@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="maps">
+   <description>Tests maps</description>
+   <dependencies>
+      <spec value="XSLT30+"/>
+   </dependencies>
+
+   <test-case name="maps-001">
+      <description>Basic test of maps in an XSLT 3.0 context</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="maps-001.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-002">
+      <description>Test of XSLT 3.0 xsl:map and xsl:map-entry instructions</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="maps-002.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-003">
+      <description>Simple computed map</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<e a="6"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="maps-004">
+      <description>Simple computed map using content of xsl:map-entry</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<e a="5 10 15 20 25"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="maps-005">
+      <description>xsl:map-entry creates a map that can be used in its own right</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<e a="2" b="2"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="maps-006">
+      <description>Error if a map used in the content of an element constructor</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-007">
+      <description>Error if a non-map used in the content of xsl:map</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-007.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-008">
+      <description>Error if a xsl:map-entry has both select attribute and content</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3280"/>
+      </result>
+   </test-case>
+</test-set>

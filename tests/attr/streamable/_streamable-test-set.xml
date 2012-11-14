@@ -1,0 +1,2213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="streamable">
+          
+   <description>Tests streamable apply-templates and modes</description>
+   
+   <environment name="strmode001a">
+      <source role="." file="strmode001a.xml" streaming="true"/>
+   </environment>
+   
+   <environment name="strmode099">
+      <source role="." file="strmode099.xml" streaming="true"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+
+   <test-case name="streamable-001">
+      <description>streaming templates used to delete selected elements</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="strmode001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-001.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-002">
+      <description>streaming templates used to delete selected elements. Built-in template for doc node.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-002.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-003">
+      <description>streaming templates used to retain selected elements.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-003.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-004">
+      <description>streaming templates used while copying attributes.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-004.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-005">
+      <description>streaming templates used while renaming some elements.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-005.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-006">
+      <description>streaming templates getting value of attribute of context node.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-006.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-007">
+      <description>streaming templates applying allowed functions to the context node.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-007.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-007.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-008">
+      <description>create an attribute from the contents of the context node.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-008.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-009">
+      <description>Real-life use case (Zeng Wang). Needs a variable</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-009.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-009.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-010">
+      <description>Two local variables in streaming template</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-010.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-010.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-011">
+      <description>Two local variables in streaming template; tests copying of attributes, namespaces, comments and PIs</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-011.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-011.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-012">
+      <description>Apply templates to attributes, namespaces, comments and PIs; change mode</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-012.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-012.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-013">
+      <description>Atomize and type-check context node in streaming mode</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-013.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <extra xmlns:your="http://your.com/ns">true</extra>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-014">
+      <description>Various ways of constructing attribute from element value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-014.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-015">
+      <description>Various ways of constructing attribute from element value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-015.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-015.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-016">
+      <description>xsl:attribute with a sequence constructor</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-016.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-016.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-017">
+      <description>xsl:element with a sequence constructor</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-017.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-017.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-018">
+      <description>xsl:variable with a sequence constructor</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-018.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-018.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-019">
+      <description>call position() in streaming mode</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-019.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-019.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-020">
+      <description>call position() in streaming mode with whitespace stripping</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-020.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-020.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-021">
+      <description>call position() in streaming mode with whitespace stripping</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-021.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-021.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-022">
+      <description>get local properties of parent node, including "instance of"</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-022.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-022.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-023">
+      <description>get local properties of attribute of ancestor node, including "instance of"</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-023.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-023.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-024">
+      <description>Within a streaming template, use copy-of select="path expression"</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-024.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-024.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-025">
+      <description>Within a streaming template, use value-of select="path expression"</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-025.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-025.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-026">
+      <description>Within a streaming template, use value-of select="path expression"</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-026.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-026.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-027">
+      <description>Within a streaming template, use value-of select="path expression" selecting an attribute</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-027.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-027.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-028">
+      <description>Within a streaming template, use value-of select="path expression" selecting multiple attributes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-028.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-028.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-029">
+      <description>Within a streaming template, use value-of select="path expression" counting all attributes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-029.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-029.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-030">
+      <description>Within a streaming template, use copy-of selecting a union of elements and attributes, with reordering needed</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-030.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-030.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-031">
+      <description>Within a streaming template, use value-of with multiple elements and attributes, and with re-ordering needed</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-031.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-031.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-032">
+      <description>Within a streaming template, use value-of with overlapping elements</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-032.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-032.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-033">
+      <description>within a streaming template, use value-of with overlapping elements and attributes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-033.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-033.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-034">
+      <description>Within a streaming template, compute sum of a set of descendant attributes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-034.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-034.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-035">
+      <description>Within a streaming template, compute average and total of a list-valued attribute value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-035.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-035.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-036">
+      <description>Within a streaming template, compute total of a list-valued attribute value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-036.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:g="http://www.w3.org/xsl-tests/grouped-transactions">
+   <account total="-141.67"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-037">
+      <description>Within a streaming template, compute total with pathological mixed content (overlapping numbers)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-037.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <chapter total="127"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-038">
+      <description>Within a streaming template, compute average of a list-valued attribute value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-038.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:g="http://www.w3.org/xsl-tests/grouped-transactions">
+   <account avg="-7.46"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-039">
+      <description>Within a streaming template, compute average with a pathological source document containing overlapping numbers</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-039.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <chapter total="63.5"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-040">
+      <description>Within a streaming template, compute total of an empty sequence of attribute values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-040.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:g="http://www.w3.org/xsl-tests/grouped-transactions">
+   <account total="-12345"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-041">
+      <description>Within a streaming template, compute compute starts-with on a singleton child node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-041.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <account zero-prefixed="true"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-042">
+      <description>Within a streaming template, test existence of a descendant node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-042.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-042.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-043">
+      <description>Within a streaming template, test non-existence of a descendant node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-043.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-043.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-044">
+      <description>Within a streaming template, use string-join with a path expression</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-044.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-044.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-045">
+      <description>Within a streaming template, get typed value of context item into a variable</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-045.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-045.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-046">
+      <description>Within a streaming template, pattern matches multiple node kinds</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-046.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-046.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-047">
+      <description>Within a streaming template, xsl:apply-templates selecting descendant nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-047.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <title>CHAPTER 1</title>
+   <title>CHAPTER 2</title>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-048">
+      <description>Within a streaming template, xsl:apply-templates selecting descendant nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-048.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <title>2</title>
+   <title>2</title>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-049">
+      <description>Within a streaming template, streamed value as second argument of a function</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-049.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <title>true</title>
+   <title>false</title>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-050">
+      <description>Within a streaming template, arithmetic on result of streamed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-050.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <title>14</title>
+   <title>14</title>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-051">
+      <description>Within a streaming template, a more elaborate expression using the result of the streamed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-051.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <title chapter="#one"/>
+   <title chapter="#two"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-052">
+      <description>Within a streaming template, a more elaborate expression using the result of the streamed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-052.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <title chapter="one"/>
+   <title chapter="two"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-053">
+      <description>Within a streaming template, use position()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-053.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <title chapter="1">Chapter 1</title>
+   <title chapter="2">Chapter 2</title>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-054">
+      <description>Within a streaming template, use min() over schema-typed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-054.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-054.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-055">
+      <description>Within a streaming template, use max() over schema-typed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-055.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns="http://www.w3.org/xsl-tests/grouped-transactions-e">
+   <max>16.00</max>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-056">
+      <description>Within a streaming template, calculate max() of numeric values including some from streamed document and others supplied literally</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-056.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns="http://www.w3.org/xsl-tests/grouped-transactions-e">
+   <max>320.00</max>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-057">
+      <description>Within a streaming template, use predicate and parent qualifier in match pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-057.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-057.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-058">
+      <description>Within a streaming template, use predicate in select expression</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-058.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-058.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-059">
+      <description>Within a streaming template, use distinct-values() on the streamed input</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-059.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-059.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-060">
+      <description>within a streaming template, use apply-templates to select overlapping elements</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-060.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <chap>
+      <section>
+         <pages>125</pages>
+      </section>
+      <section>
+         <pages>2</pages>
+      </section>
+   </chap>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-061">
+      <description>Within a streaming template, use apply-templates to select overlapping elements</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-061.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-061.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-062">
+      <description>Within a streaming template, use apply-templates within an attribute constructor. Also tests mode="#current"</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-062.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-062.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-063">
+      <description>Within a streaming template, apply-templates with atomic parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-063.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-063.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-064">
+      <description>Within a streaming template, apply-templates with tunnel parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-064.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-064.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-065">
+      <description>Within a streaming template, apply-templates with node-valued parameters. Also uses a template in both streaming and non-streaming modes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-065.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-065.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-066">
+      <description>Within a streaming template, apply-templates with node-valued parameters. Also uses a template in both streaming and non-streaming modes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-066.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-066.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-067">
+      <description>Within a streaming template, use xsl:next-match with tunnel and non-tunnel parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-067.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-067.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-068">
+      <description>Within a streaming template, use xsl:apply-imports with tunnel and non-tunnel parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-068.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-068.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-069">
+      <description>Within a streaming template, use xsl:apply-imports with tunnel and non-tunnel parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-069.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-069.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-070">
+      <description>Within a streaming template, use xsl:apply-imports with tunnel and non-tunnel parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-070.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-070.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-071">
+      <description>Within a streaming template, use for-each to process the subtree</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-071.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-071.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-072">
+      <description>Within a streaming template, use nested for-each instructions</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-072.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-072.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-073">
+      <description>Within a streaming template, capture for-each output in an attribute</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-073.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-073.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-074">
+      <description>Within a streaming template, compute count over the atomized value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-074.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-074.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-075">
+      <description>Within a streaming template, compute count over the atomized value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-075.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:g="http://www.w3.org/xsl-tests/grouped-transactions">
+   <g:transactions number="11"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-076">
+      <description>Within a streaming template, for-each instruction whose body doesn't drill down</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-076.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <chap>
+      <loan atts="0"/>
+      <loan atts="0"/>
+      <loan atts="0"/>
+      <loan atts="1"/>
+      <loan atts="1"/>
+   </chap>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-077">
+      <description>Within a streaming template, for-each instruction whose select expression depends on the context but which doesn't select streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-077.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-077.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-078">
+      <description>Within a streaming template, for-each instruction selecting the ancestors of a streamed node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-078.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-078.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-079">
+      <description>Within a streaming template, for-each instruction selecting overlapping elements</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-079.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <chap>
+      <pages>125</pages>
+      <pages>2</pages>
+   </chap>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-080">
+      <description>Within a streaming template, for-each instruction selecting the attributes of ancestors of a streamed node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-080.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <loan>version=2.1</loan>
+   <loan>version=2.1</loan>
+   <loan>version=2.1</loan>
+   <loan>version=2.1</loan>
+   <loan>version=2.1</loan>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-081">
+      <description>Within a streaming template, use lang() to access attributes of ancestors</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-081.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-081.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-082">
+      <description>within a streaming template, use xsl:if for conditional processing action depends on down-content, condition does not</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-082.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <Address>
+      <PostalCode>28165</PostalCode>
+      <State>AZ</State>
+   </Address>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-083">
+      <description>within a streaming template, use xsl:choose for conditional processing action depends on down-content, condition does not</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-083.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-083.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-084">
+      <description>within a streaming template, use if/then/else for conditional processing action depends on down-content, condition does not</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-084.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-084.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-085">
+      <description>within a streaming template, use xsl:sequence within an element constructor</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-085.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-085.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-086">
+      <description>within a streaming template, use if/then/else for conditional processing action depends on down-content, condition does not</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-086.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-086.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-087">
+      <description>within a streaming template, use if/then/else for conditional processing action depends on down-content, condition does not</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-087.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <Property/>
+   <Property/>
+   <Property/>
+   <Property>CA</Property>
+   <Property>28165</Property>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-088">
+      <description>within a streaming template, use xsl:choose for conditional processing condition uses down-selection; action does not</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-088.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <California version="2.1"/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-089">
+      <description>within a streaming template, evaluate a general comparison on streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-089.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-089.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-090">
+      <description>within a streaming template, evaluate a general comparison on streamed nodes (same as strmode088 with the operands of "=" reversed)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-090.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-090.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-091">
+      <description>Within a streaming template, use lang() to access attributes of ancestors</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-091.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-091.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-092">
+      <description>Within a streaming template, use lang() to access attributes of ancestors</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-092.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <State>##VA##</State>
+   <State>##TX##</State>
+   <State>##MD##</State>
+   <State>##CA##</State>
+   <State>##AZ##</State>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-093">
+      <description>Within a streaming template, use lang() to access attributes of ancestors</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-093.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-093.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-094">
+      <description>apply-templates in the form doc(x)//x</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-094.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-094.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-095">
+      <description>within a streaming template, use xsl:iterate to process the subtree</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-095.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-095.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-096">
+      <description>within a streaming template, use xsl:iterate and xsl:break to process the subtree</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-096.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-096.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-097">
+      <description>within a streaming template, evaluate a general comparison on streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-097.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <NotAllToday>true</NotAllToday>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-098">
+      <description>within a streaming template, evaluate a general comparison on streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-098.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <MoreThanTwo>true</MoreThanTwo>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-099">
+      <description>within a streaming template, evaluate a general comparison on streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-099.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <DeeplyInTheRed>false</DeeplyInTheRed>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-100">
+      <description>within a streaming template, evaluate a quantified expression (some $x... satisfies) on streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-100.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <DeeplyInTheRed>false</DeeplyInTheRed>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-101">
+      <description>within a streaming template, evaluate a quantified expression (some $x... satisfies) on streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-101.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <SlightlyInTheRed>true</SlightlyInTheRed>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-102">
+      <description>within a streaming template, evaluate a quantified expression (some $x... satisfies) on streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-102.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <NeverInTheRed>false</NeverInTheRed>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-103">
+      <description>within a streaming template, xsl:for-each-group group-adjacent.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-103.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-103.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-104">
+      <description>within a streaming template, use positional predicate in select expression</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-104.xsl"/>
+         <initial-template name="main"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-104.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-105">
+      <description>within a streaming template, use positional predicate in select expression</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-105.xsl"/>
+         <initial-template name="main"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-105.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-106">
+      <description>within a streaming template, use apply-templates to select overlapping elements, with a built-in template rule using shallow-copy</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-106.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[Dummy output file]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-107">
+      <description>Error case - reads context node twice</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-107.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="SXST0060"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-108">
+      <description>Error case - uses xsl:next-match</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-108.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="SXST0069"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-109">
+      <description>Access two children elements in condition. Error - reads context node twice</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-109.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="SXST0060"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-110">
+      <description>within a streaming template, for-each instruction whose select expression depends on the context but which doesn't select streamed nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-110.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="SXST0064"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-111">
+      <description>streaming templates used to delete selected elements. Variant of test using streaming on principal source doc.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="strmode001.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-111.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-112">
+      <description>streaming filter expression applied to computed sequence</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-112.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-112.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-113">
+      <description>streaming positional filter expression applied to computed sequence</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-113.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-113.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-114">
+      <description>downward-selecting for expression in a streamable template</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-114.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-114.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-115">
+      <description>xsl:for-each selecting mixed element/text nodes in a streamable template</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-115.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="streamable-115.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-116">
+      <description>Cannot stream on primary input doc if global variables refer to context item</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-116.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-117">
+      <description>Cannot stream on primary input doc if global variables refer to context item</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-117.xsl"/>
+      </test>
+      <result>
+         <error code="SXST0060"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-118">
+      <description>Cannot stream on primary input doc if global variables refer to context item</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-118.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0060"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-119">
+      <description>Cannot stream on primary input doc if global variables refer to context item</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-119.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0067"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-120">
+      <description>Cannot stream on primary input doc if global variables refer to context item</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-120.xsl"/>
+      </test>
+      <result>
+         <error code="SXST0061"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-121">
+      <description>within a streaming template, downwards-selecting predicate in match pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-121.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0064"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-122">
+      <description>within a streaming template, preceding-sibling within predicate in match pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-122.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0064"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-123">
+      <description>within a streaming template, positional predicate in match pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-123.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0064"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-124">
+      <description>apply-templates with drill-down expression in a template parameter</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-124.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0068"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-125">
+      <description>within a streaming template, passing a streamed node as a parameter is not allowed, because we can't tell where the callee will navigate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-125.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0068"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-126">
+      <description>within a streaming template, for-each instruction whose body does drill down but whose select expression does not</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-126.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0070"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-127">
+      <description>within a streaming template, disallow navigation up to ancestors and then down again</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-127.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0070"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-128">
+      <description>within a streaming template, use if/then/else for conditional processing Action depends on down-content, condition does not Invalid because the template returns nodes from the streamed document</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-128.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0063"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-129">
+      <description>within a streaming template, use a quantified expression that binds a variable to a streamed node and then does an illicit navigation using that variable.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-129.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="SXST0067"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-130">
+      <description>streaming positional filter expression using last()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode001a"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-130.xsl"/>
+      </test>
+      <result>
+         <error code="SXST0067"/>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-131">
+      <description>streaming xsl:iterate with a local variable</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode099"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-131.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result>
+   <polygons>2037</polygons>
+   <points>8148</points>
+</result>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-132">
+      <description>streaming xsl:iterate with a reference to "." in the with-param</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode099"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-132.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result>
+   <polygons>2037</polygons>
+   <points>8148</points>
+</result>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="streamable-133">
+      <description>streaming xsl:iterate with a downward navigation to child nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="strmode099"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-133.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result>
+   <polygons>2849</polygons>
+   <points>4070</points>
+</result>]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>

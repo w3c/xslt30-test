@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="iterate">
+   <description>Tests iterate</description>
+   <environment name="iterate001">
+      <source role="." file="iterate001.xml"/>
+   </environment>
+   <environment name="iterate005">
+      <source role="." file="iterate005.xml"/>
+   </environment>
+   <dependencies>
+      <spec value="XSLT30+"/>
+   </dependencies>
+
+   <test-case name="iterate-001">
+      <description>Basic Test of xsl:iterate instruction.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-001.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-001.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-002">
+      <description>Test of xsl:iterate instruction setting a parameter with xsl:next-iteration</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-002.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-002.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-003">
+      <description>Test of xsl:iterate instruction with early exit using xsl:break</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-003.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-003.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-004">
+      <description>Basic Test of xsl:iterate instruction showing it accepts xsl:fallback.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-004.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-004.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-005">
+      <description>Basic Test of xsl:iterate instruction. Error, xsl:param must come first</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate901err.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-006">
+      <description>Basic Test of xsl:iterate instruction. Error, xsl:next-iteration must be lexically within xsl:iterate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-006.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-007">
+      <description>Basic Test of xsl:iterate instruction. Error, xsl:break must be lexically within xsl:iterate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-007.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-008">
+      <description>Basic Test of xsl:iterate instruction. Error, xsl:next-iteration must come last</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate901err.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-009">
+      <description>Basic Test of xsl:iterate instruction. Error, xsl:break must come last</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-009.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-010">
+      <description>Basic Test of xsl:iterate instruction. Error, xsl:break within a literal result element</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-010.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-011">
+      <description>Basic Test of xsl:iterate instruction. Error, xsl:break within xsl:for-each</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-011.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-012">
+      <description>Basic Test of xsl:iterate instruction. Error, two xsl:param elements with same name</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-012.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0580"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-013">
+      <description>Basic Test of xsl:iterate instruction. Error, two xsl:with-param elements with same name</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-013.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0670"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-014">
+      <description>Basic Test of xsl:iterate instruction showing it accepts xsl:fallback.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-014.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-014.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-015">
+      <description>Basic Test of xsl:iterate instruction showing use of position() and last().</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-015.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-015.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-016">
+      <description>Basic test of xsl:iterate; exercises xsl:on-completion and implicit continuation</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-016.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-016.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-017">
+      <description>Basic test of xsl:iterate; params not given a value retain their previous value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-017.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-017.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-018">
+      <description>Basic test of xsl:iterate; params not given a value retain their previous value, even when shadowed by a local variable</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-018.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-018.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-019">
+      <description>Basic test of xsl:iterate; xsl:break contains a sequence constructor</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-019.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-019.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-020">
+      <description>Basic test of xsl:iterate; ensure params evaluated with correct context</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-020.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-020.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-021">
+      <description>Basic test of xsl:iterate; ensure with-param evaluated with old values of params, unaffected by other with-param elements</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-021.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-021.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-022">
+      <description>Basic Test of xsl:iterate instruction. Error, two xsl:with-param elements with same name</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-022.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0680"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-023">
+      <description>xsl:on-completion is in the wrong place</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-023.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-024">
+      <description>xsl:on-completion is in the wrong place</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-024.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-025">
+      <description>context item is undefined within xsl:on-completion</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-025.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-026">
+      <description>context position is undefined within xsl:on-completion</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-026.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="iterate-027">
+      <description>processing using xsl:iterate - group adjacent transactions by date. Same as serial017 but not streamed</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-027.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="iterate-027.out"/>
+      </result>
+   </test-case>
+</test-set>

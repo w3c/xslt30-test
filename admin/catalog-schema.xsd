@@ -15,20 +15,16 @@
                     which are to be used in the catalog and test-set instance 
                     documents, and belong to the XSLT 3.0 test suite.
                 </p>
-                <p>QT3 derives from the W3C <a href="http://dev.w3.org/cvsweb/2007/xpath-full-text-10-test-suite/" target="_blank">XQuery</a> and 
-                    <a href="http://dev.w3.org/2006/xquery-test-suite/PublicPagesStagingArea/" target="_blank">XSLT test suites</a>, where we 
-                    intend to overcome the following problems with the existing test suites:
-                    <ul>
-                        <li>Duplication across the XSLT and XQuery test suites</li>
-                        <li>Very large XQuery test suite which has become somewhat disorganised and cumbersome to find specific tests or
-                            find all test for a particular function</li>
-                        <li>Unavailability of the XSLT test suite to the general public</li>
-                        <li>Serialization issues of the test results, where the comparing of canonicalized XML documents, is
-                            unnecessarily cumbersome for the typical function test that returns an atomic value.</li>
-                        <li>Usability problems for standalone XPath processors and other host languages that use XPath</li>
-                        <li></li>
-                    </ul>
+                <p>
+                    The XSLT 3.0 test suite is a collection of tests developed over a period of time
+                    in a number of different places, brought together into a common structure whose
+                    design is based closely on the QT3 test suite used for XPath 3.0 and XQuery 3.0 testing.
+                    The schema is not identical to the QT3 schema (some improvements have been made, and
+                    some adaptations to the different needs of XSLT) but the design will be familiar to
+                    anyone with experience of QT3, and it is possible to build test drivers for both
+                    test suites using common code.
                 </p>
+ 
                 <p>This schema describes two kinds of file: the master catalog file, rooted at a
                     <code>catalog</code> element, and test-set files, which are rooted at a <code>test-set</code>
                     element. The catalog file contains a sequence of <code>test-set</code> elements which are
@@ -102,6 +98,7 @@
                         environments defined at some ancestor node, therefore conflicts are avoided.
                         
                     </p>
+                    <p><i>At present there are no global environments in the XSLT test suite.</i></p>
                     <p>
                         An environment that is shared between test cases always has a name (given by its <code>name</code> attribute).
                         An environment element within a test case may either be a reference to a shared environment (identified
@@ -132,7 +129,13 @@
     
     
     <xs:element name="stylesheet" type="styleSheetType">
-        <xs:annotation></xs:annotation>
+        <xs:annotation>
+            <xs:documentation>
+                <p>Describes a stylesheet under test. Stylesheets may be defined as part of an environment in cases
+                where many tests use the same stylesheet, but more commonly they are described individually for
+                each test case.</p>
+            </xs:documentation>
+        </xs:annotation>
         
     </xs:element>
     
@@ -146,7 +149,7 @@
                     <p>An element which defines a collation URI used in the query.</p>
                         
                     <p>The <code>uri</code>
-                        attribute is the collation URI as it actually appears in the XPath expression. There is
+                        attribute is the collation URI as it actually appears in an XPath expression. There is
                         a small enumerated set of collation URIs that may appear in tests; these have a meaning
                         that is defined in the test suite. If the implementation cannot bind arbitrary URIs to
                         collations, it may substitute this URI in the source expression by a different one having
@@ -204,15 +207,9 @@
                     <h3>param</h3>
                     <p>
                         An element within an environment that declares a variable that can be referenced
-                        within test expressions that use this environment.
+                        within stylesheets that use this environment.
                         </p>
-                     <p>   
-                        The test expression will not include a declaration of the variable (so it can be
-                        executed if appropriate using XPath). The test driver can add a declaration of the
-                        variable to the query prolog if required. If the test expression includes the string
-                        "(:%VARDECL%:)" then the variable declaration should be added to replace this string;
-                        if it does not include this string, the variable declaration can be added at the start.
-                    </p>
+                     
                 </div> 
             </xs:documentation>
         </xs:annotation>
@@ -230,10 +227,10 @@
                 <div>
                     <h3>context-item</h3>
                     <p>
-                        An element within an environment that declares the value of the context item
-                        for a query.</p>
+                        An element within an environment that declares the value of the initial context item
+                        for a stylesheet.</p>
                      <p>   
-                        The query is called with the value of the select expression as the context item.
+                        The transformation is called with the value of the select expression as the context item.
                     </p>
                 </div> 
             </xs:documentation>
@@ -341,7 +338,12 @@
                     value is a path expression to select the initial context node within the document, so that the transformation
                     can start at a non-document node.</p>
                     
-                    <p> The <code>file</code> attribute gives the relative location of the file containing the XML source.</p>
+                    <p> The <code>file</code> attribute gives the location of the file containing the XML source,
+                    relative to the URI of the catalog file.</p>
+                    
+                    <p>The <code>uri</code> attribute is the URI supplied to the <code>doc()</code> function to access the document.
+                    This may be an absolute URI or a URI relative to the base URI of the catalog file. In most cases it is the same
+                    as the <code>file</code> attribute.</p>
                     
                     <p> The scope of the &lt;source&gt; element is 
                         the parent &lt;environment&gt; element in which it appears. A validated source 
@@ -420,7 +422,7 @@
                 <div>
                     <h3>styleSheetType</h3>
                     <p>
-                        defines the type of the <code>stylesheet</code>.
+                        defines the type of the <code>stylesheet</code> element.
                     </p>
                 </div> 
             </xs:documentation>
@@ -532,7 +534,7 @@
                 <div>
                     <h3>test-set</h3>
                     <p>
-                        denotes an element which provides a sequence of test-case entries for a particular function. 
+                        denotes an element which provides a sequence of test-case entries for a particular feature of the language. 
                         Within this element we provide data needed to run the test for that function.
                     </p>
                 </div> 
@@ -572,12 +574,12 @@
                     <p>The set of recognized values appearing in the <code>value</code> attribute
                     depends on the content of the <code>type</code> attribute.</p>
                     
-                    <p>The most commonly-used dependency is on the version of XPath or XQuery. This
-                    is represented by a dependency with <code>type="spec"</code> whose corresponding
-                    value is, for example <code>value="XQ10+ XP30+"</code> which indicates that the
-                    test can be run with XQuery 1.0 or later, or XPath 3.0 or later. A test with
-                    <code>value="XQ10"</code> should be run with an XQuery 1.0 processor only (typically,
-                    an XQuery 3.0 processor will produce a different result, described in a separate
+                    <p>The most commonly-used dependency is on the version of XSLT. This
+                    is represented by the <code>spec</code> element, whose corresponding
+                    value is, for example <code>XSLT30+</code> which indicates that the
+                    test can be run with XSLT 3.0 or later. A test with
+                    <code>value="XSLT20"</code> should be run with an XSLT 2.0. processor only (typically,
+                    an XSLT 3.0 processor will produce a different result, described in a separate
                     test case.)</p>
                 </div> 
             </xs:documentation>
@@ -598,6 +600,19 @@
     </xs:complexType>
     
     <xs:element name="spec" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+  
+                    <p>The most commonly-used dependency is on the version of XSLT. This
+                        is represented by the <code>spec</code> element, whose corresponding
+                        value is, for example <code>XSLT30+</code> which indicates that the
+                        test can be run with XSLT 3.0 or later. A test with
+                        <code>value="XSLT20"</code> should be run with an XSLT 2.0. processor only (typically,
+                        an XSLT 3.0 processor will produce a different result, described in a separate
+                        test case.)</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -608,6 +623,7 @@
                                 <xs:enumeration value="XSLT10+" />
                                 <xs:enumeration value="XSLT20" />
                                 <xs:enumeration value="XSLT20+" />
+                                <xs:enumeration value="XSLT10 XSLT20" />
                                 <xs:enumeration value="XSLT30" />
                                 <xs:enumeration value="XSLT30+" />
                             </xs:restriction>
@@ -619,6 +635,14 @@
     </xs:element>
     
     <xs:element name="feature" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates that the test is dependent on an an optional feature defined in the XSLT
+                specification, for example schema awareness or streaming.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -639,9 +663,30 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="available_documents" substitutionGroup="dependency"/>
+    <xs:element name="available_documents" substitutionGroup="dependency">
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates that the test is dependent on the availability of external documents
+                that are not part of the test suite, for example pages on the W3C web site.</p>
+                
+                <p>This feature should be used sparingly; it is there to allow testing of features that
+                rely on HTTP protocol information such as media type and encoding.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
     
     <xs:element name="default_language_for_numbering" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Identifies the default language used by xsl:number and format-integer, for example en=English.</p>
+                
+                <p>Used only for tests that rely on a specific default language.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -660,6 +705,14 @@
     </xs:element>
     
     <xs:element name="combinations_for_numbering" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates dependencies on implementation-defined aspects of xsl:number, format-number, etc.
+                The full range of values is not yet defined.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -674,6 +727,13 @@
     </xs:element>
     
     <xs:element name="languages_for_numbering" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates a test that depends on a particular language being supported for number or date formatting.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -692,6 +752,13 @@
     </xs:element>
     
     <xs:element name="supported_calendars_in_date_formatting_functions" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates a test that depends on a particular calendar being supported for date formatting.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -710,9 +777,25 @@
     </xs:element>
     
     <xs:element name="default_calendar_in_date_formatting_functions" 
-        substitutionGroup="supported_calendars_in_date_formatting_functions"/>
+        substitutionGroup="supported_calendars_in_date_formatting_functions">
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates a test that depends on a particular calendar being the default calendar for date formatting.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
     
     <xs:element name="year_component_values" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates a test that depends on implementation-defined limits for dates and durations, notably on
+                    support for negative (i.e. BC) years.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -729,6 +812,13 @@
     </xs:element>
     
     <xs:element name="maximum_number_of_decimal_digits" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates a test that depends on more than the statutory minimum of 18 decimal digits.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -745,6 +835,15 @@
     </xs:element>
     
     <xs:element name="collation_uri" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates a test that depends on a particular collation URI being available.</p>
+                
+                <p>(Overlaps with the definition of collations in the environment...)</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -759,6 +858,13 @@
     </xs:element>
     
     <xs:element name="statically_known_collations" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Indicates a test that depends on particular collations being present in the static context.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -775,6 +881,13 @@
     </xs:element>
     
     <xs:element name="default_output_encoding" substitutionGroup="dependency" >
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Identifies the default encoding for serialized output.</p>
+                
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -791,7 +904,15 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="unparsed_text_encoding" substitutionGroup="default_output_encoding"/>
+    <xs:element name="unparsed_text_encoding" substitutionGroup="default_output_encoding">
+        <xs:annotation>
+            <xs:documentation>
+                
+                <p>Identifies the default encoding assumed by the unparsed-text() function</p>
+                
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
     
     <xs:element name="additional_normalization_form" substitutionGroup="dependency" >
         <xs:annotation>
@@ -938,7 +1059,7 @@
                 <div>
                     <h3>test-case</h3>
                     <p>
-                        denotes an element that contains a test that must be run in a named environment, 
+                        An element that contains a test that must be run in a named environment, 
                         also contains the expected result and description of the test, including author 
                         and creation date.
                     </p>
@@ -966,14 +1087,10 @@
                 <div>
                     <h3>test</h3>
                     <p>
-                        The content of the element is an XPath or XQuery expression to be evaluated.                     
+                        The content of the element identifies the stylesheet to be used for the transformation,
+                        plus entry conditions such as the values of parameters or an initial template name.                     
                     </p>
-                    <p>
-                        As an alternative to providing the content inline, it may be provided in an external
-                        file referenced using the <code>file</code> attribute. This is done only exceptionally, where (a)
-                        the query is unusually large, or (b) there is a need to test features that can only
-                        be achieved with an external file, for example special encodings.
-                    </p>
+                    
                 </div> 
             </xs:documentation>
         </xs:annotation>
@@ -984,6 +1101,8 @@
                         <xs:documentation>
                             <p>If the element appears more than once, then the first occurrence should have role="principal"
                             and the others should have role="secondary".</p>
+                            <p>Identifying the included/imported stylesheets using role="secondary" entries is good practice,
+                            but it's not guaranteed that all tests follow this practice.</p>
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -996,7 +1115,10 @@
     
     <xs:element name="initial-template">
         <xs:annotation>
-          
+            <xs:documentation>
+                <p>Gives the name of the named template to be used as the entry point for the transformation. When this is supplied,
+                it is not necessary to supplied a source document or initial context item.</p>
+            </xs:documentation>         
         </xs:annotation>
         <xs:complexType>
             <xs:attribute name="name" type="xs:QName" />
@@ -1005,7 +1127,9 @@
     
     <xs:element name="initial-mode">
         <xs:annotation>
-            
+            <xs:documentation>
+                <p>Gives the name of the mode to be used as the entry point for the transformation. </p>
+            </xs:documentation>         
         </xs:annotation>
         <xs:complexType>
             <xs:attribute name="name" type="xs:QName" />
@@ -1054,10 +1178,9 @@
                 <div>
                     <h3>result</h3>
                     <p>
-                        denotes an element which provides an &lt;assert&gt; or &gt;error&lt; element pertaining the expected result. 
-                        Alternatively assertions can appears as a list within &lt;any-of&gt; or &lt;all-of&gt; element. 
-                        The meaning of these elements are self explantary.
-                        
+                        A wrapper for the part of a test case describing the expected outcome of the test, in the form
+                        of an assertion about the results. Note that assertions about the result of the transformation
+                        relate to the principal result document unless otherwise specified.
                     </p>
                 </div> 
             </xs:documentation>
@@ -1076,7 +1199,7 @@
                 <div>
                     <h3>complexType for a sequence of assertions</h3>
                     <p>
-                        
+                        Used to represent the body of an <code>any-of</code> or <code>all-of</code> element.
                     </p>
                 </div> 
             </xs:documentation>
@@ -1093,7 +1216,7 @@
                 <div>
                     <h3>any-of</h3>
                     <p>
-                        denotes an element which provides a list of assertions. 
+                        A container for a list of assertions. 
                         One or more of the assertions needs to prove true for the test to pass, 
                         but if all fail then the test fails.
                     </p>
@@ -1108,7 +1231,7 @@
                 <div>
                     <h3>all-of</h3>
                     <p>
-                        denotes an element which provides a list of assertions that must be all satisfied, 
+                        A container for a list of assertions that must be all satisfied; 
                         if any of the assertions proves to be false then the test fails.      
                     </p>
                 </div> 
@@ -1215,11 +1338,6 @@
                         Asserts the result of the query by providing a serialization of the expression 
                         result using the default serialization parameters method="xml" indent="no" 
                         omit-xml-declaration="yes".</p>
-                        
-                    <p> Previously called assert-serialization.    
-                        Note that this assertion is not used to test serialization; it is used
-                        as a way of supplying the expected results of the query in the form of an XML
-                        document.</p>
                         
                     <p> The assertion is true if the result of parsing and canonicalizing the XML
                         given in the body of the assert-xml element is the same (byte-for-byte) as
@@ -1356,7 +1474,7 @@
                 <div>
                     <h3>assert-serialization-error</h3>
                     <p>
-                        Asserts that the query can be executed without error, but serializing the result
+                        Asserts that the transformation can be executed without error, but serializing the result
                         produces a serialization error. The expression result is serialized using the default
                         serialization parameters method="xml" indent="no" omit-xml-declaration="yes".
                     </p>
@@ -1372,18 +1490,7 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="assert-empty"  substitutionGroup="abstractAssertion">
-        <xs:annotation>
-            <xs:documentation>
-                <div>
-                    <h3>assert-empty</h3>
-                    <p>
-                        Asserts that the result of the test is an empty sequence.
-                    </p>
-                </div> 
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
+    
     
     <xs:element name="assert-type"  substitutionGroup="abstractAssertion">
         <xs:annotation>
@@ -1406,36 +1513,7 @@
     
     
     
-    <xs:element name="assert-string-value" substitutionGroup="abstractAssertion">
-        <xs:annotation>
-            <xs:documentation>
-                <div>
-                    <h3>assert-string-value</h3>
-                    <p>
-                        Asserts that the result of the test, after conversion to a string by applying the expression
-                        
-                        string-join(for $r in $result return string($r), " ")
-                        
-                        is equal to the string value of the assert-string-value element. Note that this test cannot
-                        be used if the result includes items that do not have a string value (elements with element-only
-                        content; function items)
-                        
-                        If the normalize-space attribute is present with the value true, then both the string value of the query
-                        result and the value of the assert-string-value
-                        element should be processed as if by the XPath normalize-space() function before the comparison.
-                    </p>
-                </div> 
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:simpleContent>
-                <xs:extension base="xs:string">
-                    <xs:attribute name="normalize-space" type="xs:boolean" default="false"/>
-                </xs:extension>
-            </xs:simpleContent>
-        </xs:complexType>
-        
-    </xs:element>
+    
     
     <xs:element name="error"  substitutionGroup="abstractAssertion">
         <xs:annotation>

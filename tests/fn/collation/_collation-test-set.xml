@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="collation">
+   <description>Tests collation</description>
+   <environment name="collationfunc001">
+      <source role=".">
+         <content><![CDATA[<!-- A required but useless input XML doc for a transformation -->
+<doc/>]]></content>
+      </source>
+   </environment>
+
+   <test-case name="collation-001">
+      <description>To verify that the implicit Unicode code point collation can be used with XPath functions that require collation.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="collationfunc001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collation-001.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="collation-001.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="collation-002">
+      <description>To verify that the Unicode code point collation can be passed as an argument and is used in XPath functions that require collation.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="collationfunc001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collation-002.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="collation-002.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="collation-003">
+      <description>To verify that the Unicode code point collation URI is the first recognized and used value from a list specified in a default-collation attribute.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="collationfunc001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collation-003.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="collation-003.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="collation-004">
+      <description>Testcase to verify that implicit default collation is captured by fn:default-collation</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="collationfunc001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collation-004.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>http://www.w3.org/2005/xpath-functions/collation/codepoint</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="collation-005">
+      <description>To verify that the first recognized collation URI value from a list specified in a default-collation attribute is returned by fn:default-collation.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="collationfunc001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collation-005.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>http://www.w3.org/2005/xpath-functions/collation/codepoint</out>]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>

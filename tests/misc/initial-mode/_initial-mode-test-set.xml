@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="initial-mode">
+   <description>Tests initial-mode</description>
+   <environment name="inimode001">
+      <source role=".">
+         <content><![CDATA[<doc/>]]></content>
+      </source>
+   </environment>
+
+   <test-case name="initial-mode-001">
+      <description>Test use of an initial mode (see config file)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="inimode001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-mode-001.xsl"/>
+         <initial-mode name="inimode"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<zzz>1,2,3,4,5,6,7,8,9,10</zzz>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="initial-mode-002">
+      <description>Test use of an initial mode matching a template with mode="#all" (see config file) Following the resolution of http://www.w3.org/Bugs/Public/show_bug.cgi?id=3690 this test should raise an error (XTDE0045)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="inimode001"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-mode-002.xsl"/>
+         <initial-mode name="inimode"/>
+      </test>
+      <result>
+         <error code="XTDE0045"/>
+      </result>
+   </test-case>
+
+   <test-case name="initial-mode-003">
+      <description>It's an error if no value is supplied for a required parameter, even if the parameter is never referenced</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="inimode001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-mode-003.xsl"/>
+         <initial-mode name="inimode"/>
+      </test>
+      <result>
+         <error code="XTDE0050"/>
+      </result>
+   </test-case>
+</test-set>

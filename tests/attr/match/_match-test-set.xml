@@ -1,0 +1,3863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="match">
+   <description>Tests match</description>
+   <environment name="match1001">
+      <source role=".">
+         <content><![CDATA[<doc>
+  <foo att1="c">
+    <foo att1="b">
+      <foo att1="a">
+        <baz att1="wrong"/>
+      </foo>
+    </foo>
+  </foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match1002">
+      <source role="." file="match1002.xml"/>
+   </environment>
+   <environment name="match1004">
+      <source role=".">
+         <content><![CDATA[ 
+<letters>
+  <letter>a</letter>
+  <letter>b</letter>
+  <letter>c</letter>
+  <letter>b</letter>
+  <letter>h</letter>
+</letters>]]></content>
+      </source>
+   </environment>
+   <environment name="match1008">
+      <source role="." file="match1008.xml"/>
+   </environment>
+   <environment name="match1009">
+      <source role="." file="match1009.xml"/>
+   </environment>
+   <environment name="match1011">
+      <source role="." file="match1011.xml"/>
+   </environment>
+   <environment name="match1012">
+      <source role="." file="match1012.xml"/>
+   </environment>
+   <environment name="match1013">
+      <source role="." file="match1013.xml"/>
+   </environment>
+   <environment name="match1014">
+      <source role=".">
+         <content><![CDATA[<doc>
+  <foo att1="a">8</foo>
+  <foo att1="b">5</foo>
+  <foo att1="c">9</foo>
+  <foo att1="d">6</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match1015">
+      <source role="." file="match1015.xml"/>
+   </environment>
+   <environment name="match1016">
+      <source role="." file="match1016.xml"/>
+   </environment>
+   <environment name="match1017">
+      <source role="." file="match1017.xml"/>
+   </environment>
+   <environment name="match1019">
+      <source role="." file="match1019.xml"/>
+   </environment>
+   <environment name="match1020">
+      <source role="." file="match1020.xml"/>
+   </environment>
+   <environment name="match1027">
+      <source role=".">
+         <content><![CDATA[<A level="1">
+  <X level="2">
+     <B level="3">
+        <X level="4">
+          <C level="5">
+            <X level="6"/>
+          </C>
+        </X>
+     </B>
+  </X>
+</A>]]></content>
+      </source>
+   </environment>
+   <environment name="match1030">
+      <source role="." file="match1030.xml"/>
+   </environment>
+   <environment name="match1033">
+      <source role="." file="match1033.xml"/>
+   </environment>
+   <environment name="match1051">
+      <source role="." file="match1051.xml"/>
+   </environment>
+   <environment name="match1052">
+      <source role=".">
+         <content><![CDATA[<div>
+  <and/>
+  <or/>
+  <div/>
+</div>
+   ]]></content>
+      </source>
+   </environment>
+   <environment name="match1054">
+      <source role=".">
+         <content><![CDATA[<html>
+  <body>
+    <table>
+      <tr>
+        <th>col1</th><th>col2</th>
+      </tr>
+      <tr>
+        <td>data1</td><td>data2</td>
+      </tr>
+    </table>
+  </body>
+</html>]]></content>
+      </source>
+   </environment>
+   <environment name="match1055">
+      <source role="." file="match1055.xml"/>
+   </environment>
+   <environment name="match1057">
+      <source role=".">
+         <content><![CDATA[<attributes><attribute/></attributes>]]></content>
+      </source>
+   </environment>
+   <environment name="match1058">
+      <source role="." file="match1058.xml"/>
+   </environment>
+   <environment name="match1059">
+      <source role=".">
+         <content><![CDATA[<doc>
+  <foo att1="c">
+    <foo att1="b">
+      <foo att1="a">
+        <baz att1="wrong"/>
+      </foo>
+    </foo>
+  </foo>
+</doc>
+   ]]></content>
+      </source>
+   </environment>
+   <environment name="match2001">
+      <source role=".">
+         <content><![CDATA[<doc>Text</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2002">
+      <source role=".">
+         <content><![CDATA[<doc attribute="attr_val"><inner att1="at1"/>Text</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2003">
+      <source role=".">
+         <content><![CDATA[<doc attribute="attr_val"><inner1>Text<inner2/></inner1></doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2004">
+      <source role=".">
+         <content><![CDATA[<doc attribute="attr_val">
+<inner1>Text</inner1>
+<inner1>Text</inner1>
+<inner2>Text</inner2>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2005">
+      <source role=".">
+         <content><![CDATA[<doc attribute="attr_val">
+<text-elem att="1">11</text-elem>
+<text-elem att="2">22</text-elem>
+<text-elem att="3">33</text-elem>
+<text-elem att="4">44</text-elem>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2011">
+      <source role=".">
+         <content><![CDATA[ 
+<doc>
+<text-elem att="1">11</text-elem>
+<text-elem att="2">22</text-elem>
+<text-elem att="3">33</text-elem>
+<text-elem att="4">44</text-elem>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2012">
+      <source role=".">
+         <content><![CDATA[<doc attribute="attr_val"></doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2016">
+      <source role="." file="match2016.xml"/>
+   </environment>
+   <environment name="match2017">
+      <source role=".">
+         <content><![CDATA[<doc>
+  <a id="elem_a">A<a1/></a>
+  <b id="elem_b">B<b1/></b>
+  <c id="elem_c">C<c1/></c>
+  <d id="elem_d">D<d1/></d>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2018">
+      <source role=".">
+         <content><![CDATA[<doc attribute="attr_val"><!--This is the 1st comment--><?pi PI_data?><?anotherpi another_PI_data?>text-in-doc<aaa>elem_aaa_value</aaa></doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2019">
+      <source role=".">
+         <content><![CDATA[ <doc attribute="attr_val"><?pi PI_data?><!--This is the 1st comment-->text-in-doc<aaa>elem_aaa_value</aaa><bbb>elem_bbb_value</bbb></doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2020">
+      <source role=".">
+         <content><![CDATA[<doc att1="attr_val1" att2="attr_val2" att3="attr_val3"><?pi PI_data?><!--This is the 1st comment-->text-in-doc<aaa>elem_aaa_value</aaa></doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match2022">
+      <source role="." file="match2022.xml"/>
+   </environment>
+   <environment name="match2023">
+      <source role="." file="match2023.xml"/>
+   </environment>
+   <environment name="match2026">
+      <source role=".">
+         <content><![CDATA[<doc attribute="attr_val">
+<text-elem1 att="1">0</text-elem1>
+<text-elem2 att="2">22<inner1>21</inner1></text-elem2>
+<text-elem3 att="3">33</text-elem3>
+<text-elem4 att="4">44</text-elem4>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="match3001">
+      <source role="." file="schemamatch001.xml"/>
+      <schema role="source-reference"
+              file="match-builtin.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3002">
+      <source role="." file="schemamatch002.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3011">
+      <source role=".">
+         <content><![CDATA[<doc/>]]></content>
+      </source>
+      <schema role="stylesheet-import"
+              file="variousTypesSchemaMatch.xsd"
+              xsd-version="1.0"/>
+      <schema role="stylesheet-import"
+              file="subgroupTypeSchemaMatch.xsd"
+              xsd-version="1.0"/>
+      <schema role="stylesheet-import"
+              file="match-attributes.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3027">
+      <source role="." file="schemamatch027.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3029">
+      <source role="." file="schemamatch029.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3033">
+      <source role="." file="schemamatch033.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3054">
+      <source role="." file="schemamatch054.xml"/>
+      <schema role="source-reference"
+              file="subgroupTypeSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3057">
+      <source role="." file="schemamatch057.xml"/>
+      <schema role="source-reference"
+              file="subgroupTypeSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3078">
+      <source role="." file="schemamatch078.xml"/>
+      <schema role="source-reference"
+              file="subgroupTypeSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3090">
+      <source role="." file="schemamatch090.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3092">
+      <source role="." file="schemamatch092.xml"/>
+      <schema role="source-reference"
+              file="match-builtin.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3096">
+      <source role="." file="schemamatch096.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaMatch.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3112">
+      <source role="." file="schemamatch112.xml"/>
+      <schema role="source-reference"
+              file="match-id-idref-notation.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3117">
+      <source role="." file="schemamatch117.xml"/>
+      <schema role="source-reference"
+              file="match-id-idref-notation.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3140">
+      <source role="." file="schemamatch140.xml"/>
+      <schema role="source-reference"
+              file="match-attributes.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3143">
+      <source role="." file="schemamatch143.xml"/>
+      <schema role="source-reference"
+              file="match-attributes.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="match3148">
+      <source role="." file="schemamatch148.xml"/>
+      <schema role="source-reference"
+              file="match-id-idref-notation.xsd"
+              xsd-version="1.0"/>
+   </environment>
+
+   <test-case name="match-001">
+      <description>Test for //name match pattern.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1001"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-001.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+  cba
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-002">
+      <description>Test "union" allowed in predicates as alternative to "|" even in 2.0 (See also match9053-err)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-002.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+  cba
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-003">
+      <description>Purpose: Test of predicate, using attribute, in match pattern.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1002"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-003.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>num6 num2 num4 num3 num1 num5 </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-004">
+      <description>Purpose: Test of @attrib=value in predicate in match pattern.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1002"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-004.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>num4</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-005">
+      <description>Purpose: Test of node=value in predicate in match pattern.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1004"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-005.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>b b </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-006">
+      <description>Test of or in predicate of match pattern.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1004"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-006.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>b b h </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-007">
+      <description>Purpose: Test of boolean not function in match pattern.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1004"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-007.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>a c h </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-008">
+      <description>Purpose: Test of node!=value match pattern.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1004"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-008.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>a c h </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-009">
+      <description>Purpose: Test of functions in predicate.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1004"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-009.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>h</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-010">
+      <description>Purpose: Test of 2 predicates.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1008"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-010.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>11 121 </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-011">
+      <description>Purpose: Test of predicate with two conditions, one positional. suppress built-in template for text</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1008"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-011.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>12 132 </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-012">
+      <description>Purpose: Test of boolean and in predicate.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1009"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-012.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>foo foo </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-013">
+      <description>Purpose: Test of id('literal') as match pattern.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1011"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-013.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>a = B</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-014">
+      <description>Test use of id() in the branches of a union pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-014.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>a = Ba = C</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-015">
+      <description>Purpose: Test that apply-templates goes down at least 15 levels. Suppress the default action on these. To suppress empty lines</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1012"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-015.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-015.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-016">
+      <description>Purpose: Test of large union.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1013"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-016.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>9
+44
+51
+77
+114
+118
+154
+176
+187
+209
+224
+255
+355
+374
+390
+426
+494
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-017">
+      <description>Purpose: Show that a variable can be used in a match pattern, though not for the name test. The variable must be top-level, of course.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1014"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-017.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+  Passed: a
+  Failed: b
+  Passed: c
+  Failed: d
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-018">
+      <description>LocationPath010 in NIST suite Purpose: Test a match patttern with a complex expression.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1015"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-018.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Test Executed Successfully.</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-019">
+      <description>Purpose: Test step//step[predicate], with positional predicate, to show that position numbering applies "relative to the child axis", not //. Suppress text matching</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1016"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-019.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<first>hello</first><other/>
+<first>goodbye</first><other/><other/>
+<first>aloha</first>
+<first>shalom</first><other/><other/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-020">
+      <description>Purpose: Test of 2 predicates, first one being positional. suppress built-in template for text</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1017"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-020.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>12 132 </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-021">
+      <description>Purpose: Test of two predicates, second one being positional. suppress built-in template for text</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1019"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-021.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>112 13 </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-022">
+      <description>Test of two predicates, both being positional. First predicate reduces the set to {a,c,e,g,i,k}.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1020"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-022.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>g i k </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-023">
+      <description>Test of three predicates, all being positional. First predicate reduces the set to {a,c,e,g,i,k}.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1020"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-023.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>i </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-024">
+      <description>Test of three predicates, all being positional. Different notation. First predicate reduces the set to {a,c,e,g,i,k}.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1020"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-024.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>i </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-025">
+      <description>Test of three predicates, all being positional. Use last() for one. First predicate reduces the set to {a,c,e,g,i,k}.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1020"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-025.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>k </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-026">
+      <description>Purpose: Test of three predicates, two being positional. Use last() for one. First predicate reduces the set to {a,c,e,g,i,k}. Second predicate, taken alone, reduces the set to {f,g,h,i,j,k,l}.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1020"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-026.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>k </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-027">
+      <description>Purpose: Test of three predicates, two being positional. Use last() for one. First predicate reduces the set to {b,e,h,k}. Second predicate further reduces the set to {h,k}.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1020"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-027.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>k </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-028">
+      <description>Purpose: Test of three predicates, two being positional. First predicate reduces the set to {a,c,e,g,i,k}. Second predicate further reduces the set to {c}. Third predicate, taken alone, reduces the set to {a,b,c,d,e,f,g,h,i}.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1020"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-028.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>c </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-029">
+      <description>, from an idea by Holger Floerke Purpose: // at start of match pattern should not affect selection of nodes.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1027"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-029.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<foundX level="2"/><foundX level="4"/><foundX level="6"/>
+<found-X level="2"/><found-X level="4"/><found-X level="6"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-030">
+      <description>, from an idea by Holger Floerke Purpose: // at start of match pattern should not affect selection of nodes. Suppress other X nodes Suppress other X nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1027"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-030.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<foundX level="4"/>
+<found-X level="4"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-031">
+      <description>, from an idea by Holger Floerke Purpose: // at start of match pattern should not affect selection of nodes. Suppress other X nodes Suppress other X nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1027"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-031.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<foundX level="4"/><foundX level="6"/>
+<found-X level="4"/><found-X level="6"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-032">
+      <description>Purpose: Use multiple levels of child axis in match patterns. Intermix 'child::' and default, but only with child:: in the middle.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1030"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-032.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-032.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-033">
+      <description>Purpose: Use multiple levels of child axis in match patterns. Intermix 'child::' and default, but only with child:: on the tail.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1030"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-033.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-033.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-034">
+      <description>Purpose: Use multiple levels of child axis in match patterns. Spell out 'child::' sometimes. </description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1030"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-034.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-034.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-035">
+      <description>Show that xpath-default-namespace has no effect on attribute names in a match pattern</description>
+      <created by="Michael Kay, based on an idea by Wendell Piez"
+               on="2012-11-07"/>
+      <environment ref="match1033"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-035.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-035.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-036">
+      <description>Test for *:local-name match pattern (XSLT 2.0).</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1051"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-036.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-036.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-037">
+      <description>Test the pattern /div. (Operator keyword after "/")</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1052"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-037.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>OK!</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-038">
+      <description>Test the "union" keyword in a pattern (should not be recognized as an operator)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1052"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-038.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>OK!</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-039">
+      <description>FileName: MATCH9053-ERR Test the "union" keyword in a pattern (should not be recognized as an operator) (See also match87)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1052"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-039.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-040">
+      <description>FileName: MATCH9053-ERR Test use of an undeclared function in a pattern predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1052"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-040.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTSE0340"/>
+            <error code="XPST0017"/>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="match-041">
+      <description>test a pattern that includes range variable declarations in a predicate default this is what causes the problem Ignore All Text Nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1054"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-041.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="match1054.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-042">
+      <description/>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1055"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-042.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-042.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-043">
+      <description/>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1055"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-043.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-043.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-044">
+      <description/>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1057"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-044.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<s><pling/></s>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-045">
+      <description>Bug 1069950 - patterns of the form ns:* ignore the node kind</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1058"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-045.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-045.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-046">
+      <description>Check that a template rule with negative priority is OK</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-046.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<d><ok/></d>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-047">
+      <description>Check that a pattern using the attribute axis in a step other than the last is OK (though it never matches anything)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-047.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<d/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-048">
+      <description>Check that a pattern using child::document-node() is legal (though it never matches anything)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-048.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>OK</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-049">
+      <description>Test use of current() in the branches of a union pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-049.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-049.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-050">
+      <description>Test match="$a//x" allowed in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-050.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><first>baz = wrong</first><second>baz = wrong</second></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-051">
+      <description>Test match="$a" allowed in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-051.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><one/><two><YYY/></two></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-052">
+      <description>Test match="doc('xxx')" allowed in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-052.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-052.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-053">
+      <description>Test match="id(X,Y)" allowed in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-053.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>a = C</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-054">
+      <description>Test match="element-with-id(X,Y)" allowed in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-054.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><row xmlns="http://match84/"><id>C</id><value>GAMMA</value></row></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-055">
+      <description>Test match="element-with-id(X)" allowed in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-055.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><row xmlns="http://match85/"><id>C</id><value>GAMMA</value></row></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-056">
+      <description>Test match="id(X)" with id-valued element</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-056.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><row><id>C</id><value>GAMMA</value></row></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-057">
+      <description>Test "union" allowed in XSLT 3.0 as alternative to "|" (See also match9053-err)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-057.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><yes>MATCH</yes></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-058">
+      <description>A trivial predicate of [true()] can affect the template priority</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-058.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>doc[true()]</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-059">
+      <description>Tilde syntax used with node tests</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-059.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><doc2>
+  <foo2>
+    <foo2>
+      <foo2>
+        
+      </foo2>
+    </foo2>
+  </foo2>
+</doc2></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-060">
+      <description>Union pattern allowing nodetest or atomic value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-060.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-061">
+      <description>xsl:number with from pattern using type pattern syntax</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-061.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+  <foo number="1">
+    <foo number="2">
+      <foo number="3">
+        
+      </foo>
+    </foo>
+  </foo>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-062">
+      <description>xsl:number with count pattern using type pattern syntax</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-062.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+  <foo number="1">
+    <foo number="1">
+      <foo number="1">
+        
+      </foo>
+    </foo>
+  </foo>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-063">
+      <description>Except pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-063.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+  <special-foo>
+    <foo2>
+      <foo2>
+        
+      </foo2>
+    </foo2>
+  </special-foo>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-064">
+      <description>Except pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-064.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+  <foo2>
+    <special-foo>
+      <special-foo>
+        
+      </special-foo>
+    </special-foo>
+  </foo2>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-065">
+      <description>Union pattern with predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-065.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-065.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-066">
+      <description>Except pattern with predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-066.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-066.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-067">
+      <description>Filtered "/" in pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-067.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<ok a="c"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-068">
+      <description>Filtered "/" in pattern. NOTE: this is allowed by the current (Oct 2012) syntax for patterns, but it is not a valid XPath expression. Bug 18861 proposes to make this pattern illegal.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-068.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[dummy results file]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-069">
+      <description>Parentless namespace node in pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-069.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<ns uri="http://www.example.com/ns"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-070">
+      <description>doc() function in pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-070.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-070.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-071">
+      <description>doc() function in pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-071.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><ok/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-072">
+      <description>global variable reference as pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-072.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><ok/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-073">
+      <description>global variable reference as pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-073.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><ok/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-074">
+      <description>global variable reference as pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-074.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><ok/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-075">
+      <description>descendant axis in pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-075.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><ok a="c"/><ok a="b"/><ok a="a"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-076">
+      <description>descendant axis in pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-076.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><ok att="b"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-077">
+      <description>FileName: MATCH9053-ERR Test use of an disallowed function at the start of a pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-077.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTSE0340"/>
+            <error code="XPST0017"/>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="match-078">
+      <description>Following match pattern is legal but can't match anything. Despite the name, this is not an error case. (Saxon gives a warning)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-078.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<doc><foo att1="c"><foo att1="b"><foo att1="a"><baz att1="wrong"/></foo></foo></foo></doc>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-079">
+      <description>FileName: MATCH9053-ERR Test that second argument to key() in a pattern must be a literal</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-079.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTSE0340"/>
+            <error code="XPST0017"/>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="match-080">
+      <description>FileName: MATCH9058-ERR Test function call not at the start of a pattern path</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-080.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTSE0340"/>
+            <error code="XPST0017"/>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="match-081">
+      <description>FileName: MATCH9059-ERR Test union operator not at top level of pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-081.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTSE0340"/>
+            <error code="XPST0017"/>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="match-082">
+      <description>FileName: MATCH9059-ERR Test parens at top level of pattern, not allowed</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-082.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTSE0340"/>
+            <error code="XPST0017"/>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="match-083">
+      <description>Test match="$a//x" disallowed in XSLT 2.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-083.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-084">
+      <description>Test match="$a" disallowed in XSLT 2.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-084.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-085">
+      <description>Test match="$a//x" disallowed in XSLT 2.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-085.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-086">
+      <description>Test match="id(A,B)" disallowed in XSLT 2.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-086.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-087">
+      <description>Test match="/[x]" (currently allowed by XSLT 3.0 specification, but not legal XPath - see spec bug 18861)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-087.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-088">
+      <description>Test of pattern with kind document-node()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-088.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Document_Node_Found<elem>doc</elem></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-089">
+      <description>Test of patterns with kind test attribute()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-089.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><doc>attribute</doc><second>att1</second></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-090">
+      <description>Test match patterns with kindtest element()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2003"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-090.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t1>inner1</t1><t2>inner2</t2></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-091">
+      <description>Test match patterns with nametest *:NCName</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2004"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-091.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t1>inner1</t1><t1>inner1</t1><t2>inner2</t2></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-092">
+      <description>Test match patterns with operator "eq" apperaing inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2005"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-092.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>11</t><t>33</t><t>44</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-093">
+      <description>Test match patterns with operator "ne" apperaing inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2005"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-093.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>11</t><t>22</t><t>33</t><t>44</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-094">
+      <description>Test match patterns with operator "lt" apperaing inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2005"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-094.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>11</t><t>44</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-095">
+      <description>Test match patterns with operator "le" apperaing inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2005"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-095.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>11</t><t>22</t><t>33</t><t>44</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-096">
+      <description>Test match patterns with operator "gt" apperaing inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2005"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-096.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>11</t><t>22</t><t>33</t><t>44</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-097">
+      <description>Test match patterns with operator "ge" apperaing inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2005"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-097.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>11</t><t>22</t><t>33</t><t>44</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-098">
+      <description>Test match patterns with rangeExpr inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2005"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-098.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>attribute</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-099">
+      <description>Test of pattern with current() appearing inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-099.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>22</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-100">
+      <description>Test predicates of document node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2012"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-100.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>GOT_DOC_NODE</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-101">
+      <description>Test predicates of various parentless nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2012"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-101.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>elem_a_value</t><t>PI_data</t><t>another_PI_data</t><t>This is the 1st comment</t><t>text-in-doc</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-102">
+      <description>Test predicates of parentless element node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2012"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-102.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>elem:elem_a_value</t><t>elem:elem_b_value</t>text-in-docatt-value</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-103">
+      <description>Test predicates of parentless attribute node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2012"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-103.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>elem_a_valuetext-in-doc<t>att1-value</t><t>att2-value</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-104">
+      <description>Test match patterns with function id() invloving variable reference</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2016"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-104.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>D</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-105">
+      <description>Test match patterns with function key() using variable reference as argument</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2017"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-105.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>d</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-106">
+      <description>Test predicates of various parentless copied nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2018"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-106.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>elem_aaa_value</t><t>PI_data</t><t>another_PI_data</t><t>This is the 1st comment</t><t>text-in-doc</t><t>attr_val</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-107">
+      <description>Test predicates of various parentless nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2018"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-107.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>elem_a_value</t><t>PI_data</t><t>another_PI_data</t><t>This is the 1st comment</t><t>text-in-doc</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-108">
+      <description>Test predicates of parentless element node using explicit child axis</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2018"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-108.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>match-with-childaxis:elem_a_value</t>text-in-docatt-value</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-109">
+      <description>Test predicates of parentless element node, using implicit child axis</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2018"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-109.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>match-with-childaxis:elem_a_value</t>text-in-docatt-value</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-110">
+      <description>Test predicates of parentless attribute node with attribute axis and the NodeTest in PatternStep is various KindTest</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2018"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-110.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>elem_a_valuetext-in-doc<t>att-value</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-111">
+      <description>Test predicates of parentless attribute node with attribute axis and the NodeTest in PatternStep is NameTest "*"</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2018"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-111.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>elem_a_valuetext-in-doc<t>att-value</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-112">
+      <description>Test predicates of various parentless copied nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2018"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-112.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>elem_aaa_value</t><t>PI_data</t><t>another_PI_data</t><t>This is the 1st comment</t><t>text-in-doc</t>attr_val</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-113">
+      <description>Test predicates of parentless copied attribute node with attribute axis and the NodeTest in PatternStep is various kindTest</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2018"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-113.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>attr_val</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-114">
+      <description>Test predicates of parentless copied element node</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2019"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-114.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>elem_aaa_value</t><t>elem_bbb_value</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-115">
+      <description>Test predicates of parentless copied element node with the use of explicit child axis</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2019"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-115.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>text-in-docelem_aaa_valueelem_bbb_value</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-116">
+      <description>Test predicates of parentless copied element node with implicit use of child axis</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2019"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-116.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>elem_aaa_value</t><t>elem_bbb_value</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-117">
+      <description>Test predicates of parentless copied attribute node with attribute axis</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-117.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>attr_val1</t><t>attr_val2</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-118">
+      <description>Test predicates of parentless copied attribute node with attribute axis</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-118.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>attr_val1</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-119">
+      <description>Test of template matching with ForExpr inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2022"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-119.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>text-elem1</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-120">
+      <description>Test match patterns with ForExpr inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2023"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-120.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>text-elem2</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-121">
+      <description>Test match patterns with ifExpr inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2023"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-121.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>text-elem4</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-122">
+      <description>Test of select in xsl:value-of with nodeComp operator inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2023"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-122.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>text-elem1</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-123">
+      <description>Test of select in xsl:value-of with generalComp operator inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2026"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-123.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>text-elem2</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-124">
+      <description>Test of select in xsl:value-of with instanceOf and cast operator inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2026"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-124.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t>text-elem1</t><t>text-elem2</t><t>text-elem3</t><t>text-elem4</t></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-125">
+      <description>Test of select in xsl:value-of with set operations: except and intersect inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2026"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-125.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>text-elem2</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-126">
+      <description>Test match patterns with current function inside predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match2026"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-126.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<t>text-elem2</t>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-127">
+      <description>Simple case of apply-templates to atomic values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-127.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>10</i></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-128">
+      <description>Precedence of rules that match atomic values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-128.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><d>1.5</d><i>1</i><i>2</i><i>3</i><i>4</i><d>3.5</d><d>4.6</d></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-129">
+      <description>Union pattern that matches atomic values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-129.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-130">
+      <description>Matching atomic values with a predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-130.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><negative>-2</negative><negative>-1</negative><zero>0</zero><positive>1</positive><positive>2</positive></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-131">
+      <description>Priority of ~integer[. gt 0]; and next-match</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-131.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><first><second><third>17</third></second></first></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-132">
+      <description>Integer predicate in type pattern (rules unclear, see bug 12455)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-132.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><second><first>17</first></second></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-133">
+      <description>xsl:apply-imports with atomic value as context item</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-133.xsl"/>
+         <stylesheet file="match-133a.xsl" role="secondary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><first><second>17</second></first></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-134">
+      <description>group-starting-with matching atomic value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-134.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><g>1 2</g><g>3 4 5</g><g>6 7 8</g><g>9 10 11</g><g>12 13 14</g><g>15 16 17</g><g>18 19 20</g></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-135">
+      <description>group-ending-with matching atomic value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-135.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><g>1 2 3</g><g>4 5 6</g><g>7 8 9</g><g>10 11 12</g><g>13 14 15</g><g>16 17 18</g><g>19 20</g></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-136">
+      <description>Test of template matching with element( * ,$type) where $type has no prefix and it belongs to no namespace.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-136.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E28>-1.0001</E28>
+<E29>123.456788</E29>
+<E30>1048.576</E30>
+<E31>1234.123</E31>
+<E32>8888888.8888</E32>
+<E33>1.1</E33>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-137">
+      <description>Test of template matching with element( * ,$type) where $type has no prefix. Show there is no effect of default namespace of stylesheet on $type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-137.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-137.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-138">
+      <description>Test of template matching with element($name ,$type) where $name has no prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-138.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E28>-1.0001</E28>
+<E29>123.456788</E29>
+<E30>1048.576</E30>
+<E31>1234.123</E31>
+<E32>8888888.8888</E32>
+<E33>1.1</E33>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-139">
+      <description>Test of template matching with element($name ,$type) where $name has no prefix. Show there is no effect of the default namespace of stylesheet on $name.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-139.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-139.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-140">
+      <description>Test of template matching with schema-element($name) where $name has no prefix and it belongs to no namespace.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-140.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E28>-1.0001</E28>
+<E29>123.456788</E29>
+<E30>1048.576</E30>
+<E31>1234.123</E31>
+<E32>8888888.8888</E32>
+<E33>1.1</E33>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-141">
+      <description>Test of template matching with schema-element($name) where $name has no prefix. Show there is no effect of default namespace of stylesheet on $name.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-141.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-141.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-142">
+      <description>Test of template matching with document-node(element( * ,$type)) where $type has no prefix and it belongs to no namespace.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-142.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * doc-match</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-143">
+      <description>Test of template matching with document-node(schema-element($name)) where $name has no prefix and it belongs to no namespace.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-143.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * doc-match</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-144">
+      <description>Test of template matching with element( * ,$type) where $type has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-144.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<B2>123-AB</B2>
+<C3>345-PT 675-RT 897-GB</C3>
+<D4>100</D4>
+<F5>Mr Peter has brown hair</F5>
+<E7>5</E7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-145">
+      <description>Test of template matching with element( * ,$type) where $type has no prefix. Show effect of @xpath-default-namespace on $type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-145.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<B2>123-AB</B2>
+<C3>345-PT 675-RT 897-GB</C3>
+<D4>100</D4>
+<F5>Mr Peter has brown hair</F5>
+<E7>5</E7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-146">
+      <description>Test of template matching with element($name ,$type) where $name has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-146.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<B2>123-AB</B2>
+<C3>345-PT 675-RT 897-GB</C3>
+<D4>100</D4>
+<F5>Mr Peter has brown hair</F5>
+<E7>5</E7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-147">
+      <description>Test of template matching with element($name ,$type) where $name has no prefix. Show effect of @xpath-default-namespace on $name.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-147.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<B2>123-AB</B2>
+<C3>345-PT 675-RT 897-GB</C3>
+<D4>100</D4>
+<F5>Mr Peter has brown hair</F5>
+<E7>5</E7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-148">
+      <description>Test of template matching with element($name,$type) as the first step in a path expression.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-148.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>Hello</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-149">
+      <description>Test of template matching with element($name,$type) as the middle step in a path expression.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-149.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>Hello</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-150">
+      <description>Test of template matching with element($name,$type) as the last step in a path expression.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-150.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>Hello</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-151">
+      <description>Test of template matching with element($name,$type) with an axis.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-151.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<B2>123-AB</B2>
+<E7>5</E7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-152">
+      <description>Test of template matching with element($name,$type) for user defined atomic types.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-152.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-153">
+      <description>Test of template matching with element( * ,$type) for user defined atomic types.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-153.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>123-AB</E>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-154">
+      <description>Test of template matching with schema-element($name) where $name has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-154.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<B2>123-AB</B2>
+<C3>345-PT 675-RT 897-GB</C3>
+<D4>100</D4>
+<F5>Mr Peter has brown hair</F5>
+<E7>5</E7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-155">
+      <description>Test of template matching with schema-element($name) where $name has no prefix. Show effect of @xpath-default-namespace on $name.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-155.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<B2>123-AB</B2>
+<C3>345-PT 675-RT 897-GB</C3>
+<D4>100</D4>
+<F5>Mr Peter has brown hair</F5>
+<E7>5</E7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-156">
+      <description>Test of template matching with schema-element($name) as a middle step in a path expression.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-156.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>Hello</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-157">
+      <description>Test of template matching with schema-element($name) with an axis.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-157.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<B2>123-AB</B2>
+<E7>5</E7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-158">
+      <description>Test of template matching with union of several schema-element($name) with different top-level element declaration names.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-158.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1>
+<A2>123-AB</A2>
+<A3>345-PT 675-RT 897-GB</A3>
+<A4>100</A4>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-159">
+      <description>Test of template matching with document-node(element( * ,$type)) where $type has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-159.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * my:userNode</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-160">
+      <description>Test of template matching with document-node(element( * ,$type)) where $type has no prefix. Show effect of @xpath-default-namespace on $type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-160.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * my:userNode</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-161">
+      <description>Test of template matching with document-node(element($name ,$type)) where $name has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-161.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * my:userNode</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-162">
+      <description>Test of template matching with the union document-node(element($name,$type)) | element($name,$type) that will both match the document element. Show that the template is executed twice.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-162.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>true * my:userNode</E>
+<out><E>false * my:simpleBuiltin</E></out></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-163">
+      <description>Test of template matching with document-node(schema-element($name)) where $name has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-163.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * my:userNode</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-164">
+      <description>Test of template matching with attribute( * ,$type) where $type has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-164.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A>
+<B>000-SS 000-RR</B>
+<C>red blue green</C>
+<A>123-AB</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-165">
+      <description>Test of template matching with attribute( * ,$type) where $type has no prefix. Show effect of @xpath-default-namespace on $type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-165.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A>
+<A>123-AB</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-166">
+      <description>Test of template matching with attribute($name ,$type) where $name has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-166.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A>
+<B>000-SS 000-RR</B>
+<C>red blue green</C>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-167">
+      <description>Test of template matching with attribute($name,$type) with an axis.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-167.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A>
+<C>red blue green</C>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-168">
+      <description>Test of template matching with attribute($name,xs:untypedAtomic) with typed attribute nodes from source file. Stylesheet has @input-type-annotations=strip.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-168.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>123-AB</E>
+<F>000-SS 000-RR</F>
+<G>red blue green</G>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-169">
+      <description>Test of template matching with union of several attribute($name,$type) and attribute( * ,$type) with different types.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-169.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A>
+<A>000-SS 000-RR</A>
+<A>red blue green</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-170">
+      <description>Test of template matching with schema-attribute($name) where $name has a prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-170.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A>
+<B>000-SS 000-RR</B>
+<D>five</D>
+<C>red blue green</C>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-171">
+      <description>Test of template matching with schema-attribute($name) Following an axis.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-171.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A><C>red blue green</C></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-172">
+      <description>Test of template matching with element($name,$type) with an explicitly created and typed element node without a parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-172.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>123-AB</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-173">
+      <description>Test of template matching with element( *,$type) with an explicitly created and typed element node with an untyped parent. Does not match.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-173.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>untyped nodes * untyped nodes * </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-174">
+      <description>Test of template matching with element( *,$type) with an explicitly created and typed element node with a typed parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-174.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>userType was matched</E><E>123-AB</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-175">
+      <description>Test of template matching with "/element($name,$type)" with an explicitly created and typed element node with a typed parent. Does not match.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-175.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>123-AB</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-176">
+      <description>Test of template matching with "/element($name,$type)" with an explicitly created and typed element node without a parent inside a variable.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-176.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>123-AB</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-177">
+      <description>Test of template matching with "//element($name,$type)" with an explicitly created and typed element node with a typed parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-177.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>123-AB</E>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-178">
+      <description>Test of template matching with "//element($name,$type)" with an explicitly created and typed element node without a parent. Does not match.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-178.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>123-AB</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-179">
+      <description>Test of template matching with schema-element($name) with an explicitly created and typed element node without a parent. Show all cases where a node will match the pattern</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-179.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://ns.example.com</A1><A1>http://www.example.com/test</A1><A1>http://test1.org</A1><A1>http://test2.org</A1><A1>http://test3.org</A1></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-180">
+      <description>Test of template matching with schema-element($name) with an explicitly created and typed element node with an untyped parent. Does not match.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-180.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>untyped nodes * untyped nodes * </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-181">
+      <description>Test of template matching with schema-element($name) with an explicitly created and typed element node with a typed parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-181.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>userType was matched</E><E>123-AB</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-182">
+      <description>Test of template matching with "//schema-element($name)" with an explicitly created and typed element node with a typed parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-182.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>123-AB</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-183">
+      <description>Test of template matching with "//schema-element($name)" with an explicitly created and typed element node without a parent. Does not match.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-183.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>123-AB</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-184">
+      <description>Test of template matching with schema-element($name) with an explicitly constructed element node and validated with @validation=strict.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-184.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>true * My first Book</A1></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-185">
+      <description>Test of template matching with document-node(schema-element($name)) with an explicitly constructed xsl:document node and validated with @type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-185.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * my:userNode</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-186">
+      <description>Test of template matching with attribute($name,$type) with an explicitly created and typed attribute node without a parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-186.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>000-TM</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-187">
+      <description>Test of template matching with attribute( *,$type) with an explicitly created and typed attribute node with an untyped parent. Does not match.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-187.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>000-TMcorrect</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-188">
+      <description>Test of template matching with "/attribute($name,$type)" with an explicitly created and typed attribute node with a typed parent. Does not match.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-188.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>000-TMcorrect</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-189">
+      <description>Test of template matching with "//attribute($name,$type)" with an explicitly created and typed attribute node with a typed parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-189.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>000-TM</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-190">
+      <description>Test of template matching with "//attribute($name,$type)" with an explicitly created and typed attribute node without a parent. Does not match.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-190.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E>000-TMcorrect</E></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-191">
+      <description>Test of template matching with schema-attribute($name) with an explicitly created and typed attribute node without a parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-191.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>american</A>
+<A>latin</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-192">
+      <description>Test of template matching with schema-attribute($name) with an explicitly created and typed attribute node with a typed parent.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-192.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>000-TM</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-193">
+      <description>Test of template matching with schema-attribute($name) with an explicitly constructed attribute node without a parent and validated with @validation=strict.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-193.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>000-TM</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-194">
+      <description>Test of template matching with element($name,$type) for a user-defined or built-in list type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3027"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-194.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-194.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-195">
+      <description>Test of template matching with element($name,$type) for a user-defined union type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3029"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-195.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A4>100</A4>
+<A5>345-PT</A5>
+<B10>12.123 23.234 34.345 45.456 56.567 67.678</B10>
+<B11>345-PT 675-RT 897-GB</B11>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-196">
+      <description>Test of template matching with element($name,$type) for a complex type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3029"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-196.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A6>Mr Peter has brown hair</A6>
+<B7>Hello</B7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-197">
+      <description>Test of template matching with element($name,$type) and element( * ,$type) with a predicate.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3029"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-197.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A5>345-PT</A5>
+<B10>12.123 23.234 34.345 45.456 56.567 67.678</B10>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-198">
+      <description>Test of template matching with element($name,xs:untyped) with typed nodes from source file. Stylesheet has @input-type-annotations=strip.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3033"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-198.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E1>http://www.example.com/ns/test</E1>
+<E2>123-AB</E2>
+<E3>345-PT 675-RT 897-GB</E3>
+<E4>100</E4>
+<E5>5</E5>
+<E6/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-199">
+      <description>Test of template matching with schema-element($name) for top-level element declarations of user defined atomic types.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3054"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-199.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A3>http://www.example.com/test</A3>
+<A4>http://www.example.com/test</A4>
+<A5>http://test1.org</A5>
+<A6>http://test2.org</A6>
+<A7>http://test3.org</A7>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-200">
+      <description>Test of template matching with schema-element($name) for top-level element declarations of a complex type. Show all cases where a node will match the pattern</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3057"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-200.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A4>My first Book</A4>
+<A5>My first Audio Book</A5>
+<A6>My first Article</A6>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-201">
+      <description>Test of template matching with document-node(element($name,$type)) for a complex type which is the base type of the document element.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3078"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-201.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * my:derived-doc</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-202">
+      <description>Test of template matching with document-node(schema-element($name)), $name is a top-level element declaration of a user-defined union type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3090"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-202.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true * my:simpleUserUnion</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-203">
+      <description>Test of template matching with attribute( * ,$type) where $type has no prefix and it belongs to no namespace.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3092"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-203.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-1.0001</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-204">
+      <description>Test of template matching with schema-attribute($name) where $name has no prefix and it belongs to no namespace.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3092"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-204.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><C>http://www.example.org/ns/test</C>
+<B>PM24</B>
+<C>true</C>
+<C>-0012-12-03-05:00</C>
+<A>-1.0001</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-205">
+      <description>Test of template matching with attribute($name ,$type) where $name has no prefix.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3096"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-205.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>456-CD</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-206">
+      <description>Test of template matching with attribute($name ,$type) where $name has no prefix. Show there is no effect of default namespace of stylesheet on $name.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3096"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-206.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns="http://www.example.com/ns/match/var"><A>456-CD</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-207">
+      <description>Test of template matching with attribute($name ,$type) where $name has no prefix. Show there is no effect of @xpath-default-namespace on $name.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3096"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-207.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>456-CD</A>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-208">
+      <description>Test of template matching with attribute($name,$type) for derived built-in atomic types including xs:ID, xs:IDREF, xs:NOTATION, xs:ENTITY.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3112"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-208.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><F>hello</F>
+<G>en</G>
+<H>200</H>
+<A>a1</A>
+<A>a2</A>
+<B>a1</B>
+<I>a2 a1</I>
+<C>my:rar</C>
+<D>eac</D>
+<E>a eac</E>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-209">
+      <description>Test of template matching with attribute( * ,$type) for xs:IDREFS, xs:NMTOKENS, xs:ENTITIES or a user-defined list type.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3117"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-209.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><D>a2 a1</D>
+<B>a eac</B>
+<A>hi he hi</A>
+<C>123-AB 456-CD 000-AA</C>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-210">
+      <description>Test of template matching with schema-attribute($name) for top-level attribute declarations of derived built-in atomic types. Show all cases where a node will match the pattern</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3140"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-210.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="match-210.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="match-211">
+      <description>Test of template matching with schema-attribute($name) for top-level attribute declarations of a user-defined union type. Show all cases where a node will match the pattern</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3143"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-211.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><C>bye</C><B>latin</B></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="match-212">
+      <description>Test of template matching with function id(). Source file has attributes and elements of type xs:ID.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="match3148"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-212.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>id-elem * id1</A>
+<B>id-elem * id2</B>
+<C>id-elem-only * unique</C>
+<D>id-attrib-only * hello</D>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="resolve-uri">
+   <description>Tests resolve-uri() and other functionality related to resolution of relative URIs</description>
+   <environment name="reluri01">
+      <source role="." file="reluri01.xml"/>
+   </environment>
+   <environment name="reluri09">
+      <source role="." file="reluri09.xml"/>
+   </environment>
+   <environment name="reluri10">
+      <source role=".">
+         <content><![CDATA[<doc><filename>level3/xreluri09a.xml</filename></doc>]]></content>
+      </source>
+   </environment>
+   <environment name="reluri11">
+      <source role="." file="reluri11.xml"/>
+   </environment>
+   <environment name="reluri14">
+      <source role=".">
+         <content><![CDATA[<doc/>]]></content>
+      </source>
+   </environment>
+   <environment name="reluri17">
+      <source role=".">
+         <content><![CDATA[<doc xml:base="file:///TestInputs/reluri/reluri17.xml"/>]]></content>
+      </source>
+   </environment>
+   <environment name="reluri18">
+      <source role="." file="reluri18.xml"/>
+   </environment>
+
+   <test-case name="resolve-uri-001">
+      <description>Base URI (Stylesheet import/Inclusion)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-001.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-001.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-002">
+      <description>Base URI (Stylesheet import/Inclusion)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-002.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-002.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-003">
+      <description>Base URI (Stylesheet import/Inclusion)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-003.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-003.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-004">
+      <description>Base URI (Stylesheet import/Inclusion)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-004.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-004.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-005">
+      <description>Base URI (Stylesheet import/Inclusion)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-005.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-005.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-006">
+      <description>Base URI (Stylesheet import/Inclusion)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-006.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-006.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-007">
+      <description>Base URI (Stylesheet import/Inclusion)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-007.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-007.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-008">
+      <description>Base URI (Stylesheet import/Inclusion)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-008.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-008.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-009">
+      <description>Multiple Source Documents</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri09"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-009.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><first><body>Watching the game, having a bud</body></first></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-010">
+      <description>Multiple Source Documents</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri10"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-010.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <body>Watching the game, having a bud</body>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-011">
+      <description>Multiple Source Documents</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri11"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-011.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <body>Watching the game, having a bud</body>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-012">
+      <description>Test the static-base-uri() function with no parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri11"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-012.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>file:///TestInputs/reluri/reluri12.xsl</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-013">
+      <description>Test the static-base-uri() function with no parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri11"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-013.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>http://some.other/</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-014">
+      <description>Test the resolve-uri() function with one argument</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri14"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-014.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <a>http://some.other/home/</a>
+   <a>http://some.other/home/banana.xml</a>
+   <a>http://some.other/</a>
+   <a>http://www.wrox.com/</a>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-015">
+      <description>Test the resolve-uri() function with two arguments</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri14"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-015.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-015.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-016">
+      <description>Test the document-uri() function</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri14"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-016.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <a>/reluri/stdxmlfile.xml</a>
+   <a/>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-017">
+      <description>Test the resolve-uri() function with base URI being a relative URI: this is an error according to erratum FO.E1</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri14"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-017.xsl"/>
+      </test>
+      <result>
+         <error code="FORG0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-018">
+      <description>Test the resolve-uri() function with invalid relative URI</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri14"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-018.xsl"/>
+      </test>
+      <result>
+         <error code="FORG0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-019">
+      <description>Test the resolve-uri() function with invalid base URI</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri14"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-019.xsl"/>
+      </test>
+      <result>
+         <error code="FORG0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-020">
+      <description>Test the base-uri() function with no parameters</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri17"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-020.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>file:///TestInputs/reluri/reluri17.xml</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="resolve-uri-021">
+      <description>Test that a processing instruction may have a base URI distinct from its parent element</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="reluri18"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-021.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <e>/reluri/level1/element.xml</e>
+   <p>/reluri/level1/pi.xml</p>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>

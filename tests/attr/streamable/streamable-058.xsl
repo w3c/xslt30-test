@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:g="http://www.w3.org/xsl-tests/grouped-transactions"
+    xmlns="http://www.w3.org/xsl-tests/grouped-transactions"
+    exclude-result-prefixes="g xs"
+    version="2.1">
+       
+  
+  <!-- within a streaming template, use predicate in select expression -->
+   
+  <xsl:import-schema namespace="http://www.w3.org/xsl-tests/grouped-transactions" schema-location="grouped-transactions.xsd"/>
+
+  <xsl:mode name="s" streamable="yes"/>
+       
+  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+   
+  <xsl:template name="main" match="/">
+    <out>
+      <xsl:apply-templates select="doc('grouped-transactions.xml')" mode="s"/>
+    </out>
+  </xsl:template>
+  
+  <xsl:template match="g:account" mode="s">
+    <xsl:apply-templates select="*[@date ge xs:date('2006-02-21')]" mode="s"/>
+  </xsl:template>
+  
+  <xsl:template match="g:transaction" mode="s">
+    <max date="{@date}"><xsl:value-of select="format-number(max(@value), '0.00')"/></max>
+  </xsl:template>
+   
+  <xsl:template match="text()" mode="s"/>
+  
+    
+</xsl:transform>
+

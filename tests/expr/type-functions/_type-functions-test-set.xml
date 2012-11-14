@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="type-functions">
+   <description>Tests type-functions</description>
+   <environment name="type-functions-01">
+      <source role="." file="type-functions-01.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaFunc.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="type-functions-02">
+      <source role="." file="type-functions-02.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaFunc.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="type-functions-03">
+      <source role="." file="type-functions-03.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaFunc.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="type-functions-04">
+      <source role="." file="type-functions-04.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaFunc.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <environment name="type-functions-05">
+      <source role="." file="type-functions-05.xml"/>
+      <schema role="source-reference"
+              file="variousTypesSchemaFunc.xsd"
+              xsd-version="1.0"/>
+   </environment>
+   <dependencies>
+      <feature value="schema_aware"/>
+   </dependencies>
+
+   <test-case name="type-functions-0101">
+      <description>Test fn:dateTime with arguments coming from typed nodes in input source. Types tested: - xs:date and xs:time; - user-defined types derived by restriction from xs:date and xs:time</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="type-functions-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0101.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<e1>truetruetruetruetruetrue</e1>
+<e2>-0012-12-03T13:20:00 , true</e2>
+<e3>1960-11-08T19:27:00 , true</e3>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0201">
+      <description>Test fn:abs with typed numeric arguments coming from nodes in input source. Types tested: - xs:float, xs:double, xs:decimal, xs:integer, xs:nonPositiveInteger, xs:long, xs:negativeInteger xs:positiveInteger, xs:short, xs:int; xs:unsignedInt; - user-defined types derived by restriction from the types listed above</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="type-functions-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0201.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="type-functions-0201.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0202">
+      <description>Test fn:data with no arguments</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="type-functions-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0202.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="type-functions-0202.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0203">
+      <description>This stylesheet crashes out at run-time saying that System function data#0 is not available with this host language - XSLT2.0</description>
+      <created by="O'Neil Delpratt, Saxonica" on="2012-11-07"/>
+      <environment ref="type-functions-02"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0203.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0301">
+      <description>Test fn:substring with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="type-functions-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0301.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="type-functions-0301.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0302">
+      <description>Test fn:upper-case with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="type-functions-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0302.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="type-functions-0302.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0303">
+      <description>Test fn:matches with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="type-functions-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0303.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="type-functions-0303.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0304">
+      <description>Test fn:resolve-uri with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="type-functions-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0304.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="type-functions-0304.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0401">
+      <description>Test fn:year-from-date with arguments coming from typed nodes in input source. Types tested: - xs:date - user-defined types derived by restriction from xs:date</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="type-functions-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0401.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<e1>true , -12</e1>
+<e2>true , true , 1992</e2></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="type-functions-0501">
+      <description>Test fn:local-name-from-QName with arguments coming from typed nodes in input source. Types tested: - xs:QName - user-defined types derived by restriction from xs:QName</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="type-functions-05"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0501.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<e1>true , hello</e1>
+<e2>true , true , brown-bear</e2></out>]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>

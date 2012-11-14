@@ -1,0 +1,1208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="for-each-group">
+   <description>Tests for-each-group</description>
+   <environment name="group001">
+      <source role="." file="group001.xml"/>
+   </environment>
+   <environment name="group005">
+      <source role=".">
+         <content><![CDATA[<body>
+  <h2>heading1</h2>
+  <p>para1</p>
+  <p>para2</p>
+  <h2>heading2</h2>
+  <p>para3</p>
+  <p>para4</p>
+  <p>para5</p>
+</body>]]></content>
+      </source>
+   </environment>
+   <environment name="group006">
+      <source role=".">
+         <content><![CDATA[<doc>
+  <group1>
+    <tag>value1</tag>
+  </group1>
+  <group2>
+    <tag>value2a</tag>
+  </group2>
+  <group2>
+    <tag>value2b</tag>
+  </group2>
+  <group3>
+    <tag>value3</tag>
+  </group3>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="group007">
+      <source role=".">
+         <content><![CDATA[<DL>
+  <!-- Handle the case with no DD or DT -->
+  <DT>One</DT>  
+  <DD>One Def</DD>
+  <DT>Two</DT>  
+  <DD>Two Def</DD>
+  <DT>Three</DT>  
+</DL>]]></content>
+      </source>
+   </environment>
+   <environment name="group008">
+      <source role="." file="group008.xml"/>
+   </environment>
+   <environment name="group009">
+      <source role=".">
+         <content><![CDATA[<p>Do <em>not</em>:
+<ul>
+<li>talk,</li>
+<li>eat, or</li>
+<li>use your mobile telephone</li>
+</ul>
+while you are in the cinema.</p>]]></content>
+      </source>
+   </environment>
+   <environment name="group012">
+      <source role="." file="group012.xml"/>
+   </environment>
+   <environment name="group013">
+      <source role=".">
+         <content><![CDATA[<foo baz="Q">
+    <bar baz="3" bop="T"/>
+    <foo baz="1"/>
+    <bar bop="S" bip="4" baz="5"/>
+</foo>]]></content>
+      </source>
+   </environment>
+   <environment name="group014">
+      <source role="." file="group014.xml"/>
+   </environment>
+   <environment name="group015">
+      <source role=".">
+         <content><![CDATA[<employees>
+<employee SSN="1000" name="John"/>
+<employee SSN="1001" name="Jane"/>
+<employee SSN="1002" name="Jim"/>
+<employee SSN="1003" name="Joan"/>
+<employee SSN="1004" name="Jan"/>
+</employees>]]></content>
+      </source>
+   </environment>
+   <environment name="group016">
+      <source role="." file="group016.xml"/>
+   </environment>
+   <environment name="group020">
+      <source role="." file="group020.xml"/>
+   </environment>
+   <environment name="group021">
+      <source role="." file="group021.xml"/>
+   </environment>
+   <environment name="group024">
+      <source role="." file="group024.xml"/>
+   </environment>
+   <environment name="group028">
+      <source role="." file="group028.xml"/>
+   </environment>
+   <environment name="group029">
+      <source role="." file="group029.xml"/>
+   </environment>
+   <environment name="group037">
+      <source role="." file="group037.xml"/>
+   </environment>
+   <environment name="group038">
+      <source role=".">
+         <content><![CDATA[<a>
+<r><x>1</x><x>3</x><x>5</x><x>7</x></r>
+<r><x>1</x><x>2</x><x>3</x><x>4</x></r>
+<r><x>1</x><x>2</x><x>3</x><x>8</x></r>
+</a>]]></content>
+      </source>
+   </environment>
+   <environment name="group045">
+      <source role=".">
+         <content><![CDATA[<a>
+ <b/>
+ <b>
+   <c/>
+   <c/>
+   <c><d>stuff</d></c>
+   <c><d>more stuff</d></c>
+ </b>
+ <b/>
+</a>]]></content>
+      </source>
+   </environment>
+
+   <test-case name="for-each-group-001">
+      <description>simple test of value-based grouping</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-001.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-001.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-002">
+      <description>simple test of value-based grouping; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-002.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-002.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-003">
+      <description>test value-based grouping, sorting both the groups and the items within each group</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-003.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-003.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-004">
+      <description>test value-based grouping, sorting both the groups and the items within each group; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-004.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-004.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-005">
+      <description>test value-based grouping using a sort-key that depends on the whole group</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-005.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-005.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-006">
+      <description>test value-based grouping using a sort-key that depends on the whole group; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-006.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-006.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-007">
+      <description>test value-based grouping with explicit use of the codepoint collation</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-007.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="group004.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-008">
+      <description>test value-based grouping with explicit use of the codepoint collation; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-008.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="group004.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-009">
+      <description>grouping used to arrange data in columns in a table</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-009.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<table><tr><td>lyon</td><td>milan</td></tr><tr><td>munich</td><td>paris</td></tr><tr><td>venice</td><td> </td></tr></table>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-010">
+      <description>grouping used to arrange data in columns in a table</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-010.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<table><tr><td>lyon</td><td>milan</td></tr><tr><td>munich</td><td>paris</td></tr><tr><td>venice</td><td> </td></tr></table>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-011">
+      <description>Grouping used to arrange data in columns in a table Doesn't yet handle the &amp;nbsp for missing cell</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-011.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<table><tr><td>lyon</td><td>paris</td></tr><tr><td>milan</td><td>venice</td></tr><tr><td>munich</td></tr></table>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-012">
+      <description>test distinct-values on string values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-012.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<chapter>italy france germany</chapter>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-013">
+      <description>test distinct-values on numeric values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-013.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<chapter>134 1556 12 15 65</chapter>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-014">
+      <description>test for-each-group in "pull" mode</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-014.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-014.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-015">
+      <description>Nesting positional grouping inside value-based grouping - bug 18333</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-015.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><g><h key=""/><h key=""/><h key=""/></g></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-016">
+      <description>simple test of positional grouping using group-starting-with</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group005"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-016.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-016.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-017">
+      <description>simple test of positional grouping using group-starting-with; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group005"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-017.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-017.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-018">
+      <description>nested groups using group-starting-with</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group006"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-018.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-018.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-019">
+      <description>nested groups using group-starting-with; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group006"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-019.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-019.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-020">
+      <description>use case for group-starting-with to structure DT/DD style glossary</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group007"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-020.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="group007.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-021">
+      <description>use case for group-starting-with to structure DT/DD style glossary; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group007"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-021.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="group007.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-022">
+      <description>Use case for group-adjacent to structure a DT/DD style glossary</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group008"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-022.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<o>
+    <UL><LI><B>One, Two</B><I>One and Two Def</I></LI></UL>
+    <UL><LI><B>One</B><OL><LI>One Def</LI><LI>Another One Def</LI></OL></LI></UL>
+</o>    ]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-023">
+      <description>Use case for group-adjacent to structure a DT/DD style glossary; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group008"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-023.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<o>
+    <UL><LI><B>One, Two</B><I>One and Two Def</I></LI></UL>
+    <UL><LI><B>One</B><OL><LI>One Def</LI><LI>Another One Def</LI></OL></LI></UL>
+</o>    ]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-024">
+      <description>Use group-adjacent to merge a set of adjacent bullets under an envelope element</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group009"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-024.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<o><p>Do <em>not</em>:
+</p><ul>
+<li>talk,</li>
+<li>eat, or</li>
+<li>use your mobile telephone</li>
+</ul><p>
+while you are in the cinema.</p></o>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-025">
+      <description>Use group-adjacent to merge a set of adjacent bullets under an envelope element; using 3.0 variable bindings</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group009"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-025.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<o><p>Do <em>not</em>:
+</p><ul>
+<li>talk,</li>
+<li>eat, or</li>
+<li>use your mobile telephone</li>
+</ul><p>
+while you are in the cinema.</p></o>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-026">
+      <description>Use case for multilevel grouping to do a hierarchic inversion</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group012"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-026.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="group012.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-027">
+      <description>grouping used to find all the element names and attribute names in a document</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group013"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-027.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-027.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-028">
+      <description>positional grouping to turn &lt;br/&gt; separators into &lt;line&gt; elements</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group014"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-028.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-028.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-029">
+      <description>use case for grouping to merge an update file with a base file</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group015"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-029.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-029.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-030">
+      <description>test group-ending-with to merge continuation records</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group016"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-030.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-030.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-031">
+      <description>A contrived test to ensure that variables - specifically, a variable that's subject to optimization - can be handled in a for-each-group pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group016"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-031.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-031.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-032">
+      <description>Demonstrate group-by using a numeric key (mixing different numeric types)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-032.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-032.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-033">
+      <description>Test group-by where an item goes in more than one group</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-033.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-033.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-034">
+      <description>test that distinct-values treats NaNs as equal</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-034.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<chapter>1 2 4 NaN 6</chapter>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-035">
+      <description>test that distinct-values works on a heterogeneous sequence</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-035.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<chapter xmlns:xs="http://www.w3.org/2001/XMLSchema">a 2 4 NaN 2003-02-03 2003-02-04</chapter>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-036">
+      <description>Test position() and last() with the result of distinct-values()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-036.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<r><p>1</p><v>English</v><l>3</l><p>2</p><v>Chinese</v><l>3</l><p>3</p><v>French</v><l>3</l></r>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-037">
+      <description>Test position() and last() with the result of xsl:for-each-group group-by</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-037.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<r><p>1</p><v>English</v><l>3</l><p>2</p><v>Chinese</v><l>3</l><p>3</p><v>French</v><l>3</l></r>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-038">
+      <description>Test position() and last() with the result of xsl:for-each-group group-adjacent</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-038.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-038.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-039">
+      <description>Test position() and last() with the result of xsl:for-each-group group-starting-with</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-039.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<r><p>1</p><v>English</v><l>3</l><p>2</p><v>French</v><l>3</l><p>3</p><v>Chinese</v><l>3</l></r>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-040">
+      <description>Test position() and last() with the result of xsl:for-each-group group-ending-with</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-040.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<r><p>1</p><v>Chinese</v><l>3</l><p>2</p><v>French</v><l>3</l><p>3</p><v>Chinese</v><l>3</l></r>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-041">
+      <description>XSLT 3.0 grouping using pattern to match atomic values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-041.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>a 1 2 3 4 5 6 7 8 9 10</a><a>b 11 12 13 14 15 16 17 18 19 20</a></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-042">
+      <description>XSLT 3.0 grouping using pattern to match atomic values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-042.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>a</a><a>1 2 3 4 5 6 7 8 9 10 b</a><a>11 12 13 14 15 16 17 18 19 20</a></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-043">
+      <description>XSLT 3.0 grouping using group-by with composite keys</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-043.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-043.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-044">
+      <description>XSLT 3.0 grouping using group-adjacent with composite keys</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-044.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-044.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-045">
+      <description>XSLT 3.0 grouping using group-adjacent with composite keys including NaNs</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-045.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-045.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-046">
+      <description>Demonstrate error when using group-starting-with when population contains atomic values</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-046.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1120"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-047">
+      <description>ERR XTSE1060: it is a static error if the current-group() function is used within a pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-047.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE1060"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-048">
+      <description>ERR XTSE1070: it is a static error if the current-grouping-key() function is used within a pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-048.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE1070"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-049">
+      <description>ERR XTSE1080: it is a static error if none of the four grouping attributes is present</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-049.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE1080"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-050">
+      <description>ERR XTSE1080: it is a static error if more than one of the four grouping attributes is present</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-050.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE1080"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-051">
+      <description>ERR XTSE1090: cannot specify collation except with group-by/adjacent</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-051.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE1090"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-052">
+      <description>ERR XTTE1100: group-adjacent selects an empty sequence</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-052.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1100"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-053">
+      <description>stable attribute only allowed on first xsl:sort</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-053.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE1017"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-054">
+      <description>invalid value for stable attribute</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-054.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-055">
+      <description>In 3.0, current-group() is initially absent</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-055.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1061"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-056">
+      <description>In 3.0, current-grouping-key() is initially absent</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-056.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1071"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-057">
+      <description>In 3.0, current-group() is absent if a group variable is bound</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-057.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1061"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-058">
+      <description>In 3.0, current-grouping-key() is absent if a grouping key variable is bound</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-058.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1071"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-059">
+      <description>In 3.0, group variable is not visible within AVTs of a contained xsl:sort</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-059.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1061"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-060">
+      <description>In 3.0, grouping key variable is not visible within AVTs of a contained xsl:sort</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-060.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1071"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-061">
+      <description>Demonstrate group-by using times in different time zones</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group021"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-061.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-061.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-062">
+      <description>Demonstrate group-adjacent using times in different time zones</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group021"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-062.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-062.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-063">
+      <description>Demonstrate items belonging to zero or more groups, including one that has the same grouping key repeated</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group024"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-063.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-063.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-064">
+      <description>Demonstrate non-error when mixing different data types in group-by</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group028"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-064.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-064.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-065">
+      <description>Demonstrate non-error when mixing different data types in group-adjacent</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group029"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-065.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-065.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-066">
+      <description>tests current(), position() and last() within xsl:for-each-group</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group037"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-066.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-066.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-067">
+      <description>an interesting use case for group-adjacent, used to identify consecutive items that are not equal, but contiguous in value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group038"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-067.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<z>
+<r>1,3,5,7</r>
+<r>1-4</r>
+<r>1-3,8</r>
+</z>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-068">
+      <description>Example of non-Transitivity from Erratum E25</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group038"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-068.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><one>2</one><one>2</one><one>1</one></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-069">
+      <description>XSLT 3.0 grouping using group-by with variable length composite keys</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group045"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-069.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><element path="a" count="1"/><element path="a/b" count="3"/><element path="a/b/c" count="4"/><element path="a/b/c/d" count="2"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="for-each-group-070">
+      <description>XSLT 3.0 grouping using group-adjacent with variable length composite keys</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="group045"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-070.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-070.out"/>
+      </result>
+   </test-case>
+</test-set>

@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="stream">
+   <description>Tests the xsl:stream instruction introduced in XSLT 3.0.</description>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+
+   <test-case name="stream-agg-001">
+      <description>Basic Test of xsl:stream instruction with count().</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>6</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-002">
+      <description>Basic Test of xsl:stream instruction with count(), filtered with motionless predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-003">
+      <description>Basic Test of xsl:stream instruction with sum()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>54.37</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-004">
+      <description>Basic Test of xsl:stream instruction with sum(), filtered with a motionless predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>32.95</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-005">
+      <description>Basic Test of xsl:stream instruction with sum(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>16.48</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-006">
+      <description>Test of xsl:stream instruction with sum(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>16.48</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-007">
+      <description>Test of xsl:stream instruction with sum(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-007.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>16.48</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-008">
+      <description>Test of xsl:stream instruction with avg(), filtered with two boolean predicates</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>420</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-009">
+      <description>Test of xsl:stream instruction with min(), applied to an attribute</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-009.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-7.5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-010">
+      <description>Test of xsl:stream instruction with max(), applied to an attribute, filtered</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-010.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>49863</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-011">
+      <description>Test of xsl:stream instruction with distinct-values(), applied to an attribute</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-011.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>49863</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-012">
+      <description>Test of xsl:stream instruction with exists(), applied to a non-existent element</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-012.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>false</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-013">
+      <description>Test of xsl:stream instruction with exists(), applied to an existent element (can exit early...)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-013.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-014">
+      <description>Test of xsl:stream instruction with empty(), applied with a boolean filter</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-015">
+      <description>Test of xsl:stream instruction with empty(), applied with both a positional and a boolean filter</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-015.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-016">
+      <description>Test of xsl:stream instruction with sum() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-016.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1491746</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-017">
+      <description>Test of xsl:stream instruction with max() of a conditional value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-017.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>23.5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-018">
+      <description>Test of xsl:stream instruction with a loop used to compute each item</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-018.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>112.5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-019">
+      <description>Test of xsl:stream instruction using //X/Y</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-019.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>112.5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-020">
+      <description>Test of xsl:stream instruction using string-join</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-020.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Pride and Prejudice, Wuthering Heights, Tess of the d'Urbervilles, Jude the Obscure, The Big Over Easy, The Eyre Affair</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-021">
+      <description>Test of xsl:stream instruction using codepoints-to-string</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-021.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1/7./-</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-022">
+      <description>Test of xsl:stream instruction with count(), filtered with non-motionless predicate.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-022.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-023">
+      <description>Test of xsl:stream instruction with sum(), filtered with predicate that uses last().</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-023.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-024">
+      <description>Test of xsl:stream instruction with sum(), filtered with predicate that atomizes.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-024.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-025">
+      <description>Test of xsl:stream instruction with empty(), applied with both a positional and a boolean filter, boolean first</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-025.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-026">
+      <description>Test of xsl:stream instruction calling a function. Not streamable.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-026.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+
+   <test-case name="stream-agg-027">
+      <description>Test of xsl:stream instruction calling a function. Not streamable.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-agg-027.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-001">
+      <description>Streamed grouping - group-adjacent - with xsl:sequence</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-group-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <batch date="2006-02-13">
+      <transaction value="13.24" date="2006-02-13"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-002">
+      <description>Streamed grouping - group-adjacent - with xsl:copy-of</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-group-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <batch date="2006-02-13">
+      <transaction value="13.24" date="2006-02-13"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-003">
+      <description>Streamed grouping - group-adjacent - with xsl:value-of</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-group-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[dummy result file]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-004">
+      <description>Streamed grouping - group-adjacent - with AVT</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-group-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[dummy result file]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-005">
+      <description>Streamed grouping - group-adjacent - with count()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-group-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[dummy result file]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-006">
+      <description>Streamed grouping - group-adjacent - with sum()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="stream-group-006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[dummy result file]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>

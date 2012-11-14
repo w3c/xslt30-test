@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="merge">
+   <description>Tests merge</description>
+   <environment name="merge002">
+      <source role="." file="merge001.xml"/>
+      <source file="log-file-1.xml" uri="log-file-1.xml"/>
+      <source file="log-file-2.xml" uri="log-file-2.xml"/>
+   </environment>
+   <environment name="merge004">
+      <source role="." file="merge004.xml"/>
+      <source file="school2.xml" uri="school2.xml"/>
+   </environment>
+   <environment name="merge008">
+      <source role="." file="merge008.xml"/>
+      <source file="america.xml" uri="america.xml"/>
+   </environment>
+   <environment name="merge010">
+      <source role="." file="merge010.xml"/>
+   </environment>
+   <environment name="merge011">
+      <source role=".">
+         <content><![CDATA[<doc/>]]></content>
+      </source>
+   </environment>
+   <environment name="merge015">
+      <source role="." file="merge015.xml"/>
+   </environment>
+   <environment name="merge917err">
+      <source role="." file="merge917err.xml"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+   </dependencies>
+
+   <test-case name="merge-001">
+      <description>xsl:merge test on a homogeneous collection of XML log files.</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment name="merge001">
+         <source role="." file="merge001.xml"/>
+         <!-- TODO: uses a collection, need to catalog its contents -->
+      </environment>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-001.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-001.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-002">
+      <description>xsl:merge test on two heterogeneous files.</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge002"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-002.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-002.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-003">
+      <description>xsl:merge test on two heterogeneous files. Testing merge-key, where order attribute requires run-time evaluation</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge002"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-003.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-003.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-004">
+      <description>xsl:merge test on two heterogeneous files- output using the current-grouping-key</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge002"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-004.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<events><group>2009-08-20T12:01:01Z</group><group>2009-08-20T12:01:08Z</group><group>2009-08-20T12:01:12Z</group><group>2009-08-20T12:01:15Z</group><group>2009-08-20T12:03:00Z</group></events>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="merge-005">
+      <description>
+         xsl:merge: xsl:merge-source that uses a path expression that selects more than one node in an attribute value template 
+         (test with context)
+      </description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment>
+         <source role="." file="merge001.xml"/>
+         <source file="log-file-3.xml" uri="log-file-2.xml"/>
+      </environment>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-005.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-005.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-006">
+      <description>xsl:merge: xsl:merge-source that uses a path expression that selects more than one node in an attribute value template</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-006.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<results><country>Argentina</country><country>Brazil</country><country>Cananda</country><country>Mexico</country><country>USA</country></results> ]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="merge-007">
+      <description>xsl:merge test with more than one xsl:merge-action child elements</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-007.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-008">
+      <description>Test xsl:merge-key with different languages.</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-008.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE2210"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-009">
+      <description>Different count of xsl:merge-key grandchildren of a xsl:merge-source to another xsl:merge-source.</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-009.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE2200"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-010">
+      <description>Test xsl:merge-key with the disallowed stable attribute.</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-010.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-011">
+      <description>Testing disallowed merge-key, where data-type attribute requires run-time evaluation</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge001"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-011.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE2210"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-012">
+      <description>xsl:merge test with multiple merge keys</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge004"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-012.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-012.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-013">
+      <description>xsl:merge test - selects two anchor items in the same document</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge004"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-013.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-013.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-014">
+      <description>xsl:merge test - selects two anchor items from two document</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge004"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-014.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-014.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-015">
+      <description>xsl:merge test - selects three anchor items from two document</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge004"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-015.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-015.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-016">
+      <description>xsl:merge test of merge-input with empty sequence at run-time</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge004"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-016.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<results/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="merge-017">
+      <description>The @select attribute of xsl:merge-key should be a singleton, but evaluated to be a sequence of items</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge004"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-017.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1020"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-018">
+      <description>Test xsl:merge - perform sort with a xsl:merge-input</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge008"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-018.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-018.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-019">
+      <description>Sequence of merge-input is text, but the data-type attribute of xsl:merge-key is number</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge008"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-019.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<results><country>Holland</country><country>UK</country><country>Italy</country><country>Germany</country><country>France</country></results>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="merge-020">
+      <description>Test xsl:merge-key with different languages.</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge008"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-020.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE2210"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-021">
+      <description>Test xsl:merge-input with incorrect order.</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge008"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-021.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE2220"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-022">
+      <description>Test xsl:merge-key context: visibility of variable defined in xsl:merge-input</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge008"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-022.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-023">
+      <description>xsl:merge-keys in corresponding merge-inputs not comparable</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge008"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-023.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE2230"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-024">
+      <description>xsl:merge test of intersection</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge010"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-024.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<results><out>20</out><out>21</out><out>22</out><out>23</out><out>24</out><out>25</out><out>26</out><out>27</out><out>28</out><out>29</out><out>30</out></results>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="merge-025">
+      <description>xsl:merge test of union</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge011"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-025.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-025.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-026">
+      <description>xsl:merge-input test with zero xsl:merge-key child elements</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge011"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-026.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-027">
+      <description>xsl:merge-input test with select attribute and sequence constructor content</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge011"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-027.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-028">
+      <description>xsl:merge: xsl:merge-source that uses a path expression that selects more than one node in an attribute value template</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment name="merge015">
+         <source role="." file="merge015.xml"/>
+         <source file="log-file-3.xml" uri="log-file-3.xml"/>
+      </environment>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-028.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-028.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-029">
+      <description>xsl:merge: live use case, see http://stackoverflow.com/questions/10271639/xslt-merge-challenge</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-029.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="merge-029.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-030">
+      <description>xsl:merge test with zero xsl:merge-source child elements</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-030.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-031">
+      <description>xsl:merge-source test with zero xsl:merge-input child elements</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-031.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-032">
+      <description>xsl:merge-key test with select attribute has non-empty content</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-032.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE2190"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-033">
+      <description>xsl:merge-source is in the wrong place</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-033.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-034">
+      <description>xsl:merge-source with more than one xsl:merge-input child element - error</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-034.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-035">
+      <description>xsl:merge with a disallowed child element</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-035.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-036">
+      <description>xsl:merge-source with a disallowed child element</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-036.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-037">
+      <description>xsl:merge-input with xsl:merge-key not at as last child node</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-037.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="merge-038">
+      <description>Testing a sequence of more than one item is not allowed as the @select attr of merge-key</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="merge917err"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-038.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1020"/>
+      </result>
+   </test-case>
+</test-set>

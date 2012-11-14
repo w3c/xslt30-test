@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="xsl-document">
+   
+   <description>Tests the xsl:document instruction, and construction of document nodes</description>
+   
+   <environment name="xsl-document-01">
+      <source role=".">
+         <content><![CDATA[<root>
+	<child>ch1</child>
+	<child>ch2</child>
+	<child>ch3</child>		
+</root>]]></content>
+      </source>
+   </environment>
+   
+   <environment name="xsl-document-02">
+      <source role=".">
+         <content><![CDATA[<doc/>]]></content>
+      </source>
+      <source file="import1.xsl" uri="import1.xsl"/>
+   </environment>
+   
+   <environment name="xsl-document-03">
+      <source role=".">
+         <content><![CDATA[<doc>
+<data>data element</data>
+</doc>]]></content>
+      </source>
+   </environment>
+   
+   <environment name="xsl-document-04">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<a>a1</a>
+	<a>a2</a>
+	<a>a3</a>
+	<a>a4</a>
+	<a>a5</a>
+</doc>]]></content>
+      </source>
+   </environment>
+   
+   <environment name="xsl-document-05">
+      <source role=".">
+         <content><![CDATA[<doc>
+<foo>one</foo>
+<foo>two</foo>
+<foo>three</foo>
+<foo>four</foo>
+<foo>five</foo>
+<foo>six</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   
+   <environment name="xsl-document-06">
+      <source role=".">
+         <content><![CDATA[<doc>
+<ch type="unknown"> my document
+</ch>
+<!-- This document has a valuable comment!! -->
+</doc>]]></content>
+      </source>
+   </environment>
+   
+   <environment name="xsl-document-07">
+      <source role=".">
+         <content><![CDATA[<doc>
+  <item target="ab"  num="1" />
+  <item target="cd"  num="2" />
+  <item target="dc"  num="3" />
+  <item target="cd"  num="4" />
+  <item target="ab"  num="5" />
+</doc>]]></content>
+      </source>
+   </environment>
+   
+   <environment name="xsl-document-08">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<item>2.2</item>
+	<item>3</item>
+	<item>5.0</item>
+</doc>]]></content>
+      </source>
+   </environment>
+
+   <test-case name="xsl-document-0101">
+      <description>
+         Simple test case that uses xsl:document instruction to create an empty new document node 
+         (sequence constructor does not contain any instruction).
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0101.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0102">
+      <description>
+         Test case to verify that a document node can contain any sequence of elements, text nodes, 
+         comments, and processing instructions as its children.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0102.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="xsl-document-0102.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0103">
+      <description>
+         Test case that creates a new document using xsl:document in a variable and uses xsl:copy-of 
+         to create a new document from the variable.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0103.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<child/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0104">
+      <description>
+         Test case that uses xsl:copy in the sequence constructor of an xsl:document instruction.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0104.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[	
+	<out><child/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0105">
+      <description>
+         Test case that uses xsl:document to create a new document inside a variable and get the text 
+         value stored in the new document using the variable.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0105.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out> text inside document</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0106">
+      <description>
+         Test case to verify that to create the content of the new document node, if there are any atomic 
+         values in the sequence, they are converted to string.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0106.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+foo:test
+1000
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0107">
+      <description>
+         Test case that uses xsl:for-each inside an xsl:document instruction to create children for 
+         the newly created document.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0107.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<a>ch1</a>
+<a>ch2</a>
+<a>ch3</a>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0201">
+      <description>
+         Test case to verify that any consecutive sequence of strings within the result sequence is converted 
+         to a single text node, whose string value contains the content of each of the strings in turn, with 
+         a single space used as a separator between successive strings.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0201.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Level1 Level2 level3 level4</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0202">
+      <description>
+         Test case that uses xsl:apply-import inside an xsl:document while the imported stylesheet itself is 
+         creating a new document using the xsl:document instruction.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0202.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1 2 3 4</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0203">
+      <description>
+         Tests an LRE which contains a document node and an xsl:element instruction whose sequence constructor 
+         contains a document node.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0203.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><Top><a/><b/></Top></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0301">
+      <description>
+         Test case to verify that any document node within the result sequence is replaced by a sequence 
+         containing each of its children, in document order.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0301.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="xsl-document-0301.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0302">
+      <description>
+         Test case to verify that Adjacent text nodes within the sequence are combined into a 
+         single text node, without any space separator. Zero-length text nodes are removed completely.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0302.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>newlybornin XSLT</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0401">
+      <description>Test case that uses xsl:sequence inside xsl:document</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0401.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1 2 3 4 5 6     a1 a2 a3 a4 a5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0402">
+      <description>Test case that uses validation=strip on an xsl:document instruction.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0402.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+true</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0403">
+      <description>Test case that uses xsl:document inside a literal result element.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0403.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><child number="1">child element</child></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0404">
+      <description>Test case to verify that nodes in the sequence constructor of xsl:document are copied.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0404.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+false
+false
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0501">
+      <description>
+         Test case to verify that creation of multiple elements at the top level (directly under the 
+         document node) is not an error.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-05"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0501.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<foo>one</foo><foo>two</foo><foo>three</foo><foo>four</foo><foo>five</foo><foo>six</foo>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0601">
+      <description>Tests use of a document node inside an instruction that is constructing simple content.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0601.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<!-- my document
+9456798 P20DT3H
+Old**est**att**rib**ute-->
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0602">
+      <description>
+         Test case that uses default-validation="strip" to test whether type annotation is stripped 
+         in an attribute constructed inside an xsl:document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0602.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+true</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0603">
+      <description>Tests using xsl:document instruction inside an xsl:message instruction.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0603.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<out/>]]></assert-xml>
+            <assert-message>
+               <assert-xml><![CDATA[* Message inside the first document element** Message inside the second document element *]]></assert-xml>
+            </assert-message>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0604">
+      <description>
+         Tests creating an element inside an xsl:document and use xsl:use-attribute-set 
+         to add attributes to the new element inside the document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0604.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a t1="1" t2="2" t3="3"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0605">
+      <description>Tests xsl:choose instruction inside an xsl:document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0605.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a status="true"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0606">
+      <description>Tests using xsl:use-when instruction inside an xsl:document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0606.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><e1 attr1="value1"/><e2/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0701">
+      <description>Tests to sort values inside an xsl:document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-07"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0701.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1:ab * 5:ab * 2:cd * 4:cd * 3:dc * </out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="xsl-document-0801">
+      <description>Tests using forExpr inside an xsl:document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="xsl-document-08"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xsl-document-0801.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>abababababa 3.5 10.2</out>]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>

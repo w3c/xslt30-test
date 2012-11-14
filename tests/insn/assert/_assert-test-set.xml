@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="assert">
+          
+   <description>Tests the xsl:assert instruction introduced in XSLT 3.0</description>
+   
+   <environment name="assert-001">
+     <stylesheet file="assert001.xsl"/>
+   </environment>
+     
+   <dependencies>
+      <spec value="XSLT30+"/>
+   </dependencies>
+   
+   <test-case name="assert-001">
+      <description>Simple assertion; succeeds</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="assert-001"/>
+      <test>
+         <initial-template name="go001"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="assert-002">
+      <description>Simple assertion; fails</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="assert-001"/>
+      <test>
+         <initial-template name="go002"/>
+      </test>
+      <result>
+         <error code="XTMM9001"/>
+      </result>
+   </test-case>
+
+   <test-case name="assert-003">
+      <description>Simple assertion; ok because assertion disabled</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="assert-001"/>
+      <test>
+         <initial-template name="go003"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="assert-004">
+      <description>Simple assertion; fails because assertion enabled</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="assert-001"/>
+      <test>
+         <initial-template name="go004"/>
+      </test>
+      <result>
+         <error code="XTMM9001"/>
+      </result>
+   </test-case>
+
+   <test-case name="assert-005">
+      <description>Simple assertion; failure caught by try/catch</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="assert-001"/>
+      <test>
+         <initial-template name="go005"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="assert-006">
+      <description>Assertion with user-defined error code</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="assert-001"/>
+      <test>
+         <initial-template name="go006"/>
+      </test>
+      <result>
+         <error xmlns:my="http://example.com/my" code="my:ABCD9999"/>
+      </result>
+   </test-case>
+</test-set>

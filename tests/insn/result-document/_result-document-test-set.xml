@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="result-document">
+   <description>Tests result-document</description>
+   <environment name="result-document-01">
+      <source role=".">
+         <content><![CDATA[ 
+<doc>
+<foo place="secondary">Hello</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-02">
+      <source role=".">
+         <content><![CDATA[<!-- A required but useless input XML doc for a transformation -->
+<doc/>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-03">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<foo>text</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-04">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<foo>item1</foo>
+	<foo>item</foo>
+	<elem>item3</elem>
+	<item>my:item5</item>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-05">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<foo>out.dtd</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-06">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<foo>-//BOAG//DTD Websites V1.3//EN</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-07">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<foo>yes</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-08">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<foo>1.0</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-09">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<foo>one:</foo>
+</doc>]]></content>
+      </source>
+   </environment>
+   <environment name="result-document-10">
+      <source role=".">
+         <content><![CDATA[<doc/>]]></content>
+      </source>
+   </environment>
+
+   <test-case name="result-document-0101">
+      <description>Switch to secondary output and back to primary - sequentially.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0101.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<out><log>Before redirect</log><log>After redirect</log></out>]]></assert-xml>
+            <assert-result-document uri="multresult1.out">
+               <assert-xml file="result-document-0101-2.out"/>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0201">
+      <description>Use named output format on secondary output</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0201.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<out xmlns:my="http://example.com"><log>Before redirect</log><log>After redirect</log></out>]]></assert-xml>
+            <assert-result-document uri="multresult2.out">
+               <assert-serialization method="text" file="multresult2.out"/>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0202">
+      <description>Use named output format on primary output</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0202.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult003.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0203">
+      <description>Test with xsl:result document with no attributes. Output is controlled by unnamed xsl:output declaration.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0203.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>In XML doc with US-ASCII.</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0204">
+      <description>That href of an empty string for xsl:result-docuemnt is OK</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0204.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Empty href on result-document.</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0205">
+      <description>Test that the primary result document can be written after a secondary one by use of nested xsl:result-document with no arguments.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0205.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<doc-primary>To primary tree.</doc-primary>]]></assert-xml>
+            <assert-result-document uri="multresult7.out">
+               <assert-xml file="result-document-0205-2.out"/>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0206">
+      <description>Simple test with xsl:result-document - empty content and no attributes. Output file contains only the XML declaration.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0206.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult009.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0207">
+      <description>Test with xsl:result-document that creates a non-well-formed XML document entity (contains more than one document element).</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0207.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>hello1</out>
+<out>hello2</out>
+<out>hello3</out>
+<out>hello4</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0208">
+      <description>Test with xsl:result-document with missing @method. Allow XML output method to be determined by default rules.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0208.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<html xmlns="http://www.mytest.example.org"><out>hello</out></html>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0209">
+      <description>Test with xsl:result-document with missing @method. Allow HTML output method to be determined by default rules.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0209.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="multresult014.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0210">
+      <description>Test with xsl:result-document with missing @method. Allow XHTML output method to be determined by default rules.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0210.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="multresult015.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0211">
+      <description>Test with xsl:result-document and relative @href value.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0211.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0212">
+      <description>Test AVT in the @href of an xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0212.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<out>This should be in the primary xml document</out>]]></assert-xml>
+            <assert-result-document uri="mult/multresult19.out">
+               <assert-serialization method="html" file="multresult19.out"/>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0213">
+      <description>Test with xsl:result-document @method="xml".</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0213.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<html xmlns="http://www.mytest.example.org"><out>hello</out></html>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0214">
+      <description>Test with xsl:result-document @method="html".</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0214.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="multresult022.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0215">
+      <description>Test with xsl:result-document @method="xhtml".</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0215.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="multresult023.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0216">
+      <description>Test with xsl:result-document @method="text".</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0216.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult024.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0217">
+      <description>Test with xsl:result-document and a whitespace separated list of QNames in @cdata-section-elements.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0217.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult036.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0218">
+      <description>Test with CDATA section element inside an LRE in the body of xsl:result-document and it has not been specified in the cdata-section-elements attribute.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0218.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+<a>&lt;&lt;&lt;&gt;&gt;&gt;</a>
+<b>&lt;&lt;&lt;&gt;&gt;&gt;</b>
+<c>&lt;&lt;&lt;&gt;&gt;&gt;</c>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0219">
+      <description>Test with xsl:result-document and @doctype-system, @method is xml.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0219.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult042.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0220">
+      <description>Test with xsl:result-document and @doctype-public present but no @doctype-system present. Show that @doctype-public is ignored.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0220.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult047.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0221">
+      <description>Test with xsl:result-document and @doctype-public and @doctype-system present, @method is xml.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0221.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult048.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0222">
+      <description>Test with xsl:result-document and @doctype-public and @doctype-system present, @method is text. Doctype attributes should be ignored.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0222.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult049.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0223">
+      <description>Test with xsl:result-document and @include-content-type="yes", method="html", @media-type is set and there is a 'head' element in the final result tree.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0223.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="multresult057.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0224">
+      <description>Test with xsl:result-document and @include-content-type="yes", method="html", @media-type is set and there is a &lt;head&gt; and &lt;meta http-equiv="Content-Type"&gt; element in the final result tree.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0224.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="multresult058.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0225">
+      <description>Test with xsl:result-document and @include-content-type="yes", method="text". @include-content-type should be ignored.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0225.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult062.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0226">
+      <description>Test with xsl:result-document and @media-type="text/xml".</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0226.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<html><head><title/></head><body>hello</body></html>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0227">
+      <description>Test with xsl:result-document and @omit-xml-declaration="no". @method="xml", no @version or @encoding present, xml declaration must be written to the result tree using default attribute values.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0227.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult075.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0228">
+      <description>Test with xsl:result-document and @omit-xml-declaration="yes", @method="xml". Declaration must be omitted from the result tree.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0228.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult080.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0229">
+      <description>Test with xsl:result-document where value of @standalone="yes".</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0229.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult082.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0230">
+      <description>Test with xsl:result-document where value of @standalone="no".</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0230.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult083.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0231">
+      <description>Test with xsl:result-document where value of @standalone="omit".</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0231.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult084.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0232">
+      <description>Test with xsl:result-document and @undeclare-prefixes="yes", @method="text". Show that attribute is ignored.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0232.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult088.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0233">
+      <description>Test with xsl:result-document and @use-character-maps.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0233.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult090.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0234">
+      <description>Test with @output-version="1.0" on xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0234.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0235">
+      <description>Test with @output-version="4.0" and @method="html" on xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0235.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="multresult095.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0236">
+      <description>Test with @output-version="1.0" and @method="xhtml" on xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0236.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="multresult096.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0237">
+      <description>Test with @output-version="5.0" and @method="text" on xsl:result-document. Version attribute should be ignored.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0237.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult097.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0238">
+      <description>Test @format of xsl:result-document. Verify that the matching output declaration is used. (output declarations have same local name but different namespace, namespace in-scope of xsl:result-document determines which one will be used)</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0238.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because
+the named my:format has method "xml".
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0239">
+      <description>Test with various attributes in xsl:result-document and an output declaration that overrides another output declaration. Attributes that are being tested are: -method, byte-order-mark, encoding, indent, omit-xml-declaration, standalone, output-version, undeclare-prefixes</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0239.xsl"/>
+         <stylesheet file="result-document-0239.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult106.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0240">
+      <description>Test the union of @cdata-section-elements values from xsl:result-document and one xsl:output declaration.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0240.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult109.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0241">
+      <description>Test that value in @use-character-maps of xsl:result-document both overrides and supplements such values in a matching output definition.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0241.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult111.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0301">
+      <description>Test AVT in the @method of an xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0301.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="multresult025.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0401">
+      <description>Test AVT in @cdata-section-elements of xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0401.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult038.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0501">
+      <description>Test AVT in @doctype-system of xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-05"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0501.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult046.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0601">
+      <description>Test AVT in @doctype-public of xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0601.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult050.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0701">
+      <description>Test AVT in @include-content-type of xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-07"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0701.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="html" file="multresult063.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0702">
+      <description>Test AVT in @omit-xml-declaration of xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-07"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0702.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xml" file="multresult081.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0703">
+      <description>Test AVT in @standalone of xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-07"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0703.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0801">
+      <description>Test AVT in @output-version of xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-08"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0801.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-0901">
+      <description>Test AVT in @format of xsl:result-document.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-09"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0901.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because
+the named my:format has method "xml".
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-1001">
+      <description>Test for generating two or more result trees with same URI where the first result tree is implicit and the second tree has an explicit xsl:result-document with @href=""</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-10"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1001.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTRE1495"/>
+            <error code="XTDE1490"/>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-1002">
+      <description>Test for generating two or more result trees with same URI where the first tree has an explicit xsl:result-document with href="" and the second tree is implicit</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-10"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1002.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTRE1495"/>
+            <error code="XTDE1490"/>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="result-document-1003">
+      <description>Test for generating two result trees with same URI where the first one is created implicitly and the second with xsl:result-document without @href.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="result-document-10"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1003.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <error code="XTRE1495"/>
+            <error code="XTDE1490"/>
+         </all-of>
+      </result>
+   </test-case>
+</test-set>

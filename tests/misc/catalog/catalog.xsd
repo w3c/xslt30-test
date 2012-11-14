@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2005/05/xslt20-test-catalog" xmlns:x="http://www.w3.org/2005/05/xslt20-test-catalog">
+  <xs:annotation id="change-history">
+    <xs:documentation>
+      <p>2012-07-04: allow error/@error-id="*", meaning any error passes the test. Used where the error code is implementation-defined.</p>
+      <p>2012-07-04: allow source-document/@uri. Defines an absolute URI that can be used in the doc() function to access the given input
+      file, independently of the file's actual location.</p>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:element name="testcases">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="x:citations"/>
+        <xs:element ref="x:coverage"/>        
+        <xs:element maxOccurs="unbounded" ref="x:testcase"/>
+      </xs:sequence>
+      <xs:attribute name="InputOffsetPath" use="required"/>
+      <xs:attribute name="ResultOffsetPath" use="required"/>
+      <xs:attribute name="SourceOffsetPath" use="required"/>
+      <xs:attribute name="testSuiteVersion" use="required"/>      
+    </xs:complexType>
+    <xs:key name="specKey">
+      <xs:selector xpath="x:citations/x:citation-spec"/>
+      <xs:field xpath="@name"/>
+    </xs:key>
+    <xs:keyref name="testCaseSpecRef" refer="x:specKey">
+      <xs:selector xpath="x:testcase/x:section"/>
+      <xs:field xpath="@spec"/>
+    </xs:keyref>
+    <xs:keyref name="testSpecVersionRef" refer="x:specKey">
+      <xs:selector xpath="x:testcase/x:discretionary-items/x:discretionary-version"/>
+      <xs:field xpath="@spec"/>
+    </xs:keyref>
+  </xs:element>
+  <xs:element name="citations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="x:citation-spec"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="coverage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="x:coverage-type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="coverage-type">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:string"/>
+      <xs:attribute name="min" use="required" type="xs:integer"/>        
+    </xs:complexType>
+  </xs:element>     
+  <xs:element name="citation-spec">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="x:description"/>
+        <xs:element ref="x:spec-URI"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="spec-URI" type="xs:anyURI"/>
+  <xs:element name="testcase">
+    <xs:complexType>
+      <xs:sequence>
+	    <xs:element ref="x:name"/>
+        <xs:element ref="x:creator"/>
+        <xs:element  maxOccurs="unbounded" ref="x:category"/>
+        <xs:element ref="x:description"/>
+        <xs:element maxOccurs="unbounded" ref="x:section"/>
+		<xs:element minOccurs="0" ref="x:origin"/>
+	    <xs:element minOccurs="0" ref="x:discretionary-items"/>
+        <xs:element ref="x:input"/>
+        <xs:element ref="x:output"/>
+        <xs:element minOccurs="0" ref="x:comment"/>        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="comment" type="xs:string"/>  
+  <xs:element name="category" type="xs:NCName"/>
+  <xs:element name="name" type="xs:NCName"/>
+  <xs:element name="creator">
+    <xs:complexType mixed="true">
+      <xs:attribute name="origin" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="section">
+    <xs:annotation>
+      <xs:documentation>A reference to the part of the specification being tested</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="id" use="optional" type="xs:NCName">
+        <xs:annotation>
+          <xs:documentation>The id attribute of the section in the specification being tested</xs:documentation>
+        </xs:annotation>
+      </xs:attribute> 
+      <xs:attribute name="number" use="optional" type="xs:NMTOKEN"/>
+      <xs:attribute name="spec" use="required" type="xs:NCName"/>
+      <xs:attribute name="title"/>
+      <xs:attribute name="version" use="optional" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="discretionary-items">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+	    <xs:choice>
+          <xs:element ref="x:discretionary-choice"/>
+          <xs:element ref="x:discretionary-feature"/>
+          <xs:element ref="x:discretionary-implementation"/>
+          <xs:element ref="x:discretionary-version"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="discretionary-choice" type="x:discretionaryType"/>
+  <xs:element name="discretionary-feature" type="x:discretionaryType"/>
+  <xs:element name="discretionary-implementation" type="x:discretionaryImplType"/>
+  <xs:complexType name="discretionaryImplType">
+      <xs:attribute name="behavior" use="required" type="xs:string"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+  </xs:complexType>    
+  <xs:complexType name="discretionaryType">
+      <xs:attribute name="behavior" use="required" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+  </xs:complexType>
+  <xs:element name="discretionary-version">
+    <xs:complexType>
+      <xs:attribute name="spec" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="origin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="x:copyright"/>
+      </xs:sequence>
+      <xs:attribute name="organization" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="copyright" type="xs:string"/>
+  <xs:element name="input">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="x:stylesheet"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="x:source-document"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="x:collection"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="x:schema"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="x:unparsed-text"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="x:stylesheet-parameters"/>
+        <xs:element minOccurs="0" ref="x:entry-named-template"/>
+        <xs:element minOccurs="0" ref="x:initial-mode"/>
+        <xs:element minOccurs="0" ref="x:initial-context-node"/>
+        <xs:element minOccurs="0" ref="x:validation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stylesheet" type="x:inputType"/>
+  <xs:complexType name="inputType">
+      <xs:attribute name="file" use="required" type="xs:anyURI"/>
+      <xs:attribute name="role" use="required" type="x:docRoleType"/>
+      <xs:attribute name="encoding" use="optional" type="xs:string"/>
+      <xs:attribute name="uri" use="optional" type="xs:anyURI"/>
+  </xs:complexType>
+  <xs:element name="collection">
+      <xs:complexType>
+        <xs:attribute name="uri" use="required" type="xs:anyURI"/>
+        <xs:attribute name="files" use="required" type="x:uriList"/>
+      </xs:complexType>
+  </xs:element>
+  <xs:complexType name="schemaType">
+      <xs:attribute name="file" use="required" type="xs:anyURI"/>
+      <xs:attribute name="role" use="required" type="x:schemaRoleType"/>
+      <xs:attribute name="validates" use="optional" type="xs:anyURI"/>
+  </xs:complexType>
+  <xs:element name="entry-named-template">
+    <xs:complexType>
+      <xs:attribute name="qname" use="required" type="xs:QName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="docRoleType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="principal"/>
+      <xs:enumeration value="secondary"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="schemaRoleType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="source-reference"/>
+      <xs:enumeration value="stylesheet-import"/>
+      <xs:enumeration value="secondary"/>      
+    </xs:restriction>
+  </xs:simpleType> 
+  <xs:simpleType name="yesNoType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="yes"/>
+      <xs:enumeration value="no"/>
+    </xs:restriction>
+  </xs:simpleType> 
+  <xs:simpleType name="compareType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="xml"/>
+      <xs:enumeration value="xml-output"/>
+      <xs:enumeration value="html-output"/>
+      <xs:enumeration value="xhtml-output"/>
+      <xs:enumeration value="xml-frag"/>
+      <xs:enumeration value="text"/>
+      <xs:enumeration value="ignore"/>
+      <xs:enumeration value="inspect"/>                  
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="uriList">
+    <xs:list itemType="xs:anyURI"/>
+  </xs:simpleType>       
+  <xs:element name="source-document" type="x:inputType"/>
+  <xs:element name="unparsed-text" type="x:inputType"/>
+  <xs:element name="schema" type="x:schemaType"/>
+  <xs:element name="stylesheet-parameters">
+    <xs:complexType>
+	  <xs:sequence maxOccurs="unbounded">
+	    <xs:element name="param">
+		  <xs:complexType>
+		    <xs:simpleContent>
+			  <xs:extension base="xs:string">
+			  	<xs:attribute name="qname" type="xs:QName"/>
+				<xs:attribute name="as" type="xs:string"/>
+			  </xs:extension>
+	        </xs:simpleContent>
+		  </xs:complexType>
+		</xs:element>
+	  </xs:sequence>
+	</xs:complexType>
+  </xs:element>
+  <xs:element name="initial-mode">
+    <xs:complexType>
+      <xs:attribute name="qname" use="required" type="xs:QName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="validation">
+    <xs:complexType>
+      <xs:attribute name="mode" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="initial-context-node" type="xs:string"/>
+  <xs:element name="output">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="x:result-document"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="x:error"/>
+          <xs:element ref="x:xsl-message"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="same-as-1.0" use="required" type="xs:boolean"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="result-document">
+    <xs:complexType>
+      <xs:attribute name="file" use="required" type="xs:anyURI"/>
+      <xs:attribute name="role" use="required" type="x:docRoleType"/>
+      <xs:attribute name="type" use="required" type="x:compareType"/>
+      <xs:attribute name="encoding" use="optional" type="xs:string"/> 
+      <xs:attribute name="indent-ignore" use="optional" type="x:yesNoType"/>             
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="error">
+    <xs:complexType>
+      <xs:attribute name="error-id" use="required">
+        <xs:simpleType>
+           <xs:union>
+             <xs:simpleType>             
+               <xs:restriction base="xs:string">
+                 <!-- either XXXX9999 or * -->
+                 <xs:pattern value="([A-Z]{4}[0-9]{4})|\*"/>
+               </xs:restriction>
+             </xs:simpleType>
+             <xs:simpleType>  
+               <xs:restriction base="xs:QName">
+                 <!-- a QName with an actual prefix -->
+                 <xs:pattern value=".+:.+"/>
+               </xs:restriction>
+             </xs:simpleType>  
+           </xs:union>  
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="xsl-message" type="xs:anyType">
+    <!--<xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>-->
+  </xs:element>
+  <!--<xs:element name="message" type="xs:anyType"/>-->
+  <xs:element name="description">
+    <xs:complexType mixed="true">
+      <xs:attribute name="last-mod" type="xs:NMTOKEN"/>
+      <xs:attribute name="short-name"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

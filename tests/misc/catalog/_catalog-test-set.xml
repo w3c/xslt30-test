@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="catalog">
+   <description>Tests catalog</description>
+   <environment name="catalog001">
+      <source role="." file="catalog001.xml"/>
+      <schema role="source-reference" file="catalog.xsd" xsd-version="1.0"/>
+   </environment>
+   <dependencies>
+      <feature value="schema_aware"/>
+   </dependencies>
+
+   <test-case name="catalog-001">
+      <description>Test that the test catalog is valid with respect to its schema</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="catalog001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="catalog-001.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<ok/>]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>

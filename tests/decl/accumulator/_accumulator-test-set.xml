@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="accumulator">
+   <description>Tests accumulator</description>
+   <environment name="accumulator-001">
+      <source role="." file="accumulator-001.xml"/>
+   </environment>
+   <environment name="accumulator-001s">
+      <source role="." file="accumulator-001.xml" streaming="true"/>
+   </environment>
+   <environment name="accumulator-002">
+      <source role="." file="accumulator-002.xml"/>
+   </environment>
+   <environment name="accumulator-002s">
+      <source role="." file="accumulator-002.xml" streaming="true"/>
+   </environment>
+   <environment name="accumulator-004">
+      <source role="." file="accumulator-004.xml"/>
+   </environment>
+   <environment name="accumulator-004s">
+      <source role="." file="accumulator-004.xml" streaming="true"/>
+   </environment>
+   <environment name="accumulator-005">
+      <source role="." file="accumulator-005.xml"/>
+   </environment>
+   <environment name="accumulator-005s">
+      <source role="." file="accumulator-005.xml" streaming="true"/>
+   </environment>
+   <dependencies>
+      <spec value="XSLT30+"/>
+   </dependencies>
+
+   <test-case name="accumulator-001">
+      <description>Basic test of accumulator functions</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-001"/>
+      <test>
+         <stylesheet file="accumulator-001.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures>
+   <p>Figure 1: a diagram</p>
+   <p>Figure 2: another diagram</p>
+   <p>Figure 1: a third diagram</p>
+   <p>Figure 2: a fourth diagram</p>
+</figures>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-002">
+      <description>Basic test of accumulator functions - streaming</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-001s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-002.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures>
+   <p>Figure 1: a diagram</p>
+   <p>Figure 2: another diagram</p>
+   <p>Figure 1: a third diagram</p>
+   <p>Figure 2: a fourth diagram</p>
+</figures>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-003">
+      <description>Pre-descent accumulator functions called before and after</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-002"/>
+      <test>
+         <stylesheet file="accumulator-003.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="accumulator-003.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-004">
+      <description>Pre-descent accumulator functions called before and after - streaming</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-002s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-004.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="accumulator-004.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-005">
+      <description>Pre-descent and post-descent accumulator functions</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-002"/>
+      <test>
+         <stylesheet file="accumulator-005.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="accumulator-005.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-006">
+      <description>Pre-descent and post-descent accumulator functions - streaming</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-002s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-006.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="accumulator-006.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-007">
+      <description>Multiple accumulators used in parallel</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-004"/>
+      <test>
+         <stylesheet file="accumulator-007.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result min="-16" max="182" sum="277.43" count="16" avg="17.34"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-008">
+      <description>Multiple accumulators used in parallel - with streaming</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-004s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-008.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result min="-16" max="182" sum="277.43" count="16" avg="17.34"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-009">
+      <description>Error: post-descent accumulator function used in a pre-descent instruction</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-004s"/>
+      <test>
+         <stylesheet file="accumulator-009.xsl"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-010">
+      <description>Hierarchic section numbers: uses accumulator rules with phase=end</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="accumulator-010.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="accumulator-010.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-011">
+      <description>Hierarchic section numbers: uses accumulator rules with phase=end. Once more with streaming.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="accumulator-005s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-011.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="accumulator-011.out"/>
+      </result>
+   </test-case>
+</test-set>

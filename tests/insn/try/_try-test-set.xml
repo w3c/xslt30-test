@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="try">
+   <description>Tests try</description>
+   <environment name="try020">
+      <source role="." file="try020.xml"/>
+      <source file="try020xpath.xml" uri="try020xpath.xml"/>
+   </environment>
+
+   <test-case name="try-001">
+      <description>Simple test of xsl:try</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<o>divide by zero</o>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-002">
+      <description>Test of xsl:try as a higher-order function</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="try-002.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="try-003">
+      <description>Test xsl:try rethrowing the exception</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FOAR0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="try-004">
+      <description>Use xsl:try to catch a validation error. Should not report the error.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml file="try-004.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="try-005">
+      <description>Show xsl:try around element creation doesn't catch an error just because the element isn't valid in the content model of its parent</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTTE1540"/>
+      </result>
+   </test-case>
+
+   <test-case name="try-006">
+      <description>xsl:try element, simple case</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Infinity</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-007">
+      <description>xsl:try element, catch a specific error</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-007.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Infinity</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-008">
+      <description>xsl:try element, catch a specific error</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Infinity</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-009">
+      <description>xsl:try element, catch several errors</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-009.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Infinity</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-010">
+      <description>xsl:try element, use sequence constructor</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-010.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out test="Infinity"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-011">
+      <description>Error: variable declared in saxon;try is not visible with xsl:catch</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-011.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>
+
+   <test-case name="try-012">
+      <description>element-available in Saxon-SA</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-012.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out try="true" catch="false"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-013">
+      <description>element-available in Saxon-B</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-013.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out try="false" catch="false"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-014">
+      <description>xsl:fallback with xsl:try in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-015">
+      <description>xsl:fallback with xsl:try in XSLT 2.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-016">
+      <description>Invalid child of xsl:try in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-016.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-017">
+      <description>Invalid child of xsl:try in XSLT 2.0 (caught by xsl:fallback) (same test as try016 but run under XSLT 2.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-017.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-018">
+      <description>xsl:catch with references to error variables in body</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-018.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+   <e>err:FODC0002|Failed to load document rubbish.xml</e>
+   <e>try018.xsl|16</e>
+</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-019">
+      <description>xsl:catch with references to error variables in select attribute</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-019.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Error: err:FODC0002 Failed to load document rubbish.xml try019.xsl 16</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-020">
+      <description>xsl:result-document within xsl:try which throws a division by zero error</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-020.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<output xmlns:xs="http://www.w3.org/2001/XMLSchema"><ERROR message="Division by 0 error caught!"/></output>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-021">
+      <description>xsl:result-document within xsl:try</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-021.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml file="try-021.out"/>
+            <assert-result-document uri="try022_2.out">
+               <assert-xml file="try-021-2.out"/>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="try-022">
+      <description>xsl:result-document within xsl:try, which catches a division by zero error in second result-document</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-022.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml file="try-022.out"/>
+            <assert-result-document uri="try023_1.out">
+               <assert-xml file="try-022-2.out"/>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="try-023">
+      <description>xsl:try within xsl:result-document, within xsl:try</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-023.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<output xmlns:xs="http://www.w3.org/2001/XMLSchema">main document</output>]]></assert-xml>
+            <assert-result-document uri="try024_1.out">
+               <assert-xml file="try-023-2.out"/>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="try-024">
+      <description>xsl:try within xsl:result-document, within xsl:try, which catches a division by zero error in inner result-document</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-024.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<output xmlns:xs="http://www.w3.org/2001/XMLSchema">main document</output>]]></assert-xml>
+            <assert-result-document uri="try025_1.out">
+               <assert-xml file="try-024-2.out"/>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="try-025">
+      <description>Invalid child of xsl:try in XSLT 2.0 (not caught by xsl:fallback) (same test as try016 but run under XSLT 2.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-025.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="try-026">
+      <description>Invalid child of xsl:try in XSLT 2.0 (caught by xsl:fallback) (same test as try017 but specifies version="3.0" at the instruction level)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-026.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="try-027">
+      <description>xsl:evaluate within xsl:try</description>
+      <created by="Toshihito Makita" on="2012-11-07"/>
+      <environment ref="try020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-027.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<output xmlns:err="http://www.w3.org/2005/xqt-errors"/>]]></assert-xml>
+      </result>
+   </test-case>
+</test-set>
