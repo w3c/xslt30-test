@@ -2,11 +2,15 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="catalog">
-   <description>Tests catalog</description>
+   
+   <description>Tests that the test catalog is valid</description>
+   
    <environment name="catalog001">
-      <source role="." file="catalog001.xml"/>
-      <schema role="source-reference" file="catalog.xsd" xsd-version="1.0"/>
+      <source role="." file="../../../catalog.xml" validation="strict"/>
+      <schema role="source-reference" file="../../../admin/catalog-schema.xsd" xsd-version="1.0"/>
+      <schema role="secondary" file="../../../admin/xml.xsd" xsd-version="1.0"/>
    </environment>
+   
    <dependencies>
       <feature value="schema_aware"/>
    </dependencies>
@@ -16,13 +20,13 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="catalog001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30"/>
       </dependencies>
       <test>
          <stylesheet file="catalog-001.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<ok/>]]></assert-xml>
+         <assert>/ok[not(*)]</assert>
       </result>
    </test-case>
 </test-set>

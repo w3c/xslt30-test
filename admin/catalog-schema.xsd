@@ -51,7 +51,7 @@
         
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="environment" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="environment" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="test-set" maxOccurs="unbounded">                    
                     <xs:complexType>
                         <xs:complexContent>
@@ -81,7 +81,7 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="environment">
+    <xs:element name="environment" type="environmentType">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -107,28 +107,36 @@
                 </div> 
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:extension base="baseType">            
-                    <xs:choice minOccurs="0" maxOccurs="unbounded">
-                        <xs:element ref="schema" />
-                        <xs:element ref="source" />
-                        <xs:element ref="resource" />
-                        <xs:element ref="param" />
-                        <xs:element ref="context-item" />
-                        <xs:element ref="collection" />
-                        <xs:element ref="collation" />
-                        <xs:element ref="stylesheet" />
-                    </xs:choice>
-                    <xs:attributeGroup ref="nameAttr" />
-                    <xs:attributeGroup ref="refAttr" />
-                </xs:extension>
-            </xs:complexContent>
-        </xs:complexType>
+        
     </xs:element>
     
+    <xs:complexType name="environmentType">
+        <xs:complexContent>
+            <xs:extension base="baseType">            
+                <xs:group ref="environmentContentModel"/>
+                <xs:attributeGroup ref="nameAttr" />
+                <xs:attributeGroup ref="refAttr" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
     
-    <xs:element name="stylesheet" type="styleSheetType">
+    <xs:group name="environmentContentModel">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="schema" />
+                <xs:element ref="source" />
+                <xs:element ref="resource" />
+                <xs:element ref="param" />
+                <xs:element ref="context-item" />
+                <xs:element ref="collection" />
+                <xs:element ref="collation" />
+                <xs:element ref="stylesheet" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:group>
+    
+    
+    <xs:element name="stylesheet" type="stylesheetType">
         <xs:annotation>
             <xs:documentation>
                 <p>Describes a stylesheet under test. Stylesheets may be defined as part of an environment in cases
@@ -416,11 +424,11 @@
         
     </xs:complexType>
     
-    <xs:complexType name="styleSheetType">
+    <xs:complexType name="stylesheetType">
         <xs:annotation>
             <xs:documentation>
                 <div>
-                    <h3>styleSheetType</h3>
+                    <h3>stylesheetType</h3>
                     <p>
                         defines the type of the <code>stylesheet</code> element.
                     </p>
@@ -432,6 +440,22 @@
                 <xs:group ref="fileMetaData" />
                 <xs:attributeGroup ref="fileAttr" />
                 <xs:attributeGroup ref="uriAttr" />
+                <xs:attribute name="role">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <p>The principal stylesheet module is the one acting as the entry point for the
+                            transformation. Secondary stylesheet modules are imported or included by the principal
+                            module. It is good practice to document all modules used, but test drivers cannot rely
+                            on this being done in all cases.</p>
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="principal"/>
+                            <xs:enumeration value="secondary"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
             </xs:extension>
         </xs:complexContent>
         
@@ -547,8 +571,8 @@
                     <xs:element ref="link" />
                     <xs:element ref="environment"/>
                     <xs:element ref="dependencies"/>
+                    <xs:element ref="test-case"/>
                 </xs:choice>
-                <xs:element ref="test-case" maxOccurs="unbounded"/>
             </xs:sequence>
             <xs:attributeGroup ref="nameAttr" />
             <xs:attributeGroup ref="coversAttr" />
@@ -1071,7 +1095,16 @@
                 <xs:element ref="description" />
                 <xs:element ref="created" />
                 <xs:element ref="modified" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="environment" minOccurs="0"/>
+                <xs:element name="environment" minOccurs="0">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:restriction base="environmentType">
+                                <xs:group ref="environmentContentModel"/>
+                                <xs:attribute name="name" use="prohibited"/>
+                            </xs:restriction>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element ref="dependencies" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="test" />
                 <xs:element ref="result" />
@@ -1412,6 +1445,12 @@
                         </xs:annotation>
                     </xs:attribute>
                     <xs:attribute name="method">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <p>Identifies the output method used for serialization, which affects the way
+                                in which the actual results can be compared with the expected results.</p>
+                            </xs:documentation>
+                        </xs:annotation>
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
                                 <xs:enumeration value="xml"/>
@@ -1421,6 +1460,27 @@
                                 <xs:enumeration value="xml-fragment"/>
                             </xs:restriction>
                         </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="encoding" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <p>Identifies the encoding used for serialization. Where the expected results are in a file,
+                                this property describes the encoding of the file. Where the expected results are inline,
+                                the property is not needed by the test driver to read the expected results, but it may
+                                be needed to read the actual results prior to comparison; the test driver should also verify
+                                that the actual results can be decoded using this encoding.</p>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="bom" type="xs:boolean">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <p>Indicates whether or not the serialized results include a byte-order-mark. Where
+                                the expected results are in a file, this property indicates whether the file includes
+                                a byte order mark. In all cases, if present, the test driver should verify that the
+                                serialized results contain a byte order mark if the value is true, or vice versa.</p>
+                            </xs:documentation>
+                        </xs:annotation>
                     </xs:attribute>
                 </xs:extension>
             </xs:simpleContent>
