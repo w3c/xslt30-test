@@ -2,7 +2,13 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="merge">
-   <description>Tests merge</description>
+   
+   <description>Tests the xsl:merge instruction</description>
+   
+   <environment name="merge001">
+      <source role="." file="merge001.xml"/>
+      <!-- TODO: uses a collection, need to catalog its contents -->
+   </environment>
    <environment name="merge002">
       <source role="." file="merge001.xml"/>
       <source file="log-file-1.xml" uri="log-file-1.xml"/>
@@ -38,10 +44,6 @@
    <test-case name="merge-001">
       <description>xsl:merge test on a homogeneous collection of XML log files.</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
-      <environment>
-         <source role="." file="merge001.xml"/>
-         <!-- TODO: uses a collection, need to catalog its contents -->
-      </environment>
       <dependencies/>
       <test>
          <stylesheet file="merge-001.xsl"/>

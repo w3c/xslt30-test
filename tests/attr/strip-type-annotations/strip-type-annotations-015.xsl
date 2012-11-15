@@ -12,79 +12,67 @@
                        schema-location="varietyOfTypes.xsd"/>
 
    <xslt:template match="/my:userNode">
-      <xslt:text>
-</xslt:text>
+      
       <out>
-         <xslt:text>
-</xslt:text>
+         
          <E1>
             <xslt:value-of select=". instance of element(*, my:userType)"/>
             <xslt:value-of select=". instance of element(*, xs:untyped)"/>
          </E1>
-         <xslt:text>
-</xslt:text>
+         
          <E2>
             <xslt:value-of select="data(simpleUserElem) instance of my:partNumberType"/>
             <xslt:value-of select="simpleUserElem instance of element(*, my:partNumberType)"/>
             <xslt:value-of select="data(simpleUserElem) instance of xs:untypedAtomic"/>
             <xslt:value-of select="simpleUserElem instance of element(*, xs:untyped)"/>
          </E2>
-         <xslt:text>
-</xslt:text>
+         
          <E3>
             <xslt:value-of select="simpleUserList instance of element(*, my:myListType)"/>
             <xslt:value-of select="data(simpleUserList) instance of xs:untypedAtomic"/>
             <xslt:value-of select="simpleUserList instance of element(*, xs:untyped)"/>
          </E3>
-         <xslt:text>
-</xslt:text>
+         
          <E4>
             <xslt:value-of select="simpleUserUnion instance of element(*, my:partIntegerUnion)"/>
             <xslt:value-of select="data(simpleUserUnion) instance of xs:untypedAtomic"/>
             <xslt:value-of select="simpleUserUnion instance of element(*, xs:untyped)"/>
          </E4>
-         <xslt:text>
-</xslt:text>
+         
          <E5>
             <xslt:value-of select="complexMixedUserElem instance of element(*, my:mixedPersonType)"/>
             <xslt:value-of select="complexMixedUserElem instance of element(*, xs:untyped)"/>
          </E5>
-         <xslt:text>
-</xslt:text>
+         
          <E6>
             <xslt:value-of select="data(complexMixedUserElem/@age) instance of xs:integer"/>
             <xslt:value-of select="complexMixedUserElem/@age instance of attribute(*, xs:integer)"/>
             <xslt:value-of select="data(complexMixedUserElem/@age) instance of xs:untypedAtomic"/>
             <xslt:value-of select="complexMixedUserElem/@age instance of attribute(*, xs:untypedAtomic)"/>
          </E6>
-         <xslt:text>
-</xslt:text>
+         
          <E7>
             <xslt:value-of select="complexMixedUserElem/description instance of element(*, my:DescriptionType)"/>
             <xslt:value-of select="data(complexMixedUserElem/description) instance of xs:untypedAtomic"/>
             <xslt:value-of select="complexMixedUserElem/description instance of element(*, xs:untyped)"/>
          </E7>
-         <xslt:text>
-</xslt:text>
+         
          <E8>
             <xslt:value-of select="complexMixedUserElem/company instance of element(*, my:CompanyType)"/>
             <xslt:value-of select="data(complexMixedUserElem/company) instance of xs:untypedAtomic"/>
             <xslt:value-of select="complexMixedUserElem/company instance of element(*, xs:untyped)"/>
          </E8>
-         <xslt:text>
-</xslt:text>
+         
          <E9>
             <xslt:value-of select="complexUserElem instance of element(*, my:personType)"/>
             <xslt:value-of select="complexUserElem instance of element(*, xs:untyped)"/>
          </E9>
-         <xslt:text>
-</xslt:text>
+         
          <E10>
             <xslt:value-of select="onlyAttributes instance of element(*, my:onlyAttributesType)"/>
             <xslt:value-of select="onlyAttributes instance of element(*, xs:untyped)"/>
          </E10>
-         <xslt:text>
-</xslt:text>
+         
       </out>
    </xslt:template>
 </xslt:transform>

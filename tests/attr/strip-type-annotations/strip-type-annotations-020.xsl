@@ -7,22 +7,14 @@
 <!-- Purpose: Show that when  @input-type-annotations="preserve", the typed value of the 
   				integer 003  is different that its string value.-->
 
-   <xslt:template match="/doc-striptype">
-      <xslt:text>
-</xslt:text>
+   <xslt:template match="/doc-striptype">     
       <out>
-         <xslt:text>
-</xslt:text>
-         <xslt:value-of select="data(elem-integer)"/>
-         <xslt:text>
-</xslt:text>
-         <xslt:value-of select="string(elem-integer)"/>
-         <xslt:text>
-</xslt:text>
-         <xslt:value-of select="data(elem-integer) instance of xs:integer"/>
-         <xslt:text>
-</xslt:text>
-         <xslt:value-of select="data(elem-integer) instance of xs:untypedAtomic"/>
+         <xslt:value-of select="
+            data(elem-integer),
+            string(elem-integer),
+            data(elem-integer) instance of xs:integer,
+            data(elem-integer) instance of xs:untypedAtomic"
+         separator="|"/>
       </out>
    </xslt:template>
 </xslt:transform>

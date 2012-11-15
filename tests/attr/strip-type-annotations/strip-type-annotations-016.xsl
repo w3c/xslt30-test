@@ -12,49 +12,42 @@
                        schema-location="varietyOfTypes.xsd"/>
 
    <xslt:template match="/my:userNode">
-      <xslt:text>
-</xslt:text>
+      
       <out>
-         <xslt:text>
-</xslt:text>
+         
          <E1>
             <xslt:value-of select="data(@specialPart) instance of my:partNumberType"/>
             <xslt:value-of select="@specialPart instance of attribute(*, my:partNumberType)"/>
             <xslt:value-of select="data(@specialPart) instance of xs:untypedAtomic"/>
             <xslt:value-of select="@specialPart instance of attribute(*, xs:untypedAtomic)"/>
          </E1>
-         <xslt:text>
-</xslt:text>
+         
          <E2>
             <xslt:value-of select="@listParts instance of attribute(*, my:myListType)"/>
             <xslt:value-of select="data(@listParts) instance of xs:untypedAtomic"/>
             <xslt:value-of select="@listParts instance of attribute(*, xs:untypedAtomic)"/>
          </E2>
-         <xslt:text>
-</xslt:text>
+         
          <E3>
             <xslt:value-of select="data(complexMixedUserElem/@age) instance of xs:integer"/>
             <xslt:value-of select="complexMixedUserElem/@age instance of attribute(*, xs:integer)"/>
             <xslt:value-of select="data(complexMixedUserElem/@age) instance of xs:untypedAtomic"/>
             <xslt:value-of select="complexMixedUserElem/@age instance of attribute(*, xs:untypedAtomic)"/>
          </E3>
-         <xslt:text>
-</xslt:text>
+         
          <E4>
             <xslt:value-of select="onlyAttributes/@colors instance of attribute(*, my:myListType)"/>
             <xslt:value-of select="data(onlyAttributes/@colors) instance of xs:untypedAtomic"/>
             <xslt:value-of select="onlyAttributes/@colors instance of attribute(*, xs:untypedAtomic)"/>
          </E4>
-         <xslt:text>
-</xslt:text>
+         
          <E5>
             <xslt:value-of select="data(onlyAttributes/@specialPart) instance of my:partNumberType"/>
             <xslt:value-of select="onlyAttributes/@specialPart instance of attribute(*, my:partNumberType)"/>
             <xslt:value-of select="data(onlyAttributes/@specialPart) instance of xs:untypedAtomic"/>
             <xslt:value-of select="onlyAttributes/@specialPart instance of attribute(*, xs:untypedAtomic)"/>
          </E5>
-         <xslt:text>
-</xslt:text>
+         
       </out>
    </xslt:template>
 </xslt:transform>
