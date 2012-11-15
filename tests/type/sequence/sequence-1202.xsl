@@ -5,7 +5,7 @@
    <t:template match="doc">
       <out>
          <t:text>(((</t:text>
-         <t:sequence select="document('simple.xml')"/>
+         <t:sequence select="document('sequence-1202a.xml')"/>
          <t:text>)))</t:text>
       </out>
    </t:template>

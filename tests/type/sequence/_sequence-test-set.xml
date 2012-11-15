@@ -68,10 +68,9 @@
    </environment>
    <environment name="sequence-12">
       <source role=".">
-         <content><![CDATA[<doc>
-	<num>13</num>
-</doc>]]></content>
+         <content><![CDATA[<doc><num>13</num></doc>]]></content>
       </source>
+      <source file="sequence-1202a.xml" uri="sequence-1202a.xml"/>
    </environment>
    <environment name="sequence-13">
       <source role="." file="sequence-13.xml"/>
@@ -125,12 +124,7 @@
    <environment name="sequence-19">
       <source role="." file="sequence-19.xml"/>
    </environment>
-   <environment name="sequence-20">
-      <source role=".">
-         <content><![CDATA[<doc>
-</doc>]]></content>
-      </source>
-   </environment>
+
    <environment name="sequence-21">
       <source role=".">
          <content><![CDATA[<doc>
@@ -158,11 +152,6 @@
   <one>1</one>
   <two>2</two>
 </doc>]]></content>
-      </source>
-   </environment>
-   <environment name="sequence-24">
-      <source role=".">
-         <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
 
@@ -1238,7 +1227,7 @@
    <test-case name="sequence-1202">
       <description>Test using xsl:sequence to add a document node to a result tree.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-12"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1253,7 +1242,7 @@
    <test-case name="sequence-1203">
       <description>Tests xsl:sequence instruction containing xsl:fallback.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-12"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1403,7 +1392,7 @@ blah, good, bar1, bar2, bar3
    <test-case name="sequence-2001">
       <description>xsl:sequence - Construction of empty sequence</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-20"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1460,12 +1449,12 @@ blah, good, bar1, bar2, bar3
       </result>
    </test-case>
 
-   <test-case name="sequence-2401">
+   <test-case name="sequence-2401a">
       <description>xsl:sequence - Content in the sequence constructor is an instruction other than xsl:fallback.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-24"/>
+      <environment ref="sequence-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="sequence-2401.xsl"/>
@@ -1474,19 +1463,52 @@ blah, good, bar1, bar2, bar3
          <error code="XTSE0010"/>
       </result>
    </test-case>
+   
+   <test-case name="sequence-2401b">
+      <description>xsl:sequence - Content in the sequence constructor is an instruction other than xsl:fallback.</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="sequence-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sequence-2401.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3185"/>
+      </result>
+   </test-case>
 
-   <test-case name="sequence-2402">
+   <test-case name="sequence-2402a">
       <description>xsl:sequence instruction is missing the REQUIRED 'select' attribute.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-24"/>
+      <environment ref="sequence-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="sequence-2402.xsl"/>
       </test>
       <result>
          <error code="XTSE0010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sequence-2402b">
+      <description>
+         xsl:sequence instruction is missing the REQUIRED 'select' attribute.
+         No longer an error in XSLT 3.0
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="sequence-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sequence-2402.xsl"/>
+      </test>
+      <result>
+         <assert>/out[not(node())]</assert>
       </result>
    </test-case>
 </test-set>
