@@ -5,12 +5,6 @@
   xmlns:x="http://www.example.org/alias"
   xmlns:y="http://www.example.org/My/Transform/Language">
 
-  <xsl:import href="namespace-2620a.xsl" />
-
-  <xsl:namespace-alias stylesheet-prefix="x" result-prefix="y"/>
-
-  <xsl:template match="/">
-    <x:transform />
-  </xsl:template>
+  <xsl:namespace-alias stylesheet-prefix="x" result-prefix="#default"/>
 
 </xsl:stylesheet>

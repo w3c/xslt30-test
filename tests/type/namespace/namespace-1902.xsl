@@ -5,10 +5,11 @@
 >
 	
 	<!-- TEST xsl:namespace-alias - result-prefix="#default" -->
-	<?spec xslt#namespace-aliasing?>
 
-    <xsl:import href="xnspc36.xsl"/>
+    <xsl:import href="namespace-1002a.xsl"/>
+	
 	<xsl:namespace-alias stylesheet-prefix="x" result-prefix="#default"/>
+	
 	<xsl:template match="/" xml:space="preserve">
 		<x:stylesheet version="1.0">
 		 <x:template name="x">

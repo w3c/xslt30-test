@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <ped:transform xmlns:ped="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<ped:import href="impnspc13.xsl"/>
-<ped:include href="incnspc13.xsl"/>
+<ped:import href="namespace-3502a.xsl"/>
+<ped:include href="namespace-3502b.xsl"/>
 
 <ped:output method="xml"/>
 

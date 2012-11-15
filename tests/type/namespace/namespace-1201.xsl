@@ -3,7 +3,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
      xmlns:a="http://a.uri/" xmlns:b="http://b.uri/">
      
-     <?spec xpath#node-tests?>
 
   <xsl:template match="/">
     <xsl:element name="o">

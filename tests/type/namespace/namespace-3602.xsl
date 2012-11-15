@@ -11,8 +11,8 @@
        are different for numerous elements. Should actually output a "bogus"
        stylesheet. -->
 
-<xsl:import href="test1.xsl"  ped:a="a"/>
-<xsl:include href="test2.xsl" ped:b="b"/>
+<xsl:import href="namespace-3602a.xsl"  ped:a="a"/>
+<xsl:include href="namespace-3602b.xsl" ped:b="b"/>
 <xsl:output method="xml" indent="yes" lotus:c="c"/>
 
 <xsl:key name="sprtest" match="TestID" use="Name" lotus:d="d"/>

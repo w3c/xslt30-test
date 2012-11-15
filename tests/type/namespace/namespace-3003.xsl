@@ -7,8 +7,6 @@
 <!-- Author: Michael Kay -->
 <!-- Date: 2 February 2009 -->
 
-<xsl:output indent="yes"/>
-
 <xsl:template match="/">
   <xsl:apply-templates/>
 </xsl:template>
