@@ -3,15 +3,16 @@
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="sequence">
    <description>
-   		Tests the xsl:sequence instruction and other constructs involving
-   		construction of sequences
+      Tests the xsl:sequence instruction and other expressions that
+      construct sequences
    </description>
+   
    <environment name="sequence-01">
       <source role=".">
-         <content><![CDATA[<doc>
-</doc>]]></content>
+         <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
+   
    <environment name="sequence-02">
       <source role=".">
          <content><![CDATA[<doc>
@@ -21,11 +22,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="sequence-03">
-      <source role=".">
-         <content><![CDATA[<doc></doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="sequence-04">
       <source role="." file="sequence-04.xml"/>
    </environment>
@@ -35,28 +32,10 @@
    <environment name="sequence-06">
       <source role="." file="sequence-06.xml"/>
    </environment>
-   <environment name="sequence-07">
-      <source role=".">
-         <content><![CDATA[<doc/>]]></content>
-      </source>
-   </environment>
-   <environment name="sequence-08">
-      <source role=".">
-         <content><![CDATA[<doc>12</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="sequence-09">
-      <source role=".">
-         <content><![CDATA[<doc><to>1987456321</to></doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="sequence-10">
       <source role=".">
-         <content><![CDATA[<doc>
-	<a>1</a>
-	<a>2</a>
-	<a>3</a>
-</doc>]]></content>
+         <content><![CDATA[<doc><a>1</a><a>2</a><a>3</a></doc>]]></content>
       </source>
    </environment>
    <environment name="sequence-11">
@@ -121,34 +100,36 @@
 </doc>]]></content>
       </source>
    </environment>
+   
    <environment name="sequence-18">
-      <source role="." file="sequence-18.xml"/>
+      <source role="." >
+         <content><![CDATA[<doc>
+	<integer>5</integer>
+	<decimal>5.5</decimal>
+	<double>2E-1</double>
+	<date>2004-03-01</date>
+	<time>12:13:14</time>
+	<datetime>2004-03-01T12:13:14-05:00</datetime>
+	<qname>example2:bar</qname>
+</doc>]]></content>
+      </source>
    </environment>
+      
    <environment name="sequence-19">
-      <source role="." file="sequence-19.xml"/>
+      <source role="." >
+         <content><![CDATA[<doc>
+   <integer>5</integer>
+   <decimal>5.5</decimal>
+   <double>2E-1</double>
+   <date>2004-03-01</date>
+   <time>12:13:14</time>
+   <datetime>2004-03-01T12:13:14-05:00</datetime>
+   <qname>example1:bar</qname>
+   <uri>http://www.yahoo.com</uri>
+</doc>]]></content>
+      </source>
    </environment>
 
-   <environment name="sequence-21">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <num>1</num>
-  <num>2</num>
-  <num>3</num>
-  <num>4</num>
-  <num>5</num>
-  <num2>35</num2>
-  <num2>36</num2>
-  <one>1</one>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="sequence-22">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <one>1</one>
-</doc>]]></content>
-      </source>
-   </environment>
    <environment name="sequence-23">
       <source role=".">
          <content><![CDATA[<doc>
@@ -810,7 +791,7 @@
    <test-case name="sequence-0301">
       <description>test op:concatenate on nested sequences, paren notation</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-03"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -825,7 +806,7 @@
    <test-case name="sequence-0302">
       <description>Nest parentheses, with concatenation and range expressions</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-03"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -840,7 +821,7 @@
    <test-case name="sequence-0303">
       <description>Test for positional indexing in sequence</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-03"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -855,7 +836,7 @@
    <test-case name="sequence-0304">
       <description>Test for xsl:sequence in a function passed from a param</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-03"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -870,7 +851,7 @@
    <test-case name="sequence-0305">
       <description>range operator - empty sequence in arg2</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-03"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -885,7 +866,7 @@
    <test-case name="sequence-0306">
       <description>Test case to verify that no error is raised for using xs:untypedAtomic as the first argument of 'to' operand if the value can be casted to an integer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-03"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -900,7 +881,7 @@
    <test-case name="sequence-0307">
       <description>Test case to verify that no error is raised for using xs:untypedAtomic as the second argument of 'to' operand if the value can be casted to an integer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-03"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1005,7 +986,7 @@
    <test-case name="sequence-0701">
       <description>when first operand of op:concatenate is the empty sequence, just return the other</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-07"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1020,7 +1001,7 @@
    <test-case name="sequence-0702">
       <description>when second operand of op:concatenate is the empty sequence, just return the other</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-07"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1035,7 +1016,7 @@
    <test-case name="sequence-0703">
       <description>when both operands of op:concatenate are empty sequences, return empty sequence</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-07"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1050,7 +1031,7 @@
    <test-case name="sequence-0704">
       <description>test op:concatenate of three sequences, empty in middle</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-07"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1065,7 +1046,7 @@
    <test-case name="sequence-0705">
       <description>Range expression, variable to variable (both integers)</description>
       <created by="(spec authors)" on="2012-11-07"/>
-      <environment ref="sequence-07"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1080,7 +1061,7 @@
    <test-case name="sequence-0706">
       <description>Range expression, upward, (positive integer) function to (positive integer) function</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-07"/>
+      <environment ref="sequence-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1092,25 +1073,14 @@
       </result>
    </test-case>
 
-   <test-case name="sequence-0801">
-      <description>Range expression, upward, positive integer to node holding positive integer</description>
-      <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-08"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="sequence-0801.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>9, 10, 11, 12</out>]]></assert-xml>
-      </result>
-   </test-case>
-
    <test-case name="sequence-0901">
       <description>Range expression, node holding positive integer to node holding positive integer, weird name</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-09"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><to>1987456321</to></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1254,6 +1224,36 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out>text</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sequence-1204">
+      <description>Range expression, upward, positive integer to node holding positive integer</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="sequence-12"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sequence-1204.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>9, 10, 11, 12, 13</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sequence-1205">
+      <description>Range expression - nested range expression</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="sequence-12"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sequence-1205.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1 2 3 4 5</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1410,7 +1410,11 @@ blah, good, bar1, bar2, bar3
    <test-case name="sequence-2101">
       <description>range expression with functions as operands</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-21"/>
+      <environment name="sequence-21">
+         <source role=".">
+            <content><![CDATA[<doc><num>1</num><num>2</num><num>3</num><num>4</num><num>5</num><num2>35</num2><num2>36</num2><one>1</one></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1419,21 +1423,6 @@ blah, good, bar1, bar2, bar3
       </test>
       <result>
          <assert-xml><![CDATA[<out>3 4 5 6 7 8 9 1032 33 34 35 3635 36</out>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="sequence-2201">
-      <description>Range expression - nested range expression</description>
-      <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-22"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="sequence-2201.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>1 2 3 4 5</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1512,6 +1501,42 @@ blah, good, bar1, bar2, bar3
       </test>
       <result>
          <assert>/out[not(node())]</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sequence-2403a">
+      <description>
+         Purpose: xsl:sequence with content but no 'select' attribute. 
+         (OK in XSLT 3.0) 
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="sequence-01"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sequence-2403.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sequence-2403b">
+      <description>
+         Purpose: xsl:sequence with content but no 'select' attribute. 
+         (OK in XSLT 3.0) 
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="sequence-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sequence-2403.xsl"/>
+      </test>
+      <result>
+         <assert>/out[foo and bar]</assert>
       </result>
    </test-case>
 </test-set>

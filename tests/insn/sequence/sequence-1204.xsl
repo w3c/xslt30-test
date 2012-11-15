@@ -6,7 +6,7 @@
 
    <t:template match="/">
       <out>
-         <t:value-of select="(9 to doc)" separator=", "/>
+         <t:value-of select="(9 to doc/num)" separator=", "/>
       </out>
    </t:template>
 </t:transform>
