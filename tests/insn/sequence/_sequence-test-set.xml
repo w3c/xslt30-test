@@ -26,11 +26,9 @@
    <environment name="sequence-04">
       <source role="." file="sequence-04.xml"/>
    </environment>
+   
    <environment name="sequence-05">
       <source role="." file="sequence-05.xml"/>
-   </environment>
-   <environment name="sequence-06">
-      <source role="." file="sequence-06.xml"/>
    </environment>
    
    <environment name="sequence-10">
@@ -54,9 +52,7 @@
       </source>
       <source file="sequence-1202a.xml" uri="sequence-1202a.xml"/>
    </environment>
-   <environment name="sequence-13">
-      <source role="." file="sequence-13.xml"/>
-   </environment>
+   
    <environment name="sequence-14">
       <source role=".">
          <content><![CDATA[<doc>
@@ -130,15 +126,6 @@
       </source>
    </environment>
 
-   <environment name="sequence-23">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <one>1</one>
-  <two>2</two>
-</doc>]]></content>
-      </source>
-   </environment>
-
    <test-case name="sequence-0101">
       <description>Test sequence construction in a variable</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -195,11 +182,7 @@
          <stylesheet file="sequence-0104.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<zzz>
-   <a>1</a>
-   <b>2</b>
-   <c>3</c>
-</zzz>]]></assert-xml>
+         <assert-xml><![CDATA[<zzz><a>1</a><b>2</b><c>3</c></zzz>]]></assert-xml>
       </result>
    </test-case>
 
@@ -274,14 +257,7 @@
          <stylesheet file="sequence-0109.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<zzz>
-   <e/>
-   <f/>
-   <g/>
-   <g/>
-   <f/>
-   <e/>
-</zzz>]]></assert-xml>
+         <assert-xml><![CDATA[<zzz><e/><f/><g/><g/><f/><e/></zzz>]]></assert-xml>
       </result>
    </test-case>
 
@@ -347,7 +323,10 @@
    </test-case>
 
    <test-case name="sequence-0114">
-      <description>Test sequence construction using xsl:sequence with a type check (type check removed 2004-03-25, facility dropped from the spec)</description>
+      <description>
+         Test sequence construction using xsl:sequence with a type check 
+         (type check removed 2004-03-25, facility dropped from the spec)
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sequence-01"/>
       <dependencies>
@@ -362,7 +341,10 @@
    </test-case>
 
    <test-case name="sequence-0115">
-      <description>Test sequence construction using xsl:sequence with atomization (type check removed 2004-03-25, facility dropped from the spec)</description>
+      <description>
+         Test sequence construction using xsl:sequence with atomization 
+         (type check removed 2004-03-25, facility dropped from the spec)
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sequence-01"/>
       <dependencies>
@@ -402,9 +384,7 @@
          <stylesheet file="sequence-0117.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<foo>
-   <bar/>
-</foo>]]></assert-xml>
+         <assert-xml><![CDATA[<foo><bar/></foo>]]></assert-xml>
       </result>
    </test-case>
 
@@ -509,12 +489,7 @@
          <stylesheet file="sequence-0124.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<do>
-   <aaa>1</aaa>
-   <bbb>2</bbb>
-   <ccc>3</ccc>
-   <ddd-got-it/>
-</do>]]></assert-xml>
+         <assert-xml><![CDATA[<do><aaa>1</aaa><bbb>2</bbb><ccc>3</ccc><ddd-got-it/></do>]]></assert-xml>
       </result>
    </test-case>
 
@@ -971,7 +946,9 @@
    <test-case name="sequence-0601">
       <description>Simple test of calling xsl:function from within the for loop, which stresses the variable stack.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-06"/>
+      <environment>
+         <source role="." file="sequence-06.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1260,7 +1237,9 @@
    <test-case name="sequence-1301">
       <description>sequence constructor/concatenator with nodes</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-13"/>
+      <environment>
+         <source role="." file="sequence-13.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1268,10 +1247,7 @@
          <stylesheet file="sequence-1301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-yes this is nonsense, foo
-blah, good, bar1, bar2, bar3
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>yes this is nonsense, foo</a><b>blah, good, bar1, bar2, bar3</b></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1429,7 +1405,11 @@ blah, good, bar1, bar2, bar3
    <test-case name="sequence-2301">
       <description>xsl:sequence - node identity should be preserved</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="sequence-23"/>
+      <environment name="sequence-23">
+         <source role=".">
+            <content><![CDATA[<doc><one>1</one><two>2</two></doc>]]></content>
+         </source>
+      </environment>     
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>

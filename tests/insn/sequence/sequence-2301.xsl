@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xslt:transform xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
-                version="2.0"
-                exclude-result-prefixes="xs">
-<!-- Purpose: xsl:sequence - node identity should be preserved -->
+<t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-   <xslt:output method="xml" encoding="UTF-8"/>
+   <!-- Purpose: xsl:sequence node identity should be preserved -->
 
-   <xslt:template match="/">
+   <t:output method="xml" encoding="UTF-8"/>
 
-      <xslt:variable name="nodeseq" as="item()*">
-         <xslt:sequence select="(doc/one,doc/two)"/>
-      </xslt:variable>
+   <t:template match="/">
+      <t:variable name="nodeseq" as="item()*">
+         <t:sequence select="(doc/one, doc/two)"/>
+      </t:variable>
       <out>
-         <xslt:value-of select="$nodeseq[1] is doc/one"/>
-         <xslt:value-of select="$nodeseq[2] is doc/two"/>
+         <t:value-of select="$nodeseq[1] is doc/one"/>
+         <t:value-of select="$nodeseq[2] is doc/two"/>
       </out>
-   </xslt:template>
-</xslt:transform>
+   </t:template>
+</t:transform>

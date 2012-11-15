@@ -3,19 +3,9 @@
 <!-- Purpose: sequence constructor/concatenator with nodes -->
 
    <t:template match="/">
-      <t:text>
-</t:text>
       <out>
-         <t:text>
-</t:text>
-         <t:value-of select="(//what,/doc/a)" separator=", "/>
-         <t:text>
-</t:text>
-         <t:value-of select="(//*/@attr,/doc/c/noodle,/doc/b)" separator=", "/>
-         <t:text>
-</t:text>
+         <a><t:value-of select="(//what,/doc/a)" separator=", "/></a>
+         <b><t:value-of select="(//*/@attr,/doc/c/noodle,/doc/b)" separator=", "/></b>
       </out>
-      <t:text>
-</t:text>
    </t:template>
 </t:transform>

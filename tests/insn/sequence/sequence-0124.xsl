@@ -2,10 +2,9 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
 xmlns:s="http://s.com/" exclude-result-prefixes="s">
-<?spec xslt#patterns?>
+
 <!-- PURPOSE:   Test pattern matching on parentless elements -->
 
-<xsl:output indent="yes"/>
 
 <xsl:template match="/">
   <xsl:variable name="x" as="node()*">
