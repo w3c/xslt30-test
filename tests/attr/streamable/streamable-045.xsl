@@ -7,34 +7,34 @@
     version="3.0">
        
   
-  <!-- within a streaming template, get typed value of context item into a variable -->
-   
-  <xsl:import-schema namespace="http://www.w3.org/xsl-tests/grouped-transactions-e" schema-location="grouped-transactions-e.xsd"/>
-
-  <xsl:mode name="s" streamable="yes"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
-   
-  <xsl:template name="main" match="/">
-    <out>
-      <xsl:apply-templates select="doc('grouped-transactions-e.xml')" mode="s"/>
-    </out>
-  </xsl:template>
+    <!-- within a streaming template, get typed value of context item into a variable -->
+     
+    <xsl:import-schema namespace="http://www.w3.org/xsl-tests/grouped-transactions-e" schema-location="grouped-transactions-e.xsd"/>
   
-  <xsl:template match="*" mode="s">
-    <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates mode="s"/>
-    </xsl:copy>
-  </xsl:template>
-  
-  <xsl:template match="g:value" mode="s">
-    <xsl:variable name="value" as="xs:decimal*">
-      <xsl:sequence select="data(.)"/>
-    </xsl:variable>
-    <sum><xsl:value-of select="format-number(sum($value), '0.00')"/></sum>
-    <avg><xsl:value-of select="format-number(avg($value), '0.00')"/></avg>
-  </xsl:template>
+    <xsl:mode name="s" streamable="yes"/>
+         
+    <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+     
+    <xsl:template name="main" match="/">
+      <out>
+        <xsl:apply-templates select="doc('grouped-transactions-e.xml')" mode="s"/>
+      </out>
+    </xsl:template>
+    
+    <xsl:template match="*" mode="s">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates mode="s"/>
+      </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="g:value" mode="s">
+      <xsl:variable name="value" as="xs:decimal*">
+        <xsl:sequence select="data(.)"/>
+      </xsl:variable>
+      <sum><xsl:value-of select="format-number(sum($value), '0.00')"/></sum>
+      <avg><xsl:value-of select="format-number(avg($value), '0.00')"/></avg>
+    </xsl:template>
     
 </xsl:transform>
 

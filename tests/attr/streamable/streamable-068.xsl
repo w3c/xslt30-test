@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes=" xs"
-    version="2.1">
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
     
-  <xsl:import href="strmode068imp.xsl"/>  
+  <xsl:import href="streamable-068a.xsl"/>  
        
   
   <!-- within a streaming template, use xsl:apply-imports with tunnel and non-tunnel parameters -->

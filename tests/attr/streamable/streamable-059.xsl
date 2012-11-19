@@ -4,31 +4,31 @@
     xmlns:g="http://www.w3.org/xsl-tests/grouped-transactions"
     xmlns="http://www.w3.org/xsl-tests/grouped-transactions"
     exclude-result-prefixes="g xs"
-    version="2.1">
+    version="3.0">
        
   
-  <!-- within a streaming template, use distinct-values() on the streamed input -->
-   
-  <xsl:import-schema namespace="http://www.w3.org/xsl-tests/grouped-transactions" schema-location="grouped-transactions.xsd"/>
-
-  <xsl:mode name="s" streamable="yes"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+    <!-- within a streaming template, use distinct-values() on the streamed input -->
+     
+    <xsl:import-schema namespace="http://www.w3.org/xsl-tests/grouped-transactions" schema-location="grouped-transactions.xsd"/>
   
-  <xsl:param name="sep" select="'|'" as="xs:string"/>
-   
-  <xsl:template name="main" match="/">
-    <out>
-      <xsl:apply-templates select="doc('grouped-transactions.xml')" mode="s"/>
-    </out>
-  </xsl:template>
-  
-  <xsl:template match="g:account" mode="s">
-    <values><xsl:value-of select="distinct-values(.//@value)" separator="{$sep}"/></values>
-  </xsl:template>
-  
-   
-  <xsl:template match="text()" mode="s"/>
+    <xsl:mode name="s" streamable="yes"/>
+         
+    <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+    
+    <xsl:param name="sep" select="'|'" as="xs:string"/>
+     
+    <xsl:template name="main" match="/">
+      <out>
+        <xsl:apply-templates select="doc('grouped-transactions.xml')" mode="s"/>
+      </out>
+    </xsl:template>
+    
+    <xsl:template match="g:account" mode="s">
+      <values><xsl:value-of select="distinct-values(.//@value)" separator="{$sep}"/></values>
+    </xsl:template>
+    
+     
+    <xsl:template match="text()" mode="s"/>
   
     
 </xsl:transform>

@@ -24,7 +24,7 @@
   
   <xsl:template match="chapter" mode="s">
     <xsl:element name="CC{local-name()}" namespace="{namespace-uri(.)}">
-      <xsl:attribute name="id" select="string-length(generate-id()) lt 10000"/>
+      <xsl:attribute name="id" select="generate-id()"/>
       <xsl:apply-templates mode="s"/>
     </xsl:element>
   </xsl:template>  

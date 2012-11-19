@@ -2,31 +2,31 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes=" xs"
-    version="2.1">
+    version="3.0">
        
   
-  <!-- within a streaming template, positional filter expression using last() -->
-   
-  <xsl:mode streamable="yes"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
-
-  <xsl:strip-space elements="*"/>
+   <!-- within a streaming template, positional filter expression using last() -->
     
-  <xsl:template match="/">
-    <out>
-      <xsl:apply-templates select=".//bookcoll"/>
-    </out>
-  </xsl:template>
-  
-  <xsl:template match="bookcoll">
-    <xsl:apply-templates select=".//bktlong"/>
-  </xsl:template>
-  
-  <xsl:template match="bktlong">
-    <title><xsl:value-of select="tokenize(., '\s+')[position() mod 2 gt last()]"/></title>
-  </xsl:template>
-  
+   <xsl:mode streamable="yes"/>
+        
+   <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+ 
+   <xsl:strip-space elements="*"/>
+     
+   <xsl:template match="/">
+     <out>
+       <xsl:apply-templates select=".//bookcoll"/>
+     </out>
+   </xsl:template>
+   
+   <xsl:template match="bookcoll">
+     <xsl:apply-templates select=".//bktlong"/>
+   </xsl:template>
+   
+   <xsl:template match="bktlong">
+     <title><xsl:value-of select="tokenize(., '\s+')[position() mod 2 gt last()]"/></title>
+   </xsl:template>
+   
     
 </xsl:transform>
 

@@ -5,27 +5,27 @@
     version="3.0">
        
   
-  <!-- within a streaming template, use for-each to process the subtree -->
-   
-  <xsl:mode name="s" streamable="yes"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
-  
-  <xsl:param name="sep" select="'|'" as="xs:string"/>
-   
-  <xsl:template name="main" match="/">
-    <out>
-      <xsl:apply-templates select="doc('loans.xml')" mode="s"/>
-    </out>
-  </xsl:template>
-  
-  <xsl:template match="myroot" mode="s">
-    <chap>
-      <xsl:for-each select=".//Loan">
-        <loan><xsl:value-of select="LoanStatus/LoanStatusType"/></loan>
-      </xsl:for-each>
-    </chap>
-  </xsl:template>
-       
+    <!-- within a streaming template, use for-each to process the subtree -->
+     
+    <xsl:mode name="s" streamable="yes"/>
+         
+    <xsl:output method="xml" indent="no" encoding="UTF-8" />
+    
+    <xsl:param name="sep" select="'|'" as="xs:string"/>
+     
+    <xsl:template name="main" match="/">
+      <out>
+        <xsl:apply-templates select="doc('loans.xml')" mode="s"/>
+      </out>
+    </xsl:template>
+    
+    <xsl:template match="myroot" mode="s">
+      <chap>
+        <xsl:for-each select=".//Loan">
+          <loan><xsl:value-of select="LoanStatus/LoanStatusType"/></loan>
+        </xsl:for-each>
+      </chap>
+    </xsl:template>
+         
 </xsl:transform>
 

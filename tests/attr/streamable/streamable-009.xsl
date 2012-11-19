@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    version="2.1">
+    version="3.0">
        
   
-  <!-- Real-life use case (Zeng Wang). Uses a variable to capture each Loan -->
+  <!-- Real-life use case. Uses a variable to capture each Loan -->
    
   <xsl:import-schema schema-location="loans.xsd"/>
 

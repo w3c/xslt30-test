@@ -3,35 +3,35 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:g="http://www.w3.org/xsl-tests/grouped-transactions"
     exclude-result-prefixes=" xs"
-    version="2.1">
+    version="3.0">
        
-  
-  <!-- within a streaming template, compute average of a list-valued attribute value -->
    
-  <xsl:mode streamable="yes"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
-  
-  <xsl:import-schema schema-location="grouped-transactions.xsd"/>
-
-  <xsl:strip-space elements="*"/>
+   <!-- within a streaming template, compute average of a list-valued attribute value -->
     
-  <xsl:template name="main">
-    <out>
-      <xsl:apply-templates select="doc('grouped-transactions.xml')"/>
-    </out>
-  </xsl:template>
+   <xsl:mode streamable="yes"/>
+        
+   <xsl:output method="xml" indent="yes" encoding="UTF-8" />
    
-  <xsl:template match="*">
-    <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates/>
-    </xsl:copy>
-  </xsl:template>
-  
-  <xsl:template match="g:account">
-    <account avg="{round-half-to-even(avg(g:transaction/@value), 2)}"/>
-  </xsl:template>
+   <xsl:import-schema schema-location="grouped-transactions.xsd"/>
+ 
+   <xsl:strip-space elements="*"/>
+     
+   <xsl:template name="main">
+     <out>
+       <xsl:apply-templates select="doc('grouped-transactions.xml')"/>
+     </out>
+   </xsl:template>
+    
+   <xsl:template match="*">
+     <xsl:copy>
+       <xsl:copy-of select="@*"/>
+       <xsl:apply-templates/>
+     </xsl:copy>
+   </xsl:template>
+   
+   <xsl:template match="g:account">
+     <account avg="{round-half-to-even(avg(g:transaction/@value), 2)}"/>
+   </xsl:template>
     
 </xsl:transform>
 

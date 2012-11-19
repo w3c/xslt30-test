@@ -3,10 +3,10 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:gml="http://www.opengis.net/gml"
 	exclude-result-prefixes="xs gml"
-	version="2.1">
+	version="3.0">
 	
 	<xsl:mode streamable="yes"/>
-	<xsl:output method="xml" indent="yes"/>
+	<xsl:output method="xml" indent="no"/>
 	
 	<xsl:template match="/">
 		<result>

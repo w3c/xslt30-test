@@ -8,22 +8,22 @@
   <!-- within a streaming template, evaluate a general comparison on streamed nodes -->
     
    
-  <xsl:mode name="s" streamable="yes"/>
-  <xsl:strip-space elements="*"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+    <xsl:mode name="s" streamable="yes"/>
+    <xsl:strip-space elements="*"/>
+         
+    <xsl:output method="xml" indent="no" encoding="UTF-8" />
+      
+    <xsl:template name="main" match="/">
+      <out>
+        <xsl:apply-templates select="doc('transactions.xml')" mode="s"/>
+      </out>
+    </xsl:template>
     
-  <xsl:template name="main" match="/">
-    <out>
-      <xsl:apply-templates select="doc('transactions.xml')" mode="s"/>
-    </out>
-  </xsl:template>
-  
-  <xsl:template match="account" mode="s">
-      <MoreThanTwo><xsl:value-of select="transaction/@value/xs:decimal(.) > 2"/></MoreThanTwo>
-  </xsl:template>
-  
-  <xsl:template match="text()" mode="#all"/>
+    <xsl:template match="account" mode="s">
+        <MoreThanTwo><xsl:value-of select="transaction/@value/xs:decimal(.) > 2"/></MoreThanTwo>
+    </xsl:template>
+    
+    <xsl:template match="text()" mode="#all"/>
        
 </xsl:transform>
 

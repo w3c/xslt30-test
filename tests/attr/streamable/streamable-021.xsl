@@ -31,8 +31,8 @@
   
   <xsl:template match="Loan" mode="s">
     <xsl:variable name="p" select="position()"/>
-    <Loan href="strmode021loan{$p}.xml"/>
-    <xsl:result-document href="strmode021loan{$p}.xml">
+    <Loan href="streamable-021-loan{$p}.xml"/>
+    <xsl:result-document href="streamable-021-loan{$p}.xml">
       <Loan>
         <xsl:apply-templates mode="s"/>
       </Loan>

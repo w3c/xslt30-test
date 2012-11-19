@@ -2,7 +2,9 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="key">
-   <description>Tests key</description>
+   
+   <description>Test xsl:key and the key() function</description>
+   
    <environment name="key101">
       <source role="." file="key101.xml"/>
    </environment>
@@ -242,7 +244,7 @@
    </test-case>
 
    <test-case name="key-002">
-      <description>test use of third para of key() to select a subtree</description>
+      <description>test use of third parameter of key() to select a subtree</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="key101"/>
       <dependencies>
@@ -252,7 +254,7 @@
          <stylesheet file="key-002.xsl"/>
       </test>
       <result>
-         <assert-xml file="key-002.out"/>
+         <assert><![CDATA[<out><ct-only><town name="Enfield" state="CT"/></ct-only><all-states><town name="Enfield" state="NH"/><town name="Enfield" state="ME"/><town name="Enfield" state="CT"/></all-states></out>]]></assert>
       </result>
    </test-case>
 

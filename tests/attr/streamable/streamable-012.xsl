@@ -10,7 +10,7 @@
   <xsl:mode name="s" streamable="yes"/>
   <xsl:mode name="t" streamable="yes"/>
        
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+  <xsl:output method="xml" encoding="UTF-8" />
   
   <xsl:param name="use-prefix" select="true()"/>
     

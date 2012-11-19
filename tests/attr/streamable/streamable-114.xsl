@@ -15,7 +15,7 @@
     
   <xsl:template name="main" match="/">
     <out>
-      <xsl:apply-templates select="document('xmark1.xml')" mode="s"/>
+      <xsl:apply-templates select="doc('xmark1.xml')" mode="s"/>
     </out>
   </xsl:template>
   

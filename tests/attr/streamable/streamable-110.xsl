@@ -5,31 +5,31 @@
     version="3.0">
        
   
-  <!-- within a streaming template, for-each instruction whose select expression 
-       doesn't select streamed nodes -->
-   
-  <xsl:mode name="s" streamable="yes"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
-  
-  <xsl:param name="sep" select="'|'" as="xs:string"/>
-   
-  <xsl:template name="main" match="/">
-    <out>
-      <xsl:apply-templates select="doc('loans.xml')" mode="s"/>
-    </out>
-  </xsl:template>
-  
-  <xsl:template match="Loan" mode="s">
-    <loan>
-      <xsl:variable name="this" select="."/>
-      <xsl:for-each select="(1 to 10)">
-        <xsl:value-of select="$this//PercentIndicator[current()]"/>
-      </xsl:for-each>
-    </loan>
-  </xsl:template>
-  
-  <xsl:template match="text()" mode="#all"/>
+    <!-- within a streaming template, for-each instruction whose select expression 
+         doesn't select streamed nodes -->
+     
+    <xsl:mode name="s" streamable="yes"/>
+         
+    <xsl:output method="xml" indent="no" encoding="UTF-8" />
+    
+    <xsl:param name="sep" select="'|'" as="xs:string"/>
+     
+    <xsl:template name="main" match="/">
+      <out>
+        <xsl:apply-templates select="doc('loans.xml')" mode="s"/>
+      </out>
+    </xsl:template>
+    
+    <xsl:template match="Loan" mode="s">
+      <loan>
+        <xsl:variable name="this" select="."/>
+        <xsl:for-each select="(1 to 10)">
+          <xsl:value-of select="$this//PercentIndicator[current()]"/>
+        </xsl:for-each>
+      </loan>
+    </xsl:template>
+    
+    <xsl:template match="text()" mode="#all"/>
        
 </xsl:transform>
 

@@ -31,8 +31,8 @@
   
   <xsl:template match="Loan" mode="s">
     <parent name="{name(..)}" local-name="{local-name(..)}" namespace-uri="{namespace-uri(..)}"
-            node-name="{node-name(..)}" base-uri="{substring-after(base-uri(..), 'xslt20-test/')}" 
-            generate-id="{string-length(generate-id(..)) lt 10000}" nilled="{nilled(..)}"
+            node-name="{node-name(..)}" base-uri="{substring-after(base-uri(..), 'streamable/')}" 
+            generate-id="{generate-id(..)}" nilled="{nilled(..)}"
             boolean="{boolean(..)}" exists="{exists(parent::Pool)}" empty="{empty(parent::Loop)}" not="{not(..)}" 
             instance-of-element="{.. instance of element(Pool)}"/>
     <xsl:variable name="copy">

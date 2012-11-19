@@ -33,7 +33,7 @@
   
       
    <xsl:template match="LoanStatusType" mode="s">
-     <xsl:attribute name="base" select="substring-after(base-uri(.), 'xslt20-test/')"/>
+     <xsl:attribute name="base" select="substring-after(base-uri(.), 'streamable/')"/>
      <xsl:attribute namespace="{namespace-uri()}" name="{local-name(.)}"><xsl:sequence select="string(.)"/></xsl:attribute>
    </xsl:template>
    

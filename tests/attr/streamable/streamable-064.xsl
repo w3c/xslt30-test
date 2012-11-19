@@ -1,41 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes=" xs"
-    version="2.1">
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
        
   
-  <!-- within a streaming template, apply-templates with tunnel parameters -->
-   
-  <xsl:mode streamable="yes"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
-
-  <xsl:strip-space elements="*"/>
+    <!-- within a streaming template, apply-templates with tunnel parameters -->
+     
+    <xsl:mode streamable="yes"/>
+         
+    <xsl:output method="xml" indent="no" encoding="UTF-8" />
+  
+    <xsl:strip-space elements="*"/>
+      
+    <xsl:template name="main">
+      <out>
+        <xsl:apply-templates select="doc('mixed.xml')">
+          <xsl:with-param name="p" select="17" tunnel="yes"/> 
+        </xsl:apply-templates>
+      </out>
+    </xsl:template>
     
-  <xsl:template name="main">
-    <out>
-      <xsl:apply-templates select="doc('mixed.xml')">
-        <xsl:with-param name="p" select="17" tunnel="yes"/> 
-      </xsl:apply-templates>
-    </out>
-  </xsl:template>
-  
-  <xsl:template match="/">
-      <xsl:apply-templates>
-        <xsl:with-param name="q" select="23" tunnel="yes"/> 
-      </xsl:apply-templates>
-  </xsl:template>  
-  
-  
-  <xsl:template match="text()"/>
+    <xsl:template match="/">
+        <xsl:apply-templates>
+          <xsl:with-param name="q" select="23" tunnel="yes"/> 
+        </xsl:apply-templates>
+    </xsl:template>  
+    
+    
+    <xsl:template match="text()"/>
+     
+    <xsl:template match="v">
+      <xsl:param name="p" tunnel="yes" required="yes"/>
+      <xsl:param name="q" tunnel="yes" required="yes"/>
+      <v p="{$p}" q="{$q}"><xsl:value-of select="."/></v>
+    </xsl:template>
    
-  <xsl:template match="v">
-    <xsl:param name="p" tunnel="yes" required="yes"/>
-    <xsl:param name="q" tunnel="yes" required="yes"/>
-    <v p="{$p}" q="{$q}"><xsl:value-of select="."/></v>
-  </xsl:template>
- 
     
 </xsl:transform>
 

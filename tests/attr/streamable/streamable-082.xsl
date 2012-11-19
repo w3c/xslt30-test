@@ -2,7 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes=" xs"
-    version="2.1">
+    version="3.0">
        
   
   <!-- within a streaming template, use xsl:if for conditional processing -->
@@ -12,7 +12,7 @@
   <xsl:mode name="s" streamable="yes"/>
   <xsl:strip-space elements="*"/>
        
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+  <xsl:output method="xml" indent="no" encoding="UTF-8" />
     
   <xsl:template name="main" match="/">
     <out>

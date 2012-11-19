@@ -6,7 +6,7 @@
 	version="3.0">
 	
 	<xsl:mode streamable="yes"/>
-	<xsl:output method="xml" indent="yes"/>
+	<xsl:output method="xml" indent="no"/>
 	
 	<xsl:template match="/">
 		<result>
