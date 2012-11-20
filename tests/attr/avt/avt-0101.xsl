@@ -4,6 +4,6 @@
   				The result is a whitespace separated list of the values. -->
 
    <t:template match="doc">
-      <out>{('1', 1.2, item)}</out>
+      <out test="{('1', 1.2, item)}"/>
    </t:template>
 </t:transform>

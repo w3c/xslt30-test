@@ -13,7 +13,7 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="para" use-when="contains(static-base-uri(), 'usewhen20')">
+  <xsl:template match="para" use-when="contains(static-base-uri(), 'use-when-0119')">
     <p><xsl:next-match/></p>
   </xsl:template>
   

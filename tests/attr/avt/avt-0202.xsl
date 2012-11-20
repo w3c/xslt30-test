@@ -4,6 +4,6 @@
   				The result is a whitespace separated list of the values. (from spec) -->
 
    <t:template match="doc">
-      <out>{10.32, 5.50, 8.31}</out>
+      <out test="{10.32, 5.50, 8.31}"/>
    </t:template>
 </t:transform>

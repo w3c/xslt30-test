@@ -8,15 +8,13 @@
   				Where the element and function exist   -->
 
    <t:template match="/">
-	  <out>
-         <t:text>&#10;</t:text>
+	  <out>        
          <t:element name="E1" use-when="element-available('t:value-of')">
 	           <t:text>Element defined</t:text>
-	     </t:element>
-         <t:text>&#10;</t:text>
-         <E2>function-available('fn:doc')<t:text>function IS defined</t:text>
-         </E2>
-         <t:text>&#10;</t:text>
+	     </t:element>        
+         <E2 t:use-when="function-available('fn:doc')">
+            <t:text>function IS defined</t:text>
+         </E2>        
       </out>
    </t:template>
 </t:transform>

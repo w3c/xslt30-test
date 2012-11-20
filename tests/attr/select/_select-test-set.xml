@@ -2709,7 +2709,10 @@ Text for variable
    </test-case>
 
    <test-case name="select-5701">
-      <description>Test that document('') refers to this stylesheet, and exploit that fact to have data file select which template to use. Priorities added by MHK to suppress warnings</description>
+      <description>
+         Test that document('') refers to this stylesheet, and exploit that fact to have data file select which 
+         template to use. Priorities added by MHK to suppress warnings.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="select-57"/>
       <dependencies>
@@ -3040,18 +3043,33 @@ Node c has on-c in @x</list></out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="select-7502">
+   <test-case name="select-7502a">
       <description>Test omission of the both the select and sequence constructor in xsl:value-of instruction</description>
-      <created by="O'Neil Delpratt, Saxonica" on="2012-11-07"/>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="select-75"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="select-7502.xsl"/>
       </test>
       <result>
          <error code="XTSE0870"/>
+      </result>
+   </test-case>
+   
+   <test-case name="select-7502b">
+      <description>Test omission of the both the select and sequence constructor in xsl:value-of instruction</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <environment ref="select-75"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="select-7502.xsl"/>
+      </test>
+      <result>
+         <assert>/out[not(node())]</assert>
       </result>
    </test-case>
 </test-set>

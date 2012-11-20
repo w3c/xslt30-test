@@ -15,26 +15,10 @@
    </environment>
    <environment name="use-when-02">
       <source role=".">
-         <content><![CDATA[<doc>
- <elem>
-   <a>a1</a>
-   <a>a2</a>
-   <b>b1</b>
-   <b>b2</b>
- </elem>
-</doc>]]></content>
+         <content><![CDATA[<doc><elem><a>a1</a><a>a2</a><b>b1</b><b>b2</b></elem></doc>]]></content>
       </source>
    </environment>
-   <environment name="use-when-03">
-      <source role=".">
-         <content><![CDATA[<doc>
-	<data>
-		<elem1 name="e1" value="v1"> First element </elem1>
-		<elem2 name="e2" value="v2"> Last element </elem2>
-	</data>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="use-when-04">
       <source role=".">
          <content><![CDATA[<doc>
@@ -44,9 +28,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="use-when-05">
-      <source role="." file="use-when-05.xml"/>
-   </environment>
+   
 
    <test-case name="use-when-0101">
       <description>test use-when="true()".</description>
@@ -653,12 +635,7 @@
          <stylesheet file="use-when-0201.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[ <out><elem>
-   <print>a1</print>
-   <print>a2</print>
-   <print>b1</print>
-   <print>b2</print>
- </elem></out>]]></assert-xml>
+         <assert-xml><![CDATA[ <out><elem><print>a1</print><print>a2</print><print>b1</print><print>b2</print></elem></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -673,15 +650,7 @@
          <stylesheet file="use-when-0202.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e>
-<e1>
-<e1.1>v1.1</e1.1>
-<e1.2>v1.2
-				<e1.2.1>v1.2.1</e1.2.1>
-</e1.2>
-</e1>
-</e></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e><e1><e1.1>v1.1</e1.1><e1.2>v1.2 <e1.2.1>v1.2.1</e1.2.1></e1.2></e1></e></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -696,10 +665,7 @@
          <stylesheet file="use-when-0203.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e>
-
-</e></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -714,14 +680,7 @@
          <stylesheet file="use-when-0204.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e>
-<e2>
-<e2.1>v2.1</e2.1>
-<e2.2>v2.2</e2.2>
-</e2>
-</e>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e><e2><e2.1>v2.1</e2.1><e2.2>v2.2</e2.2></e2></e></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -736,14 +695,7 @@
          <stylesheet file="use-when-0205.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e>
-<e2>
-<e2.1>v2.1</e2.1>
-<e2.2>v2.2</e2.2>
-</e2>
-</e>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e><e2><e2.1>v2.1</e2.1><e2.2>v2.2</e2.2></e2></e></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -758,9 +710,7 @@
          <stylesheet file="use-when-0206.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<book chapters="1 2 3 4 5"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><book chapters="1 2 3 4 5"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -775,9 +725,7 @@
          <stylesheet file="use-when-0207.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<book/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><book/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -792,14 +740,14 @@
          <stylesheet file="use-when-0208.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<book Title="XSLT Alphabet"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><book Title="XSLT Alphabet"/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="use-when-0209">
-      <description>Test case that uses use-when on an LRE in different levels (Parent-child, grandchild) (The EBV of the attribute results to true).</description>
+      <description>
+         Test case that uses use-when on an LRE in different levels (Parent-child, grandchild). 
+         (The EBV of the attribute results to true).</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -809,21 +757,14 @@
          <stylesheet file="use-when-0209.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e>
-<e1>
-<e1.1>v1.1</e1.1>
-<e1.2>v1.2
-				<e1.2.1>v1.2.1</e1.2.1>&gt;
-				
-</e1.2>
-</e1>
-</e></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e><e1><e1.1>v1.1</e1.1><e1.2>v1.2 <e1.2.1>v1.2.1</e1.2.1>&gt; </e1.2></e1></e></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="use-when-0210">
-      <description>Test case that uses use-when on an LRE in different levels (Parent-child, grandchild) (The EBV of the attribute results to false).</description>
+      <description>
+         Test case that uses use-when on an LRE in different levels (Parent-child, grandchild). 
+         (The EBV of the attribute results to false).</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -833,10 +774,7 @@
          <stylesheet file="use-when-0210.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e>
-
-</e></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -878,7 +816,9 @@
    </test-case>
 
    <test-case name="use-when-0213">
-      <description>Test case in which use-when is used with element-available and function-available functions Where the element and function exist.</description>
+      <description>
+         Test case in which use-when is used with element-available and function-available functions; 
+         Where the element and function exist.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -888,15 +828,15 @@
          <stylesheet file="use-when-0213.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<E1>Element defined</E1>
-<E2>function IS defined</E2>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><E1>Element defined</E1><E2>function IS defined</E2></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="use-when-0214">
-      <description>Test case in which use-when is used with element-available and function-available functions Where the element and function do NOT exist.</description>
+      <description>
+         Test case in which use-when is used with element-available and function-available functions;
+         Where the element and function do NOT exist.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -906,10 +846,7 @@
          <stylesheet file="use-when-0214.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-
-
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
 
@@ -924,12 +861,7 @@
          <stylesheet file="use-when-0215.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[ <out>
-<success>a1</success>
-<success>a2</success>
-<unsuccessful/>
-<unsuccessful/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><success>a1</success><success>a2</success><unsuccessful/><unsuccessful/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -944,12 +876,7 @@
          <stylesheet file="use-when-0216.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[ <out>
-a1a2
-<unsuccessful>b1</unsuccessful>
-
-<unsuccessful>b2</unsuccessful>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>a1a2<unsuccessful>b1</unsuccessful><unsuccessful>b2</unsuccessful></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -962,17 +889,10 @@ a1a2
       </dependencies>
       <test>
          <stylesheet file="use-when-0217.xsl"/>
-         <stylesheet file="include1.xsl"/>
+         <stylesheet file="include1.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
- 
-   <print_a>a1</print_a>
-   <print_a>a2</print_a>
-   <print_b>b1</print_b>
-   <print_b>b2</print_b>
- 
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><print_a>a1</print_a><print_a>a2</print_a><print_b>b1</print_b><print_b>b2</print_b></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -985,13 +905,10 @@ a1a2
       </dependencies>
       <test>
          <stylesheet file="use-when-0218.xsl"/>
-         <stylesheet file="include1.xsl"/>
+         <stylesheet file="include1.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml><![CDATA[ <out>
-<print_a>a1</print_a>
-<print_a>a2</print_a>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[ <out><print_a>a1</print_a><print_a>a2</print_a></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1004,17 +921,10 @@ a1a2
       </dependencies>
       <test>
          <stylesheet file="use-when-0219.xsl"/>
-         <stylesheet file="include2.xsl"/>
+         <stylesheet file="include2.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
- 
-   <print_a>a1</print_a>
-   <print_a>a2</print_a>
-   b1
-   b2
- 
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><print_a>a1</print_a><print_a>a2</print_a>b1b2</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1027,17 +937,10 @@ a1a2
       </dependencies>
       <test>
          <stylesheet file="use-when-0220.xsl"/>
-         <stylesheet file="use-when-0220.xsl"/>
+         <stylesheet file="include3.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
- 
-   <print_a>a1</print_a>
-   <print_a>a2</print_a>
-   b1
-   b2
- 
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><print_a>a1</print_a><print_a>a2</print_a>b1b2</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1052,14 +955,14 @@ a1a2
          <stylesheet file="use-when-0221.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<employee/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><employee/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="use-when-0222">
-      <description>Test case that uses use-when on xsl:stylesheet to verify it has no effect on this element but it takes effect on all its children.</description>
+      <description>
+         Test case that uses use-when on xsl:stylesheet to verify it has no effect on this element but it takes 
+         effect on all its children.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -1069,12 +972,7 @@ a1a2
          <stylesheet file="use-when-0222.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[ 
-   a1
-   a2
-   b1
-   b2
- ]]></assert-xml>
+         <assert-xml><![CDATA[a1a2b1b2]]></assert-xml>
       </result>
    </test-case>
 
@@ -1090,14 +988,7 @@ a1a2
          <stylesheet file="include2.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
- 
-   <print_a>a1</print_a>
-   <print_a>a2</print_a>
-   b1
-   b2
- 
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><print_a>a1</print_a><print_a>a2</print_a>b1b2</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1113,12 +1004,7 @@ a1a2
          <stylesheet file="include2.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[ <out>
-   <print_a>a1</print_a>
-   <print_a>a2</print_a>
-   
-   
- </out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><print_a>a1</print_a><print_a>a2</print_a></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1159,7 +1045,9 @@ a1a2
    </test-case>
 
    <test-case name="use-when-0227">
-      <description>Test case that uses use-when on xsl:stylesheet to verify that it has no effect on this element therefore if there is an error in the xsl:stylesheet instruction, it must be raised.</description>
+      <description>
+         Test case that uses use-when on xsl:stylesheet to verify that it has no effect on this element 
+         therefore if there is an error in the xsl:stylesheet instruction, it must be raised.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -1174,9 +1062,16 @@ a1a2
    </test-case>
 
    <test-case name="use-when-0301">
-      <description>Test case that uses use-attribute-set in an xsl:element instruction,and the attribute-set has a use-when attribute which evaluates to true.</description>
+      <description>
+         Test case that uses use-attribute-set in an xsl:element instruction,
+         and the attribute-set has a use-when attribute which evaluates to true.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="use-when-03"/>
+      <environment name="use-when-03">
+         <source role=".">
+            <content><![CDATA[<doc><data><elem1 name="e1" value="v1"> First element </elem1><elem2 name="e2" value="v2"> Last element </elem2></data></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1184,13 +1079,7 @@ a1a2
          <stylesheet file="use-when-0301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-	
-		<elem1 attB="v1"/>
-		<e2 attB="Explicit value">
-<e3 attB="v2"/></e2>
-	
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><elem1 attB="v1"/><e2 attB="Explicit value"><e3 attB="v2"/></e2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1265,8 +1154,7 @@ a1a2
          <stylesheet file="use-when-0405.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>xxx
-</out>]]></assert-xml>
+         <assert>matches(string(/out), 'xxx\s+')</assert>
       </result>
    </test-case>
 
@@ -1286,7 +1174,11 @@ a1a2
    </test-case>
 
    <test-case name="use-when-0407">
-      <description>Tests using function-available for generate-id,system-property, key, current unparsed-entity-uri, and unparsed-entity-public-id in an use-when instruction.</description>
+      <description>
+         Tests using function-available for generate-id,
+         system-property, key, current, unparsed-entity-uri, and unparsed-entity-public-id
+         in an use-when instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-04"/>
       <dependencies>
@@ -1296,14 +1188,29 @@ a1a2
          <stylesheet file="use-when-0407.xsl"/>
       </test>
       <result>
-         <assert-xml file="use-when-0407.out"/>
+         <all-of>
+            <assert>/out/fa[@f="current"]="true"</assert>
+            <assert>/out/fa[@f="generate-id"]="true"</assert>
+            <assert>/out/fa[@f="key"]="true"</assert>
+            <assert>/out/fa[@f="unparsed-entity-uri"]="true"</assert>
+            <assert>/out/fa[@f="unparsed-entity-public-id"]="true"</assert>
+            <assert>/out/fa[@f="system-property"]="true"</assert>
+            <assert>not(/out/in[@f="current"])</assert>
+            <assert>not(/out/in[@f="generate-id"])</assert>
+            <assert>not(/out/in[@f="key"])</assert>
+            <assert>not(/out/in[@f="unparsed-entity-uri"])</assert>
+            <assert>not(/out/in[@f="unparsed-entity-public-id"])</assert>
+            <assert>/out/in[@f="system-property"]="use-when evaluates to true!!!"</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="use-when-0501">
       <description>Test case that uses use-when on xsl:sort to avoid ascending sort.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="use-when-05"/>
+      <environment>
+         <source role="." file="use-when-0501.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>

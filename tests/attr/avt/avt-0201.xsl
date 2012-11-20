@@ -13,8 +13,8 @@
 
    <t:template match="doc">
       <output xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-         <out>{$var}</out>
-         <out>{$var/doc/item}</out>
+         <out test="{$var}"/>
+         <out test="{$var/doc/item}"/>
       </output>
    </t:template>
 </t:transform>

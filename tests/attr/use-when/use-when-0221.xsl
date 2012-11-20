@@ -4,19 +4,13 @@
   				its contents on which a use-when=false() attribute exist.  -->
 
    <t:template match="*">
-	     <out>
-         <t:text>
-</t:text>
-         <t:element name="employee">
-    		
-    		      <t:attribute name="foo:salary" use-when="false()">
-    			
+	     <out>       
+         <t:element name="employee">   		
+    		      <t:attribute name="foo:salary" use-when="false()">    			
     			        <t:value-of select="$v">Error </t:value-of>
     		      </t:attribute>
-    	    </t:element>
-         <t:text>
-</t:text>
-         <employee>Errorfalse()e2</employee>
+    	    </t:element>        
+         <employee name="Error" t:use-when="false()">e2</employee>
       </out>
   </t:template>
 </t:transform>

@@ -4,8 +4,7 @@
 
    <t:template match="/">
       <out>
-         <in>false()</in>xxx
-</out>
-
+         <in t:use-when="false()"/>xxx
+      </out>     
    </t:template>
 </t:transform>

@@ -6,11 +6,7 @@
 
    <t:template match="doc">
   	   <out>
-         <t:text>
-</t:text>
-         <elem>true()See what happens! error</elem>
-         <t:text>
-</t:text>
+  	     <elem t:use-when="true()" t:if="See what happens!" > error</elem>
       </out>
   </t:template>
 </t:transform>

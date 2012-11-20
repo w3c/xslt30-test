@@ -15,11 +15,11 @@
 </xsl:template>
 
 <xsl:template name="this" match="xsl:template" priority="2">This template.
-  <xsl:apply-templates select="document('select68.xml')//inside" mode="thismode"/>
+  <xsl:apply-templates select="document('select-68a.xml')//inside" mode="thismode"/>
 </xsl:template>
 
 <xsl:template name="that" match="xsl:template" priority="3">That template.
-  <xsl:apply-templates select="document('select68.xml')//inside" mode="thatmode"/>
+  <xsl:apply-templates select="document('select-68a.xml')//inside" mode="thatmode"/>
 </xsl:template>
 
 <xsl:template match="inside" mode="thismode">We are inside.
