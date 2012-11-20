@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!-- Purpose: Test of node-name() accessor with node from a temporary tree -->
+   <!-- Purpose: Test of node-name() accessor with node from a temporary tree -->
 
    <t:template match="doc">
       <t:variable name="var1">
@@ -32,8 +32,8 @@
          </t5>
          <t6>
             <t:for-each select="$var1/doc/namespace::*">
-			            <t:value-of select="node-name(.)"/>
-		          </t:for-each>
+               <t:value-of select="node-name(.)"/>
+            </t:for-each>
          </t6>
       </out>
    </t:template>
