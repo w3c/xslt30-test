@@ -10,7 +10,7 @@
       <xsl:variable name="a" select="3"/>
       <xsl:variable name="paras" select="//para[@cat=current()/@cat]"/>
       <xsl:for-each select="document('')"> <!-- change the current node to confuse things -->
-          <temp><xsl:value-of select="count($paras)"/></temp>;
+          <temp><xsl:value-of select="count($paras)"/></temp>
           <xsl:call-template name="t">
             <xsl:with-param name="ns" select="$paras[$a &lt; @id]"/>
           </xsl:call-template>

@@ -7,9 +7,9 @@
 <?spec xslt#for-each?>
 
 <xsl:template match="/">
-  <out>;
+  <out>
     <xsl:for-each select="1 to 10">
-      <xsl:value-of select=".+1"/>;
+      <a><xsl:value-of select=".+1"/></a>
     </xsl:for-each>
   </out>
 </xsl:template>

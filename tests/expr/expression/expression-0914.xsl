@@ -7,9 +7,9 @@
 <?spec xpath#id-predicates?>
 
 <xsl:template match="/">
-  <out>;
+  <out>
     <xsl:for-each select="(12, 5, 14, -2, 19, -100, 0, 14)[3]">
-      <xsl:value-of select="."/>;
+      <xsl:value-of select="."/>
     </xsl:for-each>
   </out>
 </xsl:template>

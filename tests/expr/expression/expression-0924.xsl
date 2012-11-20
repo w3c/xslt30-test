@@ -10,15 +10,13 @@
 <xsl:template match="/">
   <xsl:variable name="seq" select="(1,2,3,4,5)"/>
   <out>
-    <r23><xsl:value-of select="subsequence($seq, 2, 2)" separator=", "/></r23>
-    <r12><xsl:value-of select="subsequence($seq, 1, 2)" separator=", "/></r12>
-    <r1><xsl:value-of select="subsequence($seq, 0, 2.0e0)" separator=", "/></r1> 
-    <r2345><xsl:value-of select="subsequence($seq, 2)" separator=", "/></r2345>     
+    <r1><xsl:value-of select="subsequence($seq, 2, 2)" separator=", "/></r1>
+    <r2><xsl:value-of select="subsequence($seq, 1, 2)" separator=", "/></r2>
+    <r3><xsl:value-of select="subsequence($seq, 0, 2.0e0)" separator=", "/></r3> 
+    <r4><xsl:value-of select="subsequence($seq, 2)" separator=", "/></r4>     
     <r5><xsl:value-of select="subsequence($seq, 5.0e0)" separator=", "/></r5>
-    <r12345><xsl:value-of select="subsequence($seq, 0)" separator=", "/></r12345>
-    <r0><xsl:value-of select="subsequence((), 1)" separator=", "/></r0> 
-
-
+    <r6><xsl:value-of select="subsequence($seq, 0)" separator=", "/></r6>
+    <r7><xsl:value-of select="subsequence((), 1)" separator=", "/></r7> 
   </out>
 </xsl:template>
  

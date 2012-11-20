@@ -7,7 +7,7 @@
 <?spec xpath#id-quantified-expressions?>
 
 <xsl:template match="/">
-  <out>;
+  <out>
     <true><xsl:value-of select="every $i in /doc/item, $j in (6,10,12) satisfies $i/@val!=$j"/></true> 
     <false><xsl:value-of select="every $i in /doc/item, $j in (4,10,12) satisfies $i/@val!=$j"/></false> 
   </out>

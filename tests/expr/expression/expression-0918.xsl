@@ -7,11 +7,9 @@
 <?spec xpath#id-for-expressions?>
 
 <xsl:template match="/">
-  <out>;
-    (<xsl:value-of select="for $i in for $j in //item return $j/@val 
+  <out>(<xsl:value-of select="for $i in for $j in //item return $j/@val 
                            return $i + 1" 
-                   separator=", "/>) 
-  </out>
+                   separator=", "/>)</out>
 </xsl:template>
  
 </xsl:stylesheet>

@@ -10,15 +10,15 @@
 <xsl:template match="/">
   <xsl:variable name="seq" select="(1,2,3,4,5)"/>
   <out>
-    <r4><xsl:value-of select="insert-before($seq, 5, 4.5)" separator=", "/></r4>
-    <r1><xsl:value-of select="insert-before($seq, 2, 1.5)" separator=", "/></r1>
-    <r0><xsl:value-of select="insert-before($seq, 1, 0.5)" separator=", "/></r0> 
-    <r9><xsl:value-of select="insert-before($seq, 10, (9.5, 10.5, 11.5))" separator=", "/></r9>
-    <r-9><xsl:value-of select="insert-before($seq, -10, (9.5, 10.5, 11.5))" separator=", "/></r-9>
-    <r5><xsl:value-of select="insert-before($seq, 5, ())" separator=", "/></r5>
-    <r5><xsl:value-of select="insert-before($seq, 2, ())" separator=", "/></r5>
-    <r5><xsl:value-of select="insert-before($seq, 1, ())" separator=", "/></r5> 
-    <r5><xsl:value-of select="insert-before((), 1, $seq)" separator=", "/></r5>  
+    <r1><xsl:value-of select="insert-before($seq, 5, 4.5)" separator=", "/></r1>
+    <r2><xsl:value-of select="insert-before($seq, 2, 1.5)" separator=", "/></r2>
+    <r3><xsl:value-of select="insert-before($seq, 1, 0.5)" separator=", "/></r3> 
+    <r4><xsl:value-of select="insert-before($seq, 10, (9.5, 10.5, 11.5))" separator=", "/></r4>
+    <r5><xsl:value-of select="insert-before($seq, -10, (9.5, 10.5, 11.5))" separator=", "/></r5>
+    <r6><xsl:value-of select="insert-before($seq, 5, ())" separator=", "/></r6>
+    <r7><xsl:value-of select="insert-before($seq, 2, ())" separator=", "/></r7>
+    <r8><xsl:value-of select="insert-before($seq, 1, ())" separator=", "/></r8> 
+    <r9><xsl:value-of select="insert-before((), 1, $seq)" separator=", "/></r9>  
 
 
   </out>

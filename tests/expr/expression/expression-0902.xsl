@@ -7,7 +7,7 @@
 <?spec xpath#id-path-expressions?>
 
 <xsl:template match="/">
-  <out>;
+  <out>
     <xsl:value-of select="sum(//item/(@val+2))"/>
   </out>
 </xsl:template>

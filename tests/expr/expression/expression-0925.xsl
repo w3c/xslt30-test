@@ -11,10 +11,10 @@
   <xsl:variable name="seq" select="('1','2','3','4','5','5','4','3','2','1')"/>
   <xsl:variable name="nodes" select="//item/@val"/>
   <out>
-    <r56><xsl:value-of select="index-of($seq, '5')" separator=", "/></r56>
-    <r47><xsl:value-of select="index-of($seq, '4')" separator=", "/></r47>
-    <r0><xsl:value-of select="index-of($seq, '0')" separator=", "/></r0> 
-    <r2><xsl:value-of select="index-of($nodes, '2')" separator=", "/></r2>     
+    <r1><xsl:value-of select="index-of($seq, '5')" separator=", "/></r1>
+    <r2><xsl:value-of select="index-of($seq, '4')" separator=", "/></r2>
+    <r3><xsl:value-of select="index-of($seq, '0')" separator=", "/></r3> 
+    <r4><xsl:value-of select="index-of($nodes, '2')" separator=", "/></r4>     
     <r5><xsl:value-of select="index-of($nodes, '5')" separator=", "/></r5>
   </out>
 </xsl:template>

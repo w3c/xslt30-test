@@ -7,9 +7,9 @@
 <?spec xpath#id-predicates?>
 
 <xsl:template match="/">
-  <out>;
+  <out>
     <xsl:for-each select="(12, 5, 14, -2, 19, -100, 0, 14)[position()!=last()]">
-      <xsl:value-of select="."/>;
+      <xsl:value-of select="."/><xsl:text>;</xsl:text>
     </xsl:for-each>
   </out>
 </xsl:template>
