@@ -300,7 +300,15 @@
          <stylesheet file="base-uri-014.xsl"/>
       </test>
       <result>
-         <assert-xml file="base-uri-014.out"/>
+         <all-of>
+            <assert>/out/static-base="http://www.example.org/main/"</assert>
+            <assert>/out/example1/text() = "http://www.example.org/xxx/: "</assert>
+            <assert>/out/example1/abc/@xml:base = "/xxx/"</assert>
+            <assert>/out/example1/abc = "http://www.example.org/xxx/"</assert>
+            <assert>/out/example2/text() = "http://www.example.org/yyy/: "</assert>
+            <assert>/out/example2/abc/@xml:base = "/yyy/"</assert>
+            <assert>/out/example2/abc = "http://www.example.org/"</assert>
+         </all-of> 
       </result>
    </test-case>
 

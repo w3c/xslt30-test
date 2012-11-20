@@ -7,7 +7,8 @@
    <t:output method="xml" encoding="UTF-8"/>
 
    <t:template match="/" xml:base="http://www.one.org/tests/">
-      <out>http://www.two.org/tests/<t:value-of xml:base="http://www.three.org/tests/" select="static-base-uri()"/>
+      <out xml:base="http://www.two.org/tests/">
+         <t:value-of xml:base="http://www.three.org/tests/" select="static-base-uri()"/>
       </out>
    </t:template>
 </t:transform>
