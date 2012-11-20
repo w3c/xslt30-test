@@ -3,116 +3,86 @@
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="nodetest">
    <description>Tests nodetest</description>
-   <environment name="ntst01">
-      <source role=".">
-         <content><![CDATA[ 
-<doc>
-  test
-</doc>
-]]></content>
-      </source>
-   </environment>
-   <environment name="ntst02">
-      <source role=".">
-         <content><![CDATA[ 
 
-<doc>
-  <!-- This is a comment -->
-  test
-</doc>
-]]></content>
-      </source>
-   </environment>
-   <environment name="ntst03">
-      <source role=".">
-         <content><![CDATA[ 
-<?a-pi some data?>
-<doc>
-  <!-- This is a comment -->
-    test
-</doc>
-]]></content>
-      </source>
-   </environment>
-   <environment name="schemanodetest001">
-      <source role="." file="schemanodetest001.xml"/>
+   <environment name="nodetest-e01">
+      <source role="." file="nodetest-e01.xml"/>
       <schema role="source-reference"
               file="builtinTypeNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest002">
-      <source role="." file="schemanodetest002.xml"/>
+   <environment name="nodetest-e02">
+      <source role="." file="nodetest-e02.xml"/>
       <schema role="source-reference"
               file="variousTypesNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest004">
-      <source role="." file="schemanodetest004.xml"/>
+   <environment name="nodetest-e04">
+      <source role="." file="nodetest-e04.xml"/>
       <schema role="source-reference"
               file="variousTypesNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest005">
-      <source role="." file="schemanodetest005.xml"/>
+   <environment name="nodetest-e05">
+      <source role="." file="nodetest-e05.xml"/>
       <schema role="source-reference"
               file="subgroupTypeNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest007">
-      <source role="." file="schemanodetest007.xml"/>
+   <environment name="nodetest-e07">
+      <source role="." file="nodetest-e07.xml"/>
       <schema role="source-reference"
               file="subgroupTypeNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest008">
-      <source role="." file="schemanodetest008.xml"/>
+   <environment name="nodetest-e08">
+      <source role="." file="nodetest-e08.xml"/>
       <schema role="source-reference"
               file="subgroupTypeNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest011">
-      <source role="." file="schemanodetest011.xml"/>
+   <environment name="nodetest-e11">
+      <source role="." file="nodetest-e11.xml"/>
       <schema role="source-reference"
               file="subgroupTypeNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest012">
-      <source role="." file="schemanodetest012.xml"/>
+   <environment name="nodetest-e12">
+      <source role="." file="nodetest-e12.xml"/>
       <schema role="source-reference"
               file="subgroupTypeNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest024">
-      <source role="." file="schemanodetest024.xml"/>
+   <environment name="nodetest-e24">
+      <source role="." file="nodetest-e24.xml"/>
       <schema role="source-reference"
               file="variousTypesNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest026">
-      <source role="." file="schemanodetest026.xml"/>
+   <environment name="nodetest-e26">
+      <source role="." file="nodetest-e26.xml"/>
       <schema role="source-reference"
               file="variousTypesNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest027">
-      <source role="." file="schemanodetest027.xml"/>
+   <environment name="nodetest-e27">
+      <source role="." file="nodetest-e27.xml"/>
       <schema role="source-reference"
               file="attributesNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest030">
-      <source role="." file="schemanodetest030.xml"/>
+   <environment name="nodetest-e30">
+      <source role="." file="nodetest-e30.xml"/>
       <schema role="source-reference"
               file="attributesNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest031">
-      <source role="." file="schemanodetest031.xml"/>
+   <environment name="nodetest-e31">
+      <source role="." file="nodetest-e31.xml"/>
       <schema role="source-reference"
               file="attributesNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest041">
+   <environment name="nodetest-e41">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
       </source>
@@ -120,17 +90,22 @@
               file="variousTypesNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="schemanodetest047">
-      <source role="." file="schemanodetest047.xml"/>
+   <environment name="nodetest-e47">
+      <source role="." file="nodetest-e47.xml"/>
       <schema role="source-reference"
               file="subgroupTypeNodeTest.xsd"
               xsd-version="1.0"/>
    </environment>
+   
 
    <test-case name="nodetest-001">
       <description>Test for text() node test. Should say "test"</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="ntst01"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc>test</doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -138,16 +113,18 @@
          <stylesheet file="nodetest-001.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-  test
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>test</out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="nodetest-002">
       <description>Test for comment() node test. Should say "Found comment"</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="ntst02"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><!-- This is a comment -->test</doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -160,9 +137,13 @@
    </test-case>
 
    <test-case name="nodetest-003">
-      <description>Test for pi() node test, should say "Found-pi,,Found-pi" &lt;xsl:apply-templates select="./processing-instruction('*')"/&gt;</description>
+      <description>Test for pi() node test, should say "Found-pi,,Found-pi" </description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="ntst03"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<?a-pi some data?><doc><!-- This is a comment -->test</doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -177,7 +158,7 @@
    <test-case name="nodetest-004">
       <description>Test with schema-element($name) where $name is a top level element declaration in a schema with no target namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest001"/>
+      <environment ref="nodetest-e01"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -193,7 +174,7 @@
    <test-case name="nodetest-005">
       <description>Test with schema-attribute($name) where $name is a top level attribute declaration in a schema with no target namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest001"/>
+      <environment ref="nodetest-e01"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -209,7 +190,7 @@
    <test-case name="nodetest-006">
       <description>Test with schema-element($name) where $name has explicit prefix and is a top level element declaration in a schema with target namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest002"/>
+      <environment ref="nodetest-e02"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -225,7 +206,7 @@
    <test-case name="nodetest-007">
       <description>Test with schema-element($name) where $name is expanded using the @xpath-default- namespace and is a top level element declaration in a schema with target namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest002"/>
+      <environment ref="nodetest-e02"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -239,9 +220,14 @@
    </test-case>
 
    <test-case name="nodetest-008">
-      <description>Test with schema-element($name) where $name is a top level element declaration. The type of the candidate node and the type in the element declaration in the schema match. Types tested are: -simple built-in, simple derived, list derived, union, complex with element only content, complex with mixed content, complex with simple content, complex with empty content</description>
+      <description>
+         Test with schema-element($name) where $name is a top level element declaration. 
+         The type of the candidate node and the type in the element declaration in the schema match. 
+         Types tested are: -simple built-in, simple derived, list derived, union, complex with element only content, 
+         complex with mixed content, complex with simple content, complex with empty content
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -257,7 +243,7 @@
    <test-case name="nodetest-009">
       <description>Show that stylesheet attribute @input-type-annotation="strip" makes the schema-element test fail.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -266,23 +252,14 @@
          <stylesheet file="nodetest-009.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<E1/>
-<E2/>
-<E3/>
-<E4/>
-<E5/>
-<E6/>
-<E7/>
-<E8/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><E1/><E2/><E3/><E4/><E5/><E6/><E7/><E8/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="nodetest-010">
       <description>Use schema-element($name) with xsl:copy-of.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -298,7 +275,7 @@
    <test-case name="nodetest-011">
       <description>Use xsl:copy inside an xsl:for-each that selects schema-element($arg).</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -314,7 +291,7 @@
    <test-case name="nodetest-012">
       <description>Use xsl:copy inside an xsl:for-each that selects schema-element($arg).</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -330,7 +307,7 @@
    <test-case name="nodetest-013">
       <description>Test schema-element($name) as the first step in path expression.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -339,18 +316,14 @@
          <stylesheet file="nodetest-013.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<E1>44</E1>
-<E2>Notorios</E2>
-<E3>name</E3>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><E1>44</E1><E2>Notorios</E2><E3>name</E3></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="nodetest-014">
       <description>Test schema-element($name) as the last step in a path expression.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -366,7 +339,7 @@
    <test-case name="nodetest-015">
       <description>Test schema-element($name) in the middle of a path expression.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -375,18 +348,14 @@
          <stylesheet file="nodetest-015.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<E1>44</E1>
-<E2>Notorios</E2>
-<E3>name</E3>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><E1>44</E1><E2>Notorios</E2><E3>name</E3></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="nodetest-016">
       <description>Test schema-element($name) with an axis.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest004"/>
+      <environment ref="nodetest-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -400,9 +369,14 @@
    </test-case>
 
    <test-case name="nodetest-017">
-      <description>Test with schema-element($name) where $name is a top level element declaration. The type of the candidate node is derived directly from the type of the declaration in the schema.The candidate node is validated against a local element declaration with the same expanded-QName as the top-level element declaration.</description>
+      <description>
+         Test with schema-element($name) where $name is a top level element declaration. 
+         The type of the candidate node is derived directly from the type of the declaration in the schema.
+         The candidate node is validated against a local element declaration with the same expanded-QName 
+         as the top-level element declaration.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest005"/>
+      <environment ref="nodetest-e05"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -418,7 +392,7 @@
    <test-case name="nodetest-018">
       <description>Test that the nilled property of a candidate node is 'false' if it passes the schema-element($name) test, where $name is the name of a top level element declaration which is not nillable.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest005"/>
+      <environment ref="nodetest-e05"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -434,7 +408,7 @@
    <test-case name="nodetest-019">
       <description>Test with schema-element($name) where $name is a top level element declaration with a substitution group. The name of the candidate node matches the name of an element in the substitution group headed by $name. The types of the top-level element declaration and the element in the substritution group are the same.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest007"/>
+      <environment ref="nodetest-e07"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -450,7 +424,7 @@
    <test-case name="nodetest-020">
       <description>Test with schema-element($name) where $name is a top level element declaration with a substitution group. The name of the candidate node matches the name of an element in the substitution group headed by $name. The type of the candidate node(and the node in the substitution group) is derived directly from the type of the declaration in the schema.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest008"/>
+      <environment ref="nodetest-e08"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -466,7 +440,7 @@
    <test-case name="nodetest-021">
       <description>Show that if the name of a node in the source file complies to the schema-element($name) test but its type (different than xs:untyped) does not, the test will fail. The candidate node is validated against a local element declaration with the same expanded-QName as the top-level element declaration.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest011"/>
+      <environment ref="nodetest-e11"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -482,7 +456,7 @@
    <test-case name="nodetest-022">
       <description>Show that schema-element($name) test will fail if no element is found in the source file with name matching $name or any of the element names in its substitution group.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest012"/>
+      <environment ref="nodetest-e12"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -498,7 +472,7 @@
    <test-case name="nodetest-023">
       <description>Test with schema-attribute($name) where $name has explicit prefix and is a top level attribute declaration in a schema with target namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest024"/>
+      <environment ref="nodetest-e24"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -514,7 +488,7 @@
    <test-case name="nodetest-024">
       <description>Test with schema-attribute($name) where $name is a top level attribute declaration. The type of the candidate node and the declaration in the schema match. Types tested are: -simple built-in, simple derived, list built-in, list derived, union</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -523,20 +497,14 @@
          <stylesheet file="nodetest-024.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<E1>five</E1>
-<E2>red blue green</E2>
-<E3>20</E3>
-<E4>123-AB</E4>
-<E5>000-SS 000-RR</E5>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><E1>five</E1><E2>red blue green</E2><E3>20</E3><E4>123-AB</E4><E5>000-SS 000-RR</E5></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="nodetest-025">
       <description>Show that stylesheet attribute @input-type-annotation="strip" makes the schema-attribute test fail.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -545,20 +513,14 @@
          <stylesheet file="nodetest-025.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<E1/>
-<E2/>
-<E3/>
-<E4/>
-<E5/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><E1/><E2/><E3/><E4/><E5/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="nodetest-026">
       <description>Use schema-attribute($name) with xsl:copy-of.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -574,7 +536,7 @@
    <test-case name="nodetest-027">
       <description>Use xsl:copy inside an xsl:for-each that selects schema-attribute($arg).</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -590,7 +552,7 @@
    <test-case name="nodetest-028">
       <description>Use xsl:apply-templates with schema-attribute($arg) test.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -606,7 +568,7 @@
    <test-case name="nodetest-029">
       <description>Test schema-attribute($name) as the first step in path expression.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -622,7 +584,7 @@
    <test-case name="nodetest-030">
       <description>Test schema-attribute($name) as the first step in path expressionTest schema-attribute($name) as the last step in a path expression.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -638,7 +600,7 @@
    <test-case name="nodetest-031">
       <description>Test schema-attribute($name) in the middle of a path expression.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -654,7 +616,7 @@
    <test-case name="nodetest-032">
       <description>Test schema-attribute($name) with an axis. Axes tested</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest026"/>
+      <environment ref="nodetest-e26"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -663,20 +625,14 @@
          <stylesheet file="nodetest-032.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<E1/>
-<E2/>
-<E3>000-SS 000-RR</E3>
-<E4/>
-<E5/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><E1/><E2/><E3>000-SS 000-RR</E3><E4/><E5/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="nodetest-033">
       <description>Test with schema-attribute($name) where $name is a top level attribute declaration. The type of the candidate node is derived directly from the type of the declaration in the schema. The candidate node is validated against a local attribute declaration with the same expanded-QName as the top-level attribute declation.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest027"/>
+      <environment ref="nodetest-e27"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -692,7 +648,7 @@
    <test-case name="nodetest-034">
       <description>Show that if the name of a node in the source file complies to the schema-attribute($name) test but its type (different than xs:untypedAtomic) does not, the test will fail. The candidate node is validated against a local attribute declaration with the same expanded-QName as the top-level element declaration.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest030"/>
+      <environment ref="nodetest-e30"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -708,7 +664,7 @@
    <test-case name="nodetest-035">
       <description>Show that schema-attribute($name) test will fail if no attribute is found in the source file with name matching $name.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest031"/>
+      <environment ref="nodetest-e31"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -724,7 +680,7 @@
    <test-case name="nodetest-036">
       <description>Test schema-element($name) with a typed element created inside a variable.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest041"/>
+      <environment ref="nodetest-e41"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -740,7 +696,7 @@
    <test-case name="nodetest-037">
       <description>Test schema-attribute($name) with a typed attribute created inside a variable.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest041"/>
+      <environment ref="nodetest-e41"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -756,7 +712,7 @@
    <test-case name="nodetest-038">
       <description>Test with schema-element($name) where $name is a top level element declaration of a complex type and the type of candidate nodes is set by xsi:type.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="schemanodetest047"/>
+      <environment ref="nodetest-e47"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>

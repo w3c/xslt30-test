@@ -7,12 +7,13 @@
 
    <t:import-schema namespace="http://www.schemanodetest.example.com/ns/various"
                     schema-location="variousTypesNodeTest.xsd"/>
-
+   
    <t:variable name="var" as="schema-element(my:userNode)">
-	     <my:userNode xmlns:xsl="http://www.w3.org/1999/XSL/Transform">strict<t:attribute name="my:specialPart">123-AB</t:attribute>
-         <my:complexSimpleContentElem>ten
-			10
-		</my:complexSimpleContentElem>
+      <my:userNode t:validation="strict">
+         <t:attribute name="my:specialPart">123-AB</t:attribute>
+         <my:complexSimpleContentElem my:count="ten" >
+            10
+         </my:complexSimpleContentElem>
       </my:userNode>
    </t:variable>
 

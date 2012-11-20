@@ -11,48 +11,39 @@
 
    <t:template match="/my:userNode">
 	     <out>
-         <t:text>
-</t:text>
+         
          <E1>
             <t:value-of select="schema-element(my:simpleBuiltin)"/>
          </E1>
-         <t:text>
-</t:text>
+         
          <E2>
             <t:value-of select="schema-element(my:simpleUserElem)"/>
          </E2>
-         <t:text>
-</t:text>
+         
          <E3>
             <t:value-of select="schema-element(my:simpleUserList)"/>
          </E3>
-         <t:text>
-</t:text>
+         
          <E4>
             <t:value-of select="schema-element(my:simpleUserUnion)"/>
          </E4>
-         <t:text>
-</t:text>
+         
          <E5>
             <t:copy-of select="schema-element(my:complexUserElem)"/>
          </E5>
-         <t:text>
-</t:text>
+         
          <E6>
             <t:copy-of select="schema-element(my:complexMixedUserElem)"/>
          </E6>
-         <t:text>
-</t:text>
+         
          <E7>
             <t:value-of select="schema-element(my:complexSimpleContentElem)"/>
          </E7>
-         <t:text>
-</t:text>
+         
          <E8>
             <t:value-of select="schema-element(my:onlyAttributes)"/>
          </E8>
-         <t:text>
-</t:text>
+         
       </out>
    </t:template>
 </t:transform>
