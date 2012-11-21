@@ -11,9 +11,7 @@
                        schema-location="variousTypesSchemaMatch.xsd"/>
 
    <xslt:template match="/my:userNode">
-	     <xslt:text>
-</xslt:text>
-	     <out>
+	     	     <out>
          <xslt:apply-templates select="*"/>
       </out>
    </xslt:template>
@@ -22,17 +20,13 @@
 	     <xslt:element name="A{position()}">
 		       <xslt:value-of select="./*[1]"/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="element(my:complexUserElem, my:personType)">
 	     <xslt:element name="B{position()}">
 		       <xslt:value-of select="./*[1]"/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="element(*)">
 </xslt:template>

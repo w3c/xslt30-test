@@ -11,9 +11,7 @@
                        schema-location="variousTypesSchemaMatch.xsd"/>
 
    <xslt:template match="schema-element(my:userNode)">
-	     <xslt:text>
-</xslt:text>
-	     <out>
+	     	     <out>
          <xslt:apply-templates select="*"/>
       </out>
    </xslt:template>
@@ -22,49 +20,37 @@
 	     <xslt:element name="A{position()}">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="child::schema-element(my:simpleUserElem)">
 	     <xslt:element name="B{position()}">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute::element(pre:simpleUserList, my:myListType)">
 	     <xslt:element name="C{position()}">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute::element(pre:simpleUserUnion, pre:partIntegerUnion)">
 	     <xslt:element name="D{position()}">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="child::schema-element(my:complexSimpleContentElem)">
 	     <xslt:element name="E{position()}">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute::schema-element(my:complexMixedUserElem)">
 	     <xslt:element name="F{position()}">
 		       <xslt:value-of select="./*[1]"/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="element(*)">
 </xslt:template>

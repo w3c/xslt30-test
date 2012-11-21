@@ -12,9 +12,7 @@
                        schema-location="variousTypesSchemaMatch.xsd"/>
 
    <xslt:template match="/">
-	     <xslt:text>
-</xslt:text>
-	     <out>
+	     	     <out>
          <xslt:apply-templates select="//@*"/>
       </out>
    </xslt:template>
@@ -23,65 +21,49 @@
 	     <xslt:element name="A">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute(my:listParts, my:myListType)">
 	     <xslt:element name="B">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute(my:colors, xs:NMTOKENS)">
 	     <xslt:element name="C">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute(my:union, my:partIntegerUnion)">
 	     <xslt:element name="D">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute(my:specialPart, xs:untypedAtomic)">
 	     <xslt:element name="E">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute(my:listParts, xs:untypedAtomic)">
 	     <xslt:element name="F">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute(my:colors, xs:untypedAtomic)">
 	     <xslt:element name="G">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute(my:union, xs:untypedAtomic)">
 	     <xslt:element name="H">
 		       <xslt:value-of select="."/>
 	     </xslt:element>
-      <xslt:text>
-</xslt:text>
-   </xslt:template>
+         </xslt:template>
 
    <xslt:template match="attribute(*)">
 </xslt:template>
