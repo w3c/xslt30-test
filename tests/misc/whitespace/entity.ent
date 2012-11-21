@@ -1,0 +1,1 @@
+<!ENTITY space "&#32;">

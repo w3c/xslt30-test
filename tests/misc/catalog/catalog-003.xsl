@@ -1,6 +1,8 @@
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:cat="http://www.w3.org/2012/10/xslt-test-catalog"
   exclude-result-prefixes="cat">
+  
+  <!-- Test case names must be unique -->
 
 <xsl:template match="/">
       <out>

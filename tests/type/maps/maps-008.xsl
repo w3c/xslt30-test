@@ -16,6 +16,7 @@
                    <xsl:for-each select="1 to 5">
                      <xsl:sequence select="$key * ."/>
                    </xsl:for-each>
+                 </xsl:map-entry>  
               </xsl:for-each>
            </xsl:map>
         </xsl:variable>
