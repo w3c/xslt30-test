@@ -4,12 +4,8 @@
 
    <t:output method="xml" encoding="UTF-8"/>
 
-   <t:template match="/">
-      <t:text>
-</t:text>
-      <out>
-         <t:text>
-</t:text>
+   <t:template match="/">     
+      <out>         
          <E1>
             <t:analyze-string select="poem" regex="(Kaum)              (.* )                (dies)">
     	          <t:matching-substring>
@@ -20,8 +16,7 @@
     	          </t:non-matching-substring>
     	       </t:analyze-string>
          </E1>
-         <t:text>
-</t:text>
+         
          <E2>
             <t:analyze-string select="poem"
                               regex="(Kaum)              (.*)                (dies)"

@@ -4,10 +4,7 @@
 
 
   <!-- PURPOSE: test tokenize() with case-blind matching. -->
-  <?spec fo#func-tokenize?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <xsl:param name="in">
       <xsl:text>Some unparsed &lt;BR&gt; HTML &lt;br&gt; text</xsl:text>

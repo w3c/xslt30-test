@@ -5,13 +5,10 @@
 
   <!-- PURPOSE: test xf:tokenize() function. -->
   <?spec fo#func-tokenize?>
-  
-  <xsl:output method="xml" indent="yes"/>
+ 
 
   <xsl:template match="/">
-    <out>
-        [<xsl:value-of select="tokenize(doc, '\s+')" separator="|"/>]
-    </out>
+    <out>[<xsl:value-of select="tokenize(doc, '\s+')" separator="|"/>]</out>
   </xsl:template>
 
 </xsl:stylesheet>

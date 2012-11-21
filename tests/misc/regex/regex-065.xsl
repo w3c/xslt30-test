@@ -2,14 +2,9 @@
 <t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
 <!-- Purpose: Testcase with xsl:analyze-string using 'dot-all' mode (@flags is set to 's').-->
 
-   <t:output method="xml" encoding="UTF-8"/>
 
-   <t:template match="/">
-      <t:text>
-</t:text>
-      <out>
-         <t:text>
-</t:text>
+   <t:template match="/">     
+      <out>        
          <E1>
             <t:analyze-string select="//str1" regex="hello.*world">
     	          <t:matching-substring>
@@ -20,8 +15,7 @@
     	          </t:non-matching-substring>
             </t:analyze-string>
          </E1>
-         <t:text>
-</t:text>
+         
          <E2>
             <t:analyze-string select="//str1" regex="hello.*world" flags="s">
                <t:matching-substring>

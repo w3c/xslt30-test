@@ -4,10 +4,7 @@
 
 
   <!-- PURPOSE: test xf:tokenize() function applied to an empty sequence. -->
-  <?spec fo#func-tokenize?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <out>
         <xsl:variable name="t" select="tokenize((), '\s+')"/>

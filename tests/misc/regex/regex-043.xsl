@@ -4,11 +4,7 @@
 
 
   <!-- PURPOSE: test tokenize() with a pattern that matches the empty string. -->
-  <?spec fo#func-tokenize?>
-  <?error FORX0003?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <xsl:message>**** SHOULD BE AN ERROR UNDER LATEST SPEC ****</xsl:message>
     <out>;

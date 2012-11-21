@@ -3,8 +3,7 @@
 <!-- Purpose: Testcase with matches($input?,$pattern, $flag) using 'dot-all' mode ($flag is set to 's'). 
   				Test contrasts the result of metacharacter '.' when the flag is on and off. -->
 
-   <t:output method="xml" encoding="UTF-8"/>
-
+   
    <t:variable name="var" select="/doc/str1"/>
 
    <t:template match="/">

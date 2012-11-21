@@ -9,8 +9,8 @@
   <xsl:param name="regex">ra</xsl:param>
 
   <xsl:template match="/">
-    <out>;
-      <true result="{matches('abracadabra', $regex)}"/>;
+    <out>
+      <true result="{matches('abracadabra', $regex)}"/>
     </out>
   </xsl:template>
 

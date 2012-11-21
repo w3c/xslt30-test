@@ -5,14 +5,16 @@
   <?spec xslt#analyze-string?>
   <!-- PURPOSE: test xsl:analyze-string. -->
   
-  <xsl:output method="xml" indent="yes"/>
-
+  
   <xsl:template match="/">
-    <out>;
-      <xsl:analyze-string select="doc" regex="e">
-       <xsl:matching-substring>[<xsl:value-of select="."/>]</xsl:matching-substring>
-       <xsl:non-matching-substring><xsl:value-of select="."/></xsl:non-matching-substring>
-      </xsl:analyze-string>      
+    <out>
+      <xsl:variable name="v">
+        <xsl:analyze-string select="doc" regex="e">
+         <xsl:matching-substring>[<xsl:value-of select="."/>]</xsl:matching-substring>
+         <xsl:non-matching-substring><xsl:value-of select="."/></xsl:non-matching-substring>
+        </xsl:analyze-string>
+      </xsl:variable>
+      <xsl:value-of select="translate($v, '&#xa;', '|')"/>
     </out>
   </xsl:template>
 

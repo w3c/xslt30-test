@@ -2,9 +2,7 @@
 <xsl:stylesheet 
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
         <!-- context item within matching-substring is not a node -->
-         <?spec xslt#analyze-string?>
-        <?error XPTY0020?> 
-<xsl:output method="xml" indent="yes" /> 
+
 <xsl:template match="/"> 
 <ales> 
         <xsl:apply-templates/> 

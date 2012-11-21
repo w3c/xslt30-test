@@ -6,12 +6,10 @@
   <!-- PURPOSE: test xf:tokenize() function. -->
   <?spec fo#func-tokenize?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <out>
     <xsl:variable name="s" select="'12, 14, 3, 17, 24,,5 '"/>
-        [<xsl:value-of select="tokenize($s, ',\s*')" separator="|"/>]
+    <xsl:text/>[<xsl:value-of select="tokenize($s, ',\s*')" separator="|"/>]<xsl:text/>
     </out>
   </xsl:template>
 

@@ -6,8 +6,6 @@
   <!-- PURPOSE: test replace() with multi-digit substring references. -->
   <?spec fo#func-replace?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <xsl:param name="in">
       <xsl:text>The quick brown fox jumped over the lazy dog and immediately went into violent convulsions as a result of the dog being roused into an unusual state of hyperactivity.</xsl:text>

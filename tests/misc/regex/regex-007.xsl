@@ -5,8 +5,6 @@
  <?spec xslt#analyze-string?>
   <!-- PURPOSE: test xsl:analyze-string using multi-line mode. -->
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <out>
       <xsl:analyze-string select="doc" regex="^.+$" flags="m">

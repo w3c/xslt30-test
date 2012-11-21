@@ -4,11 +4,7 @@
 
 
   <!-- PURPOSE: test replace() with $ at end of replacement string: not allowed. -->
-  <?spec fo#func-replace?>
-  <?error FORX0004?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <xsl:param name="in">
       <xsl:text>Some unparsed HTML</xsl:text>

@@ -4,10 +4,7 @@
 
 
   <!-- PURPOSE: test tokenize() with a pattern that matches ambiguously. -->
-  <?spec fo#func-tokenize?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <out>
         <a><xsl:value-of select='tokenize("abracadabra", "ab|a")' separator="|"/></a>

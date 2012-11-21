@@ -2,10 +2,8 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
 
- <?spec xslt#analyze-string?>
   <!-- PURPOSE: test xsl:analyze-string applied to an empty sequence - error in 2.0, treated as "" in 2.1. -->
   
-  <xsl:output method="xml" indent="yes"/>
   <xsl:param name="in" select="()"/>
 
   <xsl:template match="/">

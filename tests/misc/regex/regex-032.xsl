@@ -4,10 +4,7 @@
 
 
   <!-- PURPOSE: test matches() with multi-digit back-references. -->
-  <?spec fo#func-matches?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <xsl:param name="in">
       <xsl:text>The quick brown fox jumped over the lazy dog and immediately went into violent convulsions. The quick brown fox jumped over the lazy dog and immediately went into violent convulsions.</xsl:text>

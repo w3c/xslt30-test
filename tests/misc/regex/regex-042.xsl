@@ -4,11 +4,7 @@
 
 
   <!-- PURPOSE: ERR XTSE1130 - neither matching-substring nor non-matching-substring present. -->
-   <?spec xslt#analyze-string?>
-  <?error XTSE1130?>
   
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:template match="/">
     <out>;
       <xsl:analyze-string select="doc" regex="e">
