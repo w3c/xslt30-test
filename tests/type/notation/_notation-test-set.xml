@@ -78,7 +78,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="notation-0002.out"/>
+         <assert-xml><![CDATA[<out><a result="true"/><b result="true"/><d result="true"/><e result="true"/><g result="true"/><h result="true"/><i result="true"/><j result="true"/><k result="false"/><l result="false"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -212,7 +212,18 @@
    </test-case>
 
    <test-case name="notation-0301">
-      <description>Test 'eq' on two attributes of the same type derived from xs:NOTATION. The default namespace is used for some attribute values. The schema is not imported.Check that the attributes are of type xs:NOTATION. The schema has a @targetNamespace.Cases tested: -attributes have enumeration values with matching prefix and local name, returns true -attributes have enumeration values with different prefix but same namespace binding and same local name, returns true -attributes have enumeration values with different prefix and matching local name, returns false -attributes have enumeration values with matching prefix but different local names, returns false</description>
+      <description>
+         Test 'eq' on two attributes of the same type derived from xs:NOTATION. 
+         The default namespace is used for some attribute values. 
+         The schema is not imported.
+         Check that the attributes are of type xs:NOTATION. 
+         The schema has a @targetNamespace.
+         Cases tested: 
+         -attributes have enumeration values with matching prefix and local name, returns true 
+         -attributes have enumeration values with different prefix but same namespace binding and same local name, returns true 
+         -attributes have enumeration values with different prefix and matching local name, returns false 
+         -attributes have enumeration values with matching prefix but different local names, returns false
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="notation-03"/>
       <dependencies>
@@ -223,7 +234,18 @@
          <stylesheet file="notation-0301.xsl"/>
       </test>
       <result>
-         <assert-xml file="notation-0301.out"/>
+         <all-of>
+            <assert>/out/types/type[@name="a"] = "true"</assert>
+            <assert>/out/types/type[@name="b"] = "true"</assert>
+            <assert>/out/types/type[@name="c"] = "true"</assert>
+            <assert>/out/types/type[@name="d"] = "true"</assert>
+            <assert>/out/types/type[@name="e"] = "true"</assert>
+            <assert>/out/types/type[@name="f"] = "true"</assert>
+            <assert>/out/case1 = "true"</assert>
+            <assert>/out/case2 = "truetrue"</assert>
+            <assert>/out/case3 = "falsefalse"</assert>
+            <assert>/out/case4 = "false"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -239,7 +261,18 @@
          <stylesheet file="notation-0302.xsl"/>
       </test>
       <result>
-         <assert-xml file="notation-0302.out"/>
+         <all-of>
+            <assert>/out/types/type[@name="a"] = "true"</assert>
+            <assert>/out/types/type[@name="b"] = "true"</assert>
+            <assert>/out/types/type[@name="c"] = "true"</assert>
+            <assert>/out/types/type[@name="d"] = "true"</assert>
+            <assert>/out/types/type[@name="e"] = "true"</assert>
+            <assert>/out/types/type[@name="f"] = "true"</assert>
+            <assert>/out/case1 = "false"</assert>
+            <assert>/out/case2 = "falsefalse"</assert>
+            <assert>/out/case3 = "truetrue"</assert>
+            <assert>/out/case4 = "true"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -303,7 +336,17 @@
          <stylesheet file="notation-0401.xsl"/>
       </test>
       <result>
-         <assert-xml file="notation-0401.out"/>
+         <all-of>
+            <assert>/out/types/type[@p="1"][@val="one:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="2"][@val="one:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="3"][@val="first:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="4"][@val="two:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="5"][@val="one:wav"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/case1 = "true"</assert>
+            <assert>/out/case2 = "true"</assert>
+            <assert>/out/case3 = "false"</assert>
+            <assert>/out/case4 = "false"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -319,7 +362,17 @@
          <stylesheet file="notation-0402.xsl"/>
       </test>
       <result>
-         <assert-xml file="notation-0402.out"/>
+         <all-of>
+            <assert>/out/types/type[@p="1"][@val="one:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="2"][@val="one:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="3"][@val="first:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="4"][@val="two:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="5"][@val="one:wav"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/case1 = "false"</assert>
+            <assert>/out/case2 = "false"</assert>
+            <assert>/out/case3 = "true"</assert>
+            <assert>/out/case4 = "true"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -335,7 +388,17 @@
          <stylesheet file="notation-0403.xsl"/>
       </test>
       <result>
-         <assert-xml file="notation-0403.out"/>
+         <all-of>
+            <assert>/out/types/type[@p="1"][@val="one:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="2"][@val="one:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="3"][@val="first:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="4"][@val="two:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="5"][@val="one:wav"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/case1 = "true"</assert>
+            <assert>/out/case2 = "true"</assert>
+            <assert>/out/case3 = "false"</assert>
+            <assert>/out/case4 = "false"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -351,7 +414,17 @@
          <stylesheet file="notation-0404.xsl"/>
       </test>
       <result>
-         <assert-xml file="notation-0404.out"/>
+         <all-of>
+            <assert>/out/types/type[@p="1"][@val="one:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="2"][@val="one:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="3"][@val="first:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="4"][@val="two:mp3"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@p="5"][@val="one:wav"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/case1 = "false"</assert>
+            <assert>/out/case2 = "false"</assert>
+            <assert>/out/case3 = "true"</assert>
+            <assert>/out/case4 = "true"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -367,13 +440,12 @@
          <stylesheet file="notation-0501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<types>a * truetrue
-b * truetrue
-</types>
-<case1>true</case1>
-<case2>false</case2>
-</out>]]></assert-xml>
+         <all-of>
+            <assert>/out/types/type[@val="a"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@val="b"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/case1 = "true"</assert>
+            <assert>/out/case2 = "false"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -389,18 +461,20 @@ b * truetrue
          <stylesheet file="notation-0502.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<types>a * truetrue
-b * truetrue
-</types>
-<case1>true</case1>
-<case2>false</case2>
-</out>]]></assert-xml>
+         <all-of>
+            <assert>/out/types/type[@val="a"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/types/type[@val="b"][@is1="true"][@is2="true"]</assert>
+            <assert>/out/case1 = "true"</assert>
+            <assert>/out/case2 = "false"</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="notation-0601">
-      <description>Test with NOTATION declared in a DTD and an attribute pointing to it. Show that the type of the attribute is xs:untypedAtomic and not xs:NOTATION.</description>
+      <description>
+         Test with NOTATION declared in a DTD and an attribute pointing to it. 
+         Show that the type of the attribute is xs:untypedAtomic and not xs:NOTATION.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="notation-06"/>
       <dependencies>
@@ -416,7 +490,11 @@ b * truetrue
    </test-case>
 
    <test-case name="notation-0701">
-      <description>Test 'eq' with two attributes of two different types derived from xs:NOTATION defined in separate schemas, with different targetNamespaces. Input document is validated against each, using the same prefix in both cases, but prefix bound to the appropriate namespace for each value.Returns false.</description>
+      <description>
+         Test 'eq' with two attributes of two different types derived from xs:NOTATION defined in separate schemas,
+         with different targetNamespaces. Input document is validated against each, using the same prefix in both cases,
+         but prefix bound to the appropriate namespace for each value.Returns false.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="notation-07"/>
       <dependencies>
@@ -432,7 +510,11 @@ b * truetrue
    </test-case>
 
    <test-case name="notation-0702">
-      <description>Test 'ne' with two attributes of two different types derived from xs:NOTATION defined in separate schemas, with different targetNamespaces. Input document is validated against each, using the same prefix in both cases, but prefix bound to the appropriate namespace for each value.Returns true.</description>
+      <description>
+         Test 'ne' with two attributes of two different types derived from xs:NOTATION defined in separate schemas, 
+         with different targetNamespaces. Input document is validated against each, using the same prefix in both cases, 
+         but prefix bound to the appropriate namespace for each value.Returns true.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="notation-07"/>
       <dependencies>
