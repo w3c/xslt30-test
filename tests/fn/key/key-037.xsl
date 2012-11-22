@@ -4,8 +4,7 @@
                 
 <!-- test key() in an xsl:for-each-group pattern, with a variable reference in the key() call, 
      and another in the use expression, involves atomization, last step in the pattern -->
-     
-<?spec xslt#keys?>
+
 
 <xsl:key name="k1" match="Name" use="../Age[number(.) ge number(../../Age) - $threshold]"/>
 <xsl:param name="age"><a>8</a></xsl:param>
@@ -21,6 +20,4 @@
 </out>
 </xsl:template>
 
-
-<xsl:output indent="yes"/>
 </xsl:stylesheet>

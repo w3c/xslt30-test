@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- test case for a bug found in Saxon 6.5.2 -->
-<?spec xslt#keys?>
+
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:d="http://mydata.com/">
-    <xsl:output encoding="UTF-8" indent="yes"/>
+    
     <d:Footnote indicator="$#001">
         <Instance>
             <Codes>
@@ -24,7 +24,7 @@
         <xsl:variable name="footnoteCode" select="$data[@indicator = current()/@footnote][1]/Instance[(key('courseCodes', generate-id(ancestor::Course)) = Codes/Code) or not(Codes)]/Footnote[1]"/>
         <Output>
             <FootnoteCodes>
-                <xsl:copy-of select="$footnoteCode"/>
+                <xsl:copy-of select="$footnoteCode" copy-namespaces="no"/>
             </FootnoteCodes>
         </Output>
     </xsl:template>

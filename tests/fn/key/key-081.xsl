@@ -3,10 +3,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
 <!-- test a key with a numeric type -->
-<?spec xslt#keys?>
-<xsl:key name="k" match="b" use="string-length(.)"/>
 
-<xsl:output indent="yes"/>
+<xsl:key name="k" match="b" use="string-length(.)"/>
 
   <xsl:template match="/">
     <out>
