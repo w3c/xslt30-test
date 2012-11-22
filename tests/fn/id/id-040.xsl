@@ -3,8 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
 <!-- basic test of idref() function using IDREFS values -->
-<?spec fo#func-idref?>
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <out>
