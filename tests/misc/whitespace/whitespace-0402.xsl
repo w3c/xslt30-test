@@ -14,19 +14,19 @@
    </t:template>
 
    <t:template match="elem">
-	     <a xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	     <a>
          <t:value-of select="."/>
       </a>
    </t:template>
 
    <t:template match="*:elem">
-	     <b xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	     <b>
          <t:value-of select="."/>
       </b>
    </t:template>
 
    <t:template match="*">
-	     <c xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	     <c>
          <t:value-of select="."/>
       </c>
    </t:template>

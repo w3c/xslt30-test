@@ -2,7 +2,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-  <?spec xslt#literal-text-nodes?>
+  <!-- output text as child of document node -->
 
   <xsl:template match="/">
       x

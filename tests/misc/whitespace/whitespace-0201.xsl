@@ -21,7 +21,7 @@
 			
 
 <t:param name="child"/>
-<a xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><t:value-of select="$child/text()"/></a>
+<a><t:value-of select="$child/text()"/></a>
 </t:template>
 
    <t:template match="top-node" xml:space="preserve">
@@ -32,6 +32,6 @@
 
  	
 <t:param name="child"/>
-<b xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><t:value-of select="$child/text()"/></b>
+<b><t:value-of select="$child/text()"/></b>
 </t:template>
 </t:transform>

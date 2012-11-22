@@ -7,8 +7,8 @@
 
    <t:template match="/">
       <out>
-         <e>   h</e>
-         <e>h   </e>
+         <e>   <?pi?>h</e>
+         <e>h<?pi?>   </e>
       </out>
    </t:template>
 </t:transform>

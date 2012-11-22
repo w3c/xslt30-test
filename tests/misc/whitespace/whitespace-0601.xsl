@@ -19,7 +19,7 @@
 	           <t:copy-of select="$copy"/>
 	        </t:when>
 	        <t:otherwise>
-	           <ok xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+	           <ok/>
 	        </t:otherwise>
 	     </t:choose>
    </t:template>
