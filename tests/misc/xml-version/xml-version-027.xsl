@@ -4,7 +4,7 @@
 <?spec serialization#xml-undeclare-prefixes?>
   <!-- PURPOSE: Representation of namespace undeclaration with undeclare="no" -->
 
-<xsl:output method="xml" version="1.1" undeclare-prefixes="no" indent="yes"/>
+<xsl:output method="xml" version="1.1" undeclare-prefixes="no"/>
 
 <xsl:template match="/">
   <doc xmlns:a="http://a/">
