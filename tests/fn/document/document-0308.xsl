@@ -7,10 +7,7 @@
    <t:preserve-space elements="str1"/>
 
    <t:template match="/doc">
-      <t:text>
-</t:text>
-      <out>
-         <t:copy-of select="doc('doc13.xml')"/>
-      </out>
+         <t:copy-of select="doc('doc13.xml')"/>     
    </t:template>
+   
 </t:transform>

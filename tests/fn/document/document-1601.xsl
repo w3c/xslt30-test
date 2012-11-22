@@ -3,9 +3,6 @@
   
 <!-- Test document() function: Provides multiple input sources. -->
 
-
-<xsl:output indent="yes"/>
-
 <xsl:template match="catalog.entry">
    <out>
       <s1><xsl:apply-templates select="catalog.entry.id"/></s1>

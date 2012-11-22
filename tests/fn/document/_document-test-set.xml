@@ -148,7 +148,9 @@
          -a sequence of variables, 
          -mixed sequence of strings, nodes and variables, 
          -a subsequence 
-         Passed values represent relative URI references and are resolved against the base-uri property from the static context.</description>
+         Passed values represent relative URI references and are resolved against the base-uri property from the static context.
+         Note that the results of the document() function with multiple strings as arguments is in document
+         order, which is unpredictable</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="document-01"/>
       <dependencies>
@@ -158,7 +160,13 @@
          <initial-template name="a"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<a><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></a>]]></assert-xml>
+         <all-of>
+            <assert>/a/body = "Shirt"</assert>
+            <assert>/a/body = "Tie"</assert>
+            <assert>/a/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/a/body = "GoodBye"</assert>
+            <assert>count(/a/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -179,7 +187,11 @@
          <initial-template name="b"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<b><body>Shirt</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out></b>]]></assert-xml>
+         <all-of>
+            <assert>/b/body = "Shirt"</assert>
+            <assert>/b/out/*:apply-templates/@select = "@test"</assert>
+            <assert>count(/b/*) = 2</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -200,7 +212,13 @@
          <initial-template name="c"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<c><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></c>]]></assert-xml>
+         <all-of>
+            <assert>/c/body = "Shirt"</assert>
+            <assert>/c/body = "Tie"</assert>
+            <assert>/c/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/c/body = "GoodBye"</assert>
+            <assert>count(/c/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -221,7 +239,10 @@
          <initial-template name="d"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<d><body>Tie</body></d>]]></assert-xml>
+         <all-of>
+            <assert>/d/body = "Tie"</assert>
+            <assert>count(/d/*) = 1</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -237,7 +258,13 @@
          <initial-template name="a"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<a><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></a>]]></assert-xml>
+         <all-of>
+            <assert>/a/body = "Shirt"</assert>
+            <assert>/a/body = "Tie"</assert>
+            <assert>/a/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/a/body = "GoodBye"</assert>
+            <assert>count(/a/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -253,7 +280,11 @@
          <initial-template name="b"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<b><body>Shirt</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out></b>]]></assert-xml>
+         <all-of>
+            <assert>/b/body = "Shirt"</assert>
+            <assert>/b/out/*:apply-templates/@select = "@test"</assert>
+            <assert>count(/b/*) = 2</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -269,7 +300,13 @@
          <initial-template name="c"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<c><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></c>]]></assert-xml>
+         <all-of>
+            <assert>/c/body = "Shirt"</assert>
+            <assert>/c/body = "Tie"</assert>
+            <assert>/c/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/c/body = "GoodBye"</assert>
+            <assert>count(/c/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -285,7 +322,10 @@
          <initial-template name="d"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<d><body>Tie</body></d>]]></assert-xml>
+         <all-of>
+            <assert>/d/body = "Tie"</assert>
+            <assert>count(/d/*) = 1</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -301,7 +341,13 @@
          <initial-template name="a"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<a><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>Shirt</body><body>Tie</body><body>GoodBye</body></a>]]></assert-xml>
+         <all-of>
+            <assert>/a/body = "Shirt"</assert>
+            <assert>/a/body = "Tie"</assert>
+            <assert>/a/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/a/body = "GoodBye"</assert>
+            <assert>count(/a/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -317,7 +363,11 @@
          <initial-template name="b"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<b><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>Shirt</body></b>]]></assert-xml>
+         <all-of>
+            <assert>/b/body = "Shirt"</assert>
+            <assert>/b/out/*:apply-templates/@select = "@test"</assert>
+            <assert>count(/b/*) = 2</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -333,7 +383,13 @@
          <initial-template name="c"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<c><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>Shirt</body><body>Tie</body><body>GoodBye</body></c>]]></assert-xml>
+         <all-of>
+            <assert>/c/body = "Shirt"</assert>
+            <assert>/c/body = "Tie"</assert>
+            <assert>/c/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/c/body = "GoodBye"</assert>
+            <assert>count(/c/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -349,7 +405,10 @@
          <initial-template name="d"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<d><body>Tie</body></d>]]></assert-xml>
+         <all-of>
+            <assert>/d/body = "Tie"</assert>
+            <assert>count(/d/*) = 1</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -365,7 +424,13 @@
          <initial-template name="a"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<a><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></a>]]></assert-xml>
+         <all-of>
+            <assert>/a/body = "Shirt"</assert>
+            <assert>/a/body = "Tie"</assert>
+            <assert>/a/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/a/body = "GoodBye"</assert>
+            <assert>count(/a/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -381,7 +446,11 @@
          <initial-template name="b"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<b><body>Shirt</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out></b>]]></assert-xml>
+         <all-of>
+            <assert>/b/body = "Shirt"</assert>
+            <assert>/b/out/*:apply-templates/@select = "@test"</assert>
+            <assert>count(/b/*) = 2</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -397,7 +466,13 @@
          <initial-template name="c"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<c><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></c>]]></assert-xml>
+         <all-of>
+            <assert>/c/body = "Shirt"</assert>
+            <assert>/c/body = "Tie"</assert>
+            <assert>/c/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/c/body = "GoodBye"</assert>
+            <assert>count(/c/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -413,7 +488,10 @@
          <initial-template name="d"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<d><body>Tie</body></d>]]></assert-xml>
+         <all-of>
+            <assert>/d/body = "Tie"</assert>
+            <assert>count(/d/*) = 1</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -429,7 +507,13 @@
          <initial-template name="a"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<a><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></a>]]></assert-xml>
+         <all-of>
+            <assert>/a/body = "Shirt"</assert>
+            <assert>/a/body = "Tie"</assert>
+            <assert>/a/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/a/body = "GoodBye"</assert>
+            <assert>count(/a/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -444,7 +528,11 @@
          <initial-template name="b"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<b><body>Shirt</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out></b>]]></assert-xml>
+         <all-of>
+            <assert>/b/body = "Shirt"</assert>
+            <assert>/b/out/*:apply-templates/@select = "@test"</assert>
+            <assert>count(/b/*) = 2</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -459,7 +547,13 @@
          <initial-template name="c"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<c><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></c>]]></assert-xml>
+         <all-of>
+            <assert>/c/body = "Shirt"</assert>
+            <assert>/c/body = "Tie"</assert>
+            <assert>/c/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/c/body = "GoodBye"</assert>
+            <assert>count(/c/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -474,7 +568,10 @@
          <initial-template name="d"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<d><body>Tie</body></d>]]></assert-xml>
+         <all-of>
+            <assert>/d/body = "Tie"</assert>
+            <assert>count(/d/*) = 1</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -492,7 +589,7 @@
          <stylesheet file="document-0301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<output>true</output>]]></assert-xml>
+         <assert>/output = "true"</assert>
       </result>
    </test-case>
 
@@ -522,7 +619,7 @@
          <stylesheet file="document-0303.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out/><out/>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a/><b/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -537,7 +634,7 @@
          <stylesheet file="document-0304.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
+         <assert>/out = "true"</assert>
       </result>
    </test-case>
 
@@ -552,7 +649,11 @@
          <stylesheet file="document-0305.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><body>Tie</body><body>Sly</body></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/body = "Tie"</assert>
+            <assert>/out/body = "Sly"</assert>
+            <assert>count(/out/*) = 2</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -567,7 +668,7 @@
          <stylesheet file="document-0306.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
+         <assert>/out = "true"</assert>
       </result>
    </test-case>
 
@@ -582,7 +683,7 @@
          <stylesheet file="document-0307.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>true true</out>]]></assert-xml>
+         <assert>/out = "true true"</assert>
       </result>
    </test-case>
 
@@ -597,10 +698,12 @@
          <stylesheet file="document-0308.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><doc><str1>
-				
-					<space>1</space>
-	</str1><str1>2</str1><str2>3</str2><str2><no-space>3</no-space></str2></doc></out>]]></assert-xml>
+         <all-of>
+            <assert>count(/doc/str1[1]/node()) = 3</assert>
+            <assert>count(/doc/str1[1]/text()[normalize-space(.)]) = 0</assert>
+            <assert>count(/doc/str2[2]/node()) = 1</assert>
+            <assert>every $t in //text()[matches(., '\s+')] satisfies $t/parent::str1</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -636,7 +739,7 @@
          <stylesheet file="document-0401.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><body>GoodBye</body><body>Hello</body><body>Overt</body><body>Shirt</body><body>Sly</body><body>Tie</body></out>]]></assert-xml>
+         <assert>deep-equal(/out/body/string(), ("GoodBye", "Hello", "Overt", "Shirt", "Sly", "Tie"))</assert>
       </result>
    </test-case>
 
@@ -655,7 +758,13 @@
          <initial-template name="a"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<a><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></a>]]></assert-xml>
+         <all-of>
+            <assert>/a/body = "Shirt"</assert>
+            <assert>/a/body = "Tie"</assert>
+            <assert>/a/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/a/body = "GoodBye"</assert>
+            <assert>count(/a/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -674,7 +783,11 @@
          <initial-template name="b"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<b><body>Shirt</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out></b>]]></assert-xml>
+         <all-of>
+            <assert>/b/body = "Shirt"</assert>
+            <assert>/b/out/*:apply-templates/@select = "@test"</assert>
+            <assert>count(/b/*) = 2</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -693,7 +806,13 @@
          <initial-template name="c"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<c><body>Shirt</body><body>Tie</body><out xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="@test"/></out><body>GoodBye</body></c>]]></assert-xml>
+         <all-of>
+            <assert>/c/body = "Shirt"</assert>
+            <assert>/c/body = "Tie"</assert>
+            <assert>/c/out/*:apply-templates/@select = "@test"</assert>
+            <assert>/c/body = "GoodBye"</assert>
+            <assert>count(/c/*) = 4</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -712,7 +831,10 @@
          <initial-template name="d"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<d><body>Tie</body></d>]]></assert-xml>
+         <all-of>
+            <assert>/d/body = "Tie"</assert>
+            <assert>count(/d/*) = 1</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -954,7 +1076,7 @@
          <stylesheet file="document-1201.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truetruetrue</out>]]></assert-xml>
+         <assert>/out = "truetruetrue"</assert>
       </result>
    </test-case>
 
@@ -990,7 +1112,7 @@
          <stylesheet file="document-1301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>falsefalsefalse</out>]]></assert-xml>
+         <assert>/out = "falsefalsefalse"</assert>
       </result>
    </test-case>
 
@@ -1081,10 +1203,18 @@
          <stylesheet file="document-1601.xsl"/>
       </test>
       <result>
-         <assert-xml file="document-1601.out"/>
+         <all-of>
+            <assert>/out/s1 = "c1230987"</assert>
+            <assert>/out/s2 = "CompUSA Inc."</assert>
+            <assert>/out/s3/loc = "14951"</assert>
+            <assert>/out/s3/st = "N. Dallas Pkwy"</assert>
+            <assert>/out/s3/city = "Dallas, "</assert>
+            <assert>/out/s3/co = "TX "</assert>
+            <assert>/out/s3/pc = "75240"</assert>
+            <assert>/out/s3/ph = "1-800-666-2000"</assert>
+         </all-of>
       </result>
    </test-case>
-
    
    <test-case name="document-1901">
       <description>Test loading a document relative to the stylesheet module.</description>
@@ -1195,7 +1325,7 @@
          <stylesheet file="document-2006.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><a>true</a><a>true</a><a>true</a><a>false</a><a>false</a></out>]]></assert-xml>
+         <assert>deep-equal(/out/a/string(), ("true", "true", "true", "false", "false"))</assert>
       </result>
    </test-case>
 
@@ -1253,12 +1383,12 @@
          <stylesheet file="document-2201.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <key>TableofContents</key>
-   <lang>en</lang>
-   <var>Table of Contents</var>
-   <text>Table of Contents</text>
-</out>]]></assert-xml>
+         <all-of>
+            <assert>/out/key = "TableofContents"</assert>
+            <assert>/out/lang = "en"</assert>
+            <assert>/out/var = "Table of Contents"</assert>
+            <assert>/out/text = "Table of Contents"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1275,7 +1405,12 @@
          <stylesheet file="document-2301.xsl"/>
       </test>
       <result>
-         <assert-xml file="document-2301.out"/>
+         <all-of>
+            <assert>/out/month = "January - 35215 miles earned."</assert>
+            <assert>/out/month = "February - 92731 miles earned."</assert>
+            <assert>/out/month = "March - 76725 miles earned."</assert>
+            <assert>/out/month = "April - 31781 miles earned."</assert>
+         </all-of>
       </result>
    </test-case>
 

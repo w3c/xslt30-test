@@ -5,8 +5,6 @@
   				is the first node in the sequence. The result sequence should not contain duplicate nodes.-->
 
    <t:template match="/doc">
-      <t:text>
-</t:text>
       <out>
          <t:perform-sort select="document(a, a[1])//body">
   	         <t:sort select="string(.)"/>

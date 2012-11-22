@@ -4,10 +4,8 @@
 
    <t:template match="/">
       <out>
-         <t:copy-of select="doc(())"/>
-      </out>
-      <out>
-         <t:copy-of select="doc(//str1)"/>
+         <a><t:copy-of select="doc(())"/></a>
+         <b><t:copy-of select="doc(//str1)"/></b>
       </out>
    </t:template>
 </t:transform>

@@ -10,6 +10,9 @@
 				-a subsequence
 				Passed values represent relative URI references and are resolved 
 				against the base-uri property from the static context. -->
+   
+   <!-- Note that the results of the document() function with multiple strings as arguments is in document
+        order, which is unpredictable -->
 
    <t:variable name="ea" select="xs:string('doc02.xml')"/>
 

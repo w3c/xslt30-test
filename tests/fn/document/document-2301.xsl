@@ -17,16 +17,9 @@
   <months:name sequence="11">November</months:name>
   <months:name sequence="12">December</months:name>
 
-<xsl:output method="xml"/>
-
-<xsl:variable name="newline">
-<xsl:text>
-</xsl:text>
-</xsl:variable>
 
 <xsl:template match="/">
   <out>
-    <xsl:value-of select="$newline"/>
     <xsl:for-each select="/report/month">
       <month>
         <xsl:value-of select="document('')/xsl:stylesheet/months:name[@sequence=current()/@sequence]"/>
@@ -34,7 +27,6 @@
         <xsl:value-of select="miles-earned"/>
         <xsl:text> miles earned.</xsl:text>
       </month>
-      <xsl:value-of select="$newline"/>
     </xsl:for-each>
   </out>
 </xsl:template>
