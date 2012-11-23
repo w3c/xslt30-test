@@ -34,14 +34,14 @@
    <xslt:template match="my:elem-anyURI">
 	     <xslt:param name="par1" select="1.0" tunnel="yes"/>
 	     <xslt:param name="par2" select="1.0" tunnel="yes"/>
-	     <par1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	     <par1>
          <xslt:value-of select="$par1"/>
          <xslt:value-of select="$par1 instance of my:de1-decimal-enumeration-Inline"/>
          <xslt:value-of select="$par1 instance of xs:double"/>
       </par1>
 	     <xslt:text>
 </xslt:text>
-	     <par2 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	     <par2>
          <xslt:value-of select="$par2"/>
          <xslt:value-of select="$par2 instance of my:derived-float-Type"/>
          <xslt:value-of select="$par2 instance of xs:double"/>

@@ -41,7 +41,7 @@
 
    <xslt:variable name="var6" as="item()*">
 	     <xslt:document>
-		       <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">hello</item>
+		       <item>hello</item>
 	     </xslt:document>
    </xslt:variable>
 

@@ -13,15 +13,12 @@
    <xslt:variable name="var3" select="xs:integer(-300)" as="xs:float"/>
 
    <xslt:template match="/doc">
-      <out>
-         <xslt:text>
-</xslt:text>
+      <out>         
          <var2>
             <xslt:value-of select="$var2 instance of xs:decimal"/>
             <xslt:value-of select="$var2 instance of xs:float"/>
          </var2>
-         <xslt:text>
-</xslt:text>
+         
          <var3>
             <xslt:value-of select="$var3 instance of xs:integer"/>
             <xslt:value-of select="$var3 instance of xs:float"/>

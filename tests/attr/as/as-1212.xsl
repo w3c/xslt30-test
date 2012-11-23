@@ -14,7 +14,7 @@
       </t:param>
 
       <t:param name="par3" as="element()">
-		       <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">hello</item>
+		       <item>hello</item>
       </t:param>
       <out>
          <t:value-of select="$par1 instance of element()"/>

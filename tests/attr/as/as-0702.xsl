@@ -26,7 +26,7 @@
 
    <xslt:template match="item1">
       <xslt:param name="par1" select="3.5" tunnel="yes"/>
-      <par1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par1>
          <xslt:value-of select="$par1"/>
          <xslt:value-of select="$par1 instance of xs:double"/>
       </par1>

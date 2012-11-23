@@ -39,8 +39,8 @@
    </t:template>
 
    <t:template name="a3" as="element(my:item)*">
-	     <my:item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">1</my:item>
-	     <my:item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">2</my:item>
-	     <my:item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">3</my:item>
+	     <my:item>1</my:item>
+	     <my:item>2</my:item>
+	     <my:item>3</my:item>
    </t:template>
 </t:transform>

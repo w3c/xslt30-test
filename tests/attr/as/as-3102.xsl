@@ -14,63 +14,51 @@
 
    <xslt:template match="/">
       <out>
-         <xslt:text>
-</xslt:text>
+         
          <temp1>
             <xslt:call-template name="t1"/>
          </temp1>
-         <xslt:text>
-</xslt:text>
+         
          <temp2>
             <xslt:call-template name="t2"/>
          </temp2>
-         <xslt:text>
-</xslt:text>
+         
          <temp3>
             <xslt:call-template name="t3"/>
          </temp3>
-         <xslt:text>
-</xslt:text>
+         
          <temp4>
             <xslt:call-template name="t4"/>
          </temp4>
-         <xslt:text>
-</xslt:text>
+         
          <temp5>
             <xslt:call-template name="t5"/>
          </temp5>
-         <xslt:text>
-</xslt:text>
+         
          <temp6>
             <xslt:call-template name="t6"/>
          </temp6>
-         <xslt:text>
-</xslt:text>
+         
          <temp7>
             <xslt:call-template name="t7"/>
          </temp7>
-         <xslt:text>
-</xslt:text>
+         
          <temp8>
             <xslt:call-template name="t8"/>
          </temp8>
-         <xslt:text>
-</xslt:text>
+         
          <temp9>
             <xslt:call-template name="t9"/>
          </temp9>
-         <xslt:text>
-</xslt:text>
+         
          <temp10>
             <xslt:call-template name="t10"/>
          </temp10>
-         <xslt:text>
-</xslt:text>
+         
          <temp11>
             <xslt:call-template name="t11"/>
          </temp11>
-         <xslt:text>
-</xslt:text>
+         
          <temp12>
             <xslt:call-template name="t12"/>
          </temp12>

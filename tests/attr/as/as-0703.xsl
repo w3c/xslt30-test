@@ -38,19 +38,19 @@
       <xslt:param name="par1" select="3.5" tunnel="yes"/>
       <xslt:param name="par2" select="3.5" tunnel="yes"/>
       <xslt:param name="par3" select="3.5" tunnel="yes"/>
-      <par1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par1>
          <xslt:value-of select="$par1"/>
          <xslt:value-of select="$par1 instance of element(item2, xs:untyped?)"/>
       </par1>
       <xslt:text>
 </xslt:text>
-      <par2 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par2>
          <xslt:value-of select="$par2"/>
          <xslt:value-of select="$par2 instance of element(elem, xs:untyped?)"/>
       </par2>
       <xslt:text>
 </xslt:text>
-      <par3 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par3>
          <xslt:value-of select="$par3"/>
          <xslt:value-of select="$par3 instance of element(my:item, xs:untyped?)"/>
       </par3>

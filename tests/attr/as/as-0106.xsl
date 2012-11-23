@@ -1,50 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xslt:transform xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:my="http://www.mytest.net"
-                xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
-                exclude-result-prefixes="xs my"
-                version="2.0">
-<!-- Purpose: Show that any explicitly constructed built-in atomic type can go in @select 
+<xslt:transform xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:my="http://www.mytest.net"
+   xmlns:xslt="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="xs my" version="2.0">
+   <!-- Purpose: Show that any explicitly constructed built-in atomic type can go in @select 
   				when @as="xs:anyAtomicType". Effective global variable type is both 
   				xs:anyAtomicType and the actual type used in @select. -->
 
    <xslt:output method="xml" encoding="UTF-8"/>
 
-   <xslt:variable name="var1"
-                  select="xs:duration('P1Y2M3DT10H30M23S')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var1" select="xs:duration('P1Y2M3DT10H30M23S')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var2"
-                  select="xs:duration('-P12M23DT0M59.123S')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var2" select="xs:duration('-P12M23DT0M59.123S')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var3"
-                  select="xs:dateTime('2000-01-16T00:00:00Z')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var3" select="xs:dateTime('2000-01-16T00:00:00Z')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var4"
-                  select="xs:dateTime('-1999-05-31T13:20:00+14:00')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var4" select="xs:dateTime('-1999-05-31T13:20:00+14:00')"
+      as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var5"
-                  select="xs:time('13:20:00-05:00')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var5" select="xs:time('13:20:00-05:00')" as="xs:anyAtomicType"/>
 
    <xslt:variable name="var6" select="xs:time('00:00:00')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var7"
-                  select="xs:date('-0012-12-03-05:00')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var7" select="xs:date('-0012-12-03-05:00')" as="xs:anyAtomicType"/>
 
    <xslt:variable name="var8" select="xs:date('1999-05-31')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var9"
-                  select="xs:gYearMonth('21999-05+14:00')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var9" select="xs:gYearMonth('21999-05+14:00')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var10"
-                  select="xs:gYearMonth('1999-05')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var10" select="xs:gYearMonth('1999-05')" as="xs:anyAtomicType"/>
 
    <xslt:variable name="var11" select="xs:gYear('-0012-05:00')" as="xs:anyAtomicType"/>
 
@@ -52,9 +34,7 @@
 
    <xslt:variable name="var13" select="xs:gMonthDay('--05-31')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var14"
-                  select="xs:gMonthDay('--05-31+14:00')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var14" select="xs:gMonthDay('--05-31+14:00')" as="xs:anyAtomicType"/>
 
    <xslt:variable name="var15" select="xs:gDay('---31+14:00')" as="xs:anyAtomicType"/>
 
@@ -90,256 +70,208 @@
 
    <xslt:variable name="var31" select="xs:integer(-300)" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var32"
-                  select="xs:anyURI('http://www.mytypetest.org')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var32" select="xs:anyURI('http://www.mytypetest.org')" as="xs:anyAtomicType"/>
 
    <xslt:variable name="var33" select="xs:QName('my:local')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var34"
-                  select="xs:dayTimeDuration('PT99.999S')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var34" select="xs:dayTimeDuration('PT99.999S')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var35"
-                  select="xs:dayTimeDuration('-PT100M')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var35" select="xs:dayTimeDuration('-PT100M')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var36"
-                  select="xs:yearMonthDuration('P1Y2M')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var36" select="xs:yearMonthDuration('P1Y2M')" as="xs:anyAtomicType"/>
 
-   <xslt:variable name="var37"
-                  select="xs:yearMonthDuration('-P21M')"
-                  as="xs:anyAtomicType"/>
+   <xslt:variable name="var37" select="xs:yearMonthDuration('-P21M')" as="xs:anyAtomicType"/>
 
    <xslt:variable name="var38" select="xs:string('hello')" as="xs:anyAtomicType"/>
 
    <xslt:template match="/doc">
       <out>
-         <xslt:text>
-</xslt:text>
+
          <var1>
             <xslt:value-of select="$var1 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var1 instance of xs:duration"/>
          </var1>
-         <xslt:text>
-</xslt:text>
+
          <var2>
             <xslt:value-of select="$var2 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var2 instance of xs:duration"/>
          </var2>
-         <xslt:text>
-</xslt:text>
+
          <var3>
             <xslt:value-of select="$var3 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var3 instance of xs:dateTime"/>
          </var3>
-         <xslt:text>
-</xslt:text>
+
          <var4>
             <xslt:value-of select="$var4 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var4 instance of xs:dateTime"/>
          </var4>
-         <xslt:text>
-</xslt:text>
+
          <var5>
             <xslt:value-of select="$var5 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var5 instance of xs:time"/>
          </var5>
-         <xslt:text>
-</xslt:text>
+
          <var6>
             <xslt:value-of select="$var6 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var6 instance of xs:time"/>
          </var6>
-         <xslt:text>
-</xslt:text>
+
          <var7>
             <xslt:value-of select="$var7 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var7 instance of xs:date"/>
          </var7>
-         <xslt:text>
-</xslt:text>
+
          <var8>
             <xslt:value-of select="$var8 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var8 instance of xs:date"/>
          </var8>
-         <xslt:text>
-</xslt:text>
+
          <var9>
             <xslt:value-of select="$var9 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var9 instance of xs:gYearMonth"/>
          </var9>
-         <xslt:text>
-</xslt:text>
+
          <var10>
             <xslt:value-of select="$var10 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var10 instance of xs:gYearMonth"/>
          </var10>
-         <xslt:text>
-</xslt:text>
+
          <var11>
             <xslt:value-of select="$var11 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var11 instance of xs:gYear"/>
          </var11>
-         <xslt:text>
-</xslt:text>
+
          <var12>
             <xslt:value-of select="$var12 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var12 instance of xs:gYear"/>
          </var12>
-         <xslt:text>
-</xslt:text>
+
          <var13>
             <xslt:value-of select="$var13 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var13 instance of xs:gMonthDay"/>
          </var13>
-         <xslt:text>
-</xslt:text>
+
          <var14>
             <xslt:value-of select="$var14 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var14 instance of xs:gMonthDay"/>
          </var14>
-         <xslt:text>
-</xslt:text>
+
          <var15>
             <xslt:value-of select="$var15 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var15 instance of xs:gDay"/>
          </var15>
-         <xslt:text>
-</xslt:text>
+
          <var16>
             <xslt:value-of select="$var16 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var16 instance of xs:gDay"/>
          </var16>
-         <xslt:text>
-</xslt:text>
+
          <var17>
             <xslt:value-of select="$var17 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var17 instance of xs:gMonth"/>
          </var17>
-         <xslt:text>
-</xslt:text>
+
          <var18>
             <xslt:value-of select="$var18 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var18 instance of xs:gMonth"/>
          </var18>
-         <xslt:text>
-</xslt:text>
+
          <var19>
             <xslt:value-of select="$var19 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var19 instance of xs:boolean"/>
          </var19>
-         <xslt:text>
-</xslt:text>
+
          <var20>
             <xslt:value-of select="$var20 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var20 instance of xs:base64Binary"/>
          </var20>
-         <xslt:text>
-</xslt:text>
+
          <var21>
             <xslt:value-of select="$var21 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var21 instance of xs:hexBinary"/>
          </var21>
-         <xslt:text>
-</xslt:text>
+
          <var22>
             <xslt:value-of select="$var22 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var22 instance of xs:float"/>
          </var22>
-         <xslt:text>
-</xslt:text>
+
          <var23>
             <xslt:value-of select="$var23 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var23 instance of xs:float"/>
          </var23>
-         <xslt:text>
-</xslt:text>
+
          <var24>
             <xslt:value-of select="$var24 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var24 instance of xs:decimal"/>
          </var24>
-         <xslt:text>
-</xslt:text>
+
          <var25>
             <xslt:value-of select="$var25 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var25 instance of xs:decimal"/>
          </var25>
-         <xslt:text>
-</xslt:text>
+
          <var26>
             <xslt:value-of select="$var26 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var26 instance of xs:decimal"/>
          </var26>
-         <xslt:text>
-</xslt:text>
+
          <var27>
             <xslt:value-of select="$var27 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var27 instance of xs:double"/>
          </var27>
-         <xslt:text>
-</xslt:text>
+
          <var28>
             <xslt:value-of select="$var28 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var28 instance of xs:double"/>
          </var28>
-         <xslt:text>
-</xslt:text>
+
          <var29>
             <xslt:value-of select="$var29 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var29 instance of xs:double"/>
          </var29>
-         <xslt:text>
-</xslt:text>
+
          <var30>
             <xslt:value-of select="$var30 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var30 instance of xs:integer"/>
          </var30>
-         <xslt:text>
-</xslt:text>
+
          <var31>
             <xslt:value-of select="$var31 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var31 instance of xs:integer"/>
          </var31>
-         <xslt:text>
-</xslt:text>
+
          <var32>
             <xslt:value-of select="$var32 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var32 instance of xs:anyURI"/>
          </var32>
-         <xslt:text>
-</xslt:text>
+
          <var33>
             <xslt:value-of select="$var33 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var33 instance of xs:QName"/>
          </var33>
-         <xslt:text>
-</xslt:text>
+
          <var34>
             <xslt:value-of select="$var34 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var34 instance of xs:dayTimeDuration"/>
          </var34>
-         <xslt:text>
-</xslt:text>
+
          <var35>
             <xslt:value-of select="$var35 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var35 instance of xs:dayTimeDuration"/>
          </var35>
-         <xslt:text>
-</xslt:text>
+
          <var36>
             <xslt:value-of select="$var36 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var36 instance of xs:yearMonthDuration"/>
          </var36>
-         <xslt:text>
-</xslt:text>
+
          <var37>
             <xslt:value-of select="$var37 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var37 instance of xs:yearMonthDuration"/>
          </var37>
-         <xslt:text>
-</xslt:text>
+
          <var38>
             <xslt:value-of select="$var38 instance of xs:anyAtomicType"/>
             <xslt:value-of select="$var38 instance of xs:string"/>

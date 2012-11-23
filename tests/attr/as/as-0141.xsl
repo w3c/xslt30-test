@@ -14,9 +14,9 @@
 </t:function>
 
    <t:function name="my:func2" as="item()*">
-	     <i1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">foo</i1>
-	     <i2 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">bar</i2>
-	     <i3 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">foo</i3>
+	     <i1>foo</i1>
+	     <i2>bar</i2>
+	     <i3>foo</i3>
    </t:function>
 
    <t:function name="my:func3" as="item()*">
@@ -35,7 +35,7 @@
 
    <t:function name="my:func6" as="item()*">
 	     <t:document>
-		       <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">my element</item>
+		       <item>my element</item>
 	     </t:document>
    </t:function>
 

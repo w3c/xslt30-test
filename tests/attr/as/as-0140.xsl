@@ -37,7 +37,7 @@
    </t:template>
 
    <t:template name="a1" as="item()">
-	     <i1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">item</i1>
+	     <i1>item</i1>
    </t:template>
 
    <t:template name="a2" as="item()">
@@ -54,7 +54,7 @@
 
    <t:template name="a5" as="item()">
 	     <t:document>
-		       <my:item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">1</my:item>
+		       <my:item>1</my:item>
 	     </t:document>
    </t:template>
 </t:transform>

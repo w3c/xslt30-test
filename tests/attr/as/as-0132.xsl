@@ -31,9 +31,9 @@
    </xslt:template>
 
    <xslt:template name="a2" as="element(*, xs:untyped)+">
-	     <my:item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">1</my:item>
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">2</item>
-	     <my:item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">3</my:item>
-	     <elem xmlns:xsl="http://www.w3.org/1999/XSL/Transform">hello</elem>
+	     <my:item>1</my:item>
+	     <item>2</item>
+	     <my:item>3</my:item>
+	     <elem>hello</elem>
    </xslt:template>
 </xslt:transform>

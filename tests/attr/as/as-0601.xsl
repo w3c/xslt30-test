@@ -52,7 +52,7 @@
 
    <xslt:template match="item1">
       <xslt:param name="par1" select="1.0"/>
-      <par1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par1>
          <xslt:value-of select="$par1"/>
          <xslt:value-of select="$par1 instance of xs:double"/>
       </par1>
@@ -60,7 +60,7 @@
 
    <xslt:template match="item2">
       <xslt:param name="par2" select="1.0"/>
-      <par2 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par2>
          <xslt:value-of select="abs($par2)"/>
          <xslt:value-of select="$par2 instance of xs:double"/>
       </par2>
@@ -68,7 +68,7 @@
 
    <xslt:template match="item3">
       <xslt:param name="par3" select="1.0"/>
-      <par3 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par3>
          <xslt:value-of select="$par3"/>
          <xslt:value-of select="$par3 instance of xs:double"/>
       </par3>
@@ -76,7 +76,7 @@
 
    <xslt:template match="item4">
       <xslt:param name="par4" select="1"/>
-      <par4 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par4>
          <xslt:value-of select="$par4"/>
          <xslt:value-of select="$par4 instance of xs:integer"/>
       </par4>
@@ -84,7 +84,7 @@
 
    <xslt:template match="item5">
       <xslt:param name="par5" select="1"/>
-      <par5 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par5>
          <xslt:value-of select="$par5"/>
          <xslt:value-of select="$par5 instance of xs:integer"/>
       </par5>
@@ -92,7 +92,7 @@
 
    <xslt:template match="item6">
       <xslt:param name="par6" select="'wrong'"/>
-      <par6 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par6>
          <xslt:value-of select="$par6"/>
          <xslt:value-of select="$par6 instance of xs:QName"/>
       </par6>
@@ -100,7 +100,7 @@
 
    <xslt:template match="item7">
       <xslt:param name="par7" select="'P14D'"/>
-      <par7 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par7>
          <xslt:value-of select="$par7"/>
          <xslt:value-of select="$par7 instance of xs:dayTimeDuration"/>
       </par7>
@@ -108,7 +108,7 @@
 
    <xslt:template match="item8">
       <xslt:param name="par8" select="'P14D'"/>
-      <par8 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par8>
          <xslt:value-of select="$par8"/>
          <xslt:value-of select="$par8 instance of xs:dayTimeDuration"/>
       </par8>
@@ -116,7 +116,7 @@
 
    <xslt:template match="item9">
       <xslt:param name="par9" select="'wrong'"/>
-      <par9 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par9>
          <xslt:value-of select="$par9"/>
          <xslt:value-of select="$par9 instance of xs:string"/>
       </par9>

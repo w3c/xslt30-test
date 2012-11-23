@@ -9,83 +9,83 @@
   				is of the type specified in @as. -->
 
    <xslt:variable name="var1" as="xs:normalizedString">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">like</item>
+	     <item>like</item>
    </xslt:variable>
 
    <xslt:variable name="var2" as="xs:token">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">two organizations</item>
+	     <item>two organizations</item>
    </xslt:variable>
 
    <xslt:variable name="var3" as="xs:language">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">PT</item>
+	     <item>PT</item>
    </xslt:variable>
 
    <xslt:variable name="var4" as="xs:Name">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">a:_underscore_</item>
+	     <item>a:_underscore_</item>
    </xslt:variable>
 
    <xslt:variable name="var5" as="xs:NCName">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">vwxyz12</item>
+	     <item>vwxyz12</item>
    </xslt:variable>
 
    <xslt:variable name="var6" as="xs:NMTOKEN">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">business-enforcement::link-chain.common</item>
+	     <item>business-enforcement::link-chain.common</item>
    </xslt:variable>
 
    <xslt:variable name="var7" as="xs:int">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">131072</item>
+	     <item>131072</item>
    </xslt:variable>
 
    <xslt:variable name="var8" as="xs:nonPositiveInteger">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">-7632460</item>
+	     <item>-7632460</item>
    </xslt:variable>
 
    <xslt:variable name="var9" as="xs:positiveInteger">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">18446744</item>
+	     <item>18446744</item>
    </xslt:variable>
 
    <xslt:variable name="var10" as="xs:nonNegativeInteger">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">4444</item>
+	     <item>4444</item>
    </xslt:variable>
 
    <xslt:variable name="var11" as="xs:negativeInteger">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">-74146</item>
+	     <item>-74146</item>
    </xslt:variable>
 
    <xslt:variable name="var12" as="xs:long">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">-9223372</item>
+	     <item>-9223372</item>
    </xslt:variable>
 
    <xslt:variable name="var13" as="xs:unsignedLong">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">1844674</item>
+	     <item>1844674</item>
    </xslt:variable>
 
    <xslt:variable name="var14" as="xs:unsignedInt">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">573231403</item>
+	     <item>573231403</item>
    </xslt:variable>
 
    <xslt:variable name="var15" as="xs:short">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">-32768</item>
+	     <item>-32768</item>
    </xslt:variable>
 
    <xslt:variable name="var16" as="xs:unsignedShort">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">65535</item>
+	     <item>65535</item>
    </xslt:variable>
 
    <xslt:variable name="var17" as="xs:byte">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">-128</item>
+	     <item>-128</item>
    </xslt:variable>
 
    <xslt:variable name="var18" as="xs:unsignedByte">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">110</item>
+	     <item>110</item>
    </xslt:variable>
 
    <xslt:variable name="var19" as="xs:ID">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">_a</item>
+	     <item>_a</item>
    </xslt:variable>
 
    <xslt:variable name="var20" as="xs:IDREF">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">_a</item>
+	     <item>_a</item>
    </xslt:variable>
 
    <xslt:template match="/doc">

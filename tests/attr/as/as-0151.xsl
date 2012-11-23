@@ -18,7 +18,7 @@
 
    <xslt:template name="temp" as="document-node(element(item,my:partNumberType))+">
 	     <xslt:document type="my:partNumberType">
-		       <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">111-AB</item>
+		       <item>111-AB</item>
 	     </xslt:document>
 	     <xslt:document type="my:partNumberType">
 		       <xslt:element name="item">999-AC</xslt:element>

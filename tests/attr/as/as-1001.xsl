@@ -22,7 +22,7 @@
 
    <xslt:template match="item">
       <xslt:param name="par1" select="'1.0'"/>
-      <par1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par1>
          <xslt:value-of select="$par1"/>
          <xslt:value-of select="$par1 instance of xs:anyURI+"/>
          <xslt:value-of select="$par1 instance of xs:anyURI"/>

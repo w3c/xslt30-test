@@ -10,7 +10,7 @@
 
    <xslt:template match="/doc">
       <xslt:variable name="var1" as="xs:dayTimeDuration*">
-	        <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	        <item>
             <xslt:value-of select="item8"/>
          </item>
       </xslt:variable>

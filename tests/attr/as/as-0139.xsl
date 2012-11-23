@@ -9,7 +9,7 @@
 </t:variable>
 
    <t:variable name="var2" as="item()?">
-	     <i1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">hello</i1>
+	     <i1>hello</i1>
    </t:variable>
 
    <t:variable name="var3" as="item()?">
