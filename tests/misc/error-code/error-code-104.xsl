@@ -5,7 +5,7 @@
 <!-- Error: xsl:import - circular reference -->
 <?spec xslt#errors?><?error XTSE0210?>
 
-<xsl:import href="error137.xsl"/>
+<xsl:import href="error-code-105.xsl"/>
 
   
   <xsl:template match="doc">

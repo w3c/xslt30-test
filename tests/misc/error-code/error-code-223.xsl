@@ -4,7 +4,7 @@
 
 <?error XTSE0210?>
 
-  <xsl:import href="errorcode0210b.xsl"/>
+  <xsl:import href="error-code-224.xsl"/>
 
   <xsl:template name="main">
     <out>

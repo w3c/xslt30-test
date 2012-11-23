@@ -5,7 +5,7 @@
 <!-- Error: xsl:include - circular reference -->
 <?spec xslt#errors?><?error XTSE0180?>
 
-<xsl:include href="error126.xsl"/>
+<xsl:include href="error-code-095.xsl"/>
   
   <xsl:template match="doc">
     <out>

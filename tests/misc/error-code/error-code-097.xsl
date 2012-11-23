@@ -13,6 +13,6 @@
     </out>
   </xsl:template>
   
-<xsl:include href="stdxmlfile.xml"/>
+<xsl:include href="_error-code-test-set.xml"/>
 
 </xsl:stylesheet>

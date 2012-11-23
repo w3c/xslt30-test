@@ -5,7 +5,7 @@
 <!-- Error: xsl:import - self-referential -->
 <?spec xslt#errors?><?error XTSE0210?>
 
-<xsl:import href="error135.xsl"/>
+<xsl:import href="error-code-104.xsl"/>
 
   
   <xsl:template match="doc">
