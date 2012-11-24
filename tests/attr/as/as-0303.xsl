@@ -17,4 +17,6 @@
    <xslt:template match="item" as="xs:untypedAtomic">
       <xslt:value-of select="'123'"/>
    </xslt:template>
+   
+   <xslt:template match="text()"/>
 </xslt:transform>

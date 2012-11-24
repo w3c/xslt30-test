@@ -6,8 +6,6 @@
 <!-- Purpose: Test with an xs:anyURI value as a child of LRE in the sequence constructor of a non-tunnel xsl:with-param and @as=xs:anyURI+. 
   				Verify the parameter is of type xs:anyURI+. -->
 
-   <xslt:output method="xml" encoding="UTF-8"/>
-
    <xslt:template match="/">
       <out>
          <xslt:apply-templates>

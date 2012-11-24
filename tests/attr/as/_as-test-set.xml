@@ -7,7 +7,7 @@
       <source role="." validation="skip">
          <content><![CDATA[<doc/>]]></content>
       </source>
-      <source file="builtinas20_355.xml" uri="builtinas20_355.xml"/>
+      <source file="as-15.xml" uri="as-15.xml"/>
       <schema role="stylesheet-import"
               file="variousTypesSchemaAs.xsd"/>
    </environment>
@@ -18,15 +18,7 @@
       <source file="simple.xml" uri="simple.xml" validation="skip"/>
       <schema role="stylesheet-import" file="variousTypesSchemaAs.xsd"/>
    </environment>
-   <environment name="as-02">
-      <source role=".">
-         <content><![CDATA[<doc>
-	<item1>
-		<item2></item2>
-	</item1>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="as-03">
       <source role=".">
          <content><![CDATA[<doc>
@@ -41,12 +33,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="as-05">
-      <source role="." file="as-05.xml"/>
-   </environment>
-   <environment name="as-06">
-      <source role="." file="as-06.xml"/>
-   </environment>
+   
    <environment name="as-07">
       <source role=".">
          <content><![CDATA[<doc>
@@ -56,34 +43,12 @@
 </item-list>
 </doc>]]></content>
       </source>
-   </environment>
+   </environment>  
+   
    <environment name="as-08">
       <source role="." file="as-08.xml"/>
    </environment>
-   <environment name="as-09">
-      <source role="." file="as-09.xml"/>
-   </environment>
-   <environment name="as-10">
-      <source role=".">
-         <content><![CDATA[<doc>
-<item-list>
-<item>5.4321E-1001</item>
-</item-list>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="as-11">
-      <source role=".">
-         <content><![CDATA[<doc>
-<item-list>
-<item1>5.4321E-1</item1>
-<item1>-0.00175</item1>
-<item1>INF</item1>
-<item>hello</item>
-</item-list>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="as-12">
       <source role=".">
          <content><![CDATA[<doc> 
@@ -111,9 +76,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="as-15">
-      <source role="." file="as-15.xml"/>
-   </environment>
+   
    <environment name="as-16">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
@@ -138,40 +101,13 @@
       <schema role="stylesheet-import"
               file="variousTypesSchemaAs.xsd"/>
    </environment>
-   <environment name="as-21">
-      <source role="." file="as-21.xml" validation="strict"/>
-      <schema role="source-reference" file="anyUriSchemaAs.xsd" xsd-version="1.0"/>
-   </environment>
-   <environment name="as-22">
-      <source role="." file="as-22.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="integerSchemaAs.xsd"/>
-   </environment>
-   <environment name="as-23">
-      <source role="." file="as-23.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="integerSchemaAs.xsd"/>
-   </environment>
-   <environment name="as-24">
-      <source role="." file="as-24.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="variousTypesSchemaAs.xsd"/>
-   </environment>
-   <environment name="as-25">
-      <source role="." file="as-25.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="builtinTypeSchemaAs.xsd"/>
-   </environment>
+   
    <environment name="as-26">
       <source role="." file="as-26.xml" validation="strict"/>
       <schema role="source-reference"
               file="builtinTypeSchemaAs.xsd"/>
    </environment>
-   <environment name="as-27">
-      <source role="." file="as-27.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="builtinTypeSchemaAs.xsd"/>
-   </environment>
+   
    <environment name="as-28" validation="strict">
       <source role=".">
          <content><![CDATA[<elem-Name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -202,26 +138,13 @@ a:_underscore_
       <source file="as-32b.xml" uri="as-32b.xml"/>
       <schema file="subgroupTypeSchemaAs.xsd"/>
    </environment>
-   <environment name="as-33">
-      <source role="." file="as-33.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="id-idref-notation-schemaas.xsd"/>
-   </environment>
-   <environment name="as-34">
-      <source role="." file="as-34.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="id-idref-notation-schemaas.xsd"/>
-   </environment>
+   
    <environment name="as-35">
       <source role="." file="as-35.xml" validation="strict"/>
       <schema role="source-reference"
               file="variousTypesSchemaAs.xsd"/>
    </environment>
-   <environment name="as-36">
-      <source role="." file="as-36.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="attributesSchemaAs.xsd"/>
-   </environment>
+   
 
    <test-case name="as-0101">
       <description>Test with global xsl:variable and @as=empty-sequence(). Value for @select are () and empty sequence obtained at run time.</description>
@@ -421,7 +344,45 @@ a:_underscore_
          <stylesheet file="as-0112.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0112.out"/>
+         <all-of>
+            <assert>/out/template1 = "P1Y2M3DT10H30M23S"</assert>
+            <assert>/out/template2 = "-P1Y23DT59.123S"</assert>
+            <assert>/out/template3 = "2000-01-16T00:00:00Z"</assert>
+            <assert>/out/template4 = "-1999-05-31T13:20:00+14:00"</assert>
+            <assert>/out/template5 = "13:20:00-05:00"</assert>
+            <assert>/out/template6 = "00:00:00"</assert>
+            <assert>/out/template7 = "-0012-12-03-05:00"</assert>
+            <assert>/out/template8 = "1999-05-31"</assert>
+            <assert>/out/template9 = "21999-05+14:00"</assert>
+            <assert>/out/template10 = "1999-05"</assert>
+            <assert>/out/template11 = "-0012-05:00"</assert>
+            <assert>/out/template12 = "2005"</assert>
+            <assert>/out/template13 = "--05-31"</assert>
+            <assert>/out/template14 = "--05-31+14:00"</assert>
+            <assert>/out/template15 = "---31+14:00"</assert>
+            <assert>/out/template16 = "---31Z"</assert>
+            <assert>/out/template17 = "--05+14:00"</assert>
+            <assert>/out/template18 = "--05"</assert>
+            <assert>/out/template19 = "true"</assert>
+            <assert>/out/template20 = "PM24"</assert>
+            <assert>/out/template21 = "07FF"</assert>
+            <assert>/out/template22 = "INF"</assert>
+            <assert>/out/template23 = "-0.00175"</assert>
+            <assert>/out/template24 = "-3.4201"</assert>
+            <assert>/out/template25 = "7.8899"</assert>
+            <assert>/out/template26 = "0"</assert>
+            <assert>/out/template27 = "0"</assert>
+            <assert>/out/template28 = "0"</assert>
+            <assert>/out/template29 = "INF"</assert>
+            <assert>/out/template30 = "43"</assert>
+            <assert>/out/template31 = "-300"</assert>
+            <assert>/out/template32 = "http://www.mytypetest.org"</assert>
+            <assert>/out/template34 = "PT1M39.999S"</assert>
+            <assert>/out/template35 = "-PT1H40M"</assert>
+            <assert>/out/template36 = "P1Y2M"</assert>
+            <assert>/out/template37 = "-P1Y9M"</assert>
+            <assert>/out/template38 = "hello"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -697,7 +658,15 @@ a:_underscore_
          <stylesheet file="as-0130.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0130.out"/>
+         <all-of>
+            <assert>empty(/out/e1/node())</assert>
+            <assert>/out/e2/elem[1] = "hi1"</assert>
+            <assert>/out/e2/elem[2] = "hi2"</assert>
+            <assert>/out/e2/elem[3] = "hi3"</assert>
+            <assert>/out/e3/*:item[1] = "1"</assert>
+            <assert>/out/e3/*:item[2] = "2"</assert>
+            <assert>/out/e3/*:item[3] = "3"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -712,7 +681,15 @@ a:_underscore_
          <stylesheet file="as-0131.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0131.out"/>
+         <all-of>           
+            <assert>/out/e1/elem[1] = "hi1"</assert>
+            <assert>/out/e1/elem[2] = "hi2"</assert>
+            <assert>/out/e1/item[1] = "hi3"</assert>
+            <assert>/out/e2/*[1] = "1"</assert>
+            <assert>/out/e2/*[2] = "2"</assert>
+            <assert>/out/e2/*[3] = "3"</assert>
+            <assert>/out/e2/*[4] = "hello"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -727,7 +704,15 @@ a:_underscore_
          <stylesheet file="as-0132.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0132.out"/>
+         <all-of>           
+            <assert>/out/e1/elem[1] = "hi1"</assert>
+            <assert>/out/e1/elem[2] = "hi2"</assert>
+            <assert>/out/e1/item[1] = "hi3"</assert>
+            <assert>/out/e2/*[1] = "1"</assert>
+            <assert>/out/e2/*[2] = "2"</assert>
+            <assert>/out/e2/*[3] = "3"</assert>
+            <assert>/out/e2/*[4] = "hello"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -742,10 +727,7 @@ a:_underscore_
          <stylesheet file="as-0133.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1/>
-<e2 att="4"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1/><e2 att="4"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -760,10 +742,7 @@ a:_underscore_
          <stylesheet file="as-0134.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1/>
-<e2 att="1"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1/><e2 att="1"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -778,10 +757,7 @@ a:_underscore_
          <stylesheet file="as-0135.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1/>
-<e2 att="1"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1/><e2 att="1"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -796,9 +772,7 @@ a:_underscore_
          <stylesheet file="as-0136.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<func1>truefalse</func1>
-<func2>truetrue</func2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><func1>truefalse</func1><func2>truetrue</func2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -813,10 +787,7 @@ a:_underscore_
          <stylesheet file="as-0137.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<func1>truefalse</func1>
-<func2>truetrue</func2>
-<func3>truefalse</func3></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><func1>truefalse</func1><func2>truetrue</func2><func3>truefalse</func3></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -831,9 +802,7 @@ a:_underscore_
          <stylesheet file="as-0138.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<func1>truefalse</func1>
-<func2>truetrue</func2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><func1>truefalse</func1><func2>truetrue</func2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -848,12 +817,7 @@ a:_underscore_
          <stylesheet file="as-0139.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-<e3>true</e3>
-<e4>true</e4>
-<e5>true</e5></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>true</e1><e2>true</e2><e3>true</e3><e4>true</e4><e5>true</e5></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -868,12 +832,7 @@ a:_underscore_
          <stylesheet file="as-0140.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1><i1>item</i1></e1>
-<e2>my string</e2>
-<e3>2</e3>
-<e4><elem>hi1</elem></e4>
-<e5><my:item xmlns:my="http://uri.test">1</my:item></e5></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1><i1>item</i1></e1><e2>my string</e2><e3>2</e3><e4><elem>hi1</elem></e4><e5><my:item xmlns:my="http://uri.test">1</my:item></e5></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -888,7 +847,14 @@ a:_underscore_
          <stylesheet file="as-0141.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0141.out"/>
+         <all-of>
+            <assert>/out/func1 = "truefalse"</assert>
+            <assert>/out/func2 = "truefalse"</assert>
+            <assert>/out/func3 = "truetrue"</assert>
+            <assert>/out/func4 = "truefalse"</assert>
+            <assert>/out/func5 = "truefalse"</assert>
+            <assert>/out/func6 = "truetrue"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -904,12 +870,7 @@ a:_underscore_
          <stylesheet file="as-0142.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<temp1>P1Y2M3DT10H30M23S</temp1>
-<temp2>2005</temp2>
-<temp3>1.0001</temp3>
-<temp4>000-TM</temp4>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><temp1>P1Y2M3DT10H30M23S</temp1><temp2>2005</temp2><temp3>1.0001</temp3><temp4>000-TM</temp4></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -925,7 +886,7 @@ a:_underscore_
          <stylesheet file="as-0143.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0143.out"/>
+         <assert>every $var in /out/* satisfies $var = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -941,7 +902,7 @@ a:_underscore_
          <stylesheet file="as-0144.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0144.out"/>
+         <assert>every $var in /out/* satisfies $var = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -957,7 +918,28 @@ a:_underscore_
          <stylesheet file="as-0145.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0145.out"/>
+         <all-of>
+            <assert>/out/temp1 = "like"</assert>
+            <assert>/out/temp2 = "two organizations"</assert>
+            <assert>/out/temp3 = "PT"</assert>
+            <assert>/out/temp4 = "a:_underscore_"</assert>
+            <assert>/out/temp5 = "vwxyz12"</assert>
+            <assert>/out/temp6 = "business-enforcement::link-chain.common"</assert>
+            <assert>/out/temp7 = "131072"</assert>
+            <assert>/out/temp8 = "-7632460"</assert>
+            <assert>/out/temp9 = "18446744"</assert>
+            <assert>/out/temp10 = "4444"</assert>
+            <assert>/out/temp11 = "-74146"</assert>
+            <assert>/out/temp12 = "-9223372"</assert>
+            <assert>/out/temp13 = "1844674"</assert>
+            <assert>/out/temp14 = "573231403"</assert>
+            <assert>/out/temp15 = "-32768"</assert>
+            <assert>/out/temp16 = "65535"</assert>
+            <assert>/out/temp17 = "-128"</assert>
+            <assert>/out/temp18 = "110"</assert>
+            <assert>/out/temp19 = "_a"</assert>
+            <assert>/out/temp20 = "_a"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -973,13 +955,7 @@ a:_underscore_
          <stylesheet file="as-0146.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<func1>true</func1>
-<func2>true</func2>
-<func3>true</func3>
-<func4>true</func4>
-<func5>true</func5>
-<func6>true</func6></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><func1>true</func1><func2>true</func2><func3>true</func3><func4>true</func4><func5>true</func5><func6>true</func6></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -995,9 +971,7 @@ a:_underscore_
          <stylesheet file="as-0147.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var1>falsetrue</var1><var2>falsetrue</var2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1013,9 +987,7 @@ a:_underscore_
          <stylesheet file="as-0148.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>123-AB * falsetrue</var1>
-<var2>0 * falsetrue</var2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var1>123-AB * falsetrue</var1><var2>0 * falsetrue</var2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1031,9 +1003,7 @@ a:_underscore_
          <stylesheet file="as-0149.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<func1>true</func1>
-<func2>true</func2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><func1>true</func1><func2>true</func2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1049,8 +1019,7 @@ a:_underscore_
          <stylesheet file="as-0150.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<func1>truefalse</func1></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><func1>truefalse</func1></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1073,7 +1042,11 @@ a:_underscore_
    <test-case name="as-0201">
       <description>Test with tunnel xsl:with-param and @as=empty-sequence(). The values for @select are () and empty sequence obtained at run time.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-02"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><item1><item2></item2></item1></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1096,7 +1069,7 @@ a:_underscore_
          <stylesheet file="as-0301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
+         <assert>/out = "true"</assert>
       </result>
    </test-case>
 
@@ -1111,7 +1084,7 @@ a:_underscore_
          <stylesheet file="as-0302.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truetruetruefalse</out>]]></assert-xml>
+         <assert>/out = "truetruetruefalse"</assert>
       </result>
    </test-case>
 
@@ -1126,9 +1099,7 @@ a:_underscore_
          <stylesheet file="as-0303.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-	123
-</out>]]></assert-xml>
+         <assert>/out = "123"</assert>
       </result>
    </test-case>
 
@@ -1143,7 +1114,7 @@ a:_underscore_
          <stylesheet file="as-0304.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truetruetrue</out>]]></assert-xml>
+         <assert>/out = "truetruetrue"</assert>
       </result>
    </test-case>
 
@@ -1158,7 +1129,7 @@ a:_underscore_
          <stylesheet file="as-0401.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truefalsetruefalse</out>]]></assert-xml>
+         <assert>/out = "truefalsetruefalse"</assert>
       </result>
    </test-case>
 
@@ -1173,14 +1144,16 @@ a:_underscore_
          <stylesheet file="as-0402.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truefalse</out>]]></assert-xml>
+         <assert>/out = "truefalse"</assert>
       </result>
    </test-case>
 
    <test-case name="as-0501">
       <description>Test with global xsl:variable where @select has an xs:untypedAtomic value and @as is a built-in atomic type. Verify the variable is of the type specified in @as. Values for @as tested: all built-in primitive types, xs:integer, xs:dayTimeDuration, xs:yearMonthDuration</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-05"/>
+      <environment>
+         <source role="." file="as-05.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1188,14 +1161,16 @@ a:_underscore_
          <stylesheet file="as-0501.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0501.out"/>
+         <assert>every $var in /out/* satisfies $var = "true"</assert>
       </result>
    </test-case>
 
    <test-case name="as-0601">
       <description>Test with non-tunnel xsl:with-param where the value in @select is explicitly constructed and of the same type as the built-in atomic type in @as. Verify the parapmeter is of the type specified in @as.Types tested are: xs:string, xs:double, xs:integer, xs:dayTimeDuration, xs:QName</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-06"/>
+      <environment>
+         <source role="." file="as-06.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1203,7 +1178,17 @@ a:_underscore_
          <stylesheet file="as-0601.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0601.out"/>
+         <all-of>
+            <assert>/out/par1 = "0true"</assert>
+            <assert>/out/par2 = "0true"</assert>
+            <assert>/out/par3 = "INFtrue"</assert>
+            <assert>/out/par4 = "43true"</assert>
+            <assert>/out/par5 = "-300true"</assert>
+            <assert>/out/par6 = "my:localtrue"</assert>
+            <assert>/out/par7 = "PT1M39.999Strue"</assert>
+            <assert>/out/par8 = "-PT1H40Mtrue"</assert>
+            <assert>/out/par9 = "hellotrue"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1218,7 +1203,7 @@ a:_underscore_
          <stylesheet file="as-0701.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><par1>0truetrue</par1></out>]]></assert-xml>
+         <assert>/out/par1 = "0truetrue"</assert>         
       </result>
    </test-case>
 
@@ -1233,12 +1218,7 @@ a:_underscore_
          <stylesheet file="as-0702.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-
-<par1>0true</par1>
-
-
-</out>]]></assert-xml>
+         <assert>/out/par1 = "0true"</assert>
       </result>
    </test-case>
 
@@ -1253,14 +1233,11 @@ a:_underscore_
          <stylesheet file="as-0703.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-
-<par1>http://www.mytypetest.orgtrue</par1>
-<par2>hellotrue</par2>
-<par3>my elementtrue</par3>
-
-
-</out>]]></assert-xml>
+         <all-of>
+            <assert>/out/par1 = "http://www.mytypetest.orgtrue"</assert>
+            <assert>/out/par2 = "hellotrue"</assert>
+            <assert>/out/par3 = "my elementtrue"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1275,7 +1252,7 @@ a:_underscore_
          <stylesheet file="as-0801.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0801.out"/>
+         <assert>every $var in /out/* satisfies $var = "truefalse"</assert>
       </result>
    </test-case>
 
@@ -1290,14 +1267,37 @@ a:_underscore_
          <stylesheet file="as-0802.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-0802.out"/>
+         <all-of>
+            <assert>/out/template1 = "P1Y2M3DT10H30M23S -P1Y23DT59.123S"</assert>
+            <assert>/out/template2 = "2000-01-16T00:00:00Z -1999-05-31T13:20:00+14:00"</assert>
+            <assert>/out/template3 = "13:20:00-05:00 00:00:00"</assert>
+            <assert>/out/template4 = "-0012-12-03-05:00 1999-05-31"</assert>
+            <assert>/out/template5 = "21999-05+14:00 1999-05"</assert>
+            <assert>/out/template6 = "-0012-05:00 2005"</assert>
+            <assert>/out/template7 = "--05-31 --05-31+14:00"</assert>
+            <assert>/out/template8 = "---31+14:00 ---31Z"</assert>
+            <assert>/out/template9 = "--05+14:00 --05"</assert>
+            <assert>/out/template10 = "true false"</assert>
+            <assert>/out/template11 = "PM24 1010"</assert>
+            <assert>/out/template12 = "07FF ABCD"</assert>
+            <assert>/out/template13 = "1.1234E30 -0.00175"</assert>
+            <assert>/out/template14 = "-3.4201 7.8899 0"</assert>
+            <assert>/out/template15 = "0 0 INF"</assert>
+            <assert>/out/template16 = "43 -300"</assert>
+            <assert>/out/template17 = "http://www.mytypetest.org http://www.hello.org#one"</assert>
+            <assert>/out/template18 = "PT1M39.999S -PT1H40M"</assert>
+            <assert>/out/template19 = "P1Y2M -P1Y9M"</assert>
+            <assert>/out/template20 = "hello one two three"</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="as-0901">
       <description>Test with an xs:untypedAtomic value as a child of LRE in the sequence constructor of a local xsl:variable and @as=xs:dayTimeDuration*. Verify the variable is of type xs:dayTimeDuration*.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-09"/>
+      <environment>
+         <source role="." file="as-09.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1305,14 +1305,18 @@ a:_underscore_
          <stylesheet file="as-0901.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truetrue</out>]]></assert-xml>
+         <assert>/out = "truetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-1001">
       <description>Test with an xs:anyURI value as a child of LRE in the sequence constructor of a non-tunnel xsl:with-param and @as=xs:anyURI+. Verify the parameter is of type xs:anyURI+.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-10"/>
+      <environment name="as-10">
+         <source role=".">
+            <content><![CDATA[<doc><item-list><item>5.4321E-1001</item></item-list></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1320,18 +1324,18 @@ a:_underscore_
          <stylesheet file="as-1001.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-
-<par1>http://test.orgtruetrue</par1>
-
-</out>]]></assert-xml>
+         <assert>/out/par1 = "http://test.orgtruetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-1101">
       <description>Test with several xs:untypedAtomic values as children of LRE in the sequence constructor of a tunnel xsl:with-param and @as=xs:float*. Verify the parameter is of type xs:float*.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-11"/>
+      <environment name="as-11">
+         <source role=".">
+            <content><![CDATA[<doc><item-list><item1>5.4321E-1</item1><item1>-0.00175</item1><item1>INF</item1><item>hello</item></item-list></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1339,14 +1343,12 @@ a:_underscore_
          <stylesheet file="as-1101.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-
-<empty/>
-<empty/>
-<empty/>
-<par1>0.54321 -0.00175 INFtruefalse</par1>
-
-</out>]]></assert-xml>
+         <all-of>
+            <assert>/out/*[1][self::empty] = ""</assert>
+            <assert>/out/*[2][self::empty] = ""</assert>
+            <assert>/out/*[3][self::empty] = ""</assert>
+            <assert>/out/*[4][self::par1] = "0.54321 -0.00175 INFtruefalse"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1362,7 +1364,7 @@ a:_underscore_
          <stylesheet file="as-1201.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1201.out"/>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1377,10 +1379,7 @@ a:_underscore_
          <stylesheet file="as-1202.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-<e3>true</e3></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1395,10 +1394,7 @@ a:_underscore_
          <stylesheet file="as-1203.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-<e3>true</e3></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1413,10 +1409,7 @@ a:_underscore_
          <stylesheet file="as-1204.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-</out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1431,10 +1424,7 @@ a:_underscore_
          <stylesheet file="as-1205.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-</out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1449,9 +1439,7 @@ a:_underscore_
          <stylesheet file="as-1206.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1466,9 +1454,7 @@ a:_underscore_
          <stylesheet file="as-1207.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1483,9 +1469,7 @@ a:_underscore_
          <stylesheet file="as-1208.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1500,9 +1484,7 @@ a:_underscore_
          <stylesheet file="as-1209.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1517,7 +1499,19 @@ a:_underscore_
          <stylesheet file="as-1210.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1210.out"/>
+         <all-of>
+            <assert>/out/e1/item="hello"</assert>
+            <assert>/out/e2/item[@attrib="red"][comment()="I am a comment"]="hello"</assert>
+            <assert>/out/e3[@attrib="red"]</assert>
+            <assert>/out/e4[processing-instruction(Process) = "fun"]</assert>
+            <assert>/out/e5 = "hello"</assert>
+            <assert>/out/e6/comment() = "I am a comment"</assert>
+            <assert>/out/e21/e1 = "element"</assert>
+            <assert>/out/e31/@e1 = "attribute"</assert>
+            <assert>/out/e41/processing-instruction(e1) = "PI"</assert>
+            <assert>/out/e51 = "text"</assert>
+            <assert>/out/e61/comment() = "comment"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1532,9 +1526,7 @@ a:_underscore_
          <stylesheet file="as-1211.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1 attrib="red"/>
-<e2 e1="attribute"/></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1 attrib="red"/><e2 e1="attribute"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1549,7 +1541,7 @@ a:_underscore_
          <stylesheet file="as-1212.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truetruetrue</out>]]></assert-xml>
+         <assert>/out = "truetruetrue"</assert>
       </result>
    </test-case>
 
@@ -1564,7 +1556,7 @@ a:_underscore_
          <stylesheet file="as-1213.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truetrue</out>]]></assert-xml>
+         <assert>/out = "truetrue"</assert>
       </result>
    </test-case>
 
@@ -1579,10 +1571,7 @@ a:_underscore_
          <stylesheet file="as-1214.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1597,12 +1586,7 @@ a:_underscore_
          <stylesheet file="as-1215.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3>
-<e4>truefalse</e4>
-<e5>truefalse</e5></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3><e4>truefalse</e4><e5>truefalse</e5></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1617,10 +1601,7 @@ a:_underscore_
          <stylesheet file="as-1216.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1635,12 +1616,7 @@ a:_underscore_
          <stylesheet file="as-1217.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>hellotrue</par1>
-<par2>hello namespacedtrue</par2>
-<par3>true</par3>
-<par4>true</par4>
-<par5>hello hellotrue</par5></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><par1>hellotrue</par1><par2>hello namespacedtrue</par2><par3>true</par3><par4>true</par4><par5>hello hellotrue</par5></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1655,13 +1631,7 @@ a:_underscore_
          <stylesheet file="as-1218.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-<e3>true</e3>
-<e4>true</e4>
-<e5>true</e5>
-<e6>true</e6></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1676,13 +1646,7 @@ a:_underscore_
          <stylesheet file="as-1219.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-<e3>true</e3>
-<e4>true</e4>
-<e5>true</e5>
-<e6>true</e6></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1697,14 +1661,7 @@ a:_underscore_
          <stylesheet file="as-1220.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-<e3>true</e3>
-<e4>true</e4>
-<e5>true</e5>
-<e6>true</e6>
-<e7>true</e7></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1719,13 +1676,7 @@ a:_underscore_
          <stylesheet file="as-1221.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>true</e1>
-<e2>true</e2>
-<e3>true</e3>
-<e4>true</e4>
-<e5>true</e5>
-<e6>true</e6></out>]]></assert-xml>
+         <assert>every $e in /out/* satisfies $e = "true"</assert>
       </result>
    </test-case>
 
@@ -1740,7 +1691,17 @@ a:_underscore_
          <stylesheet file="as-1222.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1222.out"/>
+         <all-of>
+            <assert>/out/par1/normalize-space() = "hello namespaced true"</assert>
+            <assert>/out/par2 = "INFtrue"</assert>
+            <assert>/out/par3 = "3 -300 my:local PT1M39.999Strue"</assert>
+            <assert>/out/par4 = "redtrue"</assert>
+            <assert>/out/par5/normalize-space() = "hello namespaced true"</assert>
+            <assert>/out/par6 = "hellotrue"</assert>
+            <assert>/out/par7 = "true"</assert>
+            <assert>/out/par8 = "true"</assert>
+            <assert>/out/par9 = "hellotrue"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1755,12 +1716,7 @@ a:_underscore_
          <stylesheet file="as-1301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3>
-<e4>truefalse</e4>
-<e5>truefalse</e5></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3><e4>truefalse</e4><e5>truefalse</e5></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1775,8 +1731,7 @@ a:_underscore_
          <stylesheet file="as-1302.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truefalse</e1></out>]]></assert-xml>
+         <assert>/out/e1 = "truefalse"</assert>
       </result>
    </test-case>
 
@@ -1791,12 +1746,7 @@ a:_underscore_
          <stylesheet file="as-1401.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3>
-<e4>truefalse</e4>
-<e5>truefalse</e5></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3><e4>truefalse</e4><e5>truefalse</e5></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1814,10 +1764,7 @@ a:_underscore_
          <stylesheet file="as-1402.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1835,11 +1782,7 @@ a:_underscore_
          <stylesheet file="as-1403.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3>
-<e4>truetrue</e4></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3><e4>truetrue</e4></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1854,11 +1797,7 @@ a:_underscore_
          <stylesheet file="as-1404.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3>
-<e4>truefalse</e4></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3><e4>truefalse</e4></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1873,17 +1812,21 @@ a:_underscore_
          <stylesheet file="as-1405.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="as-1501">
-      <description>Test with global xsl:variable that has @as="processing-instruction()*" and @select contains: -one processing-instruction node from input file, a sequence of processing-instruction nodes from input file, an empty sequence obtained at run time, (), processing-instruction nodes from a temporary tree</description>
+      <description>
+         Test with global xsl:variable that has @as="processing-instruction()*" and @select contains: 
+         -one processing-instruction node from input file, 
+         a sequence of processing-instruction nodes from input file, 
+         an empty sequence obtained at run time, (), processing-instruction nodes from a temporary tree
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-15"/>
+      <environment>
+         <source role="." file="as-15.xml"/>
+      </environment>>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1891,12 +1834,7 @@ a:_underscore_
          <stylesheet file="as-1501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>truetrue</e1>
-<e2>truefalse</e2>
-<e3>truefalse</e3>
-<e4>truefalse</e4>
-<e5>truefalse</e5></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>truetrue</e1><e2>truefalse</e2><e3>truefalse</e3><e4>truefalse</e4><e5>truefalse</e5></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1952,7 +1890,7 @@ a:_underscore_
          <stylesheet file="as-1701.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1701.out"/>
+         <assert>every $v in /out/* satisfies $v = "truetrue"</assert>
       </result>
    </test-case>
 
@@ -1972,12 +1910,15 @@ a:_underscore_
          <stylesheet file="as-1702.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1702.out"/>
+         <assert>every $v in /out/* satisfies $v = "falsetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-1703">
-      <description>Test of xsl:template with a sequence constructor of LREs and @as= built-in derived atomic type. Value of LRE is in the lexical space of the type in @as.</description>
+      <description>
+         Test of xsl:template with a sequence constructor of LREs and @as= built-in derived atomic type. 
+         Value of LRE is in the lexical space of the type in @as.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="as-17"/>
       <dependencies>
@@ -1989,12 +1930,37 @@ a:_underscore_
          <stylesheet file="as-1703.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1703.out"/>
+         <all-of>
+            <assert>/out/temp1 = "like,"</assert>
+            <assert>/out/temp2 = "two organizations"</assert>
+            <assert>/out/temp3 = "PT"</assert>
+            <assert>/out/temp4 = "a:_underscore_"</assert>
+            <assert>/out/temp5 = "vwxyz12"</assert>
+            <assert>/out/temp6 = "business-enforcement::link-chain.common"</assert>
+            <assert>/out/temp7 = "131072"</assert>
+            <assert>/out/temp8 = "-7632460"</assert>
+            <assert>/out/temp9 = "18446744"</assert>
+            <assert>/out/temp10 = "4444"</assert>
+            <assert>/out/temp11 = "-74146"</assert>
+            <assert>/out/temp12 = "-9223372"</assert>
+            <assert>/out/temp13 = "1844674"</assert>
+            <assert>/out/temp14 = "573231403"</assert>
+            <assert>/out/temp15 = "-32768"</assert>
+            <assert>/out/temp16 = "65535"</assert>
+            <assert>/out/temp17 = "-128"</assert>
+            <assert>/out/temp18 = "110"</assert>
+            <assert>/out/temp19 = "_ab"</assert>
+            <assert>/out/temp20 = "_ab"</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="as-1704">
-      <description>Test with local xsl:variable where @select has a typed value same as in @as, obtained at run time from element or attribute nodes, @as is abuilt-in derived atomic type. Verify the variable is of the type specified in @as. Types tested: -xs:nonPositiveInteger, xs:int, xs:long, xs:unsignedByte, xs:NMTOKEN, xs:ID</description>
+      <description>
+         Test with local xsl:variable where @select has a typed value same as in @as, obtained at run time from 
+         element or attribute nodes, @as is abuilt-in derived atomic type. Verify the variable is of the type 
+         specified in @as. Types tested: -xs:nonPositiveInteger, xs:int, xs:long, xs:unsignedByte, xs:NMTOKEN, xs:ID
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="as-17"/>
       <dependencies>
@@ -2003,21 +1969,19 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas028.xsl"/>
+         <stylesheet file="as-1704.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2>
-<var3>falsetrue</var3>
-<var4>falsetrue</var4>
-<var5>falsetrue</var5>
-<var6>falsetrue</var6></out>]]></assert-xml>
+         <assert>every $v in /out/* satisfies $v = "falsetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-1705">
-      <description>Test with global xsl:param where @select is a typed value the same as in @as and obtained at run time, @as is a built-in derived atomic type. Verify the parameter is of the type specified in @as. Types tested: -xs:nonPositiveInteger, xs:int, xs:long, xs:unsignedByte, xs:NMTOKEN, xs:ID</description>
+      <description>
+         Test with global xsl:param where @select is a typed value the same as in @as and obtained at run time, 
+         @as is a built-in derived atomic type. Verify the parameter is of the type specified in @as. 
+         Types tested: -xs:nonPositiveInteger, xs:int, xs:long, xs:unsignedByte, xs:NMTOKEN, xs:ID
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="as-17"/>
       <dependencies>
@@ -2026,21 +1990,20 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas038.xsl"/>
+         <stylesheet file="as-1705.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>falsetrue</par1>
-<par2>falsetrue</par2>
-<par3>falsetrue</par3>
-<par4>falsetrue</par4>
-<par5>falsetrue</par5>
-<par6>falsetrue</par6></out>]]></assert-xml>
+         <assert>every $v in /out/* satisfies $v = "falsetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-1706">
-      <description>Test with global xsl:param without @select, where the sequence constructor contains a typed value, the same as in @as, obtained at run time and @as is a built-in derived atomic type. Verify the parameter is of the type specified in @as.Types tested: -xs:nonPositiveInteger, xs:int, xs:long, xs:unsignedByte, xs:NMTOKEN, xs:ID</description>
+      <description>
+         Test with global xsl:param without @select, where the sequence constructor contains a typed value, 
+         the same as in @as, obtained at run time and @as is a built-in derived atomic type. 
+         Verify the parameter is of the type specified in @as.Types tested: 
+         -xs:nonPositiveInteger, xs:int, xs:long, xs:unsignedByte, xs:NMTOKEN, xs:ID
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="as-17"/>
       <dependencies>
@@ -2049,21 +2012,20 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas041.xsl"/>
+         <stylesheet file="as-1706.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>falsetrue</par1>
-<par2>falsetrue</par2>
-<par3>falsetrue</par3>
-<par4>falsetrue</par4>
-<par5>falsetrue</par5>
-<par6>falsetrue</par6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-1707">
-      <description>Test with local xsl:param where @select is a typed value the same as in @as and obtained at run time, @as is a built-in derived atomic type. Verify the parameter is of the type specified in @as. Types tested: -xs:nonPositiveInteger, xs:int, xs:long, xs:unsignedByte, xs:NMTOKEN, xs:ID</description>
+      <description>
+         Test with local xsl:param where @select is a typed value the same as in @as and 
+         obtained at run time, @as is a built-in derived atomic type. 
+         Verify the parameter is of the type specified in @as. Types tested: 
+         -xs:nonPositiveInteger, xs:int, xs:long, xs:unsignedByte, xs:NMTOKEN, xs:ID
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="as-17"/>
       <dependencies>
@@ -2072,16 +2034,10 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas044.xsl"/>
+         <stylesheet file="as-1707.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>falsetrue</par1>
-<par2>falsetrue</par2>
-<par3>falsetrue</par3>
-<par4>falsetrue</par4>
-<par5>falsetrue</par5>
-<par6>falsetrue</par6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2095,16 +2051,10 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas050.xsl"/>
+         <stylesheet file="as-1708.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>falsetrue</par1>
-<par2>falsetrue</par2>
-<par3>falsetrue</par3>
-<par4>falsetrue</par4>
-<par5>falsetrue</par5>
-<par6>falsetrue</par6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2121,11 +2071,7 @@ a:_underscore_
          <stylesheet file="as-1709.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2>
-<var3>falsetrue</var3>
-<var4>falsetrue</var4></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2142,11 +2088,7 @@ a:_underscore_
          <stylesheet file="as-1710.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2>
-<var3>falsetrue</var3>
-<var4>falsetrue</var4></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2163,8 +2105,7 @@ a:_underscore_
          <stylesheet file="as-1711.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetrue"</assert>
       </result>
    </test-case>
 
@@ -2181,8 +2122,7 @@ a:_underscore_
          <stylesheet file="as-1712.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetrue"</assert>
       </result>
    </test-case>
 
@@ -2199,9 +2139,7 @@ a:_underscore_
          <stylesheet file="as-1713.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<temp1>business-enforcement::link-chain.common</temp1>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><temp1>business-enforcement::link-chain.common</temp1></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2217,10 +2155,7 @@ a:_underscore_
          <stylesheet file="as-1801.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truefalse</var1>
-<var2>truefalse</var2>
-<var3>truefalse</var3></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "truefalse"</assert>
       </result>
    </test-case>
 
@@ -2236,10 +2171,7 @@ a:_underscore_
          <stylesheet file="as-1802.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truefalse</var1>
-<var2>truetrue</var2>
-<var3>truetrue</var3></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var1>truefalse</var1><var2>truetrue</var2><var3>truetrue</var3></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2255,10 +2187,7 @@ a:_underscore_
          <stylesheet file="as-1803.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<temp1>http://www.uri.com  *  -P1Y23DT59.123S  *  0  *  -7632460  *  hello</temp1>
-<temp2>000-TM  *  1.0001  *  123-AB  *  1000</temp2>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><temp1>http://www.uri.com  *  -P1Y23DT59.123S  *  0  *  -7632460  *  hello</temp1><temp2>000-TM  *  1.0001  *  123-AB  *  1000</temp2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2274,9 +2203,7 @@ a:_underscore_
          <stylesheet file="as-1804.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2292,11 +2219,7 @@ a:_underscore_
          <stylesheet file="as-1805.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2>
-<var3>falsetrue</var3>
-<var4>falsetrue</var4></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2312,9 +2235,7 @@ a:_underscore_
          <stylesheet file="as-1806.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2330,11 +2251,7 @@ a:_underscore_
          <stylesheet file="as-1807.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2>
-<var3>falsetrue</var3>
-<var4>falsetrue</var4></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2350,9 +2267,10 @@ a:_underscore_
          <stylesheet file="as-1808.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<func1>falsetrue</func1>
-<func2>falsetrue</func2></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/func1 = "falsetrue"</assert>
+            <assert>/out/func2 = "falsetrue"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2368,9 +2286,7 @@ a:_underscore_
          <stylesheet file="as-1809.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>1.0001falsetrue</par1>
-<par2>-1falsetrue</par2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><par1>1.0001falsetrue</par1><par2>-1falsetrue</par2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2386,13 +2302,15 @@ a:_underscore_
          <stylesheet file="as-1810.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetruetruetrue</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetruetruetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-1811">
-      <description>Test with xsl:template which returns a mixed sequence of derived built-in or user-defined atomic values and @as="xs:anyAtomicType+".</description>
+      <description>
+         Test with xsl:template which returns a mixed sequence of derived built-in or user-defined atomic values 
+         and @as="xs:anyAtomicType+".
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="as-18"/>
       <dependencies>
@@ -2403,7 +2321,15 @@ a:_underscore_
          <stylesheet file="as-1811.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1811.out"/>
+         <all-of xmlns:my="http://www.example.com/ns/various">
+            <assert>/out/temp1/my:onlyAttributes[@my:colors="red blue green" and @specialPart="123-AB"]</assert>
+            <assert>/out/temp2[1]/my:complexUserElem[@age="75" and firstName="Hello" and familyName="There"]</assert>
+            <assert>/out/temp2[2]/my:complexMixedUserElem[@age="44" 
+               and normalize-space(description) = "Mr Peter has brown hair"
+               and normalize-space(company) = "He works at a Notorios company"
+               and description/name="Peter"
+               and company/name="Notorios"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2419,7 +2345,10 @@ a:_underscore_
          <stylesheet file="as-1812.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1812.out"/>
+         <all-of xmlns:my="http://www.example.com/ns/various">
+            <assert>/out/temp1/@my:specialPart = "123-AB"</assert>
+            <assert>/out/temp2/@my:specialPart = "000-AB"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2435,7 +2364,11 @@ a:_underscore_
          <stylesheet file="as-1813.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1813.out"/>
+         <all-of xmlns:my="http://www.example.com/ns/various">
+            <assert>/out/temp1/@my:specialPart = "123-AB"</assert>
+            <assert>/out/temp2/@my:listParts = "000-SS 000-RR"</assert>
+            <assert>/out/temp3/@my:union = "11111"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2455,7 +2388,7 @@ a:_underscore_
          <stylesheet file="as-1702.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-1901.out"/>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2469,16 +2402,10 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas028.xsl"/>
+         <stylesheet file="as-1704.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2>
-<var3>falsetrue</var3>
-<var4>falsetrue</var4>
-<var5>falsetrue</var5>
-<var6>falsetrue</var6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2492,16 +2419,10 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas038.xsl"/>
+         <stylesheet file="as-1705.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>falsetrue</par1>
-<par2>falsetrue</par2>
-<par3>falsetrue</par3>
-<par4>falsetrue</par4>
-<par5>falsetrue</par5>
-<par6>falsetrue</par6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2515,16 +2436,10 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas041.xsl"/>
+         <stylesheet file="as-1706.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>falsetrue</par1>
-<par2>falsetrue</par2>
-<par3>falsetrue</par3>
-<par4>falsetrue</par4>
-<par5>falsetrue</par5>
-<par6>falsetrue</par6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2538,16 +2453,10 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas044.xsl"/>
+         <stylesheet file="as-1707.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>falsetrue</par1>
-<par2>falsetrue</par2>
-<par3>falsetrue</par3>
-<par4>falsetrue</par4>
-<par5>falsetrue</par5>
-<par6>falsetrue</par6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2561,16 +2470,10 @@ a:_underscore_
          <year_component_values value="support negative year"/>
       </dependencies>
       <test>
-         <stylesheet file="schemaas050.xsl"/>
+         <stylesheet file="as-1708.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>falsetrue</par1>
-<par2>falsetrue</par2>
-<par3>falsetrue</par3>
-<par4>falsetrue</par4>
-<par5>falsetrue</par5>
-<par6>falsetrue</par6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
@@ -2646,7 +2549,10 @@ a:_underscore_
    <test-case name="as-2101">
       <description>Test type of global xsl:variable where @select contains user-defined types derived by restriction from xs:anyURI, @as="xs:string".(type promotion)</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-21"/>
+      <environment>
+         <source role="." file="as-21.xml" validation="strict"/>
+         <schema role="source-reference" file="anyUriSchemaAs.xsd" xsd-version="1.0"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -2655,18 +2561,18 @@ a:_underscore_
          <stylesheet file="as-2101.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>falsetrue</var1>
-<var2>falsetrue</var2>
-<var3>falsetrue</var3>
-<var4>falsetrue</var4></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "falsetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-2201">
       <description>Test type of global xsl:variable where @select contains a user-defined value derived by restriction from xs:integer, @as="xs:decimal".(subtype substitution)</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-22"/>
+      <environment>
+         <source role="." file="as-22.xml" validation="strict"/>
+         <schema role="source-reference"
+            file="integerSchemaAs.xsd"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -2675,20 +2581,18 @@ a:_underscore_
          <stylesheet file="as-2201.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1>
-<var2>truetrue</var2>
-<var3>truetrue</var3>
-<var4>truetrue</var4>
-<var5>truetrue</var5>
-<var6>truetrue</var6></out>]]></assert-xml>
+         <assert>every $p in /out/* satisfies $p = "truetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-2301">
       <description>Test type of global xsl:variable where @select contains a user-defined value derived by restriction from xs:int, @as="xs:int".(subtype substitution)</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-23"/>
+      <environment>
+         <source role="." file="as-23.xml" validation="strict"/>
+         <schema role="source-reference"
+            file="integerSchemaAs.xsd"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -2705,7 +2609,11 @@ a:_underscore_
    <test-case name="as-2401">
       <description>Test type of global xsl:variable where @select contains a user-defined value derived by restriction from another user-defined type that is also specified in @as.(subtype substitution)</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-24"/>
+      <environment>
+         <source role="." file="as-24.xml" validation="strict"/>
+         <schema role="source-reference"
+            file="variousTypesSchemaAs.xsd"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -2722,7 +2630,11 @@ a:_underscore_
    <test-case name="as-2501">
       <description>Test with xsl:template that contains built-in types derived by restriction from xs:decimal, @as="xs:float".(type promotion) Types tested: - xs:long, xs:nonNegativeInteger, xs:int, xs:byte</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-25"/>
+      <environment>
+         <source role="." file="as-25.xml" validation="strict"/>
+         <schema role="source-reference"
+            file="builtinTypeSchemaAs.xsd"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -2752,7 +2664,14 @@ a:_underscore_
          <stylesheet file="as-2601.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-2601.out"/>
+         <all-of>
+            <assert>/out/temp1 = "one two two organizations"</assert>
+            <assert>/out/temp2 = "PT"</assert>
+            <assert>/out/temp3 = "131072 2000"</assert>
+            <assert>/out/temp4 = "-2 -9999999 -74146"</assert>
+            <assert>/out/temp5 = "-128 127"</assert>
+            <assert>/out/temp6 = "_ab"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2775,7 +2694,11 @@ a:_underscore_
    <test-case name="as-2701">
       <description>Test with a sequence of xs:ID values obtained at run time in @select of a local xsl:variable and @as=xs:ID+. Verify the variable is of type xs:ID+.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-27"/>
+      <environment>
+         <source role="." file="as-27.xml" validation="strict"/>
+         <schema role="source-reference"
+            file="builtinTypeSchemaAs.xsd"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -2800,7 +2723,7 @@ a:_underscore_
          <stylesheet file="as-2801.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><var1>truetrue</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetrue"</assert>
       </result>
    </test-case>
 
@@ -2816,7 +2739,7 @@ a:_underscore_
          <stylesheet file="as-2802.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><var1>truetrue</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetrue"</assert>
       </result>
    </test-case>
 
@@ -2848,7 +2771,7 @@ a:_underscore_
          <stylesheet file="as-2804.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><var1>truetruefalse</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetruefalse"</assert>
       </result>
    </test-case>
 
@@ -2896,7 +2819,7 @@ a:_underscore_
          <stylesheet file="as-2903.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><var1>truetruetrue</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetruetrue"</assert>
       </result>
    </test-case>
 
@@ -2932,7 +2855,11 @@ a:_underscore_
          <stylesheet file="as-2905.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-2905.out"/>
+         <all-of>
+            <assert>/out/temp1/elem-anyURI = "http://www.example.org/ns/test"</assert>
+            <assert>/out/temp2/elem-anyURI = "http://www.uri.com"</assert>
+            <assert>/out/temp3/elem-anyURI = "http://test1.org"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2948,8 +2875,10 @@ a:_underscore_
          <stylesheet file="as-2906.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><func1>true</func1>
-<func2>true</func2></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/func1 = "true"</assert>
+            <assert>/out/func2 = "true"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2968,12 +2897,7 @@ a:_underscore_
          <stylesheet file="as-3001.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>true</var1>
-<var2>true</var2>
-<var3>true</var3>
-<var4>true</var4>
-<var5>true</var5></out>]]></assert-xml>
+         <assert>every $var in /out/* satisfies $var = "true"</assert>
       </result>
    </test-case>
 
@@ -2993,7 +2917,13 @@ a:_underscore_
          <stylesheet file="as-3002.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-3002.out"/>
+         <all-of xmlns:my="http://www.example.com/ns/union-list">
+            <assert>/out/temp1/my:list-builtin = "one two three"</assert>
+            <assert>/out/temp2/my:list-primitive = "2.2 4.00099 -0.1111 7"</assert>
+            <assert>/out/temp3/my:list-derived = "EN PT BG"</assert>
+            <assert>/out/temp4/my:list-user-defined = "000-AB 123-CD"</assert>
+            <assert>/out/temp5/my:list-union = "5 111-GG 188"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3012,12 +2942,7 @@ a:_underscore_
          <stylesheet file="as-3003.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>true</par1>
-<par2>true</par2>
-<par3>true</par3>
-<par4>true</par4>
-<par5>true</par5></out>]]></assert-xml>
+         <assert>every $var in /out/* satisfies $var = "true"</assert>
       </result>
    </test-case>
 
@@ -3033,7 +2958,7 @@ a:_underscore_
          <stylesheet file="as-3101.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-3101.out"/>
+         <assert>every $var in /out/* satisfies $var = "true"</assert>
       </result>
    </test-case>
    
@@ -3285,7 +3210,7 @@ a:_underscore_
          <stylesheet file="as-3201.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><var1>truetrue</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetrue"</assert>
       </result>
    </test-case>
 
@@ -3301,14 +3226,18 @@ a:_underscore_
          <stylesheet file="as-3202.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>truetrue</out>]]></assert-xml>
+         <assert>/out = "truetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-3301">
       <description>Test type of global xsl:variable selecting a typed attribute node from input file and @as="attribute (QName, xs:NOTATION)".</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-33"/>
+      <environment>
+         <source role="." file="as-33.xml" validation="strict"/>
+         <schema role="source-reference"
+            file="id-idref-notation-schemaas.xsd"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -3317,15 +3246,18 @@ a:_underscore_
          <stylesheet file="as-3301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1></out>]]></assert-xml>
+         <assert>/out/var1 = "truetrue"</assert>
       </result>
    </test-case>
 
    <test-case name="as-3401">
       <description>Test type of global xsl:variable selecting a typed attribute node from input file and @as="attribute(QName, built-in-list-type)". Types tested: xs:NMTOKENS, xs:ENTITIES xs:IDREFS.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-34"/>
+      <environment>
+         <source role="." file="as-34.xml" validation="strict"/>
+         <schema role="source-reference"
+            file="id-idref-notation-schemaas.xsd"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -3334,10 +3266,7 @@ a:_underscore_
          <stylesheet file="as-3401.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1>
-<var2>truetrue</var2>
-<var3>truetrue</var3></out>]]></assert-xml>
+         <assert>every $var in /out/* satisfies $var = "truetrue"</assert>
       </result>
    </test-case>
 
@@ -3353,9 +3282,10 @@ a:_underscore_
          <stylesheet file="as-3501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1>
-<var2>truefalse</var2></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/var1 = "truetrue"</assert>
+            <assert>/out/var2 = "truefalse"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3371,10 +3301,11 @@ a:_underscore_
          <stylesheet file="as-3502.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truefalse</var1>
-<var2>truetrue</var2>
-<var3>truefalse</var3></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/var1 = "truefalse"</assert>
+            <assert>/out/var2 = "truetrue"</assert>
+            <assert>/out/var3 = "truefalse"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3390,7 +3321,12 @@ a:_underscore_
          <stylesheet file="as-3503.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-3503.out"/>
+         <all-of>
+            <assert>/out/temp1 = ""</assert>
+            <assert>/out/temp2 = ""</assert>
+            <assert>/out/temp3/*:simpleUserElem = "123-AB"</assert>
+            <assert>/out/temp4/item = "000-TM"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3406,7 +3342,11 @@ a:_underscore_
          <stylesheet file="as-3504.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-3504.out"/>
+         <all-of xmlns:my="http://www.example.com/ns/various">
+            <assert>/out/temp1 = ""</assert>
+            <assert>/out/temp2/my:simpleUserElem = "123-AB"</assert>
+            <assert>/out/temp3[my:simpleUserElem = "123-AB"][my:simpleUserElem = "000-AB"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3422,18 +3362,18 @@ a:_underscore_
          <stylesheet file="as-3505.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<par1>true</par1>
-<par2>true</par2>
-<par3>true</par3>
-<par4>true</par4></out>]]></assert-xml>
+         <assert>every $var in /out/* satisfies $var = "true"</assert>
       </result>
    </test-case>
 
    <test-case name="as-3601">
       <description>Test of xsl:template with @as="schema-attribute($QName) +". Sequence constructor contains: -a typed attribute node from input file, a set of typed attribute nodes from input file</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-36"/>
+      <environment>
+         <source role="." file="as-36.xml" validation="strict"/>
+         <schema role="source-reference"
+            file="attributesSchemaAs.xsd"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -3442,7 +3382,10 @@ a:_underscore_
          <stylesheet file="as-3601.xsl"/>
       </test>
       <result>
-         <assert-xml file="as-3601.out"/>
+         <all-of>
+            <assert>/out/temp1/@*:nationality = "americans"</assert>
+            <assert>/out/temp2/@*:nationality = "1.2"</assert>
+         </all-of>
       </result>
    </test-case>
 </test-set>

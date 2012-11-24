@@ -9,11 +9,11 @@
 
    <xslt:output method="xml" encoding="UTF-8"/>
 
-   <xslt:variable name="var1" select="/doc/item/@attr" as="xs:untypedAtomic"/>
+   <xslt:variable name="v" select="/doc/item/@attr" as="xs:untypedAtomic"/>
 
    <xslt:template match="/doc">
       <out>
-         <xslt:value-of select="$var1 instance of xs:untypedAtomic"/>
+         <xslt:value-of select="$v instance of xs:untypedAtomic"/>
       </out>
    </xslt:template>
 </xslt:transform>
