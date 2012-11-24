@@ -20,14 +20,10 @@
 
    <xslt:template match="/my:userNode">
       <out>
-         <xslt:text>
-</xslt:text>
          <var1>
             <xslt:value-of select="$var1 instance of element(*, my:partNumberType)+"/>
             <xslt:value-of select="$var1 instance of element(*, my:partNumberType)"/>
          </var1>
-         <xslt:text>
-</xslt:text>
          <var2>
             <xslt:value-of select="$var2 instance of element(*, my:partNumberType)+"/>
             <xslt:value-of select="$var2 instance of element(*, my:partNumberType)"/>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xslt:transform xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
-                version="2.0"
-                exclude-result-prefixes="xs">
-<!-- Purpose: Test the div operator on two type-annotated integers. -->
+   xmlns:xslt="http://www.w3.org/1999/XSL/Transform" version="2.0" exclude-result-prefixes="xs">
+   <!-- Purpose: Test the div operator on two type-annotated integers. -->
 
    <xslt:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -15,8 +13,6 @@
 
    <xslt:template match="/" version="1.0">
       <out>
-         <xslt:text>
-</xslt:text>
          <xslt:choose>
             <xslt:when test="($top div $odd) instance of xs:double">
                <DivOdd>double</DivOdd>
@@ -31,8 +27,6 @@
                <DivOdd>ERROR: other type</DivOdd>
             </xslt:otherwise>
          </xslt:choose>
-         <xslt:text>
-</xslt:text>
          <xslt:choose>
             <xslt:when test="($top div $even) instance of xs:double">
                <DivOdd>double</DivOdd>
@@ -47,8 +41,6 @@
                <DivOdd>ERROR: other type</DivOdd>
             </xslt:otherwise>
          </xslt:choose>
-         <xslt:text>
-</xslt:text>
       </out>
    </xslt:template>
 </xslt:transform>

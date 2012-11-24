@@ -16,8 +16,6 @@
 
    <xslt:template match="/my:docid">
       <out>
-         <xslt:text>
-</xslt:text>
          <var1>
             <xslt:value-of select="$var1 instance of attribute(my:filetype, xs:NOTATION)"/>
             <xslt:value-of select="notation-elem/@my:filetype instance of attribute(my:filetype, xs:NOTATION)"/>

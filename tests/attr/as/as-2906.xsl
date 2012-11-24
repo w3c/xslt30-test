@@ -22,8 +22,6 @@
          <func1>
             <xslt:value-of select="my:func1() instance of element(elem-anyURI, xs:anyURI)"/>
          </func1>
-         <xslt:text>
-</xslt:text>
          <func2>
             <xslt:value-of select="my:func2() instance of element(elem-NMTOKEN, xs:NMTOKEN)"/>
          </func2>

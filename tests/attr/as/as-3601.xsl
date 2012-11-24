@@ -13,13 +13,9 @@
 
    <xslt:template match="/">
       <out>
-         <xslt:text>
-</xslt:text>
          <temp1>
             <xslt:call-template name="temp1"/>
          </temp1>
-         <xslt:text>
-</xslt:text>
          <temp2>
             <xslt:call-template name="temp2"/>
          </temp2>
