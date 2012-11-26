@@ -5,7 +5,7 @@
 
    <t:variable name="var1" as="document-node()">
 	     <t:document>
-		       <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">hello</item>
+		       <item>hello</item>
 	     </t:document>
    </t:variable>
 

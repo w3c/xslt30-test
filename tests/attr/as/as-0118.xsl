@@ -15,15 +15,11 @@
    <xslt:variable name="var3" select="xs:yearMonthDuration('-P21M')" as="xs:duration"/>
 
    <xslt:template match="/doc">
-      <out>
-         <xslt:text>
-</xslt:text>
+      <out>       
          <var2>
             <xslt:value-of select="$var2 instance of xs:dayTimeDuration"/>
             <xslt:value-of select="$var2 instance of xs:duration"/>
-         </var2>
-         <xslt:text>
-</xslt:text>
+         </var2>       
          <var3>
             <xslt:value-of select="$var3 instance of xs:yearMonthDuration"/>
             <xslt:value-of select="$var3 instance of xs:duration"/>

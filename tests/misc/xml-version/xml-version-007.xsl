@@ -8,7 +8,7 @@
 
    <t:template match="/">
       <out>
-         <a>&#x8;&#x1f;</a>
+         <a status="&#x8;&#x1f;"/>
       </out>
   </t:template>
 </t:transform>

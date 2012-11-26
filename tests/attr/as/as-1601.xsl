@@ -11,7 +11,6 @@
       <xslt:call-template name="temp" as="xs:integer"/>
    </xslt:template>
 
-   <xslt:template name="temp">
-  5
-</xslt:template>
+   <xslt:template name="temp">5</xslt:template>
+   
 </xslt:transform>

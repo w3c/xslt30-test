@@ -11,7 +11,6 @@
       <xslt:call-template name="temp"/>
    </xslt:template>
 
-   <xslt:template name="temp" as="xs:double">
-  hello
-</xslt:template>
+   <xslt:template name="temp" as="xs:double">hello</xslt:template>
+   
 </xslt:transform>

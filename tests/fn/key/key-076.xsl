@@ -2,7 +2,6 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
 xmlns:my="http://my.uri/" exclude-result-prefixes="my">
-  <xsl:output indent="yes"/>
   
   <?spec fo#func-id?>
   <!-- Test that xml:id is recognized as an ID attribute -->

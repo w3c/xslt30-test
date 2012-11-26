@@ -3,7 +3,9 @@
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="xml-version">
    
-   <description>Tests support for XML 1.1</description>
+   <description>
+      Tests support for XML 1.1. Note that the test catalog itself is an XML 1.0 document.
+   </description>
    
    <environment name="xml-version-01">
       <source role=".">
@@ -82,7 +84,11 @@
    </test-case>
 
    <test-case name="xml-version-002">
-      <description>Test case that uses character references #x1 through #x1F in the text nodes inside an LRE in the stylesheet. These characteres were not allowed in the xml 1.0. No error should be raised when the xml declaration has version=1.1 and the characters should be serialized to the output document.</description>
+      <description>
+         Test case that uses character references #x1 through #x1F in the text nodes inside an LRE in the stylesheet. 
+         These characteres were not allowed in the xml 1.0. No error should be raised when the xml declaration has 
+         version=1.1 and the characters should be serialized to the output document.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -98,7 +104,9 @@
    </test-case>
 
    <test-case name="xml-version-003">
-      <description>To output a document with method 'xml' and version '1.1'. The name attribute of an xsl:element is a an AVT that has a character reference.</description>
+      <description>
+         To output a document with method 'xml' and version '1.1'. 
+         The name attribute of an xsl:element is a an AVT that has a character reference.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -143,7 +151,9 @@
    </test-case>
 
    <test-case name="xml-version-006">
-      <description>Testcase that uses LSEP(0x2028) character as actual value in the stylesheet document. The character should create a line feed in the output document.</description>
+      <description>
+         Testcase that uses LSEP(0x2028) character as actual value in the stylesheet document. 
+         The character should create a line feed in the output document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -159,7 +169,10 @@
    </test-case>
 
    <test-case name="xml-version-007">
-      <description>To output a document with method 'xml' and version '1.1'. To ensure that in an attribute node for an LRE, Control Characters in C0 range are output as Numeric Character Reference (NCR).</description>
+      <description>
+         To output a document with method 'xml' and version '1.1'. 
+         To ensure that in an attribute node for an LRE, Control Characters in C0 range are output as Numeric Character Reference (NCR).
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -169,12 +182,14 @@
          <stylesheet file="xml-version-007.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<out><a status="&#8;&#31;"/></out>]]></assert-xml>
+         <serialization-matches><![CDATA[status=["']&#(8|x8);&#(31|x1f|x1F);["']]]></serialization-matches>
       </result>
    </test-case>
 
    <test-case name="xml-version-008">
-      <description>To output a document with method 'xml' and version '1.1'. To ensure that in an attribute node for an xsl:element, Control Characters in C0 range are output as Numeric Character Reference (NCR).</description>
+      <description>
+         To output a document with method 'xml' and version '1.1'. 
+         To ensure that in an attribute node for an xsl:element, Control Characters in C0 range are output as Numeric Character Reference (NCR).</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -184,12 +199,14 @@
          <stylesheet file="xml-version-008.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<out><a status="&#8;&#31;"/></out>]]></assert-xml>
+         <serialization-matches><![CDATA[status=["']&#(8|x8);&#(31|x1f|x1F);["']]]></serialization-matches>
       </result>
    </test-case>
 
    <test-case name="xml-version-009">
-      <description>To output a document with method 'xml' and version '1.1'. To ensure that in an attribute node for an xsl:element, Control Characters in C1 range are output as Numeric Character Reference (NCR).</description>
+      <description>
+         To output a document with method 'xml' and version '1.1'. 
+         To ensure that in an attribute node for an xsl:element, Control Characters in C1 range are output as Numeric Character Reference (NCR).</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -199,12 +216,14 @@
          <stylesheet file="xml-version-009.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><a status="&#130;&#143;"/></out>]]></assert-xml>
+         <serialization-matches><![CDATA[status=["']&#(130|x82);&#(143|x8f|x8F);["']]]></serialization-matches>
       </result>
    </test-case>
 
    <test-case name="xml-version-010">
-      <description>To output a document with method 'xml' and version '1.1'. To ensure that in an attribute node for an LRE, Control Characters in C1 range are output as Numeric Character Reference (NCR).</description>
+      <description>
+         To output a document with method 'xml' and version '1.1'. 
+         To ensure that in an attribute node for an LRE, Control Characters in C1 range are output as Numeric Character Reference (NCR).</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -214,7 +233,7 @@
          <stylesheet file="xml-version-010.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><a status="&#130;&#143;"/></out>]]></assert-xml>
+         <serialization-matches><![CDATA[status=["']&#(130|x82);&#(143|x8f|x8F);["']]]></serialization-matches>
       </result>
    </test-case>
 
@@ -234,17 +253,24 @@
    </test-case>
 
    <test-case name="xml-version-012">
-      <description>Tests a character that was not permistted in XML 1.0 (#x140 character) in the QNames for LRE when the XML version of the stylesheet is 1.1.</description>
+      <description>
+         Tests a character that was not permitted in XML 1.0 (#x140 character) in the QNames 
+         for LRE when the XML version of the stylesheet is 1.1.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="xml-version-012.xsl"/>
+         <stylesheet xml-version="1.1" file="xml-version-012.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><pre:test͆ xmlns:pre="http://www.example.com/pre͆"/></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/*[starts-with(namespace-uri(), 'http://www.example.com/pr')]</assert>
+            <assert>deep-equal(string-to-codepoints(local-name(/out/*)), (116, 101, 115, 116, 838))</assert>
+            <assert>string-to-codepoints(namespace-uri(/out/*))[last()] = 838</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -264,7 +290,9 @@
    </test-case>
 
    <test-case name="xml-version-014">
-      <description>Tests character references with xsl:import and tunnel parameters. Test case uses version="1.0" on the main stylesheet and version="1.1 in the xml declaration of the imported stylesheet.</description>
+      <description>
+         Tests character references with xsl:import and tunnel parameters. 
+         Test case uses version="1.0" on the main stylesheet and version="1.1 in the xml declaration of the imported stylesheet.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -311,7 +339,10 @@
    </test-case>
 
    <test-case name="xml-version-017">
-      <description>Tests undeclare-prefixes="no" on xsl:output element where the method is 'xml' and version is '1.1', the namespace is an IRI.</description>
+      <description>
+         Tests undeclare-prefixes="no" on xsl:output element where the method is 'xml' 
+         and version is '1.1', the namespace is an IRI.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -321,12 +352,15 @@
          <stylesheet file="xml-version-017.xsl"/>
       </test>
       <result>
+         <serialization-matches></serialization-matches>
          <assert-xml><![CDATA[<out><a xmlns:pref="http://example.org/pre&#xC0;"><b/></a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="xml-version-018">
-      <description>To output a document with method 'xml' and version '1.1'. To ensure that in an attribute node for an xsl:element, Control Characters in C1 range are output as Numeric Character Reference (NCR).</description>
+      <description>
+         To output a document with method 'xml' and version '1.1'. 
+         To ensure that in an attribute node for an xsl:element, Control Characters in C1 range are output as Numeric Character Reference (NCR).</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xml-version-02"/>
       <dependencies>
@@ -336,7 +370,7 @@
          <stylesheet file="xml-version-018.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><a status="&#130;&#143;"/></out>]]></assert-xml>
+         <serialization-matches><![CDATA[status=["']&#(130|x82);&#(143|x8f|x8F);["']]]></serialization-matches>
       </result>
    </test-case>
 
@@ -463,12 +497,10 @@
          <stylesheet file="xml-version-026.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<doc xmlns:a="http://a/">
-   <chap>
-      <para/>
-      <para xmlns:a=""/>
-   </chap>
-</doc>]]></assert-xml>
+         <all-of>
+            <serialization-matches>version=['"]1.1['"]</serialization-matches>
+            <serialization-matches>xmlns:a=(""|'')</serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -483,12 +515,7 @@
          <stylesheet file="xml-version-027.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc xmlns:a="http://a/">
-   <chap>
-      <para/>
-      <para/>
-   </chap>
-</doc>]]></assert-xml>
+         <serialization-matches><![CDATA[<chap><para/><para/></chap>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -503,12 +530,7 @@
          <stylesheet file="xml-version-028.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc xmlns:a="http://a/">
-   <chap>
-      <para/>
-      <para/>
-   </chap>
-</doc>]]></assert-xml>
+         <serialization-matches><![CDATA[<chap><para/><para/></chap>]]></serialization-matches>
       </result>
    </test-case>
 

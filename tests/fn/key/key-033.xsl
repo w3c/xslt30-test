@@ -4,7 +4,6 @@
                 
 <!-- test key() in an xsl:key, with a variable reference, 
      not the last step in the pattern -->
-<?spec xslt#keys?>
 
 <xsl:key name="k1" match="*" use="Name/@First"/>
 <xsl:key name="k2" match="key('k1', $name)//*" use="@ID"/>
@@ -17,6 +16,4 @@
 </out>
 </xsl:template>
 
-
-<xsl:output indent="yes"/>
 </xsl:stylesheet>

@@ -4,11 +4,12 @@
   				First text node has whitespace only. Cases tested:
 				- second text node starts with whitespace
 				- second text node does not start with whitespace -->
+   <!-- Note that the comment is removed before whitespace stripping. -->
 
    <t:template match="/">
       <out>
-         <e>   h</e>
-         <e>h   </e>
+         <e>   h<!--c-->   </e>
+         <e>   <!--c-->h   </e>
       </out>
    </t:template>
 </t:transform>

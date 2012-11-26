@@ -1,79 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xslt:transform xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
-                exclude-result-prefixes="xs"
-                version="2.0">
-<!-- Purpose: Test type of global xsl:variable that has @as="item()*" and no @select, 
+   xmlns:xslt="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="xs" version="2.0">
+   <!-- Purpose: Test type of global xsl:variable that has @as="item()*" and no @select, 
   				the sequence constructor contains one of:
 				-nothing, LREs, xsl:value-of, xsl:sequence, sequence of xsl:element, xsl:document -->
 
    <xslt:variable name="temporary-tree">
-	<a>
+      <a>
          <b att="one">hello</b>
-    </a>
+      </a>
    </xslt:variable>
 
-   <xslt:variable name="var1" as="item()*">
-	
-</xslt:variable>
+   <xslt:variable name="var1" as="item()*"> </xslt:variable>
 
    <xslt:variable name="var2" as="item()*">
-	     <i1>hello</i1>
-	     <i2>there</i2>
+      <i1>hello</i1>
+      <i2>there</i2>
    </xslt:variable>
 
    <xslt:variable name="var3" as="item()*">
-	     <xslt:value-of select="'my'"/>
-	     <xslt:value-of select="$temporary-tree/a/b"/>
-	     <xslt:value-of select="'test'"/>
+      <xslt:value-of select="'my'"/>
+      <xslt:value-of select="$temporary-tree/a/b"/>
+      <xslt:value-of select="'test'"/>
    </xslt:variable>
 
    <xslt:variable name="var4" as="item()*">
-	     <xslt:sequence select="(1,2,3)"/>
+      <xslt:sequence select="(1,2,3)"/>
    </xslt:variable>
 
    <xslt:variable name="var5" as="item()*">
-	     <xslt:element name="el1">1</xslt:element>
-	     <xslt:element name="el2">2</xslt:element>
-	     <xslt:element name="el3">3</xslt:element>
-	     <xslt:element name="el4">4</xslt:element>
+      <xslt:element name="el1">1</xslt:element>
+      <xslt:element name="el2">2</xslt:element>
+      <xslt:element name="el3">3</xslt:element>
+      <xslt:element name="el4">4</xslt:element>
    </xslt:variable>
 
    <xslt:variable name="var6" as="item()*">
-	     <xslt:document>
-		       <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">hello</item>
-	     </xslt:document>
+      <xslt:document>
+         <item>hello</item>
+      </xslt:document>
    </xslt:variable>
 
    <xslt:template match="/doc">
       <out>
-         <xslt:text>
-</xslt:text>
          <e1>
             <xslt:value-of select="$var1 instance of item()*"/>
          </e1>
-         <xslt:text>
-</xslt:text>
          <e2>
             <xslt:value-of select="$var2 instance of item()*"/>
          </e2>
-         <xslt:text>
-</xslt:text>
          <e3>
             <xslt:value-of select="$var3 instance of item()*"/>
          </e3>
-         <xslt:text>
-</xslt:text>
          <e4>
             <xslt:value-of select="$var4 instance of item()*"/>
          </e4>
-         <xslt:text>
-</xslt:text>
          <e5>
             <xslt:value-of select="$var5 instance of item()*"/>
          </e5>
-         <xslt:text>
-</xslt:text>
          <e6>
             <xslt:value-of select="$var6 instance of item()*"/>
          </e6>

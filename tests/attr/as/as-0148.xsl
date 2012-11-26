@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xslt:transform xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:my="http://www.example.com/ns/various"
-                xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
-                exclude-result-prefixes="xs my"
-                version="2.0">
-<!-- Purpose: Test of global xsl:variable with a sequence constructor of LREs and @as= user-defined atomic type 
+   xmlns:my="http://www.example.com/ns/various" xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
+   exclude-result-prefixes="xs my" version="2.0">
+   <!-- Purpose: Test of global xsl:variable with a sequence constructor of LREs and @as= user-defined atomic type 
   				(derived by restriction). Value of LRE is in the lexical space of the type in @as. Verify the variable 
   				is of the type specified in @as.-->
 
    <xslt:import-schema namespace="http://www.example.com/ns/various"
-                       schema-location="variousTypesSchemaAs.xsd"/>
+      schema-location="variousTypesSchemaAs.xsd"/>
 
    <xslt:variable name="var1" as="my:partNumberType">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">123-AB</item>
+      <item>123-AB</item>
    </xslt:variable>
 
    <xslt:variable name="var2" as="my:de1-decimal-enumeration-Inline">
-	     <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">0</item>
+      <item>0</item>
    </xslt:variable>
 
    <xslt:template match="/doc">
       <out>
-         <xslt:text>
-</xslt:text>
          <var1>
             <xslt:value-of select="$var1"/>
             <xslt:text> * </xslt:text>
             <xslt:value-of select="$var1 instance of xs:untypedAtomic"/>
             <xslt:value-of select="$var1 instance of my:partNumberType"/>
          </var1>
-         <xslt:text>
-</xslt:text>
          <var2>
             <xslt:value-of select="$var2"/>
             <xslt:text> * </xslt:text>

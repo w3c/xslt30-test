@@ -54,16 +54,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="whitespace-08">
-      <source role=".">
-         <content><![CDATA[ 
-
-<doc>
-    <a>a</a>
-    <b> <!-- test -->b</b>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="whitespace-09">
       <source role="." file="whitespace-09.xml"/>
    </environment>
@@ -76,15 +67,7 @@
 ]]></content>
       </source>
    </environment>
-   <environment name="whitespace-11">
-      <source role=".">
-         <content><![CDATA[ 
-
-<document>
-  <section/>  <section/>  <section/>
-</document>]]></content>
-      </source>
-   </environment>
+   
    <environment name="whitespace-12">
       <source role=".">
          <content><![CDATA[ 
@@ -95,34 +78,7 @@
 ]]></content>
       </source>
    </environment>
-   <environment name="whitespace-13">
-      <source role=".">
-         <content><![CDATA[ 
-
-<doc/>]]></content>
-      </source>
-   </environment>
-   <environment name="whitespace-14">
-      <source role=".">
-         <content><![CDATA[<doc xmlns="http://foo.uri/"><a> </a><b> </b><c> </c></doc>]]></content>
-      </source>
-   </environment>
-   <environment name="whitespace-15">
-      <source role=".">
-         <content><![CDATA[<doc><a> </a><b> </b><c> </c></doc>]]></content>
-      </source>
-   </environment>
-   <environment name="whitespace-16">
-      <source role=".">
-         <content><![CDATA[<abc:doc xmlns:abc="http://abc.uri/">
-<abc:w>   </abc:w>
-<abc:x>   </abc:x>
-<abc:y>   </abc:y>
-<abc:z>   </abc:z>
-<q>    </q>
-</abc:doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="whitespace-17">
       <source role=".">
          <content><![CDATA[<document>
@@ -130,21 +86,13 @@
 </document>]]></content>
       </source>
    </environment>
-   <environment name="whitespace-18">
-      <source role=".">
-         <content><![CDATA[<a xml:space="preserve">
-  <b xml:space="default">  </b>
-  <c>  </c>
-  <d xml:space="preserve">  </d>
-  <e xml:space="default">
-    <f xml:space="preserve">  </f>
-  </e>
-</a>]]></content>
-      </source>
-   </environment>
+   
 
    <test-case name="whitespace-0101">
-      <description>Test that whitespace text nodes as children of xsl:analyze-string which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:analyze-string which has @xml:space=preserve do not interfere 
+         with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -154,12 +102,15 @@
          <stylesheet file="whitespace-0101.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace001.out"/>
+         <assert-xml><![CDATA[<out><E1>a*cada*</E1></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0102">
-      <description>Test that whitespace text nodes as children of xsl:apply-imports which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:apply-imports which has @xml:space=preserve do not interfere 
+         with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -167,15 +118,18 @@
       </dependencies>
       <test>
          <stylesheet file="whitespace-0102.xsl"/>
-         <stylesheet file="whitespace-0102.xsl"/>
+         <stylesheet file="import1.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace002.out"/>
+         <assert-xml><![CDATA[<out><b>primary stylesheet</b><a> imported stylesheet </a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0103">
-      <description>Test that whitespace text nodes as children of xsl:character-map which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:character-map which has @xml:space=preserve do not interfere 
+         with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -185,12 +139,15 @@
          <stylesheet file="whitespace-0103.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace003.out"/>
+         <serialization-matches>bbbbbb</serialization-matches>
       </result>
    </test-case>
 
    <test-case name="whitespace-0104">
-      <description>Test that whitespace text nodes as children of xsl:next-match which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:next-match which has @xml:space=preserve do not interfere 
+         with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -200,12 +157,15 @@
          <stylesheet file="whitespace-0104.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace004.out"/>
+         <assert-xml><![CDATA[<out><b>primary stylesheet</b><a> next match </a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0105">
-      <description>Test that whitespace text nodes as children of xsl:apply-templates which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:apply-templates which has @xml:space=preserve 
+         do not interfere with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -215,12 +175,15 @@
          <stylesheet file="whitespace-0105.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace005.out"/>
+         <assert-xml><![CDATA[<out><b>template for root</b><a> template for doc </a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0106">
-      <description>Test that whitespace text nodes as children of xsl:attribute-set which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:attribute-set which has @xml:space=preserve 
+         do not interfere with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -230,12 +193,15 @@
          <stylesheet file="whitespace-0106.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace006.out"/>
+         <assert-xml><![CDATA[<out><item color="red" number="2"/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0107">
-      <description>Test that whitespace text nodes as children of xsl:call-template which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:call-template which has @xml:space=preserve 
+         do not interfere with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -245,12 +211,15 @@
          <stylesheet file="whitespace-0107.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace007.out"/>
+         <assert-xml><![CDATA[<out><b>template for doc</b><a> temp template </a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0108">
-      <description>Test that whitespace text nodes as children of xsl:choose which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:choose which has @xml:space=preserve 
+         do not interfere with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -260,12 +229,15 @@
          <stylesheet file="whitespace-0108.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace008.out"/>
+         <assert-xml><![CDATA[<out><a>true</a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0109">
-      <description>Test that whitespace text nodes as children of xsl:stylesheet which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>
+         Test that whitespace text nodes as children of xsl:stylesheet which has @xml:space=preserve do not interfere 
+         with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -275,12 +247,14 @@
          <stylesheet file="whitespace-0109.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace009.out"/>
+         <assert-xml><![CDATA[<out>test</out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0110">
-      <description>Test that whitespace text nodes as children of xsl:transform which has @xml:space=preserve do not interfere with processing of the instruction.</description>
+      <description>Test that whitespace text nodes as children of xsl:transform which has @xml:space=preserve 
+         do not interfere with processing of the instruction.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -290,7 +264,7 @@
          <stylesheet file="whitespace-0110.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace010.out"/>
+         <assert-xml><![CDATA[<out>test</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -303,15 +277,20 @@
       </dependencies>
       <test>
          <stylesheet file="whitespace-0111.xsl"/>
-         <stylesheet file="whitespace-0111.xsl"/>
+         <stylesheet file="entity.ent" role="secondary"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace017.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<a>\n\n</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<b>\stest</b>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="whitespace-0112">
-      <description>Test with LRE that contains two text nodes with comment in between. First text node has whitespace only. Cases tested: - second text node starts with whitespace - second text node does not start with whitespace</description>
+      <description>
+         Test with LRE that contains two text nodes with comment in between. First text node has whitespace only. 
+         Cases tested: - second text node starts with whitespace - second text node does not start with whitespace</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -321,12 +300,16 @@
          <stylesheet file="whitespace-0112.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace018.out"/>
+         <assert-xml><![CDATA[<out><e>   h   </e><e>   h   </e></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0113">
-      <description>Test with LRE that contains two text nodes with processing-instruction in between. First text node has whitespace only. Cases tested: - second text node starts with whitespace - second text node does not start with whitespace</description>
+      <description>
+         Test with LRE that contains two text nodes with processing-instruction in between. 
+         First text node has whitespace only. 
+         Cases tested: - second text node starts with whitespace - second text node does not start with whitespace
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -336,12 +319,16 @@
          <stylesheet file="whitespace-0113.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace019.out"/>
+         <assert-xml><![CDATA[<out><e>   h</e><e>h   </e></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0114">
-      <description>Test with an element constructed with whitespace text node children. The element is stored in a variable and its name is listed in xsl:strip-space. Confirm that the element has a text node child.</description>
+      <description>
+         Test with an element constructed with whitespace text node children. 
+         The element is stored in a variable and its name is listed in xsl:strip-space. 
+         Confirm that the element has a text node child.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-01"/>
       <dependencies>
@@ -351,12 +338,18 @@
          <stylesheet file="whitespace-0114.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace020.out"/>
+         <all-of>
+            <assert>/out/a[1] = "  "</assert>
+            <assert>/out/a[2] = "1"</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="whitespace-0201">
-      <description>Test with whitespace text nodes as preceding-siblings of xsl:param. Parent has @xml:space=preserve. Whitespace must be stripped.</description>
+      <description>
+         Test with whitespace text nodes as preceding-siblings of xsl:param. 
+         Parent has @xml:space=preserve. Whitespace must be stripped.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-02"/>
       <dependencies>
@@ -366,12 +359,18 @@
          <stylesheet file="whitespace-0201.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace011.out"/>
+         <all-of>
+            <assert>/out/a = "Content of Rubbish"</assert>
+            <assert>/out/b = "Content of Rubbish"</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="whitespace-0301">
-      <description>Test with whitespace text nodes as preceding-siblings of xsl:sort. Parent has @xml:space=preserve. Whitespace must be stripped.</description>
+      <description>
+         Test with whitespace text nodes as preceding-siblings of xsl:sort. 
+         Parent has @xml:space=preserve. Whitespace must be stripped.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-03"/>
       <dependencies>
@@ -386,7 +385,10 @@
    </test-case>
 
    <test-case name="whitespace-0401">
-      <description>Test xsl:preserve-space with @elements="*:NCName". Template rules have match="*", match="*:NCName" and match="QName"</description>
+      <description>
+         Test xsl:preserve-space with @elements="*:NCName". 
+         Template rules have match="*", match="*:NCName" and match="QName"
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-04"/>
       <dependencies>
@@ -401,7 +403,10 @@
    </test-case>
 
    <test-case name="whitespace-0402">
-      <description>Test xsl:strip-space with @elements="*:NCName". Template rules have match="*", match="*:NCName" and match="QName".</description>
+      <description>
+         Test xsl:strip-space with @elements="*:NCName". 
+         Template rules have match="*", match="*:NCName" and match="QName".
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-04"/>
       <dependencies>
@@ -416,7 +421,9 @@
    </test-case>
 
    <test-case name="whitespace-0501">
-      <description>Test xsl:preserve-space with @elements="NCName:*". Template rules have match="*", match="NCName:* and match="QName".</description>
+      <description>
+         Test xsl:preserve-space with @elements="NCName:*". Template rules have match="*", match="NCName:* and match="QName".
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="whitespace-05"/>
       <dependencies>
@@ -457,7 +464,7 @@
          <stylesheet file="whitespace-0601.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<ok/>]]></assert-xml>
+         <assert>/ok</assert>
       </result>
    </test-case>
 
@@ -472,12 +479,15 @@
          <stylesheet file="whitespace-0701.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-0701.out"/>
+         <assert-xml><![CDATA[<out>ab
+       c
+       d
+  </out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0702">
-      <description>Another Test for white-space</description>
+      <description>Another Test for white-space (xsl:strip-space)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="whitespace-07"/>
       <dependencies>
@@ -487,7 +497,7 @@
          <stylesheet file="whitespace-0702.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-0702.out"/>
+         <assert-xml><![CDATA[<out>abcd</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -502,12 +512,12 @@
          <stylesheet file="whitespace-0703.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-0703.out"/>
+         <assert-xml><![CDATA[<out>abcd</out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0704">
-      <description>Another Test for white-space</description>
+      <description>Another Test for white-space (xsl:strip-space and xsl:preserve-space)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="whitespace-07"/>
       <dependencies>
@@ -517,14 +527,24 @@
          <stylesheet file="whitespace-0704.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-0704.out"/>
+         <assert-xml><![CDATA[<out>ab
+       c
+       d
+  </out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-0801">
       <description>Another Test for white-space handling</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="whitespace-08"/>
+      <environment name="whitespace-08">
+         <source role=".">
+            <content><![CDATA[<doc>
+    <a>a</a>
+    <b> <!-- test -->b</b>
+</doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -532,7 +552,7 @@
          <stylesheet file="whitespace-0801.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-0801.out"/>
+         <assert-xml><![CDATA[<out>ab</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -547,7 +567,10 @@
          <stylesheet file="whitespace-0901.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-0901.out"/>
+         <assert-xml><![CDATA[<out xmlns:ns1="http://ns1/">ab
+       c
+       d
+  </out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -562,7 +585,10 @@
          <stylesheet file="whitespace-0902.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-0902.out"/>
+         <assert-xml><![CDATA[<out xmlns:ns1="http://ns1/">ab
+       c
+       d
+  </out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -577,7 +603,7 @@
          <stylesheet file="whitespace-1001.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1001.out"/>
+         <assert-xml><![CDATA[<out> </out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -592,7 +618,7 @@
          <stylesheet file="whitespace-1002.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1002.out"/>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
 
@@ -607,7 +633,9 @@
          <stylesheet file="whitespace-1003.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1003.out"/>
+         <assert-xml><![CDATA[<out>
+      x
+      </out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -622,7 +650,12 @@
          <stylesheet file="whitespace-1004.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1004.out"/>
+         <!-- result is a tree containing a document node owning a text node -->
+         <all-of>
+            <assert>matches(., '\n\s+x\n\s+')</assert>
+            <assert>/child::text()</assert>
+            <assert>count(/child::node()) = 1</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -637,14 +670,20 @@
          <stylesheet file="whitespace-1005.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1005.out"/>
+         <assert-xml><![CDATA[<out><foo/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-1101">
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="whitespace-11"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<document>
+  <section/>  <section/>  <section/>
+</document>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -652,7 +691,10 @@
          <stylesheet file="whitespace-1101.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1101.out"/>
+         <assert-xml><![CDATA[<out>Position:1,Last:3
+Position:2,Last:3
+Position:3,Last:3
+</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -667,7 +709,7 @@
          <stylesheet file="whitespace-1201.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1201.out"/>
+         <assert-xml><![CDATA[<out> test </out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -682,7 +724,10 @@
          <stylesheet file="whitespace-1202.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1202.out"/>
+         <all-of>
+            <assert>/text() = "test"</assert>
+            <assert>not(/*)</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -697,14 +742,23 @@
          <stylesheet file="whitespace-1203.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1203.out"/>
+         <all-of>
+            <assert>/text() = "a"</assert>
+            <assert>not(/*)</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="whitespace-1301">
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="whitespace-13"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[ 
+
+<doc/>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -712,14 +766,18 @@
          <stylesheet file="whitespace-1301.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1301.out"/>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-1401">
       <description>test that the default namespace is NOT used for names in xsl:strip-space</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="whitespace-14"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc xmlns="http://foo.uri/"><a> </a><b> </b><c> </c></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -727,14 +785,18 @@
          <stylesheet file="whitespace-1401.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1401.out"/>
+         <assert-xml><![CDATA[<doc xmlns="http://foo.uri/"><a> </a><b> </b><c> </c></doc>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-1501">
       <description>test two conflicting xsl:strip-space declarations (recoverable error)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="whitespace-15"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><a> </a><b> </b><c> </c></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -742,14 +804,24 @@
          <stylesheet file="whitespace-1501.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1501.out"/>
+         <assert-xml><![CDATA[<doc><a/><b> </b><c/></doc>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-1601">
       <description>Test import precedence for xsl:strip-space</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="whitespace-16"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<abc:doc xmlns:abc="http://abc.uri/">
+<abc:w>   </abc:w>
+<abc:x>   </abc:x>
+<abc:y>   </abc:y>
+<abc:z>   </abc:z>
+<q>    </q>
+</abc:doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -758,7 +830,7 @@
          <stylesheet file="whitespace-1601a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1601.out"/>
+         <assert-xml><![CDATA[<abc:doc xmlns:abc="http://abc.uri/"><abc:w>   </abc:w><abc:x/><abc:y/><abc:z/><q>    </q></abc:doc>]]></assert-xml>
       </result>
    </test-case>
 
@@ -773,7 +845,10 @@
          <stylesheet file="whitespace-1701.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1701.out"/>
+         <all-of>
+            <assert>/text() = "'test''test'"</assert>
+            <assert>not(/*)</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -788,7 +863,7 @@
          <stylesheet file="whitespace-1702.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1702.out"/>
+         <assert-xml><![CDATA[<out><!--[[[fred]]]--><!--[[[ fred ]]]--></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -803,7 +878,7 @@
          <stylesheet file="whitespace-1703.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1703.out"/>
+         <assert-xml><![CDATA[<out><?p [[[fred]]]?><?q [[[ fred ]]]?></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -818,7 +893,7 @@
          <stylesheet file="whitespace-1704.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1704.out"/>
+         <assert-xml><![CDATA[<document><section/><section/><section/></document>]]></assert-xml>
       </result>
    </test-case>
 
@@ -833,14 +908,25 @@
          <stylesheet file="whitespace-1705.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="whitespace-1705.out"/>
+         <assert-xml><![CDATA[<document><section/><section/><section/></document>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="whitespace-1801">
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="whitespace-18"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<a xml:space="preserve">
+  <b xml:space="default">  </b>
+  <c>  </c>
+  <d xml:space="preserve">  </d>
+  <e xml:space="default">
+    <f xml:space="preserve">  </f>
+  </e>
+</a>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>

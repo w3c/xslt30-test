@@ -8,7 +8,7 @@
    </t:variable>
 
    <t:variable name="var2" as="element()">
-		    <item xmlns:xsl="http://www.w3.org/1999/XSL/Transform">hello</item>
+		    <item>hello</item>
    </t:variable>
 
    <t:template match="/doc">

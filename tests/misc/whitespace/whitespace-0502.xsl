@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<t:transform xmlns:foo="http://www.test1.example.org"
-             xmlns:t="http://www.w3.org/1999/XSL/Transform"
-             exclude-result-prefixes="foo"
-             version="2.0">
-<!-- Purpose: Test xsl:strip-space with @elements="NCName:*". Template 
+<t:transform xmlns:foo="http://www.test1.example.org" xmlns:t="http://www.w3.org/1999/XSL/Transform"
+   exclude-result-prefixes="foo" version="2.0">
+   <!-- Purpose: Test xsl:strip-space with @elements="NCName:*". Template 
   				rules have  match="*" , match="NCName:* and match="QName". -->
 
    <t:preserve-space elements="*"/>
@@ -11,25 +9,25 @@
    <t:strip-space elements="foo:*"/>
 
    <t:template match="/doc">
-	     <out>
+      <out>
          <t:apply-templates/>
       </out>
    </t:template>
 
    <t:template match="elem">
-	     <a xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <a>
          <t:value-of select="."/>
       </a>
    </t:template>
 
    <t:template match="foo:*">
-	     <b xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <b>
          <t:value-of select="."/>
       </b>
    </t:template>
 
    <t:template match="*">
-	     <c xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <c>
          <t:value-of select="."/>
       </c>
    </t:template>

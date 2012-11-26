@@ -6,8 +6,6 @@
 <!-- Purpose: Test with an xs:anyURI value as a child of LRE in the sequence constructor of a non-tunnel xsl:with-param and @as=xs:anyURI+. 
   				Verify the parameter is of type xs:anyURI+. -->
 
-   <xslt:output method="xml" encoding="UTF-8"/>
-
    <xslt:template match="/">
       <out>
          <xslt:apply-templates>
@@ -22,7 +20,7 @@
 
    <xslt:template match="item">
       <xslt:param name="par1" select="'1.0'"/>
-      <par1 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <par1>
          <xslt:value-of select="$par1"/>
          <xslt:value-of select="$par1 instance of xs:anyURI+"/>
          <xslt:value-of select="$par1 instance of xs:anyURI"/>

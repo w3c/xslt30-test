@@ -9,7 +9,7 @@
    <xslt:output method="xml" encoding="UTF-8"/>
 
    <xslt:param name="par" as="xs:anyURI+">
-	     <elem xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	     <elem>
          <xslt:value-of select="xs:anyURI('test.org')"/>
       </elem>
    </xslt:param>

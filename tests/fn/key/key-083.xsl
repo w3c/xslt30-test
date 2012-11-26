@@ -4,10 +4,10 @@
 
 <!-- test a key with a numeric type in a match pattern -->
 <!-- for use with key303.xml -->
-<?spec xslt#keys?>
+
 <xsl:key name="k" match="b" use="string-length(.)"/>
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <out>

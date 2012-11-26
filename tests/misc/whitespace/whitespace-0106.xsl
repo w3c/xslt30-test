@@ -15,7 +15,7 @@
 
    <t:template match="/">
       <out>
-         <item>set1</item>
+         <item t:use-attribute-sets="set1"/>
       </out>
    </t:template>
 </t:transform>

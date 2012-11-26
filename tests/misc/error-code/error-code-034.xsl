@@ -5,7 +5,7 @@
 <!-- Error: xsl:template - duplicate name -->
 <?spec xslt#errors?><?error XTSE0660?>
 
-<xsl:include href="xerror052a.xsl"/>
+<xsl:include href="error-code-034a.xsl"/>
 
 <xsl:template name="one"/>
 

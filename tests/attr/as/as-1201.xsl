@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!-- Purpose: Test type of global xsl:variable selecting any node from input 
+   <!-- Purpose: Test type of global xsl:variable selecting any node from input 
   				file or temporary tree, @as="node()". -->
 
    <t:variable name="temporary-tree">
-	     <a>
-           <t:comment>I am a comment</t:comment>
-           <b att="one">hello</b>
-         </a>
+      <a>
+         <t:comment>I am a comment</t:comment>
+         <b att="one">hello</b>
+      </a>
    </t:variable>
 
    <t:variable name="var1" select="/" as="node()"/>
@@ -36,63 +36,39 @@
 
    <t:template match="/doc">
       <out>
-         <t:text>
-</t:text>
          <e1>
             <t:value-of select="$var1 instance of node()"/>
          </e1>
-         <t:text>
-</t:text>
          <e2>
             <t:value-of select="$var2 instance of node()"/>
          </e2>
-         <t:text>
-</t:text>
          <e3>
             <t:value-of select="$var3 instance of node()"/>
          </e3>
-         <t:text>
-</t:text>
          <e4>
             <t:value-of select="$var4 instance of node()"/>
          </e4>
-         <t:text>
-</t:text>
          <e5>
             <t:value-of select="$var5 instance of node()"/>
          </e5>
-         <t:text>
-</t:text>
          <e6>
             <t:value-of select="$var6 instance of node()"/>
          </e6>
-         <t:text>
-</t:text>
          <e7>
             <t:value-of select="$var7 instance of node()"/>
          </e7>
-         <t:text>
-</t:text>
          <e8>
             <t:value-of select="$var8 instance of node()"/>
          </e8>
-         <t:text>
-</t:text>
          <e9>
             <t:value-of select="$var9 instance of node()"/>
          </e9>
-         <t:text>
-</t:text>
          <e10>
             <t:value-of select="$var10 instance of node()"/>
          </e10>
-         <t:text>
-</t:text>
          <e11>
             <t:value-of select="$var11 instance of node()"/>
          </e11>
-         <t:text>
-</t:text>
          <e12>
             <t:value-of select="$var12 instance of node()"/>
          </e12>

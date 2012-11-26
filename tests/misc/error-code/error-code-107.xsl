@@ -5,7 +5,7 @@
 <!-- Error: xsl:import - target is not a stylesheet -->
 <?spec xslt#errors?><?error ?>
 
-<xsl:import href="stdxmlfile.xml"/>
+<xsl:import href="_error-code-test-set.xml"/>
   
   <xsl:template match="doc">
     <out>

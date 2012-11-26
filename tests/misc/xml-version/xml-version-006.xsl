@@ -6,7 +6,7 @@
    <t:output method="xml" version="1.1" encoding="UTF-8"/>
 
    <t:template match="/">
-      <out>preserve
+      <out xml:space="preserve">
 </out>
   </t:template>
 </t:transform>

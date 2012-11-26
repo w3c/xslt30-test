@@ -48,48 +48,39 @@
 
    <xslt:template match="/doc">
       <out>
-         <xslt:text>
-</xslt:text>
+         
          <func1>
             <xslt:value-of select="my:func1() instance of xs:double"/>
          </func1>
-         <xslt:text>
-</xslt:text>
+         
          <func2>
             <xslt:value-of select="my:func2() instance of xs:double"/>
          </func2>
-         <xslt:text>
-</xslt:text>
+         
          <func3>
             <xslt:value-of select="my:func3() instance of xs:double"/>
          </func3>
-         <xslt:text>
-</xslt:text>
+         
          <func4>
             <xslt:value-of select="my:func4() instance of xs:integer"/>
          </func4>
-         <xslt:text>
-</xslt:text>
+         
          <func5>
             <xslt:value-of select="my:func5() instance of xs:integer"/>
          </func5>
-         <xslt:text>
-</xslt:text>
+         
          <func6>
             <xslt:value-of select="my:func6() instance of xs:anyURI"/>
          </func6>
-         <xslt:text>
-</xslt:text>
+         
          <func7>
             <xslt:value-of select="my:func7() instance of xs:dayTimeDuration"/>
          </func7>
-         <xslt:text>
-</xslt:text>
+         
          <func8>
             <xslt:value-of select="my:func8() instance of xs:dayTimeDuration"/>
          </func8>
-         <xslt:text>
-</xslt:text>
+         
          <func9>
             <xslt:value-of select="my:func9() instance of xs:string"/>
          </func9>

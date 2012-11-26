@@ -10,7 +10,7 @@
    <xslt:output method="xml" encoding="UTF-8"/>
 
    <xslt:function name="my:func1" as="element(my:elem, xs:untyped)">
-	     <my:elem xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	     <my:elem>
 		my element
 	</my:elem>
    </xslt:function>

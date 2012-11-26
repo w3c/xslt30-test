@@ -2,15 +2,20 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="error-code">
-   <description>Tests error-code</description>
+   
+   <description>
+      Tests error conditions. 
+      This test set should include a test for every error code (however, coverage of new XSLT 3.0 errors is incomplete).
+   </description>
+   
    <environment name="error001">
       <source role=".">
-         <content><![CDATA[<doc/>]]></content>
+         <content><![CDATA[<doc>
+  <element attribute="3"/>
+</doc>]]></content>
       </source>
    </environment>
-   <environment name="error007">
-      <source role="." file="error007.xml"/>
-   </environment>
+
    <environment name="error152">
       <source role=".">
          <content><![CDATA[ 
@@ -24,14 +29,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="error213">
-      <source role=".">
-         <content><![CDATA[<doc>
-<param id="1"/>
-<param id="2"/>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="error214">
       <source role=".">
          <content><![CDATA[<t04>
@@ -42,29 +40,7 @@
 </t04>]]></content>
       </source>
    </environment>
-   <environment name="error216">
-      <source role=".">
-         <content><![CDATA[<t04>
-  <a id="a" code="1" value="10"/>
-  <a id="b" code="2" value="20"/>
-  <a id="c" code="2" value="30"/>
-  <a id="d" code="1" value="50"/>
-</t04>]]></content>
-      </source>
-   </environment>
-   <environment name="error246">
-      <source role=".">
-         <content><![CDATA[<a>text</a>
-]]></content>
-      </source>
-   </environment>
-   <environment name="errorcode0010">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <element attribute="3"/>
-</doc>]]></content>
-      </source>
-   </environment>
+   
 
    <test-case name="error-code-001">
       <description>Error: XPath syntax</description>
@@ -244,10 +220,7 @@
          <stylesheet file="error-code-012.xsl"/>
       </test>
       <result>
-         <any-of>
-            <error code="XPST0003"/>
-            <error code="XPST0081"/>
-         </any-of>
+         <error code="XPST0081"/>
       </result>
    </test-case>
 
@@ -262,10 +235,7 @@
          <stylesheet file="error-code-013.xsl"/>
       </test>
       <result>
-         <any-of>
-            <error code="XPST0003"/>
-            <error code="XPST0008"/>
-         </any-of>
+         <error code="XPST0008"/>
       </result>
    </test-case>
 
@@ -1007,18 +977,33 @@
       </result>
    </test-case>
 
-   <test-case name="error-code-063">
-      <description>Error: xsl:decimal-format</description>
+   <test-case name="error-code-063a">
+      <description>Error: format-number - unknown xsl:decimal-format name</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-063.xsl"/>
       </test>
       <result>
          <error code="XTDE1280"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-code-063b">
+      <description>Error: format-number - unknown xsl:decimal-format name</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-063.xsl"/>
+      </test>
+      <result>
+         <error code="FODF1280"/>
       </result>
    </test-case>
 
@@ -1037,18 +1022,33 @@
       </result>
    </test-case>
 
-   <test-case name="error-code-065">
+   <test-case name="error-code-065a">
       <description>Error: no decimal format</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-065.xsl"/>
       </test>
       <result>
          <error code="XTDE1280"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-code-065b">
+      <description>Error: no decimal format</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-065.xsl"/>
+      </test>
+      <result>
+         <error code="FODF1280"/>
       </result>
    </test-case>
 
@@ -1862,10 +1862,7 @@
          <stylesheet file="error-code-118.xsl"/>
       </test>
       <result>
-         <any-of>
-            <error code="XTSE0280"/>
-            <error code="XTSE0550"/>
-         </any-of>
+         <error code="XTSE0550"/>
       </result>
    </test-case>
 
@@ -2967,7 +2964,7 @@
    <test-case name="error-code-190">
       <description>TEST conflicting xsl:namespace declarations</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="error007"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3030,7 +3027,11 @@
    <test-case name="error-code-194">
       <description>Test use of a variable within a pattern causing a circularity (XSLT 2.0)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="error213"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><param id="1"/><param id="2"/></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3075,7 +3076,7 @@
    <test-case name="error-code-197">
       <description>Test use of key() in a key use expression (XSLT 2.0) with circular definitions</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="error216"/>
+      <environment ref="error214"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3090,7 +3091,7 @@
    <test-case name="error-code-198">
       <description>type-check contents of a template rule against the type of the context item (could be detected statically by inference from the match pattern, but dynamic reporting is also allowed)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="error246"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3105,7 +3106,7 @@
    <test-case name="error-code-199">
       <description>Generate error XTSE0010</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3120,7 +3121,7 @@
    <test-case name="error-code-200">
       <description>xsl:stylesheet element in wrong position</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3135,7 +3136,7 @@
    <test-case name="error-code-201">
       <description>Generate error XTSE0020</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3150,7 +3151,7 @@
    <test-case name="error-code-202">
       <description>Generate error XTDE0030</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3166,7 +3167,7 @@
    <test-case name="error-code-203">
       <description>Generate error XTDE0050</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3182,7 +3183,7 @@
    <test-case name="error-code-204">
       <description>Generate error XTDE0060</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3198,7 +3199,7 @@
    <test-case name="error-code-205">
       <description>Generate error XPDY0002</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3214,7 +3215,7 @@
    <test-case name="error-code-206">
       <description>Generate error XTSE0080</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3229,7 +3230,7 @@
    <test-case name="error-code-207">
       <description>Generate error XTSE0090</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3245,7 +3246,7 @@
    <test-case name="error-code-208">
       <description>Generate error XTSE0110</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3261,7 +3262,7 @@
    <test-case name="error-code-209">
       <description>Generate error XTSE0120</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3277,7 +3278,7 @@
    <test-case name="error-code-210">
       <description>Generate error XTSE0125</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3293,7 +3294,7 @@
    <test-case name="error-code-211">
       <description>Generate error XTSE0130</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3309,7 +3310,7 @@
    <test-case name="error-code-212">
       <description>Generate error XTSE0200</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3325,7 +3326,7 @@
    <test-case name="error-code-213">
       <description>Generate error XTSE0150</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3340,7 +3341,7 @@
    <test-case name="error-code-214">
       <description>Generate error XTSE0165</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3356,7 +3357,7 @@
    <test-case name="error-code-215">
       <description>Generate error XTSE0165. Note this involves reading a document that is not a valid stylesheet module, so there will always be an alternative of reporting the error in that module, in this case XTSE0150.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3375,7 +3376,7 @@
    <test-case name="error-code-216">
       <description>Generate error XTSE0170</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3391,7 +3392,7 @@
    <test-case name="error-code-217">
       <description>Generate error XTSE0180</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3407,7 +3408,7 @@
    <test-case name="error-code-218">
       <description>Generate error XTSE0180</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3422,7 +3423,7 @@
    <test-case name="error-code-219">
       <description>Generate error XTSE0180</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3437,7 +3438,7 @@
    <test-case name="error-code-220">
       <description>Generate error XTSE0190</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3453,7 +3454,7 @@
    <test-case name="error-code-221">
       <description>Generate error XTSE0200</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3469,7 +3470,7 @@
    <test-case name="error-code-222">
       <description>Generate error XTSE0210</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3485,7 +3486,7 @@
    <test-case name="error-code-223">
       <description>Generate error XTSE0210</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3501,7 +3502,7 @@
    <test-case name="error-code-224">
       <description>Generate error XTSE0210</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3517,7 +3518,7 @@
    <test-case name="error-code-225">
       <description>Generate error XTSE0220</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -3534,7 +3535,7 @@
    <test-case name="error-code-226">
       <description>Generate error XTSE0260</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3550,7 +3551,7 @@
    <test-case name="error-code-227">
       <description>Generate error XTSE0260</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3566,12 +3567,13 @@
    <test-case name="error-code-228">
       <description>Generate error XTSE0265</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-228.xsl"/>
+         <stylesheet file="error-code-228a.xsl" role="secondary"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -3579,42 +3581,61 @@
       </result>
    </test-case>
 
-   <test-case name="error-code-229">
+   <test-case name="error-code-229a">
       <description>Generate error XTRE0270</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
+         <on-multiple-match value="error"/>
       </dependencies>
       <test>
-         <stylesheet file="errorcode0270.xsl"/>
+         <stylesheet file="error-code-229.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
          <error code="XTRE0270"/>
       </result>
    </test-case>
-
-   <test-case name="error-code-230">
+   
+   <test-case name="error-code-229b">
       <description>Recover from error XTRE0270</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
+         <on-multiple-match value="recover"/>
       </dependencies>
       <test>
-         <stylesheet file="errorcode0270.xsl"/>
+         <stylesheet file="error-code-229.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out>2</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="error-code-229c">
+      <description>Generate error XTSE0270: two statically-conflicting strip-space/preserve-space declarations</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-229.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0270"/>
+      </result>
+   </test-case>
+   
 
    <test-case name="error-code-231">
       <description>Generate error XTSE0280</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3629,7 +3650,7 @@
    <test-case name="error-code-232">
       <description>Generate error XTSE0340</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3645,7 +3666,7 @@
    <test-case name="error-code-233">
       <description>Generate error XTSE0350</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3661,7 +3682,7 @@
    <test-case name="error-code-234">
       <description>Generate error XTSE0370</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3677,7 +3698,7 @@
    <test-case name="error-code-235">
       <description>Generate error XTDE0410</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3693,7 +3714,7 @@
    <test-case name="error-code-236">
       <description>Generate error XTDE0420</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3709,7 +3730,7 @@
    <test-case name="error-code-237">
       <description>Generate error XTDE0430</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3725,7 +3746,7 @@
    <test-case name="error-code-238">
       <description>Generate error XTDE0440</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3741,7 +3762,7 @@
    <test-case name="error-code-239">
       <description>Originally designed to generate error XTDE0485, but this was removed by erratum E16</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -3758,7 +3779,7 @@
    <test-case name="error-code-240">
       <description>Generate error XTSE0500</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3774,7 +3795,7 @@
    <test-case name="error-code-241">
       <description>Generate error XTSE0500</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3790,7 +3811,7 @@
    <test-case name="error-code-242">
       <description>Generate error XTSE0500</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3806,7 +3827,7 @@
    <test-case name="error-code-243">
       <description>Generate error XTTE0510</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3822,7 +3843,7 @@
    <test-case name="error-code-244">
       <description>Generate error XTTE0520</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3838,7 +3859,7 @@
    <test-case name="error-code-245">
       <description>Generate error XTSE0530</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3854,9 +3875,10 @@
    <test-case name="error-code-246">
       <description>Generate error XTRE0540</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
+         <on-multiple-match value="error"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-246.xsl"/>
@@ -3870,7 +3892,7 @@
    <test-case name="error-code-247">
       <description>Generate error XTSE0550</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3886,7 +3908,7 @@
    <test-case name="error-code-248">
       <description>Generate error XTSE0550</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3902,7 +3924,7 @@
    <test-case name="error-code-249">
       <description>Generate error XTSE0550</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3918,7 +3940,7 @@
    <test-case name="error-code-250">
       <description>Generate error XTSE0550</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3934,7 +3956,7 @@
    <test-case name="error-code-251">
       <description>Generate error XTSE0550</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3950,7 +3972,7 @@
    <test-case name="error-code-252">
       <description>Generate error XTDE0560</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3966,7 +3988,7 @@
    <test-case name="error-code-253">
       <description>Generate error XTRE1500</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3982,7 +4004,7 @@
    <test-case name="error-code-254">
       <description>Generate error XTTE0570</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3998,7 +4020,7 @@
    <test-case name="error-code-255">
       <description>Generate error XTSE0580</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4014,7 +4036,7 @@
    <test-case name="error-code-256">
       <description>Generate error XTSE0580</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4030,7 +4052,7 @@
    <test-case name="error-code-257">
       <description>Generate error XTTE0590</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4045,7 +4067,7 @@
    <test-case name="error-code-258">
       <description>Generate error XTTE0600</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4061,7 +4083,7 @@
    <test-case name="error-code-259">
       <description>Generate error XTDE0610</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4077,7 +4099,7 @@
    <test-case name="error-code-260">
       <description>Generate error XTSE0620</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4093,7 +4115,7 @@
    <test-case name="error-code-261">
       <description>Generate error XTSE0630</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4109,7 +4131,7 @@
    <test-case name="error-code-262">
       <description>Generate error XTDE0640</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4125,7 +4147,7 @@
    <test-case name="error-code-263">
       <description>Generate error XTSE0650</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4141,7 +4163,7 @@
    <test-case name="error-code-264">
       <description>Generate error XTSE0660</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4157,7 +4179,7 @@
    <test-case name="error-code-265">
       <description>Generate error XTSE0670</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4173,7 +4195,7 @@
    <test-case name="error-code-266">
       <description>Generate error XTSE0680</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4189,7 +4211,7 @@
    <test-case name="error-code-267">
       <description>Generate error XTSE0690</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4205,7 +4227,7 @@
    <test-case name="error-code-268">
       <description>Generate error XTDE0700</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4220,7 +4242,7 @@
    <test-case name="error-code-269">
       <description>Generate error XTSE0710</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4235,7 +4257,7 @@
    <test-case name="error-code-270">
       <description>Generate error XTSE0710</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4250,7 +4272,7 @@
    <test-case name="error-code-271">
       <description>Generate error XTSE0720</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4265,7 +4287,7 @@
    <test-case name="error-code-272">
       <description>Generate error XTSE0720</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4280,7 +4302,7 @@
    <test-case name="error-code-273">
       <description>Generate error XTSE0740</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4295,7 +4317,7 @@
    <test-case name="error-code-274">
       <description>Generate error XTSE0760</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4310,7 +4332,7 @@
    <test-case name="error-code-275">
       <description>Generate error XTSE0760</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4325,7 +4347,7 @@
    <test-case name="error-code-276">
       <description>Generate error XTSE0770</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4340,7 +4362,7 @@
    <test-case name="error-code-277">
       <description>Generate error XTTE0780</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4356,7 +4378,7 @@
    <test-case name="error-code-278">
       <description>Generate error XTTE0790</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4372,7 +4394,7 @@
    <test-case name="error-code-279">
       <description>Generate error XTSE0805</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4388,7 +4410,7 @@
    <test-case name="error-code-280">
       <description>Generate error XTSE0808</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4404,7 +4426,7 @@
    <test-case name="error-code-281">
       <description>Generate error XTSE0809</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4420,7 +4442,7 @@
    <test-case name="error-code-282">
       <description>Generate error XTSE0810</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4436,7 +4458,7 @@
    <test-case name="error-code-283">
       <description>Generate error XTSE0812</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4452,7 +4474,7 @@
    <test-case name="error-code-284">
       <description>Generate error XTDE0820</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4468,7 +4490,7 @@
    <test-case name="error-code-285">
       <description>Generate error XTDE0830</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4484,7 +4506,7 @@
    <test-case name="error-code-286">
       <description>Generate error XTDE0835</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4500,7 +4522,7 @@
    <test-case name="error-code-287">
       <description>Generate error XTSE0840</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4516,7 +4538,7 @@
    <test-case name="error-code-288">
       <description>Generate error XTDE0850</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4532,7 +4554,7 @@
    <test-case name="error-code-289">
       <description>Generate error XTDE0855</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4548,7 +4570,7 @@
    <test-case name="error-code-290">
       <description>Generate error XTDE0860</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4564,7 +4586,7 @@
    <test-case name="error-code-291">
       <description>Generate error XTDE0865</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4580,7 +4602,7 @@
    <test-case name="error-code-292">
       <description>Generate error XTSE0870</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4596,7 +4618,7 @@
    <test-case name="error-code-293">
       <description>Generate error XTSE0880</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4612,7 +4634,7 @@
    <test-case name="error-code-294">
       <description>Generate error XTDE0890</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4628,7 +4650,7 @@
    <test-case name="error-code-295">
       <description>Generate error XTDE0890</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4644,7 +4666,7 @@
    <test-case name="error-code-296">
       <description>Generate error XTDE0905</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4660,7 +4682,7 @@
    <test-case name="error-code-297">
       <description>Generate error XTSE0910</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4676,7 +4698,7 @@
    <test-case name="error-code-298">
       <description>Generate error XTDE0920</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4692,7 +4714,7 @@
    <test-case name="error-code-299">
       <description>Generate error XTDE0920</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4708,7 +4730,7 @@
    <test-case name="error-code-300">
       <description>Generate error XTDE0925</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4724,7 +4746,7 @@
    <test-case name="error-code-301">
       <description>Generate error XTDE0925</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4740,7 +4762,7 @@
    <test-case name="error-code-302">
       <description>Generate error XTDE0930</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4756,7 +4778,7 @@
    <test-case name="error-code-303">
       <description>Generate error XTSE0940</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4772,7 +4794,7 @@
    <test-case name="error-code-304">
       <description>Generate error XTTE0950</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -4789,7 +4811,7 @@
    <test-case name="error-code-305">
       <description>Generate error XTTE0950</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -4806,7 +4828,7 @@
    <test-case name="error-code-306">
       <description>Generate error XTSE0975</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4822,7 +4844,7 @@
    <test-case name="error-code-307">
       <description>Generate error XTSE0975</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4838,7 +4860,7 @@
    <test-case name="error-code-308">
       <description>Generate error XTSE0975</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4854,7 +4876,7 @@
    <test-case name="error-code-309">
       <description>Generate error XTSE0975</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4870,7 +4892,7 @@
    <test-case name="error-code-310">
       <description>Generate error XTDE0980</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4886,7 +4908,7 @@
    <test-case name="error-code-311">
       <description>Generate error XTTE0990</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4902,7 +4924,7 @@
    <test-case name="error-code-312">
       <description>Generate error XTTE1000</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4918,7 +4940,7 @@
    <test-case name="error-code-313">
       <description>Generate error XTSE1015</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4934,7 +4956,7 @@
    <test-case name="error-code-314">
       <description>Generate error XTSE1017</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4950,7 +4972,7 @@
    <test-case name="error-code-315">
       <description>Generate error XTTE1020</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4966,7 +4988,7 @@
    <test-case name="error-code-316">
       <description>Generate error XTDE1030</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4982,7 +5004,7 @@
    <test-case name="error-code-317">
       <description>Generate error XTDE1035</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4998,7 +5020,7 @@
    <test-case name="error-code-318">
       <description>Generate error XTSE1040</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5014,7 +5036,7 @@
    <test-case name="error-code-319">
       <description>Generate error XTSE1060</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5030,7 +5052,7 @@
    <test-case name="error-code-320">
       <description>Generate error XTSE1070</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5046,7 +5068,7 @@
    <test-case name="error-code-321">
       <description>Generate error XTSE1080</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5062,7 +5084,7 @@
    <test-case name="error-code-322">
       <description>Generate error XTSE1080</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5078,7 +5100,7 @@
    <test-case name="error-code-323">
       <description>Generate error XTSE1080</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5094,7 +5116,7 @@
    <test-case name="error-code-324">
       <description>Generate error XTSE1090</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5110,7 +5132,7 @@
    <test-case name="error-code-325">
       <description>Generate error XTTE1100</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5126,7 +5148,7 @@
    <test-case name="error-code-326">
       <description>Generate error XTTE1100</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5142,7 +5164,7 @@
    <test-case name="error-code-327">
       <description>Generate error XTDE1110</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5158,7 +5180,7 @@
    <test-case name="error-code-328">
       <description>Generate error XTTE1120</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5174,7 +5196,7 @@
    <test-case name="error-code-329">
       <description>Generate error XTSE1130</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5190,7 +5212,7 @@
    <test-case name="error-code-330">
       <description>Generate error XTDE1140</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5206,7 +5228,7 @@
    <test-case name="error-code-331">
       <description>Generate error XTDE1145</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5222,7 +5244,7 @@
    <test-case name="error-code-332">
       <description>Generate error XTDE1150</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5238,7 +5260,7 @@
    <test-case name="error-code-333">
       <description>Generate error XTRE1160</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5254,7 +5276,7 @@
    <test-case name="error-code-334">
       <description>Generate error XTDE1170</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5273,7 +5295,7 @@
    <test-case name="error-code-335">
       <description>Generate error XTDE1190</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5292,7 +5314,7 @@
    <test-case name="error-code-336">
       <description>Generate error XTDE1200</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5308,7 +5330,7 @@
    <test-case name="error-code-337">
       <description>Generate error XTSE1205</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5324,7 +5346,7 @@
    <test-case name="error-code-338">
       <description>Generate error XTSE1205</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5340,7 +5362,7 @@
    <test-case name="error-code-339">
       <description>Generate error XTSE1210</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5356,7 +5378,7 @@
    <test-case name="error-code-340">
       <description>Generate error XTSE1220 (different collations for two keys). May also generate XTSE1210 (unknown collation)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5375,7 +5397,7 @@
    <test-case name="error-code-341">
       <description>Generate error XTDE1260</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5391,7 +5413,7 @@
    <test-case name="error-code-342">
       <description>Generate error XTDE1260</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5407,7 +5429,7 @@
    <test-case name="error-code-343">
       <description>Generate error XTDE1270</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5422,7 +5444,7 @@
    <test-case name="error-code-344">
       <description>Generate error XTDE1270</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5438,7 +5460,7 @@
    <test-case name="error-code-345">
       <description>Generate error XTDE1270</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5454,7 +5476,7 @@
    <test-case name="error-code-346">
       <description>Generate error XTDE1280</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5470,7 +5492,7 @@
    <test-case name="error-code-347">
       <description>Generate error XTSE1290</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5486,7 +5508,7 @@
    <test-case name="error-code-348">
       <description>Generate error XTSE1295</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5502,7 +5524,7 @@
    <test-case name="error-code-349">
       <description>Generate error XTSE1295</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5518,7 +5540,7 @@
    <test-case name="error-code-350">
       <description>Generate error XTSE1300</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5534,7 +5556,7 @@
    <test-case name="error-code-351">
       <description>Generate error XTSE1300</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5550,7 +5572,7 @@
    <test-case name="error-code-352">
       <description>Generate error XTSE1300</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5563,12 +5585,12 @@
       </result>
    </test-case>
 
-   <test-case name="error-code-353">
+   <test-case name="error-code-353a">
       <description>Generate error XTDE1310</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-353.xsl"/>
@@ -5578,13 +5600,29 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
+   
+   <test-case name="error-code-353b">
+      <description>Generate error FODF1310 (3.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-353.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
-   <test-case name="error-code-354">
+   <test-case name="error-code-354a">
       <description>Generate error XTDE1310</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-354.xsl"/>
@@ -5594,13 +5632,29 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
+   
+   <test-case name="error-code-354b">
+      <description>Generate error FODF1310 (3.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-354.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
-   <test-case name="error-code-355">
+   <test-case name="error-code-355a">
       <description>Generate error XTDE1310</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-355.xsl"/>
@@ -5610,13 +5664,29 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
+   
+   <test-case name="error-code-355b">
+      <description>Generate error FODF1310 (3.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-355.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
-   <test-case name="error-code-356">
+   <test-case name="error-code-356a">
       <description>Generate error XTDE1310</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-356.xsl"/>
@@ -5626,13 +5696,29 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
-
-   <test-case name="error-code-357">
-      <description>Generate error XTDE1310</description>
+   
+   <test-case name="error-code-356b">
+      <description>Generate error FODF1310 (3.0)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-356.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-code-357a">
+      <description>Generate error XTDE1310</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-357.xsl"/>
@@ -5642,13 +5728,29 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
+   
+   <test-case name="error-code-357b">
+      <description>Generate error FODF1310 (3.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-357.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
-   <test-case name="error-code-358">
+   <test-case name="error-code-358a">
       <description>Generate error XTDE1310</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-358.xsl"/>
@@ -5658,13 +5760,29 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
+   
+   <test-case name="error-code-358b">
+      <description>Generate error FODF1310 (3.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-358.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
-   <test-case name="error-code-359">
+   <test-case name="error-code-359a">
       <description>Generate error XTDE1310</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-359.xsl"/>
@@ -5674,13 +5792,29 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
+   
+   <test-case name="error-code-359b">
+      <description>Generate error FODF1310 (3.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-359.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
-   <test-case name="error-code-360">
+   <test-case name="error-code-360a">
       <description>Generate error XTDE1310</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-360.xsl"/>
@@ -5690,13 +5824,29 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
+   
+   <test-case name="error-code-360b">
+      <description>Generate error FODF 1310 (3.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-360.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
-   <test-case name="error-code-361">
+   <test-case name="error-code-361a">
       <description>Generate error XTDE1310</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-361.xsl"/>
@@ -5706,11 +5856,27 @@
          <error code="XTDE1310"/>
       </result>
    </test-case>
+   
+   <test-case name="error-code-361b">
+      <description>Generate error FODF1310 (3.0)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-361.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
    <test-case name="error-code-362">
       <description>Generate error XTDE1340</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5726,7 +5892,7 @@
    <test-case name="error-code-363">
       <description>Generate error XTDE1350</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5742,7 +5908,7 @@
    <test-case name="error-code-364">
       <description>Generate error XTDE1360</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5758,7 +5924,7 @@
    <test-case name="error-code-365">
       <description>Generate error XTDE1370</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5774,7 +5940,7 @@
    <test-case name="error-code-366">
       <description>Generate error XTDE1370</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5790,7 +5956,7 @@
    <test-case name="error-code-367">
       <description>Generate error XTDE1380</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5806,7 +5972,7 @@
    <test-case name="error-code-368">
       <description>Generate error XTDE1380</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5822,7 +5988,7 @@
    <test-case name="error-code-369">
       <description>Generate error XTDE1390</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5838,7 +6004,7 @@
    <test-case name="error-code-370">
       <description>Generate error XTDE1390</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5854,7 +6020,7 @@
    <test-case name="error-code-371">
       <description>Generate error XTDE1390</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5870,7 +6036,7 @@
    <test-case name="error-code-372">
       <description>Generate error XTDE1400</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5886,7 +6052,7 @@
    <test-case name="error-code-373">
       <description>Generate error XTDE1400</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5902,7 +6068,7 @@
    <test-case name="error-code-374">
       <description>Generate error XTSE1430</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5918,7 +6084,7 @@
    <test-case name="error-code-375">
       <description>Generate error XTDE1440</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5934,7 +6100,7 @@
    <test-case name="error-code-376">
       <description>Generate error XTDE1440</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5950,7 +6116,7 @@
    <test-case name="error-code-377">
       <description>Generate error XTSE0010 (Note: was XTDE1450 in an earlier draft specification)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5966,7 +6132,7 @@
    <test-case name="error-code-378">
       <description>Generate error XTDE1450</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5982,7 +6148,7 @@
    <test-case name="error-code-379">
       <description>Generate error XTDE1460</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -5998,7 +6164,7 @@
    <test-case name="error-code-380">
       <description>Generate error XTDE1460</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6014,7 +6180,7 @@
    <test-case name="error-code-381">
       <description>Generate error XTDE1460</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6033,7 +6199,7 @@
    <test-case name="error-code-382">
       <description>Generate error XTDE1480</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6049,7 +6215,7 @@
    <test-case name="error-code-383">
       <description>Generate error XTDE1480</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6065,7 +6231,7 @@
    <test-case name="error-code-384">
       <description>Generate error XTDE1490</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6081,7 +6247,7 @@
    <test-case name="error-code-385">
       <description>Generate error XTRE1500</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6097,7 +6263,7 @@
    <test-case name="error-code-386">
       <description>Generate error XTSE1505</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6114,7 +6280,7 @@
    <test-case name="error-code-387">
       <description>Generate error XTSE1505</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6131,7 +6297,7 @@
    <test-case name="error-code-388">
       <description>Generate error XTTE1510</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6148,7 +6314,7 @@
    <test-case name="error-code-389">
       <description>Generate error XTTE1510</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6165,7 +6331,7 @@
    <test-case name="error-code-390">
       <description>Generate error XTTE1512</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6182,7 +6348,7 @@
    <test-case name="error-code-391">
       <description>Generate error XTTE1512</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6199,7 +6365,7 @@
    <test-case name="error-code-392">
       <description>Generate error XTSE1520</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6216,7 +6382,7 @@
    <test-case name="error-code-393">
       <description>Generate error XTSE1520</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6233,7 +6399,7 @@
    <test-case name="error-code-394">
       <description>Generate error XTSE1520</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6250,7 +6416,7 @@
    <test-case name="error-code-395">
       <description>Generate error XTSE1530</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6267,7 +6433,7 @@
    <test-case name="error-code-396">
       <description>Generate error XTTE1540</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6284,7 +6450,7 @@
    <test-case name="error-code-397">
       <description>Generate error XTTE1545</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6301,7 +6467,7 @@
    <test-case name="error-code-398">
       <description>Generate error XTTE1550</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6318,7 +6484,7 @@
    <test-case name="error-code-399">
       <description>Generate error XTTE1550</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6335,7 +6501,7 @@
    <test-case name="error-code-400">
       <description>Generate error XTTE1555</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6352,7 +6518,7 @@
    <test-case name="error-code-401">
       <description>Generate error XTTE1555</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6369,7 +6535,7 @@
    <test-case name="error-code-402">
       <description>Generate error XTTE1555</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -6386,7 +6552,7 @@
    <test-case name="error-code-403">
       <description>Generate error XTSE1560</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6402,7 +6568,7 @@
    <test-case name="error-code-404">
       <description>Generate error XTSE1560</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6418,7 +6584,7 @@
    <test-case name="error-code-405">
       <description>Generate error XTSE1570</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6434,7 +6600,7 @@
    <test-case name="error-code-406">
       <description>Generate error XTSE1580</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6450,7 +6616,7 @@
    <test-case name="error-code-407">
       <description>Generate error XTSE1590</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -6466,7 +6632,7 @@
    <test-case name="error-code-408">
       <description>Generate error XTSE1600</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="errorcode0010"/>
+      <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
