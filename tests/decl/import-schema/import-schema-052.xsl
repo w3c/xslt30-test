@@ -16,7 +16,7 @@
      namespace="http://schema061.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
   <xsl:variable name="t" as="element()">

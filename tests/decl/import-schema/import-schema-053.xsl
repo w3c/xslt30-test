@@ -16,7 +16,7 @@
      namespace="http://schema061.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
 <xsl:param name="address">address</xsl:param>
 <xsl:param name="person">person</xsl:param>

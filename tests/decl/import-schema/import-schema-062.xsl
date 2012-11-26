@@ -10,7 +10,7 @@
 <?spec xslt#patterns?>
 
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <xsl:variable name="t">

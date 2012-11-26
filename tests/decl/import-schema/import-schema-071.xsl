@@ -23,7 +23,7 @@
   </xs:schema>
 </xsl:import-schema>
 
-<xsl:output indent="yes"/>
+
 
 
 

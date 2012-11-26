@@ -14,7 +14,7 @@
      namespace="http://schema056.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <enu:out>

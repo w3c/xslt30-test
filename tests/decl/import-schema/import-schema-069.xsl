@@ -12,7 +12,7 @@
 <?spec xslt#import-schema?>
 <?spec xpath#id-schema-element-test?>
 
-<xsl:output indent="yes"/>
+
 
 <xsl:variable name="mhk" as="schema-element(z:person)">
     <person xsl:validation="strict" xmlns="http://schema061.uri/">

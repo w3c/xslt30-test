@@ -15,7 +15,7 @@ qualified and unqualified attribute forms -->
      namespace="http://schema066.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <address zip="rg4" a:color="red blue" xsl:validation="strict">

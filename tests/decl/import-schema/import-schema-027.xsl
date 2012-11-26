@@ -23,7 +23,8 @@
       </xsl:variable>
       
       <hatsize>
-        <xsl:value-of select="count($data[self::element(*,hat:hatsize)])"/>,
+        <xsl:value-of select="count($data[self::element(*,hat:hatsize)])"/>
+        <xsl:text>,</xsl:text>
         <xsl:value-of select="count($data[self::element(*,hat:bighatsize)])"/>        
       </hatsize>               
     </out>

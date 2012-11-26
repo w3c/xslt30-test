@@ -12,7 +12,7 @@
 
 <xsl:import-schema namespace="http://schema061.uri/" schema-location="schema061.xsd"/>
 
-<xsl:output indent="yes"/>
+
 
 <xsl:variable name="mhk" as="schema-element(z:person)">
     <person xsl:validation="strict" xmlns="http://schema061.uri/">

@@ -17,7 +17,7 @@
 <xsl:param name="dob1" select="'s:dob'"/>  
 <xsl:param name="dob2" select="'s:dob'"/>  
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/" name="main">
     <s:out validation="strict">

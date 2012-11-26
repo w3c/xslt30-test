@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                exclude-result-prefixes="xsd"
-                version="2.0">
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xsd" version="2.0">
 
 
-  <!-- Purpose: Test with xsl:import-schema without @namespace which contains an xs:schema 
+   <!-- Purpose: Test with xsl:import-schema without @namespace which contains an xs:schema 
 				element without @targetNamespace. Verify that elements in no namespace from 
 				the imported schema are available for use in the stylesheet. -->
- 
+
    <xsl:import-schema>
       <xsd:schema>
          <xsd:element name="doc-inline" type="docType-inline"/>
-         <xsd:element name="de1-decimal-enumeration-inline"
-                      type="de1-decimal-enumeration-Inline"/>
-         <xsd:element name="de2-decimal-maxExclusive-inline"
-                      type="de2-decimal-maxExclusive-Inline"/>
+         <xsd:element name="de1-decimal-enumeration-inline" type="de1-decimal-enumeration-Inline"/>
+         <xsd:element name="de2-decimal-maxExclusive-inline" type="de2-decimal-maxExclusive-Inline"/>
          <xsd:element name="de5-decimal-fractionDigits-totalDigits-inline"
-                      type="de5-decimal-fractionDigits-totalDigits-Inline"/>
+            type="de5-decimal-fractionDigits-totalDigits-Inline"/>
          <xsd:attribute name="attr1" type="de1-decimal-enumeration-Inline"/>
          <xsd:attribute name="attr2" type="de2-decimal-maxExclusive-Inline"/>
          <xsd:complexType name="docType-inline">
@@ -30,9 +26,8 @@
                </xsd:element>
                <xsd:element ref="de1-decimal-enumeration-inline" minOccurs="0" maxOccurs="1"/>
                <xsd:element ref="de2-decimal-maxExclusive-inline" minOccurs="0" maxOccurs="1"/>
-               <xsd:element ref="de5-decimal-fractionDigits-totalDigits-inline"
-                            minOccurs="0"
-                            maxOccurs="1"/>
+               <xsd:element ref="de5-decimal-fractionDigits-totalDigits-inline" minOccurs="0"
+                  maxOccurs="1"/>
             </xsd:sequence>
          </xsd:complexType>
          <!-- Following are types derived from decimal -->
@@ -81,39 +76,28 @@
    </xsl:variable>
 
    <xsl:variable name="var3" as="attribute()">
-      <xsl:attribute name="attr2" type="de2-decimal-maxExclusive-Inline">123.456</xsl:attribute> 
+      <xsl:attribute name="attr2" type="de2-decimal-maxExclusive-Inline">123.456</xsl:attribute>
    </xsl:variable>
 
    <xsl:template match="/doc">
-      <xsl:text>
-</xsl:text>
       <out>
-         <xsl:text>
-</xsl:text>
          <type>
             <xsl:value-of select="sum($var1)"/>
          </type>
-         <xsl:text>
-</xsl:text>
          <elem>
             <xsl:value-of select="$var2 instance of element(*, docType-inline)"/>
             <xsl:text> * </xsl:text>
             <xsl:value-of select="$var2 instance of schema-element(doc-inline)"/>
-            <xsl:text>
-</xsl:text>
             <xsl:copy-of select="$var2"/>
          </elem>
-         <xsl:text>
-</xsl:text>
          <attr>
-            <xsl:value-of select="$var3 instance of attribute(attr2, de2-decimal-maxExclusive-Inline)"/>
+            <xsl:value-of
+               select="$var3 instance of attribute(attr2, de2-decimal-maxExclusive-Inline)"/>
             <xsl:text> * </xsl:text>
             <xsl:value-of select="$var3 instance of schema-attribute(attr2)"/>
             <xsl:text> * </xsl:text>
             <xsl:value-of select="$var3"/>
          </attr>
-         <xsl:text>
-</xsl:text>
       </out>
    </xsl:template>
 

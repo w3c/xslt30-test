@@ -10,9 +10,7 @@
 
 <xsl:import-schema schema-location="schema040.xsd" 
      namespace="http://schema040.uri/"/>
-  
 
-<xsl:output indent="yes"/>
 
   <xsl:template match="/">
     <out>

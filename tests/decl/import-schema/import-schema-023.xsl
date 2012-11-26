@@ -10,7 +10,6 @@
               <?spec xpath#id-castable?>
   
 <xsl:import-schema namespace="http://hats.uri/" schema-location="schema030.xsd"/>
-<xsl:output indent="yes"/>
 
   <xsl:template match="/">
     <out>

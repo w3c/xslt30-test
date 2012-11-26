@@ -5,12 +5,8 @@
         exclude-result-prefixes="xs">
 
 <!-- PURPOSE: Test use of a built-in list type: NMTOKENS. -->
-  <?spec xpath#id-attribute-test?>
-  <?spec xpath#id-predefined-types?>
-  <?spec xslt#validation-xsl-type?>
-  
 
-<xsl:output indent="yes"/>
+  
 
   <xsl:template match="/">
     <out>

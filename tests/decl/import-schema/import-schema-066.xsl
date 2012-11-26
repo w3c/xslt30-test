@@ -14,7 +14,7 @@
 
 <xsl:import-schema namespace="http://schema076.uri/" schema-location="schema076.xsd"/>
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <xsl:variable name="x" as="element()">

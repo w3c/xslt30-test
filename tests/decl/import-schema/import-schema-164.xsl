@@ -25,6 +25,6 @@
       </att>       
   </xsl:template>
   
-  <xsl:output indent="yes"/>  
+    
 
 </xsl:stylesheet>

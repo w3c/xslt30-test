@@ -169,7 +169,12 @@
          <stylesheet file="import-schema-008.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-008.out"/>
+         <all-of>
+            <assert>/out/id[@test="true"][@value="A001"]</assert>
+            <assert>/out/string[@test="true"][@value="A002"]</assert>
+            <assert>/out/integer[@test="true"][@value="3"]</assert>
+            <assert>/out/date[@test="true"][@value="2002-10-20"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -185,7 +190,12 @@
          <stylesheet file="import-schema-009.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-009.out"/>
+         <all-of>
+            <assert>/out/id[@test="true"][@value="A001"]</assert>
+            <assert>/out/string[@test="true"][@value="A002"]</assert>
+            <assert>/out/integer[@test="true"][@value="3"]</assert>
+            <assert>/out/date[@test="true"][@value="2002-10-20"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -361,11 +371,7 @@
          <stylesheet file="import-schema-020.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>red,green,blue</a>
-   <b>true</b>
-   <c>true</c>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>red,green,blue</a><b>true</b><c>true</c></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -381,7 +387,11 @@
          <stylesheet file="import-schema-021.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-021.out"/>
+         <all-of>
+            <assert>string-join(/out/hatsize/*/name(), ';') = "t;t;t;f;f"</assert>
+            <assert>string-join(/out/bighatsize/*/name(), ';') = "f;t;t;f;f"</assert>
+            <assert>string-join(/out/shoesize/*/name(), ';') = "t;t;t;f;f"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -397,15 +407,7 @@
          <stylesheet file="import-schema-022.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <hatsize>
-      <t>true</t>
-      <f>false</f>
-      <t>true</t>
-      <f>false</f>
-      <f>false</f>
-   </hatsize>
-</out>]]></assert-xml>
+         <assert>string-join(/out/hatsize/*/name(), ';') = "t;f;t;f;f"</assert>
       </result>
    </test-case>
 
@@ -421,15 +423,7 @@
          <stylesheet file="import-schema-023.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <hatsize>
-      <t>true</t>
-      <t>true</t>
-      <f>false</f>
-      <f>false</f>
-      <f>false</f>
-   </hatsize>
-</out>]]></assert-xml>
+         <assert>string-join(/out/hatsize/*/name(), ';') = "t;t;f;f;f"</assert>
       </result>
    </test-case>
 
@@ -445,15 +439,7 @@
          <stylesheet file="import-schema-024.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <hatsize>
-      <t>true</t>
-      <t>true</t>
-      <t>true</t>
-      <f>false</f>
-      <f>false</f>
-   </hatsize>
-</out>]]></assert-xml>
+         <assert>string-join(/out/hatsize/*/name(), ';') = "t;t;t;f;f"</assert>
       </result>
    </test-case>
 
@@ -469,16 +455,7 @@
          <stylesheet file="import-schema-025.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <hatsize>
-      <t>true</t>
-      <t>true</t>
-      <t>true</t>
-      <t>true</t>
-      <f>false</f>
-      <f>false</f>
-   </hatsize>
-</out>]]></assert-xml>
+         <assert>string-join(/out/hatsize/*/name(), ';') = "t;t;t;t;f;f"</assert>
       </result>
    </test-case>
 
@@ -494,8 +471,7 @@
          <stylesheet file="import-schema-026.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><hatsize>3,
-        2</hatsize></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><hatsize>3,2</hatsize></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -511,8 +487,7 @@
          <stylesheet file="import-schema-027.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><hatsize>3,
-        2</hatsize></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><hatsize>3,2</hatsize></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -528,8 +503,7 @@
          <stylesheet file="import-schema-028.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><hatsize>3,
-        2</hatsize></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><hatsize>3,2</hatsize></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -545,12 +519,7 @@
          <stylesheet file="import-schema-029.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:xslxx="http://www.w3.org/1999/XSL/Transformxx">
-   <a>red,green,hat:blue,hat:pink</a>
-   <b>true</b>
-   <c>true</c>
-   <d>true</d>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>red,green,hat:blue,hat:pink</a><b>true</b><c>true</c><d>true</d></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -566,12 +535,7 @@
          <stylesheet file="import-schema-030.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>red,green,hat:blue,hat:pink</a>
-   <b>true</b>
-   <c>true</c>
-   <d>true</d>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>red,green,hat:blue,hat:pink</a><b>true</b><c>true</c><d>true</d></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -587,13 +551,7 @@
          <stylesheet file="import-schema-031.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <t>true</t>
-   <t>true</t>
-   <t>true</t>
-   <t>true</t>
-   <f>false</f>
-</out>]]></assert-xml>
+         <assert>string-join(/out/*/name(), ';') = "t;t;t;t;f"</assert>
       </result>
    </test-case>
 
@@ -609,7 +567,7 @@
          <stylesheet file="import-schema-032.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-032.out"/>
+         <assert>string-join(/out/*/name(), ';') = "f;t;f;f;t;t;f"</assert>
       </result>
    </test-case>
 
@@ -625,12 +583,17 @@
          <stylesheet file="import-schema-033.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-033.out"/>
+         <all-of>
+            <assert>/out/a[1]/@list = "1 2 3 4 5 6 7 8 9 10"</assert>
+            <assert>/out/a[2]/@list = "21 22 23 24 25 26 27 28 29 30"</assert>
+            <assert>/out/a[3]/@list = "1 2 3 4 5"</assert>
+            <assert>/out/a[4]/@list = "21 22 23 24 25 26 27 28"</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="import-schema-034">
-      <description>Test use of facets controlling length of lists (with a different schema from 042)</description>
+      <description>Test use of facets controlling length of lists (with a different schema from previous test)</description>
       <created by="Michael Kay, Saxonica" on="2012-11-09"/>
       <environment ref="import-schema-e01"/>
       <dependencies>
@@ -641,8 +604,13 @@
          <stylesheet file="import-schema-034.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-034.out"/>
-      </result>
+         <all-of>
+            <assert>/out/a[1]/@list = "1 2 3 4 5 6 7 8 9 10"</assert>
+            <assert>/out/a[2]/@list = "21 22 23 24 25 26 27 28 29 30"</assert>
+            <assert>/out/a[3]/@list = "1 2 3 4 5"</assert>
+            <assert>/out/a[4]/@list = "21 22 23 24 25 26 27 28"</assert>
+         </all-of>
+      </result>   
    </test-case>
 
    <test-case name="import-schema-035">
@@ -657,12 +625,7 @@
          <stylesheet file="import-schema-035.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a list="xml"/>
-   <a list="html"/>
-   <a list="10"/>
-   <a list="20"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a list="xml"/><a list="html"/><a list="10"/><a list="20"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -678,12 +641,7 @@
          <stylesheet file="import-schema-036.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a list="xml"/>
-   <a list="html"/>
-   <a list="10"/>
-   <a list="20"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a list="xml"/><a list="html"/><a list="10"/><a list="20"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -699,12 +657,7 @@
          <stylesheet file="import-schema-037.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a list="xml text"/>
-   <a list="html 15 xml"/>
-   <a list="10 20 html"/>
-   <a list="20"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a list="xml text"/><a list="html 15 xml"/><a list="10 20 html"/><a list="20"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -720,10 +673,7 @@
          <stylesheet file="import-schema-038.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a att="html 15 xml">
-      <e>xml text</e>text</a>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a att="html 15 xml"><e>xml text</e>text</a></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -739,11 +689,7 @@
          <stylesheet file="import-schema-039.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>xml</a>
-   <a>html</a>
-   <a>text</a>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>xml</a><a>html</a><a>text</a></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -759,7 +705,13 @@
          <stylesheet file="import-schema-040.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-040.out"/>
+         <all-of xmlns:enu="http://schema050.uri/">
+            <assert>string-join(/enu:out/z[1]/*/local-name(), ';') = "a;f"</assert>
+            <assert>string-join(/enu:out/z[2]/*/local-name(), ';') = "a;b;f"</assert>
+            <assert>string-join(/enu:out/z[3]/*/local-name(), ';') = "a;b;b;f"</assert>
+            <assert>string-join(/enu:out/z[4]/*/local-name(), ';') = "a;f;f;f;f;f"</assert>
+            <assert>string-join(/enu:out/z[5]/*/local-name(), ';') = "a;b;f;f"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -775,7 +727,13 @@
          <stylesheet file="import-schema-041.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-041.out"/>
+         <all-of xmlns:enu="http://schema051.uri/">
+            <assert>string-join(/enu:out/z[1]/*/local-name(), ';') = "p"</assert>
+            <assert>string-join(/enu:out/z[2]/*/local-name(), ';') = "q"</assert>
+            <assert>string-join(/enu:out/z[3]/*/local-name(), ';') = "r"</assert>
+            <assert>string-join(/enu:out/z[4]/*/local-name(), ';') = ""</assert>
+            <assert>string-join(/enu:out/z[5]/*/local-name(), ';') = "p;p;p"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -791,7 +749,12 @@
          <stylesheet file="import-schema-042.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-042.out"/>
+         <all-of xmlns:enu="http://schema052.uri/">
+            <assert>string-join(/enu:out/z[1]/*/local-name(), ';') = "p"</assert>
+            <assert>string-join(/enu:out/z[2]/*/local-name(), ';') = "q"</assert>
+            <assert>string-join(/enu:out/z[3]/*/local-name(), ';') = "r"</assert>
+            <assert>string-join(/enu:out/z[4]/*/local-name(), ';') = "p;p;q;p;r;q"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -807,7 +770,13 @@
          <stylesheet file="import-schema-043.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-043.out"/>
+         <all-of xmlns:enu="http://schema053.uri/">
+            <assert>string-join(/enu:out/z[1]/*/local-name(), ';') = "p"</assert>
+            <assert>string-join(/enu:out/z[2]/*/local-name(), ';') = "q"</assert>
+            <assert>string-join(/enu:out/z[3]/*/local-name(), ';') = "r"</assert>
+            <assert>string-join(/enu:out/z[4]/*/local-name(), ';') = "strange"</assert>
+            <assert>string-join(/enu:out/z[5]/*/local-name(), ';') = "p;p;q;strange;p;r;q"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -823,12 +792,18 @@
          <stylesheet file="import-schema-044.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-044.out"/>
+         <all-of xmlns:enu="http://schema054.uri/">
+            <assert>string-join(/enu:out/z[1]/*/name(), ';') = "enu:p"</assert>
+            <assert>string-join(/enu:out/z[2]/*/name(), ';') = "enu:q"</assert>
+            <assert>string-join(/enu:out/z[3]/*/name(), ';') = "enu:r"</assert>
+            <assert>string-join(/enu:out/z[4]/*/name(), ';') = "carrot:strange"</assert>
+            <assert>string-join(/enu:out/z[5]/*/name(), ';') = "enu:p;enu:p;enu:q;banana:strange;enu:p;enu:r;enu:q"</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="import-schema-045">
-      <description>Test a complex type involving an ##targetNamespace wildcard</description>
+      <description>Test a complex type involving a ##targetNamespace wildcard</description>
       <created by="Michael Kay, Saxonica" on="2012-11-09"/>
       <environment ref="import-schema-e01"/>
       <dependencies>
@@ -839,7 +814,10 @@
          <stylesheet file="import-schema-045.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-045.out"/>
+         <all-of xmlns:enu="http://schema055.uri/">
+            <assert>string-join(/enu:out/z[1]/*/local-name(), ';') = "p;v;x;m"</assert>
+            <assert>string-join(/enu:out/z[2]/*/local-name(), ';') = "p;p;q;p;r;q;fred"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -855,15 +833,7 @@
          <stylesheet file="import-schema-046.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<enu:out xmlns:enu="http://schema056.uri/">
-   <z>
-      <enu:j/>
-      <enu:k/>
-   </z>
-   <z>
-      <fred/>
-   </z>
-</enu:out>]]></assert-xml>
+         <assert-xml><![CDATA[<enu:out xmlns:enu="http://schema056.uri/"><z><enu:j/><enu:k/></z><z><fred/></z></enu:out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -879,7 +849,11 @@
          <stylesheet file="import-schema-047.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-047.out"/>
+         <all-of xmlns:enu="http://schema057.uri/">
+            <assert>string-join(/enu:out/z[1]/*/local-name(), ';') = "j;c"</assert>
+            <assert>string-join(/enu:out/z[2]/*/local-name(), ';') = "k;c"</assert>
+            <assert>string-join(/enu:out/z[3]/*/local-name(), ';') = "k;c"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -895,7 +869,11 @@
          <stylesheet file="import-schema-048.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-048.out"/>
+         <all-of xmlns:enu="http://schema058.uri/">
+            <assert>string-join(/enu:out/z[1][@price="23.70"][@discount="0.01"][@rebate="0.01"][@cost="20.01"]/*/local-name(), ';') = "j;c"</assert>
+            <assert>string-join(/enu:out/z[2][@rebate="0.01"][@discount="0.01"][@cost="20.01"]/*/local-name(), ';') = "k;c"</assert>
+            <assert>string-join(/enu:out/z[3][@rebate="0.01"][@discount="0.01"][@cost="20.01"]/*/local-name(), ';') = "k;c"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -911,9 +889,7 @@
          <stylesheet file="import-schema-049.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<enu:out xmlns:enu="http://schema059.uri/">
-   <z cost="23.45"/>
-</enu:out>]]></assert-xml>
+         <assert-xml><![CDATA[<enu:out xmlns:enu="http://schema059.uri/"><z cost="23.45"/></enu:out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -929,9 +905,7 @@
          <stylesheet file="import-schema-050.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<enu:out xmlns:enu="http://schema060.uri/">
-   <z cost="23.45">4</z>
-</enu:out>]]></assert-xml>
+         <assert-xml><![CDATA[<enu:out xmlns:enu="http://schema060.uri/"><z cost="23.45">4</z></enu:out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -947,7 +921,8 @@
          <stylesheet file="import-schema-051.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-051.out"/>
+         <!-- Sad, I think I really was 52 when I wrote that test... -->
+         <assert-xml><![CDATA[<address xmlns="http://schema061.uri/" zip="rg4"><person><first>Michael</first><middle>H</middle><surname>Kay</surname></person><age>52</age></address>]]></assert-xml>
       </result>
    </test-case>
 
@@ -963,7 +938,7 @@
          <stylesheet file="import-schema-052.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-052.out"/>
+         <assert>string-join(/*/*/local-name(), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
       </result>
    </test-case>
 
@@ -979,7 +954,7 @@
          <stylesheet file="import-schema-053.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-053.out"/>
+         <assert>string-join(/*/*/local-name(), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
       </result>
    </test-case>
 
@@ -995,7 +970,7 @@
          <stylesheet file="import-schema-054.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-054.out"/>
+         <assert>string-join(/*/*/local-name(), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
       </result>
    </test-case>
 
@@ -1011,14 +986,7 @@
          <stylesheet file="import-schema-055.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns="http://schema061.uri/">
-   <t>true</t>
-   <t>true</t>
-   <t>true</t>
-   <f>false</f>
-   <apply>yes</apply>
-   <apply>no</apply>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out xmlns="http://schema061.uri/"><t>true</t><t>true</t><t>true</t><f>false</f><apply>yes</apply><apply>no</apply></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1034,7 +1002,8 @@
          <stylesheet file="import-schema-056.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-056.out"/>
+         <assert-xml><![CDATA[<address xmlns="http://schema066.uri/" xmlns:a="http://schema066.uri/" zip="rg4" a:color="red blue"
+            ><person><first>Michael</first><middle>H</middle><last>Kay</last></person><age>52</age></address>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1050,7 +1019,8 @@
          <stylesheet file="import-schema-057.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-057.out"/>
+         <assert-xml><![CDATA[<address xmlns:a="http://schema067.uri/" xmlns="http://schema067.uri/" zip="rg4" a:color="red blue"
+            ><person><first>Michael</first><middle>H</middle><last>Kay</last></person><age>52</age></address>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1066,7 +1036,16 @@
          <stylesheet file="import-schema-058.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-058.out"/>
+         <all-of xmlns:o="http://schema068.uri/">
+            <assert>deep-equal(/*/o:person[1]/*/local-name(), ("first", "middle", "last"))</assert>
+            <assert>deep-equal(/*/o:person[1]/*/string(), ("Michael", "H", "Kay"))</assert>
+            <assert>deep-equal(/*/o:person[2]/*/local-name(), ("first", "surname"))</assert>
+            <assert>deep-equal(/*/o:person[2]/*/string(), ("Penny", "Whelan"))</assert>
+            <assert>deep-equal(/*/o:person[3]/*/local-name(), ("last", "first", "middle"))</assert>
+            <assert>deep-equal(/*/o:person[3]/*/string(), ("Kay", "Michael", "H"))</assert>
+            <assert>deep-equal(/*/o:person[4]/*/local-name(), ("last", "first"))</assert>
+            <assert>deep-equal(/*/o:person[4]/*/string(), ("Kay", "Michael"))</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1082,7 +1061,16 @@
          <stylesheet file="import-schema-059.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-059.out"/>
+         <all-of xmlns:o="http://schema068.uri/">
+            <assert>deep-equal(/*/o:person[1][@id='p1']/*/local-name(), ("first", "middle", "last"))</assert>
+            <assert>deep-equal(/*/o:person[1]/*/string(), ("Michael", "H", "Kay"))</assert>
+            <assert>deep-equal(/*/o:person[2][@id='p2']/*/local-name(), ("first", "surname"))</assert>
+            <assert>deep-equal(/*/o:person[2]/*/string(), ("Penny", "Whelan"))</assert>
+            <assert>deep-equal(/*/o:person[3][@id='p3']/*/local-name(), ("last", "first", "middle"))</assert>
+            <assert>deep-equal(/*/o:person[3]/*/string(), ("Kay", "Michael", "H"))</assert>
+            <assert>deep-equal(/*/o:person[4][not(@id)]/*/local-name(), ("last", "first"))</assert>
+            <assert>deep-equal(/*/o:person[4]/*/string(), ("Kay", "Michael"))</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1099,8 +1087,7 @@
       </test>
       <result>
          <assert-xml><![CDATA[<s:out xmlns:s="http://schema070.uri/" s:dob="1951-10-11" s:tob="05:15:00" pling="05:15:00"
-       plong="05:15:00"
-       plang="05:15:00"/>]]></assert-xml>
+       plong="05:15:00" plang="05:15:00"/>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1116,7 +1103,16 @@
          <stylesheet file="import-schema-061.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-061.out"/>
+         <all-of xmlns:o="http://schema068.uri/">
+            <assert>deep-equal(/*/o:person[1][@id='p1']/*/local-name(), ("first", "middle", "last"))</assert>
+            <assert>deep-equal(/*/o:person[1]/*/string(), ("Michael", "H", "Kay"))</assert>
+            <assert>deep-equal(/*/o:person[2][@id='p2']/*/local-name(), ("first", "surname"))</assert>
+            <assert>deep-equal(/*/o:person[2]/*/string(), ("Penny", "Whelan"))</assert>
+            <assert>deep-equal(/*/o:person[3][@id='p3']/*/local-name(), ("last", "first", "middle"))</assert>
+            <assert>deep-equal(/*/o:person[3]/*/string(), ("Kay", "Michael", "H"))</assert>
+            <assert>deep-equal(/*/o:person[4][not(@id)]/*/local-name(), ("last", "first"))</assert>
+            <assert>deep-equal(/*/o:person[4]/*/string(), ("Kay", "Michael"))</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1132,7 +1128,8 @@
          <stylesheet file="import-schema-062.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-062.out"/>
+         <assert-xml><![CDATA[<out xmlns="http://schema068.uri/"><decimal><a>23</a></decimal><date><a>2004-10-03</a></date
+            ><decimal><a>12</a></decimal><decimal><b>12</b></decimal></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1148,7 +1145,9 @@
          <stylesheet file="import-schema-063.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-063.out"/>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema"><tree pot="black" kettle="white"
+            ><a>23</a><a>2004-10-03</a><a>12</a><b>12</b><x><y xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xsi:type="xs:integer">9999</y></x></tree></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1182,9 +1181,7 @@
          <stylesheet file="import-schema-065.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:z="http://mhk015.uri/">
-   <n>z:en</n>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:z="http://mhk015.uri/"><n>z:en</n></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1200,10 +1197,8 @@
          <stylesheet file="import-schema-066.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:z="http://schema076.uri/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-   <l>23</l>
-   <s>1.000 2.000 3.000 4.000</s>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out xmlns:z="http://schema076.uri/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            ><l>23</l><s>1.000 2.000 3.000 4.000</s></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1219,10 +1214,8 @@
          <stylesheet file="import-schema-067.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:z="http://schema076.uri/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-   <l>23</l>
-   <s>1.000 2.000 3.000 4.000</s>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out xmlns:z="http://schema076.uri/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            ><l>23</l><s>1.000 2.000 3.000 4.000</s></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1238,7 +1231,8 @@
          <stylesheet file="import-schema-068.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-068.out"/>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:z="http://schema061.uri/"
+            ><z:person><z:first>Michael</z:first><z:middle>H</z:middle><z:surname>Kay</z:surname></z:person></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1254,7 +1248,8 @@
          <stylesheet file="import-schema-069.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-069.out"/>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:z="http://schema061.uri/"
+            ><h2>Michael H Kay</h2><p>First name: Michael</p><p>Father's first name: Leslie</p></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1302,7 +1297,16 @@
          <stylesheet file="import-schema-072.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-072.out"/>
+         <all-of xmlns:o="http://schema068.uri/">
+            <assert>deep-equal(/*/o:person[1][@id='p1']/*/local-name(), ("first", "middle", "last"))</assert>
+            <assert>deep-equal(/*/o:person[1]/*/string(), ("Michael", "H", "Kay"))</assert>
+            <assert>deep-equal(/*/o:person[2][@id='p2']/*/local-name(), ("first", "surname"))</assert>
+            <assert>deep-equal(/*/o:person[2]/*/string(), ("Penny", "Whelan"))</assert>
+            <assert>deep-equal(/*/o:person[3][@id='p3']/*/local-name(), ("last", "first", "middle"))</assert>
+            <assert>deep-equal(/*/o:person[3]/*/string(), ("Kay", "Michael", "H"))</assert>
+            <assert>deep-equal(/*/o:person[4][not(@id)]/*/local-name(), ("last", "first"))</assert>
+            <assert>deep-equal(/*/o:person[4]/*/string(), ("Kay", "Michael"))</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1318,7 +1322,16 @@
          <stylesheet file="import-schema-073.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-073.out"/>
+         <all-of xmlns:o="http://schema068.uri/">
+            <assert>deep-equal(/*/o:person[1][@id='p1']/*/local-name(), ("first", "middle", "last"))</assert>
+            <assert>deep-equal(/*/o:person[1]/*/string(), ("Michael", "H", "Kay"))</assert>
+            <assert>deep-equal(/*/o:person[2][@id='p2']/*/local-name(), ("first", "surname"))</assert>
+            <assert>deep-equal(/*/o:person[2]/*/string(), ("Penny", "Whelan"))</assert>
+            <assert>deep-equal(/*/o:person[3][@id='p3']/*/local-name(), ("last", "first", "middle"))</assert>
+            <assert>deep-equal(/*/o:person[3]/*/string(), ("Kay", "Michael", "H"))</assert>
+            <assert>deep-equal(/*/o:person[4][not(@id)]/*/local-name(), ("last", "first"))</assert>
+            <assert>deep-equal(/*/o:person[4]/*/string(), ("Kay", "Michael"))</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1334,7 +1347,16 @@
          <stylesheet file="import-schema-074.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-074.out"/>
+         <all-of xmlns:o="http://schema068.uri/">
+            <assert>deep-equal(/*/o:person[1][@id='p1']/*/local-name(), ("first", "middle", "last"))</assert>
+            <assert>deep-equal(/*/o:person[1]/*/string(), ("Michael", "H", "Kay"))</assert>
+            <assert>deep-equal(/*/o:person[2][@id='p2']/*/local-name(), ("first", "surname"))</assert>
+            <assert>deep-equal(/*/o:person[2]/*/string(), ("Penny", "Whelan"))</assert>
+            <assert>deep-equal(/*/o:person[3][@id='p3']/*/local-name(), ("last", "first", "middle"))</assert>
+            <assert>deep-equal(/*/o:person[3]/*/string(), ("Kay", "Michael", "H"))</assert>
+            <assert>deep-equal(/*/o:person[4][not(@id)]/*/local-name(), ("last", "first"))</assert>
+            <assert>deep-equal(/*/o:person[4]/*/string(), ("Kay", "Michael"))</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1350,7 +1372,16 @@
          <stylesheet file="import-schema-075.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-075.out"/>
+         <all-of xmlns:o="http://schema068.uri/">
+            <assert>deep-equal(/*/o:person[1][@id='p1']/*/local-name(), ("first", "middle", "last"))</assert>
+            <assert>deep-equal(/*/o:person[1]/*/string(), ("Michael", "H", "Kay"))</assert>
+            <assert>deep-equal(/*/o:person[2][@id='p2']/*/local-name(), ("first", "surname"))</assert>
+            <assert>deep-equal(/*/o:person[2]/*/string(), ("Penny", "Whelan"))</assert>
+            <assert>deep-equal(/*/o:person[3][@id='p3']/*/local-name(), ("last", "first", "middle"))</assert>
+            <assert>deep-equal(/*/o:person[3]/*/string(), ("Kay", "Michael", "H"))</assert>
+            <assert>deep-equal(/*/o:person[4][not(@id)]/*/local-name(), ("last", "first"))</assert>
+            <assert>deep-equal(/*/o:person[4]/*/string(), ("Kay", "Michael"))</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1366,7 +1397,12 @@
          <stylesheet file="import-schema-076.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-076.out"/>
+         <assert>/*/*[1][@is-untyped="true"][@is-anyType="true"]</assert>
+         <assert>/*/*[2][@is-untyped="true"][@is-anyType="true"]</assert>
+         <assert>/*/*[3][@is-untyped="false"][@is-anyType="true"]</assert>
+         <assert>/*/*[4][@is-untyped="true"][@is-anyType="true"]</assert>
+         <assert>/*/*[5][@is-untyped="false"][@is-anyType="true"]</assert>
+         <assert>/*/*[6][@is-untyped="false"][@is-anyType="true"]</assert>
       </result>
    </test-case>
 
@@ -1382,12 +1418,7 @@
          <stylesheet file="import-schema-077.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<ans xmlns="http://schema087.uri/">
-   <person code="ghjk">
-      <first>Penny</first>
-      <surname>Whelan</surname>
-   </person>
-</ans>]]></assert-xml>
+         <assert-xml><![CDATA[<ans xmlns="http://schema087.uri/"><person code="ghjk"><first>Penny</first><surname>Whelan</surname></person></ans>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1403,13 +1434,7 @@
          <stylesheet file="import-schema-078.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<ans>
-   <person>
-      <code>ghjk</code>
-      <first>Penny</first>
-      <surname>Whelan</surname>
-   </person>
-</ans>]]></assert-xml>
+         <assert-xml><![CDATA[<ans><person><code>ghjk</code><first>Penny</first><surname>Whelan</surname></person></ans>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1425,7 +1450,8 @@
          <stylesheet file="import-schema-079.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-079.out"/>
+         <assert-xml><![CDATA[<ans xmlns="http://schema089.uri/"><person><code>gh<!--1234-->jk</code
+            ><first>Penny</first><surname>Whelan</surname></person></ans>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1441,11 +1467,8 @@
          <stylesheet file="import-schema-080.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<person xmlns="http://schema061.uri/">
-   <first>Michael</first>
-   <middle>H</middle>
-   <surname>Kay</surname>
-</person>]]></assert-xml>
+         <assert-xml><![CDATA[<person xmlns="http://schema061.uri/"><first>Michael</first><middle>H</middle
+            ><surname>Kay</surname></person>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2533,7 +2556,8 @@
          <stylesheet file="import-schema-148.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-148.out"/>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:z="http://schema061.uri/"
+            ><h2>H Kay</h2><p>First name: Michael</p><p>Father's first name: Leslie</p></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2549,7 +2573,8 @@
          <stylesheet file="import-schema-149.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-149.out"/>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:z="http://schema061.uri/"
+            ><h2>Michael H Kay</h2><p>First name: Michael</p><p>Father's first name: </p></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2565,7 +2590,8 @@
          <stylesheet file="import-schema-150.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-150.out"/>
+         <assert-xml><![CDATA[<out xmlns:z="http://schema061.uri/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            ><h2>Michael H Kay</h2><p>First name: Michael</p><p>Father's first name: </p></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2794,11 +2820,7 @@
       <created by="Michael Kay, Saxonica" on="2012-11-09"/>
       <environment>
          <source role=".">
-            <content><![CDATA[<doc>
-  <e/>
-  <e xmlns:p="http://some.other.namespace/"/>
-  <e xmlns:q="http://p.com/"/>
-</doc>]]></content>
+            <content><![CDATA[<doc><e/><e xmlns:p="http://some.other.namespace/"/><e xmlns:q="http://p.com/"/></doc>]]></content>
          </source>
       </environment>
       <dependencies>
@@ -2809,7 +2831,11 @@
          <stylesheet file="import-schema-164.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-164.out"/>
+         <all-of>
+            <assert>/doc/att[1][@local="foo"][@ns="http://p.com/"][@prefixed="true"][@declared="true"][@name="p:foo"]</assert>
+            <assert>/doc/att[2][@local="foo"][@ns="http://p.com/"][@prefixed="true"][@declared="true"][not(@name)]</assert>
+            <assert>/doc/att[3][@local="foo"][@ns="http://p.com/"][@prefixed="true"][@declared="true"][@name="q:foo"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2854,7 +2880,12 @@
          <stylesheet file="import-schema-166.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-166.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:foo="http://ns.example.com/sch002">/out/elem/foo:complexTest[@foo:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2871,7 +2902,12 @@
          <stylesheet file="import-schema-171a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml file="import-schema-167.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:foo="http://ns.example.com/sch002">/out/elem/foo:complexTest[@foo:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2888,7 +2924,12 @@
          <stylesheet file="import-schema-168a.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-168.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:sch002="http://ns.example.com/sch002">/out/elem/sch002:complexTest[@sch002:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2905,7 +2946,12 @@
          <stylesheet file="import-schema-168a.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-169.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:sch002="http://ns.example.com/sch002">/out/elem/sch002:complexTest[@sch002:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2925,7 +2971,12 @@
          <stylesheet file="import-schema-170a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml file="import-schema-170.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:sch002="http://ns.example.com/sch002">/out/elem/sch002:complexTest[@sch002:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2942,7 +2993,12 @@
          <stylesheet file="import-schema-171a.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-171.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:foo="http://ns.example.com/sch002">/out/elem/foo:complexTest[@foo:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2962,7 +3018,12 @@
          <stylesheet file="import-schema-171a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml file="import-schema-172.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:foo="http://ns.example.com/sch002">/out/elem/foo:complexTest[@foo:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2981,7 +3042,12 @@
          <stylesheet file="import-schema-173.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-173.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:foo="http://ns.example.com/sch002">/out/elem/foo:complexTest[@foo:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2999,9 +3065,15 @@
       </dependencies>
       <test>
          <stylesheet file="import-schema-174.xsl"/>
+         <stylesheet file="import-schema-174a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml file="import-schema-174.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:foo="http://ns.example.com/sch002">/out/elem/foo:complexTest[@foo:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3014,9 +3086,7 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <environment>
          <source role="." file="import-schema-175.xml"/>
-         <schema role="source-reference"
-            file="schema004.xsd"
-            xsd-version="1.0"/>
+         <schema role="source-reference" file="schema004.xsd" xsd-version="1.0"/>
       </environment>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -3026,14 +3096,7 @@
          <stylesheet file="import-schema-175.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<E1>true</E1>
-<E2>true</E2>
-<E3>true</E3>
-<A1>true</A1>
-<A2>true</A2>
-<A3>true</A3>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><E1>true</E1><E2>true</E2><E3>true</E3><A1>true</A1><A2>true</A2><A3>true</A3></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -3059,7 +3122,12 @@
          <stylesheet file="import-schema-176.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-176.out"/>
+         <all-of>
+            <assert>/out/type = "2.1001"</assert>
+            <assert>/out/elem/text()[1] = "true * true"</assert>
+            <assert>/out/elem/doc-inline/de5-decimal-fractionDigits-totalDigits-inline = "1122334.4556"</assert>
+            <assert>/out/attr = "true * true * 123.456"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3087,7 +3155,12 @@
          <stylesheet file="import-schema-177.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-177.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:foo="http://ns.example.com/sch002">/out/elem/foo:complexTest[@foo:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3141,7 +3214,12 @@
          <stylesheet file="import-schema-180.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-180.out"/>
+         <all-of>
+            <assert>/out/type="8006"</assert>
+            <assert>/out/elem/text()[1] = "true * true * "</assert>
+            <assert xmlns:foo="http://ns.example.com/sch002/025">/out/elem/foo:complexTest[@foo:type="333"][subject="math"][size="50"]</assert>
+            <assert>/out/attrib = "true * 444"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3157,7 +3235,12 @@
          <stylesheet file="import-schema-181.xsl"/>
       </test>
       <result>
-         <assert-xml file="import-schema-181.out"/>
+         <all-of>
+            <assert>/out/type = "2.1001"</assert>
+            <assert>/out/elem/text()[1] = "true * true"</assert>
+            <assert>/out/elem/doc-inline/de5-decimal-fractionDigits-totalDigits-inline = "1122334.4556"</assert>
+            <assert>/out/attr = "true * true * 123.456"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -3265,7 +3348,9 @@
    </test-case>
 
    <test-case name="import-schema-186">
-      <description>Test where two different schemas with different namespaces are imported, one in the primary and one in the imported stylesheet. Show that datatypes from both schemas can be used in both stylesheets.</description>
+      <description>
+         Test where two different schemas with different namespaces are imported, one in the primary 
+         and one in the imported stylesheet. Show that datatypes from both schemas can be used in both stylesheets.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="import-schema-e04"/>
       <dependencies>
@@ -3277,12 +3362,28 @@
          <stylesheet file="import-schema-186a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml file="import-schema-186.out"/>
+         <all-of>
+            <assert xmlns:a="http://ns.example.com/sch002">
+               /out/primary1[text()[1] = "true * true * "][a:complexTest[@a:type="333"][subject="math"][size="50"]]
+            </assert>
+            <assert xmlns:b="http://ns.example.com/sch004">
+               /out/primary2[text()[1] = "true * true * "][description = "Mr Peter has brown hair"][description/name = "Peter"]
+            </assert>
+            <assert xmlns:one="http://ns.example.com/sch002">
+               /out/imported1[text()[1] = "true * true * "][one:complexTest[@one:type="333"][subject="math"][size="50"]]
+            </assert>
+            <assert xmlns:two="http://ns.example.com/sch004">
+               /out/imported2[text()[1] = "true * true * "][description = "Mr Peter has brown hair"][description/name = "Peter"]
+            </assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="import-schema-187">
-      <description>Test where two different schemas are imported, one in the primary and one in the included stylesheet. Show that datatypes from both schemas can be used in both stylesheets.</description>
+      <description>
+         Test where two different schemas are imported, one in the primary and one in the included stylesheet. 
+         Show that datatypes from both schemas can be used in both stylesheets.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="import-schema-e04"/>
       <dependencies>
@@ -3294,7 +3395,20 @@
          <stylesheet file="import-schema-186a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml file="import-schema-187.out"/>
+         <all-of>
+            <assert xmlns:a="http://ns.example.com/sch002">
+               /out/primary1[text()[1] = "true * true * "][a:complexTest[@a:type="333"][subject="math"][size="50"]]
+            </assert>
+            <assert xmlns:b="http://ns.example.com/sch004">
+               /out/primary2[text()[1] = "true * true * "][description = "Mr Peter has brown hair"][description/name = "Peter"]
+            </assert>
+            <assert xmlns:one="http://ns.example.com/sch002">
+               /out/imported1[text()[1] = "true * true * "][one:complexTest[@one:type="333"][subject="math"][size="50"]]
+            </assert>
+            <assert xmlns:two="http://ns.example.com/sch004">
+               /out/imported2[text()[1] = "true * true * "][description = "Mr Peter has brown hair"][description/name = "Peter"]
+            </assert>
+         </all-of>
       </result>
    </test-case>
 

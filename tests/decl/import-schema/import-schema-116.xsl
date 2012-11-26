@@ -13,7 +13,7 @@
 <?error ?>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <out>

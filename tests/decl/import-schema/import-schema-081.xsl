@@ -20,7 +20,7 @@
 </xsl:import-schema>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <t:money validation="strict">23.50</t:money>

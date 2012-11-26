@@ -16,7 +16,7 @@
      namespace="http://schema071.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/" xmlns:ab="http://some-ab.uri/">
     <out>

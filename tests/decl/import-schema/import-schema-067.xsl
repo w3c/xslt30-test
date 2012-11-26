@@ -12,7 +12,7 @@
 <?spec fo#func-string-length?>
 <?spec xpath#id-typed-value?>
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <xsl:variable name="x">

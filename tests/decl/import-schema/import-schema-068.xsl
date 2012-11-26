@@ -12,7 +12,7 @@
 <?spec xslt#import-schema?>
 <?spec xpath#id-schema-element-test?>
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <out>

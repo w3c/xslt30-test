@@ -6,14 +6,11 @@
         exclude-result-prefixes="xs xslxx">
 
 <!-- PURPOSE: Test use of a used-defined list type: xsl:QNames -->
-<?spec xslt#import-schema?>
-<?spec xslt#annotation-for-constructed-attribute?>
+
 
 <xsl:import-schema schema-location="schema039.xsd" 
      namespace="http://schema039.uri/"/>
-  
 
-<xsl:output indent="yes"/>
 
   <xsl:template match="/">
     <out>

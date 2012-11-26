@@ -4,17 +4,14 @@
         xmlns:xs="http://www.w3.org/2001/XMLSchema"
         xmlns:hat="http://hats.uri/"
         xmlns:xslxx="http://www.w3.org/1999/XSL/Transformxx"
-        exclude-result-prefixes="xs hat">
+        exclude-result-prefixes="xs hat xslxx">
 
 <!-- PURPOSE: Test use of a used-defined list type: xsl:QNames -->
-<?spec xslt#import-schema?>
-<?spec xslt#annotation-for-constructed-attribute?>
+
 
 <xsl:import-schema schema-location="schema-for-xslt20.xsd" 
      namespace="http://www.w3.org/1999/XSL/Transformxx"/>
   
-
-<xsl:output indent="yes"/>
 
   <xsl:template match="/">
     <out>

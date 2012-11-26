@@ -11,7 +11,7 @@
 
 <xsl:import-schema namespace="http://mhk015.uri/" schema-location="schema075.xsd"/>
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <out>

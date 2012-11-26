@@ -6,12 +6,10 @@
         exclude-result-prefixes="xs hat">
 
 <!-- PURPOSE: Test "cast as" and "instance of" with user-defined atomic types. -->
-              <?spec xslt#import-schema?>
-              <?spec xpath#id-cast?>
-              <?spec xpath#id-instance-of?>
+
   
 <xsl:import-schema namespace="http://hats.uri/" schema-location="schema030.xsd"/>
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <out>

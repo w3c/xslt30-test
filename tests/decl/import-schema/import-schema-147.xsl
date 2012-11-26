@@ -12,7 +12,7 @@
              <?spec xslt#annotation-for-constructed-element?>
               <?error ?>
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <out>

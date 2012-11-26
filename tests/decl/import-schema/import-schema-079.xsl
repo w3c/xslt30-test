@@ -26,7 +26,7 @@
 </xsl:import-schema>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <xsl:variable name="n">

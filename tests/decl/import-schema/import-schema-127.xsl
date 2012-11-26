@@ -15,7 +15,7 @@
      namespace="http://schema071.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
 <xsl:variable name="att" as="attribute()">
   <xsl:attribute name="s:dob" select="'ab:value'" type="xs:QName" xmlns:ab="http://some-ab.uri/"/>  

@@ -16,7 +16,7 @@
      namespace="http://schema046.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <xsl:variable name="tree">

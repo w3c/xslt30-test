@@ -15,7 +15,7 @@
               <?spec xpath#id-matching-item?>
   
 
-<xsl:output indent="yes"/>
+
 
 <xsl:param name="address">address</xsl:param>
 <xsl:param name="person">person</xsl:param>

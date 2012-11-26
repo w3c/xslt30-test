@@ -6,11 +6,9 @@
         exclude-result-prefixes="xs hat">
 
 <!-- PURPOSE: Test use of castable with user-defined date types. -->
-              <?spec xslt#import-schema?>
-              <?spec xpath#id-castable?>
+
   
 <xsl:import-schema namespace="http://hats.uri/" schema-location="schema030.xsd"/>
-<xsl:output indent="yes"/>
 
   <xsl:template match="/">
     <out>

@@ -9,7 +9,7 @@
 <?spec xslt#validation?>
 
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <y xsi:type="xs:integer">zzz</y>     

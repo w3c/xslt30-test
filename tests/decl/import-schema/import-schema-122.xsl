@@ -13,7 +13,7 @@
      namespace="http://schema070.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <s:out>

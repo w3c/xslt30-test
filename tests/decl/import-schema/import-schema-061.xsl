@@ -13,7 +13,7 @@
      namespace="http://schema068.uri/"/>
   
 
-<xsl:output indent="yes"/>
+
 
   <xsl:template match="/">
     <xsl:document validation="strict">
