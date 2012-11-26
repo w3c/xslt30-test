@@ -7,12 +7,12 @@
 				and supplements such values in a matching output definition.-->
 
    <t:character-map name="temp">
-      <t:output-character character="a" string="b"/>
+      <t:output-character character="a" string="A"/>
       <t:output-character character="&#xA;" string="XX"/>
    </t:character-map>
 
    <t:character-map name="two">
-      <t:output-character character="a" string="b"/>
+      <t:output-character character="b" string="B"/>
       <t:output-character character="&#xA;" string=" "/>
       <t:output-character character="«" string="S"/> 
    </t:character-map>
@@ -26,8 +26,6 @@
 
    <t:template match="/">
   	   <t:result-document format="my:temp-output" method="xml" use-character-maps="two">
-      	  <t:text>
-</t:text>
       	  <out>baba«ba«</out>
       </t:result-document>
    </t:template>

@@ -2,83 +2,43 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="result-document">
-   <description>Tests result-document</description>
-   <environment name="result-document-01">
-      <source role=".">
-         <content><![CDATA[ 
-<doc>
-<foo place="secondary">Hello</foo>
-</doc>]]></content>
-      </source>
-   </environment>
+   <description>
+      Tests the xsl:result-document instruction.
+      Note: most of the tests concern serialization; very few actually generate multiple output documents.
+   </description>
+   
    <environment name="result-document-02">
       <source role=".">
-         <content><![CDATA[<!-- A required but useless input XML doc for a transformation -->
-<doc/>]]></content>
+         <content><![CDATA[<!-- A required but useless input XML doc for a transformation --><doc/>]]></content>
       </source>
    </environment>
-   <environment name="result-document-03">
-      <source role=".">
-         <content><![CDATA[<doc>
-	<foo>text</foo>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="result-document-04">
-      <source role=".">
-         <content><![CDATA[<doc>
-	<foo>item1</foo>
-	<foo>item</foo>
-	<elem>item3</elem>
-	<item>my:item5</item>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="result-document-05">
-      <source role=".">
-         <content><![CDATA[<doc>
-	<foo>out.dtd</foo>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="result-document-06">
-      <source role=".">
-         <content><![CDATA[<doc>
-	<foo>-//BOAG//DTD Websites V1.3//EN</foo>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="result-document-07">
       <source role=".">
-         <content><![CDATA[<doc>
-	<foo>yes</foo>
-</doc>]]></content>
+         <content><![CDATA[<doc><foo>yes</foo></doc>]]></content>
       </source>
    </environment>
+   
    <environment name="result-document-08">
       <source role=".">
-         <content><![CDATA[<doc>
-	<foo>1.0</foo>
-</doc>]]></content>
+         <content><![CDATA[<doc><foo>1.0</foo></doc>]]></content>
       </source>
    </environment>
+   
    <environment name="result-document-09">
       <source role=".">
-         <content><![CDATA[<doc>
-	<foo>one:</foo>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="result-document-10">
-      <source role=".">
-         <content><![CDATA[<doc/>]]></content>
+         <content><![CDATA[<doc><foo>one:</foo></doc>]]></content>
       </source>
    </environment>
 
    <test-case name="result-document-0101">
       <description>Switch to secondary output and back to primary - sequentially.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="result-document-01"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><foo place="secondary">Hello</foo></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -89,7 +49,7 @@
          <all-of>
             <assert-xml><![CDATA[<out><log>Before redirect</log><log>After redirect</log></out>]]></assert-xml>
             <assert-result-document uri="multresult1.out">
-               <assert-xml file="result-document-0101-2.out"/>
+               <assert-xml><![CDATA[<foo place="secondary">Hello</foo>]]></assert-xml>
             </assert-result-document>
          </all-of>
       </result>
@@ -109,7 +69,7 @@
          <all-of>
             <assert-xml><![CDATA[<out xmlns:my="http://example.com"><log>Before redirect</log><log>After redirect</log></out>]]></assert-xml>
             <assert-result-document uri="multresult2.out">
-               <assert-serialization method="text" file="multresult2.out"/>
+               <assert-serialization method="text">This should come out as plain text.</assert-serialization>
             </assert-result-document>
          </all-of>
       </result>
@@ -126,7 +86,8 @@
          <stylesheet file="result-document-0202.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult003.out"/>
+         <assert-serialization method="text">This document should be serialized as text, not as xml because
+the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-serialization>
       </result>
    </test-case>
 
@@ -174,14 +135,16 @@
          <all-of>
             <assert-xml><![CDATA[<doc-primary>To primary tree.</doc-primary>]]></assert-xml>
             <assert-result-document uri="multresult7.out">
-               <assert-xml file="result-document-0205-2.out"/>
+               <assert-xml><![CDATA[<doc-secondary><out>To secondary tree</out><out>Also to secondary Tree</out></doc-secondary>]]></assert-xml>
             </assert-result-document>
          </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0206">
-      <description>Simple test with xsl:result-document - empty content and no attributes. Output file contains only the XML declaration.</description>
+      <description>
+         Simple test with xsl:result-document - empty content and no attributes. Output file contains only the XML declaration.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -191,7 +154,7 @@
          <stylesheet file="result-document-0206.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult009.out"/>
+         <serialization-matches><![CDATA[^<\?xml\s+version="1.0"\s+encoding="UTF-8"\?>$]]></serialization-matches>
       </result>
    </test-case>
 
@@ -206,10 +169,12 @@
          <stylesheet file="result-document-0207.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>hello1</out>
-<out>hello2</out>
-<out>hello3</out>
-<out>hello4</out>]]></assert-xml>
+         <all-of>
+            <serialization-matches><![CDATA[<out>hello1</out>]]></serialization-matches>
+            <serialization-matches><![CDATA[<out>hello2</out>]]></serialization-matches>
+            <serialization-matches><![CDATA[<out>hello3</out>]]></serialization-matches>
+            <serialization-matches><![CDATA[<out>hello4</out>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -239,7 +204,12 @@
          <stylesheet file="result-document-0209.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="multresult014.out"/>
+         <all-of>
+            <serialization-matches flags="ix">
+               <![CDATA[<META\s+http-equiv=['"]Content-Type['"]\s+content=['"]text/html;\s+charset=UTF-8['"]\s*>]]>
+            </serialization-matches>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -254,7 +224,11 @@
          <stylesheet file="result-document-0210.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="multresult015.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\sxmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\shttp-equiv="Content-Type"\scontent="text/html;\scharset=UTF-8"\s*/>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -269,7 +243,9 @@
          <stylesheet file="result-document-0211.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+         <assert-result-document uri="result-document-0211b.out">
+            <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+         </assert-result-document>        
       </result>
    </test-case>
 
@@ -287,7 +263,7 @@
          <all-of>
             <assert-xml><![CDATA[<out>This should be in the primary xml document</out>]]></assert-xml>
             <assert-result-document uri="mult/multresult19.out">
-               <assert-serialization method="html" file="multresult19.out"/>
+               <assert-serialization method="html">This should be in the secondary text document</assert-serialization>
             </assert-result-document>
          </all-of>
       </result>
@@ -319,7 +295,11 @@
          <stylesheet file="result-document-0214.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="multresult022.out"/>
+         <all-of>
+            <serialization-matches flags="s"><![CDATA[<html>.*</html>]]></serialization-matches>
+            <serialization-matches flags="i"><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -334,7 +314,11 @@
          <stylesheet file="result-document-0215.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="multresult023.out"/>
+         <all-of>
+            <serialization-matches flags="s"><![CDATA[<html\s+xmlns=['"]http://www.w3.org/1999/xhtml['"]>.*</html>]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -349,7 +333,7 @@
          <stylesheet file="result-document-0216.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult024.out"/>
+         <assert-serialization method="text">hello</assert-serialization>
       </result>
    </test-case>
 
@@ -364,12 +348,21 @@
          <stylesheet file="result-document-0217.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult036.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<item1><!\[CDATA\[a & b\]{2}></item1>]]></serialization-matches>
+            <serialization-matches><![CDATA[<item2>a &amp; b</item2>]]></serialization-matches>
+            <serialization-matches><![CDATA[<item3>a &amp; b</item3>]]></serialization-matches>
+            <serialization-matches><![CDATA[<item3 xmlns=['"]http://www.mytest.example.org['"]><!\[CDATA\[a & b\]{2}></item3>]]></serialization-matches>
+            <serialization-matches><![CDATA[<item4>a &amp; b</item4>]]></serialization-matches>
+            <serialization-matches><![CDATA[<item5><!\[CDATA\[a & b\]{2}></item5>]]></serialization-matches>   
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0218">
-      <description>Test with CDATA section element inside an LRE in the body of xsl:result-document and it has not been specified in the cdata-section-elements attribute.</description>
+      <description>
+         Test with CDATA section element inside an LRE in the body of xsl:result-document when it has not been specified 
+         in the cdata-section-elements attribute.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -379,11 +372,11 @@
          <stylesheet file="result-document-0218.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<a>&lt;&lt;&lt;&gt;&gt;&gt;</a>
-<b>&lt;&lt;&lt;&gt;&gt;&gt;</b>
-<c>&lt;&lt;&lt;&gt;&gt;&gt;</c>
-</out>]]></assert-xml>
+         <all-of>
+            <serialization-matches><![CDATA[<a>&lt;&lt;&lt;&gt;&gt;&gt;</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<b>&lt;&lt;&lt;&gt;&gt;&gt;</b>]]></serialization-matches>
+            <serialization-matches><![CDATA[<c>&lt;&lt;&lt;&gt;&gt;&gt;</c>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -398,12 +391,17 @@
          <stylesheet file="result-document-0219.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult042.out"/>
+         <serialization-matches flags="x">
+            <![CDATA[<!DOCTYPE\s+out\s+SYSTEM\s+['"]out.dtd['"]>\s*<out>hello</out>]]>
+         </serialization-matches>
       </result>
    </test-case>
 
    <test-case name="result-document-0220">
-      <description>Test with xsl:result-document and @doctype-public present but no @doctype-system present. Show that @doctype-public is ignored.</description>
+      <description>
+         Test with xsl:result-document and @doctype-public present but no @doctype-system present. 
+         Show that @doctype-public is ignored.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -413,7 +411,7 @@
          <stylesheet file="result-document-0220.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult047.out"/>
+         <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -428,12 +426,17 @@
          <stylesheet file="result-document-0221.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult048.out"/>
+         <serialization-matches flags="x">
+            <![CDATA[<!DOCTYPE\s+out\s+PUBLIC\s+['"]-//BOAG//DTD\sWebsites\sV1.3//EN['"]\s+['"]out.dtd['"]>\s*<out>hello</out>]]>
+         </serialization-matches>
       </result>
    </test-case>
 
    <test-case name="result-document-0222">
-      <description>Test with xsl:result-document and @doctype-public and @doctype-system present, @method is text. Doctype attributes should be ignored.</description>
+      <description>
+         Test with xsl:result-document and @doctype-public and @doctype-system present, @method is text. 
+         Doctype attributes should be ignored.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -443,7 +446,7 @@
          <stylesheet file="result-document-0222.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult049.out"/>
+         <assert-serialization method="text">hello</assert-serialization>
       </result>
    </test-case>
 
@@ -458,7 +461,10 @@
          <stylesheet file="result-document-0223.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="multresult057.out"/>
+            <all-of>
+               <serialization-matches><![CDATA[<meta http-equiv="Content-Type" content="application/xhtml-xml; charset=UTF-8">]]></serialization-matches>
+               <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+            </all-of>
       </result>
    </test-case>
 
@@ -473,12 +479,18 @@
          <stylesheet file="result-document-0224.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="multresult058.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<meta http-equiv="Content-Type" content="application/xhtml-xml; charset=UTF-8">]]></serialization-matches>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0225">
-      <description>Test with xsl:result-document and @include-content-type="yes", method="text". @include-content-type should be ignored.</description>
+      <description>
+         Test with xsl:result-document and @include-content-type="yes", method="text". 
+         @include-content-type should be ignored.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -488,7 +500,7 @@
          <stylesheet file="result-document-0225.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult062.out"/>
+         <assert-serialization method="text">hello</assert-serialization>
       </result>
    </test-case>
 
@@ -518,12 +530,15 @@
          <stylesheet file="result-document-0227.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult075.out"/>
+         <serialization-matches><![CDATA[<\?xml\s+version=['"]1.0['"]\s+encoding=['"]UTF-8['"]\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
    <test-case name="result-document-0228">
-      <description>Test with xsl:result-document and @omit-xml-declaration="yes", @method="xml". Declaration must be omitted from the result tree.</description>
+      <description>
+         Test with xsl:result-document and @omit-xml-declaration="yes", @method="xml". 
+         Declaration must be omitted from the result tree.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -533,7 +548,7 @@
          <stylesheet file="result-document-0228.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult080.out"/>
+         <assert-serialization method="xml"><![CDATA[<out>hello</out>]]></assert-serialization>
       </result>
    </test-case>
 
@@ -548,7 +563,7 @@
          <stylesheet file="result-document-0229.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult082.out"/>
+         <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="yes"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -563,7 +578,7 @@
          <stylesheet file="result-document-0230.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult083.out"/>
+         <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="no"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -578,7 +593,7 @@
          <stylesheet file="result-document-0231.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult084.out"/>
+         <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -593,7 +608,7 @@
          <stylesheet file="result-document-0232.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult088.out"/>
+         <assert-serialization method="text">a1b2</assert-serialization>
       </result>
    </test-case>
 
@@ -608,7 +623,7 @@
          <stylesheet file="result-document-0233.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult090.out"/>
+         <serialization-matches><![CDATA[<\?xml.*>\s*<out>bbbbSbbS</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -623,7 +638,7 @@
          <stylesheet file="result-document-0234.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+         <serialization-matches><![CDATA[<\?xml\s+version=['"]1.0['"].*>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -638,7 +653,12 @@
          <stylesheet file="result-document-0235.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="multresult095.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html>]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\s+http-equiv]]></serialization-matches>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -653,12 +673,20 @@
          <stylesheet file="result-document-0236.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="multresult096.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\s+http-equiv]]></serialization-matches>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0237">
-      <description>Test with @output-version="5.0" and @method="text" on xsl:result-document. Version attribute should be ignored.</description>
+      <description>
+         Test with @output-version="5.0" and @method="text" on xsl:result-document. 
+         Version attribute should be ignored.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -668,12 +696,15 @@
          <stylesheet file="result-document-0237.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult097.out"/>
+         <assert-serialization method="text">hello</assert-serialization>
       </result>
    </test-case>
 
    <test-case name="result-document-0238">
-      <description>Test @format of xsl:result-document. Verify that the matching output declaration is used. (output declarations have same local name but different namespace, namespace in-scope of xsl:result-document determines which one will be used)</description>
+      <description>Test @format of xsl:result-document. Verify that the matching output declaration is used. 
+         (output declarations have same local name but different namespace, namespace in-scope of xsl:result-document 
+         determines which one will be used)
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -683,14 +714,19 @@
          <stylesheet file="result-document-0238.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because
-the named my:format has method "xml".
-</out>]]></assert-xml>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>]]></assert-xml>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0239">
-      <description>Test with various attributes in xsl:result-document and an output declaration that overrides another output declaration. Attributes that are being tested are: -method, byte-order-mark, encoding, indent, omit-xml-declaration, standalone, output-version, undeclare-prefixes</description>
+      <description>
+         Test with various attributes in xsl:result-document and an output declaration that overrides another output declaration. 
+         Attributes that are being tested are: -method, byte-order-mark, encoding, indent, omit-xml-declaration, standalone, 
+         output-version, undeclare-prefixes
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -698,10 +734,10 @@ the named my:format has method "xml".
       </dependencies>
       <test>
          <stylesheet file="result-document-0239.xsl"/>
-         <stylesheet file="result-document-0239.xsl"/>
+         <stylesheet file="result-document-0239a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult106.out"/>
+         <assert-serialization method="text">This document should be serialized as text, not as xml, the output definition used is not overriden.</assert-serialization>
       </result>
    </test-case>
 
@@ -716,12 +752,23 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0240.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult109.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<item1>this]]></serialization-matches>
+            <serialization-matches><![CDATA[<item2><!\[CDATA\[this]]></serialization-matches>
+            <serialization-matches><![CDATA[<item3><!\[CDATA\[this]]></serialization-matches>
+            <serialization-matches><![CDATA[<item4>this]]></serialization-matches>
+            <serialization-matches><![CDATA[<item5><!\[CDATA\[this]]></serialization-matches>
+            <serialization-matches><![CDATA[<item6>this]]></serialization-matches>
+            <serialization-matches><![CDATA[<item7><!\[CDATA\[this]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0241">
-      <description>Test that value in @use-character-maps of xsl:result-document both overrides and supplements such values in a matching output definition.</description>
+      <description>
+         Test that value in @use-character-maps of xsl:result-document both overrides and supplements such values 
+         in a matching output definition.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -731,14 +778,18 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0241.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult111.out"/>
+         <serialization-matches><![CDATA[<out>BABASBAS</out>]]></serialization-matches>
       </result>
    </test-case>
 
    <test-case name="result-document-0301">
       <description>Test AVT in the @method of an xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="result-document-03"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><foo>text</foo></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -746,14 +797,18 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0301.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="multresult025.out"/>
+         <assert-serialization method="text">hello</assert-serialization>
       </result>
    </test-case>
 
    <test-case name="result-document-0401">
       <description>Test AVT in @cdata-section-elements of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="result-document-04"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><foo>item1</foo><foo>item</foo><elem>item3</elem><item>my:item5</item></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -761,14 +816,24 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0401.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult038.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<item1><!\[CDATA]]></serialization-matches>
+            <serialization-matches><![CDATA[item2>a]]></serialization-matches>
+            <serialization-matches><![CDATA[item3 xmlns=.*><!\[CDATA]]></serialization-matches>
+            <serialization-matches><![CDATA[item4>a]]></serialization-matches>
+            <serialization-matches><![CDATA[item5 xmlns=.*><!\[CDATA]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0501">
       <description>Test AVT in @doctype-system of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="result-document-05"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><foo>out.dtd</foo></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -776,14 +841,18 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0501.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult046.out"/>
+         <serialization-matches><![CDATA[<!DOCTYPE\s+out\s+SYSTEM\s+"out.dtd">\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
    <test-case name="result-document-0601">
       <description>Test AVT in @doctype-public of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="result-document-06"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><foo>-//BOAG//DTD Websites V1.3//EN</foo></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -791,7 +860,7 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0601.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult050.out"/>
+         <serialization-matches><![CDATA[<!DOCTYPE\s+out\s+PUBLIC\s+"-//BOAG//DTD\sWebsites\sV1.3//EN"\s+"out.dtd">\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -806,7 +875,12 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0701.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="multresult063.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html>]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\s+http-equiv]]></serialization-matches>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -821,7 +895,7 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0702.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="multresult081.out"/>
+         <assert-serialization method="xml"><![CDATA[<out>hello</out>]]></assert-serialization>
       </result>
    </test-case>
 
@@ -836,7 +910,7 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0703.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+         <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="yes"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -851,7 +925,7 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0801.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
+         <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -866,16 +940,20 @@ the named my:format has method "xml".
          <stylesheet file="result-document-0901.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because
-the named my:format has method "xml".
-</out>]]></assert-xml>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>         
+            <assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>]]></assert-xml>
+         </all-of>   
       </result>
    </test-case>
 
    <test-case name="result-document-1001">
-      <description>Test for generating two or more result trees with same URI where the first result tree is implicit and the second tree has an explicit xsl:result-document with @href=""</description>
+      <description>
+         Test for generating two or more result trees with same URI where the first result tree is implicit 
+         and the second tree has an explicit xsl:result-document with @href=""
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="result-document-10"/>
+      <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -883,17 +961,20 @@ the named my:format has method "xml".
          <stylesheet file="result-document-1001.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <error code="XTRE1495"/>
             <error code="XTDE1490"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="result-document-1002">
-      <description>Test for generating two or more result trees with same URI where the first tree has an explicit xsl:result-document with href="" and the second tree is implicit</description>
+      <description>
+         Test for generating two or more result trees with same URI where the first tree has an explicit 
+         xsl:result-document with href="" and the second tree is implicit
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="result-document-10"/>
+      <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -901,17 +982,20 @@ the named my:format has method "xml".
          <stylesheet file="result-document-1002.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <error code="XTRE1495"/>
             <error code="XTDE1490"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="result-document-1003">
-      <description>Test for generating two result trees with same URI where the first one is created implicitly and the second with xsl:result-document without @href.</description>
+      <description>
+         Test for generating two result trees with same URI where the first one is created implicitly 
+         and the second with xsl:result-document without @href.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="result-document-10"/>
+      <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -919,10 +1003,10 @@ the named my:format has method "xml".
          <stylesheet file="result-document-1003.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <error code="XTRE1495"/>
             <error code="XTDE1490"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 </test-set>

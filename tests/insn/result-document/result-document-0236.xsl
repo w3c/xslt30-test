@@ -4,8 +4,7 @@
 
    <t:template match="/">
 	     <t:result-document method="xhtml" output-version="1.0">
-		       <html xmlns="http://www.w3.org/1999/xhtml"
-               xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+		       <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
                <title/>
             </head>

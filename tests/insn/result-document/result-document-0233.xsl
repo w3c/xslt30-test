@@ -10,8 +10,6 @@
 
    <t:template match="/">
   	   <t:result-document method="xml" use-character-maps="temp">
-      	  <t:text>
-</t:text>
       	  <out>baba«ba«</out>
       </t:result-document>
    </t:template>

@@ -7,7 +7,7 @@
 
    <t:template match="/">
       <t:result-document href="multresult7.out">
-         <doc-secondary xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+         <doc-secondary>
             <out>To secondary tree</out>
             <t:result-document>
                <doc-primary>To primary tree.</doc-primary>

@@ -7,12 +7,12 @@
    <t:output method="xhtml"/>
 
    <t:template match="/">
-      <html xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <html>
          <head/>
          <body>First HTML doc in implict xsl:result-document</body>
       </html>
       <t:result-document href="">
-         <html xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+         <html>
             <head/>
             <body>Second HTML doc in explicit xsl:result-document</body>
          </html>

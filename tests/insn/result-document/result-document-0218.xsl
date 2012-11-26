@@ -7,19 +7,11 @@
    <t:template match="/">
       <t:result-document>
   		     <out>
-            <t:text>
-</t:text>
             <a>&lt;&lt;&lt;&gt;&gt;&gt;</a>
-            <t:text>
-</t:text>
-            <b>&lt;&lt;&lt;&gt;&gt;&gt;</b>
-            <t:text>
-</t:text>
+            <b><![CDATA[<<<>>>]]></b>
             <c>
                <t:sequence select="codepoints-to-string((60,60,60,62,62,62))"/>
             </c>
-            <t:text>
-</t:text>
          </out>
       </t:result-document>
 

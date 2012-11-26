@@ -4,10 +4,7 @@
 
    <t:template match="/">
       <t:result-document>
-         <t:text>
-</t:text>
-         <html xmlns="http://www.mytest.example.org"
-               xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+         <html xmlns="http://www.mytest.example.org">
             <out>hello</out>
          </html>
       </t:result-document>

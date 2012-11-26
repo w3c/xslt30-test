@@ -6,9 +6,7 @@
 
    <t:template match="/">
   	   <t:result-document method="xml" omit-xml-declaration="no">
-         <t:text>
-</t:text>
-      	  <out>hello</out>
+         <out>hello</out>
       </t:result-document>
    </t:template>
 </t:transform>

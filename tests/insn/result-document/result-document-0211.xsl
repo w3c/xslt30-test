@@ -5,7 +5,7 @@
    <t:output method="xml" encoding="UTF-8"/>
 
    <t:template match="/">
-      <t:result-document href="multresult16.out">
+      <t:result-document href="result-document-0211b.out">
          <out>hello</out>
       </t:result-document>
    </t:template>

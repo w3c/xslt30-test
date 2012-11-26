@@ -7,18 +7,10 @@
 
    <t:template match="/">
       <t:result-document>
-         <t:text>
-</t:text>
-         <out>hello1</out>
-         <t:text>
-</t:text>
-         <out>hello2</out>
-         <t:text>
-</t:text>
-         <out>hello3</out>
-         <t:text>
-</t:text>
-         <out>hello4</out>
+                  <out>hello1</out>
+                  <out>hello2</out>
+                  <out>hello3</out>
+                  <out>hello4</out>
       </t:result-document>
    </t:template>
 </t:transform>

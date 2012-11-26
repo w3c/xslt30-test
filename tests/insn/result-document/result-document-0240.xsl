@@ -15,29 +15,13 @@
    <t:template match="doc">
       <t:result-document format="my:temp-output" cdata-section-elements="item2 item3">
          <out>
-            <t:text>
-</t:text>
             <item1>this is item1 - not in a cdata section</item1>
-            <t:text>
-</t:text>
             <item2>this is item2 - in a cdata section</item2>
-            <t:text>
-</t:text>
             <item3>this is item3 - in a cdata section</item3>
-            <t:text>
-</t:text>
             <item4>this is item3 - not in a cdata section</item4>
-            <t:text>
-</t:text>
             <item5>this is item3 - in a cdata section</item5>
-            <t:text>
-</t:text>
             <item6>this is item3 - not in a cdata section</item6>
-            <t:text>
-</t:text>
             <item7>this is item3 - in a cdata section</item7>
-            <t:text>
-</t:text>
          </out>
       </t:result-document>
    </t:template>

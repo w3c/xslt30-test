@@ -8,8 +8,8 @@
   				Show that attribute is ignored.-->
 
    <t:variable name="temp">
-	     <one:a xmlns:xsl="http://www.w3.org/1999/XSL/Transform">a1</one:a>
-	     <two:b xmlns:xsl="http://www.w3.org/1999/XSL/Transform">b2</two:b>
+	     <one:a>a1</one:a>
+	     <two:b>b2</two:b>
    </t:variable>
 
    <t:template match="/">

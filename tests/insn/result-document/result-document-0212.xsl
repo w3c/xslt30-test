@@ -13,7 +13,7 @@
          <out>This should be in the primary xml document</out>
       </t:result-document>
       <t:result-document href="{$filename}" format="nine999">
-This should be in the secondary text document, mult/multresult19.out
-</t:result-document>
+         <t:text>This should be in the secondary text document</t:text>
+      </t:result-document>
    </t:template>
 </t:transform>

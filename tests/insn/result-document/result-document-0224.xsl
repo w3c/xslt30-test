@@ -7,9 +7,9 @@
       <t:result-document method="html"
                          include-content-type="yes"
                          media-type="application/xhtml-xml">
-         <html xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+         <html>
             <head>
-               <meta>Content-Typetext/html;version='3.0'</meta>
+               <meta http-equiv="Content-Type" content="text/html;version='3.0'"/>
                <title/>
             </head>
             <body>hello</body>

@@ -8,7 +8,7 @@
       <t:result-document method="html"
                          include-content-type="yes"
                          media-type="application/xhtml-xml">
-         <html xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+         <html>
             <head>
                <title/>
             </head>

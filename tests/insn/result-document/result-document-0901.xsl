@@ -12,9 +12,7 @@
 
    <t:template match="doc">
       <t:result-document xmlns:one="http://example1.com" format="{foo}format2">
-         <out>This document should be serialized as xml, not as text because
-the named my:format has method "xml".
-</out>
+         <out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>
       </t:result-document>
    </t:template>
 </t:transform>

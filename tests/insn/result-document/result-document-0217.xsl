@@ -8,27 +8,13 @@
 
    <t:template match="/">
       <t:result-document method="xml" cdata-section-elements="item1 my:item3 item5">
-         <t:text>
-</t:text>
          <out>
             <item1>a &amp; b</item1>
-            <t:text>
-</t:text>
             <item2>a &amp; b</item2>
-            <t:text>
-</t:text>
             <item3>a &amp; b</item3>
-            <t:text>
-</t:text>
             <item3 xmlns="http://www.mytest.example.org">a &amp; b</item3>
-            <t:text>
-</t:text>
             <item4>a &amp; b</item4>
-            <t:text>
-</t:text>
             <item5>a &amp; b</item5>
-            <t:text>
-</t:text>
          </out>
       </t:result-document>
    </t:template>

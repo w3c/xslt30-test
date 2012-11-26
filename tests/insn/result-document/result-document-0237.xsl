@@ -5,7 +5,7 @@
 
    <t:template match="/">
 	     <t:result-document method="text" output-version="5.0">
-		       <html xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+		       <html>
             <head>
                <title/>
             </head>
