@@ -8,7 +8,7 @@
 <xsl:template match="/" name="main">
     <out>
     <xsl:for-each select="unparsed-text-lines('quadruped.txt', 'iso-8859-1')">
-      <line numnber="{position()}" of="{last()}"><xsl:value-of select="."/></line>
+      <line nr="{position()}" of="{last()}"><xsl:value-of select="."/></line>
     </xsl:for-each>
     </out>
 </xsl:template>

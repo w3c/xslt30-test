@@ -23,32 +23,14 @@
    
    <environment name="output-03">
       <source role=".">
-         <content><![CDATA[<doc>
-	<a>xx&#035;xx</a>
-	<a>yy&#042;&#036;yy</a>
-	<a>zz&#037;&#035;zz</a>
-</doc>]]></content>
+         <content><![CDATA[<doc><a>xx&#035;xx</a><a>yy&#042;&#036;yy</a><a>zz&#037;&#035;zz</a></doc>]]></content>
       </source>
    </environment>
    
    <environment name="output-04">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <foo><![CDATA[<p>&nbsp;</p>]]]]><![CDATA[></foo>
-</doc>]]></content>
-      </source>
+      <source role="." file="output04.xml"/>
    </environment>
    
-   <environment name="output-05">
-      <source role=".">
-         <content><![CDATA[<!-- Test for Serialization -->
-<doc>
-	<a>&#xA;</a>
-	<a>bbb</a>
-</doc>]]></content>
-      </source>
-   </environment>
-
    <test-case name="output-0101">
       <description>Test escaping of non-ASCII characters in HTML output when @escape-uri-attributes= yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
@@ -61,7 +43,6 @@
       </test>
       <result>
          <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
-         <!--<assert-serialization method="html" file="output005.out"/>-->
       </result>
    </test-case>
    
@@ -759,7 +740,12 @@
          <stylesheet file="output-0136.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output112.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>Hello</body>]]></serialization-matches>
+            <serialization-matches>^&#xfeff;</serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1061,7 +1047,7 @@
          <initial-mode name="a"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[href="&#150;"]]></serialization-matches>
+         <serialization-matches><![CDATA[href="¡"]]></serialization-matches>
       </result>
    </test-case>
 
@@ -1076,6 +1062,10 @@
          <stylesheet file="output-0156.xsl"/>
       </test>
       <result>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<out\s+xmlns="http://www.w3.org/1999/xhtml">Hello</out>]]></serialization-matches>
+         </all-of>
          <assert-serialization method="xml" file="output145.out"/>
       </result>
    </test-case>
@@ -1111,7 +1101,10 @@
    </test-case>
 
    <test-case name="output-0159">
-      <description>Test HTML output method with illegal content inside the 'script' tag. Example from spec. The escaping must be done manually.</description>
+      <description>
+         Test HTML output method with illegal content inside the 'script' tag. 
+         Example from spec. The escaping must be done manually.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="output-01"/>
       <dependencies>
@@ -1121,7 +1114,13 @@
          <stylesheet file="output-0159.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output149.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches><![CDATA[<script\s+type="text/javascript">document\.write\s\("<EM>This will work<\\/EM>"\)\s+</script>]]></serialization-matches>
+            <serialization-matches><![CDATA[<style>\s+<\s>\s&\s+</style>]]></serialization-matches>
+            <!--<serialization-matches><![CDATA[<pre>\s+<b> Save    all	space here</b>\s+</pre>]]></serialization-matches>-->
+            <serialization-matches><![CDATA[<textarea\s+rows="2"\s+cols="20">\s+The cat was playing in the garden.\s+Suddenly a dog showed up.....\s+</textarea>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1166,7 +1165,10 @@
          <stylesheet file="output-0162.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output155.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html><body>Hello</body></html>]]></serialization-matches>
+            <serialization-matches>^&#xfeff;</serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1211,7 +1213,10 @@
          <stylesheet file="output-0165.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output165.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html><body>Hello</body></html>]]></serialization-matches>
+            <serialization-matches>^&#xfeff;</serialization-matches>   
+         </all-of>
       </result>
    </test-case>
 
@@ -1301,7 +1306,10 @@
          <stylesheet file="output-0171.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output174.out"/>
+         <all-of>
+            <serialization-matches>Hello</serialization-matches>
+            <serialization-matches>^&#xfeff;</serialization-matches>   
+         </all-of>
       </result>
    </test-case>
 
@@ -1316,7 +1324,7 @@
          <stylesheet file="output-0172.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output175.out"/>
+         <serialization-matches>^Hello$</serialization-matches>
       </result>
    </test-case>
 
@@ -1351,7 +1359,12 @@
    </test-case>
 
    <test-case name="output-0175">
-      <description>Test with two named output declarations with the same name and the same import precedence and different values for the same attributes, then a third output declaration with the same name but with higher precedence which sets values for the conflicting attributes. Show that there is no conflict and the third named output declaration is used.</description>
+      <description>
+         Test with two named output declarations with the same name and the same import precedence 
+         and different values for the same attributes, then a third output declaration with the same 
+         name but with higher precedence which sets values for the conflicting attributes. 
+         Show that there is no conflict and the third named output declaration is used.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="output-01"/>
       <dependencies>
@@ -2007,7 +2020,10 @@
    </test-case>
 
    <test-case name="output-0306">
-      <description>Test merging of two xsl:output declaration where the resulting concatenated sequence of all use-character-maps is taken in order of increasing import precedence.</description>
+      <description>
+         Test merging of two xsl:output declaration where the resulting concatenated sequence of all use-character-maps 
+         is taken in order of increasing import precedence.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="output-03"/>
       <dependencies>
@@ -2015,8 +2031,8 @@
       </dependencies>
       <test>
          <stylesheet file="output-0306.xsl"/>
-         <stylesheet file="output-0306.xsl"/>
-         <stylesheet file="output-0306.xsl"/>
+         <stylesheet file="output-0306y.xsl" role="secondary"/>
+         <stylesheet file="output-0306z.xsl" role="secondary"/>
       </test>
       <result>
          <assert-serialization method="xml" file="output187.out"/>
@@ -2039,7 +2055,12 @@
    </test-case>
 
    <test-case name="output-0308">
-      <description>Test of merging two named output declarations with different import precedence and different values for the same attributes. Show that the values from the declaration with higher import precedence takes effect. Attributes tested: -byte-order-mark, escape-uri-attributes, include-content-type, undeclare-prefixes, use-character-maps</description>
+      <description>
+         Test of merging two named output declarations with different import precedence and different values 
+         for the same attributes. Show that the values from the declaration with higher import precedence takes 
+         effect. Attributes tested: -byte-order-mark, escape-uri-attributes, include-content-type, undeclare-prefixes, 
+         use-character-maps
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="output-03"/>
       <dependencies>
@@ -2047,10 +2068,14 @@
       </dependencies>
       <test>
          <stylesheet file="output-0308.xsl"/>
-         <stylesheet file="output-0308.xsl"/>
+         <stylesheet file="output-0308a.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="output195.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<p>xxBxx</p>]]></serialization-matches>
+            <serialization-matches><![CDATA[<p>yy\*\$yy</p>]]></serialization-matches>
+            <serialization-matches><![CDATA[<p>zz%Bzz</p>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -2095,12 +2120,18 @@
          <stylesheet file="output-0311.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="output300.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<!DOCTYPE\s+a\s+PUBLIC\s+"ABC'DEF"\s+'ABC"DEF'>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a/>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="output-0312">
-      <description>Override a system identifier and public identifier using doctype-system="", doctype-public="": see erratum E31</description>
+      <description>
+         Override a system identifier and public identifier using doctype-system="", doctype-public="": see erratum E31
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="output-03"/>
       <dependencies>
@@ -2166,7 +2197,12 @@
    <test-case name="output-0501">
       <description>Test for missing name in xsl:character-map. Static error</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-05"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<!-- Test for Serialization --><doc><a>&#xA;</a><a>bbb</a></doc>]]></content>
+         </source>
+      </environment>
+      
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>

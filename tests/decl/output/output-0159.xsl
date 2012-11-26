@@ -21,7 +21,7 @@
             <pre>
                <b> Save    all	space here</b>
             </pre>
-            <textarea>220
+            <textarea rows="2" cols="20">
 The cat was playing in the garden.
 
 Suddenly a dog showed up.....
