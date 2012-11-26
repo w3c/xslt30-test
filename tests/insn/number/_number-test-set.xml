@@ -965,7 +965,12 @@ Found source 2
          <stylesheet file="number-1102.xsl"/>
       </test>
       <result>
-         <assert-xml file="number-1102.out"/>
+         <all-of>
+            <assert>every $n in /out/no-from/n satisfies $n = "1"</assert>
+            <assert>every $n in /out/from/n satisfies $n = "1"</assert>
+            <assert>every $n in /out/matching-count/n satisfies $n = "1"</assert>
+            <assert>every $n in /out/non-matching-count/n satisfies $n = ""</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1135,7 +1140,7 @@ footnote</footnote> and a <citation/></p>
          <stylesheet file="number-1801.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc nr=""><a mark="true" nr="1"/><a nr="2"/><a nr="3"/><a nr="4"/><a mark="true" nr="1"/><a nr="2"/><a nr="3"/><a nr="4"/>   </doc>]]></assert-xml>
+         <assert-xml><![CDATA[<doc nr=""><a mark="true" nr="1"/><a nr="2"/><a nr="3"/><a nr="4"/><a mark="true" nr="1"/><a nr="2"/><a nr="3"/><a nr="4"/></doc>]]></assert-xml>
       </result>
    </test-case>
 
