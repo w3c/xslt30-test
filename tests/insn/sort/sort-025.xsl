@@ -2,19 +2,16 @@
 <?spec xslt#sorting?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<xsl:output method="text"/>
+  <!-- Purpose: Test for xsl:sort using a numeric expression for the select. -->
 
-  <!-- FileName: sort23 -->
-  <!-- Document: http://www.w3.org/TR/xslt -->
-  <!-- DocVersion: 19991116 -->
-  <!-- Section: 10 -->
-    <!-- Purpose: Test for xsl:sort using a numeric expression for the select. -->
-
-<xsl:template match="/">
-  <xsl:for-each select="doc/alpha">
-    <xsl:sort select="@height*@width" data-type="number" />
-    <xsl:value-of select="@net"/><xsl:text>,</xsl:text>
-  </xsl:for-each>
-</xsl:template>
+  <xsl:template match="/">
+    <out>
+      <xsl:for-each select="doc/alpha">
+        <xsl:sort select="@height*@width" data-type="number"/>
+        <xsl:value-of select="@net"/>
+        <xsl:text>,</xsl:text>
+      </xsl:for-each>
+    </out>
+  </xsl:template>
 
 </xsl:stylesheet>

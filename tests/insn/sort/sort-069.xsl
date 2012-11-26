@@ -9,13 +9,9 @@
 
    <xslt:template match="/">
       <out>List of numbers: <xslt:value-of select="doc/a"/>
-         <xslt:text>
-</xslt:text>
          <Last_BeforeSort>
             <xslt:value-of select="doc/a[position()=last()]"/>
          </Last_BeforeSort>
-         <xslt:text>
-</xslt:text>
          <xslt:for-each select="doc/a">
         	   <xslt:sort data-type="number" order="descending">
         		     <xslt:call-template name="temp"/>

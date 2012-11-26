@@ -3,7 +3,7 @@
 <!-- A test for xsl:sort. Alphabetic strings restricted to lower-case a-z to avoid collation differences -->
 <?spec xslt#sorting?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<xsl:output indent="yes"/>
+
   <xsl:template match="doc">
     <out>
     <asc>

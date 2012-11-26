@@ -2,21 +2,18 @@
 <?spec xslt#sorting?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<xsl:output method="xml" indent="yes"/>
+  <!-- Purpose: If nothing comes through select, should get document order. -->
 
-  <!-- FileName: sort37 -->
-  <!-- Document: http://www.w3.org/TR/xslt -->
-  <!-- DocVersion: 19991116 -->
-  <!-- Section: 10 -->
-    <!-- Purpose: If nothing comes through select, should get document order. -->
-
-<xsl:template match="/">
-<out>
-  <xsl:for-each select="doc/alpha">
-    <xsl:sort select="./*[name(.) = 'never']" data-type="text" />
-    <z><xsl:value-of select="concat(left,right,orig)"/><xsl:text>,</xsl:text></z>
-  </xsl:for-each>
-</out>  
-</xsl:template>
+  <xsl:template match="/">
+    <out>
+      <xsl:for-each select="doc/alpha">
+        <xsl:sort select="./*[name(.) = 'never']" data-type="text"/>
+        <z>
+          <xsl:value-of select="concat(left,right,orig)"/>
+          <xsl:text>,</xsl:text>
+        </z>
+      </xsl:for-each>
+    </out>
+  </xsl:template>
 
 </xsl:stylesheet>

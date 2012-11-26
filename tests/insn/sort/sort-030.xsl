@@ -2,21 +2,19 @@
 <?spec xslt#sorting?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<xsl:output method="text"/>
 
-  <!-- FileName: sort24 -->
-  <!-- Document: http://www.w3.org/TR/xslt -->
-  <!-- DocVersion: 19991116 -->
-  <!-- Section: 10 -->
-    <!-- Purpose: Test for xsl:sort using a numeric expression for the select. -->
+  <!-- Purpose: Test for xsl:sort using a numeric expression for the select. -->
   <!-- Note that we show that this sort does NOT do the expected rearrangement of nodes!
      Apparently, the conversion of the select expression to a string occurs at a bad time. -->
 
-<xsl:template match="/">
-  <xsl:for-each select="doc/alpha">
-    <xsl:sort select="string-length(.)" data-type="number"/>
-    <xsl:value-of select="@key"/><xsl:text>|</xsl:text>
-  </xsl:for-each>
-</xsl:template>
+  <xsl:template match="/">
+    <out>
+      <xsl:for-each select="doc/alpha">
+        <xsl:sort select="string-length(.)" data-type="number"/>
+        <xsl:value-of select="@key"/>
+        <xsl:text>|</xsl:text>
+      </xsl:for-each>
+    </out>
+  </xsl:template>
 
 </xsl:stylesheet>
