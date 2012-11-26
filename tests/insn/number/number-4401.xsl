@@ -2,14 +2,9 @@
 <?spec xslt#number?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-  <!-- CaseName: numbering88 -->
+
     <!-- Purpose: Show discrepancies between number and position. -->
-  <!-- SpecCitation: Rec="XSLT" Version="1.0" type="OASISptr1" place="id(number)/ulist[2]/item[1]/p[1]/text()[5]" -->
-  <!-- SpecCitation: Rec="XSLT" Version="1.0" type="OASISptr1" place="id(number)/ulist[2]/item[3]/p[1]/text()[6]" -->
-  <!-- SpecCitation: Rec="XSLT" Version="1.0" type="OASISptr1" place="id(number)/ulist[1]/item[2]/p[1]/text()[3]" -->
-  <!-- SpecCitation: Rec="XSLT" Version="1.0" type="OASISptr1" place="id(number)/ulist[1]/item[3]/p[1]/text()[1]" -->
-  <!-- SpecCitation: Rec="XSLT" Version="1.0" type="OASISptr1" place="id(convert)/p[2]/text()[3]" -->
-  <!-- Scenario: operation="standard-XML" -->
+
   <!-- Elaboration: While xsl:number always shows the number of the chapter among all chapters,
        position() in the outer case is the position of the chapter among all children of doc,
        position() in the inner case is the position of the chapter within the select="." set
@@ -44,5 +39,7 @@
     </xsl:attribute>
   </xsl:element>
 </xsl:template>
+  
+<xsl:template match="text()"/>  
 
 </xsl:stylesheet>

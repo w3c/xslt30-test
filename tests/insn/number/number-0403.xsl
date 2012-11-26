@@ -22,5 +22,7 @@
        <xsl:apply-templates/>
     </fo:block>;
   </xsl:template>
+  
+  <xsl:strip-space elements="*"/>
  
 </xsl:stylesheet>

@@ -4,8 +4,6 @@
 <?spec xslt#current-function?>
 <!-- Test use of current() in the count pattern of xsl:number -->
 
-<xsl:output indent="yes"/>
-
 <xsl:template match="*">
   <xsl:copy>
     <xsl:attribute name="nr">

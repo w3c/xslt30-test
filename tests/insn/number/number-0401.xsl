@@ -4,6 +4,9 @@
                 xmlns:fo="http://www.w3.org/XSL/Format/1.0">
 
   <!-- Example from draft -->
+  
+  <xsl:strip-space elements="*"/>
+  
   <xsl:template match="doc">
     <out>
       <xsl:apply-templates/>

@@ -8,5 +8,7 @@
       <xsl:number value="(10 to 20)" format="1,1"/>
     </out>
   </xsl:template>
+  
+  <xsl:strip-space elements="*"/>
    
 </xsl:stylesheet>

@@ -2,12 +2,11 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 version="2.0">
 
-<!-- Test case reported on xsl-list as a Saxon bug by Deborah Pickett [debbiep-list-xsl@futzle.com] on 9 Mar 2007 -->
+<!-- Test case reported on xsl-list as a Saxon bug on 9 Mar 2007 -->
 
 <!-- Tests numbering the children of the document node with from="/" -->
 
 <xsl:strip-space elements="*"/>
-<xsl:output indent="yes"/>
 
 <xsl:template match="/">
 <out><xsl:apply-templates/></out>

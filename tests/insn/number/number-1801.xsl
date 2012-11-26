@@ -1,12 +1,9 @@
 <?xml version="1.0"?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<?spec xslt#current-function?>
 <!-- Test xsl:number level="any" where the a node matches both the from and count patterns -->
 
 <!-- The result of this test is surprising! See bug 5849 -->
-
-<xsl:output indent="yes"/>
 
 <xsl:template match="*">
   <xsl:copy>
@@ -17,5 +14,7 @@
     <xsl:apply-templates/>
   </xsl:copy>
 </xsl:template>
+  
+<xsl:template match="text()"/>  
  
 </xsl:stylesheet>

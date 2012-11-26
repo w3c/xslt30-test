@@ -3,7 +3,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
                 xmlns:fo="http://www.w3.org/XSL/Format/1.0">
 
-  <!-- PURPOSE -->
   <xsl:template match="doc">
     <out>
       <xsl:apply-templates select="ol/item"/>
