@@ -4,14 +4,14 @@
   <xsl:strip-space elements="doc"/>
   <!-- trivial test of normalization-form="none" -->
   <?spec ser#normalization-form?>
-  
+
   <xsl:template match="/">
-  <xsl:result-document method="xml" normalization-form="none">
-  <html>
-    <xsl:copy-of select="."/>
-  </html>
-  </xsl:result-document>  
+    <xsl:result-document method="xml" normalization-form="none">
+      <html>
+        <xsl:copy-of select="."/>
+      </html>
+    </xsl:result-document>
   </xsl:template>
-    
+
 
 </xsl:stylesheet>

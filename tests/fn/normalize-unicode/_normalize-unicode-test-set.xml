@@ -23,7 +23,14 @@
          <stylesheet file="normalize-unicode-001.xsl"/>
       </test>
       <result>
-         <assert-xml file="normalize-unicode-001.out"/>
+         <all-of>
+            <assert>/out/a[1] = "The quick brown fox jumped over the lazy dog"</assert>
+            <assert>/out/a[2] = "84 104 101 32 113 117 105 99 107 32 98 114 111 119 110 32 102 111 120 32 106 117 109 112 101 100 32 111 118 101 114 32 116 104 101 32 108 97 122 121 32 100 111 103"</assert>
+            <assert>/out/a[3]/@att = "&#x9;&#xA;&#xD;"</assert>
+            <assert>/out/a[4] = "9 10 13"</assert>
+            <assert>/out/a[5] = "Straßenüberführung"</assert>
+            <assert>/out/a[6] = "83 116 114 97 223 101 110 252 98 101 114 102 252 104 114 117 110 103"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -38,7 +45,14 @@
          <stylesheet file="normalize-unicode-002.xsl"/>
       </test>
       <result>
-         <assert-xml file="normalize-unicode-002.out"/>
+         <all-of>
+            <assert>/out/a[1] = "The quick brown fox jumped over the lazy dog"</assert>
+            <assert>/out/a[2] = "84 104 101 32 113 117 105 99 107 32 98 114 111 119 110 32 102 111 120 32 106 117 109 112 101 100 32 111 118 101 114 32 116 104 101 32 108 97 122 121 32 100 111 103"</assert>
+            <assert>/out/a[3]/@att = "&#x9;&#xA;&#xD;"</assert>
+            <assert>/out/a[4] = "9 10 13"</assert>
+            <assert>/out/a[5] = "Straßenüberführung"</assert>
+            <assert>/out/a[6] = "83 116 114 97 223 101 110 252 98 101 114 102 252 104 114 117 110 103"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -54,7 +68,14 @@
          <stylesheet file="normalize-unicode-003.xsl"/>
       </test>
       <result>
-         <assert-xml file="normalize-unicode-003.out"/>
+         <all-of>
+            <assert>/out/a[1] = "The quick brown fox jumped over the lazy dog"</assert>
+            <assert>/out/a[2] = "84 104 101 32 113 117 105 99 107 32 98 114 111 119 110 32 102 111 120 32 106 117 109 112 101 100 32 111 118 101 114 32 116 104 101 32 108 97 122 121 32 100 111 103"</assert>
+            <assert>/out/a[3]/@att = "&#x9;&#xA;&#xD;"</assert>
+            <assert>/out/a[4] = "9 10 13"</assert>
+            <assert>/out/a[5] = "Straßenu&#776;berfu&#776;hrung"</assert>
+            <assert>/out/a[6] = "83 116 114 97 223 101 110 117 776 98 101 114 102 117 776 104 114 117 110 103"</assert>
+         </all-of>   
       </result>
    </test-case>
 
@@ -70,7 +91,14 @@
          <stylesheet file="normalize-unicode-004.xsl"/>
       </test>
       <result>
-         <assert-xml file="normalize-unicode-004.out"/>
+         <all-of>
+            <assert>/out/a[1] = "The quick brown fox jumped over the lazy dog"</assert>
+            <assert>/out/a[2] = "84 104 101 32 113 117 105 99 107 32 98 114 111 119 110 32 102 111 120 32 106 117 109 112 101 100 32 111 118 101 114 32 116 104 101 32 108 97 122 121 32 100 111 103"</assert>
+            <assert>/out/a[3]/@att = "&#x9;&#xA;&#xD;"</assert>
+            <assert>/out/a[4] = "9 10 13"</assert>
+            <assert>/out/a[5] = "Straßenüberführung"</assert>
+            <assert>/out/a[6] = "83 116 114 97 223 101 110 252 98 101 114 102 252 104 114 117 110 103"</assert>
+         </all-of>  
       </result>
    </test-case>
 
@@ -86,7 +114,14 @@
          <stylesheet file="normalize-unicode-005.xsl"/>
       </test>
       <result>
-         <assert-xml file="normalize-unicode-005.out"/>
+         <all-of>
+            <assert>/out/a[1] = "The quick brown fox jumped over the lazy dog"</assert>
+            <assert>/out/a[2] = "84 104 101 32 113 117 105 99 107 32 98 114 111 119 110 32 102 111 120 32 106 117 109 112 101 100 32 111 118 101 114 32 116 104 101 32 108 97 122 121 32 100 111 103"</assert>
+            <assert>/out/a[3]/@att = "&#x9;&#xA;&#xD;"</assert>
+            <assert>/out/a[4] = "9 10 13"</assert>
+            <assert>/out/a[5] = "Straßenu&#776;berfu&#776;hrung"</assert>
+            <assert>/out/a[6] = "83 116 114 97 223 101 110 117 776 98 101 114 102 117 776 104 114 117 110 103"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -102,12 +137,7 @@
          <stylesheet file="normalize-unicode-006.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <nfc>197 197 197</nfc>
-   <nfd>65 778 65 778 65 778</nfd>
-   <nfkc>197 197 197</nfkc>
-   <nfkd>65 778 65 778 65 778</nfkd>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><nfc>197 197 197</nfc><nfd>65 778 65 778 65 778</nfd><nfkc>197 197 197</nfkc><nfkd>65 778 65 778 65 778</nfkd></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -123,7 +153,10 @@
          <stylesheet file="normalize-unicode-007.xsl"/>
       </test>
       <result>
-         <assert-xml file="normalize-unicode-007.out"/>
+         <assert-xml><![CDATA[<out><nfc>65 102 102 105 110 105 116 121 32 65 64259 110 105 116 121</nfc
+            ><nfd>65 102 102 105 110 105 116 121 32 65 64259 110 105 116 121</nfd
+            ><nfkc>65 102 102 105 110 105 116 121 32 65 102 102 105 110 105 116 121</nfkc
+            ><nfkd>65 102 102 105 110 105 116 121 32 65 102 102 105 110 105 116 121</nfkd></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -155,12 +188,7 @@
          <stylesheet file="normalize-unicode-009.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <nfc>7691</nfc>
-   <nfc>7691</nfc>
-   <nfd>100 775</nfd>
-   <nfd>100 775</nfd>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><nfc>7691</nfc><nfc>7691</nfc><nfd>100 775</nfd><nfd>100 775</nfd></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -251,7 +279,13 @@
          <stylesheet file="normalize-unicode-014.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="normalize-unicode-014.out" encoding="utf-8"/>
+         <all-of>
+            <serialization-matches><![CDATA[<p class="en">The quick brown fox</p>]]></serialization-matches>
+            <serialization-matches>Straßenu&#x308;berfu&#x308;hrung</serialization-matches>
+            <serialization-matches>&lt;p class="de"&gt;&lt;span class="u&#x308;ss"&gt;u&#x308;ß&lt;/span&gt;Straßenu&#x308;berfu&#x308;hrung</serialization-matches>
+            <serialization-matches>&lt;p class="de"&gt;&lt;span class="u&#x308;ss"&gt;u&#x308;ss&lt;/span&gt;Straßenu&#x308;berfu&#x308;hrung</serialization-matches>
+            <serialization-matches><![CDATA[<p class="ffi"><span class="ffi">ffi</span>Affinity]]></serialization-matches>            
+         </all-of>
       </result>
    </test-case>
 
@@ -267,7 +301,13 @@
          <stylesheet file="normalize-unicode-015.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="normalize-unicode-015.out" encoding="utf-8"/>
+         <all-of>
+            <serialization-matches><![CDATA[<p>The quick brown fox</p>]]></serialization-matches>
+            <serialization-matches>Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
+            <serialization-matches>&lt;p norm="c" üss="u&amp;#x308;ß">Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
+            <serialization-matches>&lt;p norm="d" üss="u&amp;#x308;ss">Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
+            <serialization-matches><![CDATA[<p norm="kc" ffi="ffi">Affinity]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -282,7 +322,13 @@
          <stylesheet file="normalize-unicode-016.xsl"/>
       </test>
       <result>
-         <assert-xml file="normalize-unicode-016.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<div class="en">The quick brown fox</div>]]></serialization-matches>
+            <serialization-matches><![CDATA[<div class="de" norm="c" üss="üß">Straßenüberführung</div>]]></serialization-matches>
+            <serialization-matches><![CDATA[<div class="de" norm="d" üss="üss">Straßenüberführung</div>]]></serialization-matches>
+            <serialization-matches><![CDATA[<div class="ffi" norm="kc" ffi="ffi">Affinity</div>]]></serialization-matches>
+            <serialization-matches><![CDATA[<div class="ffi" norm="kd" ffi="ﬃ">Aﬃnity</div>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -297,6 +343,7 @@
          <stylesheet file="normalize-unicode-017.xsl"/>
       </test>
       <result>
+         <!-- TODO: should be a serialization test -->
          <assert-xml file="normalize-unicode-017.out"/>
       </result>
    </test-case>
@@ -312,6 +359,7 @@
          <stylesheet file="normalize-unicode-018.xsl"/>
       </test>
       <result>
+         <!-- TODO: should be a serialization test -->
          <assert-xml file="normalize-unicode-018.out"/>
       </result>
    </test-case>

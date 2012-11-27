@@ -9,6 +9,7 @@
                        schema-location="schemaForDefaultnamespace.xsd"/>
 
    <xslt:template match="/">
-      <out xslt:xpath-default-namespace="http://www.defaultnamespace.example.com/ns/schema" type="myPartNumberType"><elem>123-AB</elem></out>
+      <out xslt:xpath-default-namespace="http://www.defaultnamespace.example.com/ns/schema">
+         <elem xslt:type="myPartNumberType">123-AB</elem></out>
    </xslt:template>
 </xslt:transform>

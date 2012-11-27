@@ -30,7 +30,7 @@
             <xslt:value-of select="$var3 instance of element(*, one:myPartNumberType)"/>
          </one>
          <two>
-            <elem>myPartNumberTypehttp://www.defaultnamespace.example.com/ns/schema123-AB</elem>
+            <elem xslt:type="myPartNumberType" xslt:xpath-default-namespace="http://www.defaultnamespace.example.com/ns/schema">123-AB</elem>
          </two>
       </out>
    </xslt:template>

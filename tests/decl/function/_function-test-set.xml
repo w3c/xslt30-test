@@ -143,7 +143,7 @@
 
    <test-case name="function-0001">
       <description>Test the format-integer#2 of XSLT3.0 spec</description>
-      <created by="O'Neil delpratt, Saxonica" on="2012-11-07"/>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -152,11 +152,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>1</a>
-   <b>11</b>
-   <c>1,230</c>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>1</a><b>11</b><c>1,230</c></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -600,7 +596,10 @@
    </test-case>
 
    <test-case name="function-1011">
-      <description>Test whether function evaluation is pipelined. This test will return -100 if evaluation is pipelined, or throw a divide-by-zero error if not</description>
+      <description>
+         Test whether function evaluation is pipelined. This test will return -100 if evaluation is pipelined, 
+         or throw a divide-by-zero error if not
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="function-10"/>
       <dependencies>
@@ -610,10 +609,10 @@
          <stylesheet file="function-1011.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <assert-xml><![CDATA[<out result="-100"/>]]></assert-xml>
             <error code="FAOR0001"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -703,10 +702,10 @@
          <stylesheet file="function-1017.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <assert-xml/>
             <error code="XTTE0780"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -721,10 +720,10 @@
          <stylesheet file="function-1018.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <assert-xml/>
             <error code="XTSE0090"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -739,10 +738,10 @@
          <stylesheet file="function-1019.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <assert-xml/>
             <error code="XTTE0790"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -793,7 +792,7 @@
 
    <test-case name="function-1023">
       <description>This stylesheet crashes out at run-time saying that System function node-name#0 is not available with this host language - XSLT2.0</description>
-      <created by="O'Neil delpratt, Saxonica" on="2012-11-07"/>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="function-10"/>
       <dependencies>
          <spec value="XSLT20"/>
@@ -808,7 +807,7 @@
 
    <test-case name="function-1024">
       <description>Test the format-integer#2 of XSLT3.0 spec crashes out at runtime - picture is not valid</description>
-      <created by="O'Neil delpratt, Saxonica" on="2012-11-07"/>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="function-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -868,7 +867,7 @@
 
    <test-case name="function-1401">
       <description>Test the node-name#0 function of XSLT2.1 spec</description>
-      <created by="O'Neil Delpratt, Saxonica" on="2012-11-07"/>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="function-14"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -882,8 +881,8 @@
    </test-case>
 
    <test-case name="function-1501">
-      <description>Test the available-environment-variables#0 and get-environment-variable#1 functions of XSLT2.1 spec</description>
-      <created by="O'Neil delpratt, Saxonica" on="2012-11-07"/>
+      <description>Test the available-environment-variables#0 and get-environment-variable#1 functions of XSLT3.0 spec</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="function-15"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -897,8 +896,10 @@
    </test-case>
 
    <test-case name="function-1601">
-      <description>Test the available-environment-variables#0 and get-environment-variable#1 functions of XSLT2.1 spec with a compile-time machanism function use-when</description>
-      <created by="O'Neil delpratt, Saxonica" on="2012-11-07"/>
+      <description>
+         Test the available-environment-variables#0 and get-environment-variable#1 functions of XSLT3.0 spec
+         with a compile-time use-when</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="function-16"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -907,18 +908,13 @@
          <stylesheet file="function-1601.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc>
- <section>
-  <p ok="string-length($user) ge 0"><para>p1</para></p>
-  <p ok="string-length($user) ge 0"><para>p2</para></p>
- </section>
-</doc>]]></assert-xml>
+         <assert-xml><![CDATA[<doc><section><p ok="string-length($user) ge 0"><para>p1</para></p><p ok="string-length($user) ge 0"><para>p2</para></p></section></doc>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="function-1701">
-      <description>Test the format-integer#2 of XSLT3.0 spec</description>
-      <created by="O'Neil delpratt, Saxonica" on="2012-11-07"/>
+      <description>Test the format-integer#2 function of XSLT3.0 spec</description>
+      <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="function-17"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -932,7 +928,10 @@
    </test-case>
 
    <test-case name="function-1901">
-      <description>Test that all functions defined in the F+O 1.1 specification are implemented. Note: update the source document from time to time with the latest draft spec</description>
+      <description>
+         Test that all functions defined in the F+O 3.0 specification are implemented. 
+         Note: update the source document from time to time with the latest draft spec
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="function-19"/>
       <dependencies>
@@ -947,7 +946,9 @@
    </test-case>
 
    <test-case name="function-1902">
-      <description>Test that all functions defined in the F+O 1.1 specification are NOT implemented in a 2.0 processor. Note: update the source document from time to time with the latest draft spec</description>
+      <description>
+         Test that all functions defined in the F+O 3.0 specification are NOT implemented in a 2.0 processor. 
+         Note: update the source document from time to time with the latest draft spec</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="function-19"/>
       <dependencies>
@@ -962,7 +963,9 @@
    </test-case>
 
    <test-case name="function-2001">
-      <description>Test that all functions defined in the XSLT 2.1 specification are implemented. Note: update the source document from time to time with the latest draft spec</description>
+      <description>
+         Test that all functions defined in the XSLT 3.0 specification are implemented. 
+         Note: update the source document from time to time with the latest draft spec</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="function-20"/>
       <dependencies>
@@ -977,7 +980,10 @@
    </test-case>
 
    <test-case name="function-2002">
-      <description>Test that all functions defined in the XSLT 2.1 specification are NOT implemented in a 2.0 processor. Note: update the source document from time to time with the latest draft spec</description>
+      <description>
+         Test that all functions defined in the XSLT 3.0 specification are NOT implemented in a 2.0 processor. 
+         Note: update the source document from time to time with the latest draft spec
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="function-20"/>
       <dependencies>

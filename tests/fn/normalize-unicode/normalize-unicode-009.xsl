@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="iso-8859-1"?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-  <xsl:output indent="yes" encoding="iso-8859-1"/>
-
+  
   <!-- test normalize-unicode() -->
   <!-- test Latin Capital D with dot above -->
-  <?spec fo#func-normalize-unicode?>
   
   <xsl:template match="/">
   <xsl:variable name="c" select="'&#x1e0b;'"/>
