@@ -1,20 +1,20 @@
 <?xml version="1.0" ?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<xsl:import href="impattset46a.xsl" /> 
-<xsl:import href="impattset46b.xsl" /> 
+ <xsl:import href="attribute-set-2202a.xsl"/>
+ <xsl:import href="attribute-set-2202b.xsl"/>
 
 
  <?spec xslt#attribute-sets?>
-<!-- Purpose: Basic test of import precedence based on Richard Titmuss's test
+ <!-- Purpose: Basic test of import precedence based on Richard Titmuss's test
      with attribute sets. Here the imported attribute sets have additional non-
      conflicting attributes as well.  -->
 
 
-<xsl:template match="/">
-<out>
-	<foo xsl:use-attribute-sets="bar" /> 
-</out>
-</xsl:template>
+ <xsl:template match="/">
+  <out>
+   <foo xsl:use-attribute-sets="bar"/>
+  </out>
+ </xsl:template>
 
 </xsl:stylesheet>

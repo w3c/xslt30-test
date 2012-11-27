@@ -2,15 +2,16 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
   xmlns:ped="http://www.test.com/">
 
-<?spec xslt#xsl-element?>
-    <!-- Purpose: Use xsl:element with namespace attribute and default changed; prefix known at stylesheet level. -->
+  <!-- Purpose: Use xsl:element with namespace attribute and default changed; prefix known at stylesheet level. -->
 
-<xsl:template match="doc">
-  <out>
-    <xsl:element name="inner" namespace="http://www.test.com/" xmlns="http://other.com/">
-      <yyy/>
-    </xsl:element>
-  </out>
-</xsl:template>
+  <xsl:template match="doc">
+    <out>
+      <xsl:element name="inner" namespace="http://www.test.com/" xmlns="http://other.com/">
+        <yyy/>
+      </xsl:element>
+    </out>
+  </xsl:template>
+  
+  <xsl:template match="text()"/>
 
 </xsl:stylesheet>

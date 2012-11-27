@@ -4,28 +4,22 @@
 
   <!-- Purpose: Check for AVT on element name when xsl:element has namespace attribute. -->
 
-<xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+  <xsl:template match="doc">
+    <out>
 
-<xsl:template match="doc">
-  <out>
-    <!-- Name is literal, no prefix, no namespace: see copy18 -->
-    <!-- Name is literal, no prefix, namespace: see namespace36 -->
-    <!-- Name is literal, prefix, no namespace: see namespace40  -->
-    <!-- Name is literal, prefix, namespace: see namespace56 -->
+      <!-- Name is AVT, no prefix, no namespace -->
+      <xsl:element name="{noprefix}"/>
 
-    <!-- Name is AVT, no prefix, no namespace -->
-    <xsl:element name="{noprefix}"/>
+      <!-- Name is AVT, no prefix, namespace -->
+      <xsl:element name="{noprefix}" namespace="http://literalURI"/>
 
-    <!-- Name is AVT, no prefix, namespace -->
-    <xsl:element name="{noprefix}" namespace="http://literalURI"/>
+      <!-- Name is AVT, prefix, no namespace -->
+      <xsl:element name="{prefix}"/>
+      <!-- It's just a string in the source tree, but prefix must be declared here in the stylesheet! -->
 
-    <!-- Name is AVT, prefix, no namespace -->
-    <xsl:element name="{prefix}"/>
-    <!-- It's just a string in the source tree, but prefix must be declared here in the stylesheet! -->
-
-    <!-- Name is AVT, prefix, namespace -->
-    <xsl:element name="{prefix}" namespace="http://literalURI"/>
-  </out>
-</xsl:template>
+      <!-- Name is AVT, prefix, namespace -->
+      <xsl:element name="{prefix}" namespace="http://literalURI"/>
+    </out>
+  </xsl:template>
 
 </xsl:stylesheet>

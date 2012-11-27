@@ -8,14 +8,14 @@
 
     <!-- test whether disable-output-escaping is "sticky" -->
 
-    <xsl:text>Enable escaping here &lt;fred/&gt;</xsl:text>;
-    <xsl:text disable-output-escaping="yes">Disable escaping here &lt;fred/&gt;</xsl:text>;
-    <xsl:text disable-output-escaping="no">Enable escaping here &lt;fred/&gt;</xsl:text>;
+    <a><xsl:text>Enable escaping here &lt;fred/&gt;</xsl:text></a>;
+    <b><xsl:text disable-output-escaping="yes">Disable escaping here &lt;fred/&gt;</xsl:text></b>;
+    <c><xsl:text disable-output-escaping="no">Enable escaping here &lt;fred/&gt;</xsl:text></c>;
 
     <xsl:variable name="rtf">
-    <xsl:text>Enable escaping here &lt;fred/&gt;</xsl:text>;
-    <xsl:text disable-output-escaping="yes">Disable escaping here &lt;fred/&gt;</xsl:text>;
-    <xsl:text disable-output-escaping="no">Enable escaping here &lt;fred/&gt;</xsl:text>;
+    <p><xsl:text>Enable escaping here &lt;fred/&gt;</xsl:text></p>;
+    <q><xsl:text disable-output-escaping="yes">Disable escaping here &lt;fred/&gt;</xsl:text></q>;
+    <r><xsl:text disable-output-escaping="no">Enable escaping here &lt;fred/&gt;</xsl:text></r>;
     </xsl:variable>
     <xsl:copy-of select="$rtf"/>
 </out>

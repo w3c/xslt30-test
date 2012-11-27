@@ -36,7 +36,9 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="try-002.out"/>
+         <assert-xml><![CDATA[<o><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" 
+              code="err:FOAR0001" module="try-002.xsl"
+              line="17"><message>Integer division by zero</message></err:error></o>]]></assert-xml>
       </result>
    </test-case>
 
@@ -68,12 +70,17 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="try-004.out"/>
+         <assert-xml><![CDATA[<o><validation-error><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" code="err:XTTE1540"
+                 module="try-004.xsl"
+                 line="0"><message>true</message></err:error></validation-error></o>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="try-005">
-      <description>Show xsl:try around element creation doesn't catch an error just because the element isn't valid in the content model of its parent</description>
+      <description>
+         Show xsl:try around element creation doesn't catch an error just because the element isn't valid 
+         in the content model of its parent
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -291,10 +298,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <e>err:FODC0002|Failed to load document rubbish.xml</e>
-   <e>try018.xsl|16</e>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e>err:FODC0002|Failed to load document rubbish.xml</e><e>try-018.xsl|11</e></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -310,7 +314,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>Error: err:FODC0002 Failed to load document rubbish.xml try019.xsl 16</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>Error: err:FODC0002 Failed to load document rubbish.xml try-019.xsl 11</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -342,12 +346,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <all-of>
-            <assert-xml file="try-021.out"/>
-            <assert-result-document uri="try022_2.out">
-               <assert-xml file="try-021-2.out"/>
-            </assert-result-document>
-         </all-of>
+         <assert-xml><![CDATA[<err:error xmlns:err="http://www.w3.org/2005/xqt-errors"
+           code="err:XTDE1490"
+           module="try-021.xsl"
+           line="15"><message>true</message></err:error>]]></assert-xml>
       </result>
    </test-case>
 
@@ -363,12 +365,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <all-of>
-            <assert-xml file="try-022.out"/>
-            <assert-result-document uri="try023_1.out">
-               <assert-xml file="try-022-2.out"/>
-            </assert-result-document>
-         </all-of>
+         <assert-xml><![CDATA[<err:error xmlns:err="http://www.w3.org/2005/xqt-errors"
+           code="err:FOAR0001"
+           module="try-022.xsl"
+           line="20"><message>Integer division by zero</message></err:error>]]></assert-xml>
       </result>
    </test-case>
 
@@ -415,7 +415,7 @@
    </test-case>
 
    <test-case name="try-025">
-      <description>Invalid child of xsl:try in XSLT 2.0 (not caught by xsl:fallback) (same test as try016 but run under XSLT 2.0)</description>
+      <description>Invalid child of xsl:try in XSLT 2.0 (not caught by xsl:fallback) (same test as try-016 but run under XSLT 2.0)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20"/>
@@ -431,7 +431,7 @@
    </test-case>
 
    <test-case name="try-026">
-      <description>Invalid child of xsl:try in XSLT 2.0 (caught by xsl:fallback) (same test as try017 but specifies version="3.0" at the instruction level)</description>
+      <description>Invalid child of xsl:try in XSLT 2.0 (caught by xsl:fallback) (same test as try-017 but specifies version="3.0" at the instruction level)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20"/>

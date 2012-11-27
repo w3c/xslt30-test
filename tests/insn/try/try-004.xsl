@@ -12,8 +12,6 @@ exclude-result-prefixes="f xs z err"
 
 <!-- Use xsl:try to catch an error doing output validation -->
 
-<xsl:output indent="yes"/>
-
 <xsl:import-schema>
 <xs:schema targetNamespace="http://try004.com/">
   <xs:complexType name="z">

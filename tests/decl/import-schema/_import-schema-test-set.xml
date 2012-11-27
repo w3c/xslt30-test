@@ -388,9 +388,9 @@
       </test>
       <result>
          <all-of>
-            <assert>string-join(/out/hatsize/*/name(), ';') = "t;t;t;f;f"</assert>
-            <assert>string-join(/out/bighatsize/*/name(), ';') = "f;t;t;f;f"</assert>
-            <assert>string-join(/out/shoesize/*/name(), ';') = "t;t;t;f;f"</assert>
+            <assert>string-join(/out/hatsize/*, ';') = "true;true;true;false;false"</assert>
+            <assert>string-join(/out/bighatsize/*, ';') = "false;true;true;false;false"</assert>
+            <assert>string-join(/out/shoesize/*, ';') = "true;true;true;false;false"</assert>
          </all-of>
       </result>
    </test-case>
@@ -407,7 +407,7 @@
          <stylesheet file="import-schema-022.xsl"/>
       </test>
       <result>
-         <assert>string-join(/out/hatsize/*/name(), ';') = "t;f;t;f;f"</assert>
+         <assert>string-join(/out/hatsize/*, ';') = "true;false;true;false;false"</assert>
       </result>
    </test-case>
 
@@ -423,7 +423,7 @@
          <stylesheet file="import-schema-023.xsl"/>
       </test>
       <result>
-         <assert>string-join(/out/hatsize/*/name(), ';') = "t;t;f;f;f"</assert>
+         <assert>string-join(/out/hatsize/*, ';') = "true;true;false;false;false"</assert>
       </result>
    </test-case>
 
@@ -439,7 +439,7 @@
          <stylesheet file="import-schema-024.xsl"/>
       </test>
       <result>
-         <assert>string-join(/out/hatsize/*/name(), ';') = "t;t;t;f;f"</assert>
+         <assert>string-join(/out/hatsize/*, ';') = "true;true;true;false;false"</assert>
       </result>
    </test-case>
 
@@ -455,7 +455,7 @@
          <stylesheet file="import-schema-025.xsl"/>
       </test>
       <result>
-         <assert>string-join(/out/hatsize/*/name(), ';') = "t;t;t;t;f;f"</assert>
+         <assert>string-join(/out/hatsize/*, ';') = "true;true;true;true;false;false"</assert>
       </result>
    </test-case>
 
@@ -551,7 +551,7 @@
          <stylesheet file="import-schema-031.xsl"/>
       </test>
       <result>
-         <assert>string-join(/out/*/name(), ';') = "t;t;t;t;f"</assert>
+         <assert>string-join(/out/*, ';') = "true;true;true;true;false"</assert>
       </result>
    </test-case>
 
@@ -567,7 +567,7 @@
          <stylesheet file="import-schema-032.xsl"/>
       </test>
       <result>
-         <assert>string-join(/out/*/name(), ';') = "f;t;f;f;t;t;f"</assert>
+         <assert>string-join(/out/*, ';') = "false;true;false;false;true;true;false"</assert>
       </result>
    </test-case>
 
@@ -938,7 +938,7 @@
          <stylesheet file="import-schema-052.xsl"/>
       </test>
       <result>
-         <assert>string-join(/*/*/local-name(), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
+         <assert>string-join(/*/*/substring(.,1,1), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
       </result>
    </test-case>
 
@@ -954,7 +954,7 @@
          <stylesheet file="import-schema-053.xsl"/>
       </test>
       <result>
-         <assert>string-join(/*/*/local-name(), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
+         <assert>string-join(/*/*/substring(.,1,1), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
       </result>
    </test-case>
 
@@ -970,7 +970,7 @@
          <stylesheet file="import-schema-054.xsl"/>
       </test>
       <result>
-         <assert>string-join(/*/*/local-name(), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
+         <assert>string-join(/*/*/substring(.,1,1), ';') = "t;t;t;t;t;t;t;f;f;f;f;f;f;f"</assert>
       </result>
    </test-case>
 

@@ -1406,7 +1406,7 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2608.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b/></a>]]></assert-xml>
+         <serialization-matches><![CDATA[<a\s+xmlns:n="http://n/"><b/></a>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -1451,7 +1451,28 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2611.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-2611.out"/>
+         <all-of>
+            <assert>/x/*[01][self::xs:foo][@a="1"][@b="1"][@c="2"]</assert>
+            <assert>/x/*[02][self::xs:foo][@a="1"][@b="1"][@c="2"]</assert>
+            <assert>/x/*[03][self::m] = "true"</assert>
+            <assert>/x/*[04][self::m] = "true"</assert>
+            <assert>/x/*[05][self::xs:foo][@a="1"][@b="1"][@c="2"]</assert>
+            <assert>/x/*[06][self::xs:foo][@a="2"][@b="1"][@c="2"]</assert>
+            <assert>/x/*[07][self::m] = "false"</assert>
+            <assert>/x/*[08][self::m] = "false"</assert>
+            <assert>/x/*[09][self::xs:foo][@a=""][@b="1"][@c="2"]</assert>
+            <assert>/x/*[10][self::xs:foo][not(@a)][@b="1"][@c="2"]</assert>
+            <assert>/x/*[11][self::m] = "false"</assert>
+            <assert>/x/*[12][self::m] = "false"</assert>
+            <assert>/x/*[13][self::xs:foo][@a="0"][@b="1"][@c="2"]</assert>
+            <assert>/x/*[14][self::xs:foo][@a="0"][@b="1"][@c="2"][@e="5"]</assert>
+            <assert>/x/*[15][self::m] = "true"</assert>
+            <assert>/x/*[16][self::m] = "true"</assert>
+            <assert>/x/*[17][self::foo][@a="0"][@b="1"][@c="2"]</assert>
+            <assert>/x/*[18][self::xs:foo][@a="0"][@b="1"][@c="2"][@e="5"]</assert>
+            <assert>/x/*[19][self::m] = "false"</assert>
+            <assert>/x/*[20][self::m] = "false"</assert>           
+         </all-of>
       </result>
    </test-case>
 
@@ -1526,9 +1547,7 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2616.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<s:complexType xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns="http://t.com/">
-   <s:element ref="abcd"/>
-</s:complexType>]]></assert-xml>
+         <assert-xml><![CDATA[<s:complexType xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns="http://t.com/"><s:element ref="abcd"/></s:complexType>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2802,7 +2821,8 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-3301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:anamespace="http://foo.com/"><p anamespace:Attr1="true"/><p xmlns:two="http://baz.com/" two:Attr2="true"/><p Attr3="true"/></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out xmlns:anamespace="http://foo.com/"><p anamespace:Attr1="true"
+            /><p xmlns:two="http://baz.com/" two:Attr2="true"/><p Attr3="true"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2817,7 +2837,7 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-3302.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-3302.out"/>
+         <assert-xml><![CDATA[<out xmlns:anamespace="http://foo.com/"><test xmlns="http://foo.com/"><inner xmlns=""/></test><later/><anamespace:anelement/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -3027,13 +3047,15 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-3401.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[  <out xmlns:space="http://fictitious.com">The foo element....
-    <foo L="winner1" space:Q="winner2"/></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out xmlns:space="http://fictitious.com">The foo element....<foo L="winner1" space:Q="winner2"/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="namespace-3501">
-      <description>Stylesheets are free to use any prefix, provided there is a namespace declaration that binds the prefix to the URI of XSLT namespace.</description>
+      <description>
+         Stylesheets are free to use any prefix, provided there is a namespace declaration that binds the prefix 
+         to the URI of the XSLT namespace.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-35"/>
       <dependencies>
@@ -3152,7 +3174,11 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-3602">
-      <description>Testing an attribute not from the XSLT namespace, which is legal provided that the expanded name of the attribute has a non-null namespace URI. This tests for many xslt elements, apparent code path are different for numerous elements. Should actually output a "bogus" stylesheet.</description>
+      <description>
+         Testing an attribute not from the XSLT namespace, which is legal provided that the expanded
+         name of the attribute has a non-null namespace URI. This tests for many xslt elements, apparent 
+         code path are different for numerous elements. Should actually output a "bogus" stylesheet.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-36"/>
       <dependencies>
@@ -3164,7 +3190,10 @@ Testing 1 2 3 quos</out>]]></assert-xml>
          <stylesheet file="namespace-3602b.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml file="namespace-3602.out"/>
+         <assert-xml><![CDATA[<xsl:stylesheet xmlns:ped="http://www.ped.com/" 
+            xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+            xmlns:lotus="http://www.lotus.com"
+            version="1.0"><xsl:template match="/"><out>Yeee ha</out></xsl:template></xsl:stylesheet>]]></assert-xml>
       </result>
    </test-case>
 
@@ -3472,7 +3501,10 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4401">
-      <description>Check for AVT on element name when xsl:element has namespace attribute. Name is literal, no prefix, no namespace: see copy18 Name is literal, no prefix, namespace: see namespace36</description>
+      <description>
+         Check for AVT on element name when xsl:element has namespace attribute. 
+         Name is literal, no prefix, no namespace
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-44"/>
       <dependencies>
@@ -3482,7 +3514,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
          <stylesheet file="namespace-4401.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-4401.out"/>
+         <assert-xml><![CDATA[<out xmlns:someprefix="http://someURI"><elementName/><elementName xmlns="http://literalURI"
+            /><someprefix:elementName/><someprefix:elementName xmlns:someprefix="http://literalURI"/></out>]]></assert-xml>
       </result>
    </test-case>
 

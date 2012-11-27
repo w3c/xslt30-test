@@ -1,20 +1,19 @@
 <?xml version="1.0"?> 
 
-<!-- try023  -->
+<!-- try-022  -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:err="http://www.w3.org/2005/xqt-errors"
-  exclude-result-prefixes="err">
+  exclude-result-prefixes="err xs">
 
   <!-- Test xsl:try -->
 
   <xsl:template name="main">
     <xsl:param name="zero" select="0" as="xs:integer"/>
-    <xsl:result-document href="../../SaxonResults/try/try023.out">
+    <xsl:result-document href="">
       <xsl:try>
         <xsl:for-each select="1 to 2">
-          <xsl:result-document
-            href="../../SaxonResults/try/try023_{position()}.out">
+          <xsl:result-document href="try-022-{position()}.out">
             <output>
               <xsl:call-template name="test"/>
               <xsl:if test="position() = 2">
@@ -24,7 +23,7 @@
           </xsl:result-document>
         </xsl:for-each>
         <xsl:catch errors="*">
-          <err:error code="{$err:code}" module="{$err:module}" line="{$err:line-number}">
+          <err:error code="{$err:code}" module="{tokenize($err:module, '/')[last()]}" line="{$err:line-number}">
             <message>
               <xsl:value-of select="$err:description"/>
             </message>
