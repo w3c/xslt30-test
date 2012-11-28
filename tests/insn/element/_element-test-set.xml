@@ -119,10 +119,7 @@
          <stylesheet file="element-0101.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<Asset type="junk" value="0.0">
-<Worth><e2 type="valid" value="eternity">Worth</e2></Worth></Asset>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><Asset type="junk" value="0.0"><Worth><e2 type="valid" value="eternity">Worth</e2></Worth></Asset></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -137,10 +134,8 @@
          <stylesheet file="element-0102.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<Outer xmlns="http://www.test.com">
-<Worth xmlns=""><e2 type="valid" value="eternity">Worth</e2></Worth></Outer>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><Outer xmlns="http://www.test.com"><Worth xmlns=""
+            ><e2 type="valid" value="eternity">Worth</e2></Worth></Outer></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -173,8 +168,7 @@
          <stylesheet file="element-0201.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1 a1="1" a2="2" id="0 abc 874 b"/></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1 a1="1" a2="2" id="0 abc 874 b"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -207,9 +201,7 @@
          <stylesheet file="element-0302.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<e1>http://www.one.org/002.xml</e1>
-<e2>http://www.example.com/ns/xsl/test</e2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e1>http://www.one.org/002.xml</e1><e2>http://www.example.com/ns/xsl/test</e2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -272,6 +264,7 @@ Number of element node: 2</out>]]></assert-xml>
          (parent, child, grandchild).
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2012-11-27" change="rewrote expected result to test the namespace nodes explicitly"/>
       <environment ref="element-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -281,7 +274,30 @@ Number of element node: 2</out>]]></assert-xml>
          <stylesheet file="element-0306.xsl"/>
       </test>
       <result>
-         <assert-xml file="element-0306.out"/>
+         <all-of>
+            <assert>/out/namespace::* = "http://www.funJobs.com"</assert>
+            <assert>/out/namespace::* = "http://www.easyJobs.com"</assert>
+            <assert>/out/namespace::* = "http://www.w3.org/XML/1998/namespace"</assert>
+            <assert>count(/out/namespace::*) = 3</assert>
+            <assert>/out/*:profession/namespace::* = "http://www.funJobs.com"</assert>
+            <assert>/out/*:profession/namespace::* = "http://www.easyJobs.com"</assert>
+            <assert>/out/*:profession/namespace::* = "http://www.dummy_ns.com"</assert>
+            <assert>/out/*:profession/namespace::* = "http://www.w3.org/XML/1998/namespace"</assert>
+            <assert>count(/out/*:profession/namespace::*) = 4</assert>
+            <assert>/out/*:profession/*:IT_Architect/namespace::* = "http://www.w3.org/XML/1998/namespace"</assert>
+            <assert>/out/*:profession/*:IT_Architect/namespace::* = "http://www.dummy_ns.com"</assert>
+            <assert>count(/out/*:profession/*:IT_Architect/namespace::*) = 2</assert>
+            <assert>/out/*:profession/*:IT_Specialist/namespace::* = "http://www.w3.org/XML/1998/namespace"</assert>
+            <assert>/out/*:profession/*:IT_Specialist/namespace::* = "http://www.all.com"</assert>
+            <assert>count(/out/*:profession/*:IT_Specialist/namespace::*) = 2</assert>
+            <assert>/out/*:profession/*:IT_Specialist/*:dogsbody/namespace::* = "http://www.w3.org/XML/1998/namespace"</assert>
+            <assert>/out/*:profession/*:IT_Specialist/*:dogsbody/namespace::* = "http://www.funJobs.com"</assert>
+            <assert>/out/*:profession/*:IT_Specialist/*:dogsbody/namespace::* = "http://www.easyJobs.com"</assert>
+            <assert>/out/*:profession/*:IT_Specialist/*:dogsbody/namespace::* = "http://www.dummy_ns.com"</assert>
+            <assert>count(/out/*:profession/*:IT_Specialist/*:dogsbody/namespace::*) = 4</assert>
+            <assert>/out/*:profession/Business_Analyst/namespace::* = "http://www.w3.org/XML/1998/namespace"</assert>
+            <assert>count(/out/*:profession/Business_Analyst/namespace::*) = 1</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -317,9 +333,7 @@ Number of element node: 2</out>]]></assert-xml>
          <stylesheet file="element-0308.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<my:Var xmlns:my="http://www.examples.com/my"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><my:Var xmlns:my="http://www.examples.com/my"/></out>]]></assert-xml>
       </result>
    </test-case>
 
