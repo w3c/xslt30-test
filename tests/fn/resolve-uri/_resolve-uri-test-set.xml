@@ -177,9 +177,7 @@
          <stylesheet file="resolve-uri-010.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <body>Watching the game, having a bud</body>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><body>Watching the game, having a bud</body></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -194,9 +192,7 @@
          <stylesheet file="resolve-uri-011.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <body>Watching the game, having a bud</body>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><body>Watching the game, having a bud</body></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -241,12 +237,8 @@
          <stylesheet file="resolve-uri-014.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>http://some.other/home/</a>
-   <a>http://some.other/home/banana.xml</a>
-   <a>http://some.other/</a>
-   <a>http://www.wrox.com/</a>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>http://some.other/home/</a><a>http://some.other/home/banana.xml</a
+            ><a>http://some.other/</a><a>http://www.wrox.com/</a></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -261,14 +253,15 @@
          <stylesheet file="resolve-uri-015.xsl"/>
       </test>
       <result>
-         <assert-xml file="resolve-uri-015.out"/>
+         <assert-xml><![CDATA[<out><a>http://some.other/home/</a><a>http://some.other/home/banana.xml</a
+            ><a>http://some.other/banana.xml</a><a>http://some.other/</a><a>http://www.wrox.com/</a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="resolve-uri-016">
       <description>Test the document-uri() function</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="reluri14"/>
+      <environment ref="reluri18"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -276,10 +269,7 @@
          <stylesheet file="resolve-uri-016.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>/reluri/stdxmlfile.xml</a>
-   <a/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>resolve-uri/reluri18.xml</a><a/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -354,10 +344,7 @@
          <stylesheet file="resolve-uri-021.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <e>/reluri/level1/element.xml</e>
-   <p>/reluri/level1/pi.xml</p>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><e>resolve-uri/level1/element.xml</e><p>resolve-uri/level1/pi.xml</p></out>]]></assert-xml>
       </result>
    </test-case>
 </test-set>

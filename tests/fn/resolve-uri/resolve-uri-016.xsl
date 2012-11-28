@@ -8,9 +8,9 @@
 
 <xsl:variable name="x"><x/></xsl:variable>
 
-<xsl:template match="doc" xml:base="http://no.other/home/">
+<xsl:template match="/" xml:base="http://no.other/home/">
   <out>
-    <a><xsl:value-of select="substring-after(document-uri(/), '/TestInputs')"/></a>
+    <a><xsl:value-of select="substring-after(document-uri(/), '/fn/')"/></a>
     <a><xsl:value-of select="document-uri($x)"/></a>              
   </out>
 </xsl:template>

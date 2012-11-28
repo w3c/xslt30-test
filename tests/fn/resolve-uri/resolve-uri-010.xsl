@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<?spec xslt#document?>
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
 
@@ -7,8 +7,6 @@
     <!-- Purpose: Testing document() function with two arguments: node-set, node-set: 
        verifying that a relative URL specified in first argument is resolved based
 	   on base URI of document in second argument nodeset. -->
-
-<xsl:output indent="yes"/>
 
 <xsl:template match="doc">
   <out>

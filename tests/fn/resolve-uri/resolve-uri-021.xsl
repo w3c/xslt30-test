@@ -4,12 +4,10 @@
 
     <!-- Test that a processing instruction may have a base URI distinct from its parent element -->
 
-<xsl:output method="xml" indent="yes"/>
-
 <xsl:template match="test">
   <out>
-    <e><xsl:value-of select="substring-after(base-uri(*), '/TestInputs')"/></e>
-    <p><xsl:value-of select="substring-after(base-uri(processing-instruction()), '/TestInputs')"/></p>
+    <e><xsl:value-of select="substring-after(base-uri(*), '/fn/')"/></e>
+    <p><xsl:value-of select="substring-after(base-uri(processing-instruction()), '/fn/')"/></p>
   </out>
 </xsl:template>
 

@@ -4,7 +4,6 @@
 
     <!-- Test the resolve-uri() function with one argument -->
 
-<xsl:output method="xml" indent="yes"/>
 
 <xsl:template match="doc" xml:base="http://some.other/home/">
   <out>

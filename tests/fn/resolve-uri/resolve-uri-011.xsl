@@ -17,8 +17,6 @@
      its (one) argument. The node-set derived from the file named by the filename has the
      necessary 'body' element. -->
 
-<xsl:output method="xml" indent="yes"/>
-
 <xsl:template match="doc">
   <out>
     <xsl:copy-of select="document(document('level1/level2/xreluri11b.xml')/*/filename)/*/body"/>

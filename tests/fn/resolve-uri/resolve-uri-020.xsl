@@ -4,8 +4,6 @@
 
     <!-- Test the base-uri() function with no parameters -->
 
-<xsl:output method="xml" indent="yes"/>
-
 <xsl:template match="doc">
   <out>
     <xsl:value-of select="base-uri()"/>
