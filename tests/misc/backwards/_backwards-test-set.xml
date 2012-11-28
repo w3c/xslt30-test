@@ -7,12 +7,7 @@
    
    <environment name="backwards006">
       <source role=".">
-         <content><![CDATA[<data>
-  <item>1.00</item>
-  <item>2.00</item>
-  <item>1</item>
-  <item>2</item>
-</data>]]></content>
+         <content><![CDATA[<data><item>1.00</item><item>2.00</item><item>1</item><item>2</item></data>]]></content>
       </source>
    </environment>
    
@@ -625,15 +620,18 @@
    <test-case name="backwards-039">
       <description>effect of BC on xsl:key and key() function; two key definitions, same name, one in 1.0 mode one in 2.0 mode.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2012-11-27" change="See bug 20102"/>
       <environment ref="backwards006"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="backwards-039.xsl"/>
+         <stylesheet file="backwards-038.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><k><item>1</item></k></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><k><item>1.00</item></k><k><item>1</item></k></out>]]></assert-xml>
+         <!-- was: <assert-xml><![CDATA[<out><k><item>1</item></k></out>]]></assert-xml> -->
       </result>
    </test-case>
 
@@ -648,7 +646,9 @@
          <stylesheet file="backwards-040.xsl"/>
       </test>
       <result>
-         <assert-xml file="backwards-040.out"/>
+         <assert-xml><![CDATA[<out><item-found param="3"><item>1.00</item></item-found><item-found param="3"
+            ><item>2.00</item></item-found><item-found param="3"><item>1</item></item-found><item-found param="3"
+            ><item>2</item></item-found></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -695,10 +695,7 @@
          <stylesheet file="backwards-043b.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<result>
-   <one marker="a"/>
-   <two marker="b"/>
-</result>]]></assert-xml>
+         <assert-xml><![CDATA[<result><one marker="a"/><two marker="b"/></result>]]></assert-xml>
       </result>
    </test-case>
 
