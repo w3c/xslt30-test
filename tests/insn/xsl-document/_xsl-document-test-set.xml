@@ -7,11 +7,7 @@
    
    <environment name="xsl-document-01">
       <source role=".">
-         <content><![CDATA[<root>
-	<child>ch1</child>
-	<child>ch2</child>
-	<child>ch3</child>		
-</root>]]></content>
+         <content><![CDATA[<root><child>ch1</child><child>ch2</child><child>ch3</child></root>]]></content>
       </source>
    </environment>
    
@@ -24,69 +20,22 @@
    
    <environment name="xsl-document-03">
       <source role=".">
-         <content><![CDATA[<doc>
-<data>data element</data>
-</doc>]]></content>
+         <content><![CDATA[<doc><data>data element</data></doc>]]></content>
       </source>
    </environment>
    
    <environment name="xsl-document-04">
       <source role=".">
-         <content><![CDATA[<doc>
-	<a>a1</a>
-	<a>a2</a>
-	<a>a3</a>
-	<a>a4</a>
-	<a>a5</a>
-</doc>]]></content>
-      </source>
-   </environment>
-   
-   <environment name="xsl-document-05">
-      <source role=".">
-         <content><![CDATA[<doc>
-<foo>one</foo>
-<foo>two</foo>
-<foo>three</foo>
-<foo>four</foo>
-<foo>five</foo>
-<foo>six</foo>
-</doc>]]></content>
+         <content><![CDATA[<doc><a>a1</a><a>a2</a><a>a3</a><a>a4</a><a>a5</a></doc>]]></content>
       </source>
    </environment>
    
    <environment name="xsl-document-06">
       <source role=".">
-         <content><![CDATA[<doc>
-<ch type="unknown"> my document
-</ch>
-<!-- This document has a valuable comment!! -->
-</doc>]]></content>
+         <content><![CDATA[<doc><ch type="unknown"> my document </ch><!-- This document has a valuable comment!! --></doc>]]></content>
       </source>
    </environment>
    
-   <environment name="xsl-document-07">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <item target="ab"  num="1" />
-  <item target="cd"  num="2" />
-  <item target="dc"  num="3" />
-  <item target="cd"  num="4" />
-  <item target="ab"  num="5" />
-</doc>]]></content>
-      </source>
-   </environment>
-   
-   <environment name="xsl-document-08">
-      <source role=".">
-         <content><![CDATA[<doc>
-	<item>2.2</item>
-	<item>3</item>
-	<item>5.0</item>
-</doc>]]></content>
-      </source>
-   </environment>
-
    <test-case name="xsl-document-0101">
       <description>
          Simple test case that uses xsl:document instruction to create an empty new document node 
@@ -119,7 +68,16 @@
          <stylesheet file="xsl-document-0102.xsl"/>
       </test>
       <result>
-         <assert-xml file="xsl-document-0102.out"/>
+         <all-of>
+            <assert>/out/node()[1][self::comment()][.='Valuable comment']</assert>
+            <assert>/out/node()[2][self::new][@att1='fresh']</assert>
+            <assert>/out/node()[3][self::lre]</assert>
+            <assert>/out/node()[4][self::processing-instruction(my_pi)][.='ch2']</assert>
+            <assert>/out/node()[5][self::*:child][namespace-uri()='http://www.examples.com/my']</assert>
+            <assert>/out/node()[6][self::text()][.='Text Node']</assert>
+            <assert>/out/node()[7][self::newLRE][ch]</assert>
+            <assert>/out/node()[8][self::text()][.='ch1 ch2 ch3']</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -154,8 +112,7 @@
          <stylesheet file="xsl-document-0104.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[	
-	<out><child/></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><child/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -191,10 +148,7 @@
          <stylesheet file="xsl-document-0106.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-foo:test
-1000
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>foo:test;1000</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -212,11 +166,7 @@ foo:test
          <stylesheet file="xsl-document-0107.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<a>ch1</a>
-<a>ch2</a>
-<a>ch3</a>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>ch1</a><a>ch2</a><a>ch3</a></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -289,7 +239,13 @@ foo:test
          <stylesheet file="xsl-document-0301.xsl"/>
       </test>
       <result>
-         <assert-xml file="xsl-document-0301.out"/>
+         <all-of>
+            <assert>/out/node()[1][self::*:e1][namespace-uri()='http://www.example.org/foo'][@t1='1'][@t2='2'][@t3='3']</assert>
+            <assert>/out/node()[2][self::comment()][. = 'comment inside xsl:document']</assert>
+            <assert>/out/node()[3][self::processing-instruction(Pro2)][. = 'last pi inside xsl:document']</assert>
+            <assert>/out/node()[4][self::test]</assert>
+            <assert>/out/node()[5][self::e2][. = ' inside child elements']</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -336,8 +292,7 @@ foo:test
          <stylesheet file="xsl-document-0402.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-true</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -367,10 +322,7 @@ true</out>]]></assert-xml>
          <stylesheet file="xsl-document-0404.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-false
-false
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>falsefalse</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -380,7 +332,11 @@ false
          document node) is not an error.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="xsl-document-05"/>
+      <environment name="xsl-document-05">
+         <source role=".">
+            <content><![CDATA[<doc><foo>one</foo><foo>two</foo><foo>three</foo><foo>four</foo><foo>five</foo><foo>six</foo></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -388,7 +344,14 @@ false
          <stylesheet file="xsl-document-0501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<foo>one</foo><foo>two</foo><foo>three</foo><foo>four</foo><foo>five</foo><foo>six</foo>]]></assert-xml>
+         <all-of>
+            <assert>/foo[1] = "one"</assert>
+            <assert>/foo[2] = "two"</assert>
+            <assert>/foo[3] = "three"</assert>
+            <assert>/foo[4] = "four"</assert>
+            <assert>/foo[5] = "five"</assert>
+            <assert>/foo[6] = "six"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -403,11 +366,7 @@ false
          <stylesheet file="xsl-document-0601.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<!-- my document
-9456798 P20DT3H
-Old**est**att**rib**ute-->
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><!-- my document 9456798 P20DT3HOld**est**att**rib**ute--></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -424,8 +383,7 @@ Old**est**att**rib**ute-->
          <stylesheet file="xsl-document-0602.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-true</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -443,7 +401,7 @@ true</out>]]></assert-xml>
          <all-of>
             <assert-xml><![CDATA[<out/>]]></assert-xml>
             <assert-message>
-               <assert-xml><![CDATA[* Message inside the first document element** Message inside the second document element *]]></assert-xml>
+               <assert>. = "* Message one ** Message two *"</assert>
             </assert-message>
          </all-of>
       </result>
@@ -499,7 +457,12 @@ true</out>]]></assert-xml>
    <test-case name="xsl-document-0701">
       <description>Tests to sort values inside an xsl:document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="xsl-document-07"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><item target="ab" num="1" /><item target="cd" num="2" /><item target="dc" num="3" 
+               /><item target="cd" num="4" /><item target="ab" num="5" /></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -514,7 +477,11 @@ true</out>]]></assert-xml>
    <test-case name="xsl-document-0801">
       <description>Tests using forExpr inside an xsl:document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="xsl-document-08"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><item>2.2</item><item>3</item><item>5.0</item></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
