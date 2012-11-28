@@ -3,17 +3,7 @@
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="position">
    <description>Tests position</description>
-   <environment name="position-01">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <a>1</a>
-  <a>2</a>
-  <a>3</a>
-  <a>4</a>
-</doc>
-]]></content>
-      </source>
-   </environment>
+
    <environment name="position-02">
       <source role=".">
          <content><![CDATA[ 
@@ -149,14 +139,8 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="position-21">
-      <source role=".">
-         <content><![CDATA[<a/>]]></content>
-      </source>
-   </environment>
-   <environment name="position-22">
-      <source role="." file="position-22.xml"/>
-   </environment>
+   
+   
    <environment name="position-23">
       <source role=".">
          <content><![CDATA[ 
@@ -406,9 +390,7 @@
    <environment name="position-55">
       <source role="." file="position-55.xml"/>
    </environment>
-   <environment name="position-56">
-      <source role="." file="position-56.xml"/>
-   </environment>
+   
    <environment name="position-57">
       <source role="." file="position-57.xml"/>
    </environment>
@@ -421,70 +403,26 @@
    <environment name="position-60">
       <source role="." file="position-60.xml"/>
    </environment>
-   <environment name="position-61">
-      <source role="." file="position-61.xml"/>
-   </environment>
-   <environment name="position-62">
-      <source role=".">
-         <content><![CDATA[ 
-<?a-pi some data?>
-<?b-pi some data?>
-<doc>
-  test
-</doc>
-<?c-pi some data?>]]></content>
-      </source>
-   </environment>
+   
    <environment name="position-63">
       <source role="." file="position-63.xml"/>
    </environment>
    <environment name="position-64">
       <source role="." file="position-64.xml"/>
    </environment>
-   <environment name="position-65">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <a test="true">A1<b>B1</b>A2<!-- This is the 1st comment -->A3<b>B2</b>
-    A4<!-- This is the 2nd comment -->A5</a>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="position-66">
-      <source role=".">
-         <content><![CDATA[ 
-<doc>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="position-67">
       <source role="." file="position-67.xml"/>
    </environment>
    <environment name="position-68">
       <source role="." file="position-68.xml"/>
    </environment>
-   <environment name="position-69">
-      <source role="." file="position-69.xml"/>
-   </environment>
+   
    <environment name="position-70">
       <source role="." file="position-70.xml"/>
    </environment>
-   <environment name="position-71">
-      <source role=".">
-         <content><![CDATA[ 
-<doc>
-  <foo att1="c">
-     <foo att1="b">
-        <foo att1="a">
-           <baz/>
-        </foo>
-     </foo>
-  </foo>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="position-72">
-      <source role="." file="position-72.xml"/>
-   </environment>
+   
+   
    <environment name="position-73">
       <source role="." file="position-73.xml"/>
    </environment>
@@ -527,20 +465,25 @@
 </root>]]></content>
       </source>
    </environment>
+   
    <environment name="position-80">
       <source role="." file="position-80.xml"/>
    </environment>
-   <environment name="position-81">
-      <source role="." file="position-81.xml"/>
-   </environment>
+   
    <environment name="position-82">
       <source role="." file="position-82.xml"/>
    </environment>
+   
+   
 
    <test-case name="position-0101">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'last()' function.</description>
+      <description>Node Set Functions Test of 'last()' function.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-01"/>
+      <environment name="position-01">
+         <source role=".">
+            <content><![CDATA[<doc><a>1</a><a>2</a><a>3</a><a>4</a></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -553,7 +496,7 @@
    </test-case>
 
    <test-case name="position-0201">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function with wildcard.</description>
+      <description>Node Set Functions Test of 'position()' function with wildcard.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-02"/>
       <dependencies>
@@ -593,7 +536,7 @@
    </test-case>
 
    <test-case name="position-0301">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function with wildcard and attribute test.</description>
+      <description>Node Set Functions Test of 'position()' function with wildcard and attribute test.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-03"/>
       <dependencies>
@@ -608,7 +551,7 @@
    </test-case>
 
    <test-case name="position-0302">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates Test of 'position()' in 2nd predicate.</description>
+      <description>Node Set Functions, 2.4 Predicates Test of 'position()' in 2nd predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-03"/>
       <dependencies>
@@ -623,7 +566,7 @@
    </test-case>
 
    <test-case name="position-0401">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates Test of 'position()' when used with xsl:key.</description>
+      <description>Node Set Functions, 2.4 Predicates Test of 'position()' when used with xsl:key.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-04"/>
       <dependencies>
@@ -638,7 +581,7 @@
    </test-case>
 
    <test-case name="position-0501">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'count()'.</description>
+      <description>Node Set Functions Test of 'count()'.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-05"/>
       <dependencies>
@@ -653,7 +596,7 @@
    </test-case>
 
    <test-case name="position-0601">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'last()'.</description>
+      <description>Node Set Functions. Test of 'last()'.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-06"/>
       <dependencies>
@@ -683,7 +626,7 @@
    </test-case>
 
    <test-case name="position-0702">
-      <description>FileName: position10 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-07"/>
       <dependencies>
@@ -730,7 +673,7 @@
    </test-case>
 
    <test-case name="position-0902">
-      <description>FileName: position12 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-09"/>
       <dependencies>
@@ -760,7 +703,7 @@
    </test-case>
 
    <test-case name="position-1002">
-      <description>FileName: position13 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-10"/>
       <dependencies>
@@ -775,7 +718,7 @@
    </test-case>
 
    <test-case name="position-1101">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'last()' function.</description>
+      <description>Node Set Functions Test of 'last()' function.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -790,7 +733,7 @@
    </test-case>
 
    <test-case name="position-1102">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function.</description>
+      <description>Node Set Functions Test of 'position()' function.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -805,7 +748,7 @@
    </test-case>
 
    <test-case name="position-1103">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function.</description>
+      <description>Node Set Functions Test of 'position()' function.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -820,7 +763,7 @@
    </test-case>
 
    <test-case name="position-1104">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function.</description>
+      <description>Node Set Functions Test of 'position()' function.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -835,7 +778,7 @@
    </test-case>
 
    <test-case name="position-1105">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function in predicate.</description>
+      <description>Node Set Functions Test of 'position()' function in predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -910,7 +853,7 @@
    </test-case>
 
    <test-case name="position-1110">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'last()' function with current context position.</description>
+      <description>Node Set Functions Test of 'last()' function with current context position.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -925,7 +868,7 @@
    </test-case>
 
    <test-case name="position-1111">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function with wildcard.</description>
+      <description>Node Set Functions Test of 'position()' function with wildcard.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -940,7 +883,7 @@
    </test-case>
 
    <test-case name="position-1112">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function with wildcard.</description>
+      <description>Node Set Functions Test of 'position()' function with wildcard.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -955,7 +898,7 @@
    </test-case>
 
    <test-case name="position-1113">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function with wildcard.</description>
+      <description>Node Set Functions Test of 'position()' function with wildcard.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -970,7 +913,7 @@
    </test-case>
 
    <test-case name="position-1114">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of positional indexing with wildcard.</description>
+      <description>Node Set Functions Test of positional indexing with wildcard.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -985,7 +928,7 @@
    </test-case>
 
    <test-case name="position-1115">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of positional indexing with wildcard.</description>
+      <description>Node Set Functions Test of positional indexing with wildcard.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1000,7 +943,7 @@
    </test-case>
 
    <test-case name="position-1116">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of positional indexing with wildcard.</description>
+      <description>Node Set Functions Test of positional indexing with wildcard.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1015,7 +958,7 @@
    </test-case>
 
    <test-case name="position-1117">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of positional indexing with wildcard.</description>
+      <description>Node Set Functions Test of positional indexing with wildcard.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1030,7 +973,7 @@
    </test-case>
 
    <test-case name="position-1118">
-      <description>FileName: position15 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1045,7 +988,7 @@
    </test-case>
 
    <test-case name="position-1119">
-      <description>FileName: position16 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1060,7 +1003,7 @@
    </test-case>
 
    <test-case name="position-1120">
-      <description>FileName: position17 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1075,7 +1018,7 @@
    </test-case>
 
    <test-case name="position-1121">
-      <description>FileName: position18 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1090,7 +1033,7 @@
    </test-case>
 
    <test-case name="position-1122">
-      <description>FileName: position19 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1105,7 +1048,7 @@
    </test-case>
 
    <test-case name="position-1123">
-      <description>FileName: position20 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1120,7 +1063,7 @@
    </test-case>
 
    <test-case name="position-1124">
-      <description>FileName: position21 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1135,7 +1078,7 @@
    </test-case>
 
    <test-case name="position-1125">
-      <description>FileName: position24 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1150,7 +1093,7 @@
    </test-case>
 
    <test-case name="position-1126">
-      <description>FileName: position25 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1165,7 +1108,7 @@
    </test-case>
 
    <test-case name="position-1127">
-      <description>FileName: position26 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1180,7 +1123,7 @@
    </test-case>
 
    <test-case name="position-1128">
-      <description>FileName: position28 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1195,7 +1138,7 @@
    </test-case>
 
    <test-case name="position-1129">
-      <description>FileName: position29 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1210,7 +1153,7 @@
    </test-case>
 
    <test-case name="position-1130">
-      <description>FileName: position30 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1225,7 +1168,7 @@
    </test-case>
 
    <test-case name="position-1131">
-      <description>FileName: position67 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1240,7 +1183,7 @@
    </test-case>
 
    <test-case name="position-1132">
-      <description>FileName: position96 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-11"/>
       <dependencies>
@@ -1255,7 +1198,7 @@
    </test-case>
 
    <test-case name="position-1201">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function with wildcard and attribute test.</description>
+      <description>Node Set Functions Test of 'position()' function with wildcard and attribute test.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1272,7 +1215,7 @@
    </test-case>
 
    <test-case name="position-1202">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function with wildcard and attribute test.</description>
+      <description>Node Set Functions Test of 'position()' function with wildcard and attribute test.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1289,7 +1232,7 @@
    </test-case>
 
    <test-case name="position-1203">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test of 'position()' function with wildcard and attribute test.</description>
+      <description>Node Set Functions Test of 'position()' function with wildcard and attribute test.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1306,7 +1249,7 @@
    </test-case>
 
    <test-case name="position-1204">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' in 2nd predicate.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' in 2nd predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1321,7 +1264,7 @@
    </test-case>
 
    <test-case name="position-1205">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' in 2nd predicate.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' in 2nd predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1336,7 +1279,7 @@
    </test-case>
 
    <test-case name="position-1206">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' in 2nd predicate.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' in 2nd predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1351,7 +1294,7 @@
    </test-case>
 
    <test-case name="position-1207">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing in 2nd predicate.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing in 2nd predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1366,7 +1309,7 @@
    </test-case>
 
    <test-case name="position-1208">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing in 2nd predicate.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing in 2nd predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1381,7 +1324,7 @@
    </test-case>
 
    <test-case name="position-1209">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing in 2nd predicate.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing in 2nd predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1396,7 +1339,7 @@
    </test-case>
 
    <test-case name="position-1210">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing in 2nd predicate.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing in 2nd predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1411,7 +1354,7 @@
    </test-case>
 
    <test-case name="position-1211">
-      <description>FileName: position32 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1428,7 +1371,7 @@
    </test-case>
 
    <test-case name="position-1212">
-      <description>FileName: position33 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1445,7 +1388,7 @@
    </test-case>
 
    <test-case name="position-1213">
-      <description>FileName: position34 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1462,7 +1405,7 @@
    </test-case>
 
    <test-case name="position-1214">
-      <description>FileName: position35 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1477,7 +1420,7 @@
    </test-case>
 
    <test-case name="position-1215">
-      <description>FileName: position36 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1492,7 +1435,7 @@
    </test-case>
 
    <test-case name="position-1216">
-      <description>FileName: position38 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1507,7 +1450,7 @@
    </test-case>
 
    <test-case name="position-1217">
-      <description>FileName: position39 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1522,7 +1465,7 @@
    </test-case>
 
    <test-case name="position-1218">
-      <description>FileName: position40 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-12"/>
       <dependencies>
@@ -1537,7 +1480,7 @@
    </test-case>
 
    <test-case name="position-1301">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1552,7 +1495,7 @@
    </test-case>
 
    <test-case name="position-1302">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1567,7 +1510,7 @@
    </test-case>
 
    <test-case name="position-1303">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1582,7 +1525,7 @@
    </test-case>
 
    <test-case name="position-1304">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1597,7 +1540,7 @@
    </test-case>
 
    <test-case name="position-1305">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1612,7 +1555,7 @@
    </test-case>
 
    <test-case name="position-1306">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1627,7 +1570,7 @@
    </test-case>
 
    <test-case name="position-1307">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1642,7 +1585,7 @@
    </test-case>
 
    <test-case name="position-1308">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key and xsl:apply-templates.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of positional indexing when used with xsl:key and xsl:apply-templates.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1657,7 +1600,7 @@
    </test-case>
 
    <test-case name="position-1309">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key and xsl:apply-templates.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key and xsl:apply-templates.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1672,7 +1615,7 @@
    </test-case>
 
    <test-case name="position-1310">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key and xsl:apply-templates.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key and xsl:apply-templates.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1687,7 +1630,7 @@
    </test-case>
 
    <test-case name="position-1311">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key and xsl:apply-templates.</description>
+      <description>Node Set Functions, 2.4 Predicates. Test of 'position()' when used with xsl:key and xsl:apply-templates.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1702,7 +1645,7 @@
    </test-case>
 
    <test-case name="position-1312">
-      <description>FileName: position42 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1717,7 +1660,7 @@
    </test-case>
 
    <test-case name="position-1313">
-      <description>FileName: position43 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1732,7 +1675,7 @@
    </test-case>
 
    <test-case name="position-1314">
-      <description>FileName: position44 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1747,7 +1690,7 @@
    </test-case>
 
    <test-case name="position-1315">
-      <description>FileName: position45 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1762,7 +1705,7 @@
    </test-case>
 
    <test-case name="position-1316">
-      <description>FileName: position46 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1777,7 +1720,7 @@
    </test-case>
 
    <test-case name="position-1317">
-      <description>FileName: position47 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1792,7 +1735,7 @@
    </test-case>
 
    <test-case name="position-1318">
-      <description>FileName: position49 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1807,7 +1750,7 @@
    </test-case>
 
    <test-case name="position-1319">
-      <description>FileName: position50 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1822,7 +1765,7 @@
    </test-case>
 
    <test-case name="position-1320">
-      <description>FileName: position51 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-13"/>
       <dependencies>
@@ -1837,7 +1780,7 @@
    </test-case>
 
    <test-case name="position-1401">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'count()'..</description>
+      <description>Node Set Functions. Test of 'count()'..</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-14"/>
       <dependencies>
@@ -1852,7 +1795,7 @@
    </test-case>
 
    <test-case name="position-1402">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'count()'..</description>
+      <description>Node Set Functions. Test of 'count()'..</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-14"/>
       <dependencies>
@@ -1867,7 +1810,7 @@
    </test-case>
 
    <test-case name="position-1403">
-      <description>FileName: position53 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-14"/>
       <dependencies>
@@ -1882,7 +1825,7 @@
    </test-case>
 
    <test-case name="position-1404">
-      <description>FileName: position54 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-14"/>
       <dependencies>
@@ -1897,7 +1840,7 @@
    </test-case>
 
    <test-case name="position-1501">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'last()'.</description>
+      <description>Node Set Functions. Test of 'last()'.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -1912,7 +1855,7 @@
    </test-case>
 
    <test-case name="position-1502">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'last()'.</description>
+      <description>Node Set Functions. Test of 'last()'.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -1927,7 +1870,7 @@
    </test-case>
 
    <test-case name="position-1503">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'last()'.</description>
+      <description>Node Set Functions. Test of 'last()'.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -1942,7 +1885,7 @@
    </test-case>
 
    <test-case name="position-1504">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'last()'.</description>
+      <description>Node Set Functions. Test of 'last()'.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -1957,7 +1900,7 @@
    </test-case>
 
    <test-case name="position-1505">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'last()'.</description>
+      <description>Node Set Functions. Test of 'last()'.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -1972,7 +1915,7 @@
    </test-case>
 
    <test-case name="position-1506">
-      <description>FileName: position55 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -1987,7 +1930,7 @@
    </test-case>
 
    <test-case name="position-1507">
-      <description>FileName: position56 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -2002,7 +1945,7 @@
    </test-case>
 
    <test-case name="position-1508">
-      <description>FileName: position57 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -2017,7 +1960,7 @@
    </test-case>
 
    <test-case name="position-1509">
-      <description>FileName: position58 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -2032,7 +1975,7 @@
    </test-case>
 
    <test-case name="position-1510">
-      <description>FileName: position59 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-15"/>
       <dependencies>
@@ -2047,7 +1990,7 @@
    </test-case>
 
    <test-case name="position-1601">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of 'last()' against each axis.</description>
+      <description>Node Set Functions. Test of 'last()' against each axis.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-16"/>
       <dependencies>
@@ -2063,7 +2006,7 @@
    </test-case>
 
    <test-case name="position-1602">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of '[position()=last()]' against each axis. results depend on attribute order</description>
+      <description>Node Set Functions. Test of '[position()=last()]' against each axis. results depend on attribute order</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-16"/>
       <dependencies>
@@ -2078,7 +2021,7 @@
    </test-case>
 
    <test-case name="position-1701">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of '[position()=n]' optimizations.</description>
+      <description>Node Set Functions. Test of '[position()=n]' optimizations.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-17"/>
       <dependencies>
@@ -2099,7 +2042,7 @@
    </test-case>
 
    <test-case name="position-1702">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of recursive '[position()&gt;1]' optimizations.</description>
+      <description>Node Set Functions. Test of recursive '[position()&gt;1]' optimizations.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-17"/>
       <dependencies>
@@ -2109,26 +2052,12 @@
          <stylesheet file="position-1702.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a/>
-   <b/>
-   <c/>
-   <d/>
-   <e/>
-   <f/>
-   <g/>
-   <h/>
-   <i/>
-   <j/>
-   <k/>
-   <l/>
-   <m/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a/><b/><c/><d/><e/><f/><g/><h/><i/><j/><k/><l/><m/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="position-1703">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions. Test of recursive '[position()&gt;1]' optimizations. this is a variant of pos63 in which the expression $nodes[1] is replaced by a numeric expression whose value (and indeed type) is not known statically. This takes a different (and difficult) path through the FilterExpression code</description>
+      <description>Node Set Functions. Test of recursive '[position()&gt;1]' optimizations. this is a variant of pos63 in which the expression $nodes[1] is replaced by a numeric expression whose value (and indeed type) is not known statically. This takes a different (and difficult) path through the FilterExpression code</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-17"/>
       <dependencies>
@@ -2138,21 +2067,7 @@
          <stylesheet file="position-1703.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a/>
-   <b/>
-   <c/>
-   <d/>
-   <e/>
-   <f/>
-   <g/>
-   <h/>
-   <i/>
-   <j/>
-   <k/>
-   <l/>
-   <m/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a/><b/><c/><d/><e/><f/><g/><h/><i/><j/><k/><l/><m/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2172,7 +2087,7 @@
    </test-case>
 
    <test-case name="position-1901">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test optimization of positional predicates.</description>
+      <description>Node Set Functions Test optimization of positional predicates.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-19"/>
       <dependencies>
@@ -2187,7 +2102,7 @@
    </test-case>
 
    <test-case name="position-2001">
-      <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 4.1 Node Set Functions Test optimization of positional predicates on a reverse axis.</description>
+      <description>Node Set Functions Test optimization of positional predicates on a reverse axis.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-20"/>
       <dependencies>
@@ -2204,7 +2119,11 @@
    <test-case name="position-2101">
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-21"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<a/>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -2212,15 +2131,17 @@
          <stylesheet file="position-2101.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<x length="3" stack="d c b" stack1="d" stack2="c" stack3="b" stack-2-="c b"/>
-<x length="2" stack="c b" stack1="c" stack2="b" stack3="" stack-2-="b"/>]]></assert-xml>
+         <assert-xml><![CDATA[<out><x length="3" stack="d c b" stack1="d" stack2="c" stack3="b" stack-2-="c b"
+            /><x length="2" stack="c b" stack1="c" stack2="b" stack3="" stack-2-="b"/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="position-2201">
-      <description>bug report from Jonathan Williford [jwilliford@gh-accessibility.com] last() fails when applied to an axis on a virtual copy of a node</description>
+      <description>bug report from Jonathan Williford: last() fails when applied to an axis on a virtual copy of a node</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-22"/>
+      <environment>
+         <source role="." file="position-22.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -2228,7 +2149,9 @@
          <stylesheet file="position-2201.xsl"/>
       </test>
       <result>
-         <assert-xml file="position-2201.out"/>
+         <assert-xml><![CDATA[<ir:math xmlns:ir="http://www.gh-mathspeak.com/mathspeak-internal-representation"
+            ><ir:multiscripts><ir:base>10</ir:base><ir:superscript><ir:multiscripts><ir:base>4</ir:base></ir:multiscripts
+            ></ir:superscript><ir:base-line/></ir:multiscripts></ir:math>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2578,7 +2501,7 @@
    </test-case>
 
    <test-case name="position-3201">
-      <description>FileName: position01 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-32"/>
       <dependencies>
@@ -2593,7 +2516,7 @@
    </test-case>
 
    <test-case name="position-3301">
-      <description>FileName: position02 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2613,7 +2536,7 @@
    </test-case>
 
    <test-case name="position-3302">
-      <description>FileName: position08 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2633,7 +2556,7 @@
    </test-case>
 
    <test-case name="position-3303">
-      <description>FileName: position60 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2648,7 +2571,7 @@
    </test-case>
 
    <test-case name="position-3304">
-      <description>FileName: position61 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2663,7 +2586,7 @@
    </test-case>
 
    <test-case name="position-3305">
-      <description>FileName: position62 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2678,7 +2601,7 @@
    </test-case>
 
    <test-case name="position-3306">
-      <description>FileName: position63 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2693,7 +2616,7 @@
    </test-case>
 
    <test-case name="position-3307">
-      <description>FileName: position64 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2708,7 +2631,7 @@
    </test-case>
 
    <test-case name="position-3308">
-      <description>FileName: position65 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2723,7 +2646,7 @@
    </test-case>
 
    <test-case name="position-3309">
-      <description>FileName: position66 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-33"/>
       <dependencies>
@@ -2738,7 +2661,7 @@
    </test-case>
 
    <test-case name="position-3401">
-      <description>FileName: position03 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-34"/>
       <dependencies>
@@ -2753,7 +2676,7 @@
    </test-case>
 
    <test-case name="position-3402">
-      <description>FileName: position04 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-34"/>
       <dependencies>
@@ -2768,7 +2691,7 @@
    </test-case>
 
    <test-case name="position-3501">
-      <description>FileName: position05 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-35"/>
       <dependencies>
@@ -2783,7 +2706,7 @@
    </test-case>
 
    <test-case name="position-3601">
-      <description>FileName: position06 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-36"/>
       <dependencies>
@@ -2798,7 +2721,7 @@
    </test-case>
 
    <test-case name="position-3701">
-      <description>FileName: position07 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-37"/>
       <dependencies>
@@ -2813,7 +2736,7 @@
    </test-case>
 
    <test-case name="position-3801">
-      <description>FileName: position09 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1 Node Set Functions</description>
+      <description>Section: 4.1 Node Set Functions</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-38"/>
       <dependencies>
@@ -2849,7 +2772,7 @@
    </test-case>
 
    <test-case name="position-3901">
-      <description>FileName: position100 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description>Section: 2.2</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-39"/>
       <dependencies>
@@ -2872,7 +2795,7 @@ T:  Still Level-4
    </test-case>
 
    <test-case name="position-4001">
-      <description>FileName: position101 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description>Section: 2.2</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-40"/>
       <dependencies>
@@ -2909,7 +2832,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4201">
-      <description>FileName: position103 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-42"/>
       <dependencies>
@@ -2924,7 +2847,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4301">
-      <description>FileName: position104 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-43"/>
       <dependencies>
@@ -2939,7 +2862,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4401">
-      <description>FileName: position105 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-44"/>
       <dependencies>
@@ -2954,7 +2877,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4501">
-      <description>FileName: position106 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-45"/>
       <dependencies>
@@ -2969,7 +2892,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4601">
-      <description>FileName: position107 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-46"/>
       <dependencies>
@@ -2984,7 +2907,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4602">
-      <description>FileName: position108 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-46"/>
       <dependencies>
@@ -2999,7 +2922,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4701">
-      <description>FileName: position109 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-47"/>
       <dependencies>
@@ -3014,7 +2937,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4702">
-      <description>FileName: position101 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-47"/>
       <dependencies>
@@ -3029,7 +2952,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4801">
-      <description>FileName: position11 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-48"/>
       <dependencies>
@@ -3044,7 +2967,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-4901">
-      <description>FileName: position111 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 5</description>
+      <description>Section: 5</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-49"/>
       <dependencies>
@@ -3060,7 +2983,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5001">
-      <description>FileName: position112 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-50"/>
       <dependencies>
@@ -3075,7 +2998,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5002">
-      <description>FileName: position113 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-50"/>
       <dependencies>
@@ -3105,7 +3028,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5201">
-      <description>FileName: position14 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-52"/>
       <dependencies>
@@ -3120,7 +3043,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5301">
-      <description>FileName: position22 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-53"/>
       <dependencies>
@@ -3135,7 +3058,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5302">
-      <description>FileName: position23 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-53"/>
       <dependencies>
@@ -3150,7 +3073,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5401">
-      <description>FileName: position27 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-54"/>
       <dependencies>
@@ -3165,7 +3088,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5501">
-      <description>FileName: position31 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-55"/>
       <dependencies>
@@ -3180,9 +3103,11 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5601">
-      <description>FileName: position37 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-56"/>
+      <environment>
+         <source role="." file="position-56.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -3204,7 +3129,7 @@ C:  Comment-4
    </test-case>
 
    <test-case name="position-5701">
-      <description>FileName: position41 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-57"/>
       <dependencies>
@@ -3241,7 +3166,7 @@ under6
    </test-case>
 
    <test-case name="position-5901">
-      <description>FileName: position52 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-59"/>
       <dependencies>
@@ -3256,7 +3181,7 @@ under6
    </test-case>
 
    <test-case name="position-5902">
-      <description>FileName: position81 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-59"/>
       <dependencies>
@@ -3271,7 +3196,7 @@ under6
    </test-case>
 
    <test-case name="position-5903">
-      <description>FileName: position82 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-59"/>
       <dependencies>
@@ -3286,7 +3211,7 @@ under6
    </test-case>
 
    <test-case name="position-6001">
-      <description>FileName: position68 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-60"/>
       <dependencies>
@@ -3301,7 +3226,7 @@ under6
    </test-case>
 
    <test-case name="position-6002">
-      <description>FileName: position69 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-60"/>
       <dependencies>
@@ -3319,9 +3244,11 @@ IBM13,Lotus23,MSFT33
    </test-case>
 
    <test-case name="position-6101">
-      <description>FileName: position70 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 5.4</description>
+      <description>Section: 5.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-61"/>
+      <environment >
+         <source role="." file="position-61.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -3334,9 +3261,19 @@ IBM13,Lotus23,MSFT33
    </test-case>
 
    <test-case name="position-6201">
-      <description>FileName: position71 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-62"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[ 
+<?a-pi some data?>
+<?b-pi some data?>
+<doc>
+  test
+</doc>
+<?c-pi some data?>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -3349,7 +3286,7 @@ IBM13,Lotus23,MSFT33
    </test-case>
 
    <test-case name="position-6301">
-      <description>FileName: position72 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-63"/>
       <dependencies>
@@ -3371,7 +3308,7 @@ IBM13,Lotus23,MSFT33
    </test-case>
 
    <test-case name="position-6302">
-      <description>FileName: position73 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-63"/>
       <dependencies>
@@ -3393,7 +3330,7 @@ IBM13,Lotus23,MSFT33
    </test-case>
 
    <test-case name="position-6401">
-      <description>FileName: position74 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description>Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-64"/>
       <dependencies>
@@ -3412,9 +3349,16 @@ IBM13,Lotus23,MSFT33
    </test-case>
 
    <test-case name="position-6501">
-      <description>FileName: position75 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-65"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc>
+  <a test="true">A1<b>B1</b>A2<!-- This is the 1st comment -->A3<b>B2</b>
+    A4<!-- This is the 2nd comment -->A5</a>
+</doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -3433,9 +3377,13 @@ IBM13,Lotus23,MSFT33
    </test-case>
 
    <test-case name="position-6601">
-      <description>FileName: position76 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-66"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc/>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
          <feature value="namespace_axis"/>
@@ -3468,7 +3416,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-6801">
-      <description>FileName: position78 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description>Section: 2.2</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-68"/>
       <dependencies>
@@ -3483,7 +3431,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-6802">
-      <description>FileName: position79 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description>Section: 2.2</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-68"/>
       <dependencies>
@@ -3498,9 +3446,11 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-6901">
-      <description>FileName: position80 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description>Section: 2.2</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-69"/>
+      <environment>
+         <source role="." file="position-69.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -3513,7 +3463,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7001">
-      <description>FileName: position83 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description>Section: 2.2</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-70"/>
       <dependencies>
@@ -3531,7 +3481,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7002">
-      <description>FileName: position83 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description>Section: 2.2</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-70"/>
       <dependencies>
@@ -3546,9 +3496,22 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7101">
-      <description>FileName: position85 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.1</description>
+      <description>Section: 3.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-71"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[ 
+<doc>
+  <foo att1="c">
+     <foo att1="b">
+        <foo att1="a">
+           <baz/>
+        </foo>
+     </foo>
+  </foo>
+</doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -3561,9 +3524,11 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7201">
-      <description>FileName: position86 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.3</description>
+      <description>Section: 3.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-72"/>
+      <environment>
+         <source role="." file="position-72.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -3579,7 +3544,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7301">
-      <description>FileName: position87 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.3</description>
+      <description>Section: 3.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-73"/>
       <dependencies>
@@ -3598,7 +3563,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7302">
-      <description>FileName: position88 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.3</description>
+      <description>Section: 3.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-73"/>
       <dependencies>
@@ -3614,7 +3579,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7401">
-      <description>FileName: position89 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.3</description>
+      <description>Section: 3.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-74"/>
       <dependencies>
@@ -3632,7 +3597,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7501">
-      <description>FileName: position90 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.3</description>
+      <description>Section: 3.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-75"/>
       <dependencies>
@@ -3648,7 +3613,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7601">
-      <description>FileName: position91 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.3</description>
+      <description>Section: 3.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-76"/>
       <dependencies>
@@ -3664,7 +3629,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7701">
-      <description>FileName: position92 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.3</description>
+      <description>Section: 3.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-77"/>
       <dependencies>
@@ -3681,7 +3646,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-7801">
-      <description>FileName: position93 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 4.1</description>
+      <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-78"/>
       <dependencies>
@@ -3716,7 +3681,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-8001">
-      <description>FileName: position95 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.4</description>
+      <description></description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-80"/>
       <dependencies>
@@ -3731,9 +3696,11 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-8101">
-      <description>FileName: position97 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 3.3</description>
+      <description></description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="position-81"/>
+      <environment>
+         <source role="." file="position-81.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -3746,7 +3713,7 @@ unitedstates12,automotive22</out>]]></assert-xml>
    </test-case>
 
    <test-case name="position-8201">
-      <description>FileName: position98 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description></description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-82"/>
       <dependencies>
@@ -3768,7 +3735,7 @@ A: center-attr-3
    </test-case>
 
    <test-case name="position-8202">
-      <description>FileName: position99 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.2</description>
+      <description></description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="position-82"/>
       <dependencies>
