@@ -6,6 +6,8 @@
        
   
    <!-- within a streaming template, evaluate a quantified expression on streamed nodes -->
+  
+   <!-- streamable in Saxon but not guaranteed-streamable according to W3C rules -->
      
     
    <xsl:mode name="s" streamable="yes"/>

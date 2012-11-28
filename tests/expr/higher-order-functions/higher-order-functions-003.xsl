@@ -7,7 +7,7 @@
     
     <!-- inline function literal, imported used-defined function -->
     
-    <xsl:import href="hof-001.xsl"/>
+    <xsl:import href="higher-order-functions-001.xsl"/>
     
     <xsl:template name="main">
         <out><xsl:value-of select="let $f := local:f#1 return $f(4)"/></out>
