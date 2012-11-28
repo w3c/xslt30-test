@@ -2,60 +2,23 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="param">
-   <description>Tests param</description>
+   <description>Tests the xsl:param element</description>
    <environment name="param-01">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
-   <environment name="param-02">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <item>1</item>
-  <item>2</item>
-  <item>3</item>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="param-03">
-      <source role=".">
-         <content><![CDATA[ 
-<doc>
-	<data>
-		<a>10</a>
-		<b>100</b>
-		<c>1000</c>		
-	</data>
-</doc>    ]]></content>
-      </source>
-   </environment>
+   
    <environment name="param-04">
       <source role=".">
-         <content><![CDATA[<doc>
-	<data>
-		<inner>
-			<in>
-				<last>abc</last>
-			</in>
-		</inner>
-	</data>
-</doc>]]></content>
+         <content><![CDATA[<doc><data><inner><in><last>abc</last></in></inner></data></doc>]]></content>
       </source>
       <source file="import2.xsl" uri="import2.xsl"/>
    </environment>
-   <environment name="param-05">
-      <source role=".">
-         <content><![CDATA[ 
-<doc>
-	<prices><price>55</price><price>43</price><price>12</price><price>34.50</price></prices>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="param-06">
       <source role=".">
-         <content><![CDATA[<doc>
-	<data />
-</doc>]]></content>
+         <content><![CDATA[<doc><data/></doc>]]></content>
       </source>
       <source file="var_import.xsl" uri="var_import.xsl"/>
    </environment>
@@ -101,10 +64,7 @@
          <stylesheet file="param-0103.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-Required parameter
-Not required parameter
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>Required parameter;Not required parameter</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -134,10 +94,7 @@ Not required parameter
          <stylesheet file="param-0105.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<in>3 4 3 4 3 4</in>
-<in>6 6 6</in>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><in>3 4 3 4 3 4</in><in>6 6 6</in></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -152,10 +109,7 @@ Not required parameter
          <stylesheet file="param-0106.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<in>3 4 3 4 3 4</in>
-<in>6 6 6</in>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><in>3 4 3 4 3 4</in><in>6 6 6</in></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -170,7 +124,8 @@ Not required parameter
          <stylesheet file="param-0107.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><p1><a1>a</a1><b1>b</b1><c1>bc</c1><d1>bc,x,y,z</d1></p1><e1>a</e1><p2><a2>g</a2><b2>b</b2><c2>bc</c2><d2>bc,x,y,z</d2></p2><e2>g</e2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><p1><a1>a</a1><b1>b</b1><c1>bc</c1><d1>bc,x,y,z</d1></p1
+            ><e1>a</e1><p2><a2>g</a2><b2>b</b2><c2>bc</c2><d2>bc,x,y,z</d2></p2><e2>g</e2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -235,7 +190,9 @@ Not required parameter
    </test-case>
 
    <test-case name="param-0112">
-      <description>Test to verify that a dynamic-error is raised if a stylesheet parameter has a required attribute with no supplied value.</description>
+      <description>
+         Test to verify that a dynamic-error is raised if a stylesheet parameter has a required attribute with no supplied value.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="param-01"/>
       <dependencies>
@@ -250,7 +207,10 @@ Not required parameter
    </test-case>
 
    <test-case name="param-0113">
-      <description>Test case that uses xsl:param instruction with a required="yes" attribute, while the instruction has a non-empty sequence constructor.</description>
+      <description>
+         Test case that uses xsl:param instruction with a required="yes" attribute, 
+         while the instruction has a non-empty sequence constructor.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="param-01"/>
       <dependencies>
@@ -265,7 +225,10 @@ Not required parameter
    </test-case>
 
    <test-case name="param-0114">
-      <description>Test case to verify that an static error is raised if an element from the XSLT namespace have an attribute whose namespace is null.</description>
+      <description>
+         Test case to verify that an static error is raised if an element from the XSLT namespace 
+         have an attribute whose namespace is null.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="param-01"/>
       <dependencies>
@@ -280,7 +243,10 @@ Not required parameter
    </test-case>
 
    <test-case name="param-0115">
-      <description>Test case to verify that an static error is raised if an element from the XSLT namespace have an attribute whose namespace is the XSLT namespace.</description>
+      <description>
+         Test case to verify that an static error is raised if an element from the XSLT namespace 
+         have an attribute whose namespace is the XSLT namespace.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="param-01"/>
       <dependencies>
@@ -295,7 +261,10 @@ Not required parameter
    </test-case>
 
    <test-case name="param-0116">
-      <description>Test case to verify that a dynamic error is raised if the initial template defines a template parameter that specifies required="yes".</description>
+      <description>
+         Test case to verify that a dynamic error is raised if the initial template defines a 
+         template parameter that specifies required="yes".
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="param-01"/>
       <dependencies>
@@ -313,7 +282,11 @@ Not required parameter
    <test-case name="param-0201">
       <description>Test case using a parameter to select nodes by position to test the pitfalls with numeric predicates.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="param-02"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><item>1</item><item>2</item><item>3</item></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -326,9 +299,16 @@ Not required parameter
    </test-case>
 
    <test-case name="param-0301">
-      <description>Test case to show that circularity causes errors only if the parameter invloved in circulaity is actually evaluated at some point in the transformation process.</description>
+      <description>
+         Test case to show that circularity causes errors only if the parameter invloved in circularity 
+         is actually evaluated at some point in the transformation process.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="param-03"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><data><a>10</a><b>100</b><c>1000</c></data></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -366,17 +346,15 @@ Not required parameter
          <stylesheet file="param-0402.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-	
-		Variable Value: Poor default
-
-		Parameter Value: Assigned Value
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var>Variable Value: Poor default</var><par>Parameter Value: Assigned Value</par></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="param-0403">
-      <description>Tests parameter specified within xsl:apply-imports and a global parameter with an identical name as the template parameter, which should be ignored.</description>
+      <description>
+         Tests parameter specified within xsl:apply-imports and a global parameter with an 
+         identical name as the template parameter, which should be ignored.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="param-04"/>
       <dependencies>
@@ -386,19 +364,21 @@ Not required parameter
          <stylesheet file="param-0403.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-	
-		Variable Value: Poor default
-
-		Parameter Value: Assigned Value
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var>Variable Value: Poor default</var><par>Parameter Value: Assigned Value</par></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="param-0501">
-      <description>Test case to verify that variables used in Quantified Expressions can shadow global variables and parameters declared with the same name.</description>
+      <description>
+         Test case to verify that variables used in Quantified Expressions can shadow global variables 
+         and parameters declared with the same name.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="param-05"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><prices><price>55</price><price>43</price><price>12</price><price>34.50</price></prices></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -411,7 +391,10 @@ Not required parameter
    </test-case>
 
    <test-case name="param-0601">
-      <description>Test parameter specified within xsl:next-match instruction and a global parameter with an identical name as the template parameter, which should be ignored.</description>
+      <description>
+         Test parameter specified within xsl:next-match instruction and a global parameter with an 
+         identical name as the template parameter, which should be ignored.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="param-06"/>
       <dependencies>
@@ -426,7 +409,10 @@ Not required parameter
    </test-case>
 
    <test-case name="param-0602">
-      <description>Tests parameter specified within xsl:apply-import instruction and a global parameter with an identical name as the template parameter, which should be ignored.</description>
+      <description>
+         Tests parameter specified within xsl:apply-import instruction and a global parameter with 
+         an identical name as the template parameter, which should be ignored.
+      </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="param-06"/>
       <dependencies>

@@ -3,8 +3,8 @@
     <xsl:template match="text()" />
 
 	<xsl:template match="data">
-		<xsl:param name="p" select="'123'" />		
-		<xsl:value-of select="$p" />
+		<xsl:param name="par1" select="'123'" />		
+		<xsl:value-of select="$par1" />
 	</xsl:template>	
 	
 	
