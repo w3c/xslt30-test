@@ -27,7 +27,10 @@
    </environment>
 
    <test-case name="message-0001">
-      <description>Output a message that cannot be serialized - specifically, a free-standing attribute node. Under erratum E20, this is a recoverable error - the processor may fail or may report an error. This test shows the recovery path.</description>
+      <description>
+         Output a message that cannot be serialized - specifically, a free-standing attribute node. 
+         Under erratum E20, this is a recoverable error - the processor may fail or may report an error. 
+         This test shows both paths.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -37,10 +40,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <assert-xml><![CDATA[<out/>]]></assert-xml>
             <error code="XTDE0420"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -70,7 +73,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error xmlns:my="http://www.example.com/error" code="my:my-error-code"/>
+         <error code="Q{http://www.example.com/error}my-error-code"/>
       </result>
    </test-case>
 
@@ -85,7 +88,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error xmlns:my="http://www.example.com/error" code="my:my-error-code"/>
+         <error code="Q{http://www.example.com/error}my-error-code"/>
       </result>
    </test-case>
 
@@ -100,7 +103,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error xmlns:my="http://www.example.com/error" code="my:my-error-code"/>
+         <error code="Q{http://www.example.com/error}my-error-code"/>
       </result>
    </test-case>
 
@@ -115,7 +118,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error xmlns:my="http://www.example.com/error" code="my:my-error-code"/>
+         <error code="Q{http://www.example.com/error}my-error-code"/>
       </result>
    </test-case>
 
@@ -213,7 +216,7 @@
          <all-of>
             <assert-xml><![CDATA[<out/>]]></assert-xml>
             <assert-message>
-               <assert-xml><![CDATA[Please note that This message is produced from a source document ]]></assert-xml>
+               <assert>. = "Please note that This message is produced from a source document "</assert>
             </assert-message>
          </all-of>
       </result>
@@ -535,7 +538,7 @@
          <all-of>
             <assert-xml><![CDATA[<out/>]]></assert-xml>
             <assert-message>
-               <assert-xml><![CDATA[1:ab * 2:cd * 3:ef * 4:gh * 5:ij * ]]></assert-xml>
+               <assert>. = "1:ab * 2:cd * 3:ef * 4:gh * 5:ij * "</assert>
             </assert-message>
          </all-of>
       </result>
@@ -575,7 +578,7 @@
          <all-of>
             <assert-xml><![CDATA[<out/>]]></assert-xml>
             <assert-message>
-               <assert-xml><![CDATA[1:ab * 2:cd * 3:ef * 4:gh * 5:ij * ]]></assert-xml>
+               <assert-xml><![CDATA[<msg><grp>1:ab</grp><grp>2:cd</grp><grp>3:ef</grp><grp>4:gh</grp><grp>5:ij</grp></msg>]]></assert-xml>
             </assert-message>
          </all-of>
       </result>
