@@ -13,16 +13,7 @@
 ]]></content>
       </source>
    </environment>
-   <environment name="conflict-resolution-02">
-      <source role=".">
-         <content><![CDATA[ 
-<doc>
-  <file test="true"/>
-  <file test="false"/>
-</doc>
-]]></content>
-      </source>
-   </environment>
+   
    <environment name="conflict-resolution-03">
       <source role=".">
          <content><![CDATA[ 
@@ -48,18 +39,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="conflict-resolution-06">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <a>
-    <a id="2"/>
-  </a>
-  <a>
-    <b id="3"/>
-  </a>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="conflict-resolution-07">
       <source role=".">
          <content><![CDATA[<doc xmlns="http://some.uri/"><foo test="true"/></doc>]]></content>
@@ -85,9 +65,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   <environment name="conflict-resolution-10">
-      <source role="." file="conflict-resolution-10.xml"/>
-   </environment>
+   
    <environment name="conflict-resolution-11">
       <source role=".">
          <content><![CDATA[<top/>]]></content>
@@ -98,38 +76,13 @@
          <content><![CDATA[<doc><foo test="true">magic</foo></doc>]]></content>
       </source>
    </environment>
-   <environment name="conflict-resolution-13">
-      <source role=".">
-         <content><![CDATA[<doc>
-<simplelist>
-<member>11111111</member>
-<member>22222222</member>
-<member>33333333</member>
-<member>44444444</member>
-</simplelist>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="conflict-resolution-14">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
-   <environment name="conflict-resolution-15">
-      <source role=".">
-         <content><![CDATA[<doc>
-  <a>
-    <a/>
-  </a>
-  <a>
-    <a/>
-  </a>  
-  <a>
-    <b/>
-  </a>
-</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="conflict-resolution-16">
       <source role=".">
          <content><![CDATA[<doc><a x4="big" x5="medium" x6="small" /><b x4="red" x5="yellow" x6="blue" /></doc>]]></content>
@@ -432,7 +385,11 @@
    <test-case name="conflict-resolution-0201">
       <description>Test for conflict Resolution: nonsimple (predicate) No conflict warnings should be seen.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="conflict-resolution-02"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><file test="true"/><file test="false"/></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -572,7 +529,11 @@
    <test-case name="conflict-resolution-0601">
       <description>Test use of a variable within a pattern (XSLT 2.0)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="conflict-resolution-06"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><a><a id="2"/></a><a><b id="3"/></a></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -580,14 +541,7 @@
          <stylesheet file="conflict-resolution-0601.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc>
-  <a>
-    <a special="yes"/>
-  </a>
-  <a>
-    <b/>
-  </a>
-</doc>]]></assert-xml>
+         <assert-xml><![CDATA[<doc><a><a special="yes"/></a><a><b/></a></doc>]]></assert-xml>
       </result>
    </test-case>
 
@@ -684,7 +638,9 @@
    <test-case name="conflict-resolution-1001">
       <description>tests resolution of Saxon bug 576632 parametre externe "type" (tous, parent, enfant) regle-modele pour la racine regle-modele pour les noeuds fils de images fils de planche</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="conflict-resolution-10"/>
+      <environment>
+         <source role="." file="conflict-resolution-10.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -692,10 +648,7 @@
          <stylesheet file="conflict-resolution-1001.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<planche>
-   <images/>
-   <dialogues/>
-</planche>]]></assert-xml>
+         <assert-xml><![CDATA[<planche><images/><dialogues/></planche>]]></assert-xml>
       </result>
    </test-case>
 
@@ -835,7 +788,18 @@
    <test-case name="conflict-resolution-1301">
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="conflict-resolution-13"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc>
+<simplelist>
+<member>11111111</member>
+<member>22222222</member>
+<member>33333333</member>
+<member>44444444</member>
+</simplelist>
+</doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -881,7 +845,11 @@
    <test-case name="conflict-resolution-1501">
       <description>Test use of current() in a positional pattern, in a step other than the last (XSLT 2.0)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="conflict-resolution-15"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><a><a/></a><a><a/></a><a><b/></a></doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -889,17 +857,10 @@
          <stylesheet file="conflict-resolution-1501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc>
-  <a>
-    <a/>
-  </a>
-  <a>
-    <a parent-recursive="yes"/>
-  </a>  
-  <a>
-    <b/>
-  </a>
-</doc>]]></assert-xml>
+         <all-of>
+            <assert>/doc/a[2]/a[1][@parent-recursive="yes"]</assert>
+            <assert>count(//@parent-recursive) = 1</assert>
+         </all-of>
       </result>
    </test-case>
 
