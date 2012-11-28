@@ -4,7 +4,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
-<xsl:output indent="yes"/>
+
 
 <!-- A contrived test to ensure that variables - specifically, a variable
      that's subject to optimization - can be handled in a for-each-group pattern -->

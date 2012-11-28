@@ -2,7 +2,9 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="for-each-group">
-   <description>Tests for-each-group</description>
+   
+   <description>Tests the xsl:for-each-group instruction</description>
+   
    <environment name="group001">
       <source role="." file="group001.xml"/>
    </environment>
@@ -77,17 +79,6 @@ while you are in the cinema.</p>]]></content>
    </environment>
    <environment name="group014">
       <source role="." file="group014.xml"/>
-   </environment>
-   <environment name="group015">
-      <source role=".">
-         <content><![CDATA[<employees>
-<employee SSN="1000" name="John"/>
-<employee SSN="1001" name="Jane"/>
-<employee SSN="1002" name="Jim"/>
-<employee SSN="1003" name="Joan"/>
-<employee SSN="1004" name="Jan"/>
-</employees>]]></content>
-      </source>
    </environment>
    <environment name="group016">
       <source role="." file="group016.xml"/>
@@ -400,7 +391,8 @@ while you are in the cinema.</p>]]></content>
          <stylesheet file="for-each-group-018.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-018.out"/>
+         <assert-xml><![CDATA[<chapter><group1><tag>value1</tag><group2><tag>value2a</tag></group2
+            ><group2><tag>value2b</tag><group3><tag>value3</tag></group3></group2></group1></chapter>]]></assert-xml>
       </result>
    </test-case>
 
@@ -415,7 +407,8 @@ while you are in the cinema.</p>]]></content>
          <stylesheet file="for-each-group-019.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-019.out"/>
+         <assert-xml><![CDATA[<chapter><group1><tag>value1</tag><group2><tag>value2a</tag></group2
+            ><group2><tag>value2b</tag><group3><tag>value3</tag></group3></group2></group1></chapter>]]></assert-xml>
       </result>
    </test-case>
 
@@ -575,7 +568,18 @@ while you are in the cinema.</p></o>]]></assert-xml>
    <test-case name="for-each-group-029">
       <description>use case for grouping to merge an update file with a base file</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="group015"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<employees>
+<employee SSN="1000" name="John"/>
+<employee SSN="1001" name="Jane"/>
+<employee SSN="1002" name="Jim"/>
+<employee SSN="1003" name="Joan"/>
+<employee SSN="1004" name="Jan"/>
+</employees>]]></content>
+         </source>
+         <source file="group015b.xml" uri="group015b.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -583,7 +587,9 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-029.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-029.out"/>
+         <assert-xml><![CDATA[<out><employee SSN="1000" name="John"/><employee SSN="1001" name="Jane"
+            /><employee SSN="1002" name="Jim B"/><employee SSN="1003" name="Joan B"/><employee SSN="1004" name="Jan B"
+            /><employee SSN="1005" name="Janet B"/><employee SSN="1006" name="Joanna B"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -598,12 +604,17 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-030.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-030.out"/>
+         <assert-xml><![CDATA[<chapter><section><para>para1</para><para>para2</para></section
+            ><section><para>para3</para><para>para4</para><para>para5</para></section
+            ><section><para>para6</para><para>para7</para><para>para8</para></section></chapter>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="for-each-group-031">
-      <description>A contrived test to ensure that variables - specifically, a variable that's subject to optimization - can be handled in a for-each-group pattern</description>
+      <description>
+         A contrived test to ensure that variables - specifically, a variable that's subject to optimization - 
+         can be handled in a for-each-group pattern
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="group016"/>
       <dependencies>
@@ -613,7 +624,9 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-031.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-031.out"/>
+         <assert-xml><![CDATA[<chapter><section><para>para1</para><para>para2</para></section
+            ><section><para>para3</para><para>para4</para><para>para5</para></section
+            ><section><para>para6</para><para>para7</para><para>para8</para></section></chapter>]]></assert-xml>
       </result>
    </test-case>
 
@@ -628,7 +641,16 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-032.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-032.out"/>
+         <assert-xml><![CDATA[<o><group pop="7"><city name="milan" country="italy" pop="5"
+            /><city name="paris" country="france" pop="7"
+            /><city name="munich" country="germany" pop="4"
+            /><city name="lyon" country="france" pop="2"
+            /><city name="manchester" country="england" pop="7.0"
+            /><city name="liverpool" country="england" pop="7"
+            /><city name="venice" country="italy" pop="1"/></group
+            ><group pop="10"><city name="london" country="england" pop="10"
+            /></group><group pop="5"><city name="bristol" country="england" pop="5.0"
+            /><city name="sheffield" country="england" pop="05"/></group></o>]]></assert-xml>
       </result>
    </test-case>
 
@@ -643,7 +665,16 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-033.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-033.out"/>
+         <all-of>
+            <assert>string-join(/g/group[1]/city/@name, ',') = "milan,paris,bristol,sheffield"</assert>
+            <assert>string-join(/g/group[2]/city/@name, ',') = "paris,bristol,manchester,liverpool"</assert>
+            <assert>string-join(/g/group[3]/city/@name, ',') = "munich,lyon"</assert>
+            <assert>string-join(/g/group[4]/city/@name, ',') = "munich,london,venice"</assert>
+            <assert>string-join(/g/group[5]/city/@name, ',') = "lyon"</assert>
+            <assert>string-join(/g/group[6]/city/@name, ',') = "london,manchester"</assert>
+            <assert>string-join(/g/group[7]/city/@name, ',') = "liverpool,sheffield"</assert>
+            <assert>string-join(/g/group[8]/city/@name, ',') = "venice"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1025,6 +1056,7 @@ while you are in the cinema.</p></o>]]></assert-xml>
    <test-case name="for-each-group-059">
       <description>In 3.0, group variable is not visible within AVTs of a contained xsl:sort</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2012-11-28" change="correct error code"/>
       <environment ref="group020"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1033,13 +1065,14 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-059.xsl"/>
       </test>
       <result>
-         <error code="XTDE1061"/>
+         <error code="XTSE3220"/>
       </result>
    </test-case>
 
    <test-case name="for-each-group-060">
       <description>In 3.0, grouping key variable is not visible within AVTs of a contained xsl:sort</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2012-11-28" change="correct error code"/>
       <environment ref="group020"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1048,7 +1081,7 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-060.xsl"/>
       </test>
       <result>
-         <error code="XTDE1071"/>
+         <error code="XTSE3220"/>
       </result>
    </test-case>
 
@@ -1063,7 +1096,10 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-061.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-061.out"/>
+         <all-of>
+            <assert>string-join(/out/group[1]/city/@name, ',') = "milan,paris,munich,lyon,venice,venice"</assert>
+            <assert>string-join(/out/group[2]/city/@name, ',') = "london,bristol,manchester,liverpool,sheffield"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1078,7 +1114,11 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-062.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-062.out"/>
+         <all-of>
+            <assert>string-join(/out/group[1]/city/@name, ',') = "milan,paris,munich,lyon,venice"</assert>
+            <assert>string-join(/out/group[2]/city/@name, ',') = "london,bristol,manchester,liverpool,sheffield"</assert>
+            <assert>string-join(/out/group[3]/city/@name, ',') = "venice"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1093,7 +1133,12 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-063.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-063.out"/>
+         <all-of>
+            <assert>string-join(/out/group[1][@author='Gilbert']/title, ',') = "Pirates of Penzance,Mikado,Imaginations"</assert>
+            <assert>string-join(/out/group[2][@author='Sullivan']/title, ',') = "Pirates of Penzance,Mikado"</assert>
+            <assert>string-join(/out/group[3][@author='Shaw']/title, ',') = "Pygmalion,Imaginations"</assert>
+            <assert>string-join(/out/group[4][@author='Bacon']/title, ',') = "Imaginations"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1108,7 +1153,11 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-064.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-064.out"/>
+         <all-of>
+            <assert>string-join(/out/group[1]/city/@name, ',') = "milan,paris,munich,lyon,venice,venice"</assert>
+            <assert>string-join(/out/group[2]/city/@name, ',') = "london,manchester,liverpool,sheffield"</assert>
+            <assert>string-join(/out/group[3]/city/@name, ',') = "bristol"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1123,7 +1172,13 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <stylesheet file="for-each-group-065.xsl"/>
       </test>
       <result>
-         <assert-xml file="for-each-group-065.out"/>
+         <all-of>
+            <assert>string-join(/out/group[1]/city/@name, ',') = "milan,paris,munich,lyon,venice"</assert>
+            <assert>string-join(/out/group[2]/city/@name, ',') = "london"</assert>
+            <assert>string-join(/out/group[3]/city/@name, ',') = "bristol,bath"</assert>
+            <assert>string-join(/out/group[4]/city/@name, ',') = "manchester,liverpool,sheffield"</assert>
+            <assert>string-join(/out/group[5]/city/@name, ',') = "venice"</assert>
+         </all-of>
       </result>
    </test-case>
 
