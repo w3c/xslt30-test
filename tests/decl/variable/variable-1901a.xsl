@@ -8,8 +8,7 @@
 <xsl:param name="test" select="'test value set in impmid'"/>
 
 <xsl:template match="a">
-  <xsl:text>
-  In middle: </xsl:text><xsl:value-of select="$test"/>
+  <middle><xsl:value-of select="$test"/></middle>
   <xsl:apply-templates/>
 </xsl:template>
 

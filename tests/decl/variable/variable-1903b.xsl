@@ -3,12 +3,13 @@
 
   <!-- Purpose: to be imported  -->
 
-<xsl:param name="test" select="'test value set in final'"/>
+  <xsl:param name="test" select="'test value set in final'"/>
 
-<xsl:template match="b">
-  <xsl:text>
-  In final: </xsl:text><xsl:value-of select="$test"/>
-  <xsl:apply-templates/>
-</xsl:template>
+  <xsl:template match="b">
+    <final>
+      <xsl:value-of select="$test"/>
+    </final>
+    <xsl:apply-templates/>
+  </xsl:template>
 
 </xsl:stylesheet>

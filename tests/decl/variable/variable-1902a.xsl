@@ -6,8 +6,7 @@
 <xsl:param name="test" select="'test value set in var27side'"/>
 
 <xsl:template match="b">
-  <xsl:text>
-  On the side: </xsl:text><xsl:value-of select="$test"/>
+  <side><xsl:value-of select="$test"/></side>
   <xsl:apply-templates/>
 </xsl:template>
 

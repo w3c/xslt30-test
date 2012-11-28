@@ -4,14 +4,15 @@
   <!-- Purpose: Import precedence applies to top-level params
      (testing references from various import levels) -->
 
-<xsl:import href="variable-1901a.xsl"/>
-<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+  <xsl:import href="variable-1901a.xsl"/>
+  <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
-<xsl:param name="test" select="'main stylesheet, should have highest precedence'"/>
+  <xsl:param name="test" select="'main stylesheet, should have highest precedence'"/>
 
-<xsl:template match="b">
-  <xsl:text>
-  In main: </xsl:text><xsl:value-of select="$test"/>
-</xsl:template>
+  <xsl:template match="b">
+    <main>
+      <xsl:value-of select="$test"/>
+    </main>
+  </xsl:template>
 
 </xsl:stylesheet>

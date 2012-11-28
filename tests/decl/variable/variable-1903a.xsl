@@ -3,15 +3,17 @@
 
   <!-- Purpose: to be imported -->
 
-<xsl:import href="variable-1903b.xsl"/>
+  <xsl:import href="variable-1903b.xsl"/>
 
-<xsl:param name="test" select="'test value set in mid'"/>
+  <xsl:param name="test" select="'test value set in mid'"/>
 
-<xsl:template match="/">
-  <out><xsl:text>
-  In middle: </xsl:text><xsl:value-of select="$test"/>
-  <xsl:apply-templates/>
-  </out>
-</xsl:template>
+  <xsl:template match="/">
+    <out>
+      <middle>
+        <xsl:value-of select="$test"/>
+      </middle>
+      <xsl:apply-templates/>
+    </out>
+  </xsl:template>
 
 </xsl:stylesheet>

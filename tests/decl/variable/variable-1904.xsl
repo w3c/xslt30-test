@@ -10,8 +10,7 @@
 <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
 <xsl:template match="b">
-  <xsl:text>
-  In main: </xsl:text><xsl:value-of select="$test"/>
+  <main><xsl:value-of select="$test"/></main>
   <xsl:apply-templates/>
 </xsl:template>
 

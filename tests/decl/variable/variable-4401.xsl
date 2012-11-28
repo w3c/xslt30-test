@@ -18,8 +18,6 @@
       </xsl:with-param>
     </xsl:call-template>
 
-    <xsl:text>
-</xsl:text>
     <after>ax="<xsl:value-of select='$ax'/>"</after>
   </out>
 </xsl:template>

@@ -10,14 +10,12 @@
 <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
 <xsl:template match="a">
-  <xsl:text>
-  In main: </xsl:text><xsl:value-of select="$test"/>
+  <main><xsl:value-of select="$test"/></main>
   <xsl:apply-templates/>
 </xsl:template>
 
 <xsl:template match="c">
-  <xsl:text>
-  In main again: </xsl:text><xsl:value-of select="$test"/>
+  <main-again><xsl:value-of select="$test"/></main-again>
 </xsl:template>
 
 </xsl:stylesheet>

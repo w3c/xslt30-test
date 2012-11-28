@@ -11,8 +11,7 @@
 <xsl:param name="test" select="'main stylesheet, should have highest precedence'"/>
 
 <xsl:template match="c">
-  <xsl:text>
-  In main: </xsl:text><xsl:value-of select="$test"/>
+  <main><xsl:value-of select="$test"/></main>
 </xsl:template>
 
 </xsl:stylesheet>
