@@ -4,7 +4,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
 
-  <!-- group adjacent elements (same as serial017 but without streaming) -->
+  <!-- group adjacent elements (without streaming) -->
   
   <xsl:template name="main">
     <account>
@@ -37,6 +37,5 @@
     </account>
   </xsl:template>
   
-  <xsl:output indent="yes"/>
   
 </xsl:stylesheet>

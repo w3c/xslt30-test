@@ -2,19 +2,23 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="iterate">
-   <description>Tests iterate</description>
+   
+   <description>Tests the xsl:iterate instruction introduced in XSLT 3.0</description>
+   
    <environment name="iterate001">
       <source role="." file="iterate001.xml"/>
    </environment>
+   
    <environment name="iterate005">
       <source role="." file="iterate005.xml"/>
    </environment>
+   
    <dependencies>
       <spec value="XSLT30+"/>
    </dependencies>
 
    <test-case name="iterate-001">
-      <description>Basic Test of xsl:iterate instruction.</description>
+      <description>Basic Test of xsl:iterate instruction, including position() and last().</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="iterate001"/>
       <dependencies/>
@@ -22,7 +26,13 @@
          <stylesheet file="iterate-001.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-001.out"/>
+         <assert-xml><![CDATA[<out><item position="1" last="6"><TITLE>Pride and Prejudice</TITLE></item
+            ><item position="2" last="6"><TITLE>Wuthering Heights</TITLE></item
+            ><item position="3" last="6"><TITLE>Tess of the d'Urbervilles</TITLE></item
+            ><item position="4" last="6"><TITLE>Jude the Obscure</TITLE></item
+            ><item position="5" last="6"><TITLE>The Big Over Easy</TITLE></item
+            ><item position="6" last="6"><TITLE>The Eyre Affair</TITLE></item
+            ></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -35,7 +45,13 @@
          <stylesheet file="iterate-002.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-002.out"/>
+         <assert-xml><![CDATA[<out><item cost="0"><TITLE>Pride and Prejudice</TITLE></item
+            ><item cost="4.95"><TITLE>Wuthering Heights</TITLE></item
+            ><item cost="11.53"><TITLE>Tess of the d'Urbervilles</TITLE></item
+            ><item cost="16.48"><TITLE>Jude the Obscure</TITLE></item
+            ><item cost="21.43"><TITLE>The Big Over Easy</TITLE></item
+            ><item cost="37.9"><TITLE>The Eyre Affair</TITLE></item
+            ></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -48,7 +64,10 @@
          <stylesheet file="iterate-003.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-003.out"/>
+         <assert-xml><![CDATA[<out><item cost="0"><TITLE>Pride and Prejudice</TITLE></item
+            ><item cost="4.95"><TITLE>Wuthering Heights</TITLE></item
+            ><item cost="11.53"><TITLE>Tess of the d'Urbervilles</TITLE></item
+            ></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -61,7 +80,13 @@
          <stylesheet file="iterate-004.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-004.out"/>
+         <assert-xml><![CDATA[<out><item position="1" last="6"><TITLE>Pride and Prejudice</TITLE></item
+            ><item position="2" last="6"><TITLE>Wuthering Heights</TITLE></item
+            ><item position="3" last="6"><TITLE>Tess of the d'Urbervilles</TITLE></item
+            ><item position="4" last="6"><TITLE>Jude the Obscure</TITLE></item
+            ><item position="5" last="6"><TITLE>The Big Over Easy</TITLE></item
+            ><item position="6" last="6"><TITLE>The Eyre Affair</TITLE></item
+            ></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -183,7 +208,7 @@
    </test-case>
 
    <test-case name="iterate-014">
-      <description>Basic Test of xsl:iterate instruction showing it accepts xsl:fallback.</description>
+      <description>Basic Test of xsl:iterate instruction, uses variables.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="iterate005"/>
       <dependencies/>
@@ -191,12 +216,23 @@
          <stylesheet file="iterate-014.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-014.out"/>
+         <all-of>
+            <assert>/out/*[7][self::page-break]</assert>
+            <assert>/out/*[11][self::page-break]</assert>
+            <assert>/out/*[16][self::page-break]</assert>
+            <assert>/out/*[20][self::page-break]</assert>
+            <assert>/out/*[23][self::page-break]</assert>
+            <assert>/out/*[27][self::page-break]</assert>
+            <assert>/out/*[31][self::page-break]</assert>
+            <assert>/out/*[36][self::page-break]</assert>
+            <assert>/out/*[40][self::page-break]</assert>
+            <assert>/out/*[45][self::page-break]</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="iterate-015">
-      <description>Basic Test of xsl:iterate instruction showing use of position() and last().</description>
+      <description>Basic Test of xsl:iterate instruction, uses variables and early exit.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="iterate005"/>
       <dependencies/>
@@ -204,7 +240,7 @@
          <stylesheet file="iterate-015.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-015.out"/>
+         <assert>count(/out/p) = 10</assert>
       </result>
    </test-case>
 
@@ -217,7 +253,7 @@
          <stylesheet file="iterate-016.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-016.out"/>
+         <assert>/out/count = 2</assert>
       </result>
    </test-case>
 
@@ -230,12 +266,15 @@
          <stylesheet file="iterate-017.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-017.out"/>
+         <assert>/out/count[@h3='2'][@other='74']</assert>
       </result>
    </test-case>
 
    <test-case name="iterate-018">
-      <description>Basic test of xsl:iterate; params not given a value retain their previous value, even when shadowed by a local variable</description>
+      <description>
+         Basic test of xsl:iterate; params not given a value retain their previous value, 
+         even when shadowed by a local variable
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="iterate005"/>
       <dependencies/>
@@ -243,7 +282,12 @@
          <stylesheet file="iterate-018.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-018.out"/>
+         <all-of>
+            <assert>/out/p[1]='100000'</assert>
+            <assert>/out/p[11]='100001'</assert>
+            <assert>/out/p[20]='100002'</assert>
+            <assert>/out/count[@h3='2'][@other='74']</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -256,7 +300,7 @@
          <stylesheet file="iterate-019.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-019.out"/>
+         <assert>/out/exit[@at="12"][@of="76"]</assert>
       </result>
    </test-case>
 
@@ -269,12 +313,23 @@
          <stylesheet file="iterate-020.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-020.out"/>
+         <all-of>
+            <assert>/out/loop[1][@n='5']</assert>
+            <assert>/out/loop[1]/z[3][@c="7" and @p="3"]</assert>
+            <assert>/out/loop[1]/z[12][@c="16" and @p="12"]</assert>
+            <assert>/out/loop[1]/exit[@at="12" and @of="76"]</assert>
+            <assert>/out/loop[2][@n='6']</assert>
+            <assert>/out/loop[2]/z[1][@c="6" and @p="2"]</assert>
+            <assert>/out/loop[2]/exit[@at="12" and @of="76"]</assert>
+            <assert>/out/loop[3]/exit[@at="12" and @of="76"]</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="iterate-021">
-      <description>Basic test of xsl:iterate; ensure with-param evaluated with old values of params, unaffected by other with-param elements</description>
+      <description>
+         Basic test of xsl:iterate; ensure with-param evaluated with old values of params, unaffected by other with-param elements
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="iterate005"/>
       <dependencies/>
@@ -282,7 +337,9 @@
          <stylesheet file="iterate-021.xsl"/>
       </test>
       <result>
-         <assert-xml file="iterate-021.out"/>
+         <assert-xml><![CDATA[<out><z p="0" q="0"/><z p="1" q="1"/><z p="2" q="2"/><z p="3" q="3"
+            /><z p="4" q="4"/><z p="5" q="5"/><z p="6" q="6"/><z p="7" q="7"/><z p="8" q="8"
+            /><z p="9" q="9"/><z p="10" q="10"/><exit at="12" of="76"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -354,13 +411,28 @@
    <test-case name="iterate-027">
       <description>processing using xsl:iterate - group adjacent transactions by date. Same as serial017 but not streamed</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <environment>
+         <source file="transactions.xml" uri="transactions.xml"/>
+      </environment>
       <dependencies/>
       <test>
          <stylesheet file="iterate-027.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="iterate-027.out"/>
+         <all-of>
+            <assert>deep-equal(/account/daily-transactions[1]/*/@value/number(), (13.24, 8.12))</assert>
+            <assert>deep-equal(/account/daily-transactions[2]/*/@value/number(), (-15.00))</assert>
+            <assert>deep-equal(/account/daily-transactions[3]/*/@value/number(), (6.00))</assert>
+            <assert>deep-equal(/account/daily-transactions[4]/*/@value/number(), (0.50, 2.33, 4.44))</assert>
+            <assert>deep-equal(/account/daily-transactions[5]/*/@value/number(), (-5.00))</assert>
+            <assert>deep-equal(/account/daily-transactions[6]/*/@value/number(), (8.99))</assert>
+            <assert>deep-equal(/account/daily-transactions[7]/*/@value/number(), (16.00))</assert>
+            <assert>deep-equal(/account/daily-transactions[8]/*/@value/number(), (-2.33, 5.60, 4.32))</assert>
+            <assert>deep-equal(/account/daily-transactions[9]/*/@value/number(), (6.78, 12.20, -248.05))</assert>
+            <assert>deep-equal(/account/daily-transactions[10]/*/@value/number(), (12.00, 13.99))</assert>
+            <assert>deep-equal(/account/final-daily-transactions/*/@value/number(), (14.20))</assert>
+         </all-of>
       </result>
    </test-case>
 </test-set>

@@ -2,8 +2,6 @@
 
 <!-- Basic test of xsl:iterate; checks that xsl:fallback is permitted -->
 
-<xsl:output indent="yes"/>
-
 <xsl:template match="/">
 <out>
   <xsl:iterate select="//ITEM/TITLE" >
