@@ -7,8 +7,6 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
  <!-- PURPOSE: test that a time of 24:00:00 is allowed -->
 
 
-  <xsl:output indent="yes"/>
-
   <xsl:template match="/">
      <out>
       <a><xsl:value-of select='xs:dateTime("1996-04-14T24:00:00.000")'/></a> 

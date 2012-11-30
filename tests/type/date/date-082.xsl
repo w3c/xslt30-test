@@ -13,8 +13,6 @@ xmlns:z="http://z.com/" exclude-result-prefixes="xs xdt z">
     <xsl:param name="d3" as="xs:dayTimeDuration" select="xs:dayTimeDuration('-PT20M')"/>
     <xsl:param name="z" as="xs:dayTimeDuration" select="xs:dayTimeDuration('PT0S')"/>
 
-<xsl:output indent="yes"/>
-
   <xsl:template match="/">
      <out>
       <a><xsl:value-of select="avg(($d1,$d2,$d3))"/></a>

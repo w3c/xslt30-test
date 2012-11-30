@@ -13,8 +13,6 @@ xmlns:xdt="http://www.w3.org/2005/04/xpath-datatypes"
     <xsl:param name="t1" as="xs:time" select="xs:time('12:15:00.432')"/>
     <xsl:param name="t2" as="xs:time" select="xs:time('12:15:00.432+03:00')"/>
 
-<xsl:output indent="yes"/>
-
   <xsl:template match="/">
      <out>
       <a><xsl:value-of select="dateTime($d1, $t1)"/></a>

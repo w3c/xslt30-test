@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+< test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="date">
    <description>Tests date</description>
@@ -477,6 +476,7 @@
    <test-case name="date-032">
       <description>XPath 2.0: test sorting of dates</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -980,6 +980,7 @@
    <test-case name="date-065">
       <description>XSLT 2.0: basic test of gHorribleKludge types</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -995,6 +996,7 @@
    <test-case name="date-066">
       <description>XSLT 2.0: test date to gHorribleKludge conversion</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1003,19 +1005,14 @@
          <stylesheet file="date-066.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <v>2000</v>
-   <v>2000-02</v>
-   <v>--02</v>
-   <v>--02-29</v>
-   <v>---29</v>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><v>2000</v><v>2000-02</v><v>--02</v><v>--02-29</v><v>---29</v></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="date-067">
       <description>XSLT 2.0: test dateTime to gHorribleKludge conversion</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1024,19 +1021,14 @@
          <stylesheet file="date-067.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <v>2000+02:00</v>
-   <v>2000-02+02:00</v>
-   <v>--02+02:00</v>
-   <v>--02-29+02:00</v>
-   <v>---29+02:00</v>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><v>2000+02:00</v><v>2000-02+02:00</v><v>--02+02:00</v><v>--02-29+02:00</v><v>---29+02:00</v></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="date-068">
       <description>XSLT 2.0: test equality matching on gHorribleKludge types</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1052,6 +1044,7 @@
    <test-case name="date-069">
       <description>XSLT 2.0: test date +/- duration</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1067,6 +1060,7 @@
    <test-case name="date-070">
       <description>XSLT 2.0: test dateTime +/- duration</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1082,6 +1076,7 @@
    <test-case name="date-071">
       <description>XSLT 2.0: test time +/- duration</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1090,20 +1085,13 @@
          <stylesheet file="date-071.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>04:12:00.3Z</a>
-   <a>20:11:59.7Z</a>
-   <b>20:11:59.7Z</b>
-   <b>04:12:00.3Z</b>
-   <a>04:12:00.3Z</a>
-   <a>20:11:59.7Z</a>
-</out>]]></assert-xml>
-      </result>
+         <assert-xml><![CDATA[<out><a>04:12:00.3Z</a><a>20:11:59.7Z</a><b>20:11:59.7Z</b><b>04:12:00.3Z</b><a>04:12:00.3Z</a><a>20:11:59.7Z</a></out>]]></assert-xml></result>
    </test-case>
 
    <test-case name="date-072">
       <description>XSLT 2.0: test date|Time - date|Time</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1112,12 +1100,7 @@
          <stylesheet file="date-072.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>-P365DT19H4M</a>
-   <a>P29D</a>
-   <a>PT44.7S</a>
-   <a>-PT44.7S</a>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>-P365DT19H4M</a><a>P29D</a><a>PT44.7S</a><a>-PT44.7S</a></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1200,6 +1183,7 @@
       <description>date subtraction and division of durations</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="date002"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1229,6 +1213,7 @@
    <test-case name="date-080">
       <description>XSLT 2.0: test sum() over dayTimeDurations</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1237,18 +1222,14 @@
          <stylesheet file="date-080.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>P2DT10M</a>
-   <a>P2DT10M</a>
-   <a>PT0S</a>
-   <a/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>P2DT10M</a><a>P2DT10M</a><a>PT0S</a><a/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="date-081">
       <description>XSLT 2.0: test sum() over yearMonthDurations</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1257,18 +1238,14 @@
          <stylesheet file="date-081.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>P2Y5M</a>
-   <a>P2Y5M</a>
-   <a>P0M</a>
-   <a/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>P2Y5M</a><a>P2Y5M</a><a>P0M</a><a/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="date-082">
       <description>XSLT 2.0: test avg() over dayTimeDurations</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1277,18 +1254,14 @@
          <stylesheet file="date-082.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>PT16H3M20S</a>
-   <a>PT16H3M20S</a>
-   <a/>
-   <a/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>PT16H3M20S</a><a>PT16H3M20S</a><a/><a/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="date-083">
       <description>XSLT 2.0: test avg() over yearMonthDurations</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1297,18 +1270,14 @@
          <stylesheet file="date-083.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>P10M</a>
-   <a>P10M</a>
-   <a/>
-   <a/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>P10M</a><a>P10M</a><a/><a/></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="date-084">
       <description>XSLT 2.0: test dateTime() constructor</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1354,6 +1323,7 @@
    <test-case name="date-087">
       <description>test that a time of 24:00:00 is allowed</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1362,19 +1332,14 @@
          <stylesheet file="date-087.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>1996-04-15T00:00:00</a>
-   <a>00:00:00+05:00</a>
-   <a>false</a>
-   <a>true</a>
-   <a>2002</a>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>1996-04-15T00:00:00</a><a>00:00:00+05:00</a><a>false</a><a>true</a><a>2002</a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="date-088">
       <description>test casting dates to GDay and friends</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1390,6 +1355,7 @@
    <test-case name="date-089">
       <description>test casting dates to GDay and friends; with timezones</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1405,6 +1371,7 @@
    <test-case name="date-090">
       <description>test handling of midnight</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1420,6 +1387,7 @@
    <test-case name="date-091">
       <description>test casting xs:duration to string</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022" />
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
