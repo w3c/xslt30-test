@@ -6,8 +6,6 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
   <?spec fo#casting-to-datetimes?>
  <!-- PURPOSE: test casting dates to GDay and friends; with timezones -->
 
-
-  <xsl:output indent="yes"/>
   
   <xsl:param name="gd" select="xs:gDay('---15+03:00')"/>
   <xsl:param name="gmd" select="xs:gMonthDay('--02-15+03:00')"/>  

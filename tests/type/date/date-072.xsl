@@ -4,7 +4,7 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 xmlns:xdt="http://www.w3.org/2005/04/xpath-datatypes" exclude-result-prefixes="xs xdt">
 
-<xsl:output encoding="iso-8859-1" indent="yes"/>
+<xsl:output encoding="iso-8859-1" />
 
   <?spec fo#func-subtract-dateTimes-yielding-dayTimeDuration?>
   <?spec fo#func-subtract-dates-yielding-dayTimeDuration?>

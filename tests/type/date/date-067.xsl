@@ -3,7 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
 xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
 
-<xsl:output encoding="iso-8859-1" indent="yes"/>
+<xsl:output encoding="iso-8859-1" />
 
   <?spec fo#casting-to-datetimes?>
   <!-- PURPOSE: XSLT 2.0: test dateTime to gHorribleKludge conversion -->
