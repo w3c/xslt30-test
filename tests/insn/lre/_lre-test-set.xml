@@ -5,24 +5,17 @@
    <description>Tests lre</description>
    <environment name="lre01">
       <source role=".">
-         <content><![CDATA[<doc>
-</doc>
-]]></content>
+         <content><![CDATA[<doc></doc>]]></content>
       </source>
    </environment>
    <environment name="lre03">
       <source role=".">
-         <content><![CDATA[<doc>DocValue
-</doc>]]></content>
+         <content><![CDATA[<doc>DocValue</doc>]]></content>
       </source>
    </environment>
    <environment name="lre05">
       <source role=".">
-         <content><![CDATA[<docs>
-  <doc1/>
-  <doc2/>
-  <doc3/>
-</docs>]]></content>
+         <content><![CDATA[<docs><doc1/><doc2/><doc3/></docs>]]></content>
       </source>
    </environment>
    <environment name="lre06">
@@ -38,25 +31,17 @@
    </environment>
    <environment name="lre10">
       <source role=".">
-         <content><![CDATA[<doc>
-</doc>]]></content>
+         <content><![CDATA[<doc></doc>]]></content>
       </source>
    </environment>
    <environment name="lre14">
       <source role=".">
-         <content><![CDATA[<docs>
-<doc/>
-<a>X</a>
-<a>Y</a>
-<a>Z</a>
-</docs>]]></content>
+         <content><![CDATA[<docs><doc/><a>X</a><a>Y</a><a>Z</a></docs>]]></content>
       </source>
    </environment>
    <environment name="lre19">
       <source role=".">
-         <content><![CDATA[<docs>
-  <a href="http://www.ped.com">Out1</a>
-</docs>]]></content>
+         <content><![CDATA[<docs><a href="http://www.ped.com">Out1</a></docs>]]></content>
       </source>
    </environment>
 
@@ -131,12 +116,22 @@
          <stylesheet file="lre-005.xsl"/>
       </test>
       <result>
-         <assert-xml file="lre-005.out"/>
+         <assert-xml><![CDATA[<out xmlns:ljh="http://buster.com" xmlns:jad="http://administrator.com"
+     x="by the corner"><jad:output1/><jad:output2><jad:output2a/></jad:output2
+     ><ljh:output1/><ljh:output2><ljh:output2a/></ljh:output2></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="lre-006">
-      <description>Show that exclude-result-prefixes is scoped to just it's LRE. The designation of a namespace as an excluded namespace is effective within the subtree of the stylesheet rooted at the element bearing the exclude-result-prefixes or xsl:exclude-result-prefixes attribute. A subtree rooted at an xsl:stylesheet element does not include any stylesheets imported or included by children of that xsl:stylesheet element. The ped namespace is excluded from main and foo, but not from the sub-elements that got placed in main by other templates. In fact, it has to be re-declared for each of those sub-elements.</description>
+      <description>
+         Show that exclude-result-prefixes is scoped to just it's LRE. 
+         The designation of a namespace as an excluded namespace is effective within the subtree of the stylesheet 
+         rooted at the element bearing the exclude-result-prefixes or xsl:exclude-result-prefixes attribute. 
+         A subtree rooted at an xsl:stylesheet element does not include any stylesheets imported or 
+         included by children of that xsl:stylesheet element. The ped namespace is excluded from 
+         main and foo, but not from the sub-elements that got placed in main by other templates. 
+         In fact, it has to be re-declared for each of those sub-elements.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre05"/>
       <dependencies>
@@ -146,7 +141,9 @@
          <stylesheet file="lre-006.xsl"/>
       </test>
       <result>
-         <assert-xml file="lre-006.out"/>
+         <assert-xml><![CDATA[<main><foo/><sub-element-in-main xmlns:ped="http://tester.com"
+            /><sub-element-in-import xmlns:ped="http://tester.com"/><sub-element-in-include xmlns:ped="http://tester.com"
+            /></main>]]></assert-xml>
       </result>
    </test-case>
 
@@ -266,7 +263,9 @@
          <stylesheet file="lre-014.xsl"/>
       </test>
       <result>
-         <assert-xml file="lre-014.out"/>
+         <assert-xml><![CDATA[<minding xmlns:ped="http://tester.com" x="his peas and queues"><jad:output1 xmlns:jad="http://administrator.com"
+            /><jad:output2 xmlns:jad="http://administrator.com"><jad:output2a/></jad:output2><ljh:output1 xmlns:ljh="http://buster.com"
+            /><ljh:output2 xmlns:ljh="http://buster.com"><ljh:output2a/></ljh:output2></minding>]]></assert-xml>
       </result>
    </test-case>
 
