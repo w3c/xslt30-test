@@ -6,7 +6,7 @@
 
    <t:template match="/" version="1.0">
       <out>
-         <sometag>{//item[@name='text']}</sometag>
+         <sometag attributevalue="{//item[@name='text']}"/>
       </out>
    </t:template>
 </t:transform>
