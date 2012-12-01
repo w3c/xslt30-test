@@ -4,7 +4,6 @@
     <!-- Purpose: xsl:merge-source that uses a path expression that selects more than one node in an 
     attribute value template  -->
 
-    <xsl:output method="xml" indent="yes"/>
     <xsl:variable name="doc1" select="doc('log-file-3.xml')"/>
 
     <xsl:template match="/">

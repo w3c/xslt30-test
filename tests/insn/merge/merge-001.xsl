@@ -6,7 +6,7 @@
     <!-- xsl:merge test on a homogeneous collection of XML log files. -->
     <xsl:output method="xml" indent="no"/>
     
-    <xsl:template match="/">
+    <xsl:template name="main">
         <events>
             <xsl:merge>                
                 <xsl:merge-source 
