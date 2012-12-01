@@ -5,7 +5,6 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
 
 <?spec fo#date-time-values?>
   <!-- PURPOSE: XPath 2.0: test sorting of dates -->
-  <xsl:output indent="yes"/>
 
   <xsl:template match="/">
     <xsl:variable name="list" 

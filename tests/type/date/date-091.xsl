@@ -6,7 +6,6 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
   <?spec fo#casting-to-string?>
  <!-- PURPOSE: test casting xs:duration to string -->
   
-  <xsl:output indent="yes"/>
   <xsl:template match="/">
      <out>
      <time>
