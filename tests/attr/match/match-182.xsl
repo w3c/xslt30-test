@@ -17,11 +17,9 @@
       <t:element name="E">
          <t:value-of select="."/>
       </t:element>
-      <t:text> </t:text>
    </t:template>
    
    <t:template match="/doc">
-      <t:text> </t:text>
       <out>
          <t:apply-templates select="$var"/>
       </out>

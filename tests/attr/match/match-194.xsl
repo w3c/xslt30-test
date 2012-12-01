@@ -38,5 +38,5 @@
       </xslt:element>
    </xslt:template>
 
-   <xslt:template match="element(*)"> </xslt:template>
+   <xslt:template match="element(*)"/> 
 </xslt:transform>

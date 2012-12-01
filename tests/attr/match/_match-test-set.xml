@@ -1448,8 +1448,10 @@
    </test-case>
 
    <test-case name="match-068">
-      <description>Filtered "/" in pattern. NOTE: this is allowed by the current (Oct 2012) syntax for patterns, but it is not a valid XPath expression. Bug 18861 proposes to make this pattern illegal.</description>
+      <description>Filtered "/" in pattern. NOTE: this is allowed by the current (Oct 2012) syntax for patterns, 
+         but it is not a valid XPath expression. Bug 18861 proposes to make this pattern illegal.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <changed by="Michael Kay" on="2012-12-01" change="Changed to expect a syntax error, anticipating the revised spec"/>
       <environment ref="match1059"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1458,7 +1460,7 @@
          <stylesheet file="match-068.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[dummy results file]]></assert-xml>
+         <error code="XTSE0340"/>
       </result>
    </test-case>
 
@@ -3432,7 +3434,11 @@
          <stylesheet file="match-194.xsl"/>
       </test>
       <result>
-         <assert-xml file="match-194.out"/>
+         <assert-xml><![CDATA[<out><A3>345-PT 675-RT 897-GB</A3
+            ><D9>This is my list of 7 tokens</D9
+            ><B10>3.3 4.56</B10
+            ><C11>12.123 23.234 34.345</C11
+            ><C12>12.123 23.234 34.345 45.456 56.567 67.678</C12></out>]]></assert-xml>
       </result>
    </test-case>
 

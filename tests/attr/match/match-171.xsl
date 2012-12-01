@@ -18,14 +18,12 @@
       <t:element name="B">
          <t:value-of select="."/>
       </t:element>
-      <t:text> </t:text>
    </t:template>
    
    <t:template match="attribute::schema-attribute(my:specialPart)">
       <t:element name="A">
          <t:value-of select="."/>
       </t:element>
-      <t:text> </t:text>
    </t:template>   
 
    <t:template match="attribute::schema-attribute(my:colors)">
@@ -40,5 +38,5 @@
       </t:element>
    </t:template>
 
-   <t:template match="attribute::attribute(*)"> </t:template>
+   <t:template match="attribute::attribute(*)"/> 
 </t:transform>
