@@ -8,8 +8,6 @@
 <!-- test that xsl:evaluate doesn't use the default namespace (bug in 8.7 and previous releases)-->
 <!-- formerly saxon096 -->
 				
-	<xsl:output method="xhtml" encoding="UTF-8" omit-xml-declaration="yes" indent="yes" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
-
 	<xsl:template match="/">
 		<html>
 			<head>

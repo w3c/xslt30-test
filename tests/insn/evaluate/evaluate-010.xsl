@@ -6,8 +6,6 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ev29="http://example.com/evaluate029" version="3.0"
 exclude-result-prefixes="xs ev29">
 
-  <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
-  
   <xsl:import-schema>
     <xs:schema targetNamespace="http://example.com/evaluate029">
       <xs:simpleType name="restrictedDate">
@@ -31,7 +29,7 @@ exclude-result-prefixes="xs ev29">
              <xsl:with-param name="v" select="position() mod 5"/>
           </xsl:evaluate>
         </xsl:variable>
-        <xsl:if test="position() lt 100">
+        <xsl:if test="position() ge 90 and position() lt 100">
             <out><xsl:value-of select="$r"/></out>
         </xsl:if>
       </xsl:for-each>

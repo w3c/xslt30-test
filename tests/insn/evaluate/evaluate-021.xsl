@@ -9,8 +9,6 @@
 				<!-- test that xsl:evaluate uses xpath-default-namespace -->
 				<!-- formerly saxon098 -->
 				
-	<xsl:output method="xhtml" encoding="UTF-8" omit-xml-declaration="yes" indent="yes" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
-
 	<xsl:template match="/">
 		<html>
 			<head>

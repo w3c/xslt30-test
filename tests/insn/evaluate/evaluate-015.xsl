@@ -4,8 +4,6 @@
   <!-- Formerly saxon013 -->
   <!-- rewritten Nov 2009 to use xsl:evaluate -->
 
-  <xsl:output indent="yes"/>
-
   <xsl:template match="doc">
     <out>
       <xsl:apply-templates/>
@@ -18,5 +16,7 @@
         context-item="."/>
     </ans>
   </xsl:template>
+  
+  <xsl:strip-space elements="*"/>
 
 </xsl:transform>

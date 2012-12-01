@@ -4,7 +4,7 @@ xmlns:s="http://my.com/f" exclude-result-prefixes="s">
 
 <!-- Test use of xsl:evaluate in a predicate. Was saxon042. -->
 
-    <xsl:template match="/" xmlns:saxon="http://saxon.sf.net/">
+    <xsl:template match="/">
     <out>
         <xsl:variable name="gt0" select="'@qty * @price &gt; 0'"/>
         <xsl:variable name="gt15" select="'@qty * @price &gt; 15'"/>

@@ -13,9 +13,6 @@
 <!-- test.xml can be empty file -->
 
 
-
-<xsl:output method="xml" omit-xml-declaration="yes" indent="yes"/>
-
 <!-- primary sort fields -->
 
 <!-- ******************************************************************************************************** -->

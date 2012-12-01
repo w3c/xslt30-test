@@ -83,7 +83,26 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="evaluate-002.out"/>
+         <all-of>
+            <assert>/out/*[1][self::z][. = "STATIC setting1=[value1]"]</assert>
+            <assert>/out/*[2][self::z][. = "STATIC setting2=[value2]"]</assert>
+            <assert>/out/*[3][self::a][. = "DYNAMIC(A-all) setting1=[value1]"]</assert>
+            <assert>/out/*[4][self::a][. = "DYNAMIC(A-all) setting2=[value2]"]</assert>
+            <assert>/out/*[5][self::a][. = "DYNAMIC(B) count=2"]</assert>
+            <assert>/out/*[6][self::b][. = "DYNAMIC(B-for) setting1=[value1]"]</assert>
+            <assert>/out/*[7][self::b][. = "DYNAMIC(B-for) setting2=[value2]"]</assert>
+            <assert>/out/*[8][self::d][. = "DYNAMIC(B-top) setting1=[value1]"]</assert>
+            <assert>/out/*[9][self::d][. = "DYNAMIC(B-top) setting2=[value2]"]</assert>
+            <assert>/out/*[10][self::d][. = "DYNAMIC(B-1) setting1=[value1]"]</assert>
+            <assert>/out/*[11][self::d][. = "DYNAMIC(B-2) setting2=[value2]"]</assert>
+            <assert>/out/*[12][self::e][. = "DYNAMIC(C) count=2"]</assert>
+            <assert>/out/*[13][self::f][. = "DYNAMIC(C-for) setting1=[value1]"]</assert>
+            <assert>/out/*[14][self::f][. = "DYNAMIC(C-for) setting2=[value2]"]</assert>
+            <assert>/out/*[15][self::g][. = "DYNAMIC(C-top) setting1=[value1]"]</assert>
+            <assert>/out/*[16][self::g][. = "DYNAMIC(C-top) setting1=[value2]"]</assert>
+            <assert>/out/*[17][self::h][. = "DYNAMIC(D) setting1=[value1]"]</assert>
+            <assert>/out/*[18][self::h][. = "DYNAMIC(D) setting1=[value2]"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -96,10 +115,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <td>SVC board vhdl code consolidation</td>
-   <td>IOgen template incorporation</td>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><td>SVC board vhdl code consolidation</td><td>IOgen template incorporation</td></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -194,12 +210,15 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="evaluate-010.out"/>
+         <assert-xml><![CDATA[<Result><out>http://www.w3.org/?0</out><out>http://saxon.sf.net/#1</out
+            ><out>http://www.w3.org/?2</out><out>http://saxon.sf.net/?3</out><out>http://www.w3.org/?4</out
+            ><out>http://saxon.sf.net/?0</out><out>http://www.w3.org/?1</out><out>http://saxon.sf.net/?2</out
+            ><out>http://www.w3.org/#3</out><out>http://saxon.sf.net/?4</out></Result>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="evaluate-011">
-      <description>test format-number() occurring within xsl:evaluate. Not allowed</description>
+      <description>test format-number() occurring within xsl:evaluate. Not allowed (decimal format not declared)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies/>
       <test>
@@ -207,7 +226,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE1280"/>
+         <error code="FODF1280"/>
       </result>
    </test-case>
 
@@ -257,7 +276,9 @@
    </test-case>
 
    <test-case name="evaluate-015">
-      <description>Basic test of xsl:evaluate. Includes a test where the expression to be evaluated itself calls xsl:evaluate. Test was formerly saxon013</description>
+      <description>
+         Basic test of xsl:evaluate. Includes a test where the expression to be evaluated itself calls xsl:evaluate. 
+         Test was formerly saxon013</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="eval003"/>
       <dependencies/>
@@ -265,7 +286,7 @@
          <stylesheet file="evaluate-015.xsl"/>
       </test>
       <result>
-         <assert-xml file="evaluate-015.out"/>
+         <assert-xml><![CDATA[<out><ans>4</ans><ans>1</ans><ans>eval003.xml</ans><ans>eval003.xml</ans><ans>17</ans><ans>4</ans><ans>1 4 9</ans></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -317,7 +338,11 @@
          <stylesheet file="evaluate-019.xsl"/>
       </test>
       <result>
-         <assert-xml file="evaluate-019.out"/>
+         <all-of xmlns:h="http://www.w3.org/1999/xhtml">
+            <assert>/h:html/h:body/h:p[1] = "normal xpath/xslt : Saxon is great"</assert>
+            <assert>/h:html/h:body/h:p[2] = "evaluate : Saxon is great"</assert>
+            <assert>/h:html/h:body/h:p[3] = "evaluate without namespaces : Saxon is great"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -330,7 +355,7 @@
          <stylesheet file="evaluate-020.xsl"/>
       </test>
       <result>
-         <assert-xml file="evaluate-020.out"/>
+         <assert>//*:p = "evaluate-node : Saxon is great"</assert>
       </result>
    </test-case>
 
@@ -343,7 +368,7 @@
          <stylesheet file="evaluate-021.xsl"/>
       </test>
       <result>
-         <assert-xml file="evaluate-021.out"/>
+         <assert>//*:p = "evaluate : Saxon is great"</assert>
       </result>
    </test-case>
 
@@ -356,7 +381,10 @@
          <stylesheet file="evaluate-022.xsl"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <any-of>
+            <error code="XTTE0790"/>
+            <error code="XPTY0004"/>
+         </any-of>        
       </result>
    </test-case>
 
@@ -382,7 +410,7 @@
          <stylesheet file="evaluate-024.xsl"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <error code="XPDY0002"/>
       </result>
    </test-case>
 
@@ -395,7 +423,7 @@
          <stylesheet file="evaluate-025.xsl"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <error code="XPDY0002"/>
       </result>
    </test-case>
 
@@ -426,7 +454,7 @@
    </test-case>
 
    <test-case name="evaluate-028">
-      <description>Test saxon:expression() and xsl:eval(). Formerly saxon041.</description>
+      <description>Test xsl:evaluate in predicate. Formerly saxon041.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="eval021"/>
       <dependencies/>
@@ -434,16 +462,12 @@
          <stylesheet file="evaluate-028.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:saxon="http://saxon.sf.net/">
-   <gt0>true</gt0>
-   <gt15>true</gt15>
-   <gt1500>false</gt1500>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><gt0>true</gt0><gt15>true</gt15><gt1500>false</gt1500></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="evaluate-029">
-      <description>Test saxon:expression() with xsl:eval() in a predicate. Formerly saxon042.</description>
+      <description>Test xsl:evaluate in predicate. Formerly saxon042.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="eval021"/>
       <dependencies/>
@@ -451,11 +475,7 @@
          <stylesheet file="evaluate-029.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:saxon="http://saxon.sf.net/">
-   <gt0>true</gt0>
-   <gt15>false</gt15>
-   <gt1500>false</gt1500>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><gt0>true</gt0><gt15>false</gt15><gt1500>false</gt1500></out>]]></assert-xml>
       </result>
    </test-case>
 
