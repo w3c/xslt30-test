@@ -4,8 +4,6 @@ version="2.0">
   <!-- Bug 1930319 -->
 
 
-	<xsl:output method="xml" indent="yes"/>
-
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="grp-size" select="number(20)"/>
 	

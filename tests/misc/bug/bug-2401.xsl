@@ -5,7 +5,6 @@
 <?spec xslt#applying-templates?>
 <!-- BUG: proved not to be a bug at all -->
 
-<xsl:output method="xml" indent="yes"/>
 
 <xsl:template match="/credits_and_about_author/credits">
 <HTML><HEAD><TITLE>About Author and Credits</TITLE></HEAD>

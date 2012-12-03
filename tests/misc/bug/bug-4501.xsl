@@ -12,8 +12,6 @@ recursive call it works fine.
 -->
 
 
-<xsl:output method="xml" indent="yes" />
-
 <xsl:key name="leaf-elements" match="*[not(*)]" use="name()" />
 
 <xsl:template match="/">

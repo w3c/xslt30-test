@@ -11,7 +11,6 @@
   
   <xsl:mode name="s" streamable="yes"/>
        
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
     
   <xsl:template name="main">
     <xsl:apply-templates select="doc('transactions.xml')/account" mode="s"/>

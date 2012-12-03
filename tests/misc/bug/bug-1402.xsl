@@ -2,12 +2,11 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 >
-<?spec xslt#message?>
+
 <!-- BUG: Saxon 5.3.1/001 -->
 <!-- DESCRIPTION: If an element node is output while instantiating the content of xsl:message, the
     closing ">" or "/>" or the element start tag is omitted. -->
     
-<xsl:output indent="yes"/>
 
 <xsl:template match="/">
 <a><xsl:message>It's (<b name="fred" desc="bill">super</b>)</xsl:message></a>

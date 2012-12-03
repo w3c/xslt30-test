@@ -8,13 +8,6 @@
 
 <xsl:namespace-alias stylesheet-prefix="axsl" result-prefix="xsl"/>
 
-<!-- Category: top-level-element -->
-<xsl:output
-   method="xml" 
-   omit-xml-declaration="no"
-   standalone="yes" 
-   indent="yes" />
-
 <xsl:template match="schema">
    <axsl:stylesheet version="1.0">
       <xsl:for-each select="ns">

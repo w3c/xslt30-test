@@ -4,11 +4,7 @@
                 >
 
 <!-- PURPOSE: Test namespace nodes -->
-<?spec xpath#axes?>
-<!-- Note, this test is now superseded by nspc12-17 which break it up into parts,
-     for ease of analysing the results -->
 
-<xsl:output indent="yes"/>
 <xsl:template match="/">
 <out>
 <copy-of-test>

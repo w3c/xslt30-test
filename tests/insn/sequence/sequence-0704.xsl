@@ -2,8 +2,6 @@
 <t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
 <!-- Purpose: test op:concatenate of three sequences, empty in middle -->
 
-   <t:output method="xml" encoding="UTF-8" indent="yes"/>
-
    <t:template match="/">
       <out>
          <t:text>(</t:text>

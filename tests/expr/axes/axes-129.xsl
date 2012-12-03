@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<?spec xpath#axes?>
+
     <!-- Purpose: Check the namespace axis starting from an attribute; should be empty -->
 
-<xsl:output method="xml" encoding="UTF-8" indent="yes" />
 
 <xsl:template match="/">
   <out>

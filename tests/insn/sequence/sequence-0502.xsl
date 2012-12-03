@@ -2,8 +2,6 @@
 <t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
 <!-- Purpose: sequence op:concatenate of nodes and for clause -->
 
-   <t:output method="xml" encoding="UTF-8" indent="yes"/>
-
    <t:template match="doc">
       <out>
          <t:text>(</t:text>

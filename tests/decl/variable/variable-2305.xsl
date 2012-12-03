@@ -5,9 +5,7 @@
   <!-- Purpose: Use same-named variables in inner and outer scopes, where inner is a for-each loop. -->
   
   <!-- MHK: legal in 2.0, illegal in 1.0 -->
-  <?same-as-1.0 no?>
  
-<xsl:output method="xml" indent="yes" />
 
 <xsl:template match="/">
   <xsl:variable name="bar">outer</xsl:variable>

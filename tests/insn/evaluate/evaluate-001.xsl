@@ -11,8 +11,6 @@
     </out>
   </xsl:template>
 
-  <xsl:output indent="yes"/>
-
   <xsl:function name="my:f">
     <xsl:sequence select="$p"/>
   </xsl:function>

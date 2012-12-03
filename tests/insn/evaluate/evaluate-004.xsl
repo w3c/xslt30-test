@@ -6,7 +6,6 @@
         xmlns:h="http://www.xyz.com/h"
         exclude-result-prefixes="h xsl xs  xfn"
 >
-<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/> 
 
 <!-- A more complex example of xsl:evaluate with multiple parameters --> 
 

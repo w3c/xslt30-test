@@ -1,6 +1,5 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:d="urn:d"  exclude-result-prefixes="d">
 
-  <xsl:output indent="yes" method="xml"/>
   <xsl:strip-space elements="*"/>
   
   <?spec xslt#applying-templates?>

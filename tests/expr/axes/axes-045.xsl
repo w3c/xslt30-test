@@ -3,7 +3,6 @@
 <?spec xpath#axes?>
   <!-- PURPOSE: Test for completion of tree using all axes. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-  <xsl:output indent="yes"/>
 
   <xsl:template match="/">
     <out>

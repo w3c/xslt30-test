@@ -1,10 +1,8 @@
 <?xml version="1.0"?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-  <xsl:output indent="yes"/>
 
-<?spec fo#func-unordered?>
   <!-- PURPOSE: Test for 'ancestor::' Axis Identifier, with XPath 2.0 unordered() function -->
-  <?same-as-1.0 no?>
+
   <xsl:template match="/">
     <out>
       <ordered>

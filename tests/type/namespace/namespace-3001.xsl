@@ -9,7 +9,6 @@
 
 <!-- (Actually bug 5857 does not affect xsl:copy-of, but this case is included for completeness) -->
 
-<xsl:output indent="yes"/>
 
 <xsl:template match="/">
   <xsl:copy-of select="."/>

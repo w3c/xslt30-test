@@ -83,7 +83,7 @@ must still be automatic.</out>]]></assert-xml>
 
 
    <test-case name="unparsed-text-2001">
-      <description>test unparsed-text() with one argument make some sample files in different encodings</description>
+      <description>test unparsed-text() with one argument; make some sample files in different encodings</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unparsed-text-20"/>
       <dependencies>
@@ -94,7 +94,11 @@ must still be automatic.</out>]]></assert-xml>
          <stylesheet file="unparsed-text-2001.xsl"/>
       </test>
       <result>
-         <assert-xml file="unparsed-text-2001.out"/>
+         <assert-xml><![CDATA[<out><file name="xutf-16.txt">Kirche, Kinder, Küche</file
+            ><file name="xutf-8.txt">Kirche, Kinder, Küche</file
+            ><file name="xutf-16.xml">&lt;?xml version="1.0" encoding="utf-16"?&gt;Kirche, Kinder, Küche</file
+            ><file name="xutf-8.xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;Kirche, Kinder, Küche</file
+            ><file name="xiso-8859-1.xml">&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;Kirche, Kinder, Küche</file></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -113,10 +117,7 @@ must still be automatic.</out>]]></assert-xml>
          <stylesheet file="unparsed-text-2002.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <utf-8>true</utf-8>
-   <iso-8859-1>true</iso-8859-1>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><utf-8>true</utf-8><iso-8859-1>true</iso-8859-1></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -131,12 +132,7 @@ must still be automatic.</out>]]></assert-xml>
          <stylesheet file="unparsed-text-2003.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a>true</a>
-   <a>true</a>
-   <a>false</a>
-   <a>false</a>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>true</a><a>true</a><a>false</a><a>false</a></out>]]></assert-xml>
       </result>
    </test-case>
 

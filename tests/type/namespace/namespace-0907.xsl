@@ -4,9 +4,7 @@
                 >
 
 <!-- PURPOSE: List all the namespace nodes for an element -->
-<?spec xpath#axes?>
 
-<xsl:output indent="yes"/>
 <xsl:template match="/">
 <out>
     <xsl:for-each select="//c:chap/namespace::*" xmlns:c="http://chap-default.uri/">

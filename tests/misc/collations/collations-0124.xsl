@@ -5,7 +5,6 @@
                 exclude-result-prefixes="xs">
 
 <xsl:strip-space elements="*"/>
-<xsl:output method="xml" indent="yes"/>
 
 <xsl:param name="collation" as="xs:string" select="'&coll;'"/>
 <xsl:variable name="x" as="xs:string" select="'Adele'"/>

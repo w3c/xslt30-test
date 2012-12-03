@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="iso-8859-1"?> 
 <xsl:transform version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
-   <?spec xslt#unparsed-text?>    
+ 
     <!-- test unparsed-text() with one argument 
          using HTTP headers to discover encoding -->
 
-<xsl:output name="test" encoding="iso-8859-1" indent="yes"/>
+<xsl:output name="test" encoding="iso-8859-1" indent="no"/>
 <xsl:template match="/">
   <xsl:result-document format="test">
   <out>

@@ -1,9 +1,7 @@
 <?xml version="1.0"?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 <!-- PURPOSE:   Test sequence construction with atomization -->
-<?spec xslt#variable-values?>
 
-<xsl:output indent="yes"/>
 
 <xsl:template match="doc">
   <xsl:variable name="q" as="xs:integer *" xmlns:xs="http://www.w3.org/2001/XMLSchema">

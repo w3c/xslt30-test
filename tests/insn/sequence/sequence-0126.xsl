@@ -2,10 +2,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
 xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-<?spec fo#func-subsequence?>
 <!-- PURPOSE:   Test subsequence() function with various non-integer parameters -->
 
-<xsl:output indent="yes"/>
 
 <xsl:variable name="s" select="1 to 20"/>
 <xsl:variable name="INF" as="xs:double" select="1.0e0 div 0.0e0"/>

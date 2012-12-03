@@ -2,8 +2,7 @@
 xmlns:saxon="http://icl.com/saxon" extension-element-prefixes="saxon" 
 version="2.0">
 
-<?spec xpath#id-path-expressions?>
-<xsl:output method="xml" indent="yes"/>
+
 
 <xsl:template match="/">
   <all>

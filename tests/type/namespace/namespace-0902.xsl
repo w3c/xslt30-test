@@ -3,14 +3,14 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
    version="2.0"
 >
-<?spec xslt#generate-id?>
+
 <!-- PURPOSE: Test generate-id() on namespace nodes -->
 <!-- modified 2002-08-08 to give reproducable results. The test now simply checks that
      all the namespace nodes have distinct id values -->
 <!-- modified 2002-08-08 to give even more reproducable results. Output is now
      well-formed, and sorted.-->
 
-<xsl:output indent="yes"/>
+
 <xsl:template match="/">
  <out>
  <xsl:for-each-group select="//*/namespace::*" group-by="generate-id()">

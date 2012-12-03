@@ -2339,7 +2339,10 @@
          <stylesheet file="math-3310.xsl"/>
       </test>
       <result>
-         <assert-xml file="math-3310.out"/>
+         <all-of>
+            <assert>every $b in //t satisfies $b = 'true'</assert>
+            <assert>every $b in //f satisfies $b = 'false'</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2387,7 +2390,22 @@
          <stylesheet file="math-3313.xsl"/>
       </test>
       <result>
-         <assert-xml file="math-3313.out"/>
+         <all-of>
+            <assert>/out/aa[@ans="1.1"]</assert>
+            <assert>/out/ab[@ans="1.2"]</assert>
+            <assert>/out/ac[@ans="1.2"]</assert>
+            <assert>/out/ad[@ans="-1.2"]</assert>
+            <assert>/out/ae[@ans="-1.2"]</assert>
+            <assert>/out/af[@ans="0.2"]</assert>
+            <assert>/out/ag[@ans="0.2"]</assert>
+            <assert>/out/ah[@ans="-0.2"]</assert>
+            <assert>/out/ai[@ans="-0.2"]</assert>
+            <assert>/out/aj[@ans="0.1"]</assert>
+            <assert>/out/ak[@ans="0"]</assert>
+            <assert>/out/al[@ans="0"]</assert>
+            <assert>/out/am[@ans="0"]</assert>
+            <assert>/out/an[@ans="0.000000000000000000000000019999"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2402,7 +2420,22 @@
          <stylesheet file="math-3314.xsl"/>
       </test>
       <result>
-         <assert-xml file="math-3314.out"/>
+         <all-of>
+            <assert>/out/aa[@ans="3"]</assert>
+            <assert>/out/ab[@ans="0"]</assert>
+            <assert>/out/ac[@ans="-2"]</assert>
+            <assert>/out/ad[@ans="-2"]</assert>
+            <assert>/out/ae[@ans="2"]</assert>
+            <assert>/out/af[@ans="2"]</assert>
+            <assert>/out/ac[@ans="-2"]</assert>
+            <assert>/out/ad[@ans="-2"]</assert>
+            <assert>/out/ae[@ans="2"]</assert>
+            <assert>/out/af[@ans="2"]</assert>
+            <assert>/out/ac[@ans="-2"]</assert>
+            <assert>/out/ad[@ans="-2"]</assert>
+            <assert>/out/ae[@ans="2"]</assert>
+            <assert>/out/af[@ans="2"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2418,7 +2451,26 @@
          <stylesheet file="math-3315.xsl"/>
       </test>
       <result>
-         <assert-xml file="math-3315.out"/>
+         <all-of>
+            <assert>/out/a0[@ans="1234567896123456789612345678961234567896.1234567896"]</assert>
+            <assert>/out/aa[@ans="1234567896123456789612345678961234567896.1235"]</assert>
+            <assert>/out/ab[@ans="1234567896123456789612345678961234567896.1"]</assert>
+            <assert>/out/ac[@ans="1234567896123456789612345678961234567896"]</assert>
+            <assert>/out/ad[@ans="1234567896123456789612345678961234567900"]</assert>
+            <assert>/out/ae[@ans="1234567896123456789612345678960000000000"]</assert>
+            <assert>/out/af[@ans="1234567896000000000000000000000000000000"]</assert>
+            <assert>/out/af2[@ans="1234567897000000000000000000000000000000"]</assert>
+            <assert>/out/af3[@ans="1234567898000000000000000000000000000000"]</assert>
+            <assert>/out/ag[@ans="0"]</assert>
+            <assert>/out/b0[@ans="0.0000000000000000000000000123456789012346"]</assert>
+            <assert>/out/ba[@ans="0"]</assert>
+            <assert>/out/bb[@ans="0"]</assert>
+            <assert>/out/bc[@ans="0"]</assert>
+            <assert>/out/bd[@ans="0"]</assert>
+            <assert>/out/be[@ans="0"]</assert>
+            <assert>/out/bf[@ans="0"]</assert>
+            <assert>/out/bg[@ans="0"]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -2449,11 +2501,7 @@
          <stylesheet file="math-3317.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <a0 ans="NaN"/>
-   <a0 ans="NaN"/>
-   <a0 ans="NaN"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a0 ans="NaN"/><a0 ans="NaN"/><a0 ans="NaN"/></out>]]></assert-xml>
       </result>
    </test-case>
 

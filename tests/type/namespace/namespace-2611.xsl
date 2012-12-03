@@ -2,15 +2,11 @@
   xmlns:dbf="http://nwalsh.com/docbook/xsl/functions" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   version="2.0">
 
-  <?spec fo#func-node-name?>
-
   <xsl:function name="dbf:user-node-matches" as="xs:boolean">
     <xsl:param name="template-node" as="element()"/>
     <xsl:param name="document-node" as="element()"/>
     <xsl:value-of select="true()"/>
   </xsl:function>
-
-  <xsl:output indent="yes"/>
 
   <xsl:function name="dbf:node-matches1" as="xs:boolean">
     <xsl:param name="template-node" as="element()"/>

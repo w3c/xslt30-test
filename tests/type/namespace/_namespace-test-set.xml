@@ -357,10 +357,7 @@
          <stylesheet file="namespace-0201.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:anamespace="http://foo.com/">
-   <p anamespace:test="true"/>
-   <p xmlns:ns0="http://baz.com/" ns0:test="true"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out xmlns:anamespace="http://foo.com/"><p anamespace:test="true"/><p xmlns:ns0="http://baz.com/" ns0:test="true"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -375,7 +372,7 @@
          <stylesheet file="namespace-0202.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-0202.out"/>
+         <assert-xml><![CDATA[<out xmlns:anamespace="http://foo.com/"><p><test xmlns="http://foo.com/"/></p><p><test xmlns="http://baz.com/"/></p></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -392,7 +389,8 @@
          <stylesheet file="namespace-0301.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-0301.out"/>
+         <assert-xml><![CDATA[<out xmlns:c="http://y.com" xmlns:a="http://z.com" xmlns:b="http://x.com" t1="http://z.com:t1" t2="http://z.com:t2"
+            ><foo t1="http://y.com:t1" t2="http://z.com:t2"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -527,7 +525,8 @@
          <stylesheet file="namespace-0801.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-0801.out"/>
+         <assert-xml><![CDATA[<out xmlns="http://dummy/"><Variable><XXX xmlns=""/><YYY xmlns="http://yyy/"/></Variable
+            ><Direct><XXX xmlns=""/><YYY xmlns="http://yyy/"/></Direct></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -542,12 +541,14 @@
          <stylesheet file="namespace-0802.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-0802.out"/>
+         <assert-xml><![CDATA[<doc xmlns:p="http://dummy/"><p:part1><e/><e/><e a="1"/><e a="2"/></p:part1
+            ><part2><e/><e/><e a="3"/><e a="4"/></part2
+            ><part3 xmlns="http://something/"><e xmlns=""/><e xmlns=""/><e a="5"/><e a="6"/></part3></doc>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="namespace-0901">
-      <description>Test namespace nodes Note, this test is now superseded by nspc12-17 which break it up into parts, for ease of analysing the results</description>
+      <description>Test namespace nodes. Note, this test is now superseded by nspc12-17 which break it up into parts, for ease of analysing the results</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-09"/>
       <dependencies>
@@ -580,7 +581,14 @@
          <stylesheet file="namespace-0902.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-0902.out"/>
+         <assert-xml><![CDATA[<out><namespace name="" value="http://chap-default.uri/" count="1"
+            /><namespace name="" value="http://default.uri/" count="1"
+            /><namespace name="xml" value="http://www.w3.org/XML/1998/namespace" count="1"
+            /><namespace name="xml" value="http://www.w3.org/XML/1998/namespace" count="1"
+            /><namespace name="xml" value="http://www.w3.org/XML/1998/namespace" count="1"
+            /><namespace name="z" value="http://new-z.uri/" count="1"
+            /><namespace name="z" value="http://new-z.uri/" count="1"
+            /><namespace name="z" value="http://z.uri/" count="1"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -787,9 +795,7 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-1103.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   <ans count="1" name="xml" value="http://www.w3.org/XML/1998/namespace"/>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><ans count="1" name="xml" value="http://www.w3.org/XML/1998/namespace"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1165,12 +1171,7 @@ z = http://new-z.uri/;
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
-            <content><![CDATA[<doc xmlns:a="http://a/" xmlns:b="http://b/" xmlns:c="http://c/">
-  <a:thing/>
-  <b:thing/>
-  <c:thing/>
-  <thing/>
-</doc>]]></content>
+            <content><![CDATA[<doc xmlns:a="http://a/" xmlns:b="http://b/" xmlns:c="http://c/"><a:thing/><b:thing/><c:thing/><thing/></doc>]]></content>
          </source>
       </environment>
       <dependencies>

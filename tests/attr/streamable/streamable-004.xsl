@@ -4,7 +4,6 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
 
-  <xsl:output indent="yes"/>
   <xsl:strip-space elements="chapter"/>
 
   <!-- copy the old testament, including the chapter number attributes -->

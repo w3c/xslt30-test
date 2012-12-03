@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<?spec fo#func-document-uri?>
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
     <!-- Test the document-uri() function -->
 
-<xsl:output method="xml" indent="yes"/>
+
 
 <xsl:variable name="x"><x/></xsl:variable>
 

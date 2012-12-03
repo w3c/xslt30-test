@@ -2,8 +2,6 @@
 <t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
 <!-- Purpose: when both operands of op:concatenate are empty sequences, return empty sequence -->
 
-   <t:output method="xml" encoding="UTF-8" indent="yes"/>
-
    <t:template match="/">
       <out>
          <t:text>(</t:text>

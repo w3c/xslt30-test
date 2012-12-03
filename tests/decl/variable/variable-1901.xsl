@@ -5,8 +5,7 @@
      (testing references from various import levels) -->
 
   <xsl:import href="variable-1901a.xsl"/>
-  <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
-
+  
   <xsl:param name="test" select="'main stylesheet, should have highest precedence'"/>
 
   <xsl:template match="b">

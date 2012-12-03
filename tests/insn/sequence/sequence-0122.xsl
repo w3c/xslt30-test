@@ -3,10 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
 xmlns:s="http://s.com/" exclude-result-prefixes="s">
 
-<?spec xslt#creating-sorted-sequence?>
 <!-- PURPOSE:   Test xsl:perform-sort with a sequence constructor -->
-
-<xsl:output indent="yes"/>
 
 <xsl:template match="doc">
   <zzz>

@@ -7,8 +7,6 @@
 <!-- Author: Michael Kay -->
 <!-- Date: 2 February 2009 -->
 
-<xsl:output indent="yes"/>
-
 <xsl:template match="/">
   <xsl:variable name="n1" as="node()">
     <xsl:namespace name="n1">http://n1.com/"</xsl:namespace>

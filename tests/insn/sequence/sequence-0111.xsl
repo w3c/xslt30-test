@@ -1,9 +1,7 @@
 <?xml version="1.0"?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<?spec xslt#constructing-sequences?>
-<!-- PURPOSE:   Test xsl:sequence adding atomic values to an attribute -->
 
-<xsl:output indent="yes"/>
+<!-- PURPOSE:   Test xsl:sequence adding atomic values to an attribute -->
 
 <xsl:template match="doc">
     <zzz>

@@ -21,7 +21,6 @@
 		</xs:schema>
 	</xsl:import-schema>
 	
-	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
 	<xsl:param name="data" as="processing-instruction()">
 	   <xsl:processing-instruction name="say">Hello!</xsl:processing-instruction>

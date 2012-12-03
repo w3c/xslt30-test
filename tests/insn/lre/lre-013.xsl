@@ -4,9 +4,6 @@
 				xmlns:ljh="http://buster.com"
 				xmlns:jad="http://administrator.com">
 
-<xsl:output method="xml" indent="yes"/>
-
-<?spec xslt#lre-namespaces?>
     <!-- Purpose: xsl:exclude-result-prefixes should 
        only work to omit namespace declarations that are not actually used. -->
 

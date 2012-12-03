@@ -5,13 +5,14 @@
      (order of imports in this sheet matters) -->
 
 
-<xsl:import href="variable-1901b.xsl"/>
-<xsl:import href="variable-1904a.xsl"/>
-<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+  <xsl:import href="variable-1901b.xsl"/>
+  <xsl:import href="variable-1904a.xsl"/>
 
-<xsl:template match="b">
-  <main><xsl:value-of select="$test"/></main>
-  <xsl:apply-templates/>
-</xsl:template>
+  <xsl:template match="b">
+    <main>
+      <xsl:value-of select="$test"/>
+    </main>
+    <xsl:apply-templates/>
+  </xsl:template>
 
 </xsl:stylesheet>

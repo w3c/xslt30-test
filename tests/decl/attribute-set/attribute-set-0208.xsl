@@ -2,8 +2,6 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-  <?spec xslt#attribute-sets?>
-  
   <!-- PURPOSE: Set attributes of an element created with xsl:copy, -->
   <!-- using attribute sets that inherit, -->
   <!-- plus add overlapping attribute with xsl:attribute. -->
@@ -27,5 +25,7 @@
   <xsl:attribute-set name="set3">
     <xsl:attribute name="font-size">14pt</xsl:attribute>
   </xsl:attribute-set>
+  
+  <xsl:template match="text()"/>
 
 </xsl:stylesheet>

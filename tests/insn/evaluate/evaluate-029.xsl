@@ -14,7 +14,7 @@ xmlns:s="http://my.com/f" exclude-result-prefixes="s">
         <gt1500><xsl:value-of select="every $s in //sale satisfies $s[s:eval($gt1500,.)]"/></gt1500>              
     </out>
     </xsl:template>
-    <xsl:output indent="yes"/>
+
     <xsl:function name="s:eval">
       <xsl:param name="exp"/>
       <xsl:param name="value" as="item()"/>

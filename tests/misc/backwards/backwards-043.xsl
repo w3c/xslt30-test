@@ -5,6 +5,5 @@ version="1.0">
      <xsl:import href="backwards-043a.xsl"/>
      <xsl:import href="backwards-043b.xsl"/>
 
-     <xsl:output indent="yes"/>
 
 </xsl:stylesheet>

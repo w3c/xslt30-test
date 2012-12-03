@@ -15,7 +15,6 @@
   <xsl:param name="p2" select="-1100"/>
   <xsl:param name="p3" select="-1200"/>
        
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
     
   <xsl:template name="main" match="/">
     <out>

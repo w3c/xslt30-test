@@ -2,12 +2,10 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
 xmlns:s="http://s.com/" exclude-result-prefixes="s">
-<?spec xpath#axes?>
+
 <!-- PURPOSE:   Test use of various axes within a sequence of parentless elements -->
 <!-- (this test was originally designed to check the implementation of axes in a Saxon TinyTree forest,
      i.e. a TinyTree with multiple root nodes.) -->
-
-<xsl:output indent="yes"/>
 
 <xsl:template match="/">
   <xsl:variable name="x" as="node()*">

@@ -1,11 +1,9 @@
 <?xml version="1.0"?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<?spec xslt#constructing-sequences?>
 <!-- PURPOSE:   Test sequence construction using xsl:sequence with atomization 
     (type check removed 2004-03-25, facility dropped from the spec)-->
 
-<xsl:output indent="yes"/>
 
 <xsl:template match="doc">
   <xsl:variable name="q" as="xs:integer *" xmlns:xs="http://www.w3.org/2001/XMLSchema">

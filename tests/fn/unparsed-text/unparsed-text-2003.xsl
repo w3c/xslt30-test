@@ -3,8 +3,8 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     
     <!-- test unparsed-text-available() -->
-   <?spec xslt#unparsed-text?>
-<xsl:output name="test" encoding="iso-8859-1" indent="yes"/>
+  
+<xsl:output name="test" encoding="iso-8859-1" indent="no"/>
 <xsl:template match="/">
   <xsl:result-document format="test">
   <out>

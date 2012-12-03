@@ -5,9 +5,8 @@
 
 <!-- PURPOSE: List the id's of the namespace nodes for an element -->
 <!-- rewritten 2006-03-13 to avoid any dependency on the actual choice of generate-id() -->
-     <?spec xslt#generate-id?>
      
-<xsl:output indent="yes"/>
+
 <xsl:template match="/">
 <out>
   <xsl:value-of select="count(distinct-values(for $x in //namespace::* return generate-id($x)))"/>

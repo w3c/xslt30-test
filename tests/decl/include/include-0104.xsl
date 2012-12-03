@@ -8,8 +8,6 @@
 <xsl:import href="xinc20a.xsl"/>
 <xsl:include href="xinc20b.xsl"/>
 
-<xsl:output indent="yes"/>
-
 <xsl:template match="root-tag">
 		 <xsl:apply-templates select="one-tag"/>
 </xsl:template>

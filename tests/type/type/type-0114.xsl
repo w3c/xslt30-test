@@ -6,10 +6,7 @@ xmlns:xdt="http://www.w3.org/2005/02/xpath-datatypes"
 exclude-result-prefixes="xs xdt">
 
   <!-- PURPOSE: Test numeric subtypes with large values. -->
-  <?spec xpath#id-predefined-types?>
-  <?spec fo#casting-to-numerics?>
-  
-  <xsl:output indent="yes"/>
+
   <xsl:template match="/">
   <out>
     <xsl:variable name="v1" select="xs:positiveInteger(123456789012345678901234567890)"/>

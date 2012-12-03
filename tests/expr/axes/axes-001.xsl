@@ -1,9 +1,6 @@
 <?xml version="1.0"?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-  <xsl:output indent="yes"/>
-
-<?spec xpath#axes?>
-  <!-- PURPOSE: Test for 'ancestor::' Axis Identifier. -->
+    <!-- PURPOSE: Test for 'ancestor::' Axis Identifier. -->
   <xsl:template match="/">
         <out>
           <xsl:for-each select="//center">

@@ -21,8 +21,6 @@
 		</xs:schema>
 	</xsl:import-schema>
 	
-	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
-	
 	<xsl:param name="data" as="comment()"><xsl:comment>Hello!</xsl:comment></xsl:param>
 
 	<xsl:variable name="copied_data" as="comment()">

@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-  <xsl:output indent="yes"/>
 
-<?spec xpath#axes?>
+
   <!-- Purpose: Traverse the ancestor::* axis -->
   <!-- Elaboration: First, jump to the center (via for-each so that we don't have interfering
     templates, which is less of a problem for ancestor than other axes), then apply-templates

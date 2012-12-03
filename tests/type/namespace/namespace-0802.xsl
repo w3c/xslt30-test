@@ -4,10 +4,6 @@
   <!-- Test use of namespace="" in xsl:element and xsl:attribute -->
   <!-- The spec says the element or attribute should go in the null namespace -->
   <!-- (Bug Saxon 6.2/005) -->
-  <?spec xslt#xsl-element?>
-  <?spec xslt#creating-attributes?>
-  
-<xsl:output method="xml" indent="yes"/>
 
 <xsl:template match="/">
 <doc>

@@ -7,7 +7,6 @@
 <!-- Author: Michael Kay -->
 <!-- Date: 2 February 2009 -->
 
-<xsl:output indent="yes"/>
 
 <xsl:template match="/">
   <s:complexType xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns="http://t.com/">

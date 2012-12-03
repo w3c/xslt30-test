@@ -3,11 +3,9 @@
 <xsl:stylesheet version="2.0"  
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<?spec xslt#copy-of?>    
+    
 <!-- Saxon 8.5.1 bug report from Krzysztof Nowicki. Copying a document node followed by an element node
      in the sequence constructor of a new document node. -->
-
-	<xsl:output indent="yes" />
 
 	<xsl:template name="test">
 		<xsl:param name="count" select="10" />
@@ -39,4 +37,5 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="/">
 		<xsl:call-template name="test" />
 	</xsl:template>
+	
 </xsl:stylesheet>

@@ -21,8 +21,6 @@
         </out>
     </xsl:template>
 
-    <xsl:output indent="yes"/>
-
     <xsl:function name="s:eval">
         <xsl:param name="exp"/>
         <xsl:param name="value"/>

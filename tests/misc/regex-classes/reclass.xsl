@@ -33,7 +33,7 @@
 
 <xsl:strip-space elements="*"/>
 
-<xsl:output encoding="us-ascii" indent="yes"/>
+<xsl:output encoding="us-ascii"/>
 
 <xsl:variable name="results">
 <out>

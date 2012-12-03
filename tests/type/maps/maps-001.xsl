@@ -4,8 +4,6 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
-    <xsl:output method="xml" indent="yes"/>
-    
     <xsl:variable name="sales" as="map(*)*" select='
         map{ "product" := "broiler", "store number" := 1, "quantity" := 20  },
         map{ "product" := "toaster", "store number" := 2, "quantity" := 100 },

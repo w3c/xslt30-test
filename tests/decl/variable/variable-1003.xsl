@@ -4,9 +4,8 @@
   <!-- Purpose: Import precedence applies to top-level params
      (even when template referencing it is in the imported file) -->
 
-<xsl:import href="variable-1003a.xsl"/>
-<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+  <xsl:import href="variable-1003a.xsl"/>
 
-<xsl:param name="test" select="'main stylesheet, should have highest precedence'"/>
+  <xsl:param name="test" select="'main stylesheet, should have highest precedence'"/>
 
 </xsl:stylesheet>

@@ -7,7 +7,6 @@
 <!-- Test type-available() (with no schema)  -->
 <?spec xslt#testing-type-availability?>
 
-<xsl:output indent="yes"/>
 
 <xsl:template match="/">
 <out>

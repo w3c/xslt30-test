@@ -10,7 +10,7 @@
   <xsl:key name="chapter-for-files" match="file" use="@name"/>
   <xsl:key name="distinct" match="file/@found-in" use="."/>
   <xsl:strip-space elements="*"/>
-  <xsl:output indent="yes"/>
+
   <xsl:template match="/">
     <crossref>
       <xsl:for-each select="//@found-in[generate-id()

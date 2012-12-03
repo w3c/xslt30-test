@@ -6,8 +6,6 @@
  
   <!-- Test case for Saxon bug 2980277 - xsl:value-of generating multiple text nodes -->      
        
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
-
   <xsl:strip-space elements="*"/>
     
   <xsl:template match="/">

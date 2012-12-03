@@ -8,8 +8,7 @@
     <!-- within a streaming template, use apply-templates to select overlapping elements -->
      
     <xsl:mode name="s" streamable="yes"/>
-         
-    <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+
     
     <xsl:param name="sep" select="'|'" as="xs:string"/>
      

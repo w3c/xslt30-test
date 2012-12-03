@@ -1,6 +1,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
    xmlns:a="http://uri1.com/" xmlns:b="http://uri2.com/">
-   <xsl:output indent="yes"/>
+
 
    <?spec xslt#lre-namespaces?>
    <!-- BUG: Saxon 5.3.1/006 -->

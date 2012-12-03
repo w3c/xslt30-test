@@ -5,12 +5,6 @@
    xmlns:one="http://one.uri/"
    xmlns:def="http://default.uri/">
    
-   <?spec fo#func-resolve-QName?>
-   <?spec fo#func-namespace-uri-from-QName?>
-   <?spec fo#func-local-name-from-QName?>   
-
-<xsl:output method="xml" indent="yes"/>
-
 <xsl:variable name="doc" select="/def:doc"/>
 <xsl:variable name="chap" select="/def:doc/chap"/>
 <xsl:variable name="data1" select="/def:doc/chap/data-one"/>

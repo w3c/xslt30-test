@@ -3,7 +3,6 @@
 <?spec xslt#initiating?>
 <!-- PURPOSE:   Test use of an initial mode (see config file)  -->
 
-<xsl:output indent="yes"/>
 
 <xsl:template match="doc" mode="inimode">
   <xsl:variable name="q" as="xs:integer *" xmlns:xs="http://www.w3.org/2001/XMLSchema">

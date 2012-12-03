@@ -1,6 +1,5 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<xsl:output indent="yes"/>
 
   <!-- Purpose: Test inheritance of attribute sets. A literal result element
                 is referring an attribute set that is defined by two separate

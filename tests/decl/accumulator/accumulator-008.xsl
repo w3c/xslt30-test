@@ -6,7 +6,6 @@
     version="3.0">
     
     <!-- Use accumulators to compute min, max, sum, avg, and count in parallel; streamed case -->
-    <xsl:output method="xml" indent="yes"/>
     
    <xsl:accumulator name="f:count" post-descent="f:count_" as="xs:integer" initial-value="0" streamable="yes">
      <xsl:accumulator-rule match="transaction" new-value="$value + 1"/>

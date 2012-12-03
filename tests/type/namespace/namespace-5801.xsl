@@ -4,13 +4,7 @@
   version="2.0">
 
 <xsl:namespace-alias result-prefix="xsl" stylesheet-prefix="axsl" />
-<xsl:output method="xml" indent="yes"/>
 
-<?spec xslt#namespace-aliasing?>
-  <!-- FileName: namespace35 -->
-  <!-- Document: http://www.w3.org/TR/xslt -->
-  <!-- DocVersion: 19991116 -->
-  <!-- Section: 2.4 -->
     <!-- Purpose: Get xmlns declaration attached to outermost LRE.
      Prefix "axsl" should also be literal. -->
 

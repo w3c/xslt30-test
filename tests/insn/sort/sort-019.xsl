@@ -13,8 +13,6 @@
   </xsl:perform-sort>
 </xsl:function>
 
-<xsl:output indent="yes" encoding="iso-8859-1"/>
-
 <xsl:template match="/">
    <out lang="default-order">
     <xsl:value-of select="s:sk1(//item)" separator=","/>

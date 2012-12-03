@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output indent="yes" encoding="UTF-8"/>
+
 <!-- attribute must have prefix -->
-<?spec xslt#creating-attributes?>
+
 <!-- submitted by Eric Bratton, shows bug in Saxon 6.5 -->
 
   <xsl:template match="doc">

@@ -1,12 +1,8 @@
 <?xml version="1.0"?> 
 
-<?spec xslt#temporary-trees?>
-  <!-- PURPOSE: Test all axes with a single-element temporary tree. -->
-  <?same-as-1.0 no?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+<!-- PURPOSE: Test all axes with a single-element temporary tree. -->
+  <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
 xmlns:my="http://my.uri/" exclude-result-prefixes="my">
-  <xsl:output indent="yes"/>
-
   <xsl:template match="/">
   
   <xsl:variable name="t"><element-node/></xsl:variable>

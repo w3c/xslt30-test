@@ -17,5 +17,7 @@
       <xsl:next-match/>
     </p>
   </xsl:template>
+  
+  <xsl:strip-space elements="*"/>
 
 </xsl:stylesheet>

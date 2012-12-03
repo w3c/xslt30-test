@@ -11,8 +11,7 @@
    
   <xsl:mode name="s" streamable="yes"/>
   <xsl:strip-space elements="*"/>
-       
-  <xsl:output method="xml" indent="yes" encoding="UTF-8" />
+
     
   <xsl:template name="main" match="/">
     <out>
