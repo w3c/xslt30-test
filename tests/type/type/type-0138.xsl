@@ -11,7 +11,8 @@ exclude-result-prefixes="xs">
   <xsl:template match="/">
   <out>
     <xsl:for-each select="//element(*)">
-       <xsl:value-of select="name()"/>,
+       <xsl:value-of select="name()"/>
+       <xsl:text>, </xsl:text>
     </xsl:for-each>
   </out>     
   </xsl:template>                             

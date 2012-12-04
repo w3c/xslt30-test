@@ -4,23 +4,31 @@
     exclude-result-prefixes=" xs"
     version="3.0">
   
-  <!-- within a streaming template, use xsl:for-each-group group-adjacent with sum() -->
+  <!-- streaming, xsl:for-each-group group-adjacent, multi-level grouping -->
   
   <xsl:mode name="s" streamable="yes"/>
     
   <xsl:template name="main">
-    <xsl:apply-templates select="doc('transactions.xml')/account" mode="s"/>
+    <xsl:stream href="transactions.xml">
+      <xsl:apply-templates select="account" mode="s"/>
+    </xsl:stream>
   </xsl:template> 
 
 
   <xsl:template match="account" mode="s">
      <out>
       <xsl:for-each-group select="transaction"
-         group-adjacent="@date"
+         group-adjacent="year-from-date(xs:date(@date))"
+         composite="no"
          bind-group="g"
          bind-grouping-key="k">
-         <batch date="{$k}">
-            <total><xsl:value-of select="sum($g/xs:decimal(@value))"/></total>
+         <batch year="{$k}">
+           <xsl:for-each-group select="$g" group-adjacent="format-date(xs:date(@date), '[W]')" 
+             bind-group="h" bind-grouping-key="l">
+             <week nr="{$l}">
+                <xsl:copy-of select="$h"/>
+             </week>
+           </xsl:for-each-group>
          </batch>
       </xsl:for-each-group> 
     </out>

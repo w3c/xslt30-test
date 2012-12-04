@@ -13,7 +13,6 @@
     <xsl:param name="top-author">Bonner</xsl:param>
 
     <xsl:strip-space elements="*"/>
-    <xsl:output method="xml" indent="yes"/>
 
     <xsl:template match="/" as="element(html)">
 

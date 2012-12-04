@@ -15,19 +15,19 @@
    </environment>
    <environment name="type-03">
       <source role=".">
-         <content><![CDATA[<doc></doc>]]></content>
+         <content><![CDATA[<doc/>]]></content>
       </source>
       <schema role="stylesheet-import"
               file="variousTypesSchemaType.xsd"
               xsd-version="1.0"/>
    </environment>
-   <environment name="type-04">
-      <source role=".">
-         <content><![CDATA[<doc>1</doc>]]></content>
-      </source>
-   </environment>
+   
    <environment name="type-05">
       <source role="." file="type-05.xml"/>
+   </environment>
+   
+   <environment name="type-06">
+      <source role="." file="type-06.xml"/>
    </environment>
 
    <test-case name="type-0101">
@@ -600,8 +600,7 @@
          <stylesheet file="type-0135.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>;
-    <q true="true"/><q four="4" foo="foo"/><q false="false"/></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><q true="true"/><q four="4" foo="foo"/><q false="false"/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -646,11 +645,7 @@
          <stylesheet file="type-0138.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>doc,
-    a,
-    b,
-    c,
-    </out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>doc, a, b, c, </out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -725,10 +720,7 @@
          <stylesheet file="type-0143.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><t>ppp:example-lname</t>;
-    <n>my:element att</n>; 
-    <w>my:word</w>;        
-  </out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><t>ppp:example-lname</t><n>my:element att</n><w>my:word</w></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -744,21 +736,6 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><i>false</i><c>true</c><c>true</c><f>true</f><f>34</f></out>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="type-0145">
-      <description>Test "as" clauses on templates (with no schema)</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="type-0145.xsl"/>
-      </test>
-      <result>
-         <assert-xml file="type-0145.out"/>
       </result>
    </test-case>
 
@@ -805,7 +782,7 @@
          <stylesheet file="type-0148.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema"><int>false</int><short>false</short><NCName>false</NCName><ID>false</ID><NOTATION>false</NOTATION><ENTITIES>false</ENTITIES><NMTOKENS>false</NMTOKENS></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><int>false</int><short>false</short><NCName>false</NCName><ID>false</ID><NOTATION>false</NOTATION><ENTITIES>false</ENTITIES><NMTOKENS>false</NMTOKENS></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -821,7 +798,7 @@
          <stylesheet file="type-0149.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema"><a>true</a><a>true</a><a>true</a><a>true</a></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>true</a><a>true</a><a>true</a><a>true</a></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -841,7 +818,9 @@
    </test-case>
 
    <test-case name="type-0151">
-      <description>Test exactly-one(), failure case. Error on line 19 FORG0005: A sequence of more than one item is not allowed as the first argument of exactly-one() force run-time evaluation</description>
+      <description>
+         Test exactly-one(), failure case. Error on line 19 FORG0005: 
+         A sequence of more than one item is not allowed as the first argument of exactly-one() force run-time evaluation</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="type-01"/>
       <dependencies>
@@ -856,7 +835,9 @@
    </test-case>
 
    <test-case name="type-0152">
-      <description>Test exactly-one(), failure case. Error on line 19 FORG0005: An empty sequence is not allowed as the first argument of exactly-one() force run-time evaluation</description>
+      <description>
+         Test exactly-one(), failure case. Error on line 19 FORG0005: 
+         An empty sequence is not allowed as the first argument of exactly-one() force run-time evaluation</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="type-01"/>
       <dependencies>
@@ -871,7 +852,9 @@
    </test-case>
 
    <test-case name="type-0153">
-      <description>Test zero-or-one(), failure case. Error on line 19 FORG0005: A sequence of more than one item is not allowed as the first argument of exactly-one() force run-time evaluation</description>
+      <description>
+         Test zero-or-one(), failure case. Error on line 19 FORG0005: 
+         A sequence of more than one item is not allowed as the first argument of exactly-one() force run-time evaluation</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="type-01"/>
       <dependencies>
@@ -886,7 +869,9 @@
    </test-case>
 
    <test-case name="type-0154">
-      <description>Test one-or-more(), failure case. Error on line 22 FORG0004: An empty sequence is not allowed as the first argument of one-or-more() force run-time evaluation</description>
+      <description>
+         Test one-or-more(), failure case. Error on line 22 FORG0004: 
+         An empty sequence is not allowed as the first argument of one-or-more() force run-time evaluation</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="type-01"/>
       <dependencies>
@@ -1113,7 +1098,7 @@
    <test-case name="type-0169">
       <description>Test "as" clauses on templates (with no schema)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
+      <environment ref="type-06"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1128,7 +1113,7 @@
    <test-case name="type-0170">
       <description>Test "as" clauses on templates (with no schema)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
+      <environment ref="type-06"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1143,7 +1128,7 @@
    <test-case name="type-0171">
       <description>Test "as" clauses on templates (with no schema)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
+      <environment ref="type-06"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1156,9 +1141,13 @@
    </test-case>
 
    <test-case name="type-0172">
-      <description>Test "as" clauses on templates (with no schema) XTTE0505: Required type of result of template match="/" is element(xhtml); supplied value has type element(html, xs:untyped)</description>
+      <description>
+         Test "as" clauses on templates (with no schema) .
+         XTTE0505: Required type of result of template match="/" is element(xhtml); 
+         supplied value has type element(html, xs:untyped)
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
+      <environment ref="type-06"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1173,7 +1162,7 @@
    <test-case name="type-0173">
       <description>Test "as" clauses on templates (with no schema)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
+      <environment ref="type-06"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1312,7 +1301,11 @@
    <test-case name="type-0401">
       <description>Test "instance of" on dynamic types.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-04"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc>1</doc>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1320,12 +1313,7 @@
          <stylesheet file="type-0401.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema">;
-      <t>true</t>;
-      <t>true</t>;
-      <t>true</t>;
-      <t>true</t>;
-    </out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><t>true</t><t>true</t><t>true</t><t>true</t></out>]]></assert-xml>
       </result>
    </test-case>
 

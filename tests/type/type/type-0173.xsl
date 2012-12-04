@@ -27,7 +27,7 @@ Error on line 28 of ... type956err.xsl:
 
 <xsl:template match="/" as="document-node(element(xhtml))">
   <xsl:document>
-    <xsl:apply-templates select="doc('type052.xml')" mode="go"/>
+    <xsl:apply-templates select="." mode="go"/>
   </xsl:document>  
 </xsl:template>
 

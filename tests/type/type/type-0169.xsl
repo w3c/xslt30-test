@@ -19,7 +19,7 @@
 <xsl:param name="top-author">Bonner</xsl:param>
 
 <xsl:template match="/" as="element(html)">
-  <xsl:apply-templates select="doc('type052.xml')" mode="go"/>
+  <xsl:apply-templates select="." mode="go"/>
 </xsl:template>
 
 <xsl:template match="/" mode="go" as="element(html)">
