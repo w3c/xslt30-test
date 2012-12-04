@@ -333,6 +333,116 @@
       </result>
    </test-case>
    
+   
+   <test-case name="stream-choose-001">
+      <description>Use xsl:choose within xsl:stream, both branches do downward selection</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-choose-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><chapter><head>Heading</head><p>One</p><p>Two</p><p>Three</p
+            ><bullet>point one</bullet><bullet>point two</bullet><bullet>point three</bullet
+            ><p>Four</p></chapter></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-choose-002">
+      <description>Use xsl:choose within an LRE within xsl:stream, both branches do downward selection</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-choose-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><chapter><head>Heading</head><p>One</p><p>Two</p><p>Three</p
+            ><bullet>point one</bullet><bullet>point two</bullet><bullet>point three</bullet
+            ><p>Four</p></chapter></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-choose-003">
+      <description>Use xsl:choose and LREs within xsl:stream, both branches do downward selection</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-choose-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><in/><chapter><head>Heading</head><p>One</p><p>Two</p><p>Three</p
+            ><bullet>point one</bullet><bullet>point two</bullet><bullet>point three</bullet
+            ><p>Four</p></chapter><in/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-choose-004">
+      <description>Use xsl:choose and LREs within xsl:stream, both branches do downward selection</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-choose-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><in/><chapter><head>Heading</head><p>One</p><p>Two</p><p>Three</p
+            ><bullet>point one</bullet><bullet>point two</bullet><bullet>point three</bullet
+            ><p>Four</p></chapter><in/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-choose-005">
+      <description>Use xsl:if and LREs within xsl:stream, only one branch doing downward selection</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-choose-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><in/><chapter><head>Heading</head><p>One</p><p>Two</p><p>Three</p
+            ><bullet>point one</bullet><bullet>point two</bullet><bullet>point three</bullet
+            ><p>Four</p></chapter><in/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-choose-006">
+      <description>Streaming, xsl:choose does downward selection within the first condition</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-choose-006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out/magic</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-choose-007">
+      <description>Streaming, xsl:choose does downward selection within the first condition, returns false</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-choose-007.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out/cool</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-choose-008">
+      <description>Streaming, xsl:choose using a variety of motionless test conditions</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-choose-008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><head>Heading</head><para/><para/><para/><bullet>point one</bullet
+            ><bullet>point two</bullet><bullet>point three</bullet><para/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <out><head>Heading</head><para/><para/><para/><bullet>point one</bullet><bullet>point two</bullet><bullet>point three</bullet><para/></out>
+   
    <test-case name="stream-for-each-001">
       <description>Use xsl:for-each within xsl:stream</description>
       <created by="Michael Kay" on="2012-12-04"/>
@@ -347,6 +457,76 @@
             /><transaction value="-248.05" date="2006-02-24"/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="stream-for-each-002">
+      <description>Use xsl:for-each within xsl:stream, with position() numbering</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-for-each-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><transaction nr="1" value="-15.00" date="2006-02-15"
+            /><transaction nr="2" value="-5.00" date="2006-02-20"
+            /><transaction nr="3" value="-2.33" date="2006-02-23"
+            /><transaction nr="4" value="-248.05" date="2006-02-24"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-for-each-003">
+      <description>Use xsl:for-each within xsl:stream, with positional selection</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-for-each-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><transaction nr="1" value="13.24" date="2006-02-13"
+            /><transaction nr="2" value="8.12" date="2006-02-13"
+            /><transaction nr="3" value="-15.00" date="2006-02-15"
+            /><transaction nr="4" value="6.00" date="2006-02-16"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-for-each-004">
+      <description>Use xsl:for-each within xsl:stream, attempt multiple downward selections in a loop</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-for-each-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="SXST0060"/>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-for-each-005">
+      <description>Use xsl:for-each within xsl:stream, attempt multiple downward selections in a loop</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-for-each-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="SXST0060"/>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-for-each-006">
+      <description>Use xsl:for-each within xsl:stream, //a/b is not guaranteed streamable in the spec, but streamable in Saxon</description>
+      <created by="Michael Kay" on="2012-12-04"/>
+      <test>
+         <stylesheet file="stream-for-each-006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><title>Pride and Prejudice</title><title>Wuthering Heights</title
+            ><title>Tess of the d'Urbervilles</title><title>Jude the Obscure</title
+            ><title>The Big Over Easy</title><title>The Eyre Affair</title></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   
    
    <test-case name="stream-group-001">
       <description>Streamed grouping - group-adjacent - with xsl:sequence</description>
