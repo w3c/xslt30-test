@@ -1854,7 +1854,7 @@
    
    <test-case name="output-0208">
       <description>Test XHTML 5.0 DOCTYPE declaration.</description>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <created by="Michael Kay" on="2012-12-05"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1863,13 +1863,16 @@
          <stylesheet file="output-0208.xsl"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<!DOCTYPE html>\s*<html]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<!DOCTYPE html>\s*<html]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\s+]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
    
    <test-case name="output-0209">
       <description>Test XHTML 5.0 DOCTYPE declaration.</description>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <created by="Michael Kay" on="2012-12-05"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1884,7 +1887,7 @@
    
    <test-case name="output-0210">
       <description>Test XHTML 5.0 DOCTYPE declaration.</description>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <created by="Michael Kay" on="2012-12-05"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1898,11 +1901,8 @@
    </test-case>
    
    <test-case name="output-0211">
-      <description>
-         Test XHTML 5.0 DOCTYPE declaration with a namespace prefix.
-         Note: assumes resolution of bug 20251.
-      </description>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <description>Test XHTML 5.0 DOCTYPE declaration with a namespace prefix (which gets stripped).</description>
+      <created by="Michael Kay" on="2012-12-05"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1911,7 +1911,16 @@
          <stylesheet file="output-0211.xsl"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<!DOCTYPE h:html>\s*<h:html]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<!DOCTYPE html>\s*<html]]></serialization-matches>
+            <serialization-matches>xmlns=["']http://www.w3.org/1999/xhtml['"]</serialization-matches>
+            <not>
+               <serialization-matches>xmlns:h</serialization-matches>
+            </not>
+            <not>
+               <serialization-matches>h:</serialization-matches>
+            </not>
+         </all-of>   
       </result>
    </test-case>
    
@@ -1919,7 +1928,7 @@
       <description>
          Test XHTML 5.0 DOCTYPE declaration. Uses "5.00" as the version, and whitespace before the html element.
       </description>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <created by="Michael Kay" on="2012-12-05"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1931,6 +1940,209 @@
          <serialization-matches><![CDATA[<!DOCTYPE html>\s*<html]]></serialization-matches>
       </result>
    </test-case>
+   
+   <test-case name="output-0213">
+      <description>
+         Test XHTML 5.0: no DOCTYPE declaration because top-level element is not html.
+      </description>
+      <created by="Michael Kay" on="2012-12-05"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0213.xsl"/>
+      </test>
+      <result>
+         <not>
+            <serialization-matches>DOCTYPE</serialization-matches>
+         </not>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0214">
+      <description>
+         Test XHTML 5.0: top-level element in alien namespace.
+      </description>
+      <created by="Michael Kay" on="2012-12-05"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0214.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.example.com/not-xhtml">]]></serialization-matches>
+            <not>
+               <serialization-matches>DOCTYPE</serialization-matches>
+            </not>
+            <not>
+               <serialization-matches>meta</serialization-matches>
+            </not>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0215">
+      <description>
+         Test XHTML 5.0: top-level element in alien prefixed namespace.
+      </description>
+      <created by="Michael Kay" on="2012-12-05"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0215.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<z:html\s+xmlns:z="http://www.example.com/not-xhtml">]]></serialization-matches>
+            <not>
+               <serialization-matches>DOCTYPE</serialization-matches>
+            </not>
+            <not>
+               <serialization-matches>meta</serialization-matches>
+            </not>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0216">
+      <description>
+         Test XHTML 5.0: empty elements in XHTML namespace.
+      </description>
+      <created by="Michael Kay" on="2012-12-05"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0216.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<area\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<base\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<br\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<col\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<command\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<embed\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<hr\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<img\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<input\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<keygen\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<link\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<param\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<source\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<track\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<wbr\s*/>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0217">
+      <description>
+         Test XHTML 5.0: empty elements in no namespace.
+      </description>
+      <created by="Michael Kay" on="2012-12-05"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0217.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<area\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<base\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<br\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<col\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<command\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<embed\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<hr\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<img\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<input\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<keygen\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<link\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<param\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<source\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<track\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<wbr\s*/>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0218">
+      <description>
+         Test XHTML 5.0: empty elements with non-empty content model in XHTML namespace.
+      </description>
+      <created by="Michael Kay" on="2012-12-05"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0218.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+            <serialization-matches><![CDATA[<p></p>]]></serialization-matches>
+            <serialization-matches><![CDATA[<i></i>]]></serialization-matches>
+            <serialization-matches><![CDATA[<u></u>]]></serialization-matches>
+            <serialization-matches><![CDATA[<div></div>]]></serialization-matches>
+            <serialization-matches><![CDATA[<code></code>]]></serialization-matches>
+            <serialization-matches><![CDATA[<strong></strong>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0219">
+      <description>
+         Test XHTML 5.0: empty elements with non-empty content model in no namespace.
+      </description>
+      <created by="Michael Kay" on="2012-12-05"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0219.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+            <serialization-matches><![CDATA[<p></p>]]></serialization-matches>
+            <serialization-matches><![CDATA[<i></i>]]></serialization-matches>
+            <serialization-matches><![CDATA[<u></u>]]></serialization-matches>
+            <serialization-matches><![CDATA[<div></div>]]></serialization-matches>
+            <serialization-matches><![CDATA[<code></code>]]></serialization-matches>
+            <serialization-matches><![CDATA[<strong></strong>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    <test-case name="output-0280">
       <description>Test that an error is raised on invalid @indent value in xsl:output.</description>
