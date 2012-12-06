@@ -2512,6 +2512,7 @@ a:_underscore_
    <test-case name="as-2001">
       <description>Test with xsl:template which contains an xs:untypedAtomic value obtained at run time and @as is a user-defined atomic type (derived by restriction). Verify no typing error is raised.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-06" change="See Bug 20099" />
       <environment ref="as-20"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2521,16 +2522,14 @@ a:_underscore_
          <stylesheet file="as-2001.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<temp1>000-TM</temp1>
-<temp2>1.0001</temp2>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><temp1>000-TM</temp1><temp2>1.0001</temp2></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="as-2002">
       <description>Test with global xsl:variable with @select and @as is a user-defined atomic type with occurrence indicator (?). Verify the variable is of the type specified in @as. @select has: - an xs:untypedAtomic value, an empty-sequence</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-06" change="See Bug 20099" />
       <environment ref="as-20"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2540,9 +2539,7 @@ a:_underscore_
          <stylesheet file="as-2002.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1>
-<var2>truefalse</var2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var1>truetrue</var1><var2>truefalse</var2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2588,6 +2585,7 @@ a:_underscore_
    <test-case name="as-2301">
       <description>Test type of global xsl:variable where @select contains a user-defined value derived by restriction from xs:int, @as="xs:int".(subtype substitution)</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-06" change="See Bug 20099" />
       <environment>
          <source role="." file="as-23.xml" validation="strict"/>
          <schema role="source-reference"
@@ -2601,14 +2599,14 @@ a:_underscore_
          <stylesheet file="as-2301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var1>truetrue</var1></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="as-2401">
       <description>Test type of global xsl:variable where @select contains a user-defined value derived by restriction from another user-defined type that is also specified in @as.(subtype substitution)</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-06" change="See Bug 20099" />
       <environment>
          <source role="." file="as-24.xml" validation="strict"/>
          <schema role="source-reference"
@@ -2630,6 +2628,7 @@ a:_underscore_
    <test-case name="as-2501">
       <description>Test with xsl:template that contains built-in types derived by restriction from xs:decimal, @as="xs:float".(type promotion) Types tested: - xs:long, xs:nonNegativeInteger, xs:int, xs:byte</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-06" change="See Bug 20099" />
       <environment>
          <source role="." file="as-25.xml" validation="strict"/>
          <schema role="source-reference"
@@ -2643,12 +2642,7 @@ a:_underscore_
          <stylesheet file="as-2501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<temp1>131072</temp1>
-<temp2>44444</temp2>
-<temp3>-922337</temp3>
-<temp4>-128</temp4>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><temp1>131072</temp1><temp2>44444</temp2><temp3>-922337</temp3><temp4>-128</temp4></out>]]></assert-xml>
       </result>
    </test-case>
 
