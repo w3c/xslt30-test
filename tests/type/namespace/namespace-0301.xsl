@@ -8,8 +8,7 @@
   
   <xsl:template match="a">
     <out>
-      <xsl:apply-templates select="@a:*"/><xsl:text>
-</xsl:text>
+      <xsl:apply-templates select="@a:*"/>
       <foo><xsl:apply-templates select="@*"/></foo>
     </out>
   </xsl:template>
