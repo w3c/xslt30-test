@@ -164,13 +164,14 @@
          NameTest pattern and hence higher priority.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-07" change="Added role attributes"/>
       <environment ref="next-match001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="next-match-007.xsl"/>
-         <stylesheet file="next-match-007a.xsl"/>
+         <stylesheet file="next-match-007.xsl" role="principal"/>
+         <stylesheet file="next-match-007a.xsl" role="secondary"/>
       </test>
       <result>
          <assert-xml><![CDATA[<a><b/></a>]]></assert-xml>
@@ -183,13 +184,14 @@
          stylesheet and the other one with pattern "element(*, xs:untyped)" residing in an imported stylesheet.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-07" change="Added role attributes"/>
       <environment ref="next-match001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="next-match-008.xsl"/>
-         <stylesheet file="next-match-008a.xsl"/>
+         <stylesheet file="next-match-008.xsl" role="principal"/>
+         <stylesheet file="next-match-008a.xsl" role="secondary"/>
       </test>
       <result>
          <assert-xml><![CDATA[<a><b><a><b/></a></b></a>]]></assert-xml>
@@ -317,8 +319,8 @@
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="next-match-016.xsl"/>
-         <stylesheet file="impwparam8.xsl"/>
+         <stylesheet file="next-match-016.xsl" role="pricipal"/>
+         <stylesheet file="impwparam8.xsl" role="secondary"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out>
@@ -333,13 +335,14 @@
    <test-case name="next-match-017">
       <description>Test of xsl:next-match where the same stylesheet is both imported and included. Verifies that imported template is executed last even if it's priority is higher than the primary template, while included and primary templates are compared based on priorities.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-07" change="Added role attributes"/>
       <environment ref="next-match022"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="next-match-017.xsl"/>
-         <stylesheet file="impwparam8.xsl"/>
+         <stylesheet file="next-match-017.xsl" role="principal"/>
+         <stylesheet file="impwparam8.xsl" role="secondary"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out>
