@@ -11,7 +11,7 @@
    <t:template match="/my:userNode">
       <t:variable name="copy">
 	        <out>
-            <t:copy-of select="*"/>
+	           <t:copy-of select="my:complexUserElem[1]"/>
          </out>
 	     </t:variable>
 	     <t:choose>

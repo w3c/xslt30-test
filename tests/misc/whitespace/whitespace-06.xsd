@@ -44,7 +44,15 @@
   <xsd:complexType name="personType">
     <xsd:sequence>
       <xsd:element name="firstName"  type="xsd:string"/>
-      <xsd:element name="familyName" type="xsd:string"/>
+      <xsd:element name="familyName">
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+              <xsd:anyAttribute/>
+            </xsd:extension>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>  
     </xsd:sequence>
     <xsd:attribute name="age" type="xsd:integer"/>
   </xsd:complexType>

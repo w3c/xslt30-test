@@ -3,7 +3,7 @@
     <!-- Purpose: Test for XHTML 5 elements in XHTML namespace with non-empty content model,
         this time with attributes.-->
     
-    <t:output method="xhtml" html-version="5.0"/>
+    <t:output method=" xhtml " html-version=" 5.0 "/>
     
     <t:template match="/">
         <h:html xmlns:h="http://www.w3.org/1999/xhtml">

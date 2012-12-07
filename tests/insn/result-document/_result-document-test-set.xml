@@ -781,6 +781,76 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <serialization-matches><![CDATA[<out>BABASBAS</out>]]></serialization-matches>
       </result>
    </test-case>
+   
+   <test-case name="result-document-0242">
+      <description>
+         Test that xsl:result-document accepts html-version attribute 
+      </description>
+      <created by="Michael Kay" on="2012-12-06"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0242.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<!DOCTYPE\s+html\s*>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-0243">
+      <description>
+         Test that xsl:result-document rejects invalid html-version attribute 
+      </description>
+      <created by="Michael Kay" on="2012-12-06"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0243.xsl"/>
+      </test>
+      <result>
+         <error code="SEPM0016"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-0244">
+      <description>
+         Test that xsl:result-document accepts dynamic html-version attribute 
+      </description>
+      <created by="Michael Kay" on="2012-12-06"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0244.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<!DOCTYPE\s+html\s*>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-0245">
+      <description>
+         Test that xsl:result-document accepts dynamic html-version attribute 
+      </description>
+      <created by="Michael Kay" on="2012-12-06"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0245.xsl"/>
+      </test>
+      <result>
+         <not>
+            <serialization-matches>DOCTYPE</serialization-matches>
+         </not>
+      </result>
+   </test-case>
 
    <test-case name="result-document-0301">
       <description>Test AVT in the @method of an xsl:result-document.</description>
