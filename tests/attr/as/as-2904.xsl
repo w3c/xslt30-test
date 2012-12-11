@@ -7,6 +7,8 @@
   				explicitly created xsl:element or LRE with xsl:type, 
   				@as="element(QName, built-in primitive/derived atomic type)".-->
 
+   <xslt:import-schema schema-location="builtinTypeSchemaAs.xsd"/>
+
    <xslt:template match="/">
       <out>
          <temp1>

@@ -7,6 +7,8 @@
 <!-- Purpose: Test type of result of xsl:function with @as="element(QName, built-in primitive/derived atomic type)". 
   				Sequence constructor copies a typed element from input file.-->
 
+   <xslt:import-schema schema-location="builtinTypeSchemaAs.xsd"/>
+
    <xslt:function name="my:func1" as="element(elem-anyURI, xs:anyURI)">
 	     <xslt:copy-of select="document('schemaas20_226.xml')/doc-schemaas/elem-anyURI"
                     validation="strict"/>
