@@ -8,8 +8,6 @@
    <t:variable name="var" select="/doc/str"/>
 
    <t:template match="/doc">
-      <t:text>
-</t:text>
       <out>
          <t:message select="string(msg)" terminate="{str}"/>
          <t:message select="string(msg)" terminate="{$var}"/>

@@ -26,7 +26,7 @@
    </t:function>
 
    <t:function name="my:func2" as="document-node()*">
-      <t:copy-of select="document('simple.xml')"/>
+      <t:copy-of select="document('as-15.xml')"/>
    </t:function>
 
 </t:transform>

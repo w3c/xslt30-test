@@ -22,10 +22,10 @@ xmlns:z="http://z.com/" exclude-result-prefixes="xs z">
   </xsl:function>
   
   <xsl:function name="z:norm">
-    <!-- normalize results so A.M. and AM are both acceptable -->
+    <!-- normalize results so A.M. and AM and A.m. and Am are all acceptable -->
     <xsl:param name="f"/>
-    <xsl:variable name="f" select="for $g in $f return translate($g, '.', '')"/>
-    <xsl:sequence select="for $g in $f return translate($g, '.', '')"/>
+    <xsl:variable name="f" select="for $g in $f return translate($g, '.m', 'M')"/>
+    <xsl:sequence select="for $g in $f return translate($g, '.m', 'M')"/>
   </xsl:function> 
 
   <xsl:template match="/">

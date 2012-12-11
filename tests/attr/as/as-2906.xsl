@@ -27,4 +27,6 @@
          </func2>
       </out>
    </xslt:template>
+   
+   <xslt:import-schema schema-location="builtinTypeSchemaAs.xsd"/>
 </xslt:transform>

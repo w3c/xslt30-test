@@ -5,10 +5,10 @@
    <t:output method="xml" encoding="UTF-8" indent="no"/>
 
    <t:template match="/">
-	     <t:call-template name="xsl:temp"/>
+	     <t:call-template name="t:temp"/>
    </t:template>
 
-   <t:template name="xsl:temp">
+   <t:template name="t:temp">
 	     <t:text> Do Nothing! </t:text>
    </t:template>
 </t:transform>

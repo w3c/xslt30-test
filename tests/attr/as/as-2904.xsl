@@ -25,4 +25,6 @@
    <xslt:template name="t2" as="element(elem-NMTOKEN, xs:NMTOKEN)">
 	     <elem-NMTOKEN xslt:type="xs:NMTOKEN">business-enforcement::link-chain.common</elem-NMTOKEN>
    </xslt:template>
+   
+   <xslt:import-schema schema-location="builtinTypeSchemaAs.xsd"/>
 </xslt:transform>

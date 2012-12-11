@@ -11,11 +11,7 @@
    <t:variable name="var2" select="/doc/str[2]"/>
 
    <t:template match="/doc">
-      <t:text>
-</t:text>
       <out>
-         <t:text>
-</t:text>
          <E1>
             <t:analyze-string select="poem"
                               regex="({item})              (.*)               (gesehen,)$"
@@ -28,8 +24,6 @@
     	          </t:non-matching-substring>
     	       </t:analyze-string>
          </E1>
-         <t:text>
-</t:text>
          <E2>
             <t:analyze-string select="poem"
                               regex="({item})(.*) (krahen)"
@@ -42,8 +36,6 @@
     	          </t:non-matching-substring>
     	       </t:analyze-string>
          </E2>
-         <t:text>
-</t:text>
          <E3>
             <t:analyze-string select="poem"
                               regex="({item})              (.*)               (gesehen,)$"
@@ -56,8 +48,6 @@
     	          </t:non-matching-substring>
     	       </t:analyze-string>
          </E3>
-         <t:text>
-</t:text>
          <E4>
             <t:analyze-string select="poem"
                               regex="({item})(.*) (krahen)"

@@ -5,7 +5,7 @@
 <!-- Error: xsl:include - self-referential -->
 <?spec xslt#errors?><?error XTSE0180?>
 
-<xsl:include href="error125.xsl"/>
+<xsl:include href="error-code-094.xsl"/>
 
   
   <xsl:template match="doc">

@@ -764,6 +764,7 @@ a:_underscore_
    <test-case name="as-0136">
       <description>Test with xsl:function that has @as="document-node()*" and returns the empty sequence or a document node from fn:document().</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2012-12-11" change="changed argument to doc() function, see bug 20021"/>
       <environment ref="as-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2521,10 +2522,7 @@ a:_underscore_
          <stylesheet file="as-2001.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<temp1>000-TM</temp1>
-<temp2>1.0001</temp2>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><temp1>000-TM</temp1><temp2>1.0001</temp2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2540,9 +2538,7 @@ a:_underscore_
          <stylesheet file="as-2002.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1>
-<var2>truefalse</var2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var1>truetrue</var1><var2>truefalse</var2></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2601,8 +2597,7 @@ a:_underscore_
          <stylesheet file="as-2301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var1>truetrue</var1></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2622,8 +2617,7 @@ a:_underscore_
          <stylesheet file="as-2401.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<var1>truetrue</var1></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><var1>truetrue</var1></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2643,12 +2637,7 @@ a:_underscore_
          <stylesheet file="as-2501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-<temp1>131072</temp1>
-<temp2>44444</temp2>
-<temp3>-922337</temp3>
-<temp4>-128</temp4>
-</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><temp1>131072</temp1><temp2>44444</temp2><temp3>-922337</temp3><temp4>-128</temp4></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -2830,6 +2819,7 @@ a:_underscore_
       	@as="element(QName, built-in primitive/derived atomic type)".
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2012-12-11" change="added import-schema declaration; see bug 20060"/>
       <environment ref="as-29"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2870,6 +2860,7 @@ a:_underscore_
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Michael Kay" on="2012-12-11" change="corrected filename used in doc() function: bug 20341"/>
+      <modified by="Michael Kay" on="2012-12-11" change="added import-schema declaration; see bug 20060"/>      
       <environment ref="as-29"/>
       <dependencies>
          <spec value="XSLT20+"/>
