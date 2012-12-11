@@ -24,8 +24,8 @@ xmlns:z="http://z.com/" exclude-result-prefixes="xs z">
   <xsl:function name="z:norm">
     <!-- normalize results so A.M. and AM are both acceptable -->
     <xsl:param name="f"/>
-    <xsl:variable name="f" select="for $g in $f return replace($g, 'A.M.', 'AM')"/>
-    <xsl:sequence select="for $g in $f return replace($g, 'P.M.', 'PM')"/>
+    <xsl:variable name="f" select="for $g in $f return translate($g, '.', '')"/>
+    <xsl:sequence select="for $g in $f return translate($g, '.', '')"/>
   </xsl:function> 
 
   <xsl:template match="/">

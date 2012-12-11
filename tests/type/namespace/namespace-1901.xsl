@@ -6,7 +6,7 @@
 
 	<xsl:namespace-alias stylesheet-prefix="#default" result-prefix="xsl"/>
 
-	<xsl:template match="/" xml:space="preserve">
+	<xsl:template match="/">
 		<stylesheet version="1.0">
 		 <template name="x">
 		  <apply-templates/>

@@ -8,12 +8,12 @@
   				Sequence constructor copies a typed element from input file.-->
 
    <xslt:function name="my:func1" as="element(elem-anyURI, xs:anyURI)">
-	     <xslt:copy-of select="document('schemaas20_226.xml')/doc-schemaas/elem-anyURI"
+	     <xslt:copy-of select="document('as-29.xml')/doc-schemaas/elem-anyURI"
                     validation="strict"/>
    </xslt:function>
 
    <xslt:function name="my:func2" as="element(elem-NMTOKEN, xs:NMTOKEN)">
-	     <xslt:copy-of select="document('schemaas20_226.xml')/doc-schemaas/elem-NMTOKEN"
+      <xslt:copy-of select="document('as-29.xml')/doc-schemaas/elem-NMTOKEN"
                     validation="strict"/>
    </xslt:function>
 

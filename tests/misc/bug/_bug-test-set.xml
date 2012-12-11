@@ -847,6 +847,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    <test-case name="bug-2401">
       <description>BUG: proved not to be a bug at all</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2012-12-11" change="use assertions to remove dependency on HTML serialization, see bug 20342"/>
       <environment>
          <source role="." file="bug-24.xml"/>
       </environment>
@@ -857,7 +858,16 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          <stylesheet file="bug-2401.xsl"/>
       </test>
       <result>
-         <assert-xml file="bug-2401.out"/>
+         <all-of>
+            <assert>/HTML/HEAD/TITLE = "About Author and Credits"</assert>
+            <assert>/HTML/BODY/H2 = "Credits"</assert>
+            <assert>/HTML/BODY/TABLE/TR[1]/TD[1]/B = "Acquisitions Editor"</assert>
+            <assert>/HTML/BODY/TABLE/TR[1]/TD[2] = "John Osborne"</assert>
+            <assert>/HTML/BODY/TABLE/TR[2]/TD[1]/B = "Development Editor"</assert>
+            <assert>/HTML/BODY/TABLE/TR[2]/TD[2] = "Terri Varveris"</assert>
+            <assert>/HTML/BODY/TABLE/TR[5]/TD[1]/B = "Copy Editors"</assert>
+            <assert>/HTML/BODY/TABLE/TR[5]/TD[2] = "Amy EoffAmanda KaufmanNicole LeClercVictoria Lee"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1179,13 +1189,17 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3801">
-      <description>BUG: Saxon 5.5/002 DESCRIPTION: When the cdata-section-elements attribute of xsl:output is used, disable-output-escaping on xsl:text or xsl:value-of does not always work correctly.</description>
+      <description>
+         BUG: Saxon 5.5/002 DESCRIPTION: When the cdata-section-elements attribute of xsl:output is used, 
+         disable-output-escaping on xsl:text or xsl:value-of does not always work correctly.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2012-12-11" change="use assert-serialization, see bug 20343"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc/>]]></content>
          </source>
-      </environment>      <dependencies>
+      </environment>      
+      <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
@@ -1193,7 +1207,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          <stylesheet file="bug-3801.xsl"/>
       </test>
       <result>
-         <assert-xml file="bug-3801.out"/>
+         <assert-serialization file="bug-3801.out"/>
       </result>
    </test-case>
 
