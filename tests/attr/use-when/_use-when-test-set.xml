@@ -975,13 +975,14 @@
    <test-case name="use-when-0223">
       <description>Test case that uses use-when with an EBV of true on xsl:import instruction.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-10" change="Added role attributes"/>
       <environment ref="use-when-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="use-when-0223.xsl"/>
-         <stylesheet file="include2.xsl"/>
+         <stylesheet file="use-when-0223.xsl" role="principal"/>
+         <stylesheet file="include2.xsl" role="secondary"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><print_a>a1</print_a><print_a>a2</print_a>b1b2</out>]]></assert-xml>
@@ -991,13 +992,14 @@
    <test-case name="use-when-0224">
       <description>Test case that uses use-when on xsl:import with an EBV of false.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-10" change="Added role attributes"/>
       <environment ref="use-when-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="use-when-0224.xsl"/>
-         <stylesheet file="include2.xsl"/>
+         <stylesheet file="use-when-0224.xsl" role="principal"/>
+         <stylesheet file="include2.xsl" role="secondary"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><print_a>a1</print_a><print_a>a2</print_a></out>]]></assert-xml>
@@ -1007,6 +1009,7 @@
    <test-case name="use-when-0225">
       <description>Test case that uses use-when on an element while the element has a static error and the EBV evaluates to true and therefore the elemnt should not be excluded from the module. This is to verify that the error is reported.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-10" change="all-of to any-of"/>
       <environment ref="use-when-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1015,16 +1018,17 @@
          <stylesheet file="use-when-0225.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <error code="XTSE0010"/>
             <error code="XTSE0090"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="use-when-0226">
       <description>Test case that uses use-when on an LRE while the element has a static error and the EBV evaluates to true and therefore the elemnt should not be excluded from the module. This is to verify that the error is reported</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2012-12-10" change="all-of to any-of"/>
       <environment ref="use-when-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1033,10 +1037,10 @@
          <stylesheet file="use-when-0226.xsl"/>
       </test>
       <result>
-         <all-of>
+         <any-of>
             <error code="XTSE0010"/>
             <error code="XTSE0805"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
