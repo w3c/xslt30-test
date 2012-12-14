@@ -13,15 +13,11 @@
 
    <xslt:template match="/my:userNode">
       <out>
-         <xslt:text>
-</xslt:text>
          <e1>
             <xslt:value-of select="data(elem-QName) instance of xs:QName"/>
             <xslt:text> , </xslt:text>
             <xslt:value-of select="local-name-from-QName(elem-QName)"/>
          </e1>
-         <xslt:text>
-</xslt:text>
          <e2>
             <xslt:value-of select="data(elem-QName-derived) instance of xs:QName"/>
             <xslt:text> , </xslt:text>
