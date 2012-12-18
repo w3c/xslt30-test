@@ -257,7 +257,7 @@
          <feature value="schema_aware"/>
       </dependencies>
       <test>
-         <stylesheet file="validation-0202.xsl"/>
+         <stylesheet file="validation-0202.xsl" role="principal"/>
          <stylesheet file="validation-0202-person.xsl" role="secondary"/>
       </test>
       <result>
@@ -551,6 +551,7 @@
    <test-case name="validation-0701">
       <description>match XSLT elements match literal result elements</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim MIlls" on="2012-12-18" change="Removed whitespace"/>
       <environment>
          <source role="." validation="strict" file="validation-07.xml"/>
          <schema file="schema-for-xslt20.xsd"/>
@@ -707,6 +708,7 @@
       	Note the schema used is inline in the stylesheet.
       </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim MIlls" on="2012-12-18" change="Removed whitespace"/>
       <environment>
         <source role="." validation="lax" file="validation-15.xml"/>
       </environment>
@@ -742,6 +744,7 @@
    <test-case name="validation-2002">
       <description>show templates matching against validated elements from the source document</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim MIlls" on="2012-12-18" change="Removed whitespace"/>
       <environment ref="validation-20"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -752,10 +755,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<z xmlns:t="http://ns.example.com/val12/">
-   <a>schema-element() matches when nilled=true</a>
-   <a>schema-element() matches when nilled=false</a>
-</z>]]></assert-xml>
+         <assert-xml><![CDATA[<z xmlns:t="http://ns.example.com/val12/"><a>schema-element() matches when nilled=true</a><a>schema-element() matches when nilled=false</a></z>]]></assert-xml>
       </result>
    </test-case>
    
