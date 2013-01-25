@@ -12,8 +12,7 @@
    <t:template match="doc">
       <t:result-document>
          <out>This document should be serialized as text, not as xml because
-the un-named xsl:format (i.e. no 'name' attribute) has method "text".
-</out>
+the un-named xsl:format (i.e. no 'name' attribute) has method "text".</out>
       </t:result-document>
    </t:template>
 </t:transform>

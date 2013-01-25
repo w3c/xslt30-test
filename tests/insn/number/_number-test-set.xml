@@ -192,6 +192,7 @@
    <test-case name="number-0301">
       <description></description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2012-12-20" change="Removed duplicate xml declaration and whitespace from expected result"/>
       <environment>
          <source role="." file="number-03.xml"/>
       </environment>
@@ -837,6 +838,7 @@
    <test-case name="number-0825">
       <description>Error case, invalid lang attribute, detected statically</description>
       <created by="Michael Kay " on="2012-11-07"/>
+      <modified by="Tim Mills " on="2012-12-20" change="Added XTSE0020"/>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -845,7 +847,10 @@
          <stylesheet file="number-0825.xsl"/>
       </test>
       <result>
+	<any-of>
          <error code="XTDE0030"/>
+         <error code="XTSE0020"/>
+	</any-of>
       </result>
    </test-case>
 
