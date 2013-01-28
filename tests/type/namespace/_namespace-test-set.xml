@@ -3453,13 +3453,14 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    <test-case name="namespace-4201">
       <description>Verify that namespace-alias is honored in included stylesheets.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <changed by="Tim Mills" on="2013-01-28" change="Added role attributes"/>
       <environment ref="namespace-42"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="namespace-4201.xsl"/>
-         <stylesheet file="namespace-4201a.xsl"/>
+         <stylesheet file="namespace-4201.xsl" role="principal"/>
+         <stylesheet file="namespace-4201a.xsl" role="secondary"/>
       </test>
       <result>
          <assert-xml file="namespace-4201.out"/>
