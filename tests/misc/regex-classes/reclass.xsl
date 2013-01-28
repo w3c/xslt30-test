@@ -26,7 +26,10 @@
 <xsl:variable name="omnibus" as="xs:string"
               select="codepoints-to-string($allLegalChars)"/>
               
-<xsl:param name="result-dirs" select="'3.1', '5.2'"/>                            
+<xsl:param name="result-dirs" select="'3.1', '5.2', '6.0'"/>
+  
+<!-- save-results allows collection of results for a new Unicode version -->  
+<xsl:param name="save-results" select="false()"/>  
 
 <xsl:variable name="class-regex" select="concat('\p{', $class, '}+')"/>
 <xsl:variable name="complement-regex" select="concat('\P{', $class, '}+')"/>
@@ -76,7 +79,13 @@
     <xsl:otherwise>
       <xsl:copy-of select="$results"/>
     </xsl:otherwise>
-  </xsl:choose>         
+  </xsl:choose>
+  <xsl:if test="$save-results">
+    <xsl:result-document href="{$result-dirs[last()]}R/{$class}.xml" method="xml" indent="yes">
+       <xsl:message>Sending results to <xsl:value-of select="$class"/>.xml</xsl:message>
+       <xsl:copy-of select="$results"/>
+    </xsl:result-document>
+  </xsl:if>
 </xsl:template>
 
 </xsl:transform>  
