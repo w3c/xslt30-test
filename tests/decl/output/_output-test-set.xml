@@ -283,7 +283,7 @@
          <stylesheet file="output-0106.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output018.out"/>
+         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s*<body>This is the body</body>\s*</html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -440,6 +440,7 @@
    <test-case name="output-0117">
       <description>Boolean attributes should not be output in minimized form.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -448,7 +449,7 @@
          <stylesheet file="output-0117.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output046.out"/>
+         <serialization-matches><![CDATA[ selected="selected"]]></serialization-matches>
       </result>
    </test-case>
 
@@ -463,7 +464,7 @@
          <stylesheet file="output-0118.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output047.out"/>
+         <serialization-matches><![CDATA[<\?my-pi href="book.css" type="text/css"\?>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -538,6 +539,7 @@
          'head' element. (default is 'yes')
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -546,13 +548,20 @@
          <stylesheet file="output-0123.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output061.out"/>
+	<all-of>
+	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+	  <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
+	</all-of>
       </result>
    </test-case>
 
    <test-case name="output-0124">
       <description>Test HTML output with include-content-type=yes, the result tree has a 'head' element.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -561,13 +570,20 @@
          <stylesheet file="output-0124.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output062.out"/>
+	<all-of>
+	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+	  <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
+	</all-of>
       </result>
    </test-case>
 
    <test-case name="output-0125">
       <description>Test HTML output with include-content-type value set to "no".</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -576,7 +592,13 @@
          <stylesheet file="output-0125.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output063.out"/>
+	<not>
+	  <any-of>
+	    <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+	    <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+	    <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>]*a[^<]*>[</HEAD>]]></serialization-matches>
+	  </any-of>
+	</not>
       </result>
    </test-case>
 
@@ -643,6 +665,7 @@
    <test-case name="output-0130">
       <description>Test with no output method explicitly specified and the document element of the implicit result tree is html in the XHTML namespace. Show to output method defaults to XHTML.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -651,7 +674,13 @@
          <stylesheet file="output-0130.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output099.out"/>
+	<all-of>
+	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+	  <serialization-matches flags="i"><![CDATA[content="text/html; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="text/html; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>]]></serialization-matches>
+	</all-of>
       </result>
    </test-case>
 
@@ -805,6 +834,7 @@
    <test-case name="output-0140">
       <description>Test XHTML output method with @encoding=UTF-16.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -813,13 +843,14 @@
          <stylesheet file="output-0140.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output122.out"/>
+	<serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-16"\?>]]></serialization-matches>
       </result>
    </test-case>
 
    <test-case name="output-0141">
       <description>Test XHTML output with @escape-uri-attributes=no. Use fn:escape-html-uri to escape some URIs but not all.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -828,7 +859,10 @@
          <stylesheet file="output-0141.xsl"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output125.out"/>
+	<all-of>
+	  <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+	  <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
+	</all-of>
       </result>
    </test-case>
 
@@ -1080,6 +1114,7 @@
    <test-case name="output-0157">
       <description>Test HTML output with include-content-type=yes and 'meta http-equiv="Content-Type "' tag already present.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1088,7 +1123,13 @@
          <stylesheet file="output-0157.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output146.out"/>
+	<all-of>
+	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+	  <serialization-matches flags="i"><![CDATA[content="text/html; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="text/html; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
+	</all-of>
       </result>
    </test-case>
 
@@ -1103,7 +1144,13 @@
          <stylesheet file="output-0158.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output148.out"/>
+	<all-of>
+	  <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+	  <serialization-matches><![CDATA[="text/html; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches flags="i"><![CDATA[content="text/html; charset=UTF-8"]]></serialization-matches>
+	  <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
+	</all-of>
       </result>
    </test-case>
 
@@ -1134,6 +1181,7 @@
    <test-case name="output-0160">
       <description>Test that whitespace is not added or removed adjacent to elements ins and del if they do not contain element children; indent=no with HTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1142,7 +1190,7 @@
          <stylesheet file="output-0160.xsl"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output150.out"/>
+         <serialization-matches flags="s"><![CDATA[is <del>\n    \t\t\t20\t</del><ins>     1 2 </ins> pieces]]></serialization-matches>
       </result>
    </test-case>
 
@@ -1423,6 +1471,7 @@
       <description>Test with unsupported value for @encoding, output method is XHTML. Two alternative results,
       since the serializer is allowed to report the error or recover by using a different encoding.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1433,7 +1482,7 @@
       </test>
       <result>
          <any-of>
-            <error code="SESU0007"/>
+            <assert-serialization-error code="SESU0007"/>
             <serialization-matches><![CDATA[>hello<]]></serialization-matches>
          </any-of>
       </result>
@@ -1443,6 +1492,7 @@
       <description>Test with unsupported value for @encoding, output method is XML. Two alternative results,
          since the serializer is allowed to report the error or recover by using a different encoding.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1453,7 +1503,7 @@
       </test>
       <result>
          <any-of>
-            <error code="SESU0007"/>
+            <assert-serialization-error code="SESU0007"/>
             <serialization-matches><![CDATA[>hello<]]></serialization-matches>
          </any-of>
       </result>
@@ -1465,6 +1515,7 @@
          data model contains multiple elements children of the root node.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1473,7 +1524,7 @@
          <stylesheet file="output-0182.xsl"/>
       </test>
       <result>
-         <error code="SEPM0004"/>
+         <assert-serialization-error code="SEPM0004"/>
       </result>
    </test-case>
 
@@ -1483,6 +1534,7 @@
          contains multiple elements children of the root node.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1491,13 +1543,14 @@
          <stylesheet file="output-0183.xsl"/>
       </test>
       <result>
-         <error code="SEPM0004"/>
+         <assert-serialization-error code="SEPM0004"/>
       </result>
    </test-case>
 
    <test-case name="output-0184">
       <description>Test that an error is raised if the value of @encoding in output method HTML is not supported.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1506,13 +1559,14 @@
          <stylesheet file="output-0184.xsl"/>
       </test>
       <result>
-         <error code="SESU0007"/>
+         <assert-serialization-error code="SESU0007"/>
       </result>
    </test-case>
 
    <test-case name="output-0185">
       <description>Test that an error is raised if the value of @encoding in output method TEXT is not supported.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1521,7 +1575,7 @@
          <stylesheet file="output-0185.xsl"/>
       </test>
       <result>
-         <error code="SESU0007"/>
+         <assert-serialization-error code="SESU0007"/>
       </result>
    </test-case>
 
@@ -1531,6 +1585,7 @@
          and @standalone is other than 'omit'.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1539,7 +1594,7 @@
          <stylesheet file="output-0186.xsl"/>
       </test>
       <result>
-         <error code="SEPM0009"/>
+         <assert-serialization-error code="SEPM0009"/>
       </result>
    </test-case>
 
@@ -1549,6 +1604,7 @@
          and @version is other than '1.0' and @doctype-system is specified.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1557,13 +1613,14 @@
          <stylesheet file="output-0187.xsl"/>
       </test>
       <result>
-         <error code="SEPM0009"/>
+         <assert-serialization-error code="SEPM0009"/>
       </result>
    </test-case>
 
    <test-case name="output-0188">
       <description>Test that an error is raised when in xsl:output @method="xml", @undeclare-prefixes="yes", and @version="1.0"</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1572,13 +1629,14 @@
          <stylesheet file="output-0188.xsl"/>
       </test>
       <result>
-         <error code="SEPM0010"/>
+         <assert-serialization-error code="SEPM0010"/>
       </result>
    </test-case>
 
    <test-case name="output-0189">
       <description>Test that an error is raised if the value of @normalization-form in output method XML is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1587,13 +1645,14 @@
          <stylesheet file="output-0189.xsl"/>
       </test>
       <result>
-         <error code="SESU0011"/>
+         <assert-serialization-error code="SESU0011"/>
       </result>
    </test-case>
 
    <test-case name="output-0190">
       <description>Test that an error is raised if the value of @normalization-form in output method XHTML is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1602,13 +1661,14 @@
          <stylesheet file="output-0190.xsl"/>
       </test>
       <result>
-         <error code="SESU0011"/>
+         <assert-serialization-error code="SESU0011"/>
       </result>
    </test-case>
 
    <test-case name="output-0191">
       <description>Test that an error is raised if the value of @normalization-form in output method HTML is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1617,13 +1677,14 @@
          <stylesheet file="output-0191.xsl"/>
       </test>
       <result>
-         <error code="SESU0011"/>
+         <assert-serialization-error code="SESU0011"/>
       </result>
    </test-case>
 
    <test-case name="output-0192">
       <description>Test that an error is raised if the value of @normalization-form in output method TEXT is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1632,13 +1693,15 @@
          <stylesheet file="output-0192.xsl"/>
       </test>
       <result>
-         <error code="SESU0011"/>
+         <assert-serialization-error code="SESU0011"/>
       </result>
    </test-case>
 
    <test-case name="output-0193">
       <description>Test that an error is raised if @normalization-form="fully-normalized" and the result begins with a combining character.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1647,16 +1710,17 @@
          <stylesheet file="output-0193.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SERE0012"/>
-            <error code="SESU0011"/>
-         </all-of>
+         <any-of>
+            <assert-serialization-error code="SERE0012"/>
+            <assert-serialization-error code="SESU0011"/>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="output-0194">
       <description>Test that an error is raised if in xsl:output @method="html" and the value of @version is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1665,13 +1729,14 @@
          <stylesheet file="output-0194.xsl"/>
       </test>
       <result>
-         <error code="SESU0013"/>
+         <assert-serialization-error code="SESU0013"/>
       </result>
    </test-case>
 
    <test-case name="output-0195">
       <description>Test that an error is raised if the output method is HTML and the result tree contains characters in the #x7F-#x9F range.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1680,13 +1745,14 @@
          <stylesheet file="output-0195.xsl"/>
       </test>
       <result>
-         <error code="SERE0014"/>
+         <assert-serialization-error code="SERE0014"/>
       </result>
    </test-case>
 
    <test-case name="output-0196">
       <description>Test that an error is raised if the output method is HTML and &gt; appears within a processing instruction in the result tree.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1695,13 +1761,15 @@
          <stylesheet file="output-0196.xsl"/>
       </test>
       <result>
-         <error code="SERE0015"/>
+         <assert-serialization-error code="SERE0015"/>
       </result>
    </test-case>
 
    <test-case name="output-0197">
       <description>Test that an error is raised on invalid @byte-order-mark value in xsl:output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1710,16 +1778,18 @@
          <stylesheet file="output-0197.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SEPM0016"/>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="output-0198">
       <description>Test that an error is raised on invalid @escape-uri-attributes value in xsl:output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1728,16 +1798,17 @@
          <stylesheet file="output-0198.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SEPM0016"/>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="output-0199">
       <description>Test that an error is raised on invalid @include-content-type value in xsl:output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1746,10 +1817,10 @@
          <stylesheet file="output-0199.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SEPM0016"/>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -1801,13 +1872,14 @@
    <test-case name="output-0204">
       <description>Test for one imported xsl:character-map, no character maps declared in primary stylesheet.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="added role attributes"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="output-0204.xsl"/>
-         <stylesheet file="x.xsl"/>
+         <stylesheet file="output-0204.xsl" role="principal"/>
+         <stylesheet file="x.xsl" role="secondary"/>
       </test>
       <result>
          <assert-serialization method="xml" file="output015.out"/>
@@ -1847,13 +1919,14 @@
    <test-case name="output-0207">
       <description>Test with two character maps with the same name but with different import precedence. Show that the one with higher precedence is used.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="added role attributes"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="output-0207.xsl"/>
-         <stylesheet file="x.xsl"/>
+         <stylesheet file="output-0207.xsl" role="principal"/>
+         <stylesheet file="x.xsl" role="secondary"/>
       </test>
       <result>
          <assert-serialization method="xml" file="output185.out"/>
@@ -2402,6 +2475,8 @@
    <test-case name="output-0280">
       <description>Test that an error is raised on invalid @indent value in xsl:output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2410,16 +2485,18 @@
          <stylesheet file="output-0280.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SEPM0016"/>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
    
    <test-case name="output-0281">
       <description>Test that an error is raised on invalid @omit-xml-declaration value in xsl:output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2428,16 +2505,18 @@
          <stylesheet file="output-0281.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SEPM0016"/>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
    
    <test-case name="output-0282">
       <description>Test that an error is raised on invalid @standalone value in xsl:output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2446,16 +2525,18 @@
          <stylesheet file="output-0282.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SEPM0016"/>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
    
    <test-case name="output-0283">
       <description>Test that an error is raised on invalid @undeclare-prefixes value in xsl:output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2464,16 +2545,18 @@
          <stylesheet file="output-0283.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SEPM0016"/>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
    
    <test-case name="output-0284">
       <description>Test that an error is raised on invalid @doctype-public value in xsl:output. See XSLT 2.0 Erratum E3</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2482,10 +2565,10 @@
          <stylesheet file="output-0284.xsl"/>
       </test>
       <result>
-         <all-of>
-            <error code="SEPM0016"/>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </all-of>
+         </any-of>
       </result>
    </test-case>
    
