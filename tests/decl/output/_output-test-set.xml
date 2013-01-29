@@ -83,6 +83,7 @@
    <test-case name="output-0102c">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="added variant with hex encoding of character references"/>
       <environment ref="output-0102"/>  
       <dependencies>
          <spec value="XSLT20+"/>
@@ -91,7 +92,10 @@
          <initial-template name="c"/>
       </test>
       <result>
+	<any-of>
          <serialization-matches><![CDATA[href="% %C2%96 %C2%96 a &#34;  %C2%A1 &lt; &gt; &amp; end"]]></serialization-matches>
+         <serialization-matches><![CDATA[href="% %C2%96 %C2%96 a &#x22;  %C2%A1 &lt; &gt; &amp; end"]]></serialization-matches>
+	</any-of>
       </result>
    </test-case>
    
@@ -177,6 +181,7 @@
    <test-case name="output-0103c">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="added variant with hex encoding of character references"/>
       <environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -185,7 +190,10 @@
          <initial-template name="c"/>
       </test>
       <result>
+	<any-of>
          <serialization-matches><![CDATA[href="% %C2%96 &#x96; a &#34;  ¡ &lt; &gt; &amp; end"]]></serialization-matches>
+         <serialization-matches><![CDATA[href="% %C2%96 &#x96; a &#x22;  ¡ &lt; &gt; &amp; end"]]></serialization-matches>
+	</any-of>
       </result>
    </test-case>
    
