@@ -1,9 +1,10 @@
 <?xml version="1.0"?> 
 
-<?spec xslt#stylesheet-functions?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
+xmlns:fn="http://www.w3.org/2005/xpath-functions" 
 xmlns:fos="http://www.w3.org/xpath-functions/spec/namespace" 
-xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="fos math">
+xmlns:map="http://www.w3.org/2005/xpath-functions/map" 
+xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="fos math fn map">
 
 <!-- test that all functions listed in the F+O specification are implemented (or claim to be available!) -->
 <!-- This test uses function-catalog.xml as input. This should be updated from time to time
