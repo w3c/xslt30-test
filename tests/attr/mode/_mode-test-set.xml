@@ -624,13 +624,14 @@
    <test-case name="mode-1104">
       <description>Set stylesheet params, at least one of which will be used in the match="/" mode="X" template. Where a named mode X is set at the time the transformation is launched.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Tim Mills" on="2013-01-29" change="Fixed param/@select"/>
       <environment ref="mode-11"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="mode-1104.xsl"/>
-         <param name="Sparam" as="xs:string" select="assignedValue"/>
+         <param name="Sparam" as="xs:string" select="'assignedValue'"/>
          <initial-mode name="X"/>
       </test>
       <result>
