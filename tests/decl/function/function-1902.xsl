@@ -3,7 +3,8 @@
 <?spec xslt#stylesheet-functions?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
   xmlns:fos="http://www.w3.org/xpath-functions/spec/namespace"
-  xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="fos math">
+  xmlns:fn="http://www.w3.org/2005/xpath-functions"
+  xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="fos fn math">
 
   <!-- test that all new functions listed in the F+O specification are implemented (or claim to be available!) in XSLT 2.0 -->
   <!-- This test uses function-catalog.xml as input. This should be updated from time to time
