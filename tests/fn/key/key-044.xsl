@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<?spec xslt#generate-id?>
-    <!-- Purpose: Test two calls to generate-id() on the same file. All IDs should be
+<!-- Purpose: Test two calls to generate-id() on the same file. All IDs should be
     the same. If both filenames were given literally, the spec says that IDs must match.
     Retrieving the name from the principal XML document should still clearly mean the
-    same file. Putting nodes in a variable is more of a gray area. -->
+    same file. -->
 
 <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -46,8 +45,4 @@
   </out>
 </xsl:template>
 
-</xsl:stylesheet><!-- Stylus Studio meta-information - (c) 2004-2006. Progress Software Corporation. All rights reserved.
-<metaInformation>
-<scenarios/><MapperMetaTag><MapperInfo srcSchemaPathIsRelative="yes" srcSchemaInterpretAsXML="no" destSchemaPath="" destSchemaRoot="" destSchemaPathIsRelative="yes" destSchemaInterpretAsXML="no"/><MapperBlockPosition></MapperBlockPosition><TemplateContext></TemplateContext><MapperFilter side="source"></MapperFilter></MapperMetaTag>
-</metaInformation>
--->
+</xsl:stylesheet>
