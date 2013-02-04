@@ -16,7 +16,7 @@
 <xsl:apply-templates select = "key('which','3')"/>,
 <xsl:apply-templates select = "key('one','3') | key('two','3')"/>,
 <xsl:apply-templates select = "child[@wide='3'] | key('one','3')"/>,
-<xsl:apply-templates select = "key('two','3') | document('select59.xml')/child[@wide='3'] | child[@deep='3']"/>,
+<xsl:apply-templates select = "key('two','3') | document('select-50.xml')/child[@wide='3'] | child[@deep='3']"/>,
 </out>
 </xsl:template>
 
