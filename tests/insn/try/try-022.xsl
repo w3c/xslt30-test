@@ -11,26 +11,28 @@
   <xsl:template name="main">
     <xsl:param name="zero" select="0" as="xs:integer"/>
     <xsl:result-document href="">
-      <xsl:try>
-        <xsl:for-each select="1 to 2">
-          <xsl:result-document href="try-022-{position()}.out">
-            <output>
-              <xsl:call-template name="test"/>
-              <xsl:if test="position() = 2">
-                <xsl:value-of select="position() div $zero"/>
-              </xsl:if>
-            </output>
-          </xsl:result-document>
-        </xsl:for-each>
-        <xsl:catch errors="*">
-          <err:error code="{$err:code}" module="{tokenize($err:module, '/')[last()]}" line="{$err:line-number}">
-            <message>
-              <xsl:value-of select="$err:description"/>
-            </message>
-          </err:error>
-        </xsl:catch>
-      </xsl:try>
-      <output>main document</output>
+      <result>
+        <xsl:try>
+          <xsl:for-each select="1 to 2">
+            <xsl:result-document href="try-022-{position()}.out">
+              <output>
+                <xsl:call-template name="test"/>
+                <xsl:if test="position() = 2">
+                  <xsl:value-of select="position() div $zero"/>
+                </xsl:if>
+              </output>
+            </xsl:result-document>
+          </xsl:for-each>
+          <xsl:catch errors="*">
+            <err:error code="{$err:code}" module="{tokenize($err:module, '/')[last()]}" line="{$err:line-number}">
+              <message>
+                <xsl:value-of select="$err:description"/>
+              </message>
+            </err:error>
+          </xsl:catch>
+        </xsl:try>
+        <output>main document</output>
+      </result>  
     </xsl:result-document>
   </xsl:template>
 

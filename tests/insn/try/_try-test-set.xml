@@ -356,6 +356,7 @@
    <test-case name="try-022">
       <description>xsl:result-document within xsl:try, which catches a division by zero error in second result-document</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2013-01-31" change="restructure the test assertions"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
@@ -365,16 +366,21 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<err:error xmlns:err="http://www.w3.org/2005/xqt-errors"
-           code="err:FOAR0001"
-           module="try-022.xsl"
-           line="20"><message>Integer division by zero</message></err:error>]]></assert-xml>
+         <all-of>
+           <assert>/result/*:error[@code="err:FOAR0001" and @module="try-022.xsl" and @line="21"]</assert>
+           <assert>/result/*:error/message="Integer division by zero"</assert>
+           <assert>/result/output = "main document"</assert>
+           <assert-result-document uri="try-022-1.out">
+             <assert>/output</assert>
+           </assert-result-document>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="try-023">
       <description>xsl:try within xsl:result-document, within xsl:try</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2013-01-31" change="restructure the test assertions"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
@@ -385,9 +391,11 @@
       </test>
       <result>
          <all-of>
-            <assert-xml><![CDATA[<output xmlns:xs="http://www.w3.org/2001/XMLSchema">main document</output>]]></assert-xml>
-            <assert-result-document uri="try024_1.out">
-               <assert-xml file="try-023-2.out"/>
+            <assert-result-document uri="try023.out">
+            	<assert>/output = "main document"</assert>
+            </assert-result-document>
+            <assert-result-document uri="try023_1.out">
+               <assert-xml file="try-023_2.out"/>
             </assert-result-document>
          </all-of>
       </result>

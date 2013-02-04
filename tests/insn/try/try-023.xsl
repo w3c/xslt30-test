@@ -4,15 +4,15 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:err="http://www.w3.org/2005/xqt-errors"
-  exclude-result-prefixes="err">
+  exclude-result-prefixes="err xs">
 
   <!-- Test xsl:try -->
 
   <xsl:template name="main">
     <xsl:param name="zero" select="0" as="xs:integer"/>
-    <xsl:result-document href="../../SaxonResults/try/try024.out">
+    <xsl:result-document href="try023.out">
       <xsl:try>
-        <xsl:result-document href="../../SaxonResults/try/try024_1.out">
+        <xsl:result-document href="try023_1.out">
           <output>
             <xsl:call-template name="InnerTryTest"/>
           </output>
@@ -35,7 +35,7 @@
     <xsl:param name="two" select="2" as="xs:integer"/>
     <output>
     <xsl:try>
-      <xsl:result-document href="../../SaxonResults/try/try024_2.out">
+      <xsl:result-document href="try023_2.out">
         <xsl:for-each select="1 to 10">
           <value>
             <xsl:value-of select="position() div $two"/>
@@ -50,7 +50,7 @@
         </err:error>
       </xsl:catch>
     </xsl:try>
-      secondary document written
+      <note>secondary document written</note>
     </output>
   </xsl:template>
 
