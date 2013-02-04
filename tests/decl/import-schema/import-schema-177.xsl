@@ -11,7 +11,7 @@
         - elements, attributes or types with different names exist in the two schemas.-->
 
     <xsl:import href="import-schema-177a.xsl"/>
-    <xsl:import-schema namespace="http://ns.example.com/sch002" schema-location="schema177.xsd"/>
+    <xsl:import-schema namespace="http://ns.example.com/sch002" schema-location="schema002.xsd"/>
 
     <xsl:variable name="var1" as="foo:testType*">
         <xsl:sequence
