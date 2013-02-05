@@ -111,6 +111,314 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="cvt-008">
+      <description>expand-text is not an AVT</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-009">
+      <description>expand-text must be yes or no</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-009.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-010">
+      <description>expand-text must be yes or no</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-010.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-011">
+      <description>variables declared in a preceding sibling are in scope</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-011.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '2'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-012">
+      <description>variables declared in a preceding uncle are in scope</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-012.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '2'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-013">
+      <description>No elements allowed within curlies</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-013.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <any-of>
+           <error code="XTSE0350"/>
+           <error code="XPST0003"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-014">
+      <description>Nested expression containing curlies</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '4'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-015">
+      <description>Nested expression ending in a right curly</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-015.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '4'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-016">
+      <description>Nested expression ending in a right curly: the spec says this MUST be followed by whitespace</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-016.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-017">
+      <description>CVT not recognized in xsl:text</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-017.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '{2+2}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-018">
+      <description>CVT not recognized in xsl:text, but expand-text not rejected</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-018.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '{2+2}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-019">
+      <description>expand-text=yes rejected on xsl:text</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-019.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-020">
+      <description>expand-text=no not rejected on xsl:text</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-020.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '{2+2}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-021">
+      <description>doubled braces for escaping</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-021.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '{2+2}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-022">
+      <description>doubled braces with expand-text="no"</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-022.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '{{2+2}}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-023">
+      <description>closing brace inside a comment</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-023.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'The Lord of the Rings'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-024">
+      <description>closing brace inside a string literal</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-024.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = "{The value of a}"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-025">
+      <description>Use typed value not string value</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-025.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = "23"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-026">
+      <description>Base uri in static context for CVT expression</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-026.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = "http://www.example.com/cvt"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="cvt-027">
+      <description>Namespaces in static context for CVT expression</description>
+      <created by="Michael Kay" on="2013-02-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-027.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = "London"</assert>
+      </result>
+   </test-case>
+
+
 
  
 </test-set>
