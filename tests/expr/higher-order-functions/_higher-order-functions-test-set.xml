@@ -870,7 +870,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-067">
-      <description>Nested inline functions with closures. Originated as a Saxon bug report from jakub@maly.cz, dated Feb 2012</description>
+      <description>Originated as a Saxon bug report from jakub@maly.cz, dated Feb 2012</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="hof-300"/>
       <dependencies/>
@@ -881,4 +881,57 @@
          <assert-xml file="higher-order-functions-067.out"/>
       </result>
    </test-case>
+   
+   <test-case name="higher-order-functions-068">
+      <description>
+         Nested inline functions with closures.
+         Originated as a Saxon bug report from Abel Braaksma, dated Feb 2013
+      </description>
+      <created by="Abel Braaksma" on="2013-02-06"/>
+      <environment ref="hof-300"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="higher-order-functions-068.xsl"/>
+      </test>
+      <result>
+         <assert>/out = '55'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="higher-order-functions-069">
+      <description>
+         Apply-templates to function items
+      </description>
+      <created by="Michael Kay" on="2013-02-07"/>
+      <environment ref="hof-300"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="higher-order-functions-069.xsl"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/f[1][@name='round' and @arity='1']</assert>
+           <assert>/out/f[2][@name='f:squared' and @arity='1']</assert>
+           <assert>/out/f[3][@name='' and @arity='1']</assert>
+           <assert>/out/f[4][@name='' and @arity='1']</assert>
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="higher-order-functions-070">
+      <description>
+         Global variable cannot refer to itself, even if it makes sense.
+      </description>
+      <created by="Michael Kay" on="2013-02-07"/>
+      <environment ref="hof-300"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="higher-order-functions-070.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>
 </test-set>
+
+
