@@ -3,6 +3,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
     version="3.0">
+    
+    <!-- now permitted under resolution of bug 20874 -->
 
     <xsl:template name="main" expand-text="yes">
         <xsl:variable name="d" select="year-from-date(current-date())"/>
