@@ -720,6 +720,161 @@
       </result>
    </test-case>
    
+   <test-case name="stream-group-011">
+      <description>Streamed grouping - group-adjacent - with xsl:apply-templates selecting the current group</description>
+      <created by="Michael Kay" on="2013-03-26"/>
+      <test>
+         <stylesheet file="stream-group-011.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/batch[1][@date = "2006-02-13"] = "[13.24][8.12]"</assert>
+            <assert>/out/batch[2][@date = "2006-02-15"] = "[-15.00]"</assert>
+            <assert>/out/batch[3][@date = "2006-02-16"] = "[6.00]"</assert>
+            <assert>/out/batch[4][@date = "2006-02-17"] = "[0.50][2.33][4.44]"</assert>
+            <assert>/out/batch[5][@date = "2006-02-20"] = "[-5.00]"</assert>
+            <assert>/out/batch[6][@date = "2006-02-21"] = "[8.99]"</assert>
+            <assert>/out/batch[7][@date = "2006-02-22"] = "[16.00]"</assert>
+            <assert>/out/batch[8][@date = "2006-02-23"] = "[-2.33][5.60][4.32]"</assert>
+            <assert>/out/batch[9][@date = "2006-02-24"] = "[6.78][12.20][-248.05]"</assert>
+            <assert>/out/batch[10][@date = "2006-02-25"] = "[12.00][13.99]"</assert>
+            <assert>/out/batch[11][@date = "2006-02-26"] = "[14.20]"</assert>           
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-012">
+      <description>Streamed grouping - group-adjacent - with xsl:for-each selecting the current group</description>
+      <created by="Michael Kay" on="2013-03-26"/>
+      <test>
+         <stylesheet file="stream-group-012.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/batch[1][@date = "2006-02-13"] = "[13.24][8.12]"</assert>
+            <assert>/out/batch[2][@date = "2006-02-15"] = "[-15.00]"</assert>
+            <assert>/out/batch[3][@date = "2006-02-16"] = "[6.00]"</assert>
+            <assert>/out/batch[4][@date = "2006-02-17"] = "[0.50][2.33][4.44]"</assert>
+            <assert>/out/batch[5][@date = "2006-02-20"] = "[-5.00]"</assert>
+            <assert>/out/batch[6][@date = "2006-02-21"] = "[8.99]"</assert>
+            <assert>/out/batch[7][@date = "2006-02-22"] = "[16.00]"</assert>
+            <assert>/out/batch[8][@date = "2006-02-23"] = "[-2.33][5.60][4.32]"</assert>
+            <assert>/out/batch[9][@date = "2006-02-24"] = "[6.78][12.20][-248.05]"</assert>
+            <assert>/out/batch[10][@date = "2006-02-25"] = "[12.00][13.99]"</assert>
+            <assert>/out/batch[11][@date = "2006-02-26"] = "[14.20]"</assert>           
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-013">
+      <description>Streamed grouping - group-adjacent - composite grouping key - min and max using xsl:iterate 
+      with position() and xsl:break</description>
+      <created by="Michael Kay" on="2013-03-29"/>
+      <test>
+         <stylesheet file="stream-group-013.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><batch year="2006" week="7"><min>8.12</min><max>13.24</max></batch><batch year="2006" week="8"><min>-5</min><max>8.99</max></batch></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-014">
+      <description>Streamed grouping - group-adjacent - as a direct child of xsl:stream</description>
+      <created by="Michael Kay" on="2013-03-29"/>
+      <test>
+         <stylesheet file="stream-group-014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><batch year="2006" week="7"><total>19.63</total></batch><batch year="2006" week="8"><total>-141.67</total></batch></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-015">
+      <description>Streamed grouping - group-adjacent - with xsl:sequence;
+        using only the first item in every group</description>
+      <created by="Michael Kay" on="2013-03-29"/>
+      <test>
+         <stylesheet file="stream-group-015.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>deep-equal(/out/first[1]/transaction/@value/number(), (13.24))</assert>
+            <assert>deep-equal(/out/first[2]/transaction/@value/number(), (-15.00))</assert>
+            <assert>deep-equal(/out/first[3]/transaction/@value/number(), (6.00))</assert>
+            <assert>deep-equal(/out/first[4]/transaction/@value/number(), (0.50))</assert>
+            <assert>deep-equal(/out/first[5]/transaction/@value/number(), (-5.00))</assert>
+            <assert>deep-equal(/out/first[6]/transaction/@value/number(), (8.99))</assert>
+            <assert>deep-equal(/out/first[7]/transaction/@value/number(), (16.00))</assert>
+            <assert>deep-equal(/out/first[8]/transaction/@value/number(), (-2.33))</assert>
+            <assert>deep-equal(/out/first[9]/transaction/@value/number(), (6.78))</assert>
+            <assert>deep-equal(/out/first[10]/transaction/@value/number(), (12.00))</assert>
+            <assert>deep-equal(/out/first[11]/transaction/@value/number(), (14.20))</assert>
+            <assert>count(/out/first) = 11</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-016">
+      <description>Streamed grouping - group-adjacent - with xsl:sequence;
+        using only the first item in every group</description>
+      <created by="Michael Kay" on="2013-03-29"/>
+      <test>
+         <stylesheet file="stream-group-016.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>deep-equal(/out/first[1]/transaction/@value/number(), (13.24))</assert>
+            <assert>deep-equal(/out/first[2]/transaction/@value/number(), (-15.00))</assert>
+            <assert>deep-equal(/out/first[3]/transaction/@value/number(), (6.00))</assert>
+            <assert>deep-equal(/out/first[4]/transaction/@value/number(), (0.50))</assert>
+            <assert>deep-equal(/out/first[5]/transaction/@value/number(), (-5.00))</assert>
+            <assert>deep-equal(/out/first[6]/transaction/@value/number(), (8.99))</assert>
+            <assert>deep-equal(/out/first[7]/transaction/@value/number(), (16.00))</assert>
+            <assert>deep-equal(/out/first[8]/transaction/@value/number(), (-2.33))</assert>
+            <assert>deep-equal(/out/first[9]/transaction/@value/number(), (6.78))</assert>
+            <assert>deep-equal(/out/first[10]/transaction/@value/number(), (12.00))</assert>
+            <assert>deep-equal(/out/first[11]/transaction/@value/number(), (14.20))</assert>
+            <assert>count(/out/first) = 11</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-group-017">
+      <description>Streamed grouping - group-adjacent - non-streamable because there
+        are two references to the grouping variable</description>
+      <created by="Michael Kay" on="2013-03-29"/>
+      <test>
+         <stylesheet file="stream-group-017.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="SXST0060"/>
+      </result>
+   </test-case>
+   
+      <test-case name="stream-group-018">
+      <description>Streamed grouping - group-adjacent - using position() to number groups</description>
+      <created by="Michael Kay" on="2013-03-29"/>
+      <test>
+         <stylesheet file="stream-group-018.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/batch[1][@date="2006-02-13" and @nr="1" and @size="2"]</assert>
+            <assert>/out/batch[2][@date="2006-02-15" and @nr="2" and @size="1"]</assert>
+            <assert>/out/batch[3][@date="2006-02-16" and @nr="3" and @size="1"]</assert>
+            <assert>/out/batch[4][@date="2006-02-17" and @nr="4" and @size="3"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="stream-group-101">
       <description>Streamed grouping - group-starting-with </description>
       <created by="Michael Kay" on="2012-12-04"/>
