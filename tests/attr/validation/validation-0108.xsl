@@ -10,8 +10,8 @@
       <z xsl:type="xs:untypedAtomic">abcd</z>
     </xsl:variable>
     <out 
-      a="{$v[1] instanceof attribute(xs:untypedAtomic)}"
-      b="{$v[2] instanceof element(xs:untypedAtomic)}"/>
+      a="{$v[1] instance of attribute(*, xs:untypedAtomic)}"
+      b="{$v[2] instance of element(*, xs:untypedAtomic)}"/>
   </xsl:template>
 
 </xsl:stylesheet>
