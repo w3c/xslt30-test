@@ -3,7 +3,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="2.0">
 
 	<!--          Test with global xsl:variable where @select has an xs:untypedAtomic
-	 			value of a typed value the same in @as ontained at run time, @as is a 
+	 			value of a typed value the same in @as obtained at run time, @as is a 
 	 			built-in derived atomic type. Verify the variable is of the type specified 
 	 			in @as. -->
 
@@ -25,7 +25,9 @@
 	<xsl:variable name="v15" select="/doc-schemaas/elem-hexBinary" as="xs:hexBinary"/>
 	<xsl:variable name="v16" select="/doc-schemaas/elem-integer" as="xs:integer"/>
 	<xsl:variable name="v17"
-		select="if (/doc-schemaas/elem-QName instance of element(*,xs:untyped)) then resolve-QName(/doc-schemaas/elem-QName,/doc-schemaas/elem-QName) else /doc-schemaas/elem-QName"
+		select="if (/doc-schemaas/elem-QName instance of element(*,xs:untyped)) 
+		        then resolve-QName(/doc-schemaas/elem-QName,/doc-schemaas/elem-QName) 
+		        else /doc-schemaas/elem-QName"
 		as="xs:QName"/>
 	<xsl:variable name="v18" select="/doc-schemaas/elem-string" as="xs:string"/>
 	<xsl:variable name="v19" select="/doc-schemaas/elem-time" as="xs:time"/>

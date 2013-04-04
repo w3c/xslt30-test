@@ -6,15 +6,15 @@
 
   <xsl:template name="main">
     <xsl:variable name="v" as="element()">
-      <z xsl:type="untyped" foo="1" bar="2">
+      <z xsl:type="xs:untyped" foo="1" bar="2">
         <y/>
       </z>
     </xsl:variable>
     <out 
-      a="{$v instanceof element(xs:untyped)}"
-      b="{$v/@foo instanceof attribute(xs:untypedAtomic)}"
-      c="{$v/@bar instanceof attribute(xs:untypedAtomic)}"
-      d="{$v/y instanceof element(xs:untyped)}"/>
+      a="{$v instance of element(*, xs:untyped)}"
+      b="{$v/@foo instance of attribute(*, xs:untypedAtomic)}"
+      c="{$v/@bar instance of attribute(*, xs:untypedAtomic)}"
+      d="{$v/y instance of element(*, xs:untyped)}"/>
   </xsl:template>
 
 </xsl:stylesheet>
