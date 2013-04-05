@@ -381,6 +381,7 @@
       <description>xsl:try within xsl:result-document, within xsl:try</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-01-31" change="restructure the test assertions"/>
+      <modified by="Michael Kay" on="2013-04-05" change="further restructure the test assertions"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
@@ -395,7 +396,7 @@
             	<assert>/output = "main document"</assert>
             </assert-result-document>
             <assert-result-document uri="try023_1.out">
-               <assert-xml file="try-023_2.out"/>
+               <assert>/output/output/note = "secondary document written"</assert>
             </assert-result-document>
          </all-of>
       </result>
@@ -404,6 +405,7 @@
    <test-case name="try-024">
       <description>xsl:try within xsl:result-document, within xsl:try, which catches a division by zero error in inner result-document</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2013-04-05" change="restructure the test assertions"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
@@ -414,9 +416,15 @@
       </test>
       <result>
          <all-of>
-            <assert-xml><![CDATA[<output xmlns:xs="http://www.w3.org/2001/XMLSchema">main document</output>]]></assert-xml>
-            <assert-result-document uri="try025_1.out">
-               <assert-xml file="try-024-2.out"/>
+            <assert-result-document uri="try024.out">
+               <assert>/output = "main document"</assert>
+            </assert-result-document>   
+            <assert-result-document uri="try024_1.out">
+               <all-of>
+                  <assert>/output/output/note = "secondary document written"</assert>
+                  <assert>/output/output/*:error/@code[contains(.,"FOAR0001")]</assert>
+                  <assert>/output/output/*:error/message = "Integer division by zero"</assert>
+               </all-of>   
             </assert-result-document>
          </all-of>
       </result>
