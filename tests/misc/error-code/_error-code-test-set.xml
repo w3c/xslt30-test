@@ -1337,12 +1337,12 @@
       </result>
    </test-case>
 
-   <test-case name="error-code-085">
+   <test-case name="error-code-085a">
       <description>Error: xsl:key - bad match attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
          <feature value="namespace_axis"/>
       </dependencies>
       <test>
@@ -1350,6 +1350,22 @@
       </test>
       <result>
          <error code="XTSE0340"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-code-085b">
+      <description>Non-Error: xsl:key - namespace allowed in XSLT 3.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30"/>
+         <feature value="namespace_axis"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-085.xsl"/>
+      </test>
+      <result>
+         <assert>/out = ""</assert>
       </result>
    </test-case>
 
