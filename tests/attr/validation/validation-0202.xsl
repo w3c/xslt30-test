@@ -3,17 +3,19 @@
 
 
     <xsl:import href="validation-0202-person.xsl"/>
+    
+    <xsl:output method="xhtml" indent="yes"/>
 
     <xsl:param name="dir" select="'.'"/>
 
     <xsl:template match="/">
         <xsl:for-each select="*/IndividualRec">
-            <xsl:result-document href="{$dir}/validation-0202-out/{@Id}.html" validation="strict"
+            <xsl:result-document href="{$dir}/validation-0202-out/{@Id}.xhtml" validation="strict"
                 encoding="iso-8859-1">
                 <xsl:apply-templates select="."/>
             </xsl:result-document>
         </xsl:for-each>
-        <xsl:result-document href="{$dir}/validation-0202-out/index.html" validation="strict"
+        <xsl:result-document href="{$dir}/validation-0202-out/index.xhtml" validation="strict"
             encoding="iso-8859-1">
             <xsl:call-template name="make-index"/>
         </xsl:result-document>

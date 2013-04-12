@@ -319,6 +319,7 @@
       	against a schema for XHTML
       </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2013-04-05" change="revamped assertions to avoid serialization dependencies"/>
       <environment ref="validation-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -328,83 +329,94 @@
          <stylesheet file="validation-0202.xsl" role="principal"/>
          <stylesheet file="validation-0202-person.xsl" role="secondary"/>
       </test>
-      <result>
+      <result xmlns:h="http://www.w3.org/1999/xhtml">
          <all-of>
-            <assert-xml/>
-            <assert-result-document uri="validation-0202-out/index.html">
-               <assert-serialization method="html" file="validation-0202-out/index.html"/>
+            <assert-result-document uri="validation-0202-out/index.xhtml">
+               <all-of>
+                  <assert>/h:html/h:head/h:title/normalize-space() = "Index of names"</assert>
+                  <assert>/h:html/h:body/h:h1 = "Index of names"</assert>
+                  <assert>/h:html/h:body/h:h2[1] = ""</assert>
+                  <assert>/h:html/h:body/h:h2[2] = "Bennett"</assert>
+                  <assert>/h:html/h:body/h:h2[3] = "Bouvier"</assert>
+                  <assert>/h:html/h:body/h:p[3]/normalize-space() = "Jaqueline Lee Bouvier"</assert>
+                </all-of>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I1.html">
-               <assert-xml file="validation-0202-out/I1.html"/>
+            <assert-result-document uri="validation-0202-out/I1.xhtml">
+               <all-of>
+                  <assert>/h:html/h:head/h:title/normalize-space() = "John Fitzgerald Kennedy"</assert>
+                  <assert>/h:html/h:body/h:h1/normalize-space() = "John Fitzgerald Kennedy"</assert>
+                  <assert>/h:html/h:body/h:table[1]/h:tr[1]/h:td[1]/h:p[1]/text()[1] = "29 May 1917"</assert>
+                  <assert>/h:html/h:body/h:table[1]/h:tr[1]/h:td[1]/h:p[1]/text()[2] = "Brookline, MA, USA"</assert>
+                </all-of>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I2.html">
-               <assert-serialization method="html" file="validation-0202-out/I2.html"/>
+            <assert-result-document uri="validation-0202-out/I2.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "Jaqueline Lee Bouvier"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I3.html">
-               <assert-serialization method="html" file="validation-0202-out/I3.html"/>
+            <assert-result-document uri="validation-0202-out/I3.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "John Vernou Bouvier III"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I4.html">
-               <assert-serialization method="html" file="validation-0202-out/I4.html"/>
+            <assert-result-document uri="validation-0202-out/I4.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "Janet Norton Lee"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I5.html">
-               <assert-serialization method="html" file="validation-0202-out/I5.html"/>
+            <assert-result-document uri="validation-0202-out/I5.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "Caroline Bouvier Kennedy"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I6.html">
-               <assert-serialization method="html" file="validation-0202-out/I6.html"/>
+            <assert-result-document uri="validation-0202-out/I6.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "John Fitzgerald Kennedy"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I7.html">
-               <assert-serialization method="html" file="validation-0202-out/I7.html"/>
+            <assert-result-document uri="validation-0202-out/I7.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "Patrick Bouvier Kennedy"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I8.html">
-               <assert-serialization method="html" file="validation-0202-out/I8.html"/>
+            <assert-result-document uri="validation-0202-out/I8.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "Joseph Patrick Kennedy"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I9.html">
-               <assert-serialization method="html" file="validation-0202-out/I9.html"/>
+            <assert-result-document uri="validation-0202-out/I9.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "Rose Elizabeth Fitzgerald"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I10.html">
-               <assert-serialization method="html" file="validation-0202-out/I10.html"/>
+            <assert-result-document uri="validation-0202-out/I10.xhtml">
+               <assert>/h:html/h:head/h:title/normalize-space() = "Joseph Patrick Kennedy Jr"</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I11.html">
-               <assert-serialization method="html" file="validation-0202-out/I11.html"/>
+            <assert-result-document uri="validation-0202-out/I11.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I12.html">
-               <assert-serialization method="html" file="validation-0202-out/I12.html"/>
+            <assert-result-document uri="validation-0202-out/I12.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I13.html">
-               <assert-serialization method="html" file="validation-0202-out/I13.html"/>
+            <assert-result-document uri="validation-0202-out/I13.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I14.html">
-               <assert-serialization method="html" file="validation-0202-out/I14.html"/>
+            <assert-result-document uri="validation-0202-out/I14.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I15.html">
-               <assert-serialization method="html" file="validation-0202-out/I15.html"/>
+            <assert-result-document uri="validation-0202-out/I15.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I17.html">
-               <assert-serialization method="html" file="validation-0202-out/I17.html"/>
+            <assert-result-document uri="validation-0202-out/I17.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I18.html">
-               <assert-serialization method="html" file="validation-0202-out/I18.html"/>
+            <assert-result-document uri="validation-0202-out/I18.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I19.html">
-               <assert-serialization method="html" file="validation-0202-out/I19.html"/>
+            <assert-result-document uri="validation-0202-out/I19.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I20.html">
-               <assert-serialization method="html" file="validation-0202-out/I20.html"/>
+            <assert-result-document uri="validation-0202-out/I20.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I21.html">
-               <assert-serialization method="html" file="validation-0202-out/I21.html"/>
+            <assert-result-document uri="validation-0202-out/I21.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I22.html">
-               <assert-serialization method="html" file="validation-0202-out/I22.html"/>
+            <assert-result-document uri="validation-0202-out/I22.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I23.html">
-               <assert-serialization method="html" file="validation-0202-out/I23.html"/>
+            <assert-result-document uri="validation-0202-out/I23.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I24.html">
-               <assert-serialization method="html" file="validation-0202-out/I24.html"/>
+            <assert-result-document uri="validation-0202-out/I24.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
-            <assert-result-document uri="validation-0202-out/I25.html">
-               <assert-serialization method="html" file="validation-0202-out/I25.html"/>
+            <assert-result-document uri="validation-0202-out/I25.xhtml">
+               <assert>/h:html/h:head/h:title</assert>
             </assert-result-document>
          </all-of>
       </result>
