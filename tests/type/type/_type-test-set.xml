@@ -740,69 +740,6 @@
       </result>
    </test-case>
 
-   <test-case name="type-0146">
-      <description>Test type-available() (with no schema)</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="type-0146.xsl"/>
-      </test>
-      <result>
-         <assert-xml file="type-0146.out"/>
-      </result>
-   </test-case>
-
-   <test-case name="type-0147">
-      <description>Test type-available() (with no schema, but schema-aware processor)</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-         <feature value="schema_aware"/>
-      </dependencies>
-      <test>
-         <stylesheet file="type-0147.xsl"/>
-      </test>
-      <result>
-         <assert-xml file="type-0147.out"/>
-      </result>
-   </test-case>
-
-   <test-case name="type-0148">
-      <description>Test type-available() - non-availability of non-primitive types with a basic processor</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
-      <dependencies>
-         <spec value="XSLT20"/>
-         <feature value="schema_aware" satisfied="false"/>
-      </dependencies>
-      <test>
-         <stylesheet file="type-0148.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out><int>false</int><short>false</short><NCName>false</NCName><ID>false</ID><NOTATION>false</NOTATION><ENTITIES>false</ENTITIES><NMTOKENS>false</NMTOKENS></out>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="type-0149">
-      <description>Test type-available() - user-defined types, with schema-aware processor)</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="type-01"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-         <feature value="schema_aware"/>
-      </dependencies>
-      <test>
-         <stylesheet file="type-0149.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out><a>true</a><a>true</a><a>true</a><a>true</a></out>]]></assert-xml>
-      </result>
-   </test-case>
-
    <test-case name="type-0150">
       <description>Test dynamic casting of string to xs:QName - permitted in 3.0</description>
       <created by="Michael Kay" on="2012-11-07"/>
