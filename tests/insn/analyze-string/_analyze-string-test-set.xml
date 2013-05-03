@@ -878,4 +878,42 @@ world</E1><E2>*</E2></out>]]></assert-xml>
       </result>
    </test-case>
    
+   <test-case name="analyze-string-092a">
+      <description>regex matching zero-length string</description>
+      <created by="Michael Kay" on="2013-05-03"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-092.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1150"/>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-092b">
+      <description>regex matching zero-length string</description>
+      <created by="Michael Kay" on="2013-05-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-092.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/col[1]='Ten Thousand'</assert>
+            <assert>/out/col[2]='10000'</assert>
+            <assert>/out/col[3]=''</assert>
+            <assert>/out/col[4]='10,000'</assert>
+            <assert>/out/col[5]='It''s "10 Grand", mister'</assert>
+            <assert>/out/col[6]='10K'</assert>
+            <assert>count(/out/col) = 6</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 </test-set>
