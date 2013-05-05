@@ -11,7 +11,7 @@
     </xsl:apply-templates>
 </xsl:template>
 
-<xsl:template match="page" xmlns:saxon="http://saxon.sf.net/" extension-element-prefixes="saxon">
+<xsl:template match="page">
 <xsl:param name="max" as="xs:integer"/>
 <out>
 <xsl:iterate select="p">

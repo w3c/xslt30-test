@@ -3,9 +3,9 @@
 <!-- try002 (was saxon087) -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
-  xmlns:saxon="http://saxon.sf.net/" xmlns:f="http://localhost/functions"
-  xmlns:err="http://www.w3.org/2005/xqt-errors" extension-element-prefixes="saxon"
-  exclude-result-prefixes="saxon f err">
+   xmlns:f="http://localhost/functions"
+  xmlns:err="http://www.w3.org/2005/xqt-errors"
+  exclude-result-prefixes=" f err">
 
   <!-- Test xsl:try as an instruction -->
 

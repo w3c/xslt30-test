@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
   
  <?spec fo#func-collection?>
- <?dependency saxon?>
+
 <!-- PURPOSE: Get the default collection (by default this is an empty collection). -->
 
 <xsl:template match="/">

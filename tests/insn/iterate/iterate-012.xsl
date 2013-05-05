@@ -7,7 +7,7 @@
 
 <xsl:template match="/">
 <out>
-  <xsl:iterate select="//ITEM" xmlns:saxon="http://saxon.sf.net/" xsl:extension-element-prefixes="saxon">
+  <xsl:iterate select="//ITEM">
     <xsl:param name="basketCost" as="xs:decimal" select="0"/>
     <xsl:param name="basketCost" as="xs:decimal" select="0"/>
     <xsl:choose>

@@ -3558,4 +3558,32 @@ doc/foo/baz/is not new
      </out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="axes-202">
+      <description>Handle a comment occurring before the DOCTYPE declaration</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!--A comment-->
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "axes-202.dtd">
+<?Pub Inc?>
+<task/>]]></content>
+         </source>
+      </environment>  
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="axes-202.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/a = "A comment"</assert>
+            <assert>/out/b = 3</assert>
+            <assert>/out/c = 'Pub'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 </test-set>
