@@ -15,7 +15,7 @@
 <xsl:param name="max" as="xs:integer"/>
 <out>
 <xsl:iterate select="*">
-  <xsl:param name="count" select="0" export="yes"/>
+  <xsl:param name="count" select="0"/>
   <xsl:choose>
     <xsl:when test="self::h3">
        <heading><xsl:copy-of select="child::node()"/></heading>
