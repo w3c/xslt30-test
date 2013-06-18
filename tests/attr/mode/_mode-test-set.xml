@@ -277,7 +277,7 @@
          <assert-xml><![CDATA[<out><c xmlns:a="http://abracadabra.com/"/><d/><s/></out>]]></assert-xml>
       </result>
    </test-case>
-
+   
    <test-case name="mode-0101">
       <description>Simple test of xsl:apply-templates with mode.</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -1333,6 +1333,38 @@
 </root>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="mode-1436">
+      <description>Test xsl:mode on-no-match=deep-skip</description>
+      <created by="Michael Kay" on="2013-06-15"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1436.xsl"/>
+      </test>
+      <result>
+         <assert>empty(/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1437">
+      <description>Test xsl:mode on-no-match=deep-skip; streaming</description>
+      <created by="Michael Kay" on="2013-06-15"/>
+      <environment ref="mode-14s"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1437.xsl"/>
+      </test>
+      <result>
+         <assert>empty(/node())</assert>
+      </result>
+   </test-case>
 
    <test-case name="mode-1501">
       <description>Test for mode="#all" with match="node()"</description>
@@ -1351,4 +1383,6 @@
 </doc>]]></assert-xml>
       </result>
    </test-case>
+   
+   
 </test-set>
