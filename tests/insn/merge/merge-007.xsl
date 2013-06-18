@@ -3,6 +3,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
     version="3.0">
+    <!-- error: more than one xsl:merge-action child element -->
     <xsl:template name="main">
     <xsl:result-document href="merged-events.xml">
         <events>
