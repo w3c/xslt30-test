@@ -2,18 +2,19 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns:f="http://f.com/">
 
 <?spec xslt#patterns?>
-<?error XPST0017?>
-  <!-- FileName: match9059-err -->
-    <!-- Purpose: Test union operator not at the top level of a pattern -->
-  
-<xsl:key name="k" match="*" use="42"/>  
 
-<xsl:template match="key('k', 42)//(a|b)" priority="5">
- <out>WRONG!</out>
+    <!-- Purpose: Test union operator not at the top level of a pattern. Allowed in 3.0 -->
+  
+<xsl:key name="k" match="*" use="@att1"/>  
+
+<xsl:template match="key('k', 'c')//(bar|baz)" priority="5">
+ <out><xsl:value-of select="@att1"/></out>
 </xsl:template>
 
 <xsl:template match="/">
-<out>OK!</out>
+  <xsl:apply-templates select=".//*"/>
 </xsl:template>
+
+<xsl:template match="*"/>
 
 </xsl:stylesheet>

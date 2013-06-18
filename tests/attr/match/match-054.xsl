@@ -5,7 +5,7 @@
     exclude-result-prefixes="xs m">
 
 <?spec xslt#patterns?>
-    <!-- Purpose: Test of element-with-id('literal') as match pattern, new in XSLT 2.1. -->
+    <!-- Purpose: Test of element-with-id('literal') as match pattern, new in XSLT 3.0. -->
   
 <xsl:import-schema namespace="http://match84/">
   <xs:schema targetNamespace="http://match84/">

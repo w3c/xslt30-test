@@ -6,8 +6,7 @@
     version="3.0">
 
 <?spec xslt#patterns?>
-    <!-- Purpose: Union pattern allowing node test or atomic value. -->
-  <!-- Update 2012-09-12: no longer meaningful according to the latest spec -->
+    <!-- Purpose: Union pattern incorrectly allowing node test or atomic value. -->
 
 <xsl:template match="/">
  <out>
@@ -16,11 +15,11 @@
  </out>
 </xsl:template>
 
-<xsl:template match="~element(doc)">
+<xsl:template match="element(doc)">
   <doc2><xsl:apply-templates/></doc2>
 </xsl:template>
 
-<xsl:template match="~element(foo) | ~xs:integer">
+<xsl:template match="element(foo) | .[. instance of xs:integer]">
   <foo2/>
 </xsl:template>
 

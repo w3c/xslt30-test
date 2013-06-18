@@ -6,7 +6,8 @@
     version="3.0">
 
 <?spec xslt#patterns?>
-    <!-- Purpose: numeric value of predicate. Rules unclear, see spec bug 12455 -->
+    <!-- Purpose: numeric value of predicate.  -->
+    <!-- Purpose: comments in a pattern.  -->
 
 <xsl:template name="main">
  <out>
@@ -14,12 +15,15 @@
  </out>
 </xsl:template>
 
-<xsl:template match="~xs:integer">
+
+<xsl:template match=".[. instance of xs:integer]">
   <first><xsl:next-match/></first>
 </xsl:template>
 
-<xsl:template match="~xs:integer[2]">
+<xsl:template match="(:a(:z:)a:) . (:b:) [. instance (:c:) of xs:integer](:d:)[2](:e:)">
+  <!-- EBV of 2 is true, so the predicate matches -->
   <second><xsl:next-match/></second>
 </xsl:template>
+
 
 </xsl:stylesheet>

@@ -6,7 +6,7 @@
     version="3.0">
 
 <?spec xslt#patterns?>
-    <!-- Purpose: descendant axis in pattern -->
+    <!-- Purpose: self axis in pattern -->
 
 
 <xsl:template match="/">
@@ -15,11 +15,7 @@
 </out> 
 </xsl:template>
 
-<xsl:template match="doc/descendant::foo">
-  <ok a="{@att1}"/>
-</xsl:template>
-
-<xsl:template match="doc/descendant-or-self::foo">
+<xsl:template match="self::baz">
   <ok a="{@att1}"/>
 </xsl:template>
 

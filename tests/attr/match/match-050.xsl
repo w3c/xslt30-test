@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
 
 <?spec xslt#patterns?>
-    <!-- Purpose: Test match="$x//a" - allowed in 2.1. -->
+    <!-- Purpose: Test match="$x//a" - allowed in 3.0. -->
   
 <xsl:variable name="x" select="/doc"/>  
 <xsl:variable name="y">

@@ -14,15 +14,15 @@
  </out>
 </xsl:template>
 
-<xsl:template match=" ?{ . instance of xs:integer or . instance of xs:double } ">
+<xsl:template match=" .[ . instance of xs:integer or . instance of xs:double ] ">
   <n><xsl:value-of select="."/></n>
 </xsl:template>
 
-<xsl:template match=" ?{ . instance of xs:date }">
+<xsl:template match=" .[ . instance of xs:date ]">
   <d><xsl:value-of select="."/></d>
 </xsl:template>
 
-<xsl:template match=" ?{ . instance of xs:anyAtomicType }" priority="0.1">
+<xsl:template match=" .[ . instance of xs:anyAtomicType ]" priority="0.1">
   <a><xsl:value-of select="."/></a>
 </xsl:template>
 

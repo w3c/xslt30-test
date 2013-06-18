@@ -6,7 +6,7 @@
     version="3.0">
 
 <?spec xslt#patterns?>
-    <!-- Purpose: the priority of the pattern ~xs:integer[. gt 0] is +1.5. -->
+    <!-- Purpose: the priority of the pattern .[. instance of xs:integer][. gt 0] is +1. -->
   <!-- Purpose: xsl:next-match when context item is not a node -->
 
 <xsl:template name="main">
@@ -15,15 +15,15 @@
  </out>
 </xsl:template>
 
-<xsl:template match="~xs:integer" priority="1.499999">
+<xsl:template match=".[. instance of xs:integer]" priority="0.999999">
   <third><xsl:next-match/></third>
 </xsl:template>
 
-<xsl:template match="~xs:integer" priority="1.5000001">
+<xsl:template match=".[. instance of xs:integer]" priority="1.0000001">
   <first><xsl:next-match/></first>
 </xsl:template>
 
-<xsl:template match="~xs:integer[. gt 0]">
+<xsl:template match=".[. instance of xs:integer][. gt 0]">
   <second><xsl:next-match/></second>
 </xsl:template>
 

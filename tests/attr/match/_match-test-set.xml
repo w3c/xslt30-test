@@ -1654,11 +1654,11 @@
    </test-case>
 
    <test-case name="match-081">
-      <description>FileName: MATCH9059-ERR Test union operator not at top level of pattern</description>
+      <description>Union operator not at top level of pattern, not allowed in 2.0</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="match1059"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="match-081.xsl"/>
@@ -1670,13 +1670,28 @@
          </any-of>
       </result>
    </test-case>
-
-   <test-case name="match-082">
-      <description>FileName: MATCH9059-ERR Test parens at top level of pattern, not allowed</description>
+   
+   <test-case name="match-081a">
+      <description>Union operator not at top level of pattern, allowed in 3.0</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="match1059"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-081.xsl"/>
+      </test>
+      <result>
+         <assert>/out = 'wrong'</assert>
+      </result>
+   </test-case>
+
+   <test-case name="match-082">
+      <description>Test parens at top level of pattern, not allowed in 2.0</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="match-082.xsl"/>
@@ -1686,6 +1701,21 @@
             <error code="XTSE0340"/>
             <error code="XPST0017"/>
          </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="match-082a">
+      <description>Test parens at top level of pattern, allowed in 3.0</description>
+      <created by="Michael Kay" on="2013-06-18"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-082.xsl"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
       </result>
    </test-case>
 
@@ -3882,6 +3912,21 @@
       </test>
       <result>
          <error code="XTSE0340"/>
+      </result>
+   </test-case>
+   
+   <test-case name="match-214">
+      <description>self axis in pattern</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-214.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><ok a="wrong"/></out>]]></assert-xml>
       </result>
    </test-case>
 </test-set>

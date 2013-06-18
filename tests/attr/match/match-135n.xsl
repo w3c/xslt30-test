@@ -11,7 +11,7 @@
 
 <xsl:template name="main">
  <out>
- 	<xsl:for-each-group select="1 to 20" group-ending-with="?{. mod 3 = 0}">
+ 	<xsl:for-each-group select="1 to 20" group-ending-with=".[. mod 3 = 0]">
  	    <g><xsl:copy-of select="current-group()"/></g>
  	</xsl:for-each-group>
  </out>
