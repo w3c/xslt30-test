@@ -13,7 +13,7 @@
  </out>
 </xsl:template>
 
-<xsl:template match="?{ . instance of xs:integer }">
+<xsl:template match=".[ . instance of xs:integer ]">
   <i><xsl:value-of select="."/></i>
 </xsl:template>
 

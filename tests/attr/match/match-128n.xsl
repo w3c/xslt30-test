@@ -13,11 +13,11 @@
  </out>
 </xsl:template>
 
-<xsl:template match="?{ . instance of xs:integer }" priority="2">
+<xsl:template match=".[ . instance of xs:integer ]" priority="2">
   <i><xsl:value-of select="."/></i>
 </xsl:template>
 
-<xsl:template match="?{ . instance of xs:decimal }" priority="1.5">
+<xsl:template match=".[ . instance of xs:decimal ]" priority="1.5">
   <d><xsl:value-of select="."/></d>
 </xsl:template>
 

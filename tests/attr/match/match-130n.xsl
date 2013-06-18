@@ -13,15 +13,15 @@
  </out>
 </xsl:template>
 
-<xsl:template match="?{ .=0 }">
+<xsl:template match=".[ .=0 ]">
   <zero><xsl:value-of select="."/></zero>
 </xsl:template>
 
-<xsl:template match="?{. lt 0 }">
+<xsl:template match=".[. lt 0 ]">
   <negative><xsl:value-of select="."/></negative>
 </xsl:template>
 
-<xsl:template match="?{. gt 0}">
+<xsl:template match=".[. gt 0]">
   <positive><xsl:value-of select="."/></positive>
 </xsl:template>
 

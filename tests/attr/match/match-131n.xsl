@@ -15,15 +15,15 @@
  </out>
 </xsl:template>
 
-<xsl:template match="?{. instance of xs:integer}" priority="0.99999">
+<xsl:template match=".[. instance of xs:integer]" priority="0.99999">
   <third><xsl:next-match/></third>
 </xsl:template>
 
-<xsl:template match="?{. instance of xs:integer}" priority="1.000001">
+<xsl:template match=".[. instance of xs:integer]" priority="1.000001">
   <first><xsl:next-match/></first>
 </xsl:template>
 
-<xsl:template match="?{. instance of xs:integer}">
+<xsl:template match=".[. instance of xs:integer]">
   <second><xsl:next-match/></second>
 </xsl:template>
 

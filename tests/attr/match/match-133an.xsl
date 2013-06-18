@@ -10,7 +10,7 @@
 
 
 
-<xsl:template match="?{. instance of xs:integer}">
+<xsl:template match=".[. instance of xs:integer]">
   <second><xsl:apply-imports/></second>
 </xsl:template>
 

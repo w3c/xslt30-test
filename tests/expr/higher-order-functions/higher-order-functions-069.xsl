@@ -7,7 +7,7 @@
     
     <!-- apply-templates to a function item -->
     
-    <xsl:template match="?{ . instance of function(*)}">
+    <xsl:template match=".[ . instance of function(*)]">
       <f name="{function-name(.)}" arity="{function-arity(.)}"/>
     </xsl:template>
     

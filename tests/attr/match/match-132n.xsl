@@ -13,11 +13,11 @@
  </out>
 </xsl:template>
 
-<xsl:template match="?{ . instance of xs:integer }">
+<xsl:template match=".[ . instance of xs:integer ]">
   <first><xsl:next-match/></first>
 </xsl:template>
 
-<xsl:template match="?{ .[2] instance of xs:integer }">
+<xsl:template match=".[ .[2] instance of xs:integer ]">
   <second><xsl:next-match/></second>
 </xsl:template>
 
