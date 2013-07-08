@@ -4,7 +4,7 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
 
 <?spec xslt#format-date?>
-  <!-- PURPOSE: XSLT 2.0: test format-date: lower-case roman numerals for year (width specifier ignored)-->
+  <!-- PURPOSE: XSLT 2.0: test format-date: lower-case roman numerals for year (width specifier causes padding to 4 chars)-->
 
   <xsl:param name="t" as="xs:date" select="xs:date('0800-01-01')"/>  
 
