@@ -5,6 +5,7 @@
   
   <!-- Demonstrate error when using group-starting-with when population 
        contains atomic values -->
+  <!-- No longer an error with XSLT 3.0 -->     
        <?spec xslt#grouping?>
        <?error XTTE1120?>
 
@@ -14,7 +15,7 @@
    <out>
     <xsl:for-each-group select="1,2,3,4,2,1" group-starting-with="/">
       <group>
-        <xsl:message>Error not detected!</xsl:message>
+        <xsl:value-of select="current-group()"/>
       </group>
     </xsl:for-each-group>
    </out>

@@ -338,6 +338,7 @@ while you are in the cinema.</p>]]></content>
    <test-case name="for-each-group-015">
       <description>Nesting positional grouping inside value-based grouping - bug 18333</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2013-06-19" change="reflect decision on bug 18333"/>
       <environment ref="group001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -346,7 +347,7 @@ while you are in the cinema.</p>]]></content>
          <stylesheet file="for-each-group-015.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><g><h key=""/><h key=""/><h key=""/></g></out>]]></assert-xml>
+         <error code="XTDE1071"/>
       </result>
    </test-case>
 
@@ -859,17 +860,32 @@ while you are in the cinema.</p></o>]]></assert-xml>
    </test-case>
 
    <test-case name="for-each-group-046">
-      <description>Demonstrate error when using group-starting-with when population contains atomic values</description>
+      <description>Demonstrate error in 2.0 when using group-starting-with when population contains atomic values</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="group020"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="for-each-group-046.xsl"/>
       </test>
       <result>
          <error code="XTTE1120"/>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-046a">
+      <description>Demonstrate non-error in 3.0 when using group-starting-with when population contains atomic values</description>
+      <created by="Michael Kay" on="2013-06-19"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-046.xsl"/>
+      </test>
+      <result>
+         <assert>/out/group = '1 2 3 4 2 1'</assert>
       </result>
    </test-case>
 
