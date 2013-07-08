@@ -13055,11 +13055,12 @@ else
          </fos:example>
       </fos:examples>
    </fos:function>
-   <fos:function name="map" diff="add" at="C">
+   <fos:function name="for-each" diff="add" at="C">
       <fos:signatures>
-         <fos:proto name="map" return-type="item()*">
-            <fos:arg name="f" type="function(item()) as item()*"/>
+         <fos:proto name="for-each" return-type="item()*">
             <fos:arg name="seq" type="item()*"/>
+            <fos:arg name="f" type="function(item()) as item()*"/>
+            
          </fos:proto>
       </fos:signatures>
       <fos:properties>
@@ -13120,8 +13121,8 @@ declare function fn:map($f, $seq) {
    <fos:function name="filter" diff="add" at="D">
       <fos:signatures>
          <fos:proto name="filter" return-type="item()*">
-            <fos:arg name="f" type="function(item()) as xs:boolean"/>
-            <fos:arg name="seq" type="item()*"/>
+            <fos:arg name="seq" type="item()*"/><fos:arg name="f" type="function(item()) as xs:boolean"/>
+            
          </fos:proto>
       </fos:signatures>
       <fos:properties>
@@ -13185,9 +13186,10 @@ declare function fn:filter(
    <fos:function name="fold-left" diff="add" at="D">
       <fos:signatures>
          <fos:proto name="fold-left" return-type="item()*">
-            <fos:arg name="f" type="function(item()*, item()) as item()*"/>
-            <fos:arg name="zero" type="item()*"/>
             <fos:arg name="seq" type="item()*"/>
+            <fos:arg name="zero" type="item()*"/>
+            <fos:arg name="f" type="function(item()*, item()) as item()*"/>
+            
          </fos:proto>
       </fos:signatures>
       <fos:properties>
@@ -13306,9 +13308,10 @@ declare function fn:fold-left(
    <fos:function name="fold-right" diff="add" at="D">
       <fos:signatures>
          <fos:proto name="fold-right" return-type="item()*">
-            <fos:arg name="f" type="function(item(), item()*) as item()*"/>
-            <fos:arg name="zero" type="item()*"/>
             <fos:arg name="seq" type="item()*"/>
+            <fos:arg name="zero" type="item()*"/>
+            <fos:arg name="f" type="function(item()*, item()) as item()*"/>
+            
          </fos:proto>
       </fos:signatures>
       <fos:properties>
@@ -13394,12 +13397,13 @@ declare function fn:fold-right(
          </fos:example>
       </fos:examples>
    </fos:function>
-   <fos:function name="map-pairs" diff="add" at="D">
+   <fos:function name="for-each-pair" diff="add" at="D">
       <fos:signatures>
-         <fos:proto name="map-pairs" return-type="item()*">
-            <fos:arg name="f" type="function(item(), item()) as item()*"/>
+         <fos:proto name="for-each-pair" return-type="item()*">
             <fos:arg name="seq1" type="item()*"/>
             <fos:arg name="seq2" type="item()*"/>
+            <fos:arg name="f" type="function(item(), item()) as item()*"/>
+            
          </fos:proto>
       </fos:signatures>
       <fos:properties>
