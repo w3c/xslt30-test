@@ -685,13 +685,28 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sequence-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="sequence-0137.xsl"/>
       </test>
       <result>
          <error code="XTSE0010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sequence-0137a">
+      <description>Test sequence construction using xsl:sequence with content. Not an error in 3.0</description>
+      <created by="Michael Kay" on="2013-06-19"/>
+      <environment ref="sequence-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sequence-0137.xsl"/>
+      </test>
+      <result>
+         <assert>/zzz = '5 10 6 11 7 5 20 6 21 7 5 30 6 31 7'</assert>
       </result>
    </test-case>
 

@@ -20,7 +20,7 @@
        </xsl:sequence>
     </xsl:for-each>
   </xsl:variable>
-  <zzz><xsl:value-of select="$q" separator=","/></zzz>
+  <zzz><xsl:value-of select="$q" separator=" "/></zzz>
 </xsl:template>
  
 </xsl:stylesheet>
