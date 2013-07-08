@@ -3929,4 +3929,19 @@
          <assert-xml><![CDATA[<out><ok a="wrong"/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="match-215">
+      <description>patterns that match / do not match parentless nodes</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="match1059"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-215.xsl"/>
+      </test>
+      <result>
+         <assert>/out/two[@nr='1']/one[@nr='1']/three[@nr='2']/two[@nr='2']/one[@nr='2']</assert>
+      </result>
+   </test-case>
 </test-set>
