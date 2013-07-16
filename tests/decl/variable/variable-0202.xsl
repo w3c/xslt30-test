@@ -5,7 +5,7 @@ xmlns:f="http://fxsl.sf.net/"
 xmlns:test="my:test"
   exclude-result-prefixes="f xs test"
 >
-  <!-- test of overrideExtensionFunction a tunnel parameter -->
+  <!-- test of overriding a tunnel parameter -->
   <?spec xslt#tunnel-params?>
   <?same-as-1.0 no?>
   

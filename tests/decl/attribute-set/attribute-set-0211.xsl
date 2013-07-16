@@ -5,7 +5,7 @@
    <?spec xslt#attribute-sets?>
   <!-- PURPOSE: Set attributes of an LRE, -->
   <!-- using one attribute set with multiple attributes, -->
-  <!-- and one overrideExtensionFunction LRE attribute, and one overrideExtensionFunction -->
+  <!-- and one overriding LRE attribute, and one overriding -->
   <!-- xsl:attribute attribute. -->
   <xsl:attribute-set name="set1">
     <xsl:attribute name="color">black</xsl:attribute>
