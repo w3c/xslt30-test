@@ -8,7 +8,7 @@
   version="3.0"
   exclude-result-prefixes="schold xhtml my myin oclDate oclString">
   
-  <!--Implementers: please note that overriding process-prolog or process-root is 
+  <!--Implementers: please note that overrideExtensionFunction process-prolog or process-root is
     the preferred method for meta-stylesheets to use where possible. -->
   <xsl:param name="archiveDirParameter"/>
   <xsl:param name="archiveNameParameter"/>

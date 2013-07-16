@@ -6,7 +6,7 @@
   <!-- Document: http://www.w3.org/TR/xpath -->
   <!-- DocVersion: 19991116 -->
   <!-- Section: 3.4 -->
-    <!-- Purpose: Test of boolean and, or with parens overriding precedence. -->
+    <!-- Purpose: Test of boolean and, or with parens overrideExtensionFunction precedence. -->
 
 <xsl:template match="doc">
   <out>
