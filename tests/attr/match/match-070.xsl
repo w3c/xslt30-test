@@ -8,7 +8,7 @@
 <?spec xslt#patterns?>
     <!-- Purpose: doc() function in pattern -->
   
-<xsl:mode  name="two" on-no-match="deep-skip"/>
+<xsl:mode  name="two" on-no-match="shallow-skip"/>
 
 <xsl:template match="/">
 <out>
