@@ -11,10 +11,10 @@
     name="http://www.w3.org/xslt30tests/use-package-base-001"
     package-version="1.0.0">
     <xsl:override>
-      <xsl:function name="p:f" as="xs:string" visibility="public">
-        <xsl:param name="in" as="xs:integer"/>
+      <xsl:function name="p:fa" as="xs:string" visibility="public">
+        <xsl:param name="in" as="xs:string"/>
         <xsl:param name="count" as="xs:integer"/>
-        <xsl:sequence select="'should fail'"/>
+        <xsl:sequence select="string-join((1 to $count)!$in, ',')"/>
       </xsl:function>
     </xsl:override>
   </xsl:use-package>
@@ -28,7 +28,7 @@
       <xsl:choose>
         <xsl:when test="p:f('x', 5) = 'xxxxx'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="p:f('x', 5)"/></xsl:otherwise>
-      <xsl:choose>
+      </xsl:choose>
     </xsl:template>
     
   </xsl:stylesheet>  
