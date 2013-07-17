@@ -14,7 +14,7 @@
       <xsl:function name="p:f" as="xs:string" visibility="public">
         <xsl:param name="in" as="xs:integer"/>
         <xsl:param name="count" as="xs:integer"/>
-        <xsl:sequence select="'should fail'"/>
+        <xsl:sequence select="()"/>
       </xsl:function>
     </xsl:override>
   </xsl:use-package>
@@ -27,7 +27,7 @@
     <xsl:template name="main">
       <xsl:choose>
         <xsl:when test="p:f('x', 5) = 'xxxxx'"><ok/></xsl:when>
-        <xsl:otherwise><wrong value="p:f('x', 5)"/></xsl:otherwise>
+        <xsl:otherwise><wrong value="p:f(5, 5)"/></xsl:otherwise>
       </xsl:choose>
     </xsl:template>
     
