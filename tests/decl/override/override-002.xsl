@@ -8,7 +8,7 @@
   exclude-result-prefixes="xs p">
   
   <xsl:use-package
-    name="http://www.w3.org/xslt30tests/use-package-base-001"
+    name="http://www.w3.org/xslt30tests/override-base-001"
     package-version="1.0.0">
     <xsl:override>
       <xsl:function name="p:f" as="xs:string" visibility="public">
