@@ -32,6 +32,6 @@
       <xsl:param name="count" as="xs:integer"/>
     </xsl:function>
     
-  </xsl:stylsheet>
+  </xsl:stylesheet>
   
 </xsl:package>   
