@@ -24,6 +24,45 @@
          <assert>/ok</assert>
       </result>
    </test-case>
+   
+   <test-case name="override-002">
+      <description>Successful use of override of a function defined in a library package</description>
+      <created by="O'Neil Delpratt" on="2013-07-17"/>
+      <environment ref="override-env-001"/>
+      <test>
+         <package file="override-002.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-003">
+      <description>Unsuccessful use of override of a function defined in a library package. Parameter types are different</description>
+      <created by="O'Neil Delpratt" on="2013-07-17"/>
+      <environment ref="override-env-001"/>
+      <test>
+         <package file="override-003.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-004">
+      <description>Unsuccessful use of override of a function as it is not defined in a library package.</description>
+      <created by="O'Neil Delpratt" on="2013-07-17"/>
+      <environment ref="override-env-001"/>
+      <test>
+         <package file="override-004.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>   
 
 
 </test-set>
