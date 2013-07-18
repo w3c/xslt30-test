@@ -86,5 +86,86 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="use-package-103">
+      <description>Namespace aliases are local to a package</description>
+      <created by="Michael Kay" on="2013-07-17"/>
+      <environment ref="use-package-env-002"/>
+      <test>
+         <package file="use-package-103.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>namespace-uri(/out/*:test[1]) = 'http://www.w3.org/xslt30tests/use-package-103'</assert>
+           <assert>namespace-uri(/out/*:test[2]) = 'http://www.w3.org/xslt30tests/use-package-base-002'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-104">
+      <description>Decimal formats are local to a package</description>
+      <created by="Michael Kay" on="2013-07-18"/>
+      <environment ref="use-package-env-002"/>
+      <test>
+         <package file="use-package-104.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1280"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-105">
+      <description>Keys are local to a package</description>
+      <created by="Michael Kay" on="2013-07-18"/>
+      <environment ref="use-package-env-002"/>
+      <test>
+         <package file="use-package-105.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1260"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-106">
+      <description>Character maps are local to a package</description>
+      <created by="Michael Kay" on="2013-07-18"/>
+      <environment ref="use-package-env-002"/>
+      <test>
+         <package file="use-package-106.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE1590"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-107">
+      <description>The unnamed output format is local to a package</description>
+      <created by="Michael Kay" on="2013-07-18"/>
+      <environment ref="use-package-env-002"/>
+      <test>
+         <package file="use-package-107.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'zzz'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-108">
+      <description>The unnamed output format is local to a package</description>
+      <created by="Michael Kay" on="2013-07-18"/>
+      <environment ref="use-package-env-002"/>
+      <test>
+         <package file="use-package-108.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<out>ZZZZZZ</out>]]></serialization-matches>
+      </result>
+   </test-case>
 
 </test-set>

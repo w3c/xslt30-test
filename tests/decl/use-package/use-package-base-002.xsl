@@ -33,6 +33,17 @@
       <xs:test/>
     </xsl:function>
     
+    <xsl:output name="with-maps" use-character-maps="cm"/>
+    <xsl:character-map name="cm">
+      <xsl:output-character character="z" string="ZZ"/>
+    </xsl:character-map>
+    
+    <xsl:template name="go" visibility="public">
+      <xsl:result-document format="with-maps">
+        <out>zzz</out>
+      </xsl:result-document>
+    </xsl:template>
+    
   </xsl:stylesheet>
   
 </xsl:package>   
