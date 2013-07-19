@@ -26,7 +26,7 @@
    
     <xsl:template name="main">
       <xsl:choose>
-        <xsl:when test="p:f('x', 5) = 'xxxxx'"><ok/></xsl:when>
+        <xsl:when test="p:f(5, 5) = 'xxxxx'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="p:f(5, 5)"/></xsl:otherwise>
       </xsl:choose>
     </xsl:template>
