@@ -1,5 +1,5 @@
 <xsl:package 
-  name="http://www.w3.org/xslt30tests/use-package-004"
+  name="http://www.w3.org/xslt30tests/override-004"
   package-version="1.0.0"
   version="3.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
