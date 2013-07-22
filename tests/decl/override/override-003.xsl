@@ -11,7 +11,7 @@
     name="http://www.w3.org/xslt30tests/override-base-001"
     package-version="1.0.0">
     <xsl:override>
-      <xsl:function name="p:f" as="xs:string" visibility="public">
+      <xsl:function name="p:f" as="xs:integer" visibility="public">
         <xsl:param name="in" as="xs:integer"/>
         <xsl:param name="count" as="xs:integer"/>
         <xsl:sequence select="()"/>
