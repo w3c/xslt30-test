@@ -4,12 +4,13 @@
   				no initial context node specified. -->
 
    <t:template match="/">
-		    <t:comment>ERROR: this value should NOT appear</t:comment>
-	  </t:template>
+	 <t:comment>ERROR: this value should NOT appear</t:comment>
+   </t:template>
 
    <t:template name="temp">
-	  	  <out>
+	  <out>
          <t:copy-of select="ancestor-or-self::*"/>
       </out>
-	  </t:template>
+   </t:template>
+   
 </t:transform>

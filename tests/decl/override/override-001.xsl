@@ -9,7 +9,7 @@
   
   <xsl:use-package
     name="http://www.w3.org/xslt30tests/override-base-001"
-    package-version="1.0.0"
+    package-version="1.0.0">
   
     <xsl:override>
   
@@ -34,8 +34,8 @@
     <xsl:template name="main">
       <xsl:choose>
         <xsl:when test="p:f('x', 5) = '*xxxxx*'"><ok/></xsl:when>
-        <xsl:otherwise><wrong value="p:f('x', 5)"/></xsl:otherwise>
-      <xsl:choose>
+        <xsl:otherwise><wrong value="{p:f('x', 5)}"/></xsl:otherwise>
+      </xsl:choose>
     </xsl:template>
     
   </xsl:stylesheet>  
