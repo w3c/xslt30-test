@@ -27,10 +27,10 @@
       <xsl:sequence select="p:f-private($in, $count)"/>
     </xsl:function>
     
-<!--     <xsl:function name="p:f-abstract" as="xs:string" visibility="abstract" >
+    <xsl:function name="p:f-abstract" as="xs:string" visibility="abstract" >
       <xsl:param name="in" as="xs:string"/>
       <xsl:param name="count" as="xs:integer"/>
-    </xsl:function>-->
+    </xsl:function>
     
   </xsl:stylesheet>
   
