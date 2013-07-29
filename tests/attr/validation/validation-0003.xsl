@@ -6,13 +6,21 @@ exclude-result-prefixes="xs">
 
 <?spec xslt#validation-xsl-type?>
 
-<!-- No validation takes place if there is an on-error attribute (XSLT 3.0) -->
+<!-- Validation takes place if there is an on-empty attribute (XSLT 3.0) -->
 
 <xsl:param name="p" select="''"/>
 
+<xsl:variable name="v"><foo bar="12.4"/></xsl:variable>
+
 <xsl:template name="main">
   <out>
-    <xsl:attribute name="wrong" type="xs:integer" select="$p" on-empty="'empty'"/>
+    <xsl:attribute name="wrong" type="xs:integer" select="$p" on-empty="$v//@bar"/>
+  </out>
+</xsl:template>
+
+<xsl:template name="a">
+  <out>
+    <xsl:attribute name="wrong" type="xs:integer" select="$p" on-empty="$v"/>
   </out>
 </xsl:template>
 

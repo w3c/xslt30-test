@@ -32,8 +32,9 @@
    
 
    <test-case name="validation-0003">
-      <description>Use on-empty attribute on xsl:attribute (XSLT 3.0) - content not validated if on-empty triggered</description>
+      <description>Use on-empty attribute on xsl:attribute (XSLT 3.0) - content is now validated if on-empty triggered</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2013-07-26" change="validation now takes place"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
@@ -43,7 +44,25 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>empty</out>]]></assert-xml>
+         <!--<assert-xml><![CDATA[<out>empty</out>]]></assert-xml>-->
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-0003a">
+      <description>Use on-empty attribute on xsl:attribute (XSLT 3.0) - on-empty result must be an attribute node or nothing</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0003.xsl"/>
+         <initial-template name="a"/>
+      </test>
+      <result>
+         <!--<assert-xml><![CDATA[<out>empty</out>]]></assert-xml>-->
+         <error code="XXXX9999"/>
       </result>
    </test-case>
 
