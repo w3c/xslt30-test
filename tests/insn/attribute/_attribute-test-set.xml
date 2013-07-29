@@ -174,6 +174,67 @@
          <assert-xml><![CDATA[<atrs69/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="attribute-0008">
+      <description>Use on-empty attribute on xsl:attribute (XSLT 3.0) - returning an attribute node</description>
+      <created by="Michael Kay" on="2013-07-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-0008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<test68 b="blue" z="azure"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-0009">
+      <description>Use on-empty attribute on xsl:attribute (XSLT 3.0) - returning two attribute nodes (type error)</description>
+      <created by="Michael Kay" on="2013-07-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-0009.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTTE3320"/>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-0010">
+      <description>Use on-empty attribute on xsl:attribute (XSLT 3.0) - returning namespace node (type error)</description>
+      <created by="Michael Kay" on="2013-07-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-0010.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTTE3320"/>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-0011">
+      <description>Use on-empty attribute on xsl:attribute (XSLT 3.0) - returns attribute that fails validation</description>
+      <created by="Michael Kay" on="2013-07-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-0011.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTTE3320"/>
+      </result>
+   </test-case>
 
    <test-case name="attribute-0301">
       <description>test use of non-ASCII characters in URL and non-URL attributes using HTML output method</description>
