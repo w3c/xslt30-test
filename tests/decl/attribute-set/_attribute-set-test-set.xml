@@ -14,58 +14,17 @@
 
    <environment name="attribute-set-10">
       <source role=".">
-         <content><![CDATA[<doc>
- <test>a</test>
-</doc>]]></content>
+         <content><![CDATA[<doc><test>a</test></doc>]]></content>
       </source>
    </environment>
 
    <environment name="attribute-set-15">
       <source role=".">
-         <content><![CDATA[<doc>
-  <foo>a</foo>
-</doc>]]></content>
+         <content><![CDATA[<doc><foo>a</foo></doc>]]></content>
       </source>
    </environment>
-   <environment name="attribute-set-16">
-      <source role=".">
-         <content><![CDATA[ <doc>
-  <test>a</test>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="attribute-set-17">
-      <source role=".">
-         <content><![CDATA[ 
-<doc>
-  <foo>a</foo>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="attribute-set-18">
-      <source role=".">
-         <content><![CDATA[<doc>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="attribute-set-19">
-      <source role=".">
-         <content><![CDATA[ 
 
-<doc>
-  <foo>a</foo>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="attribute-set-20">
-      <source role=".">
-         <content><![CDATA[
-<doc>
-  <foo>a</foo>
-</doc>]]></content>
-      </source>
-   </environment>
-   <environment name="attribute-set-21">
+   <environment name="attribute-set-18">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
       </source>
@@ -295,6 +254,22 @@
          <assert-xml><![CDATA[<out><test format="bold"/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="attribute-set-1002">
+      <description>Purpose: Set attributes of an element created with xsl:element from single attribute set.  ResultTree007 in NIST suite</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="attribute-set-10"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-1002.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><test1 format="bold"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
 
    <test-case name="attribute-set-1501">
       <description>Purpose: Use xsl:copy with multiple attribute sets that inherit, but have conflicts.  ResultTree004 in NIST suite</description>
@@ -452,35 +427,52 @@
       </result>
    </test-case>
 
-   <test-case name="attribute-set-1601">
-      <description>Purpose: Set attributes of an element created with xsl:element from single attribute set.  ResultTree007 in NIST suite</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-16"/>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="attribute-set-1601.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out><test1 format="bold"/></out>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="attribute-set-1701">
+   <test-case name="attribute-set-1511">
       <description>Purpose: Use xsl:element with multiple attribute sets that inherit.  ResultTree005 in NIST suite</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-17"/>
+      <environment ref="attribute-set-15"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-1701.xsl"/>
+         <stylesheet file="attribute-set-1511.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><test font-size="14pt" text-decoration="underline" color="black"/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="attribute-set-1512">
+      <description>Test inheritance of attribute sets. A literal result element is referring an attribute set that is defined by two separate &lt;xsl:attribute-set.../&gt; elements with the same name. Both these elements have a use-attribute-sets attribute, which means that we have a single attribute set that inherits from two other attribute sets. Both parents attribute sets have attributes that are overridden by the child.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="attribute-set-15"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-1512.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out alice="intoxicated" follow="theleader" rabbithole="deep" location="Wonderland"/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="attribute-set-1513">
+      <description>Test inheritance of attribute sets. A xsl:element instruction is referring an attribute set that is defined by two separate xsl:attribute-set elements with the same name.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="attribute-set-15"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-1513.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out follow="theleader" rabbithole="shallow" alice="intoxicated"
+     location="Wonderland"/>]]></assert-xml>
+      </result>
+   </test-case>
+
 
    <test-case name="attribute-set-1801">
       <description>Test use of leading underscore in names.</description>
@@ -497,197 +489,166 @@
       </result>
    </test-case>
 
-   <test-case name="attribute-set-1901">
-      <description>Test inheritance of attribute sets. A literal result element is referring an attribute set that is defined by two separate &lt;xsl:attribute-set.../&gt; elements with the same name. Both these elements have a use-attribute-sets attribute, which means that we have a single attribute set that inherits from two other attribute sets. Both parents attribute sets have attributes that are overridden by the child.</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-19"/>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="attribute-set-1901.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out alice="intoxicated" follow="theleader" rabbithole="deep" location="Wonderland"/>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="attribute-set-2001">
-      <description>Test inheritance of attribute sets. A xsl:element instruction is referring an attribute set that is defined by two separate xsl:attribute-set elements with the same name.</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-20"/>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="attribute-set-2001.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out follow="theleader" rabbithole="shallow" alice="intoxicated"
-     location="Wonderland"/>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="attribute-set-2101">
+   <test-case name="attribute-set-1802">
       <description>Purpose: Only top-level variables and params are visible within the declaration of an attribute set.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2101.xsl"/>
+         <stylesheet file="attribute-set-1802.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out test="correct"/>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2201">
+   <test-case name="attribute-set-1803">
       <description>Basic test of import precedence with attribute sets</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2201.xsl"/>
+         <stylesheet file="attribute-set-1803.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><foo baz="two"/></out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2202">
+   <test-case name="attribute-set-1804">
       <description>Basic test of import precedence based on Richard Titmuss's test with attribute sets. 
       Here the imported attribute sets have additional non- conflicting attributes as well.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2202.xsl"/>
+         <stylesheet file="attribute-set-1804.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><foo baz="two" foo="ten" poo="twenty"/></out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2301">
+   <test-case name="attribute-set-1805">
       <description>Test attribute set with a qualified name.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2301.xsl"/>
+         <stylesheet file="attribute-set-1805.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><test1 color="black"/></out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2302">
+   <test-case name="attribute-set-1806">
       <description>Test attribute set with a qualified name, different prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2302.xsl"/>
+         <stylesheet file="attribute-set-1806.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><test1 color="black"/></out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2401">
+   <test-case name="attribute-set-1807">
       <description>xsl:attribute with select="x" (XSLT 2.0).</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2401.xsl"/>
+         <stylesheet file="attribute-set-1807.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><test1 color="black"/></out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2402">
+   <test-case name="attribute-set-1808">
       <description>xsl:attribute with select="x" and separators (XSLT 2.0).</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2402.xsl"/>
+         <stylesheet file="attribute-set-1808.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><test1 color="black|blue|3"/></out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2403">
+   <test-case name="attribute-set-1809">
       <description>xsl:attribute with content and separators (XSLT 2.0).</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2403.xsl"/>
+         <stylesheet file="attribute-set-1809.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><test1 color="blackbluegreen"/></out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2404">
+   <test-case name="attribute-set-1810">
       <description>test an empty attribute set &lt;xsl:attribute name="n1" select="s1"/&gt;</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2404.xsl"/>
+         <stylesheet file="attribute-set-1810.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<a/>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2405">
+   <test-case name="attribute-set-1811">
       <description>Test separator on xsl:attribute, with and without select attribute, including default</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2405.xsl"/>
+         <stylesheet file="attribute-set-1811.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<x a="1 2 3" b="1-2-3" c="123" d="1 2 3" e="1-2-3" f="123" g="123" h="1 2 3"/>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="attribute-set-2406">
+   <test-case name="attribute-set-1812">
       <description>check use of attribute sets with a computed element name Saxon bug 1244273 It seems Saxon has a problem with the following line... whereas this line will work as expected...</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="attribute-set-21"/>
+      <environment ref="attribute-set-18"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
-         <stylesheet file="attribute-set-2406.xsl"/>
+         <stylesheet file="attribute-set-1812.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<Data foo="bar"><doc/></Data>]]></assert-xml>

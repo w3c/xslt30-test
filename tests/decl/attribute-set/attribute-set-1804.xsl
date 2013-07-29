@@ -1,8 +1,8 @@
 <?xml version="1.0" ?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
- <xsl:import href="attribute-set-2202a.xsl"/>
- <xsl:import href="attribute-set-2202b.xsl"/>
+ <xsl:import href="attribute-set-1804a.xsl"/>
+ <xsl:import href="attribute-set-1804b.xsl"/>
 
 
  <?spec xslt#attribute-sets?>
