@@ -16,16 +16,6 @@
       </source>
    </environment>
    
-   <environment name="element-02">
-      <source role=".">
-         <content><![CDATA[<file title="XSLT Tutorial"
-   author="no name"
-   type="text"
-   id="0 abc 874 b"
-   date="2005_11_04"/>]]></content>
-      </source>
-   </environment>
-   
    <environment name="element-03">
       <source role="." file="element-03.xml"/>
    </environment>
@@ -153,6 +143,81 @@
          <assert-xml><![CDATA[<out><name xmlns:abc="http://www.test.com"/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="element-0104">
+      <description>xsl:element with on-empty.</description>
+      <created by="Michael Kay" on="2013-07-30"/>
+      <environment ref="element-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="element-0104.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><one><name><e/></name></one><two/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="element-0105">
+      <description>xsl:element with on-empty, producing an element</description>
+      <created by="Michael Kay" on="2013-07-30"/>
+      <environment ref="element-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="element-0105.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><one><name><e/></name></one><two><jaq/></two></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="element-0106">
+      <description>xsl:element with on-empty, with intervening document node</description>
+      <created by="Michael Kay" on="2013-07-30"/>
+      <environment ref="element-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="element-0106.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><one><name><e/></name></one><two><jaq/></two></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="element-0107">
+      <description>xsl:element with on-empty, with intervening empty text node</description>
+      <created by="Michael Kay" on="2013-07-30"/>
+      <environment ref="element-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="element-0107.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><one><name><e/></name></one><two><jaq/></two></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="element-0108">
+      <description>xsl:element with on-empty, value is an atomic type (not allowed)</description>
+      <created by="Michael Kay" on="2013-07-30"/>
+      <environment ref="element-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="element-0108.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE3310"/>
+      </result>
+   </test-case>
 
    <test-case name="element-0201">
       <description>
@@ -160,7 +225,15 @@
          (xsl:attribute instruction, xsl:call-template, xsl:copy-of) to add attributes to the newly created element.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="element-02"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<file title="XSLT Tutorial"
+   author="no name"
+   type="text"
+   id="0 abc 874 b"
+   date="2005_11_04"/>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
