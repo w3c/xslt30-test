@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
+  xmlns:f="http://lre-019.com/" exclude-result-prefixes="f">
 
 <?spec xslt#lre-namespaces?>
 
@@ -16,7 +17,7 @@
     <d><lre xsl:on-empty="()"><?pi?></lre></d>
     <e><lre xsl:on-empty="()"><xsl:attribute name="x">12</xsl:attribute></lre></e>
     <f><lre xsl:on-empty="()" x="12"/></f>
-    <g><lre xsl:on-empty="()"><xsl:attribute name="x" select="nothing" on-empty="'abc'"/></lre></g>
+    <g><lre xsl:on-empty="()"><xsl:attribute name="x" select="nothing" on-empty="f:att()"/></lre></g>
     
     <p><lre xsl:on-empty="()"/></p>
     <q><lre xsl:on-empty="()"><xsl:attribute name="x" select="nothing" on-empty="()"/></lre></q>
@@ -24,5 +25,9 @@
     <s><lre xsl:on-empty="()" xmlns:p="http://p.com/"></lre></s>
   </out>
 </xsl:template>
+
+<xsl:function name="f:att">
+  <xsl:attribute name="x" select="'abc'"/>
+</xsl:function>
 
 </xsl:stylesheet>
