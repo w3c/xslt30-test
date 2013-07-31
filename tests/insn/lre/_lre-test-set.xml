@@ -3,11 +3,7 @@
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="lre">
    <description>Tests lre</description>
-   <environment name="lre01">
-      <source role=".">
-         <content><![CDATA[<doc/>]]></content>
-      </source>
-   </environment>
+   
    <environment name="lre03">
       <source role=".">
          <content><![CDATA[<doc>DocValue</doc>]]></content>
@@ -18,20 +14,10 @@
          <content><![CDATA[<docs><doc1/><doc2/><doc3/></docs>]]></content>
       </source>
    </environment>
-   <environment name="lre06">
-      <source role="." file="lre06.xml"/>
-   </environment>
-   <environment name="lre08">
-      <source role="." file="lre08.xml"/>
-   </environment>
-   <environment name="lre09">
-      <source role=".">
-         <content><![CDATA[<doc/>]]></content>
-      </source>
-   </environment>
+   
    <environment name="lre10">
       <source role=".">
-         <content><![CDATA[<doc></doc>]]></content>
+         <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
    <environment name="lre14">
@@ -39,16 +25,11 @@
          <content><![CDATA[<docs><doc/><a>X</a><a>Y</a><a>Z</a></docs>]]></content>
       </source>
    </environment>
-   <environment name="lre19">
-      <source role=".">
-         <content><![CDATA[<docs><a href="http://www.ped.com">Out1</a></docs>]]></content>
-      </source>
-   </environment>
 
    <test-case name="lre-001">
       <description>Simplest test for creation of a LRE</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="lre01"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -63,7 +44,7 @@
    <test-case name="lre-002">
       <description>Create literal result element with constant attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="lre01"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -76,7 +57,15 @@
    </test-case>
 
    <test-case name="lre-003">
-      <description>Test exclude-result-prefixes as an attribute on an LRE. Elaboration: The created element node will also have a copy of the namespace nodes that were present on the element node in the stylesheet tree with the exception of any namespace node whose string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, or a namespace URI designated as an excluded namespace. (Can't exclude namespaces that are used, however.) The default namespace is used, and so can't be excluded.</description>
+      <description>
+      	Test exclude-result-prefixes as an attribute on an LRE. 
+      	The created element node will also have a copy of the namespace nodes that were present 
+      	on the element node in the stylesheet tree with the exception of any namespace node whose 
+      	string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, 
+      	or a namespace URI designated as an excluded namespace. 
+      	(Can't exclude namespaces that are used, however.) 
+      	The default namespace is used, and so can't be excluded.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre03"/>
       <dependencies>
@@ -91,7 +80,10 @@
    </test-case>
 
    <test-case name="lre-004">
-      <description>The designation of a namespace as an excluded namespace is effective within the subtree of the stylesheet rooted at the element bearing the exclude-result-prefixes or xsl:exclude-result-prefixes attribute.</description>
+      <description>
+      	The designation of a namespace as an excluded namespace is effective within the subtree of the stylesheet 
+      	rooted at the element bearing the exclude-result-prefixes or xsl:exclude-result-prefixes attribute.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre03"/>
       <dependencies>
@@ -148,9 +140,14 @@
    </test-case>
 
    <test-case name="lre-007">
-      <description>Tests that the value of an attribute of a LRE is interpreted as a attribute value template, which can contain expressions within curly braces({}).</description>
+      <description>
+      	Tests that the value of an attribute of a LRE is interpreted as a attribute value template, 
+      	which can contain expressions within curly braces({}).
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="lre06"/>
+      <environment>
+         <source role="." file="lre-007.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -165,7 +162,9 @@
    <test-case name="lre-008">
       <description>The name attribute of xsl:element is interpreted as an attribute value template.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="lre08"/>
+      <environment>
+         <source role="." file="lre-008.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -180,7 +179,7 @@
    <test-case name="lre-009">
       <description>Ensure that names are preserved, case and all.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="lre09"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -193,7 +192,13 @@
    </test-case>
 
    <test-case name="lre-010">
-      <description>Show that attributes from extension namespaces cause inclusion of the namespace node. Purpose: The created element node will also have a copy of the namespace nodes that were present on the element node in the stylesheet tree with the exception of any namespace node whose string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, or a namespace URI designated as an excluded namespace.</description>
+      <description>
+      	Show that attributes from extension namespaces cause inclusion of the namespace node. 
+      	The created element node will also have a copy of the namespace nodes that were present 
+      	on the element node in the stylesheet tree with the exception of any namespace node whose 
+      	string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, 
+      	or a namespace URI designated as an excluded namespace.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre10"/>
       <dependencies>
@@ -218,7 +223,7 @@
          <stylesheet file="lre-011.xsl"/>
       </test>
       <result>
-         <assert-serialization method="text" file="lre13.out"/>
+         <assert-serialization method="text" file="lre-011.out"/>
       </result>
    </test-case>
 
@@ -270,7 +275,13 @@
    </test-case>
 
    <test-case name="lre-015">
-      <description>Show that the namespace node for an extension namespace is automatically excluded. Elaboration: The created element node will also have a copy of the namespace nodes that were present on the element node in the stylesheet tree with the exception of any namespace node whose string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, or a namespace URI designated as an excluded namespace.</description>
+      <description>
+      	Show that the namespace node for an extension namespace is automatically excluded. 
+      	The created element node will also have a copy of the namespace nodes that were present 
+      	on the element node in the stylesheet tree with the exception of any namespace node whose 
+      	string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, 
+      	or a namespace URI designated as an excluded namespace.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre10"/>
       <dependencies>
@@ -285,7 +296,13 @@
    </test-case>
 
    <test-case name="lre-016">
-      <description>Exclude namespace node for an extension namespace via local declaration. Elaboration: The created element node will also have a copy of the namespace nodes that were present on the element node in the stylesheet tree with the exception of any namespace node whose string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, or a namespace URI designated as an excluded namespace.</description>
+      <description>
+      	Exclude namespace node for an extension namespace via local declaration. 
+      	The created element node will also have a copy of the namespace nodes that were present 
+      	on the element node in the stylesheet tree with the exception of any namespace node whose 
+      	string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, 
+      	or a namespace URI designated as an excluded namespace.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre10"/>
       <dependencies>
@@ -300,7 +317,14 @@
    </test-case>
 
    <test-case name="lre-017">
-      <description>Test exclusion of #default, stylesheet level. Elaboration: The created element node will also have a copy of the namespace nodes that were present on the element node in the stylesheet tree with the exception of any namespace node whose string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, or a namespace URI designated as an excluded namespace. (Can't exclude namespaces that are used, however.)</description>
+      <description>
+      	Test exclusion of #default, stylesheet level. 
+      	The created element node will also have a copy of the namespace nodes that were present 
+      	on the element node in the stylesheet tree with the exception of any namespace node whose 
+      	string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, 
+      	or a namespace URI designated as an excluded namespace. 
+      	(Can't exclude namespaces that are used, however.)
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre10"/>
       <dependencies>
@@ -315,7 +339,14 @@
    </test-case>
 
    <test-case name="lre-018">
-      <description>Test exclusion of #default as an attribute on an LRE. Elaboration: The created element node will also have a copy of the namespace nodes that were present on the element node in the stylesheet tree with the exception of any namespace node whose string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, or a namespace URI designated as an excluded namespace. (Can't exclude namespaces that are used, however.)</description>
+      <description>
+      	Test exclusion of #default as an attribute on an LRE. 
+      	The created element node will also have a copy of the namespace nodes that were present 
+      	on the element node in the stylesheet tree with the exception of any namespace node whose 
+      	string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, 
+      	or a namespace URI designated as an excluded namespace. 
+      	(Can't exclude namespaces that are used, however.)
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre10"/>
       <dependencies>
@@ -345,7 +376,14 @@
    </test-case>
 
    <test-case name="lre-020">
-      <description>Show that attributes from XSLT namespace are automatically excluded. Elaboration: The created element node will also have a copy of the namespace nodes that were present on the element node in the stylesheet tree with the exception of any namespace node whose string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, or a namespace URI designated as an excluded namespace. MHK comment: Saxon disallows this. I can't actually see anything in the XSLT 1.0 specification that bans it. It's banned in 2.0</description>
+      <description>
+      	Show that attributes from XSLT namespace are automatically excluded. 
+      	The created element node will also have a copy of the namespace nodes that were present 
+      	on the element node in the stylesheet tree with the exception of any namespace node whose 
+      	string-value is the XSLT namespace URI, a namespace URI declared as an extension namespace, 
+      	or a namespace URI designated as an excluded namespace. 
+      	MHK comment: Saxon disallows this. I can't actually see anything in the XSLT 1.0 
+      	specification that bans it. It's banned in 2.0</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="lre10"/>
       <dependencies>
@@ -407,9 +445,13 @@
    </test-case>
 
    <test-case name="lre-024">
-      <description>Section: 7.1.2 Creating Elements with xsl:element. Test use of leading underscore in names.</description>
+      <description>Test use of leading underscore in names.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="lre19"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<docs><a href="http://www.ped.com">Out1</a></docs>]]></content>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -426,7 +468,7 @@
    <test-case name="lre-104">
       <description>LRE with on-empty.</description>
       <created by="Michael Kay" on="2013-07-30"/>
-      <environment ref="lre01"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -441,7 +483,7 @@
    <test-case name="lre-105">
       <description>LRE with on-empty, producing an element</description>
       <created by="Michael Kay" on="2013-07-30"/>
-      <environment ref="lre01"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -456,7 +498,7 @@
    <test-case name="lre-106">
       <description>LRE with on-empty, with intervening document node</description>
       <created by="Michael Kay" on="2013-07-30"/>
-      <environment ref="lre01"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -471,7 +513,7 @@
    <test-case name="lre-107">
       <description>LRE with on-empty, with intervening empty text node</description>
       <created by="Michael Kay" on="2013-07-30"/>
-      <environment ref="lre01"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -486,7 +528,7 @@
    <test-case name="lre-108">
       <description>LRE with on-empty, value is an atomic type (not allowed)</description>
       <created by="Michael Kay" on="2013-07-30"/>
-      <environment ref="lre01"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -501,7 +543,7 @@
    <test-case name="lre-109">
       <description>LRE with on-empty, value is two elements (not allowed)</description>
       <created by="Michael Kay" on="2013-07-30"/>
-      <environment ref="lre01"/>
+      <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
