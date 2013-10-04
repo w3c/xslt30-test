@@ -7,6 +7,10 @@
    <environment name="override-env-001">
       <package file="override-base-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-001" package-version="1.0.0"/>
    </environment>
+   
+   <environment name="override-env-101">
+      <package file="override-base-101.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-101" package-version="1.0.0"/>
+   </environment>
 
    <dependencies>
       <spec value="XSLT30+"/>
@@ -47,7 +51,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPST0017"/>
+         <error code="XTSE3070"/>
       </result>
    </test-case>
    
@@ -60,7 +64,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPST0017"/>
+         <error code="XTSE3058"/>
       </result>
    </test-case>
    
@@ -113,6 +117,47 @@
       </test>
       <result>
          <assert>/out</assert>
+      </result>
+   </test-case>
+   
+   
+   
+   <test-case name="override-101">
+      <description>Successful override of a named template, when called from overriding package</description>
+      <created by="Michael Kay" on="2013-07-31"/>
+      <environment ref="override-env-101"/>
+      <test>
+         <package file="override-101.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '*xxxxx*'</assert>
+      </result>
+   </test-case>  
+   
+   <test-case name="override-102">
+      <description>Successful override of a named template, when called from base package</description>
+      <created by="Michael Kay" on="2013-07-31"/>
+      <environment ref="override-env-101"/>
+      <test>
+         <package file="override-102.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '*xxxxx*'</assert>
+      </result>
+   </test-case>   
+   
+   <test-case name="override-103">
+      <description>Cannot call an abstract template</description>
+      <created by="Michael Kay" on="2013-07-31"/>
+      <environment ref="override-env-101"/>
+      <test>
+         <package file="override-103.xsl" role="primary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3080"/>
       </result>
    </test-case>   
   

@@ -1276,4 +1276,28 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <assert-xml file="for-each-group-070.out"/>
       </result>
    </test-case>
+   
+   <test-case name="for-each-group-071">
+      <description>XSLT 2.0 grouping, group-starting-with pattern refers to a function parameter</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-071.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<a>
+   <b current-group-count="1"
+      current-group-names="b"
+      level="1"
+      type="A"/>
+   <b current-group-count="1"
+      current-group-names="b"
+      level="1"
+      type="B"/>
+</a>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>

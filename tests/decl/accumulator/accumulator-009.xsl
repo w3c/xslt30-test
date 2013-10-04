@@ -10,26 +10,28 @@
     
     <xsl:output method="xml" indent="yes"/>
     
-   <xsl:accumulator name="f:count" post-descent="f:count_" as="xs:integer" initial-value="0" streamable="yes">
+   <xsl:accumulator name="count" as="xs:integer" initial-value="0" streamable="yes">
      <xsl:accumulator-rule match="transaction" new-value="$value + 1"/>
    </xsl:accumulator>
    
-   <xsl:accumulator name="f:sum" post-descent="f:sum_" as="xs:double" initial-value="0" streamable="yes">
+   <xsl:accumulator name="sum" as="xs:double" initial-value="0" streamable="yes">
      <xsl:accumulator-rule match="transaction" new-value="$value + @amount"/>
    </xsl:accumulator>
    
-   <xsl:accumulator name="f:min" post-descent="f:min_" as="xs:double" initial-value="999999999999" streamable="yes">
+   <xsl:accumulator name="min" as="xs:double" initial-value="999999999999" streamable="yes">
      <xsl:accumulator-rule match="transaction" new-value="if (@amount &lt; $value) then @amount else $value"/>
    </xsl:accumulator>
    
-   <xsl:accumulator name="f:max" post-descent="f:max_" as="xs:double" initial-value="-999999999999" streamable="yes">
+   <xsl:accumulator name="max" as="xs:double" initial-value="-999999999999" streamable="yes">
      <xsl:accumulator-rule match="transaction" new-value="if (@amount &gt; $value) then @amount else $value"/>
    </xsl:accumulator>
    
    
    <xsl:mode streamable="yes" on-no-match="deep-skip"/>
    <xsl:template match="/">
-     <result min="{f:min_()}" max="{f:max_()}" sum="{f:sum_()}" count="{f:count_()}" avg="{round(f:sum_() div f:count_(), 2)}"/> 
+     <result min="{accumulator-after('min')}" max="{accumulator-after('max')}" 
+             sum="{accumulator-after('sum')}" count="{accumulator-after('count')}" 
+             avg="{round(accumulator-after('sum') div accumulator-after('count'), 2)}"/> 
    </xsl:template>  
     
 </xsl:stylesheet>

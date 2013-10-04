@@ -15,7 +15,7 @@
 
   <xsl:template match="section">
     <span>
-      <xsl:value-of select="reverse(tail(f:section-nr()))" separator="."/>
+      <xsl:value-of select="reverse(tail(accumulator-before('f:section-nr')))" separator="."/>
     </span>
     <xsl:apply-templates/>
   </xsl:template>

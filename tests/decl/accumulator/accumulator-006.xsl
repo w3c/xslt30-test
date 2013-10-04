@@ -5,7 +5,7 @@
 
   <!-- Get post-descent value of accumulator - streaming version -->
 
-  <xsl:accumulator name="f:figNr" post-descent="f:figNrAfter" as="xs:decimal" initial-value="0"
+  <xsl:accumulator name="f:figNr" as="xs:decimal" initial-value="0"
     streamable="yes">
     <xsl:accumulator-rule match="chap" new-value="0"/>
     <xsl:accumulator-rule match="fig" new-value="$value + 1"/>
@@ -15,9 +15,9 @@
   <xsl:mode streamable="yes" on-no-match="shallow-skip"/>
   <xsl:template match="fig">
     <pix>
-      <p>Figure <xsl:value-of select="f:figNr()"/> start</p>
+      <p>Figure <xsl:value-of select="accumulator-before('f:figNr')"/> start</p>
       <xsl:apply-templates/>
-      <p>Figure <xsl:value-of select="f:figNrAfter()"/> end</p>
+      <p>Figure <xsl:value-of select="accumulator-after('f:figNr')"/> end</p>
     </pix>
   </xsl:template>
 

@@ -5,7 +5,7 @@
 
   <!-- Simple test of an accumulator function, with streaming -->
 
-  <xsl:accumulator name="f:figNr" as="xs:integer" initial-value="0" streamable="yes">
+  <xsl:accumulator name="figNr" as="xs:integer" initial-value="0" streamable="yes">
     <xsl:accumulator-rule match="chap" new-value="0"/>
     <xsl:accumulator-rule match="fig" new-value="$value + 1"/>
   </xsl:accumulator>
@@ -14,7 +14,7 @@
   
   <xsl:template match="fig">
     <xsl:apply-templates/>
-    <p>Figure <xsl:value-of select="f:figNr()"/>: <xsl:value-of select="@alt"/></p>
+    <p>Figure <xsl:value-of select="accumulator-before('figNr')"/>: <xsl:value-of select="@alt"/></p>
   </xsl:template>
 
   <xsl:template match="/">

@@ -6,7 +6,7 @@
   <!-- Get pre-descent value of accumulator in both pre-descent and post-descent phase; streamable -->
 
 
-  <xsl:accumulator name="f:figNr" as="xs:integer" initial-value="0" streamable="yes">
+  <xsl:accumulator name="figNr" as="xs:integer" initial-value="0" streamable="yes">
     <xsl:accumulator-rule match="chap" new-value="0"/>
     <xsl:accumulator-rule match="fig" new-value="$value + 1"/>
     <xsl:accumulator-rule match="diag" new-value="5"/>
@@ -16,9 +16,9 @@
 
   <xsl:template match="fig">
     <pix>
-      <p>Figure <xsl:value-of select="f:figNr()"/> start</p>
+      <p>Figure <xsl:value-of select="accumulator-before('figNr')"/> start</p>
       <xsl:apply-templates/>
-      <p>Figure <xsl:value-of select="f:figNr()"/> end</p>
+      <p>Figure <xsl:value-of select="accumulator-before('figNr')"/> end</p>
     </pix>
   </xsl:template>
 
