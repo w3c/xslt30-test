@@ -300,7 +300,10 @@
          <stylesheet file="iterate-019.xsl"/>
       </test>
       <result>
-         <assert>/out/exit[@at="12"][@of="76"]</assert>
+         <all-of>
+           <assert>/out/exit[@at="12"][@of="76"]</assert>
+           <assert>empty(/out/exit[@at="12"][@of="76"]/following-sibling::*)</assert>
+         </all-of>  
       </result>
    </test-case>
 
@@ -435,6 +438,64 @@
             <assert>deep-equal(/account/daily-transactions[10]/*/@value/number(), (12.00, 13.99))</assert>
             <assert>deep-equal(/account/final-daily-transactions/*/@value/number(), (14.20))</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="iterate-028">
+      <description>Basic test of xsl:iterate; xsl:break contains a select attribute</description>
+      <created by="Michael Kay" on="2013-10-04"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-028.xsl"/>
+      </test>
+      <result>
+         <all-of> 
+            <assert>/out/text()[. = 'exit at 12 of 76']</assert>
+            <assert>empty(/out/text()[. = 'exit at 12 of 76']/following-sibling::*)</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="iterate-029">
+      <description>error, xsl:break contains a select attribute and a sequence constructor</description>
+      <created by="Michael Kay" on="2013-10-04"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-029.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3125"/>
+      </result>
+   </test-case>
+   
+   <test-case name="iterate-030">
+      <description>xsl:on-completion with a select attribute</description>
+      <created by="Michael Kay" on="2013-10-04"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-030.xsl"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/text()['count 2']</assert>
+           <assert>empty(/out/text()['count 2']/following-sibling::*)</assert>
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="iterate-031">
+      <description>error, xsl:on-completion with a select attribute and content</description>
+      <created by="Michael Kay" on="2013-10-04"/>
+      <environment ref="iterate005"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="iterate-031.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3125"/>  
       </result>
    </test-case>
 </test-set>
