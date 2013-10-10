@@ -9,7 +9,7 @@
    </environment>
    
    <dependencies>
-     <spec value="XSLT20+"/>
+     <spec value="XSLT30+"/>
    </dependencies>  
 
    <test-case name="regex-syntax-0001">
@@ -22,6 +22,7 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-01-31" 
                 change="(For all tests). The param/@select attribute is now an XPath expression, as required in the documentation"/>         
+      <modified by="Michael Kay" on="2013-10-10" change="update expected results to match XPath 3.0 specification."/>
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="''"/>
@@ -884,7 +885,7 @@
          <initial-template name="go"/>
       </test>
       <result>
-         <assert>/true</assert>
+         <error code="FORX0002"/>
       </result>
    </test-case>
 
@@ -1362,7 +1363,7 @@
          <initial-template name="go"/>
       </test>
       <result>
-         <assert>/true</assert>
+         <error code="FORX0002"/>
       </result>
    </test-case>
 
@@ -1603,7 +1604,7 @@
          <initial-template name="go"/>
       </test>
       <result>
-         <assert>/true</assert>
+         <error code="FORX0002"/>
       </result>
    </test-case>
 
@@ -12231,10 +12232,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(a+)(?:b*)(ccc)'"/>
+         <param name="match" as="xs:string" select="'aabccc,accc'"/>
+         <param name="nonmatch" as="xs:string" select="'ccc,acc'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13401,10 +13405,13 @@
          <param name="regex"
                 as="xs:string"
                 select="'(?:(?:(?:(?:(?:(?:(?:(?:(?:(a))))))))))'"/>
+         <param name="match" as="xs:string" select="'a'"/>
+         <param name="nonmatch" as="xs:string" select="'b'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13416,10 +13423,13 @@
          <param name="regex"
                 as="xs:string"
                 select="'(?:(?:(?:(?:(?:(?:(?:(?:(?:(a|b|c))))))))))'"/>
+         <param name="match" as="xs:string" select="'a,b,c'"/>
+         <param name="nonmatch" as="xs:string" select="'d,bb'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13429,10 +13439,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d)a'"/>
+         <param name="match" as="xs:string" select="'xba,xca,xda'"/>
+         <param name="nonmatch" as="xs:string" select="'ea,aa'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13442,10 +13455,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d)*a'"/>
+         <param name="match" as="xs:string" select="'xba,xbba,xbcda,xa'"/>
+         <param name="nonmatch" as="xs:string" select="'b,c,d'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13455,10 +13471,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d)+?a'"/>
+         <param name="match" as="xs:string" select="'xba,xca,xccca'"/>
+         <param name="nonmatch" as="xs:string" select="'a'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13468,10 +13487,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d)+a'"/>
+         <param name="match" as="xs:string" select="'xba,xca,xda'"/>
+         <param name="nonmatch" as="xs:string" select="'ea,a'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13481,10 +13503,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){2}a'"/>
+         <param name="match" as="xs:string" select="'xbba,xcca,xdda,xbca'"/>
+         <param name="nonmatch" as="xs:string" select="'xba,xbcda'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13494,10 +13519,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){4,5}a'"/>
+         <param name="match" as="xs:string" select="'xbbbba,xbbbbba,xbcbcba'"/>
+         <param name="nonmatch" as="xs:string" select="'xbbbbbba,xbbba'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13507,10 +13535,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){4,5}?a'"/>
+         <param name="match" as="xs:string" select="'xbbbba,xbbbbba,xbcbcba'"/>
+         <param name="nonmatch" as="xs:string" select="'xbbbbbba,xbbba'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13533,10 +13564,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){6,7}a'"/>
+         <param name="match" as="xs:string" select="'xbbbbcca,xbbbbbcca,xbcbcbdca'"/>
+         <param name="nonmatch" as="xs:string" select="'xbbbbbbbba,xbbba'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13546,10 +13580,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){6,7}?a'"/>
+         <param name="match" as="xs:string" select="'xbbbbbba,xbbbbbbba,xbcddbcba'"/>
+         <param name="nonmatch" as="xs:string" select="'xbbbbbbbbba,xbbba'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13559,10 +13596,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){5,6}a'"/>
+         <param name="match" as="xs:string" select="'xbbbbba,xbbbbbba,xbcddbba,bbbbbba'"/>
+         <param name="nonmatch" as="xs:string" select="'bbbbb,xbbba'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13572,10 +13612,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){5,6}?a'"/>
+         <param name="match" as="xs:string" select="'xbbbbba,xbbbbbba,xbcddbca'"/>
+         <param name="nonmatch" as="xs:string" select="'xbbbbbbbba,xbbba'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13585,10 +13628,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){5,7}a'"/>
+         <param name="match" as="xs:string" select="'xbbbbba,xbbbbbba,xbcbcbcba'"/>
+         <param name="nonmatch" as="xs:string" select="'xbbbbbbbbba,xbbba'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13598,10 +13644,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|c|d){5,7}?a'"/>
+         <param name="match" as="xs:string" select="'xbbbbba,xbbbbba,xbcbcba'"/>
+         <param name="nonmatch" as="xs:string" select="'xbbbbbb,xbbb'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13611,10 +13660,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(.)(?:b|(c|e){1,2}?|d)+?a'"/>
+         <param name="match" as="xs:string" select="'xbea,xbca'"/>
+         <param name="nonmatch" as="xs:string" select="'xbeeaa,xdaa'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13650,10 +13702,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(?:(f)(o)(o)|(b)(a)(r))*'"/>
+         <param name="match" as="xs:string" select="'foo,bar,foobar'"/>
+         <param name="nonmatch" as="xs:string" select="'raboof'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13663,10 +13718,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(?:..)*a'"/>
+         <param name="match" as="xs:string" select="'12a,1234a,123456a'"/>
+         <param name="nonmatch" as="xs:string" select="'1a,123a,12345a'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13676,10 +13734,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'(?:..)*?a'"/>
+         <param name="match" as="xs:string" select="'12a,1234a,123456a'"/>
+         <param name="nonmatch" as="xs:string" select="'123a,123a'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13821,10 +13882,13 @@
          <param name="regex"
                 as="xs:string"
                 select="'(?:c|d)(?:)(?:a(?:)(?:b)(?:b(?:))(?:b(?:)(?:b)))'"/>
+         <param name="match" as="xs:string" select="'cabbbb'"/>
+         <param name="nonmatch" as="xs:string" select="'x'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13836,10 +13900,13 @@
          <param name="regex"
                 as="xs:string"
                 select="'(?:c|d)(?:)(?:aaaaaaaa(?:)(?:bbbbbbbb)(?:bbbbbbbb(?:))(?:bbbbbbbb(?:)(?:bbbbbbbb)))'"/>
+         <param name="match" as="xs:string" select="'caaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'"/>
+         <param name="nonmatch" as="xs:string" select="'abcdefghijklmnopqrstuvwxyz'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13862,10 +13929,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'x(~~)*(?:(?:F)?)?'"/>
+         <param name="match" as="xs:string" select="'x,xF,x~~'"/>
+         <param name="nonmatch" as="xs:string" select="'xFF'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -13901,10 +13971,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'^(?:a?b?)*$'"/>
+         <param name="match" as="xs:string" select="'ab'"/>
+         <param name="nonmatch" as="xs:string" select="'ab$'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14683,10 +14756,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d)(.)'"/>
+         <param name="match" as="xs:string" select="'abx,aby,acx,acc'"/>
+         <param name="nonmatch" as="xs:string" select="'bbc'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14696,10 +14772,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d)*(.)'"/>
+         <param name="match" as="xs:string" select="'abcd'"/>
+         <param name="nonmatch" as="xs:string" select="'bcde'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14709,10 +14788,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d)+?(.)'"/>
+         <param name="match" as="xs:string" select="'abbba'"/>
+         <param name="nonmatch" as="xs:string" select="'zbbbz'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14722,10 +14804,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d)+(.)'"/>
+         <param name="match" as="xs:string" select="'abba'"/>
+         <param name="nonmatch" as="xs:string" select="'abbid'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14735,10 +14820,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){2}(.)'"/>
+         <param name="match" as="xs:string" select="'abba,abda'"/>
+         <param name="nonmatch" as="xs:string" select="'abcda'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14748,10 +14836,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){4,5}(.)'"/>
+         <param name="match" as="xs:string" select="'abbbba,accccca'"/>
+         <param name="nonmatch" as="xs:string" select="'abcda,bbbccct'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14761,10 +14852,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){4,5}?(.)'"/>
+         <param name="match" as="xs:string" select="''"/>
+         <param name="nonmatch" as="xs:string" select="'abbbba,accccca'"/>
+         <param name="delimiter" as="xs:string" select="'abcda,bbbccct'"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14774,10 +14868,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){6,7}(.)'"/>
+         <param name="match" as="xs:string" select="'abcdbcdz'"/>
+         <param name="nonmatch" as="xs:string" select="'aa'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14787,10 +14884,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){6,7}?(.)'"/>
+         <param name="match" as="xs:string" select="'abbbccca'"/>
+         <param name="nonmatch" as="xs:string" select="'abcdp'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14800,10 +14900,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){5,6}(.)'"/>
+         <param name="match" as="xs:string" select="'abbbccca'"/>
+         <param name="nonmatch" as="xs:string" select="'abcdefghijklmnopqrstuvwxyz'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14813,10 +14916,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){5,6}?(.)'"/>
+         <param name="match" as="xs:string" select="'abbbddd'"/>
+         <param name="nonmatch" as="xs:string" select="'a1234567'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14826,10 +14932,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){5,7}(.)'"/>
+         <param name="match" as="xs:string" select="'addddddq'"/>
+         <param name="nonmatch" as="xs:string" select="'abcdefghijklmnopqrstuvwxyz'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14839,10 +14948,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|c|d){5,7}?(.)'"/>
+         <param name="match" as="xs:string" select="'adddddd='"/>
+         <param name="nonmatch" as="xs:string" select="'abcdefghijklmnopqrstuvwxyz'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -14852,10 +14964,13 @@
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'a(?:b|(c|e){1,2}?|d)+?(.)'"/>
+         <param name="match" as="xs:string" select="'abbw'"/>
+         <param name="nonmatch" as="xs:string" select="'abcdefghijklmnopqrstuvwxyz'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
-         <error code="FORX0002"/>
+         <assert>/true</assert>
       </result>
    </test-case>
 
