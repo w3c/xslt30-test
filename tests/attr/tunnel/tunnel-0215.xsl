@@ -10,7 +10,7 @@
    <t:template match="/">
 		    <out>
          <t:call-template name="temp1">
-			         <t:with-param name="par1" select="'foo1'" tunnel="no"/>
+			         <!--<t:with-param name="par1" select="'foo1'" tunnel="no"/>-->
 			         <t:with-param name="par2" select="'foo2'" tunnel="yes"/>					
 		       </t:call-template>
       </out>

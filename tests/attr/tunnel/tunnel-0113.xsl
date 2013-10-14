@@ -7,7 +7,7 @@
 
    <t:function name="foo:func">
 		    <t:call-template name="temp1">
-			      <t:with-param name="par" select="'xyz'" tunnel="no"/>		
+			      <!--<t:with-param name="par" select="'xyz'" tunnel="no"/>	-->	
 		    </t:call-template>	
 	  </t:function>
 

@@ -160,6 +160,7 @@
    <test-case name="tunnel-0108">
       <description>test tunnel param specified within xsl:call-template and another non-tunnel param with the same name should not override the value</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2013-10-14" change="change test to avoid error XTSE0680. See bug 10534"/>
       <environment ref="tunnel-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -175,6 +176,7 @@
    <test-case name="tunnel-0109">
       <description>Simple test with a non-tunnel param specified within xsl:call-template but template param has tunnel="yes"</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2013-10-14" change="change to expect error XTSE0680. See bug 10534"/>
       <environment ref="tunnel-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -183,13 +185,14 @@
          <stylesheet file="tunnel-0109.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>xyz and zyx</out>]]></assert-xml>
+         <error code="XTSE0680"/>
       </result>
    </test-case>
 
    <test-case name="tunnel-0110">
       <description>test tunnel params and non-tunnel params within xsl:call-template</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2013-10-14" change="change to expect error XTSE0680. See bug 10534"/>
       <environment ref="tunnel-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -198,7 +201,7 @@
          <stylesheet file="tunnel-0110.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>xyz1, foo2, foo3, xyz4</out>]]></assert-xml>
+         <error code="XTSE0680"/>
       </result>
    </test-case>
 
@@ -235,6 +238,7 @@
    <test-case name="tunnel-0113">
       <description>test empty base set within stylesheet function using call-template</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2013-10-14" change="change test to avoid error XTSE0680. See bug 10534"/>
       <environment ref="tunnel-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -505,6 +509,7 @@
    <test-case name="tunnel-0215">
       <description>Tests tunnel parameters specified within xsl:call-templates instruction with identical names as the global variables.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2013-10-14" change="change test to avoid error XTSE0680. See bug 10534"/>
       <environment ref="tunnel-02"/>
       <dependencies>
          <spec value="XSLT20+"/>

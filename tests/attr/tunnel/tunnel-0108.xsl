@@ -5,24 +5,30 @@
   		override the value -->
 
    <t:template match="/">
-		    <out>
+	  <out>
          <t:call-template name="temp1">
 			         <t:with-param name="par1" select="'foo1'" tunnel="yes"/>
 			         <t:with-param name="par2" select="'foo2'" tunnel="yes"/>			
 		       </t:call-template>
       </out>
-	  </t:template>
+   </t:template>
 
    <t:template name="temp1">
 		    <t:call-template name="temp2">
 			      <t:with-param name="par1" select="'bar1'"/>
 			      <t:with-param name="par2" select="'bar2'" tunnel="no"/>			
 		    </t:call-template>
-	  </t:template>
-
+   </t:template>
+	  
    <t:template name="temp2">
+            <t:param name="par1" select="'xyz1'" tunnel="no"/>
+		    <t:param name="par2" select="'xyz2'" tunnel="no"/>	
+		    <t:call-template name="temp3"/>
+   </t:template>	  
+
+   <t:template name="temp3">
 		    <t:param name="par1" select="'xyz1'" tunnel="yes"/>
 		    <t:param name="par2" select="'xyz2'" tunnel="yes"/>		
 		    <t:value-of select="$par1"/> and <t:value-of select="$par2"/>
-	  </t:template>
+   </t:template>
 </t:transform>
