@@ -18,7 +18,7 @@ xmlns:z="http://z.com/" exclude-result-prefixes="xs xdt z">
       <a><xsl:value-of select="avg(($d1,$d2,$d3))"/></a>
       <a><xsl:value-of select="avg(($d1,$d2,$d3))"/></a>
       <a><xsl:value-of select="avg(())"/></a>   
-      <a><xsl:value-of select="avg(($d1, $d2, $d3)[. gt $d1])"/></a>                  
+      <a><xsl:value-of select="avg(($d1, $d2, $d3, d4)[. gt $d1])"/></a>                  
      </out>     
   </xsl:template>
 
