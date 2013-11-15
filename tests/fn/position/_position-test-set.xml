@@ -2,7 +2,7 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="position">
-   <description>Tests position</description>
+   <description>Tests the position() function</description>
 
    <environment name="position-02">
       <source role=".">
@@ -492,6 +492,21 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="position-0102">
+      <description>Integer subscripting: Saxon bug report.</description>
+      <created by="Vliadimir Nestorovsky" on="2013-10-25"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="position-0102.xsl"/>
+         <initial-template name="go"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>X X</out>]]></assert-xml>
       </result>
    </test-case>
 
