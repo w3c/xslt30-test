@@ -32,6 +32,8 @@
       <xsl:param name="count" as="xs:integer"/>
     </xsl:function>
     
+    <xsl:variable name="p:final-var" select="p:f('+', 3)" visibility="final"/>
+    
   </xsl:stylesheet>
   
 </xsl:package>   
