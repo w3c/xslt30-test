@@ -1169,10 +1169,7 @@
          <fos:proto name="new" return-type="map(*)">
             <fos:arg name="maps" type="map(*)*"/>
          </fos:proto>
-         <fos:proto name="new" return-type="map(*)">
-            <fos:arg name="maps" type="map(*)*"/>
-            <fos:arg name="collation" type="xs:string"/>
-         </fos:proto>
+         
       </fos:signatures>
       <fos:properties>
          <fos:property>deterministic</fos:property>
@@ -1284,34 +1281,7 @@
          </fos:example>
       </fos:examples>
    </fos:function>
-   <fos:function name="collation" prefix="map" diff="add" at="MAP">
-      <fos:signatures>
-         <fos:proto name="collation" return-type="xs:string">
-            <fos:arg name="input" type="map(*)"/>
-         </fos:proto>
-      </fos:signatures>
-      <fos:properties>
-         <fos:property>deterministic</fos:property>
-         <fos:property>context-independent</fos:property>
-         <fos:property>focus-independent</fos:property>
-      </fos:properties>
-      <fos:summary>
-         <p>Returns the URI of the supplied map's collation</p>
-      </fos:summary>
-      <fos:rules>
-         <p>The function <function>map:collation</function> returns the collation URI of the
-               <termref def="dt-map">map</termref> supplied as <code>$input</code>.</p>
-      </fos:rules>
-      <fos:examples>
-         <fos:example>
-            <fos:test>
-               <fos:expression>map:collation(map:new((),
-                  "http://collation.example.com/caseblind"))</fos:expression>
-               <fos:result>"http://collation.example.com/caseblind"</fos:result>
-            </fos:test>
-         </fos:example>
-      </fos:examples>
-   </fos:function>
+   
    <fos:function name="keys" prefix="map">
       <fos:signatures>
          <fos:proto name="keys" return-type="xs:anyAtomicType*">
