@@ -15,7 +15,7 @@
       
     <xsl:template name="main">
       <out>
-        <xsl:apply-templates select="doc('loans.xml')"/>
+        <xsl:stream href="loans.xml"><xsl:apply-templates select="."/></xsl:stream>
       </out>
     </xsl:template>
      

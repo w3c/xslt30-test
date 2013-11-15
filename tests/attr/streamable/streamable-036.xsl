@@ -17,7 +17,7 @@
   
     <xsl:template name="main">
       <out>
-        <xsl:apply-templates select="doc('grouped-transactions.xml')"/>
+        <xsl:stream href="grouped-transactions.xml"><xsl:apply-templates select="."/></xsl:stream>
       </out>
     </xsl:template>
   

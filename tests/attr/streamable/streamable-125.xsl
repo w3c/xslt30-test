@@ -16,7 +16,9 @@
    
   <xsl:template name="main" match="/">
     <out>
-      <xsl:apply-templates select="doc('strmode037.xml')" mode="s"/>
+      <xsl:stream href="strmode037.xml">
+        <xsl:apply-templates select="." mode="s"/>
+      </xsl:stream>
     </out>
   </xsl:template>
   

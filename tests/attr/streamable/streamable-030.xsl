@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes=" xs" version="2.1">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes=" xs" version="3.0">
 
 
   <!-- within a streaming template, use copy-of with multiple elements and attributes -->
@@ -13,7 +13,9 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:apply-templates select="doc('mixed.xml')"/>
+      <xsl:stream href="mixed.xml">
+        <xsl:apply-templates select="."/>
+      </xsl:stream>
     </out>
   </xsl:template>
 
@@ -29,7 +31,11 @@
   <xsl:template match="book">
     <book>
       <xsl:variable name="temp" as="node()*">
-        <xsl:copy-of select="(.//*|.//@*)"/>
+        <xsl:for-each select=".//*">
+          <xsl:copy-of select="."/>
+          <xsl:copy-of select="@*"/>
+        </xsl:for-each>  
+        <!--<xsl:sequence select=".//*/(copy-of(.), @*/copy-of(.))    (: was .//*|.//@* :)"/>-->
       </xsl:variable>
       <elements>
         <xsl:value-of select="count($temp[. instance of element()])"/>

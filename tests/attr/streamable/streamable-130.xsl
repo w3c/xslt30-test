@@ -24,7 +24,7 @@
    </xsl:template>
    
    <xsl:template match="bktlong">
-     <title><xsl:value-of select="tokenize(., '\s+')[position() mod 2 gt last()]"/></title>
+     <title><xsl:value-of select="tokenize(., '\s+')[position() * 2 gt last()]"/></title>
    </xsl:template>
    
     

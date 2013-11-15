@@ -15,7 +15,7 @@
       
     <xsl:template name="main">
       <out>
-        <xsl:apply-templates select="doc('mixed.xml')"/>
+        <xsl:stream href="mixed.xml"><xsl:apply-templates select="."/></xsl:stream>
       </out>
     </xsl:template>
     

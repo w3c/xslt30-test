@@ -2,7 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes=" xs"
-    version="2.1">
+    version="3.0">
        
   
   <!-- xsl:element with a sequence constructor -->
@@ -19,7 +19,9 @@
     
   <xsl:template name="main" match="/">
     <out>
-      <xsl:apply-templates select="doc('loans.xml')" mode="s"/>
+      <xsl:stream href="loans.xml">
+        <xsl:apply-templates select="." mode="s"/>
+      </xsl:stream>
     </out>
   </xsl:template>
   

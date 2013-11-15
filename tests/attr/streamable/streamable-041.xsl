@@ -13,7 +13,7 @@
       
     <xsl:template name="main">
       <out>
-        <xsl:apply-templates select="doc('transactions.xml')"/>
+        <xsl:stream href="transactions.xml"><xsl:apply-templates select="."/></xsl:stream>
       </out>
     </xsl:template>
      

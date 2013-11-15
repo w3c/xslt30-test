@@ -12,9 +12,11 @@
       
     <xsl:template name="main">
       <out>
-        <xsl:apply-templates select="doc('ot.xml')">
+      <xsl:stream href="ot.xml">
+        <xsl:apply-templates select=".">
           <xsl:with-param name="p" select="17" tunnel="yes"/> 
         </xsl:apply-templates>
+      </xsl:stream>  
       </out>
     </xsl:template>
     

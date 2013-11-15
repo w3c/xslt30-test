@@ -16,15 +16,19 @@
      
    <xsl:template name="main">
      <out>
-       <xsl:apply-templates select="doc('mixed.xml')">
-         <xsl:with-param name="p" select="17" tunnel="yes"/> 
-       </xsl:apply-templates>
+       <xsl:stream href="mixed.xml">
+         <xsl:apply-templates select=".">
+           <xsl:with-param name="p" select="17" tunnel="yes"/> 
+         </xsl:apply-templates>
+       </xsl:stream>
      </out>
    </xsl:template>
    
    <xsl:template match="/">
        <xsl:variable name="v" as="element()*">
-         <xsl:apply-templates select="doc('sections.xml')" mode="t"/>
+         <xsl:stream href="sections.xml">
+           <xsl:apply-templates select="." mode="t"/>
+         </xsl:stream>
        </xsl:variable>
        <xsl:apply-templates>
          <xsl:with-param name="q" select="$v" tunnel="yes"/> 

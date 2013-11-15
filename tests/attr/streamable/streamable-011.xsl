@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    version="2.1">
+    version="3.0">
        
   
   <!-- Test that attributes, namespaces, comments, and PIs are copied in streaming mode -->
@@ -15,7 +15,9 @@
     
   <xsl:template name="main" match="/">
     <out>
-      <xsl:apply-templates select="doc('loans.xml')" mode="s"/>
+      <xsl:stream href="loans.xml">
+        <xsl:apply-templates select="." mode="s"/>
+      </xsl:stream>
     </out>
   </xsl:template>
   

@@ -15,7 +15,7 @@
       
     <xsl:template name="main">
       <out>
-        <xsl:apply-templates select="doc('overlapping.xml')"/>
+        <xsl:stream href="overlapping.xml"><xsl:apply-templates select="."/></xsl:stream>
       </out>
     </xsl:template>
       

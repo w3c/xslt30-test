@@ -13,7 +13,9 @@
     
   <xsl:template name="main" match="/">
     <myroot>
-      <xsl:apply-templates select="doc('loans.xml')" mode="s"/>
+      <xsl:stream href="loans.xml">
+        <xsl:apply-templates select="." mode="s"/>
+      </xsl:stream>  
     </myroot>
   </xsl:template>
   

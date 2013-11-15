@@ -5,13 +5,14 @@
     <xsl:output indent="no"/>
     <xsl:strip-space elements="chapter"/>
   
-    <!-- apply-templates in the form doc(x)//x -->
     
     <xsl:mode name="s" streamable="yes"/>
     
     <xsl:template name="main">
     <out>
-      <xsl:apply-templates select="doc('ot.xml')//book" mode="s"/>
+      <xsl:stream href="ot.xml">
+        <xsl:apply-templates select="//book" mode="s"/>
+      </xsl:stream>
     </out>
     </xsl:template>
     

@@ -683,7 +683,9 @@
 
    <test-case name="streamable-030">
       <description>Within a streaming template, use copy-of selecting a union of elements and
-         attributes, with reordering needed</description>
+         attributes, with reordering needed.
+         TODO: Not streamable under the current (Nov 2013) rules, the union delivers a mix of different postures
+         </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mixed"/>
       <test>
@@ -701,7 +703,9 @@
 
    <test-case name="streamable-031">
       <description>Within a streaming template, use value-of with multiple elements and attributes,
-         and with re-ordering needed</description>
+         and with re-ordering needed
+         TODO: Not streamable under the current (Nov 2013) rules, the union delivers a mix of different postures
+         </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <dependencies>
@@ -723,7 +727,9 @@
    </test-case>
 
    <test-case name="streamable-032">
-      <description>Within a streaming template, use value-of with overlapping elements</description>
+      <description>Within a streaming template, use value-of with overlapping elements
+      TODO: Not streamable under the current (Nov 2013) rules, cannot use a crawling operand with absorption posture
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mixed"/>
       <test>
@@ -2010,7 +2016,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2027,7 +2033,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2045,7 +2051,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2063,7 +2069,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2197,7 +2203,7 @@
          <stylesheet file="streamable-117.xsl"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2215,7 +2221,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2233,7 +2239,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2250,7 +2256,7 @@
          <stylesheet file="streamable-120.xsl"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2268,7 +2274,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2286,7 +2292,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2303,7 +2309,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2320,7 +2326,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2338,7 +2344,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2356,7 +2362,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2374,13 +2380,13 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
    <test-case name="streamable-128">
       <description>within a streaming template, use if/then/else for conditional processing Action
-         depends on down-content, condition does not Invalid because the template returns nodes from
+         depends on down-content, condition does not. Invalid because the template returns nodes from
          the streamed document</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
@@ -2393,7 +2399,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -2411,19 +2417,23 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
    <test-case name="streamable-130">
       <description>streaming positional filter expression using last()</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2012-11-14" change="this example is now streamable"/>
       <environment ref="ot-as-context"/>
       <test>
          <stylesheet file="streamable-130.xsl"/>
       </test>
       <result>
-         <error code="SXST0067"/>
+         <all-of>
+            <assert>/out/title[1] = 'of Moses, Called GENESIS.'</assert>
+            <assert>count(/out/title) = 39</assert>
+         </all-of>   
       </result>
    </test-case>
 

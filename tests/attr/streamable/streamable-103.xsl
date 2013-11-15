@@ -12,7 +12,9 @@
     <xsl:output method="xml" indent="yes" encoding="UTF-8" />
       
     <xsl:template name="main">
-      <xsl:apply-templates select="doc('transactions.xml')/account" mode="s"/>
+       <xsl:stream href="transactions.xml">
+        <xsl:apply-templates select="account" mode="s"/>
+      </xsl:stream>
     </xsl:template> 
   
   

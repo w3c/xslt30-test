@@ -8,6 +8,54 @@
       <spec value="XSLT30+"/>
       <feature value="streaming"/>
    </dependencies>
+   
+   <test-case name="stream-apply-001">
+      <description>Test of xsl:stream instruction with xsl:apply-templates, 
+      	navigating to attributes and ancestors. 
+      	From a Saxon bug report by Roger Costello.</description>
+      <created by="Michael Kay" on="2013-10-31"/>  
+      <test>
+         <stylesheet file="stream-apply-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+         	<assert>/Results/CATEGORIES/CATEGORY[1]/Attributes[Name='CODE' and Value='P' and Name='DESC' and Value='Paperback']</assert>
+         	<assert>/Results/CATEGORIES/CATEGORY[1]/Ancestors[
+         			*[1][self::Name][.='BOOKLIST'] and 
+         			*[2][self::Attributes[not(*)]] and 
+         			*[3][self::Name][.='CATEGORIES'] and
+         			*[4][self::Attributes[Name='DESC' and Value='Miscellaneous categories']]]</assert>
+            <assert>count(/Results/CATEGORIES/CATEGORY) = 3</assert>			
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-apply-002">
+      <description>Test of xsl:stream instruction with xsl:apply-templates, 
+      	itself appearing within a streamable template.
+      	From a Saxon bug report by Roger Costello.</description>
+      <created by="Michael Kay" on="2013-11-04"/>
+      <environment>
+        <source role="." streaming="true">
+            <content><![CDATA[<doc/>]]></content>
+         </source>
+      </environment>
+      <test>
+         <stylesheet file="stream-apply-002.xsl"/>
+      </test>
+      <result>
+         <all-of>
+         	<assert>/Results/CATEGORIES/CATEGORY[1]/Attributes[Name='CODE' and Value='P' and Name='DESC' and Value='Paperback']</assert>
+         	<assert>/Results/CATEGORIES/CATEGORY[1]/Ancestors[
+         			*[1][self::Name][.='BOOKLIST'] and 
+         			*[2][self::Attributes[not(*)]] and 
+         			*[3][self::Name][.='CATEGORIES'] and
+         			*[4][self::Attributes[Name='DESC' and Value='Miscellaneous categories']]]</assert>
+            <assert>count(/Results/CATEGORIES/CATEGORY) = 3</assert>			
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="stream-agg-001">
       <description>Basic Test of xsl:stream instruction with count().</description>
@@ -269,7 +317,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XXXX9999"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -281,7 +329,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XXXX9999"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -293,7 +341,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XXXX9999"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -305,7 +353,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XXXX9999"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -317,7 +365,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XXXX9999"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -329,7 +377,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XXXX9999"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    
@@ -494,7 +542,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    
@@ -506,7 +554,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    
@@ -854,7 +902,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    
