@@ -13,13 +13,11 @@
   </xsl:variable>
 
   <xsl:template match="/" name="main">
-    <out>
       <test68>
         <xsl:attribute name="{$aname}" select="$color" on-empty="()"/>
         <xsl:attribute name="b" select="if (exists($color)) then 'green' else 'blue'" on-empty="()"/>
         <xsl:attribute name="c" select="if (exists($color)) then 'green' else ''" on-empty="$z"/>
       </test68>
-    </out>
   </xsl:template>
 
 </xsl:stylesheet>

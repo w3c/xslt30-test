@@ -17,7 +17,7 @@
       <test68>
         <xsl:attribute name="{$aname}" select="$color" on-empty="()"/>
         <xsl:attribute name="b" select="if (exists($color)) then 'green' else 'blue'" on-empty="()"/>
-        <xsl:attribute name="c" select="if (exists($color)) then '3' else '4'" type="xs:integer" on-empty="$z"/>
+        <xsl:attribute name="c" select="if (exists($color)) then '3' else ''" type="xs:integer" on-empty="$z"/>
       </test68>
     </out>
   </xsl:template>
