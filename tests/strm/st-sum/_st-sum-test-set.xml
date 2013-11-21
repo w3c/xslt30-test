@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="st-sum">
+   <description>sum() function with streaming</description>
+   
+   <environment name="st-sum-A">
+     <stylesheet file="st-sum-001.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="st-sum-003">
+      <description>Basic Test of xsl:stream instruction with sum()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-003"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>54.37</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="st-sum-004">
+      <description>Test of xsl:stream instruction with sum(), filtered with a motionless predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-004"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>32.95</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="st-sum-005">
+      <description>Test of xsl:stream instruction with sum(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-005"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>16.48</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="st-sum-006">
+      <description>Test of xsl:stream instruction with sum(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-006"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>16.48</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="st-sum-007">
+      <description>Test of xsl:stream instruction with sum(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-007"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>16.48</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-008">
+      <description>Test of xsl:stream instruction with sum(), filtered with data() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-008"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2520</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-009">
+      <description>Test of xsl:stream instruction with sum(), filtered with text() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-009"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2520</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-010">
+      <description>Test of xsl:stream instruction with sum(), filtered with number() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-010"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2520</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-011">
+      <description>sum() selecting nothing, returning the $zero case</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-011"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>42</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-012">
+      <description>sum() selecting both streamed nodes and literals</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-012"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2583</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-013">
+      <description>sum() selecting both streamed nodes and literals while also filtering</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-013"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2231</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-015">
+      <description>Test of xsl:stream instruction with sum() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-015"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>52.041</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-016">
+      <description>Test of xsl:stream instruction with sum() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-016"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1491746</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-017">
+      <description>Test of xsl:stream instruction with sum() using copy-of to make it streamable</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-017"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1491746</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-018">
+      <description>Test of xsl:stream instruction with sum() over attribute values</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-018"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1491746</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-019">
+      <description>Test of xsl:stream instruction with sum() over attribute values, filtered</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-019"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1491746</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-020">
+      <description>sum() over attribute values, computed</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-020"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1491746</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-021">
+      <description>sum() over values that depend on a condition</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-021"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1491746</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-022">
+      <description>sum() with a loop used to compute each value</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-022"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1491746</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-023">
+      <description>sum() over a crawling expression</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="st-sum-A"/>
+      <test>
+         <initial-template name="s-023"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>112.5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="st-sum-901">
+      <description>Test of xsl:stream instruction with sum(), filtered with predicate that atomizes.</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <test>
+         <stylesheet file="st-sum-901.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="st-sum-902">
+      <description>Test of xsl:stream instruction with sum(), filtered with predicate that uses last().</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <test>
+         <stylesheet file="st-sum-902.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+
+
+</test-set>
