@@ -187,6 +187,50 @@
           <xsl:value-of select="exists(account/transaction[position() lt 20][@value &gt; 1000])"/>
         </out>
       </xsl:stream>
+    </xsl:template>
+    
+    <!-- exists() on a sequence of both streamed nodes and atomic values -->
+    
+    <xsl:template name="c-100" use-when="$RUN">
+      <xsl:variable name="b" select="1[current-date() gt xs:date('1900-01-01')]"/>
+      <xsl:stream href="../docs/big-transactions.xml">
+        <out>
+          <xsl:value-of select="exists(($b, account/transaction/dummy))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- exists() on a sequence of both streamed nodes and atomic values -->
+    
+    <xsl:template name="c-101" use-when="$RUN">
+      <xsl:variable name="b" select="1[current-date() gt xs:date('1900-01-01')]"/>
+      <xsl:stream href="../docs/big-transactions.xml">
+        <out>
+          <xsl:value-of select="exists((account/transaction/dummy, $b))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- exists() on a sequence of both streamed nodes and atomic values -->
+    
+    <xsl:template name="c-102" use-when="$RUN">
+      <xsl:variable name="b" select="1[current-date() gt xs:date('1900-01-01')]"/>
+      <xsl:stream href="../docs/big-transactions.xml">
+        <out>
+          <xsl:value-of select="exists((account/transaction, $b))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- exists() on a sequence of both streamed nodes and atomic values -->
+    
+    <xsl:template name="c-103" use-when="$RUN">
+      <xsl:variable name="b" select="1[current-date() gt xs:date('1900-01-01')]"/>
+      <xsl:stream href="../docs/big-transactions.xml">
+        <out>
+          <xsl:value-of select="exists(($b, account/transaction))"/>
+        </out>
+      </xsl:stream>
     </xsl:template>          
     
 </xsl:stylesheet>

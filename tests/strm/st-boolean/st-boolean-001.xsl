@@ -7,230 +7,230 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <!-- Simple use of xsl:stream with empty() -->
+    <!-- Simple use of xsl:stream with boolean() -->
     
     <xsl:template name="c-001" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(.//ITEM)"/>
+          <xsl:value-of select="boolean(.//ITEM)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty(), filtered with motionless predicate -->
+    <!-- boolean(), filtered with motionless predicate -->
     
-    <xsl:template name="c-002" use-when="$RUN">
+    <xsl:template name="c-002" use-when="true() or $RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="empty(./BOOKLIST/BOOKS/ITEM[@CAT='P'])"/>
+          <xsl:copy-of select="boolean(./BOOKLIST/BOOKS/ITEM[@CAT='P'])"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() applied to ancestor nodes-->
+    <!-- boolean() applied to ancestor nodes-->
     
     <xsl:template name="c-003" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="BOOKLIST/BOOKS/ITEM[@CAT='MMP'] ! empty(ancestor::*)"/>
+          <xsl:value-of select="BOOKLIST/BOOKS/ITEM[@CAT='MMP'] ! boolean(ancestor::*)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() applied to a grounded consuming sequence -->
+    <!-- boolean() applied to a grounded consuming sequence -->
     
     <xsl:template name="c-004" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(/BOOKLIST/BOOKS/ITEM/DIMENSIONS!tokenize(., ' '))"/>
+          <xsl:value-of select="boolean(/BOOKLIST/BOOKS/ITEM/DIMENSIONS!tokenize(., ' '))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() applied to attributes of ancestor nodes-->
+    <!-- boolean() applied to attributes of ancestor nodes-->
     
     <xsl:template name="c-005" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="BOOKLIST/BOOKS/ITEM[@CAT='MMP'] ! empty(ancestor-or-self::*/@*)"/>
+          <xsl:value-of select="BOOKLIST/BOOKS/ITEM[@CAT='MMP'] ! boolean(ancestor-or-self::*/@*)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() applied to namespaces of ancestor nodes-->
+    <!-- boolean() applied to namespaces of ancestor nodes-->
     
     <xsl:template name="c-006" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="BOOKLIST/BOOKS/ITEM[@CAT='MMP'] ! empty(ancestor-or-self::*/namespace::*)"/>
+          <xsl:value-of select="BOOKLIST/BOOKS/ITEM[@CAT='MMP'] ! boolean(ancestor-or-self::*/namespace::*)"/>
         </out>
       </xsl:stream>
     </xsl:template> 
     
-    <!-- empty() with empty downwards selection-->
+    <!-- boolean() with empty downwards selection-->
     
     <xsl:template name="c-007" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(BOOKS)"/>
+          <xsl:value-of select="boolean(BOOKS)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() with empty downwards selection with predicate-->
+    <!-- boolean() with empty downwards selection with predicate-->
     
     <xsl:template name="c-008" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(BOOKS/BOOK[2])"/>
+          <xsl:value-of select="boolean(BOOKS/BOOK[2])"/>
         </out>
       </xsl:stream>
     </xsl:template> 
     
-    <!-- empty() with a striding(?) union -->
+    <!-- boolean() with a striding(?) union -->
     
     <xsl:template name="c-009" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(BOOKLIST/BOOKS | BOOKLIST/CATEGORIES)"/>
+          <xsl:value-of select="boolean(BOOKLIST/BOOKS | BOOKLIST/CATEGORIES)"/>
         </out>
       </xsl:stream>
     </xsl:template> 
     
-    <!-- empty() with a crawling union -->
+    <!-- boolean() with a crawling union -->
     
     <xsl:template name="c-010" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(.//* | .//text())"/>
+          <xsl:value-of select="boolean(.//* | .//text())"/>
         </out>
       </xsl:stream>
     </xsl:template>  
     
-    <!-- simple motionless empty() -->
+    <!-- simple motionless boolean() -->
     
     <xsl:template name="c-011" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:if test="child::BOOKLIST">
-            <xsl:value-of select="empty(1 to 10)"/>
+            <xsl:value-of select="boolean(true())"/>
           </xsl:if>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() filtered grounded sequence -->
+    <!-- boolean() filtered grounded sequence -->
     
     <xsl:template name="c-012" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(remove(data(//DIMENSIONS/text()), 3))"/>
+          <xsl:value-of select="boolean(remove(data(//DIMENSIONS/text()), 3))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() filtered striding sequence -->
+    <!-- boolean() filtered striding sequence -->
     
     <xsl:template name="c-013" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(remove(/BOOKLIST/BOOKS/ITEM, 3))"/>
+          <xsl:value-of select="boolean(remove(/BOOKLIST/BOOKS/ITEM, 3))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() twice-filtered striding sequence -->
+    <!-- boolean() twice-filtered striding sequence -->
     
     <xsl:template name="c-014" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="empty(remove(/BOOKLIST/BOOKS/ITEM, 3)[@CAT='MMP'])"/>
+          <xsl:value-of select="boolean(remove(/BOOKLIST/BOOKS/ITEM, 3)[@CAT='MMP'])"/>
         </out>
       </xsl:stream>
     </xsl:template> 
     
-    <!-- empty() applied to a non-existent element -->
+    <!-- boolean() applied to a non-existent element -->
     
-    <xsl:template name="c-015">
+    <xsl:template name="c-015" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="empty(account/transaction/details)"/>
+          <xsl:value-of select="boolean(account/transaction/details)"/>
         </out>
       </xsl:stream>
     </xsl:template> 
     
-    <!-- empty() applied to an existent attribute (can exit early) -->
+    <!-- boolean() applied to an existent attribute (can exit early) -->
     
-    <xsl:template name="c-016">
+    <xsl:template name="c-016" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="empty(account/transaction/@value)"/>
+          <xsl:value-of select="boolean(account/transaction/@value)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- Test of xsl:stream with empty() and a boolean filter -->
+    <!-- Test of xsl:stream with boolean() and a boolean filter -->
     
-    <xsl:template name="c-017">
+    <xsl:template name="c-017" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="empty(account/transaction[@value &gt; 10000000])"/>
+          <xsl:value-of select="boolean(account/transaction[@value &gt; 10000000])"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- Test of xsl:stream with empty() and both a positional and a boolean filter -->
+    <!-- Test of xsl:stream with boolean() and both a positional and a boolean filter -->
     
-    <xsl:template name="c-018">
+    <xsl:template name="c-018" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="empty(account/transaction[position() lt 20][@value &gt; 1000])"/>
+          <xsl:value-of select="boolean(account/transaction[position() lt 20][@value &gt; 1000])"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() on a sequence of both streamed nodes and atomic values -->
+    <!-- boolean() on a sequence of both streamed nodes and atomic values -->
     
     <xsl:template name="c-100" use-when="$RUN">
-      <xsl:variable name="b" select="1[current-date() gt xs:date('1900-01-01')]"/>
+      <xsl:variable name="b" select="current-date() gt xs:date('1900-01-01')"/>
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="empty(($b, account/transaction/dummy))"/>
+          <xsl:value-of select="boolean(($b, account/transaction/dummy))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() on a sequence of both streamed nodes and atomic values -->
+    <!-- boolean() on a sequence of both streamed nodes and atomic values -->
     
     <xsl:template name="c-101" use-when="$RUN">
-      <xsl:variable name="b" select="1[current-date() gt xs:date('1900-01-01')]"/>
+      <xsl:variable name="b" select="current-date() gt xs:date('1900-01-01')"/>
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="empty((account/transaction/dummy, $b))"/>
+          <xsl:value-of select="boolean((account/transaction/dummy, $b))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() on a sequence of both streamed nodes and atomic values -->
+    <!-- boolean() on a sequence of both streamed nodes and atomic values -->
     
     <xsl:template name="c-102" use-when="$RUN">
-      <xsl:variable name="b" select="1[current-date() gt xs:date('1900-01-01')]"/>
+      <xsl:variable name="b" select="current-date() gt xs:date('1900-01-01')"/>
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="empty((account/transaction, $b))"/>
+          <xsl:value-of select="boolean((account/transaction, $b))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- empty() on a sequence of both streamed nodes and atomic values -->
+    <!-- boolean() on a sequence of both streamed nodes and atomic values -->
     
     <xsl:template name="c-103" use-when="$RUN">
-      <xsl:variable name="b" select="1[current-date() gt xs:date('1900-01-01')]"/>
+      <xsl:variable name="b" select="current-date() gt xs:date('1900-01-01')"/>
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="empty(($b, account/transaction))"/>
+          <xsl:value-of select="boolean(($b, account/transaction))"/>
         </out>
       </xsl:stream>
-    </xsl:template>                    
+    </xsl:template>          
     
 </xsl:stylesheet>

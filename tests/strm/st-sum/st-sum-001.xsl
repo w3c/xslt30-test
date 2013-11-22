@@ -123,7 +123,8 @@
     <xsl:template name="s-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="format-number(sum(let $x := //DIMENSIONS/tokenize(text(), '\s')!number() 
+          <xsl:value-of select="format-number(sum(for $d in data(//DIMENSIONS)
+                                                  return let $x := tokenize($d, '\s')!number() 
                                                   return $x[1]*$x[2]*$x[3]), '99.999')"/>
         </out>
       </xsl:stream>
@@ -144,7 +145,7 @@
     <xsl:template name="s-017" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="round(avg(./BOOKLIST/BOOKS/ITEM/PAGES/copy-of()[. &lt; 1000][. &gt; 0]))"/>
+          <xsl:value-of select="round(sum(./BOOKLIST/BOOKS/ITEM/PAGES/copy-of()[. &lt; 1000][. &gt; 0]))"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -154,7 +155,7 @@
     <xsl:template name="s-018" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="sum(account/transaction/@value)"/>
+          <xsl:value-of select="round(sum(account/transaction/@value))"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -164,7 +165,7 @@
     <xsl:template name="s-019" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="sum(account/transaction/@value[xs:decimal(.) gt 0])"/>
+          <xsl:value-of select="round(sum(account/transaction/@value[xs:decimal(.) gt 0]))"/>
         </out>
       </xsl:stream>
     </xsl:template> 
@@ -174,7 +175,7 @@
     <xsl:template name="s-020" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="sum(account/transaction/abs(@value))"/>
+          <xsl:value-of select="round(sum(account/transaction/abs(@value)))"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -184,8 +185,8 @@
     <xsl:template name="s-021" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
-          <xsl:value-of select="sum(account/transaction/
-                (if (xs:date(@date) lt xs:date('2020-01-01')) then +@value else (@value+1)))"/>
+          <xsl:value-of select="round(sum(account/transaction/
+                (if (xs:date(@date) lt xs:date('2020-01-01')) then +@value else (@value+1))))"/>
         </out>
       </xsl:stream>
     </xsl:template>

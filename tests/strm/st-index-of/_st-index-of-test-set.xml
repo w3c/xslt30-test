@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="st-result-document">
+   <description>Tests xsl:stream instruction introduced in XSLT 3.0 with xsl:result-document.</description>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   
+
+   
+   <test-case name="st-index-of-001">
+      <description>Streaming - calling index-of - first arg is a consuming attribute sequence</description>
+      <created by="Michael Kay" on="2013-11-22"/>
+      <test>
+         <stylesheet file="st-index-of-001.xsl"/>
+         <initial-template name="i-001"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>40 41 42</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-index-of-002">
+      <description>Streaming - calling index-of - first arg is motionless, second is consuming</description>
+      <created by="Michael Kay" on="2013-11-22"/>
+      <test>
+         <stylesheet file="st-index-of-001.xsl"/>
+         <initial-template name="i-002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+
+</test-set>
