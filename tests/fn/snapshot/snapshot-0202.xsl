@@ -3,7 +3,7 @@
 <xsl:template name="main">
   <out>
   <xsl:stream href="snapshot-02.xml">
-     <xsl:for-each select="works/department/employee/snapshot(.)">
+     <xsl:for-each select="snapshot(works/department/employee)">
         <emp name="{@name}" dept="{../@name}" nr="{empnum}" hours="{hours}"/>
      </xsl:for-each>
   </xsl:stream>

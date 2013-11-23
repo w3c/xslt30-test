@@ -14,6 +14,8 @@
 
     <xsl:strip-space elements="*"/>
 
+    <xsl:output method="xml" />
+
     <xsl:template match="/" as="element(html)">
 
         <html>
