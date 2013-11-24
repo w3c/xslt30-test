@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="sf-min">
+   <description>min() function with streaming</description>
+   
+   <environment name="sf-min-A">
+     <stylesheet file="sf-min-001.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="sf-min-003">
+      <description>Basic Test of xsl:stream instruction with min()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-003"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-min-004">
+      <description>Test of xsl:stream instruction with min(), filtered with a motionless predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-004"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-min-005">
+      <description>Test of xsl:stream instruction with min(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-005"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-min-006">
+      <description>Test of xsl:stream instruction with min(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-006"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-min-007">
+      <description>Test of xsl:stream instruction with min(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-007"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-008">
+      <description>Test of xsl:stream instruction with min(), filtered with data() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-008"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>346</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-009">
+      <description>Test of xsl:stream instruction with min(), filtered with text() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-009"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>346</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-010">
+      <description>Test of xsl:stream instruction with min(), filtered with number() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-010"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>346</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-011">
+      <description>min() selecting nothing, returning the $zero case</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-011"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>NaN</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-012">
+      <description>min() selecting both streamed nodes and literals</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-012"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>31</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-013">
+      <description>min() selecting both streamed nodes and literals while also filtering</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-013"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>31</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-015">
+      <description>Test of xsl:stream instruction with min() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-015"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>22.848</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-016">
+      <description>Test of xsl:stream instruction with min() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-016"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-15</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-017">
+      <description>Test of xsl:stream instruction with min() using copy-of to make it streamable</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-017"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>346</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-018">
+      <description>Test of xsl:stream instruction with min() over attribute values</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-018"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-7</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-019">
+      <description>Test of xsl:stream instruction with min() over attribute values, filtered</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-019"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-020">
+      <description>min() over attribute values, computed</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-020"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-021">
+      <description>min() over values that depend on a condition</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-021"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-7</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-022">
+      <description>min() with a loop used to compute each value</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-022"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0.8</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-023">
+      <description>min() over a crawling expression</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-023"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0.8</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-min-901">
+      <description>Test of xsl:stream instruction with min(), filtered with predicate that atomizes.</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <test>
+         <stylesheet file="sf-min-901.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-902">
+      <description>Test of xsl:stream instruction with min(), filtered with predicate that uses last().</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <test>
+         <stylesheet file="sf-min-902.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+
+
+</test-set>

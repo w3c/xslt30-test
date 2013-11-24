@@ -4,12 +4,12 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
-    <!-- Test of xsl:stream with sum(), filtered with non-motionless predicate -->
+    <!-- Test of xsl:stream with max(), filtered with non-motionless predicate -->
     
     <xsl:template name="main">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="round(sum(./BOOKLIST/BOOKS/ITEM/PAGES[. &lt; 1000]))"/>
+          <xsl:value-of select="round(max(./BOOKLIST/BOOKS/ITEM/PAGES[. &lt; 1000]))"/>
         </out>
       </xsl:stream>
     </xsl:template>   

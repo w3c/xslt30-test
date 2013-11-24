@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="sf-avg">
+   <description>avg() function with streaming</description>
+   
+   <environment name="sf-avg-A">
+     <stylesheet file="sf-avg-001.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="sf-avg-003">
+      <description>Basic Test of xsl:stream instruction with avg()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-003"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>9.06</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-avg-004">
+      <description>Test of xsl:stream instruction with avg(), filtered with a motionless predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-004"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>8.2375</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-avg-005">
+      <description>Test of xsl:stream instruction with avg(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-005"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5.49</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-avg-006">
+      <description>Test of xsl:stream instruction with avg(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-006"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5.49</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-avg-007">
+      <description>Test of xsl:stream instruction with avg(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-007"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5.49</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-008">
+      <description>Test of xsl:stream instruction with avg(), filtered with data() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-008"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>420</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-009">
+      <description>Test of xsl:stream instruction with avg(), filtered with text() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-009"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>420</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-010">
+      <description>Test of xsl:stream instruction with avg(), filtered with number() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-010"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>420</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-011">
+      <description>avg() selecting nothing, returning the $zero case</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-011"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-012">
+      <description>avg() selecting both streamed nodes and literals</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-012"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>322.875</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-013">
+      <description>avg() selecting both streamed nodes and literals while also filtering</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-013"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>318.71</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-015">
+      <description>Test of xsl:stream instruction with avg() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-015"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>267.426</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-016">
+      <description>Test of xsl:stream instruction with avg() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-016"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>15</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-017">
+      <description>Test of xsl:stream instruction with avg() using copy-of to make it streamable</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-017"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>420</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-018">
+      <description>Test of xsl:stream instruction with avg() over attribute values</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-018"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>7</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-019">
+      <description>Test of xsl:stream instruction with avg() over attribute values, filtered</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-019"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>11</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-020">
+      <description>avg() over attribute values, computed</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-020"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>9</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-021">
+      <description>avg() over values that depend on a condition</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-021"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>8</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-022">
+      <description>avg() with a loop used to compute each value</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-022"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>6.25</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-023">
+      <description>avg() over a crawling expression</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-023"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>6.25</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-avg-901">
+      <description>Test of xsl:stream instruction with avg(), filtered with predicate that atomizes.</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <test>
+         <stylesheet file="sf-avg-901.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-902">
+      <description>Test of xsl:stream instruction with avg(), filtered with predicate that uses last().</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <test>
+         <stylesheet file="sf-avg-902.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+
+
+</test-set>
