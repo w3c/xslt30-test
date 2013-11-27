@@ -7,15 +7,21 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
 
-
-    
-    <xsl:template name="s-023" use-when="$RUN">
+    <xsl:template name="s-008" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="sum(//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+          <xsl:value-of select="round(sum(./BOOKLIST/BOOKS/ITEM/PAGES/data()[. &lt; 1000][. &gt; 0]))"/>
         </out>
       </xsl:stream>
     </xsl:template>
+    
+   <!--<xsl:template name="s-012" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum((./BOOKLIST/BOOKS/ITEM/PAGES/number(), 31, 32))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>-->
     
     
 </xsl:stylesheet>

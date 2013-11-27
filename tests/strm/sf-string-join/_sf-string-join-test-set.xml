@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="stream">
+          name="sf-string-join">
    <description>Tests the xsl:stream instruction with string-join()</description>
+   
+   <environment name="sf-string-join-A">
+     <stylesheet file="sf-string-join-001.xsl"/>
+   </environment>
    
    <dependencies>
       <spec value="XSLT30+"/>
@@ -14,12 +18,24 @@
    <test-case name="st-string-join-001">
       <description>Test of xsl:stream instruction using string-join</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-string-join-A"/>
       <test>
-         <stylesheet file="st-string-join-001.xsl"/>
-         <initial-template name="main"/>
+         <initial-template name="j-001"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out>Pride and Prejudice, Wuthering Heights, Tess of the d'Urbervilles, Jude the Obscure, The Big Over Easy, The Eyre Affair</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="st-string-join-002">
+      <description>Test of xsl:stream instruction using string-join: first argument motionless, second argument consuming</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-string-join-A"/>
+      <test>
+         <initial-template name="j-002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1MMP2MMP3MMP4MMP5MMP6MMP7MMP8MMP9MMP10</out>]]></assert-xml>
       </result>
    </test-case>
 

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="sf-max">
+   <description>max() function with streaming</description>
+   
+   <environment name="sf-max-A">
+     <stylesheet file="sf-max-001.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="sf-max-003">
+      <description>Basic Test of xsl:stream instruction with max()</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-003"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>16.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-max-004">
+      <description>Test of xsl:stream instruction with max(), filtered with a motionless predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-004"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>16.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-max-005">
+      <description>Test of xsl:stream instruction with max(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-005"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>6.58</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-max-006">
+      <description>Test of xsl:stream instruction with max(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-006"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>6.58</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-max-007">
+      <description>Test of xsl:stream instruction with max(), filtered with a positional predicate</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-007"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>6.58</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-008">
+      <description>Test of xsl:stream instruction with max(), filtered with data() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-008"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>528</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-009">
+      <description>Test of xsl:stream instruction with max(), filtered with text() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-009"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>528</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-010">
+      <description>Test of xsl:stream instruction with max(), filtered with number() to make the predicates motionless</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-010"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>528</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-011">
+      <description>max() selecting nothing, returning the $zero case</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-011"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>NaN</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-012">
+      <description>max() selecting both streamed nodes and literals</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-012"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>528</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-013">
+      <description>max() selecting both streamed nodes and literals while also filtering</description>
+      <created by="Michael Kay" on="2012-11-20"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-013"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>528</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-015">
+      <description>Test of xsl:stream instruction with max() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-015"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1417.500</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-016">
+      <description>Test of xsl:stream instruction with max() of a computed value</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-016"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>45</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-017">
+      <description>Test of xsl:stream instruction with max() using copy-of to make it streamable</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-017"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>528</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-018">
+      <description>Test of xsl:stream instruction with max() over attribute values</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-018"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>23</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-019">
+      <description>Test of xsl:stream instruction with max() over attribute values, filtered</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-019"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>23</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-020">
+      <description>max() over attribute values, computed</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-020"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>23</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-021">
+      <description>max() over values that depend on a condition</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-021"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>24</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-022">
+      <description>max() with a loop used to compute each value</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-022"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>22.5</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-023">
+      <description>max() over a crawling expression</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-023"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>22.5</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="sf-max-901">
+      <description>Test of xsl:stream instruction with max(), filtered with predicate that atomizes.</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <test>
+         <stylesheet file="sf-max-901.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-902">
+      <description>Test of xsl:stream instruction with max(), filtered with predicate that uses last().</description>
+      <created by="Michael Kay" on="2013-11-21"/>
+      <test>
+         <stylesheet file="sf-max-902.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+
+
+</test-set>
