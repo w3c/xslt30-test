@@ -151,7 +151,7 @@
     
     <!-- count() applied to a non-existent element -->
     
-    <xsl:template name="c-015">
+    <xsl:template name="c-015" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
           <xsl:value-of select="count(account/transaction/details)"/>
@@ -161,7 +161,7 @@
     
     <!-- count() applied to an existent attribute (can exit early) -->
     
-    <xsl:template name="c-016">
+    <xsl:template name="c-016" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
           <xsl:value-of select="count(account/transaction/@value)"/>
@@ -171,7 +171,7 @@
     
     <!-- Test of xsl:stream with count() and a boolean filter -->
     
-    <xsl:template name="c-017">
+    <xsl:template name="c-017" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
           <xsl:value-of select="count(account/transaction[@value &gt; 10000000])"/>
@@ -181,7 +181,7 @@
     
     <!-- Test of xsl:stream with count() and both a positional and a boolean filter -->
     
-    <xsl:template name="c-018">
+    <xsl:template name="c-018" use-when="$RUN">
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
           <xsl:value-of select="count(account/transaction[position() lt 20][@value &gt; 1000])"/>
