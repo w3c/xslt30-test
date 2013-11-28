@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="sx-CommaExpr">
+   <description>comma expression function with streaming</description>
+   
+   <environment name="sx-comma-A">
+     <stylesheet file="sx-comma-A.xsl"/>
+   </environment>
+   
+   <environment name="sx-comma-B">
+     <stylesheet file="sx-comma-B.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="sx-comma-001">
+      <description>Streaming comma expression - grounded operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-001"/>
+      </test>
+      <result>
+         <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 A B"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-002">
+      <description>Streaming comma expression - grounded operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><PRICE>6.58</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE><a>A</a><b>B</b></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-003">
+      <description>Streaming comma expression - grounded atomic operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-003"/>
+      </test>
+      <result>
+         <assert>/out = "8.3 5.7 1.1 A B 1.0 5.2 7.8 A B 6.8 4.2 0.8 A B 7.8 5.2 0.9 A B 22.5 18.0 3.5 A B 7.8 5.0 0.9 A B"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-010">
+      <description>Streaming comma expression - striding operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>8</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-011">
+      <description>Streaming comma expression - striding operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-012">
+      <description>Streaming comma expression - striding operand, transmission usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert>/out = "6.58 4.95 16.47 B"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-013">
+      <description>Streaming comma expression - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 7.58 5.95 5.95 17.47 17.47"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-014">
+      <description>Streaming comma expression - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><AUTHOR>Jane Austen</AUTHOR><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT><a>A</a><b>B</b></out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-015">
+      <description>Streaming comma expression - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 7.58 5.95 5.95 17.47 17.47 "</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-016">
+      <description>Streaming comma expression - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><AUTHOR>Jane Austen</AUTHOR><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT><a>A</a><b>B</b></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-017">
+      <description>Streaming comma expression - striding operand, focus-setting usage for inspection action</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>/out = "true false true true true true false false true true true false false"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-018">
+      <description>Streaming comma expression - striding operand, apply-templates usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>/out = "???"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-020">
+      <description>Streaming comma expression - crawling operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert>/out = "8"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-021">
+      <description>Streaming comma expression - crawling operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert>/out = "13"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-022">
+      <description>Streaming comma expression - crawling operand, transmission usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceJane AustenModern Library"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-023">
+      <description>Streaming comma expression - crawling operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 7.58 5.95 5.95 17.47 17.47"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-030">
+      <description>Streaming comma expression - climbing operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST BOOKS ITEM a b"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-031">
+      <description>Streaming comma expression - climbing operand, inspection usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST BOOKS ITEM ITEM ITEM ITEM ITEM ITEM a b"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-032">
+      <description>Streaming comma expression - climbing operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>/out = "MHK|MMP|A|B"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-033">
+      <description>Streaming comma expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P|P|P|H|P|A|B"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-034">
+      <description>Streaming comma expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P|P|P|H|P|A|B"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-035">
+      <description>Streaming comma expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>/out = "MHK|MMP|P|P|P|H|P|A|B"</assert>
+      </result>
+   </test-case>  
+
+
+
+   <test-case name="sx-comma-101">
+      <description>comma expression (streaming arg 2) - grounded operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-001"/>
+      </test>
+      <result>
+         <assert>/out = "A B 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-102">
+      <description>comma expression (streaming arg 2) - grounded operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>A</a><b>B</b><PRICE>4.95</PRICE><PRICE>6.58</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-103">
+      <description>comma expression (streaming arg 2) - grounded atomic operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-003"/>
+      </test>
+      <result>
+         <assert>/out = "A B 8.3 5.7 1.1 A B 1.0 5.2 7.8 A B 6.8 4.2 0.8 A B 7.8 5.2 0.9 A B 22.5 18.0 3.5 A B 7.8 5.0 0.9"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-110">
+      <description>comma expression (streaming arg 2) - striding operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert>/out = "8"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-111">
+      <description>comma expression (streaming arg 2) - striding operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-112">
+      <description>comma expression (streaming arg 2) - striding operand, transmission usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert>/out = "???"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-113">
+      <description>comma expression (streaming arg 2) - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 7.58 5.95 5.95 17.47 17.47"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-114">
+      <description>comma expression (streaming arg 2) - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>A</a><b>B</b><TITLE>Pride and Prejudice</TITLE><AUTHOR>Jane Austen</AUTHOR><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-115">
+      <description>comma expression (streaming arg 2) - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 7.58 5.95 5.95 17.47 17.47 "</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-116">
+      <description>comma expression (streaming arg 2) - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>A</a><b>B</b><TITLE>Pride and Prejudice</TITLE><AUTHOR>Jane Austen</AUTHOR><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-117">
+      <description>comma expression (streaming arg 2) - striding operand, focus-setting usage for inspection action</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>/out = "false false true false true true true true false false true true true"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-118">
+      <description>comma expression (streaming arg 2) - striding operand, apply-templates usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceJane AustenModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-120">
+      <description>comma expression (streaming arg 2) - crawling operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert>/out = "8"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-121">
+      <description>comma expression (streaming arg 2) - crawling operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert>/out = "13"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-122">
+      <description>comma expression (streaming arg 2) - crawling operand, transmission usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>A</a><b>B</b>Pride and Prejudice</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-123">
+      <description>comma expression (streaming arg 2) - crawling operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5.95 7.58 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-130">
+      <description>comma expression (streaming arg 2) - climbing operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST BOOKS ITEM a b"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-131">
+      <description>comma expression (streaming arg 2) - climbing operand, inspection usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST BOOKS ITEM ITEM ITEM ITEM ITEM ITEM a b"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-132">
+      <description>comma expression (streaming arg 2) - climbing operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>/out = "A|B|MHK|MMP"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-133">
+      <description>comma expression (streaming arg 2) - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>/out = "A|B|MMP|P|P|P|H|P"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-comma-134">
+      <description>comma expression (streaming arg 2) - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>/out = "A|B|MMP|P|P|P|H|P"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-135">
+      <description>comma expression (streaming arg 2) - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>/out = "A|B|MHK|MMP|P|P|P|H|P"</assert>
+      </result>
+   </test-case>  
+
+
+
+</test-set>
