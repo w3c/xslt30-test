@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="sf-insert-before">
+   <description>insert-before() function with streaming</description>
+   
+   <environment name="sf-insert-before-A">
+     <stylesheet file="sf-insert-before-A.xsl"/>
+   </environment>
+   
+   <environment name="sf-insert-before-B">
+     <stylesheet file="sf-insert-before-B.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="sf-insert-before-001">
+      <description>Streaming insert-before() - grounded operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-001"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95 4.95 4.95 16.47 16.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-002">
+      <description>Streaming insert-before() - grounded operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-003">
+      <description>Streaming insert-before() - grounded atomic operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-003"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>8.3 1.1 1.0 7.8 6.8 0.8 7.8 0.9 22.5 3.5 7.8 0.9</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-010">
+      <description>Streaming insert-before() - striding operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-011">
+      <description>Streaming insert-before() - striding operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>47.79</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-012">
+      <description>Streaming insert-before() - striding operand, transmission usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95 16.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-013">
+      <description>Streaming insert-before() - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-014">
+      <description>Streaming insert-before() - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-015">
+      <description>Streaming insert-before() - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 5.95 5.95 17.47 17.47 "</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-016">
+      <description>Streaming insert-before() - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-017">
+      <description>Streaming insert-before() - striding operand, focus-setting usage for inspection action</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>/out = "true true true true true false false true true true"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-018">
+      <description>Streaming insert-before() - striding operand, apply-templates usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-020">
+      <description>Streaming insert-before() - crawling operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-021">
+      <description>Streaming insert-before() - crawling operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>10</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-022">
+      <description>Streaming insert-before() - crawling operand, transmission usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Pride and PrejudiceModern Library2002-12-31</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-023">
+      <description>Streaming insert-before() - crawling operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-030">
+      <description>Streaming insert-before() - climbing operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST ITEM"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-031">
+      <description>Streaming insert-before() - climbing operand, inspection usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST ITEM ITEM ITEM ITEM ITEM ITEM"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-032">
+      <description>Streaming insert-before() - climbing operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>/out = "MHK"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-033">
+      <description>Streaming insert-before() - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P|P|H|P"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-034">
+      <description>Streaming insert-before() - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P|P|H|P"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-035">
+      <description>Streaming insert-before() - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>/out = "MHK|P|P|P|H|P"</assert>
+      </result>
+   </test-case>  
+
+
+
+   <test-case name="sf-insert-before-101">
+      <description>insert-before() (streaming arg 3) - grounded operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-001"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95 4.95 4.95 16.47 16.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-102">
+      <description>insert-before() (streaming arg 3) - grounded operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-103">
+      <description>insert-before() (streaming arg 3) - grounded atomic operand</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-003"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>8.3 1.1 1.0 7.8 6.8 0.8 7.8 0.9 22.5 3.5 7.8 0.9</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-110">
+      <description>insert-before() (streaming arg 3) - striding operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-111">
+      <description>insert-before() (streaming arg 3) - striding operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>47.79</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-112">
+      <description>insert-before() (streaming arg 3) - striding operand, transmission usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>4.95 16.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-113">
+      <description>insert-before() (streaming arg 3) - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-114">
+      <description>insert-before() (streaming arg 3) - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-115">
+      <description>insert-before() (streaming arg 3) - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 5.95 5.95 17.47 17.47 "</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-116">
+      <description>insert-before() (streaming arg 3) - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-117">
+      <description>insert-before() (streaming arg 3) - striding operand, focus-setting usage for inspection action</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>/out = "true true true true true false false true true true"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-118">
+      <description>insert-before() (streaming arg 3) - striding operand, apply-templates usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-120">
+      <description>insert-before() (streaming arg 3) - crawling operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-121">
+      <description>insert-before() (streaming arg 3) - crawling operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>10</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-122">
+      <description>insert-before() (streaming arg 3) - crawling operand, transmission usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>Pride and PrejudiceModern Library2002-12-31</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-123">
+      <description>insert-before() (streaming arg 3) - crawling operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-130">
+      <description>insert-before() (streaming arg 3) - climbing operand, inspection usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST ITEM"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-131">
+      <description>insert-before() (streaming arg 3) - climbing operand, inspection usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST ITEM ITEM ITEM ITEM ITEM ITEM"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-132">
+      <description>insert-before() (streaming arg 3) - climbing operand, absorption usage</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>/out = "MHK"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-133">
+      <description>insert-before() (streaming arg 3) - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P|P|H|P"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-insert-before-134">
+      <description>insert-before() (streaming arg 3) - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P|P|H|P"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-135">
+      <description>insert-before() (streaming arg 3) - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2013-11-25"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>/out = "MHK|P|P|P|H|P"</assert>
+      </result>
+   </test-case>  
+
+
+
+</test-set>
