@@ -33,7 +33,6 @@
             <xsl:value-of select="$count"/>
           </count>
         </xsl:on-completion>
-        <xsl:fallback/>
       </xsl:iterate>
     </out>
   </xsl:template>

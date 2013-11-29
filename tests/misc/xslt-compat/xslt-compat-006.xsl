@@ -6,16 +6,16 @@
 
    <t:template match="/">
       <out>
-         <t:analyze-string select="'abracadabra'" regex="b">
-            <t:fallback>
-               <t:text>Cannot use analyze-string in this version.</t:text>
-            </t:fallback>
+         <t:analyze-string select="'abracadabra'" regex="b">            
     	       <t:matching-substring>
     		         <t:value-of select="'!'"/>
     	       </t:matching-substring>
     	       <t:non-matching-substring>
     		         <t:value-of select="."/>
     	       </t:non-matching-substring>
+    	       <t:fallback>
+                 <t:text>Cannot use analyze-string in this version.</t:text>
+               </t:fallback>
          </t:analyze-string>
       </out>
    </t:template>

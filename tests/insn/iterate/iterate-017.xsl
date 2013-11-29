@@ -35,7 +35,6 @@
         <xsl:on-completion>
           <count h3="{$count-h3}" other="{$count-other}"/>
         </xsl:on-completion>
-        <xsl:fallback/>
       </xsl:iterate>
     </out>
   </xsl:template>

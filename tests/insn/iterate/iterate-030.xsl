@@ -29,7 +29,6 @@
         </xsl:choose>
         <xsl:fallback/>
         <xsl:on-completion select="'count ' || $count"/>
-        <xsl:fallback/>
       </xsl:iterate>
     </out>
   </xsl:template>
