@@ -83,7 +83,7 @@
          can't currently be handled by a ComposingWatch. Need to generalize
          TransmissionAdjunct -->
     
-    <xsl:template name="r-014" use-when="true() or $RUN">
+    <xsl:template name="r-014" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[1] ! unordered(*)"/>
@@ -180,7 +180,7 @@
     
     <!-- Streaming unordered(): climbing operand, inspection usage -->
     
-    <xsl:template name="r-030" use-when="$RUN">
+    <xsl:template name="r-030" use-when="true() or $RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:copy-of select="unordered(/BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*) ! name()"/>
