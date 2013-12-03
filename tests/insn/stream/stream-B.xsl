@@ -48,6 +48,26 @@
       </out>
     </xsl:template>
     
+    <!-- Partial validation, valid -->
+    
+    <xsl:template name="s-105" use-when="$RUN">
+      <out>
+        <xsl:stream href="books-invalid.xml">
+          <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[1]" validation="strict"/>
+        </xsl:stream>
+      </out>
+    </xsl:template>
+    
+    <!-- Partial validation, valid -->
+    
+    <xsl:template name="s-106" use-when="$RUN">
+      <out>
+        <xsl:stream href="books-invalid.xml">
+          <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[2]" validation="strict"/>
+        </xsl:stream>
+      </out>
+    </xsl:template>
+    
 
 
               
