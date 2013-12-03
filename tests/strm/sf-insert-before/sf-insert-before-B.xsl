@@ -12,6 +12,11 @@
       <b>B</b>
     </xsl:variable>
     
+    <xsl:variable name="numeric-insertion" as="element()*">
+      <a>98</a>
+      <b>99</b>
+    </xsl:variable>
+    
     <!-- insert-before() (streaming arg 3): grounded operand -->
     
     <xsl:template name="r-001" use-when="$RUN">
@@ -57,7 +62,7 @@
     <xsl:template name="r-011" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="sum(insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM/PRICE))"/>
+          <xsl:value-of select="sum(insert-before($numeric-insertion, 2, /BOOKLIST/BOOKS/ITEM/PRICE))"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -77,7 +82,7 @@
     <xsl:template name="r-013" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM/PRICE) ! (.+1)"/>
+          <xsl:value-of select="insert-before($numeric-insertion, 2, /BOOKLIST/BOOKS/ITEM/PRICE) ! (.+1)"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -101,7 +106,7 @@
     <xsl:template name="r-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:for-each select="insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM/PRICE)">
+          <xsl:for-each select="insert-before($numeric-insertion, 2, /BOOKLIST/BOOKS/ITEM/PRICE)">
             <xsl:value-of select=".+1 || ' '"/>
           </xsl:for-each>  
         </out>
@@ -142,6 +147,7 @@
     
     <xsl:mode name="r-018-mode" streamable="yes" on-no-match="deep-skip"/>
     <xsl:template match="ITEM/*" mode="r-018-mode"><xsl:value-of select="."/></xsl:template>
+    <xsl:template match="a|b" mode="r-018-mode">(<xsl:value-of select="."/>)</xsl:template>
     
     <!-- insert-before() (streaming arg 3): crawling operand, inspection usage -->
     
@@ -178,7 +184,7 @@
     <xsl:template name="r-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="insert-before($insertion, 2, //PRICE/text()) ! (.+1)"/>
+          <xsl:copy-of select="insert-before($numeric-insertion, 2, //PRICE/text()) ! (.+1)"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -208,7 +214,7 @@
     <xsl:template name="r-032" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*/@*)" separator="|"/>
+          <xsl:value-of select="insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*/data(@*))" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -218,7 +224,7 @@
     <xsl:template name="r-033" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM/ancestor-or-self::*/@CAT)" separator="|"/>
+          <xsl:value-of select="insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM/ancestor-or-self::*/data(@CAT))" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -228,7 +234,7 @@
     <xsl:template name="r-034" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM/PRICE/ancestor-or-self::*/@CAT)" separator="|"/>
+          <xsl:value-of select="insert-before($insertion, 2, /BOOKLIST/BOOKS/ITEM/PRICE/ancestor-or-self::*/data(@CAT))" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -238,7 +244,7 @@
     <xsl:template name="r-035" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="insert-before($insertion, 2, //PRICE/ancestor-or-self::*/@*)" separator="|"/>
+          <xsl:value-of select="insert-before($insertion, 2, //PRICE/ancestor-or-self::*/data(@*))" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>               

@@ -25,7 +25,7 @@
          <initial-template name="r-001"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>4.95 4.95 4.95 16.47 16.47</out>]]></assert-xml>
+         <assert>/out = "4.95 A B 6.58 4.95 4.95 16.47 16.47"</assert>
       </result>
    </test-case>
    
@@ -37,7 +37,7 @@
          <initial-template name="r-002"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><a>A</a><b>B</b><PRICE>6.58</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -49,7 +49,7 @@
          <initial-template name="r-003"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>8.3 1.1 1.0 7.8 6.8 0.8 7.8 0.9 22.5 3.5 7.8 0.9</out>]]></assert-xml>
+         <assert>/out = "8.3 A B 5.7 1.1 1.0 A B 5.2 7.8 6.8 A B 4.2 0.8 7.8 A B 5.2 0.9 22.5 A B 18.0 3.5 7.8 A B 5.0 0.9"</assert>
       </result>
    </test-case>
    
@@ -61,7 +61,7 @@
          <initial-template name="r-010"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+         <assert>/out = "8"</assert>
       </result>
    </test-case>
    
@@ -73,7 +73,7 @@
          <initial-template name="r-011"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>47.79</out>]]></assert-xml>
+         <error code="FORG0001"/>
       </result>
    </test-case>
    
@@ -85,7 +85,7 @@
          <initial-template name="r-012"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>4.95 16.47</out>]]></assert-xml>
+         <assert>/out = "A 6.58 4.95 16.47"</assert>
       </result>
    </test-case>
    
@@ -97,7 +97,7 @@
          <initial-template name="r-013"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+         <assert>/out = "5.95 100 99 7.58 5.95 5.95 17.47 17.47"</assert>
       </result>
    </test-case> 
    
@@ -109,7 +109,7 @@
          <initial-template name="r-014"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><a>A</a><b>B</b><AUTHOR>Jane Austen</AUTHOR><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
       </result>
    </test-case> 
    
@@ -121,7 +121,7 @@
          <initial-template name="r-015"/>
       </test>
       <result>
-         <assert>/out = "5.95 5.95 5.95 17.47 17.47 "</assert>
+         <assert>/out = "5.95 100 99 7.58 5.95 5.95 17.47 17.47 "</assert>
       </result>
    </test-case> 
    
@@ -133,7 +133,7 @@
          <initial-template name="r-016"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><a>A</a><b>B</b><AUTHOR>Jane Austen</AUTHOR><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -145,7 +145,7 @@
          <initial-template name="r-017"/>
       </test>
       <result>
-         <assert>/out = "true true true true true false false true true true"</assert>
+         <assert>/out = "true false false false true true true true false false true true true"</assert>
       </result>
    </test-case>
    
@@ -157,7 +157,7 @@
          <initial-template name="r-018"/>
       </test>
       <result>
-         <assert>/out = "Pride and PrejudiceModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
+         <assert>/out = "Pride and Prejudice(A)(B)Jane AustenModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
       </result>
    </test-case>
    
@@ -169,7 +169,7 @@
          <initial-template name="r-020"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+         <assert>/out = "8"</assert>
       </result>
    </test-case>
    
@@ -181,7 +181,7 @@
          <initial-template name="r-021"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>10</out>]]></assert-xml>
+         <assert>/out = "13"</assert>
       </result>
    </test-case>
    
@@ -193,7 +193,7 @@
          <initial-template name="r-022"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>Pride and PrejudiceModern Library2002-12-31</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>Pride and Prejudice<a>A</a><b>B</b></out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -205,7 +205,7 @@
          <initial-template name="r-023"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+         <assert>/out = "5.95 100 99 7.58 5.95 5.95 17.47 17.47"</assert>
       </result>
    </test-case>
    
@@ -217,7 +217,7 @@
          <initial-template name="r-030"/>
       </test>
       <result>
-         <assert>/out = "BOOKLIST ITEM"</assert>
+         <assert>/out = "BOOKLIST a b BOOKS ITEM"</assert>
       </result>
    </test-case>
    
@@ -229,7 +229,7 @@
          <initial-template name="r-031"/>
       </test>
       <result>
-         <assert>/out = "BOOKLIST ITEM ITEM ITEM ITEM ITEM ITEM"</assert>
+         <assert>/out = "BOOKLIST a b BOOKS ITEM ITEM ITEM ITEM ITEM ITEM"</assert>
       </result>
    </test-case> 
    
@@ -241,7 +241,7 @@
          <initial-template name="r-032"/>
       </test>
       <result>
-         <assert>/out = "MHK"</assert>
+         <assert>/out = "MHK|A|B|MMP"</assert>
       </result>
    </test-case>
    
@@ -253,7 +253,7 @@
          <initial-template name="r-033"/>
       </test>
       <result>
-         <assert>/out = "MMP|P|P|H|P"</assert>
+         <assert>/out = "MMP|A|B|P|P|P|H|P"</assert>
       </result>
    </test-case> 
    
@@ -265,7 +265,7 @@
          <initial-template name="r-034"/>
       </test>
       <result>
-         <assert>/out = "MMP|P|P|H|P"</assert>
+         <assert>/out = "MMP|A|B|P|P|P|H|P"</assert>
       </result>
    </test-case>
    
@@ -277,7 +277,7 @@
          <initial-template name="r-035"/>
       </test>
       <result>
-         <assert>/out = "MHK|P|P|P|H|P"</assert>
+         <assert>/out = "MHK|A|B|MMP|P|P|P|H|P"</assert>
       </result>
    </test-case>  
 
@@ -291,7 +291,7 @@
          <initial-template name="r-001"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>4.95 4.95 4.95 16.47 16.47</out>]]></assert-xml>
+         <assert>/out = "A 4.95 6.58 4.95 4.95 16.47 16.47 B"</assert>
       </result>
    </test-case>
    
@@ -303,7 +303,7 @@
          <initial-template name="r-002"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>A</a><PRICE>4.95</PRICE><PRICE>6.58</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE><b>B</b></out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -315,7 +315,7 @@
          <initial-template name="r-003"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>8.3 1.1 1.0 7.8 6.8 0.8 7.8 0.9 22.5 3.5 7.8 0.9</out>]]></assert-xml>
+         <assert>/out = "A 8.3 5.7 1.1 B A 1.0 5.2 7.8 B A 6.8 4.2 0.8 B A 7.8 5.2 0.9 B A 22.5 18.0 3.5 B A 7.8 5.0 0.9 B"</assert>
       </result>
    </test-case>
    
@@ -327,7 +327,7 @@
          <initial-template name="r-010"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+         <assert>/out = "8"</assert>
       </result>
    </test-case>
    
@@ -339,7 +339,7 @@
          <initial-template name="r-011"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>47.79</out>]]></assert-xml>
+         <assert>/out = "251.37"</assert>
       </result>
    </test-case>
    
@@ -351,7 +351,7 @@
          <initial-template name="r-012"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>4.95 16.47</out>]]></assert-xml>
+         <assert>/out = "4.95 4.95 16.47 B"</assert>
       </result>
    </test-case>
    
@@ -363,7 +363,7 @@
          <initial-template name="r-013"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+         <assert>/out = "99 5.95 7.58 5.95 5.95 17.47 17.47 100"</assert>
       </result>
    </test-case> 
    
@@ -375,7 +375,7 @@
          <initial-template name="r-014"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>A</a><TITLE>Pride and Prejudice</TITLE><AUTHOR>Jane Austen</AUTHOR><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT><b>B</b></out>]]></assert-xml>
       </result>
    </test-case> 
    
@@ -387,7 +387,7 @@
          <initial-template name="r-015"/>
       </test>
       <result>
-         <assert>/out = "5.95 5.95 5.95 17.47 17.47 "</assert>
+         <assert>/out = "99 5.95 7.58 5.95 5.95 17.47 17.47 100 "</assert>
       </result>
    </test-case> 
    
@@ -399,7 +399,7 @@
          <initial-template name="r-016"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>A</a><TITLE>Pride and Prejudice</TITLE><AUTHOR>Jane Austen</AUTHOR><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT><b>B</b></out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -411,7 +411,7 @@
          <initial-template name="r-017"/>
       </test>
       <result>
-         <assert>/out = "true true true true true false false true true true"</assert>
+         <assert>/out = "false true false true true true true false false true true true false"</assert>
       </result>
    </test-case>
    
@@ -423,7 +423,7 @@
          <initial-template name="r-018"/>
       </test>
       <result>
-         <assert>/out = "Pride and PrejudiceModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
+         <assert>/out = "(A)Pride and PrejudiceJane AustenModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1(B)"</assert>
       </result>
    </test-case>
    
@@ -435,7 +435,7 @@
          <initial-template name="r-020"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+         <assert>/out = "8"</assert>
       </result>
    </test-case>
    
@@ -447,7 +447,7 @@
          <initial-template name="r-021"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>10</out>]]></assert-xml>
+         <assert>/out = "13"</assert>
       </result>
    </test-case>
    
@@ -459,7 +459,7 @@
          <initial-template name="r-022"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>Pride and PrejudiceModern Library2002-12-31</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>A</a>Pride and PrejudiceJane Austen</out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -471,7 +471,7 @@
          <initial-template name="r-023"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
+         <assert>/out = "99 5.95 7.58 5.95 5.95 17.47 17.47 100"</assert>
       </result>
    </test-case>
    
@@ -483,7 +483,7 @@
          <initial-template name="r-030"/>
       </test>
       <result>
-         <assert>/out = "BOOKLIST ITEM"</assert>
+         <assert>/out = "a BOOKLIST BOOKS ITEM b"</assert>
       </result>
    </test-case>
    
@@ -495,7 +495,7 @@
          <initial-template name="r-031"/>
       </test>
       <result>
-         <assert>/out = "BOOKLIST ITEM ITEM ITEM ITEM ITEM ITEM"</assert>
+         <assert>/out = "a BOOKLIST BOOKS ITEM ITEM ITEM ITEM ITEM ITEM b"</assert>
       </result>
    </test-case> 
    
@@ -507,7 +507,7 @@
          <initial-template name="r-032"/>
       </test>
       <result>
-         <assert>/out = "MHK"</assert>
+         <assert>/out = "A|MHK|MMP|B"</assert>
       </result>
    </test-case>
    
@@ -519,7 +519,7 @@
          <initial-template name="r-033"/>
       </test>
       <result>
-         <assert>/out = "MMP|P|P|H|P"</assert>
+         <assert>/out = "A|MMP|P|P|P|H|P|B"</assert>
       </result>
    </test-case> 
    
@@ -531,7 +531,7 @@
          <initial-template name="r-034"/>
       </test>
       <result>
-         <assert>/out = "MMP|P|P|H|P"</assert>
+         <assert>/out = "A|MMP|P|P|P|H|P|B"</assert>
       </result>
    </test-case>
    
@@ -543,7 +543,7 @@
          <initial-template name="r-035"/>
       </test>
       <result>
-         <assert>/out = "MHK|P|P|P|H|P"</assert>
+         <assert>/out = "A|MHK|MMP|P|P|P|H|P|B"</assert>
       </result>
    </test-case>  
 
