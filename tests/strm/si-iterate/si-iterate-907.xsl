@@ -4,14 +4,15 @@
     exclude-result-prefixes=" xs"
     version="3.0">
    
-  <!-- within xsl:stream, use parent axis within xsl:for-each -->
+  <!-- within xsl:stream, use xsl:iterate containing xsl:sequence -->
+  <!-- Not streamable because the result of xsl:stream must not be a streamed node -->
    
   <xsl:template name="main">
     <out>
       <xsl:stream href="../docs/transactions.xml">
-        <xsl:for-each select="account/transaction[position() lt 5]">
-          <xsl:sequence select="name(..)"/>
-        </xsl:for-each>
+        <xsl:iterate select="account/transaction[@value &lt; 0]">
+          <xsl:sequence select="."/>
+        </xsl:iterate>
       </xsl:stream>
     </out>
   </xsl:template> 

@@ -1802,42 +1802,7 @@
       </result>
    </test-case>
 
-   <test-case name="streamable-095">
-      <description>within a streaming template, use xsl:iterate to process the subtree</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="loans"/>
-      <test>
-         <stylesheet file="streamable-095.xsl"/>
-         <initial-template name="main"/>
-      </test>
-      <result>
-         <all-of>
-            <assert>deep-equal(/out/loans/loan/number(@cumulativeValue),
-               (400000,750000,1150000,1500000,2100000,2600000,3400000,4150000,4350000,4525000))</assert>
-            <assert>deep-equal(/out/loans/loan/number(@value),
-               (400000,350000,400000,350000,600000,500000,800000,750000,200000,175000))</assert>
-         </all-of>
-      </result>
-   </test-case>
-
-   <test-case name="streamable-096">
-      <description>within a streaming template, use xsl:iterate and xsl:break to process the subtree</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="loans"/>
-      <test>
-         <stylesheet file="streamable-096.xsl"/>
-         <initial-template name="main"/>
-      </test>
-      <result>
-         <all-of>
-            <assert>deep-equal(/out/loans/loan/number(@cumulativeValue),
-               (400000,750000,1150000,1500000,2100000,2600000))</assert>
-            <assert>deep-equal(/out/loans/loan/number(@value),
-               (400000,350000,400000,350000,600000,500000))</assert>
-         </all-of>
-      </result>
-   </test-case>
-
+   
    <test-case name="streamable-097">
       <description>within a streaming template, evaluate a general comparison on streamed
          nodes</description>
@@ -2437,42 +2402,6 @@
       </result>
    </test-case>
 
-   <test-case name="streamable-131">
-      <description>streaming xsl:iterate with a local variable</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="citygml"/>
-      <test>
-         <stylesheet file="streamable-131.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<result><polygons>2037</polygons><points>8148</points></result>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="streamable-132">
-      <description>streaming xsl:iterate with a reference to "." in the with-param</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="citygml"/>
-      <test>
-         <stylesheet file="streamable-132.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<result><polygons>2037</polygons><points>8148</points></result>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="streamable-133">
-      <description>streaming xsl:iterate with a downward navigation to child nodes</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="citygml"/>
-      <test>
-         <stylesheet file="streamable-133.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<result><polygons>2849</polygons><points>4070</points></result>]]></assert-xml>
-      </result>
-   </test-case>
-   
    <test-case name="streamable-134">
       <description>streaming template containing xsl:result-document with motionless content</description>
       <created by="Michael Kay" on="2012-11-07"/>
