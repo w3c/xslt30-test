@@ -87,7 +87,7 @@ Tak, tak, tak! - da kommen sie.</poem>]]></content>
    </environment>
    
    <environment name="regex905">
-      <source role="." file="regex905.xml"/>
+      <source role="." file="analyze-string-905.xml"/>
    </environment>
    
    
@@ -898,6 +898,36 @@ world</E1><E2>*</E2></out>]]></assert-xml>
             <assert>/out/col[6]='10K'</assert>
             <assert>count(/out/col) = 6</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-093">
+      <description>matching-substring and non-matching-substring in wrong order</description>
+      <created by="Michael Kay" on="2013-12-09"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-093.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-094">
+      <description>xsl:fallback must come last</description>
+      <created by="Michael Kay" on="2013-12-09"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-094.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
       </result>
    </test-case>
    
