@@ -133,6 +133,7 @@
     
     <xsl:mode name="r-018-mode" streamable="yes" on-no-match="deep-skip"/>
     <xsl:template match="ITEM/*" mode="r-018-mode"><xsl:value-of select="."/></xsl:template>
+    <xsl:template match=".[. instance of xs:integer]" expand-text="yes" mode="r-018-mode">#{.}</xsl:template>
     
     <!-- Streaming if() expression: crawling operand, inspection usage -->
     
