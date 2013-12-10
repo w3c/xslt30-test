@@ -10,7 +10,7 @@
     
     <xsl:function name="local:round" as="xs:double">
         <xsl:param name="x" as="xs:double"/>
-        <xsl:param name="algorithm" as="(function(xs:double) as xs:double))"/>
+        <xsl:param name="algorithm" as="(function(xs:double) as xs:double)"/>
         <xsl:sequence select="$algorithm($x)"/>
     </xsl:function>
     
