@@ -126,6 +126,7 @@
    <test-case name="function-0002">
       <description>Basic test of first-class functions</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="fn:function-name() - The prefix part of the returned QName is implementation dependent."/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -134,13 +135,17 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<x><a>2</a><b>abs</b><c>1</c><d>1</d></x>]]></assert-xml>
+         <any-of>
+            <assert-xml><![CDATA[<x><a>2</a><b>abs</b><c>1</c><d>1</d></x>]]></assert-xml>
+            <assert-xml><![CDATA[<x><a>2</a><b>fn:abs</b><c>1</c><d>1</d></x>]]></assert-xml>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="function-0003">
       <description>Basic test of first-class functions</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="fn:function-name() - The prefix part of the returned QName is implementation dependent."/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -149,7 +154,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<x><a>2</a><b>abs</b><c>1</c><d>1</d></x>]]></assert-xml>
+         <any-of>
+            <assert-xml><![CDATA[<x><a>2</a><b>abs</b><c>1</c><d>1</d></x>]]></assert-xml>
+            <assert-xml><![CDATA[<x><a>2</a><b>fn:abs</b><c>1</c><d>1</d></x>]]></assert-xml>
+         </any-of>
       </result>
    </test-case>
 
@@ -493,6 +501,7 @@
          or throw a divide-by-zero error if not
       </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Corrected error code from FAOR0001(typo) to FOAR0001"/>
       <environment ref="function-10"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -503,7 +512,7 @@
       <result>
          <any-of>
             <assert-xml><![CDATA[<out result="-100"/>]]></assert-xml>
-            <error code="FAOR0001"/>
+            <error code="FOAR0001"/>
          </any-of>
       </result>
    </test-case>
@@ -685,6 +694,7 @@
    <test-case name="function-1024">
       <description>Test the format-integer#2 of XSLT3.0 spec crashes out at runtime - picture is not valid</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Corrected error code from XTDE0030 into more specific FODF1310 (This error is raised if the picture string supplied to fn:format-number has invalid syntax.)"/>
       <environment ref="function-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -693,7 +703,7 @@
          <stylesheet file="function-1024.xsl"/>
       </test>
       <result>
-         <error code="XTDE0030"/>
+         <error code="FODF1310"/>
       </result>
    </test-case>
 
