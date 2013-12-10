@@ -5197,9 +5197,10 @@
    <test-case name="error-code-328">
       <description>Generate error XTTE1120</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Error code XTTE1120 absent in xslt3.0 spec. Changed dependency to xslt20"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-328.xsl"/>
@@ -5493,9 +5494,10 @@
    <test-case name="error-code-346">
       <description>Generate error XTDE1280</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Error code XTDE1280 is specific to XSLT20 (FODF1280 for XSLT30). Changed dependency to XSLT20"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-346.xsl"/>
@@ -5503,6 +5505,22 @@
       </test>
       <result>
          <error code="XTDE1280"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-code-346b">
+      <description>Generate error FODF1280 (3.0)</description>
+      <created by="Abel Braaksma" on="2013-12-09"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-346.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1280"/>
       </result>
    </test-case>
 
