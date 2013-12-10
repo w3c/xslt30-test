@@ -4,26 +4,28 @@
     exclude-result-prefixes=" xs"
     version="3.0">
    
-  <!-- within xsl:stream, use xsl:for-each-group group-adjacent -->
+  <!-- within a streaming template, use xsl:for-each-group group-adjacent, no reference to the group contents -->
   
   <xsl:mode name="s" streamable="yes"/>
        
     
   <xsl:template name="main">
     <xsl:stream href="../docs/transactions.xml">
-     <out>
-      <xsl:for-each-group select="account/transaction"
-         group-adjacent="@date"
-         bind-group="g"
-         bind-grouping-key="k">
-         <batch date="{$k}">
-            <xsl:sequence select="$g"/>
-         </batch>
-      </xsl:for-each-group> 
-     </out>
+    	<xsl:apply-templates select="account" mode="s"/>
     </xsl:stream>
   </xsl:template> 
 
 
+  <xsl:template match="account" mode="s">
+     <out>
+      <xsl:for-each-group select="transaction"
+         group-adjacent="@date"
+         bind-group="g"
+         bind-grouping-key="k">
+         <g/>
+      </xsl:for-each-group> 
+    </out>
+  </xsl:template>   
+       
 </xsl:transform>
 

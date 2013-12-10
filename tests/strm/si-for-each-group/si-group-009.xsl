@@ -11,7 +11,7 @@
   <xsl:template name="main">
     <out>
       <xsl:stream href="../docs/bullets.xml">
-        <xsl:for-each-group select="chapter/*" group-adjacent="node-name()" bind-group="g">
+        <xsl:for-each-group select="chapter/*" group-adjacent="node-name()" bind-group="g" bind-grouping-key="k">
           <xsl:choose>
             <xsl:when test="self::bullet">
               <list>
