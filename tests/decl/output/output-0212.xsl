@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="3.0">
     <!-- Purpose: Test for XHTML 5 DOCTYPE declaration.
          Uses "5.00" rather than the more usual "5.0" 
          Uses whitespace before the html element.

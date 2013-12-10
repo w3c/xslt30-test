@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="3.0">
     <!-- Purpose: Test for XHTML 5 DOCTYPE declaration with a namespace prefix.
          Top element is not html so there is no DOCTYPE declaration -->
     
