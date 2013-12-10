@@ -7,7 +7,7 @@
   xmlns:p="http://www.w3.org/xslt30tests/use-package-base-001"
   exclude-result-prefixes="xs p">
   
-  <xsl:expose components="xsl:template" names="*" visibility="public"/>
+  <xsl:expose component="template" names="*" visibility="public"/>
     
   <xsl:stylesheet version="3.0">
   
