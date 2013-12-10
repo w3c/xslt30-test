@@ -18,7 +18,7 @@
 <xsl:template match="foo">
  <foo>
     <xsl:attribute name="number">
-        <xsl:number level="any" count="~element(doc)"/>
+        <xsl:number level="any" count="doc[. instance of element()]"/>
     </xsl:attribute>
     <xsl:apply-templates/>
  </foo>
