@@ -1327,97 +1327,6 @@
       </result>
    </test-case>
 
-   <test-case name="streamable-067">
-      <description>Within a streaming template, use xsl:next-match with tunnel and non-tunnel
-         parameters</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="ot"/>
-      <test>
-         <stylesheet file="streamable-067.xsl"/>
-         <initial-template name="main"/>
-      </test>
-      <result>
-         <all-of>
-            <assert>count(/out/prio5) = 39</assert>
-            <assert>every $P in /out/prio5 satisfies ($P/@p="57" and $P/@q="23" and $P/prio4 and
-               not($P/prio4[2]))</assert>
-            <assert>every $P in /out/prio5/prio4 satisfies ($P/(@p="58" and @q="23" and
-               @r="42"))</assert>
-            <assert>deep-equal(subsequence(/out/prio5/prio4/data(.), 1, 5), ('Genesis', 'Exodus',
-            'Leviticus', 'Numbers', 'Deuteronomy'))</assert>
-         </all-of>
-      </result>
-   </test-case>
-
-   <test-case name="streamable-068">
-      <description>Within a streaming template, use xsl:apply-imports with tunnel and non-tunnel
-         parameters</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="ot"/>
-      <test>
-         <stylesheet file="streamable-068.xsl"/>
-         <stylesheet file="streamable-068a.xsl" role="secondary"/>
-         <initial-template name="main"/>
-      </test>
-      <result>
-         <all-of>
-            <assert>count(/out/prio5) = 39</assert>
-            <assert>every $P in /out/prio5 satisfies ($P/@p="17" and $P/@q="23" and $P/prio4 and
-               not($P/prio4[2]))</assert>
-            <assert>every $P in /out/prio5/prio4 satisfies ($P/(@p="18" and @q="23" and
-               @r="42"))</assert>
-            <assert>deep-equal(subsequence(/out/prio5/prio4/data(.), 1, 5), ('Genesis', 'Exodus',
-            'Leviticus', 'Numbers', 'Deuteronomy'))</assert>
-         </all-of>
-      </result>
-   </test-case>
-
-   <test-case name="streamable-069">
-      <description>Within a streaming template, use xsl:apply-imports with tunnel and non-tunnel
-         parameters</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="ot"/>
-      <test>
-         <stylesheet file="streamable-069.xsl"/>
-         <stylesheet file="streamable-069a.xsl" role="secondary"/>
-         <initial-template name="main"/>
-      </test>
-      <result>
-         <all-of>
-            <assert>count(/out/prio5) = 39</assert>
-            <assert>every $P in /out/prio5 satisfies ($P/@p="17" and $P/@q="23" and $P/prio4 and
-               not($P/prio4[2]))</assert>
-            <assert>every $P in /out/prio5/prio4 satisfies ($P/(@p="18" and @q="23" and
-               @r="42"))</assert>
-            <assert>deep-equal(subsequence(/out/prio5/prio4/data(.), 1, 5), ('Genesis', 'Exodus',
-            'Leviticus', 'Numbers', 'Deuteronomy'))</assert>
-         </all-of>
-      </result>
-   </test-case>
-
-   <test-case name="streamable-070">
-      <description>Within a streaming template, use xsl:apply-imports with tunnel and non-tunnel
-         parameters</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="ot"/>
-      <test>
-         <stylesheet file="streamable-070.xsl"/>
-         <stylesheet file="streamable-069a.xsl" role="secondary"/>
-         <initial-template name="main"/>
-      </test>
-      <result>
-         <all-of>
-            <assert>count(/out/prio5) = 39</assert>
-            <assert>every $P in /out/prio5 satisfies ($P/@p="17" and $P/@q="23" and $P/prio4 and
-               not($P/prio4[2]))</assert>
-            <assert>every $P in /out/prio5/prio4 satisfies ($P/(@p="18" and @q="23" and
-               @r="42"))</assert>
-            <assert>deep-equal(subsequence(/out/prio5/prio4/data(.), 1, 5), ('Genesis', 'Exodus',
-            'Leviticus', 'Numbers', 'Deuteronomy'))</assert>
-         </all-of>
-      </result>
-   </test-case>
-
    <test-case name="streamable-071">
       <description>Within a streaming template, use for-each to process the subtree</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -1978,23 +1887,6 @@
       </dependencies>
       <test>
          <stylesheet file="streamable-107.xsl"/>
-         <initial-template name="main"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-
-   <test-case name="streamable-108">
-      <description>Error case - uses xsl:next-match</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="loans"/>      
-      <dependencies>
-         <feature value="schema_aware"/>
-         <feature value="streaming"/>
-      </dependencies>
-      <test>
-         <stylesheet file="streamable-108.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
