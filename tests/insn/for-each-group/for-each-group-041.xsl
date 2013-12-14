@@ -10,7 +10,7 @@
 <xsl:template match="/">
 <out>
 	<xsl:for-each-group select="'a', 1 to 10, 'b', 11 to 20" 
-	                    group-starting-with="~xs:string"
+	                    group-starting-with=".[. instance of xs:string]"
 	                    bind-group="g">
 	  <a><xsl:value-of select="$g"/></a>
     </xsl:for-each-group>

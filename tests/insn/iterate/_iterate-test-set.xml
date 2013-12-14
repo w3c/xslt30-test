@@ -145,39 +145,42 @@
    <test-case name="iterate-009">
       <description>Basic Test of xsl:iterate instruction. Error, xsl:break must come last</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Changed to specific error code XTSE3120 for xsl:iterate instruction."/>
       <environment ref="iterate001"/>
       <dependencies/>
       <test>
          <stylesheet file="iterate-009.xsl"/>
       </test>
       <result>
-         <error code="XTSE0010"/>
+         <error code="XTSE3120"/>
       </result>
    </test-case>
 
    <test-case name="iterate-010">
       <description>Basic Test of xsl:iterate instruction. Error, xsl:break within a literal result element</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Changed to specific error code XTSE3120 for xsl:iterate instruction."/>
       <environment ref="iterate001"/>
       <dependencies/>
       <test>
          <stylesheet file="iterate-010.xsl"/>
       </test>
       <result>
-         <error code="XTSE0010"/>
+         <error code="XTSE3120"/>
       </result>
    </test-case>
 
    <test-case name="iterate-011">
       <description>Basic Test of xsl:iterate instruction. Error, xsl:break within xsl:for-each</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Changed to specific error code XTSE3120 for xsl:iterate instruction."/>
       <environment ref="iterate001"/>
       <dependencies/>
       <test>
          <stylesheet file="iterate-011.xsl"/>
       </test>
       <result>
-         <error code="XTSE0010"/>
+         <error code="XTSE3120"/>
       </result>
    </test-case>
 
@@ -349,13 +352,14 @@
    <test-case name="iterate-022">
       <description>Basic Test of xsl:iterate instruction. Error, two xsl:with-param elements with same name</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="XTSE3130 (specific to xsl:iterate) instead of XTSE0680."/>
       <environment ref="iterate005"/>
       <dependencies/>
       <test>
          <stylesheet file="iterate-022.xsl"/>
       </test>
       <result>
-         <error code="XTSE0680"/>
+         <error code="XTSE3130"/>
       </result>
    </test-case>
 
@@ -403,10 +407,12 @@
    <test-case name="iterate-026">
       <description>context position is undefined within xsl:on-completion</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Added initial template name."/>
       <environment ref="iterate005"/>
       <dependencies/>
       <test>
          <stylesheet file="iterate-026.xsl"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XPDY0002"/>

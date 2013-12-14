@@ -7,7 +7,7 @@
     
     
     <xsl:function name="s:sk1">
-        <xsl:param name="sort-key" as="function()"/>
+        <xsl:param name="sort-key" as="function(*)"/>
         <xsl:merge>
             <xsl:merge-source  select="doc('europe.xml')/europe/country">
 

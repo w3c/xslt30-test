@@ -18,7 +18,7 @@
 <xsl:template match="foo">
  <foo>
     <xsl:attribute name="number">
-        <xsl:number level="any" from="~element(doc)"/>
+        <xsl:number level="any" from="doc[. instance of element()]"/>
     </xsl:attribute>
     <xsl:apply-templates/>
  </foo>

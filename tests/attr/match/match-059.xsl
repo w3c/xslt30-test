@@ -14,11 +14,11 @@
  </out>
 </xsl:template>
 
-<xsl:template match="~element(doc)">
+<xsl:template match="doc[. instance of element()]">
   <doc2><xsl:apply-templates/></doc2>
 </xsl:template>
 
-<xsl:template match="~element(foo)">
+<xsl:template match="foo[. instance of element()]">
   <foo2><xsl:apply-templates/></foo2>
 </xsl:template>
 

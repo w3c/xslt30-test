@@ -5,7 +5,7 @@
     version="3.0">
 
     <xsl:template name="main" expand-text="yes">
-        <xsl:variable name="d" select="year-from-date(current-date)"/>
+        <xsl:variable name="d" select="year-from-date(current-date())"/>
         <out>
             The year was {<bold>$year</bold>}
         </out>
