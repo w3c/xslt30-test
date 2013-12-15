@@ -12,7 +12,7 @@
     <xsl:template name="r-001" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="outermost(data(/BOOKLIST/BOOKS/ITEM/PRICE))"/>
+          <xsl:value-of select="data(outermost(/BOOKLIST/BOOKS/ITEM/PRICE))"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -32,7 +32,7 @@
     <xsl:template name="r-003" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="/BOOKLIST/BOOKS/ITEM/DIMENSIONS ! outermost(tokenize(., ' '))"/>
+          <xsl:value-of select="outermost(/BOOKLIST/BOOKS/ITEM/DIMENSIONS) ! tokenize(., ' ')"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -83,7 +83,7 @@
          can't currently be handled by a ComposingWatch. Need to generalize
          TransmissionAdjunct -->
     
-    <xsl:template name="r-014" use-when="true() or $RUN">
+    <xsl:template name="r-014" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[1] ! outermost(*)"/>
