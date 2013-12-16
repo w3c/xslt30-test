@@ -210,6 +210,46 @@
           <xsl:value-of select="max(//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
         </out>
       </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): grounded operand, selects nothing -->
+    
+    <xsl:template name="s-040" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(data(//NOTHING))" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): striding operand, selects nothing -->
+    
+    <xsl:template name="s-041" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(/BOOKLIST/BOOKS/MAGAZINE)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): crawling operand, selects nothing -->
+    
+    <xsl:template name="s-042" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(//MAGAZINE)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): climbing operand, selects nothing -->
+    
+    <xsl:template name="s-043" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(//PRICE/../@nothing)" separator="|"/>
+        </out>
+      </xsl:stream>
     </xsl:template>                            
     
 </xsl:stylesheet>

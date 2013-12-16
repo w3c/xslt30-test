@@ -210,6 +210,47 @@
           <xsl:value-of select="avg(//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
         </out>
       </xsl:stream>
-    </xsl:template>                            
+    </xsl:template>
+    
+    <!-- Streaming avg(): grounded operand, selects nothing -->
+    
+    <xsl:template name="s-040" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="avg(data(//NOTHING))" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): striding operand, selects nothing -->
+    
+    <xsl:template name="s-041" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="avg(/BOOKLIST/BOOKS/MAGAZINE)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): crawling operand, selects nothing -->
+    
+    <xsl:template name="s-042" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="avg(//MAGAZINE)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): climbing operand, selects nothing -->
+    
+    <xsl:template name="s-043" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="avg(//PRICE/../@nothing)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+                                               
     
 </xsl:stylesheet>

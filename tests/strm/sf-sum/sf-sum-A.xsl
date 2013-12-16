@@ -210,6 +210,47 @@
           <xsl:value-of select="sum(//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
         </out>
       </xsl:stream>
-    </xsl:template>                            
+    </xsl:template>
+    
+    <!-- Streaming sum(): grounded operand, selects nothing -->
+    
+    <xsl:template name="s-040" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(data(//NOTHING), -1)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): striding operand, selects nothing -->
+    
+    <xsl:template name="s-041" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(/BOOKLIST/BOOKS/MAGAZINE, -1)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): crawling operand, selects nothing -->
+    
+    <xsl:template name="s-042" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(//MAGAZINE, -1)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): climbing operand, selects nothing -->
+    
+    <xsl:template name="s-043" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(//PRICE/../@nothing, -1)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+                                                
     
 </xsl:stylesheet>

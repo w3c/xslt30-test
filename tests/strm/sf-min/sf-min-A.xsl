@@ -210,6 +210,47 @@
           <xsl:value-of select="min(//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
         </out>
       </xsl:stream>
-    </xsl:template>                            
+    </xsl:template>
+    
+    <!-- Streaming min(): grounded operand, selects nothing -->
+    
+    <xsl:template name="s-040" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="min(data(//NOTHING))" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming min(): striding operand, selects nothing -->
+    
+    <xsl:template name="s-041" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="min(/BOOKLIST/BOOKS/MAGAZINE)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming min(): crawling operand, selects nothing -->
+    
+    <xsl:template name="s-042" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="min(//MAGAZINE)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming min(): climbing operand, selects nothing -->
+    
+    <xsl:template name="s-043" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="min(//PRICE/../@nothing)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+                                                
     
 </xsl:stylesheet>
