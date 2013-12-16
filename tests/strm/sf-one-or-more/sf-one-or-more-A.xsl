@@ -236,6 +236,47 @@
           <xsl:value-of select="one-or-more(//PRICE/ancestor-or-self::*/@*)" separator="|"/>
         </out>
       </xsl:stream>
-    </xsl:template>               
+    </xsl:template>
+    
+    <!-- Streaming one-or-more(): grounded operand, selects nothing -->
+    
+    <xsl:template name="r-040" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="one-or-more(data(//NOTHING))" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming one-or-more(): striding operand, selects nothing -->
+    
+    <xsl:template name="r-041" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="one-or-more(/BOOKLIST/BOOKS/MAGAZINE)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming one-or-more(): crawling operand, selects nothing -->
+    
+    <xsl:template name="r-042" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="one-or-more(//MAGAZINE)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming one-or-more(): climbing operand, selects nothing -->
+    
+    <xsl:template name="r-043" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="one-or-more(//PRICE/../@nothing)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+                   
     
 </xsl:stylesheet>
