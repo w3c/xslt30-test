@@ -52,7 +52,7 @@
     <xsl:template name="r-011" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="sum(subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, 3))"/>
+          <xsl:value-of select="round(sum(subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, 3)), 2)"/>
         </out>
       </xsl:stream>
     </xsl:template>
