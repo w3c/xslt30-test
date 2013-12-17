@@ -236,6 +236,42 @@
           <xsl:value-of select="outermost(//PRICE/ancestor-or-self::*/@*)" separator="|"/>
         </out>
       </xsl:stream>
+    </xsl:template> 
+    
+    <!-- Streaming outermost(): recursive data -->
+    
+    <xsl:template name="r-100" use-when="$RUN">
+      <xsl:stream href="../docs/recursive.xml">
+        <out>
+          <xsl:value-of select="outermost(//section)/@id" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming outermost(): recursive data -->
+    
+    <xsl:template name="r-101" use-when="$RUN">
+      <xsl:stream href="../docs/recursive.xml">
+        <out>
+          <xsl:value-of select="outermost(//section/section)/@id" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <xsl:template name="r-102" use-when="$RUN">
+      <xsl:stream href="../docs/recursive.xml">
+        <out>
+          <xsl:value-of select="outermost(//section/section)/head" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <xsl:template name="r-103" use-when="$RUN">
+      <xsl:stream href="../docs/recursive.xml">
+        <out>
+          <xsl:value-of select="outermost(//section/section)/foot" separator="|"/>
+        </out>
+      </xsl:stream>
     </xsl:template>               
     
 </xsl:stylesheet>
