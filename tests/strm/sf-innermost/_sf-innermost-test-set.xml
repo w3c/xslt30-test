@@ -3,279 +3,35 @@
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="sf-innermost">
    <description>innermost() function with streaming</description>
-   
-   <environment name="sf-innermost-A">
-     <stylesheet file="sf-innermost-A.xsl"/>
-   </environment>
-   
+
    <dependencies>
       <spec value="XSLT30+"/>
       <feature value="streaming"/>
    </dependencies>
    
    <test-case name="sf-innermost-001">
-      <description>Streaming innermost() - grounded operand</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
+      <description>Streaming innermost() - grounded operand. Note: see bug 24125.</description>
+      <created by="Michael Kay" on="2013-12-17"/>
       <test>
+         <stylesheet file="sf-innermost-001.xsl"/>
          <initial-template name="r-001"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>4.95 4.95 4.95 16.47 16.47</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>1.1 1.2.1 1.2.2 1.3</out>]]></assert-xml>
       </result>
    </test-case>
    
-   <test-case name="sf-innermost-002">
-      <description>Streaming innermost() - grounded operand</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
+   <test-case name="sf-innermost-901">
+      <description>Non-Streaming innermost() - non-grounded operand</description>
+      <created by="Michael Kay" on="2013-12-17"/>
       <test>
-         <initial-template name="r-002"/>
+         <stylesheet file="sf-innermost-901.xsl"/>
+         <initial-template name="r-901"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+         <error code="XTSE3430"/>
       </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-003">
-      <description>Streaming innermost() - grounded atomic operand</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-003"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>8.3 1.1 1.0 7.8 6.8 0.8 7.8 0.9 22.5 3.5 7.8 0.9</out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-010">
-      <description>Streaming innermost() - striding operand, inspection usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-010"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-011">
-      <description>Streaming innermost() - striding operand, absorption usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-011"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>47.79</out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-012">
-      <description>Streaming innermost() - striding operand, transmission usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-012"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>4.95 16.47</out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-013">
-      <description>Streaming innermost() - striding operand, focus-setting usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-013"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-innermost-014">
-      <description>Streaming innermost() - striding operand, focus-controlled usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-014"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-innermost-015">
-      <description>Streaming innermost() - striding operand, focus-setting usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-015"/>
-      </test>
-      <result>
-         <assert>/out = "5.95 5.95 5.95 17.47 17.47 "</assert>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-innermost-016">
-      <description>Streaming innermost() - striding operand, focus-controlled usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-016"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><PUBLISHER>Modern Library</PUBLISHER><PUB-DATE>2002-12-31</PUB-DATE><LANGUAGE>English</LANGUAGE><PRICE>4.95</PRICE><QUANTITY>187</QUANTITY><ISBN>0679601686</ISBN><PAGES>352</PAGES><DIMENSIONS UNIT="in">8.3 5.7 1.1</DIMENSIONS><WEIGHT UNIT="oz">6.1</WEIGHT></out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-017">
-      <description>Streaming innermost() - striding operand, focus-setting usage for inspection action</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-017"/>
-      </test>
-      <result>
-         <assert>/out = "true true true true true false false true true true"</assert>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-018">
-      <description>Streaming innermost() - striding operand, apply-templates usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-018"/>
-      </test>
-      <result>
-         <assert>/out = "Pride and PrejudiceModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-020">
-      <description>Streaming innermost() - crawling operand, inspection usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-020"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-021">
-      <description>Streaming innermost() - crawling operand, absorption usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-021"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>10</out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-022">
-      <description>Streaming innermost() - crawling operand, transmission usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-022"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>Pride and PrejudiceModern Library2002-12-31</out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-023">
-      <description>Streaming innermost() - crawling operand, focus-setting usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-023"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<out>5.95 5.95 5.95 17.47 17.47</out>]]></assert-xml>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-030">
-      <description>Streaming innermost() - climbing operand, inspection usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-030"/>
-      </test>
-      <result>
-         <assert>/out = "BOOKLIST ITEM"</assert>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-031">
-      <description>Streaming innermost() - climbing operand, inspection usage, removal of duplicates</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-031"/>
-      </test>
-      <result>
-         <assert>/out = "BOOKLIST ITEM ITEM ITEM ITEM ITEM ITEM"</assert>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-innermost-032">
-      <description>Streaming innermost() - climbing operand, absorption usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-032"/>
-      </test>
-      <result>
-         <assert>/out = "MHK"</assert>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-033">
-      <description>Streaming innermost() - climbing operand, absorption usage, removal of duplicates</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-033"/>
-      </test>
-      <result>
-         <assert>/out = "MMP|P|P|H|P"</assert>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-innermost-034">
-      <description>Streaming innermost() - climbing operand, absorption usage, removal of duplicates</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-034"/>
-      </test>
-      <result>
-         <assert>/out = "MMP|P|P|H|P"</assert>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-innermost-035">
-      <description>Streaming innermost() - climbing operand, absorption usage, removal of duplicates</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-innermost-A"/>
-      <test>
-         <initial-template name="r-035"/>
-      </test>
-      <result>
-         <assert>/out = "MHK|P|P|P|H|P"</assert>
-      </result>
-   </test-case>  
+   </test-case>   
 
 
 
