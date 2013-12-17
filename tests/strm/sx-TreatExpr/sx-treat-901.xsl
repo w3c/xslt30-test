@@ -4,19 +4,14 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
-    <xsl:variable name="RUN" select="true()" static="yes"/>
-    <xsl:strip-space elements="*"/>
+    <!-- Test of xsl:stream with empty(), filtered with non-motionless predicate -->
     
-    <!-- Simple use of xsl:stream with "instance of" -->
-    
-    <xsl:template name="c-001" use-when="$RUN">
+    <xsl:template name="main">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="(.//node()) instance of element()*"/>
+          <xsl:copy-of select="(./BOOKLIST/BOOKS/ITEM[AUTHOR='Jasper Fforde']) treat as element(ITEM)"/>
         </out>
       </xsl:stream>
-    </xsl:template>
-    
-
+    </xsl:template>   
     
 </xsl:stylesheet>
