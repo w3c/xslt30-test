@@ -8,6 +8,8 @@
     <xsl:strip-space elements="*"/>
    
   <!-- within xsl:stream, use xsl:iterate -->
+  
+  <!-- the tests in this stylesheet use xsl:iterate to emulate xsl:for-each -->
    
   <xsl:template name="fe-001" use-when="$RUN">
     <out>
@@ -21,7 +23,7 @@
   
   <!-- within xsl:stream, use xsl:iterate with numbering -->
    
-  <xsl:template name="fe-002">
+  <xsl:template name="fe-002" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction[@value &lt; 0]">
@@ -35,7 +37,7 @@
   
   <!-- within xsl:stream, use xsl:iterate with positional selection -->
    
-  <xsl:template name="fe-003">
+  <xsl:template name="fe-003" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction[position() &lt; 5]">
@@ -49,7 +51,7 @@
   
   <!-- xsl:iterate over atomized nodes -->
    
-  <xsl:template name="fe-004">
+  <xsl:template name="fe-004" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:iterate select="subsequence(data(account/transaction/@value), 5, 3)">
@@ -63,7 +65,7 @@
   
   <!-- crawling selection, inspection body -->
    
-  <xsl:template name="fe-005" expand-text="yes">
+  <xsl:template name="fe-005" expand-text="yes" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:iterate select="(//*)[position()=1 to 6]">{position()}:{name()}</xsl:iterate>
@@ -73,7 +75,7 @@
   
   <!-- crawling selection, inspection body -->
    
-  <xsl:template name="fe-006">
+  <xsl:template name="fe-006" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:iterate select="//*">
@@ -85,7 +87,7 @@
   
   <!-- within xsl:stream, use parent axis within xsl:iterate -->
    
-  <xsl:template name="fe-008">
+  <xsl:template name="fe-008" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction[position() lt 5]">
@@ -97,7 +99,7 @@
   
   <!-- within xsl:stream, use ancestor axis within xsl:iterate -->
    
-  <xsl:template name="fe-009">
+  <xsl:template name="fe-009" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:iterate select="subsequence(account/transaction, 1, 4)">
@@ -109,7 +111,7 @@
   
   <!-- within xsl:stream, use subsequence() within xsl:iterate/@select -->
    
-  <xsl:template name="fe-010">
+  <xsl:template name="fe-010" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:iterate select="subsequence(account/transaction, 1, 4)">
@@ -121,7 +123,7 @@
   
   <!-- within xsl:stream, select attributes within xsl:iterate/@select -->
    
-  <xsl:template name="fe-011">
+  <xsl:template name="fe-011" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction/@value">
@@ -135,7 +137,7 @@
   
   <!-- within xsl:stream, iterate over ancestor axis within xsl:iterate/@select -->
    
-  <xsl:template name="fe-012">
+  <xsl:template name="fe-012" use-when="$RUN">
     <out xmlns="http://loan.shark.com/">
       <xsl:stream href="../docs/loans.xml">
         <xsl:iterate select="outermost(//*:extra)">

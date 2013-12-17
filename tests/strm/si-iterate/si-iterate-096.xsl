@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes=" xs"
+    xmlns:ls="http://loan.shark.com/"
+    exclude-result-prefixes="ls xs"
+    xpath-default-namespace="http://loan.shark.com/"
     version="3.0">
        
   
