@@ -126,7 +126,9 @@
   <xsl:template name="cy-011" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
+        <head/>
         <xsl:copy-of select="."/>
+        <tail/>
       </xsl:stream>
     </out>
   </xsl:template>
