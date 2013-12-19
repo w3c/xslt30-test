@@ -227,7 +227,112 @@
         <xsl:copy-of select="/*/*/@version" type="xs:date"/>
       </xsl:stream>
     </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy-of: schema-aware, validation=strict, element node -->
+  
+  <xsl:template name="cy-121" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans-noNS.xml">
+        <xsl:variable name="copy" as="node()">
+          <xsl:copy-of select="*" validation="strict"/>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy-of: schema-aware, validation=lax, element node -->
+  
+  <xsl:template name="cy-122" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans-noNS.xml">
+        <xsl:variable name="copy" as="element()">
+          <xsl:copy-of select="*" validation="lax"/>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy-of: schema-aware, validation=strip, element node -->
+  
+  <xsl:template name="cy-123" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans-noNS.xml">
+        <xsl:variable name="copy" as="element()">
+          <xsl:copy-of select="*" validation="strip"/>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy-of: schema-aware, validation=preserve, element node -->
+  
+  <xsl:template name="cy-124" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans-noNS.xml">
+        <xsl:variable name="copy" as="element()">
+          <xsl:copy-of select="*" validation="preserve"/>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
   </xsl:template>  
+  
+  <!-- within xsl:stream, use xsl:copy-of: schema-aware, validation by type, element node -->
+  
+  <xsl:template name="cy-125" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans-noNS.xml">
+        <xsl:variable name="copy" as="element()">
+          <xsl:copy-of select="*" type="myroot"/>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy-of: schema-aware, validation=strict, element node, no element declaration available -->
+  
+  <xsl:template name="cy-126" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans.xml">
+        <xsl:variable name="copy" as="element()">
+          <xsl:copy-of select="*" validation="strict"/>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy-of: schema-aware, validation=lax, element node, no element declaration available -->
+  
+  <xsl:template name="cy-127" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans.xml">
+        <xsl:variable name="copy" as="element()">
+          <xsl:copy-of select="*" validation="lax"/>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy-of: schema-aware, validation by type, invalid (wrong namespace), element node -->
+  
+  <xsl:template name="cy-128" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans.xml">
+        <xsl:variable name="copy" as="element()">
+          <xsl:copy-of select="*" validation="strict"/>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template> 
+    
    
   
   
