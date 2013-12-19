@@ -138,7 +138,7 @@
   <xsl:template name="cy-010" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
-        <xsl:for-each select="100, 101, //PRICE">
+        <xsl:for-each select="100, 101, /BOOKLIST/BOOKS/ITEM/PRICE">
           <xsl:copy>
             <xsl:value-of select="text()"/>
           </xsl:copy>
@@ -268,5 +268,145 @@
       </xsl:stream>
     </out>
   </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty sequence selected -->
+  
+  <xsl:template name="cy-040" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:copy select="/*[@dummy='not-there']" on-empty="$a">
+          <b/>
+        </xsl:copy>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty element constructed -->
+  
+  <xsl:template name="cy-041" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:copy select="/*" on-empty="$a">
+          <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
+        </xsl:copy>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty document node constructed -->
+  
+  <xsl:template name="cy-042" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:copy on-empty="$a">
+          <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
+        </xsl:copy>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty document node constructed -->
+  
+  <xsl:template name="cy-043" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:copy on-empty="$a">
+          <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
+        </xsl:copy>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty comment node constructed -->
+  
+  <xsl:template name="cy-044" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/special.xml">
+        <xsl:copy select="special/comment()[2]" on-empty="$a">
+          <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
+        </xsl:copy>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty PI node constructed -->
+  
+  <xsl:template name="cy-045" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/special.xml">
+        <xsl:copy select="special/processing-instruction()[2]" on-empty="$a">
+          <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
+        </xsl:copy>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty attribute node constructed -->
+  
+  <xsl:template name="cy-046" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/special.xml">
+        <xsl:copy select="special/f/@a" on-empty="$a"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty element constructed -->
+  
+  <xsl:template name="cy-047" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:copy select="/*" on-empty="$a">
+          <xsl:copy-of select="a/b/c/d/e/f/g"/>
+        </xsl:copy>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy/on-empty: empty document constructed -->
+  
+  <xsl:template name="cy-048" use-when="$RUN">
+    <out>
+      <xsl:variable name="a"><a/></xsl:variable>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:copy on-empty="$a">
+          <xsl:copy-of select="a/b/c/d/e/f/g"/>
+        </xsl:copy>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- xsl:copy referring to a streamable attribute set -->
+  
+  <xsl:attribute-set name="as-1" streamable="yes">
+    <xsl:attribute name="x" select="1"/>
+    <xsl:attribute name="y" select="2"/>
+  </xsl:attribute-set> 
+  
+  <xsl:attribute-set name="as-2" streamable="no">
+    <xsl:attribute name="x" select=".//x"/>
+    <xsl:attribute name="y" select="2"/>
+  </xsl:attribute-set>
+  
+  <xsl:attribute-set name="as-3">
+    <xsl:attribute name="x" select=".//x"/>
+    <xsl:attribute name="y" select="2"/>
+  </xsl:attribute-set>
+  
+  <xsl:template name="cy-028" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:copy select="*" use-attribute-sets="as-1"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>  
   
 </xsl:transform>  
