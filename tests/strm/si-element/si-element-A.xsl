@@ -36,9 +36,11 @@
   <xsl:template name="cy-003" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
-        <xsl:variable name="atts" as="attribute(*)*">
+        <xsl:variable name="atts" as="element(*)*">
           <xsl:for-each select="account/transaction[@value &lt; 0]/@value">
-            <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}"/>
+            <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+              <xsl:value-of select="."/>
+            </xsl:element>
           </xsl:for-each>
         </xsl:variable>
         <xsl:copy-of select="data($atts)"/>  
@@ -55,9 +57,11 @@
     </xsl:variable>
     <out>
       <xsl:stream href="../docs/transactions.xml">
-        <xsl:variable name="atts" as="attribute(*)*">
+        <xsl:variable name="atts" as="element(*)*">
           <xsl:for-each select="account/transaction[@value &lt; 0]/@value, $extra/@value">
-            <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}"/>
+            <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+              <xsl:value-of select="."/>
+            </xsl:element>             
           </xsl:for-each>
         </xsl:variable>
         <xsl:copy-of select="data($atts)"/> 
@@ -85,7 +89,9 @@
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM/PRICE/text()">
-          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}"/>
+          <xsl:element name="{name(..)}" namespace="{namespace-uri(..)}">
+            <xsl:value-of select="."/>
+          </xsl:element>
         </xsl:for-each>
       </xsl:stream>
     </out>
@@ -97,7 +103,9 @@
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM/PRICE/text(), 101, 102">
-          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}"/>
+          <xsl:element name="t">
+            <xsl:value-of select="."/>
+          </xsl:element>
         </xsl:for-each>
       </xsl:stream>
     </out>
@@ -113,7 +121,7 @@
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="$extra, /BOOKLIST/BOOKS/ITEM/PRICE">
-          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+          <xsl:element name="t">
             <xsl:value-of select="."/>
           </xsl:element>
         </xsl:for-each>
@@ -141,8 +149,8 @@
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="100, 101, /BOOKLIST/BOOKS/ITEM/PRICE">
-          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
-            <xsl:value-of select="text()"/>
+          <xsl:element name="t">
+            <xsl:value-of select="if (. instance of element()) then text() else ."/>
           </xsl:element>
         </xsl:for-each>
       </xsl:stream>
@@ -155,7 +163,7 @@
     <out>
       <xsl:stream href="../docs/books.xml">
         <head/>
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+        <xsl:element name="doc">
           <xsl:copy-of select="child::node()"/>
         </xsl:element>
         <tail/>
@@ -235,12 +243,14 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:element: type error, more than one item selected -->
+  <!-- within xsl:stream, use xsl:element: -->
   
   <xsl:template name="cy-027" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}"><xsl:sequence select="/*/*"/></xsl:element>
+        <xsl:for-each select="*">
+          <xsl:element name="{name()}" namespace="{namespace-uri(.)}"><xsl:sequence select="*"/></xsl:element>
+        </xsl:for-each>  
       </xsl:stream>
     </out>
   </xsl:template>

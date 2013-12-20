@@ -27,6 +27,9 @@
    <environment name="accumulator-005s">
       <source role="." file="accumulator-005.xml" streaming="true"/>
    </environment>
+   <environment name="accumulator-015s">
+      <source role="." file="accumulator-015.xml" streaming="true"/>
+   </environment>
    <dependencies>
       <spec value="XSLT30+"/>
    </dependencies>
@@ -247,6 +250,18 @@
       <environment ref="accumulator-001"/>
       <test>
          <stylesheet file="accumulator-014.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 1: a diagram</p><p>Figure 2: another diagram</p><p>Figure 1: a third diagram</p><p>Figure 2: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-015">
+      <description>Use post-descend function</description>
+      <created by="Michael Kay" on="2013-12-20"/>
+      <environment ref="accumulator-015s"/>
+      <test>
+         <stylesheet file="accumulator-015.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<figures><p>Figure 1: a diagram</p><p>Figure 2: another diagram</p><p>Figure 1: a third diagram</p><p>Figure 2: a fourth diagram</p></figures>]]></assert-xml>
