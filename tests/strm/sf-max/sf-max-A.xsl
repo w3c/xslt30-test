@@ -212,6 +212,69 @@
       </xsl:stream>
     </xsl:template>
     
+    <!-- Streaming max(): applied to dates -->
+    
+    <xsl:template name="s-030" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(BOOKLIST/BOOKS/ITEM/PUB-DATE/xs:date(.))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): applied to strings -->
+    
+    <xsl:template name="s-031" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(BOOKLIST/BOOKS/ITEM/AUTHOR/string())"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): applied to durations -->
+    
+    <xsl:template name="s-032" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(BOOKLIST/BOOKS/ITEM ! (xs:date(PUB-DATE) - xs:date('1970-01-01')))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): sequence contain NaN -->
+    
+    <xsl:template name="s-033" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(BOOKLIST/BOOKS/ITEM/DIMENSIONS/number())"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): sequence contains incompatible data types -->
+    
+    <xsl:template name="s-034" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max((BOOKLIST/BOOKS/ITEM/PRICE/number(), '100'))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): sequence contains incompatible data types, error is caught -->
+    
+    <xsl:template name="s-035" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+             <xsl:value-of select="max((BOOKLIST/BOOKS/ITEM/PRICE/number(), '100'))"/>
+             <xsl:catch errors="*:FORG0006" select="'caught'"/>
+           </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
     <!-- Streaming max(): grounded operand, selects nothing -->
     
     <xsl:template name="s-040" use-when="$RUN">
@@ -250,6 +313,76 @@
           <xsl:value-of select="max(//PRICE/../@nothing)" separator="|"/>
         </out>
       </xsl:stream>
-    </xsl:template>                            
+    </xsl:template> 
+    
+    <!-- Streaming max(): collation argument present -->
+    
+    <xsl:template name="s-050" use-when="$RUN">
+      <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/codepoint'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(outermost(//AUTHOR)/string(.), $c)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): collation argument present, unknown collation -->
+    
+    <xsl:template name="s-051" use-when="$RUN">
+      <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/codepoint/unknown'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="max(outermost(//AUTHOR)/string(.), $c)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): collation argument present, unknown collation, recovery case -->
+    
+    <xsl:template name="s-052" use-when="$RUN">
+      <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/codepoint/unknown'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="max(outermost(//AUTHOR)/string(.), $c)"/>
+            <xsl:catch errors="*:FOCH0002" select="'caught'"/>
+          </xsl:try>  
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): collation argument obtained from streamed input -->
+    
+    <xsl:template name="s-053" use-when="$RUN">
+      <xsl:stream href="../docs/special.xml">
+        <out>
+          <xsl:value-of select="max(('a', 'b', 'c'), special/codepointCollation)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): collation argument obtained from streamed input, unknown collation -->
+    
+    <xsl:template name="s-054" use-when="$RUN">
+      <xsl:stream href="../docs/special.xml">
+        <out>
+          <xsl:value-of select="max(('a', 'b', 'c'), special/unknownCollation)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming max(): collation argument obtained from streamed input, unknown collation, recovery case -->
+    
+    <xsl:template name="s-055" use-when="$RUN">
+      <xsl:stream href="../docs/special.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="max(('a', 'b', 'c'), special/unknownCollation)"/>
+            <xsl:catch errors="*:FOCH0002" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+                                                          
     
 </xsl:stylesheet>

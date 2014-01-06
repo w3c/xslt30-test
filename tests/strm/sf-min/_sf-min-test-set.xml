@@ -253,6 +253,78 @@
       </result>
    </test-case>
    
+   <test-case name="sf-min-030">
+      <description>min() applied to dates</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-030"/>
+      </test>
+      <result>
+         <assert>/out = '1984-05-01'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-031">
+      <description>min() applied to strings</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-031"/>
+      </test>
+      <result>
+         <assert>/out = 'Charlotte Brontë'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-032">
+      <description>min() applied to durations</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-032"/>
+      </test>
+      <result>
+         <assert>/out = 'P5234D'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-033">
+      <description>min() - sequence contains NaN</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-033"/>
+      </test>
+      <result>
+         <assert>/out = 'NaN'</assert>
+      </result>
+   </test-case>
+
+   <test-case name="sf-min-034">
+      <description>min() - incompatible data types</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-034"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-035">
+      <description>min() - incompatible data types - error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-035"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
    <test-case name="sf-min-040">
       <description>min() over an empty grounded expression</description>
       <created by="Michael Kay" on="2013-12-16"/>
@@ -299,7 +371,80 @@
       <result>
          <assert>/out = ""</assert>
       </result>
-   </test-case>   
+   </test-case>
+   
+   <test-case name="sf-min-050">
+      <description>min() - collation argument present</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-050"/>
+      </test>
+      <result>
+         <assert>/out = 'Charlotte Brontë'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-051">
+      <description>min() - collation argument present - unknown collation</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-051"/>
+      </test>
+      <result>
+         <error code="FOCH0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-052">
+      <description>min() - collation argument present - unknown collation - error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-052"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-053">
+      <description>min() - collation argument consumes streamed document</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-053"/>
+      </test>
+      <result>
+         <assert>/out = 'a'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-054">
+      <description>min() - collation argument consumes streamed document, unknown collation</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-054"/>
+      </test>
+      <result>
+         <error code="FOCH0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-min-055">
+      <description>min() - collation argument consumes streamed document, unknown collation, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-min-A"/>
+      <test>
+         <initial-template name="s-055"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+      
 
    <test-case name="sf-min-901">
       <description>Test of xsl:stream instruction with min(), filtered with predicate that atomizes.</description>

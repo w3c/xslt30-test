@@ -253,6 +253,78 @@
       </result>
    </test-case>
    
+   <test-case name="sf-max-030">
+      <description>max() applied to dates</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-030"/>
+      </test>
+      <result>
+         <assert>/out = '2005-07-11'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-031">
+      <description>max() applied to strings</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-031"/>
+      </test>
+      <result>
+         <assert>/out = 'Thomas Hardy'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-032">
+      <description>max() applied to durations</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-032"/>
+      </test>
+      <result>
+         <assert>/out = 'P12975D'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-033">
+      <description>max() - sequence contains NaN</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-033"/>
+      </test>
+      <result>
+         <assert>/out = 'NaN'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-034">
+      <description>max() - incompatible data types</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-034"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-035">
+      <description>min() - incompatible data types - error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-035"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
    <test-case name="sf-max-040">
       <description>max() over an empty grounded expression</description>
       <created by="Michael Kay" on="2013-12-16"/>
@@ -299,7 +371,81 @@
       <result>
          <assert>/out = ""</assert>
       </result>
-   </test-case>      
+   </test-case>
+   
+   <test-case name="sf-max-050">
+      <description>max() - collation argument present</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-050"/>
+      </test>
+      <result>
+         <assert>/out = 'Thomas Hardy'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-051">
+      <description>max() - collation argument present - unknown collation</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-051"/>
+      </test>
+      <result>
+         <error code="FOCH0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-052">
+      <description>max() - collation argument present - unknown collation - error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-052"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-053">
+      <description>max() - collation argument consumes streamed document</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-053"/>
+      </test>
+      <result>
+         <assert>/out = 'c'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-054">
+      <description>max() - collation argument consumes streamed document, unknown collation</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-054"/>
+      </test>
+      <result>
+         <error code="FOCH0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-max-055">
+      <description>max() - collation argument consumes streamed document, unknown collation, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-max-A"/>
+      <test>
+         <initial-template name="s-055"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+
+      
 
    <test-case name="sf-max-901">
       <description>Test of xsl:stream instruction with max(), filtered with predicate that atomizes.</description>
