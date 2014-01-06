@@ -16,12 +16,49 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="sf-codepoints-to-string-001.xsl"/>
-         <initial-template name="main"/>
+         <initial-template name="c-001"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out>1/7./-</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="sf-codepoints-to-string-002">
+      <description>Test of xsl:stream instruction using codepoints-to-string, error case</description>
+      <created by="Michael Kay" on="2013-01-06"/>
+      <test>
+         <stylesheet file="sf-codepoints-to-string-001.xsl"/>
+         <initial-template name="c-002"/>
+      </test>
+      <result>
+         <error code="FOCH0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-codepoints-to-string-003">
+      <description>Test of xsl:stream instruction using codepoints-to-string, error case, caught</description>
+      <created by="Michael Kay" on="2013-01-06"/>
+      <test>
+         <stylesheet file="sf-codepoints-to-string-001.xsl"/>
+         <initial-template name="c-003"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-codepoints-to-string-004">
+      <description>Test of xsl:stream instruction using codepoints-to-string, empty case</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <test>
+         <stylesheet file="sf-codepoints-to-string-001.xsl"/>
+         <initial-template name="c-004"/>
+      </test>
+      <result>
+         <assert>/out = ''</assert>
+      </result>
+   </test-case>
+
 
 
 
