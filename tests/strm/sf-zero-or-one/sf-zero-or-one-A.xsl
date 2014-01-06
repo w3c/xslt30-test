@@ -37,7 +37,7 @@
       </xsl:stream>
     </xsl:template>
     
-    <!-- Streaming zero-or-one(): striding operand -->
+    <!-- Streaming zero-or-one(): striding operand - error case -->
     
     <xsl:template name="r-004" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
@@ -63,6 +63,19 @@
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:copy-of select="zero-or-one(/BOOKLIST/BOOKS/ITEM[@CAT='J'])"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming zero-or-one(): striding operand - error case, recovered -->
+    
+    <xsl:template name="r-007" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+             <xsl:value-of select="zero-or-one(/BOOKLIST/BOOKS/ITEM/PRICE)"/>
+             <xsl:catch errors="*:FORG0003" select="'caught'"/>
+          </xsl:try>
         </out>
       </xsl:stream>
     </xsl:template>    
