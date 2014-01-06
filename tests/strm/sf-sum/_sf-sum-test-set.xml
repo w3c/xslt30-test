@@ -254,7 +254,7 @@
    </test-case>
    
       <test-case name="sf-sum-040">
-      <description>avg() over an empty grounded expression</description>
+      <description>sum() over an empty grounded expression</description>
       <created by="Michael Kay" on="2013-12-16"/>
       <environment ref="sf-sum-A"/>
       <test>
@@ -300,6 +300,102 @@
          <assert>/out = "-1"</assert>
       </result>
    </test-case>
+   
+   <test-case name="sf-sum-044">
+      <description>sum(); second operand is consuming, but unused</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-sum-A"/>
+      <test>
+         <initial-template name="s-044"/>
+      </test>
+      <result>
+         <assert>/out = "55"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-sum-045">
+      <description>sum(); second operand is consuming, and used</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-sum-A"/>
+      <test>
+         <initial-template name="s-045"/>
+      </test>
+      <result>
+         <assert>/out = "4.95"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-sum-050">
+      <description>sum() over dayTimeDuration values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-sum-A"/>
+      <test>
+         <initial-template name="s-050"/>
+      </test>
+      <result>
+         <assert>/out = "P110429D"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-sum-051">
+      <description>sum() over yearMonthDuration values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-sum-A"/>
+      <test>
+         <initial-template name="s-051"/>
+      </test>
+      <result>
+         <assert>/out = "P302Y1M"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-sum-052">
+      <description>sum() over inconsistent type values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-sum-A"/>
+      <test>
+         <initial-template name="s-052"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-sum-053">
+      <description>sum() over incorrect type values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-sum-A"/>
+      <test>
+         <initial-template name="s-053"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-sum-054">
+      <description>sum() over inconsistent type values, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-sum-A"/>
+      <test>
+         <initial-template name="s-054"/>
+      </test>
+      <result>
+         <assert>/out = "caught"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-sum-055">
+      <description>sum() over incorrect type values, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-sum-A"/>
+      <test>
+         <initial-template name="s-055"/>
+      </test>
+      <result>
+         <assert>/out = "caught"</assert>
+      </result>
+   </test-case>   
 
    <test-case name="sf-sum-901">
       <description>Test of xsl:stream instruction with sum(), filtered with predicate that atomizes.</description>
