@@ -347,6 +347,52 @@
         </out>
       </xsl:stream>
     </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument present -->
+    
+    <xsl:template name="s-050" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="deep-equal(outermost(//LANGUAGE)/string(.), ('English', 'English', 'English', 'English', 'English', 'English'), 
+              'http://www.w3.org/2005/xpath-functions/collation/codepoint')"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument present, unknown collation -->
+    
+    <xsl:template name="s-051" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="deep-equal(outermost(//LANGUAGE)/string(.), ('English', 'English', 'English', 'English', 'English', 'English'), 
+              'http://www.w3.org/2005/xpath-functions/collation/codepoint/unknown')"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument present, unknown collation, recovery case -->
+    
+    <xsl:template name="s-052" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="deep-equal(outermost(//LANGUAGE)/string(.), ('English', 'English', 'English', 'English', 'English', 'English'), 
+              'http://www.w3.org/2005/xpath-functions/collation/codepoint/unknown')"/>
+            <xsl:catch errors="*:FOCH0002" select="'caught'"/>
+          </xsl:try>  
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument obtained from streamed input -->
+    
+    <xsl:template name="s-053" use-when="$RUN">
+      <xsl:stream href="../docs/special.xml">
+        <out>
+          <xsl:value-of select="deep-equal(('a', 'b', 'c'), ('A', 'B', 'C'), special/codepointCollation)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
                                                 
     
 </xsl:stylesheet>
