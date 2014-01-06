@@ -1,8 +1,9 @@
 <xsl:stylesheet version="3.0" 
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:err="http://www.w3.org/2005/xqt-errors"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes="map xs">
+    exclude-result-prefixes="map xs err">
     
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
@@ -248,6 +249,79 @@
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:value-of select="avg(//PRICE/../@nothing)" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): dayTimeDuration values -->
+    
+    <xsl:template name="s-050" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="avg(/BOOKLIST/BOOKS/ITEM/PUB-DATE ! (xs:date('2050-01-01') - xs:date(.)))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): yearMonthDuration values -->
+    
+    <xsl:template name="s-051" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="avg(
+                                    for $pubdate in /BOOKLIST/BOOKS/ITEM/PUB-DATE/xs:date(.) return
+                                    let $monthsAgo := (2050*12) - (12*year-from-date($pubdate) + month-from-date($pubdate)) return
+                                    xs:yearMonthDuration('P1M') * $monthsAgo)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): inconsistent type values -->
+    
+    <xsl:template name="s-052" use-when="$RUN">
+      <xsl:param name="p" select="23"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="avg(($p, /BOOKLIST/BOOKS/ITEM/PUB-DATE ! (xs:date('2050-01-01') - xs:date(.))))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): incorrect type values -->
+    
+    <xsl:template name="s-053" use-when="$RUN">
+      <xsl:param name="p" select="'Wrong'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="avg(($p, /BOOKLIST/BOOKS/ITEM/PUB-DATUM ! (xs:date('2050-01-01') - xs:date(.))))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): inconsistent type values, error is caught -->
+    
+    <xsl:template name="s-054" use-when="$RUN">
+      <xsl:param name="p" select="23"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="avg(($p, /BOOKLIST/BOOKS/ITEM/PUB-DATE ! (xs:date('2050-01-01') - xs:date(.))))"/>
+            <xsl:catch errors="err:FORG0006" select="'caught'"/>
+          </xsl:try>  
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming avg(): incorrect type values, error is caught -->
+    
+    <xsl:template name="s-055" use-when="$RUN">
+      <xsl:param name="p" select="'Wrong'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="avg(($p, /BOOKLIST/BOOKS/ITEM/PUB-DATUM ! (xs:date('2050-01-01') - xs:date(.))))"/>
+            <xsl:catch errors="err:FORG0006" select="'caught'"/>
+          </xsl:try>
         </out>
       </xsl:stream>
     </xsl:template>
