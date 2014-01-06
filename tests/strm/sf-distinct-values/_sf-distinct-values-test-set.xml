@@ -3,6 +3,10 @@
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="sf-distinct-values">
    <description>Tests the xsl:stream instruction with distinct-values()</description>
+
+   <environment name="sf-distinct-values-A">
+     <stylesheet file="sf-distinct-values-001.xsl"/>
+   </environment>
    
    <dependencies>
       <spec value="XSLT30+"/>
@@ -14,12 +18,135 @@
    <test-case name="sf-distinct-values-001">
       <description>Test of xsl:stream instruction with distinct-values(), applied to an attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="sf-distinct-values-A"/>
       <test>
-         <stylesheet file="sf-distinct-values-001.xsl"/>
-         <initial-template name="main"/>
+         <initial-template name="d-001"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>49863</out>]]></assert-xml>
+         <assert>/out = '49863'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-002">
+      <description>Test of xsl:stream instruction with distinct-values(), empty input</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-002"/>
+      </test>
+      <result>
+         <assert>/out = '0'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-003">
+      <description>Test of xsl:stream instruction with distinct-values(), numeric values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-003"/>
+      </test>
+      <result>
+         <assert>/out = '3001'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-004">
+      <description>Test of xsl:stream instruction with distinct-values(), handling of NaN</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-004"/>
+      </test>
+      <result>
+         <assert>/out = '2252'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-005">
+      <description>Test of xsl:stream instruction with distinct-values(), applied to an element</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-005"/>
+      </test>
+      <result>
+         <assert>/out = 'English'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-006">
+      <description>Test of xsl:stream instruction with distinct-values(), with collation specified</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-006"/>
+      </test>
+      <result>
+         <assert>/out = 'English'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-007">
+      <description>Test of xsl:stream instruction with distinct-values(), with unknown collation specified</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-007"/>
+      </test>
+      <result>
+         <error code="FOCH0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-008">
+      <description>Test of xsl:stream instruction with distinct-values(), with unknown collation specified, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-008"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-009">
+      <description>Test of xsl:stream instruction with distinct-values(), with collation from consuming argument</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-009"/>
+      </test>
+      <result>
+         <any-of>
+           <assert>/out = 'a b'</assert>
+           <assert>/out = 'b a'</assert>
+         </any-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-010">
+      <description>Test of xsl:stream instruction with distinct-values(), with unknown collation from consuming argument</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-010"/>
+      </test>
+      <result>
+         <error code="FOCH0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-distinct-values-011">
+      <description>Test of xsl:stream instruction with distinct-values(), with unknown collation from consuming argument, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-distinct-values-A"/>
+      <test>
+         <initial-template name="d-011"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
       </result>
    </test-case>
 
