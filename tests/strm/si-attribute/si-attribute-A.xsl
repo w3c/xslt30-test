@@ -111,7 +111,7 @@
     
     <!-- Test of xsl:attribute selecting both streamed nodes and literals while also filtering -->
     
-    <xsl:template name="s-013" use-when="true() or $RUN">
+    <xsl:template name="s-013" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:attribute name="a" select="tail(./BOOKLIST/BOOKS/ITEM/PAGES)/number(), 31, 32"/>
@@ -309,7 +309,226 @@
       </xsl:stream>
     </xsl:template>
     
+    <!-- Test of xsl:stream with xsl:attribute/@on-empty (not empty) -->
+    
+    <xsl:template name="s-050" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="a" select="./BOOKLIST/BOOKS/ITEM/PRICE" on-empty="()"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream with xsl:attribute/@on-empty (empty) -->
+    
+    <xsl:template name="s-051" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="a" select="./BOOKLIST/BOOKS/ITEM/PRICETAG" on-empty="()"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream with xsl:attribute/@on-empty, with on-empty consuming (not empty) -->
+    
+    <xsl:template name="s-052" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="a" select="1 to 10" on-empty="head(//@*)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream with xsl:attribute/@on-empty, with on-empty consuming (empty) -->
+    
+    <xsl:template name="s-053" use-when="$RUN">
+      <xsl:param name="s" select="20"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="a" select="$s to 10" on-empty="head(//@*)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream with xsl:attribute/@on-empty (empty, returns a new attribute) -->
+    
+    <xsl:template name="s-054" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <xsl:for-each select="BOOKLIST/BOOKS">
+          <out>
+            <xsl:attribute name="a" select="ITEM/PRICETAG" on-empty="@OWNER"/>
+          </out>
+        </xsl:for-each>  
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream with xsl:attribute/@on-empty (empty, type error, returns two attributes) -->
+    
+    <xsl:template name="s-055" use-when="$RUN">
+      <xsl:param name="n" select="2"/>
+      <xsl:variable name="atts" as="attribute()*">
+        <xsl:for-each select="1 to $n">
+          <xsl:attribute name="n{.}" select="."/>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:for-each select="BOOKLIST/BOOKS">
+          <out>
+            <xsl:attribute name="a" select="ITEM/PRICETAG" on-empty="$atts"/>
+          </out>
+        </xsl:for-each>  
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream with xsl:attribute/@on-empty (empty, type error, returns two attributes, recovered) -->
+    
+    <xsl:template name="s-056" use-when="$RUN">
+      <xsl:param name="n" select="2"/>
+      <xsl:variable name="atts" as="attribute()*">
+        <xsl:for-each select="1 to $n">
+          <xsl:attribute name="n{.}" select="."/>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:for-each select="BOOKLIST/BOOKS">
+          <out>
+            <xsl:try>
+              <xsl:attribute name="a" select="ITEM/PRICETAG" on-empty="$atts"/>
+              <xsl:catch errors="*:XTTE3320">
+                <xsl:attribute name="fallback">OK</xsl:attribute>
+              </xsl:catch>
+            </xsl:try>  
+          </out>
+        </xsl:for-each>  
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute content cannot contain a function item - error -->
+    
+    <xsl:template name="s-057" use-when="$RUN">
+      <xsl:param name="s" select="false#0"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="a" select="1, 2, head(//text()), $s"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute content cannot contain a function item - error - recovered -->
+    
+    <xsl:template name="s-058" use-when="$RUN">
+      <xsl:param name="s" select="false#0"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:attribute name="a" select="1, 2, head(//text()), $s"/>
+            <xsl:catch errors="*:FOTY0013">caught</xsl:catch>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute invalid name - error -->
+    
+    <xsl:template name="s-059" use-when="$RUN">
+      <xsl:param name="s" select="'#'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="{$s}" select="1, 2, head(//text())"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute invalid name - error - recovered -->
+    
+    <xsl:template name="s-060" use-when="$RUN">
+      <xsl:param name="s" select="'#'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:attribute name="{$s}" select="1, 2, head(//text())"/>
+            <xsl:catch errors="*:XTDE0850">caught</xsl:catch>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute invalid name xmlns - error -->
+    
+    <xsl:template name="s-061" use-when="$RUN">
+      <xsl:param name="s" select="'xmlns'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="{$s}" select="1, 2, head(//text())"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute invalid name xmlns - error - recovered -->
+    
+    <xsl:template name="s-062" use-when="$RUN">
+      <xsl:param name="s" select="'xmlns'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:attribute name="{$s}" select="1, 2, head(//text())"/>
+            <xsl:catch errors="*:XTDE0855">caught</xsl:catch>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute prefix not declared - error -->
+    
+    <xsl:template name="s-063" use-when="$RUN">
+      <xsl:param name="s" select="'a:b'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="{$s}" select="1, 2, head(//text())"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute prefix not declared - error - recovered -->
+    
+    <xsl:template name="s-064" use-when="$RUN">
+      <xsl:param name="s" select="'a:b'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:attribute name="{$s}" select="1, 2, head(//text())"/>
+            <xsl:catch errors="*:XTDE0860">caught</xsl:catch>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute disallowed namespace - error -->
+    
+    <xsl:template name="s-065" use-when="$RUN">
+      <xsl:param name="s" select="'http://www.w3.org/2000/xmlns/'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="a:b" namespace="{$s}" select="1, 2, head(//text())"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- xsl:attribute disallowed namespace - error - recovered -->
+    
+    <xsl:template name="s-066" use-when="$RUN">
+      <xsl:param name="s" select="'http://www.w3.org/2000/xmlns/'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:attribute name="a:b" namespace="{$s}" select="1, 2, head(//text())"/>
+            <xsl:catch errors="*:XTDE0865">caught</xsl:catch>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
 
-                                                
+                                              
     
 </xsl:stylesheet>

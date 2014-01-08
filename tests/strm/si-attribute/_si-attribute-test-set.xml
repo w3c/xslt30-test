@@ -364,6 +364,214 @@
       </result>
    </test-case>
    
+   <test-case name="si-attribute-050">
+      <description>xsl:attribute; value is consuming; on-empty</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-050"/>
+      </test>
+      <result>
+         <assert>/out/@a = '4.95 6.58 4.95 4.95 16.47 16.47'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-051">
+      <description>xsl:attribute; value is consuming; on-empty</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-051"/>
+      </test>
+      <result>
+         <assert>empty(/out/@a)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-052">
+      <description>xsl:attribute; on-empty expression is consuming, but not activated</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-052"/>
+      </test>
+      <result>
+         <assert>/out/@a = '1 2 3 4 5 6 7 8 9 10'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-053">
+      <description>xsl:attribute; on-empty expression is consuming, and is activated</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-053"/>
+      </test>
+      <result>
+         <assert>/out/@OWNER = 'MHK'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-054">
+      <description>xsl:attribute; select is consuming, on-empty is climbing</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-054"/>
+      </test>
+      <result>
+         <assert>/out/@OWNER = 'MHK'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-055">
+      <description>xsl:attribute; select is consuming, on-empty is multiple attributes - type error</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-055"/>
+      </test>
+      <result>
+         <error code="XTTE3320"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-056">
+      <description>xsl:attribute; select is consuming, on-empty is multiple attributes - type error - caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-056"/>
+      </test>
+      <result>
+         <assert>/out/@fallback = 'OK'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-057">
+      <description>xsl:attribute; content cannot include function items; error</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-057"/>
+      </test>
+      <result>
+         <error code="FOTY0013"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-058">
+      <description>xsl:attribute; content cannot include function items; error - caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-058"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-059">
+      <description>xsl:attribute; invalid attribute name; error</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-059"/>
+      </test>
+      <result>
+         <error code="XTDE0850"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-060">
+      <description>xsl:attribute; invalid attribute name; error; caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-060"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-061">
+      <description>xsl:attribute; invalid attribute name xmlns; error</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-061"/>
+      </test>
+      <result>
+         <error code="XTDE0855"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-062">
+      <description>xsl:attribute; invalid attribute name xmlns; error; caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-062"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-063">
+      <description>xsl:attribute; prefix not declared; error</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-063"/>
+      </test>
+      <result>
+         <error code="XTDE0860"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-064">
+      <description>xsl:attribute; prefix not declared; error; caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-064"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-065">
+      <description>xsl:attribute; disallowed namespace; error</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-065"/>
+      </test>
+      <result>
+         <error code="XTDE0865"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-attribute-066">
+      <description>xsl:attribute; disallowed namespace; error; caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-attribute-A"/>
+      <test>
+         <initial-template name="s-066"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   
+   
+   
+   
 
 
 
