@@ -134,7 +134,7 @@
   <xsl:template name="cy-009" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
-        <xsl:for-each select="//PRICE">
+        <xsl:for-each select="outermost(//PRICE)">
           <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
           	<xsl:sequence select="text()"/>
           </xsl:element>
@@ -243,18 +243,6 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:element: -->
-  
-  <xsl:template name="cy-027" use-when="$RUN">
-    <out>
-      <xsl:stream href="../docs/citygml.xml">
-        <xsl:for-each select="*">
-          <xsl:element name="{name()}" namespace="{namespace-uri(.)}"><xsl:sequence select="*"/></xsl:element>
-        </xsl:for-each>  
-      </xsl:stream>
-    </out>
-  </xsl:template>
-
   
   <!-- xsl:element referring to a streamable attribute set -->
   
@@ -266,9 +254,11 @@
   <xsl:template name="cy-029" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" use-attribute-sets="as-1">
+        <xsl:for-each select="*">
+          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" use-attribute-sets="as-1">
         	<xsl:sequence select="*" />
-        </xsl:element>
+          </xsl:element>
+        </xsl:for-each>  
       </xsl:stream>
     </out>
   </xsl:template>   
@@ -279,7 +269,7 @@
     <out>
       <xsl:variable name="a" as="element()"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
+        <xsl:element name="{name($a)}" on-empty="$a">
           <xsl:sequence select="/*[@dummy='not-there']" />
         </xsl:element>
       </xsl:stream>
@@ -292,7 +282,7 @@
     <out>
       <xsl:variable name="a" as="element()"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
+        <xsl:element name="{name($a)}" on-empty="$a">
           <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
         </xsl:element>
       </xsl:stream>
@@ -305,7 +295,7 @@
     <out>
       <xsl:variable name="a" as="element()"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
+        <xsl:element name="{name($a)}"  on-empty="$a">
           <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
         </xsl:element>
       </xsl:stream>
@@ -318,7 +308,7 @@
     <out>
       <xsl:variable name="a" as="element()"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
+        <xsl:element name="{name($a)}" on-empty="$a">
           <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
         </xsl:element>
       </xsl:stream>
@@ -351,15 +341,17 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:element/on-empty: empty attribute node constructed -->
+  <!-- within xsl:stream, use xsl:element/on-empty: empty element node constructed -->
   
   <xsl:template name="cy-046" use-when="$RUN">
     <out>
       <xsl:variable name="a" as="element()"><a/></xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
-        	<xsl:sequence select="special/f/@a" />
-        </xsl:element>
+        <xsl:for-each select="special">
+           <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
+        	  <xsl:sequence select="f/@b" />
+           </xsl:element>
+        </xsl:for-each>   
       </xsl:stream>
     </out>
   </xsl:template>
@@ -370,9 +362,11 @@
     <out>
       <xsl:variable name="a" as="element()"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
-          <xsl:copy-of select="a/b/c/d/e/f/g"/>
-        </xsl:element>
+        <xsl:for-each select="*">
+          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
+            <xsl:copy-of select="a/b/c/d/e/f/g"/>
+          </xsl:element>
+        </xsl:for-each>  
       </xsl:stream>
     </out>
   </xsl:template>
@@ -383,9 +377,11 @@
     <out>
       <xsl:variable name="a" as="element()"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
-          <xsl:copy-of select="a/b/c/d/e/f/g"/>
-        </xsl:element>
+        <xsl:for-each select="*">
+          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" on-empty="$a">
+            <xsl:copy-of select="a/b/c/d/e/f/g"/>
+          </xsl:element>
+        </xsl:for-each>  
       </xsl:stream>
     </out>
   </xsl:template>
