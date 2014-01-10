@@ -962,7 +962,7 @@
    </test-case>
    
    <test-case name="si-lre-247">
-      <description>literal result element; name is consuming</description>
+      <description>literal result element; attribute is consuming</description>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="si-lre-C"/>
       <test>
@@ -974,7 +974,7 @@
    </test-case>
    
    <test-case name="si-lre-248">
-      <description>literal result element; namespace is consuming</description>
+      <description>literal result element; attribute is consuming</description>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="si-lre-C"/>
       <test>
@@ -982,6 +982,18 @@
       </test>
       <result>
          <assert>/out/a[@namespace = 'http://jane_austen.com/'] = "value"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-lre-249">
+      <description>literal result element; attribute is consuming and sequence-valued</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-lre-C"/>
+      <test>
+         <initial-template name="s-049"/>
+      </test>
+      <result>
+         <assert>/out/a/@prices = '4.95 6.58 4.95 4.95 16.47 16.47'</assert>
       </result>
    </test-case>
    
@@ -1078,6 +1090,33 @@
       </test>
       <result>
          <error code="FOTY0013"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-lre-258">
+      <description>literal result element; content cannot include function items; error - caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-lre-C"/>
+      <test>
+         <initial-template name="s-058"/>
+      </test>
+      <result>
+         <assert>false()</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-lre-259">
+      <description>literal result element; content is "."</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-lre-C"/>
+      <test>
+         <initial-template name="s-059"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/BOOKLIST/BOOKS[@OWNER="MHK"]/ITEM[1]/TITLE="Pride and Prejudice"</assert>
+           <assert>/out/BOOKLIST/CATEGORIES/@DESC eq "Miscellaneous categories"</assert>
+         </all-of>  
       </result>
    </test-case>
    

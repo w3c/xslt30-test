@@ -295,6 +295,16 @@
       </xsl:stream>
     </xsl:template>
     
+    <!-- Streaming xsl:element: attribute is consuming and sequence-valued -->
+    
+    <xsl:template name="s-049" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <a prices="{outermost(//PRICE)}">value</a>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
     <!-- Test of xsl:stream with literal result element/@xsl:on-empty (not empty) -->
     
     <xsl:template name="s-050" use-when="$RUN">
@@ -411,6 +421,18 @@
             <a><xsl:sequence select="1, 2, head(//text()), $s"/></a>
             <xsl:catch errors="*:FOTY0013">caught</xsl:catch>
           </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- LRE content  = "." -->
+    
+    <xsl:template name="s-059" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:for-each select="*">
+            <in><xsl:sequence select="."/></in>
+          </xsl:for-each>
         </out>
       </xsl:stream>
     </xsl:template>
