@@ -51,7 +51,7 @@
     
     <!-- Test of xsl:stream with xsl:value-of, filtered with a positional predicate -->
     
-    <xsl:template name="s-007" use-when="$RUN">
+    <xsl:template name="s-007" use-when="false()">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:value-of select="/BOOKLIST/BOOKS/*:ITEM[position() lt 4]/PRICE"/>
@@ -285,6 +285,16 @@
               <xsl:text>]</xsl:text>
             </xsl:for-each>
           </xsl:value-of>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:value-of: descendant text nodes -->
+    
+    <xsl:template name="s-047" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="//PRICE/text()"/>
         </out>
       </xsl:stream>
     </xsl:template>
