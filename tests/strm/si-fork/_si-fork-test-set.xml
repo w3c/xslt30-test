@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="si-fork">
+   <description>xsl:value-of instruction with streaming</description>
+   
+   <environment name="si-fork-A">
+     <stylesheet file="si-fork-A.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="si-fork-001">
+      <description>Basic Test of xsl:stream instruction with xsl:fork</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-001"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>9.06</a><b>420</b></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-002">
+      <description>xsl:stream instruction with xsl:fork, some motionless prongs</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>[<a>9.06</a><b>420</b>]</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-003">
+      <description>xsl:stream instruction with xsl:fork, split input to multiple result files</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-003"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="credits.xml">
+               <all-of>
+                  <assert>count(/credits/transaction) = 15</assert>
+                  <assert>/credits/transaction[1]/@value = 13.24</assert>
+         	   </all-of>
+         	</assert-result-document>
+         	<assert-result-document uri="debits.xml">
+         		<all-of>
+                  <assert>count(/debits/transaction) = 4</assert>
+                  <assert>/debits/transaction[1]/@value = -15.00</assert>
+         	   </all-of>
+         	</assert-result-document>
+         </all-of>	
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-004">
+      <description>xsl:stream instruction with xsl:fork, all prongs motionless</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-004"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><in>[<a/><b/>]</in></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-005">
+      <description>xsl:stream / xsl:for-each / xsl:fork </description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-005"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/book[@title="Pride and Prejudice"]/@price-per-page = "0.0141"</assert>
+            <assert>count(/out/book) = 6</assert>
+            <assert>count(//*) = 7</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-006">
+      <description>xsl:fork with only one branch consuming</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-006"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/book[1][@category="MMP"][.="Pride and Prejudice"]</assert>
+            <assert>/out/book[2][@category="P"][.="Wuthering Heights"]</assert>
+            <assert>count(/out/book) = 6</assert>
+            <assert>count(//*) = 13</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-007">
+      <description>xsl:fork with try/catch within a single prong</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-007"/>
+      </test>
+      <result>
+		 <assert>/out = "2520 9.06"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-008">
+      <description>xsl:fork with try/catch around the whole xsl:fork</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-008"/>
+      </test>
+      <result>
+		 <assert>/out = ""</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-009">
+      <description>xsl:fork used to create attribute nodes</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <environment ref="si-fork-A"/>
+      <test>
+         <initial-template name="f-009"/>
+      </test>
+      <result>
+         <all-of>
+		   <assert>/out/book[1][@title="Pride and Prejudice"][@author="Jane Austen"][@publisher="Modern Library"][@price="4.95"]</assert>
+		   <assert>/out/book[6][@title="The Eyre Affair"][@author="Jasper Fforde"][@publisher="Penguin"][@price="16.47"]</assert>
+		 </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-901">
+      <description>Non-streamable xsl:fork - returns streamed nodes</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <test>
+         <stylesheet file="si-fork-901.xsl"/>
+         <initial-template name="f-901"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-901">
+      <description>Non-streamable xsl:fork - one prong is non-streamable</description>
+      <created by="Michael Kay" on="2014-01-13"/>
+      <test>
+         <stylesheet file="si-fork-902.xsl"/>
+         <initial-template name="f-902"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+
+
+
+</test-set>
