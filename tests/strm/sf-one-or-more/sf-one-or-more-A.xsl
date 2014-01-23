@@ -277,6 +277,59 @@
         </out>
       </xsl:stream>
     </xsl:template>
+    
+    <!-- Streaming one-or-more(): grounded operand, selects nothing, error is caught -->
+    
+    <xsl:template name="r-050" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+             <xsl:value-of select="one-or-more(data(//NOTHING))" separator="|"/>
+             <xsl:catch errors="*:FORG0004" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming one-or-more(): striding operand, selects nothing, error is caught -->
+    
+    <xsl:template name="r-051" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+             <xsl:value-of select="one-or-more(/BOOKLIST/BOOKS/MAGAZINE)" separator="|"/>
+             <xsl:catch errors="*:FORG0004" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming one-or-more(): crawling operand, selects nothing, error is caught -->
+    
+    <xsl:template name="r-052" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+             <xsl:value-of select="one-or-more(//MAGAZINE)" separator="|"/>
+             <xsl:catch errors="*:FORG0004" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming one-or-more(): climbing operand, selects nothing, error is caught -->
+    
+    <xsl:template name="r-053" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+             <xsl:value-of select="one-or-more(//PRICE/../@nothing)" separator="|"/>
+             <xsl:catch errors="*:FORG0004" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+                   
                    
     
 </xsl:stylesheet>

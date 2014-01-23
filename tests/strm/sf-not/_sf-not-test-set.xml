@@ -262,7 +262,7 @@
          <initial-template name="c-102"/>
       </test>
       <result>
-         <error code="FORG0006"/>
+         <assert>/out = "false"</assert>
       </result>
    </test-case>
    
@@ -276,7 +276,58 @@
       <result>
          <error code="FORG0006"/>
       </result>
+   </test-case>
+   
+      <test-case name="sf-not-104">
+      <description>not() on a sequence containing a single xs:anyURI</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-not-A"/>
+      <test>
+         <initial-template name="c-104"/>
+      </test>
+      <result>
+         <assert>/out = "false"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-not-105">
+      <description>not() on a sequence containing a single xs:date</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-not-A"/>
+      <test>
+         <initial-template name="c-105"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case> 
+   
+   <test-case name="sf-not-106">
+      <description>not() on a sequence containing a single xs:date; error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-not-A"/>
+      <test>
+         <initial-template name="c-106"/>
+      </test>
+      <result>
+         <assert>/out = "caught"</assert>
+      </result>
    </test-case>   
+   
+   <test-case name="sf-not-107">
+      <description>test that streaming resumes OK after a caught error</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-not-A"/>
+      <test>
+         <initial-template name="c-107"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>every $b in /out/t satisfies $b = ('true', 'false', 'invalid')</assert>
+           <assert>count(/out/t) = 100000</assert>
+         </all-of>  
+      </result>
+   </test-case>       
    
    <test-case name="sf-not-901">
       <description>Test of xsl:stream instruction with not(), filtered with non-motionless predicate.</description>

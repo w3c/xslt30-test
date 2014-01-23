@@ -300,6 +300,78 @@
          <assert>/out = ""</assert>
       </result>
    </test-case>
+   
+   <test-case name="sf-avg-050">
+      <description>avg() over dayTimeDuration values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-050"/>
+      </test>
+      <result>
+         <assert>/out = "P18404DT20H"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-051">
+      <description>avg() over yearMonthDuration values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-051"/>
+      </test>
+      <result>
+         <assert>/out = "P50Y4M"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-052">
+      <description>avg() over inconsistent type values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-052"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-053">
+      <description>avg() over incorrect type values</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-053"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-054">
+      <description>avg() over inconsistent type values, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-054"/>
+      </test>
+      <result>
+         <assert>/out = "caught"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-avg-055">
+      <description>avg() over incorrect type values, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-avg-A"/>
+      <test>
+         <initial-template name="s-055"/>
+      </test>
+      <result>
+         <assert>/out = "caught"</assert>
+      </result>
+   </test-case>
 
    <test-case name="sf-avg-901">
       <description>Test of xsl:stream instruction with avg(), filtered with predicate that atomizes.</description>

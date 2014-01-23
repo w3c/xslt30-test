@@ -347,6 +347,75 @@
         </out>
       </xsl:stream>
     </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument present -->
+    
+    <xsl:template name="s-050" use-when="$RUN">
+      <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/codepoint'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="deep-equal(outermost(//LANGUAGE)/string(.), ('English', 'English', 'English', 'English', 'English', 'English'), $c)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument present, unknown collation -->
+    
+    <xsl:template name="s-051" use-when="$RUN">
+      <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/codepoint/unknown'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="deep-equal(outermost(//LANGUAGE)/string(.), ('English', 'English', 'English', 'English', 'English', 'English'), $c)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument present, unknown collation, recovery case -->
+    
+    <xsl:template name="s-052" use-when="$RUN">
+      <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/codepoint/unknown'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="deep-equal(outermost(//LANGUAGE)/string(.), ('English', 'English', 'English', 'English', 'English', 'English'), $c)"/>
+            <xsl:catch errors="*:FOCH0002" select="'caught'"/>
+          </xsl:try>  
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument obtained from streamed input -->
+    
+    <xsl:template name="s-053" use-when="$RUN">
+      <xsl:stream href="../docs/special.xml">
+        <out>
+          <xsl:value-of select="deep-equal(('a', 'b', 'c'), ('A', 'B', 'C'), special/codepointCollation)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument obtained from streamed input, unknown collation -->
+    
+    <xsl:template name="s-054" use-when="$RUN">
+      <xsl:stream href="../docs/special.xml">
+        <out>
+          <xsl:value-of select="deep-equal(('a', 'b', 'c'), ('A', 'B', 'C'), special/unknownCollation)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming deep-equal(): collation argument obtained from streamed input, unknown collation, recovery case -->
+    
+    <xsl:template name="s-055" use-when="$RUN">
+      <xsl:stream href="../docs/special.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="deep-equal(('a', 'b', 'c'), ('A', 'B', 'C'), special/unknownCollation)"/>
+            <xsl:catch errors="*:FOCH0002" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
                                                 
     
 </xsl:stylesheet>

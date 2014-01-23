@@ -231,6 +231,60 @@
           <xsl:value-of select="not(($b, account/transaction))"/>
         </out>
       </xsl:stream>
+    </xsl:template>
+    
+    <!-- not() on an xs:anyURI -->
+    
+    <xsl:template name="c-104" use-when="$RUN">
+      <xsl:variable name="b" select="current-date() gt xs:date('1900-01-01')"/>
+      <xsl:stream href="../docs/big-transactions.xml">
+        <out>
+          <xsl:value-of select="not(account/transaction[1]/base-uri(.))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template> 
+    
+    <!-- not() on an xs:date -->
+    
+    <xsl:template name="c-105" use-when="$RUN">
+      <xsl:variable name="b" select="current-date()"/>
+      <xsl:stream href="../docs/big-transactions.xml">
+        <out>
+          <xsl:value-of select="not((account/transaction[888888], $b))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- not() on an xs:date; error is caught -->
+    
+    <xsl:template name="c-106" use-when="$RUN">
+      <xsl:variable name="b" select="current-date()"/>
+      <xsl:stream href="../docs/big-transactions.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="not((account/transaction[888888], $b))"/>
+            <xsl:catch errors="*:FORG0006" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template> 
+    
+    <!-- test that streaming resumes OK after a caught error -->
+    
+    <xsl:template name="c-107" use-when="$RUN">
+      <xsl:stream href="../docs/big-transactions.xml">
+        <out>
+          <xsl:for-each select="account/transaction">
+            <t>            
+              <xsl:try>
+                <xsl:value-of select="not(xs:double(concat('-', @value)))"/>
+                <xsl:catch errors="*:FORG0001" select="'invalid'"/>
+              </xsl:try>
+            </t>
+          </xsl:for-each>  
+        </out>
+      </xsl:stream>
     </xsl:template>          
+              
     
 </xsl:stylesheet>

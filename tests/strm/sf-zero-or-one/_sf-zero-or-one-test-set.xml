@@ -53,11 +53,11 @@
    </test-case>
    
    <test-case name="sf-zero-or-one-004">
-      <description>Streaming zero-or-one() - striding operand</description>
+      <description>Streaming zero-or-one() - striding operand - error case</description>
       <created by="Michael Kay" on="2013-12-16"/>
       <environment ref="sf-zero-or-one-A"/>
       <test>
-         <initial-template name="r-001"/>
+         <initial-template name="r-004"/>
       </test>
       <result>
          <error code="FORG0003"/>
@@ -69,11 +69,11 @@
       <created by="Michael Kay" on="2013-12-16"/>
       <environment ref="sf-zero-or-one-A"/>
       <test>
-         <initial-template name="r-002"/>
+         <initial-template name="r-005"/>
       </test>
       <result>
          <all-of>
-           <assert>/out/ITEM[@CAT='MMP']</assert>
+           <assert>/out/ITEM[@CAT='H']</assert>
            <assert>count(/out/*) = 1</assert>
          </all-of>
       </result>
@@ -84,10 +84,22 @@
       <created by="Michael Kay" on="2013-12-16"/>
       <environment ref="sf-zero-or-one-A"/>
       <test>
-         <initial-template name="r-003"/>
+         <initial-template name="r-006"/>
       </test>
       <result>
          <assert>count(/out/*) = 0</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-zero-or-one-007">
+      <description>Streaming zero-or-one() - striding operand - error case, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-zero-or-one-A"/>
+      <test>
+         <initial-template name="r-007"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
       </result>
    </test-case>
       

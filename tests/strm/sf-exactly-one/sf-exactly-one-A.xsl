@@ -65,6 +65,32 @@
           <xsl:copy-of select="exactly-one(/BOOKLIST/BOOKS/ITEM[@CAT='J'])"/>
         </out>
       </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming exactly-one(): grounded operand - recover from error -->
+    
+    <xsl:template name="r-007" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="exactly-one(copy-of(/BOOKLIST/BOOKS/ITEM/PRICE))"/>
+            <xsl:catch errors="*:FORG0005" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming exactly-one(): striding operand recover from error -->
+    
+    <xsl:template name="r-008" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="exactly-one(/BOOKLIST/BOOKS/ITEM/PRICE)"/>
+            <xsl:catch errors="*:FORG0005" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
     </xsl:template>    
     
 

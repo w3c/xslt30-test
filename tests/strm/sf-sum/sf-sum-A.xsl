@@ -1,8 +1,9 @@
 <xsl:stylesheet version="3.0" 
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:err="http://www.w3.org/2005/xqt-errors"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes="map xs">
+    exclude-result-prefixes="map xs err">
     
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
@@ -251,6 +252,100 @@
         </out>
       </xsl:stream>
     </xsl:template>
+    
+    <!-- Streaming sum(): second operand is consuming (but unused) -->
+    
+    <xsl:template name="s-044" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(1 to 10, number(head(//PRICE)))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): second operand is consuming (and unused) -->
+    
+    <xsl:template name="s-045" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum((1 to 10)[current-date() lt xs:date('1999-11-16')], number(head(//PRICE)))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): dayTimeDuration values -->
+    
+    <xsl:template name="s-050" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(/BOOKLIST/BOOKS/ITEM/PUB-DATE ! (xs:date('2050-01-01') - xs:date(.)))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): yearMonthDuration values -->
+    
+    <xsl:template name="s-051" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(
+                                    for $pubdate in /BOOKLIST/BOOKS/ITEM/PUB-DATE/xs:date(.) return
+                                    let $monthsAgo := (2050*12) - (12*year-from-date($pubdate) + month-from-date($pubdate)) return
+                                    xs:yearMonthDuration('P1M') * $monthsAgo)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): inconsistent type values -->
+    
+    <xsl:template name="s-052" use-when="$RUN">
+      <xsl:param name="p" select="23"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(($p, /BOOKLIST/BOOKS/ITEM/PUB-DATE ! (xs:date('2050-01-01') - xs:date(.))))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): incorrect type values -->
+    
+    <xsl:template name="s-053" use-when="$RUN">
+      <xsl:param name="p" select="'Wrong'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="sum(($p, /BOOKLIST/BOOKS/ITEM/PUB-DATUM ! (xs:date('2050-01-01') - xs:date(.))))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): inconsistent type values, error is caught -->
+    
+    <xsl:template name="s-054" use-when="$RUN">
+      <xsl:param name="p" select="23"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="sum(($p, /BOOKLIST/BOOKS/ITEM/PUB-DATE ! (xs:date('2050-01-01') - xs:date(.))))"/>
+            <xsl:catch errors="err:FORG0006" select="'caught'"/>
+          </xsl:try>  
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming sum(): incorrect type values, error is caught -->
+    
+    <xsl:template name="s-055" use-when="$RUN">
+      <xsl:param name="p" select="'Wrong'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="sum(($p, /BOOKLIST/BOOKS/ITEM/PUB-DATUM ! (xs:date('2050-01-01') - xs:date(.))))"/>
+            <xsl:catch errors="err:FORG0006" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+                         
                                                 
     
 </xsl:stylesheet>

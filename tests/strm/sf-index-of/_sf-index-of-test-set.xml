@@ -3,6 +3,10 @@
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="sf-index-of">
    <description>Tests xsl:stream instruction introduced in XSLT 3.0 with xsl:result-document.</description>
+
+   <environment name="sf-index-of-A">
+     <stylesheet file="sf-index-of-001.xsl"/>
+   </environment>
    
    <dependencies>
       <spec value="XSLT30+"/>
@@ -15,24 +19,108 @@
    <test-case name="sf-index-of-001">
       <description>Streaming - calling index-of - first arg is a consuming attribute sequence</description>
       <created by="Michael Kay" on="2013-11-22"/>
+      <environment ref="sf-index-of-A"/>
       <test>
-         <stylesheet file="sf-index-of-001.xsl"/>
          <initial-template name="i-001"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>40 41 42</out>]]></assert-xml>
+         <assert>/out = '40 41 42'</assert>
       </result>
    </test-case>
    
    <test-case name="sf-index-of-002">
       <description>Streaming - calling index-of - first arg is motionless, second is consuming</description>
       <created by="Michael Kay" on="2013-11-22"/>
+      <environment ref="sf-index-of-A"/>
       <test>
-         <stylesheet file="sf-index-of-001.xsl"/>
          <initial-template name="i-002"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>5</out>]]></assert-xml>
+         <assert>/out = '5'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-index-of-003">
+      <description>Streaming - calling index-of - first arg is a consuming attribute sequence - empty case</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-index-of-A"/>
+      <test>
+         <initial-template name="i-003"/>
+      </test>
+      <result>
+         <assert>/out = ''</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-index-of-050">
+      <description>index-of() - collation argument present</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-index-of-A"/>
+      <test>
+         <initial-template name="i-050"/>
+      </test>
+      <result>
+         <assert>/out = '1'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-index-of-051">
+      <description>index-of() - collation argument present - unknown collation</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-index-of-A"/>
+      <test>
+         <initial-template name="i-051"/>
+      </test>
+      <result>
+         <error code="FOCH0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-index-of-052">
+      <description>index-of() - collation argument present - unknown collation - error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-index-of-A"/>
+      <test>
+         <initial-template name="i-052"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-index-of-053">
+      <description>index-of() - collation argument consumes streamed document</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-index-of-A"/>
+      <test>
+         <initial-template name="i-053"/>
+      </test>
+      <result>
+         <assert>/out = '1'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-index-of-054">
+      <description>index-of() - collation argument consumes streamed document, unknown collation</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-index-of-A"/>
+      <test>
+         <initial-template name="i-054"/>
+      </test>
+      <result>
+         <error code="FOCH0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-index-of-055">
+      <description>index-of() - collation argument consumes streamed document, unknown collation, error is caught</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="sf-index-of-A"/>
+      <test>
+         <initial-template name="i-055"/>
+      </test>
+      <result>
+         <assert>/out = 'caught'</assert>
       </result>
    </test-case>
 

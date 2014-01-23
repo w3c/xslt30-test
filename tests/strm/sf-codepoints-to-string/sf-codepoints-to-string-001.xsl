@@ -7,10 +7,43 @@
     
     <!-- Test of xsl:stream calling codepoints-to-string()  -->
     
-    <xsl:template name="main">
+    <xsl:template name="c-001">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="codepoints-to-string(//TITLE/(30+string-length(.)))"/>
+          <xsl:value-of select="codepoints-to-string(outermost(//TITLE)/(30+string-length(.)))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream calling codepoints-to-string() - error case -->
+    
+    <xsl:template name="c-002">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="codepoints-to-string(outermost(//TITLE)/(string-length(.) - 60))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream calling codepoints-to-string() - error case, recovered -->
+    
+    <xsl:template name="c-003">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:try>
+            <xsl:value-of select="codepoints-to-string(outermost(//TITLE)/(string-length(.) - 60))"/>
+            <xsl:catch errors="*:FOCH0001" select="'caught'"/>
+          </xsl:try>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Test of xsl:stream calling codepoints-to-string(), empty case  -->
+    
+    <xsl:template name="c-004">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="codepoints-to-string(outermost(//TITTLE-TATTLE)/(30+string-length(.)))"/>
         </out>
       </xsl:stream>
     </xsl:template>

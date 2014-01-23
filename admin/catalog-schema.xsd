@@ -123,6 +123,7 @@
     <xs:group name="environmentContentModel">
         <xs:sequence>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="package" />
                 <xs:element ref="schema" />
                 <xs:element ref="source" />
                 <xs:element ref="resource" />
@@ -134,6 +135,17 @@
             </xs:choice>
         </xs:sequence>
     </xs:group>
+    
+    <xs:element name="package" type="packageType">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Describes an XSLT package under test. Packages may be defined as part of an environment in cases
+                    where many tests use the same stylesheet, but more commonly they are described individually for
+                    each test case.</p>
+            </xs:documentation>
+        </xs:annotation>
+        
+    </xs:element>
     
     
     <xs:element name="stylesheet" type="stylesheetType">
@@ -423,6 +435,45 @@
                     </xs:annotation> 
                 </xs:attribute>
                 <xs:attributeGroup ref="xmlVersionAttr"/>
+            </xs:extension>
+        </xs:complexContent>
+        
+    </xs:complexType>
+    
+    <xs:complexType name="packageType">
+        <xs:annotation>
+            <xs:documentation>
+                <div>
+                    <h3>packageType</h3>
+                    <p>
+                        defines the type of the <code>package</code> element.
+                    </p>
+                </div> 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="baseType">
+                <xs:group ref="fileMetaData" />
+                <xs:attributeGroup ref="fileAttr" />
+                <xs:attributeGroup ref="uriAttr" />
+                <xs:attributeGroup ref="xmlVersionAttr"/>
+                <xs:attribute name="role">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <p>The principal stylesheet module is the one acting as the entry point for the
+                                transformation. Secondary stylesheet modules are imported or included by the principal
+                                module. It is good practice to document all modules used, but test drivers cannot rely
+                                on this being done in all cases.</p>
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="principal"/>
+                            <xs:enumeration value="secondary"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="package-version" type="xs:string"/>
             </xs:extension>
         </xs:complexContent>
         
@@ -1135,6 +1186,16 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
+                <xs:element ref="package" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <p>If the element appears more than once, then the first occurrence should have role="principal"
+                                and the others should have role="secondary".</p>
+                            <p>Identifying the used packages using role="secondary" entries is good practice,
+                                but it's not guaranteed that all tests follow this practice.</p>
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element ref="stylesheet" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
