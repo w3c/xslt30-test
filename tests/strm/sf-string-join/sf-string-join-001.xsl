@@ -25,6 +25,16 @@
       </xsl:stream>
     </xsl:template>
     
+    <!-- Test of xsl:stream calling string-join(), first argument consuming and striding, second argument omitted  -->
+    
+    <xsl:template name="j-003">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="string-join(/BOOKLIST/BOOKS/ITEM/TITLE)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
     
     
 </xsl:stylesheet>
