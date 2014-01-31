@@ -278,6 +278,21 @@
       </result>
    </test-case>
    
+   <test-case name="mode-0011">
+      <description>Use boolean function call in predicate. Saxon bug 1992</description>
+      <created by="John Lumley" on="2014-01-31"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0011.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/*:stylesheet/*:template/*:attribute[@name="IS-AVT{local-name(.)}"]</assert>
+      </result>
+   </test-case>
+   
    <test-case name="mode-0101">
       <description>Simple test of xsl:apply-templates with mode.</description>
       <created by="Michael Kay" on="2012-11-07"/>
