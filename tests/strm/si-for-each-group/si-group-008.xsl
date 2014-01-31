@@ -26,14 +26,14 @@
             <xsl:iterate select="$g">
               <xsl:param name="min" select="+1000000000"/>
               <xsl:param name="max" select="-1000000000"/>
-              <xsl:next-iteration>
-                <xsl:with-param name="min" select="min(($min, xs:decimal(@value)))"/>
-                <xsl:with-param name="max" select="max(($max, xs:decimal(@value)))"/>
-              </xsl:next-iteration>
               <xsl:on-completion>
                 <min><xsl:value-of select="$min"/></min>
                 <max><xsl:value-of select="$max"/></max>
               </xsl:on-completion>
+              <xsl:next-iteration>
+                <xsl:with-param name="min" select="min(($min, xs:decimal(@value)))"/>
+                <xsl:with-param name="max" select="max(($max, xs:decimal(@value)))"/>
+              </xsl:next-iteration>             
             </xsl:iterate>
          </batch>
       </xsl:for-each-group> 

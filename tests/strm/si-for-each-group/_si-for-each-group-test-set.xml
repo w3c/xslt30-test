@@ -141,17 +141,17 @@
       </test>
       <result>
          <all-of>
-            <assert>/out/batch[1][@date = "2006-02-13"]/total = "21.36"</assert>
-            <assert>/out/batch[2][@date = "2006-02-15"]/total = "6.36"</assert>
-            <assert>/out/batch[3][@date = "2006-02-16"]/total = "12.36"</assert>
-            <assert>/out/batch[4][@date = "2006-02-17"]/total = "19.63"</assert>
-            <assert>/out/batch[5][@date = "2006-02-20"]/total = "14.63"</assert>
-            <assert>/out/batch[6][@date = "2006-02-21"]/total = "23.62"</assert>
-            <assert>/out/batch[7][@date = "2006-02-22"]/total = "39.62"</assert>
-            <assert>/out/batch[8][@date = "2006-02-23"]/total = "47.21"</assert>
-            <assert>/out/batch[9][@date = "2006-02-24"]/total = "-181.86"</assert>
-            <assert>/out/batch[10][@date = "2006-02-25"]/total = "-155.87"</assert>
-            <assert>/out/batch[11][@date = "2006-02-26"]/total = "-141.67"</assert>           
+            <assert>/out/batch[1][@date = "2006-02-13"]/total = 21.36</assert>
+            <assert>/out/batch[2][@date = "2006-02-15"]/total = -15.00</assert>
+            <assert>/out/batch[3][@date = "2006-02-16"]/total = 6.00</assert>
+            <assert>/out/batch[4][@date = "2006-02-17"]/total = 7.27</assert>
+            <assert>/out/batch[5][@date = "2006-02-20"]/total = -5.00</assert>
+            <assert>/out/batch[6][@date = "2006-02-21"]/total = 8.99</assert>
+            <assert>/out/batch[7][@date = "2006-02-22"]/total = 16.00</assert>
+            <assert>/out/batch[8][@date = "2006-02-23"]/total = 7.59</assert>
+            <assert>/out/batch[9][@date = "2006-02-24"]/total = -229.07</assert>
+            <assert>/out/batch[10][@date = "2006-02-25"]/total = 25.99</assert>
+            <assert>/out/batch[11][@date = "2006-02-26"]/total = 14.20</assert>           
          </all-of>
       </result>
    </test-case>
@@ -164,13 +164,14 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><batch year="2006" week="7"><total>19.63</total></batch><batch year="2006" week="8"><total>-141.67</total></batch></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><batch year="2006" week="7"><total>19.63</total></batch><batch year="2006" week="8"><total>-161.3</total></batch></out>]]></assert-xml>
       </result>
    </test-case>
    
    <test-case name="si-group-008">
       <description>Streamed grouping - group-adjacent - composite grouping key - min and max using xsl:iterate</description>
       <created by="Michael Kay" on="2012-12-04"/>
+      <changed by="Michael Kay" on="2014-01-31" change="reorder xsl:on-completion, see bug 24179"/>
       <test>
          <stylesheet file="si-group-008.xsl"/>
          <initial-template name="main"/>
@@ -188,7 +189,8 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>false()</assert> <!-- not currently working in Saxon -->
+         <assert-xml><![CDATA[<out><head>Heading</head><p>One</p><p>Two</p><p>Three</p
+         ><list><li>point one</li><li>point two</li><li>point three</li></list><p>Four</p></out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -200,7 +202,14 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>false()</assert>
+         <all-of>
+           <assert>/out/week[1][@nr="7"]/day[1][@date="2006-02-13"]/transaction[1][@value="13.24"]</assert>
+           <assert>/out/week[1][@nr="7"]/day[1][@date="2006-02-13"]/transaction[2][@value="8.12"]</assert>
+           <assert>/out/week[1][@nr="7"]/day[2][@date="2006-02-15"]/transaction[1][@value="-15.00"]</assert>
+           <assert>/out/week[1][@nr="7"]/day[3][@date="2006-02-16"]/transaction[1][@value="6.00"]</assert>
+           <assert>/out/week[2][@nr="8"]/day[1][@date="2006-02-20"]/transaction[1][@value="-5.00"]</assert>
+           <assert>/out/week[2][@nr="8"]/day[7][@date="2006-02-26"]/transaction[1][@value="14.20"]</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -256,6 +265,7 @@
       <description>Streamed grouping - group-adjacent - composite grouping key - min and max using xsl:iterate 
       with position() and xsl:break</description>
       <created by="Michael Kay" on="2013-03-29"/>
+      <changed by="Michael Kay" on="2014-01-31" change="reorder xsl:on-completion, see bug 24179"/>
       <test>
          <stylesheet file="si-group-013.xsl"/>
          <initial-template name="main"/>
@@ -273,7 +283,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><batch year="2006" week="7"><total>19.63</total></batch><batch year="2006" week="8"><total>-141.67</total></batch></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><batch year="2006" week="7"><total>19.63</total></batch><batch year="2006" week="8"><total>-161.3</total></batch></out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -368,7 +378,7 @@
       </test>
       <result>
          <all-of>
-            <assert>false()</assert>
+            <assert>count(/out/g) = 11</assert>
          </all-of>
       </result>
    </test-case>
@@ -382,7 +392,8 @@
       </test>
       <result>
          <all-of>
-            <assert>false()</assert>
+            <assert>count(/out/g) = 11</assert>
+            <assert>every $i in 1 to 11 satisfies /out/g[$i]/@pos = string($i)</assert>
          </all-of>
       </result>
    </test-case>
@@ -396,7 +407,55 @@
       </test>
       <result>
          <all-of>
-            <assert>false()</assert>
+            <assert>/out/g[1]/@val = "13.24"</assert>
+            <assert>/out/g[2]/@val = "-15.00"</assert>
+            <assert>/out/g[3]/@val = "6.00"</assert>
+            <assert>/out/g[4]/@val = "0.50"</assert>
+            <assert>/out/g[5]/@val = "-5.00"</assert>
+            <assert>/out/g[6]/@val = "8.99"</assert>
+            <assert>/out/g[7]/@val = "16.00"</assert>
+            <assert>/out/g[8]/@val = "-2.33"</assert>
+            <assert>/out/g[9]/@val = "6.78"</assert>
+            <assert>/out/g[10]/@val = "12.00"</assert>
+            <assert>/out/g[11]/@val = "14.20"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-022">
+      <description>Streamed grouping - group-adjacent - with xsl:sequence;
+        using only the second item in every group</description>
+      <created by="Michael Kay" on="2014-01-27"/>
+      <test>
+         <stylesheet file="si-group-022.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>deep-equal(/out/second[1]/transaction/@value/number(), (8.12))</assert>
+            <assert>deep-equal(/out/second[2]/transaction, ())</assert>
+            <assert>deep-equal(/out/second[3]/transaction, ())</assert>
+            <assert>deep-equal(/out/second[4]/transaction/@value/number(), (2.33))</assert>
+            <assert>count(/out/second) = 11</assert>
+            <assert>count(/out/second/transaction) = 5</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-023">
+      <description>Streamed grouping - group-adjacent - with xsl:sequence;
+        using only the positive items in every group</description>
+      <created by="Michael Kay" on="2014-01-27"/>
+      <test>
+         <stylesheet file="si-group-023.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>deep-equal(/out/credits[1]/transaction[1]/@value/number(), (13.24))</assert>
+            <assert>deep-equal(/out/credits[1]/transaction[2]/@value/number(), (8.12))</assert>
+            <assert>empty(/out/credits[2]/transaction)</assert>
+            <assert>empty(/out/credits/transaction[number(@value) lt 0])</assert>
          </all-of>
       </result>
    </test-case>

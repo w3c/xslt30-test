@@ -24,7 +24,7 @@
          bind-group="g"
          bind-grouping-key="k">
          <first date="{$k}">
-            <xsl:sequence select="$g[1]"/>
+            <xsl:copy-of select="$g[1]"/>
          </first>
       </xsl:for-each-group> 
     </out>

@@ -27,6 +27,10 @@
             <xsl:iterate select="$g">
               <xsl:param name="min" select="+1000000000"/>
               <xsl:param name="max" select="-1000000000"/>
+              <xsl:on-completion>
+                <min><xsl:value-of select="$min"/></min>
+                <max><xsl:value-of select="$max"/></max>
+              </xsl:on-completion>
               <xsl:choose>
                 <xsl:when test="position() = 3">
                   <xsl:break>
@@ -41,10 +45,6 @@
                   </xsl:next-iteration>
                 </xsl:otherwise>
               </xsl:choose>
-              <xsl:on-completion>
-                <min><xsl:value-of select="$min"/></min>
-                <max><xsl:value-of select="$max"/></max>
-              </xsl:on-completion>
             </xsl:iterate>
          </batch>
       </xsl:for-each-group> 
