@@ -5,11 +5,11 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:iterate select="1 to 10">
-        <xsl:value-of select="position()"/>
+      <xsl:iterate select="1 to 10">        
         <xsl:on-completion>
           <xsl:value-of select="position()"/>
         </xsl:on-completion>
+        <xsl:value-of select="position()"/>
       </xsl:iterate>
     </out>
   </xsl:template>

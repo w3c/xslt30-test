@@ -11,6 +11,11 @@
       <xsl:iterate select="doc('transactions.xml')/account/transaction">
       <xsl:param name="group" as="element(transaction)*" select="()"/>
       <xsl:param name="currentDate" as="xs:date?" select="()"/>
+        <xsl:on-completion>
+          <final-daily-transactions date="{$currentDate}">
+            <xsl:copy-of select="$group"/>
+          </final-daily-transactions>
+        </xsl:on-completion> 
         <xsl:choose>
           <xsl:when test="xs:date(@date) eq $currentDate or empty($group)">
             <xsl:next-iteration>
@@ -27,12 +32,7 @@
               <xsl:with-param name="currentDate" select="@date"/>
             </xsl:next-iteration>            
           </xsl:otherwise>
-        </xsl:choose>
-        <xsl:on-completion>
-          <final-daily-transactions date="{$currentDate}">
-            <xsl:copy-of select="$group"/>
-          </final-daily-transactions>
-        </xsl:on-completion>        
+        </xsl:choose>       
       </xsl:iterate>
     </account>
   </xsl:template>

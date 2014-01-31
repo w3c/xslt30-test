@@ -6,10 +6,10 @@
   <xsl:template name="main">
     <out>
       <xsl:iterate select="1 to 10">
-        <xsl:value-of select="."/>
         <xsl:on-completion>
           <xsl:value-of select="."/>
         </xsl:on-completion>
+        <xsl:value-of select="."/>
       </xsl:iterate>
     </out>
   </xsl:template>

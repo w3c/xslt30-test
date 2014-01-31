@@ -13,15 +13,15 @@
 		    <xsl:iterate select=".//gml:posList">
 		        <xsl:param name="polygons" select="0" as="xs:integer"/>
 		        <xsl:param name="points" select="0" as="xs:integer"/>
+		        <xsl:on-completion>
+		            <polygons><xsl:value-of select="$polygons"/></polygons>
+		            <points><xsl:value-of select="$points"/></points>
+		        </xsl:on-completion>
 		        <xsl:variable name="n" select="count(tokenize(., '\s+')) idiv 3"/>
 		        <xsl:next-iteration>
 		            <xsl:with-param name="polygons" select="$polygons+1"/>
 		            <xsl:with-param name="points" select="$points + $n"/>
 		        </xsl:next-iteration>
-		        <xsl:on-completion>
-		            <polygons><xsl:value-of select="$polygons"/></polygons>
-		            <points><xsl:value-of select="$points"/></points>
-		        </xsl:on-completion>
 		    </xsl:iterate>
 		</result>
 	</xsl:template>

@@ -15,6 +15,9 @@
       <xsl:iterate select="*">
         <xsl:param name="count-h3" select="0"/>
         <xsl:param name="count-other" select="0"/>
+        <xsl:on-completion>
+          <count h3="{$count-h3}" other="{$count-other}"/>
+        </xsl:on-completion>
         <xsl:choose>
           <xsl:when test="self::h3">
             <heading>
@@ -32,9 +35,6 @@
           </xsl:otherwise>
         </xsl:choose>
         <xsl:fallback/>
-        <xsl:on-completion>
-          <count h3="{$count-h3}" other="{$count-other}"/>
-        </xsl:on-completion>
       </xsl:iterate>
     </out>
   </xsl:template>

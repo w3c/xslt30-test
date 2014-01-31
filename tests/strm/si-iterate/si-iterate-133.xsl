@@ -13,14 +13,15 @@
 		    <xsl:iterate select=".//gml:LinearRing">
 		        <xsl:param name="polygons" select="0" as="xs:integer"/>
 		        <xsl:param name="points" select="0" as="xs:integer"/>
-		        <xsl:next-iteration>
-		            <xsl:with-param name="polygons" select="$polygons+1"/>
-		            <xsl:with-param name="points" select="$points + count(gml:pos)"/>
-		        </xsl:next-iteration>
 		        <xsl:on-completion>
 		            <polygons><xsl:value-of select="$polygons"/></polygons>
 		            <points><xsl:value-of select="$points"/></points>
 		        </xsl:on-completion>
+		        <xsl:next-iteration>
+		            <xsl:with-param name="polygons" select="$polygons+1"/>
+		            <xsl:with-param name="points" select="$points + count(gml:pos)"/>
+		        </xsl:next-iteration>
+		        
 		    </xsl:iterate>
 		</result>
 	</xsl:template>
