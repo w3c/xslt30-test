@@ -614,13 +614,88 @@
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="use-when-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="use-when-0132.xsl"/>
       </test>
       <result>
          <error code="XPST0008"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0133">
+      <description>Static variables are visible in a subsequently-included module</description>
+      <created by="Michael Kay" on="2014-01-31"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="main"/>
+         <stylesheet file="use-when-0133.xsl"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0134">
+      <description>Import precedence affecting static variables.</description>
+      <created by="Michael Kay" on="2014-01-31"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="main"/>
+         <stylesheet file="use-when-0134.xsl"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0135">
+      <description>Static base uri in static expressions is affected by xml:base</description>
+      <created by="Michael Kay" on="2014-02-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="main"/>
+         <stylesheet file="use-when-0135.xsl"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0136">
+      <description>Static base uri in static expressions is affected by use of external entities</description>
+      <created by="Michael Kay" on="2014-02-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="main"/>
+         <stylesheet file="use-when-0136.xsl"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0137">
+      <description>Precedence of static variables when the same module is imported more than once. (See bug 24478)</description>
+      <created by="Michael Kay" on="2014-02-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="main"/>
+         <stylesheet file="use-when-0137.xsl"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
       </result>
    </test-case>
 
@@ -670,7 +745,8 @@
    </test-case>
 
    <test-case name="use-when-0204">
-      <description>Test case that uses use-when on xsl:element instruction in different levels (Parent-child, grandchild) with the mixture of true and false values for the use-when attribute.</description>
+      <description>Test case that uses use-when on xsl:element instruction in different levels (Parent-child, grandchild) 
+      with the mixture of true and false values for the use-when attribute.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -685,7 +761,8 @@
    </test-case>
 
    <test-case name="use-when-0205">
-      <description>Test case that uses use-when attribute on an element that has a static error, the path expression of the attribute evaluates to false and therefore no error will be reported.</description>
+      <description>Test case that uses use-when attribute on an element that has a static error, the path 
+      expression of the attribute evaluates to false and therefore no error will be reported.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -730,7 +807,8 @@
    </test-case>
 
    <test-case name="use-when-0208">
-      <description>Test case that uses use-when attribute on both xsl:element and its attributes where the value use-when boolean value defined on the element is different from it attributes.</description>
+      <description>Test case that uses use-when attribute on both xsl:element and its attributes where the value 
+      use-when boolean value defined on the element is different from it attributes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -795,7 +873,8 @@
    </test-case>
 
    <test-case name="use-when-0212">
-      <description>Test case that uses system-property function as the expression used to evaluate the EBV of the use-when attribute.</description>
+      <description>Test case that uses system-property function as the expression used to evaluate the EBV of the 
+      use-when attribute.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2012-11-30" change="See Bug 20022"/>
       <environment ref="use-when-02"/>
@@ -846,7 +925,8 @@
    </test-case>
 
    <test-case name="use-when-0215">
-      <description>Test case in which use-when is used with an expression containing a local variable in a quantitative exp (using 'some').</description>
+      <description>Test case in which use-when is used with an expression containing a local variable in a quantitative exp 
+      (using 'some').</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -861,7 +941,8 @@
    </test-case>
 
    <test-case name="use-when-0216">
-      <description>Test case in which use-when is used with an expression containing a local variable in a quantitative exp (using 'every').</description>
+      <description>Test case in which use-when is used with an expression containing a local variable in a quantitative exp 
+      (using 'every').</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="use-when-02"/>
       <dependencies>
@@ -1007,7 +1088,9 @@
    </test-case>
 
    <test-case name="use-when-0225">
-      <description>Test case that uses use-when on an element while the element has a static error and the EBV evaluates to true and therefore the elemnt should not be excluded from the module. This is to verify that the error is reported.</description>
+      <description>Test case that uses use-when on an element while the element has a static error and the EBV 
+      evaluates to true and therefore the elemnt should not be excluded from the module. This is to verify that 
+      the error is reported.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2012-12-10" change="all-of to any-of"/>
       <environment ref="use-when-02"/>
@@ -1026,7 +1109,9 @@
    </test-case>
 
    <test-case name="use-when-0226">
-      <description>Test case that uses use-when on an LRE while the element has a static error and the EBV evaluates to true and therefore the elemnt should not be excluded from the module. This is to verify that the error is reported</description>
+      <description>Test case that uses use-when on an LRE while the element has a static error and the EBV 
+      evaluates to true and therefore the elemnt should not be excluded from the module. This is to verify that 
+      the error is reported</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2012-12-10" change="all-of to any-of"/>
       <environment ref="use-when-02"/>
