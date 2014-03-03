@@ -188,6 +188,21 @@
          <assert-xml><![CDATA[<out xmlns:fo="http://www.w3.org/XSL/Format/1.0"><fo:block>1. aaa</fo:block><fo:block>2. bbb</fo:block><fo:block>3. ccc</fo:block><fo:block>4. ddd</fo:block></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="number-0202">
+      <description>The count pattern on xsl:number has two predicates (Saxon bug)</description>
+      <created by="Michael Kay" on="2014-02-24"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-0202.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 1</assert>
+      </result>
+   </test-case>
 
    <test-case name="number-0301">
       <description></description>
