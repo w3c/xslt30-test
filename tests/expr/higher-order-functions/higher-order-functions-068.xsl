@@ -8,16 +8,16 @@
     <!-- inline function literal, used-defined function -->
     
     <xsl:function name="f:fib">
-        <xsl:param name="n" as="xs:integer" />
-        <xsl:param name="countfun" as="function(*)" />
+        <xsl:param name="n"/>
+        <xsl:param name="countfun"  />
        
         <xsl:sequence select="
             if ($n = 1 or $n = 2)
             then $countfun(1)
             else let $first :=
-                     function($x as xs:integer) as function(*)
+                     function($x)
                      {
-                        let $second := function($y as xs:integer) as function(*)
+                        let $second := function($y)
                         {
                             $countfun($x + $y)
                         }
@@ -26,8 +26,8 @@
                  return f:fib($n - 1, $first)" />
     </xsl:function>
 
-    <xsl:template name="main">
-        <out><xsl:value-of select="f:fib(10, function($a as xs:integer){$a})" /></out>
+    <xsl:template match="/">
+        <out><xsl:value-of select="f:fib(11, function($a) {$a})" /></out>
     </xsl:template>
     
 </xsl:stylesheet>
