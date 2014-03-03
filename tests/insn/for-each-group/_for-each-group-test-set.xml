@@ -1301,4 +1301,26 @@ while you are in the cinema.</p></o>]]></assert-xml>
 </a>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="for-each-group-072">
+      <description>XSLT 3.0 grouping, group-by with composite="yes"</description>
+      <created by="David Rudel" on="2014-02-24"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-072.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out
+         ><group key="3 blue" key.count="2" group.size="3"
+         /><group key="1 blue" key.count="2" group.size="1"
+         /><group key="2 blue" key.count="2" group.size="1"
+         /><group key="1 red" key.count="2" group.size="1"
+         /><group key="2 red" key.count="2" group.size="1"
+         /><group key="3 red" key.count="2" group.size="2"
+         /></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>
