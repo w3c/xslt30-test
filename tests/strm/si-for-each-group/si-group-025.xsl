@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    exclude-result-prefixes=" xs"
+    version="3.0">
+   
+  <!-- within a streaming template, use xsl:for-each-group group-adjacent, group on text nodes -->
+  
+  <xsl:mode name="s" streamable="yes"/>
+       
+    
+  <xsl:template name="main">
+    <xsl:stream href="../docs/books.xml">
+    	<xsl:apply-templates select="/BOOKLIST/BOOKS" mode="s"/>
+    </xsl:stream>
+  </xsl:template> 
+
+
+  <xsl:template match="BOOKS" mode="s">
+     <out>
+      <xsl:for-each-group select="ITEM/PRICE/text()"
+         group-adjacent="."
+         bind-group="g"
+         bind-grouping-key="k">
+         <group price="{$k}" count="{count($g/..)}"/>
+      </xsl:for-each-group> 
+    </out>
+  </xsl:template>   
+       
+</xsl:transform>
+

@@ -460,6 +460,64 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-024">
+      <description>Streamed grouping - group-adjacent - group on attribute values</description>
+      <created by="Michael Kay" on="2014-01-31"/>
+      <test>
+         <stylesheet file="si-group-024.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/group[1][@date="2006-02-13"][@values="13.24 8.12"]</assert>
+            <assert>/out/group[2][@date="2006-02-15"][@values="-15.00"]</assert>
+            <assert>/out/group[3][@date="2006-02-16"][@values="6.00"]</assert>
+            <assert>/out/group[4][@date="2006-02-17"][@values="0.50 2.33 4.44"]</assert>
+            <assert>/out/group[5][@date="2006-02-20"][@values="-5.00"]</assert>
+            <assert>/out/group[6][@date="2006-02-21"][@values="8.99"]</assert>
+            <assert>/out/group[7][@date="2006-02-22"][@values="16.00"]</assert>
+            <assert>/out/group[8][@date="2006-02-23"][@values="-2.33 5.60 4.32"]</assert>
+            <assert>/out/group[9][@date="2006-02-24"][@values="6.78 12.20 -248.05"]</assert>
+            <assert>/out/group[10][@date="2006-02-25"][@values="12.00 13.99"]</assert>
+            <assert>/out/group[11][@date="2006-02-26"][@values="14.20"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-025">
+      <description>Streamed grouping - group-adjacent - group on text nodes</description>
+      <created by="Michael Kay" on="2014-01-31"/>
+      <test>
+         <stylesheet file="si-group-025.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/group[1][@price="4.95"][@count="1"]</assert>
+            <assert>/out/group[2][@price="6.58"][@count="1"]</assert>
+            <assert>/out/group[3][@price="4.95"][@count="2"]</assert>
+            <assert>/out/group[4][@price="16.47"][@count="2"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-026">
+      <description>Streamed grouping - group-adjacent - population is grounded and consuming</description>
+      <created by="Michael Kay" on="2014-01-31"/>
+      <test>
+         <stylesheet file="si-group-026.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/group[1][@price="4.95"][@count="1"]</assert>
+            <assert>/out/group[2][@price="6.58"][@count="1"]</assert>
+            <assert>/out/group[3][@price="4.95"][@count="2"]</assert>
+            <assert>/out/group[4][@price="16.47"][@count="2"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>
       <created by="Michael Kay" on="2012-12-04"/>
@@ -529,6 +587,18 @@
             <assert>deep-equal(/out/batch[4]/transaction/@value/xs:decimal(.), (5.60))</assert>
             <assert>deep-equal(/out/batch[5]/transaction/@value/xs:decimal(.), (12.00))</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-901">
+      <description>Streamed grouping - group-adjacent - grouping key is not motionless</description>
+      <created by="Michael Kay" on="2014-01-31"/>
+      <test>
+         <stylesheet file="si-group-901.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    

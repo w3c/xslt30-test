@@ -214,6 +214,23 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="si-iterate-098">
+      <description>within xsl:stream, use xsl:iterate over descendants</description>
+      <created by="Michael Kay" on="2014-02-08"/>
+      <test>
+         <stylesheet file="si-iterate-098.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>deep-equal(/out/loans/loan/number(@cumulativeValue),
+               (400000,750000,1150000,1500000,2100000,2600000))</assert>
+            <assert>deep-equal(/out/loans/loan/number(@value),
+               (400000,350000,400000,350000,600000,500000))</assert>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="si-iterate-131">
       <description>streaming xsl:iterate with a local variable</description>
