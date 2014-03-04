@@ -3,7 +3,7 @@
 
 	<!-- TEST namespace-alias - two declarations with different precedence -->
 
-	<xsl:import href="namespace-1002a.xsl"/>
+	<xsl:import href="namespace-alias-1002a.xsl"/>
 	
 	<xsl:namespace-alias stylesheet-prefix="out" result-prefix="xsl"/>
 	

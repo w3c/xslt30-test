@@ -4,7 +4,7 @@
 
   <!-- Purpose: Verify that namespace-alias is honored in included stylesheets. -->
 
-  <xsl:include href="namespace-4201a.xsl"/>
+  <xsl:include href="namespace-alias-4201a.xsl"/>
   <xsl:namespace-alias stylesheet-prefix="ixsl" result-prefix="xsl"/>
 
   <xsl:template match="/">

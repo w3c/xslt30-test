@@ -29,9 +29,7 @@
    <environment name="namespace-09">
       <source role="." file="namespace-09.xml"/>
    </environment>
-   <environment name="namespace-10">
-      <source role="." file="namespace-10.xml"/>
-   </environment>
+
    <environment name="namespace-11">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
@@ -49,13 +47,6 @@
          <content><![CDATA[<doc><a:a xmlns:a="http://a.uri/"> </a:a><b:a xmlns:b="http://b.uri/"> </b:a><A:b xmlns:A="http://a.uri/"> </A:b><B:b xmlns:B="http://b.uri/"> </B:b></doc>]]></content>
       </source>
    </environment>
-   
-   <environment name="namespace-19">
-      <source role=".">
-         <content><![CDATA[<doc/>]]></content>
-      </source>
-   </environment>
-   
    
    <environment name="namespace-23">
       <source role=".">
@@ -172,14 +163,7 @@
    <environment name="namespace-41">
       <source role="." file="namespace-41.xml"/>
    </environment>
-   <environment name="namespace-42">
-      <source role=".">
-         <content><![CDATA[<source>
-  <gen_a name="foo"/>
-  <gen_b name="bar"/>
-</source>]]></content>
-      </source>
-   </environment>
+
    <environment name="namespace-43">
       <source role=".">
          <content><![CDATA[<doc>
@@ -207,13 +191,7 @@
 <doc xmlns="http://example.com"/>]]></content>
       </source>
    </environment>
-   <environment name="namespace-47">
-      <source role=".">
-         <content><![CDATA[<elements>
-<block>h1</block>
-</elements>]]></content>
-      </source>
-   </environment>
+
    <environment name="namespace-48">
       <source role=".">
          <content><![CDATA[<doc>
@@ -295,13 +273,7 @@
    <environment name="namespace-57">
       <source role="." file="namespace-57.xml"/>
    </environment>
-   <environment name="namespace-58">
-      <source role=".">
-         <content><![CDATA[
-<thisisroot>
-</thisisroot>]]></content>
-      </source>
-   </environment>
+
    <environment name="namespace-59">
       <source role=".">
          <content><![CDATA[<one>
@@ -717,37 +689,6 @@ z = http://new-z.uri/;
       </result>
    </test-case>
 
-   <test-case name="namespace-1001">
-      <description>TEST namespace-alias on attribute names BUG Saxon 6.3/013</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-10"/>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-1001.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<html xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"/>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-1002">
-      <description>TEST namespace-alias - two declarations with different precedence</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-10"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-1002.xsl"/>
-         <stylesheet file="namespace-1002a.xsl" role="secondary"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<html xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"/>]]></assert-xml>
-      </result>
-   </test-case>
-
    <test-case name="namespace-1101">
       <description>TEST xsl:namespace (XSLT 2.0)</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -1028,85 +969,6 @@ z = http://new-z.uri/;
             <assert>count(d/namespace/name[.='xml']) = 1</assert>
             <assert>count(d/namespace) = 1</assert>
          </all-of>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-1901">
-      <description>TEST xsl:namespace-alias - stylesheet-prefix="#default"</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Michael Kay" on="2012-12-11" change="deleted xml:space=preserve - see bug 20270"/>
-      <environment ref="namespace-19"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-1901.xsl"/>
-         <stylesheet file="namespace-1002a.xsl" role="secondary"/>
-      </test>
-      <result>
-         <assert-xml file="namespace-1901.out"/>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-1902">
-      <description>TEST xsl:namespace-alias - result-prefix="#default"</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Michael Kay" on="2012-12-11" change="deleted xml:space=preserve - see bug 20270"/>
-      <environment ref="namespace-19"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-1902.xsl"/>
-         <stylesheet file="namespace-1002a.xsl" role="secondary"/>
-      </test>
-      <result>
-         <assert-xml file="namespace-1902.out"/>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-1903">
-      <description>TEST xsl:namespace clashing with namespace of parent element</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-19"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-1903.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<ns_0:e xmlns:ns="http://nstwo.uri/" xmlns:ns_0="http://nsone.uri/"/>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-1904">
-      <description>test use of #default when there is no default namespace</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-19"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-1904.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" proc="bah">boo</xsl:stylesheet>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-1905">
-      <description/>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-19"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-1905.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<doc xml:space="preserve">text</doc>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1497,21 +1359,6 @@ z = http://new-z.uri/;
       </result>
    </test-case>
 
-   <test-case name="namespace-2613">
-      <description>Example of xsl:namespace-alias from the 2.0 spec</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-26"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-2613.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<name xml:space="preserve"><first>James</first> <last>Clark</last></name>]]></assert-xml>
-      </result>
-   </test-case>
-
    <test-case name="namespace-2614">
       <description>Modified example taken from the example "Confilicting Namespace Prefixes" in section 11.7 of the spec exclude-result-prefixes added. This should not generate an error (namespace fixup should invent a prefix)</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -1600,23 +1447,6 @@ z = http://new-z.uri/;
       </test>
       <result>
          <assert-xml><![CDATA[<z answer="true"/>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-2620">
-      <description>A test of xsl:namespace-alias with import precedence: see spec bug 9812</description>
-      <created by="Michael Kay, from a bug submitted by Tim Mills"
-               on="2012-11-07"/>
-      <environment ref="namespace-26"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-2620.xsl"/>
-         <stylesheet file="namespace-2620a.xsl" role="secondary"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<y:transform xmlns:y="http://www.example.org/My/Transform/Language"/>]]></assert-xml>
       </result>
    </test-case>
 
@@ -3180,30 +3010,6 @@ Testing 1 2 3 quos</out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="namespace-3602">
-      <description>
-         Testing an attribute not from the XSLT namespace, which is legal provided that the expanded
-         name of the attribute has a non-null namespace URI. This tests for many xslt elements, apparent 
-         code path are different for numerous elements. Should actually output a "bogus" stylesheet.
-      </description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-36"/>
-      <dependencies>
-         <spec value="XSLT20+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-3602.xsl"/>
-         <stylesheet file="namespace-3602a.xsl" role="secondary"/>
-         <stylesheet file="namespace-3602b.xsl" role="secondary"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<xsl:stylesheet xmlns:ped="http://www.ped.com/" 
-            xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-            xmlns:lotus="http://www.lotus.com"
-            version="1.0"><xsl:template match="/"><out>Yeee ha</out></xsl:template></xsl:stylesheet>]]></assert-xml>
-      </result>
-   </test-case>
-
    <test-case name="namespace-3701">
       <description>Test of 'local-name()' function on an element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -3459,23 +3265,6 @@ Testing 1 2 3 quos</out>]]></assert-xml>
       </result>
    </test-case>
 
-   <test-case name="namespace-4201">
-      <description>Verify that namespace-alias is honored in included stylesheets.</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Tim Mills" on="2013-01-28" change="Added role attributes"/>
-      <environment ref="namespace-42"/>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-4201.xsl" role="principal"/>
-         <stylesheet file="namespace-4201a.xsl" role="secondary"/>
-      </test>
-      <result>
-         <assert-xml file="namespace-4201.out"/>
-      </result>
-   </test-case>
-
    <test-case name="namespace-4301">
       <description>Test for resetting of a namespace prefix by copy-of. Note: results affected by erratum XT.E37: see member bugzilla 931.</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -3556,36 +3345,6 @@ Testing 1 2 3 quos</out>]]></assert-xml>
       <result>
          <assert-xml><![CDATA[<out>1 namespace node qualifies:
 name||namespace-uri||local-name||</out>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-4701">
-      <description>Purpose: Test basic functionality of namespace-alias. Where XSL elements are created by using Literal Result Elements. namespace24 is very similar, but it creates the axsl:stylesheet element via xsl:element.</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-47"/>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-4701.xsl"/>
-      </test>
-      <result>
-         <assert-xml file="namespace-4701.out"/>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-4702">
-      <description>Test basic functionality of namespace-alias. Where XSL elements are created by using xsl:element command.</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-47"/>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-4702.xsl"/>
-      </test>
-      <result>
-         <assert-xml file="namespace-4702.out"/>
       </result>
    </test-case>
 
@@ -3766,21 +3525,6 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
     
   
 </out>]]></assert-xml>
-      </result>
-   </test-case>
-
-   <test-case name="namespace-5801">
-      <description>FileName: namespace35 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 2.4</description>
-      <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="namespace-58"/>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="namespace-5801.xsl"/>
-      </test>
-      <result>
-         <assert-xml><![CDATA[<xsl:template xmlns:xsl="http://www.w3.org/1999/XSL/Transform" match="/"/>]]></assert-xml>
       </result>
    </test-case>
 

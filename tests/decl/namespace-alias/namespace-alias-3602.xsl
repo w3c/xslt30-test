@@ -10,8 +10,8 @@
        are different for numerous elements. Should actually output a "bogus"
        stylesheet. -->
 
-  <xsl:import href="namespace-3602a.xsl" ped:a="a"/>
-  <xsl:include href="namespace-3602b.xsl" ped:b="b"/>
+  <xsl:import href="namespace-alias-3602a.xsl" ped:a="a"/>
+  <xsl:include href="namespace-alias-3602b.xsl" ped:b="b"/>
   <xsl:output method="xml"  lotus:c="c"/>
 
   <xsl:key name="sprtest" match="TestID" use="Name" lotus:d="d"/>

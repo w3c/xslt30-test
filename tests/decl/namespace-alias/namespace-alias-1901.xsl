@@ -2,7 +2,7 @@
 
 	<!-- TEST xsl:namespace-alias - stylesheet-prefix="#default" -->
 
-	<xsl:import href="namespace-1002a.xsl"/>
+	<xsl:import href="namespace-alias-1002a.xsl"/>
 
 	<xsl:namespace-alias stylesheet-prefix="#default" result-prefix="xsl"/>
 
