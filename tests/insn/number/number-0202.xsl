@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<xsl:stylesheet version="3.0" 
+<xsl:stylesheet version="2.0" 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
   xmlns:fn="http://www.w3.org/2005/xpath-functions" 
-  xmlns:ecf2ncx="http://www.w3.org/2005/xpath-datatypes" 
-  xmlns:saxon="http://saxon.sf.net/" 
-  exclude-result-prefixes="xs ecf2ncx saxon fn">
-  <xsl:mode name="s" streamable="yes"/>
+  xmlns:ecf2ncx="http://www.w3.org/2005/xpath-datatypes"  
+  exclude-result-prefixes="xs ecf2ncx fn">
   
 <xsl:function name="ecf2ncx:get-num-toc" as="xs:string?">
 		<xsl:param name="e" as="element()"/>
@@ -25,10 +23,7 @@
 				<xsl:number level="any" select="$e"	count="*[ local-name() = $name and @toc-addnum = $e/@toc-addnum ]"
 													format="{$e/@toc-addnum-format}"/>
 			</xsl:when>
-		</xsl:choose>
-		<xsl:iterate>
-		  <e/>
-		</xsl:iterate>  
+		</xsl:choose>  
 </xsl:function>
 
 <xsl:template name="main">
