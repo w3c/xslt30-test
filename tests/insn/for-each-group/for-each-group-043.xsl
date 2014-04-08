@@ -11,11 +11,9 @@
 <out>
 	<xsl:for-each-group select="/*/city" 
 	                    group-by="@country, xs:decimal(@pop)"
-	                    composite="yes"
-	                    bind-group="g"
-	                    bind-grouping-key="k">
-	  <group country="{$k[1]}" pop="{$k[2]}">
-	    <xsl:copy-of select="$g"/>
+	                    composite="yes">
+	  <group country="{current-grouping-key()[1]}" pop="{current-grouping-key()[2]}">
+	    <xsl:copy-of select="current-group()"/>
 	  </group>
 	</xsl:for-each-group>
 </out>

@@ -11,10 +11,8 @@
 <out>
 	<xsl:for-each-group select="//*" 
 	                    group-adjacent="ancestor-or-self::*/name()"
-	                    composite="yes"
-	                    bind-group="g"
-	                    bind-grouping-key="k">
-	  <element path="{string-join($k, '/')}" count="{count($g)}"/>
+	                    composite="yes">
+	  <element path="{string-join(current-grouping-key(), '/')}" count="{count(current-group())}"/>
 	</xsl:for-each-group>
 </out>
 </xsl:template>

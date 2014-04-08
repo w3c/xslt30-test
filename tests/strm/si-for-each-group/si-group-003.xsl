@@ -18,12 +18,9 @@
 
   <xsl:template match="account" mode="s">
      <out>
-      <xsl:for-each-group select="transaction"
-         group-adjacent="@date"
-         bind-group="g"
-         bind-grouping-key="k">
-         <batch date="{$k}">
-            <xsl:value-of select="$g/@value"/>
+      <xsl:for-each-group select="transaction" group-adjacent="@date">
+         <batch date="{current-grouping-key()}">
+            <xsl:value-of select="current-group()/@value"/>
          </batch>
       </xsl:for-each-group> 
     </out>

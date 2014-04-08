@@ -19,14 +19,11 @@
      <out>
       <xsl:for-each-group select="transaction"
          group-adjacent="format-date(xs:date(@date), '[W]')"
-         composite="no"
-         bind-group="g"
-         bind-grouping-key="k">
-         <week nr="{$k}">
-           <xsl:for-each-group select="$g" group-adjacent="xs:date(@date)" 
-             bind-group="h" bind-grouping-key="l">
-             <day date="{$l}">
-                <xsl:copy-of select="$h"/>
+         composite="no">
+         <week nr="{current-grouping-key()}">
+           <xsl:for-each-group select="current-group()" group-adjacent="xs:date(@date)">
+             <day date="{current-grouping-key()}">
+                <xsl:copy-of select="current-group()"/>
              </day>
            </xsl:for-each-group>
          </week>

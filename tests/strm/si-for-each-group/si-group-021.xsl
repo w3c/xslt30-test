@@ -10,9 +10,7 @@
     <xsl:stream href="../docs/transactions.xml">
      <out>
       <xsl:for-each-group select="/account/transaction"
-         group-adjacent="@date"
-         bind-group="g"
-         bind-grouping-key="k">
+         group-adjacent="@date">
          <g val="{@value}"/>
       </xsl:for-each-group> 
      </out>

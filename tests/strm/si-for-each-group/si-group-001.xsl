@@ -12,12 +12,9 @@
   <xsl:template name="main">
     <xsl:stream href="../docs/transactions.xml">
      <out>
-      <xsl:for-each-group select="account/transaction"
-         group-adjacent="@date"
-         bind-group="g"
-         bind-grouping-key="k">
-         <batch date="{$k}">
-            <xsl:sequence select="$g"/>
+      <xsl:for-each-group select="account/transaction" group-adjacent="@date">
+         <batch date="{current-grouping-key()}">
+            <xsl:sequence select="current-group()"/>
          </batch>
       </xsl:for-each-group> 
      </out>

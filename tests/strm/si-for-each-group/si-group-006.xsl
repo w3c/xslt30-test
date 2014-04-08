@@ -18,11 +18,9 @@
   <xsl:template match="account" mode="s">
      <out>
       <xsl:for-each-group select="transaction"
-         group-adjacent="@date"
-         bind-group="g"
-         bind-grouping-key="k">
-         <batch date="{$k}">
-            <total><xsl:value-of select="sum($g/xs:decimal(@value))"/></total>
+         group-adjacent="@date">
+         <batch date="{current-grouping-key()}">
+            <total><xsl:value-of select="sum(current-group()/xs:decimal(@value))"/></total>
          </batch>
       </xsl:for-each-group> 
     </out>

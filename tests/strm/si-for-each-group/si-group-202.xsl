@@ -18,9 +18,9 @@
   <xsl:template match="account" mode="s">
      <out>
       <xsl:for-each-group select="transaction"
-         group-ending-with="*[@value &lt; 0]" bind-group="g">
+         group-ending-with="*[@value &lt; 0]">
          <batch>
-           <xsl:copy-of select="$g[1]"/>
+           <xsl:copy-of select="current-group()[1]"/>
          </batch>
       </xsl:for-each-group> 
     </out>

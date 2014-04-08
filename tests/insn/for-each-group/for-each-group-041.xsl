@@ -10,9 +10,8 @@
 <xsl:template match="/">
 <out>
 	<xsl:for-each-group select="'a', 1 to 10, 'b', 11 to 20" 
-	                    group-starting-with=".[. instance of xs:string]"
-	                    bind-group="g">
-	  <a><xsl:value-of select="$g"/></a>
+	                    group-starting-with=".[. instance of xs:string]">
+	  <a><xsl:value-of select="current-group()"/></a>
     </xsl:for-each-group>
 </out>
 </xsl:template>

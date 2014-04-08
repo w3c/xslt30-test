@@ -20,11 +20,9 @@
   <xsl:template match="account" mode="s">
      <out>
       <xsl:for-each-group select="transaction"
-         group-adjacent="@date"
-         bind-group="g"
-         bind-grouping-key="k">
-         <first date="{$k}">
-            <xsl:sequence select="count($g), $g"/>
+         group-adjacent="@date">
+         <first date="{current-grouping-key()}">
+            <xsl:sequence select="count(current-group()), current-group()"/>
          </first>
       </xsl:for-each-group> 
     </out>

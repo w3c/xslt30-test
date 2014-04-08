@@ -19,9 +19,7 @@
   <xsl:template match="account" mode="s">
      <out>
       <xsl:for-each-group select="transaction"
-         group-adjacent="@date"
-         bind-group="g"
-         bind-grouping-key="k">
+         group-adjacent="@date">
          <g/>
       </xsl:for-each-group> 
     </out>

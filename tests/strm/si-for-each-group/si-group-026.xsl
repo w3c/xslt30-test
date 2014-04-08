@@ -19,9 +19,8 @@
   <xsl:template match="account" mode="s">
      <out>
       <xsl:for-each-group select="transaction/copy-of()"
-         group-adjacent="@value idiv 5"
-         bind-group="g">
-         <group dates="{$g/@date}" values="{$g/@value}"/>
+         group-adjacent="@value idiv 5">
+         <group dates="{current-group()/@date}" values="{current-group()/@value}"/>
       </xsl:for-each-group> 
     </out>
   </xsl:template>   

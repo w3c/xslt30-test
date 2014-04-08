@@ -19,11 +19,9 @@
      <out>
       <xsl:for-each-group select="transaction"
          group-adjacent="year-from-date(xs:date(@date)), format-date(xs:date(@date), '[W]')"
-         composite="yes"
-         bind-group="g"
-         bind-grouping-key="k">
-         <batch year="{$k[1]}" week="{$k[2]}">
-            <total><xsl:value-of select="sum($g/xs:decimal(@value))"/></total>
+         composite="yes">
+         <batch year="{current-grouping-key()[1]}" week="{current-grouping-key()[2]}">
+            <total><xsl:value-of select="sum(current-group()/xs:decimal(@value))"/></total>
          </batch>
       </xsl:for-each-group> 
     </out>

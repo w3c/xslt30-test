@@ -11,13 +11,13 @@
   <xsl:template name="main">
     <out>
       <xsl:stream href="../docs/sections.xml">
-        <xsl:for-each-group select="chapter/*" group-starting-with="h1" bind-group="g1">
+        <xsl:for-each-group select="chapter/*" group-starting-with="h1">
           <div>
-            <xsl:for-each-group select="$g1" group-starting-with="h2" bind-group="g2">
+            <xsl:for-each-group select="current-group()" group-starting-with="h2">
               <div>
-                <xsl:for-each-group select="$g2" group-starting-with="h3" bind-group="g3">
+                <xsl:for-each-group select="current-group()" group-starting-with="h3">
                   <div>
-                    <xsl:copy-of select="$g3"/>
+                    <xsl:copy-of select="current-group()"/>
                   </div>
                 </xsl:for-each-group>
               </div>

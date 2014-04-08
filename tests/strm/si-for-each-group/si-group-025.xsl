@@ -19,10 +19,8 @@
   <xsl:template match="BOOKS" mode="s">
      <out>
       <xsl:for-each-group select="ITEM/PRICE/text()"
-         group-adjacent="."
-         bind-group="g"
-         bind-grouping-key="k">
-         <group price="{$k}" count="{count($g/..)}"/>
+         group-adjacent=".">
+         <group price="{current-grouping-key()}" count="{count(current-group()/..)}"/>
       </xsl:for-each-group> 
     </out>
   </xsl:template>   

@@ -11,15 +11,15 @@
   <xsl:template name="main">
     <out>
       <xsl:stream href="../docs/bullets.xml">
-        <xsl:for-each-group select="chapter/*" group-adjacent="node-name()" bind-group="g" bind-grouping-key="k">
+        <xsl:for-each-group select="chapter/*" group-adjacent="node-name()">
           <xsl:choose>
             <xsl:when test="self::bullet">
               <list>
-                <xsl:apply-templates select="$g" mode="s"/>
+                <xsl:apply-templates select="current-group()" mode="s"/>
               </list>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:copy-of select="$g"/>
+              <xsl:copy-of select="current-group()"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each-group>
