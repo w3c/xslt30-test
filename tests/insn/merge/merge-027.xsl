@@ -15,7 +15,7 @@
                         <xsl:merge-key select="dateTime(current-date(), @time)" />
                 </xsl:merge-source>
                 <xsl:merge-action>
-                    <xsl:apply-templates select="current-group()" />
+                    <xsl:apply-templates select="current-merge-group()" />
                 </xsl:merge-action>
             </xsl:merge>
         </events>

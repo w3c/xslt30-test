@@ -24,7 +24,7 @@
                         <xsl:merge-key select="surname"/>
                         <xsl:merge-key select="firstname"/>
                 </xsl:merge-source>
-                <xsl:merge-action><xsl:copy-of select="current-group()"/></xsl:merge-action>
+                <xsl:merge-action><xsl:copy-of select="current-merge-group()"/></xsl:merge-action>
             </xsl:merge>
         </results>
         

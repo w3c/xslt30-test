@@ -10,7 +10,7 @@
         <results>
             <xsl:merge>
                 <xsl:merge-source 
-                  for-each="doc('school1.xml')/school/class[@id='c1'],
+                  for-each-item="doc('school1.xml')/school/class[@id='c1'],
                   		    doc('school1.xml')/school/class[@id='c2']"
                   select="pupil">
                         <xsl:merge-key select="number(tests/test[@id='test1']/mark)" order="descending"/>
@@ -18,14 +18,14 @@
                         <xsl:merge-key select="firstname"/>
                 </xsl:merge-source>
                 <xsl:merge-source 
-                	for-each="doc('school2.xml')"
+                	for-each-item="doc('school2.xml')"
                     select="school/class[@id='c1']/pupil">
                         <xsl:merge-key select="number(tests/test[@id='test1']/mark)" order="descending"/>
                         <xsl:merge-key select="surname"/>
                         <xsl:merge-key select="firstname"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
-                        <xsl:copy-of select="current-group()" />
+                        <xsl:copy-of select="current-merge-group()" />
                 </xsl:merge-action>
             </xsl:merge>
         </results>

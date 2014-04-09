@@ -18,7 +18,7 @@
                     
                 </xsl:merge-source>
                 <xsl:merge-action>
-                    <xsl:value-of select="current-group()"/>                    
+                    <xsl:value-of select="current-merge-group()"/>                    
                 </xsl:merge-action>
             </xsl:merge>
         </results>

@@ -10,12 +10,12 @@
         <events>
             <xsl:merge>                
                 <xsl:merge-source 
-                		for-each="collection('log-files')"
+                		for-each-item="collection('log-files')"
                 		select="events/event">
                     <xsl:merge-key select="@timestamp"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
-                    <xsl:copy-of select="current-group()" />
+                    <xsl:copy-of select="current-merge-group()" />
                 </xsl:merge-action>
             </xsl:merge>
             

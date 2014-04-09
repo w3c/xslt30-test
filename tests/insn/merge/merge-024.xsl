@@ -18,9 +18,9 @@
                         <xsl:merge-key select="."/>
                 </xsl:merge-source>
                 <xsl:merge-action>
-                    <xsl:if test="count(current-group()) eq 2">
+                    <xsl:if test="count(current-merge-group()) eq 2">
                         <out>
-                        <xsl:value-of select="current-grouping-key()"/>
+                        <xsl:value-of select="current-merge-key()"/>
                         </out>
                     </xsl:if>
                 </xsl:merge-action>

@@ -17,7 +17,7 @@
                 </xsl:merge-source>
                 <xsl:merge-action>
                     <group>
-                        <xsl:copy-of select="current-grouping-key()" />
+                        <xsl:copy-of select="current-merge-key()" />
                     </group>
                 </xsl:merge-action>
             </xsl:merge>

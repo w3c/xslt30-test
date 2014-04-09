@@ -12,7 +12,7 @@
                         <xsl:merge-key select="number(tests/test[@id='test1']/mark)" order="descending"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
-                    <xsl:value-of select="current-group()"/>                    
+                    <xsl:value-of select="current-merge-group()"/>                    
                 </xsl:merge-action>
             </xsl:merge>
         </results>

@@ -20,7 +20,7 @@
                 </xsl:merge-source>
                 <xsl:merge-action>
                     <group>
-                        <xsl:copy-of select="current-group()" />
+                        <xsl:copy-of select="current-merge-group()" />
                     </group>
                 </xsl:merge-action>
             </xsl:merge>

@@ -22,7 +22,7 @@
                 </xsl:merge-source>
                 
                 <xsl:merge-action>
-                    <xsl:apply-templates select="current-group()" 
+                    <xsl:apply-templates select="current-merge-group()" 
                         mode="standardize-log-entry" />
                 </xsl:merge-action>
                 

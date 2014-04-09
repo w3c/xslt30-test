@@ -10,7 +10,7 @@
                     <xsl:sequence select="1 to 10"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
-                    <xsl:apply-templates select="current-group()" />
+                    <xsl:apply-templates select="current-merge-group()" />
                 </xsl:merge-action>
             </xsl:merge>
         </events>

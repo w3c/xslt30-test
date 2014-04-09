@@ -17,17 +17,17 @@
   <xsl:template match="Addresses">
     <Addresses>
       <xsl:merge>
-        <xsl:merge-source for-each="$updates, $original"
+        <xsl:merge-source for-each-item="$updates, $original"
                         select=".//Address">
           <xsl:merge-key select="AddressesId"/>
         </xsl:merge-source>
         <xsl:merge-action>
           <xsl:variable name="status" select="
-            if (count(current-group()) = 1)
-            then if (current-group()[1]/root(.) is $original) then 'Deleted' else 'New'
-            else if (deep-equal(current-group()[1], current-group()[2])) then 'NoChange' else 'Updated'"/>
+            if (count(current-merge-group()) = 1)
+            then if (current-merge-group()[1]/root(.) is $original) then 'Deleted' else 'New'
+            else if (deep-equal(current-merge-group()[1], current-merge-group()[2])) then 'NoChange' else 'Updated'"/>
           <Address status="{$status}">
-            <xsl:copy-of select="current-group()[1]/(AddressesId, Street)"/>
+            <xsl:copy-of select="current-merge-group()[1]/(AddressesId, Street)"/>
           </Address>
         </xsl:merge-action>
       </xsl:merge>
