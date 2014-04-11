@@ -33,6 +33,12 @@
    <environment name="merge015">
       <source role="." file="merge015.xml"/>
    </environment>
+   
+   <environment name="merge049">
+      <schema role="stylesheet-import"
+              file="books.xsd"/>
+   </environment>
+   
    <environment name="merge917err">
       <source role="." file="merge917err.xml"/>
    </environment>
@@ -564,4 +570,249 @@
          <error code="XTTE1020"/>
       </result>
    </test-case>
+   
+   <test-case name="merge-039">
+      <description>xsl:merge test on a homogeneous collection of XML log files, using for-each-stream</description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment>
+         <collection uri="log-files">
+            <source file="log-files/log-file1.xml" uri="log-files/log-file1.xml"/>
+            <source file="log-files/log-file2.xml" uri="log-files/log-file2.xml"/>
+         </collection>
+      </environment>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-039.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<events><event timestamp="2009-08-20T12:01:01Z">Transaction T1234 started</event
+            ><event timestamp="2009-08-20T12:01:05Z">Transaction T1236 started</event
+            ><event timestamp="2009-08-20T12:01:08Z">Transaction T1235 started</event
+            ><event timestamp="2009-08-20T12:01:09Z">Transaction T1236 ended</event
+            ><event timestamp="2009-08-20T12:01:11Z">Transaction T1237 started</event
+            ><event timestamp="2009-08-20T12:01:12Z">Transaction T1235 ended</event
+            ><event timestamp="2009-08-20T12:01:15Z">Transaction T1234 ended</event
+            ><event timestamp="2009-08-20T12:01:17Z">Transaction T1237 ended</event></events>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-040">
+      <description>xsl:merge test on two heterogeneous files, using for-each-stream</description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-040.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-002.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-041">
+      <description>
+      	xsl:merge test on two heterogeneous files. 
+      	Testing merge-key, where order attribute requires run-time evaluation.
+      	Mixing different ways of selecting different sources.
+      	Also tests use of xml:base affecting URI resolution.
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-041.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="merge-003.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-042">
+      <description>
+      	Error - can't specify both for-each-item and for-each-stream
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-042.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-043">
+      <description>
+      	Error - for-each-stream expected type is string
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="merge-043.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-044">
+      <description>
+         xsl:merge: current-merge-group with source name argument
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-044.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/events/group[1][@at="2009-08-20T12:01:01Z"]/one/event = "Transaction T1234 started"</assert>
+           <assert>/events/group[1][@at="2009-08-20T12:01:01Z"]/two/record/message = "Temperature 15.4C"</assert>
+           <assert>/events/group[2][@at="2009-08-20T12:01:08Z"]/one/event = "Transaction T1235 started"</assert>
+           <assert>/events/group[2][@at="2009-08-20T12:01:08Z"]/two = ""</assert>
+           <assert>/events/group[3][@at="2009-08-20T12:01:12Z"]/one/event = "Transaction T1235 ended"</assert>
+           <assert>/events/group[3][@at="2009-08-20T12:01:12Z"]/two = ""</assert>
+           <assert>/events/group[4][@at="2009-08-20T12:01:15Z"]/one/event = "Transaction T1234 ended"</assert>
+           <assert>/events/group[4][@at="2009-08-20T12:01:15Z"]/two = ""</assert>
+           <assert>/events/group[5][@at="2009-08-20T12:03:00Z"]/one = ""</assert>
+           <assert>/events/group[5][@at="2009-08-20T12:03:00Z"]/two/record/message = "Temperature 18.2C"</assert>
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="merge-045">
+      <description>
+         xsl:merge: current-merge-group with source name argument; unknown source name
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-045.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE3490"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-046">
+      <description>
+         xsl:merge: current-merge-group with source name argument; invalid source name
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-046.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-047">
+      <description>
+         xsl:merge: dynamic argument to current-merge-group()
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-047.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/events/group[1][@name="g1"][@at="2009-08-20T12:01:01Z"]/record/message = "Temperature 15.4C"</assert>
+           <assert>/events/group[2][@name="g0"][@at="2009-08-20T12:01:08Z"]/event = "Transaction T1235 started"</assert>
+           <assert>/events/group[3][@name="g1"][@at="2009-08-20T12:01:12Z"] = ""</assert>
+           <assert>/events/group[4][@name="g0"][@at="2009-08-20T12:01:15Z"]/event = "Transaction T1234 ended"</assert>
+           <assert>/events/group[5][@name="g1"][@at="2009-08-20T12:03:00Z"]/record/message = "Temperature 18.2C"</assert>
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="merge-048">
+      <description>
+         xsl:merge: dynamic argument to current-merge-group(); unknown source name
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-048.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE3490"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-049">
+      <description>
+         xsl:merge: merge two documents with validation=strict
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge049"/>
+      <test>
+         <stylesheet file="merge-049.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>count(/books/ok) = 4</assert>
+           <assert>count(/books/bad) = 0</assert>
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="merge-050">
+      <description>
+         xsl:merge: merge two documents with validation failure
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge049"/>
+      <test>
+         <stylesheet file="merge-050.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-051">
+      <description>
+         xsl:merge: merge two documents with validation by type
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge049"/>
+      <test>
+         <stylesheet file="merge-051.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>count(/books/ok) = 4</assert>
+           <assert>count(/books/bad) = 0</assert>
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="merge-052">
+      <description>
+         xsl:merge: merge two documents with validation by type, failure
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge049"/>
+      <test>
+         <stylesheet file="merge-052.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTTE1540"/>
+      </result>
+   </test-case>   
 </test-set>
