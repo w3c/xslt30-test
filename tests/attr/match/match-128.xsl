@@ -5,8 +5,7 @@
     exclude-result-prefixes="xs"
     version="3.0">
 
-<?spec xslt#patterns?>
-    <!-- Purpose: Basic priority test for matching atomic values. -->
+    <!-- Purpose: Basic priority test for matching atomic values: new syntax -->
 
 <xsl:template name="main">
  <out>
@@ -14,11 +13,11 @@
  </out>
 </xsl:template>
 
-<xsl:template match="~xs:integer">
+<xsl:template match=".[ . instance of xs:integer ]" priority="2">
   <i><xsl:value-of select="."/></i>
 </xsl:template>
 
-<xsl:template match="~xs:decimal">
+<xsl:template match=".[ . instance of xs:decimal ]" priority="1.5">
   <d><xsl:value-of select="."/></d>
 </xsl:template>
 

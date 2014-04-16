@@ -5,8 +5,7 @@
     exclude-result-prefixes="xs"
     version="3.0">
 
-<?spec xslt#patterns?>
-    <!-- Purpose: Basic test for matching atomic values. -->
+    <!-- Purpose: Basic test for matching atomic values: revised syntax -->
 
 <xsl:template name="main">
  <out>
@@ -14,7 +13,7 @@
  </out>
 </xsl:template>
 
-<xsl:template match="~xs:integer">
+<xsl:template match=".[ . instance of xs:integer ]">
   <i><xsl:value-of select="."/></i>
 </xsl:template>
 

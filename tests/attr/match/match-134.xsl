@@ -5,13 +5,12 @@
     exclude-result-prefixes="xs"
     version="3.0">
 
-<?spec xslt#patterns?>
     <!-- Purpose: grouping pattern with atomic value as context item -->
   
 
 <xsl:template name="main">
  <out>
- 	<xsl:for-each-group select="1 to 20" group-starting-with="~xs:integer[. mod 3 = 0]">
+ 	<xsl:for-each-group select="1 to 20" group-starting-with=".[. mod 3 = 0]">
  	    <g><xsl:copy-of select="current-group()"/></g>
  	</xsl:for-each-group>
  </out>

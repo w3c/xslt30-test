@@ -16,7 +16,7 @@
  </out>
 </xsl:template>
 
-<xsl:template match="~xs:integer">
+<xsl:template match=".[. gt 0]">
   <first><xsl:apply-imports/></first>
 </xsl:template>
 

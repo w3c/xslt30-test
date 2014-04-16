@@ -5,13 +5,12 @@
     exclude-result-prefixes="xs"
     version="3.0">
 
-<?spec xslt#patterns?>
   <!-- Creator: Michael Kay -->
-  <!-- Purpose: apply-imports with numeric predicate -->
+  <!-- Purpose: apply-imports with numeric pattern -->
 
 
 
-<xsl:template match="~xs:integer">
+<xsl:template match=".[. instance of xs:integer]">
   <second><xsl:apply-imports/></second>
 </xsl:template>
 
