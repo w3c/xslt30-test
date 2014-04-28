@@ -4,8 +4,6 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:my="my" 
   exclude-result-prefixes="#all">
-
-  <xsl:output indent="yes"/>
   
   <xsl:variable name="data">
     <a>
