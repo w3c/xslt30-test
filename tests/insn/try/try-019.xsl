@@ -10,7 +10,7 @@
       <xsl:try>
         <xsl:sequence select="doc('rubbish.xml')"/>
         <xsl:catch errors="*"
-          select="'Error:', $err:code, $err:description, $err:value, tokenize($err:module, '/')[last()], $err:line-number, $err:column-number"
+          select="'Error:', $err:code, $err:description, $err:value, tokenize($err:module, '/')[last()], ('#'||$err:line-number||'#'), $err:column-number"
         />
       </xsl:try>
     </out>

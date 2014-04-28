@@ -8,16 +8,14 @@
   <xsl:template name="main">
     <out>
       <xsl:try>
-        <xsl:sequence select="doc('rubbish.xml')"/>
+        <xsl:sequence select="doc('try-018-rubbish.xml')"/>
         <xsl:catch errors="*">
-          <e>
-            <xsl:value-of select="$err:code, $err:description, $err:value" separator="|"/>
-          </e>
-          <e>
-            <xsl:value-of
-              select="tokenize($err:module, '/')[last()], $err:line-number, $err:column-number"
-              separator="|"/>
-          </e>
+          <code ns="{namespace-uri-from-QName($err:code)}" local="{local-name-from-QName($err:code)}"/>
+          <description><xsl:value-of select="$err:description"/></description>
+          <value><xsl:value-of select="$err:value"/></value>
+          <module><xsl:value-of select="$err:module"/></module>
+          <line><xsl:value-of select="$err:line-number"/></line>
+          <column><xsl:value-of select="$err:column-number"/></column>
         </xsl:catch>
       </xsl:try>
     </out>

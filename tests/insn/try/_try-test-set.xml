@@ -291,6 +291,7 @@
    <test-case name="try-018">
       <description>xsl:catch with references to error variables in body</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-04-28" change="reproducible results"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
@@ -300,13 +301,19 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><e>err:FODC0002|Failed to load document rubbish.xml</e><e>try-018.xsl|11</e></out>]]></assert-xml>
+         <all-of>
+           <assert>/out/code[@ns="http://www.w3.org/2005/xqt-errors" and @local="FODC0002"]</assert>
+           <assert>/out/description[contains(., 'try-018-rubbish.xml')]</assert>
+           <assert>/out/module[ends-with(., 'try-018.xsl')]</assert>
+           <assert>/out/line = "11"</assert>
+         </all-of>  
       </result>
    </test-case>
 
    <test-case name="try-019">
       <description>xsl:catch with references to error variables in select attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-04-28" change="reproducible results"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
@@ -316,6 +323,12 @@
          <initial-template name="main"/>
       </test>
       <result>
+         <all-of>
+           <assert>contains(/out, "FODC0002")</assert>
+           <assert>contains(/out, 'rubbish.xml')</assert>
+           <assert>contains(/out, 'try-019.xsl')</assert>
+           <assert>contains(/out, '#11#')</assert>
+         </all-of> 
          <assert-xml><![CDATA[<out>Error: err:FODC0002 Failed to load document rubbish.xml try-019.xsl 11</out>]]></assert-xml>
       </result>
    </test-case>
