@@ -150,6 +150,7 @@
    <test-case name="copy-of-4910">
       <description>Use copy-of() applied to sequence of length &gt; 1</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-04-28" change="no longer an error in current spec"/>
       <environment ref="copy-of-49"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -158,7 +159,7 @@
          <stylesheet file="copy-of-4910.xsl"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <assert>count(/out/*:subelem) = 2</assert>
       </result>
    </test-case>
 
