@@ -11,7 +11,7 @@
   
   <xsl:variable name="one" static="yes" select="$flip-flop"/> <!--should be true -->
   
-  <xsl:import href="use-when-0137a.xsl"/>
+  <xsl:import href="use-when-0137b.xsl"/>
   
   <xsl:variable name="two" static="yes" select="$flip-flop"/> <!--should be false -->
   

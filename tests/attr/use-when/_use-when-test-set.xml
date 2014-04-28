@@ -687,6 +687,7 @@
    <test-case name="use-when-0137">
       <description>Precedence of static variables when the same module is imported more than once. (See bug 24478)</description>
       <created by="Michael Kay" on="2014-02-02"/>
+      <modified by="Michael Kay" on="2014-04-28" change="Reflect W3C decision on bug 24478"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -695,7 +696,22 @@
          <stylesheet file="use-when-0137.xsl"/>
       </test>
       <result>
-         <assert>/ok</assert>
+         <error code="XTSE3450"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0138">
+      <description>Import precedence affecting static variables; error case</description>
+      <created by="Michael Kay" on="2014-01-31"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="main"/>
+         <stylesheet file="use-when-0138.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3450"/>
       </result>
    </test-case>
 
