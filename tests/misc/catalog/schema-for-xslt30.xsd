@@ -508,6 +508,7 @@ of problems processing the schema using various tools
           <xs:attribute name="grouping-separator" type="xsl:char" default=","/>
           <xs:attribute name="infinity" type="xs:string" default="Infinity"/>
           <xs:attribute name="minus-sign" type="xsl:char" default="-"/>
+          <xs:attribute name="exponent-separator" type="xsl:char" default="e"/>
           <xs:attribute name="NaN" type="xs:string" default="NaN"/>
           <xs:attribute name="percent" type="xsl:char" default="%"/>
           <xs:attribute name="per-mille" type="xsl:char" default="~"/>
@@ -620,8 +621,6 @@ of problems processing the schema using various tools
           <xs:attribute name="group-adjacent" type="xsl:expression"/>
           <xs:attribute name="group-starting-with" type="xsl:pattern"/>
           <xs:attribute name="group-ending-with" type="xsl:pattern"/>
-          <xs:attribute name="bind-group" type="xsl:EQName"/>
-          <xs:attribute name="bind-grouping-key" type="xsl:EQName"/>
           <xs:attribute name="composite" type="xsl:yes-or-no"/>
           <xs:attribute name="collation" type="xsl:avt"/>
           <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/@stable)">
@@ -647,15 +646,6 @@ of problems processing the schema using various tools
               <xs:documentation>
                 <p>It is an error to specify the collation attribute or the composite attribute 
                   if neither the group-by attribute nor group-adjacent attribute is specified.
-                </p>
-              </xs:documentation>
-            </xs:annotation>
-          </xs:assert>
-          <xs:assert test="if (exists(@bind-grouping-key)) then (exists(@group-by) or exists(@group-adjacent)) else true()">
-            <xs:annotation>
-              <xs:documentation>
-                <p>It is a static error if the bind-grouping-key attribute is present on an 
-                  xsl:for-each-group instruction unless either the group-by or group-adjacent attribute is present.    
                 </p>
               </xs:documentation>
             </xs:annotation>
@@ -779,7 +769,7 @@ of problems processing the schema using various tools
           <xs:sequence>
             <xs:element ref="xsl:param" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="xsl:on-completion" minOccurs="0" maxOccurs="1"/>
-            <xs:group ref="xsl:sequence-constructor-group" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:group ref="xsl:sequence-constructor-group" minOccurs="0" maxOccurs="unbounded"/>           
           </xs:sequence>
           <xs:attribute name="select" type="xsl:expression" use="required"/>
         </xs:extension>
@@ -824,8 +814,6 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:merge-action" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="xsl:fallback" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
-          <xs:attribute name="bind-group" type="xsl:EQName"/>
-          <xs:attribute name="bind-key" type="xsl:EQName"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -858,11 +846,14 @@ of problems processing the schema using various tools
           <xs:sequence>
             <xs:element ref="xsl:merge-key" minOccurs="1" maxOccurs="unbounded"/>
           </xs:sequence>
-          <xs:attribute name="for-each" type="xsl:expression"/>
+          <xs:attribute name="name" type="xs:NCName"/>
+          <xs:attribute name="for-each-item" type="xsl:expression"/>
+          <xs:attribute name="for-each-stream" type="xsl:expression"/>
           <xs:attribute name="select" type="xsl:expression" use="required"/>
-          <xs:attribute name="bind-source" type="xsl:EQName"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
           <xs:attribute name="sort-before-merge" type="xsl:yes-or-no"/>
+          <xs:attribute name="type" type="xsl:EQName"/>
+          <xs:attribute name="validation" type="xsl:validation-type"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -884,12 +875,8 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="false">
         <xs:extension base="xsl:element-only-versioned-element-type">
-          <xs:sequence>
-            <xs:element ref="xsl:context-item" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
           <xs:attribute name="name" type="xsl:EQName"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no" default="no"/>
-          <xs:attribute name="initial" type="xsl:yes-or-no" default="yes"/>
           <xs:attribute name="on-no-match" type="xsl:on-no-match-type" default="shallow-skip"/>
           <xs:attribute name="on-multiple-match" type="xsl:on-multiple-match-type" default="use-last"/>
           <xs:attribute name="warning-on-no-match" type="xsl:yes-or-no"/>
@@ -904,10 +891,10 @@ of problems processing the schema using various tools
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:assert test="not(normalize-space(@initial) = 'no' and exists(xsl:context-item))">
+          <xs:assert test="not(exists(@name) and normalize-space(@visibility) = 'private' and exists(xsl:context-item))">
             <xs:annotation>
               <xs:documentation>
-                <p>It is a static error if an xsl:mode declaration specifying initial="no" 
+                <p>It is a static error if a named xsl:mode declaration specifying visibility="private" 
                   contains an xsl:context-item element.
                 </p>
               </xs:documentation>
@@ -1018,6 +1005,7 @@ of problems processing the schema using various tools
           <xs:attribute name="html-version" type="xs:decimal"/>
           <xs:attribute name="include-content-type" type="xsl:yes-or-no"/>
           <xs:attribute name="indent" type="xsl:yes-or-no"/>
+          <xs:attribute name="item-separator" type="xs:string"/>
           <xs:attribute name="media-type" type="xs:string"/>
           <xs:attribute name="normalization-form" type="xs:NMTOKEN"/>
           <xs:attribute name="omit-xml-declaration" type="xsl:yes-or-no"/>
@@ -1085,9 +1073,15 @@ of problems processing the schema using various tools
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
           <xs:sequence>
-            <xs:element ref="xsl:use-package" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="xsl:use-package"/>
+              <xs:element ref="xsl:expose"/>
+            </xs:choice>  
             <xs:element ref="xsl:transform" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="xsl:expose" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="xsl:use-package"/>
+              <xs:element ref="xsl:expose"/>
+            </xs:choice>
           </xs:sequence>
           <xs:attribute name="name" type="xs:anyURI"/>
           <xs:attribute name="package-version" type="xs:string"/>
@@ -1214,6 +1208,7 @@ of problems processing the schema using various tools
           <xs:attribute name="html-version" type="xsl:avt"/>
           <xs:attribute name="include-content-type" type="xsl:avt"/>
           <xs:attribute name="indent" type="xsl:avt"/>
+          <xs:attribute name="item-separator" type="xsl:avt"/>
           <xs:attribute name="media-type" type="xsl:avt"/>
           <xs:attribute name="normalization-form" type="xsl:avt"/>
           <xs:attribute name="omit-xml-declaration" type="xsl:avt"/>
@@ -1270,6 +1265,16 @@ of problems processing the schema using various tools
       <xs:complexContent>
         <xs:extension base="xsl:sequence-constructor">
           <xs:attribute name="href" type="xsl:avt" use="required"/>
+          <xs:attribute name="type" type="xsl:EQName"/>
+          <xs:attribute name="validation" type="xsl:validation-type"/>
+          <xs:assert test="not(exists(@type) and exists(@validation))">
+            <xs:annotation>
+              <xs:documentation>
+                <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
+                  (if one is present, the other must be absent).</p>
+              </xs:documentation>
+            </xs:annotation>
+          </xs:assert>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
