@@ -5260,11 +5260,13 @@
    </test-case>
 
    <test-case name="error-code-332">
-      <description>Generate error XTDE1150</description>
+      <description>Generate error XTDE1150. Regex in analyze-string matches zero-length string;
+        no longer an error in XSLT 3.0</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-04-01" change="changed dependency to XSLT 2.0 only"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-code-332.xsl"/>
@@ -5276,8 +5278,9 @@
    </test-case>
 
    <test-case name="error-code-333">
-      <description>Generate error XTRE1160</description>
+      <description>Generate error XTRE1160/XTDE1160</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-04-01" change="error code changes in XSLT 3.0"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -5287,7 +5290,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTRE1160"/>
+         <any-of>
+           <error code="XTRE1160"/> <!-- XSLT 2.0 -->
+           <error code="XTDE1160"/> <!-- XSLT 3.0 -->
+         </any-of>  
       </result>
    </test-case>
 

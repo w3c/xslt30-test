@@ -814,5 +814,93 @@
       <result>
          <error code="XTTE1540"/>
       </result>
+   </test-case>
+   
+   <test-case name="merge-053">
+      <description>
+         xsl:merge: merge two documents with validation; both validation and type specified, error.
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge049"/>
+      <test>
+         <stylesheet file="merge-053.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE1505"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-054">
+      <description>
+         xsl:merge: merge two documents with validation; validation specified without for-each-stream, error.
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge049"/>
+      <test>
+         <stylesheet file="merge-054.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
    </test-case>   
+   
+   <test-case name="merge-055">
+      <description>
+         xsl:merge: current-merge-group() not available in called template.
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-055.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3480"/>
+      </result>
+   </test-case> 
+   
+   <test-case name="merge-056">
+      <description>
+         xsl:merge: current-merge-key() not available in called template.
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-056.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3510"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-057">
+      <description>
+         xsl:merge: current-merge-group() used within a pattern.
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-057.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3470"/>
+      </result>
+   </test-case>  
+   
+   <test-case name="merge-058">
+      <description>
+         xsl:merge: current-merge-key() used within a pattern.
+      </description>
+      <created by="Michael Kay" on="2014-04-10"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-058.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3500"/>
+      </result>
+   </test-case>
+   
+
 </test-set>

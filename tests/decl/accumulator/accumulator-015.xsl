@@ -9,19 +9,21 @@
 
    <xsl:mode streamable="yes" />
 
-   <xsl:accumulator name="f:item-cost" 
-       post-descent="f:total-item-cost" 
+   <xsl:accumulator name="item-cost"  
        as="xs:integer" 
        initial-value="0">
        <xsl:accumulator-rule match="cost" new-value="$value + xs:integer(.)"/>
    </xsl:accumulator>
+   
+   <!-- The void xsl:for-each in the template below is designed to sow confusion. Although it does nothing useful,
+     it still serves to separate the pre-descent and post-descent phases of the sequence constructor. -->
 
    <xsl:template match="purchase-order">
        <Total-Cost>
            <xsl:for-each select="item">
                <xsl:for-each select="cost"/>
            </xsl:for-each>
-           <xsl:value-of select="f:total-item-cost()" />
+           <xsl:value-of select="accumulator-after('item-cost')" />
        </Total-Cost>
    </xsl:template>
 

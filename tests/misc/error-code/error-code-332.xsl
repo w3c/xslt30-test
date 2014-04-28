@@ -4,6 +4,7 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:my="http://my.com/">
 
 <?error XTDE1150?>
+<!-- regex matches zero-length string. No longer an error in 3.0 -->
 
 
   <xsl:template name="main">
