@@ -117,9 +117,7 @@
    
    <environment name="mode-15">
       <source role=".">
-         <content><![CDATA[<doc>
-   <para><?pi PI ?>text <foo><baz/></foo></para>
-</doc>]]></content>
+         <content><![CDATA[<doc><para><?pi PI ?>text <foo><baz/></foo></para></doc>]]></content>
       </source>
    </environment>
 
@@ -1380,6 +1378,39 @@
          <assert>empty(/node())</assert>
       </result>
    </test-case>
+   
+   <test-case name="mode-1438">
+      <description>Test xsl:mode with typed="yes", fails because nodes are untyped</description>
+      <created by="Michael Kay" on="2013-06-15"/>
+      <environment ref="mode-14s"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1438.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="XTTE3100"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1439">
+      <description>Test xsl:mode with typed="yes", fails because nodes are untyped</description>
+      <created by="Michael Kay" on="2013-06-15"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1439.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="XTTE3100"/>
+      </result>
+   </test-case>
 
    <test-case name="mode-1501">
       <description>Test for mode="#all" with match="node()"</description>
@@ -1396,6 +1427,88 @@
          <assert-xml><![CDATA[<doc>
    <para><?pi PI ?>text <bar><baz/></bar></para>
 </doc>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1502">
+      <description>Conflicting attributes on xsl:mode declarations</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1502.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0545"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1503">
+      <description>Conflicting attributes on xsl:mode declarations, resolved by import precedence</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1503.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out/x</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1504">
+      <description>Conflicting attributes on xsl:mode declarations, resolved by import precedence
+        although declarations are not in import order</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1504.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out/x</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1505">
+      <description>Conflicting attributes on xsl:mode declarations at the same import precedence, 
+      resolved by another declaration at higher import precedence</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1505.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out/x</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1506">
+      <description>Conflicting attributes on xsl:mode declarations at the same import precedence, 
+      unresolved by another declaration at higher import precedence</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1506.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0545"/>
       </result>
    </test-case>
    

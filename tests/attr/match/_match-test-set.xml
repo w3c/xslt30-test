@@ -3805,4 +3805,72 @@
          <assert>/one/two/three</assert>
       </result>
    </test-case>
+   
+   <test-case name="match-218">
+      <description>Test xsl:mode typed="strict". Derived from match-140.</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-218.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E28>-1.0001</E28><E29>123.456788</E29><E30>1048.576</E30><E31>1234.123</E31><E32>8888888.8888</E32><E33>1.1</E33></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-219">
+      <description>Test xsl:mode typed="strict" with untyped nodes. Derived from match-140.</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-219.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE3110"/>
+      </result>
+   </test-case>
+   
+   <test-case name="match-220">
+      <description>Test xsl:mode typed="strict". Derived from match-140.</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-220.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E28>-1.0001</E28><E29>123.456788</E29><E30>1048.576</E30><E31>1234.123</E31><E32>8888888.8888</E32><E33>1.1</E33><ok/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-221">
+      <description>Test xsl:mode typed="lax". Derived from match-140.</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-221.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><E28>-1.0001</E28><E29>123.456788</E29><E30>1048.576</E30><E31>1234.123</E31><E32>8888888.8888</E32><E33>1.1</E33><ok/></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>
