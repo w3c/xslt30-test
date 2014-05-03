@@ -3873,4 +3873,90 @@
          <assert-xml><![CDATA[<out><E28>-1.0001</E28><E29>123.456788</E29><E30>1048.576</E30><E31>1234.123</E31><E32>8888888.8888</E32><E33>1.1</E33><ok/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="match-222">
+      <description>Test of xsl:mode typed="strict" with union patterns.</description>
+      <created by="Michael Kay" on="2014-04-30"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-222.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1><A2>123-AB</A2><A3>345-PT 675-RT 897-GB</A3><A4>100</A4></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-223">
+      <description>A pattern that can't match any valid input. Not an error, but could produce a warning.</description>
+      <created by="Michael Kay" on="2014-05-01"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-223.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-224">
+      <description>
+      	A pattern that can't match any valid input, because of xsl:mode typed="strict". 
+      	Not an error, but could produce a warning.
+      </description>
+      <created by="Michael Kay" on="2014-05-01"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-224.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-225">
+      <description>An expression that can't select any valid input. Not an error, but could produce a warning.</description>
+      <created by="Michael Kay" on="2014-05-01"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-225.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out data=""><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="match-226">
+      <description>
+      	An expression that can't select any valid input, because of typed="lax". 
+      	Not an error, but could produce a warning.
+      </description>
+      <created by="Michael Kay" on="2014-05-01"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-226.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out data=""><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
+      </result>
+   </test-case>   
 </test-set>
