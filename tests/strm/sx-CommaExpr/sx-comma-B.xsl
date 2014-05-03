@@ -12,6 +12,11 @@
       <b>B</b>
     </xsl:variable>
     
+    <xsl:variable name="numeric-insertion" as="element()*">
+      <a>11</a>
+      <b>22</b>
+    </xsl:variable>
+    
     <!-- Comma expression (streaming arg 2): grounded operand -->
     
     <xsl:template name="r-001" use-when="$RUN">
@@ -57,7 +62,7 @@
     <xsl:template name="r-011" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="sum(($insertion, /BOOKLIST/BOOKS/ITEM/PRICE))"/>
+          <xsl:value-of select="sum(($numeric-insertion, /BOOKLIST/BOOKS/ITEM/PRICE))"/>
         </out>
       </xsl:stream>
     </xsl:template>

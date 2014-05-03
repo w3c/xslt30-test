@@ -13,7 +13,7 @@
     
   <xsl:template name="main" match="/">
     <myroot>
-      <xsl:stream href="loans.xml">
+      <xsl:stream href="loans.xml" validation="strict">
         <xsl:apply-templates select="." mode="s"/>
       </xsl:stream>  
     </myroot>
@@ -59,7 +59,7 @@
       
    <xsl:template match="Loan" mode="s" priority="6">
      <xsl:variable name="Loan">
-       <xsl:copy-of select="."/>
+       <xsl:copy-of select="." validation="preserve"/>
      </xsl:variable>
       <Loan>
       <xsl:apply-templates select="$Loan/Loan/LoanStatus" />

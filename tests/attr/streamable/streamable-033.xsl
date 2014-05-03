@@ -28,7 +28,7 @@
 
   <xsl:template match="chapter">
     <ch>
-      <xsl:value-of select="chtitle | @*" separator=":"/>
+      <xsl:value-of select="copy-of(@*), chtitle" separator=":"/>
     </ch>
   </xsl:template>
 

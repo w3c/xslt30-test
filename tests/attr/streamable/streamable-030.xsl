@@ -32,7 +32,7 @@
     <book>
       <xsl:variable name="temp" as="node()*">
         <xsl:for-each select=".//*">
-          <xsl:copy-of select="."/>
+          <xsl:copy select="."/>
           <xsl:copy-of select="@*"/>
         </xsl:for-each>  
         <!--<xsl:sequence select=".//*/(copy-of(.), @*/copy-of(.))    (: was .//*|.//@* :)"/>-->

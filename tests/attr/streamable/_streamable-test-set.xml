@@ -682,11 +682,10 @@
    </test-case>
 
    <test-case name="streamable-030">
-      <description>Within a streaming template, use copy-of selecting a union of elements and
-         attributes, with reordering needed.
-         TODO: Not streamable under the current (Nov 2013) rules, the union delivers a mix of different postures
-         </description>
+      <description>Within a streaming template, use copy-of selecting both elements and
+         attributes, with reordering needed.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-05-02" change="make the test streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-030.xsl"/>
@@ -703,9 +702,7 @@
 
    <test-case name="streamable-031">
       <description>Within a streaming template, use value-of with multiple elements and attributes,
-         and with re-ordering needed
-         TODO: Not streamable under the current (Nov 2013) rules, the union delivers a mix of different postures
-         </description>
+         and with re-ordering needed. TODO - only streamable with Saxon extensions enabled.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <dependencies>
@@ -750,6 +747,7 @@
       <description>within a streaming template, use value-of with overlapping elements and
          attributes</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-05-02" change="Make streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-033.xsl"/>
@@ -1989,12 +1987,15 @@
    <test-case name="streamable-114">
       <description>downward-selecting for expression in a streamable template</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-05-02" change="mark as non-streamable according to current W3C rules"/>
       <environment ref="xmark"/>
       <test>
          <stylesheet file="streamable-114.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
+         <error code="XTSE3430"/>
+         <!--
          <all-of>
             <assert>/out/item[@id="item0"] = "authority professes distinction servilius"</assert>
             <assert>/out/item[@id="item1"] = ""</assert>
@@ -2002,6 +2003,7 @@
             <assert>/out/item[@id="item3"] = ""</assert>
             <assert>starts-with(/out/item[@id="item15"], "heartless preventions loveliness convenient whoremaster displeasure presently congregation")</assert>
          </all-of>
+         -->
       </result>
    </test-case>
 
