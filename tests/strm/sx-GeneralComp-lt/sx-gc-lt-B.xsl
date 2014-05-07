@@ -123,7 +123,7 @@
     <xsl:template name="s-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="22.5 &lt; (for $d in data(//DIMENSIONS) return tokenize($d, '\s')!number())"/>
+          <xsl:value-of select="22.5 &lt; (for $d in data(outermost(//DIMENSIONS)) return tokenize($d, '\s')!number())"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -205,7 +205,7 @@
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="5.0 &lt; (//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+          <xsl:value-of select="5.0 &lt; (/*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
         </out>
       </xsl:stream>
     </xsl:template>                            

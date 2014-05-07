@@ -313,7 +313,7 @@
     <xsl:template name="s-040" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="deep-equal(data(//NOTHING), ())" separator="|"/>
+          <xsl:value-of select="deep-equal(data(outermost(//NOTHING)), ())" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -333,7 +333,7 @@
     <xsl:template name="s-042" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="deep-equal(//MAGAZINE, ())" separator="|"/>
+          <xsl:value-of select="deep-equal(outermost(//MAGAZINE), ())" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>

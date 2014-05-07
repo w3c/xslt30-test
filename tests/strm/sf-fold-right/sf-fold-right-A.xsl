@@ -8,9 +8,9 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <xsl:function name="f:add" as="xs:double">
-      <xsl:param name="x" as="xs:double"/>
-      <xsl:param name="y" as="xs:double"/>
+    <xsl:function name="f:add" as="xs:decimal">
+      <xsl:param name="x" as="xs:decimal"/>
+      <xsl:param name="y" as="xs:decimal"/>
       <xsl:sequence select="$x + $y"/>
     </xsl:function>
     

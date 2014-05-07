@@ -2,7 +2,10 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="sf-fold-right">
-   <description>fold-right() function with streaming: the function is not streamable</description>
+   <description>
+   	fold-right() function with streaming: the function is streamable if the operand
+   	is grounded, despite being processed from right-to-left: see bug 24125.
+   </description>
    
    <dependencies>
       <spec value="XSLT30+"/>
@@ -12,13 +15,12 @@
    <test-case name="sf-fold-right-003">
       <description>Basic Test of xsl:stream instruction with fold-right()</description>
       <created by="Michael Kay" on="2013-12-10"/>
-      <environment ref="sf-fold-right-A"/>
       <test>
          <stylesheet file="sf-fold-right-A.xsl"/>
          <initial-template name="s-003"/>
       </test>
       <result>
-         <error code="XTSE3430"/>
+         <assert-xml><![CDATA[<out>54.37</out>]]></assert-xml>
       </result>
    </test-case>
 

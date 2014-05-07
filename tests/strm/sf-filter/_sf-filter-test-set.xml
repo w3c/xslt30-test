@@ -4,9 +4,6 @@
           name="sf-filter">
    <description>fn:filter() function with streaming</description>
    
-   <environment name="sf-filter-A">
-     <stylesheet file="sf-filter-A.xsl"/>
-   </environment>
    
    <dependencies>
       <spec value="XSLT30+"/>
@@ -16,8 +13,9 @@
    <test-case name="sf-filter-001">
       <description>Streaming filter() - grounded operand</description>
       <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
+      <modified by="Michael Kay" on="2014-05-07" change="reduced to a single test, as not streamable"/>
       <test>
+         <stylesheet file="sf-filter-001.xsl"/>
          <initial-template name="r-001"/>
       </test>
       <result>
@@ -27,256 +25,28 @@
    
    <test-case name="sf-filter-002">
       <description>Streaming filter() - grounded operand</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
+      <created by="Michael Kay" on="2014-05-07"/>
       <test>
+         <stylesheet file="sf-filter-002.xsl"/>
          <initial-template name="r-002"/>
       </test>
       <result>
-         <error code="XTSE3430"/>
+         <assert-xml><![CDATA[<out><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
       </result>
    </test-case>
    
    <test-case name="sf-filter-003">
       <description>Streaming filter() - grounded atomic operand</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
+      <created by="Michael Kay" on="2014-05-07"/>
       <test>
+         <stylesheet file="sf-filter-003.xsl"/>
          <initial-template name="r-003"/>
       </test>
       <result>
-         <error code="XTSE3430"/>
+         <assert-xml><![CDATA[<out>22.5 18.0</out>]]></assert-xml>
       </result>
    </test-case>
    
-   <test-case name="sf-filter-010">
-      <description>Streaming filter() - striding operand, inspection usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-010"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-011">
-      <description>Streaming filter() - striding operand, absorption usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-011"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-012">
-      <description>Streaming filter() - striding operand, transmission usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-012"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-013">
-      <description>Streaming filter() - striding operand, focus-setting usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-013"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-filter-014">
-      <description>Streaming filter() - striding operand, focus-controlled usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-014"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-filter-015">
-      <description>Streaming filter() - striding operand, focus-setting usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-015"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-filter-016">
-      <description>Streaming filter() - striding operand, focus-controlled usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-016"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-017">
-      <description>Streaming filter() - striding operand, focus-setting usage for inspection action</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-017"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-018">
-      <description>Streaming filter() - striding operand, apply-templates usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-018"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-020">
-      <description>Streaming filter() - crawling operand, inspection usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-020"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-021">
-      <description>Streaming filter() - crawling operand, absorption usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-021"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-022">
-      <description>Streaming filter() - crawling operand, transmission usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-022"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-023">
-      <description>Streaming filter() - crawling operand, focus-setting usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-023"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-030">
-      <description>Streaming filter() - climbing operand, inspection usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-030"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-031">
-      <description>Streaming filter() - climbing operand, inspection usage, removal of duplicates</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-031"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-filter-032">
-      <description>Streaming filter() - climbing operand, absorption usage</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-032"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-033">
-      <description>Streaming filter() - climbing operand, absorption usage, removal of duplicates</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-033"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case> 
-   
-   <test-case name="sf-filter-034">
-      <description>Streaming filter() - climbing operand, absorption usage, removal of duplicates</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-034"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-   
-   <test-case name="sf-filter-035">
-      <description>Streaming filter() - climbing operand, absorption usage, removal of duplicates</description>
-      <created by="Michael Kay" on="2013-11-25"/>
-      <environment ref="sf-filter-A"/>
-      <test>
-         <initial-template name="r-035"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>  
-
 
 
 </test-set>

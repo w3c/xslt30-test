@@ -208,7 +208,7 @@
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:attribute name="a" select="//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.)"/>
+          <xsl:attribute name="a" select="/*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.)"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -218,7 +218,7 @@
     <xsl:template name="s-040" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:attribute name="a" select="data(//NOTHING)" separator="|"/>
+          <xsl:attribute name="a" select="data(/*/NOTHING)" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -238,7 +238,7 @@
     <xsl:template name="s-042" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:attribute name="a" select="//MAGAZINE" separator="|"/>
+          <xsl:attribute name="a" select="/*/*/MAGAZINE" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>

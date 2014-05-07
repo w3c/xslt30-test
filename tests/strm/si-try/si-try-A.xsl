@@ -13,7 +13,7 @@
     <xsl:template name="c-001" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:try><xsl:value-of select="(.//node()) treat as element()*"/><xsl:catch errors="*:XPDY0050" select="'caught'"/></xsl:try>
+          <xsl:try><xsl:value-of select="outermost(.//node()) treat as element()*"/><xsl:catch errors="*:XPDY0050" select="'caught'"/></xsl:try>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -88,12 +88,12 @@
       </xsl:stream>
     </xsl:template> 
     
-    <!-- "treat as" with a striding(?) union -->
+    <!-- "treat as" with a striding union -->
     
     <xsl:template name="c-009" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:try><xsl:value-of select="(BOOKLIST/BOOKS | BOOKLIST/CATEGORIES) treat as element(BOOKS)+"/><xsl:catch errors="*:XPDY0050" select="'caught'"/></xsl:try>
+          <xsl:try><xsl:value-of select="(BOOKLIST/(BOOKS | CATEGORIES)) treat as element(BOOKS)+"/><xsl:catch errors="*:XPDY0050" select="'caught'"/></xsl:try>
         </out>
       </xsl:stream>
     </xsl:template> 

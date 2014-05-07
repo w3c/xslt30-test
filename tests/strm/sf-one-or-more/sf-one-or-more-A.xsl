@@ -243,7 +243,7 @@
     <xsl:template name="r-040" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="one-or-more(data(//NOTHING))" separator="|"/>
+          <xsl:value-of select="one-or-more(data(/*/NOTHING))" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -263,7 +263,7 @@
     <xsl:template name="r-042" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="one-or-more(//MAGAZINE)" separator="|"/>
+          <xsl:value-of select="one-or-more(/*/MAGAZINE)" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -284,7 +284,7 @@
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:try>
-             <xsl:value-of select="one-or-more(data(//NOTHING))" separator="|"/>
+             <xsl:value-of select="one-or-more(data(/*/*/NOTHING))" separator="|"/>
              <xsl:catch errors="*:FORG0004" select="'caught'"/>
           </xsl:try>
         </out>
@@ -310,7 +310,7 @@
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:try>
-             <xsl:value-of select="one-or-more(//MAGAZINE)" separator="|"/>
+             <xsl:value-of select="one-or-more(/*/*/MAGAZINE)" separator="|"/>
              <xsl:catch errors="*:FORG0004" select="'caught'"/>
           </xsl:try>
         </out>

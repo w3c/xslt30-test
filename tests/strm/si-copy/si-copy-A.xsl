@@ -126,7 +126,7 @@
   <xsl:template name="cy-009" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
-        <xsl:for-each select="//PRICE">
+        <xsl:for-each select="outermost(//PRICE)">
           <xsl:copy select="text()"/>
         </xsl:for-each>
       </xsl:stream>

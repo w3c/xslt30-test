@@ -244,7 +244,7 @@
     <xsl:template name="s-042" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:element name="a"><xsl:sequence select="//MAGAZINE"/></xsl:element>
+          <xsl:element name="a"><xsl:sequence select="/*/*/MAGAZINE"/></xsl:element>
         </out>
       </xsl:stream>
     </xsl:template>

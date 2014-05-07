@@ -124,7 +124,7 @@
     <xsl:template name="s-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="format-number(avg(for $d in data(//DIMENSIONS)
+          <xsl:value-of select="format-number(avg(for $d in data(outermost(//DIMENSIONS))
                                                   return let $x := tokenize($d, '\s')!number() 
                                                   return $x[1]*$x[2]*$x[3]), '99.999')"/>
         </out>
@@ -208,7 +208,7 @@
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="avg(//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+          <xsl:value-of select="avg(/BOOKLIST/BOOKS/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -218,7 +218,7 @@
     <xsl:template name="s-040" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="avg(data(//NOTHING))" separator="|"/>
+          <xsl:value-of select="avg(data(/BOOKLIST/BOOKS/NOTHING))" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -238,7 +238,7 @@
     <xsl:template name="s-042" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="avg(//MAGAZINE)" separator="|"/>
+          <xsl:value-of select="avg(/BOOKLIST/BOOKS/MAGAZINE)" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>

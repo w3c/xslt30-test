@@ -123,7 +123,7 @@
     <xsl:template name="s-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="format-number(max(for $d in data(//DIMENSIONS)
+          <xsl:value-of select="format-number(max(for $d in outermost(//DIMENSIONS)/data()
                                                   return let $x := tokenize($d, '\s')!number() 
                                                   return $x[1]*$x[2]*$x[3]), '99.999')"/>
         </out>
@@ -207,7 +207,7 @@
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="max(//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+          <xsl:value-of select="max(outermost(//ITEM/DIMENSIONS)!xs:NMTOKENS(.)!xs:decimal(.))"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -280,7 +280,7 @@
     <xsl:template name="s-040" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="max(data(//NOTHING))" separator="|"/>
+          <xsl:value-of select="max(data(outermost(//NOTHING)))" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -300,7 +300,7 @@
     <xsl:template name="s-042" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="max(//MAGAZINE)" separator="|"/>
+          <xsl:value-of select="max(outermost(//MAGAZINE))" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>

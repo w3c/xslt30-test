@@ -135,7 +135,7 @@
     <xsl:template name="s-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="format-number(fold-left(for $d in data(//DIMENSIONS)
+          <xsl:value-of select="format-number(fold-left(for $d in data(outermost(//DIMENSIONS))
                                                   return let $x := tokenize($d, '\s')!number() 
                                                   return $x[1]*$x[2]*$x[3], 0, f:add#2), '99.999')"/>
         </out>
@@ -214,12 +214,11 @@
     </xsl:template>
     
     <!-- Test of xsl:stream calling fold-left() using //x/y -->
-    <!-- Saxon makes this streamable by rewriting //X/Y as .//Y[parent::X] -->
     
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="fold-left(//ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.), 0, f:add#2)"/>
+          <xsl:value-of select="fold-left(/*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.), 0, f:add#2)"/>
         </out>
       </xsl:stream>
     </xsl:template>                            

@@ -126,7 +126,7 @@
     <xsl:template name="s-115" use-when="true() or $RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:try select="format-number(avg(for $d in data(//DIMENSIONS)
+          <xsl:try select="format-number(avg(for $d in data(outermost(//DIMENSIONS))
                                                   return let $x := tokenize($d, '\s')!number() 
                                                   return $x[1]*$x[2]*$x[3]), '99.999')"><xsl:catch select="()"/></xsl:try>
         </out>
@@ -220,7 +220,7 @@
     <xsl:template name="s-140" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:try select="avg(data(//NOTHING))"><xsl:catch select="()"/></xsl:try>
+          <xsl:try select="avg(data(/*/NOTHING))"><xsl:catch select="()"/></xsl:try>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -240,7 +240,7 @@
     <xsl:template name="s-142" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:try select="avg(//MAGAZINE)"><xsl:catch select="()"/></xsl:try>
+          <xsl:try select="avg(/*/*/MAGAZINE)"><xsl:catch select="()"/></xsl:try>
         </out>
       </xsl:stream>
     </xsl:template>
