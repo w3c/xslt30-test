@@ -17,10 +17,10 @@
     <xsl:template name="main">
       <out>
         <xsl:stream href="../docs/loans.xml">
-		  <xsl:iterate select="descendant::element()[name(.)=('Property','PropertyValuation')]">
+		  <xsl:iterate select="outermost(descendant::element()[name(.)=('Property','PropertyValuation')])">
 			<xsl:text>
 			</xsl:text>
-			<xsl:value-of select="name(.)"/>
+			<n><xsl:value-of select="name(.)"/></n>
 		  </xsl:iterate>
         </xsl:stream>
       </out>

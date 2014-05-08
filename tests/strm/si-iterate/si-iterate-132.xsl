@@ -10,7 +10,7 @@
 	
 	<xsl:template match="/">
 		<result>
-		    <xsl:iterate select=".//gml:posList">
+		    <xsl:iterate select="outermost(.//gml:posList)">
 		        <xsl:param name="polygons" select="0" as="xs:integer"/>
 		        <xsl:param name="points" select="0" as="xs:integer"/>
 		        <xsl:on-completion>

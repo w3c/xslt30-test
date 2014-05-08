@@ -82,7 +82,7 @@
     <xsl:template name="r-013" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="($insertion, /BOOKLIST/BOOKS/ITEM/PRICE) ! (.+1)"/>
+          <xsl:value-of select="($numeric-insertion, /BOOKLIST/BOOKS/ITEM/PRICE) ! (.+1)"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -106,7 +106,7 @@
     <xsl:template name="r-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:for-each select="($insertion, /BOOKLIST/BOOKS/ITEM/PRICE)">
+          <xsl:for-each select="($numeric-insertion, /BOOKLIST/BOOKS/ITEM/PRICE)">
             <xsl:value-of select=".+1 || ' '"/>
           </xsl:for-each>  
         </out>
@@ -183,7 +183,7 @@
     <xsl:template name="r-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="($insertion, //PRICE/text()) ! (.+1)"/>
+          <xsl:copy-of select="($numeric-insertion, //PRICE/text()) ! (.+1)"/>
         </out>
       </xsl:stream>
     </xsl:template>

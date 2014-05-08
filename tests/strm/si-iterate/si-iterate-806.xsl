@@ -11,7 +11,7 @@
   <xsl:template name="main">
     <out>
       <xsl:stream href="../docs/books.xml">
-        <xsl:iterate select="//ITEM/TITLE">
+        <xsl:iterate select="/*/*/ITEM/TITLE">
            <title><xsl:value-of select="."/></title>
         </xsl:iterate>  
       </xsl:stream>

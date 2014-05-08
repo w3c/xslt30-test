@@ -24,7 +24,7 @@
     
     <xsl:template match="ls:ACERequest" mode="s">
       <loans>
-        <xsl:iterate select=".//ls:UnpaidPrincipalBalanceAmount">
+        <xsl:iterate select="outermost(.//ls:UnpaidPrincipalBalanceAmount)">
           <xsl:param name="acc" as="xs:decimal" select="0.00"/>
           <xsl:variable name="loan" select="xs:decimal(.)"/>
           <xsl:variable name="newAcc" as="xs:decimal" select="$acc + $loan"/>

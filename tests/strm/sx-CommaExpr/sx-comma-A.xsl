@@ -82,16 +82,12 @@
     <xsl:template name="r-013" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM/PRICE, $insertion) ! (.+1)"/>
+          <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM/PRICE, $numeric-insertion) ! (.+1)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
     <!-- Streaming comma operator: striding operand, focus-controlled usage -->
-    
-    <!-- Saxon 26 Nov 2013. Failing. A for-each that returns streamed nodes
-         can't currently be handled by a ComposingWatch. Need to generalize
-         TransmissionAdjunct -->
     
     <xsl:template name="r-014" use-when="true() or $RUN">
       <xsl:stream href="../docs/books.xml">
@@ -106,7 +102,7 @@
     <xsl:template name="r-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:for-each select="(/BOOKLIST/BOOKS/ITEM/PRICE, $insertion)">
+          <xsl:for-each select="(/BOOKLIST/BOOKS/ITEM/PRICE, $numeric-insertion)">
             <xsl:value-of select=".+1 || ' '"/>
           </xsl:for-each>  
         </out>
@@ -183,7 +179,7 @@
     <xsl:template name="r-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="(//PRICE/text(), $insertion) ! (.+1)"/>
+          <xsl:copy-of select="(//PRICE/text(), $numeric-insertion) ! (.+1)"/>
         </out>
       </xsl:stream>
     </xsl:template>

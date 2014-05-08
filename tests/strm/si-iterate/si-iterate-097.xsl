@@ -19,7 +19,7 @@
       <out>
         <xsl:stream href="../docs/loans.xml">
         	<loans>
-        		<xsl:iterate select=".//UnpaidPrincipalBalanceAmount">
+        		<xsl:iterate select="outermost(.//UnpaidPrincipalBalanceAmount)">
           			<xsl:param name="acc" as="xs:decimal" select="0.00"/>
           			<xsl:variable name="loan" select="xs:decimal(.)"/>
           			<xsl:variable name="newAcc" as="xs:decimal" select="$acc + $loan"/>

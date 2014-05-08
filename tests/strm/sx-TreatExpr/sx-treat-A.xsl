@@ -12,7 +12,7 @@
     <xsl:template name="c-001" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="(.//node()) treat as element()*"/>
+          <xsl:value-of select="outermost(.//node()) treat as element()*"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -124,7 +124,7 @@
     <xsl:template name="c-012" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="(remove(data(//DIMENSIONS/text()), 3)) treat as text()+"/>
+          <xsl:value-of select="(remove(data(//DIMENSIONS/text()), 3)) treat as xs:untypedAtomic+"/>
         </out>
       </xsl:stream>
     </xsl:template>
