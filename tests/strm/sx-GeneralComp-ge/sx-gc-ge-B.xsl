@@ -208,6 +208,97 @@
           <xsl:value-of select="5.0 >= (/*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
         </out>
       </xsl:stream>
-    </xsl:template>                            
+    </xsl:template>
+    
+    <!-- Test where the streamed operand is a mix of untypedAtomic and xs:decimal, and
+         the unstreamed operand is a mix of untypedAtomic and xs:double, True result -->
+    
+    <xsl:template name="s-024" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+         <xsl:variable name="extra" as="item()*">
+          <e>109</e>
+          <e>110</e>
+          <e>111</e>
+        </xsl:variable>
+        <xsl:variable name="other" as="item()*">
+          <e>8.00</e>
+          <xsl:sequence select="13.22e0"/>
+          <e>8.00</e>
+          <e>5.00</e>
+          <xsl:sequence select="13.22e1"/>
+        </xsl:variable>  
+        <out>
+          <xsl:value-of select="(5.0, $other) >= ($extra, /*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>      
+    
+    <!-- Test where the streamed operand is a mix of untypedAtomic and xs:decimal, and
+         the unstreamed operand is a mix of untypedAtomic and xs:double, False result -->
+    
+    <xsl:template name="s-025" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+         <xsl:variable name="extra" as="item()*">
+          <e>109</e>
+          <e>110</e>
+          <e>111</e>
+        </xsl:variable>
+        <xsl:variable name="other" as="item()*">
+          <e>8.001</e>
+          <xsl:sequence select="13.22e0"/>
+          <e>8.002</e>
+          <e>5.001</e>
+          <xsl:sequence select="13.22e1"/>
+        </xsl:variable>  
+        <out>
+          <xsl:value-of select="(5.1, $other) >= ($extra, /*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>    
+    
+    <!-- Test where the streamed operand is a mix of untypedAtomic and xs:decimal, and
+         the unstreamed operand is a mix of untypedAtomic and xs:double, Error result -->
+    
+    <xsl:template name="s-026" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+         <xsl:variable name="extra" as="item()*">
+          <e>109</e>
+          <e>110</e>
+          <e>111</e>
+        </xsl:variable>
+        <xsl:variable name="other" as="item()*">
+          <e>8.001</e>
+          <xsl:sequence select="13.22e0"/>
+          <e>8.002</e>
+          <e>5.001</e>
+          <xsl:sequence select="13.22e1"/>
+          <xsl:sequence select="current-date()"/>
+        </xsl:variable>  
+        <out>
+          <xsl:value-of select="(5.1, $other) >= ($extra, /*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Compare string to decimal. Error result. -->
+    
+    <xsl:template name="s-027" use-when="$RUN">
+      <xsl:param name="s" select="'invalid'"/>
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="$s >= (/*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Compare double to decimal. Success. -->
+    
+    <xsl:template name="s-028" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="5.0 >= (/*/*/ITEM/DIMENSIONS!xs:NMTOKENS(.)!xs:decimal(.))"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>                                          
     
 </xsl:stylesheet>
