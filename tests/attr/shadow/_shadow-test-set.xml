@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="shadow">
+   <description>Tests Shadow Attributes (Static AVTs)</description>
+   <environment name="shadow-A">
+      <source role=".">
+         <content><![CDATA[<doc>
+	<item>att1</item>
+	<item>att2</item>
+	<item>att3</item>
+	<item>att4</item>
+</doc>]]></content>
+      </source>
+   </environment>
+
+
+   <test-case name="shadow-001">
+      <description>
+         Test of simple shardow attribute on an instruction
+      </description>
+      <created by="Michael Kay" on="2014-05-15"/>
+      <environment ref="shadow-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="shadow-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '3'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="shadow-002">
+      <description>
+         Test of shardow attribute on xsl:variable/@static
+      </description>
+      <created by="Michael Kay" on="2014-05-15"/>
+      <environment ref="shadow-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="shadow-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '3'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="shadow-003">
+      <description>
+         Test of shadow attribute on xsl:stylesheet/@version
+      </description>
+      <created by="Michael Kay" on="2014-05-15"/>
+      <environment ref="shadow-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="shadow-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '1 2 3 4 5'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="shadow-004">
+      <description>
+         Test of shadow attribute on xsl:include/@href
+      </description>
+      <created by="Michael Kay" on="2014-05-15"/>
+      <environment ref="shadow-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="shadow-004.xsl"/>
+         <initial-template name="go"/>
+      </test>
+      <result>
+         <assert>/out = '1 2 3 4 5'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="shadow-005">
+      <description>
+         Test of shadow attribute on @use-when
+      </description>
+      <created by="Michael Kay" on="2014-05-15"/>
+      <environment ref="shadow-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="shadow-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '3'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="shadow-006">
+      <description>
+         Test of shadow attribute on @xpah-default-namespace
+      </description>
+      <created by="Michael Kay" on="2014-05-15"/>
+      <environment ref="shadow-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="shadow-006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '1'</assert>
+      </result>
+   </test-case>
+
+</test-set>
