@@ -203,4 +203,14 @@
     </out>
   </xsl:template>
   
+  <!-- within xsl:stream, use xsl:copy-of: argument crawling and consuming, nested nodes -->
+  
+  <xsl:template name="cy-027" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <xsl:copy-of select="descendant::n"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
 </xsl:transform>  

@@ -345,6 +345,16 @@
         </out>
       </xsl:stream>
     </xsl:template>
+    
+    <!-- Streaming sum(): crawling operand including nested nodes -->
+    
+    <xsl:template name="s-056" use-when="$RUN">
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:value-of select="sum(descendant::n)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>    
                          
                                                 
     

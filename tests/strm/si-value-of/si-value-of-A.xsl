@@ -213,6 +213,16 @@
       </xsl:stream>
     </xsl:template>
     
+    <!-- within xsl:stream, use xsl:value-of: argument crawling and consuming, nested nodes -->
+  
+    <xsl:template name="s-027" use-when="$RUN">
+      <out>
+        <xsl:stream href="../docs/nested-numbers.xml">
+          <xsl:value-of select="descendant::n"/>
+        </xsl:stream>
+      </out>
+    </xsl:template>
+    
     <!-- Streaming xsl:value-of: grounded operand, selects nothing -->
     
     <xsl:template name="s-040" use-when="$RUN">

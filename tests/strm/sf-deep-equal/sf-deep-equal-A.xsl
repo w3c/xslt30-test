@@ -416,6 +416,32 @@
         </out>
       </xsl:stream>
     </xsl:template>
+    
+    <!-- Streaming deep-equal(): crawling operand including nested nodes -->
+    
+    <xsl:template name="s-056" use-when="$RUN">
+      <xsl:variable name="data" as="element()*">
+        <n><n>1</n><n>2</n><n>3</n><n>4</n><n>5</n></n><n>1</n><n>2</n><n>3</n><n>4</n><n>5</n>
+      </xsl:variable>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:value-of select="deep-equal(descendant::n, $data)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template> 
+    
+    <!-- Streaming deep-equal(): crawling operand including nested nodes -->
+    
+    <xsl:template name="s-057" use-when="$RUN">
+      <xsl:variable name="data" as="element()*">
+        <n><n>1</n><n>2</n><n>333</n><n>4</n><n>5</n></n><n>1</n><n>2</n><n>3</n><n>4</n><n>5</n>
+      </xsl:variable>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:value-of select="deep-equal(descendant::n, $data)"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>    
                                                 
     
 </xsl:stylesheet>
