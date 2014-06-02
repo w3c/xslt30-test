@@ -6,20 +6,20 @@
   <!-- PURPOSE: test numbering in German words -->
   <xsl:template match="doc">
     <out>
-        3 = <xsl:number value="3" format="w" lang="de"/>;
-        10 = <xsl:number value="10" format="w" lang="de"/>;
-        13 = <xsl:number value="13" format="w" lang="de"/>;
-        20 = <xsl:number value="20" format="w"  lang="de"/>;
-        100 = <xsl:number value="100" format="W" lang="de"/>;
-        115 = <xsl:number value="115" format="W" lang="de"/>;
-        134 = <xsl:number value="134" format="W" lang="de"/>;
-        200 = <xsl:number value="200" format="w" lang="de"/>;
-        201 = <xsl:number value="201" format="w" lang="de"/>;
-        210 = <xsl:number value="210" format="w" lang="de"/>;
-        230 = <xsl:number value="230" format="w"  lang="de"/>;
-        1000 = <xsl:number value="1000" format="W" lang="de"/>;
-        1005 = <xsl:number value="1005" format="W" lang="de"/>;
-        2134816 = <xsl:number value="2134816" format="Ww" lang="de"/>;       
+        <n3><xsl:number value="3" format="w" lang="de"/></n3>
+        <n10><xsl:number value="10" format="w" lang="de"/></n10>
+        <n13><xsl:number value="13" format="w" lang="de"/></n13>
+        <n20><xsl:number value="20" format="w"  lang="de"/></n20>
+        <n100><xsl:number value="100" format="W" lang="de"/></n100>
+        <n115><xsl:number value="115" format="W" lang="de"/></n115>
+        <n134><xsl:number value="134" format="W" lang="de"/></n134>
+        <n200><xsl:number value="200" format="w" lang="de"/></n200>
+        <n201><xsl:number value="201" format="w" lang="de"/></n201>
+        <n210><xsl:number value="210" format="w" lang="de"/></n210>
+        <n230><xsl:number value="230" format="w"  lang="de"/></n230>
+        <n1000><xsl:number value="1000" format="W" lang="de"/></n1000>
+        <n1005><xsl:number value="1005" format="W" lang="de"/></n1005>
+        <n2134816><xsl:number value="2134816" format="Ww" lang="de"/></n2134816>       
     </out>
   </xsl:template>
  
