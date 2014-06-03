@@ -4,6 +4,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
+    <xsl:import href="maps-001.xsl"/>
+    
     <xsl:output method="xml"/>
     
     <xsl:variable name="sales" as="map(*)*">
@@ -88,10 +90,10 @@
     </xsl:variable>
     
     <xsl:variable name="stores" as="map(*)*" select='
-        map{ "store number" := 1, "state" := "CA" },
-        map{ "store number" := 2, "state" := "CA" },
-        map{ "store number" := 3, "state" := "MA" },
-        map{ "store number" := 4, "state" := "MA" }'/>
+        map{ "store number" : 1, "state" : "CA" },
+        map{ "store number" : 2, "state" : "CA" },
+        map{ "store number" : 3, "state" : "MA" },
+        map{ "store number" : 4, "state" : "MA" }'/>
     
     <xsl:template name="main">
         <xsl:variable name="state-maps" as="map(*)*">
@@ -110,20 +112,25 @@
                                        select="$sales[.('product') = $product-name and 
                                                          .('store number') = $stores-in-state]"/>                      
                                    <xsl:if test="exists($product-sales)">                      
-                                      <xsl:sequence select="map{ $product-name := sum($product-sales!.('quantity')) }"/>
+                                      <xsl:sequence select="map{ $product-name : sum($product-sales!.('quantity')) }"/>
                                    </xsl:if>   
                                 </xsl:for-each>
                             </xsl:variable>
                             <xsl:sequence select="map:new($totals-map-entries)"/>
                         </xsl:variable>
-                        <xsl:sequence select="map{ $category := $totals-map }"/>
+                        <xsl:sequence select="map{ $category : $totals-map }"/>
                     </xsl:for-each-group>
                 </xsl:variable>    
-                <xsl:sequence select=" map { $state := $state-map-entry }"/>
+                <xsl:sequence select=" map { $state : $state-map-entry }"/>
             </xsl:for-each-group>
         </xsl:variable>
         <json>
-          <xsl:value-of select="serialize-json($state-maps, map{ 'indent' := true()} )"/>
+          <xsl:text>[</xsl:text>
+            <xsl:for-each select="$state-maps">
+              <xsl:if test="position() ne 1">,</xsl:if>
+              <xsl:apply-templates select="." mode="to-json"/>
+            </xsl:for-each>
+          <xsl:text>]</xsl:text>
         </json>  
     </xsl:template>   
     
