@@ -92,13 +92,20 @@ of problems processing the schema using various tools
     </xs:annotation>
     <xs:attribute name="default-collation" type="xsl:uri-list"/>
     <xs:attribute name="default-mode" type="xsl:default-mode-type"/>
-    <xs:attribute name="default-validation" type="xsl:validation-strip-or-preserve"
-      default="strip"/>
+    <xs:attribute name="default-validation" type="xsl:validation-strip-or-preserve" default="strip"/>
     <xs:attribute name="exclude-result-prefixes" type="xsl:prefix-list-or-all"/>
     <xs:attribute name="expand-text" type="xsl:yes-or-no"/>
     <xs:attribute name="extension-element-prefixes" type="xsl:prefix-list"/>
     <xs:attribute name="use-when" type="xsl:expression"/>
     <xs:attribute name="xpath-default-namespace" type="xs:anyURI"/>
+    <xs:attribute name="_default-collation" type="xs:string"/>
+    <xs:attribute name="_default-mode" type="xs:string"/>
+    <xs:attribute name="_default-validation" type="xs:string"/>
+    <xs:attribute name="_exclude-result-prefixes" type="xs:string"/>
+    <xs:attribute name="_expand-text" type="xs:string"/>
+    <xs:attribute name="_extension-element-prefixes" type="xs:string"/>
+    <xs:attribute name="_use-when" type="xs:string"/>
+    <xs:attribute name="_xpath-default-namespace" type="xs:string"/>
     <xs:anyAttribute namespace="##other" processContents="lax"/>
   </xs:complexType>
 
@@ -117,6 +124,7 @@ of problems processing the schema using various tools
     <xs:complexContent>
       <xs:extension base="xsl:generic-element-type">
         <xs:attribute name="version" type="xs:decimal" use="optional"/>
+        <xs:attribute name="_version" type="xs:string"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -153,6 +161,7 @@ of problems processing the schema using various tools
     <xs:complexContent mixed="true">
       <xs:extension base="xsl:sequence-constructor">
         <xs:attribute name="select" type="xsl:expression"/>
+        <xs:attribute name="_select" type="xs:string"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -212,9 +221,15 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
-          <xs:attribute name="component" type="xsl:component-kind-type" use="required"/>
-          <xs:attribute name="names" type="xsl:EQNames" use="required"/>
-          <xs:attribute name="visibility" type="xsl:visibility-type" use="required"/>
+          <xs:attribute name="component" type="xsl:component-kind-type"/>
+          <xs:attribute name="names" type="xsl:EQNames"/>
+          <xs:attribute name="visibility" type="xsl:visibility-type"/>
+          <xs:attribute name="_component" type="xs:string"/>
+          <xs:attribute name="_names" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
+          <xs:assert test="exists(@component | @_component)"/>
+          <xs:assert test="exists(@names | @_names)"/>
+          <xs:assert test="exists(@visibility | @_visibility)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -233,6 +248,12 @@ of problems processing the schema using various tools
           <xs:attribute name="as" type="xsl:sequence-type"/>
           <xs:attribute name="visibility" type="xsl:visibility-type"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
+          <xs:attribute name="_name" type="xs:string" />
+          <xs:attribute name="_post-descent" type="xs:string" />
+          <xs:attribute name="_initial-value" type="xs:string"/>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
+          <xs:attribute name="_streamable" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -243,7 +264,7 @@ of problems processing the schema using various tools
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
           <xs:sequence/>
-          <xs:attribute name="match" type="xsl:pattern" use="required"/>
+          <xs:attribute name="match" type="xsl:pattern"/>
           <xs:attribute name="phase">
             <xs:simpleType>
               <xs:restriction base="xs:token">
@@ -252,7 +273,12 @@ of problems processing the schema using various tools
               </xs:restriction>           
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="new-value" type="xsl:expression" use="required"/>
+          <xs:attribute name="new-value" type="xsl:expression"/>
+          <xs:attribute name="_match" type="xs:string"/>
+          <xs:attribute name="_phase" type="xs:string"/>
+          <xs:attribute name="_new-value" type="xs:string"/>
+          <xs:assert test="exists(@match | @_match)"/>
+          <xs:assert test="exists(@new-value | @_new-value)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -267,9 +293,14 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:non-matching-substring" minOccurs="0"/>
             <xs:element ref="xsl:fallback" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
-          <xs:attribute name="select" type="xsl:expression" use="required"/>
-          <xs:attribute name="regex" type="xsl:avt" use="required"/>
+          <xs:attribute name="select" type="xsl:expression"/>
+          <xs:attribute name="regex" type="xsl:avt"/>
           <xs:attribute name="flags" type="xsl:avt" default=""/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_regex" type="xs:string"/>
+          <xs:attribute name="_flags" type="xs:string"/>
+          <xs:assert test="exists(@select | @_select)"/>
+          <xs:assert test="exists(@regex | @_regex)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -297,6 +328,8 @@ of problems processing the schema using various tools
           </xs:choice>
           <xs:attribute name="select" type="xsl:expression" default="child::node()"/>
           <xs:attribute name="mode" type="xsl:mode"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_mode" type="xs:string"/>
           <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/@stable)">
             <xs:annotation>
               <xs:documentation>
@@ -315,9 +348,13 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor">
-          <xs:attribute name="test" type="xsl:expression" use="required"/>
+          <xs:attribute name="test" type="xsl:expression"/>
           <xs:attribute name="select" type="xsl:expression"/>
           <xs:attribute name="error-code" type="xsl:avt"/>
+          <xs:attribute name="_test" type="xs:string"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_error-code" type="xs:string"/>
+          <xs:assert test="exists(@test | @_test)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -327,12 +364,18 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor-or-select">
-          <xs:attribute name="name" type="xsl:avt" use="required"/>
+          <xs:attribute name="name" type="xsl:avt"/>
           <xs:attribute name="namespace" type="xsl:avt"/>
           <xs:attribute name="separator" type="xsl:avt"/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
           <xs:attribute name="on-empty" type="xsl:expression"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_namespace" type="xs:string"/>
+          <xs:attribute name="_separator" type="xs:string"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
+          <xs:attribute name="_on-empty" type="xs:string"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
               <xs:documentation>
@@ -341,6 +384,7 @@ of problems processing the schema using various tools
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
+          <xs:assert test="exists(@name | @_name)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -353,10 +397,15 @@ of problems processing the schema using various tools
           <xs:sequence minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="xsl:attribute"/>
           </xs:sequence>
-          <xs:attribute name="name" type="xsl:EQName" use="required"/>
+          <xs:attribute name="name" type="xsl:EQName"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
           <xs:attribute name="use-attribute-sets" type="xsl:EQNames" default=""/>
           <xs:attribute name="visibility" type="xsl:visibility-type"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_use-attribute-sets" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -371,7 +420,9 @@ of problems processing the schema using various tools
           <xs:sequence>
             <xs:element ref="xsl:with-param" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
-          <xs:attribute name="name" type="xsl:EQName" use="required"/>
+          <xs:attribute name="name" type="xsl:EQName"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -382,6 +433,7 @@ of problems processing the schema using various tools
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor-or-select">
           <xs:attribute name="errors" type="xs:token" use="optional"/>
+          <xs:attribute name="_errors" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -394,8 +446,11 @@ of problems processing the schema using various tools
           <xs:sequence>
             <xs:element ref="xsl:output-character" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
-          <xs:attribute name="name" type="xsl:EQName" use="required"/>
+          <xs:attribute name="name" type="xsl:EQName"/>
           <xs:attribute name="use-character-maps" type="xsl:EQNames" default=""/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_use-character-maps" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -430,6 +485,8 @@ of problems processing the schema using various tools
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_use" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -446,6 +503,13 @@ of problems processing the schema using various tools
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
           <xs:attribute name="on-empty" type="xsl:expression"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_copy-namespaces" type="xs:string"/>
+          <xs:attribute name="_inherit-namespaces" type="xs:string"/>
+          <xs:attribute name="_use-attribute-sets" type="xs:string"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
+          <xs:attribute name="_on-empty" type="xs:string"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
               <xs:documentation>
@@ -463,10 +527,14 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:versioned-element-type">
-          <xs:attribute name="select" type="xsl:expression" use="required"/>
+          <xs:attribute name="select" type="xsl:expression"/>
           <xs:attribute name="copy-namespaces" type="xsl:yes-or-no" default="yes"/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_copy-namespaces" type="xs:string"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
               <xs:documentation>
@@ -475,6 +543,7 @@ of problems processing the schema using various tools
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
+          <xs:assert test="exists(@select | @_select)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -486,6 +555,8 @@ of problems processing the schema using various tools
         <xs:extension base="xsl:sequence-constructor">
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
               <xs:documentation>
@@ -515,6 +586,18 @@ of problems processing the schema using various tools
           <xs:attribute name="zero-digit" type="xsl:zero-digit" default="0"/>
           <xs:attribute name="digit" type="xsl:char" default="#"/>
           <xs:attribute name="pattern-separator" type="xsl:char" default=";"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_decimal-separator" type="xs:string"/>
+          <xs:attribute name="_grouping-separator" type="xs:string"/>
+          <xs:attribute name="_infinity" type="xs:string"/>
+          <xs:attribute name="_minus-sign" type="xs:string"/>
+          <xs:attribute name="_exponent-separator" type="xs:string"/>
+          <xs:attribute name="_NaN" type="xs:string"/>
+          <xs:attribute name="_percent" type="xs:string"/>
+          <xs:attribute name="_per-mille" type="xs:string"/>
+          <xs:attribute name="_zero-digit" type="xs:string"/>
+          <xs:attribute name="_digit" type="xs:string"/>
+          <xs:attribute name="_pattern-separator" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -524,13 +607,21 @@ of problems processing the schema using various tools
     <xs:complexType mixed="true">
       <xs:complexContent>
         <xs:extension base="xsl:sequence-constructor">
-          <xs:attribute name="name" type="xsl:avt" use="required"/>
+          <xs:attribute name="name" type="xsl:avt"/>
           <xs:attribute name="namespace" type="xsl:avt"/>
           <xs:attribute name="inherit-namespaces" type="xsl:yes-or-no" default="yes"/>
           <xs:attribute name="use-attribute-sets" type="xsl:EQNames" default=""/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
           <xs:attribute name="on-empty" type="xsl:expression"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_namespace" type="xs:string"/>
+          <xs:attribute name="_inherit-namespaces" type="xs:string"/>
+          <xs:attribute name="_use-attribute-sets" type="xs:string"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
+          <xs:attribute name="_on-empty" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
               <xs:documentation>
@@ -552,13 +643,21 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:with-param"/>
             <xs:element ref="xsl:fallback"/>
           </xs:choice>
-          <xs:attribute name="xpath" type="xsl:expression" use="required"/>
+          <xs:attribute name="xpath" type="xsl:expression"/>
           <xs:attribute name="as" type="xsl:sequence-type"/>
           <xs:attribute name="base-uri" type="xsl:avt"/>
           <xs:attribute name="context-item" type="xsl:expression"/>
           <xs:attribute name="namespace-context" type="xsl:expression"/>
           <xs:attribute name="schema-aware" type="xsl:avt"/>
-          <xs:attribute name="with-params" type="xsl:expression"/>         
+          <xs:attribute name="with-params" type="xsl:expression"/> 
+          <xs:attribute name="_xpath" type="xs:string"/>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_base-uri" type="xs:string"/>
+          <xs:attribute name="_context-item" type="xs:string"/>
+          <xs:attribute name="_namespace-context" type="xs:string"/>
+          <xs:attribute name="_schema-aware" type="xs:string"/>
+          <xs:attribute name="_with-params" type="xs:string"/> 
+          <xs:assert test="exists(@xpath | @_xpath)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -578,6 +677,9 @@ of problems processing the schema using various tools
           <xs:attribute name="component" type="xsl:component-kind-type"/>
           <xs:attribute name="names" type="xsl:EQNames"/>
           <xs:attribute name="visibility" type="xsl:visibility-not-hidden-type"/>
+          <xs:attribute name="_component" type="xs:string"/>
+          <xs:attribute name="_names" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -593,7 +695,8 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:sort" minOccurs="0" maxOccurs="unbounded"/>
             <xs:group ref="xsl:sequence-constructor-group" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
-          <xs:attribute name="select" type="xsl:expression" use="required"/>
+          <xs:attribute name="select" type="xsl:expression"/>
+          <xs:attribute name="_select" type="xs:string"/>
           <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/@stable)">
             <xs:annotation>
               <xs:documentation>
@@ -603,6 +706,7 @@ of problems processing the schema using various tools
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
+          <xs:assert test="exists(@select | @_select)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -616,13 +720,21 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:sort" minOccurs="0" maxOccurs="unbounded"/>
             <xs:group ref="xsl:sequence-constructor-group" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
-          <xs:attribute name="select" type="xsl:expression" use="required"/>
+          <xs:attribute name="select" type="xsl:expression"/>
           <xs:attribute name="group-by" type="xsl:expression"/>
           <xs:attribute name="group-adjacent" type="xsl:expression"/>
           <xs:attribute name="group-starting-with" type="xsl:pattern"/>
           <xs:attribute name="group-ending-with" type="xsl:pattern"/>
           <xs:attribute name="composite" type="xsl:yes-or-no"/>
           <xs:attribute name="collation" type="xsl:avt"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_group-by" type="xs:string"/>
+          <xs:attribute name="_group-adjacent" type="xs:string"/>
+          <xs:attribute name="_group-starting-with" type="xs:string"/>
+          <xs:attribute name="_group-ending-with" type="xs:string"/>
+          <xs:attribute name="_composite" type="xs:string"/>
+          <xs:attribute name="_collation" type="xs:string"/>
+          <xs:assert test="exists(@select | @_select)"/>
           <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/@stable)">
             <xs:annotation>
               <xs:documentation>
@@ -676,13 +788,23 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:param" minOccurs="0" maxOccurs="unbounded"/>
             <xs:group ref="xsl:sequence-constructor-group" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
-          <xs:attribute name="name" type="xsl:EQName-in-namespace" use="required"/>
+          <xs:attribute name="name" type="xsl:EQName-in-namespace"/>
           <xs:attribute name="override" type="xsl:yes-or-no" default="yes"/>
           <xs:attribute name="as" type="xsl:sequence-type" default="item()*"/>
           <xs:attribute name="visibility" type="xsl:visibility-type"/>
+          <xs:attribute name="streamable" type="xsl:yes-or-no"/>
           <xs:attribute name="override-extension-function" type="xsl:yes-or-no"/>
           <xs:attribute name="identity-sensitive" type="xsl:yes-or-no"/>
           <xs:attribute name="cache" type="xsl:caching-values"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_override" type="xs:string"/>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
+          <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_override-extension-function" type="xs:string"/>
+          <xs:attribute name="_identity-sensitive" type="xs:string"/>
+          <xs:attribute name="_cache" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
           <xs:assert test="every $e in xsl:param satisfies (empty($e/@select) and empty($e/child::node()))">
             <xs:annotation>
               <xs:documentation>
@@ -713,7 +835,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor">
-          <xs:attribute name="test" type="xsl:expression" use="required"/>
+          <xs:attribute name="test" type="xsl:expression"/>
+          <xs:attribute name="_test" type="xs:string"/>
+          <xs:assert test="exists(@test | @_test)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -723,7 +847,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
-          <xs:attribute name="href" type="xs:anyURI" use="required"/>
+          <xs:attribute name="href" type="xs:anyURI"/>
+          <xs:attribute name="_href" type="xs:string"/>
+          <xs:assert test="exists(@href | @_href)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -738,6 +864,8 @@ of problems processing the schema using various tools
           </xs:sequence>
           <xs:attribute name="namespace" type="xs:anyURI"/>
           <xs:attribute name="schema-location" type="xs:anyURI"/>
+          <xs:attribute name="_namespace" type="xs:string"/>
+          <xs:attribute name="_schema-location" type="xs:string"/>
           <xs:assert test="not(exists(@schema-location) and exists(xs:schema))">
             <xs:annotation>
               <xs:documentation>
@@ -756,7 +884,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
-          <xs:attribute name="href" type="xs:anyURI" use="required"/>
+          <xs:attribute name="href" type="xs:anyURI"/>
+          <xs:attribute name="_href" type="xs:string"/>
+          <xs:assert test="exists(@href | @_href)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -771,7 +901,9 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:on-completion" minOccurs="0" maxOccurs="1"/>
             <xs:group ref="xsl:sequence-constructor-group" minOccurs="0" maxOccurs="unbounded"/>           
           </xs:sequence>
-          <xs:attribute name="select" type="xsl:expression" use="required"/>
+          <xs:attribute name="select" type="xsl:expression"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:assert test="exists(@select | @_select)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -781,11 +913,18 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor">
-          <xs:attribute name="name" type="xsl:EQName" use="required"/>
-          <xs:attribute name="match" type="xsl:pattern" use="required"/>
+          <xs:attribute name="name" type="xsl:EQName"/>
+          <xs:attribute name="match" type="xsl:pattern"/>
           <xs:attribute name="use" type="xsl:expression"/>
           <xs:attribute name="composite" type="xsl:yes-or-no"/>
           <xs:attribute name="collation" type="xs:anyURI"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_match" type="xs:string"/>
+          <xs:attribute name="_use" type="xs:string"/>
+          <xs:attribute name="_composite" type="xs:string"/>
+          <xs:attribute name="_collation" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
+          <xs:assert test="exists(@match | @_match)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -797,7 +936,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor-and-select">
-          <xs:attribute name="key" type="xsl:expression" use="required"/>            
+          <xs:attribute name="key" type="xsl:expression"/>
+          <xs:attribute name="_key" type="xs:string"/>
+          <xs:assert test="exists(@key | @_key)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -834,6 +975,12 @@ of problems processing the schema using various tools
           <xs:attribute name="collation" type="xs:anyURI"/>
           <xs:attribute name="case-order" type="xsl:avt"/>
           <xs:attribute name="data-type" type="xsl:avt"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_lang" type="xs:string"/>
+          <xs:attribute name="_order" type="xs:string"/>
+          <xs:attribute name="_collation" type="xs:string"/>
+          <xs:attribute name="_case-order" type="xs:string"/>
+          <xs:attribute name="_data-type" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -849,11 +996,20 @@ of problems processing the schema using various tools
           <xs:attribute name="name" type="xs:NCName"/>
           <xs:attribute name="for-each-item" type="xsl:expression"/>
           <xs:attribute name="for-each-stream" type="xsl:expression"/>
-          <xs:attribute name="select" type="xsl:expression" use="required"/>
+          <xs:attribute name="select" type="xsl:expression"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
           <xs:attribute name="sort-before-merge" type="xsl:yes-or-no"/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_for-each-item" type="xs:string"/>
+          <xs:attribute name="_for-each-stream" type="xs:string"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_sort-before-merge" type="xs:string"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
+          <xs:assert test="exists(@select | @_select)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -866,6 +1022,9 @@ of problems processing the schema using various tools
           <xs:attribute name="select" type="xsl:expression"/>
           <xs:attribute name="terminate" type="xsl:avt" default="no"/>
           <xs:attribute name="error-code" type="xsl:avt"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_terminate" type="xs:string"/>
+          <xs:attribute name="_error-code" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -891,6 +1050,14 @@ of problems processing the schema using various tools
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_on-no-match" type="xs:string"/>
+          <xs:attribute name="_on-multiple-match" type="xs:string"/>
+          <xs:attribute name="_warning-on-no-match" type="xs:string"/>
+          <xs:attribute name="_warning-on-multiple-match" type="xs:string"/>
+          <xs:attribute name="_typed" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
           <xs:assert test="not(exists(@name) and normalize-space(@visibility) = 'private' and exists(xsl:context-item))">
             <xs:annotation>
               <xs:documentation>
@@ -910,7 +1077,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor-or-select">
-          <xs:attribute name="name" type="xsl:avt" use="required"/>
+          <xs:attribute name="name" type="xsl:avt"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -920,8 +1089,12 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
-          <xs:attribute name="stylesheet-prefix" type="xsl:prefix-or-default" use="required"/>
-          <xs:attribute name="result-prefix" type="xsl:prefix-or-default" use="required"/>
+          <xs:attribute name="stylesheet-prefix" type="xsl:prefix-or-default"/>
+          <xs:attribute name="result-prefix" type="xsl:prefix-or-default"/>
+          <xs:attribute name="_stylesheet-prefix" type="xs:string"/>
+          <xs:attribute name="_result-prefix" type="xs:string"/>
+          <xs:assert test="exists(@stylesheet-prefix | @_stylesheet-prefix)"/>
+          <xs:assert test="exists(@result-prefix | @_result-prefix)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -972,6 +1145,18 @@ of problems processing the schema using various tools
           <xs:attribute name="start-at" type="xsl:avt"/>
           <xs:attribute name="grouping-separator" type="xsl:avt"/>
           <xs:attribute name="grouping-size" type="xsl:avt"/>
+          <xs:attribute name="_value" type="xs:string"/>
+          <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_level" type="xs:string"/>
+          <xs:attribute name="_count" type="xs:string"/>
+          <xs:attribute name="_from" type="xs:string"/>
+          <xs:attribute name="_format" type="xs:string"/>
+          <xs:attribute name="_lang" type="xs:string"/>
+          <xs:attribute name="_letter-value" type="xs:string"/>
+          <xs:attribute name="_ordinal" type="xs:string"/>
+          <xs:attribute name="_start-at" type="xs:string"/>
+          <xs:attribute name="_grouping-separator" type="xs:string"/>
+          <xs:attribute name="_grouping-size" type="xs:string"/>
           <xs:assert test="if (exists(@value)) then empty((@select, @count, @from)) and @level='single' else true()">
             <xs:annotation>
               <xs:documentation>
@@ -1015,6 +1200,27 @@ of problems processing the schema using various tools
           <xs:attribute name="undeclare-prefixes" type="xsl:yes-or-no"/>
           <xs:attribute name="use-character-maps" type="xsl:EQNames"/>
           <xs:attribute name="version" type="xs:NMTOKEN"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_method" type="xs:string"/>
+          <xs:attribute name="_byte-order-mark" type="xs:string"/>
+          <xs:attribute name="_cdata-section-elements" type="xs:string"/>
+          <xs:attribute name="_doctype-public" type="xs:string"/>
+          <xs:attribute name="_doctype-system" type="xs:string"/>
+          <xs:attribute name="_encoding" type="xs:string"/>
+          <xs:attribute name="_escape-uri-attributes" type="xs:string"/>
+          <xs:attribute name="_html-version" type="xs:string"/>
+          <xs:attribute name="_include-content-type" type="xs:string"/>
+          <xs:attribute name="_indent" type="xs:string"/>
+          <xs:attribute name="_item-separator" type="xs:string"/>
+          <xs:attribute name="_media-type" type="xs:string"/>
+          <xs:attribute name="_normalization-form" type="xs:string"/>
+          <xs:attribute name="_omit-xml-declaration" type="xs:string"/>
+          <xs:attribute name="_parameter-document" type="xs:string"/>
+          <xs:attribute name="_standalone" type="xs:string"/>
+          <xs:attribute name="_suppress-indentation" type="xs:string"/>
+          <xs:attribute name="_undeclare-prefixes" type="xs:string"/>
+          <xs:attribute name="_use-character-maps" type="xs:string"/>
+          <xs:attribute name="_version" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1024,8 +1230,12 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
-          <xs:attribute name="character" type="xsl:char" use="required"/>
-          <xs:attribute name="string" type="xs:string" use="required"/>
+          <xs:attribute name="character" type="xsl:char"/>
+          <xs:attribute name="string" type="xs:string"/>
+          <xs:attribute name="_character" type="xs:string"/>
+          <xs:attribute name="_string" type="xs:string"/>
+          <xs:assert test="exists(@character | @_character)"/>
+          <xs:assert test="exists(@string | @_string)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1086,6 +1296,9 @@ of problems processing the schema using various tools
           <xs:attribute name="name" type="xs:anyURI"/>
           <xs:attribute name="package-version" type="xs:string"/>
           <xs:attribute name="input-type-annotations" type="xsl:input-type-annotations-type"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_package-version" type="xs:string"/>
+          <xs:attribute name="_input-type-annotations" type="xs:string"/>
           <xs:assert test="every $s in (.//xsl:stylesheet, .//xsl:transform)[@input-type-annotations]
                            satisfies normalize-space($s/@input-type-annotations) = normalize-space(./@input-type-annotations)">
             <xs:annotation>
@@ -1113,12 +1326,19 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor-or-select">
-          <xs:attribute name="name" type="xsl:EQName" use="required"/>
+          <xs:attribute name="name" type="xsl:EQName"/>
           <xs:attribute name="as" type="xsl:sequence-type"/>
           <xs:attribute name="required" type="xsl:yes-or-no"/>
           <xs:attribute name="tunnel" type="xsl:yes-or-no"/>
-          <xs:attribute name="visibility" type="xsl:visibility-type" use="optional"/>
-          <xs:attribute name="static" type="xsl:yes-or-no"/>          
+          <xs:attribute name="visibility" type="xsl:visibility-type"/>
+          <xs:attribute name="static" type="xsl:yes-or-no"/>  
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_required" type="xs:string"/>
+          <xs:attribute name="_tunnel" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
+          <xs:attribute name="_static" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
           <xs:assert test="if (normalize-space(@static) = 'yes') 
                            then normalize-space(@visibility) = ('', 'private', 'final') 
                            else true()">
@@ -1174,7 +1394,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
-          <xs:attribute name="elements" type="xsl:nametests" use="required"/>
+          <xs:attribute name="elements" type="xsl:nametests"/>
+          <xs:attribute name="_elements" type="xs:string"/>
+          <xs:assert test="exists(@elements | @_elements)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1184,7 +1406,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor-or-select">
-          <xs:attribute name="name" type="xsl:avt" use="required"/>
+          <xs:attribute name="name" type="xsl:avt"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1218,6 +1442,30 @@ of problems processing the schema using various tools
           <xs:attribute name="undeclare-prefixes" type="xsl:avt"/>
           <xs:attribute name="use-character-maps" type="xsl:EQNames"/>
           <xs:attribute name="output-version" type="xsl:avt"/>
+          <xs:attribute name="_format" type="xs:string"/>
+          <xs:attribute name="_href" type="xs:string"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
+          <xs:attribute name="_method" type="xs:string"/>
+          <xs:attribute name="_byte-order-mark" type="xs:string"/>
+          <xs:attribute name="_cdata-section-elements" type="xs:string"/>
+          <xs:attribute name="_doctype-public" type="xs:string"/>
+          <xs:attribute name="_doctype-system" type="xs:string"/>
+          <xs:attribute name="_encoding" type="xs:string"/>
+          <xs:attribute name="_escape-uri-attributes" type="xs:string"/>
+          <xs:attribute name="_html-version" type="xs:string"/>
+          <xs:attribute name="_include-content-type" type="xs:string"/>
+          <xs:attribute name="_indent" type="xs:string"/>
+          <xs:attribute name="_item-separator" type="xs:string"/>
+          <xs:attribute name="_media-type" type="xs:string"/>
+          <xs:attribute name="_normalization-form" type="xs:string"/>
+          <xs:attribute name="_omit-xml-declaration" type="xs:string"/>
+          <xs:attribute name="_parameter-document" type="xs:string"/>
+          <xs:attribute name="_standalone" type="xs:string"/>
+          <xs:attribute name="_suppress-indentation" type="xs:string"/>
+          <xs:attribute name="_undeclare-prefixes" type="xs:string"/>
+          <xs:attribute name="_use-character-maps" type="xs:string"/>
+          <xs:attribute name="_output-version" type="xs:string"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
               <xs:documentation>
@@ -1243,6 +1491,12 @@ of problems processing the schema using various tools
           <xs:attribute name="case-order" type="xsl:avt"/>
           <xs:attribute name="collation" type="xsl:avt"/>
           <xs:attribute name="stable" type="xsl:avt"/>
+          <xs:attribute name="_lang" type="xs:string"/>
+          <xs:attribute name="_data-type" type="xs:string"/>
+          <xs:attribute name="_order" type="xs:string"/>
+          <xs:attribute name="_case-order" type="xs:string"/>
+          <xs:attribute name="_collation" type="xs:string"/>
+          <xs:attribute name="_stable" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1252,7 +1506,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
-          <xs:attribute name="elements" type="xsl:nametests" use="required"/>
+          <xs:attribute name="elements" type="xsl:nametests"/>
+          <xs:attribute name="_elements" type="xs:string"/>
+          <xs:assert test="exists(@elements | @_elements)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1264,9 +1520,13 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:sequence-constructor">
-          <xs:attribute name="href" type="xsl:avt" use="required"/>
+          <xs:attribute name="href" type="xsl:avt"/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
+          <xs:attribute name="_href" type="xs:string"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
+          <xs:assert test="exists(@href | @_href)"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
               <xs:documentation>
@@ -1295,6 +1555,12 @@ of problems processing the schema using various tools
           <xs:attribute name="name" type="xsl:EQName"/>
           <xs:attribute name="as" type="xsl:sequence-type" default="item()*"/>
           <xs:attribute name="visibility" type="xsl:visibility-type"/>
+          <xs:attribute name="_match" type="xs:string"/>
+          <xs:attribute name="_priority" type="xs:string"/>
+          <xs:attribute name="_mode" type="xs:string"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
           <xs:assert test="exists(@match) or exists(@name)">
             <xs:annotation>
               <xs:documentation>
@@ -1370,6 +1636,7 @@ of problems processing the schema using various tools
     <xs:simpleContent>
       <xs:extension base="xsl:text-element-base-type">
         <xs:attribute name="disable-output-escaping" type="xsl:yes-or-no" default="no"/>
+        <xs:attribute name="_disable-output-escaping" type="xs:string"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -1380,7 +1647,8 @@ of problems processing the schema using various tools
   <xs:complexType name="transform-element-base-type">
     <xs:complexContent>
       <xs:restriction base="xsl:element-only-versioned-element-type">
-        <xs:attribute name="version" type="xs:decimal" use="optional">
+        <xs:attribute name="version" type="xs:decimal" use="optional"/>
+        <xs:attribute name="_version" type="xs:string">
           <xs:annotation>
             <xs:documentation>
               <p>The version attribute indicates the version of XSLT that 
@@ -1410,6 +1678,8 @@ of problems processing the schema using various tools
           <xs:attribute name="id" type="xs:ID"/>
           <xs:attribute name="input-type-annotations" type="xsl:input-type-annotations-type"
             default="unspecified"/>
+          <xs:attribute name="_id" type="xs:string"/>
+          <xs:attribute name="_input-type-annotations" type="xs:string"/>
           <!--* The 'static' attribute may be used on 'param' and 'variable'
               * only when they are top-level elements. *-->
           <xs:assert test="every $v in (.//xsl:param, .//xsl:variable)[@static]
@@ -1441,6 +1711,7 @@ of problems processing the schema using various tools
             </xs:choice>
           </xs:sequence>
           <xs:attribute name="select" type="xsl:expression" use="optional"/>
+          <xs:attribute name="_select" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1464,6 +1735,8 @@ of problems processing the schema using various tools
           </xs:choice>
           <xs:attribute name="name" type="xs:anyURI"/>
           <xs:attribute name="package-version" type="xs:string"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_package-version" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1475,6 +1748,8 @@ of problems processing the schema using various tools
         <xs:extension base="xsl:sequence-constructor-or-select">
           <xs:attribute name="separator" type="xsl:avt"/>
           <xs:attribute name="disable-output-escaping" type="xsl:yes-or-no" default="no"/>
+          <xs:attribute name="_separator" type="xs:string"/>
+          <xs:attribute name="_disable-output-escaping" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1494,10 +1769,15 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor-or-select">
-          <xs:attribute name="name" type="xsl:EQName" use="required"/>
-          <xs:attribute name="as" type="xsl:sequence-type" use="optional"/>
-          <xs:attribute name="visibility" type="xsl:visibility-type" use="optional"/>
+          <xs:attribute name="name" type="xsl:EQName"/>
+          <xs:attribute name="as" type="xsl:sequence-type"/>
+          <xs:attribute name="visibility" type="xsl:visibility-type"/>
           <xs:attribute name="static" type="xsl:yes-or-no"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_visibility" type="xs:string"/>
+          <xs:attribute name="_static" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
           <xs:assert test="if (normalize-space(@static) = 'yes') 
                            then normalize-space(@visibility) = ('', 'private', 'final') 
                            else true()">
@@ -1531,7 +1811,9 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor">
-          <xs:attribute name="test" type="xsl:expression" use="required"/>
+          <xs:attribute name="test" type="xsl:expression"/>
+          <xs:attribute name="_test" type="xs:string"/>
+          <xs:assert test="exists(@test | @_test)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1541,9 +1823,13 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:sequence-constructor-or-select">
-          <xs:attribute name="name" type="xsl:EQName" use="required"/>
+          <xs:attribute name="name" type="xsl:EQName"/>
           <xs:attribute name="as" type="xsl:sequence-type"/>
           <xs:attribute name="tunnel" type="xsl:yes-or-no"/>
+          <xs:attribute name="_name" type="xs:string"/>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_tunnel" type="xs:string"/>
+          <xs:assert test="exists(@name | @_name)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
