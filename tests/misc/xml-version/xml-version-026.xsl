@@ -6,7 +6,7 @@
 <xsl:output method="xml" version="1.1" undeclare-prefixes="yes"/>
 
 <xsl:template match="/">
-  <doc xmlns:a="http://a/">
+  <doc xmlns:a="http://a/" xsl:inherit-namespaces="no">
     <chap xsl:inherit-namespaces="no">
       <para/>
       <para xmlns:a=""/>
