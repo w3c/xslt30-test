@@ -11,9 +11,17 @@
      with the latest version -->
 
   <xsl:template match="/">
-    <out>
+    <xsl:variable name="temp" as="element(f)*">
       <xsl:apply-templates
         select=".//fos:proto[not(../../fos:opermap)][not(../../@prefix=('math', 'map'))]"/>
+    </xsl:variable>
+    <out>
+      <xsl:for-each-group select="$temp, doc('function-1902.out')/out/f" 
+         group-by="concat(@name, '|', @arity, '|', @test)">
+         <xsl:if test="count(current-group()) ne 2">
+           <xsl:copy-of select="current-group()"/>
+         </xsl:if>
+      </xsl:for-each-group>
     </out>
   </xsl:template>
 
