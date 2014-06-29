@@ -15,7 +15,7 @@
   </xsl:template>
   
   <xsl:template match="book">
-    <xsl:apply-templates select=".//chtitle"/>
+    <xsl:apply-templates select="chapter/chtitle"/>
   </xsl:template>
   
   <xsl:template match="chtitle">

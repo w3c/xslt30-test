@@ -15,12 +15,12 @@
      
    <xsl:template match="/">
      <out>
-       <xsl:apply-templates select=".//bookcoll"/>
+       <xsl:apply-templates select="outermost(.//bookcoll)"/>
      </out>
    </xsl:template>
    
    <xsl:template match="bookcoll">
-     <xsl:apply-templates select=".//bktlong"/>
+     <xsl:apply-templates select="outermost(.//bktlong)"/>
    </xsl:template>
    
    <xsl:template match="bktlong">

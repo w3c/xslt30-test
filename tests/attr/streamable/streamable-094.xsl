@@ -11,7 +11,7 @@
     <xsl:template name="main">
     <out>
       <xsl:stream href="ot.xml">
-        <xsl:apply-templates select="//book" mode="s"/>
+        <xsl:apply-templates select="outermost(//book)" mode="s"/>
       </xsl:stream>
     </out>
     </xsl:template>

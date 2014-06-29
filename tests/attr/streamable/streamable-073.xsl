@@ -21,7 +21,7 @@
   
   <xsl:template match="myroot" mode="s">
     <chap>
-      <xsl:for-each select=".//Loan">
+      <xsl:for-each select="outermost(.//Loan)">
         <loan>
           <xsl:attribute name="statuses">
             <xsl:for-each select="LoanStatus/LoanStatusType">

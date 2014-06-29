@@ -26,7 +26,7 @@
    <xsl:template match="node()">
      <xsl:param name="p" required="yes"/>
      <xsl:copy>
-       <xsl:apply-templates select="@*"/>
+       <xsl:copy-of select="@* except @length"/>
        <xsl:attribute name="level" select="$p"/>
        <xsl:apply-templates>
          <xsl:with-param name="p" select="$p + 1"/>

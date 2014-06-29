@@ -4,8 +4,7 @@
     exclude-result-prefixes=" xs"
     version="3.0">
        
-  
-    <!-- within a streaming template, pattern matches multiple node kinds -->
+
      
     <xsl:mode streamable="yes"/>
          
@@ -21,9 +20,9 @@
     
     <xsl:template match="coverpg|preface|titlepg"/>
     
-    <xsl:template match="node()|@*">
+    <xsl:template match="*">
       <xsl:copy>
-        <xsl:apply-templates select="@*"/>
+        <xsl:copy-of select="@* except @length"/>
         <xsl:apply-templates/>
       </xsl:copy>
     </xsl:template>

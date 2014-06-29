@@ -2,7 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes=" xs"
-    version="2.1">
+    version="3.0">
        
   
   <!-- within a streaming template, positional filter expression applied to computed values -->
@@ -15,12 +15,12 @@
     
   <xsl:template match="/">
     <out>
-      <xsl:apply-templates select=".//bookcoll"/>
+      <xsl:apply-templates select="outermost(.//bookcoll)"/>
     </out>
   </xsl:template>
   
   <xsl:template match="bookcoll">
-    <xsl:apply-templates select=".//bktlong"/>
+    <xsl:apply-templates select="outermost(.//bktlong)"/>
   </xsl:template>
   
   <xsl:template match="bktlong">

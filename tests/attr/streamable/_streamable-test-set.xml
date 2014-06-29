@@ -1004,8 +1004,9 @@
    </test-case>
 
    <test-case name="streamable-046">
-      <description>Within a streaming template, pattern matches multiple node kinds</description>
+      <description>Within a streaming template, process attributes</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-046.xsl"/>
@@ -1020,6 +1021,7 @@
       <description>Within a streaming template, xsl:apply-templates selecting descendant
          nodes</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-047.xsl"/>
@@ -1034,6 +1036,7 @@
       <description>Within a streaming template, xsl:apply-templates selecting descendant
          nodes</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-048.xsl"/>
@@ -1048,6 +1051,7 @@
       <description>Within a streaming template, streamed value as second argument of a
          function</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-049.xsl"/>
@@ -1061,6 +1065,7 @@
    <test-case name="streamable-050">
       <description>Within a streaming template, arithmetic on result of streamed value</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-050.xsl"/>
@@ -1075,6 +1080,7 @@
       <description>Within a streaming template, a more elaborate expression using the result of the
          streamed value</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-051.xsl"/>
@@ -1089,6 +1095,7 @@
       <description>Within a streaming template, a more elaborate expression using the result of the
          streamed value</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-052.xsl"/>
@@ -1102,6 +1109,7 @@
    <test-case name="streamable-053">
       <description>Within a streaming template, use position()</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-053.xsl"/>
@@ -1227,13 +1235,14 @@
       <description>within a streaming template, use apply-templates to select overlapping
          elements</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="overlapping"/>
       <test>
          <stylesheet file="streamable-060.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><chap><section><pages>125</pages></section><section><pages>2</pages></section></chap></out>]]></assert-xml>
+         <error code="XTSE3430"/>   
       </result>
    </test-case>
 
@@ -1241,13 +1250,14 @@
       <description>Within a streaming template, use apply-templates to select overlapping
          elements</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="sections"/>
       <test>
          <stylesheet file="streamable-061.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><chap><section id="1" author="Nikolay"/><section id="1.1" author="Oliver"/><section id="1.1.1" author="Mike"/><section id="1.1.1.1" author="Anders"/><section id="1.1.1.2" author="Sharon"/><section id="1.1.2" author="Petr"/><section id="2" author="Edward"/></chap></out>]]></assert-xml>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -1255,19 +1265,21 @@
       <description>Within a streaming template, use apply-templates within an attribute constructor.
          Also tests mode="#current"</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="sections"/>
       <test>
          <stylesheet file="streamable-062.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><chap><section id="1" author="Nikolay"/><section id="1.1" author="Oliver"/><section id="1.1.1" author="Mike"/><section id="1.1.1.1" author="Anders"/><section id="1.1.1.2" author="Sharon"/><section id="1.1.2" author="Petr"/><section id="2" author="Edward"/></chap></out>]]></assert-xml>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
    <test-case name="streamable-063">
       <description>Within a streaming template, apply-templates with atomic parameters</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="make test guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
       <test>
          <stylesheet file="streamable-063.xsl"/>
@@ -1328,39 +1340,33 @@
    <test-case name="streamable-071">
       <description>Within a streaming template, use for-each to process the subtree</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="loans"/>
       <test>
          <stylesheet file="streamable-071.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <all-of>
-            <assert>count(/out/chap/loan) = 5</assert>
-            <assert>every $L in /out/chap/loan satisfies $L = 'Origination CurrentAsOfDate'</assert>
-         </all-of>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
    <test-case name="streamable-072">
       <description>Within a streaming template, use nested for-each instructions</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="loans"/>
       <test>
          <stylesheet file="streamable-072.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <all-of>
-            <assert>count(/out/chap/loan/status) = 10</assert>
-            <assert>every $L in /out/chap/loan satisfies $L/status[1] = 'ORIGINATION'</assert>
-            <assert>every $L in /out/chap/loan satisfies $L/status[2] = 'CURRENTASOFDATE'</assert>
-         </all-of>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
    <test-case name="streamable-073">
-      <description>Within a streaming template, capture for-each output in an
-         attribute</description>
+      <description>Within a streaming template, capture for-each output in an attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1474,13 +1480,14 @@
       <description>Within a streaming template, for-each instruction selecting overlapping
          elements</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="overlapping"/>
       <test>
          <stylesheet file="streamable-079.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><chap><pages>125</pages><pages>2</pages></chap></out>]]></assert-xml>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -1694,6 +1701,7 @@
    <test-case name="streamable-094">
       <description>apply-templates in the form doc(x)//x</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="use outermost() to make it guaranteed streamable under current rules"/>
       <environment ref="ot"/>
       <test>
          <stylesheet file="streamable-094.xsl"/>
@@ -1865,13 +1873,14 @@
       <description>within a streaming template, use apply-templates to select overlapping elements,
          with a built-in template rule using shallow-copy</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="not streamable under current rules"/>
       <environment ref="overlapping"/>      
       <test>
          <stylesheet file="streamable-106.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><chap><section><pages>125</pages></section><section><pages>2</pages></section></chap></out>]]></assert-xml>
+         <error code="XTSE3430"/>   
       </result>
    </test-case>
 
@@ -1948,6 +1957,7 @@
    <test-case name="streamable-112">
       <description>streaming filter expression applied to computed sequence</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="use outermost() to make this streamable under current rules"/>
       <environment ref="ot-as-context"/>
       <test>
          <stylesheet file="streamable-112.xsl"/>
@@ -1967,6 +1977,7 @@
    <test-case name="streamable-113">
       <description>streaming positional filter expression applied to computed sequence</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-06-29" change="use outermost() to make this streamable under current rules"/>
       <environment ref="ot-as-context"/>
       <test>
          <stylesheet file="streamable-113.xsl"/>
@@ -2284,6 +2295,8 @@
       <description>streaming positional filter expression using last()</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2012-11-14" change="this example is now streamable"/>
+      <modified by="Michael Kay" on="2014-06-29" change="use outermost() to make this streamable under current rules"/>
+      
       <environment ref="ot-as-context"/>
       <test>
          <stylesheet file="streamable-130.xsl"/>
