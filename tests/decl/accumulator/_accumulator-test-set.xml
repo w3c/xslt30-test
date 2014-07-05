@@ -6,9 +6,7 @@
    <environment name="accumulator-001">
       <source role="." file="accumulator-001.xml"/>
    </environment>
-   <environment name="accumulator-001s">
-      <source role="." file="accumulator-001.xml" streaming="true"/>
-   </environment>
+   
    <environment name="accumulator-002">
       <source role="." file="accumulator-002.xml"/>
    </environment>
@@ -49,7 +47,9 @@
    <test-case name="accumulator-002">
       <description>Basic test of accumulator functions - streaming</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="accumulator-001s"/>
+      <environment>
+         <source role="." file="accumulator-001.xml" streaming="true"/>
+   	  </environment>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -128,7 +128,7 @@
    </test-case>
 
    <test-case name="accumulator-007">
-      <description>Multiple accumulators used in parallel</description>
+      <description>Multiple accumulators used in parallel; uses @applies-to</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-004"/>
       <test>
@@ -140,7 +140,7 @@
    </test-case>
 
    <test-case name="accumulator-008">
-      <description>Multiple accumulators used in parallel - with streaming</description>
+      <description>Multiple accumulators used in parallel - with streaming; uses @applies-to</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-004s"/>
       <dependencies>
@@ -229,7 +229,9 @@
       <description>Accumulator matching text node - streamable</description>
       <created by="Michael Kay" on="2013-09-07"/>
       <environment ref="accumulator-005s"/>
-      <dependencies/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
       <test>
          <stylesheet file="accumulator-013.xsl"/>
       </test>
@@ -259,12 +261,87 @@
    <test-case name="accumulator-015">
       <description>Use post-descent accumulator function</description>
       <created by="Michael Kay" on="2013-12-20"/>
+      <modified by="Michael Kay" on="2014-07-03" change="make streamable, define expected result"/>
       <environment ref="accumulator-015s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
       <test>
          <stylesheet file="accumulator-015.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<figures><p>Figure 1: a diagram</p><p>Figure 2: another diagram</p><p>Figure 1: a third diagram</p><p>Figure 2: a fourth diagram</p></figures>]]></assert-xml>
+         <assert>/Total-Cost = '91'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-016">
+      <description>
+      	Applies-to pattern is not motionless. Error case when streaming.
+      </description>
+      <created by="Michael Kay" on="2014-07-04"/>
+      <environment ref="accumulator-004s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-008.xsl"/>
+         <param name="applies-to" as="xs:string" select="'transactions[transaction]'" static="yes"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-017">
+      <description>
+      	Multiple accumulators used in parallel; uses @applies-to. Non-streaming.
+      	Error: accumulator does not apply to current document.
+      </description>
+      <created by="Michael Kay" on="2014-07-04"/>
+      <environment ref="accumulator-004"/>
+      <test>
+         <stylesheet file="accumulator-007.xsl"/>
+         <param name="applies-to" as="xs:string" select="'bananas'" static="yes"/>
+      </test>
+      <result>
+         <error code="XTDE3361"/>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-018">
+      <description>
+      	Multiple accumulators used in parallel; uses @applies-to. Streaming.
+      	Error: accumulator does not apply to current document.
+      </description>
+      <created by="Michael Kay" on="2014-07-04"/>
+      <environment ref="accumulator-004s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-008.xsl"/>
+         <param name="applies-to" as="xs:string" select="'bananas'" static="yes"/>
+      </test>
+      <result>
+         <error code="XTDE3361"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-019">
+      <description>
+      	Initial-value expression is not motionless. Error case when streaming.
+      </description>
+      <created by="Michael Kay" on="2014-07-04"/>
+      <environment ref="accumulator-004s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-008.xsl"/>
+         <param name="initial-count" as="xs:string" select="'//x'" static="yes"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 </test-set>

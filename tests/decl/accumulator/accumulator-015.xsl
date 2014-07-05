@@ -9,10 +9,10 @@
 
    <xsl:mode streamable="yes" />
 
-   <xsl:accumulator name="item-cost"  
+   <xsl:accumulator name="item-cost" streamable="yes" 
        as="xs:integer" 
        initial-value="0">
-       <xsl:accumulator-rule match="cost" new-value="$value + xs:integer(.)"/>
+       <xsl:accumulator-rule match="cost/text()" new-value="$value + xs:integer(.)"/>
    </xsl:accumulator>
    
    <!-- The void xsl:for-each in the template below is designed to sow confusion. Although it does nothing useful,

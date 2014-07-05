@@ -5,21 +5,24 @@
     exclude-result-prefixes="xs f"
     version="3.0">
     
-    <!-- Use accumulators to compute min, max, sum, avg, and count in parallel -->
+    <xsl:param name="applies-to" static="yes" select="'transactions'"/>
     
-   <xsl:accumulator name="count"  as="xs:integer" initial-value="0">
+    <!-- Use accumulators to compute min, max, sum, avg, and count in parallel -->
+    <!-- Also tests @applies-to -->
+    
+   <xsl:accumulator name="count"  as="xs:integer" initial-value="0" applies-to="transactions">
      <xsl:accumulator-rule match="transaction" new-value="$value + 1"/>
    </xsl:accumulator>
    
-   <xsl:accumulator name="sum"  as="xs:double" initial-value="0">
+   <xsl:accumulator name="sum"  as="xs:double" initial-value="0" applies-to="transactions">
      <xsl:accumulator-rule match="transaction" new-value="$value + @amount"/>
    </xsl:accumulator>
    
-   <xsl:accumulator name="min"  as="xs:double" initial-value="999999999999">
+   <xsl:accumulator name="min"  as="xs:double" initial-value="999999999999" _applies-to="{$applies-to}">
      <xsl:accumulator-rule match="transaction" new-value="if (@amount &lt; $value) then @amount else $value"/>
    </xsl:accumulator>
    
-   <xsl:accumulator name="max" as="xs:double" initial-value="-999999999999">
+   <xsl:accumulator name="max" as="xs:double" initial-value="-999999999999" _applies-to="{$applies-to}">
      <xsl:accumulator-rule match="transaction" new-value="if (@amount &gt; $value) then @amount else $value"/>
    </xsl:accumulator>
    
