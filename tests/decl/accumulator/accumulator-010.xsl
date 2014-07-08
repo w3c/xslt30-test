@@ -4,14 +4,16 @@
   exclude-result-prefixes="xs f" version="3.0">
 
   <!-- Use accumulators to compute hierarchic section numbers -->
+  
+  <xsl:param name="streamable" static="yes" select="'no'"/>
 
-  <xsl:accumulator name="f:section-nr" as="xs:integer*" initial-value="0">
+  <xsl:accumulator name="f:section-nr" as="xs:integer*" initial-value="0" _streamable="{$streamable}">
     <xsl:accumulator-rule match="section" phase="start" new-value="0, head($value)+1, tail($value)"/>
     <xsl:accumulator-rule match="section" phase="end" new-value="tail($value) (:pop:)"/>
   </xsl:accumulator>
 
 
-  <xsl:mode streamable="no" on-no-match="shallow-copy"/>
+  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-copy"/>
 
   <xsl:template match="section">
     <span>
