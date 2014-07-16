@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="xsd.xsl" type="text/xsl"?>
 
-<xs:schema targetNamespace="http://www.w3.org/2012/10/xslt-test-catalog" elementFormDefault="qualified" attributeFormDefault="unqualified" 
+<xs:schema targetNamespace="http://www.w3.org/2012/10/xslt-test-catalog"
+    elementFormDefault="qualified" attributeFormDefault="unqualified"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2012/10/xslt-test-catalog">
     <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"
         xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"/>
-    
+
     <xs:annotation>
         <xs:documentation>
             
@@ -33,7 +34,7 @@
             
         </xs:documentation>
     </xs:annotation>
-    
+
     <xs:element name="catalog">
         <xs:annotation>
             <xs:documentation>
@@ -48,17 +49,17 @@
                               
             </xs:documentation>
         </xs:annotation>
-        
+
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="environment" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="test-set" maxOccurs="unbounded">                    
+                <xs:element name="test-set" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:complexContent>
                             <xs:extension base="baseType">
-                                <xs:attributeGroup ref="nameAttr" />
-                                <xs:attributeGroup ref="fileAttr" />
-                             </xs:extension>
+                                <xs:attributeGroup ref="nameAttr"/>
+                                <xs:attributeGroup ref="fileAttr"/>
+                            </xs:extension>
                         </xs:complexContent>
                     </xs:complexType>
                 </xs:element>
@@ -70,17 +71,17 @@
                             the test suite is released.</p>
                     </xs:documentation>
                 </xs:annotation>
-            </xs:attribute>    
-            <xs:attribute name="test-suite" type="xs:string" >
-               <xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="test-suite" type="xs:string">
+                <xs:annotation>
                     <xs:documentation>
                         <p>Identifies this test suite (in case there are several test suites using this format)</p>
                     </xs:documentation>
                 </xs:annotation>
-            </xs:attribute>                   
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="environment" type="environmentType">
         <xs:annotation>
             <xs:documentation>
@@ -107,35 +108,35 @@
                 </div> 
             </xs:documentation>
         </xs:annotation>
-        
+
     </xs:element>
-    
+
     <xs:complexType name="environmentType">
         <xs:complexContent>
-            <xs:extension base="baseType">            
+            <xs:extension base="baseType">
                 <xs:group ref="environmentContentModel"/>
-                <xs:attributeGroup ref="nameAttr" />
-                <xs:attributeGroup ref="refAttr" />
+                <xs:attributeGroup ref="nameAttr"/>
+                <xs:attributeGroup ref="refAttr"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    
+
     <xs:group name="environmentContentModel">
         <xs:sequence>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
-                <xs:element ref="package" />
-                <xs:element ref="schema" />
-                <xs:element ref="source" />
-                <xs:element ref="resource" />
-                <xs:element ref="param" />
-                <xs:element ref="context-item" />
-                <xs:element ref="collection" />
-                <xs:element ref="collation" />
-                <xs:element ref="stylesheet" />
+                <xs:element ref="package"/>
+                <xs:element ref="schema"/>
+                <xs:element ref="source"/>
+                <xs:element ref="resource"/>
+                <xs:element ref="param"/>
+                <xs:element ref="context-item"/>
+                <xs:element ref="collection"/>
+                <xs:element ref="collation"/>
+                <xs:element ref="stylesheet"/>
             </xs:choice>
         </xs:sequence>
     </xs:group>
-    
+
     <xs:element name="package" type="packageType">
         <xs:annotation>
             <xs:documentation>
@@ -144,10 +145,10 @@
                     each test case.</p>
             </xs:documentation>
         </xs:annotation>
-        
+
     </xs:element>
-    
-    
+
+
     <xs:element name="stylesheet" type="stylesheetType">
         <xs:annotation>
             <xs:documentation>
@@ -156,11 +157,11 @@
                 each test case.</p>
             </xs:documentation>
         </xs:annotation>
-        
+
     </xs:element>
-    
-    
-    
+
+
+
     <xs:element name="collation">
         <xs:annotation>
             <xs:documentation>
@@ -186,7 +187,8 @@
             <xs:attribute name="uri">
                 <xs:simpleType>
                     <xs:restriction base="xs:anyURI">
-                        <xs:enumeration value="http://www.w3.org/2005/xpath-functions/collation/codepoint">
+                        <xs:enumeration
+                            value="http://www.w3.org/2005/xpath-functions/collation/codepoint">
                             <xs:annotation>
                                 <xs:documentation>
                                     <p>This is the standard codepoint collation which all implementations must support</p>
@@ -206,20 +208,20 @@
                         </xs:enumeration>
                     </xs:restriction>
                 </xs:simpleType>
-             </xs:attribute>
-             <xs:attribute name="default" type="xs:boolean" use="optional" default="false">
+            </xs:attribute>
+            <xs:attribute name="default" type="xs:boolean" use="optional" default="false">
                 <xs:annotation>
                     <xs:documentation>
                         <p>The value <code>default="true"</code> indicates that this collation is to be the default collation
                         in the static context.</p>
                     </xs:documentation>
                 </xs:annotation>
-             </xs:attribute>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
-    
-               
-    
+
+
+
     <xs:element name="param">
         <xs:annotation>
             <xs:documentation>
@@ -242,7 +244,7 @@
             <xs:attribute name="source" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="context-item">
         <xs:annotation>
             <xs:documentation>
@@ -263,7 +265,7 @@
             <xs:attribute name="select" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="collection">
         <xs:annotation>
             <xs:documentation>
@@ -288,11 +290,11 @@
             <xs:attributeGroup ref="uriAttr"/>
         </xs:complexType>
     </xs:element>
-         
-    
-    <xs:element name="schema" type="schemaType" >
-    <xs:annotation>
-        <xs:documentation>
+
+
+    <xs:element name="schema" type="schemaType">
+        <xs:annotation>
+            <xs:documentation>
             <div>
                 <h3>schema</h3>
                 <p>
@@ -301,13 +303,13 @@
                 </p>
             </div> 
         </xs:documentation>
-    </xs:annotation>
+        </xs:annotation>
     </xs:element>
-    
+
     <xs:complexType name="baseType" abstract="true" mixed="false">
         <xs:attribute ref="xml:id"/>
     </xs:complexType>
-    
+
     <xs:complexType name="schemaType">
         <xs:annotation>
             <xs:documentation>
@@ -321,31 +323,31 @@
         </xs:annotation>
         <xs:complexContent>
             <xs:extension base="baseType">
-                <xs:sequence >
+                <xs:sequence>
                     <xs:element ref="description" minOccurs="0" maxOccurs="1"/>
                     <xs:element ref="created" minOccurs="0" maxOccurs="1"/>
                     <xs:element ref="modified" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>
-                <xs:attributeGroup ref="uriAttr" />
-                <xs:attributeGroup ref="fileAttr" />
+                <xs:attributeGroup ref="uriAttr"/>
+                <xs:attributeGroup ref="fileAttr"/>
                 <xs:attribute name="xsd-version" type="xs:decimal" default="1.0"/>
                 <xs:attribute name="role" use="optional">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
                             <xs:enumeration value="source-reference"/>
                             <xs:enumeration value="stylesheet-import"/>
-                            <xs:enumeration value="secondary"/>      
+                            <xs:enumeration value="secondary"/>
                         </xs:restriction>
-                    </xs:simpleType> 
+                    </xs:simpleType>
                 </xs:attribute>
                 <!--<xs:attributeGroup ref="lastModAttr" />-->
             </xs:extension>
-            
+
         </xs:complexContent>
-        
+
     </xs:complexType>
-    
-    <xs:element name="source" type="sourceType" >
+
+    <xs:element name="source" type="sourceType">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -376,9 +378,9 @@
                 </div> 
             </xs:documentation>
         </xs:annotation>
-        
+
     </xs:element>
-    
+
     <xs:complexType name="sourceType">
         <xs:annotation>
             <xs:documentation>
@@ -393,9 +395,9 @@
         <xs:complexContent>
             <xs:extension base="baseType">
                 <xs:sequence>
-                  <xs:group ref="fileMetaData" />
-                  <xs:element name="content" type="xs:string" minOccurs="0" maxOccurs="1"/>
-                </xs:sequence>  
+                    <xs:group ref="fileMetaData"/>
+                    <xs:element name="content" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
                 <xs:attributeGroup ref="roleAttr"/>
                 <xs:attributeGroup ref="fileAttr">
                     <xs:annotation>
@@ -405,9 +407,9 @@
                             </p>
                         </xs:documentation>
                     </xs:annotation>
-                </xs:attributeGroup>     
-                <xs:attributeGroup ref="uriAttr" />
-                <xs:attributeGroup ref="validationAttr" />
+                </xs:attributeGroup>
+                <xs:attributeGroup ref="uriAttr"/>
+                <xs:attributeGroup ref="validationAttr"/>
                 <xs:attribute name="select" type="xs:string" use="optional">
                     <xs:annotation>
                         <xs:documentation>
@@ -415,7 +417,7 @@
                                 Used only with <code>role="."</code>
                             </p>
                         </xs:documentation>
-                    </xs:annotation> 
+                    </xs:annotation>
                 </xs:attribute>
                 <xs:attribute name="streaming" type="xs:boolean" use="optional">
                     <xs:annotation>
@@ -423,7 +425,7 @@
                             <p>If true, indicates that this source file MUST be processed in streaming mode.
                                 This option is only used in conjunction with <code>role="."</code>.</p>
                         </xs:documentation>
-                    </xs:annotation> 
+                    </xs:annotation>
                 </xs:attribute>
                 <xs:attribute name="defines-stylesheet" type="xs:boolean" use="optional">
                     <xs:annotation>
@@ -432,14 +434,14 @@
                                 instruction which defines the stylesheet to be used for the test case. This option is only used
                                 in conjunction with <code>role="."</code>.</p>
                         </xs:documentation>
-                    </xs:annotation> 
+                    </xs:annotation>
                 </xs:attribute>
                 <xs:attributeGroup ref="xmlVersionAttr"/>
             </xs:extension>
         </xs:complexContent>
-        
+
     </xs:complexType>
-    
+
     <xs:complexType name="packageType">
         <xs:annotation>
             <xs:documentation>
@@ -453,9 +455,9 @@
         </xs:annotation>
         <xs:complexContent>
             <xs:extension base="baseType">
-                <xs:group ref="fileMetaData" />
-                <xs:attributeGroup ref="fileAttr" />
-                <xs:attributeGroup ref="uriAttr" />
+                <xs:group ref="fileMetaData"/>
+                <xs:attributeGroup ref="fileAttr"/>
+                <xs:attributeGroup ref="uriAttr"/>
                 <xs:attributeGroup ref="xmlVersionAttr"/>
                 <xs:attribute name="role">
                     <xs:annotation>
@@ -476,9 +478,9 @@
                 <xs:attribute name="package-version" type="xs:string"/>
             </xs:extension>
         </xs:complexContent>
-        
+
     </xs:complexType>
-    
+
     <xs:complexType name="stylesheetType">
         <xs:annotation>
             <xs:documentation>
@@ -492,9 +494,9 @@
         </xs:annotation>
         <xs:complexContent>
             <xs:extension base="baseType">
-                <xs:group ref="fileMetaData" />
-                <xs:attributeGroup ref="fileAttr" />
-                <xs:attributeGroup ref="uriAttr" />
+                <xs:group ref="fileMetaData"/>
+                <xs:attributeGroup ref="fileAttr"/>
+                <xs:attributeGroup ref="uriAttr"/>
                 <xs:attributeGroup ref="xmlVersionAttr"/>
                 <xs:attribute name="role">
                     <xs:annotation>
@@ -514,18 +516,18 @@
                 </xs:attribute>
             </xs:extension>
         </xs:complexContent>
-        
+
     </xs:complexType>
-    
+
     <xs:group name="fileMetaData">
         <xs:sequence>
             <xs:element ref="description" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="created" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="modified" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence> 
+        </xs:sequence>
     </xs:group>
-    
-    <xs:element name="resource" type="resourceType" >
+
+    <xs:element name="resource" type="resourceType">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -549,9 +551,9 @@
                 </div> 
             </xs:documentation>
         </xs:annotation>
-        
+
     </xs:element>
-    
+
     <xs:complexType name="resourceType">
         <xs:annotation>
             <xs:documentation>
@@ -566,23 +568,23 @@
         <xs:complexContent>
             <xs:extension base="baseType">
                 <xs:sequence>
-                    <xs:sequence >
-                    <xs:element ref="description" minOccurs="0" maxOccurs="1"/>
-                    <xs:element ref="created" minOccurs="0" maxOccurs="1"/>
-                    <xs:element ref="modified" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:sequence>
+                        <xs:element ref="description" minOccurs="0" maxOccurs="1"/>
+                        <xs:element ref="created" minOccurs="0" maxOccurs="1"/>
+                        <xs:element ref="modified" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
                 </xs:sequence>
-                </xs:sequence>
-                <xs:attributeGroup ref="fileAttr" />
-                <xs:attributeGroup ref="uriAttr" />
+                <xs:attributeGroup ref="fileAttr"/>
+                <xs:attributeGroup ref="uriAttr"/>
                 <xs:attributeGroup ref="media-typeAttr"/>
                 <xs:attributeGroup ref="encodingAttr"/>
-           
+
             </xs:extension>
         </xs:complexContent>
-        
+
     </xs:complexType>
-    
-    
+
+
     <xs:element name="description">
         <xs:annotation>
             <xs:documentation>
@@ -595,19 +597,37 @@
                 </div> 
             </xs:documentation>
         </xs:annotation>
-        
+
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:string">
-                                        
-                </xs:extension>
-                
+                <xs:extension base="xs:string"> </xs:extension>
+
             </xs:simpleContent>
-            
-            
+
+
         </xs:complexType>
     </xs:element>
-    
+
+    <xs:element name="keywords">
+        <xs:annotation>
+            <xs:documentation>
+                <div>
+                    <h3>description</h3>
+                    <p>
+                        An element containing searchable or sortable keywords that this 
+                        test applies to, such as "streaming error-handling xsl:try".
+                    </p>
+                </div> 
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:token"/>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="test-set">
         <xs:annotation>
             <xs:documentation>
@@ -624,19 +644,20 @@
             <xs:sequence>
                 <xs:choice maxOccurs="unbounded">
                     <xs:element ref="description"/>
-                    <xs:element ref="link" />
+                    <xs:element ref="keywords"/>
+                    <xs:element ref="link"/>
                     <xs:element ref="environment"/>
                     <xs:element ref="dependencies"/>
                     <xs:element ref="test-case"/>
                 </xs:choice>
             </xs:sequence>
-            <xs:attributeGroup ref="nameAttr" />
-            <xs:attributeGroup ref="coversAttr" />
+            <xs:attributeGroup ref="nameAttr"/>
+            <xs:attributeGroup ref="coversAttr"/>
         </xs:complexType>
     </xs:element>
-    
-    
-    
+
+
+
     <xs:element name="dependencies">
         <xs:annotation>
             <xs:documentation>
@@ -670,16 +691,15 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="dependency" abstract="true" type="dependencyType">
-    </xs:element>
-    
+
+    <xs:element name="dependency" abstract="true" type="dependencyType"> </xs:element>
+
     <xs:complexType name="dependencyType">
-        <xs:attribute name="value"  type="xs:string"/>
-        <xs:attribute name="satisfied" type="xs:boolean" default="true" />
+        <xs:attribute name="value" type="xs:string"/>
+        <xs:attribute name="satisfied" type="xs:boolean" default="true"/>
     </xs:complexType>
-    
-    <xs:element name="spec" substitutionGroup="dependency" >
+
+    <xs:element name="spec" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
   
@@ -699,13 +719,13 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                               <xs:enumeration value="XSLT10" />
-                                <xs:enumeration value="XSLT10+" />
-                                <xs:enumeration value="XSLT20" />
-                                <xs:enumeration value="XSLT20+" />
-                                <xs:enumeration value="XSLT10 XSLT20" />
-                                <xs:enumeration value="XSLT30" />
-                                <xs:enumeration value="XSLT30+" />
+                                <xs:enumeration value="XSLT10"/>
+                                <xs:enumeration value="XSLT10+"/>
+                                <xs:enumeration value="XSLT20"/>
+                                <xs:enumeration value="XSLT20+"/>
+                                <xs:enumeration value="XSLT10 XSLT20"/>
+                                <xs:enumeration value="XSLT30"/>
+                                <xs:enumeration value="XSLT30+"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -713,8 +733,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="feature" substitutionGroup="dependency" >
+
+    <xs:element name="feature" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -729,13 +749,13 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:enumeration value="backwards_compatibility" />
-                                <xs:enumeration value="disabling_output_escaping" />
-                                <xs:enumeration value="schema_aware" />
-                                <xs:enumeration value="namespace_axis" />
-                                <xs:enumeration value="streaming" />
-                                <xs:enumeration value="XML_1.1" />
-                                <xs:enumeration value="XSD_1.1" />
+                                <xs:enumeration value="backwards_compatibility"/>
+                                <xs:enumeration value="disabling_output_escaping"/>
+                                <xs:enumeration value="schema_aware"/>
+                                <xs:enumeration value="namespace_axis"/>
+                                <xs:enumeration value="streaming"/>
+                                <xs:enumeration value="XML_1.1"/>
+                                <xs:enumeration value="XSD_1.1"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -743,7 +763,7 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="available_documents" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
@@ -757,8 +777,8 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
-    <xs:element name="default_language_for_numbering" substitutionGroup="dependency" >
+
+    <xs:element name="default_language_for_numbering" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -774,9 +794,9 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:enumeration value="en" />
-                                <xs:enumeration value="de" />
-                                <xs:enumeration value="fr" />
+                                <xs:enumeration value="en"/>
+                                <xs:enumeration value="de"/>
+                                <xs:enumeration value="fr"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -784,8 +804,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="combinations_for_numbering" substitutionGroup="dependency" >
+
+    <xs:element name="combinations_for_numbering" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -806,8 +826,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="languages_for_numbering" substitutionGroup="dependency" >
+
+    <xs:element name="languages_for_numbering" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -821,9 +841,9 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:enumeration value="en" />
-                                <xs:enumeration value="de" />
-                                <xs:enumeration value="fr" />
+                                <xs:enumeration value="en"/>
+                                <xs:enumeration value="de"/>
+                                <xs:enumeration value="fr"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -831,8 +851,9 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="supported_calendars_in_date_formatting_functions" substitutionGroup="dependency" >
+
+    <xs:element name="supported_calendars_in_date_formatting_functions"
+        substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -846,18 +867,18 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:enumeration value="ISO" />
-                                <xs:enumeration value="AD" />
-                                <xs:enumeration value="CB" />
-                             </xs:restriction>
+                                <xs:enumeration value="ISO"/>
+                                <xs:enumeration value="AD"/>
+                                <xs:enumeration value="CB"/>
+                            </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
                 </xs:restriction>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="default_calendar_in_date_formatting_functions" 
+
+    <xs:element name="default_calendar_in_date_formatting_functions"
         substitutionGroup="supported_calendars_in_date_formatting_functions">
         <xs:annotation>
             <xs:documentation>
@@ -867,8 +888,8 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
-    <xs:element name="year_component_values" substitutionGroup="dependency" >
+
+    <xs:element name="year_component_values" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -883,7 +904,7 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:enumeration value="support negative year" />
+                                <xs:enumeration value="support negative year"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -891,8 +912,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="maximum_number_of_decimal_digits" substitutionGroup="dependency" >
+
+    <xs:element name="maximum_number_of_decimal_digits" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -906,7 +927,7 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:pattern value="[0-9]+" />
+                                <xs:pattern value="[0-9]+"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -914,8 +935,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="collation_uri" substitutionGroup="dependency" >
+
+    <xs:element name="collation_uri" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -937,8 +958,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="statically_known_collations" substitutionGroup="dependency" >
+
+    <xs:element name="statically_known_collations" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -952,7 +973,8 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:enumeration value="http://www.w3.org/xslts/collation/caseblind"/>
+                                <xs:enumeration value="http://www.w3.org/xslts/collation/caseblind"
+                                />
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -960,8 +982,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="default_output_encoding" substitutionGroup="dependency" >
+
+    <xs:element name="default_output_encoding" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 
@@ -984,7 +1006,7 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="unparsed_text_encoding" substitutionGroup="default_output_encoding">
         <xs:annotation>
             <xs:documentation>
@@ -994,8 +1016,8 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
-    <xs:element name="additional_normalization_form" substitutionGroup="dependency" >
+
+    <xs:element name="additional_normalization_form" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 <p>Indicates Unicode normalization forms accepted in addition to the standard NFC.</p>
@@ -1007,7 +1029,7 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:pattern value="support (NFD|NFKC|NFKD|\s)*" />
+                                <xs:pattern value="support (NFD|NFKC|NFKD|\s)*"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -1015,8 +1037,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="recognize_id_as_uri_fragment" substitutionGroup="dependency" >
+
+    <xs:element name="recognize_id_as_uri_fragment" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 <p>Indicates whether or not the fragments in URIs are recognized as ID values.</p>
@@ -1036,8 +1058,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="on-multiple-match" substitutionGroup="dependency" >
+
+    <xs:element name="on-multiple-match" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 <p>Indicates (for an XSLT 2.0 processor) what happens when several template rules match a selected node</p>
@@ -1049,8 +1071,8 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:enumeration value="recover" />
-                                <xs:enumeration value="error" />
+                                <xs:enumeration value="recover"/>
+                                <xs:enumeration value="error"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -1058,8 +1080,8 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="ignore-doc-failure" substitutionGroup="dependency" >
+
+    <xs:element name="ignore-doc-failure" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
                 <p>Indicates whether or not the document() function throws an error if the underlying call on doc() fails</p>
@@ -1071,8 +1093,8 @@
                     <xs:attribute name="value">
                         <xs:simpleType>
                             <xs:restriction base="xs:string">
-                                <xs:enumeration value="false" />
-                                <xs:enumeration value="true" />
+                                <xs:enumeration value="false"/>
+                                <xs:enumeration value="true"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -1080,9 +1102,9 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
-    
-    
-   <!-- <xs:element name="version-of-xml" substitutionGroup="dependency" >
+
+
+    <!-- <xs:element name="version-of-xml" substitutionGroup="dependency" >
         <xs:complexType>
             <xs:complexContent>
                 <xs:restriction base="dependencyType">
@@ -1133,7 +1155,7 @@
         </xs:complexType>
     </xs:element>     
     -->
-    
+
     <xs:element name="test-case">
         <xs:annotation>
             <xs:documentation>
@@ -1149,8 +1171,10 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="description" />
-                <xs:element ref="created" />
+                <xs:element ref="description"/>
+                <xs:element ref="keywords" minOccurs="0"/>
+                <xs:element ref="link" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="created"/>
                 <xs:element ref="modified" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="environment" minOccurs="0">
                     <xs:complexType>
@@ -1163,14 +1187,14 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element ref="dependencies" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="test" />
-                <xs:element ref="result" />
+                <xs:element ref="test"/>
+                <xs:element ref="result"/>
             </xs:sequence>
-            <xs:attributeGroup ref="nameAttr" />
-            <xs:attributeGroup ref="coversAttr" />
+            <xs:attributeGroup ref="nameAttr"/>
+            <xs:attributeGroup ref="coversAttr"/>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="test">
         <xs:annotation>
             <xs:documentation>
@@ -1207,35 +1231,35 @@
                     </xs:annotation>
                 </xs:element>
                 <xs:element ref="param" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="initial-template" minOccurs="0" />
-                <xs:element ref="initial-mode" minOccurs="0" />
+                <xs:element ref="initial-template" minOccurs="0"/>
+                <xs:element ref="initial-mode" minOccurs="0"/>
             </xs:sequence>
-        </xs:complexType>        
+        </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="initial-template">
         <xs:annotation>
             <xs:documentation>
                 <p>Gives the name of the named template to be used as the entry point for the transformation. When this is supplied,
                 it is not necessary to supplied a source document or initial context item.</p>
-            </xs:documentation>         
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:attribute name="name" type="xs:QName" />
+            <xs:attribute name="name" type="xs:QName"/>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="initial-mode">
         <xs:annotation>
             <xs:documentation>
                 <p>Gives the name of the mode to be used as the entry point for the transformation. </p>
-            </xs:documentation>         
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:attribute name="name" type="xs:QName" />
+            <xs:attribute name="name" type="xs:QName"/>
         </xs:complexType>
-    </xs:element>    
-    
+    </xs:element>
+
     <xs:element name="created">
         <xs:annotation>
             <xs:documentation>
@@ -1248,11 +1272,11 @@
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:attributeGroup ref="byAttr" />
-            <xs:attributeGroup ref="onAttr" />
+            <xs:attributeGroup ref="byAttr"/>
+            <xs:attributeGroup ref="onAttr"/>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="modified">
         <xs:annotation>
             <xs:documentation>
@@ -1265,13 +1289,13 @@
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:attributeGroup ref="byAttr" />
-            <xs:attributeGroup ref="onAttr" />
-            <xs:attributeGroup ref="changeAttr" />
+            <xs:attributeGroup ref="byAttr"/>
+            <xs:attributeGroup ref="onAttr"/>
+            <xs:attributeGroup ref="changeAttr"/>
         </xs:complexType>
     </xs:element>
 
-    
+
     <xs:element name="result">
         <xs:annotation>
             <xs:documentation>
@@ -1291,8 +1315,8 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    
-    
+
+
     <xs:complexType name="SequenceOfAssertionsType">
         <xs:annotation>
             <xs:documentation>
@@ -1305,11 +1329,11 @@
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element ref="abstractAssertion" minOccurs="1" maxOccurs="unbounded"/>            
+            <xs:element ref="abstractAssertion" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-    
-    
+
+
     <xs:element name="any-of" type="SequenceOfAssertionsType" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
@@ -1324,8 +1348,8 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
-    <xs:element name="all-of" type="SequenceOfAssertionsType"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="all-of" type="SequenceOfAssertionsType" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1338,7 +1362,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
+
     <xs:element name="not" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
@@ -1354,10 +1378,10 @@
             <xs:sequence>
                 <xs:element ref="abstractAssertion"/>
             </xs:sequence>
-        </xs:complexType>    
+        </xs:complexType>
     </xs:element>
-    
-    <xs:element name="abstractAssertion" abstract="true" type="xs:anyType" >
+
+    <xs:element name="abstractAssertion" abstract="true" type="xs:anyType">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1369,9 +1393,9 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
-    
-    
+
+
+
     <xs:element name="assert" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
@@ -1392,13 +1416,13 @@
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:string" />
+                <xs:extension base="xs:string"/>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-        
-    
-    <xs:element name="assert-message"  substitutionGroup="abstractAssertion">
+
+
+    <xs:element name="assert-message" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1418,8 +1442,8 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="assert-result-document"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="assert-result-document" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1437,19 +1461,19 @@
                 <xs:element ref="abstractAssertion"/>
             </xs:sequence>
             <xs:attribute name="uri" type="xs:anyURI" use="required">
-              <xs:annotation>
-                <xs:documentation>
+                <xs:annotation>
+                    <xs:documentation>
                   <p>The uri corresponds to the URI used in the href attribute of the xsl:result-document instruction.
                   It is supplied as a relative URI, interpreted as being relative to the implicit base output URI chosen
                   by the test driver.</p>
-                </xs:documentation>  
-              </xs:annotation>    
-           </xs:attribute>
+                </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
-    
-    
-    <xs:element name="assert-xml"  substitutionGroup="abstractAssertion">
+
+
+    <xs:element name="assert-xml" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1475,7 +1499,7 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attributeGroup ref="fileAttr"/>                    
+                    <xs:attributeGroup ref="fileAttr"/>
                     <xs:attributeGroup ref="xmlVersionAttr"/>
                     <xs:attribute name="ignore-prefixes" type="xs:boolean">
                         <xs:annotation>
@@ -1493,8 +1517,8 @@
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="assert-serialization"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="assert-serialization" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1572,9 +1596,9 @@
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
-    </xs:element>    
-    
-    <xs:element name="serialization-matches"  substitutionGroup="abstractAssertion">
+    </xs:element>
+
+    <xs:element name="serialization-matches" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1614,8 +1638,8 @@
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="assert-serialization-error"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="assert-serialization-error" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1631,15 +1655,15 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attributeGroup ref="codeAttr" />
+                    <xs:attributeGroup ref="codeAttr"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
-    
-    
-    <xs:element name="assert-type"  substitutionGroup="abstractAssertion">
+
+
+
+    <xs:element name="assert-type" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1653,16 +1677,16 @@
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:string" />
+                <xs:extension base="xs:string"/>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
-    
-    
-    
-    
-    <xs:element name="error"  substitutionGroup="abstractAssertion">
+
+
+
+
+
+    <xs:element name="error" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1684,12 +1708,12 @@
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:attributeGroup ref="codeAttr" />
+            <xs:attributeGroup ref="codeAttr"/>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:element name="link">
-        
+
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1703,7 +1727,7 @@
         <xs:complexType>
             <!--<xs:attributeGroup ref="typeAttr" />-->
             <xs:attributeGroup ref="documentAttr"/>
-            <xs:attribute name="idref" type="xs:NCName" />
+            <xs:attribute name="idref" type="xs:NCName"/>
             <xs:attribute name="section-number">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -1713,10 +1737,10 @@
             </xs:attribute>
         </xs:complexType>
     </xs:element>
-    
+
     <xs:attributeGroup name="documentAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>document (as an attribute name)</h3>
                         <p>
@@ -1724,29 +1748,29 @@
                         </p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="document" type="xs:anyURI"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="xmlVersionAttr">
-                 <xs:attribute name="xml-version" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>
+        <xs:attribute name="xml-version" use="optional">
+            <xs:annotation>
+                <xs:documentation>
                             <p>Indicates whether an XML 1.1 parser is required for this source document.</p>
                         </xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                      <xs:restriction base="xs:decimal">
-                        <xs:enumeration value="1.0"/>
-                        <xs:enumeration value="1.1"/>
-                      </xs:restriction>
-                    </xs:simpleType> 
-                </xs:attribute>    
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:decimal">
+                    <xs:enumeration value="1.0"/>
+                    <xs:enumeration value="1.1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="codeAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>code (as an attribute name)</h3>
                         <p>
@@ -1757,7 +1781,7 @@
                         <p> The value may also be an EQName (Q{uri}local) to allow for user-defined error codes </p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="code">
             <xs:simpleType>
                 <xs:union memberTypes="xs:NCName xs:QName EQName">
@@ -1772,24 +1796,24 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:union>
-            </xs:simpleType>    
+            </xs:simpleType>
         </xs:attribute>
     </xs:attributeGroup>
-    
+
     <xs:simpleType name="EQName">
-      <xs:annotation>
-        <xs:documentation>
+        <xs:annotation>
+            <xs:documentation>
           <p>Allows a user-defined error code to be expressed in the form Q{uri}local</p>
         </xs:documentation>
-      </xs:annotation>
-      <xs:restriction base="xs:string">
-        <xs:pattern value="Q\{.*\}\i\c*"/>
-      </xs:restriction>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="Q\{.*\}\i\c*"/>
+        </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:attributeGroup name="fileAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>file</h3>
                         <p>
@@ -1801,13 +1825,13 @@
                         </p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="file" type="xs:anyURI" use="optional"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="roleAttr">
-                    <xs:annotation>
-                        <xs:documentation>
+        <xs:annotation>
+            <xs:documentation>
                            <div>
                             <h3>role</h3> 
                             <p>Describes how a source document is made available to the query.</p>
@@ -1825,13 +1849,13 @@
                             definition.</p>
                            </div>
                         </xs:documentation>
-                    </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="role" type="xs:string" use="optional"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="nameAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>name</h3>
                         <p>
@@ -1839,10 +1863,10 @@
                         </p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="name" type="xs:string"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="coversAttr">
         <xs:annotation>
             <xs:documentation>
@@ -1863,12 +1887,12 @@
             <xs:simpleType>
                 <xs:list itemType="xs:NCName"/>
             </xs:simpleType>
-        </xs:attribute>    
+        </xs:attribute>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="creatorAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>creator</h3>
                         <p>
@@ -1879,13 +1903,13 @@
                             may be used if policy requires it.</p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="creator" type="xs:string"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="refAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>ref</h3>
                         <p>
@@ -1897,14 +1921,14 @@
                         object in a different XML document.</p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="ref" type="xs:string"/>
-     </xs:attributeGroup>
-    
-   
+    </xs:attributeGroup>
+
+
     <xs:attributeGroup name="validationAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>validation</h3>
                         <p>
@@ -1913,40 +1937,40 @@
                         </p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="validation" type="validationEnumType" use="optional"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="media-typeAttr">
-                    <xs:annotation>
-                        <xs:documentation>
+        <xs:annotation>
+            <xs:documentation>
                            <div>
                             <h3>media-type</h3> 
                             <p>Describes the media type of a resource.</p>
                             <p>The value should conform to RFC 2046.</p>
                            </div>
                         </xs:documentation>
-                    </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="media-type" type="xs:string" use="optional"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="encodingAttr">
-                    <xs:annotation>
-                        <xs:documentation>
+        <xs:annotation>
+            <xs:documentation>
                            <div>
                             <h3>encoding</h3> 
                             <p>Describes the encoding of a resource.</p>
                             <p>The value should be that of a character set registered with the Internet Assigned Numbers Authority.</p>
                            </div>
                         </xs:documentation>
-                    </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="encoding" type="encodingType" use="optional"/>
     </xs:attributeGroup>
-    
+
     <xs:simpleType name="encodingType">
-      <xs:restriction base="xs:string">
-	    <xs:pattern value="[A-Za-z]([A-Za-z0-9._-])*"/>
-      </xs:restriction>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z]([A-Za-z0-9._-])*"/>
+        </xs:restriction>
     </xs:simpleType>
 
     <!--<xs:attributeGroup name="typeAttr">
@@ -1990,19 +2014,19 @@
             <xs:enumeration value="xsd-version" />
         </xs:restriction>
     </xs:simpleType>-->
-    
+
     <xs:simpleType name="validationEnumType">
         <xs:restriction base="xs:normalizedString">
-            <xs:enumeration value="strict" />
-            <xs:enumeration value="lax" />
-            <xs:enumeration value="skip" />
+            <xs:enumeration value="strict"/>
+            <xs:enumeration value="lax"/>
+            <xs:enumeration value="skip"/>
         </xs:restriction>
     </xs:simpleType>
-    
-    
+
+
     <xs:attributeGroup name="valueAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>value</h3>
                         <p>
@@ -2011,13 +2035,13 @@
                         </p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="value" type="xs:string"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="uriAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>uri (as an attribute name)</h3>
                         <p>
@@ -2033,13 +2057,13 @@
                         <p>For schemas, the URI defines the target namespace URI.</p>
                     </div> 
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="uri" type="xs:anyURI"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="byAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>by (as an attribute name)</h3>
                         <p>
@@ -2049,13 +2073,13 @@
                     </div> 
                     
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="by" type="xs:string"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="onAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>on (as an attribute name)</h3>
                         <p>
@@ -2065,13 +2089,13 @@
                     </div> 
                     
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="on" type="xs:date"/>
     </xs:attributeGroup>
-    
+
     <xs:attributeGroup name="changeAttr">
         <xs:annotation>
-                <xs:documentation>
+            <xs:documentation>
                     <div>
                         <h3>change (as an attribute name)</h3>
                         <p>
@@ -2081,7 +2105,7 @@
                     </div> 
                     
                 </xs:documentation>
-            </xs:annotation>
+        </xs:annotation>
         <xs:attribute name="change" type="xs:string"/>
     </xs:attributeGroup>
 </xs:schema>
