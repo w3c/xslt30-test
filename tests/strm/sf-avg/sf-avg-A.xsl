@@ -202,7 +202,7 @@
       </xsl:stream>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling avg() using root-select expr /x/y -->
+    <!-- Test of xsl:stream calling avg() using striding select expr with grounding mapping operator of the form /x/y!z -->
     
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
