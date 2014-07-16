@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="avt">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="avt">
    <description>Tests Attribute Value Templates</description>
    <environment name="avt-01">
       <source role=".">
@@ -151,6 +149,7 @@
          Test of single AVT where the value is a sequence with mixed atomic content.
          The result is a whitespace separated list of the values.
       </description>
+      <keywords>mixed-sequence literals select-expression lre</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-01"/>
       <dependencies>
@@ -166,6 +165,7 @@
 
    <test-case name="avt-0201">
       <description>Test of single AVT in a LRE where the value comes from a temporary tree.</description>
+      <keywords>xsl:variable temporary-tree select-expression lre</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-02"/>
       <dependencies>
@@ -184,6 +184,7 @@
          Test of AVT where the value is a sequence of atomic values surrounded only in curly brackets. 
          The result is a whitespace separated list of the values. (from spec)
       </description>
+      <keywords>sequence literals numeric-literals lre</keywords>
       <created by="XSLT Editors" on="2012-11-07"/>
       <environment ref="avt-02"/>
       <dependencies>
@@ -199,6 +200,7 @@
 
    <test-case name="avt-0301">
       <description>Test of single AVT in the separator attribute of xsl:attribute where the value comes from a set of nodes. (literal elements are present in AVT at start and end)</description>
+      <keywords>select-expression xsl:attribute separator-attribute mixed-avt</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-03"/>
       <dependencies>
@@ -214,6 +216,7 @@
 
    <test-case name="avt-0302">
       <description>Test two AVTs with literal element between them in the separator attribute of xsl:value-of.</description>
+      <keywords>xsl:value-of separator-attribute select-expression mixed-avt</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-03"/>
       <dependencies>
@@ -229,6 +232,7 @@
 
    <test-case name="avt-0303">
       <description>Test AVT in the name attribute of xsl:namespace. AVT value comes from a node or a variable. Cases for AVT: -no literal element -literal element at start -literal element at end -literal element at start and end -literal element present and value obtained at run time is empty sequence</description>
+      <keywords>xsl:namespace select-expression variable-reference mixed-avt</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-03"/>
       <dependencies>
@@ -244,6 +248,7 @@
 
    <test-case name="avt-0401">
       <description>Test of single AVT in @collation of xsl:for-each-group. Cases for AVT: no literal element, LE at start and end AVT value comes from a node or a variable.</description>
+      <keywords>xsl:for-each-group collation-attribute mixed-avt select-expression variable-reference</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-04"/>
       <dependencies>
@@ -263,6 +268,7 @@
 
    <test-case name="avt-0501">
       <description>Test of single AVT in @regex of xsl:analyze-string. Cases for AVT: no literal element, LE at start and end AVT value comes from a node or a variable.</description>
+      <keywords>xsl:analyze-string regex-attribute mixed-avt select-expression variable-reference</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-05"/>
       <dependencies>
@@ -283,6 +289,7 @@
          Test two AVTs with literal element between them in @flags and single AVT in @regex of xsl:analyze-string. 
          AVT value comes from a node or a variable.
       </description>
+      <keywords>xsl:analyze-string regex-attribute mixed-avt select-expression flags-attribute variable-reference</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Michael Kay" on="2012-12-11" change="fixed whitespace issues (no bug report)"/>
       <environment ref="avt-06"/>
@@ -299,6 +306,7 @@
 
    <test-case name="avt-0701">
       <description>Test of single AVT with value 'no' in @terminate of xsl:message. AVT value comes from a node or a variable.</description>
+      <keywords>xsl:message terminate-attribute select-expression variable-reference</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Michael Kay" on="2012-12-11" change="removed leading whitespace from output, see bug 20027"/>
       <environment ref="avt-07"/>
@@ -323,6 +331,7 @@
 
    <test-case name="avt-0801">
       <description>Test AVT in the ordinal attribute of xsl:number. AVT value comes from a variable.</description>
+      <keywords>xsl:number lang-attribute letter-value-attribute ordinal-attribute variable-reference</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-08"/>
       <dependencies>
@@ -340,6 +349,7 @@
 
    <test-case name="avt-0901">
       <description>Test of single AVT in @lang, @order and @collation of xsl:sort. AVT value has no literal element and comes from a node or a variable.</description>
+      <keywords>xsl:sort lang-attribute collation-attribute order-attribute variable-reference select-expression</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-09"/>
       <dependencies>
@@ -355,6 +365,7 @@
 
    <test-case name="avt-1001">
       <description>Test of single AVT in @stable of xsl:sort. AVT value has no literal element and comes from a node.</description>
+      <keywords>xsl:sort stable-attribute select-expression</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="avt-10"/>
       <dependencies>
@@ -370,6 +381,7 @@
 
    <test-case name="avt-1101">
       <description>Test of single AVT.</description>
+      <keywords>lre select-expression</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-11"/>
       <dependencies>
@@ -385,6 +397,7 @@
 
    <test-case name="avt-1201">
       <description>Test two AVTs with literal element between them (based on example in the draft).</description>
+      <keywords>lre mixed-avt select-expression variable-reference</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-12"/>
       <dependencies>
@@ -400,6 +413,7 @@
 
    <test-case name="avt-1202">
       <description>DOCUMENT: http://www.w3.org/TR/xslt SECTION: 7.6.2 Attribute Value Templates Test of AVT containing XPath 2.0 comments.</description>
+      <keywords>lre xpath-comments literals sequence</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-12"/>
       <dependencies>
@@ -415,6 +429,7 @@
 
    <test-case name="avt-1203">
       <description>Test of sequence-valued AVT in backwards compatibility mode.</description>
+      <keywords>lre numeric-literals sequence empty-sequence backwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-12"/>
       <dependencies>
@@ -431,6 +446,7 @@
 
    <test-case name="avt-1204">
       <description>Test of sequence-valued AVT in 2.0 mode.</description>
+      <keywords>lre numeric-literals sequence empty-sequence</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-12"/>
       <dependencies>
@@ -446,6 +462,7 @@
 
    <test-case name="avt-1205">
       <description>Test handling of text nodes in an AVT. AUTHOR: Michael Kay</description>
+      <keywords>text-node xsl:function lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-12"/>
       <dependencies>
@@ -461,6 +478,7 @@
 
    <test-case name="avt-1206">
       <description>Test handling of }}} in an AVT.</description>
+      <keywords>escaped-curlies lre mixed-avt</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-12"/>
       <dependencies>
@@ -476,6 +494,7 @@
 
    <test-case name="avt-1301">
       <description>Test of left curly brace escape.</description>
+      <keywords>lre escaped-curlies</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-13"/>
       <dependencies>
@@ -491,6 +510,7 @@
 
    <test-case name="avt-1302">
       <description>Test of right curly brace escape.</description>
+      <keywords>lre escaped-curlies</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-13"/>
       <dependencies>
@@ -506,6 +526,7 @@
 
    <test-case name="avt-1401">
       <description>Test of curly braces (single and double) within the expression.</description>
+      <keywords>lre escaped-curlies literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-14"/>
       <dependencies>
@@ -521,6 +542,7 @@
 
    <test-case name="avt-1501">
       <description>Test context within an AVT.</description>
+      <keywords>lre context fn:position fn:last mixed-avt</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-15"/>
       <dependencies>
@@ -536,6 +558,7 @@
 
    <test-case name="avt-1502">
       <description>Check that attributes of top-level data elements are not treated as AVTs.</description>
+      <keywords> data-elements</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-15"/>
       <dependencies>
@@ -551,6 +574,7 @@
 
    <test-case name="avt-1601">
       <description>Check space-separation of a list-valued AVT (new 2.0 incompatibility). AUTHOR: Michael Kay test changed in 7.4</description>
+      <keywords>lre sequence literals select-expression space-separation</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-16"/>
       <dependencies>
@@ -566,6 +590,7 @@
 
    <test-case name="avt-1701">
       <description>Purpose: Testing generation of null attribute. Bug: if $From was null, it was not outputting the attribute. Author: Geoff Crowther</description>
+      <keywords>empty-sequence variable-reference xsl:param lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-17"/>
       <dependencies>
@@ -581,6 +606,7 @@
 
    <test-case name="avt-1801">
       <description>Evaluation of string expression in AVT, surrounded by fixed strings.</description>
+      <keywords>fn:concat select-expression attribute-axis mixed-avt lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-18"/>
       <dependencies>
@@ -596,6 +622,7 @@
 
    <test-case name="avt-1901">
       <description>Evaluation of boolean expression in AVT, surrounded by fixed strings.</description>
+      <keywords> fn:starts-with select-expression attribute-axis mixed-avt lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-19"/>
       <dependencies>
@@ -611,6 +638,7 @@
 
    <test-case name="avt-2001">
       <description>Double braces to neutralize AVT processing, including colon.</description>
+      <keywords>escaped-curlies lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-20"/>
       <dependencies>
@@ -626,6 +654,7 @@
 
    <test-case name="avt-2101">
       <description>Use of colon in AVT expression to signify namespaced element.</description>
+      <keywords>lre select-expression namespace-resolution</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-21"/>
       <dependencies>
@@ -641,6 +670,7 @@
 
    <test-case name="avt-2201">
       <description>this one works @@1 this one gives "not a QName" error @@2 this one gives "not a QName" error this one works</description>
+      <keywords>xsl:element xsl:attribute name-attribute variable-reference qname-resolution lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="avt-22"/>
       <dependencies>
