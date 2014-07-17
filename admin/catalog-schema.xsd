@@ -1209,6 +1209,7 @@
                 <xs:element ref="param" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="initial-template" minOccurs="0" />
                 <xs:element ref="initial-mode" minOccurs="0" />
+                <xs:element ref="output" minOccurs="0" />
             </xs:sequence>
         </xs:complexType>        
     </xs:element>
@@ -1233,6 +1234,20 @@
         </xs:annotation>
         <xs:complexType>
             <xs:attribute name="name" type="xs:QName" />
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="output">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Provides a base output URI for the transformation. The processor may (optionally) use this as the
+                location to which serialized output for the principal result tree is written. The location should be
+                given as a relative URI, and should be within a subdirectory of the directory that contains the test 
+                set XML file.</p>
+            </xs:documentation>         
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="file" type="xs:anyURI" />
         </xs:complexType>
     </xs:element>    
     
