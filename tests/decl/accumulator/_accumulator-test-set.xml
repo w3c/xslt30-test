@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="accumulator">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="accumulator">
    <description>Tests accumulator</description>
    <environment name="accumulator-001">
       <source role="." file="accumulator-001.xml"/>
@@ -36,6 +34,7 @@
 
    <test-case name="accumulator-001">
       <description>Basic test of accumulator functions</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before ElementTest</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-001"/>
       <test>
@@ -48,6 +47,7 @@
 
    <test-case name="accumulator-002">
       <description>Basic test of accumulator functions - streaming</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before ElementTest streamable</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-001s"/>
       <dependencies>
@@ -63,6 +63,7 @@
 
    <test-case name="accumulator-003">
       <description>Pre-descent accumulator functions called before and after</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-002"/>
       <test>
@@ -78,6 +79,7 @@
 
    <test-case name="accumulator-004">
       <description>Pre-descent accumulator functions called before and after - streaming</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before streamable</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-002s"/>
       <dependencies>
@@ -96,6 +98,7 @@
 
    <test-case name="accumulator-005">
       <description>Pre-descent and post-descent accumulator functions</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before fn:accumulator-after</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-002"/>
       <test>
@@ -111,6 +114,7 @@
 
    <test-case name="accumulator-006">
       <description>Pre-descent and post-descent accumulator functions - streaming</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before fn:accumulator-after streamable</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-002s"/>
       <dependencies>
@@ -129,6 +133,7 @@
 
    <test-case name="accumulator-007">
       <description>Multiple accumulators used in parallel</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip multiple-accumulators fn:accumulator-after</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-004"/>
       <test>
@@ -141,6 +146,7 @@
 
    <test-case name="accumulator-008">
       <description>Multiple accumulators used in parallel - with streaming</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip multiple-accumulators fn:accumulator-after streamable</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-004s"/>
       <dependencies>
@@ -156,6 +162,7 @@
 
    <test-case name="accumulator-009">
       <description>Error: post-descent accumulator function used in a pre-descent instruction</description>
+      <keywords>xsl:mode on-no-match-attribute deep-skip multiple-accumulators fn:accumulator-after streamable</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-004s"/>
       <test>
@@ -168,6 +175,7 @@
 
    <test-case name="accumulator-010">
       <description>Hierarchic section numbers: uses accumulator rules with phase=end</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-copy fn:accumulator-before</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-005"/>
       <dependencies/>
@@ -187,6 +195,7 @@
 
    <test-case name="accumulator-011">
       <description>Hierarchic section numbers: uses accumulator rules with phase=end. Once more with streaming.</description>
+      <keywords>xsl:mode on-no-match-attribute streamable shallow-copy streamable fn:accumulator-before</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="accumulator-005s"/>
       <dependencies>
@@ -208,6 +217,7 @@
    
    <test-case name="accumulator-012">
       <description>Accumulator matching text node</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-copy TextTest fn:accumulator-after</keywords>
       <created by="Michael Kay" on="2013-09-07"/>
       <environment ref="accumulator-005"/>
       <dependencies/>
@@ -227,6 +237,7 @@
    
    <test-case name="accumulator-013">
       <description>Accumulator matching text node - streamable</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-copy TextTest fn:accumulator-after streamable</keywords>
       <created by="Michael Kay" on="2013-09-07"/>
       <environment ref="accumulator-005s"/>
       <dependencies/>
@@ -246,6 +257,7 @@
    
    <test-case name="accumulator-014">
       <description>Local use of $value to cause confusion</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before $value</keywords>
       <created by="Michael Kay" on="2013-11-07"/>
       <environment ref="accumulator-001"/>
       <test>
@@ -258,6 +270,7 @@
    
    <test-case name="accumulator-015">
       <description>Use post-descent accumulator function</description>
+      <keywords>xsl:mode streamable post-descent non-streamable _WRONG:illegal-accumulator-streaming-non-streaming</keywords>
       <created by="Michael Kay" on="2013-12-20"/>
       <environment ref="accumulator-015s"/>
       <test>
