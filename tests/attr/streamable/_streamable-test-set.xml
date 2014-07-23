@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="streamable">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="streamable">
 
    <description>Tests streamable apply-templates and modes</description>
+   <keywords>classifying-pattern xsl:apply-templates xsl:mode streamable streamable-mode</keywords>
 
    <environment name="ot">
       <source file="ot.xml" uri="ot.xml" streaming="true">
@@ -38,16 +38,14 @@
    </environment>
 
    <environment name="grouped-transactions">
-      <source file="grouped-transactions.xml" uri="grouped-transactions.xml" streaming="true"
-         validation="strict">
+      <source file="grouped-transactions.xml" uri="grouped-transactions.xml" streaming="true" validation="strict">
          <description>Simple transaction data including list-valued attributes</description>
       </source>
       <schema file="grouped-transactions.xsd" uri="grouped-transactions.xsd"/>
    </environment>
 
    <environment name="grouped-transactions-e">
-      <source file="grouped-transactions-e.xml" uri="grouped-transactions.xml" streaming="true"
-         validation="strict">
+      <source file="grouped-transactions-e.xml" uri="grouped-transactions.xml" streaming="true" validation="strict">
          <description>Simple transaction data including list-valued attributes</description>
       </source>
       <schema file="grouped-transactions-e.xsd" uri="grouped-transactions.xsd"/>
@@ -86,6 +84,7 @@
 
    <test-case name="streamable-001">
       <description>streaming templates used to delete selected elements</description>
+      <keywords>leading-lone-slash xsl:copy striding motionless-pattern xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot"/>
       <test>
@@ -103,6 +102,7 @@
    <test-case name="streamable-002">
       <description>streaming templates used to delete selected elements. Built-in template for doc
          node.</description>
+      <keywords>xsl:copy buildin-template-rules striding motionless-pattern xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot"/>
       <test>
@@ -119,6 +119,7 @@
 
    <test-case name="streamable-003">
       <description>streaming templates used to retain selected elements.</description>
+      <keywords>xsl:copy striding motionless-pattern xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot"/>
       <test>
@@ -135,6 +136,7 @@
 
    <test-case name="streamable-004">
       <description>streaming templates used while copying attributes.</description>
+      <keywords>striding motionless-pattern leading-lone-slash streamable-identity-transform xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <test>
@@ -153,6 +155,7 @@
 
    <test-case name="streamable-005">
       <description>streaming templates used while renaming some elements.</description>
+      <keywords>attribute-axis climbing-childless motionless-pattern leading-lone-slash motionless-and-consuming streamable-identity-transform xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <test>
@@ -171,6 +174,7 @@
 
    <test-case name="streamable-006">
       <description>streaming templates getting value of attribute of context node.</description>
+      <keywords>climbing-childless motionless-pattern leading-lone-slash motionless-and-consuming streamable-identity-transform xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <test>
@@ -190,6 +194,7 @@
 
    <test-case name="streamable-007">
       <description>streaming templates applying allowed functions to the context node.</description>
+      <keywords>motionless-builtin-functions motionless-pattern ContextItemExpr motionless-and-consuming xsl:strip-space streamable-identity-transform leading-lone-slash</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <test>
@@ -206,6 +211,7 @@
 
    <test-case name="streamable-008">
       <description>create an attribute from the contents of the context node.</description>
+      <keywords>avt ContextItemExpr xsl:strip-space streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <test>
@@ -221,6 +227,7 @@
 
    <test-case name="streamable-009">
       <description>Real-life use case. Needs a variable</description>
+      <keywords>complex-use-case ContextItemExpr mode-switching xsl:copy-of grounded-variable motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -241,6 +248,7 @@
 
    <test-case name="streamable-010">
       <description>Two local variables in streaming template</description>
+      <keywords>complex-use-case grounded-variable ContextItemExpr mode-switching motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -262,6 +270,7 @@
    <test-case name="streamable-011">
       <description>Two local variables in streaming template; tests copying of attributes,
          namespaces, comments and PIs</description>
+      <keywords>grounded-variable xsl:copy-of namespace-nodes comment-nodes attribute-nodes processing-instruction-nodes motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -286,6 +295,7 @@
    <test-case name="streamable-012">
       <description>Apply templates to attributes, namespaces, comments and PIs; change
          mode</description>
+      <keywords>attribute-nodes comment-nodes processing-instruction-nodes ContextItemExpr CommentTest PITest mode-switching xsl:import-schema _IMPROVE:change-attribute-template-to-streamable climbing-childless xsl:if motionless-pattern</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -303,6 +313,7 @@
 
    <test-case name="streamable-013">
       <description>Atomize and type-check context node in streaming mode</description>
+      <keywords>ContextItemExpr type-determined-usage motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -320,6 +331,7 @@
 
    <test-case name="streamable-014">
       <description>Various ways of constructing attribute from element value</description>
+      <keywords>fn:name fn:string ContextItemExpr motionless-and-consuming motionless-pattern xsl:import-schema motionless-builtin-functions</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -342,6 +354,7 @@
 
    <test-case name="streamable-015">
       <description>Various ways of constructing attribute from element value</description>
+      <keywords>motionless-and-consuming fn:namespace-uri xsl:sequence motionless-pattern xsl:import-schema motionless-builtin-functions</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -366,6 +379,7 @@
 
    <test-case name="streamable-016">
       <description>xsl:attribute with a sequence constructor</description>
+      <keywords>xsl:attribute ContextItemExpr motionless-and-consuming fn:local-name fn:string motionless-pattern xsl:import-schema motionless-builtin-functions</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -388,6 +402,7 @@
 
    <test-case name="streamable-017">
       <description>xsl:element with a sequence constructor</description>
+      <keywords>xsl:element fn:string consuming ContextItemExpr motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -414,6 +429,7 @@
 
    <test-case name="streamable-018">
       <description>xsl:variable with a sequence constructor</description>
+      <keywords>xsl:variable grounded-variable consuming ContextItemExpr xsl:value-of motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -435,6 +451,7 @@
 
    <test-case name="streamable-019">
       <description>call position() in streaming mode</description>
+      <keywords>fn:position motionless-and-consuming attribute-axis xsl:import-schema streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -456,6 +473,7 @@
 
    <test-case name="streamable-020">
       <description>call position() in streaming mode with whitespace stripping</description>
+      <keywords>fn:position motionless-and-consuming xsl:import-schema streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -478,6 +496,7 @@
    <test-case name="streamable-021">
       <description>Streaming with xsl:result-document. Also uses position() and selective
          strip-space</description>
+      <keywords>fn:position xsl:result-document grounded-variable xsl:strip-space streamable-identity-transform motionless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -510,6 +529,7 @@
 
    <test-case name="streamable-022">
       <description>get local properties of parent node, including "instance of"</description>
+      <keywords>InstanceOfExpr motionless-builtin-functions parent-axis grounded-variable xsl:import-schema xsl:strip-space streamable-identity-transform striding climbing</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -543,6 +563,7 @@
    <test-case name="streamable-023">
       <description>get local properties of attribute of ancestor node, including "instance
          of"</description>
+      <keywords>ancestor-then-climbing ancestor-axis motionless-builtin-functions xsl:import-schema xsl:strip-space streamable-identity-transform striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -576,6 +597,7 @@
 
    <test-case name="streamable-024">
       <description>Within a streaming template, use copy-of select="path expression"</description>
+      <keywords>xsl:copy-of xsl:import-schema PathExpr streamable-identity-transform striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -593,6 +615,7 @@
 
    <test-case name="streamable-025">
       <description>Within a streaming template, use value-of select="path expression"</description>
+      <keywords>xsl:value-of PathExpr motionless-pattern xsl:import-schema streamable-identity-transform striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -614,6 +637,7 @@
 
    <test-case name="streamable-026">
       <description>Within a streaming template, use value-of(count(path expression))</description>
+      <keywords>fn:count PathExpr xsl:import-schema streamable-identity-transform striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -635,6 +659,7 @@
    <test-case name="streamable-027">
       <description>Within a streaming template, use value-of select="path expression" selecting an
          attribute</description>
+      <keywords>fn:position climbing-childless xsl:strip-space PathExpr streamable-identity-transform striding-then-climbing</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <test>
@@ -653,6 +678,7 @@
    <test-case name="streamable-028">
       <description>Within a streaming template, use value-of select="path expression" selecting
          multiple attributes</description>
+      <keywords>PathExpr climbing-childless xsl:strip-space striding-then-climbing streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <test>
@@ -669,6 +695,7 @@
    <test-case name="streamable-029">
       <description>Within a streaming template, use value-of select="path expression" counting all
          attributes</description>
+      <keywords>fn:count crawling-then-climbing climbing-childless streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="streamable-029.xsl"/>
@@ -684,6 +711,7 @@
    <test-case name="streamable-030">
       <description>Within a streaming template, use copy-of selecting both elements and
          attributes, with reordering needed.</description>
+      <keywords>xsl:copy-of InstanceOfExpr fn:count _WRONG:for-each-with-crawling-not-streamable streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-05-02" change="make the test streamable under current rules"/>
       <environment ref="mixed"/>
@@ -703,6 +731,7 @@
    <test-case name="streamable-031">
       <description>Within a streaming template, use value-of with multiple elements and attributes,
          and with re-ordering needed. TODO - only streamable with Saxon extensions enabled.</description>
+      <keywords>fn:position crawling-then-climbing crawling-atomizing motionless-pattern xsl:if streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <dependencies>
@@ -727,6 +756,7 @@
       <description>Within a streaming template, use value-of with overlapping elements
       TODO: Not streamable under the current (Nov 2013) rules, cannot use a crawling operand with absorption posture
       </description>
+      <keywords>crawling-atomizing streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mixed"/>
       <test>
@@ -746,6 +776,7 @@
    <test-case name="streamable-033">
       <description>within a streaming template, use value-of with overlapping elements and
          attributes</description>
+      <keywords>climbing-childless striding streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-05-02" change="Make streamable under current rules"/>
       <environment ref="mixed"/>
@@ -766,6 +797,7 @@
    <test-case name="streamable-034">
       <description>Within a streaming template, compute sum of a set of descendant
          attributes</description>
+      <keywords>crawling-then-climbing climbing-childless streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot2"/>
       <test>
@@ -783,6 +815,7 @@
    <test-case name="streamable-035">
       <description>Within a streaming template, compute average and total of a list-valued attribute
          value</description>
+      <keywords>motionless climbing-childless streamable-identity-transform xsl:import-schema fn:avg fn:sum</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -822,6 +855,7 @@
    <test-case name="streamable-036">
       <description>Within a streaming template, compute total of a list-valued attribute
          value</description>
+      <keywords>striding-then-climbing fn:sum streamable-identity-transform xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -840,6 +874,7 @@
    <test-case name="streamable-037">
       <description>Within a streaming template, compute total with pathological mixed content
          (overlapping numbers)</description>
+      <keywords>crawling-atomizing fn:sum motionless-pattern</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="overlapping"/>
       <test>
@@ -854,6 +889,7 @@
    <test-case name="streamable-038">
       <description>Within a streaming template, compute average of a list-valued attribute
          value</description>
+      <keywords>striding-then-climbing fn:avg streamable-identity-transform xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -872,6 +908,7 @@
    <test-case name="streamable-039">
       <description>Within a streaming template, compute average with a pathological source document
          containing overlapping numbers</description>
+      <keywords>fn:avg crawling-atomizing motionless-pattern</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="overlapping"/>
       <test>
@@ -886,6 +923,7 @@
    <test-case name="streamable-040">
       <description>Within a streaming template, compute total of an empty sequence of attribute
          values</description>
+      <keywords>fn:sum striding-then-climbing streamable-identity-transform xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -904,6 +942,7 @@
    <test-case name="streamable-041">
       <description>Within a streaming template, compute starts-with on a singleton child
          node</description>
+      <keywords>fn:starts-with striding streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <dependencies>
@@ -921,6 +960,7 @@
 
    <test-case name="streamable-042">
       <description>Within a streaming template, test existence of a descendant node</description>
+      <keywords>fn:exists crawling streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -942,6 +982,7 @@
    <test-case name="streamable-043">
       <description>Within a streaming template, test non-existence of a descendant
          node</description>
+      <keywords>fn:empty crawling streamable-identity-transform</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -962,6 +1003,7 @@
 
    <test-case name="streamable-044">
       <description>Within a streaming template, use string-join with a path expression</description>
+      <keywords>fn:string-join striding streamable-identity-transform xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -983,6 +1025,7 @@
    <test-case name="streamable-045">
       <description>Within a streaming template, get typed value of context item into a
          variable</description>
+      <keywords>fn:sum fn:avg grounded-variable ContextItemExpr streamable-identity-transform xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions-e"/>
       <dependencies>
@@ -1005,6 +1048,7 @@
 
    <test-case name="streamable-046">
       <description>Within a streaming template, process attributes</description>
+      <keywords>climbing-pattern xsl:copy climbing-childless motionless-pattern</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1020,6 +1064,7 @@
    <test-case name="streamable-047">
       <description>Within a streaming template, xsl:apply-templates selecting descendant
          nodes</description>
+      <keywords>striding ContextItemExpr motionless-pattern PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1035,6 +1080,7 @@
    <test-case name="streamable-048">
       <description>Within a streaming template, xsl:apply-templates selecting descendant
          nodes</description>
+      <keywords>striding PathExpr ContextItemExpr motionless-pattern fn:upper-case</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1050,6 +1096,7 @@
    <test-case name="streamable-049">
       <description>Within a streaming template, streamed value as second argument of a
          function</description>
+      <keywords>fn:starts-with ContextItemExpr striding motionless-pattern</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1064,6 +1111,7 @@
 
    <test-case name="streamable-050">
       <description>Within a streaming template, arithmetic on result of streamed value</description>
+      <keywords>fn:string-length ContextItemExpr striding motionless-pattern</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1079,6 +1127,7 @@
    <test-case name="streamable-051">
       <description>Within a streaming template, a more elaborate expression using the result of the
          streamed value</description>
+      <keywords>fn:upper-case striding ContextItemExpr IfExpr motionless-pattern</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1094,6 +1143,7 @@
    <test-case name="streamable-052">
       <description>Within a streaming template, a more elaborate expression using the result of the
          streamed value</description>
+      <keywords>PathExpr striding fn:number ContextItemExpr motionless-pattern GeneralComp</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1108,6 +1158,7 @@
 
    <test-case name="streamable-053">
       <description>Within a streaming template, use position()</description>
+      <keywords>striding xsl:value-of fn:position motionless-pattern</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="modified test to make it guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1122,6 +1173,7 @@
 
    <test-case name="streamable-054">
       <description>Within a streaming template, use min() over schema-typed value</description>
+      <keywords>fn:min ContextItemExpr striding streamable-identity-transform xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions-e"/>
       <dependencies>
@@ -1141,6 +1193,7 @@
 
    <test-case name="streamable-055">
       <description>Within a streaming template, use max() over schema-typed value</description>
+      <keywords>fn:max striding PathExpr motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions-e"/>
       <dependencies>
@@ -1159,6 +1212,7 @@
    <test-case name="streamable-056">
       <description>Within a streaming template, calculate max() of numeric values including some
          from streamed document and others supplied literally</description>
+      <keywords>fn:max striding ParenthesizedExpr motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions-e"/>
       <dependencies>
@@ -1177,6 +1231,7 @@
    <test-case name="streamable-057">
       <description>Within a streaming template, use predicate and parent qualifier in match
          pattern</description>
+      <keywords>fn:max avt climbing-childless motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -1195,6 +1250,7 @@
 
    <test-case name="streamable-058">
       <description>Within a streaming template, use predicate in select expression</description>
+      <keywords>motionless-predicate ValueComp striding climbing-childless motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -1214,6 +1270,7 @@
    <test-case name="streamable-059">
       <description>Within a streaming template, use distinct-values() on the streamed
          input</description>
+      <keywords>fn:distinct-values crawling-then-climbing climbing-childless motionless-pattern xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -1234,6 +1291,7 @@
    <test-case name="streamable-060">
       <description>within a streaming template, use apply-templates to select overlapping
          elements</description>
+      <keywords>XTSE3430 crawling</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="overlapping"/>
@@ -1249,6 +1307,7 @@
    <test-case name="streamable-061">
       <description>Within a streaming template, use apply-templates to select overlapping
          elements</description>
+      <keywords>XTSE3430 crawling</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="sections"/>
@@ -1264,6 +1323,7 @@
    <test-case name="streamable-062">
       <description>Within a streaming template, use apply-templates within an attribute constructor.
          Also tests mode="#current"</description>
+      <keywords>XTSE3430 crawling _IMPROVE:fix-description</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="sections"/>
@@ -1278,6 +1338,7 @@
 
    <test-case name="streamable-063">
       <description>Within a streaming template, apply-templates with atomic parameters</description>
+      <keywords>xsl:apply-templates xsl:with-param grounded-parameter IntersectExceptExpr climbing-childless xsl:copy</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="make test guaranteed streamable under current rules"/>
       <environment ref="mixed"/>
@@ -1292,6 +1353,7 @@
 
    <test-case name="streamable-064">
       <description>Within a streaming template, apply-templates with tunnel parameters</description>
+      <keywords>grounded-parameter tunnel-parameter xsl:apply-templates xsl:with-param</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mixed"/>
       <test>
@@ -1306,6 +1368,7 @@
    <test-case name="streamable-065">
       <description> Within a streaming template, apply-templates with node-valued parameters. Also
          uses a template in both streaming and non-streaming modes </description>
+      <keywords>grounded-parameter tunnel-parameter xsl:apply-templates xsl:with-param mode-switching</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source file="mixed.xml" uri="mixed.xml" streaming="true"/>
@@ -1323,6 +1386,7 @@
    <test-case name="streamable-066">
       <description> Within a streaming template, apply-templates with node-valued parameters.
          Processes two documents in streaming mode </description>
+      <keywords>grounded-parameter xsl:with-param tunnel-parameter xsl:apply-templates multiple-streaming-input</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source file="mixed.xml" uri="mixed.xml" streaming="true"/>
@@ -1339,6 +1403,7 @@
 
    <test-case name="streamable-071">
       <description>Within a streaming template, use for-each to process the subtree</description>
+      <keywords>xsl:for-each crawling XTSE3430 crawling-then-striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="loans"/>
@@ -1353,6 +1418,7 @@
 
    <test-case name="streamable-072">
       <description>Within a streaming template, use nested for-each instructions</description>
+      <keywords>xsl:for-each crawling XTSE3430 crawling-then-striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="loans"/>
@@ -1367,6 +1433,7 @@
 
    <test-case name="streamable-073">
       <description>Within a streaming template, capture for-each output in an attribute</description>
+      <keywords>fn:outermost xsl:for-each crawling-then-striding fn:position fn:upper-case ContextItemExpr nested-for-each</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1384,6 +1451,7 @@
 
    <test-case name="streamable-074">
       <description>Within a streaming template, compute count over the atomized value</description>
+      <keywords>fn:data avt climbing-childless attribute-axis streamable-identity-transform xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -1401,6 +1469,7 @@
 
    <test-case name="streamable-075">
       <description>Within a streaming template, compute count over the atomized value</description>
+      <keywords>fn:data striding-then-climbing climbing-childless attribute-axis xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -1419,6 +1488,7 @@
    <test-case name="streamable-076">
       <description>Within a streaming template, for-each instruction whose body doesn't drill
          down</description>
+      <keywords>crawling-then-climbing xsl:for-each crawling fn:count</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -1437,6 +1507,7 @@
    <test-case name="streamable-077">
       <description>Within a streaming template, for-each instruction whose select expression depends
          on the context but which doesn't select streamed nodes</description>
+      <keywords>fn:count crawling xsl:for-each</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1462,6 +1533,7 @@
    <test-case name="streamable-078">
       <description>Within a streaming template, for-each instruction selecting the ancestors of a
          streamed node</description>
+      <keywords>xsl:for-each ancestor-axis climbing-then-grounded fn:name</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1479,6 +1551,7 @@
    <test-case name="streamable-079">
       <description>Within a streaming template, for-each instruction selecting overlapping
          elements</description>
+      <keywords>xsl:for-each crawling XTSE3430 crawling-then-striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="not guaranteed streamable under current rules"/>
       <environment ref="overlapping"/>
@@ -1494,6 +1567,7 @@
    <test-case name="streamable-080">
       <description>Within a streaming template, for-each instruction selecting the attributes of
          ancestors of a streamed node</description>
+      <keywords>ancestor-axis fn:name xsl:for-each climbing-then-grounded climbing-childless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1508,6 +1582,7 @@
    <test-case name="streamable-081">
       <description>Within a streaming template, use lang() to access attributes of
          ancestors</description>
+      <keywords>fn:lang</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1523,6 +1598,7 @@
    <test-case name="streamable-082">
       <description>within a streaming template, use xsl:if for conditional processing action depends
          on down-content, condition does not</description>
+      <keywords>fn:lang striding AxisStep</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1537,6 +1613,7 @@
    <test-case name="streamable-083">
       <description>within a streaming template, use xsl:choose for conditional processing action
          depends on down-content, condition does not</description>
+      <keywords>fn:lang choice-operand-group striding xsl:choose xsl:when xsl:otherwise AxisStep</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1551,6 +1628,7 @@
    <test-case name="streamable-084">
       <description>within a streaming template, use if/then/else for conditional processing action
          depends on down-content, condition does not</description>
+      <keywords>IfExpr fn:lang choice-operand-group striding AxisStep</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1565,6 +1643,7 @@
    <test-case name="streamable-085">
       <description>within a streaming template, use xsl:sequence within an element
          constructor</description>
+      <keywords>lre xsl:sequence striding AxisStep</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1583,6 +1662,7 @@
    <test-case name="streamable-086">
       <description>within a streaming template, use if/then/else for conditional processing action
          depends on down-content, condition does not</description>
+      <keywords>fn:lang IfExpr choice-operand-group striding AxisStep lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1597,6 +1677,7 @@
    <test-case name="streamable-087">
       <description>within a streaming template, use if/then/else for conditional processing action
          depends on down-content, condition does not</description>
+      <keywords>fn:lang IfExpr PathExpr choice-operand-group lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1611,6 +1692,7 @@
    <test-case name="streamable-088">
       <description> within a streaming template, use xsl:choose for conditional processing condition
          uses down-selection; action does not </description>
+      <keywords>_IMPROVE:fix-description ancestor-axis climbing-childless striding xsl:if GeneralComp</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1625,6 +1707,7 @@
    <test-case name="streamable-089">
       <description>within a streaming template, evaluate a general comparison on streamed
          nodes</description>
+      <keywords>GeneralComp striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1640,6 +1723,7 @@
    <test-case name="streamable-090">
       <description> within a streaming template, evaluate a general comparison on streamed nodes
          (same as streamable-089 with the operands of "=" reversed) </description>
+      <keywords>GeneralComp striding</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1655,6 +1739,7 @@
    <test-case name="streamable-091">
       <description>Within a streaming template, use lang() to access attributes of
          ancestors</description>
+      <keywords>Expr striding PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1669,6 +1754,7 @@
    <test-case name="streamable-092">
       <description>Within a streaming template, use lang() to access attributes of
          ancestors</description>
+      <keywords>xsl:value-of striding PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1683,6 +1769,7 @@
    <test-case name="streamable-093">
       <description>Within a streaming template, use lang() to access attributes of
          ancestors</description>
+      <keywords>AxisStep xsl:sequence lre</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <test>
@@ -1700,6 +1787,7 @@
 
    <test-case name="streamable-094">
       <description>apply-templates in the form doc(x)//x</description>
+      <keywords>fn:outermost crawling-then-striding xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="use outermost() to make it guaranteed streamable under current rules"/>
       <environment ref="ot"/>
@@ -1721,6 +1809,7 @@
    <test-case name="streamable-097">
       <description>within a streaming template, evaluate a general comparison on streamed
          nodes</description>
+      <keywords>striding-then-grounded xs:date climbing-childless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <test>
@@ -1734,6 +1823,7 @@
 
    <test-case name="streamable-098">
       <description>within a streaming template, evaluate a general comparison on streamed nodes</description>
+      <keywords>striding-then-grounded xs:decimal climbing-childless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <test>
@@ -1748,6 +1838,7 @@
    <test-case name="streamable-099">
       <description>within a streaming template, evaluate a general comparison on streamed
          nodes</description>
+      <keywords>xs:decimal striding-then-climbing climbing-then-grounded climbing-childless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <test>
@@ -1762,6 +1853,7 @@
    <test-case name="streamable-100">
       <description>within a streaming template, evaluate a quantified expression (some $x...
          satisfies) on streamed nodes</description>
+      <keywords>QuantifiedExpr _WRONG:not-streamable _WRONG:streamability-rules-incorrect climbing-childless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <test>
@@ -1776,6 +1868,7 @@
    <test-case name="streamable-101">
       <description>within a streaming template, evaluate a quantified expression (some $x...
          satisfies) on streamed nodes</description>
+      <keywords>_WRONG:not-streamable _WRONG:streamability-rules-incorrect QuantifiedExpr climbing-childless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <test>
@@ -1790,6 +1883,7 @@
    <test-case name="streamable-102">
       <description>within a streaming template, evaluate a quantified expression (every $x...
          satisfies) on streamed nodes</description>
+      <keywords>_WRONG:not-streamable _WRONG:streamability-rules-incorrect QuantifiedExpr climbing-childless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <test>
@@ -1803,6 +1897,7 @@
 
    <test-case name="streamable-103">
       <description>within a streaming template, xsl:for-each-group group-adjacent.</description>
+      <keywords>fn:current-group fn:current-grouping-key AxisStep xsl:for-each-group group-adjacent-attribute</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="streamable-103.xsl"/>
@@ -1829,6 +1924,7 @@
    <test-case name="streamable-104">
       <description>within a streaming template, use positional predicate in select
          expression</description>
+      <keywords>fn:max AxisStep positional-predicate climbing-childless xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="grouped-transactions"/>
       <dependencies>
@@ -1848,6 +1944,7 @@
    <test-case name="streamable-105">
       <description>within a streaming template, use positional predicate in select
          expression</description>
+      <keywords>_IMPROVE:fix-description AxisStep fn:position GeneralComp xsl:if xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>
       <dependencies>
@@ -1872,6 +1969,7 @@
    <test-case name="streamable-106">
       <description>within a streaming template, use apply-templates to select overlapping elements,
          with a built-in template rule using shallow-copy</description>
+      <keywords>crawling XTSE3430 on-no-match-attribute shallow-copy</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="not streamable under current rules"/>
       <environment ref="overlapping"/>      
@@ -1886,6 +1984,7 @@
 
    <test-case name="streamable-107">
       <description>Error case - reads context node twice</description>
+      <keywords>striding multiple-consuming-expressions XTSE3430 xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>      
       <dependencies>
@@ -1904,6 +2003,7 @@
    <test-case name="streamable-109">
       <description>Access two children elements in condition. Error - reads context node
          twice</description>
+      <keywords>GeneralComp AndExpr multiple-consuming-expressions XTSE3430 xsl:if xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>      
       <dependencies>
@@ -1922,6 +2022,7 @@
    <test-case name="streamable-110">
       <description>within a streaming template, for-each instruction whose select expression depends
          on the context but which doesn't select streamed nodes</description>
+      <keywords>_IMPROVE:fix-description variable-bound-to-streamed-node XTSE3430</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="loans"/>      
       <dependencies>
@@ -1940,6 +2041,7 @@
    <test-case name="streamable-111">
       <description>streaming templates used to delete selected elements. Variant of test using
          streaming on principal source doc: supplies source doc as context item</description>
+      <keywords>initial-streaming-mode _IMPROVE:cleanup-redundant-code leading-lone-slash motionless-pattern xsl:copy xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <test>
@@ -1956,6 +2058,7 @@
 
    <test-case name="streamable-112">
       <description>streaming filter expression applied to computed sequence</description>
+      <keywords>fn:outermost crawling-then-striding fn:tokenize predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="use outermost() to make this streamable under current rules"/>
       <environment ref="ot-as-context"/>
@@ -1976,6 +2079,7 @@
 
    <test-case name="streamable-113">
       <description>streaming positional filter expression applied to computed sequence</description>
+      <keywords>fn:outermost crawling-then-striding fn:tokenize fn:position predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-29" change="use outermost() to make this streamable under current rules"/>
       <environment ref="ot-as-context"/>
@@ -1997,6 +2101,7 @@
 
    <test-case name="streamable-114">
       <description>downward-selecting for expression in a streamable template</description>
+      <keywords>ForExpr crawling variable-bound-to-streamed-node XTSE3430</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-05-02" change="mark as non-streamable according to current W3C rules"/>
       <environment ref="xmark"/>
@@ -2021,6 +2126,7 @@
    <test-case name="streamable-115">
       <description>xsl:for-each selecting mixed element/text nodes in a streamable
          template</description>
+      <keywords>xsl:for-each striding xsl:value-of ContextItemExpr initial-streaming-mode _IMPROVE:cleanup-redundant-code</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mixed"/>
       <test>
@@ -2045,6 +2151,7 @@
    <test-case name="streamable-116">
       <description>Cannot stream on primary input doc if global variables refer to context
          item</description>
+      <keywords>_IMPROVE:fix-description global-variable variable-bound-to-streamed-node initial-streaming-mode XPDY0002 _WRONG:wrong-error-code xsl:copy xsl:strip-space</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2063,6 +2170,7 @@
    <test-case name="streamable-117">
       <description>Cannot stream on primary input doc if global variables refer to context
          item</description>
+      <keywords>_IMPROVE:fix-description crawling XTSE3430 xsl:apply-templates leading-double-slash</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2080,6 +2188,7 @@
    <test-case name="streamable-118">
       <description>Cannot stream on primary input doc if global variables refer to context
          item</description>
+      <keywords>_IMPROVE:fix-description crawling XTSE3430 initial-streaming-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2098,6 +2207,7 @@
    <test-case name="streamable-119">
       <description>Cannot stream on primary input doc if global variables refer to context
          item</description>
+      <keywords>_IMPROVE:fix-description crawling XTSE3430 initial-streaming-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2116,6 +2226,7 @@
    <test-case name="streamable-120">
       <description>Cannot stream on primary input doc if global variables refer to context
          item</description>
+      <keywords>_IMPROVE:fix-description xsl:sort XTSE3430 _IMPROVE:double-error-situation crawling initial-streaming-mode _IMPROVE:cleanup-redundant-code</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2133,6 +2244,7 @@
    <test-case name="streamable-121">
       <description>within a streaming template, downwards-selecting predicate in match
          pattern</description>
+      <keywords>free-ranging-pattern predicate XTSE3430 initial-streaming-mode _IMPROVE:cleanup-redundant-code xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2151,6 +2263,7 @@
    <test-case name="streamable-122">
       <description>within a streaming template, preceding-sibling within predicate in match
          pattern</description>
+      <keywords>free-ranging-pattern predicate XTSE3430 initial-streaming-mode _IMPROVE:cleanup-redundant-code xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2168,6 +2281,7 @@
 
    <test-case name="streamable-123">
       <description>within a streaming template, positional predicate in match pattern</description>
+      <keywords>free-ranging-pattern XTSE3430 _IMPROVE:cleanup-redundant-code initial-streaming-mode xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2185,6 +2299,7 @@
 
    <test-case name="streamable-124">
       <description>apply-templates with drill-down expression in a template parameter</description>
+      <keywords>_IMPROVE:cleanup-redundant-code variable-bound-to-streamed-node XTSE3430 xsl:with-param tunnel-parameter xsl:apply-templates</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2203,6 +2318,7 @@
    <test-case name="streamable-125">
       <description>within a streaming template, passing a streamed node as a parameter is not
          allowed, because we can't tell where the callee will navigate</description>
+      <keywords>_IMPROVE:cleanup-redundant-code variable-bound-to-streamed-node XTSE3430 climbing-childless xsl:with-param tunnel-parameter xsl:apply-templates</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2221,6 +2337,7 @@
    <test-case name="streamable-126">
       <description>within a streaming template, for-each instruction whose body does drill down but
          whose select expression does not</description>
+      <keywords>xsl:for-each initial-streaming-mode _IMPROVE:cleanup-redundant-code XTSE3430 climbing parent-axis</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2239,6 +2356,7 @@
    <test-case name="streamable-127">
       <description>within a streaming template, disallow navigation up to ancestors and then down
          again</description>
+      <keywords>initial-streaming-mode _IMPROVE:cleanup-redundant-code xsl:for-each ancestor-axis XTSE3430 climbing</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2258,6 +2376,7 @@
       <description>within a streaming template, use if/then/else for conditional processing Action
          depends on down-content, condition does not. Invalid because the template returns nodes from
          the streamed document</description>
+      <keywords>xsl:template xsl:sequence IfExpr XTSE3430 template-returning-nodes _IMPROVE:cleanup-redundant-code</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ot-as-context"/>
       <dependencies>
@@ -2276,6 +2395,7 @@
    <test-case name="streamable-129">
       <description>within a streaming template, use a quantified expression that binds a variable to
          a streamed node and then does an illicit navigation using that variable.</description>
+      <keywords>initial-streaming-mode variable-bound-to-streamed-node QuantifiedExpr _IMPROVE:cleanup-redundant-code _IMPROVE:any-binding-to-node-is-illegal XTSE3430 climbing-childless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <dependencies>
@@ -2293,6 +2413,7 @@
 
    <test-case name="streamable-130">
       <description>streaming positional filter expression using last()</description>
+      <keywords>fn:outermost crawling-then-striding fn:tokenize fn:position predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2012-11-14" change="this example is now streamable"/>
       <modified by="Michael Kay" on="2014-06-29" change="use outermost() to make this streamable under current rules"/>
@@ -2311,6 +2432,7 @@
 
    <test-case name="streamable-134">
       <description>streaming template containing xsl:result-document with motionless content</description>
+      <keywords>xsl:result-document avt fn:name motionless</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="transactions"/>
       <test>
