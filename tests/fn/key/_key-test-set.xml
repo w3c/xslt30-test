@@ -8,6 +8,7 @@
    <environment name="key101">
       <source role="." file="key101.xml"/>
    </environment>
+
    <environment name="key105">
       <source role="." file="key105.xml"/>
    </environment>
@@ -81,6 +82,11 @@
 <b>Phil</b>
 </a>]]></content>
       </source>
+   </environment>
+   
+   <environment name="key285">
+      <source role="." file="key101.xml"/>
+      <stylesheet file="key-085.xsl"/>
    </environment>
    
 
@@ -1543,6 +1549,46 @@ Namespace "" used in 3
       </test>
       <result>
          <assert-xml><![CDATA[<o><elem type="a"><active>true</active><dataset><field1>x</field1><field2>x</field2><field3><field4>x</field4><field5>x</field5></field3></dataset></elem></o>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="key-085a">
+      <description>
+        Test a key whose match pattern depends on a parameter. 
+        See Saxon bug https://saxonica.plan.io/issues/1968
+        This test and key-085b both work when run individually, but in Saxon 9.5 the second
+        test fails because the index is built based on the original value of the parameter, 
+        and is then re-used in the second test.
+      </description>
+      <created by="Michael Kay" on="2014-06-04"/>
+      <environment ref="key285">
+         <source role="." file="key306.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <param name="min" select="8"/>
+      </test>
+      <result>
+         <assert>/out = "Cambridge Manchester Pittsfield Rochester Springfield"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="key-085b">
+      <description>Test a key whose match pattern depends on a parameter. See Saxon bug https://saxonica.plan.io/issues/1968</description>
+      <created by="Michael Kay" on="2014-06-04"/>
+      <environment ref="key285">
+         <source role="." file="key306.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <param name="min" select="2"/>
+      </test>
+      <result>
+         <assert>/out = "Amherst Auburn Cambridge Grafton Hudson Lincoln Manchester Pittsfield Rochester Salem Springfield"</assert>
       </result>
    </test-case>
 </test-set>

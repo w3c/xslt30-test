@@ -87,7 +87,7 @@
       </xsl:stream>
     </xsl:template> 
     
-    <!-- boolean() with a striding(?) union -->
+    <!-- boolean() with a crawling (striding | striding => crawling) union -->
     
     <xsl:template name="c-009" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
@@ -236,7 +236,6 @@
     <!-- boolean() on an xs:anyURI -->
     
     <xsl:template name="c-104" use-when="$RUN">
-      <xsl:variable name="b" select="current-date() gt xs:date('1900-01-01')"/>
       <xsl:stream href="../docs/big-transactions.xml">
         <out>
           <xsl:value-of select="boolean(account/transaction[1]/base-uri(.))"/>

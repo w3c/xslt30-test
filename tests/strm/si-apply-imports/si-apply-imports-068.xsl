@@ -21,13 +21,13 @@
   </xsl:template>
   
   <xsl:template match="/">
-      <xsl:apply-templates select=".//book">
+      <xsl:apply-templates select="outermost(.//book)">
         <xsl:with-param name="q" select="23" tunnel="yes"/> 
       </xsl:apply-templates>
   </xsl:template>
   
   <xsl:template match="bookcoll | tstmt | book">
-    <xsl:apply-templates select=".//bktshort"/>
+    <xsl:apply-templates select="outermost(.//bktshort)"/>
   </xsl:template>
   
   <xsl:template match="bktshort">

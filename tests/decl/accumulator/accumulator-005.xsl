@@ -4,15 +4,17 @@
   exclude-result-prefixes="xs f" version="3.0">
 
   <!-- Get post-descent value of accumulator -->
+  
+  <xsl:param name="streamable" static="yes" select="'no'"/>
 
   <xsl:accumulator name="f:figNr" as="xs:decimal" initial-value="0"
-    streamable="no">
+    _streamable="{$streamable}">
     <xsl:accumulator-rule match="chap" new-value="0"/>
     <xsl:accumulator-rule match="fig" new-value="$value + 1"/>
     <xsl:accumulator-rule match="diag" new-value="$value + 0.5"/>
   </xsl:accumulator>
 
-  <xsl:mode streamable="no" on-no-match="shallow-skip"/>
+  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip"/>
   <xsl:template match="fig">
     <pix>
       <p>Figure <xsl:value-of select="accumulator-before('f:figNr')"/> start</p>

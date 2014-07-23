@@ -4,16 +4,18 @@
   exclude-result-prefixes="xs f" version="3.0">
 
   <!-- Use accumulators to match text nodes -->
+  
+  <xsl:param name="streamable" static="yes" select="'no'"/>
 
   <xsl:accumulator name="f:last-p" 
   					as="xs:string" 
   					initial-value="''"
-  					streamable="no">
+  					_streamable="{$streamable}">
     <xsl:accumulator-rule match="section/p/text()" new-value="string(.)"/>
   </xsl:accumulator>
 
 
-  <xsl:mode streamable="no" on-no-match="shallow-copy"/>
+  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-copy"/>
 
   <xsl:template match="section">
     <xsl:apply-templates/>
