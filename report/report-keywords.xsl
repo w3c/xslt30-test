@@ -7,6 +7,9 @@
     exclude-result-prefixes="xs f math"
     xpath-default-namespace="http://www.w3.org/2012/10/xslt-test-catalog" 
     version="3.0">
+    
+    <!-- import needed? -->
+    <xsl:import href="_report-package.xsl" use-when="false()" />
 
     <xsl:output indent="yes"/>
 
