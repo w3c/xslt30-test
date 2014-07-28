@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:j="http://www.w3.org/2013/XSL/json">
     <xsl:param name="options.escape" select="map{'unescape':false()}"/>
     <xsl:param name="options.validate" select="map{'validate':true()}"/>
-    
-    <xsl:param name="options.rfc" select="map{'spec':'RFC4627'}"/>
-    <xsl:param name="options.ecma" select="map{'spec':'ECMA-262'}"/>
-    
+
+    <!--<xsl:param name="options.rfc" select="map{'spec':'RFC4627'}"/>
+    <xsl:param name="options.ecma" select="map{'spec':'ECMA-262'}"/>-->
+
     <xsl:param name="s0.map" select="'{}'"/>
     <xsl:param name="s0.array" select="'[]'"/>
     <xsl:param name="s1.number" select="'[1]'"/>
@@ -13,14 +14,14 @@
     <xsl:param name="s1.true" select="'[true]'"/>
     <xsl:param name="s1.false" select="'[false]'"/>
     <xsl:param name="s1.null" select="'[null]'"/>
-    
-    
+
     <xsl:param name="s2" select="'{&#34;x&#34;:1, &#34;y&#34;:[1,2,3]}'"/>
-    
+
     <xsl:param name="escape.1" select="'[&#34;Data with \&#34; within it&#34;]'"/>
     <xsl:param name="escape.2"
         select="'{&#34;Key \&#34; with quote&#34;:&#34;Data with \&#34; within it&#34;}'"/>
-    
+
+
     <xsl:template name="json-to-xml-001">
         <xsl:variable name="metadata">
             <description>Empty object as document-node</description>
@@ -194,5 +195,104 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml(unparsed-text('escapeText.json')) "/>
+    </xsl:template>
+
+    <!-- Escaping tests -->
+    <xsl:template name="json-to-xml-escape-001">
+        <xsl:variable name="metadata">
+            <description>Escaped quote string</description>
+            <created by="John Lumley" on="2013-10-01"/>
+            <environment ref="JSON-XML"/>
+        </xsl:variable>
+        <xsl:copy-of select=" json-to-xml($escape.1)//j:string "/>
+        <xsl:variable name="expected-results">
+            <test> json-to-xml($escape.1)//j:string</test>
+            <result>
+                <all-of>
+                    <!--<assert-count>1</assert-count>
+                    <assert-type>element(Q{http://www.w3.org/2013/XSL/json}string)</assert-type>
+                    <assert-string-value>Data with " within it</assert-string-value>
+                    <any-of>
+                        <assert>empty($result/@escaped)</assert>
+                        <assert>$result/@escaped eq "false"</assert>
+                    </any-of>
+                    <any-of>
+                        <assert>empty($result/@escaped-key)</assert>
+                        <assert>$result/@escaped-key eq "false"</assert>
+                    </any-of>-->
+                </all-of>
+            </result>
+        </xsl:variable>
+    </xsl:template>
+    <xsl:template name="json-to-xml-escape-002">
+        <xsl:variable name="metadata">
+            <description>Escaped quote and key string</description>
+            <created by="John Lumley" on="2013-10-01"/>
+            <environment ref="JSON-XML"/>
+        </xsl:variable>
+        <xsl:copy-of select=" json-to-xml($escape.2)//j:string "/>
+        <xsl:variable name="expected-results">
+            <test> json-to-xml($escape.2)//j:string</test>
+            <result>
+                <all-of>
+                    <!--<assert-count>1</assert-count>
+                    <assert-type>element(Q{http://www.w3.org/2013/XSL/json}string)</assert-type>
+                    <assert-string-value>Data with " within it</assert-string-value>
+                    <assert>$result/@key eq 'Key " with quote'</assert>
+                    <any-of>
+                        <assert>empty($result/@escaped)</assert>
+                        <assert>$result/@escaped eq "false"</assert>
+                    </any-of>
+                    <any-of>
+                        <assert>empty($result/@escaped-key)</assert>
+                        <assert>$result/@escaped-key eq "false"</assert>
+                    </any-of>-->
+                </all-of>
+            </result>
+        </xsl:variable>
+    </xsl:template>
+    <xsl:template name="json-to-xml-escape-003">
+        <xsl:variable name="metadata">
+            <description>Escaped quote string - remaining escaped</description>
+            <created by="John Lumley" on="2013-10-01"/>
+            <environment ref="JSON-XML"/>
+        </xsl:variable>
+        <xsl:copy-of select=" json-to-xml($escape.1,$options.escape)//j:string "/>
+        <xsl:variable name="expected-results">
+            <test> json-to-xml($escape.1,$options.escape)//j:string</test>
+            <result>
+                <!-- <all-of>
+                    <assert-count>1</assert-count>
+                    <assert-type>element(Q{http://www.w3.org/2013/XSL/json}string)</assert-type>
+                    <assert-string-value>Data with \" within it</assert-string-value>
+                    <assert>$result/@escaped eq "true"</assert>
+                    <any-of>
+                        <assert>empty($result/@escaped-key)</assert>
+                        <assert>$result/@escaped-key eq "false"</assert>
+                    </any-of>
+                </all-of>-->
+            </result>
+        </xsl:variable>
+    </xsl:template>
+    <xsl:template name="json-to-xml-escape-004">
+        <xsl:variable name="metadata">
+            <description>Escaped quote string and key - remaining escaped</description>
+            <created by="John Lumley" on="2013-10-01"/>
+            <environment ref="JSON-XML"/>
+        </xsl:variable>
+        <xsl:copy-of select=" json-to-xml($escape.2,$options.escape)//j:string "/>
+        <xsl:variable name="expected-results">
+            <test> json-to-xml($escape.2,$options.escape)//j:string</test>
+            <result>
+                <!--<all-of>
+                    <assert-count>1</assert-count>
+                    <assert-type>element(Q{http://www.w3.org/2013/XSL/json}string)</assert-type>
+                    <assert-string-value>Data with \" within it</assert-string-value>
+                    <assert>$result/@key eq 'Key \" with quote'</assert>
+                    <assert>$result/@escaped eq "true"</assert>
+                    <assert>$result/@escaped-key eq "true"</assert>
+                </all-of>-->
+            </result>
+        </xsl:variable>
     </xsl:template>
 </xsl:stylesheet>
