@@ -14,9 +14,9 @@
     <xsl:output indent="no" />
     
     <!-- provide a test location base-uri with a trailing slash -->
-    <xsl:param name="test-set" select="'try'" />
-    <xsl:param name="test-case" select="'try-018'" />
-    <xsl:param name="show-full-xslt" select="'true'" />
+    <xsl:param name="test-set" select="'sf-insert-before'" />
+    <xsl:param name="test-case" select="'sf-insert-before-001'" />
+    <xsl:param name="show-full-xslt" select="'false'" />
     
     <xsl:template name="main">
         <xsl:text>&#xA;</xsl:text>

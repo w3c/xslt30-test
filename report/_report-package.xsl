@@ -3,6 +3,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:f="http://exselt.net/local"
+    xmlns:cat="http://www.w3.org/2012/10/xslt-test-catalog"
     xpath-default-namespace="http://www.w3.org/2012/10/xslt-test-catalog"
     exclude-result-prefixes="xs"
     version="3.0">
@@ -116,10 +117,14 @@
     -->
     <xsl:function name="f:keyword-hints">
         <xsl:param name="entrypoint" />
-        <xsl:attribute name="keyword-hints" use-when="true()">
+        <xsl:variable name="keyword-hints">
             <xsl:apply-templates select="document($keyword-hints-input)" mode="keywords">
                 <xsl:with-param name="entrypoint" select="$entrypoint" tunnel="yes" />
-            </xsl:apply-templates>                
+            </xsl:apply-templates>    
+        </xsl:variable>
+        
+        <xsl:attribute name="keyword-hints" use-when="true()">
+            <xsl:value-of select="distinct-values($keyword-hints/tokenize(., ' '))" />
         </xsl:attribute>
     </xsl:function>
     
@@ -127,16 +132,24 @@
         <xsl:variable name="keyword-hints">
             <xsl:apply-templates select="*/hint[not(@active eq 'no')]" mode="#current" />        
         </xsl:variable>
+        <xsl:variable name="keyword-similars">
+            <xsl:apply-templates select="*/similar[not(@active eq 'no')]" mode="#current" />        
+        </xsl:variable>
+        
+        <!-- if there are similars, then use the similars -->
+        <xsl:variable name="keyword-combi" 
+            select="if(string-length($keyword-similars)) then $keyword-similars else $keyword-hints" />
+        
         <xsl:variable name="filtered-keyword-hints">
-            <xsl:apply-templates select="$keyword-hints/tokenize(., ' ')" mode="filter-keywords" >
+            <xsl:apply-templates select="$keyword-combi/tokenize(., ' ')" mode="filter-keywords" >
                 <xsl:with-param name="filter" select="*/filter" tunnel="yes" />
-                <xsl:with-param name="all-keywords" select="$keyword-hints" tunnel="yes" />
+                <xsl:with-param name="all-keywords" select="$keyword-combi" tunnel="yes" />
             </xsl:apply-templates>
         </xsl:variable>
         <xsl:value-of select="$filtered-keyword-hints" separator=" " />
     </xsl:template>
     
-    <!-- removes keywords if a certain other keyword is already there -->
+    <!-- removes/filters keywords if a certain other keyword is already there -->
     <xsl:template match="." mode="filter-keywords" xpath-default-namespace="">
         <xsl:param name="filter" tunnel="yes" />
         <xsl:param name="all-keywords" tunnel="yes" />
@@ -144,6 +157,26 @@
         <xsl:variable name="remove-keywords" select="$if-keywords/following-sibling::remove-keywords/tokenize(., ' ')" />
         <xsl:sequence select=".[not(. = $remove-keywords)]" />
     </xsl:template>
+    
+    <!-- find keywords based on a master / similar test-set -->
+    <xsl:template match="similar" xpath-default-namespace="" mode="keywords">
+        <xsl:apply-templates select="slave[. = $test-set]" mode="#current" />
+    </xsl:template>
+    
+    <xsl:template match="slave" xpath-default-namespace="" mode="keywords">
+        <xsl:variable name="ts-file" select="doc($test-catalog)/*/cat:test-set[@name = current()/../master]/@file" />
+        <xsl:variable name="ts-location" select="resolve-uri($ts-file, $test-location)" />
+        <xsl:sequence select="doc($ts-location)/*/cat:test-case[f:numerically-equal-test-name(@name, $test-case, current()/@numeric-add)]/cat:keywords/tokenize(., ' ')" />        
+    </xsl:template>
+    
+    <xsl:function name="f:numerically-equal-test-name" as="xs:boolean">
+        <xsl:param name="t1" />
+        <xsl:param name="t2" />
+        <xsl:param name="add" />
+        <xsl:variable name="t1-num" select="replace($t1, '^.*[^0-9]([0-9]+)$', '$1')" />
+        <xsl:variable name="t2-num" select="replace($t2, '^.*[^0-9]([0-9]+)$', '$1')" />
+        <xsl:sequence select="number($t1-num) + ($add, 0)[1] = number($t2-num)" />
+    </xsl:function>
     
     
     <!-- find keyword hints based on keyword-hints.xml -->
