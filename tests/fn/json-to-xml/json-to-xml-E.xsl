@@ -148,10 +148,12 @@
         <xsl:variable name="metadata">
             <description>Trailing comma in object - liberal spec</description>
             <created by="John Lumley" on="2013-10-01"/>
+            <modified by="John Lumley" on="2014-07-22"
+                change="option 'spec':'liberal' altered to 'liberal':true()"/>
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:variable name="json">{"key":123 ,}</xsl:variable>
-        <xsl:copy-of select="json-to-xml($json,map{'spec':'liberal'})"/>
+        <xsl:copy-of select="json-to-xml($json,map{'liberal':true()})"/>
     </xsl:template>
     <xsl:template name="json-to-xml-error-018">
         <xsl:variable name="metadata">
@@ -166,28 +168,32 @@
         <xsl:variable name="metadata">
             <description>Trailing comma in array - liberal spec</description>
             <created by="John Lumley" on="2013-10-01"/>
+            <modified by="John Lumley" on="2014-07-22"
+                change="option 'spec':'liberal' altered to 'liberal':true()"/>
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:variable name="json">["key",123,]</xsl:variable>
-        <xsl:copy-of select="json-to-xml($json,map{'spec':'liberal'})"/>
+        <xsl:copy-of select="json-to-xml($json,map{'liberal':true()})"/>
     </xsl:template>
     <xsl:template name="json-to-xml-error-020">
         <xsl:variable name="metadata">
-            <description>Spec option error</description>
+            <description>Liberal option error</description>
             <created by="John Lumley" on="2013-10-01"/>
+            <modified by="John Lumley" on="2014-07-22" change="option 'spec' altered to 'liberal'"/>
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:variable name="json">["String"]</xsl:variable>
-        <xsl:copy-of select="json-to-xml($json,map{'spec':()})"/>
+        <xsl:copy-of select="json-to-xml($json,map{'liberal':()})"/>
     </xsl:template>
     <xsl:template name="json-to-xml-error-021">
         <xsl:variable name="metadata">
-            <description>Spec option error</description>
+            <description>Liberal option error</description>
             <created by="John Lumley" on="2013-10-01"/>
+            <modified by="John Lumley" on="2014-07-22" change="option 'spec' altered to 'liberal'"/>
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:variable name="json">["String"]</xsl:variable>
-        <xsl:copy-of select="json-to-xml($json,map{'spec':('EMCA-262','RFC4627')})"/>
+        <xsl:copy-of select="json-to-xml($json,map{'liberal':'some string'})"/>
     </xsl:template>
     <xsl:template name="json-to-xml-error-022">
         <xsl:variable name="metadata">
