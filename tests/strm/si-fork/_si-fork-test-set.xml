@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="si-fork">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="si-fork">
    <description>xsl:value-of instruction with streaming</description>
    
    <environment name="si-fork-A">
@@ -15,6 +13,7 @@
    
    <test-case name="si-fork-001">
       <description>Basic Test of xsl:stream instruction with xsl:fork</description>
+      <keywords>multiple-xsl-sequence-children fn:avg PathExpr xsl:value-of striding consuming</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -27,6 +26,7 @@
    
    <test-case name="si-fork-002">
       <description>xsl:stream instruction with xsl:fork, some motionless prongs</description>
+      <keywords>multiple-xsl-sequence-children fn:avg PathExpr striding xsl:value-of consuming</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -39,6 +39,7 @@
    
    <test-case name="si-fork-003">
       <description>xsl:stream instruction with xsl:fork, split input to multiple result files</description>
+      <keywords>multiple-xsl-sequence-children xsl:result-document motionless-predicate striding PathExpr fn:number consuming</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -64,6 +65,7 @@
    
    <test-case name="si-fork-004">
       <description>xsl:stream instruction with xsl:fork, all prongs motionless</description>
+      <keywords>multiple-xsl-sequence-children motionless lre literals</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -76,6 +78,7 @@
    
    <test-case name="si-fork-005">
       <description>xsl:stream / xsl:for-each / xsl:fork </description>
+      <keywords>xsl:for-each multiple-xsl-sequence-children AxisStep striding consuming</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -92,6 +95,7 @@
    
    <test-case name="si-fork-006">
       <description>xsl:fork with only one branch consuming</description>
+      <keywords>multiple-xsl-sequence-children consuming motionless mixed-sweep</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -109,6 +113,7 @@
    
    <test-case name="si-fork-007">
       <description>xsl:fork with try/catch within a single prong</description>
+      <keywords>multiple-xsl-sequence-children xsl:try fn:outermost crawling-then-striding XPTY0004 consuming</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -121,6 +126,7 @@
    
    <test-case name="si-fork-008">
       <description>xsl:fork with try/catch around the whole xsl:fork</description>
+      <keywords>multiple-xsl-sequence-children consuming fn:outermost crawling-then-striding</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -133,6 +139,7 @@
    
    <test-case name="si-fork-009">
       <description>xsl:fork used to create attribute nodes</description>
+      <keywords>multiple-xsl-sequence-children AxisStep consuming striding</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <environment ref="si-fork-A"/>
       <test>
@@ -148,6 +155,7 @@
    
    <test-case name="si-fork-901">
       <description>Non-streamable xsl:fork - returns streamed nodes</description>
+      <keywords>multiple-xsl-sequence-children AxisStep striding XTSE3430 illegally-returning-streamed-nodes</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <test>
          <stylesheet file="si-fork-901.xsl"/>
@@ -160,6 +168,7 @@
    
    <test-case name="si-fork-902">
       <description>Non-streamable xsl:fork - one prong is non-streamable</description>
+      <keywords>illegally-returning-streamed-nodes multiple-xsl-sequence-children striding AxisStep XTSE3430</keywords>
       <created by="Michael Kay" on="2014-01-13"/>
       <test>
          <stylesheet file="si-fork-902.xsl"/>

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="sf-boolean">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="sf-boolean">
+
    <description>boolean() function with streaming. </description>
+   <keywords>streaming streamability-analysis boolean</keywords>
    
    <environment name="sf-boolean-A">
      <stylesheet file="sf-boolean-001.xsl"/>
@@ -14,7 +14,9 @@
    </dependencies>
    
    <test-case name="sf-boolean-001">
-      <description>Test of xsl:stream instruction with boolean(): count descendant nodes</description>
+      <description>Test of xsl:stream instruction with boolean(): whether descendant nodes exist</description>
+      <keywords>boolean crawling</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -28,8 +30,10 @@
 
    <test-case name="sf-boolean-002">
       <description>Test of xsl:stream instruction with boolean(), filtered with motionless predicate</description>
+      <keywords>fn:boolean ContextItemExpr motionless-predicate RelativePathExpr</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="sf-boolean-A"/>
+      <environment ref="sf-boolean-A"/>      
       <test>
          <initial-template name="c-002"/>
       </test>
@@ -40,6 +44,8 @@
    
    <test-case name="sf-boolean-003">
       <description>Test of xsl:stream instruction with boolean(), applied to ancestor nodes</description>
+      <keywords>boolean climbing motionless-predicate bang-operator</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -52,6 +58,8 @@
    
    <test-case name="sf-boolean-004">
       <description>Test of xsl:stream instruction with boolean(), applied to grounded consuming items</description>
+      <keywords>boolean grounded bang-operator</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -64,6 +72,8 @@
    
    <test-case name="sf-boolean-005">
       <description>Test of xsl:stream instruction with boolean(), applied to attributes of ancestor nodes</description>
+      <keywords>boolean climbing attribute-axis bang-operator</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -76,6 +86,8 @@
    
    <test-case name="sf-boolean-006">
       <description>Test of xsl:stream instruction with boolean(), applied to namespaces of ancestor nodes</description>
+      <keywords>boolean climbing namespace-axis bang-operator</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -88,6 +100,8 @@
 
    <test-case name="sf-boolean-007">
       <description>boolean() with empty downwards selection</description>
+      <keywords>boolean striding empty-sequence</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -100,6 +114,8 @@
    
    <test-case name="sf-boolean-008">
       <description>boolean() with empty downwards selection</description>
+      <keywords>boolean striding empty-sequence numeric-predicate</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -111,8 +127,12 @@
    </test-case> 
    
    <test-case name="sf-boolean-009">
-      <description>boolean() with a crawling (striding | striding => crawling) union</description>
+      <description>boolean() with a crawling (striding | striding =&gt; crawling) union</description>
+      <keywords>boolean crawling unionexpr</keywords>
+      <link section-number="19.8.8"/>
+      <link section-number="19.8.7.4"/>
       <created by="Michael Kay" on="2013-11-18"/>
+      <modified by="Abel Braaksma" on="2014-07-06" change="fixed description, expr is crawling"/>
       <environment ref="sf-boolean-A"/>
       <test>
          <initial-template name="c-009"/>
@@ -124,6 +144,9 @@
    
    <test-case name="sf-boolean-010">
       <description>boolean() with a crawling union</description>
+      <keywords>boolean crawling unionexpr</keywords>
+      <link section-number="19.8.8"/>
+      <link section-number="19.8.7.4"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -136,6 +159,9 @@
    
    <test-case name="sf-boolean-011">
       <description>simple motionless boolean()</description>
+      <keywords>boolean xsl:if striding motionless</keywords>
+      <link section-number="19.8.8"/>
+      <link section-number="19.8.4.21"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -148,6 +174,10 @@
    
    <test-case name="sf-boolean-012">
       <description>boolean() filtered grounded sequence</description>
+      <keywords>boolean remove crawling grounded childless-node</keywords>
+      <link section-number="19.8.8"/>
+      <link section-number="19.8.8.15"/>
+      <link section-number="19.8.7.6"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -160,6 +190,10 @@
    
    <test-case name="sf-boolean-013">
       <description>boolean() filtered crawling sequence</description>
+      <keywords>boolean remove root striding</keywords>
+      <link section-number="19.8.8"/>
+      <link section-number="19.8.8.15"/>
+      <link section-number="19.8.7.6"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -172,6 +206,10 @@
    
    <test-case name="sf-boolean-014">
       <description>boolean() with twice-filtered crawling sequence</description>
+      <keywords>boolean remove root striding motionless-predicate</keywords>
+      <link section-number="19.8.8"/>
+      <link section-number="19.8.8.15"/>
+      <link section-number="19.8.7.6"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -184,6 +222,8 @@
    
    <test-case name="sf-boolean-015">
       <description>boolean() applied to a non-existent element</description>
+      <keywords>boolean striding empty-sequence</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -196,6 +236,8 @@
    
    <test-case name="sf-boolean-016">
       <description>boolean() applied to an existent attribute (can exit early)</description>
+      <keywords>boolean climbing attribute-axis</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -208,6 +250,8 @@
    
    <test-case name="sf-boolean-017">
       <description>boolean() and a boolean filter</description>
+      <keywords>boolean striding motionless-predicate</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -220,6 +264,8 @@
    
    <test-case name="sf-boolean-018">
       <description>boolean() and both a positional and a boolean filter</description>
+      <keywords>boolean position striding motionless-predicate</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -232,6 +278,8 @@
    
    <test-case name="sf-boolean-100">
       <description>boolean() on a sequence containing streamed nodes and atomic values</description>
+      <keywords>boolean mixed-posture striding grounded</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -244,6 +292,8 @@
    
    <test-case name="sf-boolean-101">
       <description>boolean() on a sequence containing streamed nodes and atomic values</description>
+      <keywords>boolean mixed-posture striding grounded</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -256,6 +306,8 @@
    
    <test-case name="sf-boolean-102">
       <description>boolean() on a sequence containing streamed nodes and atomic values</description>
+      <keywords>boolean mixed-posture striding grounded</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -268,6 +320,8 @@
    
    <test-case name="sf-boolean-103">
       <description>boolean() on a sequence containing streamed nodes and atomic values</description>
+      <keywords>boolean mixed-posture striding grounded</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -280,7 +334,10 @@
    
    <test-case name="sf-boolean-104">
       <description>boolean() on a sequence containing a single xs:anyURI</description>
+      <keywords>boolean base-uri striding grounded</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2014-01-06"/>
+      <modified by="Abel Braaksma" on="2014-07-06" change="removed unused variable that was irrelevant to the test"/>
       <environment ref="sf-boolean-A"/>
       <test>
          <initial-template name="c-104"/>
@@ -292,6 +349,8 @@
    
    <test-case name="sf-boolean-105">
       <description>boolean() on a sequence containing a single xs:date</description>
+      <keywords>boolean mixed-posture striding grounded empty-sequence numerical-predicate FORG0006</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -304,6 +363,8 @@
    
    <test-case name="sf-boolean-106">
       <description>boolean() on a sequence containing a single xs:date; error is caught</description>
+      <keywords>boolean xsl:try mixed-posture striding numerical-predicate FORG0006</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -316,6 +377,8 @@
    
    <test-case name="sf-boolean-107">
       <description>test that streaming resumes OK after a caught error</description>
+      <keywords>boolean xsl:try xsl:for-each striding FORG0006</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-boolean-A"/>
       <test>
@@ -331,6 +394,8 @@
    
    <test-case name="sf-boolean-901">
       <description>Test of xsl:stream instruction with boolean(), filtered with non-motionless predicate.</description>
+      <keywords>boolean non-motionless-predicate XTSE3430</keywords>
+      <link section-number="19.8.8"/>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="sf-boolean-901.xsl"/>

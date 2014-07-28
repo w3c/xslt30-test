@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="sf-exists">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="sf-exists">
    <description>exists() function with streaming</description>
    
    <environment name="sf-exists-A">
@@ -15,6 +13,7 @@
    
    <test-case name="sf-exists-001">
       <description>Test of xsl:stream instruction with exists(): count descendant nodes</description>
+      <keywords>crawling PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -28,6 +27,7 @@
 
    <test-case name="sf-exists-002">
       <description>Test of xsl:stream instruction with exists(), filtered with motionless predicate</description>
+      <keywords>PathExpr motionless-predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -40,6 +40,7 @@
    
    <test-case name="sf-exists-003">
       <description>Test of xsl:stream instruction with exists(), applied to ancestor nodes</description>
+      <keywords>PathExpr motionless-predicate SimpleMapExpr ancestor-axis climbing</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -52,6 +53,7 @@
    
    <test-case name="sf-exists-004">
       <description>Test of xsl:stream instruction with exists(), applied to grounded consuming items</description>
+      <keywords>ContextItemExpr striding-then-grounded fn:tokenize leading-lone-slash PathExpr SimpleMapExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -64,6 +66,7 @@
    
    <test-case name="sf-exists-005">
       <description>Test of xsl:stream instruction with exists(), applied to attributes of ancestor nodes</description>
+      <keywords>attribute-axis climbing-then-climbing PathExpr motionless-predicate SimpleMapExpr ancestor-or-self-axis climbing</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -76,6 +79,7 @@
    
    <test-case name="sf-exists-006">
       <description>Test of xsl:stream instruction with exists(), applied to namespaces of ancestor nodes</description>
+      <keywords>climbing-then-climbing PathExpr motionless-predicate SimpleMapExpr ancestor-or-self-axis climbing namespace-axis</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -88,6 +92,7 @@
 
    <test-case name="sf-exists-007">
       <description>exists() with empty downwards selection</description>
+      <keywords>AxisStep striding</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -100,6 +105,7 @@
    
    <test-case name="sf-exists-008">
       <description>exists() with empty downwards selection</description>
+      <keywords>striding PathExpr positional-predicate</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -112,6 +118,7 @@
    
    <test-case name="sf-exists-009">
       <description>exists() with a striding(?) union</description>
+      <keywords>striding-then-crawling UnionExpr PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -124,6 +131,7 @@
    
    <test-case name="sf-exists-010">
       <description>exists() with a crawling union</description>
+      <keywords>crawling-then-crawling text-nodes childless-nodes UnionExpr crawling PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -136,6 +144,7 @@
    
    <test-case name="sf-exists-011">
       <description>simple motionless exists()</description>
+      <keywords>RangeExpr grounded</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -148,6 +157,7 @@
    
    <test-case name="sf-exists-012">
       <description>exists() filtered grounded sequence</description>
+      <keywords>childless-nodes crawling-atomizing leading-double-slash PathExpr crawling fn:remove fn:data</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -160,6 +170,7 @@
    
    <test-case name="sf-exists-013">
       <description>exists() filtered crawling sequence</description>
+      <keywords>leading-lone-slash striding PathExpr fn:remove</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -172,6 +183,7 @@
    
    <test-case name="sf-exists-014">
       <description>exists() with twice-filtered crawling sequence</description>
+      <keywords>leading-lone-slash striding motionless-predicate PathExpr fn:remove</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -184,6 +196,7 @@
    
    <test-case name="sf-exists-015">
       <description>exists() applied to a non-existent element</description>
+      <keywords>striding PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -196,6 +209,7 @@
    
    <test-case name="sf-exists-016">
       <description>exists() applied to an existent attribute (can exit early)</description>
+      <keywords>striding-then-climbing attribute-axis PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -208,6 +222,7 @@
    
    <test-case name="sf-exists-017">
       <description>exists() and a boolean filter</description>
+      <keywords>striding PathExpr motionless-predicate</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -220,6 +235,7 @@
    
    <test-case name="sf-exists-018">
       <description>exists() and both a positional and a boolean filter</description>
+      <keywords>striding motionless-predicate PathExpr positional-predicate</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -232,6 +248,7 @@
    
    <test-case name="sf-exists-100">
       <description>exists() on a sequence containing streamed nodes and atomic values</description>
+      <keywords>striding empty-sequence mixed-posture ParenthesizedExpr PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -244,6 +261,7 @@
    
    <test-case name="sf-exists-101">
       <description>exists() on a sequence containing streamed nodes and atomic values</description>
+      <keywords>ParenthesizedExpr striding mixed-posture empty-sequence PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -256,6 +274,7 @@
    
    <test-case name="sf-exists-102">
       <description>exists() on a sequence containing streamed nodes and atomic values</description>
+      <keywords>striding mixed-posture ParenthesizedExpr PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -268,6 +287,7 @@
    
    <test-case name="sf-exists-103">
       <description>exists() on a sequence containing streamed nodes and atomic values</description>
+      <keywords>striding mixed-posture ParenthesizedExpr PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-18"/>
       <environment ref="sf-exists-A"/>
       <test>
@@ -280,6 +300,7 @@
    
    <test-case name="sf-exists-901">
       <description>Test of xsl:stream instruction with exists(), filtered with non-motionless predicate.</description>
+      <keywords>striding consuming-predicate XTSE3430 PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="sf-exists-901.xsl"/>

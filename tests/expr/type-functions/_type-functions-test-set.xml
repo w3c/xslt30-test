@@ -1,25 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="type-functions">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="type-functions">
    <description>Tests type-functions</description>
    <environment name="type-functions-01">
       <source role="." file="type-functions-01.xml"/>
-      <schema role="source-reference"
-              file="variousTypesSchemaFunc.xsd"
-              xsd-version="1.0"/>
+      <schema role="source-reference" file="variousTypesSchemaFunc.xsd" xsd-version="1.0"/>
    </environment>
    <environment name="type-functions-02">
       <source role="." file="type-functions-02.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="variousTypesSchemaFunc.xsd"
-              xsd-version="1.0"/>
+      <schema role="source-reference" file="variousTypesSchemaFunc.xsd" xsd-version="1.0"/>
    </environment>
    <environment name="type-functions-03">
       <source role="." file="type-functions-03.xml" validation="strict"/>
-      <schema role="source-reference"
-              file="variousTypesSchemaFunc.xsd"
-              xsd-version="1.0"/>
+      <schema role="source-reference" file="variousTypesSchemaFunc.xsd" xsd-version="1.0"/>
    </environment>
    
    <dependencies>
@@ -28,6 +20,7 @@
 
    <test-case name="type-functions-0101">
       <description>Test fn:dateTime with arguments coming from typed nodes in input source. Types tested: - xs:date and xs:time; - user-defined types derived by restriction from xs:date and xs:time</description>
+      <keywords>xs:date xs:time derived-xs-time derived-xs-date fn:dateTime InstanceOfExpr xsl:import-schema fn:data</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="type-functions-01"/>
       <dependencies>
@@ -44,6 +37,7 @@
 
    <test-case name="type-functions-0201">
       <description>Test fn:abs with typed numeric arguments coming from nodes in input source. Types tested: - xs:float, xs:double, xs:decimal, xs:integer, xs:nonPositiveInteger, xs:long, xs:negativeInteger xs:positiveInteger, xs:short, xs:int; xs:unsignedInt; - user-defined types derived by restriction from the types listed above</description>
+      <keywords>buildin-datatypes derived-builtin-types InstanceOfExpr fn:abs xsl:import-schema fn:data</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="type-functions-02"/>
       <dependencies>
@@ -82,6 +76,7 @@
 
    <test-case name="type-functions-0202">
       <description>Test fn:data with no arguments</description>
+      <keywords>buildin-types derived-builtin-types InstanceOfExpr fn:data xsl:if xsl:import-schema</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="type-functions-02"/>
       <dependencies>
@@ -97,6 +92,7 @@
 
    <test-case name="type-functions-0203">
       <description>This stylesheet crashes out at run-time saying that System function data#0 is not available with this host language - XSLT2.0</description>
+      <keywords>xs:decimal fn:data InstanceOfExpr xsl:if xsl:import-schema XPST0017</keywords>
       <created by="O'Neil Delpratt, Saxonica" on="2012-11-07"/>
       <environment ref="type-functions-02"/>
       <dependencies>
@@ -112,6 +108,7 @@
 
    <test-case name="type-functions-0301">
       <description>Test fn:substring with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
+      <keywords>buildin-types fn:data derived-builtin-types fn:substring derived-xs-string xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="type-functions-03"/>
       <dependencies>
@@ -146,6 +143,7 @@
 
    <test-case name="type-functions-0302">
       <description>Test fn:upper-case with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
+      <keywords>buildin-types derived-builtin-types derived-xs-string xs:string InstanceOfExpr fn:data fn:upper-case xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="type-functions-03"/>
       <dependencies>
@@ -180,6 +178,7 @@
 
    <test-case name="type-functions-0303">
       <description>Test fn:matches with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
+      <keywords>buildin-types derived-builtin-types derived-xs-string xs:string InstanceOfExpr fn:data fn:matches xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="type-functions-03"/>
       <dependencies>
@@ -214,6 +213,7 @@
 
    <test-case name="type-functions-0304">
       <description>Test fn:resolve-uri with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
+      <keywords>buildin-types derived-builtin-types derived-xs-string xs:string InstanceOfExpr fn:data fn:resolve-uri xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="type-functions-03"/>
       <dependencies>
@@ -248,12 +248,11 @@
 
    <test-case name="type-functions-0401">
       <description>Test fn:year-from-date with arguments coming from typed nodes in input source. Types tested: - xs:date - user-defined types derived by restriction from xs:date</description>
+      <keywords>InstanceOfExpr xs:date fn:data fn:year-from-date derived-xs-date xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment>
          <source role="." file="type-functions-04.xml"/>
-         <schema role="source-reference"
-            file="variousTypesSchemaFunc.xsd"
-            xsd-version="1.0"/>
+         <schema role="source-reference" file="variousTypesSchemaFunc.xsd" xsd-version="1.0"/>
       </environment>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -269,13 +268,12 @@
 
    <test-case name="type-functions-0501">
       <description>Test fn:local-name-from-QName with arguments coming from typed nodes in input source. Types tested: - xs:QName - user-defined types derived by restriction from xs:QName</description>
+      <keywords>fn:data xs:QName fn:local-name-from-QName derived-xs-QName InstanceOfExpr xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2012-12-14" change="Added validation attribute, removed whitespace from stylesheet"/>
       <environment>
          <source role="." file="type-functions-05.xml" validation="strict"/>
-         <schema role="source-reference"
-            file="variousTypesSchemaFunc.xsd"
-            xsd-version="1.0"/>
+         <schema role="source-reference" file="variousTypesSchemaFunc.xsd" xsd-version="1.0"/>
       </environment>
       <dependencies>
          <spec value="XSLT20+"/>
