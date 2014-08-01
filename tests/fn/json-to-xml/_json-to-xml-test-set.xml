@@ -24,10 +24,6 @@
         </schema>-->
         <!--<stylesheet file="json-to-xml-typed.xsl"/>-->
     </environment>
-    <!-- This separate environment decouples the possibility of a shared compiled stylesheet  -->
-    <environment name="json-to-xml-typed2">
-        <namespace prefix="j" uri="http://www.w3.org/2013/XSL/json"/>
-    </environment>
 
 
 
@@ -387,13 +383,11 @@
         </result>
     </test-case>
 
-    <!-- This uses a different environment to ensure that
-        any compiled stylesheet (which may be set schema-aware) isn't reused -->
     <test-case name="json-to-xml-typed-010">
         <description>Error when requesting type annotation on a non-schema aware
             processor</description>
         <created by="John Lumley" on="2013-10-08"/>
-        <environment ref="json-to-xml-typed2"/>
+        <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware" satisfied="false"/>
         </dependencies>
