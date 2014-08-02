@@ -301,7 +301,7 @@
          <assert>/Total-Cost = '91'</assert>
       </result>
    </test-case>
-
+   
    <test-case name="accumulator-016">
       <description>
       	Multiple accumulators used in parallel; uses @applies-to. Non-streaming.
@@ -638,6 +638,24 @@
          <assert-xml><![CDATA[<figures><p>Figure 2: a diagram</p><p>Figure 4: another diagram</p><p>Figure 2: a third diagram</p><p>Figure 4: a fourth diagram</p></figures>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-036s">
+      <description>Sequence constructor in accumulator rule</description>
+      <keywords>xsl:mode streamable post-descent non-streamable</keywords>
+      <created by="Michael Kay" on="2014-08-02"/>
+      <environment ref="accumulator-015s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-036.xsl"/>
+      </test>
+      <result>
+         <assert>/Total-Cost = '91'</assert><!-- needs revision -->
+      </result>
+   </test-case>
+
+
 
 
 </test-set>
