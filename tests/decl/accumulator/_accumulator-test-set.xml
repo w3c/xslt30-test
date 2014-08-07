@@ -575,5 +575,23 @@
          <assert-xml><![CDATA[<figures><p>Figure 2: a diagram</p><p>Figure 4: another diagram</p><p>Figure 2: a third diagram</p><p>Figure 4: a fourth diagram</p></figures>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-035">
+      <description>Basic test of accumulator functions; @streamable="true"</description>
+      <created by="Debbie Lockett" on="2014-30-07"/>
+      <environment>
+         <source role="." file="accumulator-001.xml" streaming="true"/>
+      </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-001.xsl"/>
+         <param name="streamable" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 1: a diagram</p><p>Figure 2: another diagram</p><p>Figure 1: a third diagram</p><p>Figure 2: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
 
 </test-set>

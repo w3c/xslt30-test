@@ -11,7 +11,7 @@
 <out>
 	<xsl:for-each-group select="1 to 30" 
 	                    group-adjacent=". idiv 2, number(concat(., 'zzz'))"
-	                    composite="yes">
+	                    composite="1">
 	  <group values="{current-group()}"/>
 	</xsl:for-each-group>
 </out>

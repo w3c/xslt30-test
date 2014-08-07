@@ -563,4 +563,76 @@
          <assert-serialization-error code="SERE0006"/>
       </result>
    </test-case>
+   
+   <test-case name="xml-version-031">
+      <description>See if a namespace undeclaration (using undeclare-prefixes="true") in a stylesheet works.</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="xml-version-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-031.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>version=['"]1.1['"]</serialization-matches>
+            <serialization-matches>xmlns:a=(""|'')</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-032">
+      <description>See if a namespace undeclaration (using undeclare-prefixes=" 1 ") in a stylesheet works.</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="xml-version-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-032.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>version=['"]1.1['"]</serialization-matches>
+            <serialization-matches>xmlns:a=(""|'')</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-033">
+      <description>
+         Tests undeclare-prefixes="false" on xsl:output element where the method is 'xml' 
+         and version is '1.1', the namespace is an IRI.
+      </description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="xml-version-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-033.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a xmlns:pref="http://example.org/pre&#xC0;"><b/></a></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-034">
+      <description>
+         Tests undeclare-prefixes="0" on xsl:output element where the method is 'xml' 
+         and version is '1.1', the namespace is an IRI.
+      </description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="xml-version-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-034.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a xmlns:pref="http://example.org/pre&#xC0;"><b/></a></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>

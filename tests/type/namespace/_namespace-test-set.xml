@@ -1360,7 +1360,7 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2614">
-      <description>Modified example taken from the example "Confilicting Namespace Prefixes" in section 11.7 of the spec exclude-result-prefixes added. This should not generate an error (namespace fixup should invent a prefix)</description>
+      <description>Modified example taken from the example "Conflicting Namespace Prefixes" in section 11.7 of the spec exclude-result-prefixes added. This should not generate an error (namespace fixup should invent a prefix)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1420,7 +1420,7 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2618">
-      <description>Incorrect example taken from the example "Confilicting Namespace Prefixes" in section 11.7 of the spec This should generate an error (two conflicting namespace nodes). Corrected versions in nspc70 and nspc71</description>
+      <description>Incorrect example taken from the example "Conflicting Namespace Prefixes" in section 11.7 of the spec This should generate an error (two conflicting namespace nodes). Corrected versions in nspc70 and nspc71</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1508,6 +1508,54 @@ z = http://new-z.uri/;
       </test>
       <result>
          <error code="XTDE0920"/>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-2625">
+      <description>test inherit-namespaces="false" on xsl:copy</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2625.xsl"/>
+      </test>
+      <result>
+         <assert-xml xml-version="1.1"><![CDATA[<n:a xmlns="http://d/" xmlns:n="http://n/"><n:b xmlns:n="http://n2/" xmlns=""/><c xmlns="http://n3/" xmlns:n=""/></n:a>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-2626">
+      <description>test inherit-namespaces="  0" on xsl:copy</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2626.xsl"/>
+      </test>
+      <result>
+         <assert-xml xml-version="1.1"><![CDATA[<n:a xmlns="http://d/" xmlns:n="http://n/"><n:b xmlns:n="http://n2/" xmlns=""/><c xmlns="http://n3/" xmlns:n=""/></n:a>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-2627">
+      <description>test inherit-namespaces="FALSE" on xsl:copy (not allowed)</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2627.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
       </result>
    </test-case>
 

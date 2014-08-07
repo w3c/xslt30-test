@@ -46,6 +46,36 @@
       </result>
    </test-case>
    
+   <test-case name="output-0101a">
+      <description>Test escaping of non-ASCII characters in HTML output when @escape-uri-attributes="true".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0101a.xsl"/>
+      </test>
+      <result>
+         <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0101b">
+      <description>Test escaping of non-ASCII characters in HTML output when @escape-uri-attributes="1".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0101b.xsl"/>
+      </test>
+      <result>
+         <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
+      </result>
+   </test-case>
+   
    <environment name="output-0102">
       <stylesheet file="output-0102.xsl"/>
    </environment> 
@@ -286,6 +316,36 @@
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s*<body>This is the body</body>\s*</html>]]></serialization-matches>
       </result>
    </test-case>
+   
+   <test-case name="output-0106a">
+      <description>Test indent="true", with XHTML output where the stylesheet has a default namespace defined on the html element itself.</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0106a.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0106b">
+      <description>Test indent=" 1 ", with XHTML output where the stylesheet has a default namespace defined on the html element itself.</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0106b.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+      </result>
+   </test-case>
 
    <test-case name="output-0107">
       <description>Test for SCRIPT handling with XHTML output method.</description>
@@ -341,6 +401,36 @@
       </dependencies>
       <test>
          <stylesheet file="output-0110.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output030.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0110a">
+      <description>Test for the xhtml output method with omit-xml-declaration="true".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0110a.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output030.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0110b">
+      <description>Test for the xhtml output method with omit-xml-declaration="1".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0110b.xsl"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output030.out"/>
@@ -420,8 +510,8 @@
       <result>
          <assert-serialization method="xhtml" file="output043.out"/>
       </result>
-   </test-case>
-
+   </test-case>   
+   
    <test-case name="output-0116">
       <description>Test empty elements with empty content model in XHTML output and @indent=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
@@ -431,6 +521,36 @@
       </dependencies>
       <test>
          <stylesheet file="output-0116.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output045.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0116a">
+      <description>Test empty elements with empty content model in XHTML output and @indent=" false".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0116a.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output045.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0116b">
+      <description>Test empty elements with empty content model in XHTML output and @indent="0".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0116b.xsl"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output045.out"/>
@@ -579,12 +699,55 @@
 	</all-of>
       </result>
    </test-case>
+   
+   <test-case name="output-0124a">
+      <description>Test HTML output with include-content-type="true", the result tree has a 'head' element.</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0124a.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0124b">
+      <description>Test HTML output with include-content-type="1", the result tree has a 'head' element.</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0124b.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="output-0125">
       <description>Test HTML output with include-content-type value set to "no".</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <modified by="Michael Kay" on="2013-01-31" change="Correct regex in 3rd assertion"/>
+      <modified by="Debbie Lockett" on="2014-08-07" change="Add error to not/any-of assertions"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -595,11 +758,56 @@
       <result>
 	<not>
 	  <any-of>
+	     <error code="*"/>
 	    <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
 	    <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
 	    <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>]*a[^<]*></HEAD>]]></serialization-matches>
 	  </any-of>
 	</not>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0125a">
+      <description>Test HTML output with include-content-type value set to "false".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0125a.xsl"/>
+      </test>
+      <result>
+         <not>
+            <any-of>
+               <error code="*"/>
+               <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+               <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+               <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>]*a[^<]*></HEAD>]]></serialization-matches>
+            </any-of>
+         </not>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0125b">
+      <description>Test HTML output with include-content-type value set to "0".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0125b.xsl"/>
+      </test>
+      <result>
+         <not>
+            <any-of>
+               <error code="*"/>
+               <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+               <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+               <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>]*a[^<]*></HEAD>]]></serialization-matches>
+            </any-of>
+         </not>
       </result>
    </test-case>
 
@@ -786,6 +994,46 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="output-0136a">
+      <description>Test XHTML output with @byte-order-mark=true. Encoding is UTF-8.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0136a.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>Hello</body>]]></serialization-matches>
+            <serialization-matches>^&#xfeff;</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0136b">
+      <description>Test XHTML output with @byte-order-mark="1". Encoding is UTF-8.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0136b.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>Hello</body>]]></serialization-matches>
+            <serialization-matches>^&#xfeff;</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="output-0137">
       <description>Test XHTML output with @byte-order-mark=no.Encoding is UTF-8.</description>
@@ -796,6 +1044,36 @@
       </dependencies>
       <test>
          <stylesheet file="output-0137.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="output113.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0137a">
+      <description>Test XHTML output with @byte-order-mark=false. Encoding is UTF-8.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0137a.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="text" file="output113.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0137b">
+      <description>Test XHTML output with @byte-order-mark="0". Encoding is UTF-8.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0137b.xsl"/>
       </test>
       <result>
          <assert-serialization method="text" file="output113.out"/>
@@ -864,6 +1142,42 @@
 	  <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
 	  <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
 	</all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0141a">
+      <description>Test XHTML output with @escape-uri-attributes="false". Use fn:escape-html-uri to escape some URIs but not all.</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>      
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0141a.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0141b">
+      <description>Test XHTML output with @escape-uri-attributes=" 0 ". Use fn:escape-html-uri to escape some URIs but not all.</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0141b.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -971,6 +1285,36 @@
          <assert-serialization method="xhtml" file="output134.out"/>
       </result>
    </test-case>
+   
+   <test-case name="output-0148a">
+      <description>Test for the xhtml output method with omit-xml-declaration="false"</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0148a.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output134.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0148b">
+      <description>Test for the xhtml output method with omit-xml-declaration="0"</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0148b.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output134.out"/>
+      </result>
+   </test-case>
 
    <test-case name="output-0149">
       <description>Test for the xhtml output method @standalone=yes.</description>
@@ -986,6 +1330,36 @@
          <assert-serialization method="xhtml" file="output136.out"/>
       </result>
    </test-case>
+   
+   <test-case name="output-0149a">
+      <description>Test for the xhtml output method @standalone="true".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0149a.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output136.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0149b">
+      <description>Test for the xhtml output method @standalone="1".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0149b.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output136.out"/>
+      </result>
+   </test-case>
 
    <test-case name="output-0150">
       <description>Test for the xhtml output method @standalone=no.</description>
@@ -996,6 +1370,36 @@
       </dependencies>
       <test>
          <stylesheet file="output-0150.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output137.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0150a">
+      <description>Test for the xhtml output method @standalone="false".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0150a.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output137.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0150b">
+      <description>Test for the xhtml output method @standalone="0".</description>
+      <created by="Debbie Lockett" on="2014-08-07"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0150b.xsl"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output137.out"/>
@@ -1771,12 +2175,31 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
+      <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0197a"/>
       <environment ref="output-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0197.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0197a">
+      <description>Test that an error is raised on invalid @byte-order-mark value ("TRUE") in xsl:output.</description>      
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0197a.xsl"/>
       </test>
       <result>
          <any-of>
@@ -1791,12 +2214,31 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
+      <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0198a"/>
       <environment ref="output-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0198.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0198a">
+      <description>Test that an error is raised on invalid @escape-uri-attributes value ("YES") in xsl:output.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0198a.xsl"/>
       </test>
       <result>
          <any-of>
@@ -1810,12 +2252,31 @@
       <description>Test that an error is raised on invalid @include-content-type value in xsl:output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
+      <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0199a"/>
       <environment ref="output-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0199.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0199a">
+      <description>Test that an error is raised on invalid @include-content-type value ("TRUE") in xsl:output.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0199a.xsl"/>
       </test>
       <result>
          <any-of>
@@ -2033,6 +2494,7 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="Debbie Lockett" on="2014-08-07" change="Add error in not/any-of assertions"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2042,7 +2504,10 @@
       </test>
       <result>
          <not>
-            <serialization-matches>DOCTYPE</serialization-matches>
+            <any-of>
+               <error code="*"/>
+               <serialization-matches>DOCTYPE</serialization-matches>
+            </any-of>            
          </not>
       </result>
    </test-case>
@@ -2463,6 +2928,7 @@
       </description>
       <created by="Michael Kay" on="2012-12-06"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="Debbie Lockett" on="2014-08-07" change="Add error in not/any-of assertions"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2472,7 +2938,10 @@
       </test>
       <result>
          <not>
-           <serialization-matches><![CDATA[<!DOCTYPE\s+html\s*>]]></serialization-matches>
+            <any-of>
+               <error code="*"/>
+               <serialization-matches><![CDATA[<!DOCTYPE\s+html\s*>]]></serialization-matches>
+            </any-of>           
          </not>            
       </result>
    </test-case>
@@ -2517,12 +2986,31 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
+      <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0280a"/>
       <environment ref="output-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0280.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0280a">
+      <description>Test that an error is raised on invalid @indent value ("TRUE") in xsl:output.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0280a.xsl"/>
       </test>
       <result>
          <any-of>
@@ -2537,12 +3025,31 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
+      <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0281a"/>
       <environment ref="output-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0281.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0281a">
+      <description>Test that an error is raised on invalid @omit-xml-declaration value ("YES") in xsl:output.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0281a.xsl"/>
       </test>
       <result>
          <any-of>
@@ -2557,12 +3064,31 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
+      <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0282a"/>
       <environment ref="output-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0282.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0282a">
+      <description>Test that an error is raised on invalid @standalone value ("TRUE") in xsl:output.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0282a.xsl"/>
       </test>
       <result>
          <any-of>
@@ -2577,12 +3103,31 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
+      <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0283a"/>
       <environment ref="output-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0283.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0283a">
+      <description>Test that an error is raised on invalid @undeclare-prefixes value ("True") in xsl:output.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0283a.xsl"/>
       </test>
       <result>
          <any-of>

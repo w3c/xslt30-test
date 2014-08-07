@@ -5,7 +5,7 @@
     expand-text="no"
     version="3.0">
 
-    <xsl:template name="main" expand-text="true">
+    <xsl:template name="main" expand-text="TRUE">
         <out>
             <xsl:attribute name="a">{1,2} {3,4}{5,6}</xsl:attribute>
             <xsl:attribute name="b" separator=" ">{1,2} {3,4}{5,6}</xsl:attribute>
