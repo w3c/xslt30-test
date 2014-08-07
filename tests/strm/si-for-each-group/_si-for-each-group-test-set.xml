@@ -557,6 +557,56 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-027">
+      <description>
+      	Streamed grouping - group-adjacent - access to context item post-descent.
+      	See spec bug 26513
+      </description>
+      <created by="Michael Kay" on="2014-08-03"/>
+      <test>
+         <stylesheet file="si-group-027.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/g[1]/start/@value = '13.24'</assert>
+            <assert>/out/g[1]/group/@values = '13.24 8.12'</assert>
+            <assert>/out/g[1]/end/@value = '13.24'</assert>
+            <assert>/out/g[2]/start/@value = '-15.00'</assert>
+            <assert>/out/g[2]/group/@values = '-15.00'</assert>
+            <assert>/out/g[2]/end/@value = '-15.00'</assert>
+            <assert>/out/g[3]/start/@value = '6.00'</assert>
+            <assert>/out/g[3]/group/@values = '6.00 0.50 2.33 4.44'</assert>
+            <assert>/out/g[3]/end/@value = '6.00'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-028">
+      <description>
+      	Streamed grouping - group-adjacent - access to context item mid-descent.
+      </description>
+      <created by="Michael Kay" on="2014-08-03"/>
+      <test>
+         <stylesheet file="si-group-028.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/group[1]/@values="13.24 8.12 13.24"</assert>
+   			<assert>/out/group[2]/@values="-15.00 -15.00"</assert>
+   			<assert>/out/group[3]/@values="6.00 0.50 6.00 2.33 4.44"</assert>
+   			<assert>/out/group[4]/@values="-5.00 -5.00"</assert>
+   			<assert>/out/group[5]/@values="8.99 16.00 8.99"</assert>
+   			<assert>/out/group[6]/@values="-2.33 -2.33"</assert>
+   			<assert>/out/group[7]/@values="5.60 4.32 5.60 6.78 12.20"</assert>
+   			<assert>/out/group[8]/@values="-248.05 -248.05"</assert>
+   			<assert>/out/group[9]/@values="12.00 13.99 12.00 14.20"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>
       <created by="Michael Kay" on="2012-12-04"/>
@@ -647,7 +697,7 @@
    </test-case>
    
    <test-case name="si-group-A01">
-      <description>Use xsl:for-each within xsl:stream</description>
+      <description>Use xsl:for-each-group within xsl:stream</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-A"/>
       <test>
@@ -662,7 +712,7 @@
    </test-case>
    
    <test-case name="si-group-A02">
-      <description>Use xsl:for-each within xsl:stream, with position() numbering</description>
+      <description>Use xsl:for-each-group within xsl:stream, with position() numbering</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-A"/>
       <test>
@@ -677,7 +727,7 @@
    </test-case>
    
    <test-case name="si-group-A03">
-      <description>Use xsl:for-each within xsl:stream, with positional selection</description>
+      <description>Use xsl:for-each-group within xsl:stream, with positional selection</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-A"/>
       <test>
@@ -692,7 +742,7 @@
    </test-case>
    
    <test-case name="si-group-A04">
-      <description>Use xsl:for-each over atomized nodes</description>
+      <description>Use xsl:for-each-group over atomized nodes</description>
       <created by="Michael Kay" on="2013-12-04"/>
       <environment ref="si-for-each-group-A"/>
       <test>
@@ -728,7 +778,7 @@
    </test-case>
    
    <test-case name="si-group-A08">
-      <description>Use parent axis within xsl:for-each</description>
+      <description>Use parent axis within xsl:for-each-group</description>
       <created by="Michael Kay" on="2013-11-28"/>
       <environment ref="si-for-each-group-A"/>
       <test>
@@ -740,7 +790,7 @@
    </test-case>
    
    <test-case name="si-group-A09">
-      <description>Use ancestor axis within xsl:for-each</description>
+      <description>Use ancestor axis within xsl:for-each-group</description>
       <created by="Michael Kay" on="2013-11-28"/>
       <environment ref="si-for-each-group-A"/>
       <test>
@@ -792,7 +842,7 @@
    </test-case>
    
    <test-case name="si-group-B01">
-      <description>Use xsl:for-each within xsl:stream</description>
+      <description>Use xsl:for-each-group within xsl:stream</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-B"/>
       <test>
@@ -807,7 +857,7 @@
    </test-case>
    
    <test-case name="si-group-B02">
-      <description>Use xsl:for-each within xsl:stream, with position() numbering</description>
+      <description>Use xsl:for-each-group within xsl:stream, with position() numbering</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-B"/>
       <test>
@@ -822,7 +872,7 @@
    </test-case>
    
    <test-case name="si-group-B03">
-      <description>Use xsl:for-each within xsl:stream, with positional selection</description>
+      <description>Use xsl:for-each-group within xsl:stream, with positional selection</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-B"/>
       <test>
@@ -837,7 +887,7 @@
    </test-case>
    
    <test-case name="si-group-B04">
-      <description>Use xsl:for-each over atomized nodes</description>
+      <description>Use xsl:for-each-group over atomized nodes</description>
       <created by="Michael Kay" on="2013-12-04"/>
       <environment ref="si-for-each-group-B"/>
       <test>
@@ -873,7 +923,7 @@
    </test-case>
    
    <test-case name="si-group-B08">
-      <description>Use parent axis within xsl:for-each</description>
+      <description>Use parent axis within xsl:for-each-group</description>
       <created by="Michael Kay" on="2013-11-28"/>
       <environment ref="si-for-each-group-B"/>
       <test>
@@ -885,7 +935,7 @@
    </test-case>
    
    <test-case name="si-group-B09">
-      <description>Use ancestor axis within xsl:for-each</description>
+      <description>Use ancestor axis within xsl:for-each-group</description>
       <created by="Michael Kay" on="2013-11-28"/>
       <environment ref="si-for-each-group-B"/>
       <test>
@@ -937,7 +987,7 @@
    </test-case>
    
    <test-case name="si-group-C01">
-      <description>Use xsl:for-each within xsl:stream</description>
+      <description>Use xsl:for-each-group within xsl:stream</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-C"/>
       <test>
@@ -952,7 +1002,7 @@
    </test-case>
    
    <test-case name="si-group-C02">
-      <description>Use xsl:for-each within xsl:stream, with position() numbering</description>
+      <description>Use xsl:for-each-group within xsl:stream, with position() numbering</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-C"/>
       <test>
@@ -967,7 +1017,7 @@
    </test-case>
    
    <test-case name="si-group-C03">
-      <description>Use xsl:for-each within xsl:stream, with positional selection</description>
+      <description>Use xsl:for-each-group within xsl:stream, with positional selection</description>
       <created by="Michael Kay" on="2012-12-04"/>
       <environment ref="si-for-each-group-C"/>
       <test>
@@ -982,7 +1032,7 @@
    </test-case>
    
    <test-case name="si-group-C04">
-      <description>Use xsl:for-each over atomized nodes</description>
+      <description>Use xsl:for-each-group over atomized nodes</description>
       <created by="Michael Kay" on="2013-12-04"/>
       <environment ref="si-for-each-group-C"/>
       <test>
@@ -1018,7 +1068,7 @@
    </test-case>
    
    <test-case name="si-group-C08">
-      <description>Use parent axis within xsl:for-each</description>
+      <description>Use parent axis within xsl:for-each-group</description>
       <created by="Michael Kay" on="2013-11-28"/>
       <environment ref="si-for-each-group-C"/>
       <test>
@@ -1030,7 +1080,7 @@
    </test-case>
    
    <test-case name="si-group-C09">
-      <description>Use ancestor axis within xsl:for-each</description>
+      <description>Use ancestor axis within xsl:for-each-group</description>
       <created by="Michael Kay" on="2013-11-28"/>
       <environment ref="si-for-each-group-C"/>
       <test>

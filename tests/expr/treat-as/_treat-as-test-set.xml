@@ -1,28 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="treat-as">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="treat-as">
    <description>Tests treat-as</description>
    <environment name="treat-as-01">
-      <source role="." file="treat-as-01.xml" validation="strict" />
-      <schema role="source-reference"
-              file="integerTypesSchemaTreatas.xsd"
-              xsd-version="1.0"/>
+      <source role="." file="treat-as-01.xml" validation="strict"/>
+      <schema role="source-reference" file="integerTypesSchemaTreatas.xsd" xsd-version="1.0"/>
    </environment>
    <environment name="treat-as-02">
       <source role="." file="treat-as-02.xml"/>
-      <schema role="source-reference"
-              file="integerTypesSchemaTreatas.xsd"
-              xsd-version="1.0"/>
+      <schema role="source-reference" file="integerTypesSchemaTreatas.xsd" xsd-version="1.0"/>
    </environment>
    <environment name="treat-as-03">
       <source role="." file="treat-as-03.xml"/>
-      <schema role="source-reference"
-              file="integerTypesSchemaTreatas.xsd"
-              xsd-version="1.0"/>
-      <schema role="source-reference"
-              file="integerTypesSchemaTreatas.xsd"
-              xsd-version="1.0"/>
+      <schema role="source-reference" file="integerTypesSchemaTreatas.xsd" xsd-version="1.0"/>
+      <schema role="source-reference" file="integerTypesSchemaTreatas.xsd" xsd-version="1.0"/>
    </environment>
    <dependencies>
       <feature value="schema_aware"/>
@@ -30,6 +20,7 @@
 
    <test-case name="treat-as-0101">
       <description>Simple test 'treat as xs:integer' on a run-time value of type xs:integer or derived by restriction from it.</description>
+      <keywords>TreatExpr xs:integer derived-xs-integer stylesheet-function xsl:function xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="treat-as-01"/>
       <dependencies>
@@ -45,6 +36,7 @@
 
    <test-case name="treat-as-0201">
       <description>Show that an invalid use of 'treat as' does not throw an error in part of the stylesheet that is never executed.</description>
+      <keywords>xs:integer invalid-cast no-error-if-not-executed fn:codepoints-to-string fn:data TreatExpr xsl:if xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="treat-as-02"/>
       <dependencies>
@@ -60,6 +52,7 @@
 
    <test-case name="treat-as-0301">
       <description>Test with 'treat as' where the value is casted to the required SequenceType at run time.</description>
+      <keywords>derived-xs-integer xs:integer CastExpr TreatExpr fn:data stylesheet-function xsl:function xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="treat-as-03"/>
       <dependencies>
@@ -75,6 +68,7 @@
 
    <test-case name="treat-as-0302">
       <description>Simple test 'treat as xs:integer' on a run-time value of type xs:integer or derived by restriction from it.</description>
+      <keywords>xs:anyAtomicType xs:integer TreatExpr derived-xs-integer XPDY0050 stylesheet-function xsl:function xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="treat-as-03"/>
       <dependencies>

@@ -8,8 +8,8 @@
   <xsl:param name="increment" select="0"/>
 
   <xsl:accumulator name="figNr" as="xs:integer" initial-value="0" streamable="no">
-    <xsl:accumulator-rule match="chap" new-value="0"/>
-    <xsl:accumulator-rule match="fig" new-value="$value + (let $value := $increment + 1 return $value)"/>
+    <xsl:accumulator-rule match="chap" select="0"/>
+    <xsl:accumulator-rule match="fig" select="$value + (let $value := $increment + 1 return $value)"/>
   </xsl:accumulator>
 
   <xsl:mode streamable="no" on-no-match="shallow-skip"/>

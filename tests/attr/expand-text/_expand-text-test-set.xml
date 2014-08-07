@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="expand-text">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="expand-text">
    <description>Tests the XSLT 3.0 expand-text attribute and content value templates</description>
 
    <test-case name="cvt-001">
       <description>Simple test of content value templates</description>
+      <keywords>expand-text-attribute xsl:stylesheet variable-reference lre</keywords>
       <created by="Michael Kay" on="2013-01-25"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -21,6 +20,7 @@
    
    <test-case name="cvt-002">
       <description>No expansion if expand-text = "no"</description>
+      <keywords>expand-text-attribute xsl:stylesheet variable-reference lre</keywords>
       <created by="Michael Kay" on="2013-01-25"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -36,6 +36,7 @@
    
    <test-case name="cvt-003">
       <description>Expansion enabled at element level</description>
+      <keywords>xsl:stylesheet expand-text-attribute lre xsl:expand-text-attribute expand-override variable-reference</keywords>
       <created by="Michael Kay" on="2013-01-25"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -51,6 +52,7 @@
    
    <test-case name="cvt-004">
       <description>Expansion enabled at template level</description>
+      <keywords>xsl:stylesheet expand-text-attribute expand-override lre variable-reference</keywords>
       <created by="Michael Kay" on="2013-01-25"/>      
       <dependencies>
          <spec value="XSLT30+"/>
@@ -66,6 +68,7 @@
    
    <test-case name="cvt-005">
       <description>Atomization</description>
+      <keywords>xsl:stylesheet expand-override variable-reference xsl:template lre</keywords>
       <created by="Michael Kay" on="2013-01-25"/>
       <modified by="Debbie Lockett" on="2014-08-05" change="use expand-text='true' and 'false'"/>
       <dependencies>
@@ -82,6 +85,7 @@
    
    <test-case name="cvt-006">
       <description>Space separation</description>
+      <keywords>xsl:stylesheet expand-override expand-text-attribute xsl:template numeric-literals lre</keywords>
       <created by="Michael Kay" on="2013-01-25"/>
       <modified by="Debbie Lockett" on="2014-08-05" change="use expand-text='1' and '0'"/>
       <dependencies>
@@ -98,6 +102,7 @@
    
    <test-case name="cvt-007">
       <description>Use in xsl:attribute</description>
+      <keywords>expand-text-attribute xsl:template xsl:stylesheet xsl:attribute numeric-literals</keywords>
       <created by="Michael Kay" on="2013-01-25"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -116,6 +121,7 @@
    
    <test-case name="cvt-008">
       <description>expand-text is not an AVT</description>
+      <keywords>XTSE0020 expand-text-attribute xsl:template wrong-attribute-value</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -131,6 +137,7 @@
    
    <test-case name="cvt-009">
       <description>expand-text must be yes or no</description>
+      <keywords>XTSE0020 wrong-attribute-value expand-text-attribute xsl:template xsl:stylesheet</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <modified by="Debbie Lockett" on="2014-08-05" change="expand-text must be yes|no|true|false|1|0, e.g. not TRUE"/>
       <dependencies>
@@ -147,6 +154,7 @@
    
    <test-case name="cvt-010">
       <description>expand-text must be yes or no</description>
+      <keywords>expand-text-attribute xsl:stylesheet xsl:template wrong-attribute-value</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <modified by="Debbie Lockett" on="2014-08-05" change="expand-text must be yes|no|true|false|1|0, e.g. not empty"/>
       <dependencies>
@@ -163,6 +171,7 @@
    
    <test-case name="cvt-011">
       <description>variables declared in a preceding sibling are in scope</description>
+      <keywords>expand-text-attribute xsl:template variable-reference scope</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -178,6 +187,7 @@
    
    <test-case name="cvt-012">
       <description>variables declared in a preceding uncle are in scope</description>
+      <keywords>lre expand-text-attribute variable-reference xsl:template</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -193,6 +203,7 @@
    
    <test-case name="cvt-013">
       <description>No elements allowed within curlies</description>
+      <keywords>XTSE0350 XPST0003 invalid-expression expand-text-attribute xsl:template lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -211,6 +222,7 @@
    
    <test-case name="cvt-014">
       <description>Nested expression containing curlies</description>
+      <keywords>expand-text-attribute xsl:template variable-reference nested-curlies lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -226,6 +238,7 @@
    
    <test-case name="cvt-015">
       <description>Nested expression ending in a right curly</description>
+      <keywords>xsl:template expand-text-attribute lre nested-curlies</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -241,6 +254,7 @@
    
    <test-case name="cvt-016">
       <description>Nested expression ending in a right curly: now allowed under resolution of bug 20874</description>
+      <keywords>bug-20874 expand-text-attribute xsl:template nested-curlies lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -256,6 +270,7 @@
    
    <test-case name="cvt-017">
       <description>CVT not recognized in xsl:text</description>
+      <keywords>expand-text-attribute xsl:template xsl:text lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -271,6 +286,7 @@
    
    <test-case name="cvt-018">
       <description>CVT not recognized in xsl:text, but expand-text not rejected</description>
+      <keywords>xsl:expand-text-attribute lre xsl:text</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -286,6 +302,7 @@
    
    <test-case name="cvt-019">
       <description>expand-text=yes rejected on xsl:text</description>
+      <keywords>XTSE0020 invalid-attribute expand-text-attribute xsl:text _WRONG:no-such-error-condition-exists</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -301,6 +318,7 @@
    
    <test-case name="cvt-020">
       <description>expand-text=no not rejected on xsl:text</description>
+      <keywords>expand-text-attribute xsl:text lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -316,6 +334,7 @@
    
    <test-case name="cvt-021">
       <description>doubled braces for escaping</description>
+      <keywords>xsl:expand-text-attribute lre escaped-curlies</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -331,6 +350,7 @@
    
    <test-case name="cvt-022">
       <description>doubled braces with expand-text="no"</description>
+      <keywords>lre expand-text-attribute escaped-curlies</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -346,6 +366,7 @@
    
    <test-case name="cvt-023">
       <description>closing brace inside a comment</description>
+      <keywords>lre expand-text-attribute xpath-comments</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -361,6 +382,7 @@
    
    <test-case name="cvt-024">
       <description>closing brace inside a string literal</description>
+      <keywords>lre xsl:expand-text-attribute nested-curlies</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -376,6 +398,7 @@
    
    <test-case name="cvt-025">
       <description>Use typed value not string value</description>
+      <keywords>xsl:expand-text-attribute typed-value variable-reference lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -392,6 +415,7 @@
    
    <test-case name="cvt-026">
       <description>Base uri in static context for CVT expression</description>
+      <keywords>lre xsl:template expand-text-attribute static-context fn:static-base-uri xml:base-attribute</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -408,6 +432,7 @@
    
    <test-case name="cvt-027">
       <description>Namespaces in static context for CVT expression</description>
+      <keywords>static-context expand-text-attribute namespace-resolution variable-reference EQName</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -424,6 +449,7 @@
    
    <test-case name="cvt-028">
       <description>Call to current() in CVT expression</description>
+      <keywords>dynamic-context expand-text-attribute xsl:template fn:current xsl:for-each</keywords>
       <created by="Michael Kay" on="2013-09-22"/>
       <dependencies>
          <spec value="XSLT30+"/>

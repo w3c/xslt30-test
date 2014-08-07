@@ -202,8 +202,7 @@
       </xsl:stream>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling avg() using //x/y -->
-    <!-- Saxon makes this streamable by rewriting //X/Y as .//Y[parent::X] -->
+    <!-- Test of xsl:stream calling avg() using striding select expr with grounding mapping operator of the form /x/y!z -->
     
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
@@ -233,7 +232,7 @@
       </xsl:stream>
     </xsl:template>
     
-    <!-- Streaming avg(): crawling operand, selects nothing -->
+    <!-- Streaming avg(): rooted striding operand, selects nothing -->
     
     <xsl:template name="s-042" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">

@@ -11,7 +11,7 @@
   					as="xs:string" 
   					initial-value="''"
   					_streamable="{$streamable}">
-    <xsl:accumulator-rule match="section/p/text()" new-value="string(.)"/>
+    <xsl:accumulator-rule match="section/p/text()" select="string(.)"/>
   </xsl:accumulator>
 
 

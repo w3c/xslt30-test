@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keyword-hints>
+    <!-- extra filters -->
+    <filter>
+        <if-keyword>streamable-identity-transform</if-keyword>
+        <remove-keywords>xsl:copy climbing-childless motionless-pattern climbing</remove-keywords>
+    </filter>
+    <filter>
+        <if-keyword>crawling-then-striding</if-keyword>
+        <remove-keywords>crawling</remove-keywords>
+    </filter>
+    <filter>
+        <if-keyword>striding-then-crawling</if-keyword>
+        <remove-keywords>crawling</remove-keywords>
+    </filter>
+    <filter>
+        <if-keyword>striding-then-climbing</if-keyword>
+        <remove-keywords>climbing</remove-keywords>
+    </filter>
+    <filter>
+        <if-keyword>climbing-then-climbing</if-keyword>
+        <remove-keywords>climbing</remove-keywords>
+    </filter>
+    <filter>
+        <if-keyword>positional-predicate</if-keyword>
+        <remove-keywords>motionless-predicate</remove-keywords>
+    </filter>
+    
+    <!-- if testsets are (almost) identical to earliers test-sets -->
+    <similar active="no">
+        <master>sf-trace</master>
+        <slave>sf-insert-before</slave>        
+        <slave numeric-add="100">sf-insert-before</slave>
+        <slave>sf-outermost</slave>
+        <slave>sf-one-or-more</slave>
+        <slave>sf-remove</slave>
+        <slave>sf-subsequence</slave>
+        <slave numeric-add="100">sf-subsequence</slave>
+        <slave>sf-tail</slave>
+        <slave>sf-trace</slave>
+        <slave>sf-unordered</slave>
+        <slave>sx-CommaExpr</slave>
+        <slave>sx-IfExpr</slave>
+    </similar>
+    
+    <similar>
+        <master>sx-CommaExpr</master>
+        <slave numeric-add="100">sx-CommaExpr</slave>        
+    </similar>
+    
+    <similar active="no">
+        <master>sf-trace</master>
+        <slave numeric-add="100">sx-IfExpr</slave>        
+        <slave numeric-add="200">sx-IfExpr</slave>        
+    </similar>    
+
+    <similar>
+        <master>sf-empty</master>
+        <slave>sf-not</slave>
+    </similar>
+    
+    <similar>
+        <master>sx-GeneralComp-eq</master>
+        <slave numeric-add="100">sx-GeneralComp-eq</slave>
+        <slave>sx-GeneralComp-ge</slave>
+        <slave>sx-GeneralComp-gt</slave>
+        <slave>sx-GeneralComp-le</slave>
+        <slave>sx-GeneralComp-lt</slave>
+        <slave>sx-GeneralComp-ne</slave>
+    </similar>
+    
+    <similar>
+        <master>sf-exactly-one</master>
+        <slave>sf-zero-or-one</slave>
+    </similar>
+    
+    <similar>
+        <master>sf-max</master>
+        <slave>sf-min</slave>
+        <slave>sf-sum</slave>
+    </similar>
+    
+    <!-- hints based on dynamic xpath -->
+    <hint active="no">
+        <xpath>//xsl:mode</xpath>
+        <keywords>xsl:mode</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:mode/@on-no-match</xpath>
+        <keywords>on-no-match-attribute</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//xsl:mode[@streamable = 'yes']</xpath>
+        <keywords>streamable-mode</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:mode[@streamable = 'no']</xpath>
+        <keywords>non-streamable-mode</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:copy</xpath>
+        <keywords>xsl:copy</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//xsl:apply-templates</xpath>
+        <keywords>xsl:apply-templates</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:mode/@on-no-match</xpath>
+        <keywords as-xpath="yes">/xsl:*/xsl:mode/@on-no-match/string(.)</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//xsl:template[@mode = //xsl:mode/@name]</xpath>
+        <keywords>matching-mode</keywords>
+    </hint>
+    <hint active="yes">
+        <!-- only leading lone slash if streamable mode applies -->
+        <xpath>//(@select | @match)[starts-with(., '/')][not(starts-with(., '//'))][ancestor::xsl:template[@mode = preceding-sibling::xsl:mode[@streamable='yes']/@name or (not(@mode) and preceding-sibling::xsl:mode[@streamable='yes'][not(@name)])]]</xpath>
+        <keywords>leading-lone-slash</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[matches(., '\(/[^/]|^/[^/]|, ?/[^/]')]</xpath>
+        <keywords>leading-lone-slash</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[matches(., '\(//|^//|, ?//')]</xpath>
+        <keywords>leading-double-slash</keywords>
+    </hint>
+    <hint>
+        <xpath>//(@select | @match)[starts-with(., '//')]</xpath>
+        <keywords>leading-double-slash</keywords>
+    </hint>
+    <hint>
+        <!-- only attribute axis climbing if streamable mode applies -->
+        <xpath>//@select[ancestor::xsl:template[@mode = preceding-sibling::xsl:mode[@streamable='yes']/@name or (not(@mode) and preceding-sibling::xsl:mode[@streamable='yes'][not(@name)])]][contains(., '@')]</xpath>
+        <keywords>climbing-childless</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//xsl:template[@mode = //xsl:mode[@streamable = 'yes']/@name or (not(@mode) and preceding-sibling::xsl:mode[@streamable='yes'][not(@name)])]</xpath>
+        <keywords>motionless-pattern</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:template[@mode = //xsl:mode[@streamable = 'yes']/@name or (not(@mode) and preceding-sibling::xsl:mode[@streamable='yes'][not(@name)])][xsl:copy[xsl:copy-of[@select='@*']][xsl:apply-templates]]</xpath>
+        <keywords>streamable-identity-transform</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//xsl:variable[@static = 'yes']</xpath>
+        <keywords>static-variable</keywords>
+    </hint>
+    <hint>
+        <!-- names of the instructions that have a shadow attribute --> 
+        <xpath>//*[@*[starts-with(local-name(), '_')]]</xpath>
+        <keywords as-xpath="yes">//*[@*[starts-with(local-name(), '_')]]/name()</keywords>
+    </hint>
+    <hint>
+        <!-- names of the attributes that are a shadow attribute -->
+        <xpath>//*[@*[starts-with(local-name(), '_')]]</xpath>
+        <keywords as-xpath="yes">//*/@*[starts-with(local-name(), '_')]/local-name()</keywords>
+    </hint>
+    <hint>
+        <!-- names of the instruction or declaration with xpath-default-namespace -->
+        <xpath>//*[@xpath-default-namespace]</xpath>
+        <keywords as-xpath="yes">//*[@xpath-default-namespace]/('xsl:' || local-name())</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//xsl:if</xpath>
+        <keywords>xsl:if</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:choose</xpath>
+        <keywords>xsl:choose xsl:when xsl:otherwise</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:function</xpath>
+        <keywords>stylesheet-function xsl:function</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[contains(., 'function-available')]</xpath>
+        <keywords>fn:function-available</keywords>
+    </hint>
+    <hint>
+        <xpath>//@xsl:use-attribute-sets</xpath>
+        <keywords>xsl:use-attribute-sets</keywords>
+    </hint>
+    <hint>
+        <xpath>//@use-attribute-sets</xpath>
+        <keywords>use-attribute-sets</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*:use-attribute-sets[count(tokenize(., ' ')) > 1]</xpath>
+        <keywords>multiple-attribute-sets</keywords>
+    </hint>
+    <hint>
+        <xpath>//@on-empty</xpath>
+        <keywords>on-empty</keywords>
+    </hint>
+    <hint>
+        <xpath>//@xsl:on-empty</xpath>
+        <keywords>xsl:on-empty</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:attribute-set/@use-attribute-sets</xpath>
+        <keywords>attribute-set-inheritance</keywords>
+    </hint>
+    <hint>
+        <xpath>//*[following-sibling::*/name() = ./name()][following-sibling::*/@name = ./@name][parent::xsl:stylesheet | parent::xsl:transform | xsl:override]</xpath>
+        <keywords>conflict-resolution</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:import</xpath>
+        <keywords>xsl:import</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:include</xpath>
+        <keywords>xsl:include</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:import-schema</xpath>
+        <keywords>xsl:import-schema</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:strip-space[not(@elements = '*')]</xpath>
+        <keywords>xsl:strip-space</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:with-param[@tunnel = 'yes']</xpath>
+        <keywords>xsl:with-param tunnel-parameter</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:apply-templates[xsl:with-param[@tunnel = 'yes']]</xpath>
+        <keywords>xsl:with-param tunnel-parameter xsl:apply-templates</keywords>
+    </hint>
+    <hint>
+        <xpath>//(xsl:stylesheet | xsl:transform)[count(//xsl:stream) >= 2]</xpath>
+        <keywords>multiple-streaming-input</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:for-each-group</xpath>
+        <keywords>xsl:for-each-group</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:for-each-group</xpath>
+        <keywords as-xpath="yes">//xsl:for-each-group/@*[starts-with(name(), 'group')]/concat(local-name(), '-attribute')</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//xsl:value-of</xpath>
+        <keywords>xsl:value-of</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//@select[contains(., 'true(')]</xpath>
+        <keywords>fn:true</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'false(')]</xpath>
+        <keywords>fn:false</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'not(')]</xpath>
+        <keywords>fn:not</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'boolean(')][not(contains(., 'xs:boolean'))]</xpath>
+        <keywords>fn:boolean</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'xs:boolean(')]</xpath>
+        <keywords>xs:boolean</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'lang(')]</xpath>
+        <keywords>fn:lang</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'number(')]</xpath>
+        <keywords>fn:number</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//@select[matches(., "[0-9]+[^'0-9]")]</xpath>
+        <keywords>numeric-literals</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//@select[matches(., "'[^']+'")]</xpath>
+        <keywords>string-literals</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//@select[matches(., "''")]</xpath>
+        <keywords>empty-string string-literals</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[contains(., 'system-property')]</xpath>
+        <keywords>fn:system-property</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[contains(., 'system-property')][contains(., 'xsl:version')]</xpath>
+        <keywords>xsl:version</keywords>
+    </hint>
+    <hint>
+        <xpath>//(@use-when | //@xsl:use-when)[not(contains(., '$RUN'))]</xpath>
+        <keywords>use-when-attribute</keywords>
+    </hint>
+    <hint>
+        <xpath>//(@version|@xsl:version)[. > /(xsl:stylesheet | xsl:transform)/@version/number()] | /(xsl:stylesheet | xsl:transform)/@version[. > 3.0]</xpath>
+        <keywords>forwards-compatibility-mode</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:fallback</xpath>
+        <keywords>xsl:fallback</keywords>
+    </hint>
+    <hint>
+        <xpath>//@xsl:extension-element-prefixes[data(.)] | //@extension-element-prefixes[data(.)]</xpath>
+        <keywords>extension-element-prefixes-attribute</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:output[@method='xhtml']</xpath>
+        <keywords>xhtml-output-method</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:output[@method='text']</xpath>
+        <keywords>text-output-method</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:output[@method='html']</xpath>
+        <keywords>html-output-method</keywords>
+    </hint>
+    <hint active="no">
+        <xpath>//xsl:output[@method='xml' or not(@method)]</xpath>
+        <keywords>xml-output-method</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:result-document</xpath>
+        <keywords>xsl:result-document</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[matches(., 'copy-of\s*\(')]</xpath>
+        <keywords>fn:copy-of</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[matches(., 'error\s*\(')]</xpath>
+        <keywords>fn:error</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:try</xpath>
+        <keywords>xsl:try error-handling</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:try[xsl:catch[not(@errors) or @errors = '*']]</xpath>
+        <keywords>generic-catch-clause</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:try[xsl:catch[@errors][not(@errors = '*')]]</xpath>
+        <keywords>specific-catch-clause</keywords>
+    </hint>
+    <hint>
+        <xpath>//xsl:try[xsl:catch[@errors][not(@errors = '*')]]</xpath>
+        <keywords as-xpath="yes">//xsl:catch[@errors][not(@errors = '*')]/@errors/data()!replace(., '[^:]*:?(.+)', '$1')</keywords>
+    </hint>
+    <hint>
+        <!-- $err:description and other namespaced variable references in attributes -->
+        <xpath>//@*[matches(., '\$[a-zA-Z]+:[a-zA-Z-]+')]</xpath>
+        <keywords as-xpath="yes">//@*[matches(., '\$[a-zA-Z]+:[a-zA-Z-]+')]!replace(., '.*(\$[a-zA-Z]+:[a-zA-Z-]+).*', '$1')</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[contains(., 'xml-to-json')]</xpath>
+        <keywords>fn:xml-to-json</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[contains(., 'json-to-xml')]</xpath>
+        <keywords>fn:json-to-xml</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[contains(., 'xs:decimal')]</xpath>
+        <keywords>xs:decimal</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[matches(., '[a-zA-Z+]/[a-zA-Z]+')]</xpath>
+        <keywords>PathExpr</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[matches(., '[a-zA-Z+]/[a-zA-Z]+\[[^\[]+\]')]</xpath>
+        <keywords>motionless-predicate</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[matches(., '\[[^\[]*position\([^\[]+\]|\[[0-9]+\]')]</xpath>
+        <keywords>positional-predicate</keywords>
+    </hint>
+    <hint>
+        <xpath>//@*[contains(., 'outermost')]</xpath>
+        <keywords>fn:outermost crawling-then-striding</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., '//')]</xpath>
+        <keywords>PathExpr</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., '!')]</xpath>
+        <keywords>SimpleMapExpr</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'remove')]</xpath>
+        <keywords>fn:remove</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'data')]</xpath>
+        <keywords>fn:data</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'ancestor::')]</xpath>
+        <keywords>ancestor-axis climbing</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'ancestor-or-self::')]</xpath>
+        <keywords>ancestor-or-self-axis climbing</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[contains(., 'namespace::')]</xpath>
+        <keywords>namespace-axis climbing</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[matches(., '[a-zA-Z]#[0-9]')]</xpath>
+        <keywords>NamedFunctionRef</keywords>
+    </hint>
+    <hint>
+        <xpath>//@select[matches(., 'if.*then.*else')]</xpath>
+        <keywords>choice-operand-group</keywords>
+    </hint>
+</keyword-hints>

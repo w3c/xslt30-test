@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="boolean">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="boolean">
    <description>Tests boolean</description>
    <environment name="bool001">
       <source role=".">
@@ -206,6 +204,7 @@
 
    <test-case name="boolean-001">
       <description>Test of true()</description>
+      <keywords>fn:true xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool001"/>
       <dependencies>
@@ -221,6 +220,7 @@
 
    <test-case name="boolean-002">
       <description>Test of codepoint-equal() function</description>
+      <keywords>fn:codepoint-equal xsl:value-of string-literal</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool001"/>
       <dependencies>
@@ -236,6 +236,7 @@
 
    <test-case name="boolean-003">
       <description>Test of boolean "and" operator with both values true</description>
+      <keywords>fn:true AndExpr xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool002"/>
       <dependencies>
@@ -251,6 +252,7 @@
 
    <test-case name="boolean-004">
       <description>Test of boolean "not" operator with true value.</description>
+      <keywords>xsl:value-of fn:true fn:not</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool002"/>
       <dependencies>
@@ -266,6 +268,7 @@
 
    <test-case name="boolean-005">
       <description>Test of boolean "or" operator with two true values</description>
+      <keywords>OrExpr xsl:value-of fn:true</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool003"/>
       <dependencies>
@@ -281,6 +284,7 @@
 
    <test-case name="boolean-006">
       <description>Test of boolean() function - conversion of empty string.</description>
+      <keywords>xsl:value-of fn:boolean string-literal empty-string</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool005"/>
       <dependencies>
@@ -296,6 +300,7 @@
 
    <test-case name="boolean-007">
       <description>Test of "&gt;" operator with false expected value.</description>
+      <keywords>GeneralComp xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool005"/>
       <dependencies>
@@ -311,6 +316,7 @@
 
    <test-case name="boolean-008">
       <description>Test of "&gt;=" operators with expected false result.</description>
+      <keywords>GeneralComp xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool005"/>
       <dependencies>
@@ -326,6 +332,7 @@
 
    <test-case name="boolean-009">
       <description>Test of lang() function</description>
+      <keywords>xsl:value-of fn:lang</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool008"/>
       <dependencies>
@@ -341,6 +348,7 @@
 
    <test-case name="boolean-010">
       <description>Test of false() function</description>
+      <keywords>xsl:value-of fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -356,6 +364,7 @@
 
    <test-case name="boolean-011">
       <description>Test of the '=' operator for true.</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -371,6 +380,7 @@
 
    <test-case name="boolean-012">
       <description>Test of '=' operator for false.</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -386,6 +396,7 @@
 
    <test-case name="boolean-013">
       <description>Test of '=' operator with fractional number one with leading zero one without.</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -401,6 +412,7 @@
 
    <test-case name="boolean-014">
       <description>Test of '=' operator with positive and negative zero.</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -416,6 +428,7 @@
 
    <test-case name="boolean-015">
       <description>Test of '=' operator with one number with leading zero, one not. originally written as &lt;xsl:value-of select="1 = '001'"/&gt;. At 2.0, you have to be explicit whether you want a string or a numeric comparison</description>
+      <keywords>GeneralComp xsl:value-of fn:number numeric-literals string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -431,6 +444,7 @@
 
    <test-case name="boolean-016">
       <description>Test of '=' operator one true value compared against a non-empty string. original test was &lt;xsl:value-of select="true()='xxx'"/&gt;. This isn't allowed in XPath 2.0</description>
+      <keywords>GeneralComp xsl:value-of fn:true fn:boolean string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -446,6 +460,7 @@
 
    <test-case name="boolean-017">
       <description>Test of '=' operator one false value compared against an empty string. original test was &lt;xsl:value-of select="false()=''"/&gt;. This isn't allowed in 2.0</description>
+      <keywords>GeneralComp xsl:value-of fn:false fn:boolean empty-string string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -461,6 +476,7 @@
 
    <test-case name="boolean-018">
       <description>Test of '=' operator one true value compared against a non-zero number.</description>
+      <keywords>GeneralComp xsl:value-of fn:true fn:boolean numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -476,6 +492,7 @@
 
    <test-case name="boolean-019">
       <description>Test of '=' operator one true value compared against zero.</description>
+      <keywords>GeneralComp xsl:value-of fn:false fn:boolean numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -491,6 +508,7 @@
 
    <test-case name="boolean-020">
       <description>Test of boolean "and" operator with both values false</description>
+      <keywords>AndExpr xsl:value-of fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -506,6 +524,7 @@
 
    <test-case name="boolean-021">
       <description>Test of boolean "and" operator with one value true and one value false</description>
+      <keywords>AndExpr xsl:value-of fn:true fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -521,6 +540,7 @@
 
    <test-case name="boolean-022">
       <description>Test of boolean "and" operator with one value false and one value true</description>
+      <keywords>xsl:value-of fn:true fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -536,6 +556,7 @@
 
    <test-case name="boolean-023">
       <description>Test of boolean "and" operator with two strings</description>
+      <keywords>AndExpr xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -551,6 +572,7 @@
 
    <test-case name="boolean-024">
       <description>Test that '0' converts to boolean "false" at XPath 2.0 (at XPath 1.0, it converts to true) Test changed Jan 2003, comparison of boolean to string no longer allowed</description>
+      <keywords>GeneralComp xs:boolean xsl:value-of fn:false string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -566,6 +588,7 @@
 
    <test-case name="boolean-025">
       <description>Test that 'false' converts to boolean "false" at XPath 2.0 (at XPath 1.0, it converts to true) Test changed Jan 2003, comparison of boolean to string no longer allowed</description>
+      <keywords>GeneralComp xsl:value-of fn:false xs:boolean string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -581,6 +604,7 @@
 
    <test-case name="boolean-026">
       <description>Test "fortran" operators applied to numbers (XPath 2.0)</description>
+      <keywords>ValueComp lre avt numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -596,6 +620,7 @@
 
    <test-case name="boolean-027">
       <description>Test "fortran" operators applied to strings (XPath 2.0) actually this is false actually this is false</description>
+      <keywords>ValueComp lre avt string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool009"/>
       <dependencies>
@@ -611,6 +636,7 @@
 
    <test-case name="boolean-028">
       <description>Test of boolean "or" operator</description>
+      <keywords>OrExpr xsl:value-of fn:true fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool024"/>
       <dependencies>
@@ -626,6 +652,7 @@
 
    <test-case name="boolean-029">
       <description>Test of boolean "or" operator</description>
+      <keywords>xsl:value-of fn:true fn:false OrExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool024"/>
       <dependencies>
@@ -641,6 +668,7 @@
 
    <test-case name="boolean-030">
       <description>Test of boolean "or" operator</description>
+      <keywords>OrExpr xsl:value-of fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool024"/>
       <dependencies>
@@ -656,6 +684,7 @@
 
    <test-case name="boolean-031">
       <description>Test of boolean "or" operator</description>
+      <keywords>OrExpr empty-string xsl:value-of numeric-literals string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool024"/>
       <dependencies>
@@ -671,6 +700,7 @@
 
    <test-case name="boolean-032">
       <description>Test that "or" doesn't evaluate right operand if left is true, in backwards compatibility mode</description>
+      <keywords>OrExpr MultiplicativeExpr xsl:value-of fn:true numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool024"/>
       <dependencies>
@@ -687,6 +717,7 @@
 
    <test-case name="boolean-033">
       <description>Test of boolean "not" operator</description>
+      <keywords>xsl:value-of fn:false fn:not</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool028"/>
       <dependencies>
@@ -702,6 +733,7 @@
 
    <test-case name="boolean-034">
       <description>Test of boolean "not" operator</description>
+      <keywords>GeneralComp xsl:value-of fn:false fn:not</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool028"/>
       <dependencies>
@@ -717,6 +749,7 @@
 
    <test-case name="boolean-035">
       <description>Test of boolean "not" operator</description>
+      <keywords>GeneralComp xsl:value-of fn:true fn:false fn:not</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool028"/>
       <dependencies>
@@ -732,6 +765,7 @@
 
    <test-case name="boolean-036">
       <description>Test of boolean "not" operator</description>
+      <keywords>empty-string xsl:value-of fn:not string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool028"/>
       <dependencies>
@@ -747,6 +781,7 @@
 
    <test-case name="boolean-037">
       <description>Test of boolean "not" operator</description>
+      <keywords>xsl:value-of fn:not string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool028"/>
       <dependencies>
@@ -762,6 +797,7 @@
 
    <test-case name="boolean-038">
       <description>Test of boolean() function</description>
+      <keywords>xsl:value-of fn:boolean string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -777,6 +813,7 @@
 
    <test-case name="boolean-039">
       <description>Test of boolean() function</description>
+      <keywords>xsl:value-of fn:boolean numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -792,6 +829,7 @@
 
    <test-case name="boolean-040">
       <description>Test of boolean() function</description>
+      <keywords>xsl:value-of fn:boolean numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -807,6 +845,7 @@
 
    <test-case name="boolean-041">
       <description>Test of boolean() function</description>
+      <keywords>xsl:value-of fn:boolean numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -822,6 +861,7 @@
 
    <test-case name="boolean-042">
       <description>Test of boolean() function</description>
+      <keywords>MultiplicativeExpr xsl:value-of fn:boolean numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -837,6 +877,7 @@
 
    <test-case name="boolean-043">
       <description/>
+      <keywords>MultiplicativeExpr xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -852,6 +893,7 @@
 
    <test-case name="boolean-044">
       <description>Test of boolean() function</description>
+      <keywords>MultiplicativeExpr xsl:value-of fn:boolean numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -867,6 +909,7 @@
 
    <test-case name="boolean-045">
       <description>Test of boolean() function</description>
+      <keywords>AxisStep xsl:value-of fn:boolean</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -882,6 +925,7 @@
 
    <test-case name="boolean-046">
       <description>Test of boolean() function</description>
+      <keywords>AxisStep xsl:value-of fn:boolean</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -897,6 +941,7 @@
 
    <test-case name="boolean-047">
       <description>Test of boolean() function</description>
+      <keywords>variable-reference xsl:value-of fn:boolean</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -912,6 +957,7 @@
 
    <test-case name="boolean-048">
       <description>Test of boolean() function</description>
+      <keywords>variable-reference xsl:value-of fn:boolean</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -927,6 +973,7 @@
 
    <test-case name="boolean-049">
       <description>Test of "&gt;" and "&lt;" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -942,6 +989,7 @@
 
    <test-case name="boolean-050">
       <description>Test of "&gt;" and "&lt;" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -957,6 +1005,7 @@
 
    <test-case name="boolean-051">
       <description>Test of "&gt;" and "&lt;" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -972,6 +1021,7 @@
 
    <test-case name="boolean-052">
       <description>Test of "&gt;" and "&lt;" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -987,6 +1037,7 @@
 
    <test-case name="boolean-053">
       <description>Test of "&gt;" and "&lt;" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1002,6 +1053,7 @@
 
    <test-case name="boolean-054">
       <description>Test of "&gt;" and "&lt;" operators</description>
+      <keywords>GeneralComp xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1017,6 +1069,7 @@
 
    <test-case name="boolean-055">
       <description>Test of "&gt;" and "&lt;" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1032,6 +1085,7 @@
 
    <test-case name="boolean-056">
       <description>Test of "&lt;=" and "&gt;=" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1047,6 +1101,7 @@
 
    <test-case name="boolean-057">
       <description>Test of "&lt;=" and "&gt;=" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1062,6 +1117,7 @@
 
    <test-case name="boolean-058">
       <description>Test of "&lt;=" and "&gt;=" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1077,6 +1133,7 @@
 
    <test-case name="boolean-059">
       <description>Test of "&lt;=" and "&gt;=" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1092,6 +1149,7 @@
 
    <test-case name="boolean-060">
       <description>Test of "&lt;=" and "&gt;=" operators</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1107,6 +1165,7 @@
 
    <test-case name="boolean-061">
       <description>Purpose: Test of "&lt;=" operator</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1122,6 +1181,7 @@
 
    <test-case name="boolean-062">
       <description>Test of "&lt;" operator comparing two real numbers, true result</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1137,6 +1197,7 @@
 
    <test-case name="boolean-063">
       <description>Test of "&lt;" operator comparing two real numbers, false result</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1152,6 +1213,7 @@
 
    <test-case name="boolean-064">
       <description>Test of "&lt;" operator comparing real to integer, true result</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1167,6 +1229,7 @@
 
    <test-case name="boolean-065">
       <description>Test of "&lt;" operator comparing real to integer, false result</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool033"/>
       <dependencies>
@@ -1182,6 +1245,7 @@
 
    <test-case name="boolean-066">
       <description>Test of "&lt;=" and "&gt;=" operators</description>
+      <keywords>PathExpr variable-reference GeneralComp xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool056"/>
       <dependencies>
@@ -1199,6 +1263,7 @@
 
    <test-case name="boolean-067">
       <description>Test of "&lt;=" and "&gt;=" operators Modified from bool56 which does string comparisons at XPath 2.0</description>
+      <keywords>ForExpr GeneralComp xsl:value-of fn:number variable-reference sequence-comparison</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool056"/>
       <dependencies>
@@ -1216,6 +1281,7 @@
 
    <test-case name="boolean-068">
       <description>Test of "=" operator with mixed types Modified from bool56 which does string comparisons at XPath 2.0</description>
+      <keywords>variable-reference GeneralComp leading-double-slash xsl:value-of sequence-comparison numeric-literals string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool056"/>
       <dependencies>
@@ -1235,6 +1301,7 @@
 
    <test-case name="boolean-069">
       <description>Test of "=" operator with mixed types String to boolean comparison is allowed in backwards compatibility mode</description>
+      <keywords>variable-reference sequence-comparison GeneralComp xsl:value-of numeric-literals string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool056"/>
       <dependencies>
@@ -1255,6 +1322,7 @@
 
    <test-case name="boolean-070">
       <description>Test of "!=" operator with an unordered type (anyURI)</description>
+      <keywords>xs:anyURI GeneralComp sequence-comparison xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool056"/>
       <dependencies>
@@ -1271,6 +1339,7 @@
 
    <test-case name="boolean-071">
       <description>Test of eq (etc) with an empty sequence as operand empty</description>
+      <keywords>ValueComp fn:count sequence-comparison xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool056"/>
       <dependencies>
@@ -1286,6 +1355,7 @@
 
    <test-case name="boolean-072">
       <description>Test of eq (etc) with an emptiable types as operands</description>
+      <keywords>xs:integer empty-sequence sequence-comparison stylesheet-function xsl:function xsl:value-of ValueComp string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool056"/>
       <dependencies>
@@ -1301,6 +1371,7 @@
 
    <test-case name="boolean-073">
       <description>Test of "&lt;=" and "&gt;=" operators</description>
+      <keywords>GeneralComp sequence-comparison variable-reference xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool057"/>
       <dependencies>
@@ -1318,6 +1389,7 @@
 
    <test-case name="boolean-074">
       <description>Test of node identity comparison operators</description>
+      <keywords>NodeComp sequence-comparison variable-reference xsl:value-of fn:not</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool057"/>
       <dependencies>
@@ -1337,6 +1409,7 @@
 
    <test-case name="boolean-075">
       <description>Test of node identity comparison operators with empty sequences</description>
+      <keywords>sequence-comparison NodeComp variable-reference xsl:value-of fn:not</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool057"/>
       <dependencies>
@@ -1357,6 +1430,7 @@
 
    <test-case name="boolean-076">
       <description>Test of node order operators</description>
+      <keywords>sequence-comparison NodeComp variable-reference xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool057"/>
       <dependencies>
@@ -1376,6 +1450,7 @@
 
    <test-case name="boolean-077">
       <description>Test of node order operators with empty operands</description>
+      <keywords>sequence-comparison NodeComp variable-reference xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool057"/>
       <dependencies>
@@ -1396,6 +1471,7 @@
 
    <test-case name="boolean-078">
       <description>Test 3-valued truth table for AND</description>
+      <keywords>empty-sequence xsl:value-of fn:true fn:false AndExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool057"/>
       <dependencies>
@@ -1411,6 +1487,7 @@
 
    <test-case name="boolean-079">
       <description>Test 3-valued truth table for OR</description>
+      <keywords>empty-sequence OrExpr xsl:value-of fn:true fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool057"/>
       <dependencies>
@@ -1426,6 +1503,7 @@
 
    <test-case name="boolean-080">
       <description>DOCUMENT: http://www.w3.org/TR/xpath SECTION: 3.4 Booleans Test 3-valued truth table for AND with computed booleans</description>
+      <keywords>fn:count GeneralComp AndExpr fn:exists PathExpr leading-double-slash xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool057"/>
       <dependencies>
@@ -1441,6 +1519,7 @@
 
    <test-case name="boolean-081">
       <description>Test of comparison between boolean and node-set</description>
+      <keywords>sequence-comparison variable-reference GeneralComp xsl:value-of fn:true</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool070"/>
       <dependencies>
@@ -1459,6 +1538,7 @@
 
    <test-case name="boolean-082">
       <description>crashes with NPE in Saxon 7.9.1</description>
+      <keywords>GeneralComp fn:compare text-node xsl:if xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool077"/>
       <dependencies>
@@ -1474,6 +1554,7 @@
 
    <test-case name="boolean-083">
       <description>Test of '=' operator, boolean to string. Reverse order of boolean15.</description>
+      <keywords>GeneralComp xsl:value-of fn:true string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1490,6 +1571,7 @@
 
    <test-case name="boolean-084">
       <description>Test that "and" doesn't bother with right operand if left is false, in backwards compatibility mode</description>
+      <keywords>AndExpr MultiplicativeExpr xsl:value-of fn:false numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1506,6 +1588,7 @@
 
    <test-case name="boolean-085">
       <description>Test of the '!=' operator returning false on two numbers.</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1521,6 +1604,7 @@
 
    <test-case name="boolean-086">
       <description>Test of the '!=' operator returning true on two numbers.</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1536,6 +1620,7 @@
 
    <test-case name="boolean-087">
       <description>Test of '!=' operator on two numbers, one having decimal point and zeroes after</description>
+      <keywords>GeneralComp xsl:value-of numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1551,6 +1636,7 @@
 
    <test-case name="boolean-088">
       <description>Test of '!=' operator on two booleans, false first.</description>
+      <keywords>GeneralComp xsl:value-of fn:true fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1566,6 +1652,7 @@
 
    <test-case name="boolean-089">
       <description>Test of '!=' operator on two booleans, true first.</description>
+      <keywords>GeneralComp xsl:value-of fn:true fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1581,6 +1668,7 @@
 
    <test-case name="boolean-090">
       <description>Test of '!=' operator on two booleans that are equal, so false should result.</description>
+      <keywords>GeneralComp xsl:value-of fn:false</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1596,6 +1684,7 @@
 
    <test-case name="boolean-091">
       <description>Test of '!=' operator on two strings that are equal, so false should result.</description>
+      <keywords>GeneralComp xs:string xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1611,6 +1700,7 @@
 
    <test-case name="boolean-092">
       <description>Test of '!=' operator on two strings that are unequal, so true should result.</description>
+      <keywords>GeneralComp xs:string xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1626,6 +1716,7 @@
 
    <test-case name="boolean-093">
       <description>Test of '!=' operator on two strings that are unequal, but only in leading spaces.</description>
+      <keywords>GeneralComp xs:string xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1641,6 +1732,7 @@
 
    <test-case name="boolean-094">
       <description>Test of '!=' operator on two strings that are unequal, but only in trailing spaces.</description>
+      <keywords>GeneralComp xs:string xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1656,6 +1748,7 @@
 
    <test-case name="boolean-095">
       <description>Test of '=' operator with one number with leading zero, one not. Reverse order of boolean14.</description>
+      <keywords>GeneralComp xs:string backwards-compatibility-mode xsl:value-of numeric-literals string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1672,6 +1765,7 @@
 
    <test-case name="boolean-096">
       <description>Test of '=' operator, false value compared against zero. Reverse order of boolean18.</description>
+      <keywords>GeneralComp backwards-compatibility-mode xsl:value-of fn:false numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1688,6 +1782,7 @@
 
    <test-case name="boolean-097">
       <description>Test of '=' operator with one number with leading zero, one not. Reverse order of boolean14. Error: cannot compare a number to a string</description>
+      <keywords>GeneralComp xs:string xsl:value-of string-literals numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1703,6 +1798,7 @@
 
    <test-case name="boolean-098">
       <description>Test of '=' operator, false value compared against zero. Reverse order of boolean18. Error: cannot compare boolean to number</description>
+      <keywords>GeneralComp xsl:value-of fn:false numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool078"/>
       <dependencies>
@@ -1718,6 +1814,7 @@
 
    <test-case name="boolean-099">
       <description>Test of lang() function with 2 arguments</description>
+      <keywords>ForExpr PathExpr xsl:value-of fn:lang</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool079"/>
       <dependencies>
@@ -1733,6 +1830,7 @@
 
    <test-case name="boolean-100">
       <description>If $x is bound to a node-set, then $x="foo" does not mean the same as not($x!="foo"): the former is true if and only if some node in $x has the string-value foo; the latter is true if and only if all nodes in $x have the string-value foo.</description>
+      <keywords>sequence-comparison GeneralComp xsl:value-of fn:not string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool158"/>
       <dependencies>
@@ -1748,6 +1846,7 @@
 
    <test-case name="boolean-101">
       <description>Test =, !=, and not, comparing node-set to string, where node-set is empty. empty</description>
+      <keywords>empty-sequence GeneralComp sequence-comparison xsl:value-of fn:not string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool159"/>
       <dependencies>
@@ -1763,6 +1862,7 @@
 
    <test-case name="boolean-102">
       <description>Test = on two node-sets, where both are the same.</description>
+      <keywords>sequence-comparison GeneralComp predicate xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool170"/>
       <dependencies>
@@ -1778,6 +1878,7 @@
 
    <test-case name="boolean-103">
       <description>Test = on two disjoint node-sets.</description>
+      <keywords>sequence-comparison predicate GeneralComp xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool170"/>
       <dependencies>
@@ -1793,6 +1894,7 @@
 
    <test-case name="boolean-104">
       <description>Test != on two node-sets, where both are the same.</description>
+      <keywords>GeneralComp sequence-comparison predicate xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool170"/>
       <dependencies>
@@ -1808,6 +1910,7 @@
 
    <test-case name="boolean-105">
       <description>Test != on two disjoint node-sets.</description>
+      <keywords>predicate GeneralComp sequence-comparison xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool170"/>
       <dependencies>
@@ -1823,6 +1926,7 @@
 
    <test-case name="boolean-106">
       <description>Test = on two node-sets that have one node in common.</description>
+      <keywords>GeneralComp sequence-comparison predicate xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool172"/>
       <dependencies>
@@ -1838,6 +1942,7 @@
 
    <test-case name="boolean-107">
       <description>Test != on two node-sets that have one node in common.</description>
+      <keywords>GeneralComp sequence-comparison predicate xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool172"/>
       <dependencies>
@@ -1853,6 +1958,7 @@
 
    <test-case name="boolean-108">
       <description>Test != on two node-sets that have their only node in common.</description>
+      <keywords>sequence-comparison GeneralComp predicate xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool172"/>
       <dependencies>
@@ -1868,6 +1974,7 @@
 
    <test-case name="boolean-109">
       <description>Test =, !=, and not, comparing node-set to number. Now reverse the order of the comparands</description>
+      <keywords>GeneralComp sequence-comparison xsl:value-of fn:not numeric-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool184"/>
       <dependencies>
@@ -1884,6 +1991,7 @@
 
    <test-case name="boolean-110">
       <description>Test = and !=, comparing RTF to string.</description>
+      <keywords>variable-reference GeneralComp xs:string xsl:value-of string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool188"/>
       <dependencies>
@@ -1899,6 +2007,7 @@
 
    <test-case name="boolean-111">
       <description>Test = and !=, comparing RTF to string.</description>
+      <keywords>variable-reference GeneralComp numeric-literals xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool189"/>
       <dependencies>
@@ -1914,6 +2023,7 @@
 
    <test-case name="boolean-112">
       <description>Test of boolean() on string "1".</description>
+      <keywords>xsl:value-of fn:boolean string-literals</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bool190"/>
       <dependencies>

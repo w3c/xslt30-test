@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.w3.org/2012/10/xslt-test-catalog ../../../admin/catalog-schema.xsd"
-          name="try">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2012/10/xslt-test-catalog ../../../admin/catalog-schema.xsd" name="try">
    <description>Tests try</description>
    <environment name="try020">
       <source role="." file="try020.xml"/>
@@ -12,6 +8,7 @@
 
    <test-case name="try-001">
       <description>Simple test of xsl:try</description>
+      <keywords>xsl:try error-handling generic-catch-clause FOAR0001 _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -28,6 +25,7 @@
 
    <test-case name="try-002">
       <description>Test of xsl:try as a higher-order function</description>
+      <keywords>xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description FORG0001 _IMPROVE:cannot-test-error-variables _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -46,6 +44,7 @@
 
    <test-case name="try-003">
       <description>Test xsl:try rethrowing the exception</description>
+      <keywords>_IMPROVE:cleanup-redundant-code fn:error xsl:try error-handling generic-catch-clause specific-catch-clause FORG0001 $err:code $err:line-number $err:value _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -62,6 +61,7 @@
 
    <test-case name="try-004">
       <description>Use xsl:try to catch a validation error. Should not report the error.</description>
+      <keywords>stylesheet-function XTTE1540 xsl:import-schema xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description _WRONG:not-sure-test-is-correct xsl:function fn:boolean _IMPROVE:cannot-test-error-variables</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -83,6 +83,7 @@
          Show xsl:try around element creation doesn't catch an error just because the element isn't valid 
          in the content model of its parent
       </description>
+      <keywords>_WRONG:not-sure-test-is-correct stylesheet-function xsl:import-schema xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description xsl:function</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -99,6 +100,7 @@
 
    <test-case name="try-006">
       <description>xsl:try element, simple case</description>
+      <keywords>FOAR0001 xsl:try error-handling generic-catch-clause _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -115,6 +117,7 @@
 
    <test-case name="try-007">
       <description>xsl:try element, catch a specific error</description>
+      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR0001 _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -131,6 +134,7 @@
 
    <test-case name="try-008">
       <description>xsl:try element, catch a specific error</description>
+      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 FOAR0001 _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -147,6 +151,7 @@
 
    <test-case name="try-009">
       <description>xsl:try element, catch several errors</description>
+      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 err:FOAR0001 _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -163,6 +168,7 @@
 
    <test-case name="try-010">
       <description>xsl:try element, use sequence constructor</description>
+      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 err:FOAR0001 _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -179,6 +185,7 @@
 
    <test-case name="try-011">
       <description>Error: variable declared in xsl:try is not visible with xsl:catch</description>
+      <keywords>XPST0008 variable-scope xsl:try error-handling generic-catch-clause specific-catch-clause _WRONG:incorrect-dependency</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -195,6 +202,7 @@
 
    <test-case name="try-012">
       <description>element-available in Saxon-SA</description>
+      <keywords>fn:element-available xsl:try xsl:catch _WRONG:incorrect-dependency _WRONG:test-output-incorrect</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -211,6 +219,7 @@
 
    <test-case name="try-013">
       <description>element-available in Saxon-B</description>
+      <keywords>fn:element-available xsl:try xsl:catch 2.0-only-behavior</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20"/>
@@ -226,6 +235,7 @@
 
    <test-case name="try-014">
       <description>xsl:fallback with xsl:try in XSLT 3.0</description>
+      <keywords>_WRONG:incorrect-dependency xsl:fallback xsl:try error-handling generic-catch-clause no-error-inside-try</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -242,6 +252,7 @@
 
    <test-case name="try-015">
       <description>xsl:fallback with xsl:try in XSLT 2.0</description>
+      <keywords>_WRONG:incorrect-dependency 2.0-only-behavior forwards-compatibility-mode xsl:fallback xsl:try error-handling generic-catch-clause no-error-inside-try</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20"/>
@@ -258,6 +269,7 @@
 
    <test-case name="try-016">
       <description>Invalid child of xsl:try in XSLT 3.0</description>
+      <keywords>_WRONG:incorrect-dependency xsl:fallback xsl:try error-handling generic-catch-clause no-error-inside-try</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -274,6 +286,7 @@
 
    <test-case name="try-017">
       <description>Invalid child of xsl:try in XSLT 2.0 (caught by xsl:fallback) (same test as try016 but run under XSLT 2.0)</description>
+      <keywords>_WRONG:incorrect-dependency forwards-compatibility-mode xsl:fallback xsl:try error-handling generic-catch-clause no-error-inside-try</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20"/>
@@ -290,6 +303,7 @@
 
    <test-case name="try-018">
       <description>xsl:catch with references to error variables in body</description>
+      <keywords>_IMPROVE:cannot-test-error-variables _WRONG:incorrect-dependency xsl:try error-handling generic-catch-clause $err:code $err:description $err:value $err:module $err:line-number $err:column-number FODC0002</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-04-28" change="reproducible results"/>
       <dependencies>
@@ -312,6 +326,7 @@
 
    <test-case name="try-019">
       <description>xsl:catch with references to error variables in select attribute</description>
+      <keywords>_WRONG:incorrect-dependency _IMPROVE:cannot-test-error-variables FODC0002 xsl:try error-handling generic-catch-clause $err:column-number</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-04-28" change="reproducible results"/>
       <dependencies>
@@ -334,6 +349,7 @@
 
    <test-case name="try-020">
       <description>xsl:result-document within xsl:try which throws a division by zero error</description>
+      <keywords>_IMPROVE:xsl:result-document-href-dependency FOAR0001 _WRONG:incorrect-dependency xsl:result-document xsl:try error-handling generic-catch-clause</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -350,6 +366,7 @@
 
    <test-case name="try-021">
       <description>xsl:result-document within xsl:try</description>
+      <keywords>_WRONG:incorrect-dependency _IMPROVE:cannot-test-error-variables XTDE1490 fn:boolean xsl:result-document xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -369,6 +386,7 @@
 
    <test-case name="try-022">
       <description>xsl:result-document within xsl:try, which catches a division by zero error in second result-document</description>
+      <keywords>FOAR0001 _IMPROVE:cannot-test-error-variables _WRONG:incorrect-dependency xsl:result-document xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-01-31" change="restructure the test assertions"/>
       <dependencies>
@@ -393,6 +411,7 @@
 
    <test-case name="try-023">
       <description>xsl:try within xsl:result-document, within xsl:try</description>
+      <keywords>_WRONG:incorrect-dependency no-error-inside-try xsl:result-document xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-01-31" change="restructure the test assertions"/>
       <modified by="Michael Kay" on="2013-04-05" change="further restructure the test assertions"/>
@@ -418,6 +437,7 @@
 
    <test-case name="try-024">
       <description>xsl:try within xsl:result-document, within xsl:try, which catches a division by zero error in inner result-document</description>
+      <keywords>FOAR0001 complex-use-case _IMPROVE:cannot-test-error-variables xsl:result-document xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-04-05" change="restructure the test assertions"/>
       <dependencies>
@@ -446,6 +466,7 @@
 
    <test-case name="try-025">
       <description>Invalid child of xsl:try in XSLT 2.0 (not caught by xsl:fallback) (same test as try-016 but run under XSLT 2.0)</description>
+      <keywords>2.0-only-behavior _WRONG:incorrect-dependency XTSE0010 xsl:fallback xsl:try error-handling generic-catch-clause</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20"/>
@@ -462,6 +483,7 @@
 
    <test-case name="try-026">
       <description>Invalid child of xsl:try in XSLT 2.0 (caught by xsl:fallback) (same test as try-017 but specifies version="3.0" at the instruction level)</description>
+      <keywords>version-attribute forwards-compatibility-mode xsl:fallback xsl:try error-handling generic-catch-clause</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20"/>
@@ -478,6 +500,7 @@
 
    <test-case name="try-027">
       <description>xsl:evaluate within xsl:try</description>
+      <keywords>xsl:evaluate _IMPROVE:cleanup-test xsl:try error-handling generic-catch-clause $err:description</keywords>
       <created by="Toshihito Makita" on="2012-11-07"/>
       <environment ref="try020"/>
       <dependencies>

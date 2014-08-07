@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="sf-max">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="sf-max">
    <description>max() function with streaming</description>
    
    <environment name="sf-max-A">
@@ -15,6 +13,7 @@
    
    <test-case name="sf-max-003">
       <description>Basic Test of xsl:stream instruction with max()</description>
+      <keywords>striding PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -27,6 +26,7 @@
 
    <test-case name="sf-max-004">
       <description>Test of xsl:stream instruction with max(), filtered with a motionless predicate</description>
+      <keywords>striding PathExpr motionless-predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -39,6 +39,7 @@
 
    <test-case name="sf-max-005">
       <description>Test of xsl:stream instruction with max(), filtered with a positional predicate</description>
+      <keywords>striding PathExpr positional-predicate fn:position</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -51,6 +52,7 @@
 
    <test-case name="sf-max-006">
       <description>Test of xsl:stream instruction with max(), filtered with a positional predicate</description>
+      <keywords>striding fn:position PathExpr positional-predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -63,6 +65,7 @@
 
    <test-case name="sf-max-007">
       <description>Test of xsl:stream instruction with max(), filtered with a positional predicate</description>
+      <keywords>striding fn:position PathExpr positional-predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -75,6 +78,7 @@
    
    <test-case name="sf-max-008">
       <description>Test of xsl:stream instruction with max(), filtered with data() to make the predicates motionless</description>
+      <keywords>striding-then-grounded predicate PathExpr fn:data</keywords>
       <created by="Michael Kay" on="2012-11-20"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -87,6 +91,7 @@
    
    <test-case name="sf-max-009">
       <description>Test of xsl:stream instruction with max(), filtered with text() to make the predicates motionless</description>
+      <keywords>striding childless-nodes text-nodes PathExpr predicate</keywords>
       <created by="Michael Kay" on="2012-11-20"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -99,6 +104,7 @@
    
    <test-case name="sf-max-010">
       <description>Test of xsl:stream instruction with max(), filtered with number() to make the predicates motionless</description>
+      <keywords>striding-then-grounded fn:number PathExpr predicate</keywords>
       <created by="Michael Kay" on="2012-11-20"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -111,6 +117,7 @@
    
    <test-case name="sf-max-011">
       <description>max() selecting nothing, returning the $zero case</description>
+      <keywords>striding empty-sequence PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-20"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -123,6 +130,7 @@
    
    <test-case name="sf-max-012">
       <description>max() selecting both streamed nodes and literals</description>
+      <keywords>ParenthesizedExpr striding-then-grounded mixed-posture fn:number PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-20"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -135,6 +143,7 @@
    
    <test-case name="sf-max-013">
       <description>max() selecting both streamed nodes and literals while also filtering</description>
+      <keywords>fn:tail striding-then-grounded fn:number PathExpr ParenthesizedExpr</keywords>
       <created by="Michael Kay" on="2012-11-20"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -147,6 +156,7 @@
    
    <test-case name="sf-max-015">
       <description>Test of xsl:stream instruction with max() of a computed value</description>
+      <keywords>striding-then-grounded ForExpr LetExpr leading-double-slash fn:outermost crawling-then-striding PathExpr SimpleMapExpr fn:data</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -159,6 +169,7 @@
    
    <test-case name="sf-max-016">
       <description>Test of xsl:stream instruction with max() of a computed value</description>
+      <keywords>MultiplicativeExpr attribute-axis striding-then-grounded PathExpr</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -171,6 +182,7 @@
    
    <test-case name="sf-max-017">
       <description>Test of xsl:stream instruction with max() using copy-of to make it streamable</description>
+      <keywords>striding-then-grounded predicate fn:copy-of PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -183,6 +195,7 @@
    
    <test-case name="sf-max-018">
       <description>Test of xsl:stream instruction with max() over attribute values</description>
+      <keywords>striding-then-climbing attribute-axis PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -195,6 +208,7 @@
    
    <test-case name="sf-max-019">
       <description>Test of xsl:stream instruction with max() over attribute values, filtered</description>
+      <keywords>striding-then-climbing attribute-axis motionless-predicate xs:decimal PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -207,6 +221,7 @@
    
    <test-case name="sf-max-020">
       <description>max() over attribute values, computed</description>
+      <keywords>striding-then-grounded attribute-axis climbing PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -219,6 +234,7 @@
    
    <test-case name="sf-max-021">
       <description>max() over values that depend on a condition</description>
+      <keywords>striding-then-grounded AdditiveExpr climbing attribute-axis UnaryExpr PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -231,6 +247,7 @@
    
    <test-case name="sf-max-022">
       <description>max() with a loop used to compute each value</description>
+      <keywords>striding xs:NMTOKENS ContextItemExpr xs:decimal PathExpr SimpleMapExpr</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -243,6 +260,7 @@
    
    <test-case name="sf-max-023">
       <description>max() over a crawling expression</description>
+      <keywords>xs:NMTOKENS ContextItemExpr leading-double-slash xs:decimal PathExpr fn:outermost crawling-then-striding SimpleMapExpr</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -255,6 +273,7 @@
    
    <test-case name="sf-max-030">
       <description>max() applied to dates</description>
+      <keywords>striding-then-grounded xs:date ContextItemExpr PathExpr</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -267,6 +286,7 @@
    
    <test-case name="sf-max-031">
       <description>max() applied to strings</description>
+      <keywords>striding-then-grounded fn:string PathExpr</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -279,6 +299,7 @@
    
    <test-case name="sf-max-032">
       <description>max() applied to durations</description>
+      <keywords>striding AxisStep xs:date PathExpr SimpleMapExpr</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -291,6 +312,7 @@
    
    <test-case name="sf-max-033">
       <description>max() - sequence contains NaN</description>
+      <keywords>striding-then-grounded fn:number PathExpr</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -303,6 +325,7 @@
    
    <test-case name="sf-max-034">
       <description>max() - incompatible data types</description>
+      <keywords>striding-then-grounded ParenthesizedExpr fn:number PathExpr FORG0006</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -315,6 +338,7 @@
    
    <test-case name="sf-max-035">
       <description>min() - incompatible data types - error is caught</description>
+      <keywords>ParenthesizedExpr striding-then-grounded fn:number xsl:try error-handling specific-catch-clause FORG0006 PathExpr</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -327,6 +351,7 @@
    
    <test-case name="sf-max-040">
       <description>max() over an empty grounded expression</description>
+      <keywords>empty-sequence leading-double-slash fn:outermost crawling-then-striding PathExpr fn:data</keywords>
       <created by="Michael Kay" on="2013-12-16"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -339,6 +364,7 @@
    
    <test-case name="sf-max-041">
       <description>max() over an empty striding expression</description>
+      <keywords>striding leading-lone-slash PathExpr</keywords>
       <created by="Michael Kay" on="2013-12-16"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -351,6 +377,7 @@
    
    <test-case name="sf-max-042">
       <description>max() over an empty crawling expression</description>
+      <keywords>leading-double-slash fn:outermost crawling-then-striding PathExpr</keywords>
       <created by="Michael Kay" on="2013-12-16"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -363,6 +390,7 @@
    
    <test-case name="sf-max-043">
       <description>max() over an empty grounded expression</description>
+      <keywords>crawling-then-climbing parent-axis attribute-axis leading-double-slash PathExpr</keywords>
       <created by="Michael Kay" on="2013-12-16"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -375,6 +403,7 @@
    
    <test-case name="sf-max-050">
       <description>max() - collation argument present</description>
+      <keywords>striding-then-grounded ContextItemExpr collation-argument leading-double-slash PathExpr fn:outermost crawling-then-striding</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -387,6 +416,7 @@
    
    <test-case name="sf-max-051">
       <description>max() - collation argument present - unknown collation</description>
+      <keywords>striding-then-grounded collation-argument ContextItemExpr FOCH0002 leading-double-slash PathExpr fn:outermost crawling-then-striding</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -399,6 +429,7 @@
    
    <test-case name="sf-max-052">
       <description>max() - collation argument present - unknown collation - error is caught</description>
+      <keywords>striding-then-grounded ContextItemExpr collation-argument leading-double-slash xsl:try error-handling specific-catch-clause FOCH0002 PathExpr fn:outermost crawling-then-striding</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -411,6 +442,7 @@
    
    <test-case name="sf-max-053">
       <description>max() - collation argument consumes streamed document</description>
+      <keywords>ParenthesizedExpr collation-argument striding PathExpr</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -423,6 +455,7 @@
    
    <test-case name="sf-max-054">
       <description>max() - collation argument consumes streamed document, unknown collation</description>
+      <keywords>ParenthesizedExpr striding collation-argument PathExpr FOCH0002</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -435,6 +468,7 @@
    
    <test-case name="sf-max-055">
       <description>max() - collation argument consumes streamed document, unknown collation, error is caught</description>
+      <keywords>collation-argument ParenthesizedExpr striding xsl:try error-handling specific-catch-clause FOCH0002 PathExpr</keywords>
       <created by="Michael Kay" on="2014-01-06"/>
       <environment ref="sf-max-A"/>
       <test>
@@ -449,6 +483,7 @@
 
    <test-case name="sf-max-901">
       <description>Test of xsl:stream instruction with max(), filtered with predicate that atomizes.</description>
+      <keywords>consuming-predicate fn:last striding-then-roaming PathExpr positional-predicate XTSE3430 _IMPROVE:fix-description</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <test>
          <stylesheet file="sf-max-901.xsl"/>
@@ -461,6 +496,7 @@
    
    <test-case name="sf-max-902">
       <description>Test of xsl:stream instruction with max(), filtered with predicate that uses last().</description>
+      <keywords>_IMPROVE:fix-description consuming-predicate GeneralComp striding-then-roaming XTSE3430 PathExpr</keywords>
       <created by="Michael Kay" on="2013-11-21"/>
       <test>
          <stylesheet file="sf-max-902.xsl"/>

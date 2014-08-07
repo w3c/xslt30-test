@@ -6,13 +6,13 @@
   <!-- Import precedence applied to accumulators -->
 
   <xsl:accumulator name="a" as="xs:integer" initial-value="0">
-    <xsl:accumulator-rule match="chap" new-value="0"/>
-    <xsl:accumulator-rule match="fig" new-value="$value + 83"/>
+    <xsl:accumulator-rule match="chap" select="0"/>
+    <xsl:accumulator-rule match="fig" select="$value + 83"/>
   </xsl:accumulator>
   
   <xsl:accumulator name="a" as="xs:integer" initial-value="0">
-    <xsl:accumulator-rule match="chap" new-value="0"/>
-    <xsl:accumulator-rule match="fig" new-value="$value + 86"/>
+    <xsl:accumulator-rule match="chap" select="0"/>
+    <xsl:accumulator-rule match="fig" select="$value + 86"/>
   </xsl:accumulator>
 
   <xsl:mode on-no-match="shallow-skip"/>

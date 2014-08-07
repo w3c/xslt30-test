@@ -9,9 +9,9 @@
 
   <xsl:accumulator name="f:figNr" as="xs:decimal" initial-value="0"
     _streamable="{$streamable}">
-    <xsl:accumulator-rule match="chap" new-value="0"/>
-    <xsl:accumulator-rule match="fig" new-value="$value + 1"/>
-    <xsl:accumulator-rule match="diag" new-value="$value + 0.5"/>
+    <xsl:accumulator-rule match="chap" select="0"/>
+    <xsl:accumulator-rule match="fig" select="$value + 1"/>
+    <xsl:accumulator-rule match="diag" select="$value + 0.5"/>
   </xsl:accumulator>
 
   <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip"/>

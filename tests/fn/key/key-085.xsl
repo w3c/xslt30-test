@@ -1,13 +1,17 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-  <!-- Purpose: Test for xsl:key, with 'composite' attribute. -->
+  <!-- Purpose: key dependent on value of a parameter. -->
 
-  <xsl:key name="mykey1" match="div" use="title,p" composite="yes"/>  
+  <xsl:output method="xml" encoding="UTF-8" indent="no"/>
+  
+  <xsl:param name="min" required="yes"/>
+
+  <xsl:key name="places" match="town[string-length(@name) gt $min]" use="@state"/>
 
   <xsl:template match="doc">
     <out>
-      <xsl:value-of select="key('mykey1',('Expressions','Exp Section') )/q"/>      
+      <xsl:value-of select="key('places', 'MA')/@name"/>
     </out>
   </xsl:template>
 

@@ -8,7 +8,7 @@
   <xsl:mode streamable="yes"/>
   
   <xsl:accumulator name="a" as="xs:integer" initial-value="0" streamable="yes">
-    <xsl:accumulator-rule match="*" new-value="$value + $count"/>
+    <xsl:accumulator-rule match="*" select="$value + $count"/>
   </xsl:accumulator>
 
   <xsl:variable name="count">

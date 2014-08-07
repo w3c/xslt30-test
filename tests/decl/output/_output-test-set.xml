@@ -31,6 +31,22 @@
       <source role="." file="output04.xml"/>
    </environment>
    
+   <!-- Test environments for HTML5 -->
+   <environment name="output-06a">
+      <stylesheet file="output-0601.xsl"/>
+      <source role="." file="output06a.xml">
+         <description>An XML/HTML tree containing prefixed elements in SVG, MathML and a foreign
+            namespace</description>
+      </source>
+   </environment>
+   <environment name="output-06b">
+      <stylesheet file="output-0601.xsl"/>
+      <source role="." file="output06b.xml">
+         <description>An XML/HTML tree containing prefixed attributes in SVG, MathML and a foreign
+            namespace</description>
+      </source>
+   </environment>
+   
    <test-case name="output-0101">
       <description>Test escaping of non-ASCII characters in HTML output when @escape-uri-attributes= yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
@@ -3427,4 +3443,177 @@
          <error code="XTSE0010"/>
       </result>
    </test-case>
+   
+   
+   <!-- Tests for HTML5 -->
+   
+   <test-case name="output-0601">
+      <description>HTML5 empty content elements</description>
+      <created by="John Lumley" on="2014-06-19"/>
+      <environment>
+         <source role="." file="output06c.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0601.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<area\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<base\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<br\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<col\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<command\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<embed\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<hr\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<img\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<input\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<keygen\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<link\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<meta\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<param\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<source\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<track\s*>]]></serialization-matches>
+            <serialization-matches><![CDATA[<wbr\s*>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0602a">
+      <description>HTML5 svg unprefixed</description>
+      <created by="John Lumley" on="2014-07-15"/>
+      <environment ref="output-06a"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <!--<stylesheet file="output-0601.xsl"/>-->
+      </test>
+      <result>
+         <all-of>
+            <not>
+               <any-of>
+                  <serialization-matches><![CDATA[<body\s+xmlns=["']http://www.w3.org/2000/svg["']]]></serialization-matches>
+                  <serialization-matches>xmlns:svg=["']http://www.w3.org/2000/svg["']</serialization-matches>
+               </any-of>
+            </not>
+            <serialization-matches><![CDATA[<svg\s+xmlns=["']http://www.w3.org/2000/svg["']]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   <test-case name="output-0602b">
+      <description>HTML5 MathML unprefixed</description>
+      <created by="John Lumley" on="2014-07-15"/>
+      <environment ref="output-06a"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>         
+      </test>
+      <result>
+         <all-of>
+            <not>
+               <any-of>
+                  <serialization-matches>xmlns:mathML=["']http://www.w3.org/1998/Math/MathML["']</serialization-matches>
+               </any-of>
+            </not>
+            <serialization-matches><![CDATA[<math\s+xmlns=["']http://www.w3.org/1998/Math/MathML["']]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   <test-case name="output-0602c">
+      <description>HTML5 foreign namespace prefixed</description>
+      <created by="John Lumley" on="2014-07-15"/>
+      <environment ref="output-06a"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+        
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>xmlns:n=["']NamespaceN["']</serialization-matches>
+            <serialization-matches><![CDATA[<n:zzz>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0603a">
+      <description>HTML5 svg:attribute prefixed</description>
+      <created by="John Lumley" on="2014-07-15"/>
+      <environment ref="output-06b"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>mi\s+xmlns:svg=["']http://www.w3.org/2000/svg["']</serialization-matches>
+            <serialization-matches>svg:att=</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   <test-case name="output-0603b">
+      <description>HTML5 MathML:attribute prefixed</description>
+      <created by="John Lumley" on="2014-07-15"/>
+      <environment ref="output-06b"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>xmlns:mathML=["']http://www.w3.org/1998/Math/MathML["']</serialization-matches>
+            <serialization-matches>mathML:att=</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   <test-case name="output-0603c">
+      <description>HTML5 foreign namespace attribute prefixed</description>
+      <created by="John Lumley" on="2014-07-15"/>
+      <environment ref="output-06b"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>xmlns:m=["']NamespaceM["']</serialization-matches>
+            <serialization-matches><![CDATA[<p m:zzz=["']value["']>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   
+   <test-case name="output-0604">
+      <description>HTML5 - test simple use of a character map</description>
+      <created by="John Lumley" on="2014-07-18"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><a value="abcde">vwxyz</a></doc>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0602.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>value=['"]ab\[C\]de['"]</serialization-matches>
+            <serialization-matches>vw\[X\]yz</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
 </test-set>

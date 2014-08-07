@@ -272,6 +272,32 @@
          <assert-xml><![CDATA[<result><polygons>2849</polygons><points>4070</points></result>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="si-iterate-134">
+      <description>streaming xsl:iterate with maps. From Saxon bug 2006.</description>
+      <created by="John Lumley" on="2014-08-05"/>
+      <environment ref="citygml"/>
+      <test>
+         <stylesheet file="si-iterate-134.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-iterate-135">
+      <description>streaming xsl:iterate with maps, sorting a grounded sequence. From Saxon bug 2006.</description>
+      <created by="John Lumley" on="2014-08-05"/>
+      <environment ref="citygml"/>
+      <test>
+         <stylesheet file="si-iterate-135.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="si-iterate-806">
       <description>Use xsl:iterate within xsl:stream, //a/b is not guaranteed streamable in the spec, but streamable in Saxon</description>

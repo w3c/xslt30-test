@@ -8,8 +8,8 @@
   <xsl:param name="streamable" static="yes" select="'no'"/>
 
   <xsl:accumulator name="f:section-nr" as="xs:integer*" initial-value="0" _streamable="{$streamable}">
-    <xsl:accumulator-rule match="section" phase="start" new-value="0, head($value)+1, tail($value)"/>
-    <xsl:accumulator-rule match="section" phase="end" new-value="tail($value) (:pop:)"/>
+    <xsl:accumulator-rule match="section" phase="start" select="0, head($value)+1, tail($value)"/>
+    <xsl:accumulator-rule match="section" phase="end" select="tail($value) (:pop:)"/>
   </xsl:accumulator>
 
 

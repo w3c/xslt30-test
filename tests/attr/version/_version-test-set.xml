@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="version">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="version">
    <description>Tests version</description>
    <environment name="ver01">
       <source role=".">
@@ -58,6 +56,7 @@
 
    <test-case name="version-001">
       <description>Test the basics of the XSLT version declaration.</description>
+      <keywords>fn:system-property xsl:version use-when-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -78,6 +77,7 @@
 
    <test-case name="version-002">
       <description>Test that version attribute can be used on any XSLT element. (This is an XSLT 2.0 feature</description>
+      <keywords>fn:system-property xsl:version use-when-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -93,6 +93,7 @@
 
    <test-case name="version-003">
       <description>Test xsl:message.</description>
+      <keywords>_IMPROVE:test-xsl:message-output XTMM9000 forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -108,6 +109,7 @@
 
    <test-case name="version-004">
       <description>Test xsl:fallback for an XSL instruction.</description>
+      <keywords>forwards-compatibility-mode xsl:fallback</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -123,6 +125,7 @@
 
    <test-case name="version-005">
       <description>Test xsl:fallback for an extension element.</description>
+      <keywords>forwards-compatibility-mode xsl:fallback extension-element-prefixes-attribute extension-element</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -138,6 +141,7 @@
 
    <test-case name="version-006">
       <description>Test xsl:fallback is ignored if the element is a known XSL element.</description>
+      <keywords>forwards-compatibility-mode xsl:fallback extension-element-prefixes-attribute</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -153,6 +157,7 @@
 
    <test-case name="version-007">
       <description>In forwards compatible mode, unknown attributes on XSL elements should be accepted.</description>
+      <keywords>xsl:value-of forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -168,6 +173,7 @@
 
    <test-case name="version-008">
       <description>Test xsl:fallback for existing top-level element used instruction.</description>
+      <keywords>forwards-compatibility-mode xsl:fallback</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -183,6 +189,7 @@
 
    <test-case name="version-009">
       <description>Test that in forwards compatibility mode, unknown top-level XSL elements are ignored.</description>
+      <keywords>forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -198,6 +205,7 @@
 
    <test-case name="version-010">
       <description>Test xsl:message with terminate as an AVT (XSLT 2.0).</description>
+      <keywords>_IMPROVE:test-in-wrong-location xsl:message avt terminate-attribute</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver01"/>
       <dependencies>
@@ -213,6 +221,7 @@
 
    <test-case name="version-011">
       <description>Test that exclude-result-prefix attribute can be used on any XSLT element. (This is an XSLT 2.0 feature)</description>
+      <keywords>forwards-compatibility-mode 2.0-behaves-like-1.0</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver03"/>
       <dependencies>
@@ -230,6 +239,7 @@
 
    <test-case name="version-012">
       <description>TEST that absent extension elements don't cause an error (a) if they aren't instantiated (b) if they have an xsl:fallback</description>
+      <keywords>xsl:vendor fn:system-property xsl:fallback extension-element-prefixes-attribute extension-element</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver12"/>
       <dependencies>
@@ -245,6 +255,7 @@
 
    <test-case name="version-013">
       <description>TEST that a call to an extension function that cannot be loaded is not an error unless we try to execute it</description>
+      <keywords>xsl:vendor extension-function fn:system-property</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver13"/>
       <dependencies>
@@ -260,6 +271,7 @@
 
    <test-case name="version-014">
       <description>Type error in argument to arithmetic operator, works in backwards compatible mode for failing example with version=2.0, see error229</description>
+      <keywords>backwards-compatibility-mode ignore-type-error</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver15"/>
       <dependencies>
@@ -276,6 +288,7 @@
 
    <test-case name="version-015">
       <description>Test trace() function with a singleton and with an empty sequence</description>
+      <keywords>fn:trace _IMPROVE:test-in-wrong-location</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver15"/>
       <dependencies>
@@ -294,6 +307,7 @@
 
    <test-case name="version-016">
       <description>Test trace() function with a sequence of nodes</description>
+      <keywords>fn:trace _IMPROVE:test-in-wrong-location</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -309,6 +323,7 @@
 
    <test-case name="version-017">
       <description>Test xsl:message with select attribute</description>
+      <keywords>_WRONG:incorrect-xslt-version _IMPROVE:test-in-wrong-location xsl:message</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -335,6 +350,7 @@
 
    <test-case name="version-018">
       <description>Test [xsl:] version on various elements</description>
+      <keywords>version-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -350,6 +366,7 @@
 
    <test-case name="version-019">
       <description>Test extension attributes on various elements</description>
+      <keywords>extension-attribute version-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -365,6 +382,7 @@
 
    <test-case name="version-020">
       <description>Crashes with an NPE in Saxon 7.9.1 the &lt;dummy/&gt; causes the NPE</description>
+      <keywords>extension-element xsl:fallback extension-element-prefixes-attribute</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -380,6 +398,7 @@
 
    <test-case name="version-021">
       <description>Crashes with an NPE in Saxon 7.9.1</description>
+      <keywords>backwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -395,6 +414,7 @@
 
    <test-case name="version-022">
       <description>Show that a local variable is not visible within a sibling xsl:fallback element</description>
+      <keywords>version-attribute forwards-compatibility-mode xsl:fallback xsl:variable variable-dependencies</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -410,6 +430,7 @@
 
    <test-case name="version-023">
       <description>Show that an invalid match pattern is *not* ignored in forwards compatibility mode</description>
+      <keywords>version-attribute XTSE0340 _WRONG:error-condition-allowed-in-3.0 forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -425,6 +446,7 @@
 
    <test-case name="version-024">
       <description>Unrecognized top-level elements are ignored in forwards-compatibility mode *along with their content*</description>
+      <keywords>forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -440,6 +462,7 @@
 
    <test-case name="version-025">
       <description>Call supports-namespace-axis system property introducted by erratum E14</description>
+      <keywords>erratum-XT.E14 _WRONG:incorrect-system-property xsl:supports-namespace-axis fn:system-property use-when-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="ver17"/>
       <dependencies>
@@ -455,6 +478,7 @@
 
    <test-case name="version-026">
       <description>Later-version (8.5) stylesheet has (fictional) 8.5 function guarded by use-when testing function-available, 2 arguments.</description>
+      <keywords>fn:function-available use-when-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltversion019"/>
       <dependencies>
@@ -470,6 +494,7 @@
 
    <test-case name="version-027">
       <description>Later-version (8.5) stylesheet has (fictional) 8.5 declaration guarded by use-when testing system-property.</description>
+      <keywords>fn:system-property use-when-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltversion019"/>
       <dependencies>
@@ -485,6 +510,7 @@
 
    <test-case name="version-028">
       <description>Later-version (8.5) stylesheet has (fictional) 8.5 attribute on older instruction, unguarded.</description>
+      <keywords>forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltversion022"/>
       <dependencies>
@@ -500,6 +526,7 @@
 
    <test-case name="version-029">
       <description>2.0 stylesheet has (fictional) higher-versioned instruction guarded by xsl:fallback.</description>
+      <keywords>version-attribute forwards-compatibility-mode xsl:fallback</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltversion022"/>
       <dependencies>
@@ -515,6 +542,7 @@
 
    <test-case name="version-030">
       <description>2.0 stylesheet has (fictional) higher-versioned instruction guarded by use-when testing element-available.</description>
+      <keywords>version-attribute use-when-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltversion022"/>
       <dependencies>
@@ -530,6 +558,7 @@
 
    <test-case name="version-031">
       <description>Use version flag on xsl:namespace to singularize AVT; error if BC not supported.</description>
+      <keywords>version-attribute backwards-compatibility-mode XTDE0160 avt</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltversionerr003"/>
       <dependencies>

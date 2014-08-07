@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="current-output-uri">
+   <description>Tests current-output-uri() function in XSLT 3.0</description>
+   
+   <dependencies>
+       <spec value="XSLT30+"/>
+   </dependencies>
+
+   <test-case name="current-output-uri-001">
+      <description>Returns empty sequence in temporary output state</description>
+      <created by="Michael Kay" on="2014-07-12"/>      
+      <test>
+         <stylesheet file="current-output-uri-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<ok/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="current-output-uri-002">
+      <description>Initial value of current-output-uri</description>
+      <created by="Michael Kay" on="2014-07-12"/>      
+      <test>
+         <stylesheet file="current-output-uri-002.xsl"/>
+         <initial-template name="main"/>
+         <output file="results/current-output-uri-002.xml"/>
+      </test>
+      <result>
+         <assert>ends-with(/out, 'fn/current-output-uri/results/current-output-uri-002.xml')</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="current-output-uri-003">
+      <description>Value of current-output-uri() within xsl:result-document</description>
+      <created by="Michael Kay" on="2014-07-12"/>      
+      <test>
+         <stylesheet file="current-output-uri-003.xsl"/>
+         <initial-template name="main"/>
+         <output file="results/current-output-uri-003.xml"/>
+      </test>
+      <result>
+         <assert-result-document uri="second/current-output-uri-003.xml">
+            <assert>ends-with(/out, 'fn/current-output-uri/results/second/current-output-uri-003.xml')</assert>
+         </assert-result-document>
+      </result>
+   </test-case>
+   
+   
+   
+
+
+</test-set>

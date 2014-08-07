@@ -8,8 +8,8 @@
   <xsl:import href="accumulator-027a.xsl"/>
 
   <xsl:accumulator name="a" as="xs:integer" initial-value="0">
-    <xsl:accumulator-rule match="chap" new-value="0"/>
-    <xsl:accumulator-rule match="fig" new-value="$value + 2"/>
+    <xsl:accumulator-rule match="chap" select="0"/>
+    <xsl:accumulator-rule match="fig" select="$value + 2"/>
   </xsl:accumulator>
   
   <xsl:template match="fig">

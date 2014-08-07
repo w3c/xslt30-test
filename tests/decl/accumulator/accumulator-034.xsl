@@ -5,11 +5,13 @@
 
   <!-- Accumulator pattern has dependency on global variable and local variable -->
   
-  <xsl:mode streamable="no" on-no-match="shallow-skip"/>
+  <xsl:param name="streamable" static="yes" required="yes"/>
   
-  <xsl:accumulator name="a" as="xs:integer" initial-value="0">
-    <xsl:accumulator-rule match="chap[not(@nr = $seven)]" new-value="0"/>
-    <xsl:accumulator-rule match="fig[every $n in @* satisfies $n = '83']" new-value="$value + 2"/>
+  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip"/>
+  
+  <xsl:accumulator name="a" as="xs:integer" initial-value="0" _streamable="{$streamable}">
+    <xsl:accumulator-rule match="chap[not(@nr = $seven)]" select="0"/>
+    <xsl:accumulator-rule match="fig[every $n in data(@*) satisfies $n = '83']" select="$value + 2"/>
   </xsl:accumulator>
   
   <xsl:template match="fig">

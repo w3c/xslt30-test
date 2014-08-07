@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="xslt-compat">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="xslt-compat">
    <description>Tests xslt-compat</description>
    <environment name="xsltbc001">
       <source role="." file="xsltbc001.xml"/>
@@ -28,6 +26,7 @@
 
    <test-case name="xslt-compat-001">
       <description>Give the select attribute of xsl:value-of a path expression that selects more than one node. No @separator is given.</description>
+      <keywords>backwards-compatibility-mode 2.0-behaves-like-1.0 leading-double-slash version-attribute</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc001"/>
       <dependencies>
@@ -43,6 +42,7 @@
 
    <test-case name="xslt-compat-002">
       <description>Test xsl:fallback inside xsl:next-match.</description>
+      <keywords>xsl:fallback</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc001"/>
       <dependencies>
@@ -61,6 +61,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-003">
       <description>Test xsl:fallback inside xsl:result-document.</description>
+      <keywords>xsl:fallback xsl:result-document</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc001"/>
       <dependencies>
@@ -81,6 +82,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-004">
       <description>Use version 1.0 on xsl:attribute to affect (new) select expression.</description>
+      <keywords>version-attribute backwards-compatibility-mode 2.0-behaves-like-1.0</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc001"/>
       <dependencies>
@@ -96,6 +98,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-005">
       <description>Use a path expression that selects more than one node in an attribute value template.</description>
+      <keywords>version-attribute 2.0-behaves-like-1.0 backwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc001"/>
       <dependencies>
@@ -111,6 +114,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-006">
       <description>Test xsl:fallback inside xsl:analyze-string.</description>
+      <keywords>xsl:analyze-string xsl:fallback</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc005"/>
       <dependencies>
@@ -126,6 +130,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-007">
       <description>Test xsl:fallback inside xsl:namespace.</description>
+      <keywords>xsl:namespace xsl:fallback</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc005"/>
       <dependencies>
@@ -141,6 +146,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-008">
       <description>Test xsl:fallback inside xsl:sequence.</description>
+      <keywords>xsl:sequence xsl:fallback</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc005"/>
       <dependencies>
@@ -156,6 +162,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-009">
       <description>Test of 1.0 stylesheet that has an unguarded instruction set to version 2.0, and using new 2.0 attribute of that instruction.</description>
+      <keywords>xsl:attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc005"/>
       <dependencies>
@@ -171,6 +178,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-010">
       <description>Test of 1.0 stylesheet that has an unguarded instruction set to version 2.0, and using new 2.0 sub-element of that instruction, unguarded.</description>
+      <keywords>xsl:sort xsl:choose forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc005"/>
       <dependencies>
@@ -186,6 +194,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-011">
       <description>Set a variable under version 1.0, then use it in an XPath on a version 2.0 element to show use of 2.0 XPath rules.</description>
+      <keywords>backwards-compatibility-mode xsl:variable global-variable</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc018"/>
       <dependencies>
@@ -201,6 +210,7 @@ value at 3</out>]]></assert-xml>
 
    <test-case name="xslt-compat-012">
       <description>Set a variable with version 2.0 applying to xsl:variable, but use the variable under version 1.0 to invoke 1.0 XPath rules.</description>
+      <keywords>backwards-compatibility-mode xsl:variable global-variable fn:contains xsl:for-each xsl:if</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="xsltbc019"/>
       <dependencies>
@@ -221,6 +231,7 @@ value at 3</out>]]></assert-xml>
    
    <test-case name="xslt-compat-013">
       <description>Use of xsl:fallback within (absent) extension elements.</description>
+      <keywords>extension-element xsl:fallback extension-element-prefixes-attribute</keywords>
       <created by="Michael Kay" on="2013-12-12"/>
       <environment ref="xsltbc019"/>
       <dependencies>
