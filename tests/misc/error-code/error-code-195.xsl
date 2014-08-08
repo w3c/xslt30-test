@@ -3,6 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
 <!-- Test use of variables in a key match pattern (XSLT 2.0) causing a circularity -->
+<!-- Result disputed for XSLT 3.0: see bug 26543 -->
 <?spec xslt#errors?><?error XTDE0640?>
 
   <xsl:key name="k" match="a[@code=$p]" use="@code"/>
