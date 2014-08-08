@@ -1871,6 +1871,105 @@
          <assert-serialization method="xhtml" file="output176.out"/>
       </result>
    </test-case>
+   
+   <test-case name="output-0176a">
+      <description>Test for disabling-output-escaping="true" in xsl:text</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0176a.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output176.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0176b">
+      <description>Test for disabling-output-escaping="1" in xsl:text</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0176b.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output176.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0176c">
+      <description>Test for disabling-output-escaping=" no " in xsl:text</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0176c.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<body>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0176d">
+      <description>Test for disabling-output-escaping="false" in xsl:text</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0176d.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<body>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0176e">
+      <description>Test for disabling-output-escaping="0" in xsl:text</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0176e.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<body>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0176f">
+      <description>Test for disabling-output-escaping=" " (not allowed) in xsl:text</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0176f.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
 
    <test-case name="output-0177">
       <description>Test for disabling output escaping in xsl:text</description>
@@ -3421,6 +3520,105 @@
       </test>
       <result>
          <error code="XTRE1620"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0403">
+      <description>Test for disabling-output-escaping="true" in xsl:value-of</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0403.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output401.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0404">
+      <description>Test for disabling-output-escaping=" 1 " in xsl:value-of</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0404.xsl"/>
+      </test>
+      <result>
+         <assert-serialization method="xhtml" file="output401.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0405">
+      <description>Test for disabling-output-escaping="no" in xsl:value-of</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0405.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[&lt;p&gt;&amp;nbsp;&lt;/p&gt;]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0406">
+      <description>Test for disabling-output-escaping="false" in xsl:value-of</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0406.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[&lt;p&gt;&amp;nbsp;&lt;/p&gt;]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0407">
+      <description>Test for disabling-output-escaping="0" in xsl:value-of</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0407.xsl"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[&lt;p&gt;&amp;nbsp;&lt;/p&gt;]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0408">
+      <description>Test for disabling-output-escaping="YES" (not allowed) in xsl:value-of</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="output-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0408.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
       </result>
    </test-case>
 
