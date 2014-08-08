@@ -17,7 +17,7 @@
     <!-- It would be helpful to assert schema-awareness on the stylesheet in a shared environment
     Sadly 'dependencies' aren't appropriate and just adding 'schema' doesn't mean the same thing -->
     <environment name="json-to-xml-typed">
-        <namespace prefix="j" uri="http://www.w3.org/2013/XSL/json"/>
+        <!--<namespace prefix="j" uri="http://www.w3.org/2013/XSL/json"/>-->
         <!-- <schema uri="http://www.w3.org/2013/XSL/json" file="schema-for-json.xsd">
             <description>JSON XML representation schema</description>
             <created by="John Lumley" on="2013-10-03"/>
@@ -194,7 +194,6 @@
         </test>
         <result>
             <all-of>
-                <assert-count>1</assert-count>
                 <assert>* instance of element(Q{http://www.w3.org/2013/XSL/json}string)</assert>
                 <assert>. = 'Data with " within it'</assert>
                 <any-of>
@@ -217,7 +216,6 @@
         </test>
         <result>
             <all-of>
-                <assert-count>1</assert-count>
                 <assert>* instance of element(Q{http://www.w3.org/2013/XSL/json}string)</assert>
                 <assert>. = 'Data with " within it'</assert>
                 <assert>*/@key eq 'Key " with quote'</assert>
@@ -241,7 +239,6 @@
         </test>
         <result>
             <all-of>
-                <assert-count>1</assert-count>
                 <assert>* instance of element(Q{http://www.w3.org/2013/XSL/json}string)</assert>
                 <assert>. = 'Data with \" within it'</assert>
                 <assert>*/@escaped eq "true"</assert>
@@ -261,7 +258,6 @@
         </test>
         <result>
             <all-of>
-                <assert-count>1</assert-count>
                 <assert>* instance of element(Q{http://www.w3.org/2013/XSL/json}string)</assert>
                 <assert>. = 'Data with \" within it'</assert>
                 <assert>*/@key eq 'Key \" with quote'</assert>

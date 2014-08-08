@@ -282,7 +282,13 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+         <all-of>
+            <assert>/elements/e[@name="gml:pos"]/@count="4070"</assert>
+            <assert>/elements/e[@name="bldg:Building"]/@count="14"</assert>
+            <assert>/elements/e[@name="cityObjectMember"]/@count="15"</assert>
+            <assert>/elements/e[@name="app:TexCoordList"]/@count="295"</assert>
+            <assert>/elements/e[@name="bldg:boundedBy"]/@count="812"</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -295,7 +301,18 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+         <all-of>
+            <assert>/elements/e[1][@name="CityModel" and @count="1"]</assert>
+            <assert>/elements/e[2][@name="app:Appearance" and @count="1"]</assert>
+            <assert>/elements/e[3][@name="app:GeoreferencedTexture" and @count="1"]</assert>
+            <assert>/elements/e[4][@name="app:ParameterizedTexture" and @count="295"]</assert>
+            <assert>/elements/e[5][@name="app:TexCoordList" and @count="295"]</assert>
+            <assert>/elements/e[6][@name="app:X3DMaterial" and @count="2"]</assert>
+            <assert>/elements/e[7][@name="app:appearanceMember" and @count="1"]</assert>
+            <assert>/elements/e[8][@name="app:borderColor" and @count="295"]</assert>
+            <assert>/elements/e[9][@name="app:diffuseColor" and @count="2"]</assert>
+            <assert>/elements/e[10][@name="app:imageURI" and @count="296"]</assert>
+         </all-of>
       </result>
    </test-case>
 
