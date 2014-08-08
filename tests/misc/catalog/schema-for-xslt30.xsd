@@ -244,12 +244,14 @@ of problems processing the schema using various tools
           </xs:sequence>
           <xs:attribute name="name" type="xsl:EQName" />
           <xs:attribute name="post-descent" type="xsl:EQName" />
+          <xs:attribute name="applies-to" type="xsl:pattern"/>
           <xs:attribute name="initial-value" type="xsl:expression"/>
           <xs:attribute name="as" type="xsl:sequence-type"/>
           <xs:attribute name="visibility" type="xsl:visibility-type"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
           <xs:attribute name="_name" type="xs:string" />
           <xs:attribute name="_post-descent" type="xs:string" />
+          <xs:attribute name="_applies-to" type="xs:string"/> 
           <xs:attribute name="_initial-value" type="xs:string"/>
           <xs:attribute name="_as" type="xs:string"/>
           <xs:attribute name="_visibility" type="xs:string"/>
@@ -261,8 +263,8 @@ of problems processing the schema using various tools
 
   <xs:element name="accumulator-rule">
     <xs:complexType>
-      <xs:complexContent>
-        <xs:extension base="xsl:element-only-versioned-element-type">
+      <xs:complexContent mixed="true">
+        <xs:extension base="xsl:sequence-constructor-or-select">
           <xs:sequence/>
           <xs:attribute name="match" type="xsl:pattern"/>
           <xs:attribute name="phase">
@@ -273,12 +275,9 @@ of problems processing the schema using various tools
               </xs:restriction>           
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="select" type="xsl:expression"/>
           <xs:attribute name="_match" type="xs:string"/>
           <xs:attribute name="_phase" type="xs:string"/>
-          <xs:attribute name="_select" type="xs:string"/>
           <xs:assert test="exists(@match | @_match)"/>
-          <xs:assert test="exists(@select | @_select)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -771,10 +770,19 @@ of problems processing the schema using various tools
     <xs:complexType>
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:versioned-element-type">
-          <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element ref="xsl:sequence"/>
-            <xs:element ref="xsl:fallback"/>
-          </xs:choice>
+          <xs:sequence>
+            <xs:element ref="xsl:fallback" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:choice>
+              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="xsl:sequence"/>
+                <xs:element ref="xsl:fallback" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+              <xs:sequence>
+                <xs:element ref="xsl:for-each-group"/>
+                <xs:element ref="xsl:fallback" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:choice>
+          </xs:sequence>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -830,6 +838,30 @@ of problems processing the schema using various tools
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  
+  <xs:element name="global-context-item">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xsl:element-only-versioned-element-type">
+          <xs:attribute name="as" type="xsl:item-type"/>
+          <xs:attribute name="use">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="required"/>
+                <xs:enumeration value="optional"/>
+                <xs:enumeration value="prohibited"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="streamable" type="xsl:yes-or-no"/>
+          <xs:attribute name="_as" type="xs:string"/>
+          <xs:attribute name="_use" type="xs:string"/>
+          <xs:attribute name="_streamable" type="xs:string"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  
 
   <xs:element name="if" substitutionGroup="xsl:instruction">
     <xs:complexType>
@@ -1095,6 +1127,8 @@ of problems processing the schema using various tools
           <xs:attribute name="_result-prefix" type="xs:string"/>
           <xs:assert test="exists(@stylesheet-prefix | @_stylesheet-prefix)"/>
           <xs:assert test="exists(@result-prefix | @_result-prefix)"/>
+          <xs:assert test="every $prefix in (@stylesheet-prefix, @result-prefix)[. ne '#default']
+            satisfies $prefix = in-scope-prefixes(.)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1180,6 +1214,7 @@ of problems processing the schema using various tools
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:generic-element-type">
           <xs:attribute name="name" type="xsl:EQName"/>
+          <xs:attribute name="recoverable" type="xsl:yes-or-no"/>
           <xs:attribute name="method" type="xsl:method"/>
           <xs:attribute name="byte-order-mark" type="xsl:yes-or-no"/>
           <xs:attribute name="cdata-section-elements" type="xsl:EQNames"/>
@@ -1286,12 +1321,9 @@ of problems processing the schema using various tools
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:element ref="xsl:use-package"/>
               <xs:element ref="xsl:expose"/>
+              <xs:element ref="xsl:transform"/>
+              <xs:element ref="xsl:global-context-item"/>
             </xs:choice>  
-            <xs:element ref="xsl:transform" minOccurs="1" maxOccurs="1"/>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-              <xs:element ref="xsl:use-package"/>
-              <xs:element ref="xsl:expose"/>
-            </xs:choice>
           </xs:sequence>
           <xs:attribute name="name" type="xs:anyURI"/>
           <xs:attribute name="package-version" type="xs:string"/>
@@ -1351,7 +1383,7 @@ of problems processing the schema using various tools
               </xs:annotation>
             </xs:assert>
           <xs:assert test="if (normalize-space(@static) = 'yes')
-                           then empty((*,text())) and exists(@select)
+                           then empty((*,text()))
                            else true()">
             <xs:annotation>
               <xs:documentation>
@@ -1422,6 +1454,7 @@ of problems processing the schema using various tools
           <xs:attribute name="href" type="xsl:avt"/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
+          <xs:attribute name="recoverable" type="xsl:avt"/>
           <xs:attribute name="method" type="xsl:avt"/>
           <xs:attribute name="byte-order-mark" type="xsl:avt"/>
           <xs:attribute name="cdata-section-elements" type="xsl:avt"/>
@@ -1690,6 +1723,19 @@ of problems processing the schema using various tools
               <xs:documentation>
                 <p>The static attribute must not be present on an xsl:variable or xsl:param 
                   element unless it is a top-level element.</p>
+              </xs:documentation>
+            </xs:annotation>
+          </xs:assert>
+          <xs:assert test="every $prefix in (@exclude-result-prefixes[not(. = '#all')], @extension-element-prefixes)
+            satisfies ((if ($prefix = '#default') then '' else $prefix) = in-scope-prefixes(.))">
+            <xs:annotation>
+              <xs:documentation>
+                <p>XTSE0808: It is a static error if a namespace prefix is used within the [xsl:]exclude-result-prefixes 
+                  attribute and there is no namespace binding in scope for that prefix.
+                </p>
+                <p>XTSE0809: It is a static error if the value #default is used within the [xsl:]exclude-result-prefixes 
+                  attribute and the parent element of the [xsl:]exclude-result-prefixes attribute has no default namespace.
+                </p>
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
@@ -2215,6 +2261,10 @@ of problems processing the schema using various tools
     <xs:restriction base="xs:token">
       <xs:enumeration value="yes"/>
       <xs:enumeration value="no"/>
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="0"/>
       <xs:enumeration value="strict"/>
       <xs:enumeration value="lax"/>
       <xs:enumeration value="unspecified"/>
@@ -2278,21 +2328,30 @@ of problems processing the schema using various tools
 
   <xs:simpleType name="yes-or-no">
     <xs:annotation>
-      <xs:documentation> One of the values "yes" or "no". </xs:documentation>
+      <xs:documentation> One of the values "yes" or "no": the values "true" or "false", or "1" or "0" are accepted as synonyms. </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:enumeration value="yes"/>
       <xs:enumeration value="no"/>
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="0"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="yes-or-no-or-omit">
     <xs:annotation>
-      <xs:documentation> One of the values "yes" or "no" or "omit". </xs:documentation>
+      <xs:documentation> One of the values "yes" or "no" or "omit". 
+        The values "true" or "false", or "1" or "0" are accepted as synonyms of "yes" and "no" respectively.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:enumeration value="yes"/>
       <xs:enumeration value="no"/>
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="0"/>
       <xs:enumeration value="omit"/>
     </xs:restriction>
   </xs:simpleType>

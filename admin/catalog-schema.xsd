@@ -242,6 +242,7 @@
             <xs:attribute name="select" type="xs:string" use="optional"/>
             <xs:attribute name="as" type="xs:string" use="optional"/>
             <xs:attribute name="source" type="xs:string" use="optional"/>
+            <xs:attribute name="static" type="yesNoType" use="optional"/>
         </xs:complexType>
     </xs:element>
 
@@ -2035,6 +2036,13 @@
             <xs:enumeration value="strict"/>
             <xs:enumeration value="lax"/>
             <xs:enumeration value="skip"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="yesNoType">
+        <xs:restriction base="xs:normalizedString">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
         </xs:restriction>
     </xs:simpleType>
 
