@@ -635,4 +635,148 @@
          <assert-xml><![CDATA[<out><a xmlns:pref="http://example.org/pre&#xC0;"><b/></a></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="xml-version-035">
+      <description>See if a namespace undeclaration (using undeclare-prefixes="yes" on xsl:result-document) in a stylesheet works.</description>
+      <created by="Debbie Lockett" on="2014-08-11"/>
+      <environment ref="xml-version-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-035.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>version=['"]1.1['"]</serialization-matches>
+            <serialization-matches>xmlns:a=(""|'')</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-036">
+      <description>
+         Tests undeclare-prefixes=" no " on xsl:result-document element where the method is 'xml' 
+         and version is '1.1', the namespace is an IRI.
+      </description>
+      <created by="Debbie Lockett" on="2014-08-11"/>
+      <environment ref="xml-version-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-036.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a xmlns:pref="http://example.org/pre&#xC0;"><b/></a></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-037">
+      <description>See if a namespace undeclaration (using undeclare-prefixes="true" on xsl:result-document) in a stylesheet works.</description>
+      <created by="Debbie Lockett" on="2014-08-11"/>
+      <environment ref="xml-version-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-037.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>version=['"]1.1['"]</serialization-matches>
+            <serialization-matches>xmlns:a=(""|'')</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-038">
+      <description>
+         Tests undeclare-prefixes="false" on xsl:result-document element where the method is 'xml' 
+         and version is '1.1', the namespace is an IRI.
+      </description>
+      <created by="Debbie Lockett" on="2014-08-11"/>
+      <environment ref="xml-version-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-038.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a xmlns:pref="http://example.org/pre&#xC0;"><b/></a></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-039">
+      <description>See if a namespace undeclaration (using undeclare-prefixes="1" on xsl:result-document) in a stylesheet works.</description>
+      <created by="Debbie Lockett" on="2014-08-11"/>
+      <environment ref="xml-version-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-039.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>version=['"]1.1['"]</serialization-matches>
+            <serialization-matches>xmlns:a=(""|'')</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-040">
+      <description>
+         Tests undeclare-prefixes="0" on xsl:result-document element where the method is 'xml' 
+         and version is '1.1', the namespace is an IRI.
+      </description>
+      <created by="Debbie Lockett" on="2014-08-11"/>
+      <environment ref="xml-version-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-040.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a xmlns:pref="http://example.org/pre&#xC0;"><b/></a></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-041">
+      <description>See if a namespace undeclaration (using undeclare-prefixes="T" on xsl:result-document) in a stylesheet works (not allowed).</description>
+      <created by="Debbie Lockett" on="2014-08-11"/>
+      <environment ref="xml-version-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-041.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization-error code="SEPM0016"/>
+            <error code="XTSE0020"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-version-042">
+      <description>Test AVT in @undeclare-prefixes of xsl:result-document, which evaluates to " yes ".</description>
+      <created by="Debbie Lockett" on="2014-08-11"/>
+      <environment ref="xml-version-06"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-version-042.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>version=['"]1.1['"]</serialization-matches>
+            <serialization-matches>xmlns:a=(""|'')</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
