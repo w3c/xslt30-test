@@ -12,7 +12,7 @@
     <xsl:template name="c-001" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="outermost(.//node()) treat as element()*"/>
+          <xsl:value-of select="(/*/* treat as element()*) ! name(.)"/>
         </out>
       </xsl:stream>
     </xsl:template>
