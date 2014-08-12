@@ -295,7 +295,67 @@
          <error code="XTSE0020"/>
       </result>
    </test-case>
-
+   
+   <test-case name="tunnel-0117">
+      <description>Simple test with a non-tunnel param (tunnel="false") specified within xsl:apply-templates but template param has tunnel="true"</description>
+      <created by="Debbie Lockett" on="2014-08-05"/>
+      <environment ref="tunnel-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="tunnel-0117.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>xyz and zyx</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="tunnel-0118">
+      <description>Simple test with a tunnel param (tunnel="true") specified within xsl:call-template but template param has tunnel="false"</description>
+      <created by="Debbie Lockett" on="2014-08-05"/>
+      <environment ref="tunnel-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="tunnel-0118.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>xyz and zyx</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="tunnel-0119">
+      <description>Simple test with a non-tunnel param (tunnel="0") specified within xsl:apply-templates but template param has tunnel="1"</description>
+      <created by="Debbie Lockett" on="2014-08-05"/>
+      <environment ref="tunnel-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="tunnel-0119.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>xyz and zyx</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="tunnel-0120">
+      <description>Simple test with a tunnel param (tunnel="1") specified within xsl:call-template but template param has tunnel="0"</description>
+      <created by="Debbie Lockett" on="2014-08-05"/>
+      <environment ref="tunnel-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="tunnel-0120.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>xyz and zyx</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="tunnel-0201">
       <description>Simple test with a tunnel param specified within xsl:apply-templates and the tunnel param value is later retrieved</description>
       <created by="Michael Kay" on="2012-10-30"/>

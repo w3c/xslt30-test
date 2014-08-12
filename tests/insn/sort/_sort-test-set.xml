@@ -1346,4 +1346,80 @@
          <assert-xml><![CDATA[<out>z w r l f d a </out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="sort-074">
+      <description>Test that stable="true" can be set on an xsl:sort instruction.</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="sort129"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sort-074.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>First,Second,Third,Fourth,Fifth,Sixth,Seventh,</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sort-075">
+      <description>Test that stable="false" can be set, but apply to data where it's moot.</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="sort129"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sort-075.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>First,Second,Third,Fourth,Fifth,Sixth,Seventh,</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sort-076">
+      <description>Test that stable=" 1 " can be set on an xsl:sort instruction.</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="sort129"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sort-076.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>First,Second,Third,Fourth,Fifth,Sixth,Seventh,</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sort-077">
+      <description>Test that stable="0" can be set, but apply to data where it's moot.</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="sort129"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sort-077.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>First,Second,Third,Fourth,Fifth,Sixth,Seventh,</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sort-078">
+      <description>Test with stable="YES" (not allowed).</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="sort129"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sort-078.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
 </test-set>

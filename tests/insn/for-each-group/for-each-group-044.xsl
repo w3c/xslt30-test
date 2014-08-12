@@ -11,7 +11,7 @@
 <out>
 	<xsl:for-each-group select="/*/city" 
 	                    group-adjacent="@country, xs:decimal(@pop)"
-	                    composite="yes">
+	                    composite="true">
 	  <group country="{current-grouping-key()[1]}" pop="{current-grouping-key()[2]}">
 	    <xsl:copy-of select="current-group()"/>
 	  </group>

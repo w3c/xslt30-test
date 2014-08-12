@@ -599,4 +599,98 @@
          <assert>/out = 'false'</assert>
       </result>
    </test-case>
+   
+   <test-case name="evaluate-034">
+      <description>Test use of schema-aware="true"</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <dependencies>
+         <spec value="XSLT30+" />
+      </dependencies>
+      <test>
+         <stylesheet file="evaluate-034.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-035">
+      <description>Test use of schema-aware=" false "</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <dependencies>
+         <spec value="XSLT30+" />
+      </dependencies>
+      <test>
+         <stylesheet file="evaluate-035.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'false'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-036">
+      <description>Test use of schema-aware="1"</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <dependencies>
+         <spec value="XSLT30+" />
+      </dependencies>
+      <test>
+         <stylesheet file="evaluate-036.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-037">
+      <description>Test use of schema-aware="0"</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <dependencies>
+         <spec value="XSLT30+" />
+      </dependencies>
+      <test>
+         <stylesheet file="evaluate-037.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'false'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-038">
+      <description>Test use of schema-aware="TRUE" (not allowed)</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <dependencies>
+         <spec value="XSLT30+" />
+      </dependencies>
+      <test>
+         <stylesheet file="evaluate-038.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-039">
+      <description>Test designed to exercise any caching done by the implementation, uses schema-aware AVT attributes which evaluate to "true" and "false"</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <dependencies>
+         <spec value="XSLT30+" />
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="evaluate-039.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<Result><out>http://www.w3.org/?0</out><out>http://saxon.sf.net/#1</out
+            ><out>http://www.w3.org/?2</out><out>http://saxon.sf.net/?3</out><out>http://www.w3.org/?4</out
+            ><out>http://saxon.sf.net/?0</out><out>http://www.w3.org/?1</out><out>http://saxon.sf.net/?2</out
+            ><out>http://www.w3.org/#3</out><out>http://saxon.sf.net/?4</out></Result>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>

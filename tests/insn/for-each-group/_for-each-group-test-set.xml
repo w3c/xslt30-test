@@ -689,6 +689,7 @@ while you are in the cinema.</p></o>]]></assert-xml>
    <test-case name="for-each-group-044">
       <description>XSLT 3.0 grouping using group-adjacent with composite keys</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-04" change="use composite='true'"/>
       <environment ref="group020"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -704,6 +705,7 @@ while you are in the cinema.</p></o>]]></assert-xml>
    <test-case name="for-each-group-045">
       <description>XSLT 3.0 grouping using group-adjacent with composite keys including NaNs</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-04" change="use composite='1'"/>
       <environment ref="group020"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1145,6 +1147,81 @@ while you are in the cinema.</p></o>]]></assert-xml>
          /><group key="2 red" key.count="2" group.size="1"
          /><group key="3 red" key.count="2" group.size="2"
          /></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-073">
+      <description>simple test of value-based grouping, with composite="no"</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-073.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-001.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-074">
+      <description>simple test of value-based grouping, with composite="  false  " (with white-space)</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-074.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-001.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-075">
+      <description>simple test of value-based grouping, with composite="0"</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-075.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-001.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-076">
+      <description>XSLT 3.0 grouping using group-by with composite=" " (not allowed).</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-076.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-077">
+      <description>ERR XTSE1090: cannot specify composite except with group-by/adjacent</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-077.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE1090"/>
       </result>
    </test-case>
 </test-set>

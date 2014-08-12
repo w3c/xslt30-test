@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="copy">
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="copy">
    <description>Tests copy</description>
    <environment name="copy-01">
       <source role=".">
@@ -44,7 +43,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   
+
    <environment name="copy-06">
       <source role=".">
          <content><![CDATA[<pink xmlns:rose="http://www.rose.com">
@@ -74,17 +73,17 @@
 </OL>]]></content>
       </source>
    </environment>
-   
+
    <environment name="copy-10">
       <source role="." file="copy-10.xml"/>
    </environment>
-   
+
    <environment name="copy-12">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
-   
+
    <environment name="copy-16">
       <source role=".">
          <content><![CDATA[ 
@@ -95,7 +94,7 @@
 </doc>]]></content>
       </source>
    </environment>
-   
+
    <environment name="copy-18">
       <source role="." file="copy-18.xml"/>
    </environment>
@@ -103,7 +102,7 @@
    <environment name="copy-22">
       <source role="." file="copy-22.xml"/>
    </environment>
-   
+
    <environment name="copy-24">
       <source role="." file="copy-24.xml"/>
    </environment>
@@ -120,7 +119,7 @@
 </OL>]]></content>
       </source>
    </environment>
-   
+
    <environment name="copy-29">
       <source role=".">
          <content><![CDATA[ 
@@ -231,7 +230,7 @@
    <environment name="copy-48">
       <source role="." file="copy-48.xml"/>
    </environment>
-   
+
 
    <test-case name="copy-0101">
       <description>Test for simple identity transformation w/Template match</description>
@@ -264,7 +263,8 @@
    </test-case>
 
    <test-case name="copy-0103">
-      <description>Simple identity transformation, Result tree fragment test for xsl:copy-of</description>
+      <description>Simple identity transformation, Result tree fragment test for
+         xsl:copy-of</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-01"/>
       <dependencies>
@@ -331,7 +331,8 @@
    </test-case>
 
    <test-case name="copy-0401">
-      <description>BUG Saxon 5.5.1/010 Test that contents of xsl:copy are ignored for an attribute, comment, text node, or PI</description>
+      <description>BUG Saxon 5.5.1/010 Test that contents of xsl:copy are ignored for an attribute,
+         comment, text node, or PI</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-04"/>
       <dependencies>
@@ -350,7 +351,8 @@
    </test-case>
 
    <test-case name="copy-0501">
-      <description>Test copying of attribute from a temporary tree (docbook bug clearance) See bug 529362</description>
+      <description>Test copying of attribute from a temporary tree (docbook bug clearance) See bug
+         529362</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -398,11 +400,150 @@
       </result>
    </test-case>
 
+   <test-case name="copy-0603">
+      <description>test use copy-namespaces attribute of xsl:copy-of, with values " true " (with
+         some white-space), "false". (XSLT 3.0)</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0603.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="copy-0601.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="copy-0604">
+      <description>test use copy-namespaces attribute of xsl:copy, with values "true", "false".
+         (XSLT 3.0)</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0604.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="copy-0602.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="copy-0605">
+      <description>test use copy-namespaces attribute of xsl:copy-of, with values "1", "0". (XSLT
+         3.0)</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0605.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="copy-0601.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="copy-0606">
+      <description>test use copy-namespaces attribute of xsl:copy, with values " 1" (with some
+         white-space), "0". (XSLT 3.0)</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0606.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="copy-0602.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="element-0607">
+      <description> Test case that uses copy-namespaces ="TRUE" on an xsl:copy-of instruction (not
+         allowed).</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0607.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+
+   <test-case name="element-0608">
+      <description> Test case that uses copy-namespaces ="FALSE" on an xsl:copy instruction (not
+         allowed).</description>
+      <created by="Debbie Lockett" on="2014-08-04"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0608.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+
+   <test-case name="copy-0609">
+      <description>test use inherit-namespaces="   yes  " (with whitespace) of xsl:copy. (XSLT 3.0)</description>
+      <created by="Debbie Lockett" on="2014-08-05"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0609.xsl"/>
+      </test>
+      <result>
+         <assert>//red[namespace::rose="http://www.rose.com"]</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0610">
+      <description>test use inherit-namespaces="true" of xsl:copy. (XSLT 3.0)</description>
+      <created by="Debbie Lockett" on="2014-08-05"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0610.xsl"/>
+      </test>
+      <result>
+         <assert>//red[namespace::rose="http://www.rose.com"]</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0611">
+      <description>test use inherit-namespaces="1" of xsl:copy. (XSLT 3.0)</description>
+      <created by="Debbie Lockett" on="2014-08-05"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0611.xsl"/>
+      </test>
+      <result>
+         <assert>//red[namespace::rose="http://www.rose.com"]</assert>
+      </result>
+   </test-case>
+
    <test-case name="copy-0701">
-      <description>
-      	Test for copy-of with '*' wildcard pattern. 
-      	This test also checks handling of processing instructions by copy-of.
-      </description>
+      <description> Test for copy-of with '*' wildcard pattern. This test also checks handling of
+         processing instructions by copy-of. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -436,10 +577,8 @@
    </test-case>
 
    <test-case name="copy-0901">
-      <description>
-      	Use id(node-set) to try to create a set of nodes in random order. 
-      	Either id() or xsl:copy is arranging them in document order.
-      </description>
+      <description> Use id(node-set) to try to create a set of nodes in random order. Either id() or
+         xsl:copy is arranging them in document order. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="copy-09.xml"/>
@@ -471,7 +610,8 @@
    </test-case>
 
    <test-case name="copy-1002">
-      <description>Another style of identity transform, where attributes are copied by copy-of rather than by recursive use of the template.</description>
+      <description>Another style of identity transform, where attributes are copied by copy-of
+         rather than by recursive use of the template.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-10"/>
       <dependencies>
@@ -486,7 +626,8 @@
    </test-case>
 
    <test-case name="copy-1003">
-      <description>FileName: copy43 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3</description>
+      <description>FileName: copy43 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-10"/>
       <dependencies>
@@ -504,9 +645,9 @@
       <description>Test for copy-of with union of attribute nodes.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
-       <source role=".">
-         <content><![CDATA[<TEST RELEASE="R6.0"><ELEMENT x="100000"/><ELEMENT x="2" y="3" z="4"/><ELEMENT x="33333"/></TEST>]]></content>
-       </source>
+         <source role=".">
+            <content><![CDATA[<TEST RELEASE="R6.0"><ELEMENT x="100000"/><ELEMENT x="2" y="3" z="4"/><ELEMENT x="33333"/></TEST>]]></content>
+         </source>
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -520,10 +661,8 @@
    </test-case>
 
    <test-case name="copy-1201">
-      <description>
-      	Test copy-of a string constant containing character entity.
-      	With this output encoding, should get one byte of xE8 for the &amp;egrave
-      </description>
+      <description> Test copy-of a string constant containing character entity. With this output
+         encoding, should get one byte of xE8 for the &amp;egrave </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-12"/>
       <dependencies>
@@ -538,10 +677,8 @@
    </test-case>
 
    <test-case name="copy-1202">
-      <description>
-      	Test copy-of a string constant containing character entity.
-      	With this output encoding, should get two bytes (xC3,xA6) for the &amp;aelig
-      </description>
+      <description> Test copy-of a string constant containing character entity. With this output
+         encoding, should get two bytes (xC3,xA6) for the &amp;aelig </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-12"/>
       <dependencies>
@@ -554,9 +691,10 @@
          <assert-xml><![CDATA[<out>abcdæfgh</out>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1203">
-      <description>Demonstrate copying a named template from the stylesheet into the result. From a thread on XSL-list 7/30/2001.</description>
+      <description>Demonstrate copying a named template from the stylesheet into the result. From a
+         thread on XSL-list 7/30/2001.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-12"/>
       <dependencies>
@@ -569,7 +707,7 @@
          <assert-xml file="copy-1203.out"/>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1204">
       <description>Make an RTF on the fly and watch for incorrect xml-decl placement</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -584,7 +722,7 @@
          <assert-xml><![CDATA[<out><rtf>abc<in x="yz">def</in>ghi</rtf></out>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1205">
       <description>Test xsl:copy on-empty</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -599,9 +737,10 @@
          <assert>/out/rtf = 'abc'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1206">
-      <description>Test xsl:copy on-empty: check that the returned node has been copied</description>
+      <description>Test xsl:copy on-empty: check that the returned node has been
+         copied</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <environment ref="copy-12"/>
       <dependencies>
@@ -614,7 +753,7 @@
          <assert>/out/@copied = 'true'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1207">
       <description>Test xsl:copy on-empty: selecting empty sequence</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -629,7 +768,7 @@
          <assert>/out/rtf = 'abc'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1208">
       <description>Test xsl:copy on-empty: empty document node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -642,12 +781,12 @@
       </test>
       <result>
          <all-of>
-             <assert>/out/@p = "12"</assert>
-             <assert>empty(/out/child::node())</assert>
-         </all-of>    
+            <assert>/out/@p = "12"</assert>
+            <assert>empty(/out/child::node())</assert>
+         </all-of>
       </result>
-   </test-case>  
-   
+   </test-case>
+
    <test-case name="copy-1209">
       <description>Test xsl:copy on-empty: empty document node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -660,12 +799,12 @@
       </test>
       <result>
          <all-of>
-             <assert>/out/@p = "12"</assert>
-             <assert>empty(/out/child::node())</assert>
-         </all-of>    
+            <assert>/out/@p = "12"</assert>
+            <assert>empty(/out/child::node())</assert>
+         </all-of>
       </result>
-   </test-case>   
-   
+   </test-case>
+
    <test-case name="copy-1210">
       <description>Test xsl:copy on-empty: content is a namespace node only</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -679,8 +818,8 @@
       <result>
          <assert>/out/rtf</assert>
       </result>
-   </test-case> 
-   
+   </test-case>
+
    <test-case name="copy-1211">
       <description>Test xsl:copy on-empty: non-empty document node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -694,8 +833,8 @@
       <result>
          <assert>/out/a/namespace::n</assert>
       </result>
-   </test-case> 
-   
+   </test-case>
+
    <test-case name="copy-1212">
       <description>Test xsl:copy on-empty: empty comment node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -708,12 +847,12 @@
       </test>
       <result>
          <all-of>
-             <assert>/out</assert>
-             <assert>empty(/out/node())</assert>
+            <assert>/out</assert>
+            <assert>empty(/out/node())</assert>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1213">
       <description>Test xsl:copy on-empty: non-empty comment node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -726,12 +865,12 @@
       </test>
       <result>
          <all-of>
-             <assert>/out</assert>
-             <assert>/out/comment() = "Boo!"</assert>
+            <assert>/out</assert>
+            <assert>/out/comment() = "Boo!"</assert>
          </all-of>
       </result>
-   </test-case>   
-   
+   </test-case>
+
    <test-case name="copy-1214">
       <description>Test xsl:copy on-empty: empty text node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -744,12 +883,12 @@
       </test>
       <result>
          <all-of>
-             <assert>/out</assert>
-             <assert>empty(/out/node())</assert>
+            <assert>/out</assert>
+            <assert>empty(/out/node())</assert>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1215">
       <description>Test xsl:copy on-empty: non-empty text node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -762,12 +901,12 @@
       </test>
       <result>
          <all-of>
-             <assert>/out</assert>
-             <assert>/out/text() = "Boo!"</assert>
+            <assert>/out</assert>
+            <assert>/out/text() = "Boo!"</assert>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1216">
       <description>Test xsl:copy on-empty: empty PI node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -780,12 +919,12 @@
       </test>
       <result>
          <all-of>
-             <assert>/out</assert>
-             <assert>empty(/out/node())</assert>
+            <assert>/out</assert>
+            <assert>empty(/out/node())</assert>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1217">
       <description>Test xsl:copy on-empty: non-empty PI node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -798,12 +937,12 @@
       </test>
       <result>
          <all-of>
-             <assert>/out</assert>
-             <assert>/out/processing-instruction() = "Boo!"</assert>
+            <assert>/out</assert>
+            <assert>/out/processing-instruction() = "Boo!"</assert>
          </all-of>
       </result>
-   </test-case>  
-   
+   </test-case>
+
    <test-case name="copy-1218">
       <description>Test xsl:copy on-empty: empty attribute node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -818,7 +957,7 @@
          <assert>/out/@y = '3'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="copy-1219">
       <description>Test xsl:copy on-empty: non-empty attribute node</description>
       <created by="Michael Kay" on="2013-07-30"/>
@@ -832,9 +971,9 @@
       <result>
          <assert>/out/@y = '3'</assert>
       </result>
-   </test-case>      
-   
-   
+   </test-case>
+
+
 
    <test-case name="copy-1301">
       <description>Ensure that external entity reference works in copy.</description>
@@ -854,20 +993,18 @@
    </test-case>
 
    <test-case name="copy-1401">
-      <description>
-      	Ensure that external entity reference with high-byte character works in copy. 
-      	With this output encoding, should get one byte of xBE for the &amp;frac34
-      </description>
+      <description> Ensure that external entity reference with high-byte character works in copy.
+         With this output encoding, should get one byte of xBE for the &amp;frac34 </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
-      <source role=".">
-         <content><![CDATA[<!DOCTYPE test [ 
+         <source role=".">
+            <content><![CDATA[<!DOCTYPE test [ 
   <!ELEMENT test (#PCDATA)> 
   <!ENTITY extEnt SYSTEM "ent22.xml">
   ]>
   <test>abcd&extEnt;fgh</test>]]></content>
-      </source>
-   </environment>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -883,14 +1020,14 @@
       <description>Purpose: Test for copy-of text nodes including CDATA.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
-      <source role=".">
-         <content><![CDATA[ 
+         <source role=".">
+            <content><![CDATA[ 
 <doc>
   <simple>abcde</simple>
   <coded>ab<![CDATA[<P>&nbsp;</P>]]]]><![CDATA[>de</coded>
 </doc>]]></content>
-      </source>
-   </environment>
+         </source>
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -906,7 +1043,8 @@
    </test-case>
 
    <test-case name="copy-1601">
-      <description>Test for processing-instruction() node-test in copy-of. should say "Found-pi,,Found-pi"</description>
+      <description>Test for processing-instruction() node-test in copy-of. should say
+         "Found-pi,,Found-pi"</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-16"/>
       <dependencies>
@@ -925,7 +1063,8 @@
    </test-case>
 
    <test-case name="copy-1602">
-      <description>FileName: copy24 Document: http://www.w3.org/TR/xpath DocVersion: 19991116 Section: 2.3</description>
+      <description>FileName: copy24 Document: http://www.w3.org/TR/xpath DocVersion: 19991116
+         Section: 2.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-16"/>
       <dependencies>
@@ -942,10 +1081,8 @@
    </test-case>
 
    <test-case name="copy-1701">
-      <description>
-      	Accumulate attributes from several places in the source. 
-      	First, get all attribute nodes under the 'a' node in the source next, get an attribute node from elsewhere
-      </description>
+      <description> Accumulate attributes from several places in the source. First, get all
+         attribute nodes under the 'a' node in the source next, get an attribute node from elsewhere </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="copy-17.xml"/>
@@ -1035,7 +1172,8 @@
    </test-case>
 
    <test-case name="copy-2202">
-      <description>FileName: copy40 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3 Using Values of Variables &amp; Parameters with xsl:copy-of.</description>
+      <description>FileName: copy40 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3 Using Values of Variables &amp; Parameters with xsl:copy-of.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-22"/>
       <dependencies>
@@ -1112,7 +1250,8 @@
    </test-case>
 
    <test-case name="copy-2501">
-      <description>Make an RTF of the whole doc and watch for incorrect xml-decl placement.</description>
+      <description>Make an RTF of the whole doc and watch for incorrect xml-decl
+         placement.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-25"/>
       <dependencies>
@@ -1134,7 +1273,8 @@
    </test-case>
 
    <test-case name="copy-2502">
-      <description>Make a node-set of the whole doc and watch for incorrect xml-decl placement.</description>
+      <description>Make a node-set of the whole doc and watch for incorrect xml-decl
+         placement.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-25"/>
       <dependencies>
@@ -1190,7 +1330,16 @@
    </test-case>
 
    <test-case name="copy-2801">
-      <description>Using copy-of for repeated output of an RTF (HTML output) Source Attribution: This test was written by Michael Kay and is taken from 'XSLT Programmer's Reference' published by Wrox Press Limited in 2000; ISBN 1-861003-12-9; copyright Wrox Press Limited 2000; all rights reserved. Now updated in the second edition (ISBN 1-861005-06-7), http://www.wrox.com. No part of this book may be reproduced, stored in a retrieval system or transmitted in any form or by any means - electronic, electrostatic, mechanical, photocopying, recording or otherwise - without the prior written permission of the publisher, except in the case of brief quotations embodied in critical articles or reviews. Origin: copy-of/soccer.xml, copy-of/soccer.xsl, Chapter/Page: 4-185, was MK015 before</description>
+      <description>Using copy-of for repeated output of an RTF (HTML output) Source Attribution:
+         This test was written by Michael Kay and is taken from 'XSLT Programmer's Reference'
+         published by Wrox Press Limited in 2000; ISBN 1-861003-12-9; copyright Wrox Press Limited
+         2000; all rights reserved. Now updated in the second edition (ISBN 1-861005-06-7),
+         http://www.wrox.com. No part of this book may be reproduced, stored in a retrieval system
+         or transmitted in any form or by any means - electronic, electrostatic, mechanical,
+         photocopying, recording or otherwise - without the prior written permission of the
+         publisher, except in the case of brief quotations embodied in critical articles or reviews.
+         Origin: copy-of/soccer.xml, copy-of/soccer.xsl, Chapter/Page: 4-185, was MK015
+         before</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="copy-28.xml"/>
@@ -1207,7 +1356,8 @@
    </test-case>
 
    <test-case name="copy-2901">
-      <description>FileName: COPY41 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3</description>
+      <description>FileName: COPY41 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-29"/>
       <dependencies>
@@ -1222,7 +1372,8 @@
    </test-case>
 
    <test-case name="copy-3001">
-      <description>FileName: copy42 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3</description>
+      <description>FileName: copy42 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-30"/>
       <dependencies>
@@ -1237,7 +1388,8 @@
    </test-case>
 
    <test-case name="copy-3101">
-      <description>FileName: copy44 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3</description>
+      <description>FileName: copy44 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-31"/>
       <dependencies>
@@ -1252,7 +1404,8 @@
    </test-case>
 
    <test-case name="copy-3102">
-      <description>FileName: copy46 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.2</description>
+      <description>FileName: copy46 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.2</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-31"/>
       <dependencies>
@@ -1267,7 +1420,8 @@
    </test-case>
 
    <test-case name="copy-3301">
-      <description>FileName: copy47 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 7.1.1 (and 11.3)</description>
+      <description>FileName: copy47 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 7.1.1 (and 11.3)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-33"/>
       <dependencies>
@@ -1282,7 +1436,8 @@
    </test-case>
 
    <test-case name="copy-3302">
-      <description>FileName: copy48 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 7.1.1 (and 11.3)</description>
+      <description>FileName: copy48 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 7.1.1 (and 11.3)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-33"/>
       <dependencies>
@@ -1297,7 +1452,8 @@
    </test-case>
 
    <test-case name="copy-3401">
-      <description>FileName: copy49 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 7.5</description>
+      <description>FileName: copy49 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 7.5</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-34"/>
       <dependencies>
@@ -1312,7 +1468,8 @@
    </test-case>
 
    <test-case name="copy-3501">
-      <description>FileName: copy51 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 7.5</description>
+      <description>FileName: copy51 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 7.5</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-35"/>
       <dependencies>
@@ -1328,7 +1485,8 @@
    </test-case>
 
    <test-case name="copy-3601">
-      <description>FileName: copy52 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 7.5</description>
+      <description>FileName: copy52 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 7.5</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-36"/>
       <dependencies>
@@ -1347,7 +1505,8 @@
    </test-case>
 
    <test-case name="copy-3602">
-      <description>FileName: copy53 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3</description>
+      <description>FileName: copy53 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-36"/>
       <dependencies>
@@ -1362,7 +1521,8 @@
    </test-case>
 
    <test-case name="copy-3603">
-      <description>FileName: copy54 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 7.5</description>
+      <description>FileName: copy54 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 7.5</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-36"/>
       <dependencies>
@@ -1380,7 +1540,8 @@
    </test-case>
 
    <test-case name="copy-3701">
-      <description>FileName: COPY55 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 7.5</description>
+      <description>FileName: COPY55 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 7.5</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-37"/>
       <dependencies>
@@ -1417,7 +1578,8 @@
    </test-case>
 
    <test-case name="copy-3801">
-      <description>FileName: copy56 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 AdditionalSpec: http://www.w3.org/1999/11/REC-xslt-19991116-errata/#E27</description>
+      <description>FileName: copy56 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         AdditionalSpec: http://www.w3.org/1999/11/REC-xslt-19991116-errata/#E27</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-38"/>
       <dependencies>
@@ -1432,7 +1594,8 @@
    </test-case>
 
    <test-case name="copy-3901">
-      <description>FileName: copy57 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 AdditionalSpec: http://www.w3.org/1999/11/REC-xslt-19991116-errata/#E27</description>
+      <description>FileName: copy57 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         AdditionalSpec: http://www.w3.org/1999/11/REC-xslt-19991116-errata/#E27</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-39"/>
       <dependencies>
@@ -1447,7 +1610,8 @@
    </test-case>
 
    <test-case name="copy-4001">
-      <description>FileName: copy58 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 AdditionalSpec: http://www.w3.org/1999/11/REC-xslt-19991116-errata/#E27</description>
+      <description>FileName: copy58 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         AdditionalSpec: http://www.w3.org/1999/11/REC-xslt-19991116-errata/#E27</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-40"/>
       <dependencies>
@@ -1462,7 +1626,8 @@
    </test-case>
 
    <test-case name="copy-4101">
-      <description>FileName: copy59 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3 Using Values of Variables &amp; Parameters with xsl:copy-of.</description>
+      <description>FileName: copy59 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3 Using Values of Variables &amp; Parameters with xsl:copy-of.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-41"/>
       <dependencies>
@@ -1477,7 +1642,8 @@
    </test-case>
 
    <test-case name="copy-4102">
-      <description>FileName: copy60 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3 Using Values of Variables &amp; Parameters with xsl:copy-of.</description>
+      <description>FileName: copy60 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3 Using Values of Variables &amp; Parameters with xsl:copy-of.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-41"/>
       <dependencies>
@@ -1552,7 +1718,8 @@
    </test-case>
 
    <test-case name="copy-4304">
-      <description>Use xsl:copy-of within a function, which in Saxon will do a virtual copy</description>
+      <description>Use xsl:copy-of within a function, which in Saxon will do a virtual
+         copy</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-43"/>
       <dependencies>
@@ -1567,10 +1734,8 @@
    </test-case>
 
    <test-case name="copy-4305">
-      <description>
-      	Check that in a copy of a tree, axes only navigate within the subtree that was copied 
-      	&lt;xsl:variable name="cp" select="$in//c"/&gt;
-      </description>
+      <description> Check that in a copy of a tree, axes only navigate within the subtree that was
+         copied &lt;xsl:variable name="cp" select="$in//c"/&gt; </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-43"/>
       <dependencies>
@@ -1585,10 +1750,8 @@
    </test-case>
 
    <test-case name="copy-4306">
-      <description>
-      	Saxon 8.5.1 bug report from Krzysztof Nowicki. 
-      	Copying a document node followed by an element node in the sequence constructor of a new document node.
-      </description>
+      <description> Saxon 8.5.1 bug report from Krzysztof Nowicki. Copying a document node followed
+         by an element node in the sequence constructor of a new document node. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-43"/>
       <dependencies>
@@ -1604,7 +1767,8 @@
    </test-case>
 
    <test-case name="copy-4307">
-      <description>Test xsl:copy when there is no context item. See spec bug 7624. In this example the error can be detected statically.</description>
+      <description>Test xsl:copy when there is no context item. See spec bug 7624. In this example
+         the error can be detected statically.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-43"/>
       <dependencies>
@@ -1619,7 +1783,8 @@
    </test-case>
 
    <test-case name="copy-4308">
-      <description>Test xsl:copy when there is no context item. See spec bug 7624. In this example the error is detected dynamically.</description>
+      <description>Test xsl:copy when there is no context item. See spec bug 7624. In this example
+         the error is detected dynamically.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-43"/>
       <dependencies>
@@ -1685,7 +1850,8 @@
    </test-case>
 
    <test-case name="copy-4601">
-      <description>FileName: COPY50 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3</description>
+      <description>FileName: COPY50 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-46"/>
       <dependencies>
@@ -1700,7 +1866,8 @@
    </test-case>
 
    <test-case name="copy-4701">
-      <description>FileName: copy61 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3</description>
+      <description>FileName: copy61 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-47"/>
       <dependencies>
@@ -1715,7 +1882,8 @@
    </test-case>
 
    <test-case name="copy-4702">
-      <description>FileName: copy62 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 11.3</description>
+      <description>FileName: copy62 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 11.3</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-47"/>
       <dependencies>
@@ -1730,7 +1898,8 @@
    </test-case>
 
    <test-case name="copy-4801">
-      <description>Test for simple identity transformation w/Template match, using select attribute</description>
+      <description>Test for simple identity transformation w/Template match, using select
+         attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-48"/>
       <dependencies>
@@ -1745,7 +1914,8 @@
    </test-case>
 
    <test-case name="copy-4802">
-      <description>Test for simple identity transformation w/Template match, using select attribute</description>
+      <description>Test for simple identity transformation w/Template match, using select
+         attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-48"/>
       <dependencies>
@@ -1805,5 +1975,5 @@
       </result>
    </test-case>
 
-  
+
 </test-set>

@@ -121,6 +121,36 @@
          <error code="Q{http://www.example.com/error}my-error-code"/>
       </result>
    </test-case>
+   
+   <test-case name="message-0007">
+      <description>Test terminate="true" attribute on xsl:message element.</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0007.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTMM9000"/>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0008">
+      <description>Test terminate=" 1 " attribute on xsl:message element.</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTMM9000"/>
+      </result>
+   </test-case>
 
    <test-case name="message-0101">
       <description>Test case that uses attribute value template for 'terminate' attribute of an xsl:message instruction, the value of the AVT which is the value of a parameter evalues to 'no'.</description>
@@ -137,6 +167,46 @@
             <assert-xml><![CDATA[<out><not-terminated/></out>]]></assert-xml>
             <assert-message>
                <assert-xml><![CDATA[Terminate attribute has a value of: no]]></assert-xml>
+            </assert-message>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0102">
+      <description>Test case that uses attribute value template for 'terminate' attribute of an xsl:message instruction, the value of the AVT which is the value of a parameter evaluates to 'false'.</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="message-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0102.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<out><not-terminated/></out>]]></assert-xml>
+            <assert-message>
+               <assert-xml><![CDATA[Terminate attribute has a value of: false]]></assert-xml>
+            </assert-message>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0103">
+      <description>Test case that uses attribute value template for 'terminate' attribute of an xsl:message instruction, the value of the AVT which is the value of a parameter evaluates to '0'.</description>
+      <created by="Debbie Lockett" on="2014-08-08"/>
+      <environment ref="message-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0103.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<out><not-terminated/></out>]]></assert-xml>
+            <assert-message>
+               <assert-xml><![CDATA[Terminate attribute has a value of:  0]]></assert-xml>
             </assert-message>
          </all-of>
       </result>

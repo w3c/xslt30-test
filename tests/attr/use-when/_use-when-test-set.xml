@@ -714,6 +714,36 @@
          <error code="XTSE3450"/>
       </result>
    </test-case>
+   
+   <test-case name="use-when-0139">
+      <description>test that the statically declared param and variable (with static="true") are allowed in an excluded section.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0139.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<p>value matched ok $xx=2</p>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0140">
+      <description>test that the statically declared param and variable (with static="1") are allowed in an excluded section.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0140.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<p>value matched ok $xx=2</p>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="use-when-0201">
       <description>Test case that uses use-when attribute with a value of true on an xsl:template.</description>
@@ -1303,6 +1333,66 @@
             <assert>not(/out/in[@f="unparsed-entity-public-id"])</assert>
             <assert>/out/in[@f="system-property"]="use-when evaluates to true!!!"</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0408">
+      <description>Test case using a variable with static="no" attribute, that uses use-when with an EBV of true on an xsl:choose instruction.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="use-when-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0408.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-1</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0409">
+      <description>Test case using a variable with static="false" attribute, that uses use-when with an EBV of true on an xsl:choose instruction.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="use-when-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0409.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-1</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0410">
+      <description>Test case using a variable with static="0" attribute, that uses use-when with an EBV of true on an xsl:choose instruction.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="use-when-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0410.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-1</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0411">
+      <description>Test case using a variable with static="" attribute (not allowed), that uses use-when with an EBV of true on an xsl:choose instruction.</description>
+      <created by="Debbie Lockett" on="2014-08-06"/>
+      <environment ref="use-when-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0411.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
       </result>
    </test-case>
 
