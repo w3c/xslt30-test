@@ -51,7 +51,7 @@
     
     <!-- Test of xsl:stream with xsl:value-of, filtered with a positional predicate -->
     
-    <xsl:template name="s-007" use-when="false()">
+    <xsl:template name="s-007" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:value-of select="/BOOKLIST/BOOKS/*:ITEM[position() lt 4]/PRICE"/>
@@ -305,6 +305,73 @@
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:value-of select="//PRICE/text()"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:value-of: striding element nodes -->
+    
+    <xsl:template name="s-070" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="/BOOKLIST/BOOKS/ITEM/PRICE" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:value-of: crawling element nodes -->
+    
+    <xsl:template name="s-071" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:value-of select="//PRICE" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:value-of: crawling nested element nodes -->
+    
+    <xsl:template name="s-072" use-when="$RUN">
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:value-of select="//n" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:value-of: zero-length text nodes -->
+    
+    <xsl:template name="s-073" use-when="$RUN">
+      <xsl:variable name="etn" as="text()">
+        <xsl:value-of select="''"/>
+      </xsl:variable>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:value-of select="$etn, //n, $etn" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:value-of: adjacent text nodes -->
+    
+    <xsl:template name="s-074" use-when="$RUN">
+      <xsl:variable name="gtn" as="text()">
+        <xsl:value-of select="'~'"/>
+      </xsl:variable>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:value-of select="$gtn, //text(), $gtn" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:value-of: mix in atomic values -->
+    
+    <xsl:template name="s-075" use-when="$RUN">
+      <xsl:variable name="av" as="xs:integer*" select="1 to 3"/>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:value-of select="$av, //text(), $av" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>

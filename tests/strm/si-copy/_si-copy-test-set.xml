@@ -4,10 +4,6 @@
           name="si-copy">
    <description>xsl:copy with streaming</description>
    
-   <!--
-     TODO: tests for on-empty
-    -->
-   
    <environment name="si-copy-A">
      <stylesheet file="si-copy-A.xsl"/>
    </environment>
@@ -392,12 +388,13 @@
    <test-case name="si-copy-048">
       <description>Use xsl:copy: with on-empty (empty document constructed)</description>
       <created by="Michael Kay" on="2012-12-19"/>
+      <modified by="Michael Kay" on="2014-08-09" change="on-empty is now ignored for document nodes: see bug 24378"/>
       <environment ref="si-copy-A"/>
       <test>
          <initial-template name="cy-048"/>
       </test>
       <result>
-         <assert>/out/a</assert>
+         <assert>/out</assert>
       </result>
    </test-case>
    
@@ -539,6 +536,7 @@
   <test-case name="si-copy-110">
       <description>Use xsl:copy: schema-aware, validation by type, invalid, caught</description>
       <created by="Michael Kay" on="2012-12-19"/>
+      <modified by="Michael Kay" on="2014-08-09" change="Expected error code is 1540, not 1510"/>
       <environment ref="si-copy-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -547,7 +545,7 @@
          <initial-template name="cy-110"/>
       </test>
       <result>
-         <assert>/out = "XTTE1510"</assert>
+         <assert>/out = "XTTE1540"</assert>
       </result>
    </test-case>
    
@@ -775,6 +773,36 @@
          <error code="XTTE1510"/>
       </result>
    </test-case>
+   
+   <test-case name="si-copy-129">
+      <description>Use xsl:copy: schema-aware, validation=strict, element node; passes xsl:variable/@as test</description>
+      <created by="Michael Kay" on="2014-08-10"/>
+      <environment ref="si-copy-B"/>
+      <dependencies>
+        <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="cy-129"/>
+      </test>
+      <result>
+         <assert>/out = "true"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-copy-130">
+      <description>Use xsl:copy: schema-aware, validation=strict, element node; fails xsl:variable/@as test</description>
+      <created by="Michael Kay" on="2014-08-10"/>
+      <environment ref="si-copy-B"/>
+      <dependencies>
+        <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="cy-130"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>      
    
    
    <test-case name="si-copy-901">
