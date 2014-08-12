@@ -269,7 +269,7 @@
     </out>
   </xsl:template>
   
-<!-- within xsl:stream, use xsl:copy: schema-aware, validation=strict, element node -->
+  <!-- within xsl:stream, use xsl:copy: schema-aware, validation=strict, element node -->
   
   <xsl:template name="cy-121" use-when="$RUN">
     <out>
@@ -387,7 +387,37 @@
         <xsl:value-of select="$copy instance of element(*, myroot)"/>
       </xsl:stream>
     </out>
-  </xsl:template>    
+  </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:copy: schema-aware, validation=strict, element node, passes xsl:variable/@as -->
+  
+  <xsl:template name="cy-129" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans-noNS.xml">
+        <xsl:variable name="copy" as="element(*, myroot)">
+          <xsl:copy select="*" validation="strict">
+            <xsl:copy-of select="child::node()"/>
+          </xsl:copy>
+        </xsl:variable>
+        <xsl:value-of select="$copy instance of element(*, myroot)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+<!-- within xsl:stream, use xsl:copy: schema-aware, validation=strict, element node, fails xsl:variable/@as -->
+  
+  <xsl:template name="cy-130" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/loans-noNS.xml">
+        <xsl:variable name="copy" as="element(*, xs:integer)">
+          <xsl:copy select="*" validation="strict">
+            <xsl:copy-of select="child::node()"/>
+          </xsl:copy>
+        </xsl:variable>
+        <xsl:value-of select="empty($copy/comment())"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>        
    
   
   

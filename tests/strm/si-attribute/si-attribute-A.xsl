@@ -528,6 +528,75 @@
       </xsl:stream>
     </xsl:template>
     
+    <!-- Streaming xsl:attribute: striding element nodes -->
+    
+    <xsl:template name="s-070" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="a" select="/BOOKLIST/BOOKS/ITEM/PRICE" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:attribute: crawling element nodes -->
+    
+    <xsl:template name="s-071" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:attribute name="a" select="//PRICE" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:attribute: crawling nested element nodes -->
+    
+    <xsl:template name="s-072" use-when="$RUN">
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:attribute name="a" select="//n" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:attribute: zero-length text nodes -->
+    
+    <xsl:template name="s-073" use-when="$RUN">
+      <xsl:variable name="etn" as="text()">
+        <xsl:value-of select="''"/>
+      </xsl:variable>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:attribute name="a" select="$etn, //n, $etn" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:attribute: adjacent text nodes -->
+    
+    <xsl:template name="s-074" use-when="$RUN">
+      <xsl:variable name="gtn" as="text()">
+        <xsl:value-of select="'~'"/>
+      </xsl:variable>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:attribute name="a" select="$gtn, //text(), $gtn" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <!-- Streaming xsl:attribute: mix in atomic values -->
+    
+    <xsl:template name="s-075" use-when="$RUN">
+      <xsl:variable name="av" as="xs:integer*" select="1 to 3"/>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:attribute name="a" select="$av, //text(), $av" separator="|"/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+
+    
 
                                               
     
