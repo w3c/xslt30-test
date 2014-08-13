@@ -4006,6 +4006,7 @@
       <description>Test xsl:mode typed="strict" with untyped nodes. Derived from match-140.</description>
       <keywords>xsl:import-schema Wildcard NCName child-axis typed-strict xsl:mode</keywords>
       <created by="Michael Kay" on="2014-04-30"/>
+      <modified by="Debbie Lockett" on="2014-08-13" change="Corrected error code"/>
       <environment ref="match3001"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -4016,7 +4017,7 @@
          <stylesheet file="match-219.xsl"/>
       </test>
       <result>
-         <error code="XTTE3110"/>
+         <error code="XTTE3100"/>
       </result>
    </test-case>
    
@@ -4097,9 +4098,10 @@
       </description>
       <keywords>xsl:import-schema typed-strict child-axis</keywords>
       <created by="Michael Kay" on="2014-05-01"/>
+      <modified by="Debbie Lockett" on="2014-08-13" change="Spec dependency corrected"/>
       <environment ref="match3002"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
       </dependencies>
       <test>
@@ -4134,9 +4136,10 @@
       </description>
       <keywords>xsl:import-schema xsl:mode typed-strict child-axis</keywords>
       <created by="Michael Kay" on="2014-05-01"/>
+      <modified by="Debbie Lockett" on="2014-08-13" change="Spec dependency corrected"/>
       <environment ref="match3002"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
       </dependencies>
       <test>
@@ -4146,4 +4149,89 @@
          <assert-xml><![CDATA[<out data=""><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
       </result>
    </test-case>   
+   
+   <test-case name="match-227">
+      <description>Test xsl:mode typed=" yes ".</description>
+      <keywords>xsl:import-schema SchemaElementTest child-axis typed-yes xsl:mode</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-227.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-228">
+      <description>Test xsl:mode typed="true".</description>
+      <keywords>xsl:import-schema SchemaElementTest child-axis typed-true xsl:mode</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-228.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-229">
+      <description>Test xsl:mode typed="1".</description>
+      <keywords>xsl:import-schema SchemaElementTest child-axis typed-1 xsl:mode</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-229.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-230">
+      <description>Test xsl:mode typed="unspecified".</description>
+      <keywords>xsl:import-schema SchemaElementTest child-axis typed-unspecified xsl:mode</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-230.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A1>http://www.example.com/ns/test</A1><B2>123-AB</B2><E7>5</E7></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-231">
+      <description>Test xsl:mode with typed="no", fails because nodes are typed.</description>
+      <keywords>xsl:import-schema SchemaElementTest child-axis typed-no xsl:mode</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-231.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE3110"/>
+      </result>
+   </test-case>
 </test-set>
