@@ -3,7 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes=" xs" version="3.0">
 
   <!-- streaming, xsl:for-each, //a/b selection: 
-       not guaranteed streamable in spec, streamable in Saxon -->
+       not guaranteed streamable (select expression is crawling) -->
 
   <xsl:strip-space elements="*"/>
 

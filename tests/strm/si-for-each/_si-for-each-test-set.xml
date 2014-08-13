@@ -162,16 +162,15 @@
 
 
    <test-case name="si-for-each-806">
-      <description>Use xsl:for-each within xsl:stream, //a/b is not guaranteed streamable in the spec, but streamable in Saxon</description>
+      <description>Use xsl:for-each within xsl:stream, not streamable (select expression is crawling)</description>
       <created by="Michael Kay" on="2012-12-04"/>
+      <modified by="Michael Kay" on="2014-08-13" change="change expected result to match the spec"/>
       <test>
          <stylesheet file="si-for-each-806.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><title>Pride and Prejudice</title><title>Wuthering Heights</title
-            ><title>Tess of the d'Urbervilles</title><title>Jude the Obscure</title
-            ><title>The Big Over Easy</title><title>The Eyre Affair</title></out>]]></assert-xml>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    
