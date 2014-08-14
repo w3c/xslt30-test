@@ -344,7 +344,7 @@
       <result>
          <assert>/out/a</assert>
       </result>
-   </test-case>
+   </test-case> 
    
    <test-case name="si-lre-101">
       <description>Use literal result element: schema-aware, validation=strict</description>
@@ -1157,7 +1157,42 @@
          <error code="XTSE3430"/>
       </result>
    </test-case>
-  
-  
+   
+   <test-case name="si-lre-904">
+      <description>Use literal result element: uses a streamable attribute set with streamable=" true "</description>
+      <created by="Debbie Lockett" on="2014-08-14"/>
+      <test>
+         <stylesheet file="si-lre-904.xsl"/>
+         <initial-template name="cy-904"/>
+      </test>
+      <result>
+         <assert>/out/*[@x='1' and @y='2']</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-lre-905">
+      <description>Use literal result element: uses a streamable attribute set with streamable="1"</description>
+      <created by="Debbie Lockett" on="2014-08-14"/>
+      <test>
+         <stylesheet file="si-lre-905.xsl"/>
+         <initial-template name="cy-905"/>
+      </test>
+      <result>
+         <assert>/out/*[@x='1' and @y='2']</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-lre-906">
+      <description>Use literal result element, using an attribute set with streamable="Yes" (not allowed)</description>
+      <created by="Debbie Lockett" on="2014-08-14"/>
+      <test>
+         <stylesheet file="si-lre-906.xsl"/>
+         <initial-template name="cy-906"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>     
+    
    
 </test-set>

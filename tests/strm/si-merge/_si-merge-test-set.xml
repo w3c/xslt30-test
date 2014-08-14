@@ -69,6 +69,22 @@
          <assert>count(/prices/key) = 11644</assert>
       </result>
    </test-case>
+   
+   <test-case name="si-merge-005">
+      <description>Test streamable=" true " and " 1 "; merge time-series data for gold and uranium prices.</description>
+      <created by="Debbie Lockett" on="2014-08-14"/>
+      <test>
+         <stylesheet file="si-merge-005.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/prices/price[@date="2014-03-31"][@gold="1294.0"][@uranium="34.91"]</assert>
+            <assert>/prices/price[@date="2014-02-28"][@gold="1327.75"][@uranium="35.54"]</assert>
+            <assert>/prices/price[@date="2014-01-31"][@gold="1246.5"][@uranium="35.1"]</assert>
+         </all-of>
+      </result>
+   </test-case>
 
    
 </test-set>
