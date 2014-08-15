@@ -1558,6 +1558,111 @@ z = http://new-z.uri/;
          <error code="XTSE0020"/>
       </result>
    </test-case>
+   
+   <test-case name="namespace-2628">
+      <description>test inherit-namespaces="yes" on literal result elements</description>
+      <created by="Debbie Lockett" on="2014-08-15"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2628.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
+            <assert>/a/b/namespace::* = "http://n/"</assert> 
+         </all-of>         
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-2629">
+      <description>test inherit-namespaces="true" on literal result elements</description>
+      <created by="Debbie Lockett" on="2014-08-15"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2629.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
+            <assert>/a/b/namespace::* = "http://n/"</assert> 
+         </all-of>         
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-2630">
+      <description>test inherit-namespaces="1" on literal result elements</description>
+      <created by="Debbie Lockett" on="2014-08-15"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2630.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
+            <assert>/a/b/namespace::* = "http://n/"</assert> 
+         </all-of>         
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-2631">
+      <description>test inherit-namespaces="false" on literal result elements</description>
+      <created by="Debbie Lockett" on="2014-08-15"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2631.xsl"/>
+      </test>
+      <result>
+         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n=""/></a>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-2632">
+      <description>test inherit-namespaces="0" on literal result elements</description>
+      <created by="Debbie Lockett" on="2014-08-15"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2632.xsl"/>
+      </test>
+      <result>
+         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n=""/></a>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-2633">
+      <description>test inherit-namespaces=" " (not allowed) on literal result elements</description>
+      <created by="Debbie Lockett" on="2014-08-15"/>
+      <environment ref="namespace-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-2633.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
 
    <test-case name="namespace-2701">
       <description>Identity template (using an unusual namespace prefix)</description>
