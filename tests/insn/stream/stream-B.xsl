@@ -58,7 +58,7 @@
       </out>
     </xsl:template>
     
-    <!-- Partial validation, valid -->
+    <!-- Partial validation, invalid -->
     
     <xsl:template name="s-106" use-when="$RUN">
       <out>
