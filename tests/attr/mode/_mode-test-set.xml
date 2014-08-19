@@ -300,6 +300,56 @@
       </result>
    </test-case>
    
+   <test-case name="mode-0012">
+      <description>Test xsl:mode on-no-match with namespace nodes; streaming= " yes ", "true", and "1"</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip shallow-copy text-only-copy variable-reference namespace-nodes parentless-nodes streamable</keywords>
+      <created by="Debbie Lockett" on="2014-08-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0012.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><c xmlns:a="http://abracadabra.com/"/><d/><s/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-0013">
+      <description>Test xsl:mode on-no-match with namespace nodes; streaming= "no", "false" and "0"</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip shallow-copy text-only-copy variable-reference namespace-nodes parentless-nodes non-streamable</keywords>
+      <created by="Debbie Lockett" on="2014-08-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0013.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><c xmlns:a="http://abracadabra.com/"/><d/><s/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-0014">
+      <description>Test xsl:mode on-no-match with namespace nodes; streaming= "YES" (not allowed)</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip shallow-copy text-only-copy variable-reference namespace-nodes parentless-nodes streamable</keywords>
+      <created by="Debbie Lockett" on="2014-08-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
    <test-case name="mode-0101">
       <description>Simple test of xsl:apply-templates with mode.</description>
       <keywords>matching-mode</keywords>
@@ -573,6 +623,92 @@
       </test>
       <result>
          <assert-xml file="mode-0801.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-0802">
+      <description>Ambiguous match, use warning-on-multiple-match=" yes "</description>
+      <keywords>conflict-resolution matching-mode multiple-matching-templates</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="mode-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0802.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml file="mode-0801.out"/>
+            <assert-warning/>            
+         </all-of>     
+      </result>
+   </test-case>
+   
+   <test-case name="mode-0803">
+      <description>Ambiguous match, use warning-on-multiple-match="no"</description>
+      <keywords>conflict-resolution matching-mode multiple-matching-templates</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="mode-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0803.xsl"/>
+      </test>
+      <result>
+            <assert-xml file="mode-0801.out"/>              
+      </result>
+   </test-case>
+   
+   <test-case name="mode-0804">
+      <description>Ambiguous match, use warning-on-multiple-match="true" and "1"</description>
+      <keywords>conflict-resolution matching-mode multiple-matching-templates</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="mode-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0804.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml file="mode-0801.out"/>
+            <assert-warning/>            
+         </all-of>     
+      </result>
+   </test-case>
+   
+   <test-case name="mode-0805">
+      <description>Ambiguous match, use warning-on-multiple-match="false" and "0"</description>
+      <keywords>conflict-resolution matching-mode multiple-matching-templates</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="mode-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0805.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="mode-0801.out"/>              
+      </result>
+   </test-case>
+   
+   <test-case name="mode-0806">
+      <description>Ambiguous match, use warning-on-multiple-match="Yes" (not allowed)</description>
+      <keywords>conflict-resolution matching-mode multiple-matching-templates</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="mode-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0806.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>              
       </result>
    </test-case>
 
@@ -859,6 +995,7 @@
       <description>Test xsl:mode on-no-match="text-only-copy"</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy matching-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="use normalize-space in assert"/>
       <environment ref="mode-14"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -868,8 +1005,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <assert>starts-with(., "
- The First Book of Moses, Called GENESIS.")</assert>
+         <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
       </result>
    </test-case>
 
@@ -877,6 +1013,7 @@
       <description>Test xsl:mode on-no-match="text-only-copy", streaming</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy streamable buildin-template-rules</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="use normalize-space in assert"/>
       <environment ref="mode-14s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -887,8 +1024,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <assert>starts-with(., "
- The First Book of Moses, Called GENESIS.")</assert>
+         <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>         
       </result>
    </test-case>
 
@@ -896,6 +1032,7 @@
       <description>Test xsl:mode on-no-match="text-only-copy"</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy matching-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="use normalize-space in assert"/>
       <environment ref="mode-14"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -905,8 +1042,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <assert>starts-with(., "
- The First Book of Moses, Called GENESIS.")</assert>
+         <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
       </result>
    </test-case>
 
@@ -914,6 +1050,7 @@
       <description>Test xsl:mode on-no-match="text-only-copy"; streaming</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy streamable initial-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="use normalize-space in assert"/>
       <environment ref="mode-14s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -924,8 +1061,7 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <assert>starts-with(., "
- The First Book of Moses, Called GENESIS.")</assert>
+         <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
       </result>
    </test-case>
 
@@ -933,6 +1069,7 @@
       <description>Test xsl:mode on-no-match="text-only-copy"</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy TextTest</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="use normalize-space in assert"/>
       <environment ref="mode-14"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -941,8 +1078,7 @@
          <stylesheet file="mode-1409.xsl"/>
       </test>
       <result>
-         <assert>starts-with(., "
- THE FIRST BOOK OF MOSES, CALLED GENESIS.")</assert>
+         <assert>starts-with(normalize-space(.), "THE FIRST BOOK OF MOSES, CALLED GENESIS.")</assert>
       </result>
    </test-case>
 
@@ -950,6 +1086,7 @@
       <description>Test xsl:mode on-no-match="text-only-copy"; streaming</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy TextTest streamable</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="use normalize-space in assert"/>
       <environment ref="mode-14s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -959,8 +1096,7 @@
          <stylesheet file="mode-1410.xsl"/>
       </test>
       <result>
-         <assert>starts-with(., "
- THE FIRST BOOK OF MOSES, CALLED GENESIS.")</assert>
+         <assert>starts-with(normalize-space(.), "THE FIRST BOOK OF MOSES, CALLED GENESIS.")</assert>
       </result>
    </test-case>
 
@@ -1242,6 +1378,7 @@
       <description>Test xsl:mode warning-on-no-match=yes</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy matching-mode xsl:apply-imports</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="assert-warning added, use normalize-space in assert"/>
       <environment ref="mode-14"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1252,11 +1389,11 @@
       </test>
       <result>
          <all-of>
-            <assert>starts-with(., "
- The First Book of Moses, Called GENESIS.")</assert>
+            <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
             <assert-message>
                <assert-xml><![CDATA[** Expect no-matching-template warnings **]]></assert-xml>
             </assert-message>
+            <assert-warning/>
          </all-of>
       </result>
    </test-case>
@@ -1265,6 +1402,7 @@
       <description>Test xsl:mode warning-on-no-match=yes; streaming</description>
       <keywords>xsl:mode on-no-match-attribute streamable text-only-copy matching-mode warning-on-no-match</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="assert-warning added, use normalize-space in assert"/>
       <environment ref="mode-14s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1276,11 +1414,11 @@
       </test>
       <result>
          <all-of>
-            <assert>starts-with(., "
- The First Book of Moses, Called GENESIS.")</assert>
+            <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
             <assert-message>
                <assert-xml><![CDATA[** Expect no-matching-template warnings **]]></assert-xml>
             </assert-message>
+            <assert-warning/>
          </all-of>
       </result>
    </test-case>
@@ -1289,6 +1427,7 @@
       <description>Test xsl:mode warning-on-no-match=no</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy EQName warning-on-no-match</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="use normalize-space in assert"/>
       <environment ref="mode-14"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1299,8 +1438,7 @@
       </test>
       <result>
          <all-of>
-            <assert>starts-with(., "
- The First Book of Moses, Called GENESIS.")</assert>
+            <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
             <assert-message>
                <assert-xml><![CDATA[** Expect NO no-matching-template warnings **]]></assert-xml>
             </assert-message>
@@ -1312,6 +1450,7 @@
       <description>Test xsl:mode warning-on-no-match=no; streaming</description>
       <keywords>xsl:mode on-no-match-attribute text-only-copy matching-mode warning-on-no-match xsl:apply-imports</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-12" change="use normalize-space in assert"/>
       <environment ref="mode-14s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1323,8 +1462,7 @@
       </test>
       <result>
          <all-of>
-            <assert>starts-with(., "
- The First Book of Moses, Called GENESIS.")</assert>
+            <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
             <assert-message>
                <assert-xml><![CDATA[** Expect NO no-matching-template warnings **]]></assert-xml>
             </assert-message>
@@ -1468,6 +1606,7 @@
       <description>Test xsl:mode with typed="yes", fails because nodes are untyped</description>
       <keywords>xsl:mode on-no-match-attribute shallow-copy typed-yes XTTE3100</keywords>
       <created by="Michael Kay" on="2013-06-15"/>
+      <modified by="Debbie Lockett" on="2014-08-13" change="Fixed mode name"/>
       <environment ref="mode-14s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1498,7 +1637,165 @@
          <error code="XTTE3100"/>
       </result>
    </test-case>
-
+   
+   <test-case name="mode-1440">
+      <description>Test xsl:mode warning-on-no-match="true"</description>
+      <keywords>xsl:mode on-no-match-attribute text-only-copy matching-mode xsl:apply-imports</keywords>
+      <created by="Debbie Lockett" on="2014-08-12"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1440.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
+            <assert-message>
+               <assert-xml><![CDATA[** Expect no-matching-template warnings **]]></assert-xml>
+            </assert-message>
+            <assert-warning/>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1441">
+      <description>Test xsl:mode warning-on-no-match="false"</description>
+      <keywords>xsl:mode on-no-match-attribute text-only-copy warning-on-no-match</keywords>
+      <created by="Debbie Lockett" on="2014-08-12"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1441.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
+            <assert-message>
+               <assert-xml><![CDATA[** Expect NO no-matching-template warnings **]]></assert-xml>
+            </assert-message>
+         </all-of>
+      </result>
+   </test-case>
+         
+   <test-case name="mode-1442">
+      <description>Test xsl:mode warning-on-no-match="1"</description>
+      <keywords>xsl:mode on-no-match-attribute text-only-copy matching-mode xsl:apply-imports</keywords>
+      <created by="Debbie Lockett" on="2014-08-12"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1442.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
+            <assert-message>
+               <assert-xml><![CDATA[** Expect no-matching-template warnings **]]></assert-xml>
+            </assert-message>
+            <assert-warning/>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1443">
+      <description>Test xsl:mode warning-on-no-match="0"</description>
+      <keywords>xsl:mode on-no-match-attribute text-only-copy warning-on-no-match</keywords>
+      <created by="Debbie Lockett" on="2014-08-12"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1443.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>starts-with(normalize-space(.), "The First Book of Moses, Called GENESIS.")</assert>
+            <assert-message>
+               <assert-xml><![CDATA[** Expect NO no-matching-template warnings **]]></assert-xml>
+            </assert-message>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1444">
+      <description>Test xsl:mode warning-on-no-match="Yes" (not allowed) </description>
+      <keywords>xsl:mode on-no-match-attribute text-only-copy matching-mode xsl:apply-imports</keywords>
+      <created by="Debbie Lockett" on="2014-08-12"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1444.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1445">
+      <description>Test xsl:mode typed=" false "</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-copy typed-false buildin-template-rules</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1445.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <assert-xml file="mode-1411.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1446">
+      <description>Test xsl:mode typed="0"</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-copy typed-0 buildin-template-rules</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1446.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <assert-xml file="mode-1411.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1447">
+      <description>Test xsl:mode typed="No" (not allowed)</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-copy typed buildin-template-rules</keywords>
+      <created by="Debbie Lockett" on="2014-08-13"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1447.xsl"/>
+         <initial-mode name="s"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+      
    <test-case name="mode-1501">
       <description>Test for mode="#all" with match="node()"</description>
       <keywords>mode-#all mode-#current</keywords>
@@ -1601,7 +1898,6 @@
       <result>
          <error code="XTSE0545"/>
       </result>
-   </test-case>
-   
+   </test-case>   
    
 </test-set>

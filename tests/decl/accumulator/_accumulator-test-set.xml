@@ -67,10 +67,11 @@
       <description>Pre-descent accumulator functions called before and after</description>
       <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-14" change="use streamable='false'"/>
       <environment ref="accumulator-002"/>
       <test>
          <stylesheet file="accumulator-003.xsl"/>
-         <param name="streamable" static="yes" select="'no'"/>
+         <param name="streamable" static="yes" select="'false'"/>
       </test>
       <result>
          <assert-xml><![CDATA[<figures><pix><p>Figure 1 start</p><p>Figure 1 end</p></pix
@@ -84,13 +85,14 @@
       <description>Pre-descent accumulator functions called before and after - streaming</description>
       <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before streamable</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-14" change="use streamable=' true '"/>
       <environment ref="accumulator-002s"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
       <test>
          <stylesheet file="accumulator-003.xsl"/>
-         <param name="streamable" static="yes" select="'yes'"/>
+         <param name="streamable" static="yes" select="' true '"/>
       </test>
       <result>
          <assert-xml><![CDATA[<figures><pix><p>Figure 1 start</p><p>Figure 1 end</p></pix
@@ -104,10 +106,11 @@
       <description>Pre-descent and post-descent accumulator functions</description>
       <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before fn:accumulator-after</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-14" change="use streamable='0'"/>
       <environment ref="accumulator-002"/>
       <test>
          <stylesheet file="accumulator-005.xsl"/>
-         <param name="streamable" static="yes" select="'no'"/>
+         <param name="streamable" static="yes" select="'0'"/>
       </test>
       <result>
          <assert-xml><![CDATA[<figures><pix><p>Figure 1 start</p><p>Figure 1.5 end</p></pix
@@ -121,13 +124,14 @@
       <description>Pre-descent and post-descent accumulator functions - streaming</description>
       <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before fn:accumulator-after streamable</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Debbie Lockett" on="2014-08-14" change="use streamable='1'"/>
       <environment ref="accumulator-002s"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
       <test>
          <stylesheet file="accumulator-005.xsl"/>
-         <param name="streamable" static="yes" select="'yes'"/>
+         <param name="streamable" static="yes" select="'1'"/>
       </test>
       <result>
          <assert-xml><![CDATA[<figures><pix><p>Figure 1 start</p><p>Figure 1.5 end</p></pix
@@ -678,8 +682,20 @@
          </all-of>   
       </result>
    </test-case>
-
-
+   
+   <test-case name="accumulator-037">
+      <description>Basic test of accumulator functions with streamable="No" (not allowed)</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip fn:accumulator-before ElementTest</keywords>
+      <created by="Debbie Lockett" on="2014-08-14"/>
+      <environment ref="accumulator-001"/>
+      <test>
+         <stylesheet file="accumulator-037.xsl"/>
+         <param name="streamable" static="yes" select="'No'"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
 
 
 </test-set>
