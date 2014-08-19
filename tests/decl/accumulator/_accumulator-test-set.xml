@@ -639,9 +639,29 @@
       </result>
    </test-case>
    
-   <test-case name="accumulator-036s">
+   <test-case name="accumulator-036">
       <description>Sequence constructor in accumulator rule</description>
       <keywords>xsl:mode streamable post-descent non-streamable</keywords>
+      <created by="Michael Kay" on="2014-08-19"/>
+      <environment ref="accumulator-015s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-036.xsl"/>
+         <param name="streamable" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <all-of> 
+            <assert>/Total-Cost/items = '5'</assert> 
+            <assert>/Total-Cost/cost = '91'</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-036s">
+      <description>Sequence constructor in accumulator rule</description>
+      <keywords>xsl:mode streamable post-descent</keywords>
       <created by="Michael Kay" on="2014-08-02"/>
       <environment ref="accumulator-015s"/>
       <dependencies>
@@ -649,9 +669,13 @@
       </dependencies>
       <test>
          <stylesheet file="accumulator-036.xsl"/>
+         <param name="streamable" static="yes" select="'yes'"/>
       </test>
       <result>
-         <assert>/Total-Cost = '91'</assert><!-- needs revision -->
+         <all-of> 
+            <assert>/Total-Cost/items = '5'</assert> 
+            <assert>/Total-Cost/cost = '91'</assert>
+         </all-of>   
       </result>
    </test-case>
 
