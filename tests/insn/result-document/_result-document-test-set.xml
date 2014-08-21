@@ -36,6 +36,10 @@
       <stylesheet role="principal" file="result-document-1101.xsl"/>
    </environment>
    
+   <environment name="result-document-113">
+      <stylesheet role="principal" file="result-document-1130.xsl"/>
+   </environment>
+   
    <environment name="result-document-12">
       <source role=".">
          <content><![CDATA[<doc><foo> true </foo></doc>]]></content>
@@ -1753,7 +1757,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="a"/>
@@ -1770,7 +1774,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="b"/>
@@ -1787,7 +1791,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="c"/>
@@ -1804,7 +1808,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="d"/>
@@ -1821,7 +1825,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="e"/>
@@ -1838,7 +1842,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="f"/>
@@ -1855,7 +1859,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="g"/>
@@ -1872,7 +1876,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="h"/>
@@ -1889,7 +1893,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="i"/>
@@ -1906,7 +1910,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="j"/>
@@ -1923,7 +1927,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <initial-template name="k"/>
@@ -1932,6 +1936,252 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
+   
+   
+   <test-case name="result-document-1131">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="a"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1132">
+      <description>
+         xsl:result-document in temporary output state: allowed in 3.0
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="b"/>
+      </test>
+      <result>
+         <assert>/b/@v = 'rrr'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1133">
+      <description>
+         xsl:result-document in temporary output state: allowed in 3.0
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="c"/>
+      </test>
+      <result>
+         <assert>/c='rrr'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1134">
+      <description>
+         xsl:result-document in temporary output state: allowed in 3.0
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="d"/>
+      </test>
+      <result>
+         <assert>/d/comment()='rrr'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1135">
+      <description>
+         xsl:result-document in temporary output state: allowed in 3.0
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="e"/>
+      </test>
+      <result>
+         <assert>/e/processing-instruction() = 'rrr'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1136">
+      <description>
+         xsl:result-document in temporary output state: allowed in 3.0
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="f"/>
+      </test>
+      <result>
+         <assert>/f/namespace::n = 'rrr'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1137">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="g"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1138">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="h"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1139">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="i"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1140">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="j"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1141">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="k"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1142">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="l"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1143">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="m"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1144">
+      <description>
+         xsl:result-document in temporary output state
+      </description>
+      <created by="Michael Kay" on="2013-08-09"/>
+      <environment ref="result-document-113"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <initial-template name="n"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
+      </result>
+   </test-case>
+   
+   
    
    <test-case name="result-document-1201">
       <description>Test AVT in @standalone of xsl:result-document, which evaluates to " true ".</description>
