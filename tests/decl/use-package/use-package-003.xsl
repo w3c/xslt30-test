@@ -12,7 +12,7 @@
     package-version="1.0.0"/>
 
   
-  <xsl:stylesheet version="3.0">
+ 
   
     <!-- Call private function defined in used package (error) -->
    
@@ -23,6 +23,6 @@
       </xsl:choose>
     </xsl:template>
     
-  </xsl:stylesheet>  
+ 
   
 </xsl:package>   
