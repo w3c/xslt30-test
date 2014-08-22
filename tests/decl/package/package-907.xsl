@@ -7,12 +7,12 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
   
-  <xsl:stylesheet version="3.0">
+  
   
     <xsl:template name="main">
       <ok/>
     </xsl:template>
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   
