@@ -29,7 +29,7 @@
     
   </xsl:use-package>
   
-  <xsl:stylesheet>
+  
   
     <xsl:variable name="g"><a/></xsl:variable>
     
@@ -47,6 +47,6 @@
       </xsl:choose>
     </xsl:template>
     
-  </xsl:stylesheet>  
+ 
   
 </xsl:package>   

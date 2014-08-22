@@ -7,7 +7,7 @@
   xmlns:p="http://www.w3.org/xslt30tests/override-base-101"
   exclude-result-prefixes="xs p">
   
-  <xsl:stylesheet version="3.0">
+  
   
     <xsl:template name="t" as="xs:string" visibility="public">
       <xsl:param name="in" as="xs:string"/>
@@ -47,6 +47,6 @@
       </xsl:call-template>
     </xsl:template>
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   

@@ -29,7 +29,7 @@
     
   </xsl:use-package>
   
-  <xsl:stylesheet>
+  
   
     <xsl:variable name="v" select="p:f('x', 5)"/>
    
@@ -40,6 +40,6 @@
       </xsl:choose>
     </xsl:template>
     
-  </xsl:stylesheet>  
+ 
   
 </xsl:package>   

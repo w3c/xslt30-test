@@ -20,7 +20,6 @@
   </xsl:use-package>
 
   
-  <xsl:stylesheet>
   
     <!-- Call public function defined in used package -->
    
@@ -31,6 +30,6 @@
       </xsl:choose>
     </xsl:template>
     
-  </xsl:stylesheet>  
+ 
   
 </xsl:package>   

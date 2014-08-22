@@ -36,7 +36,7 @@
     
   </xsl:use-package>
   
-  <xsl:stylesheet>
+  
   
     <!-- Demonstrate that the named template u in the base package is rebound to the declaration of t in this package -->
    
@@ -49,6 +49,6 @@
     </out>  
     </xsl:template>
     
-  </xsl:stylesheet>  
+ 
   
 </xsl:package>   

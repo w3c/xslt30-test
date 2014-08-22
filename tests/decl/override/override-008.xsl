@@ -17,12 +17,12 @@
     
   </xsl:use-package>
   
-  <xsl:stylesheet>
+  
    
     <xsl:template name="main">
       <out/>
     </xsl:template>
     
-  </xsl:stylesheet>  
+ 
   
 </xsl:package>   

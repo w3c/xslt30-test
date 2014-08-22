@@ -20,7 +20,7 @@
     
   </xsl:use-package>
   
-  <xsl:stylesheet>
+ 
    
     <xsl:template name="main">
       <xsl:choose>
@@ -29,6 +29,6 @@
       </xsl:choose>
     </xsl:template>
     
-  </xsl:stylesheet>  
+  
   
 </xsl:package>   
