@@ -6,7 +6,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
   
-  <xsl:stylesheet version="3.0">
+ 
   
     <xsl:variable name="v-public" as="xs:string" visibility="public" select="'v/public'"/>
     
@@ -14,6 +14,6 @@
     
     <xsl:variable name="v-final" as="xs:string" visibility="final" select="'v/final'"/>
     
-  </xsl:stylesheet>
+ 
   
 </xsl:package>   

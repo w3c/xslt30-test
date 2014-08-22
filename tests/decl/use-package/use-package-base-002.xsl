@@ -9,7 +9,7 @@
   
   <!-- tests that decimal-formats, keys, and namespace aliases are local to a package -->
   
-  <xsl:stylesheet version="3.0">
+ 
   
     <xsl:decimal-format grouping-separator="~"/>
     <xsl:decimal-format name="a" grouping-separator="!"/>
@@ -44,6 +44,6 @@
       </xsl:result-document>
     </xsl:template>
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   

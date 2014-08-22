@@ -11,7 +11,7 @@
     package-version="1.0.0"/>
 
   
-  <xsl:stylesheet version="3.0">
+  
   
     <!-- Access private variable defined in used package (fails) -->
    
@@ -22,6 +22,6 @@
       </xsl:choose>
     </xsl:template>
     
-  </xsl:stylesheet>  
+  
   
 </xsl:package>   

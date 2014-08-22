@@ -12,12 +12,12 @@
   
   <xsl:use-package name="http://www.w3.org/xslt30tests/use-package-base-002" package-version="1.0.0"/>
   
-  <xsl:stylesheet version="3.0">
+  
     
     <xsl:template name="main">
       <out p="{format-number(1234.5, '0.0', 'a')}"/>
     </xsl:template>
     
-  </xsl:stylesheet>
+ 
   
 </xsl:package>   

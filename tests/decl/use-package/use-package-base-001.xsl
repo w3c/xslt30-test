@@ -7,7 +7,7 @@
   xmlns:p="http://www.w3.org/xslt30tests/use-package-base-001"
   exclude-result-prefixes="xs p">
   
-  <xsl:stylesheet version="3.0">
+  
   
     <xsl:function name="p:f" as="xs:string" visibility="public">
       <xsl:param name="in" as="xs:string"/>
@@ -27,6 +27,6 @@
       <xsl:sequence select="p:f-private($in, $count)"/>
     </xsl:function>
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   

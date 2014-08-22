@@ -12,7 +12,7 @@
   
   <xsl:use-package name="http://www.w3.org/xslt30tests/use-package-base-002" package-version="1.0.0"/>
   
-  <xsl:stylesheet version="3.0">
+ 
   
     <xsl:namespace-alias stylesheet-prefix="xs" result-prefix="q"/>
     
@@ -26,6 +26,6 @@
       </xsl:element>
     </xsl:template>
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   
