@@ -7,7 +7,7 @@
 <xsl:template match="/">
   <xsl:variable name="var1" as="node()"><a x="" y="3"/></xsl:variable>
   <out>
-    <xsl:copy select="$var1//@x" on-empty="$var1//@y"/>
+    <xsl:copy select="$var1//@x" on-empty="$var1//a"/>
   </out>  
 </xsl:template>
 
