@@ -24,4 +24,4 @@
          <x/>
       </out>
    </xsl:template>
-</xsl:stylesheet>
+</xsl:package>

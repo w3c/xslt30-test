@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-          name="error-code">
+          name="error">
    <description>
                 Tests error conditions. 
                 This test set should include a test for every error code (however, coverage of new XSLT 3.0 errors is incomplete).
@@ -2067,7 +2067,7 @@ A literal result element
       <created by="Michael Kay" on="2014-08-25"/>
       <dependencies>
          <spec value="XSLT30+"/>
-         <feature name="backwards_compatibility" satisfied="false"/>
+         <feature value="backwards_compatibility" satisfied="false"/>
       </dependencies>
       <test>
          <stylesheet file="error-0160a.xsl"/>
@@ -2808,7 +2808,7 @@ Was error-code-228.
       </dependencies>
       <test>
          <stylesheet file="error-0265a.xsl"/>
-         <stylesheet file="error-code-228a.xsl" role="secondary"/>
+         <stylesheet file="error-0265a2.xsl" role="secondary"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -4617,7 +4617,7 @@ It is a non-recoverable dynamic
         template defines a template parameter that specifies required="yes"
         and no value is supplied.</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <changed by="Michael Kay"
+      <modified by="Michael Kay"
                on="2014-08-26"
                change="Error 0060 replaced by 0700 in XSLT 3.0"/>
       <environment ref="error001"/>
@@ -8266,7 +8266,7 @@ It is a static error if a character
       <created by="Michael Kay" on="2014-08-25"/>
       <dependencies>
          <spec value="XSLT20"/>
-         <feature value="disable_output_escaping" satisfied="false"/>
+         <feature value="disabling_output_escaping" satisfied="false"/>
       </dependencies>
       <test>
          <stylesheet file="error-1620a.xsl"/>
@@ -8287,7 +8287,7 @@ It is a static error if a character
       <created by="Michael Kay" on="2014-08-25"/>
       <dependencies>
          <spec value="XSLT20"/>
-         <feature value="disable_output_escaping" satisfied="false"/>
+         <feature value="disabling_output_escaping" satisfied="false"/>
       </dependencies>
       <test>
          <stylesheet file="error-1630a.xsl"/>
@@ -9217,8 +9217,8 @@ It is a static error if a character
       </dependencies>
       <test>
          <stylesheet file="error-3340a.xsl"/>
-         <initial-template name="main"/>
          <param name="n" select="'1234'"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XTDE3340"/>
@@ -9233,8 +9233,8 @@ It is a static error if a character
       </dependencies>
       <test>
          <stylesheet file="error-3340a.xsl"/>
-         <initial-template name="main"/>
          <param name="n" select="'x:yyy'"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XTDE3340"/>
@@ -9249,8 +9249,8 @@ It is a static error if a character
       </dependencies>
       <test>
          <stylesheet file="error-3340a.xsl"/>
-         <initial-template name="main"/>
          <param name="n" select="'unknown'"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XTDE3340"/>
@@ -9273,9 +9273,9 @@ It is a static error if a character
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <stylesheet file="error-3340d.xsl"/>
-         <initial-template name="main"/>
+         <stylesheet file="error-3340d.xsl"/>        
          <param name="n" select="'1234'"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XTDE3340"/>
@@ -9290,8 +9290,8 @@ It is a static error if a character
       </dependencies>
       <test>
          <stylesheet file="error-3340d.xsl"/>
-         <initial-template name="main"/>
          <param name="n" select="'x:yyy'"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XTDE3340"/>
@@ -9306,8 +9306,8 @@ It is a static error if a character
       </dependencies>
       <test>
          <stylesheet file="error-3340d.xsl"/>
-         <initial-template name="main"/>
          <param name="n" select="'unknown'"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XTDE3340"/>
@@ -9441,8 +9441,8 @@ It is a static error if a character
       </dependencies>
       <test>
          <stylesheet file="error-3370a.xsl"/>
-         <initial-template name="main"/>
          <param name="p" select="22"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XTSE3370"/>
@@ -9689,8 +9689,8 @@ It is a static error if a character
       declared within an xsl:override element. (To invoke the template rule that is being overridden, 
       xsl:next-match should therefore be used.)
       </description>
-      <environment ref="error005"/>
       <created by="Michael Kay" on="2014-08-25"/>
+      <environment ref="error005"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>

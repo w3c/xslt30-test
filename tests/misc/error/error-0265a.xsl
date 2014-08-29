@@ -10,7 +10,7 @@
 
 <?error XTSE0265?>
 
-  <xsl:include href="error-code-228a.xsl"/>
+  <xsl:include href="error-0265a2.xsl"/>
 
   <xsl:template name="main">
       <out>
