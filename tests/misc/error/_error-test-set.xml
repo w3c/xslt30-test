@@ -6791,12 +6791,11 @@ It is a non-recoverable dynamic
    </test-case>
 
    <test-case name="error-1270c">
-      <description>Generate error XTDE1270.
-Was error-code-345.
-It is a non-recoverable dynamic
+      <description>Generate error XTDE1270. Was error-code-345.
+                  It is a non-recoverable dynamic
                   error to call the key function with two
                   arguments if there is no context
-                     node, or if the root of the tree containing the context node is
+                  node, or if the root of the tree containing the context node is
                   not a document node; or to call the function with three arguments if the
                   root of the tree containing the node supplied in the third argument is not a
                   document node.</description>
@@ -6813,14 +6812,106 @@ It is a non-recoverable dynamic
          <error code="XTDE1270"/>
       </result>
    </test-case>
+   
+   <test-case name="error-1280a-20">
+      <description>Error: format-number - unknown xsl:decimal-format name. Was error-code-063.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1280a.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1280"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1280a-30">
+      <description>Error: format-number - unknown xsl:decimal-format name. Was error-code-063.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1280a.xsl"/>
+      </test>
+      <result>
+         <error code="FODF1280"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1280b-20">
+      <description>Error: no decimal format.  Was error-code-065.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1280b.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1280"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1280b-30">
+      <description>Error: no decimal format.  Was error-code-065.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1280b.xsl"/>
+      </test>
+      <result>
+         <error code="FODF1280"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1280c-20">
+      <description>Generate error XTDE1280. Was error-code-346.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2013-12-09" change="Error code XTDE1280 is specific to XSLT20 (FODF1280 for XSLT30). Changed dependency to XSLT20"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1280c.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1280"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1280c-30">
+      <description>Generate error FODF1280 (3.0). Was error-code-346b.</description>
+      <created by="Abel Braaksma" on="2013-12-09"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1280c.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1280"/>
+      </result>
+   </test-case>
 
    <test-case name="error-1290a">
-      <description>Error: xsl:decimal-format.
-Was error-code-061.
-It is a static error if a named or
+      <description>Error: xsl:decimal-format. Was error-code-061.
+                     It is a static error if a named or
                      unnamed decimal format contains two
                      conflicting values for the same attribute in different
-                        xsl:decimal-format declarations having the same import precedence, unless there is
+                     xsl:decimal-format declarations having the same import precedence, unless there is
                      another definition of the same attribute with higher import precedence.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
@@ -6924,13 +7015,14 @@ It is a static error if, for any named
    <test-case name="error-1300b">
       <description>Generate error XTSE1300.
 Was error-code-351.
-It is a static error if, for any named
+                     It is a static error if, for any named
                      or unnamed decimal format, the variables representing characters used in a
-                        picture string do not each have
+                     picture string do not each have
                      distinct values. These variables are decimal-separator-sign,
-                        grouping-sign, percent-sign,
+                     grouping-sign, percent-sign,
                      per-mille-sign, digit-zero-sign, digit-sign,
-                     and pattern-separator-sign.</description>
+                     and pattern-separator-sign.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
@@ -6946,15 +7038,15 @@ It is a static error if, for any named
    </test-case>
 
    <test-case name="error-1300c">
-      <description>Generate error XTSE1300.
-Was error-code-352.
-It is a static error if, for any named
+      <description>Generate error XTSE1300. Was error-code-352.
+                     It is a static error if, for any named
                      or unnamed decimal format, the variables representing characters used in a
-                        picture string do not each have
+                     picture string do not each have
                      distinct values. These variables are decimal-separator-sign,
-                        grouping-sign, percent-sign,
+                     grouping-sign, percent-sign,
                      per-mille-sign, digit-zero-sign, digit-sign,
-                     and pattern-separator-sign.</description>
+                     and pattern-separator-sign.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
@@ -6968,13 +7060,302 @@ It is a static error if, for any named
          <error code="XTSE1300"/>
       </result>
    </test-case>
+   
+      <test-case name="error-1310a-20">
+      <description>Generate error XTDE1310. Was  error-code-353a.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310a-30">
+      <description>Generate error FODF1310 (3.0). Was error-code-353b.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1310b-20">
+      <description>Generate error XTDE1310. Was error-code-354.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310b.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310b-30">
+      <description>Generate error FODF1310 (3.0). Was error-code-354</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310b.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1310c-20">
+      <description>Generate error XTDE1310. Was error-code-355.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310c.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310c-30">
+      <description>Generate error FODF1310 (3.0). Was error-code-355.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310c.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1310d-20">
+      <description>Generate error XTDE1310. Was error-code-356.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310d.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310d-30">
+      <description>Generate error FODF1310 (3.0). Was error-code-356.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2012-12-14" change="Fixed spec dependency"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310d.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1310e-20">
+      <description>Generate error XTDE1310. Was error-code-357.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310e.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310e-30">
+      <description>Generate error FODF1310 (3.0). Was error-code-357.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-code-357.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1310f-20">
+      <description>Generate error XTDE1310. Was error-code-358.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310f.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310f-30">
+      <description>Generate error FODF1310 (3.0). Was error-code-358.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310f.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1310g-20">
+      <description>Generate error XTDE1310. Was error-code-359.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310g.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310g-30">
+      <description>Generate error FODF1310 (3.0). Was error-code-359.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310g.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1310h-20">
+      <description>Generate error XTDE1310. Was error-code-360.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310h.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310h-30">
+      <description>Generate error FODF 1310 (3.0). Was error-code-360.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310h.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-1310i-20">
+      <description>Generate error XTDE1310. Was error-code-361.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310i.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE1310"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1310i-30">
+      <description>Generate error FODF1310 (3.0). Was error-code-361.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1310i.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FODF1310"/>
+      </result>
+   </test-case>
 
    <test-case name="error-1360a">
-      <description>Generate error XTDE1360.
-Was error-code-364.
-If the current function is evaluated within an
+      <description>Generate error XTDE1360. Was error-code-364.
+                  If the current function is evaluated within an
                   expression that is evaluated when the context item is absent, a non-recoverable dynamic error
-                  occurs.</description>
+                  occurs.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
@@ -6990,12 +7371,11 @@ If the current function is evaluated within an
    </test-case>
 
    <test-case name="error-1370a">
-      <description>Generate error XTDE1370.
-Was error-code-365.
-It is a non-recoverable dynamic
+      <description>Generate error XTDE1370. Was error-code-365.
+                  It is a non-recoverable dynamic
                   error if the unparsed-entity-uri function
                   is called when there is no context
-                     node, or when the root of the tree containing the context node
+                  node, or when the root of the tree containing the context node
                   is not a document node.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
@@ -9865,5 +10245,831 @@ It is a static error if a character
          <error code="XTMM9001"/>
       </result>
    </test-case>
+   
+   <test-case name="error-FOAR0001a">
+      <description>Test integer division by zero (XPath 2.0). Was error-code-162</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FOAR0001a.xsl"/>
+      </test>
+      <result>
+         <error code="FOAR0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-FOAR0001b">
+      <description>Deeply nested dynamic error. Was error-code-177.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FOAR0001b.xsl"/>
+      </test>
+      <result>
+         <error code="FOAR0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-FODC0002a">
+      <description>test reporting of dynamic errors in a simplified stylesheet. Was error-code-185a</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <ignore-doc-failure value="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FODC0002a.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="FODC0002"/>
+            <error code="FODC0005"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="error-FODC0002a-ignore">
+      <description>test reporting of dynamic errors in a simplified stylesheet. Was error-code-185b.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <ignore-doc-failure value="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FODC0002a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="error-FOER0001a">
+      <description>Test error() function with no arguments. Was error-code-164.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FOER0001a.xsl"/>
+      </test>
+      <result>
+         <error code="FOER0000"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-FORG0001a">
+      <description>XPath 2.0: invalid date and time. Was error-code-159.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FORG0001a.xsl"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-FORG0006a">
+      <description>XPath 2.0: test min/max on a heterogeneous sequence. Was error-code-163</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FORG0006a.xsl"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-FORG0006b">
+      <description>Test how sum() handles a mixed sequence. Was error-code-167.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FORG0006b.xsl"/>
+      </test>
+      <result>
+         <error code="FORG0006"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-FORX0002a">
+      <description>tests syntax error in a regular expression. Was error-code-160.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-FORX0002a.xsl"/>
+      </test>
+      <result>
+         <error code="FORX0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPDY0002a">
+      <description>"." used when undefined - type error detected statically or dynamically. Was error-code-178.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPDY0002a.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPDY0002b">
+      <description>"." used when undefined - type error detected statically or dynamically. Was error-code-179.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPDY0002b.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPDY0002c">
+      <description>error: context item is not set on entry to a stylesheet function. Was error-code-025.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPDY0002c.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-XPDY0002d">
+      <description>Generate error XPDY0002. Was error-code-205.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPDY0002d.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-XPDY0050a">
+      <description>Test "treat as" failure on simple values. the next two are known at compile time here 
+      are some that aren't known until run-time. Was error-code-155.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPDY0050a.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0050"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPDY0050b">
+      <description>Test "treat as" failure on simple values. here are some that aren't known until run-time. Was error-code-156.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPDY0050b.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0050"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPDY0050c">
+      <description>Test "treat as" cardinality failure on simple values. Was error-code-157.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPDY0050c.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0050"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPDY0050d">
+      <description>Test "treat as" on sequences. treat-as failure: 13th item in list is a string, not a decimal. Was error-code-158.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPDY0050d.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0050"/>
+      </result>
+   </test-case>
+   
+<test-case name="error-XPST0003a">
+      <description>Error: XPath syntax. Was error-code-001.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003a.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003b">
+      <description>Error: XPath syntax. Was error-code-002.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003b.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003c">
+      <description>Error: XPath syntax. Was error-code-003.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003c.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003d">
+      <description>Error: XPath syntax unmatched square brackets. Was error-code-004.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003d.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003e">
+      <description>Error: XPath syntax unclosed string. Was error-code-005.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003e.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003f">
+      <description>Error: XPath syntax. Was error-code-006.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003f.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003g">
+      <description>Error: XPath syntax processing instruction must be a QName. Was error-code-008.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003g.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003h">
+      <description>Error: XPath syntax unknown axis. Was error-code-009.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003h.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003i">
+      <description>Error: XPath syntax needs a space. Was error-code-014.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003i.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003j">
+      <description>Error: XPath syntax. Was error-code-015.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003j.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003k">
+      <description>Error: XPath syntax. Was error-code-016.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003k.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-XPST0003l">
+      <description>Error: XPath syntax. Was error-code-021.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003l.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003m">
+      <description>Error: XPath syntax. Was error-code-026.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003m.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003n">
+      <description>Error: XPath syntax. Was error-code-027.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003n.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003o">
+      <description>Error: XPath syntax not a valid XML Name character. Was error-code-028.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003o.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003p">
+      <description>Error: XPath syntax. Was error-code-029.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003p.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003q">
+      <description>Error: XPath syntax. Was error-code-030.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003q.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0003r">
+      <description>Error: XPath syntax. Was error-code-031.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0003r.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0008a">
+      <description>Error: XPath syntax. Was error-code-013.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0008a.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-XPST0008b">
+      <description>Error: xsl:variable - self-reference. Was error-code-144.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0008b.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0008c">
+      <description>Range variable used outside its scope. Was error-code-193.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error152"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0008c.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>   
+
+   <test-case name="error-XPST0017a">
+      <description>Error: XPath syntax. Was error-code-010.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0017a.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0017b">
+      <description>Error: XPath syntax. Was error-code-017.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0017b.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0081a">
+      <description>Error: XPath syntax. Was error-code-012.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0081a.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0081"/>
+      </result>
+   </test-case>  
+
+   <test-case name="error-XPST00081b">
+      <description>Error: XPath syntax. Was error-code-022.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0081b.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0081"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0081c">
+      <description>Error: XPath syntax. Was error-code-023.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0081c.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0081"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPST0081d">
+      <description>Error: XPath syntax. Was error-code-024.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPST0081d.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0081"/>
+      </result>
+   </test-case>      
+
+   <test-case name="error-XPTY0004a">
+      <description>Test error() function with a string arguments. Was error-code-165.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0004a.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPTY0004b">
+      <description>Type error in argument to a function call. Was error-code-168.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0004b.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPTY0004c">
+      <description>Type error in argument to arithmetic operator. Was error-code-169.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0004c.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPTY0004d">
+      <description>Type error in equality comparison. Was error-code-170.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0004d.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPTY0004e">
+      <description>Booleans Test of "=" operator with mixed types String to number comparison is not 
+      allowed except in backwards compatibility mode. Was error-code-171.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0004e.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPTY004f">
+      <description>"." used when not a node - optionally a static error even though never executed. Was error-code-182.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0004f.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPTY0004g">
+      <description>Error: XPath syntax. Was error-code-020.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0004g.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-XPTY0019a">
+      <description>two range variables, both have the same name this is actually allowed; 
+      but $i/@val gives an error because the context item isn't a node. Was error-code-192.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error152"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0019a.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XPTY0019"/>
+            <error code="XPTY0020"/>
+         </any-of>
+      </result>
+   </test-case>
+
+   
+   <test-case name="error-XPTY0020a">
+      <description>axis step used when context item is not a node - type error detected statically or dynamically.
+      Was error-code-180.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0020a.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0020"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-XPTY0020b">
+      <description>"." used when not a node - static error even though never executed. Was error-code-183.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-XPTY0020b.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0020"/>
+      </result>
+   </test-case>
+
+      
 
 </test-set>
