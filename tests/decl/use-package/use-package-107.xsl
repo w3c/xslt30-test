@@ -12,12 +12,12 @@
   
   <xsl:use-package name="http://www.w3.org/xslt30tests/use-package-base-002" package-version="1.0.0"/>
   
-  <xsl:stylesheet version="3.0">
+  
         
     <xsl:template name="main">
       <out>zzz</out>
     </xsl:template>
 
-  </xsl:stylesheet>
+  
   
 </xsl:package>   

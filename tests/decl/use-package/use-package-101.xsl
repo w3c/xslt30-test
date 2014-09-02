@@ -12,7 +12,7 @@
   
   <xsl:use-package name="http://www.w3.org/xslt30tests/use-package-base-002" package-version="1.0.0"/>
   
-  <xsl:stylesheet version="3.0">
+  
   
     <xsl:decimal-format grouping-separator="^"/>
     <xsl:decimal-format name="a" grouping-separator="$"/>
@@ -26,6 +26,6 @@
       <xsl:value-of select="format-number($in, '0^000.0'), format-number($in, '0$000.0', 'a')"/>
     </xsl:function>
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   

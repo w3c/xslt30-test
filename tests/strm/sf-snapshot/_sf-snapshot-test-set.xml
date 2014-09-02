@@ -31,6 +31,10 @@
 ]]></content>
       </source>
    </environment>
+   
+   <environment name="sf-snapshot-A">
+     <stylesheet file="sf-snapshot-A.xsl"/>
+   </environment>
 
 
    <dependencies>
@@ -315,6 +319,133 @@
 ]]></assert-xml>
          </all-of>
       </result>
-   </test-case>       
+   </test-case>
+   
+   <test-case name="sf-snapshot-0303">
+      <description>Use fn:snapshot: climbing posture</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-003"/>
+      </test>
+      <result>
+         <assert>/out = "-15.00 -5.00 -2.33 -248.05"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0304">
+      <description>Use fn:snapshot: climbing posture</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-004"/>
+      </test>
+      <result>
+         <assert>/out = "-15.00 -5.00 -2.33 -248.05 101 102"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0305">
+      <description>Use fn:snapshot: striding posture, element nodes</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-005"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><PRICE>6.58</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0306">
+      <description>Use fn:snapshot: striding posture, text nodes</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-006"/>
+      </test>
+      <result>
+         <assert>/out = "4.956.584.954.9516.4716.47"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0308">
+      <description>Use fn:snapshot: striding posture, element nodes plus grounded elements</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-008"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><PRICE>100.00</PRICE><PRICE>101.00</PRICE><PRICE>4.95</PRICE><PRICE>6.58</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0309">
+      <description>Use fn:snapshot: descendant text nodes</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-009"/>
+      </test>
+      <result>
+         <assert>/out = "4.956.584.954.9516.4716.47"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0311">
+      <description>Use fn:snapshot: whole document unchanged</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-011"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/head</assert>
+           <assert>/out/BOOKLIST/BOOKS</assert>
+           <assert>/out/BOOKLIST/CATEGORIES</assert>
+           <assert>/out/tail</assert>
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0321">
+      <description>Use fn:snapshot: test that namespaces are copied</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-021"/>
+      </test>
+      <result>
+         <assert>count(in-scope-prefixes(/out/*)) = 8</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0325">
+      <description>Use fn:snapshot: test that namespaces are copied, argument grounded and consuming</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-025"/>
+      </test>
+      <result>
+         <assert>count(in-scope-prefixes(/out/*)) = 8</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-snapshot-0327">
+      <description>Use fn:snapshot: argument crawling and consuming, nested nodes</description>
+      <created by="Michael Kay" on="2014-08-30"/>
+      <environment ref="sf-snapshot-A"/>
+      <test>
+         <initial-template name="cy-027"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><n><n>1</n><n>2</n><n>3</n><n>4</n><n>5</n></n><n>1</n><n>2</n><n>3</n><n>4</n><n>5</n></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+          
    
 </test-set>   

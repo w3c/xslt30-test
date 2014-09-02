@@ -1318,30 +1318,22 @@ of problems processing the schema using various tools
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
           <xs:sequence>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">             
               <xs:element ref="xsl:use-package"/>
               <xs:element ref="xsl:expose"/>
-              <xs:element ref="xsl:transform"/>
               <xs:element ref="xsl:global-context-item"/>
+              <xs:element ref="xsl:declaration"/>
+              <xs:any namespace="##other" processContents="lax"/>
             </xs:choice>  
           </xs:sequence>
+          <xs:attribute name="id" type="xs:ID"/>         
           <xs:attribute name="name" type="xs:anyURI"/>
           <xs:attribute name="package-version" type="xs:string"/>
           <xs:attribute name="input-type-annotations" type="xsl:input-type-annotations-type"/>
+          <xs:attribute name="_id" type="xs:string"/>
           <xs:attribute name="_name" type="xs:string"/>
           <xs:attribute name="_package-version" type="xs:string"/>
           <xs:attribute name="_input-type-annotations" type="xs:string"/>
-          <xs:assert test="every $s in (.//xsl:stylesheet, .//xsl:transform)[@input-type-annotations]
-                           satisfies normalize-space($s/@input-type-annotations) = normalize-space(./@input-type-annotations)">
-            <xs:annotation>
-              <xs:documentation>
-                <p>XTSE0265: It is a static error if a stylesheet module specifies the value strip 
-                or preserve and the same value is not specified on the xsl:package element 
-                of the containing package
-                </p>
-              </xs:documentation>
-            </xs:annotation>
-          </xs:assert>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

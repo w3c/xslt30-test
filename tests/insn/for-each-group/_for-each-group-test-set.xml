@@ -276,13 +276,31 @@ while you are in the cinema.</p>]]></content>
       </result>
    </test-case>
 
-   <test-case name="for-each-group-015">
+   <test-case name="for-each-group-015a">
       <description>Nesting positional grouping inside value-based grouping - bug 18333</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-06-19" change="reflect decision on bug 18333"/>
+      <modified by="Michael Kay" on="2014-08-29" change="different expected results for 2.0 and 3.0"/>
       <environment ref="group001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-015.xsl"/>
+      </test>
+      <result>
+         <assert>/out/g/h/@key = ""</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-015b">
+      <description>Nesting positional grouping inside value-based grouping - bug 18333</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2013-06-19" change="reflect decision on bug 18333"/>
+      <modified by="Michael Kay" on="2014-08-29" change="different expected results for 2.0 and 3.0"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="for-each-group-015.xsl"/>

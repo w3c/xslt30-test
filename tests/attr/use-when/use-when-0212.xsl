@@ -18,7 +18,7 @@
       </print>
   </t:template>
 
-   <t:template match="b" use-when="system-property('t:version') = '2.0'">
+   <t:template match="b" use-when="number(system-property('t:version')) ge 2.0">
       <print>
          <t:next-match/>
       </print>

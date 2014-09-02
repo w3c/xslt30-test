@@ -6,7 +6,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
   
-  <xsl:stylesheet version="3.0">
+  
   
     <xsl:variable name="v-public" as="xs:integer" visibility="public" select="$v-private - 1"/>
     
@@ -18,6 +18,6 @@
     
     <xsl:variable name="v-base" as="xs:integer" visibility="public" select="2"/>
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   

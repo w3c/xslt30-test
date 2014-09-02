@@ -7,7 +7,7 @@
   xmlns:p="http://www.w3.org/xslt30tests/override-base-001"
   exclude-result-prefixes="xs p">
   
-  <xsl:stylesheet version="3.0">
+  
   
     <xsl:function name="p:f" as="xs:string" visibility="public">
       <xsl:param name="in" as="xs:string"/>
@@ -34,6 +34,6 @@
     
     <xsl:variable name="p:final-var" select="p:f('+', 3)" visibility="final"/>
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   

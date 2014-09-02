@@ -308,7 +308,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:copy select="/*[@dummy='not-there']" on-empty="$a">
+        <xsl:copy select="/*[@dummy='not-there']" on-empty="$a/a">
           <b/>
         </xsl:copy>
       </xsl:stream>
@@ -321,7 +321,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:copy select="/*" on-empty="$a">
+        <xsl:copy select="/*" on-empty="$a/a">
           <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
         </xsl:copy>
       </xsl:stream>
@@ -334,7 +334,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:copy on-empty="$a">
+        <xsl:copy on-empty="$a/a">
           <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
         </xsl:copy>
       </xsl:stream>
@@ -347,7 +347,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:copy on-empty="$a">
+        <xsl:copy on-empty="$a/a">
           <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
         </xsl:copy>
       </xsl:stream>
@@ -360,7 +360,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:copy select="special/comment()[2]" on-empty="$a">
+        <xsl:copy select="special/comment()[2]" on-empty="$a/a">
           <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
         </xsl:copy>
       </xsl:stream>
@@ -373,7 +373,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:copy select="special/processing-instruction()[2]" on-empty="$a">
+        <xsl:copy select="special/processing-instruction()[2]" on-empty="$a/a">
           <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
         </xsl:copy>
       </xsl:stream>
@@ -386,7 +386,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:copy select="special/f/@a" on-empty="$a"/>
+        <xsl:copy select="special/f/@a" on-empty="$a/a"/>
       </xsl:stream>
     </out>
   </xsl:template>
@@ -397,7 +397,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:copy select="/*" on-empty="$a">
+        <xsl:copy select="/*" on-empty="$a/a">
           <xsl:copy-of select="a/b/c/d/e/f/g"/>
         </xsl:copy>
       </xsl:stream>
@@ -410,7 +410,7 @@
     <out>
       <xsl:variable name="a"><a/></xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:copy on-empty="$a">
+        <xsl:copy on-empty="$a/a">
           <xsl:copy-of select="a/b/c/d/e/f/g"/>
         </xsl:copy>
       </xsl:stream>

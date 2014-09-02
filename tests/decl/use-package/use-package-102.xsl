@@ -12,8 +12,7 @@
   
   <xsl:use-package name="http://www.w3.org/xslt30tests/use-package-base-002" package-version="1.0.0"/>
   
-  <xsl:stylesheet version="3.0">
-  
+ 
     <xsl:key name="k" match="row" use="column[2]"/>
     
     <xsl:function name="q:find" as="element(row)?" visibility="public">
@@ -44,6 +43,6 @@
       </row>
     </xsl:variable>     
     
-  </xsl:stylesheet>
+  
   
 </xsl:package>   

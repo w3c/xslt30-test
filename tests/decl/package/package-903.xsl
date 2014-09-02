@@ -7,14 +7,15 @@
   xmlns:p="http://www.w3.org/xslt30tests/use-package-base-001"
   exclude-result-prefixes="xs p">
   
-  <xsl:expose component="template" names="*" visibility="public"/>
+  
     
-  <xsl:stylesheet version="3.0">
+  
   
     <xsl:template name="main">
+      <xsl:expose component="template" names="*" visibility="public"/>
       <ok/>
     </xsl:template>
     
-  </xsl:stylesheet>  
+
   
 </xsl:package>   

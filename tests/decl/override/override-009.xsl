@@ -29,7 +29,7 @@
     
   </xsl:use-package>
   
-  <xsl:stylesheet>
+ 
   
     <xsl:function name="p:local-function">
       <xsl:param name="cond" as="xs:boolean"/>
@@ -43,6 +43,6 @@
       </xsl:choose>
     </xsl:template>
     
-  </xsl:stylesheet>  
+ 
   
 </xsl:package>   

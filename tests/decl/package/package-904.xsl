@@ -8,14 +8,15 @@
   xmlns:p="http://www.w3.org/xslt30tests/use-package-base-001"
   exclude-result-prefixes="xs p">
   
-  <xsl:stylesheet version="3.0">
+  
   
     <xsl:template name="main">
       <ok/>
+       <xsl:use-package name="http://www.w3.org/xslt30tests/package-903"/>  
     </xsl:template>
     
-  </xsl:stylesheet>
+ 
   
-  <xsl:use-package name="http://www.w3.org/xslt30tests/package-903"/>  
+ 
   
 </xsl:package>   

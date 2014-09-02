@@ -36,7 +36,7 @@
     
   </xsl:use-package>
   
-  <xsl:stylesheet>
+ 
    
     <xsl:template name="main">
     <out>
@@ -47,6 +47,6 @@
     </out>  
     </xsl:template>
     
-  </xsl:stylesheet>  
+
   
 </xsl:package>   

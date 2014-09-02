@@ -272,6 +272,7 @@
       <description>CVT not recognized in xsl:text</description>
       <keywords>expand-text-attribute xsl:template xsl:text lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
+      <modified by="Michael Kay" on="2014-08-22" change="See bug 26525"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -280,7 +281,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>/out = '{2+2}'</assert>
+         <assert>/out = '4'</assert>
       </result>
    </test-case>
    
@@ -288,6 +289,7 @@
       <description>CVT not recognized in xsl:text, but expand-text not rejected</description>
       <keywords>xsl:expand-text-attribute lre xsl:text</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
+      <modified by="Michael Kay" on="2014-08-22" change="See bug 26525"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -296,14 +298,15 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>/out = '{2+2}'</assert>
+         <assert>/out = '4'</assert>
       </result>
    </test-case>
    
    <test-case name="cvt-019">
       <description>expand-text=yes rejected on xsl:text</description>
-      <keywords>XTSE0020 invalid-attribute expand-text-attribute xsl:text _WRONG:no-such-error-condition-exists</keywords>
+      <keywords>expand-text-attribute xsl:text lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
+      <modified by="Michael Kay" on="2014-08-22" change="See bug 26525"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -312,7 +315,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE0020"/>
+         <assert>/out = '4'</assert>
       </result>
    </test-case>
    

@@ -13,7 +13,7 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="para" use-when="system-property('xsl:version') = '2.0'">
+  <xsl:template match="para" use-when="number(system-property('xsl:version')) ge 2.0">
     <p><xsl:next-match/></p>
   </xsl:template>
 
