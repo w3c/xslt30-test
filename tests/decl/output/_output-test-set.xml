@@ -50,12 +50,13 @@
    <test-case name="output-0101">
       <description>Test escaping of non-ASCII characters in HTML output when @escape-uri-attributes= yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0101.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
@@ -65,12 +66,13 @@
    <test-case name="output-0101a">
       <description>Test escaping of non-ASCII characters in HTML output when @escape-uri-attributes="true".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0101a.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
@@ -80,12 +82,13 @@
    <test-case name="output-0101b">
       <description>Test escaping of non-ASCII characters in HTML output when @escape-uri-attributes="1".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0101b.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
@@ -99,12 +102,13 @@
    <test-case name="output-0102a">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0102"/>   
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0102"/>   
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="a"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>href="%C2%A1"</serialization-matches>
@@ -114,12 +118,13 @@
    <test-case name="output-0102b">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0102"/>   
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0102"/>   
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="b"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>href="%C2%96"</serialization-matches>
@@ -130,12 +135,13 @@
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="added variant with hex encoding of character references"/>
-      <environment ref="output-0102"/>  
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0102"/>  
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="c"/>
+         <output serialize="yes"/>
       </test>
       <result>
 	<any-of>
@@ -148,12 +154,13 @@
    <test-case name="output-0102d">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0102"/>   
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0102"/>   
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="d"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>accesskey="¡"</serialization-matches>
@@ -163,12 +170,13 @@
    <test-case name="output-0102e">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0102"/>  
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0102"/>  
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="e"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[accesskey="&#x96;"]]></serialization-matches>
@@ -178,12 +186,13 @@
    <test-case name="output-0102f">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0102"/>  
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0102"/>  
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="f"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>notxhtmlattr="¡"</serialization-matches>
@@ -197,12 +206,13 @@
    <test-case name="output-0103a">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0103"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="a"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>href="¡"</serialization-matches>
@@ -212,12 +222,13 @@
    <test-case name="output-0103b">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0103"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="b"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[href="&#x96;"]]></serialization-matches>
@@ -228,12 +239,13 @@
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="added variant with hex encoding of character references"/>
-      <environment ref="output-0103"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="c"/>
+         <output serialize="yes"/>
       </test>
       <result>
 	<any-of>
@@ -246,12 +258,13 @@
    <test-case name="output-0103d">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0103"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="d"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>accesskey="¡"</serialization-matches>
@@ -261,12 +274,13 @@
    <test-case name="output-0103e">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0103"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="e"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[accesskey="&#x96;"]]></serialization-matches>
@@ -276,12 +290,13 @@
    <test-case name="output-0103f">
       <description>Test escaping of non-ASCII characters in XHTML output, @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-0103"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <initial-template name="f"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>notxhtmlattr="¡"</serialization-matches>
@@ -291,12 +306,13 @@
    <test-case name="output-0104">
       <description>Test avoidance of apos entity for XHTML output</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0104.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output011.out"/>
@@ -306,12 +322,13 @@
    <test-case name="output-0105">
       <description>Test with XHTML output method. The document element name is 'html' in the null namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0105.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output017.out"/>
@@ -321,12 +338,13 @@
    <test-case name="output-0106">
       <description>Test with XHTML output where the stylesheet has a default namespace defined on the html element itself.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0106.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s*<body>This is the body</body>\s*</html>]]></serialization-matches>
@@ -336,12 +354,13 @@
    <test-case name="output-0106a">
       <description>Test indent="true", with XHTML output where the stylesheet has a default namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0106a.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
@@ -351,12 +370,13 @@
    <test-case name="output-0106b">
       <description>Test indent=" 1 ", with XHTML output where the stylesheet has a default namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0106b.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
@@ -366,12 +386,13 @@
    <test-case name="output-0107">
       <description>Test for SCRIPT handling with XHTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0107.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output021.out"/>
@@ -381,12 +402,13 @@
    <test-case name="output-0108">
       <description>Test for STYLE handling with XHTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0108.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output022.out"/>
@@ -396,12 +418,13 @@
    <test-case name="output-0109">
       <description>Test for the xhtml output method with an empty html tag</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0109.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output029.out"/>
@@ -411,12 +434,13 @@
    <test-case name="output-0110">
       <description>Test for the xhtml output method with omit-xml-declaration=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0110.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output030.out"/>
@@ -426,12 +450,13 @@
    <test-case name="output-0110a">
       <description>Test for the xhtml output method with omit-xml-declaration="true".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0110a.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output030.out"/>
@@ -441,12 +466,13 @@
    <test-case name="output-0110b">
       <description>Test for the xhtml output method with omit-xml-declaration="1".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0110b.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output030.out"/>
@@ -456,12 +482,13 @@
    <test-case name="output-0111">
       <description>Test XHTML output with @doctype-system only.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0111.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output031.out"/>
@@ -471,12 +498,13 @@
    <test-case name="output-0112">
       <description>Test XHTML output with @doctype-public only. Show that attribute is ignored.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0112.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output032.out"/>
@@ -486,12 +514,13 @@
    <test-case name="output-0113">
       <description>Test XHTML output with @doctype-system and @doctype-public</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0113.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output033.out"/>
@@ -501,12 +530,13 @@
    <test-case name="output-0114">
       <description>Test XHTML output with cdata-section-elements that have ]]</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0114.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="output042.out"/>
@@ -516,13 +546,13 @@
    <test-case name="output-0115">
       <description>Test XHTML output with cdata-section-elements that have ]]&gt;.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0115.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output043.out"/>
       </result>
@@ -531,13 +561,13 @@
    <test-case name="output-0116">
       <description>Test empty elements with empty content model in XHTML output and @indent=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0116.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output045.out"/>
       </result>
@@ -546,13 +576,13 @@
    <test-case name="output-0116a">
       <description>Test empty elements with empty content model in XHTML output and @indent=" false".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0116a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output045.out"/>
       </result>
@@ -561,13 +591,13 @@
    <test-case name="output-0116b">
       <description>Test empty elements with empty content model in XHTML output and @indent="0".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0116b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output045.out"/>
       </result>
@@ -577,13 +607,13 @@
       <description>Boolean attributes should not be output in minimized form.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0117.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[ selected="selected"]]></serialization-matches>
       </result>
@@ -592,13 +622,13 @@
    <test-case name="output-0118">
       <description>Processing instructions should be terminated with "?&gt;". Output method is XHTML.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0118.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[<\?my-pi href="book.css" type="text/css"\?>]]></serialization-matches>
       </result>
@@ -607,13 +637,13 @@
    <test-case name="output-0119">
       <description>Simple test of XHTML output with @indent=no</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0119.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output050.out"/>
       </result>
@@ -622,13 +652,13 @@
    <test-case name="output-0120">
       <description>Test of cdata-section-elements processing. &lt;example&gt; should not be processed.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0120.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output052.out"/>
       </result>
@@ -637,13 +667,13 @@
    <test-case name="output-0121">
       <description>Test that the default value of @omit-xml-declaration with XHTML output method is 'no'.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0121.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output053.out"/>
       </result>
@@ -657,13 +687,13 @@
          and the output should be XML (since cdata-section-elements only applies to XML).
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0122.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output054.out"/>
       </result>
@@ -676,13 +706,13 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0123.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
 	<all-of>
 	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
@@ -698,13 +728,13 @@
       <description>Test HTML output with include-content-type=yes, the result tree has a 'head' element.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0124.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
 	<all-of>
 	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
@@ -719,13 +749,13 @@
    <test-case name="output-0124a">
       <description>Test HTML output with include-content-type="true", the result tree has a 'head' element.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0124a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
@@ -740,13 +770,13 @@
    <test-case name="output-0124b">
       <description>Test HTML output with include-content-type="1", the result tree has a 'head' element.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0124b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
@@ -764,13 +794,13 @@
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <modified by="Michael Kay" on="2013-01-31" change="Correct regex in 3rd assertion"/>
       <modified by="Debbie Lockett" on="2014-08-07" change="Add error to not/any-of assertions"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0125.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
 	<not>
 	  <any-of>
@@ -786,13 +816,13 @@
    <test-case name="output-0125a">
       <description>Test HTML output with include-content-type value set to "false".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0125a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <not>
             <any-of>
@@ -808,13 +838,13 @@
    <test-case name="output-0125b">
       <description>Test HTML output with include-content-type value set to "0".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0125b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <not>
             <any-of>
@@ -830,13 +860,13 @@
    <test-case name="output-0126">
       <description>Test XHTML output with default value for @include-content-type, the result tree has a 'head' element in the XHTML namespace and '@media-type="application/xhtml-xml".</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0126.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output064.out"/>
       </result>
@@ -845,13 +875,13 @@
    <test-case name="output-0127">
       <description>Test XHTML output with include-content-type=no. The document element of the final result tree is 'html' in the XHTML namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0127.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output066.out"/>
       </result>
@@ -860,13 +890,13 @@
    <test-case name="output-0128">
       <description>Test XML output DOES NOT output a meta tag when include-content-type is specified and head element is present</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0128.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output067.out"/>
       </result>
@@ -875,13 +905,13 @@
    <test-case name="output-0129">
       <description>Test Text output DOES NOT output a meta tag when include-content-type is specified and head element is present</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0129.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="html" file="output068.out"/>
       </result>
@@ -891,13 +921,13 @@
       <description>Test with no output method explicitly specified and the document element of the implicit result tree is html in the XHTML namespace. Show to output method defaults to XHTML.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0130.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
 	<all-of>
 	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
@@ -912,13 +942,13 @@
    <test-case name="output-0131">
       <description>Test serialization of invalid XHTML. Not an error.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0131.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output104.out"/>
       </result>
@@ -927,13 +957,13 @@
    <test-case name="output-0132">
       <description>Test with NCName for @name and xsl:output method=xhtml. Use the named output definition in xsl:result document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0132.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output106.out"/>
       </result>
@@ -942,13 +972,13 @@
    <test-case name="output-0133">
       <description>Test with prefixed local name for @name and xsl:output method=xhtml.Use the named output definition in xsl:result document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0133.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output107.out"/>
       </result>
@@ -960,13 +990,13 @@
          serialize the implicit final result tree.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0134.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output108.out"/>
       </result>
@@ -979,13 +1009,13 @@
          the same namespace)
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0135.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output110.out"/>
       </result>
@@ -994,13 +1024,13 @@
    <test-case name="output-0136">
       <description>Test XHTML output with @byte-order-mark=yes. Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0136.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
@@ -1014,13 +1044,13 @@
    <test-case name="output-0136a">
       <description>Test XHTML output with @byte-order-mark=true. Encoding is UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0136a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
@@ -1034,13 +1064,13 @@
    <test-case name="output-0136b">
       <description>Test XHTML output with @byte-order-mark="1". Encoding is UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0136b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
@@ -1054,13 +1084,13 @@
    <test-case name="output-0137">
       <description>Test XHTML output with @byte-order-mark=no.Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0137.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="text" file="output113.out"/>
       </result>
@@ -1069,13 +1099,13 @@
    <test-case name="output-0137a">
       <description>Test XHTML output with @byte-order-mark=false. Encoding is UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0137a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="text" file="output113.out"/>
       </result>
@@ -1084,13 +1114,13 @@
    <test-case name="output-0137b">
       <description>Test XHTML output with @byte-order-mark="0". Encoding is UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0137b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="text" file="output113.out"/>
       </result>
@@ -1099,13 +1129,13 @@
    <test-case name="output-0138">
       <description>Test of XHTML output with @cdata-section-elements with a list of names with or without prefixes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0138.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output117.out"/>
       </result>
@@ -1114,13 +1144,13 @@
    <test-case name="output-0139">
       <description>Test XHTML output method with @encoding=UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0139.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output121.out"/>
       </result>
@@ -1130,13 +1160,13 @@
       <description>Test XHTML output method with @encoding=UTF-16.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0140.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
 	<serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-16"\?>]]></serialization-matches>
       </result>
@@ -1146,13 +1176,13 @@
       <description>Test XHTML output with @escape-uri-attributes=no. Use fn:escape-html-uri to escape some URIs but not all.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0141.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
 	<all-of>
 	  <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
@@ -1164,13 +1194,13 @@
    <test-case name="output-0141a">
       <description>Test XHTML output with @escape-uri-attributes="false". Use fn:escape-html-uri to escape some URIs but not all.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>      
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0141a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
@@ -1182,13 +1212,13 @@
    <test-case name="output-0141b">
       <description>Test XHTML output with @escape-uri-attributes=" 0 ". Use fn:escape-html-uri to escape some URIs but not all.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0141b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
@@ -1200,13 +1230,13 @@
    <test-case name="output-0142">
       <description>Test XHTML output with include-content-type=yes, the result tree has a 'head' element in the XHTML namespace and '@media-type="application/xhtml-xml".</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0142.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output126.out"/>
       </result>
@@ -1215,13 +1245,13 @@
    <test-case name="output-0143">
       <description>Test XHTML output with include-content-type=yes and 'meta http-equiv="Content-Type"' tag already present.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0143.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output127.out"/>
       </result>
@@ -1230,13 +1260,13 @@
    <test-case name="output-0144">
       <description>Test XHTML output with include-content-type=yes and 'meta http-equiv="Content-Type "' tag already present with additional parameters in the 'content' attribute value. Example from spec.</description>
       <created by="XSLT Editors" on="2012-11-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0144.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output129.out"/>
       </result>
@@ -1245,13 +1275,13 @@
    <test-case name="output-0145">
       <description>Test that @media-type can be specified on output method xhtml. Value used is "application/postscript"</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0145.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output131.out"/>
       </result>
@@ -1260,13 +1290,13 @@
    <test-case name="output-0146">
       <description>Test of XTHML output with @normalization-form=NFC.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0146.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output132.out"/>
       </result>
@@ -1275,13 +1305,13 @@
    <test-case name="output-0147">
       <description>Test of XTHML output with @normalization-form=none.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0147.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output133.out"/>
       </result>
@@ -1290,13 +1320,13 @@
    <test-case name="output-0148">
       <description>Test for the xhtml output method with omit-xml-declaration=no</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0148.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output134.out"/>
       </result>
@@ -1305,13 +1335,13 @@
    <test-case name="output-0148a">
       <description>Test for the xhtml output method with omit-xml-declaration="false"</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0148a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output134.out"/>
       </result>
@@ -1320,13 +1350,13 @@
    <test-case name="output-0148b">
       <description>Test for the xhtml output method with omit-xml-declaration="0"</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0148b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output134.out"/>
       </result>
@@ -1335,13 +1365,13 @@
    <test-case name="output-0149">
       <description>Test for the xhtml output method @standalone=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0149.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output136.out"/>
       </result>
@@ -1350,13 +1380,13 @@
    <test-case name="output-0149a">
       <description>Test for the xhtml output method @standalone="true".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0149a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output136.out"/>
       </result>
@@ -1365,13 +1395,13 @@
    <test-case name="output-0149b">
       <description>Test for the xhtml output method @standalone="1".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0149b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output136.out"/>
       </result>
@@ -1380,13 +1410,13 @@
    <test-case name="output-0150">
       <description>Test for the xhtml output method @standalone=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0150.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output137.out"/>
       </result>
@@ -1395,13 +1425,13 @@
    <test-case name="output-0150a">
       <description>Test for the xhtml output method @standalone="false".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0150a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output137.out"/>
       </result>
@@ -1410,13 +1440,13 @@
    <test-case name="output-0150b">
       <description>Test for the xhtml output method @standalone="0".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0150b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output137.out"/>
       </result>
@@ -1425,13 +1455,13 @@
    <test-case name="output-0151">
       <description>Test empty elements with non-empty content model in XHTML output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0151.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output138.out"/>
       </result>
@@ -1440,13 +1470,13 @@
    <test-case name="output-0152">
       <description>Test for the xhtml output method @standalone=omit.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0152.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output139.out"/>
       </result>
@@ -1455,13 +1485,13 @@
    <test-case name="output-0153">
       <description>Test XHTML output method with @version=1.0</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0153.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output140.out"/>
       </result>
@@ -1470,13 +1500,13 @@
    <test-case name="output-0154">
       <description>Test HTML output method with illegal content inside the 'script' tag. Example from spec. The escaping must be done manually.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0154.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="html" file="output142.out"/>
       </result>
@@ -1485,14 +1515,14 @@
    <test-case name="output-0155a">
       <description>Test that @escape-uri-attributes with XML output method is ignored.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0155.xsl"/>
          <initial-mode name="a"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[href="¡"]]></serialization-matches>
       </result>
@@ -1501,14 +1531,14 @@
    <test-case name="output-0155b">
       <description>Test that @escape-uri-attributes with XML output method is ignored.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0155.xsl"/>
          <initial-mode name="a"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[href="¡"]]></serialization-matches>
       </result>
@@ -1517,13 +1547,13 @@
    <test-case name="output-0156">
       <description>Test that @include-content-type with XML output method is ignored.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0156.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
@@ -1536,13 +1566,13 @@
       <description>Test HTML output with include-content-type=yes and 'meta http-equiv="Content-Type "' tag already present.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0157.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
 	<all-of>
 	  <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
@@ -1557,13 +1587,13 @@
    <test-case name="output-0158">
       <description>Test HTML output with include-content-type=yes and 'meta http-equiv="Content-Type "' tag already present with additional parameters in the 'content' attribute value. Example from spec.</description>
       <created by="XSLT Editors" on="2012-11-07"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0158.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
 	<all-of>
 	  <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
@@ -1581,13 +1611,13 @@
          Example from spec. The escaping must be done manually.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0159.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
@@ -1603,13 +1633,13 @@
       <description>Test that whitespace is not added or removed adjacent to elements ins and del if they do not contain element children; indent=no with HTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0160.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches flags="s"><![CDATA[is <del>\n    \t\t\t20\t</del><ins>     1 2 </ins> pieces]]></serialization-matches>
       </result>
@@ -1618,13 +1648,13 @@
    <test-case name="output-0161">
       <description>Test of HTML output with @normalization-form=none.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0161.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="html" file="output153.out"/>
       </result>
@@ -1633,13 +1663,13 @@
    <test-case name="output-0162">
       <description>Test HTML output with @byte-order-mark=yes.Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0162.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<html><body>Hello</body></html>]]></serialization-matches>
@@ -1651,13 +1681,13 @@
    <test-case name="output-0163">
       <description>Test HTML output with @byte-order-mark=no. Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0163.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="text" file="output156.out"/>
       </result>
@@ -1666,13 +1696,13 @@
    <test-case name="output-0164">
       <description>Test HTML output with default value for @escape-uri-attributes. (default is 'yes')</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0164.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="html" file="output159.out"/>
       </result>
@@ -1681,13 +1711,13 @@
    <test-case name="output-0165">
       <description>Test XML output with @byte-order-mark=yes.Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0165.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<html><body>Hello</body></html>]]></serialization-matches>
@@ -1699,13 +1729,13 @@
    <test-case name="output-0166">
       <description>Test XML output with @byte-order-mark=no. Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0166.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="text" file="output166.out"/>
       </result>
@@ -1714,13 +1744,13 @@
    <test-case name="output-0167">
       <description>Test of XML output with @normalization-form=NFC.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0167.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output169.out"/>
       </result>
@@ -1729,13 +1759,13 @@
    <test-case name="output-0168">
       <description>Test of XML output with @normalization-form=none.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0168.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output170.out"/>
       </result>
@@ -1744,13 +1774,13 @@
    <test-case name="output-0169">
       <description>Test of TEXT output with @normalization-form=NFC.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0169.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="text" file="output171.out"/>
       </result>
@@ -1759,13 +1789,13 @@
    <test-case name="output-0170">
       <description>Test of TEXT output with @normalization-form=none.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0170.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="text" file="output172.out"/>
       </result>
@@ -1774,13 +1804,13 @@
    <test-case name="output-0171">
       <description>Test TEXT output with @byte-order-mark=yes.Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0171.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches>Hello</serialization-matches>
@@ -1792,13 +1822,13 @@
    <test-case name="output-0172">
       <description>Test TEXT output with @byte-order-mark=no.Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0172.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches>^Hello$</serialization-matches>
       </result>
@@ -1807,13 +1837,13 @@
    <test-case name="output-0173">
       <description>Test of merging two unnamed output declarations with non-overlapping attributes. (output method is XML)</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0173.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output192.out"/>
       </result>
@@ -1822,13 +1852,13 @@
    <test-case name="output-0174">
       <description>Test of merging two named output declarations with non-overlapping attributes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0174.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output193.out"/>
       </result>
@@ -1842,7 +1872,7 @@
          Show that there is no conflict and the third named output declaration is used.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1850,7 +1880,7 @@
          <stylesheet file="output-0175.xsl"/>
          <stylesheet file="output-0175a.xsl" role="secondary"/>
          <stylesheet file="output-0175b.xsl" role="secondary"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output196.out"/>
       </result>
@@ -1859,14 +1889,14 @@
    <test-case name="output-0176">
       <description>Test for disabling output escaping in xsl:text</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0176.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output176.out"/>
       </result>
@@ -1875,14 +1905,14 @@
    <test-case name="output-0176a">
       <description>Test for disabling-output-escaping="true" in xsl:text</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0176a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output176.out"/>
       </result>
@@ -1891,14 +1921,14 @@
    <test-case name="output-0176b">
       <description>Test for disabling-output-escaping="1" in xsl:text</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0176b.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output176.out"/>
       </result>
@@ -1907,14 +1937,14 @@
    <test-case name="output-0176c">
       <description>Test for disabling-output-escaping=" no " in xsl:text</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0176c.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[<body>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>]]></serialization-matches>
       </result>
@@ -1923,14 +1953,14 @@
    <test-case name="output-0176d">
       <description>Test for disabling-output-escaping="false" in xsl:text</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0176d.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[<body>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>]]></serialization-matches>
       </result>
@@ -1939,14 +1969,14 @@
    <test-case name="output-0176e">
       <description>Test for disabling-output-escaping="0" in xsl:text</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0176e.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[<body>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>]]></serialization-matches>
       </result>
@@ -1955,14 +1985,14 @@
    <test-case name="output-0176f">
       <description>Test for disabling-output-escaping=" " (not allowed) in xsl:text</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0176f.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -1974,14 +2004,14 @@
    <test-case name="output-0177">
       <description>Test for disabling output escaping in xsl:text</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
       </dependencies>
       <test>
          <stylesheet file="output-0176.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <error code="XTRE1620"/>
       </result>
@@ -1992,14 +2022,14 @@
       since the serializer is allowed to report the error or recover by using a different encoding.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <default_output_encoding value="UTF-8"/>
       </dependencies>
       <test>
          <stylesheet file="output-0178.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SESU0007"/>
@@ -2013,14 +2043,14 @@
          since the serializer is allowed to report the error or recover by using a different encoding.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <default_output_encoding value="UTF-8"/>
       </dependencies>
       <test>
          <stylesheet file="output-0180.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SESU0007"/>
@@ -2036,13 +2066,13 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0182.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SEPM0004"/>
       </result>
@@ -2055,13 +2085,13 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0183.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SEPM0004"/>
       </result>
@@ -2071,13 +2101,13 @@
       <description>Test that an error is raised if the value of @encoding in output method HTML is not supported.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0184.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SESU0007"/>
       </result>
@@ -2087,13 +2117,13 @@
       <description>Test that an error is raised if the value of @encoding in output method TEXT is not supported.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0185.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SESU0007"/>
       </result>
@@ -2106,13 +2136,13 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0186.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SEPM0009"/>
       </result>
@@ -2125,13 +2155,13 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0187.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SEPM0009"/>
       </result>
@@ -2141,13 +2171,13 @@
       <description>Test that an error is raised when in xsl:output @method="xml", @undeclare-prefixes="yes", and @version="1.0"</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0188.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SEPM0010"/>
       </result>
@@ -2157,13 +2187,13 @@
       <description>Test that an error is raised if the value of @normalization-form in output method XML is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0189.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SESU0011"/>
       </result>
@@ -2173,13 +2203,13 @@
       <description>Test that an error is raised if the value of @normalization-form in output method XHTML is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0190.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SESU0011"/>
       </result>
@@ -2189,13 +2219,13 @@
       <description>Test that an error is raised if the value of @normalization-form in output method HTML is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0191.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SESU0011"/>
       </result>
@@ -2205,13 +2235,13 @@
       <description>Test that an error is raised if the value of @normalization-form in output method TEXT is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0192.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SESU0011"/>
       </result>
@@ -2222,13 +2252,13 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0193.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SERE0012"/>
@@ -2241,13 +2271,13 @@
       <description>Test that an error is raised if in xsl:output @method="html" and the value of @version is not supported by the serializer.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0194.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SESU0013"/>
       </result>
@@ -2257,13 +2287,13 @@
       <description>Test that an error is raised if the output method is HTML and the result tree contains characters in the #x7F-#x9F range.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0195.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SERE0014"/>
       </result>
@@ -2273,13 +2303,13 @@
       <description>Test that an error is raised if the output method is HTML and &gt; appears within a processing instruction in the result tree.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0196.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization-error code="SERE0015"/>
       </result>
@@ -2291,13 +2321,13 @@
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0197a"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0197.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -2309,13 +2339,13 @@
    <test-case name="output-0197a">
       <description>Test that an error is raised on invalid @byte-order-mark value ("TRUE") in xsl:output.</description>      
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0197a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -2330,13 +2360,13 @@
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0198a"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0198.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -2348,13 +2378,13 @@
    <test-case name="output-0198a">
       <description>Test that an error is raised on invalid @escape-uri-attributes value ("YES") in xsl:output.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0198a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -2368,13 +2398,13 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0199a"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0199.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -2386,13 +2416,13 @@
    <test-case name="output-0199a">
       <description>Test that an error is raised on invalid @include-content-type value ("TRUE") in xsl:output.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0199a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -2404,13 +2434,13 @@
    <test-case name="output-0201">
       <description>Simple test for using one character map with the XML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0201.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output012.out"/>
       </result>
@@ -2419,13 +2449,13 @@
    <test-case name="output-0202">
       <description>Simple test for xsl:character-map and @use-character-maps defined on it.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0202.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output013.out"/>
       </result>
@@ -2434,13 +2464,13 @@
    <test-case name="output-0203">
       <description>Test xsl:character-map with two different mappings of the same character, one from @use-character-maps and one from xsl:output-character.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0203.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output014.out"/>
       </result>
@@ -2450,14 +2480,14 @@
       <description>Test for one imported xsl:character-map, no character maps declared in primary stylesheet.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="added role attributes"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0204.xsl" role="principal"/>
          <stylesheet file="x.xsl" role="secondary"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output015.out"/>
       </result>
@@ -2466,13 +2496,13 @@
    <test-case name="output-0205">
       <description>Test for xsl:character-map and @use-character-maps referencing another character map with prefixed name by using a different prefix bound to the same namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0205.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output181.out"/>
       </result>
@@ -2481,13 +2511,13 @@
    <test-case name="output-0206">
       <description>Simple test for xsl:character-map and @use-character-maps referencing the same character map more than once.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0206.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output184.out"/>
       </result>
@@ -2497,14 +2527,14 @@
       <description>Test with two character maps with the same name but with different import precedence. Show that the one with higher precedence is used.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="added role attributes"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0207.xsl" role="principal"/>
          <stylesheet file="x.xsl" role="secondary"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output185.out"/>
       </result>
@@ -2513,13 +2543,13 @@
    <test-case name="output-0208">
       <description>Test XHTML 5.0 DOCTYPE declaration.</description>
       <created by="Michael Kay" on="2012-12-05"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0208.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<!DOCTYPE html>\s*<html]]></serialization-matches>
@@ -2532,13 +2562,13 @@
       <description>Test XHTML 5.0 DOCTYPE declaration.</description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0209.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[<!DOCTYPE HTML>\s*<HTML]]></serialization-matches>
       </result>
@@ -2548,13 +2578,13 @@
       <description>Test XHTML 5.0 DOCTYPE declaration.</description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0210.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[<!DOCTYPE HtMl>\s*<HtMl]]></serialization-matches>
       </result>
@@ -2564,13 +2594,13 @@
       <description>Test XHTML 5.0 DOCTYPE declaration with a namespace prefix (which gets stripped).</description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0211.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<!DOCTYPE html>\s*<html]]></serialization-matches>
@@ -2591,13 +2621,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0212.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[<!DOCTYPE html>\s*<html]]></serialization-matches>
       </result>
@@ -2610,13 +2640,13 @@
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
       <modified by="Debbie Lockett" on="2014-08-07" change="Add error in not/any-of assertions"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0213.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <not>
             <any-of>
@@ -2633,13 +2663,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0214.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<html\s+xmlns="http://www.example.com/not-xhtml">]]></serialization-matches>
@@ -2659,13 +2689,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0215.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<z:html\s+xmlns:z="http://www.example.com/not-xhtml">]]></serialization-matches>
@@ -2685,13 +2715,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0216.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<area\s*/>]]></serialization-matches>
@@ -2720,13 +2750,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0217.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<area\s*/>]]></serialization-matches>
@@ -2755,13 +2785,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0218.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
@@ -2781,13 +2811,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0219.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
@@ -2808,13 +2838,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0220.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<title\s+class="c"></title>]]></serialization-matches>
@@ -2835,13 +2865,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0221.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<title\s+class="c"></title>]]></serialization-matches>
@@ -2861,13 +2891,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0222.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<area\s*class=['"]s['"]\s*/>]]></serialization-matches>
@@ -2896,13 +2926,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0223.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<area\s*class=['"]s['"]\s*/>]]></serialization-matches>
@@ -2931,13 +2961,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0224.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<html\s+xmlns=['"]http://www.w3.org/1999/xhtml['"]\s*>]]></serialization-matches>
@@ -2953,13 +2983,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-05"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0225.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<html\s+xmlns=['"]http://www.w3.org/1999/xhtml['"]\s*>]]></serialization-matches>
@@ -2985,13 +3015,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-06"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0226.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<html\s+xmlns=['"]http://www.w3.org/1999/xhtml['"]\s*>]]></serialization-matches>
@@ -3006,13 +3036,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-06"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0227.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
             <serialization-matches><![CDATA[<!DOCTYPE\s+html\s+PUBLIC\s+"-//W3C//DTD\sXHTML\s1.0\sStrict//EN"\s+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">]]></serialization-matches>            
       </result>
@@ -3024,13 +3054,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-06"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0228.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[<!DOCTYPE\s+html\s+SYSTEM\s+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">]]></serialization-matches>            
       </result>
@@ -3044,13 +3074,13 @@
       <created by="Michael Kay" on="2012-12-06"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
       <modified by="Debbie Lockett" on="2014-08-07" change="Add error in not/any-of assertions"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0229.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <not>
             <any-of>
@@ -3067,13 +3097,13 @@
       </description>
       <created by="Michael Kay" on="2012-12-06"/>
       <modified by="Abel Braaksma" on="2013-12-09" change="Corrected error code from XTSE0010 to XTSE0020 (invalid attribute value)"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0230.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <error code="XTSE0020"/>          
       </result>
@@ -3084,13 +3114,13 @@
          html-version="5" (not "5.0")
       </description>
       <created by="Michael Kay" on="2014-05-07"/>
-      <environment ref="output-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0231.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
             <serialization-matches><![CDATA[<!DOCTYPE\s+html\s+PUBLIC\s+"-//W3C//DTD\sXHTML\s1.0\sStrict//EN"\s+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">]]></serialization-matches>            
       </result>
@@ -3102,13 +3132,13 @@
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0280a"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0280.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3120,13 +3150,13 @@
    <test-case name="output-0280a">
       <description>Test that an error is raised on invalid @indent value ("TRUE") in xsl:output.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0280a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3141,13 +3171,13 @@
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0281a"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0281.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3159,13 +3189,13 @@
    <test-case name="output-0281a">
       <description>Test that an error is raised on invalid @omit-xml-declaration value ("YES") in xsl:output.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0281a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3180,13 +3210,13 @@
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0282a"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0282.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3198,13 +3228,13 @@
    <test-case name="output-0282a">
       <description>Test that an error is raised on invalid @standalone value ("TRUE") in xsl:output.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0282a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3219,13 +3249,13 @@
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <modified by="Debbie Lockett" on="2014-08-06" change="spec value to XSLT20 only, see test output-0283a"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="output-0283.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3237,13 +3267,13 @@
    <test-case name="output-0283a">
       <description>Test that an error is raised on invalid @undeclare-prefixes value ("True") in xsl:output.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0283a.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3257,13 +3287,13 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2013-01-29" change="all-of to any-of"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
-      <environment ref="output-01"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0284.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3276,13 +3306,13 @@
    <test-case name="output-0301">
       <description>Simple test for using character maps with the XHTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0301.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output178.out"/>
       </result>
@@ -3291,13 +3321,13 @@
    <test-case name="output-0302">
       <description>Simple test for using character maps with the HTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0302.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="html" file="output179.out"/>
       </result>
@@ -3306,13 +3336,13 @@
    <test-case name="output-0303">
       <description>Simple test for using character maps with the TEXT output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0303.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="text" file="output180.out"/>
       </result>
@@ -3321,13 +3351,13 @@
    <test-case name="output-0304">
       <description>Test @use-character-maps on xsl:result-document, referencing a character map with prefixed name by using a different prefix bound to the same namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0304.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output183.out"/>
       </result>
@@ -3336,13 +3366,13 @@
    <test-case name="output-0305">
       <description>Test merging of two xsl:output declaration where the resulting concatenated sequence of all use-character-maps is taken in declaration order.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0305.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output186.out"/>
       </result>
@@ -3354,7 +3384,7 @@
          is taken in order of increasing import precedence.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -3362,7 +3392,7 @@
          <stylesheet file="output-0306.xsl"/>
          <stylesheet file="output-0306y.xsl" role="secondary"/>
          <stylesheet file="output-0306z.xsl" role="secondary"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output187.out"/>
       </result>
@@ -3371,13 +3401,13 @@
    <test-case name="output-0307">
       <description>Test with xsl:output that has @use-character-maps and an xsl:result-document that uses this output declaration but includes @use-character-maps on its own. Show that the charactes-maps references in xsl:result-document supplement and take precedence over the ones from the xsl:output declaration.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0307.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output191.out"/>
       </result>
@@ -3391,14 +3421,14 @@
          use-character-maps
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0308.xsl"/>
          <stylesheet file="output-0308a.xsl" role="secondary"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<p>xxBxx</p>]]></serialization-matches>
@@ -3411,13 +3441,13 @@
    <test-case name="output-0309">
       <description>Simple test for using a list of character maps with the XML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0309.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output199.out"/>
       </result>
@@ -3426,13 +3456,13 @@
    <test-case name="output-0310">
       <description>Show that text node children of elements present in @cdata-section-elements are not affected by character maps.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0310.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output200.out"/>
       </result>
@@ -3441,13 +3471,13 @@
    <test-case name="output-0311">
       <description>Use a system identifier in doctype-system that contains a double-quote character</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0311.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
@@ -3462,14 +3492,14 @@
          Override a system identifier and public identifier using doctype-system="", doctype-public="": see erratum E31
       </description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0312.xsl"/>
          <stylesheet file="output-0312a.xsl" role="secondary"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output301.out"/>
       </result>
@@ -3478,14 +3508,14 @@
    <test-case name="output-0313">
       <description>Override a system identifier and public identifier using doctype-system="", doctype-public="": see erratum E31</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="output-03"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="output-0313.xsl"/>
          <stylesheet file="output-0313a.xsl" role="secondary"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xml" file="output302.out"/>
       </result>
@@ -3494,14 +3524,14 @@
    <test-case name="output-0401">
       <description>Test for disabling output escaping in xsl:value-of</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-04"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0401.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output401.out"/>
       </result>
@@ -3510,14 +3540,14 @@
    <test-case name="output-0402">
       <description>Test for disabling output escaping in xsl:value-of</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="output-04"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
       </dependencies>
       <test>
          <stylesheet file="output-0401.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <error code="XTRE1620"/>
       </result>
@@ -3526,14 +3556,14 @@
    <test-case name="output-0403">
       <description>Test for disabling-output-escaping="true" in xsl:value-of</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-04"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0403.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output401.out"/>
       </result>
@@ -3542,14 +3572,14 @@
    <test-case name="output-0404">
       <description>Test for disabling-output-escaping=" 1 " in xsl:value-of</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-04"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0404.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <assert-serialization method="xhtml" file="output401.out"/>
       </result>
@@ -3558,14 +3588,14 @@
    <test-case name="output-0405">
       <description>Test for disabling-output-escaping="no" in xsl:value-of</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-04"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0405.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[&lt;p&gt;&amp;nbsp;&lt;/p&gt;]]></serialization-matches>
       </result>
@@ -3574,14 +3604,14 @@
    <test-case name="output-0406">
       <description>Test for disabling-output-escaping="false" in xsl:value-of</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-04"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0406.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[&lt;p&gt;&amp;nbsp;&lt;/p&gt;]]></serialization-matches>
       </result>
@@ -3590,14 +3620,14 @@
    <test-case name="output-0407">
       <description>Test for disabling-output-escaping="0" in xsl:value-of</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-04"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0407.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <serialization-matches><![CDATA[&lt;p&gt;&amp;nbsp;&lt;/p&gt;]]></serialization-matches>
       </result>
@@ -3606,14 +3636,14 @@
    <test-case name="output-0408">
       <description>Test for disabling-output-escaping="YES" (not allowed) in xsl:value-of</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
-      <environment ref="output-04"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="output-0408.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
@@ -3625,7 +3655,7 @@
    <test-case name="output-0501">
       <description>Test for missing name in xsl:character-map. Static error</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment>
          <source role=".">
             <content><![CDATA[<!-- Test for Serialization --><doc><a>&#xA;</a><a>bbb</a></doc>]]></content>
          </source>
@@ -3636,7 +3666,7 @@
       </dependencies>
       <test>
          <stylesheet file="output-0501.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <error code="XTSE0010"/>
       </result>
@@ -3648,7 +3678,7 @@
    <test-case name="output-0601">
       <description>HTML5 empty content elements</description>
       <created by="John Lumley" on="2014-06-19"/>
-      <environment>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment>
          <source role="." file="output06c.xml"/>
       </environment>
       <dependencies>
@@ -3656,7 +3686,7 @@
       </dependencies>
       <test>
          <stylesheet file="output-0601.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<area\s*>]]></serialization-matches>
@@ -3682,13 +3712,13 @@
    <test-case name="output-0602a">
       <description>HTML5 svg unprefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
-      <environment ref="output-06a"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-06a"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <!--<stylesheet file="output-0601.xsl"/>-->
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <not>
@@ -3704,12 +3734,12 @@
    <test-case name="output-0602b">
       <description>HTML5 MathML unprefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
-      <environment ref="output-06a"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-06a"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>         
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <not>
@@ -3724,13 +3754,13 @@
    <test-case name="output-0602c">
       <description>HTML5 foreign namespace prefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
-      <environment ref="output-06a"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-06a"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
         
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches>xmlns:n=["']NamespaceN["']</serialization-matches>
@@ -3742,13 +3772,13 @@
    <test-case name="output-0603a">
       <description>HTML5 svg:attribute prefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
-      <environment ref="output-06b"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-06b"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches>mi\s+xmlns:svg=["']http://www.w3.org/2000/svg["']</serialization-matches>
@@ -3759,13 +3789,13 @@
    <test-case name="output-0603b">
       <description>HTML5 MathML:attribute prefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
-      <environment ref="output-06b"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-06b"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches>xmlns:mathML=["']http://www.w3.org/1998/Math/MathML["']</serialization-matches>
@@ -3776,13 +3806,13 @@
    <test-case name="output-0603c">
       <description>HTML5 foreign namespace attribute prefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
-      <environment ref="output-06b"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment ref="output-06b"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches>xmlns:m=["']NamespaceM["']</serialization-matches>
@@ -3795,7 +3825,7 @@
    <test-case name="output-0604">
       <description>HTML5 - test simple use of a character map</description>
       <created by="John Lumley" on="2014-07-18"/>
-      <environment>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/><environment>
          <source role=".">
             <content><![CDATA[<doc><a value="abcde">vwxyz</a></doc>]]></content>
          </source>
@@ -3805,7 +3835,7 @@
       </dependencies>
       <test>
          <stylesheet file="output-0602.xsl"/>
-      </test>
+       <output serialize="yes"/></test>
       <result>
          <all-of>
             <serialization-matches>value=['"]ab\[C\]de['"]</serialization-matches>
