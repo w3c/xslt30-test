@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="character-map">
-   
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema" name="character-map">
+
    <description>Tests the xsl:character-map declaration</description>
-   
+
    <environment name="charmap001">
       <source role=".">
          <content><![CDATA[<doc><a value="abcde">vwxyz</a></doc>]]></content>
       </source>
    </environment>
-   
+
    <test-case name="character-map-001">
       <description>test simple use of a character map</description>
       <keywords>single-character-map xml-output-method</keywords>
@@ -26,7 +27,7 @@
          <all-of>
             <serialization-matches>value=['"]ab\[C\]de['"]</serialization-matches>
             <serialization-matches>vw\[X\]yz</serialization-matches>
-         </all-of>   
+         </all-of>
       </result>
    </test-case>
 
@@ -73,7 +74,8 @@
    </test-case>
 
    <test-case name="character-map-004">
-      <description>test xsl:output referencing two character maps. Use forwards references</description>
+      <description>test xsl:output referencing two character maps. Use forwards
+         references</description>
       <keywords>multiple-character-maps conflict-resolution xml-output-method</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
@@ -137,7 +139,8 @@
 
    <test-case name="character-map-007">
       <description>test use of high Unicode characters in character maps.</description>
-      <keywords>unicode encoding-attribute iso-8859-1 single-character-map xml-output-method</keywords>
+      <keywords>unicode encoding-attribute iso-8859-1 single-character-map
+         xml-output-method</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="charmap001"/>
@@ -175,10 +178,8 @@
    </test-case>
 
    <test-case name="character-map-009">
-      <description>
-         Test character maps with HTML output method, specifically the interaction of HTML URI escaping with character maps. 
-         See resolution of CR Bug 2459.
-      </description>
+      <description> Test character maps with HTML output method, specifically the interaction of
+         HTML URI escaping with character maps. See resolution of CR Bug 2459. </description>
       <keywords>html-uri-escaping single-character-map html-output-method</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
@@ -200,7 +201,8 @@
 
    <test-case name="character-map-010">
       <description>test use of a character map in attribute values</description>
-      <keywords>single-character-map attribute-nodes illegal-xml-generation xml-output-method</keywords>
+      <keywords>single-character-map attribute-nodes illegal-xml-generation
+         xml-output-method</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="charmap001"/>
@@ -258,7 +260,8 @@
    </test-case>
 
    <test-case name="character-map-013">
-      <description>tests generation of special characters in replacement string with HTML output method (both text and attribute nodes)</description>
+      <description>tests generation of special characters in replacement string with HTML output
+         method (both text and attribute nodes)</description>
       <keywords>iso-8859-1 illegal-xml-generation single-character-map html-output-method</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
@@ -272,14 +275,17 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches>&lt;body&gt;value='&lt;%= "id" \+ idValue %&gt;'</serialization-matches>
-            <serialization-matches>&lt;setProperty value=['"]&lt;%= "id" \+ idValue %&gt;['"]</serialization-matches>
+            <serialization-matches>&lt;body&gt;value='&lt;%= "id" \+ idValue
+               %&gt;'</serialization-matches>
+            <serialization-matches>&lt;setProperty value=['"]&lt;%= "id" \+ idValue
+               %&gt;['"]</serialization-matches>
          </all-of>
       </result>
    </test-case>
 
    <test-case name="character-map-014">
-      <description>tests generation of special characters in replacement string with text output method (both text and attribute nodes)</description>
+      <description>tests generation of special characters in replacement string with text output
+         method (both text and attribute nodes)</description>
       <keywords>iso-8859-1 single-character-map text-output-method</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
@@ -297,7 +303,8 @@
    </test-case>
 
    <test-case name="character-map-015">
-      <description>tests use of a character map in xsl:result-document (no href attribute)</description>
+      <description>tests use of a character map in xsl:result-document (no href
+         attribute)</description>
       <keywords>single-character-map iso-8859-1 xsl:result-document</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
@@ -315,8 +322,10 @@
    </test-case>
 
    <test-case name="character-map-016">
-      <description>tests use of a character map in xsl:result-document combined with one on xsl:output, including a conflict</description>
-      <keywords>xsl:result-document multiple-character-maps conflict-resolution xml-output-method</keywords>
+      <description>tests use of a character map in xsl:result-document combined with one on
+         xsl:output, including a conflict</description>
+      <keywords>xsl:result-document multiple-character-maps conflict-resolution
+         xml-output-method</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="charmap001"/>
@@ -347,15 +356,20 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches>content=["']te\[X\]t/html; \[C\]harset=UTF-8['"]</serialization-matches>
-            <serialization-matches>The qui\[C\]k brown fo\[X\] jumped over the lazy dog</serialization-matches>
+            <serialization-matches>content=["']te\[X\]t/html;
+               \[C\]harset=UTF-8['"]</serialization-matches>
+            <serialization-matches>The qui\[C\]k brown fo\[X\] jumped over the lazy
+               dog</serialization-matches>
          </all-of>
       </result>
    </test-case>
 
    <test-case name="character-map-018">
-      <description>tests use of a character map in xsl:result-document combined with one on xsl:output, including a conflict. Same as charmap018, but with a forwards reference</description>
-      <keywords>multiple-character-maps conflict-resolution xml-output-method xsl:result-document</keywords>
+      <description>tests use of a character map in xsl:result-document combined with one on
+         xsl:output, including a conflict. Same as charmap018, but with a forwards
+         reference</description>
+      <keywords>multiple-character-maps conflict-resolution xml-output-method
+         xsl:result-document</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="charmap001"/>
@@ -390,7 +404,8 @@
    </test-case>
 
    <test-case name="character-map-020">
-      <description>test unresolved reference from xsl:character-map to another character map.</description>
+      <description>test unresolved reference from xsl:character-map to another character
+         map.</description>
       <keywords>XTSE1590 xml-output-method multiple-character-maps</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
@@ -408,8 +423,10 @@
    </test-case>
 
    <test-case name="character-map-021">
-      <description>test circular reference from xsl:character-map to another character map.</description>
-      <keywords>XTSE1600 conflict-resolution circular-reference xml-output-method multiple-character-maps</keywords>
+      <description>test circular reference from xsl:character-map to another character
+         map.</description>
+      <keywords>XTSE1600 conflict-resolution circular-reference xml-output-method
+         multiple-character-maps</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="charmap001"/>

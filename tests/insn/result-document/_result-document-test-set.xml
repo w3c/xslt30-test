@@ -1,45 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="result-document">
-   <description>
-      Tests the xsl:result-document instruction.
-      Note: most of the tests concern serialization; very few actually generate multiple output documents.
-   </description>
-   
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="result-document">
+   <description> Tests the xsl:result-document instruction. Note: most of the tests concern
+      serialization; very few actually generate multiple output documents. </description>
+
    <environment name="result-document-02">
       <source role=".">
          <content><![CDATA[<!-- A required but useless input XML doc for a transformation --><doc/>]]></content>
       </source>
    </environment>
-   
+
    <environment name="result-document-07">
       <source role=".">
          <content><![CDATA[<doc><foo>yes</foo></doc>]]></content>
       </source>
    </environment>
-   
+
    <environment name="result-document-08">
       <source role=".">
          <content><![CDATA[<doc><foo>1.0</foo></doc>]]></content>
       </source>
    </environment>
-   
+
    <environment name="result-document-09">
       <source role=".">
          <content><![CDATA[<doc><foo>one:</foo></doc>]]></content>
       </source>
    </environment>
-   
+
    <environment name="result-document-11">
       <!--Abel Braaksma: styleheet @role is restricted to be only "principal" or "secondary"-->
       <stylesheet role="principal" file="result-document-1101.xsl"/>
    </environment>
-   
+
    <environment name="result-document-113">
       <stylesheet role="principal" file="result-document-1130.xsl"/>
    </environment>
-   
+
    <environment name="result-document-12">
       <source role=".">
          <content><![CDATA[<doc><foo> true </foo></doc>]]></content>
@@ -73,16 +70,20 @@
    <test-case name="result-document-0201">
       <description>Use named output format on secondary output</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-03"
+         change="Declared serialization requirement; change tests to serialized form"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0201.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
-            <assert-xml><![CDATA[<out xmlns:my="http://example.com"><log>Before redirect</log><log>After redirect</log></out>]]></assert-xml>
+            <serialization-matches><![CDATA[<out xmlns:my="http://example.com"><log>Before redirect</log><log>After redirect</log></out>$]]></serialization-matches>
+            <!--<assert-xml><![CDATA[<out xmlns:my="http://example.com"><log>Before redirect</log><log>After redirect</log></out>]]></assert-xml>-->
             <assert-result-document uri="multresult2.out">
                <assert-serialization method="text">This should come out as plain text.</assert-serialization>
             </assert-result-document>
@@ -94,12 +95,14 @@
       <description>Use named output format on primary output</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2012-12-20" change="Fixed whitespace"/>
+      <modified by="John Lumley" on="2014-09-03" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0202.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text">This document should be serialized as text, not as xml because
@@ -108,7 +111,8 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0203">
-      <description>Test with xsl:result document with no attributes. Output is controlled by unnamed xsl:output declaration.</description>
+      <description>Test with xsl:result document with no attributes. Output is controlled by unnamed
+         xsl:output declaration.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -138,7 +142,8 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0205">
-      <description>Test that the primary result document can be written after a secondary one by use of nested xsl:result-document with no arguments.</description>
+      <description>Test that the primary result document can be written after a secondary one by use
+         of nested xsl:result-document with no arguments.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -158,16 +163,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0206">
-      <description>
-         Simple test with xsl:result-document - empty content and no attributes. Output file contains only the XML declaration.
-      </description>
+      <description> Simple test with xsl:result-document - empty content and no attributes. Output
+         file contains only the XML declaration. </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0206.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[^<\?xml\s+version="1.0"\s+encoding="UTF-8"\?>$]]></serialization-matches>
@@ -175,14 +181,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0207">
-      <description>Test with xsl:result-document that creates a non-well-formed XML document entity (contains more than one document element).</description>
+      <description>Test with xsl:result-document that creates a non-well-formed XML document entity
+         (contains more than one document element).</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0207.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -195,7 +204,8 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0208">
-      <description>Test with xsl:result-document with missing @method. Allow XML output method to be determined by default rules.</description>
+      <description>Test with xsl:result-document with missing @method. Allow XML output method to be
+         determined by default rules.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -210,14 +220,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0209">
-      <description>Test with xsl:result-document with missing @method. Allow HTML output method to be determined by default rules.</description>
+      <description>Test with xsl:result-document with missing @method. Allow HTML output method to
+         be determined by default rules.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0209.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -230,14 +243,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0210">
-      <description>Test with xsl:result-document with missing @method. Allow XHTML output method to be determined by default rules.</description>
+      <description>Test with xsl:result-document with missing @method. Allow XHTML output method to
+         be determined by default rules.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0210.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -261,25 +277,29 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <result>
          <assert-result-document uri="result-document-0211b.out">
             <assert-xml><![CDATA[<out>hello</out>]]></assert-xml>
-         </assert-result-document>        
+         </assert-result-document>
       </result>
    </test-case>
 
    <test-case name="result-document-0212">
       <description>Test AVT in the @href of an xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0212.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
-            <assert-xml><![CDATA[<out>This should be in the primary xml document</out>]]></assert-xml>
+            <!--<assert-xml><![CDATA[<out>This should be in the primary xml document</out>]]></assert-xml>-->
+            <serialization-matches><![CDATA[<out>This should be in the primary xml document</out>$]]></serialization-matches>
             <assert-result-document uri="mult/multresult19.out">
-               <assert-serialization method="html">This should be in the secondary text document</assert-serialization>
+               <assert-serialization method="html">This should be in the secondary text
+                  document</assert-serialization>
             </assert-result-document>
          </all-of>
       </result>
@@ -303,17 +323,20 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0214">
       <description>Test with xsl:result-document @method="html".</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0214.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
             <serialization-matches flags="s"><![CDATA[<html>.*</html>]]></serialization-matches>
-            <serialization-matches flags="i"><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
          </all-of>
       </result>
@@ -322,16 +345,19 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0215">
       <description>Test with xsl:result-document @method="xhtml".</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0215.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="s"><![CDATA[<html\s+xmlns=['"]http://www.w3.org/1999/xhtml['"]>.*</html>]]></serialization-matches>
+            <serialization-matches flags="s"
+               ><![CDATA[<html\s+xmlns=['"]http://www.w3.org/1999/xhtml['"]>.*</html>]]></serialization-matches>
             <serialization-matches><![CDATA[<meta\s+http-equiv="Content-Type"]]></serialization-matches>
             <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
          </all-of>
@@ -341,12 +367,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0216">
       <description>Test with xsl:result-document @method="text".</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0216.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text">hello</assert-serialization>
@@ -354,14 +382,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0217">
-      <description>Test with xsl:result-document and a whitespace separated list of QNames in @cdata-section-elements.</description>
+      <description>Test with xsl:result-document and a whitespace separated list of QNames in
+         @cdata-section-elements.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0217.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -370,22 +401,23 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
             <serialization-matches><![CDATA[<item3>a &amp; b</item3>]]></serialization-matches>
             <serialization-matches><![CDATA[<item3 xmlns=['"]http://www.mytest.example.org['"]><!\[CDATA\[a & b\]{2}></item3>]]></serialization-matches>
             <serialization-matches><![CDATA[<item4>a &amp; b</item4>]]></serialization-matches>
-            <serialization-matches><![CDATA[<item5><!\[CDATA\[a & b\]{2}></item5>]]></serialization-matches>   
+            <serialization-matches><![CDATA[<item5><!\[CDATA\[a & b\]{2}></item5>]]></serialization-matches>
          </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0218">
-      <description>
-         Test with CDATA section element inside an LRE in the body of xsl:result-document when it has not been specified 
-         in the cdata-section-elements attribute.</description>
+      <description> Test with CDATA section element inside an LRE in the body of xsl:result-document
+         when it has not been specified in the cdata-section-elements attribute.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0218.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -400,11 +432,13 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <description>Test with xsl:result-document and @doctype-system, @method is xml.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0219.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches flags="x">
@@ -414,17 +448,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0220">
-      <description>
-         Test with xsl:result-document and @doctype-public present but no @doctype-system present. 
-         Show that @doctype-public is ignored.
-      </description>
+      <description> Test with xsl:result-document and @doctype-public present but no @doctype-system
+         present. Show that @doctype-public is ignored. </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0220.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\?>\s*<out>hello</out>]]></serialization-matches>
@@ -432,14 +466,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0221">
-      <description>Test with xsl:result-document and @doctype-public and @doctype-system present, @method is xml.</description>
+      <description>Test with xsl:result-document and @doctype-public and @doctype-system present,
+         @method is xml.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0221.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches flags="x">
@@ -449,17 +486,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0222">
-      <description>
-         Test with xsl:result-document and @doctype-public and @doctype-system present, @method is text. 
-         Doctype attributes should be ignored.
-      </description>
+      <description> Test with xsl:result-document and @doctype-public and @doctype-system present,
+         @method is text. Doctype attributes should be ignored. </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0222.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text">hello</assert-serialization>
@@ -467,32 +504,39 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0223">
-      <description>Test with xsl:result-document and @include-content-type="yes", method="html", @media-type is set and there is a 'head' element in the final result tree.</description>
+      <description>Test with xsl:result-document and @include-content-type="yes", method="html",
+         @media-type is set and there is a 'head' element in the final result tree.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0223.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
-            <all-of>
-               <serialization-matches><![CDATA[<meta http-equiv="Content-Type" content="application/xhtml-xml; charset=UTF-8">]]></serialization-matches>
-               <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
-            </all-of>
+         <all-of>
+            <serialization-matches><![CDATA[<meta http-equiv="Content-Type" content="application/xhtml-xml; charset=UTF-8">]]></serialization-matches>
+            <serialization-matches><![CDATA[<title></title>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0224">
-      <description>Test with xsl:result-document and @include-content-type="yes", method="html", @media-type is set and there is a &lt;head&gt; and &lt;meta http-equiv="Content-Type"&gt; element in the final result tree.</description>
+      <description>Test with xsl:result-document and @include-content-type="yes", method="html",
+         @media-type is set and there is a &lt;head&gt; and &lt;meta http-equiv="Content-Type"&gt;
+         element in the final result tree.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0224.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -503,17 +547,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0225">
-      <description>
-         Test with xsl:result-document and @include-content-type="yes", method="text". 
-         @include-content-type should be ignored.
-      </description>
+      <description> Test with xsl:result-document and @include-content-type="yes", method="text".
+         @include-content-type should be ignored. </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0225.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text">hello</assert-serialization>
@@ -536,14 +580,18 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0227">
-      <description>Test with xsl:result-document and @omit-xml-declaration="no". @method="xml", no @version or @encoding present, xml declaration must be written to the result tree using default attribute values.</description>
+      <description>Test with xsl:result-document and @omit-xml-declaration="no". @method="xml", no
+         @version or @encoding present, xml declaration must be written to the result tree using
+         default attribute values.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0227.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version=['"]1.0['"]\s+encoding=['"]UTF-8['"]\?>\s*<out>hello</out>]]></serialization-matches>
@@ -551,17 +599,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0228">
-      <description>
-         Test with xsl:result-document and @omit-xml-declaration="yes", @method="xml". 
-         Declaration must be omitted from the result tree.
-      </description>
+      <description> Test with xsl:result-document and @omit-xml-declaration="yes", @method="xml".
+         Declaration must be omitted from the result tree. </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0228.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xml"><![CDATA[<out>hello</out>]]></assert-serialization>
@@ -571,12 +619,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0229">
       <description>Test with xsl:result-document where value of @standalone="yes".</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0229.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="yes"\?>\s*<out>hello</out>]]></serialization-matches>
@@ -586,12 +636,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0230">
       <description>Test with xsl:result-document where value of @standalone="no".</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0230.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="no"\?>\s*<out>hello</out>]]></serialization-matches>
@@ -601,12 +653,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0231">
       <description>Test with xsl:result-document where value of @standalone="omit".</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0231.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\?>\s*<out>hello</out>]]></serialization-matches>
@@ -614,14 +668,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0232">
-      <description>Test with xsl:result-document and @undeclare-prefixes="yes", @method="text". Show that attribute is ignored.</description>
+      <description>Test with xsl:result-document and @undeclare-prefixes="yes", @method="text". Show
+         that attribute is ignored.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0232.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text">a1b2</assert-serialization>
@@ -631,12 +688,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0233">
       <description>Test with xsl:result-document and @use-character-maps.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0233.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml.*>\s*<out>bbbbSbbS</out>]]></serialization-matches>
@@ -646,12 +705,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0234">
       <description>Test with @output-version="1.0" on xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0234.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version=['"]1.0['"].*>\s*<out>hello</out>]]></serialization-matches>
@@ -659,14 +720,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0235">
-      <description>Test with @output-version="4.0" and @method="html" on xsl:result-document.</description>
+      <description>Test with @output-version="4.0" and @method="html" on
+         xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0235.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -679,14 +743,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0236">
-      <description>Test with @output-version="1.0" and @method="xhtml" on xsl:result-document.</description>
+      <description>Test with @output-version="1.0" and @method="xhtml" on
+         xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0236.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -699,17 +766,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0237">
-      <description>
-         Test with @output-version="5.0" and @method="text" on xsl:result-document. 
-         Version attribute should be ignored.
-      </description>
+      <description> Test with @output-version="5.0" and @method="text" on xsl:result-document.
+         Version attribute should be ignored. </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0237.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text">hello</assert-serialization>
@@ -717,33 +784,36 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0238">
-      <description>Test @format of xsl:result-document. Verify that the matching output declaration is used. 
-         (output declarations have same local name but different namespace, namespace in-scope of xsl:result-document 
-         determines which one will be used)
-      </description>
+      <description>Test @format of xsl:result-document. Verify that the matching output declaration
+         is used. (output declarations have same local name but different namespace, namespace
+         in-scope of xsl:result-document determines which one will be used) </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-03"
+         change="Declared serialization requirement; changed tests to all serialized"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0238.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
-            <assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>]]></assert-xml>
+            <serialization-matches><![CDATA[<out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>$]]></serialization-matches>
+            <!--<assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>]]></assert-xml>-->
          </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0239">
-      <description>
-         Test with various attributes in xsl:result-document and an output declaration that overrides another output declaration. 
-         Attributes that are being tested are: -method, byte-order-mark, encoding, indent, omit-xml-declaration, standalone, 
-         output-version, undeclare-prefixes
-      </description>
+      <description> Test with various attributes in xsl:result-document and an output declaration
+         that overrides another output declaration. Attributes that are being tested are: -method,
+         byte-order-mark, encoding, indent, omit-xml-declaration, standalone, output-version,
+         undeclare-prefixes </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -751,6 +821,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <test>
          <stylesheet file="result-document-0239.xsl"/>
          <stylesheet file="result-document-0239a.xsl" role="secondary"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text">This document should be serialized as text, not as xml, the output definition used is not overriden.</assert-serialization>
@@ -758,14 +829,17 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0240">
-      <description>Test the union of @cdata-section-elements values from xsl:result-document and one xsl:output declaration.</description>
+      <description>Test the union of @cdata-section-elements values from xsl:result-document and one
+         xsl:output declaration.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0240.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -781,47 +855,47 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-0241">
-      <description>
-         Test that value in @use-character-maps of xsl:result-document both overrides and supplements such values 
-         in a matching output definition.
-      </description>
+      <description> Test that value in @use-character-maps of xsl:result-document both overrides and
+         supplements such values in a matching output definition. </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0241.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<out>BABASBAS</out>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0242">
-      <description>
-         Test that xsl:result-document accepts html-version attribute 
-      </description>
+      <description> Test that xsl:result-document accepts html-version attribute </description>
       <created by="Michael Kay" on="2012-12-06"/>
-      <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="Abel Braaksma" on="2013-12-10"
+         change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0242.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<!DOCTYPE\s+html\s*>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0243">
-      <description>
-         Test that xsl:result-document rejects invalid html-version attribute 
-      </description>
+      <description> Test that xsl:result-document rejects invalid html-version attribute </description>
       <created by="Michael Kay" on="2012-12-06"/>
-      <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="Abel Braaksma" on="2013-12-10"
+         change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -833,37 +907,39 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="SEPM0016"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0244">
-      <description>
-         Test that xsl:result-document accepts dynamic html-version attribute 
-      </description>
+      <description> Test that xsl:result-document accepts dynamic html-version attribute </description>
       <created by="Michael Kay" on="2012-12-06"/>
-      <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="Abel Braaksma" on="2013-12-10"
+         change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0244.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<!DOCTYPE\s+html\s*>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0245">
-      <description>
-         Test that xsl:result-document accepts dynamic html-version attribute 
-      </description>
+      <description> Test that xsl:result-document accepts dynamic html-version attribute </description>
       <created by="Michael Kay" on="2012-12-06"/>
-      <modified by="Abel Braaksma" on="2013-12-10" change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="Abel Braaksma" on="2013-12-10"
+         change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0245.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <not>
@@ -871,69 +947,78 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </not>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0246">
       <description>Test with xsl:result-document where value of @standalone="true".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0246.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="yes"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0247">
       <description>Test with xsl:result-document where value of @standalone=" false ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0247.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="no"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0248">
       <description>Test with xsl:result-document where value of @standalone=" 1 ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0248.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="yes"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0249">
       <description>Test with xsl:result-document where value of @standalone="0".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0249.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="no"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0250">
-      <description>Test with xsl:result-document where value of @standalone="TRUE" (not allowed).</description>
+      <description>Test with xsl:result-document where value of @standalone="TRUE" (not
+         allowed).</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -949,77 +1034,84 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </any-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0251">
-      <description>
-         Test with xsl:result-document and @omit-xml-declaration="true", @method="xml". 
-         Declaration must be omitted from the result tree.
-      </description>
+      <description> Test with xsl:result-document and @omit-xml-declaration="true", @method="xml".
+         Declaration must be omitted from the result tree. </description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0251.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xml"><![CDATA[<out>hello</out>]]></assert-serialization>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0252">
-      <description>Test with xsl:result-document and @omit-xml-declaration="false". @method="xml", no @version or @encoding present, xml declaration must be written to the result tree using default attribute values.</description>
+      <description>Test with xsl:result-document and @omit-xml-declaration="false". @method="xml",
+         no @version or @encoding present, xml declaration must be written to the result tree using
+         default attribute values.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0252.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version=['"]1.0['"]\s+encoding=['"]UTF-8['"]\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0253">
-      <description>
-         Test with xsl:result-document and @omit-xml-declaration=" 1 ", @method="xml". 
-         Declaration must be omitted from the result tree.
-      </description>
+      <description> Test with xsl:result-document and @omit-xml-declaration=" 1 ", @method="xml".
+         Declaration must be omitted from the result tree. </description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0253.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xml"><![CDATA[<out>hello</out>]]></assert-serialization>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0254">
-      <description>Test with xsl:result-document and @omit-xml-declaration="0". @method="xml", no @version or @encoding present, xml declaration must be written to the result tree using default attribute values.</description>
+      <description>Test with xsl:result-document and @omit-xml-declaration="0". @method="xml", no
+         @version or @encoding present, xml declaration must be written to the result tree using
+         default attribute values.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0254.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version=['"]1.0['"]\s+encoding=['"]UTF-8['"]\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0255">
-      <description>
-         Test with xsl:result-document where value of @omit-xml-declaration="01" (not allowed).
-      </description>
+      <description> Test with xsl:result-document where value of @omit-xml-declaration="01" (not
+         allowed). </description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -1027,6 +1119,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </dependencies>
       <test>
          <stylesheet file="result-document-0255.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <any-of>
@@ -1035,16 +1128,19 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </any-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0256">
-      <description>Test XHTML result document with @byte-order-mark="     yes   ". Encoding is UTF-8.</description>
+      <description>Test XHTML result document with @byte-order-mark=" yes ". Encoding is
+         UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0256.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -1055,31 +1151,37 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0257">
-      <description>Test XHTML result document with @byte-order-mark="no". Encoding is UTF-8.</description>
+      <description>Test XHTML result document with @byte-order-mark="no". Encoding is
+         UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0257.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="result-document-0257.out"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0258">
-      <description>Test XHTML result document with @byte-order-mark="true". Encoding is UTF-8.</description>
+      <description>Test XHTML result document with @byte-order-mark="true". Encoding is
+         UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0258.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -1090,31 +1192,37 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0259">
-      <description>Test XHTML result document with @byte-order-mark="false". Encoding is UTF-8.</description>
+      <description>Test XHTML result document with @byte-order-mark="false". Encoding is
+         UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0259.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="result-document-0257.out"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0260">
-      <description>Test XHTML result document with @byte-order-mark="1". Encoding is UTF-8.</description>
+      <description>Test XHTML result document with @byte-order-mark="1". Encoding is
+         UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0260.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -1125,31 +1233,37 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0261">
-      <description>Test XHTML result document with @byte-order-mark="0". Encoding is UTF-8.</description>
+      <description>Test XHTML result document with @byte-order-mark="0". Encoding is
+         UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0261.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="result-document-0257.out"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0262">
-      <description>Test XHTML result document with @byte-order-mark="00". Encoding is UTF-8.</description>
+      <description>Test XHTML result document with @byte-order-mark="00". Encoding is
+         UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0262.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <any-of>
@@ -1158,99 +1272,118 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </any-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0263">
-      <description>Test escaping of non-ASCII characters in HTML result document when @escape-uri-attributes="yes".</description>
+      <description>Test escaping of non-ASCII characters in HTML result document when
+         @escape-uri-attributes="yes".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0263.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>         
+         <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0264">
-      <description>Test escaping of non-ASCII characters in HTML result document when @escape-uri-attributes="no".</description>
+      <description>Test escaping of non-ASCII characters in HTML result document when
+         @escape-uri-attributes="no".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0264.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0265">
-      <description>Test escaping of non-ASCII characters in HTML result document when @escape-uri-attributes="true".</description>
+      <description>Test escaping of non-ASCII characters in HTML result document when
+         @escape-uri-attributes="true".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0265.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
-            <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>         
+         <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0266">
-      <description>Test escaping of non-ASCII characters in HTML result document when @escape-uri-attributes="no".</description>
+      <description>Test escaping of non-ASCII characters in HTML result document when
+         @escape-uri-attributes="no".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0266.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0267">
-      <description>Test escaping of non-ASCII characters in HTML result document when @escape-uri-attributes="  1".</description>
+      <description>Test escaping of non-ASCII characters in HTML result document when
+         @escape-uri-attributes=" 1".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0267.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
-            <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>         
+         <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0268">
-      <description>Test escaping of non-ASCII characters in HTML result document when @escape-uri-attributes="0".</description>
+      <description>Test escaping of non-ASCII characters in HTML result document when
+         @escape-uri-attributes="0".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0268.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0269">
-      <description>Test escaping of non-ASCII characters in HTML result document when @escape-uri-attributes="y e s" (not allowed).</description>
+      <description>Test escaping of non-ASCII characters in HTML result document when
+         @escape-uri-attributes="y e s" (not allowed).</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -1258,6 +1391,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </dependencies>
       <test>
          <stylesheet file="result-document-0269.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <any-of>
@@ -1266,265 +1400,316 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </any-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0270">
-      <description>Test HTML output with include-content-type="yes", the result tree has a 'head' element.</description>
+      <description>Test HTML output with include-content-type="yes", the result tree has a 'head'
+         element.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0270.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
             <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
-            <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
             <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
             <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0271">
       <description>Test HTML output with include-content-type value set to " no ".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0271.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <not>
             <any-of>
                <error code="*"/>
-               <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
-               <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+               <serialization-matches flags="i"
+                  ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+               <serialization-matches flags="i"
+                  ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
                <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>]*a[^<]*></HEAD>]]></serialization-matches>
             </any-of>
          </not>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0272">
-      <description>Test HTML output with include-content-type="true", the result tree has a 'head' element.</description>
+      <description>Test HTML output with include-content-type="true", the result tree has a 'head'
+         element.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0272.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
             <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
-            <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
             <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
             <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0273">
       <description>Test HTML output with include-content-type value set to "false".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0273.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <not>
             <any-of>
                <error code="*"/>
-               <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
-               <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+               <serialization-matches flags="i"
+                  ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+               <serialization-matches flags="i"
+                  ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
                <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>]*a[^<]*></HEAD>]]></serialization-matches>
             </any-of>
          </not>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0274">
-      <description>Test HTML output with include-content-type="1", the result tree has a 'head' element.</description>
+      <description>Test HTML output with include-content-type="1", the result tree has a 'head'
+         element.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0274.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
             <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
-            <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
             <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
             <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0275">
       <description>Test HTML output with include-content-type value set to "0".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0275.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <not>
             <any-of>
                <error code="*"/>
-               <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
-               <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+               <serialization-matches flags="i"
+                  ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+               <serialization-matches flags="i"
+                  ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
                <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>]*a[^<]*></HEAD>]]></serialization-matches>
             </any-of>
          </not>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0276">
       <description>Test HTML output with include-content-type="Yes" (not allowed).</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0276.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </any-of>         
+         </any-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0277">
-      <description>Test indent="yes", with XHTML result document where the stylesheet has a default namespace defined on the html element itself.</description>
+      <description>Test indent="yes", with XHTML result document where the stylesheet has a default
+         namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0277.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0278">
-      <description>Test empty elements with empty content model in XHTML output and @indent="no".</description>
+      <description>Test empty elements with empty content model in XHTML output and
+         @indent="no".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0278.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="result-document-0278.out"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0279">
-      <description>Test indent="true", with XHTML result document where the stylesheet has a default namespace defined on the html element itself.</description>
+      <description>Test indent="true", with XHTML result document where the stylesheet has a default
+         namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0279.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0280">
-      <description>Test empty elements with empty content model in XHTML output and @indent=" false".</description>
+      <description>Test empty elements with empty content model in XHTML output and @indent="
+         false".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0280.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="result-document-0278.out"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0281">
-      <description>Test indent="1", with XHTML result document where the stylesheet has a default namespace defined on the html element itself.</description>
+      <description>Test indent="1", with XHTML result document where the stylesheet has a default
+         namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0281.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0282">
-      <description>Test empty elements with empty content model in XHTML output and @indent="0".</description>
+      <description>Test empty elements with empty content model in XHTML output and
+         @indent="0".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0282.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="result-document-0278.out"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-0283">
-      <description>Test empty elements with empty content model in XHTML output and @indent="0".</description>
+      <description>Test empty elements with empty content model in XHTML output and
+         @indent="0".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0283.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <any-of>
             <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
-         </any-of>  
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0301">
       <description>Test AVT in the @method of an xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc><foo>text</foo></doc>]]></content>
@@ -1535,6 +1720,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </dependencies>
       <test>
          <stylesheet file="result-document-0301.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text">hello</assert-serialization>
@@ -1544,6 +1730,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0401">
       <description>Test AVT in @cdata-section-elements of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc><foo>item1</foo><foo>item</foo><elem>item3</elem><item>my:item5</item></doc>]]></content>
@@ -1554,6 +1741,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </dependencies>
       <test>
          <stylesheet file="result-document-0401.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -1569,6 +1757,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0501">
       <description>Test AVT in @doctype-system of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc><foo>out.dtd</foo></doc>]]></content>
@@ -1579,6 +1768,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </dependencies>
       <test>
          <stylesheet file="result-document-0501.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<!DOCTYPE\s+out\s+SYSTEM\s+"out.dtd">\s*<out>hello</out>]]></serialization-matches>
@@ -1588,6 +1778,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0601">
       <description>Test AVT in @doctype-public of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc><foo>-//BOAG//DTD Websites V1.3//EN</foo></doc>]]></content>
@@ -1598,6 +1789,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </dependencies>
       <test>
          <stylesheet file="result-document-0601.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<!DOCTYPE\s+out\s+PUBLIC\s+"-//BOAG//DTD\sWebsites\sV1.3//EN"\s+"out.dtd">\s*<out>hello</out>]]></serialization-matches>
@@ -1607,12 +1799,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0701">
       <description>Test AVT in @include-content-type of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-07"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0701.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -1627,12 +1821,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0702">
       <description>Test AVT in @omit-xml-declaration of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-07"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0702.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xml"><![CDATA[<out>hello</out>]]></assert-serialization>
@@ -1642,12 +1838,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0703">
       <description>Test AVT in @standalone of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-07"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0703.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="yes"\?>\s*<out>hello</out>]]></serialization-matches>
@@ -1657,12 +1855,14 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0801">
       <description>Test AVT in @output-version of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-08"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0801.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\?>\s*<out>hello</out>]]></serialization-matches>
@@ -1672,26 +1872,29 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-0901">
       <description>Test AVT in @format of xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="John Lumley" on="2014-09-03"
+         change="Declared serialization requirement; changed tests to all serialized"/>
       <environment ref="result-document-09"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0901.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>         
-            <assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>]]></assert-xml>
-         </all-of>   
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>$]]></serialization-matches>
+            <!--<assert-xml><![CDATA[<out>This document should be serialized as xml, not as text because the named my:format has method "xml".</out>]]></assert-xml>-->
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="result-document-1001">
-      <description>
-         Test for generating two or more result trees with same URI where the first result tree is implicit 
-         and the second tree has an explicit xsl:result-document with @href=""
-      </description>
+      <description> Test for generating two or more result trees with same URI where the first
+         result tree is implicit and the second tree has an explicit xsl:result-document with
+         @href="" </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -1709,10 +1912,8 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-1002">
-      <description>
-         Test for generating two or more result trees with same URI where the first tree has an explicit 
-         xsl:result-document with href="" and the second tree is implicit
-      </description>
+      <description> Test for generating two or more result trees with same URI where the first tree
+         has an explicit xsl:result-document with href="" and the second tree is implicit </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -1730,10 +1931,8 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    </test-case>
 
    <test-case name="result-document-1003">
-      <description>
-         Test for generating two result trees with same URI where the first one is created implicitly 
-         and the second with xsl:result-document without @href.
-      </description>
+      <description> Test for generating two result trees with same URI where the first one is
+         created implicitly and the second with xsl:result-document without @href. </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="result-document-02"/>
       <dependencies>
@@ -1749,11 +1948,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </any-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1101">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1766,11 +1963,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1102">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1783,11 +1978,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1103">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1800,11 +1993,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1104">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1817,11 +2008,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1105">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1834,11 +2023,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1106">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1851,11 +2038,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1107">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1868,11 +2053,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1108">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1885,11 +2068,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1109">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1902,11 +2083,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1110">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1919,11 +2098,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1111">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-11"/>
       <dependencies>
@@ -1936,12 +2113,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
-   
+
+
    <test-case name="result-document-1131">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -1954,11 +2129,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1132">
-      <description>
-         xsl:result-document in temporary output state: allowed in 3.0
-      </description>
+      <description> xsl:result-document in temporary output state: allowed in 3.0 </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
       <environment ref="result-document-113"/>
@@ -1972,11 +2145,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <assert>/b/@v = 'rrr'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1133">
-      <description>
-         xsl:result-document in temporary output state: allowed in 3.0
-      </description>
+      <description> xsl:result-document in temporary output state: allowed in 3.0 </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
       <environment ref="result-document-113"/>
@@ -1990,11 +2161,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <assert>/c='rrr'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1134">
-      <description>
-         xsl:result-document in temporary output state: allowed in 3.0
-      </description>
+      <description> xsl:result-document in temporary output state: allowed in 3.0 </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
       <environment ref="result-document-113"/>
@@ -2008,11 +2177,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <assert>/d/comment()='rrr'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1135">
-      <description>
-         xsl:result-document in temporary output state: allowed in 3.0
-      </description>
+      <description> xsl:result-document in temporary output state: allowed in 3.0 </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
       <environment ref="result-document-113"/>
@@ -2026,11 +2193,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <assert>/e/processing-instruction() = 'rrr'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1136">
-      <description>
-         xsl:result-document in temporary output state: allowed in 3.0
-      </description>
+      <description> xsl:result-document in temporary output state: allowed in 3.0 </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <modified by="Michael Kay" on="2014-08-21" change="now allowed in XSLT 3.0"/>
       <environment ref="result-document-113"/>
@@ -2044,11 +2209,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <assert>/f/namespace::n = 'rrr'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1137">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -2061,11 +2224,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1138">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -2078,11 +2239,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1139">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -2095,11 +2254,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1140">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -2112,11 +2269,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1141">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -2129,11 +2284,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1142">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -2146,11 +2299,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1143">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -2163,11 +2314,9 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1144">
-      <description>
-         xsl:result-document in temporary output state
-      </description>
+      <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
       <environment ref="result-document-113"/>
       <dependencies>
@@ -2180,48 +2329,57 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <error code="XTDE1480"/>
       </result>
    </test-case>
-   
-   
-   
+
+
+
    <test-case name="result-document-1201">
-      <description>Test AVT in @standalone of xsl:result-document, which evaluates to " true ".</description>
+      <description>Test AVT in @standalone of xsl:result-document, which evaluates to " true
+         ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0703.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml\s+version="1.0"\s+encoding="UTF-8"\s+standalone="yes"\?>\s*<out>hello</out>]]></serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1202">
-      <description>Test AVT in @omit-xml-declaration of xsl:result-document, which evaluates to " true ".</description>
+      <description>Test AVT in @omit-xml-declaration of xsl:result-document, which evaluates to "
+         true ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0702.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xml"><![CDATA[<out>hello</out>]]></assert-serialization>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1203">
-      <description>Test AVT in @byte-order-mark of xsl:result-document, which evaluates to " true ".</description>
+      <description>Test AVT in @byte-order-mark of xsl:result-document, which evaluates to " true
+         ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-1203.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -2229,58 +2387,69 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
             <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
             <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
             <serialization-matches>^&#xfeff;</serialization-matches>
-         </all-of>  
+         </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1204">
-      <description>Test AVT in @escape-uri-attributes of xsl:result-document, which evaluates to " true ".</description>
+      <description>Test AVT in @escape-uri-attributes of xsl:result-document, which evaluates to "
+         true ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-1204.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>  
+         <serialization-matches>href=["']http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y["']</serialization-matches>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1205">
-      <description>Test AVT in @include-content-type of xsl:result-document, which evaluates to " true ".</description>
+      <description>Test AVT in @include-content-type of xsl:result-document, which evaluates to "
+         true ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-1205.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
-            <serialization-matches flags="i"><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
             <serialization-matches><![CDATA[="Content-Type"]]></serialization-matches>
-            <serialization-matches flags="i"><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
             <serialization-matches><![CDATA[="application/xhtml-xml; charset=UTF-8"]]></serialization-matches>
             <serialization-matches><![CDATA[<HEAD>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</HEAD>]]></serialization-matches>
-         </all-of>  
+         </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="result-document-1206">
-      <description>Test AVT in @indent of xsl:result-document, which evaluates to " true ".</description>
+      <description>Test AVT in @indent of xsl:result-document, which evaluates to " true
+         ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-1206.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
       </result>
-   </test-case>  
+   </test-case>
 </test-set>

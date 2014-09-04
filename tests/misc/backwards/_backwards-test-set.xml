@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="backwards">
-   
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="backwards">
+
    <description>Tests backwards compatibility with XSLT 1.0</description>
-   
+
    <environment name="backwards006">
       <source role=".">
          <content><![CDATA[<data><item>1.00</item><item>2.00</item><item>1</item><item>2</item></data>]]></content>
       </source>
    </environment>
-   
+
    <environment name="backwards072">
       <source role=".">
          <content><![CDATA[<root>
@@ -20,7 +19,7 @@
 </root>]]></content>
       </source>
    </environment>
-   
+
    <environment name="backwards073">
       <source role=".">
          <content><![CDATA[<apply>
@@ -37,7 +36,7 @@
 </apply>]]></content>
       </source>
    </environment>
-   
+
    <dependencies>
       <feature value="backwards_compatibility"/>
    </dependencies>
@@ -302,12 +301,14 @@
    <test-case name="backwards-018">
       <description>effect of BC on default output method</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="backwards-018.xsl"/>
          <initial-template name="main"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -321,12 +322,14 @@
       <description>effect of BC on default output method</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-04-28" change="correct expected results"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="backwards-019.xsl"/>
          <initial-template name="main"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches>file:///My D&#xf8;cuments/page.html</serialization-matches>
@@ -589,7 +592,8 @@
    </test-case>
 
    <test-case name="backwards-037">
-      <description>Backwards compatibility mode with simplified stylesheet, version=+1.99999</description>
+      <description>Backwards compatibility mode with simplified stylesheet,
+         version=+1.99999</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="backwards006"/>
       <dependencies>
@@ -619,7 +623,8 @@
    </test-case>
 
    <test-case name="backwards-039">
-      <description>effect of BC on xsl:key and key() function; two key definitions, same name, one in 1.0 mode one in 2.0 mode.</description>
+      <description>effect of BC on xsl:key and key() function; two key definitions, same name, one
+         in 1.0 mode one in 2.0 mode.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2012-11-27" change="See bug 20102"/>
       <environment ref="backwards006"/>
@@ -669,7 +674,9 @@
    </test-case>
 
    <test-case name="backwards-042">
-      <description>In range expressions, (M to N), standard function conversion rules apply, which means that in BC mode, M or N can be a sequence of integers, and the first-item rule holds. See spec bugzilla entry 7424.</description>
+      <description>In range expressions, (M to N), standard function conversion rules apply, which
+         means that in BC mode, M or N can be a sequence of integers, and the first-item rule holds.
+         See spec bugzilla entry 7424.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="backwards006"/>
       <dependencies>
@@ -684,7 +691,8 @@
    </test-case>
 
    <test-case name="backwards-043">
-      <description>effect of BC on xsl:key and key() function; two key definitions, same name, one in 1.0 mode one in 2.0 mode.</description>
+      <description>effect of BC on xsl:key and key() function; two key definitions, same name, one
+         in 1.0 mode one in 2.0 mode.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="backwards072"/>
       <dependencies>
