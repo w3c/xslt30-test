@@ -562,12 +562,14 @@
    <test-case name="function-0501">
       <description>test case for bug https://sourceforge.net/tracker/index.php?func=detail&amp;aid=553347&amp;group_id=29872&amp;atid=397617 (Context not reset on return from a call to a stylesheet function)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
       <environment ref="function-05"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="function-0501.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="html" file="func17.out"/>
@@ -607,12 +609,14 @@
    <test-case name="function-0701">
       <description>XSLT stylesheet to perform a knight's tour of the chessboard. Author: Michael H. Kay Date: 15 November 2002 This version modified to use XSLT 2.0 and XPath 2.0, with sequences and functions. Type declarations added in Nov 2002 version. This stylesheet can be run using any XML file as a dummy source document. There is an optional parameter, start, which can be set to any square on the chessboard, e.g. a3 or h5. By default the tour starts at a1. The output is an HTML display of the completed tour. Internally, the following data representations are used: * A square on the chessboard: represented as a number in the range 0 to 63 * A state of the chessboard: a sequence of 64 integers, each containing a move number. A square that has not been visited yet is represented by a zero. * A set of possible moves: represented as a sequence of integers, * each integer representing the number of the destination square start-column is an integer in the range 0-7 start-row is an integer in the range 0-7, with zero at the top This template controls the processing. It does not access the source document.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
       <environment ref="function-07"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="function-0701.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="html" file="func20.out"/>

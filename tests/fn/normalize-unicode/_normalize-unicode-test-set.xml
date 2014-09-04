@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="normalize-unicode">
-   
-   <description>
-      Test the fn:normalize-unicode() function introduced in XPath 2.0,
-      together with the normalization-form option on serialization.
-   </description>
-   
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="normalize-unicode">
+
+   <description> Test the fn:normalize-unicode() function introduced in XPath 2.0, together with the
+      normalization-form option on serialization. </description>
+
    <environment name="unicode001">
       <source role="." file="unicode001.xml"/>
    </environment>
 
    <test-case name="normalize-unicode-001">
-      <description>test normalize-unicode() default normalization form, trivial examples</description>
+      <description>test normalize-unicode() default normalization form, trivial
+         examples</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -35,7 +33,8 @@
    </test-case>
 
    <test-case name="normalize-unicode-002">
-      <description>test normalize-unicode() explicit NFC normalization form, trivial examples</description>
+      <description>test normalize-unicode() explicit NFC normalization form, trivial
+         examples</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -57,7 +56,8 @@
    </test-case>
 
    <test-case name="normalize-unicode-003">
-      <description>test normalize-unicode() explicit NFD normalization form, trivial examples</description>
+      <description>test normalize-unicode() explicit NFD normalization form, trivial
+         examples</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -75,12 +75,13 @@
             <assert>/out/a[4] = "9 10 13"</assert>
             <assert>/out/a[5] = "Straßenu&#776;berfu&#776;hrung"</assert>
             <assert>/out/a[6] = "83 116 114 97 223 101 110 117 776 98 101 114 102 117 776 104 114 117 110 103"</assert>
-         </all-of>   
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="normalize-unicode-004">
-      <description>test normalize-unicode() explicit NFKC normalization form, trivial examples</description>
+      <description>test normalize-unicode() explicit NFKC normalization form, trivial
+         examples</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -98,12 +99,13 @@
             <assert>/out/a[4] = "9 10 13"</assert>
             <assert>/out/a[5] = "Straßenüberführung"</assert>
             <assert>/out/a[6] = "83 116 114 97 223 101 110 252 98 101 114 102 252 104 114 117 110 103"</assert>
-         </all-of>  
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="normalize-unicode-005">
-      <description>test normalize-unicode() explicit NFKD normalization form, trivial examples</description>
+      <description>test normalize-unicode() explicit NFKD normalization form, trivial
+         examples</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -126,7 +128,8 @@
    </test-case>
 
    <test-case name="normalize-unicode-006">
-      <description>test normalize-unicode() test all normalization forms on a string containing a mixture of different forms</description>
+      <description>test normalize-unicode() test all normalization forms on a string containing a
+         mixture of different forms</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -142,7 +145,8 @@
    </test-case>
 
    <test-case name="normalize-unicode-007">
-      <description>test normalize-unicode() test all normalization forms on a string containing a mixture of different forms</description>
+      <description>test normalize-unicode() test all normalization forms on a string containing a
+         mixture of different forms</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -161,7 +165,11 @@
    </test-case>
 
    <test-case name="normalize-unicode-008">
-      <description>This test applies the normalize-unicode() function to the normalization conformance test published by the Unicode Consortium. If successful, no &lt;failure&gt; elements are output. For details of the test, see NormalizationTest.txt. The test has been modified to avoid using characters that are illegal in XML. e.g. 0055 030C e.g. 030C</description>
+      <description>This test applies the normalize-unicode() function to the normalization
+         conformance test published by the Unicode Consortium. If successful, no &lt;failure&gt;
+         elements are output. For details of the test, see NormalizationTest.txt. The test has been
+         modified to avoid using characters that are illegal in XML. e.g. 0055 030C e.g.
+         030C</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -177,7 +185,8 @@
    </test-case>
 
    <test-case name="normalize-unicode-009">
-      <description>test normalize-unicode() test Latin Capital D with dot above 1E0B;1E0B;0064 0307;1E0B;0064 0307;</description>
+      <description>test normalize-unicode() test Latin Capital D with dot above 1E0B;1E0B;0064
+         0307;1E0B;0064 0307;</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="unicode001"/>
       <dependencies>
@@ -195,12 +204,14 @@
    <test-case name="normalize-unicode-010">
       <description>trivial test of normalized output (NFC)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-010.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -213,6 +224,7 @@
    <test-case name="normalize-unicode-011">
       <description>trivial test of normalized output (xml, NFD)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -220,6 +232,7 @@
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-011.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -232,6 +245,7 @@
    <test-case name="normalize-unicode-012">
       <description>trivial test of normalized output (xml, NFKC)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -239,6 +253,7 @@
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-012.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -251,6 +266,7 @@
    <test-case name="normalize-unicode-013">
       <description>trivial test of normalized output (xml, NFKD)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -258,6 +274,7 @@
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-013.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -270,6 +287,7 @@
    <test-case name="normalize-unicode-014">
       <description>trivial test of normalized output (html, NFKD)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -277,14 +295,17 @@
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-014.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<p class="en">The quick brown fox</p>]]></serialization-matches>
             <serialization-matches>Straßenu&#x308;berfu&#x308;hrung</serialization-matches>
-            <serialization-matches>&lt;p class="de"&gt;&lt;span class="u&#x308;ss"&gt;u&#x308;ß&lt;/span&gt;Straßenu&#x308;berfu&#x308;hrung</serialization-matches>
-            <serialization-matches>&lt;p class="de"&gt;&lt;span class="u&#x308;ss"&gt;u&#x308;ss&lt;/span&gt;Straßenu&#x308;berfu&#x308;hrung</serialization-matches>
-            <serialization-matches><![CDATA[<p class="ffi"><span class="ffi">ffi</span>Affinity]]></serialization-matches>            
+            <serialization-matches>&lt;p class="de"&gt;&lt;span
+               class="u&#x308;ss"&gt;u&#x308;ß&lt;/span&gt;Straßenu&#x308;berfu&#x308;hrung</serialization-matches>
+            <serialization-matches>&lt;p class="de"&gt;&lt;span
+               class="u&#x308;ss"&gt;u&#x308;ss&lt;/span&gt;Straßenu&#x308;berfu&#x308;hrung</serialization-matches>
+            <serialization-matches><![CDATA[<p class="ffi"><span class="ffi">ffi</span>Affinity]]></serialization-matches>
          </all-of>
       </result>
    </test-case>
@@ -292,6 +313,7 @@
    <test-case name="normalize-unicode-015">
       <description>trivial test of normalized output (uncommited method, NFKD)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -299,13 +321,16 @@
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-015.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
             <serialization-matches><![CDATA[<p>The quick brown fox</p>]]></serialization-matches>
             <serialization-matches>Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
-            <serialization-matches>&lt;p norm="c" üss="u&amp;#x308;ß">Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
-            <serialization-matches>&lt;p norm="d" üss="u&amp;#x308;ss">Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
+            <serialization-matches>&lt;p norm="c"
+               üss="u&amp;#x308;ß">Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
+            <serialization-matches>&lt;p norm="d"
+               üss="u&amp;#x308;ss">Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
             <serialization-matches><![CDATA[<p norm="kc" ffi="ffi">Affinity]]></serialization-matches>
          </all-of>
       </result>
@@ -314,12 +339,14 @@
    <test-case name="normalize-unicode-016">
       <description>trivial test of normalized output (XHTML, result-document, NFC)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-016.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -335,32 +362,38 @@
    <test-case name="normalize-unicode-017">
       <description>trivial test of normalization-form="none"</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-017.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <!-- TODO: should be a serialization test -->
-         <assert-xml file="normalize-unicode-017.out"/>
+         <!--<assert-xml file="normalize-unicode-017.out"/>-->
+         <assert-serialization file="normalize-unicode-018.out"/>
       </result>
    </test-case>
 
    <test-case name="normalize-unicode-018">
       <description>trivial test of normalization-form="none"</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-018.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <!-- TODO: should be a serialization test -->
-         <assert-xml file="normalize-unicode-018.out"/>
+         <!--<assert-xml file="normalize-unicode-018.out"/>-->
+         <assert-serialization file="normalize-unicode-018.out"/>
       </result>
    </test-case>
 </test-set>

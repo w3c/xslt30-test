@@ -1225,6 +1225,7 @@
    <test-case name="expression-2101">
       <description>BUG in 7.6.5 and earlier - wrong optimization causes different results being output BUG 2 - colon (':') is not an alphanumeric character</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc xmlns:ns="http://some_ns/" ns:att="att value"/>]]></content>
@@ -1236,6 +1237,7 @@
       </dependencies>
       <test>
          <stylesheet file="expression-2101.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="expression-2101.out"/>

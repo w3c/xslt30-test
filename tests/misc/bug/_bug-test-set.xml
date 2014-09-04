@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="bug">
-   <description>A collection of miscellaneous tests garnered from interesting bug reports</description>
-   
-   
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="bug">
+   <description>A collection of miscellaneous tests garnered from interesting bug
+      reports</description>
+
+
    <environment name="bug-03">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
-   
+
    <environment name="bug-05">
       <source role="." file="bug-05.xml"/>
    </environment>
-   
+
    <environment name="bug-12">
       <source role=".">
          <content><![CDATA[<source_document/>]]></content>
       </source>
    </environment>
-   
+
    <environment name="bug-14">
       <source role=".">
          <content><![CDATA[<bar>
@@ -28,14 +28,14 @@
 </bar>]]></content>
       </source>
    </environment>
-    
+
    <environment name="bug-18">
       <source role=".">
          <content><![CDATA[<foo xmlns="http://pre.uri/" />]]></content>
       </source>
    </environment>
-   
-   
+
+
    <environment name="bug-21">
       <source role=".">
          <content><![CDATA[<document>
@@ -45,7 +45,7 @@
 ]]></content>
       </source>
    </environment>
-    
+
    <environment name="bug-25">
       <source role=".">
          <content><![CDATA[<list>
@@ -57,7 +57,7 @@
 </list>]]></content>
       </source>
    </environment>
-   
+
    <environment name="bug-27">
       <source role=".">
          <content><![CDATA[<xxx>
@@ -69,15 +69,15 @@
       <source file="xbug45a.xml" uri="xbug45a.xml"/>
       <source file="xbug45b.xml" uri="xbug45b.xml"/>
    </environment>
-   
+
    <environment name="bug-31">
       <source role="." file="bug-31.xml"/>
    </environment>
-   
+
    <environment name="bug-47">
       <source role="." file="bug-47.xml"/>
    </environment>
-   
+
    <environment name="bug-53">
       <source role=".">
          <content><![CDATA[<a>
@@ -87,7 +87,7 @@
 </a>]]></content>
       </source>
    </environment>
-  
+
    <environment name="bug-58">
       <source role=".">
          <content><![CDATA[<a>
@@ -141,7 +141,8 @@
    </test-case>
 
    <test-case name="bug-0301">
-      <description>BUG: Saxon 5.3/003 DESCRIPTION: The attribute &lt;b&gt;[xsl:]exclude-result-prefixes="#default"&lt;/b&gt; has no effect.</description>
+      <description>BUG: Saxon 5.3/003 DESCRIPTION: The attribute
+         &lt;b&gt;[xsl:]exclude-result-prefixes="#default"&lt;/b&gt; has no effect.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-03"/>
       <dependencies>
@@ -157,7 +158,10 @@
    </test-case>
 
    <test-case name="bug-0302">
-      <description>BUG: Saxon 5.3/003 DESCRIPTION: The attribute &lt;b&gt;[xsl:]exclude-result-prefixes="#default"&lt;/b&gt; has no effect. NOTE: Expected results changed 2011-06-01 as a consequence of erratum XT.E37: see member bugzilla 931</description>
+      <description>BUG: Saxon 5.3/003 DESCRIPTION: The attribute
+         &lt;b&gt;[xsl:]exclude-result-prefixes="#default"&lt;/b&gt; has no effect. NOTE: Expected
+         results changed 2011-06-01 as a consequence of erratum XT.E37: see member bugzilla
+         931</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-03"/>
       <dependencies>
@@ -172,7 +176,8 @@
    </test-case>
 
    <test-case name="bug-0303">
-      <description>BUG: Saxon 5.2/020 DESCRIPTION: xsl:namespace-alias must come before the relevant xsl:template elements</description>
+      <description>BUG: Saxon 5.2/020 DESCRIPTION: xsl:namespace-alias must come before the relevant
+         xsl:template elements</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-03"/>
       <dependencies>
@@ -188,16 +193,18 @@
    </test-case>
 
    <test-case name="bug-0304">
-      <description>BUG: Saxon 5.3/007 DESCRIPTION: The HTML output method occasionally applies URL 
-      escaping to an attribute that is not a URL, for example (with the Microsoft JVM) it does so 
-      with &lt;h2 style="clear: all"&gt;.</description>
+      <description>BUG: Saxon 5.3/007 DESCRIPTION: The HTML output method occasionally applies URL
+         escaping to an attribute that is not a URL, for example (with the Microsoft JVM) it does so
+         with &lt;h2 style="clear: all"&gt;.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
       <environment ref="bug-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="bug-0304.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="html" file="bug07.out"/>
@@ -205,8 +212,8 @@
    </test-case>
 
    <test-case name="bug-0305">
-      <description>BUG: Saxon 5.3.2/001 DESCRIPTION: test recovery action when outputting element nodes 
-      into attributes, comments, and PIs</description>
+      <description>BUG: Saxon 5.3.2/001 DESCRIPTION: test recovery action when outputting element
+         nodes into attributes, comments, and PIs</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-03"/>
       <dependencies>
@@ -224,7 +231,9 @@
    </test-case>
 
    <test-case name="bug-0401">
-      <description>BUG: Saxon 5.3/004 DESCRIPTION: The priorities of the components in a union pattern may be calculated incorrectly, for example in the pattern "text() | *" both components are given priority +0.5 instead of -0.5.</description>
+      <description>BUG: Saxon 5.3/004 DESCRIPTION: The priorities of the components in a union
+         pattern may be calculated incorrectly, for example in the pattern "text() | *" both
+         components are given priority +0.5 instead of -0.5.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -243,7 +252,8 @@
    </test-case>
 
    <test-case name="bug-0501">
-      <description>BUG: Saxon 5.2/021 DESCRIPTION: Every element should have a namespace node for the "xml" namespace. It doesn't. for reproducible results</description>
+      <description>BUG: Saxon 5.2/021 DESCRIPTION: Every element should have a namespace node for
+         the "xml" namespace. It doesn't. for reproducible results</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-05"/>
       <dependencies>
@@ -262,9 +272,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-0502">
-      <description>
-         BUG: Saxon 5.3/009 DESCRIPTION: The parent of a namespace node is the element on which the namespace was declared, 
-         not the element on whose namespace axis the namespace node lies.</description>
+      <description> BUG: Saxon 5.3/009 DESCRIPTION: The parent of a namespace node is the element on
+         which the namespace was declared, not the element on whose namespace axis the namespace
+         node lies.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-05"/>
       <dependencies>
@@ -367,7 +377,11 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-0601">
-      <description>Preprocessor for the Schematron XML Schema Language. BUG: Saxon 5.3/005 and 5.3/008 DESCRIPTION: 5.3/005: If xml:namespace-alias is used in an included or imported stylesheet module, it is ignored. 5.3/008: When xsl:copy-of is used to copy a result tree fragment to the final tree, no attempt is made to remove redundant namespace declarations.</description>
+      <description>Preprocessor for the Schematron XML Schema Language. BUG: Saxon 5.3/005 and
+         5.3/008 DESCRIPTION: 5.3/005: If xml:namespace-alias is used in an included or imported
+         stylesheet module, it is ignored. 5.3/008: When xsl:copy-of is used to copy a result tree
+         fragment to the final tree, no attempt is made to remove redundant namespace
+         declarations.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2012-12-11" change="Removed whitespace from expected result"/>
       <environment>
@@ -386,10 +400,11 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-0701">
-      <description>BUG: Saxon 5.3.1/002 DESCRIPTION: Text content may be lost when xsl:copy-of is used to copy from a result tree 
-        fragment to an output destination defined with method="html" indent="yes".
-       </description>
+      <description>BUG: Saxon 5.3.1/002 DESCRIPTION: Text content may be lost when xsl:copy-of is
+         used to copy from a result tree fragment to an output destination defined with
+         method="html" indent="yes". </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<page-items>
@@ -404,6 +419,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-0701.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="html" file="bug-0701.out"/>
@@ -411,9 +427,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-0801">
-      <description>BUG: Saxon 5.3.1/003 DESCRIPTION: Under certain conditions passing a parameter in xsl:with-param 
-        that is a node-set-expression containing a variable reference will fail when the parameter value is referenced.
-      </description>
+      <description>BUG: Saxon 5.3.1/003 DESCRIPTION: Under certain conditions passing a parameter in
+         xsl:with-param that is a node-set-expression containing a variable reference will fail when
+         the parameter value is referenced. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -436,7 +452,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-0901">
-      <description>BUG: Saxon 5.3.1/004 DESCRIPTION: When a template calls itself recursively within an xsl:for-each instruction, tail recursion is invoked but doesn't work correctly. The effect is that the loop is obeyed only once and with the wrong current node.</description>
+      <description>BUG: Saxon 5.3.1/004 DESCRIPTION: When a template calls itself recursively within
+         an xsl:for-each instruction, tail recursion is invoked but doesn't work correctly. The
+         effect is that the loop is obeyed only once and with the wrong current node.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="bug-09.xml"/>
@@ -454,7 +472,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1001">
-      <description>BUG: Saxon 5.3.1/005 DESCRIPTION: A union expression whose operands are individual attribute nodes of the same element is evaluated incorrectly. For example count(@a | @b) returns 1. The attributes are wrongly regarded as duplicate nodes.</description>
+      <description>BUG: Saxon 5.3.1/005 DESCRIPTION: A union expression whose operands are
+         individual attribute nodes of the same element is evaluated incorrectly. For example
+         count(@a | @b) returns 1. The attributes are wrongly regarded as duplicate
+         nodes.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2012-12-10" change="Removed whitespace from expected result"/>
       <environment>
@@ -474,7 +495,12 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1101">
-      <description>BUG: Saxon 5.3.1/006 DESCRIPTION: When a namespace is excluded from the result tree using xsl:exclude-result-prefixes, but is then used on a literal result element, the request to exclude it should be ignored, to ensure that the result is well-formed XML following the Namespace rules. Currently the request to exclude the namespace is ignored if the namespace is used on the element containing the xsl:exclude-result-prefixes attribute, but not if it is used on an inner element.</description>
+      <description>BUG: Saxon 5.3.1/006 DESCRIPTION: When a namespace is excluded from the result
+         tree using xsl:exclude-result-prefixes, but is then used on a literal result element, the
+         request to exclude it should be ignored, to ensure that the result is well-formed XML
+         following the Namespace rules. Currently the request to exclude the namespace is ignored if
+         the namespace is used on the element containing the xsl:exclude-result-prefixes attribute,
+         but not if it is used on an inner element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2012-12-10" change="Removed whitespace from expected result"/>
       <environment>
@@ -494,7 +520,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1201">
-      <description>BUG 5.3.1/007 DESCRIPTION: When a number is converted to a string, XPath requires that "after the decimal point there must be as many, but only as many, more digits as are needed to uniquely distinguish the number from all other IEEE 754 numeric values". Saxon may display more digits than this. NOTE: the rules have changed in XPath 2.0</description>
+      <description>BUG 5.3.1/007 DESCRIPTION: When a number is converted to a string, XPath requires
+         that "after the decimal point there must be as many, but only as many, more digits as are
+         needed to uniquely distinguish the number from all other IEEE 754 numeric values". Saxon
+         may display more digits than this. NOTE: the rules have changed in XPath 2.0</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-12"/>
       <dependencies>
@@ -511,11 +540,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1202">
-      <description>
-         BUG: Saxon 5.3.1/009 DESCRIPTION: disable-output-escaping="yes" has no effect when writing to a result tree fragment. 
-         Test whether disable-output-escaping is "sticky"
-      </description>
+      <description> BUG: Saxon 5.3.1/009 DESCRIPTION: disable-output-escaping="yes" has no effect
+         when writing to a result tree fragment. Test whether disable-output-escaping is "sticky" </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="bug-12"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -523,6 +551,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-1202.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -539,6 +568,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    <test-case name="bug-1301">
       <description>BUG: not a bug, as it turned out. Tests numeric sorting.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role="." file="bug-13.xml"/>
       </environment>
@@ -547,6 +577,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-1301.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="html" file="bug18.out"/>
@@ -554,7 +585,13 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1401">
-      <description>test that exclude-result-prefixes is ignored if the prefix is actually used BUG: Saxon 5.3.1/006 DESCRIPTION: When a namespace is excluded from the result tree using xsl:exclude-result-prefixes, but is then used on a literal result element, the request to exclude it should be ignored, to ensure that the result is well-formed XML following the Namespace rules. Currently the request to exclude the namespace is ignored if the namespace is used on the element containing the xsl:exclude-result-prefixes attribute, but not if it is used on an inner element.</description>
+      <description>test that exclude-result-prefixes is ignored if the prefix is actually used BUG:
+         Saxon 5.3.1/006 DESCRIPTION: When a namespace is excluded from the result tree using
+         xsl:exclude-result-prefixes, but is then used on a literal result element, the request to
+         exclude it should be ignored, to ensure that the result is well-formed XML following the
+         Namespace rules. Currently the request to exclude the namespace is ignored if the namespace
+         is used on the element containing the xsl:exclude-result-prefixes attribute, but not if it
+         is used on an inner element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-14"/>
       <dependencies>
@@ -569,7 +606,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1402">
-      <description>Test that xsl:message output containing XML markup is handled correctly</description>
+      <description>Test that xsl:message output containing XML markup is handled
+         correctly</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-14"/>
       <dependencies>
@@ -589,7 +627,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1403">
-      <description>BUG: Saxon 5.3.2/002 DESCRIPTION: If an element node is output while instantiating the content of xsl:attribute, no error is reported, the tag is output incorrectly in escaped form.</description>
+      <description>BUG: Saxon 5.3.2/002 DESCRIPTION: If an element node is output while
+         instantiating the content of xsl:attribute, no error is reported, the tag is output
+         incorrectly in escaped form.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-14"/>
       <dependencies>
@@ -604,7 +644,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1404">
-      <description>BUG: Saxon 5.3.2/003 DESCRIPTION: If an element node is output while instantiating the content of xsl:comment or xsl:processing-instruction, the element node and its content should be ignored. The element node is ignored but its content is output.</description>
+      <description>BUG: Saxon 5.3.2/003 DESCRIPTION: If an element node is output while
+         instantiating the content of xsl:comment or xsl:processing-instruction, the element node
+         and its content should be ignored. The element node is ignored but its content is
+         output.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-14"/>
       <dependencies>
@@ -619,7 +662,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1405">
-      <description>BUG: Saxon 5.3.2/005 DESCRIPTION: If an element node is output when the output method is text, the markup should be suppressed but this is not done correctly. test generating elements and other nodes with method="text"</description>
+      <description>BUG: Saxon 5.3.2/005 DESCRIPTION: If an element node is output when the output
+         method is text, the markup should be suppressed but this is not done correctly. test
+         generating elements and other nodes with method="text"</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-14"/>
       <dependencies>
@@ -627,6 +672,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-1405.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="bug25.out"/>
@@ -634,17 +680,18 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1406">
-      <description>
-         BUG: Saxon 5.3.2/009 DESCRIPTION: If the output method is not specified explicitly, special characters 
-         such as "&lt;" that are output before the first element start tag are not escaped.
-      </description>
+      <description> BUG: Saxon 5.3.2/009 DESCRIPTION: If the output method is not specified
+         explicitly, special characters such as "&lt;" that are output before the first element
+         start tag are not escaped. </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="bug-14"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
          <stylesheet file="bug-1406.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[This text contains escaped characters &lt; and &gt;]]></serialization-matches>
@@ -652,7 +699,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1501">
-      <description>test copying an attribute in non-default namespace (5.3.2/004) test generates two attributes with same prefix but different URI; one prefix must change</description>
+      <description>test copying an attribute in non-default namespace (5.3.2/004) test generates two
+         attributes with same prefix but different URI; one prefix must change</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -674,7 +722,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1601">
-      <description>BUG: Saxon 5.3.2/004 DESCRIPTION: If an attribute node is copied using xsl:copy or xsl:copy-of, and it is in a non-default namespace, the result file may contain a reference to a namespace that is not declared.</description>
+      <description>BUG: Saxon 5.3.2/004 DESCRIPTION: If an attribute node is copied using xsl:copy
+         or xsl:copy-of, and it is in a non-default namespace, the result file may contain a
+         reference to a namespace that is not declared.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -696,8 +746,11 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1701">
-      <description>BUG: Saxon 5.3.2/012 DESCRIPTION: The count() function, when applied to a node-set expressed as a filter expression, may give the wrong answer: specifically, it gives the number of nodes before applying the predicates.</description>
+      <description>BUG: Saxon 5.3.2/012 DESCRIPTION: The count() function, when applied to a
+         node-set expressed as a filter expression, may give the wrong answer: specifically, it
+         gives the number of nodes before applying the predicates.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role="." file="bug-17.xml"/>
       </environment>
@@ -706,6 +759,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-1701.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="html" file="bug29.out"/>
@@ -713,7 +767,11 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1801">
-      <description>BUG: Saxon 5.3.2/014 DESCRIPTION: When an element is output to the result tree, and its name uses the default namespace prefix and a null namespace URI, but where the result tree contains an ancestor element in which the default namespace prefix is assigned to a non-null namespace URI, a namespace undeclaration (xmlns="") should be output, but isn't.</description>
+      <description>BUG: Saxon 5.3.2/014 DESCRIPTION: When an element is output to the result tree,
+         and its name uses the default namespace prefix and a null namespace URI, but where the
+         result tree contains an ancestor element in which the default namespace prefix is assigned
+         to a non-null namespace URI, a namespace undeclaration (xmlns="") should be output, but
+         isn't.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-18"/>
       <dependencies>
@@ -728,7 +786,11 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1802">
-      <description>BUG: Saxon 5.3.2/014 DESCRIPTION: When an element is output to the result tree, and its name uses the default namespace prefix and a null namespace URI, but where the result tree contains an ancestor element in which the default namespace prefix is assigned to a non-null namespace URI, a namespace undeclaration (xmlns="") should be output, but isn't.</description>
+      <description>BUG: Saxon 5.3.2/014 DESCRIPTION: When an element is output to the result tree,
+         and its name uses the default namespace prefix and a null namespace URI, but where the
+         result tree contains an ancestor element in which the default namespace prefix is assigned
+         to a non-null namespace URI, a namespace undeclaration (xmlns="") should be output, but
+         isn't.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-18"/>
       <dependencies>
@@ -743,7 +805,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-1901">
-      <description>BUG: Turned out not to be a bug Create output document template Generate glossary Process one gi-def for glossary output</description>
+      <description>BUG: Turned out not to be a bug Create output document template Generate glossary
+         Process one gi-def for glossary output</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2012-12-10" change="Removed whitespace from expected result"/>
       <modified by="Tim Mills" on="2012-12-10" change="Removed meta tag from expected result"/>
@@ -762,7 +825,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2001">
-      <description>BUG: Saxon 5.3.2/016 DESCRIPTION: A null pointer exception occurs if a local variable is declared within the template-body of a global variable declaration.</description>
+      <description>BUG: Saxon 5.3.2/016 DESCRIPTION: A null pointer exception occurs if a local
+         variable is declared within the template-body of a global variable
+         declaration.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="bug-20.xml"/>
@@ -780,7 +845,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2101">
-      <description>BUG: 5.3.2/020 DESCRIPTION: When Saxon is used with Xerces (or any other SAX2 parser that does not internalize strings by default), attribute names used in a match pattern may go unrecognized.</description>
+      <description>BUG: 5.3.2/020 DESCRIPTION: When Saxon is used with Xerces (or any other SAX2
+         parser that does not internalize strings by default), attribute names used in a match
+         pattern may go unrecognized.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-21"/>
       <dependencies>
@@ -798,7 +865,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2102">
-      <description>BUG: Saxon 5.3.2/002 DESCRIPTION: Conversion of a result-tree-fragment to a boolean is done incorrectly. The result should always be true; Saxon returns false if the result of converting the result tree fragment to a string is zero-length. result of RTF to boolean conversion (should always be true)</description>
+      <description>BUG: Saxon 5.3.2/002 DESCRIPTION: Conversion of a result-tree-fragment to a
+         boolean is done incorrectly. The result should always be true; Saxon returns false if the
+         result of converting the result tree fragment to a string is zero-length. result of RTF to
+         boolean conversion (should always be true)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-21"/>
       <dependencies>
@@ -813,8 +883,12 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2201">
-      <description>nspace.xsl XSLT 1.0 - http://www.CraneSoftwrights.com/training BUG: Saxon 5.3.2/018 DESCRIPTION: In a location path using the namespace axis with a name test, for example namespace::x, all the namespace nodes are returned in the result, whether or not their name matches "x".</description>
+      <description>nspace.xsl XSLT 1.0 - http://www.CraneSoftwrights.com/training BUG: Saxon
+         5.3.2/018 DESCRIPTION: In a location path using the namespace axis with a name test, for
+         example namespace::x, all the namespace nodes are returned in the result, whether or not
+         their name matches "x".</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role="." file="bug-22.xml"/>
       </environment>
@@ -824,6 +898,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-2201.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="bug36.out"/>
@@ -831,7 +906,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2301">
-      <description>BUG: Saxon 5.3.2/025 DESCRIPTION: When an attribute node is matched against the pattern "@prefix:*", a null pointer exception occurs.</description>
+      <description>BUG: Saxon 5.3.2/025 DESCRIPTION: When an attribute node is matched against the
+         pattern "@prefix:*", a null pointer exception occurs.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -852,7 +928,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    <test-case name="bug-2401">
       <description>BUG: proved not to be a bug at all</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Michael Kay" on="2012-12-11" change="use assertions to remove dependency on HTML serialization, see bug 20342"/>
+      <modified by="Michael Kay" on="2012-12-11"
+         change="use assertions to remove dependency on HTML serialization, see bug 20342"/>
       <environment>
          <source role="." file="bug-24.xml"/>
       </environment>
@@ -877,7 +954,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2501">
-      <description>BUG: Saxon 5.3.2/027 DESCRIPTION: When the current() function is used within the select expression of xsl:sort, it gives the wrong answer (the relevant node will be the context node, but not the current node). This results in an incorrect sort sequence.</description>
+      <description>BUG: Saxon 5.3.2/027 DESCRIPTION: When the current() function is used within the
+         select expression of xsl:sort, it gives the wrong answer (the relevant node will be the
+         context node, but not the current node). This results in an incorrect sort
+         sequence.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-25"/>
       <dependencies>
@@ -897,11 +977,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2502">
-      <description>
-         BUG: Saxon 5.4/002 DESCRIPTION: A call to "document('foo.xml', /)" fails with the message 
-         "No base URI available for resolving relative URI". The same error occurs with any other second 
-         argument that refers to the root node of the principal source document.
-      </description>
+      <description> BUG: Saxon 5.4/002 DESCRIPTION: A call to "document('foo.xml', /)" fails with
+         the message "No base URI available for resolving relative URI". The same error occurs with
+         any other second argument that refers to the root node of the principal source document. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-25"/>
       <dependencies>
@@ -961,7 +1039,12 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2702">
-      <description>BUG: Saxon 5.4/003 DESCRIPTION: If a top-level element with a non-null namespace URI appears in the stylesheet, and its namespace is designated as an extension element namespace, and Saxon does not recognize the namespace URI as one that identifies an extension element implementation, then Saxon will reject the element with an error. It should ignore it, because a top-level element can never be an extension element. Test top-level elements are ignored</description>
+      <description>BUG: Saxon 5.4/003 DESCRIPTION: If a top-level element with a non-null namespace
+         URI appears in the stylesheet, and its namespace is designated as an extension element
+         namespace, and Saxon does not recognize the namespace URI as one that identifies an
+         extension element implementation, then Saxon will reject the element with an error. It
+         should ignore it, because a top-level element can never be an extension element. Test
+         top-level elements are ignored</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-27"/>
       <dependencies>
@@ -976,7 +1059,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2703">
-      <description>BUG: Saxon 5.4/007 DESCRIPTION: When the parent axis is used on the right-hand side of a "/" operator, the node-set returned will never include the root node. For example, if the current node is the document element, the expression "./.." will return an empty node-set. (The problem does not occur if this is simplified to "..")</description>
+      <description>BUG: Saxon 5.4/007 DESCRIPTION: When the parent axis is used on the right-hand
+         side of a "/" operator, the node-set returned will never include the root node. For
+         example, if the current node is the document element, the expression "./.." will return an
+         empty node-set. (The problem does not occur if this is simplified to "..")</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-27"/>
       <dependencies>
@@ -1020,7 +1106,11 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-2901">
-      <description>Written by Santiago Pericas-Geertsen BUG: Saxon 5.4/007 DESCRIPTION: When the parent axis is used on the right-hand side of a "/" operator, the node-set returned will never include the root node. For example, if the current node is the document element, the expression "./.." will return an empty node-set. (The problem does not occur if this is simplified to "..")</description>
+      <description>Written by Santiago Pericas-Geertsen BUG: Saxon 5.4/007 DESCRIPTION: When the
+         parent axis is used on the right-hand side of a "/" operator, the node-set returned will
+         never include the root node. For example, if the current node is the document element, the
+         expression "./.." will return an empty node-set. (The problem does not occur if this is
+         simplified to "..")</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="bug-29.xml"/>
@@ -1037,8 +1127,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3001">
-      <description>BUG: Saxon DESCRIPTION: from http://www.zvon.org/xxl/XSLTreference/OutputExamples/example_8_87_frame.html</description>
+      <description>BUG: Saxon DESCRIPTION: from
+         http://www.zvon.org/xxl/XSLTreference/OutputExamples/example_8_87_frame.html</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
       <environment>
          <source role="." file="bug-30.xml"/>
       </environment>
@@ -1047,6 +1139,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-3001.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="bug51.out"/>
@@ -1054,7 +1147,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3101">
-      <description>XML Remote Processor Security Check Helper Stylesheet Author: Dimitre Novatchev (dnovatchev@yahoo.com) BUG: DESCRIPTION This is the only output produced</description>
+      <description>XML Remote Processor Security Check Helper Stylesheet Author: Dimitre Novatchev
+         (dnovatchev@yahoo.com) BUG: DESCRIPTION This is the only output produced</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-31"/>
       <dependencies>
@@ -1070,7 +1164,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3102">
-      <description>XML Remote Processor Security Check Helper Stylesheet Author: Dimitre Novatchev (dnovatchev@yahoo.com) BUG: DESCRIPTION Same as bug52 but without the explicit call on saxon:node-set()</description>
+      <description>XML Remote Processor Security Check Helper Stylesheet Author: Dimitre Novatchev
+         (dnovatchev@yahoo.com) BUG: DESCRIPTION Same as bug52 but without the explicit call on
+         saxon:node-set()</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-31"/>
       <dependencies>
@@ -1086,8 +1182,11 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3201">
-      <description>BUG: Saxon 5.4.1/007 DESCRIPTION: disable-output-escaping does not work correctly when applied to text output before the first start tag, unless xsl:output is used to set the output method explicitly.</description>
+      <description>BUG: Saxon 5.4.1/007 DESCRIPTION: disable-output-escaping does not work correctly
+         when applied to text output before the first start tag, unless xsl:output is used to set
+         the output method explicitly.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc/>]]></content>
@@ -1099,6 +1198,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-3201.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<output-escaping>content</output-escaping>]]></serialization-matches>
@@ -1106,7 +1206,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3301">
-      <description>BUG: Saxon 5.4.1/009 DESCRIPTION: An IndexOutOfBoundException occurs if the nesting depth of any element within a document (that is, the number of ancestors) exceeds 100.</description>
+      <description>BUG: Saxon 5.4.1/009 DESCRIPTION: An IndexOutOfBoundException occurs if the
+         nesting depth of any element within a document (that is, the number of ancestors) exceeds
+         100.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="bug-33.xml"/>
@@ -1128,7 +1230,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       <environment>
          <source role="." file="bug-34.xml"/>
       </environment>
-      
+
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -1143,6 +1245,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    <test-case name="bug-3501">
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role="." file="bug-35.xml"/>
       </environment>
@@ -1151,6 +1254,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </dependencies>
       <test>
          <stylesheet file="bug-3501.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="xhtml" file="bug57.out"/>
@@ -1158,7 +1262,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3601">
-      <description>BUG: not actually a bug DESCRIPTION: tests xsl:namespace-alias everything between the x:template tags is outputted to the new stylesheet Create the include lines???</description>
+      <description>BUG: not actually a bug DESCRIPTION: tests xsl:namespace-alias everything between
+         the x:template tags is outputted to the new stylesheet Create the include
+         lines???</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2012-12-10" change="Removed whitespace from expected result"/>
       <environment>
@@ -1178,7 +1284,9 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3701">
-      <description>BUG: Saxon 5.5/001 DESCRIPTION: An error occurs when a filter expression using the key() function is used as an argument to another function call within an XPath predicate.</description>
+      <description>BUG: Saxon 5.5/001 DESCRIPTION: An error occurs when a filter expression using
+         the key() function is used as an argument to another function call within an XPath
+         predicate.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2012-12-10" change="Removed whitespace from expected result"/>
       <environment>
@@ -1196,22 +1304,24 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-3801">
-      <description>
-         BUG: Saxon 5.5/002 DESCRIPTION: When the cdata-section-elements attribute of xsl:output is used, 
-         disable-output-escaping on xsl:text or xsl:value-of does not always work correctly.</description>
+      <description> BUG: Saxon 5.5/002 DESCRIPTION: When the cdata-section-elements attribute of
+         xsl:output is used, disable-output-escaping on xsl:text or xsl:value-of does not always
+         work correctly.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2012-12-11" change="use assert-serialization, see bug 20343"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc/>]]></content>
          </source>
-      </environment>      
+      </environment>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="disabling_output_escaping"/>
       </dependencies>
       <test>
          <stylesheet file="bug-3801.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization file="bug-3801.out"/>
@@ -1259,7 +1369,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4101">
-      <description>BUG 6.0/001 DESCRIPTION: Invalid attribute prefix generated by xsl:copy-of</description>
+      <description>BUG 6.0/001 DESCRIPTION: Invalid attribute prefix generated by
+         xsl:copy-of</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -1278,7 +1389,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4201">
-      <description>BUG 6.0/006 DESCRIPTION: Zero-length text nodes are created in an empty element</description>
+      <description>BUG 6.0/006 DESCRIPTION: Zero-length text nodes are created in an empty
+         element</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -1297,7 +1409,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4301">
-      <description>BUG: 6.0/006 DESCRIPTION: With TinyTree model, descendants axis gives wrong answer if there are no descendants or following siblings</description>
+      <description>BUG: 6.0/006 DESCRIPTION: With TinyTree model, descendants axis gives wrong
+         answer if there are no descendants or following siblings</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="bug-43.xml"/>
@@ -1331,10 +1444,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4501">
-      <description>
-         From Jeni Tennison, 12 Jan 2001 I have a weird problem with recursion in Saxon 6.1. In the following stylesheet, 
-         if there's nothing after the recursive call to the named template, then the elements that are produced are not nested, 
-         as they should be. If I add &lt;xsl:comment&gt;end match&lt;/xsl:comment&gt; after the recursive call it works fine. 
+      <description> From Jeni Tennison, 12 Jan 2001 I have a weird problem with recursion in Saxon
+         6.1. In the following stylesheet, if there's nothing after the recursive call to the named
+         template, then the elements that are produced are not nested, as they should be. If I add
+         &lt;xsl:comment&gt;end match&lt;/xsl:comment&gt; after the recursive call it works fine.
          content removed for brevity</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
@@ -1352,11 +1465,12 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4601">
-      <description>BUG 6.1/010: //abc:xyz returns no nodes when used with tinytree model</description>
+      <description>BUG 6.1/010: //abc:xyz returns no nodes when used with tinytree
+         model</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="bug-46.xml"/>
-      </environment>      
+      </environment>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
@@ -1369,7 +1483,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4701">
-      <description>BUG 6.1/020: null pointer exception occurs when reporting ambiguous rule match</description>
+      <description>BUG 6.1/020: null pointer exception occurs when reporting ambiguous rule
+         match</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-47"/>
       <dependencies>
@@ -1385,7 +1500,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4702">
-      <description>BUG 6.1/020: null pointer exception occurs when reporting ambiguous rule match</description>
+      <description>BUG 6.1/020: null pointer exception occurs when reporting ambiguous rule
+         match</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-47"/>
       <dependencies>
@@ -1399,9 +1515,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          <error code="XTRE0540"/>
       </result>
    </test-case>
-   
+
    <test-case name="bug-4703">
-      <description>BUG 6.1/020: null pointer exception occurs when reporting ambiguous rule match</description>
+      <description>BUG 6.1/020: null pointer exception occurs when reporting ambiguous rule
+         match</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="bug-47"/>
       <dependencies>
@@ -1417,9 +1534,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4801">
-      <description>
-         BUG (reported but not reproduced) that number('123abc') returns 123 rather than NaN. Appears to depend on the Java VM in use.
-      </description>
+      <description> BUG (reported but not reproduced) that number('123abc') returns 123 rather than
+         NaN. Appears to depend on the Java VM in use. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -1438,7 +1554,8 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    </test-case>
 
    <test-case name="bug-4901">
-      <description>BUG (reported but not reproduced) name() doesn't work on attribute nodes.</description>
+      <description>BUG (reported but not reproduced) name() doesn't work on attribute
+         nodes.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -1490,7 +1607,9 @@ text
    </test-case>
 
    <test-case name="bug-5101">
-      <description>Tests elimination of a bug that was in the original SAX distribution, whereby a namespace declared on a parent element was used in an attribute of a child element before being redeclared</description>
+      <description>Tests elimination of a bug that was in the original SAX distribution, whereby a
+         namespace declared on a parent element was used in an attribute of a child element before
+         being redeclared</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="bug-51.xml"/>
@@ -1575,7 +1694,9 @@ text
    </test-case>
 
    <test-case name="bug-5501">
-      <description>Bug reported as https://sourceforge.net/forum/forum.php?thread_id=637041&amp;forum_id=94027 Apparent cause is an error in the optimization of constant [true()] predicates</description>
+      <description>Bug reported as
+         https://sourceforge.net/forum/forum.php?thread_id=637041&amp;forum_id=94027 Apparent cause
+         is an error in the optimization of constant [true()] predicates</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -1603,6 +1724,7 @@ text
    <test-case name="bug-5601">
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc>[𐌀]</doc>]]></content>
@@ -1613,6 +1735,7 @@ text
       </dependencies>
       <test>
          <stylesheet file="bug-5601.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="bug89.out"/>
@@ -1620,7 +1743,8 @@ text
    </test-case>
 
    <test-case name="bug-5701">
-      <description>need to run this with -T option to demonstrate the bug NullPointerException when using -T option</description>
+      <description>need to run this with -T option to demonstrate the bug NullPointerException when
+         using -T option</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -1762,7 +1886,8 @@ text
    </test-case>
 
    <test-case name="bug-6401">
-      <description>See Saxon bug Bug 1930319 on SourceForge.: infinite recursion during optimization</description>
+      <description>See Saxon bug Bug 1930319 on SourceForge.: infinite recursion during
+         optimization</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="bug-64.xml"/>

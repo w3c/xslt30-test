@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="namespace">
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="namespace">
    <description>Tests namespace</description>
 
    <environment name="namespace-02">
@@ -9,15 +8,15 @@
          <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
-   
+
    <environment name="namespace-04">
       <source role=".">
          <content><![CDATA[<foo xmlns="http://bogus" up="down"/>]]></content>
       </source>
    </environment>
-   
-   
-   
+
+
+
    <environment name="namespace-08">
       <source role=".">
          <content><![CDATA[<AAA>
@@ -35,7 +34,7 @@
          <content><![CDATA[<doc/>]]></content>
       </source>
    </environment>
-   
+
    <environment name="namespace-14">
       <source role="." file="namespace-14.xml"/>
    </environment>
@@ -47,7 +46,7 @@
          <content><![CDATA[<doc><a:a xmlns:a="http://a.uri/"> </a:a><b:a xmlns:b="http://b.uri/"> </b:a><A:b xmlns:A="http://a.uri/"> </A:b><B:b xmlns:B="http://b.uri/"> </B:b></doc>]]></content>
       </source>
    </environment>
-   
+
    <environment name="namespace-23">
       <source role=".">
          <content><![CDATA[<e xmlns:my="http://my.uri/" att="att" my:att="my:att">
@@ -77,7 +76,7 @@
          <content><![CDATA[<data/>]]></content>
       </source>
    </environment>
-   
+
    <environment name="namespace-28">
       <source role=".">
          <content><![CDATA[<doc xmlns:one="http://one.uri/" xmlns="http://default.uri/">
@@ -346,7 +345,8 @@
    <test-case name="namespace-0301">
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Tim Mills" on="2012-12-06" change="Removed whitespace, corrected expected result"/>
+      <modified by="Tim Mills" on="2012-12-06"
+         change="Removed whitespace, corrected expected result"/>
       <environment>
          <source role="." file="namespace-03.xml"/>
       </environment>
@@ -362,7 +362,8 @@
    </test-case>
 
    <test-case name="namespace-0401">
-      <description>Tests "that default namespaces do not apply directly to attributes."</description>
+      <description>Tests "that default namespaces do not apply directly to
+         attributes."</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-04"/>
       <dependencies>
@@ -407,7 +408,7 @@
          <assert-xml file="namespace-0501.out"/>
       </result>
    </test-case>
-   
+
    <environment name="namespace-06">
       <source role=".">
          <content><![CDATA[<doc><q xmlns:a="http://a.uri/" xmlns:b="http://b.uri/" xmlns:c="http://c.uri/"/></doc>]]></content>
@@ -430,7 +431,7 @@
          <assert-xml><![CDATA[<out xmlns:a="http://a.uri/" xmlns:c="http://c.uri/" xmlns:b="http://b.uri/"/>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-0602">
       <description>Test copying of namespace nodes REF: XSLT 1.0 Errata</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -446,7 +447,7 @@
          <assert-xml><![CDATA[<out xmlns:a="http://a.uri/"/>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-0603">
       <description>Test copying of namespace nodes REF: XSLT 1.0 Errata</description>
       <created by="Michael Kay" on="2012-11-07"/>
@@ -466,6 +467,7 @@
    <test-case name="namespace-0701">
       <description>test union operation applied to namespace nodes</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment>
          <source role="." file="namespace-07.xml"/>
       </environment>
@@ -475,6 +477,7 @@
       </dependencies>
       <test>
          <stylesheet file="namespace-0701.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <assert-serialization method="text" file="namespace-0701.out"/>
@@ -498,7 +501,8 @@
    </test-case>
 
    <test-case name="namespace-0802">
-      <description>Test use of namespace="" in xsl:element and xsl:attribute The spec says the element or attribute should go in the null namespace (Bug Saxon 6.2/005)</description>
+      <description>Test use of namespace="" in xsl:element and xsl:attribute The spec says the
+         element or attribute should go in the null namespace (Bug Saxon 6.2/005)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-08"/>
       <dependencies>
@@ -515,7 +519,8 @@
    </test-case>
 
    <test-case name="namespace-0901">
-      <description>Test namespace nodes. Note, this test is now superseded by nspc12-17 which break it up into parts, for ease of analysing the results</description>
+      <description>Test namespace nodes. Note, this test is now superseded by nspc12-17 which break
+         it up into parts, for ease of analysing the results</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-09"/>
       <dependencies>
@@ -531,13 +536,10 @@
    </test-case>
 
    <test-case name="namespace-0902">
-      <description>
-         Test generate-id() on namespace nodes. 
-         modified 2002-08-08 to give reproducable results. 
-         The test now simply checks that all the namespace nodes have distinct id values 
-         modified 2002-08-08 to give even more reproducable results. 
-         Output is now well-formed, and sorted.
-      </description>
+      <description> Test generate-id() on namespace nodes. modified 2002-08-08 to give reproducable
+         results. The test now simply checks that all the namespace nodes have distinct id values
+         modified 2002-08-08 to give even more reproducable results. Output is now well-formed, and
+         sorted. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-09"/>
       <dependencies>
@@ -658,7 +660,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-0909">
-      <description>List the id's of the namespace nodes for an element modified 2002-08-08 to give reproducable results. The test now outputs the id modulo the document id</description>
+      <description>List the id's of the namespace nodes for an element modified 2002-08-08 to give
+         reproducable results. The test now outputs the id modulo the document id</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-09"/>
       <dependencies>
@@ -705,7 +708,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-1102">
-      <description>attribute must have prefix submitted by Eric Bratton, shows bug in Saxon 6.5</description>
+      <description>attribute must have prefix submitted by Eric Bratton, shows bug in Saxon
+         6.5</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-11"/>
       <dependencies>
@@ -920,7 +924,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-1701">
-      <description>test that the default namespace is not applied to names in XPath expressions or to variable names</description>
+      <description>test that the default namespace is not applied to names in XPath expressions or
+         to variable names</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -945,10 +950,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-1801">
-      <description>
-         This shows a bug in Saxon 6.5: duplicate entries in namespace axis when the source document explicitly 
-         declares the "xml" namespace (but note, some XML parsers don't allow the XML namespace to be declared anyway)
-      </description>
+      <description> This shows a bug in Saxon 6.5: duplicate entries in namespace axis when the
+         source document explicitly declares the "xml" namespace (but note, some XML parsers don't
+         allow the XML namespace to be declared anyway) </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -973,7 +977,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2001">
-      <description>TEST copied namespace clashing with namespace of parent element Results require manual inspection because a system-generated prefix is used.</description>
+      <description>TEST copied namespace clashing with namespace of parent element Results require
+         manual inspection because a system-generated prefix is used.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -999,7 +1004,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2101">
-      <description>test use of xsl:attribute with a namespace prefix not known until run-time</description>
+      <description>test use of xsl:attribute with a namespace prefix not known until
+         run-time</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="namespace-21.xml"/>
@@ -1026,7 +1032,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2201">
-      <description>test use of xsl:element with a namespace prefix not known until run-time</description>
+      <description>test use of xsl:element with a namespace prefix not known until
+         run-time</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
@@ -1105,7 +1112,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2501">
-      <description>Testing "An element from the XSLT namespace may have any attribute not from the XSLT namespace, provided that the expanded name of the attribute has a non-null namespace URI."</description>
+      <description>Testing "An element from the XSLT namespace may have any attribute not from the
+         XSLT namespace, provided that the expanded name of the attribute has a non-null namespace
+         URI."</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-25"/>
       <dependencies>
@@ -1135,7 +1144,11 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2503">
-      <description>test exclusion of a namespace that is actually required for one of the attributes of the literal result element. In Saxon 7.6.5, this causes the exclude-result-prefixes request to be ignored, so the output contains declarations of both xmlns:a="a.uri" and xmlns:a2="a.uri". In 7.7, this is changed so that the unwanted declaration for xmlns:a2 is now excluded should copy c.uri only</description>
+      <description>test exclusion of a namespace that is actually required for one of the attributes
+         of the literal result element. In Saxon 7.6.5, this causes the exclude-result-prefixes
+         request to be ignored, so the output contains declarations of both xmlns:a="a.uri" and
+         xmlns:a2="a.uri". In 7.7, this is changed so that the unwanted declaration for xmlns:a2 is
+         now excluded should copy c.uri only</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-25"/>
       <dependencies>
@@ -1150,7 +1163,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2601">
-      <description>test effect of attempting to exclude a system namespace (xsi) that's needed</description>
+      <description>test effect of attempting to exclude a system namespace (xsi) that's
+         needed</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1192,7 +1206,8 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2603.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n1.com/"><b xmlns:n=""/></a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<a xmlns:n="http://n1.com/"><b xmlns:n=""/></a>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1208,7 +1223,8 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2604.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n1.com/"><b xmlns:o="http://o1.com/" xmlns:n=""><c/></b></a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<a xmlns:n="http://n1.com/"><b xmlns:o="http://o1.com/" xmlns:n=""><c/></b></a>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1224,7 +1240,8 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2605.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n1.com/" xmlns:m="http://m1.com/" xmlns:k="http://k1.com/"><b xmlns:k="http://k2.com/" xmlns:m=""><c/></b></a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<a xmlns:n="http://n1.com/" xmlns:m="http://m1.com/" xmlns:k="http://k1.com/"><b xmlns:k="http://k2.com/" xmlns:m=""><c/></b></a>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1240,7 +1257,7 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2606.xsl"/>
       </test>
       <result>
-         <assert-xml  xml-version="1.1" file="namespace-2606.out"/>
+         <assert-xml xml-version="1.1" file="namespace-2606.out"/>
       </result>
    </test-case>
 
@@ -1256,19 +1273,22 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2607.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n=""/></a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<a xmlns:n="http://n/"><b xmlns:n=""/></a>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="namespace-2608">
       <description>test inherit-namespaces="no" serialized as XML 1.0</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="namespace-26"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="namespace-2608.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
          <serialization-matches><![CDATA[<a\s+xmlns:n="http://n/"><b/></a>]]></serialization-matches>
@@ -1304,7 +1324,8 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2610.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<n:a xmlns="http://d/" xmlns:n="http://n/"><n:b xmlns:n="http://n2/" xmlns=""/><c xmlns="http://n3/" xmlns:n=""/></n:a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<n:a xmlns="http://d/" xmlns:n="http://n/"><n:b xmlns:n="http://n2/" xmlns=""/><c xmlns="http://n3/" xmlns:n=""/></n:a>]]></assert-xml>
       </result>
    </test-case>
 
@@ -1339,7 +1360,7 @@ z = http://new-z.uri/;
             <assert>/x/*[17][self::foo][@a="0"][@b="1"][@c="2"]</assert>
             <assert>/x/*[18][self::xs:foo][@a="0"][@b="1"][@c="2"][@e="5"]</assert>
             <assert>/x/*[19][self::m] = "false"</assert>
-            <assert>/x/*[20][self::m] = "false"</assert>           
+            <assert>/x/*[20][self::m] = "false"</assert>
          </all-of>
       </result>
    </test-case>
@@ -1360,7 +1381,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2614">
-      <description>Modified example taken from the example "Conflicting Namespace Prefixes" in section 11.7 of the spec exclude-result-prefixes added. This should not generate an error (namespace fixup should invent a prefix)</description>
+      <description>Modified example taken from the example "Conflicting Namespace Prefixes" in
+         section 11.7 of the spec exclude-result-prefixes added. This should not generate an error
+         (namespace fixup should invent a prefix)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1375,7 +1398,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2615">
-      <description>Modified example taken from the example "Conflicting Namespace Prefixes" in section 11.7 of the spec This should not generate an error. The prefix "p" is not available for use by namespace fixup, so the element must be allocated a different prefix</description>
+      <description>Modified example taken from the example "Conflicting Namespace Prefixes" in
+         section 11.7 of the spec This should not generate an error. The prefix "p" is not available
+         for use by namespace fixup, so the element must be allocated a different
+         prefix</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1390,7 +1416,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2616">
-      <description>Test case for spec bug 5857 - namespace undeclaration on an LRE is not copied through to the output, because of the rules for namespace inheritance</description>
+      <description>Test case for spec bug 5857 - namespace undeclaration on an LRE is not copied
+         through to the output, because of the rules for namespace inheritance</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1420,7 +1447,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2618">
-      <description>Incorrect example taken from the example "Conflicting Namespace Prefixes" in section 11.7 of the spec This should generate an error (two conflicting namespace nodes). Corrected versions in nspc70 and nspc71</description>
+      <description>Incorrect example taken from the example "Conflicting Namespace Prefixes" in
+         section 11.7 of the spec This should generate an error (two conflicting namespace nodes).
+         Corrected versions in nspc70 and nspc71</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1483,7 +1512,8 @@ z = http://new-z.uri/;
    <test-case name="namespace-2623">
       <description>Erratum E6: Error when xmlns prefix or corresponding URI is misused</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Abel Braaksma" on="2013-12-10" change="XTDE0835 instead of XTDE0865 - invalid namespace in xsl:attribute"/>
+      <modified by="Abel Braaksma" on="2013-12-10"
+         change="XTDE0835 instead of XTDE0865 - invalid namespace in xsl:attribute"/>
       <environment ref="namespace-26"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1510,7 +1540,7 @@ z = http://new-z.uri/;
          <error code="XTDE0920"/>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2625">
       <description>test inherit-namespaces="false" on xsl:copy</description>
       <created by="Debbie Lockett" on="2014-08-04"/>
@@ -1523,12 +1553,13 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2625.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<n:a xmlns="http://d/" xmlns:n="http://n/"><n:b xmlns:n="http://n2/" xmlns=""/><c xmlns="http://n3/" xmlns:n=""/></n:a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<n:a xmlns="http://d/" xmlns:n="http://n/"><n:b xmlns:n="http://n2/" xmlns=""/><c xmlns="http://n3/" xmlns:n=""/></n:a>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2626">
-      <description>test inherit-namespaces="  0" on xsl:copy</description>
+      <description>test inherit-namespaces=" 0" on xsl:copy</description>
       <created by="Debbie Lockett" on="2014-08-04"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1539,10 +1570,11 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2626.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<n:a xmlns="http://d/" xmlns:n="http://n/"><n:b xmlns:n="http://n2/" xmlns=""/><c xmlns="http://n3/" xmlns:n=""/></n:a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<n:a xmlns="http://d/" xmlns:n="http://n/"><n:b xmlns:n="http://n2/" xmlns=""/><c xmlns="http://n3/" xmlns:n=""/></n:a>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2627">
       <description>test inherit-namespaces="FALSE" on xsl:copy (not allowed)</description>
       <created by="Debbie Lockett" on="2014-08-04"/>
@@ -1558,7 +1590,7 @@ z = http://new-z.uri/;
          <error code="XTSE0020"/>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2628">
       <description>test inherit-namespaces="yes" on literal result elements</description>
       <created by="Debbie Lockett" on="2014-08-15"/>
@@ -1572,12 +1604,13 @@ z = http://new-z.uri/;
       </test>
       <result>
          <all-of>
-            <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
-            <assert>/a/b/namespace::* = "http://n/"</assert> 
-         </all-of>         
+            <assert-xml xml-version="1.1"
+               ><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
+            <assert>/a/b/namespace::* = "http://n/"</assert>
+         </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2629">
       <description>test inherit-namespaces="true" on literal result elements</description>
       <created by="Debbie Lockett" on="2014-08-15"/>
@@ -1591,12 +1624,13 @@ z = http://new-z.uri/;
       </test>
       <result>
          <all-of>
-            <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
-            <assert>/a/b/namespace::* = "http://n/"</assert> 
-         </all-of>         
+            <assert-xml xml-version="1.1"
+               ><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
+            <assert>/a/b/namespace::* = "http://n/"</assert>
+         </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2630">
       <description>test inherit-namespaces="1" on literal result elements</description>
       <created by="Debbie Lockett" on="2014-08-15"/>
@@ -1610,12 +1644,13 @@ z = http://new-z.uri/;
       </test>
       <result>
          <all-of>
-            <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
-            <assert>/a/b/namespace::* = "http://n/"</assert> 
-         </all-of>         
+            <assert-xml xml-version="1.1"
+               ><![CDATA[<a xmlns:n="http://n/"><b xmlns:n="http://n/"/></a>]]></assert-xml>
+            <assert>/a/b/namespace::* = "http://n/"</assert>
+         </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2631">
       <description>test inherit-namespaces="false" on literal result elements</description>
       <created by="Debbie Lockett" on="2014-08-15"/>
@@ -1628,10 +1663,11 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2631.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n=""/></a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<a xmlns:n="http://n/"><b xmlns:n=""/></a>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2632">
       <description>test inherit-namespaces="0" on literal result elements</description>
       <created by="Debbie Lockett" on="2014-08-15"/>
@@ -1644,12 +1680,14 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2632.xsl"/>
       </test>
       <result>
-         <assert-xml xml-version="1.1"><![CDATA[<a xmlns:n="http://n/"><b xmlns:n=""/></a>]]></assert-xml>
+         <assert-xml xml-version="1.1"
+            ><![CDATA[<a xmlns:n="http://n/"><b xmlns:n=""/></a>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="namespace-2633">
-      <description>test inherit-namespaces=" " (not allowed) on literal result elements</description>
+      <description>test inherit-namespaces=" " (not allowed) on literal result
+         elements</description>
       <created by="Debbie Lockett" on="2014-08-15"/>
       <environment ref="namespace-26"/>
       <dependencies>
@@ -1717,7 +1755,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3001">
-      <description>Test case for spec bug 5857 - namespace undeclaration on a copied element is not copied through to the output, because of the rules for namespace inheritance</description>
+      <description>Test case for spec bug 5857 - namespace undeclaration on a copied element is not
+         copied through to the output, because of the rules for namespace inheritance</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-30"/>
       <dependencies>
@@ -1734,7 +1773,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3002">
-      <description>Test case for spec bug 5857 - namespace undeclaration on a copied element is not copied through to the output, because of the rules for namespace inheritance</description>
+      <description>Test case for spec bug 5857 - namespace undeclaration on a copied element is not
+         copied through to the output, because of the rules for namespace inheritance</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-30"/>
       <dependencies>
@@ -1751,7 +1791,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3003">
-      <description>Test case for spec bug 5857 - namespace undeclaration on a copied element is not copied through to the output, because of the rules for namespace inheritance</description>
+      <description>Test case for spec bug 5857 - namespace undeclaration on a copied element is not
+         copied through to the output, because of the rules for namespace inheritance</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-30"/>
       <dependencies>
@@ -1766,7 +1807,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3004">
-      <description>Test case for spec bug 5857 - namespace undeclaration on a copied element is not copied through to the output, because of the rules for namespace inheritance</description>
+      <description>Test case for spec bug 5857 - namespace undeclaration on a copied element is not
+         copied through to the output, because of the rules for namespace inheritance</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-30"/>
       <dependencies>
@@ -1781,7 +1823,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3005">
-      <description>Test case for spec erratum FO.E42 - comparing namespace nodes with deep-equal()</description>
+      <description>Test case for spec erratum FO.E42 - comparing namespace nodes with
+         deep-equal()</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-30"/>
       <dependencies>
@@ -1796,7 +1839,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3101">
-      <description>Discretionary: name="element-name-not-QName" choice="pass-through" Test for resetting of a prefixed namespace by a LRE. Should see one warning about namespace "none" unresolvable. Recovery: put yyy directly inside higher element (out).</description>
+      <description>Discretionary: name="element-name-not-QName" choice="pass-through" Test for
+         resetting of a prefixed namespace by a LRE. Should see one warning about namespace "none"
+         unresolvable. Recovery: put yyy directly inside higher element (out).</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1811,7 +1856,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3102">
-      <description>Test to make sure xsl:attribute isn't added to the containing element when an xsl:element is ignored. Should see a warning that xyz:foo was not created. The &lt;yyy/&gt; element is placed directly within out, but the attribute isn't.</description>
+      <description>Test to make sure xsl:attribute isn't added to the containing element when an
+         xsl:element is ignored. Should see a warning that xyz:foo was not created. The &lt;yyy/&gt;
+         element is placed directly within out, but the attribute isn't.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1826,7 +1873,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3103">
-      <description>Discretionary: name="element-name-not-QName" choice="pass-through" Test for non-empty illegal element name. Should see a warning about illegal element name. Recovery: put yyy directly in out.</description>
+      <description>Discretionary: name="element-name-not-QName" choice="pass-through" Test for
+         non-empty illegal element name. Should see a warning about illegal element name. Recovery:
+         put yyy directly in out.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1841,7 +1890,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3104">
-      <description>Test to make sure xsl:attribute isn't added to the containing element when an xsl:element is ignored. Should see a warning that xyz:foo was not created. The &lt;yyy/&gt; element is placed directly within out, but the attribute isn't.</description>
+      <description>Test to make sure xsl:attribute isn't added to the containing element when an
+         xsl:element is ignored. Should see a warning that xyz:foo was not created. The &lt;yyy/&gt;
+         element is placed directly within out, but the attribute isn't.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1856,7 +1907,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3105">
-      <description>Test for resetting of a prefixed namespace by a LRE; stylesheet default NS set. Should see one warning about namespace "none" unresolvable. Recovery: put yyy directly inside higher element (out). MHK: changed to make it a dynamic error</description>
+      <description>Test for resetting of a prefixed namespace by a LRE; stylesheet default NS set.
+         Should see one warning about namespace "none" unresolvable. Recovery: put yyy directly
+         inside higher element (out). MHK: changed to make it a dynamic error</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1871,7 +1924,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3106">
-      <description>Put an unprefixed xmlns declaration in xsl:element where requested name has prefix. Should see one warning about namespace "abc" unresolvable. Recovery: put yyy directly inside higher element (out).</description>
+      <description>Put an unprefixed xmlns declaration in xsl:element where requested name has
+         prefix. Should see one warning about namespace "abc" unresolvable. Recovery: put yyy
+         directly inside higher element (out).</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1886,7 +1941,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3107">
-      <description>Have a non-empty but unprefixed xmlns declaration while specifying prefixed name. Should see one warning about namespace "wxyz" unresolvable. Recovery: put yyy directly inside higher element (out).</description>
+      <description>Have a non-empty but unprefixed xmlns declaration while specifying prefixed name.
+         Should see one warning about namespace "wxyz" unresolvable. Recovery: put yyy directly
+         inside higher element (out).</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1901,7 +1958,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3108">
-      <description>Use prefixed xmlns declaration, namespace attrib to same URI, different prefix on name. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Use prefixed xmlns declaration, namespace attrib to same URI, different prefix on
+         name. NOTE: Processor developers could legitimately disagree about where the "p2" name has
+         to be in scope on the result. It must be in effect for yyy, but could be for foo as well.
+         The spec doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1916,7 +1976,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3109">
-      <description>Set default namespace, then reset via xmlns declaration in xsl:element.</description>
+      <description>Set default namespace, then reset via xmlns declaration in
+         xsl:element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -1946,7 +2007,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3111">
-      <description>Specify an empty namespace; stylesheet default NS set, and reset in xsl:element.</description>
+      <description>Specify an empty namespace; stylesheet default NS set, and reset in
+         xsl:element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2006,7 +2068,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3115">
-      <description>Set a prefixed name to an NS not among those in scope; prefix was in use.</description>
+      <description>Set a prefixed name to an NS not among those in scope; prefix was in
+         use.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2036,7 +2099,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3117">
-      <description>Request prefix that is already mapped to requested NS, default set globally.</description>
+      <description>Request prefix that is already mapped to requested NS, default set
+         globally.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2066,7 +2130,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3119">
-      <description>Set a prefixed name to same NS as other prefix already had, prefix is new.</description>
+      <description>Set a prefixed name to same NS as other prefix already had, prefix is
+         new.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2081,7 +2146,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3120">
-      <description>Test for resetting of an unspecified default namespace by copy-of. create an RTF with no namespace nodes</description>
+      <description>Test for resetting of an unspecified default namespace by copy-of. create an RTF
+         with no namespace nodes</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2096,7 +2162,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3121">
-      <description>Test for resetting of the unspecified default namespace by a contained xsl:element.</description>
+      <description>Test for resetting of the unspecified default namespace by a contained
+         xsl:element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2186,7 +2253,11 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3127">
-      <description>Prefixed xmlns declaration and same-prefixed name; namespace matches default set locally. NOTE: Processor developers could legitimately disagree about where the default name has to be reset in the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point. On the other hand, p2 must be set to "barz.com" for the yyy element.</description>
+      <description>Prefixed xmlns declaration and same-prefixed name; namespace matches default set
+         locally. NOTE: Processor developers could legitimately disagree about where the default
+         name has to be reset in the result. It must be in effect for yyy, but could be for foo as
+         well. The spec doesn't address this point. On the other hand, p2 must be set to "barz.com"
+         for the yyy element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2216,7 +2287,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3129">
-      <description>Test what happens when namespace attrib is a known URI, but no prefixes involved.</description>
+      <description>Test what happens when namespace attrib is a known URI, but no prefixes
+         involved.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2231,7 +2303,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3130">
-      <description>Section: 7.1.2 Creating Elements Test for namespace attribute matching stylesheet default.</description>
+      <description>Section: 7.1.2 Creating Elements Test for namespace attribute matching stylesheet
+         default.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2261,7 +2334,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3132">
-      <description>Test for specification of an empty namespace; stylesheet default NS set.</description>
+      <description>Test for specification of an empty namespace; stylesheet default NS
+         set.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2276,7 +2350,12 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3133">
-      <description>Two xmlns declarations with namespace attrib (matches default) in xsl:element. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point. MHK: I disagree with the above. I don't see how one could justify outputting the barz.com namespace on the foo element. But that's what Xalan appears to do...</description>
+      <description>Two xmlns declarations with namespace attrib (matches default) in xsl:element.
+         NOTE: Processor developers could legitimately disagree about where the "p2" name has to be
+         in scope on the result. It must be in effect for yyy, but could be for foo as well. The
+         spec doesn't address this point. MHK: I disagree with the above. I don't see how one could
+         justify outputting the barz.com namespace on the foo element. But that's what Xalan appears
+         to do...</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2291,7 +2370,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3134">
-      <description>Reset default locally, but namespace attribute matches stylesheet default. NOTE: Processor developers could legitimately disagree about where the default name has to be set the 2nd time in the result. It must be correct for yyy, but could be reset for foo as well. The spec doesn't address this point.</description>
+      <description>Reset default locally, but namespace attribute matches stylesheet default. NOTE:
+         Processor developers could legitimately disagree about where the default name has to be set
+         the 2nd time in the result. It must be correct for yyy, but could be reset for foo as well.
+         The spec doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2306,7 +2388,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3135">
-      <description>Test for prefixed name when prefixed NS is in scope; no namespace attrib.</description>
+      <description>Test for prefixed name when prefixed NS is in scope; no namespace
+         attrib.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2351,7 +2434,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3138">
-      <description>Test for prefixed name when prefixed NS is in scope; also set default for stylesheet.</description>
+      <description>Test for prefixed name when prefixed NS is in scope; also set default for
+         stylesheet.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2366,7 +2450,11 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3139">
-      <description>Set default namespace in outer, then specify namespace for inner; add prefixed decl. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result, if anywhere. Since there are no LREs inside foo, there is no requirement to pick up and emit the p2 declaration. The spec doesn't address this point.</description>
+      <description>Set default namespace in outer, then specify namespace for inner; add prefixed
+         decl. NOTE: Processor developers could legitimately disagree about where the "p2" name has
+         to be in scope on the result, if anywhere. Since there are no LREs inside foo, there is no
+         requirement to pick up and emit the p2 declaration. The spec doesn't address this
+         point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2411,7 +2499,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3142">
-      <description>Put both an unprefixed xmlns declaration and namespace attrib in xsl:element.</description>
+      <description>Put both an unprefixed xmlns declaration and namespace attrib in
+         xsl:element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2426,7 +2515,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3143">
-      <description>Put both an unprefixed xmlns declaration and namespace attrib in; name has prefix.</description>
+      <description>Put both an unprefixed xmlns declaration and namespace attrib in; name has
+         prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2441,7 +2531,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3144">
-      <description>Baseline case of a non-empty but unprefixed xmlns declaration in xsl:element.</description>
+      <description>Baseline case of a non-empty but unprefixed xmlns declaration in
+         xsl:element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2456,7 +2547,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3145">
-      <description>Mix a non-empty xmlns declaration and namespace attrib (to same) in xsl:element.</description>
+      <description>Mix a non-empty xmlns declaration and namespace attrib (to same) in
+         xsl:element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2471,7 +2563,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3146">
-      <description>Mix a non-empty xmlns declaration and namespace attrib (different URI) in xsl:element.</description>
+      <description>Mix a non-empty xmlns declaration and namespace attrib (different URI) in
+         xsl:element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2486,7 +2579,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3147">
-      <description>Prefixed xmlns declaration and same-prefixed name; no namespace attrib; default set. NOTE: Processor developers could legitimately disagree about where the default name has to be reset in the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Prefixed xmlns declaration and same-prefixed name; no namespace attrib; default
+         set. NOTE: Processor developers could legitimately disagree about where the default name
+         has to be reset in the result. It must be in effect for yyy, but could be for foo as well.
+         The spec doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2501,7 +2597,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3148">
-      <description>Mix xmlns declaration and namespace attrib (to same) in xsl:element; name has prefix. NOTE: Processor developers could legitimately disagree about where the default name has to be set in the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Mix xmlns declaration and namespace attrib (to same) in xsl:element; name has
+         prefix. NOTE: Processor developers could legitimately disagree about where the default name
+         has to be set in the result. It must be in effect for yyy, but could be for foo as well.
+         The spec doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2516,7 +2615,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3149">
-      <description>Set xmlns declaration and namespace attrib to different URIs; name has prefix. NOTE: Processor developers could legitimately disagree about where the default name has to be set in the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Set xmlns declaration and namespace attrib to different URIs; name has prefix.
+         NOTE: Processor developers could legitimately disagree about where the default name has to
+         be set in the result. It must be in effect for yyy, but could be for foo as well. The spec
+         doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2531,7 +2633,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3150">
-      <description>Use prefixed name; requested NS matches default rather than what's declared for that prefix.</description>
+      <description>Use prefixed name; requested NS matches default rather than what's declared for
+         that prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2546,7 +2649,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3151">
-      <description>Use prefixed name; requested NS matches default; another decl present. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Use prefixed name; requested NS matches default; another decl present. NOTE:
+         Processor developers could legitimately disagree about where the "p2" name has to be in
+         scope on the result. It must be in effect for yyy, but could be for foo as well. The spec
+         doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2561,7 +2667,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3152">
-      <description>Test crossing prefix set locally with namespace from outer level (where it has other prefix).</description>
+      <description>Test crossing prefix set locally with namespace from outer level (where it has
+         other prefix).</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2576,7 +2683,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3153">
-      <description>Mix xmlns declaration and namespace attrib (to same) in xsl:element; name has prefix. NOTE: Processor developers could legitimately disagree about where the default name has to be set the 2nd time in the result. It must be correct for yyy, but could be reset for foo as well. The spec doesn't address this point.</description>
+      <description>Mix xmlns declaration and namespace attrib (to same) in xsl:element; name has
+         prefix. NOTE: Processor developers could legitimately disagree about where the default name
+         has to be set the 2nd time in the result. It must be correct for yyy, but could be reset
+         for foo as well. The spec doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2591,7 +2701,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3154">
-      <description>Test that exclude-result-prefixes should NOT affect xsl:element (when prefix needed)</description>
+      <description>Test that exclude-result-prefixes should NOT affect xsl:element (when prefix
+         needed)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2606,7 +2717,11 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3155">
-      <description>Test crossing prefix set at outer level with URI also attached to different prefix in local decl. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point. (Also, p1 must be reset for yyy.)</description>
+      <description>Test crossing prefix set at outer level with URI also attached to different
+         prefix in local decl. NOTE: Processor developers could legitimately disagree about where
+         the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be
+         for foo as well. The spec doesn't address this point. (Also, p1 must be reset for
+         yyy.)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2621,7 +2736,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3156">
-      <description>Baseline case of prefixed xmlns declaration in xsl:element. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Baseline case of prefixed xmlns declaration in xsl:element. NOTE: Processor
+         developers could legitimately disagree about where the "p2" name has to be in scope on the
+         result. It must be in effect for yyy, but could be for foo as well. The spec doesn't
+         address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2636,7 +2754,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3157">
-      <description>Use prefixed xmlns declaration with null namespace attrib. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Use prefixed xmlns declaration with null namespace attrib. NOTE: Processor
+         developers could legitimately disagree about where the "p2" name has to be in scope on the
+         result. It must be in effect for yyy, but could be for foo as well. The spec doesn't
+         address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2651,7 +2772,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3158">
-      <description>Use prefixed xmlns declaration with non-null namespace attrib, different URIs. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Use prefixed xmlns declaration with non-null namespace attrib, different URIs.
+         NOTE: Processor developers could legitimately disagree about where the "p2" name has to be
+         in scope on the result. It must be in effect for yyy, but could be for foo as well. The
+         spec doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2666,7 +2790,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3159">
-      <description>Use prefixed xmlns declaration with non-null namespace attrib, same URI. NOTE: Processor developers could legitimately disagree about where the "p2" name has to be in scope on the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Use prefixed xmlns declaration with non-null namespace attrib, same URI. NOTE:
+         Processor developers could legitimately disagree about where the "p2" name has to be in
+         scope on the result. It must be in effect for yyy, but could be for foo as well. The spec
+         doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2681,7 +2808,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3160">
-      <description>Prefixed xmlns declaration and same-prefixed name; no namespace attrib.</description>
+      <description>Prefixed xmlns declaration and same-prefixed name; no namespace
+         attrib.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2696,7 +2824,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3161">
-      <description>Issue prefixed name in current default namespace, rather than the one assigned to tha prefix at outer level NOTE: Processor developers could legitimately disagree about where the default name has to be set in the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Issue prefixed name in current default namespace, rather than the one assigned to
+         tha prefix at outer level NOTE: Processor developers could legitimately disagree about
+         where the default name has to be set in the result. It must be in effect for yyy, but could
+         be for foo as well. The spec doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2711,7 +2842,10 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3162">
-      <description>Test for prefixed name when prefixed NS is in scope; also set default locally. NOTE: Processor developers could legitimately disagree about where the default name has to be set in the result. It must be in effect for yyy, but could be for foo as well. The spec doesn't address this point.</description>
+      <description>Test for prefixed name when prefixed NS is in scope; also set default locally.
+         NOTE: Processor developers could legitimately disagree about where the default name has to
+         be set in the result. It must be in effect for yyy, but could be for foo as well. The spec
+         doesn't address this point.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2726,7 +2860,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3163">
-      <description>Use prefixed xmlns declaration with non-null namespace attrib, same URI and prefix.</description>
+      <description>Use prefixed xmlns declaration with non-null namespace attrib, same URI and
+         prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2741,7 +2876,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3164">
-      <description>Use prefixed xmlns declaration, namespace attrib sets different URI of that prefix.</description>
+      <description>Use prefixed xmlns declaration, namespace attrib sets different URI of that
+         prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-31"/>
       <dependencies>
@@ -2756,7 +2892,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3201">
-      <description>Test for error recovery when assigned name ends with : (has null local-part) MHK: changed to make it a dynamic error</description>
+      <description>Test for error recovery when assigned name ends with : (has null local-part) MHK:
+         changed to make it a dynamic error</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-32"/>
       <dependencies>
@@ -2771,7 +2908,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3202">
-      <description>Test for invalid namespace URI; spec says "not syntactically legal URI" is NOT error. Results require manual inspection because XML containing invalid namespace URI cannot be canonicalized.</description>
+      <description>Test for invalid namespace URI; spec says "not syntactically legal URI" is NOT
+         error. Results require manual inspection because XML containing invalid namespace URI
+         cannot be canonicalized.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-32"/>
       <dependencies>
@@ -2786,7 +2925,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3203">
-      <description>Test recovery when assigned name begins with : (has null namespace) MHK: changed to a run-time test MHK: error is now non-recoverable (April 2005)</description>
+      <description>Test recovery when assigned name begins with : (has null namespace) MHK: changed
+         to a run-time test MHK: error is now non-recoverable (April 2005)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-32"/>
       <dependencies>
@@ -2801,7 +2941,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3301">
-      <description>Apply namespaces to attributes This 3rd case is a base line and should not have associated namespace</description>
+      <description>Apply namespaces to attributes This 3rd case is a base line and should not have
+         associated namespace</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2862,7 +3003,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3305">
-      <description>Put namespace attribute on xsl:attribute, but set it to null (which it would have been anyway).</description>
+      <description>Put namespace attribute on xsl:attribute, but set it to null (which it would have
+         been anyway).</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2892,7 +3034,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3307">
-      <description>Have default namespace declared, request attribute in null namespace.</description>
+      <description>Have default namespace declared, request attribute in null
+         namespace.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2907,7 +3050,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3308">
-      <description>Have default namespace declared, request attribute in namespace different from default. No prefix on attribute name. Processor must create a prefix.</description>
+      <description>Have default namespace declared, request attribute in namespace different from
+         default. No prefix on attribute name. Processor must create a prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2922,7 +3066,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3309">
-      <description>Have default namespace declared, request attribute in namespace same as default. No prefix on attribute name. Processor must create a prefix.</description>
+      <description>Have default namespace declared, request attribute in namespace same as default.
+         No prefix on attribute name. Processor must create a prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2937,7 +3082,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3310">
-      <description>Have default namespace declared, request attribute in namespace same as default. New prefix on attribute name. Processor must create a prefix.</description>
+      <description>Have default namespace declared, request attribute in namespace same as default.
+         New prefix on attribute name. Processor must create a prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2952,7 +3098,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3311">
-      <description>Have default namespace declared, request attribute in namespace different from default. New prefix on attribute name. Processor must create a prefix.</description>
+      <description>Have default namespace declared, request attribute in namespace different from
+         default. New prefix on attribute name. Processor must create a prefix.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2967,7 +3114,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3312">
-      <description>Declare prefixed namespace at stylesheet level, then use prefix in attribute name only. No namespace nor xmlns on xsl:attribute itself.</description>
+      <description>Declare prefixed namespace at stylesheet level, then use prefix in attribute name
+         only. No namespace nor xmlns on xsl:attribute itself.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2982,7 +3130,14 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3313">
-      <description>Declare prefixed namespace at stylesheet level, then use another prefix in attribute name, but same namespace. New namespace-decl must be issued, or change prefix. This test raises another facet of the issue of supplied prefixes on the attribute name. Processor developers could disagree about whether the combination of a prefixed name and an explicit namespace attribute with a URI signals a request from the stylesheet to generate a namespace declaration, even when the requested URI is already available to apply to the attribute simply by using a different prefix. In other words, does the stylesheet really want to ensure that an xmlns:other declaration is issued?</description>
+      <description>Declare prefixed namespace at stylesheet level, then use another prefix in
+         attribute name, but same namespace. New namespace-decl must be issued, or change prefix.
+         This test raises another facet of the issue of supplied prefixes on the attribute name.
+         Processor developers could disagree about whether the combination of a prefixed name and an
+         explicit namespace attribute with a URI signals a request from the stylesheet to generate a
+         namespace declaration, even when the requested URI is already available to apply to the
+         attribute simply by using a different prefix. In other words, does the stylesheet really
+         want to ensure that an xmlns:other declaration is issued?</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -2997,7 +3152,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3314">
-      <description>FileName: namespace17 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 2.4</description>
+      <description>FileName: namespace17 Document: http://www.w3.org/TR/xslt DocVersion: 19991116
+         Section: 2.4</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-33"/>
       <dependencies>
@@ -3027,7 +3183,9 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3401">
-      <description>Adding an attribute to an element replaces any existing attribute of that element with the same expanded-name. For attribute L, there is only a local name. Attribute Q has a namespace.</description>
+      <description>Adding an attribute to an element replaces any existing attribute of that element
+         with the same expanded-name. For attribute L, there is only a local name. Attribute Q has a
+         namespace.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-34"/>
       <dependencies>
@@ -3042,10 +3200,8 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-3501">
-      <description>
-         Stylesheets are free to use any prefix, provided there is a namespace declaration that binds the prefix 
-         to the URI of the XSLT namespace.
-      </description>
+      <description> Stylesheets are free to use any prefix, provided there is a namespace
+         declaration that binds the prefix to the URI of the XSLT namespace. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-35"/>
       <dependencies>
@@ -3063,10 +3219,8 @@ bo</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-3502">
-      <description>
-         Stylesheets are free to use any prefix, provided there is a namespace declaration that binds 
-         the prefix to the URI of XSLT namespace.
-      </description>
+      <description> Stylesheets are free to use any prefix, provided there is a namespace
+         declaration that binds the prefix to the URI of XSLT namespace. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-35"/>
       <dependencies>
@@ -3104,10 +3258,8 @@ unchanged</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-3504">
-      <description>
-         Stylesheet elements may contain any element not from the XSLT namespace, provided that the 
-         expanded name of the element has a non-null namespace URI.
-      </description>
+      <description> Stylesheet elements may contain any element not from the XSLT namespace,
+         provided that the expanded name of the element has a non-null namespace URI. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-35"/>
       <dependencies>
@@ -3123,10 +3275,9 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-3505">
-      <description>
-         XSLT processor must ignore a top-level element without giving and error if it does not recognize 
-         the namespace URI. The prefix used must still resolve to a URI; but that URI may not be known.
-      </description>
+      <description> XSLT processor must ignore a top-level element without giving and error if it
+         does not recognize the namespace URI. The prefix used must still resolve to a URI; but that
+         URI may not be known. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-35"/>
       <dependencies>
@@ -3141,10 +3292,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-3601">
-      <description>
-         Testing an attribute not from the XSLT namespace, which is legal provided that the expanded name 
-         of the attribute has a non-null namespace URI.
-      </description>
+      <description> Testing an attribute not from the XSLT namespace, which is legal provided that
+         the expanded name of the attribute has a non-null namespace URI. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-36"/>
       <dependencies>
@@ -3179,7 +3328,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-3702">
-      <description>Test of 'local-name()' function on attribute in non-default namespace.</description>
+      <description>Test of 'local-name()' function on attribute in non-default
+         namespace.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-37"/>
       <dependencies>
@@ -3269,7 +3419,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4001">
-      <description>Use "plain" xsl:element while both default and prefixed NS defined at top.</description>
+      <description>Use "plain" xsl:element while both default and prefixed NS defined at
+         top.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-40"/>
       <dependencies>
@@ -3284,7 +3435,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4002">
-      <description>Use xsl:element with namespace attribute; prefix known at stylesheet level; default set.</description>
+      <description>Use xsl:element with namespace attribute; prefix known at stylesheet level;
+         default set.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-40"/>
       <dependencies>
@@ -3299,7 +3451,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4003">
-      <description>Use xsl:element with namespace attribute that matches default; another in scope.</description>
+      <description>Use xsl:element with namespace attribute that matches default; another in
+         scope.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-40"/>
       <dependencies>
@@ -3314,7 +3467,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4004">
-      <description>Use namespace attribute, but namespace new at that point; default was set. Requested name has no prefix, and we can get by without it.</description>
+      <description>Use namespace attribute, but namespace new at that point; default was set.
+         Requested name has no prefix, and we can get by without it.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-40"/>
       <dependencies>
@@ -3329,7 +3483,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4005">
-      <description>Use xsl:element with namespace attribute and default changed; prefix known at stylesheet level.</description>
+      <description>Use xsl:element with namespace attribute and default changed; prefix known at
+         stylesheet level.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-40"/>
       <dependencies>
@@ -3359,7 +3514,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4007">
-      <description>Use xsl:element with namespace attribute; prefix known at stylesheet level. Requested name with no prefix, so we probably get that.</description>
+      <description>Use xsl:element with namespace attribute; prefix known at stylesheet level.
+         Requested name with no prefix, so we probably get that.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-40"/>
       <dependencies>
@@ -3374,7 +3530,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4008">
-      <description>Use xsl:element with namespace attribute, but namespace new at that point. Requested name has no prefix, and we can get by without it.</description>
+      <description>Use xsl:element with namespace attribute, but namespace new at that point.
+         Requested name has no prefix, and we can get by without it.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-40"/>
       <dependencies>
@@ -3389,7 +3546,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4009">
-      <description>Use xsl:element with namespace attribute and default reset; prefix known at stylesheet level.</description>
+      <description>Use xsl:element with namespace attribute and default reset; prefix known at
+         stylesheet level.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-40"/>
       <dependencies>
@@ -3419,7 +3577,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4301">
-      <description>Test for resetting of a namespace prefix by copy-of. Note: results affected by erratum XT.E37: see member bugzilla 931.</description>
+      <description>Test for resetting of a namespace prefix by copy-of. Note: results affected by
+         erratum XT.E37: see member bugzilla 931.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-43"/>
       <dependencies>
@@ -3436,7 +3595,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4302">
-      <description>Test copying of a namespace node by copy-of. Note: results affected by erratum XT.E37: see member bugzilla 931.</description>
+      <description>Test copying of a namespace node by copy-of. Note: results affected by erratum
+         XT.E37: see member bugzilla 931.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-43"/>
       <dependencies>
@@ -3451,10 +3611,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4401">
-      <description>
-         Check for AVT on element name when xsl:element has namespace attribute. 
-         Name is literal, no prefix, no namespace
-      </description>
+      <description> Check for AVT on element name when xsl:element has namespace attribute. Name is
+         literal, no prefix, no namespace </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-44"/>
       <dependencies>
@@ -3470,7 +3628,9 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4501">
-      <description>Test for resetting of an unspecified default namespace by copy-of. extended variant of namespace137 to check special cases create an RTF with a mix of namespaced and non-namespaced elements</description>
+      <description>Test for resetting of an unspecified default namespace by copy-of. extended
+         variant of namespace137 to check special cases create an RTF with a mix of namespaced and
+         non-namespaced elements</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-45"/>
       <dependencies>
@@ -3485,7 +3645,8 @@ Testing 1 2 3 quos</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4601">
-      <description>Test name functions on default-namespace declaration. Should be null strings.</description>
+      <description>Test name functions on default-namespace declaration. Should be null
+         strings.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-46"/>
       <dependencies>
@@ -3517,7 +3678,8 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-4901">
-      <description>Match namespace between stylesheet, in a select, and input. Prefixes differ but the URIs are the same.</description>
+      <description>Match namespace between stylesheet, in a select, and input. Prefixes differ but
+         the URIs are the same.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-49"/>
       <dependencies>
@@ -3532,7 +3694,8 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-5001">
-      <description>Section: 7.1 Creating Elements (Namespace Node Inheritance) Show how namespaces are inherited down to succeeding elements.</description>
+      <description>Section: 7.1 Creating Elements (Namespace Node Inheritance) Show how namespaces
+         are inherited down to succeeding elements.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-50"/>
       <dependencies>
@@ -3563,7 +3726,10 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-5201">
-      <description>Purpose: Test of local-name and name() on namespace axis.  The local-name() function should work on this axis, returning the same value as name(). The XML parser has freedom to present namespaces in any order it wants. The input should have only one namespace if you want consistent results across parsers.</description>
+      <description>Purpose: Test of local-name and name() on namespace axis. The local-name()
+         function should work on this axis, returning the same value as name(). The XML parser has
+         freedom to present namespaces in any order it wants. The input should have only one
+         namespace if you want consistent results across parsers.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-52"/>
       <dependencies>
@@ -3643,7 +3809,9 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-5602">
-      <description>Test of namespace-uri() on default namespace declaration. Part 4 of the Namespaces in XML spec says "The prefix xmlns is used only for namespace bindings and is not itself bound to any namespace name.</description>
+      <description>Test of namespace-uri() on default namespace declaration. Part 4 of the
+         Namespaces in XML spec says "The prefix xmlns is used only for namespace bindings and is
+         not itself bound to any namespace name.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-56"/>
       <dependencies>
@@ -3720,8 +3888,8 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-5903">
-      <description>Create attribute with NCName and newly-introduced namespace. 
-      Processor will have to invent a prefix because none has been established for that namespace.</description>
+      <description>Create attribute with NCName and newly-introduced namespace. Processor will have
+         to invent a prefix because none has been established for that namespace.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-59"/>
       <dependencies>
@@ -3751,7 +3919,8 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-6002">
-      <description>Use xsl:element with namespace that is AVT, URI matches one already in scope. Requested name has no NS prefix, so we probably get just that.</description>
+      <description>Use xsl:element with namespace that is AVT, URI matches one already in scope.
+         Requested name has no NS prefix, so we probably get just that.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-60"/>
       <dependencies>
@@ -3766,7 +3935,8 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-6003">
-      <description>Use xsl:element with a namespace that has AVT, introduces new namespace.</description>
+      <description>Use xsl:element with a namespace that has AVT, introduces new
+         namespace.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-60"/>
       <dependencies>
@@ -3781,7 +3951,8 @@ name||namespace-uri||local-name||</out>]]></assert-xml>
    </test-case>
 
    <test-case name="namespace-6101">
-      <description>When there two prefixes for an NS URI, exclude-result-prefixes of one prefix excludes all for that URI.</description>
+      <description>When there two prefixes for an NS URI, exclude-result-prefixes of one prefix
+         excludes all for that URI.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-61"/>
       <dependencies>
