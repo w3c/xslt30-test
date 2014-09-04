@@ -111,13 +111,24 @@
     
     <!-- Test of avg() selecting both streamed nodes and literals while also filtering -->
     
-    <xsl:template name="s-013" use-when="true() or $RUN">
+    <xsl:template name="s-013" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:value-of select="round(avg((tail(./BOOKLIST/BOOKS/ITEM/PAGES)/number(), 31, 32)), 2)"/>
         </out>
       </xsl:stream>
-    </xsl:template>   
+    </xsl:template>
+    
+    <!-- Test of avg() output feeding directly into xsl:stream -->
+    
+    <xsl:template name="s-014" use-when="$RUN">
+      <out>
+        <xsl:stream href="../docs/books.xml">
+          <xsl:value-of select="round(avg(//QUANTITY/number()), 2)"/>
+        </xsl:stream>
+      </out>  
+    </xsl:template>
+       
     
     <!-- Test of xsl:stream with sum of a computed value -->
     

@@ -6,7 +6,7 @@
 <!-- Error: xsl:include - self-referential -->
 <?spec xslt#errors?><?error XTSE0180?>
 
-   <xsl:include href="error-180a.xsl"/>
+   <xsl:include href="error-0180a.xsl"/>
 
   
   <xsl:template match="doc">
