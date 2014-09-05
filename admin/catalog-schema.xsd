@@ -1297,15 +1297,15 @@
         <xs:annotation>
             <xs:documentation>
                 <p>Gives the name of the mode to be used as the entry point for the transformation,
-                    with possible parameters. </p><p>To transmit parameters in the default mode, set
-                    mode to <code>#default</code>. </p>
+                    with possible parameters. </p><p>To transmit parameters for an invocation in the
+                    stylesheet's default mode, leave out the name attribute.</p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:group ref="tunnelParameters"/>
             </xs:sequence>
-            <xs:attribute name="name" type="xs:QName"/>
+            <xs:attribute name="name" type="xs:QName" use="optional"/>
         </xs:complexType>
     </xs:element>
 
@@ -1747,153 +1747,137 @@
         </xs:complexType>
     </xs:element>
 
-<!-- NEW -->
-    <xs:element name="assert-eq"  substitutionGroup="abstractAssertion">
+    <!-- NEW -->
+    <xs:element name="assert-eq" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
                     <h3>assert-eq</h3>
-                    <p>
-                        The assert element contains an XPath expression (usually a simple string or numeric literal) which must
-                        be equal to the result of the test case under the rules of the XPath 'eq' operator. 
-                    </p>
-                    <p>For example, <code>&lt;assert-eq&gt;12&lt;/assert-eq&gt;</code>
-                        asserts that the result of the test expression is an atomic value that compares
-                        equal to the integer 12 (which means it might be the double value 12.0 or the
-                        float value 12.0 or the untyped atomic value "12.0", for example).</p>
-                </div> 
+                    <p> The assert element contains an XPath expression (usually a simple string or
+                        numeric literal) which must be equal to the result of the test case under
+                        the rules of the XPath 'eq' operator. </p>
+                    <p>For example, <code>&lt;assert-eq&gt;12&lt;/assert-eq&gt;</code> asserts that
+                        the result of the test expression is an atomic value that compares equal to
+                        the integer 12 (which means it might be the double value 12.0 or the float
+                        value 12.0 or the untyped atomic value "12.0", for example).</p>
+                </div>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:string" />
+                <xs:extension base="xs:string"/>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="assert-count"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="assert-count" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
                     <h3>assert-count</h3>
-                    <p>
-                        Asserts that the result must be a sequence containing a given number of items.
-                        The value of the element is an integer giving the expected length of the sequence.
-                    </p>
-                </div> 
+                    <p> Asserts that the result must be a sequence containing a given number of
+                        items. The value of the element is an integer giving the expected length of
+                        the sequence. </p>
+                </div>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:integer" />
+                <xs:extension base="xs:integer"/>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="assert-deep-eq"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="assert-deep-eq" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
                     <h3>assert-deep-eq</h3>
-                    <p>
-                        Asserts that the result must be a sequence of atomic values that is deep-equal
-                        to the supplied sequence under the rules of the deep-equal() function.
-                    </p>
-                </div> 
+                    <p> Asserts that the result must be a sequence of atomic values that is
+                        deep-equal to the supplied sequence under the rules of the deep-equal()
+                        function. </p>
+                </div>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:string" />
+                <xs:extension base="xs:string"/>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="assert-permutation"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="assert-permutation" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
                     <h3>assert-permutation</h3>
-                    <p>
-                        Asserts that the result must be a sequence of atomic values that 
-                        has some permutation (reordering) that is deep-equal
-                        to the supplied sequence under the rules of the deep-equal() function.
-                    </p>
-                    
-                    <p>Note this implies that NaN is equal to NaN.</p>
-                </div> 
+                    <p> Asserts that the result must be a sequence of atomic values that has some
+                        permutation (reordering) that is deep-equal to the supplied sequence under
+                        the rules of the deep-equal() function. </p> <p>Note this implies that NaN
+                        is equal to NaN.</p>
+                </div>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="xs:string" />
+                <xs:extension base="xs:string"/>
             </xs:simpleContent>
         </xs:complexType>
     </xs:element>
-    
-    
-    <xs:element name="assert-empty"  substitutionGroup="abstractAssertion">
+
+
+    <xs:element name="assert-empty" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
                     <h3>assert-empty</h3>
-                    <p>
-                        Asserts that the result of the test is an empty sequence.
-                    </p>
-                </div> 
+                    <p> Asserts that the result of the test is an empty sequence. </p>
+                </div>
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
-    <xs:element name="assert-true"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="assert-true" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
                     <h3>assert-true</h3>
-                    <p>
-                        Asserts that the result of the test is the singleton boolean value true().
-                        Note, the test expression must actually evaluate to true: this is not an assertion
-                        on the effective boolean value.
-                    </p>
-                </div> 
+                    <p> Asserts that the result of the test is the singleton boolean value true().
+                        Note, the test expression must actually evaluate to true: this is not an
+                        assertion on the effective boolean value. </p>
+                </div>
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
-    <xs:element name="assert-false"  substitutionGroup="abstractAssertion">
+
+    <xs:element name="assert-false" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
                     <h3>assert-true</h3>
-                    <p>
-                        Asserts that the result of the test is the singleton boolean value false().
-                        Note, the test expression must actually evaluate to false: this is not an assertion
-                        on the effective boolean value.
-                    </p>
-                </div> 
+                    <p> Asserts that the result of the test is the singleton boolean value false().
+                        Note, the test expression must actually evaluate to false: this is not an
+                        assertion on the effective boolean value. </p>
+                </div>
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
+
     <xs:element name="assert-string-value" substitutionGroup="abstractAssertion">
         <xs:annotation>
             <xs:documentation>
                 <div>
                     <h3>assert-string-value</h3>
-                    <p>
-                        Asserts that the result of the test, after conversion to a string by applying the expression
-                        
-                        string-join(for $r in $result return string($r), " ")
-                        
-                        is equal to the string value of the assert-string-value element. Note that this test cannot
-                        be used if the result includes items that do not have a string value (elements with element-only
-                        content; function items)
-                        
-                        If the normalize-space attribute is present with the value true, then both the string value of the query
-                        result and the value of the assert-string-value
-                        element should be processed as if by the XPath normalize-space() function before the comparison.
-                    </p>
-                </div> 
+                    <p> Asserts that the result of the test, after conversion to a string by
+                        applying the expression string-join(for $r in $result return string($r), "
+                        ") is equal to the string value of the assert-string-value element. Note
+                        that this test cannot be used if the result includes items that do not have
+                        a string value (elements with element-only content; function items) If the
+                        normalize-space attribute is present with the value true, then both the
+                        string value of the query result and the value of the assert-string-value
+                        element should be processed as if by the XPath normalize-space() function
+                        before the comparison. </p>
+                </div>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1903,10 +1887,10 @@
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
-        
+
     </xs:element>
 
-<!-- END -->
+    <!-- END -->
 
     <xs:element name="error" substitutionGroup="abstractAssertion">
         <xs:annotation>

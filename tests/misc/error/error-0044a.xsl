@@ -7,7 +7,7 @@
                         defaulted to the global context item).
                     -->
                     
-   <xsl:template name="main">
+   <xsl:template match="/" mode="aMode">
       <out>
          <x/>
       </out>

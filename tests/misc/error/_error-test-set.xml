@@ -1447,12 +1447,14 @@ It is a non-recoverable dynamic
                         stylesheet function defined in the stylesheet,
                      whose visibility is public or final.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="John Lumley" on="2014-09-05" change="Use initial-function"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="error-0041a.xsl"/>
-         <initial-template name="main"/>
+         <!--<initial-template name="main"/>-->
+         <initial-function xmlns:hms="Nonesuch" name="hms:noSuchFunction"/>
       </test>
       <result>
          <error code="XTDE0041"/>
@@ -1465,12 +1467,13 @@ It is a non-recoverable dynamic
                                  is supplied (either explicitly, or
                         defaulted to the global context item).</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="John Lumley" on="2014-09-05" change="Use initial (unnamed) mode"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="error-0044a.xsl"/>
-         <initial-template name="main"/>
+         <initial-mode/>
       </test>
       <result>
          <error code="XTDE0044"/>
