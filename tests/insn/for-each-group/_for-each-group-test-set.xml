@@ -140,13 +140,31 @@ while you are in the cinema.</p>]]></content>
       </result>
    </test-case>
    
+   <test-case name="for-each-group-002a">
+      <description>Error case: bind-group and bind-grouping-key variables no longer permitted</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-04-07" change="turn this into an error case (spec has changed)"/>
+      <modified by="Tim Mills" on="2014-09-05" change="Correct error code for XSLT20.  See bug 25305"/>
+      <environment ref="group001"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-002.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>
+
    <test-case name="for-each-group-002">
       <description>Error case: bind-group and bind-grouping-key variables no longer permitted</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-04-07" change="turn this into an error case (spec has changed)"/>
+      <modified by="Tim Mills" on="2014-09-05" change="Marked as XSLT30+.  See bug 25305"/>
       <environment ref="group001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="for-each-group-002.xsl"/>
