@@ -365,12 +365,18 @@
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-017.xsl"/>
-         <!--<output serialize="yes"/>-->
+         <output serialize="yes"/>
       </test>
       <result>
-         <!-- TODO: should be a serialization test -->
-         <assert-xml file="normalize-unicode-017.out"/>
-         <!--<assert-serialization file="normalize-unicode-018.out"/>-->
+         <all-of>
+            <serialization-matches><![CDATA[<en>The quick brown fox</en>]]></serialization-matches>
+            <serialization-matches><![CDATA[<de norm="c" üss="üß">Straßenüberführung</de>]]></serialization-matches>
+            <serialization-matches><![CDATA[<de norm="d" üss="u&#(776|x308);ss">Straßenu&#(776|x308);berfu&#(776|x308);hrung</de>]]></serialization-matches>
+            <serialization-matches><![CDATA[<ffi norm="kc" ffi="ffi">Affinity</ffi>]]></serialization-matches>
+            <serialization-matches><![CDATA[<ffi norm="kd" ffi="&#(64259|xfb03);">A&#(64259|xfb03);nity</ffi>]]></serialization-matches>
+            <!-- TODO: should be a serialization test -->
+            <!--<assert-xml file="normalize-unicode-017.out"/>-->          
+         </all-of>
       </result>
    </test-case>
 
@@ -384,12 +390,18 @@
       </dependencies>
       <test>
          <stylesheet file="normalize-unicode-018.xsl"/>
-         <!--<output serialize="yes"/>-->
+         <output serialize="yes"/>
       </test>
-      <result>
+      <result><all-of>
          <!-- TODO: should be a serialization test -->
-         <assert-xml file="normalize-unicode-018.out"/>
+         <!--<assert-xml file="normalize-unicode-018.out"/>-->
+         <serialization-matches><![CDATA[<en>The quick brown fox</en>]]></serialization-matches>
+         <serialization-matches><![CDATA[<de norm="c" üss="üß">Straßenüberführung</de>]]></serialization-matches>
+         <serialization-matches><![CDATA[<de norm="d" üss="u&#(776|x308);ss">Straßenu&#(776|x308);berfu&#(776|x308);hrung</de>]]></serialization-matches>
+         <serialization-matches><![CDATA[<ffi norm="kc" ffi="ffi">Affinity</ffi>]]></serialization-matches>
+         <serialization-matches>&lt;ffi norm="kd" ffi="|&#xfb03;">A&#xfb03;nity&lt;/ffi></serialization-matches>
          <!--<assert-serialization file="normalize-unicode-018.out"/>-->
+      </all-of>
       </result>
    </test-case>
 </test-set>
