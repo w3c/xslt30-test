@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="current-output-uri">
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="current-output-uri">
    <description>Tests current-output-uri() function in XSLT 3.0</description>
-   
+
    <dependencies>
-       <spec value="XSLT30+"/>
+      <spec value="XSLT30+"/>
    </dependencies>
 
    <test-case name="current-output-uri-001">
       <description>Returns empty sequence in temporary output state</description>
-      <created by="Michael Kay" on="2014-07-12"/>      
+      <created by="Michael Kay" on="2014-07-12"/>
       <test>
          <stylesheet file="current-output-uri-001.xsl"/>
          <initial-template name="main"/>
@@ -19,37 +18,70 @@
          <assert-xml><![CDATA[<ok/>]]></assert-xml>
       </result>
    </test-case>
-   
+
    <test-case name="current-output-uri-002">
       <description>Initial value of current-output-uri</description>
-      <created by="Michael Kay" on="2014-07-12"/>      
+      <created by="Michael Kay" on="2014-07-12"/>
       <test>
          <stylesheet file="current-output-uri-002.xsl"/>
          <initial-template name="main"/>
-         <output file="results/current-output-uri-002.xml"/>
+         <!--<output file="results/current-output-uri-002.xml"/>-->
+         <output file="current-output-uri-002.xml"/>
       </test>
       <result>
-         <assert>ends-with(/out, 'fn/current-output-uri/results/current-output-uri-002.xml')</assert>
+         <any-of>
+            <assert>ends-with(/out, 'fn/current-output-uri/results/current-output-uri-002.xml')</assert>
+            <assert>ends-with(/out, 'current-output-uri-002.xml')</assert>
+         </any-of>
       </result>
    </test-case>
-   
+
    <test-case name="current-output-uri-003">
       <description>Value of current-output-uri() within xsl:result-document</description>
-      <created by="Michael Kay" on="2014-07-12"/>      
+      <created by="Michael Kay" on="2014-07-12"/>
       <test>
          <stylesheet file="current-output-uri-003.xsl"/>
          <initial-template name="main"/>
          <output file="results/current-output-uri-003.xml"/>
+         <!--<output file="current-output-uri-003.xml"/>-->
       </test>
       <result>
-         <assert-result-document uri="second/current-output-uri-003.xml">
-            <assert>ends-with(/out, 'fn/current-output-uri/results/second/current-output-uri-003.xml')</assert>
-         </assert-result-document>
+         <any-of>
+            <assert-result-document
+               uri="fn/current-output-uri/results/second/current-output-uri-003.xml">
+               <assert>ends-with(/out, 'fn/current-output-uri/results/second/current-output-uri-003.xml')</assert>
+            </assert-result-document>
+            <assert-result-document uri="results/second/current-output-uri-003.xml">
+               <assert>ends-with(/out, 'results/second/current-output-uri-003.xml')</assert>
+            </assert-result-document>
+         </any-of>
       </result>
    </test-case>
    
-   
-   
+   <test-case name="current-output-uri-004">
+      <description>Value of current-output-uri() within xsl:result-document. More robust test?</description>
+      <created by="John Lumley" on="2014-09-10"/>
+      <test>
+         <stylesheet file="current-output-uri-004.xsl"/>
+         <initial-template name="main"/>
+         <output file="results/current-output-uri-004.xml"/>
+         <!--<output file="current-output-uri-003.xml"/>-->
+      </test>
+      <result>
+         <any-of>
+            <assert-result-document
+               uri="fn/current-output-uri/results/second/current-output-uri-004.xml">
+               <assert>ends-with(/out, 'fn/current-output-uri/results/second/current-output-uri-004.xml')</assert>
+            </assert-result-document>
+            <assert-result-document uri="results/second/current-output-uri-004.xml">
+               <assert>ends-with(/out, 'results/second/current-output-uri-004.xml')</assert>
+            </assert-result-document>
+         </any-of>
+      </result>
+   </test-case>
+
+
+
 
 
 </test-set>
