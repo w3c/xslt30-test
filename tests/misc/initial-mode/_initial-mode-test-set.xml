@@ -59,4 +59,23 @@
          <error code="XTDE0050"/>
       </result>
    </test-case>
+   
+   <test-case name="initial-mode-004">
+      <description>Initial mode with local parameters</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <environment ref="inimode001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-mode-004.xsl"/>
+         <initial-mode name="flobble">
+            <param name="a" select="1234"/>
+            <param xmlns:my="http://my.net/" name="my:b" tunnel="yes" select="999"/>
+         </initial-mode>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><doc/>1234 999</out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="initial-function">
+   <description>Tests Call Function XSLT invocation</description>
+   <dependencies>
+      <spec value="XSLT20+"></spec>
+      <!--<feature value="Saxon-PE"/>-->
+   </dependencies>
+
+    <test-case name="initial-function-001">
+      <description>test initial-function</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-function-001.xsl"/>
+         <initial-function xmlns:my="http://my.net/" name="my:foo">
+            <param select="1234"/>
+            <param select="5678"/>
+         </initial-function>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<simple-data>5678Simple Data1234</simple-data>]]></assert-xml>
+      </result>
+   </test-case>
+
+   
+
+   <test-case name="initial-function-002">
+      <description>test initial-function returning sequence</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-function-001.xsl"/>
+         <initial-function xmlns:my="http://my.net/" name="my:bar">
+            <param select="1234"/>
+            <param select="5678"/>
+         </initial-function>
+         <output tree="no" serialize="no"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-count>2</assert-count>
+            <assert-deep-eq>1234,5678</assert-deep-eq>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="initial-function-901">
+      <description>test initial-function to non-existent stylesheet function</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-function-001.xsl"/>
+         <initial-function xmlns:my="http://my.net/" name="my:nonsuch">
+            <param select="1234"/>
+            <param select="5678"/>
+         </initial-function>
+         <output tree="no" serialize="no"/>
+      </test>
+      <result>
+         <error code="XTDE0041"/>
+      </result>
+   </test-case>
+   <test-case name="initial-function-902">
+      <description>test initial-function to stylesheet function with wrong arity - too small</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-function-001.xsl"/>
+         <initial-function xmlns:my="http://my.net/" name="my:bar">
+            <param select="1234"/>
+          </initial-function>
+         <output tree="no" serialize="no"/>
+      </test>
+      <result>
+         <error code="XTDE0041"/>
+      </result>
+   </test-case>
+   <test-case name="initial-function-903">
+      <description>test initial-function to stylesheet function with wrong arity - too large</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-function-001.xsl"/>
+         <initial-function xmlns:my="http://my.net/" name="my:bar">
+            <param select="1234"/>
+            <param select="5678"/>
+            <param select="5678"/>
+         </initial-function>
+         <output tree="no" serialize="no"/>
+      </test>
+      <result>
+         <error code="XTDE0041"/>
+      </result>
+   </test-case>
+
+
+
+</test-set>
