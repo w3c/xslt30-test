@@ -32,19 +32,24 @@
 
    <!-- Test environments for HTML5 -->
    <environment name="output-06a">
-      <stylesheet file="output-0601.xsl"/>
+      <stylesheet file="output-0601.xsl"/> 
+      <output serialize="yes"/>
       <source role="." file="output06a.xml">
          <description>An XML/HTML tree containing prefixed elements in SVG, MathML and a foreign
-            namespace</description>
+            namespace</description>        
       </source>
    </environment>
    <environment name="output-06b">
       <stylesheet file="output-0601.xsl"/>
+      <output serialize="yes"/>
       <source role="." file="output06b.xml">
          <description>An XML/HTML tree containing prefixed attributes in SVG, MathML and a foreign
             namespace</description>
       </source>
    </environment>
+   
+   
+   
 
    <test-case name="output-0101">
       <description>Test escaping of non-ASCII characters in HTML output when @escape-uri-attributes=
@@ -4179,14 +4184,13 @@
       <description>HTML5 svg unprefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
       <environment ref="output-06a"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <!--<stylesheet file="output-0601.xsl"/>-->
-         <output serialize="yes"/>
-      </test>
+       </test>
       <result>
          <all-of>
             <not>
@@ -4203,12 +4207,12 @@
       <description>HTML5 MathML unprefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
       <environment ref="output-06a"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -4225,13 +4229,12 @@
       <description>HTML5 foreign namespace prefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
       <environment ref="output-06a"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-
-         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -4245,13 +4248,12 @@
       <description>HTML5 svg:attribute prefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
       <environment ref="output-06b"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-
-         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -4264,13 +4266,12 @@
       <description>HTML5 MathML:attribute prefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
       <environment ref="output-06b"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-
-         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
@@ -4283,13 +4284,12 @@
       <description>HTML5 foreign namespace attribute prefixed</description>
       <created by="John Lumley" on="2014-07-15"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
       <environment ref="output-06b"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-
-         <output serialize="yes"/>
       </test>
       <result>
          <all-of>
