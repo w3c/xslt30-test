@@ -17,10 +17,10 @@
     <d><lre xsl:on-empty="()"><?pi?></lre></d>
     <e><lre xsl:on-empty="()"><xsl:attribute name="x">12</xsl:attribute></lre></e>
     <f><lre xsl:on-empty="()" x="12"/></f>
-    <g><lre xsl:on-empty="()"><xsl:attribute name="x" select="nothing" on-empty="f:att()"/></lre></g>
+    <g><lre xsl:on-empty="()"><xsl:attribute name="x" select="'abc'"/></lre></g>
     
     <p><lre xsl:on-empty="()"/></p>
-    <q><lre xsl:on-empty="()"><xsl:attribute name="x" select="nothing" on-empty="()"/></lre></q>
+    <q><lre xsl:on-empty="()"></lre></q>
     <r><lre xsl:on-empty="()"><xsl:value-of select="$zls"/></lre></r>
     <s><lre xsl:on-empty="()" xmlns:p="http://p.com/"></lre></s>
   </out>
