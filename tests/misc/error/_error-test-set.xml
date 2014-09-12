@@ -9355,11 +9355,11 @@ It is a static error if a character
          <error code="XTSE3185"/>
       </result>
    </test-case>
-
+   
    <test-case name="error-3190a">
       <description>Error: It is a static error if two sibling
-                        xsl:merge-source elements have the same name, whether
-                  explicit or implicit.</description>
+                    xsl:merge-source elements have the same name, whether
+                    explicit or implicit.</description>
       <created by="Michael Kay" on="2014-08-25"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -9370,6 +9370,48 @@ It is a static error if a character
       </test>
       <result>
          <error code="XTSE3190"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-3195a">
+      <description>The two attributes for-each-item and
+               for-each-stream are mutually exclusive. 
+               The xsl:merge-source element may contain
+               either or neither, but not both. It is a static error if both are present.
+               Furthermore, if the for-each-stream attribute is present, the only permitted value 
+               (and the default value) of the streamable attribute is yes.
+      </description>
+      <created by="Michael Kay" on="2014-09-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-3195a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3195"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-3195b">
+      <description>The two attributes for-each-item and
+               for-each-stream are mutually exclusive. 
+               The xsl:merge-source element may contain
+               either or neither, but not both. It is a static error if both are present.
+               Furthermore, if the for-each-stream attribute is present, the only permitted value 
+               (and the default value) of the streamable attribute is yes.
+      </description>
+      <created by="Michael Kay" on="2014-09-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-3195b.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3195"/>
       </result>
    </test-case>
 
@@ -9776,6 +9818,23 @@ It is a static error if a character
       </test>
       <result>
          <error code="XTTE3360"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-3362">
+      <description>It is a dynamic error if the accumulator-before or accumulator-after function is called when the 
+      context item is a node in a streamed document, and the dynamic pre-conditions for calling a streamable 
+      accumulator are not met.</description>
+      <created by="Michael Kay" on="2014-09-11"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-3360c.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<test-not-written/>]]></assert-xml>
       </result>
    </test-case>
 
