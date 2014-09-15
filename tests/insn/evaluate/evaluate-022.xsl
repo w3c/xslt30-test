@@ -1,8 +1,11 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0" xmlns:f="f.uri"
-  xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:math="java:java.lang.Math" exclude-result-prefixes="f fn xs math">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0" 
+  xmlns:f="f.uri"
+  xmlns:fn="http://www.w3.org/2005/xpath-functions"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:math="http://www.w3.org/2005/xpath-functions/math" 
+  exclude-result-prefixes="f fn xs math">
 
-  <!--  test type error on a function called within xsl:evaluate -->
+  <!--  test type error on function f:square called within xsl:evaluate -->
   <!-- formerly saxon9083-err -->
 
   <xsl:param name="e1">true()</xsl:param>
@@ -10,7 +13,7 @@
   <xsl:param name="e3">fn:position()</xsl:param>
   <xsl:param name="e4">xs:integer('3')</xsl:param>
   <xsl:param name="e5">f:square('5')</xsl:param>  <!-- type error -->
-  <xsl:param name="e6">math:max(5,2)</xsl:param>
+  <xsl:param name="e6">math:pow(12,3)</xsl:param>
 
   <xsl:template match="/">
     <out>

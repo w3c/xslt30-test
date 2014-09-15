@@ -146,25 +146,28 @@
    <test-case name="evaluate-006">
       <description>Test availability of functions within xsl:evaluate. Test was formerly saxon083.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-09-14" change="Bug#26796: Remove redundant Java namespace, fix function call"/>
       <test>
          <stylesheet file="evaluate-006.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><a>true</a><a>ab</a><a>1</a><a>3</a><a>25</a><a>5</a></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a>true</a><a>ab</a><a>1</a><a>3</a><a>25</a><a>1728</a></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="evaluate-007">
       <description>test current() occurring within xsl:evaluate. Now allowed</description>
-      <created by="Michael Kay" on="2012-11-07"/>
+      <created by="Michael Kay" on="2012-11-07"/>      
       <modified by="Michael Kay" on="2013-06-19" change="remove unnecessary Saxon namespace"/>
+      <modified by="Abel Braaksma" on="2014-09-14" change="Bug#26796: Remove redundant Java namespace"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#26796: Use of fn:current is not allowed in xsl:evaluate, fixed to catch the error"/>
       <test>
          <stylesheet file="evaluate-007.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><z><a n="1"/></z><z><a n="2"/></z><z><a n="3"/></z><z><a n="4"/></z></out>]]></assert-xml>
+         <error code="XPST0017"/>
       </result>
    </test-case>
 
@@ -172,6 +175,7 @@
       <description>test call on polymorphic extension function occurring within xsl:evaluate. Bug 2859861</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2012-12-05" change="fix bug 23203"/>
+      <modified by="Abel Braaksma" on="2014-09-14" change="Bug#26796: make test somewhat meaningful when ext. function is not available, by using xsl:evaluate to the equiv. function"/>
       <test>
          <stylesheet file="evaluate-008.xsl"/>
          <initial-template name="main"/>
@@ -199,6 +203,7 @@
    <test-case name="evaluate-010">
       <description>Test designed to exercise any caching done by the implementation</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#26796, avoiding confusion on the saxon namespace"/>
       <dependencies>
          <feature value="schema_aware"/>
       </dependencies>
@@ -207,10 +212,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<Result><out>http://www.w3.org/?0</out><out>http://saxon.sf.net/#1</out
-            ><out>http://www.w3.org/?2</out><out>http://saxon.sf.net/?3</out><out>http://www.w3.org/?4</out
-            ><out>http://saxon.sf.net/?0</out><out>http://www.w3.org/?1</out><out>http://saxon.sf.net/?2</out
-            ><out>http://www.w3.org/#3</out><out>http://saxon.sf.net/?4</out></Result>]]></assert-xml>
+         <assert-xml><![CDATA[<Result><out>http://www.w3.org/?0</out><out>http://example.com/#1</out
+            ><out>http://www.w3.org/?2</out><out>http://example.com/?3</out><out>http://www.w3.org/?4</out
+            ><out>http://example.com/?0</out><out>http://www.w3.org/?1</out><out>http://example.com/?2</out
+            ><out>http://www.w3.org/#3</out><out>http://example.com/?4</out></Result>]]></assert-xml>
       </result>
    </test-case>
 
@@ -274,9 +279,10 @@
 
    <test-case name="evaluate-015">
       <description>
-         Basic test of xsl:evaluate. Includes a test where the expression to be evaluated itself calls xsl:evaluate. 
+         Complex test of xsl:evaluate. Includes a test where the expression to be evaluated itself calls xsl:evaluate, and inherits the context. 
          Test was formerly saxon013</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#26796, removed dependency on saxon:evaluate-node, by rewriting it as a stylesheet function with similar semantics"/>
       <environment ref="eval003"/>
       <test>
          <stylesheet file="evaluate-015.xsl"/>
@@ -302,6 +308,7 @@
    <test-case name="evaluate-017">
       <description>Test of xsl:evaluate calling an external Java function. Test was formerly saxon037</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-09-14" change="Bug#26796: fixed incorrect dependency on saxon namespace in xsl:otherwise"/>
       <environment ref="eval005"/>
      <test>
          <stylesheet file="evaluate-017.xsl"/>
@@ -369,6 +376,7 @@
       <description>test type error occurring within xsl:evaluate. Formerly saxon9083-err</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="xsl:evaluate occured in xslt3.0 spec, set stylesheet @version to 3.0"/>
+      <modified by="Abel Braaksma" on="2014-09-14" change="Bug#26796: Remove redundant Java namespace, fix ext. function call to use one from the standard math namespace"/>
       <environment ref="eval012"/>
       <test>
          <stylesheet file="evaluate-022.xsl"/>
@@ -384,18 +392,23 @@
    <test-case name="evaluate-023">
       <description>test type error occurring on result of xsl:evaluate</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#26801: fixing the error code (currently allowing both XPTY0004 and XTTE0780, but I think the former should be removed)"/>
       <environment ref="eval012"/>
       <test>
          <stylesheet file="evaluate-023.xsl"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <any-of>
+            <error code="XPTY0004"/>
+            <error code="XTTE0780"/>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="evaluate-024">
       <description>xsl:evaluate fails with absent context item</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Removed redundant, unused code"/>
       <environment ref="eval012"/>
       <test>
          <stylesheet file="evaluate-024.xsl"/>
@@ -409,6 +422,7 @@
       <description>xsl:evaluate fails with absent context item</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="xsl:evaluate occured in xslt3.0 spec, set stylesheet @version to 3.0"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Removed redundant, unused code"/>
       <environment ref="eval012"/>
       <test>
          <stylesheet file="evaluate-025.xsl"/>
@@ -422,19 +436,22 @@
       <description>xsl:evaluate fails with context item as sequence of items</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="xsl:evaluate occured in xslt3.0 spec, set stylesheet @version to 3.0"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Removed redundant, unused code"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#26801: fixing the error code, should be XTTE3210 instead of XPTY0004"/>
       <environment ref="eval012"/>
       <test>
          <stylesheet file="evaluate-026.xsl"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <error code="XTTE3210"/>
       </result>
    </test-case>
 
    <test-case name="evaluate-027">
-      <description>Test use of second argument to saxon:expression() to supply a namespace context</description>
+      <description>Test to supply a namespace context to xsl:evaluate</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="xsl:evaluate occured in xslt3.0 spec, set stylesheet @version to 3.0"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#26796: Remove redundant Java and Saxon namespace"/>
       <environment ref="eval014"/>
       <test>
          <stylesheet file="evaluate-027.xsl"/>
@@ -610,6 +627,7 @@
       <description>Test designed to exercise any caching done by the implementation, uses schema-aware AVT attributes which evaluate to "true" and "false"</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
       <modified by="Abel Braaksma" on="2014-09-14" change="made test specific for schema-aware processors, per bug#26793"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#26796, avoiding confusion on the saxon namespace"/>
       <dependencies>
          <feature value="schema_aware" satisfied="true"/>
       </dependencies>
@@ -618,10 +636,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<Result><out>http://www.w3.org/?0</out><out>http://saxon.sf.net/#1</out
-            ><out>http://www.w3.org/?2</out><out>http://saxon.sf.net/?3</out><out>http://www.w3.org/?4</out
-            ><out>http://saxon.sf.net/?0</out><out>http://www.w3.org/?1</out><out>http://saxon.sf.net/?2</out
-            ><out>http://www.w3.org/#3</out><out>http://saxon.sf.net/?4</out></Result>]]></assert-xml>
+         <assert-xml><![CDATA[<Result><out>http://www.w3.org/?0</out><out>http://example.com/#1</out
+            ><out>http://www.w3.org/?2</out><out>http://example.com/?3</out><out>http://www.w3.org/?4</out
+            ><out>http://example.com/?0</out><out>http://www.w3.org/?1</out><out>http://example.com/?2</out
+            ><out>http://www.w3.org/#3</out><out>http://example.com/?4</out></Result>]]></assert-xml>
       </result>
    </test-case>
 </test-set>
