@@ -1,4 +1,6 @@
-<xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
+<xsl:transform version="3.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:eval="http://example.com/eval">
 
   <!-- Basic test of saxon:evaluate-node() -->
   <!-- Formerly saxon013 -->
@@ -18,5 +20,12 @@
   </xsl:template>
   
   <xsl:strip-space elements="*"/>
+  
+  <xsl:function name="eval:node">
+    <xsl:param name="node" as="element()" />
+    
+    <xsl:evaluate xpath="string($node)" base-uri="{base-uri($node)}" namespace-context="$node" />
+      
+  </xsl:function>
 
 </xsl:transform>

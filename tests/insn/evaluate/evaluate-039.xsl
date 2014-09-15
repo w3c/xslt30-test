@@ -24,7 +24,7 @@ exclude-result-prefixes="xs ev39">
       <xsl:for-each select="1 to 100000">
         <xsl:variable name="r" as="xs:string">
           <xsl:evaluate xpath="if (position() mod 7 = 0) then $path1 else $path2"
-                        base-uri="{if (position() mod 2 = 0) then 'http://www.w3.org/' else 'http://saxon.sf.net/'}"
+                        base-uri="{if (position() mod 2 = 0) then 'http://www.w3.org/' else 'http://example.com/'}"
                         schema-aware="{if (position() mod 3 = 0) then ' true ' else 'false'}">
              <xsl:with-param name="v" select="position() mod 5"/>
           </xsl:evaluate>

@@ -340,9 +340,10 @@
    <test-case name="call-template-0401">
       <description>Launched with initial template and that template has a param marked required. (Processors not permitted to supply template params at launch, only stylesheet params.)</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#24864, XTDE0060 is now XSLT20 specific, changed XSLT20+ to XSLT20 and added call-template-0401a" />
       <environment ref="call-template-04"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="call-template-0401.xsl"/>
@@ -352,7 +353,24 @@
          <error code="XTDE0060"/>
       </result>
    </test-case>
-
+   
+   <test-case name="call-template-0401a">
+      <description>Launched with initial template and that template has a param marked required. (Processors not permitted to supply template params at launch, only stylesheet params.)</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2014-09-15" change="Bug#24864, XTDE0060 is now XSLT20 specific, added this test as alternative for call-template-0401 for XSLT30+ processors" />
+      <environment ref="call-template-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="call-template-0401.xsl"/>
+         <initial-template name="temp"/>
+      </test>
+      <result>
+         <error code="XTDE0700"/>
+      </result>
+   </test-case>
+   
    <test-case name="call-template-0402">
       <description>FileName: namedtemplate06 Document: http://www.w3.org/TR/xslt DocVersion: 19991116 Section: 6</description>
       <created by="Michael Kay" on="2012-11-07"/>
