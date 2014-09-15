@@ -376,6 +376,17 @@
       </xsl:stream>
     </xsl:template>
     
+    <!-- Streaming xsl:value-of: value-of document node -->
+    
+    <xsl:template name="s-076" use-when="$RUN">
+      <xsl:variable name="av" as="xs:integer*" select="1 to 3"/>
+      <xsl:stream href="../docs/nested-numbers.xml">
+        <out>
+          <xsl:value-of select="."/>
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
 
                                                 
     
