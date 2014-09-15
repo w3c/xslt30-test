@@ -9821,20 +9821,37 @@ It is a static error if a character
       </result>
    </test-case>
    
-   <test-case name="error-3362">
+   <test-case name="error-3362a">
       <description>It is a dynamic error if the accumulator-before or accumulator-after function is called when the 
-      context item is a node in a streamed document, and the dynamic pre-conditions for calling a streamable 
-      accumulator are not met.</description>
-      <created by="Michael Kay" on="2014-09-11"/>
+      context item is a node in a streamed document, unless the selected accumulator is declared with streamable="yes".
+      </description>
+      <created by="Michael Kay" on="2014-09-15"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <stylesheet file="error-3360c.xsl"/>
+         <stylesheet file="error-3362a.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<test-not-written/>]]></assert-xml>
+         <error code="XTDE3362"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-3362b">
+      <description>It is a dynamic error if the accumulator-before or accumulator-after function is called when the 
+      context item is a node in a streamed document, unless the selected accumulator is declared with streamable="yes".
+      </description>
+      <created by="Michael Kay" on="2014-09-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-3362b.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE3362"/>
       </result>
    </test-case>
 
