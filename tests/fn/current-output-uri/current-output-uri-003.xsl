@@ -4,6 +4,7 @@
   <!-- current-output-uri() within xsl:result-document -->
   
   <xsl:template name="main">
+    <out>first</out>
     <xsl:result-document href="second/current-output-uri-003.xml">
     	<out><xsl:value-of select="current-output-uri()"/></out>
     </xsl:result-document>	

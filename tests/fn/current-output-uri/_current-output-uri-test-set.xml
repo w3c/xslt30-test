@@ -29,7 +29,7 @@
          <output file="results/current-output-uri-002.xml"/>
       </test>
       <result>
-         <assert>ends-with(/out, 'fn/current-output-uri/results/current-output-uri-002.xml')</assert>
+         <assert>ends-with(/out, 'results/current-output-uri-002.xml')</assert>
       </result>
    </test-case>
    
@@ -42,9 +42,39 @@
          <output file="results/current-output-uri-003.xml"/>
       </test>
       <result>
-         <assert-result-document uri="second/current-output-uri-003.xml">
-            <assert>ends-with(/out, 'fn/current-output-uri/results/second/current-output-uri-003.xml')</assert>
+         <assert-result-document uri="results/second/current-output-uri-003.xml">
+            <assert>ends-with(/out, 'results/second/current-output-uri-003.xml')</assert>
          </assert-result-document>
+      </result>
+   </test-case>
+   
+   <test-case name="current-output-uri-004">
+      <description>Value of current-output-uri() in a tunnel parameter</description>
+      <created by="Michael Kay" on="2014-09-16"/> 
+      <environment>
+         <source role="." file="current-output-uri-004.xsl"/>
+      </environment>     
+      <test>
+         <stylesheet file="current-output-uri-004.xsl"/>
+         <output file="results/current-output-uri-004.xml"/>
+      </test>
+      <result>
+         <assert-result-document uri="results/row1.xml">
+            <assert>ends-with(/row/col/@base, 'results/current-output-uri-004.xml')</assert>
+         </assert-result-document>
+      </result>
+   </test-case>
+   
+   <test-case name="current-output-uri-005">
+      <description>Value of current-output-uri() while evaluating a stylesheet function</description>
+      <created by="Michael Kay" on="2014-09-16"/>   
+      <test>
+         <stylesheet file="current-output-uri-005.xsl"/>
+         <initial-template name="main"/>
+         <output file="results/current-output-uri-005.xml"/>
+      </test>
+      <result>
+         <assert>/out = ''</assert>
       </result>
    </test-case>
    
