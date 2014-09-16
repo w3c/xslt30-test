@@ -3,7 +3,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
     version="3.0">
-    <!-- xsl:merge test on two heterogeneous files, using for-each-stream and streamable=" no ". -->
+    <!-- xsl:merge test on two heterogeneous files, using for-each-stream and streamable defaulted. -->
     
     <xsl:output method="xml" indent="no"/>
     <xsl:strip-space elements="*"/>
@@ -11,10 +11,10 @@
         
         <events>
             <xsl:merge>
-                <xsl:merge-source for-each-stream="'log-file-1.xml'" select="events/event" streamable=" no ">
+                <xsl:merge-source for-each-stream="'log-file-1.xml'" select="events/event">
                         <xsl:merge-key select="xs:dateTime(@timestamp)"/>
                 </xsl:merge-source>
-                <xsl:merge-source for-each-stream="'log-file-2.xml'" select="log/day/record" streamable="no">
+                <xsl:merge-source for-each-stream="'log-file-2.xml'" select="log/day/record">
                         <xsl:merge-key select="dateTime(../@date, time)"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
