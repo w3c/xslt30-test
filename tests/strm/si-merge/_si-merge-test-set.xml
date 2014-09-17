@@ -61,12 +61,27 @@
          Merge time-series data for two files with homogenous structure
       </description>
       <created by="Michael Kay" on="2014-04-15"/>
+      <modified by="Michael Kay" on="2014-09-16" change="Change expected result (was 11644)"/>
       <test>
          <stylesheet file="si-merge-004.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>count(/prices/key) = 11644</assert>
+         <assert>count(/prices/key) = 11774</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-merge-004ns">
+      <description>
+         Merge time-series data for two files with homogenous structure. Non streaming version for comparison.
+      </description>
+      <created by="Michael Kay" on="2014-09-16"/>
+      <test>
+         <stylesheet file="si-merge-004ns.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>count(/prices/key) = 11774</assert>
       </result>
    </test-case>
    

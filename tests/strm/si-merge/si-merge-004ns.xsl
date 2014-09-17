@@ -4,15 +4,15 @@
     exclude-result-prefixes="xs"
     version="3.0">
     
-    <!-- Two files in a single merge-source -->
+    <!-- Non-streaming version of si-merge-004 for comparison purposes -->
 
     <xsl:template name="main">
         
         <prices>
             <xsl:merge>
                 <xsl:merge-source
-                    streamable="yes"
-                    for-each-stream="('../docs/goldPrice.xml', '../docs/uraniumPrice.xml')" 
+                    streamable="no"
+                    for-each-item="(doc('../docs/goldPrice.xml'), doc('../docs/uraniumPrice.xml'))" 
                 	select="dataset/data/datum">
                         <xsl:merge-key select="xs:date(datum[1])" order="descending"/>
                 </xsl:merge-source>

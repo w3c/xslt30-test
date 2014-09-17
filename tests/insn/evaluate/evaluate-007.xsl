@@ -2,8 +2,7 @@
 xmlns:f="f.uri"
 xmlns:fn="http://www.w3.org/2005/xpath-functions"
 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-xmlns:math="java:java.lang.Math"
-exclude-result-prefixes="f fn xs math">
+exclude-result-prefixes="f fn xs">
 
 <!--  test calling current() within xsl:evaluate -->
 
