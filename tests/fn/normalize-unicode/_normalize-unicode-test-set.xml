@@ -359,6 +359,7 @@
       <description>trivial test of normalization-form="none"</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="John Lumley" on="2014-09-24" change="Support uppercase hexadecimal - Bug 26890"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -373,7 +374,7 @@
             <serialization-matches><![CDATA[<de norm="c" üss="üß">Straßenüberführung</de>]]></serialization-matches>
             <serialization-matches><![CDATA[<de norm="d" üss="u&#(776|x308);ss">Straßenu&#(776|x308);berfu&#(776|x308);hrung</de>]]></serialization-matches>
             <serialization-matches><![CDATA[<ffi norm="kc" ffi="ffi">Affinity</ffi>]]></serialization-matches>
-            <serialization-matches><![CDATA[<ffi norm="kd" ffi="&#(64259|xfb03);">A&#(64259|xfb03);nity</ffi>]]></serialization-matches>
+            <serialization-matches><![CDATA[<ffi norm="kd" ffi="&#(64259|xfb03|xFB03);">A&#(64259|xfb03|xFB03);nity</ffi>]]></serialization-matches>
             <!-- TODO: should be a serialization test -->
             <!--<assert-xml file="normalize-unicode-017.out"/>-->          
          </all-of>
