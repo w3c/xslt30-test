@@ -4,7 +4,8 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema"
 exclude-result-prefixes="xs">
 
-  <!-- PURPOSE: Test casting of string to QName. No longer permitted at run-time (argument must be a string literal). -->
+  <!-- PURPOSE: Test casting of string to QName. Not permitted at run-time in 2.0 (argument must be a string literal),
+       but permitted in 3.0 (even if the stylesheet says version="2.0"...) -->
   <?spec xpath#id-cast?>
   <?error XPTY0004?>
   
