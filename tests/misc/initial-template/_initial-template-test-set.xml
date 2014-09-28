@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="initial-template">
+   <description>Tests Call-Template XSLT invocation</description>
+   <dependencies>
+      <spec value="XSLT20+"/>
+      <!--<feature value="Saxon-PE"/>-->
+   </dependencies>
+
+   <test-case name="initial-template-001">
+      <description>test initial-template</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<a id="2">-18</a><a id="4">14.2</a><a id="6">-56.0</a><a id="8">123.6</a>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="initial-template-002">
+      <description>initial-template invocation with params</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <modified by="John Lumley" on="2014-09-24"
+         change="Dependency changed from XT20+ to XT30+ [Bug 26891]"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-001.xsl"/>
+         <initial-template name="param1">
+            <param name="a" select="1234"/>
+            <param xmlns:my="http://my.net/" name="my:b" tunnel="yes" select="999"/>
+         </initial-template>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<a>1234 999 24</a>]]></assert-xml>
+      </result>
+   </test-case>
+   <test-case name="initial-template-002a">
+      <description>initial-template invocation with params</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <modified by="John Lumley" on="2014-09-24" change="Error under XT20 [Bug 26891]"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-001.xsl"/>
+         <initial-template name="param1">
+            <param name="a" select="1234"/>
+            <param xmlns:my="http://my.net/" name="my:b" tunnel="yes" select="999"/>
+         </initial-template>
+      </test>
+      <result>
+         <error code="XTDE0060"/>
+      </result>
+   </test-case>
+
+   <test-case name="initial-template-003">
+      <description>initial-template invocation with setting of name-overlapping stylesheet and local
+         params</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <modified by="John Lumley" on="2014-09-24"
+         change="Dependency changed from XT20+ to XT30+ [Bug 26891]"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-001.xsl"/>
+         <param name="a" select="77"/>
+         <initial-template name="param1">
+            <param name="a" select="1234"/>
+            <param xmlns:my="http://my.net/" name="my:b" tunnel="yes" select="999"/>
+         </initial-template>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<a>1234 999 154</a>]]></assert-xml>
+      </result>
+   </test-case>
+   <test-case name="initial-template-003a">
+      <description>initial-template invocation with setting of name-overlapping stylesheet and local
+         params</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <modified by="John Lumley" on="2014-09-24" change="Error under XT20 [Bug 26891]"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-001.xsl"/>
+         <param name="a" select="77"/>
+         <initial-template name="param1">
+            <param name="a" select="1234"/>
+            <param xmlns:my="http://my.net/" name="my:b" tunnel="yes" select="999"/>
+         </initial-template>
+      </test>
+      <result>
+         <error code="XTDE0060"/>
+      </result>
+   </test-case>
+
+   <test-case name="initial-template-901">
+      <description>initial-template invocation to missing template</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-001.xsl"/>
+         <initial-template name="nonsuch">
+            <param name="a" select="1234"/>
+            <param xmlns:my="http://my.net/" name="my:b" tunnel="yes" select="999"/>
+         </initial-template>
+      </test>
+      <result>
+         <error code="XTDE0040"/>
+      </result>
+   </test-case>
+   <test-case name="initial-template-902">
+      <description>initial-template invocation with missing required local parameter</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <modified by="John Lumley" on="2014-09-24"
+         change="Dependency changed from XT20+ to XT30+ [Bug 26891]"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-001.xsl"/>
+         <initial-template name="param1">
+            <!--<param name="a" select="1234"/>-->
+            <param xmlns:my="http://my.net/" name="my:b" tunnel="yes" select="999"/>
+         </initial-template>
+      </test>
+      <result>
+         <error code="XTDE0700"/>
+      </result>
+   </test-case>
+   <test-case name="initial-template-902a">
+      <description>XT20 initial-template invocation to a template that defines a required
+         parameter</description>
+      <created by="John Lumley" on="2014-08-19"/>
+      <modified by="John Lumley" on="2014-09-24" change="Error under XT20 [Bug 26891]"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-001.xsl"/>
+         <initial-template name="param1"/>
+      </test>
+      <result>
+         <error code="XTDE0060"/>
+      </result>
+   </test-case>
+
+
+
+</test-set>
