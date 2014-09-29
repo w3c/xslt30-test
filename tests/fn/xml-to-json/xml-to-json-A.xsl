@@ -5,12 +5,12 @@
     exclude-result-prefixes="xs j"
     version="3.0">
     
-    
+    <xsl:variable name="options.liberal" as="map(*)" select="map{'liberal':true()}"/>
     <xsl:output method="xml"/>
  
     
     <xsl:template name="t001">
-        <t001><xsl:sequence select="xml-to-json(json-to-xml('null'))"/></t001>
+        <t001><xsl:sequence select="xml-to-json(json-to-xml('null',$options.liberal))"/></t001>
     </xsl:template>
     
     <xsl:template name="t002">
