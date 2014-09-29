@@ -112,16 +112,15 @@
       </result>
    </test-case>
 
-   <test-case name="validation-0102">
+   <test-case name="validation-0102a">
       <description>
-      	Test that an error is raised if @validation=lax is present in the stylesheet 
+      	Test that an error is raised (by 2.0) if @validation=lax is present in the stylesheet 
       	but the processor is a non-schema-aware processor.
-      	TODO: the rules have changed for XSLT 3.0
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="validation-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
          <feature value="schema_aware" satisfied="false"/>
       </dependencies>
       <test>
@@ -131,16 +130,35 @@
          <error code="XTSE1660"/>
       </result>
    </test-case>
-
-   <test-case name="validation-0103">
+   
+   <test-case name="validation-0102b">
       <description>
-      	Test that an error is raised if @validation=preserve is present in the stylesheet 
+      	Test that an error is NOT raised (by 3.0) if @validation=lax is present in the stylesheet 
+      	but the processor is a non-schema-aware processor.
+      </description>
+      <created by="Michael Kay" on="2014-09-29"/>
+      <environment ref="validation-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0102.xsl"/>
+      </test>
+      <result>
+         <assert>/elem = '2.2'</assert>
+      </result>
+   </test-case>
+
+   <test-case name="validation-0103a">
+      <description>
+      	Test that an error is raised (in 2.0) if @validation=preserve is present in the stylesheet 
       	but the processor is a non-schema-aware processor.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <environment ref="validation-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
          <feature value="schema_aware" satisfied="false"/>
       </dependencies>
       <test>
@@ -148,6 +166,25 @@
       </test>
       <result>
          <error code="XTSE1660"/>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-0103b">
+      <description>
+      	Test that an error is NOT raised (in 3.0) if @validation=preserve is present in the stylesheet 
+      	but the processor is a non-schema-aware processor.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment ref="validation-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0103.xsl"/>
+      </test>
+      <result>
+         <assert>/elem = '2.2'</assert>
       </result>
    </test-case>
 
@@ -170,15 +207,16 @@
       </result>
    </test-case>
 
-   <test-case name="validation-0105">
+   <test-case name="validation-0105a">
       <description>
-      	Test that an error is raised if @validation=strip is present in the stylesheet 
+      	Test that an error is raised (in 2.0) if @validation=preserve is present in the stylesheet 
       	but the processor is a non-schema-aware processor.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2014-09-29" change="change the test to do what it says on the tin"/>
       <environment ref="validation-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
          <feature value="schema_aware" satisfied="false"/>
       </dependencies>
       <test>
@@ -186,6 +224,26 @@
       </test>
       <result>
          <error code="XTSE1660"/>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-0105b">
+      <description>
+      	Test that an error is NOT raised (in 3.0) if @validation=preserve is present in the stylesheet 
+      	but the processor is a non-schema-aware processor.
+      </description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2014-09-29" change="change the test to do what it says on the tin"/>
+      <environment ref="validation-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0105.xsl"/>
+      </test>
+      <result>
+         <assert>/elem = '2.2'</assert>
       </result>
    </test-case>
 
