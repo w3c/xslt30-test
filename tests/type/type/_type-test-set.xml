@@ -1014,18 +1014,33 @@
       </result>
    </test-case>
 
-   <test-case name="type-0168">
-      <description>Test casting of string to QName. No longer permitted at run-time.</description>
+   <test-case name="type-0168a">
+      <description>Test casting of string to QName. Not permitted at run-time in XSLT 2.0.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="type-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="type-0168.xsl"/>
       </test>
       <result>
          <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
+   <test-case name="type-0168b">
+      <description>Test casting of string to QName. Permitted at run-time in XPath 3.0+.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="type-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-0168.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "{http://magic.namespace.com/uri}thing"</assert>
       </result>
    </test-case>
 
