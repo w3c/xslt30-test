@@ -5,7 +5,7 @@
     exclude-result-prefixes="xs"
     version="3.0">
     
-    <!-- instance-of tests on user-defined function, varying the argument types - all false -->
+    <!-- instance-of tests on user-defined function, varying the argument types -->
     
     <xsl:function name="local:f" as="element(e)?">
         <xsl:param name="x" as="xs:long"/>
@@ -16,14 +16,14 @@
     <xsl:template name="main">
     <out>    
         <xsl:value-of select="
-            local:f#2 instance of function(xs:long, xs:NCName) as element(), 
-            local:f#2 instance of function(xs:long, xs:NCName) as element()+, 
-            local:f#2 instance of function(xs:long, xs:NCName) as element()?, 
-            local:f#2 instance of function(xs:long, xs:NCName) as element()*, 
-            local:f#2 instance of function(xs:long, xs:NCName) as element(e)*, 
-            local:f#2 instance of function(xs:long, xs:NCName) as element(e, xs:anyType)*, 
-            local:f#2 instance of function(xs:long, xs:NCName) as element(*, xs:anyType)?, 
-            local:f#2 instance of function(xs:long, xs:NCName) as element(*, xs:untyped)?"/>
+            (:F:) local:f#2 instance of function(xs:long, xs:NCName) as element(), 
+            (:F:) local:f#2 instance of function(xs:long, xs:NCName) as element()+, 
+            (:T:) local:f#2 instance of function(xs:long, xs:NCName) as element()?, 
+            (:T:) local:f#2 instance of function(xs:long, xs:NCName) as element()*, 
+            (:T:) local:f#2 instance of function(xs:long, xs:NCName) as element(e)*, 
+            (:F:) local:f#2 instance of function(xs:long, xs:NCName) as element(e, xs:anyType)*, 
+            (:F:) local:f#2 instance of function(xs:long, xs:NCName) as element(*, xs:anyType)?, 
+            (:F:) local:f#2 instance of function(xs:long, xs:NCName) as element(*, xs:untyped)?"/>
     </out>
     </xsl:template>
     
