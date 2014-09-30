@@ -6,8 +6,8 @@
                      [xsl:]validation or default-validation attribute
                      with a value other than strip,
                         preserve, or lax.-->
-   <xsl:template name="main">
-      <out>
+   <xsl:template name="main" >
+      <out xsl:type="xs:untyped">
          <x/>
       </out>
    </xsl:template>
