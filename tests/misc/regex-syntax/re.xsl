@@ -36,7 +36,7 @@
   </xsl:when>
   <xsl:otherwise>
     <!-- output here is for diagnostics -->
-    <regex value="{$regex}">
+    <regex value="{$regex}" cp="{string-to-codepoints($regex)}">
       <xsl:for-each select="tokenize($match, $delimiter)">
         <xsl:if test="not(matches(., $anchored-regex))">
           <string value="{.}" cp="{string-to-codepoints(.)}" expected-match="true"  actual-match="false"/>
