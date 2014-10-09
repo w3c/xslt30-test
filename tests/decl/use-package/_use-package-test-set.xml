@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="use-package">
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="use-package">
    <description>Tests xsl:use-package in XSLT 3.0</description>
-   
+
    <environment name="use-package-env-001">
-      <package file="use-package-base-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/use-package-base-001" package-version="1.0.0"/>
+      <package file="use-package-base-001.xsl" role="secondary"
+         uri="http://www.w3.org/xslt30tests/use-package-base-001" package-version="1.0.0"/>
    </environment>
-   
+
    <environment name="use-package-env-002">
-      <package file="use-package-base-002.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/use-package-base-002" package-version="1.0.0"/>
+      <package file="use-package-base-002.xsl" role="secondary"
+         uri="http://www.w3.org/xslt30tests/use-package-base-002" package-version="1.0.0"/>
    </environment>
-   
+
    <environment name="use-package-env-003">
-      <package file="use-package-base-003.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/use-package-base-003" package-version="1.0.0"/>
+      <package file="use-package-base-003.xsl" role="secondary"
+         uri="http://www.w3.org/xslt30tests/use-package-base-003" package-version="1.0.0"/>
+   </environment>
+
+   <environment name="use-package-env-004">
+      <package file="use-package-base-004a.xsl" role="secondary"
+         uri="http://www.w3.org/xslt30tests/use-package-base-004" package-version="1.0.0"/>
+      <package file="use-package-base-004b.xsl" role="secondary"
+         uri="http://www.w3.org/xslt30tests/use-package-base-004" package-version="2.0.0"/>
+      <package file="use-package-base-004c.xsl" role="secondary"
+         uri="http://www.w3.org/xslt30tests/use-package-base-004" package-version="3.5.4"/>
+      <package file="use-package-base-004d.xsl" role="secondary"
+         uri="http://www.w3.org/xslt30tests/use-package-base-004" package-version="2.0.0-alpha"/>
+      <package file="use-package-base-004e.xsl" role="secondary"
+         uri="http://www.w3.org/xslt30tests/use-package-base-004" package-version="2.0.0-beta"/>
    </environment>
 
    <dependencies>
@@ -33,7 +48,7 @@
          <assert>/ok</assert>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-002">
       <description>Successful use of a final function defined in a library package</description>
       <created by="Michael Kay" on="2013-07-08"/>
@@ -47,7 +62,7 @@
          <assert>/ok</assert>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-003">
       <description>Unsuccessful use of a private function defined in a library package</description>
       <created by="Michael Kay" on="2013-07-08"/>
@@ -61,7 +76,7 @@
          <error code="XPST0017"/>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-004">
       <description>Successful use of a public variable defined in a library package</description>
       <created by="Michael Kay" on="2013-10-17"/>
@@ -75,7 +90,7 @@
          <assert>/ok</assert>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-005">
       <description>Successful use of a final variable defined in a library package</description>
       <created by="Michael Kay" on="2013-10-17"/>
@@ -89,7 +104,7 @@
          <assert>/ok</assert>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-006">
       <description>Unsuccessful use of a private variable defined in a library package</description>
       <created by="Michael Kay" on="2013-10-17"/>
@@ -103,7 +118,7 @@
          <error code="XPST0008"/>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-101">
       <description>Decimal formats are local to a package</description>
       <created by="Michael Kay" on="2013-07-17"/>
@@ -115,12 +130,12 @@
       </test>
       <result>
          <all-of>
-           <assert>/out/@p = '1~234.5 1!234.5'</assert>
-           <assert>/out/@q = '1^234.5 1$234.5'</assert>
+            <assert>/out/@p = '1~234.5 1!234.5'</assert>
+            <assert>/out/@q = '1^234.5 1$234.5'</assert>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-102">
       <description>Keys are local to a package</description>
       <created by="Michael Kay" on="2013-07-17"/>
@@ -132,12 +147,12 @@
       </test>
       <result>
          <all-of>
-           <assert>/out/@p = 'one'</assert>
-           <assert>/out/@q = 'three'</assert>
+            <assert>/out/@p = 'one'</assert>
+            <assert>/out/@q = 'three'</assert>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-103">
       <description>Namespace aliases are local to a package</description>
       <created by="Michael Kay" on="2013-07-17"/>
@@ -149,12 +164,12 @@
       </test>
       <result>
          <all-of>
-           <assert>namespace-uri(/out/*:test[1]) = 'http://www.w3.org/xslt30tests/use-package-103'</assert>
-           <assert>namespace-uri(/out/*:test[2]) = 'http://www.w3.org/xslt30tests/use-package-base-002'</assert>
+            <assert>namespace-uri(/out/*:test[1]) = 'http://www.w3.org/xslt30tests/use-package-103'</assert>
+            <assert>namespace-uri(/out/*:test[2]) = 'http://www.w3.org/xslt30tests/use-package-base-002'</assert>
          </all-of>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-104">
       <description>Decimal formats are local to a package</description>
       <created by="Michael Kay" on="2013-07-18"/>
@@ -168,7 +183,7 @@
          <error code="FODF1280"/>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-105">
       <description>Keys are local to a package</description>
       <created by="Michael Kay" on="2013-07-18"/>
@@ -182,7 +197,7 @@
          <error code="XTDE1260"/>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-106">
       <description>Character maps are local to a package</description>
       <created by="Michael Kay" on="2013-07-18"/>
@@ -196,7 +211,7 @@
          <error code="XTSE1590"/>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-107">
       <description>The unnamed output format is local to a package</description>
       <created by="Michael Kay" on="2013-07-18"/>
@@ -210,7 +225,7 @@
          <assert>/out = 'zzz'</assert>
       </result>
    </test-case>
-   
+
    <test-case name="use-package-108">
       <description>The unnamed output format is local to a package</description>
       <created by="Michael Kay" on="2013-07-18"/>
@@ -226,5 +241,203 @@
          <serialization-matches><![CDATA[<out xmlns:p="[^"]*">ZZZZZZ</out>]]></serialization-matches>
       </result>
    </test-case>
+
+   <test-case name="use-package-201">
+      <description>Testing package versioning - version 1.0.0</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-201.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = '1.0.0'</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-202">
+      <description>Testing package versioning - version 2.0.0</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-202.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = '2.0.0'</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-203">
+      <description>Testing package versioning - version 1.0.0,2.0.0</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-203.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('1.0.0','2.0.0')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-204">
+      <description>Testing package versioning - version 1.5 to 2.5</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-204.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-205">
+      <description>Testing package versioning - version to 1.5</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-205.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('1.0.0')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-206">
+      <description>Testing package versioning - version 1.5+</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-206.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-207">
+      <description>Testing package versioning - version 3.5.*</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-207.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('3.5.4')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-208">
+      <description>Testing package versioning - version 2.0.0-alpha</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-208.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0-alpha')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-209">
+      <description>Testing package versioning - version 2.0.0-arable-environment.27 to
+         2.0.0-gamma</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-209.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0-beta')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-210">
+      <description>Testing package versioning - version 2.0.0-a to 2.0.0-gamma</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-210.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0-alpha')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-211">
+      <description>Testing package versioning - version 2.7.0-a to 5.0.0-gamma</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-211.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = '3.5.4'</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-212">
+      <description>Testing package versioning - zero-truncated version 2.0</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-212.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = '2.0.0'</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-291">
+      <description>Testing package versioning - invalid NCName suffix:
+         2.0.0-alpha:beta</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-291.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   <test-case name="use-package-292">
+      <description>Testing package versioning - invalid version: TotallyInvalid</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-292.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   <test-case name="use-package-293">
+      <description>Testing package versioning - invalid version: -3.6</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-293.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   <test-case name="use-package-294">
+      <description>Testing package versioning - invalid version: -alpha</description>
+      <created by="John Lumley" on="2014-10-09"/>
+      <environment ref="use-package-env-004"/>
+      <test>
+         <package file="use-package-294.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+
+
 
 </test-set>
