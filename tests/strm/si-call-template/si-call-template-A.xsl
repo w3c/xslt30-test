@@ -25,6 +25,26 @@
       <xsl:copy-of select="PRICE"/>
     </xsl:template>
     
+    <!-- Use xsl:call-template with prohibited context item and atomized parameter -->
+    
+    <xsl:template name="c-002" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:for-each select="/BOOKLIST/BOOKS/ITEM">
+             <xsl:call-template name="c-002a">
+               <xsl:with-param name="price" select="PRICE"/>
+             </xsl:call-template>
+          </xsl:for-each>   
+        </out>
+      </xsl:stream>
+    </xsl:template>
+    
+    <xsl:template name="c-002a">
+      <xsl:context-item use="prohibited"/>
+      <xsl:param name="price" as="xs:decimal"/>
+      <PRICE><xsl:copy-of select="$price"/></PRICE>
+    </xsl:template>
+    
 
     
 
