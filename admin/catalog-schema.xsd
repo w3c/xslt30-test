@@ -3,7 +3,9 @@
 
 <xs:schema targetNamespace="http://www.w3.org/2012/10/xslt-test-catalog"
     elementFormDefault="qualified" attributeFormDefault="unqualified"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2012/10/xslt-test-catalog">
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0" vc:maxVersion="1.1">
+
     <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"
         xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"/>
 
@@ -753,12 +755,12 @@
                             <xs:restriction base="xs:string">
                                 <xs:enumeration value="backwards_compatibility"/>
                                 <xs:enumeration value="disabling_output_escaping"/>
-                                <xs:enumeration value="dynamic_evaluation" />
+                                <xs:enumeration value="dynamic_evaluation"/>
                                 <xs:enumeration value="namespace_axis"/>
                                 <xs:enumeration value="schema_aware"/>
-                                <xs:enumeration value="serialization" />
+                                <xs:enumeration value="serialization"/>
                                 <xs:enumeration value="streaming"/>
-                                <xs:enumeration value="xquery_invocation" />
+                                <xs:enumeration value="xquery_invocation"/>
                                 <xs:enumeration value="XML_1.1"/>
                                 <xs:enumeration value="XSD_1.1"/>
                             </xs:restriction>
@@ -1217,6 +1219,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
+                <xs:element minOccurs="0" ref="posture-and-sweep"/>
                 <xs:element ref="param" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="initial-template" minOccurs="0"/>
                 <xs:element ref="initial-mode" minOccurs="0"/>
@@ -1309,6 +1312,60 @@
                 <xs:group ref="tunnelParameters"/>
             </xs:sequence>
             <xs:attribute name="name" type="xs:QName" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="posture-and-sweep">
+        <xs:annotation>
+            <xs:documentation>
+                <h3>Posture and sweep test (posture-and-sweep)</h3>
+                <p>Takes a (set of) XPath expression(s) or XSLT instruction(s), but not both, as input and
+                    can be used to assess the resulting sweep and posture, based on
+                    a given context posture and (optional) context type (defaults to "item()").
+                    Note that the context posture and the expected result sweep and posture applies to every
+                    &lt;xpath&gt; or &lt;xslt&gt; element in this element. To use another context posture or result 
+                    sweep or posture assertion, create another test.
+                </p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice>
+                <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                    <xs:element ref="xpath"/>
+                </xs:sequence>
+                <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                    <xs:element ref="xslt"/>
+                </xs:sequence>
+            </xs:choice>
+            <xs:attributeGroup ref="attrContextPostureAndType"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="xpath">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Takes an XPath as input and
+                    can be used to assess the resulting sweep and posture, based on
+                    a given input (context) posture and context type</p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+            <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="xslt">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Takes an XPath as input and
+                    can be used to assess the resulting sweep and posture, based on
+                    a given input (context) posture and context type</p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:any namespace="http://www.w3.org/1999/XSL/Transform" processContents="lax"/>
+            </xs:sequence>
         </xs:complexType>
     </xs:element>
 
@@ -1918,6 +1975,22 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="assert-posture-and-sweep" substitutionGroup="abstractAssertion">
+        <xs:annotation>
+            <xs:documentation>
+                <div>
+                    <h3>assert-sweep-and-posture</h3>
+                    <p> Asserts that the result of the test has a given posture and sweep </p>
+                    <p> Implementations are not required to be able to assert the sweep and posture
+                        of a single instruction, declaration or expression</p>
+                </div>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="attrResultPostureAndSweep"/>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="link">
 
         <xs:annotation>
@@ -2229,6 +2302,35 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:simpleType name="postureType">
+        <xs:restriction base="xs:normalizedString">
+            <xs:enumeration value="grounded"/>
+            <xs:enumeration value="climbing"/>
+            <xs:enumeration value="striding"/>
+            <xs:enumeration value="crawling"/>
+            <xs:enumeration value="roaming"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="streamingContextType">
+        <xs:restriction base="xs:normalizedString">
+            <xs:enumeration value="item()"/>
+            <xs:enumeration value="node()"/>
+            <xs:enumeration value="document-node()"/>
+            <xs:enumeration value="element()"/>
+            <xs:enumeration value="atomic"/>
+            <xs:enumeration value="childless-node-kind"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="sweepType">
+        <xs:restriction base="xs:normalizedString">
+            <xs:enumeration value="motionless"/>
+            <xs:enumeration value="consuming"/>
+            <xs:enumeration value="free-ranging"/>
+        </xs:restriction>
+    </xs:simpleType>
+
 
     <xs:attributeGroup name="valueAttr">
         <xs:annotation>
@@ -2301,5 +2403,90 @@
             </xs:documentation>
         </xs:annotation>
         <xs:attribute name="change" type="xs:string"/>
+    </xs:attributeGroup>
+
+    <xs:attributeGroup name="attrContextPostureAndType">
+        <xs:annotation>
+            <xs:documentation>
+                <div>
+                    <h3>context-posture and context-type (as attribute names)</h3>
+                    <p>The context posture and type of a sweep-and-posture test. The context-posture attribute is mandatory.</p>
+                </div>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="context-posture" type="postureType" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    <div>
+                        <h3>The context posture of a posture-and-sweep test</h3>
+                        <p>The context posture needs to be set prior to a posture and sweep test is run.
+                            It can be any of grounded, climbing, striding, crawling, roaming.
+                            The context posture applies to all &lt;xpath&gt; and &lt;xslt&gt; tests in the posture-and-sweep subset.
+                            This attribute is mandatory.
+                        </p>
+                    </div>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="context-type" type="streamingContextType" use="optional"
+            default="item()">
+            <xs:annotation>
+                <xs:documentation>
+                    <div>
+                        <h3>The context type of a posture-and-sweep test</h3>
+                        <p>The context type needs to be set prior to a posture and sweep test is run.
+                            It can be any of:
+                            <ol>
+                                <li>item(): either a streamed node or an atomic item</li>
+                                <li>node(): any streamed node</li>
+                                <li>document-node(): a streamed document node</li>
+                                <li>element(): a streamed element node</li>
+                                <li>atomic: any atomic item</li>
+                                <li>childless-node-kind: any node of comment(), attribute(), text(), processing-instruction(), namespace()</li>
+                            </ol>
+                            The context posture applies to all &lt;xpath&gt; and &lt;xslt&gt; tests in the posture-and-sweep subset.
+                            This attribute is optional and defaults to "item()".
+                        </p>
+                    </div>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <xs:attributeGroup name="attrResultPostureAndSweep">
+        <xs:annotation>
+            <xs:documentation>
+                <div>
+                    <h3>result-posture and result-sweep (as an attribute name)</h3>
+                    <p>The result posture and sweep of a sweep-and-posture test. Both posture and sweep attributes are required.</p>
+                </div>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="result-posture" type="postureType">
+            <xs:annotation>
+                <xs:documentation>
+                    <div>
+                        <h3>The result posture of a (sequence of) posture and sweep tests</h3>
+                        <p>The result posture is the resulting posture of streaming analysis of a posture and sweep test.
+                            It applies to each of the &lt;xpath&gt; or &lt;xslt&gt; elements inside the posture-and-sweep subset individually.
+                            The test fails if the analyzed posture is not equal to the value of this attribute. 
+                        </p>
+                    </div>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="result-sweep" type="sweepType">
+            <xs:annotation>
+                <xs:documentation>
+                    <div>
+                        <h3>The result sweep of a (sequence of) posture and sweep tests</h3>
+                        <p>The result sweep is the resulting sweep of streaming analysis of a posture and sweep test.
+                            It applies to each of the &lt;xpath&gt; or &lt;xslt&gt; elements inside the posture-and-sweep subset individually.
+                            The test fails if the analyzed posture is not equal to the value of this attribute. 
+                        </p>
+                    </div>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
     </xs:attributeGroup>
 </xs:schema>
