@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<expressions xmlns:ex="http://example.com">
+    <!--
+        Explanation of the format:
+        Each production should be unambiguous in its resulting node type, assuming a context type of item().
+        
+        The recognized node types are:
+        element     - can return element nodes only (like child::foo)
+        elem-doc    - can return element nodes and document nodes (like parent::node())
+        document    - can return document nodes only (like ancestor::document() or (/))
+        comment     - can return comment nodes only (like descendant::comment())
+        pi          - can return processing instruction nodes only (like child::processing-instruction())
+        text        - can return text nodes only (like descendant-or-self::text())
+        attribute   - can return attribute nodes only (like @*)
+        namespace   - can return namespace nodes only (like namespace::namespace-node())
+        any-node    - can return any node type (like following::node())
+        empty       - can only return the empty sequence (like following::attribute() or child::document-node())
+        error       - can only raise an error (like namespace-node() without axis specifier), in streaming analysis the same as 'empty'
+        
+        The recognized axes are the same as in XPath, plus 'none' for expressions that do not operate on an axis (like $var or function calls)
+        
+        Note that all set node types must be invariants: the set they include must be the 
+        same in any situation. If it can differ then choose one of the two variants of 
+        'elem-doc' or 'any-node'.
+        
+        In the stylesheet _create-sandp.xsl the node type or axis 'any' can be used to 
+        mean any of the above, which is different from 'any-node' 
+    -->
+    <productions type="StepExpr" axis="child">
+        <production node-type="element">foo</production>
+        <production node-type="element">ex:foo</production>
+        <production node-type="element">Q{http://example.com}foo</production>
+        <production node-type="element">Q{http://example.com}*</production>
+        <production node-type="element">child::foo</production>
+        <production node-type="element">child::ex:foo</production>
+        <production node-type="element">child::Q{http://example.com}foo</production>
+        <production node-type="element">child::Q{http://example.com}*</production>
+        <production node-type="element">*</production>
+        <production node-type="element">*:foo</production>
+        <production node-type="element">ex:*</production>
+        <production node-type="element">child::*</production>
+        <production node-type="element">child::*:foo</production>
+        <production node-type="element">child::ex:*</production>
+        
+        <production node-type="element">element()</production>
+        <production node-type="element">child::element()</production>
+        
+        <production node-type="any-node">node()</production>
+        <production node-type="any-node">child::node()</production>
+        
+        <production node-type="any-node">item()</production>
+        <production node-type="any-node">child::item()</production>
+        
+        <!-- document node is never the child of anything, it will select the empty sequence -->
+        <production node-type="empty">document-node()</production>
+        <production node-type="empty">child::document-node()</production>
+    
+        <production node-type="empty">child::attribute()</production>
+        <production node-type="empty">child::attribute(*)</production>
+        <production node-type="empty">child::attribute(ex:foo)</production>
+        <production node-type="empty">child::attribute(Q{http://example.com}foo)</production>
+        
+        <production node-type="comment">comment()</production>
+        <production node-type="comment">child::comment()</production>
+        
+        <production node-type="pi">processing-instruction()</production>
+        <production node-type="pi">child::processing-instruction()</production>
+        <production node-type="pi">child::processing-instruction(xml-stylesheet)</production>
+        <production node-type="pi">child::processing-instruction('xml-stylesheet')</production>
+        
+        <production node-type="text">text()</production>
+        <production node-type="text">child::text()</production>
+        
+        <!-- if the static result type is an error, it is the empty sequence in posture/sweep analysis
+             note: in XP31 the default axis for such test is the namespace axis, bug#26788 -->
+        <production node-type="error">namespace-node()</production>
+        <production node-type="empty">child::namespace-node()</production>
+    </productions>
+    <productions type="StepExpr" axis="self">
+        <production node-type="element">self::foo</production>
+        <production node-type="element">self::ex:foo</production>
+        <production node-type="element">self::Q{http://example.com}foo</production>
+        <production node-type="element">self::Q{http://example.com}*</production>
+        <production node-type="element">self::*:foo</production>
+        <production node-type="element">self::ex:*</production>
+        <production node-type="element">self::*</production>
+        <production node-type="any-node">self::node()</production>
+        <production node-type="any-node">self::item()</production>
+        <production node-type="document">self::document-node()</production>
+        <production node-type="attribute">self::attribute()</production>
+        <production node-type="attribute">self::attribute(*)</production>
+        <production node-type="attribute">self::attribute(ex:foo)</production>
+        <production node-type="attribute">self::attribute(Q{http://example.com}foo)</production>
+        <production node-type="comment">self::comment()</production>
+        <production node-type="pi">self::processing-instruction()</production>
+        <production node-type="pi">self::processing-instruction(xml-stylesheet)</production>
+        <production node-type="pi">self::processing-instruction('xml-stylesheet')</production>
+        <production node-type="text">self::text()</production>
+        <production node-type="namespace">self::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="attribute">
+        <production node-type="attribute">attribute()</production>
+        <production node-type="attribute">attribute::foo</production>
+        <production node-type="attribute">attribute::ex:foo</production>
+        <production node-type="attribute">attribute::Q{http://example.com}foo</production>
+        <production node-type="attribute">attribute::Q{http://example.com}*</production>
+        <production node-type="attribute">attribute::*:foo</production>
+        <production node-type="attribute">attribute::ex:*</production>
+        <production node-type="attribute">attribute::*</production>
+        <production node-type="attribute">attribute::node()</production>
+        <production node-type="attribute">attribute::item()</production>
+        <production node-type="empty">attribute::document-node()</production>
+        <production node-type="attribute">attribute::attribute()</production>
+        <production node-type="attribute">attribute::attribute(*)</production>
+        <production node-type="attribute">attribute::attribute(ex:foo)</production>
+        <production node-type="attribute">attribute::attribute(Q{http://example.com}foo)</production>
+        <production node-type="empty">attribute::comment()</production>
+        <production node-type="empty">attribute::processing-instruction()</production>
+        <production node-type="empty">attribute::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="empty">attribute::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="empty">attribute::text()</production>
+        <production node-type="empty">attribute::namespace-node()</production>  
+        
+        <production node-type="attribute">@foo</production>
+        <production node-type="attribute">@ex:foo</production>
+        <production node-type="attribute">@Q{http://example.com}foo</production>
+        <production node-type="attribute">@Q{http://example.com}*</production>
+        <production node-type="attribute">@*:foo</production>
+        <production node-type="attribute">@ex:*</production>
+        <production node-type="attribute">@*</production>
+        <production node-type="attribute">@node()</production>
+        <production node-type="attribute">@item()</production>
+        <production node-type="empty">@document-node()</production>
+        <production node-type="attribute">@attribute()</production>
+        <production node-type="attribute">@attribute(*)</production>
+        <production node-type="attribute">@attribute(ex:foo)</production>
+        <production node-type="attribute">@attribute(Q{http://example.com}foo)</production>
+        <production node-type="empty">@comment()</production>
+        <production node-type="empty">@processing-instruction()</production>
+        <production node-type="empty">@processing-instruction(xsl-stylesheet)</production>
+        <production node-type="empty">@processing-instruction('xsl-stylesheet')</production>
+        <production node-type="empty">@text()</production>
+        <production node-type="empty">@namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="namespace">
+        <production node-type="namespace">namespace::foo</production>
+        <production node-type="namespace">namespace::Q{}foo</production>
+        <production node-type="empty">namespace::ex:foo</production>
+        <production node-type="empty">namespace::Q{http://example.com}foo</production>
+        <production node-type="empty">namespace::Q{http://example.com}*</production>
+        <production node-type="namespace">namespace::Q{}*</production>
+        <production node-type="namespace">namespace::*:foo</production>
+        <production node-type="empty">namespace::ex:*</production>
+        <production node-type="namespace">namespace::*</production>
+        <production node-type="namespace">namespace::node()</production>
+        <production node-type="namespace">namespace::item()</production>
+        <production node-type="empty">namespace::document-node()</production>
+        <production node-type="empty">namespace::document-node(element(foo))</production>
+        <production node-type="empty">namespace::document-node(element(Q{http://example.com}foo))</production>
+        <production node-type="attribute">namespace::attribute()</production>
+        <production node-type="attribute">namespace::attribute(*)</production>
+        <production node-type="attribute">namespace::attribute(ex:foo)</production>
+        <production node-type="attribute">namespace::attribute(Q{http://example.com}foo)</production>
+        <production node-type="empty">namespace::comment()</production>
+        <production node-type="empty">namespace::processing-instruction()</production>
+        <production node-type="empty">namespace::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="empty">namespace::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="empty">namespace::text()</production>
+        <production node-type="namespace">namespace::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="parent">
+        <production node-type="element">parent::foo</production>
+        <production node-type="element">parent::ex:foo</production>
+        <production node-type="element">parent::Q{http://example.com}foo</production>
+        <production node-type="element">parent::Q{http://example.com}*</production>
+        <production node-type="element">parent::*:foo</production>
+        <production node-type="element">parent::ex:*</production>
+        <production node-type="element">parent::*</production>
+        <production node-type="elem-doc">parent::node()</production>
+        <production node-type="elem-doc">parent::item()</production>
+        <production node-type="document">parent::document-node()</production>
+        <production node-type="empty">parent::attribute()</production>
+        <production node-type="empty">parent::attribute(*)</production>
+        <production node-type="empty">parent::attribute(ex:foo)</production>
+        <production node-type="empty">parent::attribute(Q{http://example.com}foo)</production>
+        <production node-type="empty">parent::comment()</production>
+        <production node-type="empty">parent::processing-instruction()</production>
+        <production node-type="empty">parent::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="empty">parent::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="empty">parent::text()</production>
+        <production node-type="empty">parent::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="ancestor">
+        <production node-type="element">ancestor::foo</production>
+        <production node-type="element">ancestor::ex:foo</production>
+        <production node-type="element">ancestor::Q{http://example.com}foo</production>
+        <production node-type="element">ancestor::Q{http://example.com}*</production>
+        <production node-type="element">ancestor::*:foo</production>
+        <production node-type="element">ancestor::ex:*</production>
+        <production node-type="element">ancestor::*</production>
+        <production node-type="elem-doc">ancestor::node()</production>
+        <production node-type="elem-doc">ancestor::item()</production>
+        <production node-type="document">ancestor::document-node()</production>
+        <production node-type="empty">ancestor::attribute()</production>
+        <production node-type="empty">ancestor::attribute(*)</production>
+        <production node-type="empty">ancestor::attribute(ex:foo)</production>
+        <production node-type="empty">ancestor::attribute(Q{http://example.com}foo)</production>
+        <production node-type="empty">ancestor::comment()</production>
+        <production node-type="empty">ancestor::processing-instruction()</production>
+        <production node-type="empty">ancestor::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="empty">ancestor::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="empty">ancestor::text()</production>
+        <production node-type="empty">ancestor::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="ancestor-or-self">
+        <production node-type="element">ancestor-or-self::foo</production>
+        <production node-type="element">ancestor-or-self::ex:foo</production>
+        <production node-type="element">ancestor-or-self::Q{http://example.com}foo</production>
+        <production node-type="element">ancestor-or-self::Q{http://example.com}*</production>
+        <production node-type="element">ancestor-or-self::*:foo</production>
+        <production node-type="element">ancestor-or-self::ex:*</production>
+        <production node-type="element">ancestor-or-self::*</production>
+        <production node-type="any-node">ancestor-or-self::node()</production>
+        <production node-type="any-node">ancestor-or-self::item()</production>
+        <production node-type="document">ancestor-or-self::document-node()</production>
+        <production node-type="attribute">ancestor-or-self::attribute()</production>
+        <production node-type="attribute">ancestor-or-self::attribute(*)</production>
+        <production node-type="attribute">ancestor-or-self::attribute(ex:foo)</production>
+        <production node-type="attribute">ancestor-or-self::attribute(Q{http://example.com}foo)</production>
+        <production node-type="comment">ancestor-or-self::comment()</production>
+        <production node-type="pi">ancestor-or-self::processing-instruction()</production>
+        <production node-type="pi">ancestor-or-self::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="pi">ancestor-or-self::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="text">ancestor-or-self::text()</production>
+        <production node-type="namespace">ancestor-or-self::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="descendant">
+        <production node-type="element">descendant::foo</production>
+        <production node-type="element">descendant::ex:foo</production>
+        <production node-type="element">descendant::Q{http://example.com}foo</production>
+        <production node-type="element">descendant::Q{http://example.com}*</production>
+        <production node-type="element">descendant::*:foo</production>
+        <production node-type="element">descendant::ex:*</production>
+        <production node-type="element">descendant::*</production>
+        <production node-type="any-node">descendant::node()</production>
+        <production node-type="any-node">descendant::item()</production>
+        <production node-type="document">descendant::document-node()</production>
+        <production node-type="empty">descendant::attribute()</production>
+        <production node-type="empty">descendant::attribute(*)</production>
+        <production node-type="empty">descendant::attribute(ex:foo)</production>
+        <production node-type="empty">descendant::attribute(Q{http://example.com}foo)</production>
+        <production node-type="comment">descendant::comment()</production>
+        <production node-type="pi">descendant::processing-instruction()</production>
+        <production node-type="pi">descendant::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="pi">descendant::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="text">descendant::text()</production>
+        <production node-type="empty">descendant::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="descendant-or-self">
+        <production node-type="element">descendant-or-self::foo</production>
+        <production node-type="element">descendant-or-self::ex:foo</production>
+        <production node-type="element">descendant-or-self::Q{http://example.com}foo</production>
+        <production node-type="element">descendant-or-self::Q{http://example.com}*</production>
+        <production node-type="element">descendant-or-self::*:foo</production>
+        <production node-type="element">descendant-or-self::ex:*</production>
+        <production node-type="element">descendant-or-self::*</production>
+        <production node-type="any-node">descendant-or-self::node()</production>
+        <production node-type="any-node">descendant-or-self::item()</production>
+        <production node-type="document">descendant-or-self::document-node()</production>
+        <production node-type="attribute">descendant-or-self::attribute()</production>
+        <production node-type="attribute">descendant-or-self::attribute(*)</production>
+        <production node-type="attribute">descendant-or-self::attribute(ex:foo)</production>
+        <production node-type="attribute">descendant-or-self::attribute(Q{http://example.com}foo)</production>
+        <production node-type="comment">descendant-or-self::comment()</production>
+        <production node-type="pi">descendant-or-self::processing-instruction()</production>
+        <production node-type="pi">descendant-or-self::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="pi">descendant-or-self::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="text">descendant-or-self::text()</production>
+        <production node-type="namespace">descendant-or-self::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="following">
+        <production node-type="element">following::foo</production>
+        <production node-type="element">following::ex:foo</production>
+        <production node-type="element">following::Q{http://example.com}foo</production>
+        <production node-type="element">following::Q{http://example.com}*</production>
+        <production node-type="element">following::*:foo</production>
+        <production node-type="element">following::ex:*</production>
+        <production node-type="element">following::*</production>
+        <production node-type="any-node">following::node()</production>
+        <production node-type="any-node">following::item()</production>
+        <!-- a document node can never be on the following axis, not even on constructed trees -->
+        <production node-type="empty">following::document-node()</production>
+        <production node-type="empty">following::attribute()</production>
+        <production node-type="empty">following::attribute(*)</production>
+        <production node-type="empty">following::attribute(ex:foo)</production>
+        <production node-type="empty">following::attribute(Q{http://example.com}foo)</production>
+        <production node-type="comment">following::comment()</production>
+        <production node-type="pi">following::processing-instruction()</production>
+        <production node-type="pi">following::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="pi">following::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="text">following::text()</production>
+        <production node-type="empty">following::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="following-sibling">
+        <production node-type="element">following-sibling::foo</production>
+        <production node-type="element">following-sibling::ex:foo</production>
+        <production node-type="element">following-sibling::Q{http://example.com}foo</production>
+        <production node-type="element">following-sibling::Q{http://example.com}*</production>
+        <production node-type="element">following-sibling::*:foo</production>
+        <production node-type="element">following-sibling::ex:*</production>
+        <production node-type="element">following-sibling::*</production>
+        <production node-type="any-node">following-sibling::node()</production>
+        <production node-type="any-node">following-sibling::item()</production>
+        <!-- a document node can never be on the following-sibling axis, not even on constructed trees -->
+        <production node-type="empty">following-sibling::document-node()</production>
+        <production node-type="empty">following-sibling::attribute()</production>
+        <production node-type="empty">following-sibling::attribute(*)</production>
+        <production node-type="empty">following-sibling::attribute(ex:foo)</production>
+        <production node-type="empty">following-sibling::attribute(Q{http://example.com}foo)</production>
+        <production node-type="comment">following-sibling::comment()</production>
+        <production node-type="pi">following-sibling::processing-instruction()</production>
+        <production node-type="pi">following-sibling::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="pi">following-sibling::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="text">following-sibling::text()</production>
+        <production node-type="empty">following-sibling::namespace-node()</production>        
+    </productions>
+    <productions type="StepExpr" axis="preceding">
+        <production node-type="element">preceding::foo</production>
+        <production node-type="element">preceding::ex:foo</production>
+        <production node-type="element">preceding::Q{http://example.com}foo</production>
+        <production node-type="element">preceding::Q{http://example.com}*</production>
+        <production node-type="element">preceding::*:foo</production>
+        <production node-type="element">preceding::ex:*</production>
+        <production node-type="element">preceding::*</production>
+        <production node-type="any-node">preceding::node()</production>
+        <production node-type="any-node">preceding::item()</production>
+        <!-- a document node can never be on the preceding axis, not even on constructed trees -->
+        <production node-type="empty">preceding::document-node()</production>
+        <production node-type="empty">preceding::attribute()</production>
+        <production node-type="empty">preceding::attribute(*)</production>
+        <production node-type="empty">preceding::attribute(ex:foo)</production>
+        <production node-type="empty">preceding::attribute(Q{http://example.com}foo)</production>
+        <production node-type="comment">preceding::comment()</production>
+        <production node-type="pi">preceding::processing-instruction()</production>
+        <production node-type="pi">preceding::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="pi">preceding::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="text">preceding::text()</production>
+        <production node-type="empty">preceding::namespace-node()</production>        
+    </productions>
+        <productions type="StepExpr" axis="preceding-sibling">
+        <production node-type="element">preceding-sibling::foo</production>
+        <production node-type="element">preceding-sibling::ex:foo</production>
+        <production node-type="element">preceding-sibling::Q{http://example.com}foo</production>
+        <production node-type="element">preceding-sibling::Q{http://example.com}*</production>
+        <production node-type="element">preceding-sibling::*:foo</production>
+        <production node-type="element">preceding-sibling::ex:*</production>
+        <production node-type="element">preceding-sibling::*</production>
+        <production node-type="any-node">preceding-sibling::node()</production>
+        <production node-type="any-node">preceding-sibling::item()</production>
+        <!-- a document node can never be on the preceding-sibling axis, not even on constructed trees -->
+        <production node-type="empty">preceding-sibling::document-node()</production>
+        <production node-type="empty">preceding-sibling::attribute()</production>
+        <production node-type="empty">preceding-sibling::attribute(*)</production>
+        <production node-type="empty">preceding-sibling::attribute(ex:foo)</production>
+        <production node-type="empty">preceding-sibling::attribute(Q{http://example.com}foo)</production>
+        <production node-type="comment">preceding-sibling::comment()</production>
+        <production node-type="pi">preceding-sibling::processing-instruction()</production>
+        <production node-type="pi">preceding-sibling::processing-instruction(xsl-stylesheet)</production>
+        <production node-type="pi">preceding-sibling::processing-instruction('xsl-stylesheet')</production>
+        <production node-type="text">preceding-sibling::text()</production>
+        <production node-type="empty">preceding-sibling::namespace-node()</production>        
+    </productions>
+</expressions>
