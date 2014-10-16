@@ -2,7 +2,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-    xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xs math"
     xpath-default-namespace="http://www.w3.org/1999/xhtml"
     version="3.0">
@@ -32,7 +31,7 @@
         </xsl:variable>
         <xsl:result-document href="function-1902.xml">
             <function-list>
-                <xsl:copy-of select="$fo30/function-list/function[not(@name || @arity = $fo20/function-list/function/(@name || @arity))]" />
+                <xsl:copy-of select="$fo30/*:function-list/*:function[not(@name || @arity = $fo20/*:function-list/*:function/(@name || @arity))]" />
             </function-list>
         </xsl:result-document>
     </xsl:template>
