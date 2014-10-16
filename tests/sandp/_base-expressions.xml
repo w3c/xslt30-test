@@ -48,9 +48,6 @@
         <production node-type="any-node">node()</production>
         <production node-type="any-node">child::node()</production>
         
-        <production node-type="any-node">item()</production>
-        <production node-type="any-node">child::item()</production>
-        
         <!-- document node is never the child of anything, it will select the empty sequence -->
         <production node-type="empty">document-node()</production>
         <production node-type="empty">child::document-node()</production>
@@ -85,7 +82,6 @@
         <production node-type="element">self::ex:*</production>
         <production node-type="element">self::*</production>
         <production node-type="any-node">self::node()</production>
-        <production node-type="any-node">self::item()</production>
         <production node-type="document">self::document-node()</production>
         <production node-type="attribute">self::attribute()</production>
         <production node-type="attribute">self::attribute(*)</production>
@@ -108,7 +104,6 @@
         <production node-type="attribute">attribute::ex:*</production>
         <production node-type="attribute">attribute::*</production>
         <production node-type="attribute">attribute::node()</production>
-        <production node-type="attribute">attribute::item()</production>
         <production node-type="empty">attribute::document-node()</production>
         <production node-type="attribute">attribute::attribute()</production>
         <production node-type="attribute">attribute::attribute(*)</production>
@@ -129,7 +124,6 @@
         <production node-type="attribute">@ex:*</production>
         <production node-type="attribute">@*</production>
         <production node-type="attribute">@node()</production>
-        <production node-type="attribute">@item()</production>
         <production node-type="empty">@document-node()</production>
         <production node-type="attribute">@attribute()</production>
         <production node-type="attribute">@attribute(*)</production>
@@ -153,14 +147,13 @@
         <production node-type="empty">namespace::ex:*</production>
         <production node-type="namespace">namespace::*</production>
         <production node-type="namespace">namespace::node()</production>
-        <production node-type="namespace">namespace::item()</production>
         <production node-type="empty">namespace::document-node()</production>
         <production node-type="empty">namespace::document-node(element(foo))</production>
         <production node-type="empty">namespace::document-node(element(Q{http://example.com}foo))</production>
-        <production node-type="attribute">namespace::attribute()</production>
-        <production node-type="attribute">namespace::attribute(*)</production>
-        <production node-type="attribute">namespace::attribute(ex:foo)</production>
-        <production node-type="attribute">namespace::attribute(Q{http://example.com}foo)</production>
+        <production node-type="empty">namespace::attribute()</production>
+        <production node-type="empty">namespace::attribute(*)</production>
+        <production node-type="empty">namespace::attribute(ex:foo)</production>
+        <production node-type="empty">namespace::attribute(Q{http://example.com}foo)</production>
         <production node-type="empty">namespace::comment()</production>
         <production node-type="empty">namespace::processing-instruction()</production>
         <production node-type="empty">namespace::processing-instruction(xsl-stylesheet)</production>
@@ -177,7 +170,6 @@
         <production node-type="element">parent::ex:*</production>
         <production node-type="element">parent::*</production>
         <production node-type="elem-doc">parent::node()</production>
-        <production node-type="elem-doc">parent::item()</production>
         <production node-type="document">parent::document-node()</production>
         <production node-type="empty">parent::attribute()</production>
         <production node-type="empty">parent::attribute(*)</production>
@@ -199,7 +191,6 @@
         <production node-type="element">ancestor::ex:*</production>
         <production node-type="element">ancestor::*</production>
         <production node-type="elem-doc">ancestor::node()</production>
-        <production node-type="elem-doc">ancestor::item()</production>
         <production node-type="document">ancestor::document-node()</production>
         <production node-type="empty">ancestor::attribute()</production>
         <production node-type="empty">ancestor::attribute(*)</production>
@@ -221,7 +212,6 @@
         <production node-type="element">ancestor-or-self::ex:*</production>
         <production node-type="element">ancestor-or-self::*</production>
         <production node-type="any-node">ancestor-or-self::node()</production>
-        <production node-type="any-node">ancestor-or-self::item()</production>
         <production node-type="document">ancestor-or-self::document-node()</production>
         <production node-type="attribute">ancestor-or-self::attribute()</production>
         <production node-type="attribute">ancestor-or-self::attribute(*)</production>
@@ -243,8 +233,7 @@
         <production node-type="element">descendant::ex:*</production>
         <production node-type="element">descendant::*</production>
         <production node-type="any-node">descendant::node()</production>
-        <production node-type="any-node">descendant::item()</production>
-        <production node-type="document">descendant::document-node()</production>
+        <production node-type="empty">descendant::document-node()</production>
         <production node-type="empty">descendant::attribute()</production>
         <production node-type="empty">descendant::attribute(*)</production>
         <production node-type="empty">descendant::attribute(ex:foo)</production>
@@ -265,7 +254,6 @@
         <production node-type="element">descendant-or-self::ex:*</production>
         <production node-type="element">descendant-or-self::*</production>
         <production node-type="any-node">descendant-or-self::node()</production>
-        <production node-type="any-node">descendant-or-self::item()</production>
         <production node-type="document">descendant-or-self::document-node()</production>
         <production node-type="attribute">descendant-or-self::attribute()</production>
         <production node-type="attribute">descendant-or-self::attribute(*)</production>
@@ -287,7 +275,6 @@
         <production node-type="element">following::ex:*</production>
         <production node-type="element">following::*</production>
         <production node-type="any-node">following::node()</production>
-        <production node-type="any-node">following::item()</production>
         <!-- a document node can never be on the following axis, not even on constructed trees -->
         <production node-type="empty">following::document-node()</production>
         <production node-type="empty">following::attribute()</production>
@@ -310,7 +297,6 @@
         <production node-type="element">following-sibling::ex:*</production>
         <production node-type="element">following-sibling::*</production>
         <production node-type="any-node">following-sibling::node()</production>
-        <production node-type="any-node">following-sibling::item()</production>
         <!-- a document node can never be on the following-sibling axis, not even on constructed trees -->
         <production node-type="empty">following-sibling::document-node()</production>
         <production node-type="empty">following-sibling::attribute()</production>
@@ -333,7 +319,6 @@
         <production node-type="element">preceding::ex:*</production>
         <production node-type="element">preceding::*</production>
         <production node-type="any-node">preceding::node()</production>
-        <production node-type="any-node">preceding::item()</production>
         <!-- a document node can never be on the preceding axis, not even on constructed trees -->
         <production node-type="empty">preceding::document-node()</production>
         <production node-type="empty">preceding::attribute()</production>
@@ -356,7 +341,6 @@
         <production node-type="element">preceding-sibling::ex:*</production>
         <production node-type="element">preceding-sibling::*</production>
         <production node-type="any-node">preceding-sibling::node()</production>
-        <production node-type="any-node">preceding-sibling::item()</production>
         <!-- a document node can never be on the preceding-sibling axis, not even on constructed trees -->
         <production node-type="empty">preceding-sibling::document-node()</production>
         <production node-type="empty">preceding-sibling::attribute()</production>

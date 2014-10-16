@@ -452,7 +452,6 @@
         <!-- for the catalog -->
         <test-set name="xp-{.('name')}" file="tests/sandp/{$filename}" />
         
-        <xsl:result-document href="{$filename}">
             <test-set name="xp-{.('name')}">
                 <description xsl:expand-text="yes">
                     CP: {.('cp')}, RP: {.('rp')}, RS: {.('rs')}
@@ -464,7 +463,6 @@
                  <xsl:with-param name="current" select="current()" />
                 </xsl:apply-templates>
             </test-set>
-        </xsl:result-document>
     </xsl:template>
 
     <xsl:template match="production">
