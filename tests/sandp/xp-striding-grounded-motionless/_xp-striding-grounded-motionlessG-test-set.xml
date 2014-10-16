@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="xp-striding-grounded-motionlessG">
+   <description>
+                    CP: Striding, RP: Grounded, RS: Motionless
+                    Self axis on ancestor-or-self axis which is not on U{element, document}} and not on same axis as lh side selects nothingness
+                </description>
+   <test-case name="xp-striding-grounded-motionlessG001">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::foo/self::document-node()</xpath>
+            <xpath>ancestor-or-self::foo/self::attribute()</xpath>
+            <xpath>ancestor-or-self::foo/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::foo/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::foo/self::comment()</xpath>
+            <xpath>ancestor-or-self::foo/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::foo/self::text()</xpath>
+            <xpath>ancestor-or-self::foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG002">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::ex:foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::ex:foo/self::document-node()</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::attribute()</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::comment()</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::text()</xpath>
+            <xpath>ancestor-or-self::ex:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG003">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::Q{http://example.com}foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::document-node()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::attribute()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::comment()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::text()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG004">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::Q{http://example.com}*
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::document-node()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::attribute()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::comment()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::text()</xpath>
+            <xpath>ancestor-or-self::Q{http://example.com}*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG005">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::*:foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::*:foo/self::document-node()</xpath>
+            <xpath>ancestor-or-self::*:foo/self::attribute()</xpath>
+            <xpath>ancestor-or-self::*:foo/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::*:foo/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::*:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::*:foo/self::comment()</xpath>
+            <xpath>ancestor-or-self::*:foo/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::*:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::*:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::*:foo/self::text()</xpath>
+            <xpath>ancestor-or-self::*:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG006">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::ex:*
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::ex:*/self::document-node()</xpath>
+            <xpath>ancestor-or-self::ex:*/self::attribute()</xpath>
+            <xpath>ancestor-or-self::ex:*/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::ex:*/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::ex:*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::ex:*/self::comment()</xpath>
+            <xpath>ancestor-or-self::ex:*/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::ex:*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::ex:*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::ex:*/self::text()</xpath>
+            <xpath>ancestor-or-self::ex:*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG007">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::*
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::*/self::document-node()</xpath>
+            <xpath>ancestor-or-self::*/self::attribute()</xpath>
+            <xpath>ancestor-or-self::*/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::*/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::*/self::comment()</xpath>
+            <xpath>ancestor-or-self::*/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::*/self::text()</xpath>
+            <xpath>ancestor-or-self::*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG008">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::node()
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG009">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::item()
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG010">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::document-node()
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::document-node()/self::foo</xpath>
+            <xpath>ancestor-or-self::document-node()/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::document-node()/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::document-node()/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::document-node()/self::*:foo</xpath>
+            <xpath>ancestor-or-self::document-node()/self::ex:*</xpath>
+            <xpath>ancestor-or-self::document-node()/self::*</xpath>
+            <xpath>ancestor-or-self::document-node()/self::attribute()</xpath>
+            <xpath>ancestor-or-self::document-node()/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::document-node()/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::document-node()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::document-node()/self::comment()</xpath>
+            <xpath>ancestor-or-self::document-node()/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::document-node()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::document-node()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::document-node()/self::text()</xpath>
+            <xpath>ancestor-or-self::document-node()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG011">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::attribute()
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::attribute()/self::foo</xpath>
+            <xpath>ancestor-or-self::attribute()/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::attribute()/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::attribute()/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::attribute()/self::*:foo</xpath>
+            <xpath>ancestor-or-self::attribute()/self::ex:*</xpath>
+            <xpath>ancestor-or-self::attribute()/self::*</xpath>
+            <xpath>ancestor-or-self::attribute()/self::document-node()</xpath>
+            <xpath>ancestor-or-self::attribute()/self::comment()</xpath>
+            <xpath>ancestor-or-self::attribute()/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::attribute()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::attribute()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::attribute()/self::text()</xpath>
+            <xpath>ancestor-or-self::attribute()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG012">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::attribute(*)
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::attribute(*)/self::foo</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::*:foo</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::ex:*</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::*</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::document-node()</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::comment()</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::text()</xpath>
+            <xpath>ancestor-or-self::attribute(*)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG013">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::attribute(ex:foo)
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::foo</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::*:foo</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::ex:*</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::*</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::document-node()</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::comment()</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::text()</xpath>
+            <xpath>ancestor-or-self::attribute(ex:foo)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG014">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::attribute(Q{http://example.com}foo)
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::foo</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::*:foo</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::ex:*</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::*</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::document-node()</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::comment()</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::text()</xpath>
+            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG015">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::comment()
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::comment()/self::foo</xpath>
+            <xpath>ancestor-or-self::comment()/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::comment()/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::comment()/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::comment()/self::*:foo</xpath>
+            <xpath>ancestor-or-self::comment()/self::ex:*</xpath>
+            <xpath>ancestor-or-self::comment()/self::*</xpath>
+            <xpath>ancestor-or-self::comment()/self::document-node()</xpath>
+            <xpath>ancestor-or-self::comment()/self::attribute()</xpath>
+            <xpath>ancestor-or-self::comment()/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::comment()/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::comment()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::comment()/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::comment()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::comment()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::comment()/self::text()</xpath>
+            <xpath>ancestor-or-self::comment()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG016">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::processing-instruction()
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::processing-instruction()/self::foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::*:foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::ex:*</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::*</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::document-node()</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::attribute()</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::comment()</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::text()</xpath>
+            <xpath>ancestor-or-self::processing-instruction()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG017">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::processing-instruction(xsl-stylesheet)
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::*:foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::ex:*</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::*</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::document-node()</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::attribute()</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::comment()</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::text()</xpath>
+            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG018">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::processing-instruction('xsl-stylesheet')
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::*:foo</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::ex:*</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::*</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::document-node()</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::attribute()</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::comment()</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::text()</xpath>
+            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG019">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::text()
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::text()/self::foo</xpath>
+            <xpath>ancestor-or-self::text()/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::text()/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::text()/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::text()/self::*:foo</xpath>
+            <xpath>ancestor-or-self::text()/self::ex:*</xpath>
+            <xpath>ancestor-or-self::text()/self::*</xpath>
+            <xpath>ancestor-or-self::text()/self::document-node()</xpath>
+            <xpath>ancestor-or-self::text()/self::attribute()</xpath>
+            <xpath>ancestor-or-self::text()/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::text()/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::text()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::text()/self::comment()</xpath>
+            <xpath>ancestor-or-self::text()/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::text()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::text()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::text()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-motionlessG020">
+      <description>
+                CP: striding, RP: grounded, RS: motionless
+                Base expression: ancestor-or-self::namespace-node()
+                Separators:      / 
+                With axes:       self
+                With node types: element, elem-doc, document, attribute, namespace, comment, pi, text
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ancestor-or-self::namespace-node()/self::foo</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::ex:foo</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::Q{http://example.com}foo</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::Q{http://example.com}*</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::*:foo</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::ex:*</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::*</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::document-node()</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::attribute()</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::attribute(*)</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::attribute(ex:foo)</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::comment()</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::processing-instruction()</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ancestor-or-self::namespace-node()/self::text()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="motionless"/>
+      </result>
+   </test-case>
+</test-set>

@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="xp-striding-striding-consumingB">
+   <description>
+                    CP: Striding, RP: Striding, RS: Consuming
+                    Self axis on child axis with striding context selecting elements is striding and consuming
+                </description>
+   <test-case name="xp-striding-striding-consumingB001">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>foo/self::foo</xpath>
+            <xpath>foo/self::ex:foo</xpath>
+            <xpath>foo/self::Q{http://example.com}foo</xpath>
+            <xpath>foo/self::Q{http://example.com}*</xpath>
+            <xpath>foo/self::*:foo</xpath>
+            <xpath>foo/self::ex:*</xpath>
+            <xpath>foo/self::*</xpath>
+            <xpath>foo/self::node()</xpath>
+            <xpath>foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB002">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: ex:foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ex:foo/self::foo</xpath>
+            <xpath>ex:foo/self::ex:foo</xpath>
+            <xpath>ex:foo/self::Q{http://example.com}foo</xpath>
+            <xpath>ex:foo/self::Q{http://example.com}*</xpath>
+            <xpath>ex:foo/self::*:foo</xpath>
+            <xpath>ex:foo/self::ex:*</xpath>
+            <xpath>ex:foo/self::*</xpath>
+            <xpath>ex:foo/self::node()</xpath>
+            <xpath>ex:foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB003">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: Q{http://example.com}foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>Q{http://example.com}foo/self::foo</xpath>
+            <xpath>Q{http://example.com}foo/self::ex:foo</xpath>
+            <xpath>Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
+            <xpath>Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
+            <xpath>Q{http://example.com}foo/self::*:foo</xpath>
+            <xpath>Q{http://example.com}foo/self::ex:*</xpath>
+            <xpath>Q{http://example.com}foo/self::*</xpath>
+            <xpath>Q{http://example.com}foo/self::node()</xpath>
+            <xpath>Q{http://example.com}foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB004">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: Q{http://example.com}*
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>Q{http://example.com}*/self::foo</xpath>
+            <xpath>Q{http://example.com}*/self::ex:foo</xpath>
+            <xpath>Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
+            <xpath>Q{http://example.com}*/self::Q{http://example.com}*</xpath>
+            <xpath>Q{http://example.com}*/self::*:foo</xpath>
+            <xpath>Q{http://example.com}*/self::ex:*</xpath>
+            <xpath>Q{http://example.com}*/self::*</xpath>
+            <xpath>Q{http://example.com}*/self::node()</xpath>
+            <xpath>Q{http://example.com}*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB005">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::foo/self::foo</xpath>
+            <xpath>child::foo/self::ex:foo</xpath>
+            <xpath>child::foo/self::Q{http://example.com}foo</xpath>
+            <xpath>child::foo/self::Q{http://example.com}*</xpath>
+            <xpath>child::foo/self::*:foo</xpath>
+            <xpath>child::foo/self::ex:*</xpath>
+            <xpath>child::foo/self::*</xpath>
+            <xpath>child::foo/self::node()</xpath>
+            <xpath>child::foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB006">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::ex:foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::ex:foo/self::foo</xpath>
+            <xpath>child::ex:foo/self::ex:foo</xpath>
+            <xpath>child::ex:foo/self::Q{http://example.com}foo</xpath>
+            <xpath>child::ex:foo/self::Q{http://example.com}*</xpath>
+            <xpath>child::ex:foo/self::*:foo</xpath>
+            <xpath>child::ex:foo/self::ex:*</xpath>
+            <xpath>child::ex:foo/self::*</xpath>
+            <xpath>child::ex:foo/self::node()</xpath>
+            <xpath>child::ex:foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB007">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::Q{http://example.com}foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::Q{http://example.com}foo/self::foo</xpath>
+            <xpath>child::Q{http://example.com}foo/self::ex:foo</xpath>
+            <xpath>child::Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
+            <xpath>child::Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
+            <xpath>child::Q{http://example.com}foo/self::*:foo</xpath>
+            <xpath>child::Q{http://example.com}foo/self::ex:*</xpath>
+            <xpath>child::Q{http://example.com}foo/self::*</xpath>
+            <xpath>child::Q{http://example.com}foo/self::node()</xpath>
+            <xpath>child::Q{http://example.com}foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB008">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::Q{http://example.com}*
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::Q{http://example.com}*/self::foo</xpath>
+            <xpath>child::Q{http://example.com}*/self::ex:foo</xpath>
+            <xpath>child::Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
+            <xpath>child::Q{http://example.com}*/self::Q{http://example.com}*</xpath>
+            <xpath>child::Q{http://example.com}*/self::*:foo</xpath>
+            <xpath>child::Q{http://example.com}*/self::ex:*</xpath>
+            <xpath>child::Q{http://example.com}*/self::*</xpath>
+            <xpath>child::Q{http://example.com}*/self::node()</xpath>
+            <xpath>child::Q{http://example.com}*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB009">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: *
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>*/self::foo</xpath>
+            <xpath>*/self::ex:foo</xpath>
+            <xpath>*/self::Q{http://example.com}foo</xpath>
+            <xpath>*/self::Q{http://example.com}*</xpath>
+            <xpath>*/self::*:foo</xpath>
+            <xpath>*/self::ex:*</xpath>
+            <xpath>*/self::*</xpath>
+            <xpath>*/self::node()</xpath>
+            <xpath>*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB010">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: *:foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>*:foo/self::foo</xpath>
+            <xpath>*:foo/self::ex:foo</xpath>
+            <xpath>*:foo/self::Q{http://example.com}foo</xpath>
+            <xpath>*:foo/self::Q{http://example.com}*</xpath>
+            <xpath>*:foo/self::*:foo</xpath>
+            <xpath>*:foo/self::ex:*</xpath>
+            <xpath>*:foo/self::*</xpath>
+            <xpath>*:foo/self::node()</xpath>
+            <xpath>*:foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB011">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: ex:*
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ex:*/self::foo</xpath>
+            <xpath>ex:*/self::ex:foo</xpath>
+            <xpath>ex:*/self::Q{http://example.com}foo</xpath>
+            <xpath>ex:*/self::Q{http://example.com}*</xpath>
+            <xpath>ex:*/self::*:foo</xpath>
+            <xpath>ex:*/self::ex:*</xpath>
+            <xpath>ex:*/self::*</xpath>
+            <xpath>ex:*/self::node()</xpath>
+            <xpath>ex:*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB012">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::*
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::*/self::foo</xpath>
+            <xpath>child::*/self::ex:foo</xpath>
+            <xpath>child::*/self::Q{http://example.com}foo</xpath>
+            <xpath>child::*/self::Q{http://example.com}*</xpath>
+            <xpath>child::*/self::*:foo</xpath>
+            <xpath>child::*/self::ex:*</xpath>
+            <xpath>child::*/self::*</xpath>
+            <xpath>child::*/self::node()</xpath>
+            <xpath>child::*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB013">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::*:foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::*:foo/self::foo</xpath>
+            <xpath>child::*:foo/self::ex:foo</xpath>
+            <xpath>child::*:foo/self::Q{http://example.com}foo</xpath>
+            <xpath>child::*:foo/self::Q{http://example.com}*</xpath>
+            <xpath>child::*:foo/self::*:foo</xpath>
+            <xpath>child::*:foo/self::ex:*</xpath>
+            <xpath>child::*:foo/self::*</xpath>
+            <xpath>child::*:foo/self::node()</xpath>
+            <xpath>child::*:foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB014">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::ex:*
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::ex:*/self::foo</xpath>
+            <xpath>child::ex:*/self::ex:foo</xpath>
+            <xpath>child::ex:*/self::Q{http://example.com}foo</xpath>
+            <xpath>child::ex:*/self::Q{http://example.com}*</xpath>
+            <xpath>child::ex:*/self::*:foo</xpath>
+            <xpath>child::ex:*/self::ex:*</xpath>
+            <xpath>child::ex:*/self::*</xpath>
+            <xpath>child::ex:*/self::node()</xpath>
+            <xpath>child::ex:*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB015">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: element()
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>element()/self::foo</xpath>
+            <xpath>element()/self::ex:foo</xpath>
+            <xpath>element()/self::Q{http://example.com}foo</xpath>
+            <xpath>element()/self::Q{http://example.com}*</xpath>
+            <xpath>element()/self::*:foo</xpath>
+            <xpath>element()/self::ex:*</xpath>
+            <xpath>element()/self::*</xpath>
+            <xpath>element()/self::node()</xpath>
+            <xpath>element()/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB016">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::element()
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::element()/self::foo</xpath>
+            <xpath>child::element()/self::ex:foo</xpath>
+            <xpath>child::element()/self::Q{http://example.com}foo</xpath>
+            <xpath>child::element()/self::Q{http://example.com}*</xpath>
+            <xpath>child::element()/self::*:foo</xpath>
+            <xpath>child::element()/self::ex:*</xpath>
+            <xpath>child::element()/self::*</xpath>
+            <xpath>child::element()/self::node()</xpath>
+            <xpath>child::element()/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB017">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: node()
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>node()/self::foo</xpath>
+            <xpath>node()/self::ex:foo</xpath>
+            <xpath>node()/self::Q{http://example.com}foo</xpath>
+            <xpath>node()/self::Q{http://example.com}*</xpath>
+            <xpath>node()/self::*:foo</xpath>
+            <xpath>node()/self::ex:*</xpath>
+            <xpath>node()/self::*</xpath>
+            <xpath>node()/self::node()</xpath>
+            <xpath>node()/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB018">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::node()
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::node()/self::foo</xpath>
+            <xpath>child::node()/self::ex:foo</xpath>
+            <xpath>child::node()/self::Q{http://example.com}foo</xpath>
+            <xpath>child::node()/self::Q{http://example.com}*</xpath>
+            <xpath>child::node()/self::*:foo</xpath>
+            <xpath>child::node()/self::ex:*</xpath>
+            <xpath>child::node()/self::*</xpath>
+            <xpath>child::node()/self::node()</xpath>
+            <xpath>child::node()/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB019">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: item()
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>item()/self::foo</xpath>
+            <xpath>item()/self::ex:foo</xpath>
+            <xpath>item()/self::Q{http://example.com}foo</xpath>
+            <xpath>item()/self::Q{http://example.com}*</xpath>
+            <xpath>item()/self::*:foo</xpath>
+            <xpath>item()/self::ex:*</xpath>
+            <xpath>item()/self::*</xpath>
+            <xpath>item()/self::node()</xpath>
+            <xpath>item()/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-consumingB020">
+      <description>
+                CP: striding, RP: striding, RS: consuming
+                Base expression: child::item()
+                Separators:      / 
+                With axes:       self
+                With node types: element, any-node, doc-elem
+                Invariant:       none
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::item()/self::foo</xpath>
+            <xpath>child::item()/self::ex:foo</xpath>
+            <xpath>child::item()/self::Q{http://example.com}foo</xpath>
+            <xpath>child::item()/self::Q{http://example.com}*</xpath>
+            <xpath>child::item()/self::*:foo</xpath>
+            <xpath>child::item()/self::ex:*</xpath>
+            <xpath>child::item()/self::*</xpath>
+            <xpath>child::item()/self::node()</xpath>
+            <xpath>child::item()/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="consuming"/>
+      </result>
+   </test-case>
+</test-set>

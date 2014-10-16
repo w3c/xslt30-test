@@ -19,7 +19,7 @@
 	<a1>1. <xsl:value-of select="element-available('xsl:value-of')"/> should be true</a1>;
 	<a1>2. <xsl:value-of select="element-available('saxon:assign')"/> should be false</a1>;
 	<a1>3. <xsl:value-of select="element-available('sql:connect')"/> should be false</a1>;
-	<a1>4. <xsl:value-of select="element-available('xsl:key')"/> should be false</a1>;
+	<a1>4. <xsl:value-of select="element-available('xsl:key')"/> should be true</a1>;
 	<a1>5. <xsl:value-of select="element-available('xsl:neverHeardOfIt')"/> should be false</a1>;
 	<a1>6. <xsl:value-of select="element-available('saxon:collation')"/> should be false</a1>;
 	<a1>7. <xsl:value-of select="element-available('other:handler')"/> should be false</a1>;
