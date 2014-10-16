@@ -95,17 +95,28 @@
 ]]></content>
       </source>
    </environment>
+
    
-   <environment name="function-19">
-      <source role="." file="function-19.xml"/>
-   </environment>
    <environment name="function-20">
       <source role="." file="function-20.xml"/>
    </environment>
+   
    <environment name="function-21">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
       </source>
+   </environment>
+   
+   <environment name="function-1901">
+      <source role="." file="function-1901.xml"/>
+   </environment>
+   
+   <environment name="function-1902">
+      <source role="." file="function-1902.xml"/>
+   </environment>
+   
+   <environment name="function-2001">
+      <source role="." file="function-2001.xml"/>
    </environment>
 
    <test-case name="function-0001">
@@ -532,6 +543,7 @@
    <test-case name="function-0302">
       <description>Test element-available on a range of names</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-16" change="Fixes bug#27068, element-available on xsl:key should return true" />
       <environment ref="function-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -549,7 +561,7 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="function-04"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="function-0401.xsl"/>
@@ -1078,7 +1090,8 @@
          Note: update the source document from time to time with the latest draft spec
       </description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="function-19"/>
+      <modified by="Abel Braaksma" on="2014-10-16" change="Changed the auto-generation of this test, it is now dependent on actual XHTML spec, and updated the set of functions it tests"/>
+      <environment ref="function-1901"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -1097,7 +1110,8 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2012-12-20" change="Removed whitespace"/>
       <modified by="Michael Kay" on="2014-06-04" change="Update results for renamed functions; output only the discrepancies to make results comparison easier"/>
-      <environment ref="function-19"/>
+      <modified by="Abel Braaksma" on="2014-10-16" change="Changed the auto-generation of this test, it is now dependent on actual XHTML spec, and updated the set of functions it tests"/>
+      <environment ref="function-1902"/>
       <dependencies>
          <spec value="XSLT20"/>
       </dependencies>
@@ -1105,16 +1119,17 @@
          <stylesheet file="function-1902.xsl"/>
       </test>
       <result>
-         <assert>empty(/out/f)</assert>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="function-2001">
       <description>
          Test that all functions defined in the XSLT 3.0 specification are implemented. 
-         Note: update the source document from time to time with the latest draft spec</description>
+         Note: call function-2001-generate.xsl from time to time with the latest draft spec</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment ref="function-20"/>
+      <modified by="Abel Braaksma" on="2014-10-16" change="Changed the auto-generation of this test, it is now dependent on actual XHTML spec, and updated the set of functions it tests"/>
+      <environment ref="function-2001"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
