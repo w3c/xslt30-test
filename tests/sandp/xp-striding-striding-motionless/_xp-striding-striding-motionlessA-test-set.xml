@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="xp-striding-striding-motionlessA">
+   <description>
+                    CP: Striding, RP: Striding, RS: Motionless
+                    Self axis on self axis remains striding and motionless if both sides select the same nodes
+                </description>
+   <test-case name="xp-striding-striding-motionlessA001">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::foo/self::foo</xpath>
+            <xpath>self::foo/self::ex:foo</xpath>
+            <xpath>self::foo/self::Q{http://example.com}foo</xpath>
+            <xpath>self::foo/self::Q{http://example.com}*</xpath>
+            <xpath>self::foo/self::*:foo</xpath>
+            <xpath>self::foo/self::ex:*</xpath>
+            <xpath>self::foo/self::*</xpath>
+            <xpath>self::foo/self::node()</xpath>
+            <xpath>self::foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA002">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::ex:foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::ex:foo/self::foo</xpath>
+            <xpath>self::ex:foo/self::ex:foo</xpath>
+            <xpath>self::ex:foo/self::Q{http://example.com}foo</xpath>
+            <xpath>self::ex:foo/self::Q{http://example.com}*</xpath>
+            <xpath>self::ex:foo/self::*:foo</xpath>
+            <xpath>self::ex:foo/self::ex:*</xpath>
+            <xpath>self::ex:foo/self::*</xpath>
+            <xpath>self::ex:foo/self::node()</xpath>
+            <xpath>self::ex:foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA003">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::Q{http://example.com}foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::Q{http://example.com}foo/self::foo</xpath>
+            <xpath>self::Q{http://example.com}foo/self::ex:foo</xpath>
+            <xpath>self::Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
+            <xpath>self::Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
+            <xpath>self::Q{http://example.com}foo/self::*:foo</xpath>
+            <xpath>self::Q{http://example.com}foo/self::ex:*</xpath>
+            <xpath>self::Q{http://example.com}foo/self::*</xpath>
+            <xpath>self::Q{http://example.com}foo/self::node()</xpath>
+            <xpath>self::Q{http://example.com}foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA004">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::Q{http://example.com}*
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::Q{http://example.com}*/self::foo</xpath>
+            <xpath>self::Q{http://example.com}*/self::ex:foo</xpath>
+            <xpath>self::Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
+            <xpath>self::Q{http://example.com}*/self::Q{http://example.com}*</xpath>
+            <xpath>self::Q{http://example.com}*/self::*:foo</xpath>
+            <xpath>self::Q{http://example.com}*/self::ex:*</xpath>
+            <xpath>self::Q{http://example.com}*/self::*</xpath>
+            <xpath>self::Q{http://example.com}*/self::node()</xpath>
+            <xpath>self::Q{http://example.com}*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA005">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::*:foo
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::*:foo/self::foo</xpath>
+            <xpath>self::*:foo/self::ex:foo</xpath>
+            <xpath>self::*:foo/self::Q{http://example.com}foo</xpath>
+            <xpath>self::*:foo/self::Q{http://example.com}*</xpath>
+            <xpath>self::*:foo/self::*:foo</xpath>
+            <xpath>self::*:foo/self::ex:*</xpath>
+            <xpath>self::*:foo/self::*</xpath>
+            <xpath>self::*:foo/self::node()</xpath>
+            <xpath>self::*:foo/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA006">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::ex:*
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::ex:*/self::foo</xpath>
+            <xpath>self::ex:*/self::ex:foo</xpath>
+            <xpath>self::ex:*/self::Q{http://example.com}foo</xpath>
+            <xpath>self::ex:*/self::Q{http://example.com}*</xpath>
+            <xpath>self::ex:*/self::*:foo</xpath>
+            <xpath>self::ex:*/self::ex:*</xpath>
+            <xpath>self::ex:*/self::*</xpath>
+            <xpath>self::ex:*/self::node()</xpath>
+            <xpath>self::ex:*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA007">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::*
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::*/self::foo</xpath>
+            <xpath>self::*/self::ex:foo</xpath>
+            <xpath>self::*/self::Q{http://example.com}foo</xpath>
+            <xpath>self::*/self::Q{http://example.com}*</xpath>
+            <xpath>self::*/self::*:foo</xpath>
+            <xpath>self::*/self::ex:*</xpath>
+            <xpath>self::*/self::*</xpath>
+            <xpath>self::*/self::node()</xpath>
+            <xpath>self::*/self::item()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA008">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::node()
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::node()/self::foo</xpath>
+            <xpath>self::node()/self::ex:foo</xpath>
+            <xpath>self::node()/self::Q{http://example.com}foo</xpath>
+            <xpath>self::node()/self::Q{http://example.com}*</xpath>
+            <xpath>self::node()/self::*:foo</xpath>
+            <xpath>self::node()/self::ex:*</xpath>
+            <xpath>self::node()/self::*</xpath>
+            <xpath>self::node()/self::node()</xpath>
+            <xpath>self::node()/self::item()</xpath>
+            <xpath>self::node()/self::document-node()</xpath>
+            <xpath>self::node()/self::comment()</xpath>
+            <xpath>self::node()/self::processing-instruction()</xpath>
+            <xpath>self::node()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>self::node()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>self::node()/self::text()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA009">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::item()
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::item()/self::foo</xpath>
+            <xpath>self::item()/self::ex:foo</xpath>
+            <xpath>self::item()/self::Q{http://example.com}foo</xpath>
+            <xpath>self::item()/self::Q{http://example.com}*</xpath>
+            <xpath>self::item()/self::*:foo</xpath>
+            <xpath>self::item()/self::ex:*</xpath>
+            <xpath>self::item()/self::*</xpath>
+            <xpath>self::item()/self::node()</xpath>
+            <xpath>self::item()/self::item()</xpath>
+            <xpath>self::item()/self::document-node()</xpath>
+            <xpath>self::item()/self::comment()</xpath>
+            <xpath>self::item()/self::processing-instruction()</xpath>
+            <xpath>self::item()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>self::item()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>self::item()/self::text()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA010">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::document-node()
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::document-node()/self::node()</xpath>
+            <xpath>self::document-node()/self::item()</xpath>
+            <xpath>self::document-node()/self::document-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA011">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::comment()
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::comment()/self::node()</xpath>
+            <xpath>self::comment()/self::item()</xpath>
+            <xpath>self::comment()/self::comment()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA012">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::processing-instruction()
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::processing-instruction()/self::node()</xpath>
+            <xpath>self::processing-instruction()/self::item()</xpath>
+            <xpath>self::processing-instruction()/self::processing-instruction()</xpath>
+            <xpath>self::processing-instruction()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>self::processing-instruction()/self::processing-instruction('xml-stylesheet')</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA013">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::processing-instruction(xml-stylesheet)
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::processing-instruction(xml-stylesheet)/self::node()</xpath>
+            <xpath>self::processing-instruction(xml-stylesheet)/self::item()</xpath>
+            <xpath>self::processing-instruction(xml-stylesheet)/self::processing-instruction()</xpath>
+            <xpath>self::processing-instruction(xml-stylesheet)/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>self::processing-instruction(xml-stylesheet)/self::processing-instruction('xml-stylesheet')</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA014">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::processing-instruction('xml-stylesheet')
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::processing-instruction('xml-stylesheet')/self::node()</xpath>
+            <xpath>self::processing-instruction('xml-stylesheet')/self::item()</xpath>
+            <xpath>self::processing-instruction('xml-stylesheet')/self::processing-instruction()</xpath>
+            <xpath>self::processing-instruction('xml-stylesheet')/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>self::processing-instruction('xml-stylesheet')/self::processing-instruction('xml-stylesheet')</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-striding-motionlessA015">
+      <description>
+                CP: striding, RP: striding, RS: motionless
+                Base expression: self::text()
+                Separators:      / 
+                With axes:       self
+                With node types: element, document, comment, pi, text, any-node, elem-doc
+                Invariant:       node-type-equal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>self::text()/self::node()</xpath>
+            <xpath>self::text()/self::item()</xpath>
+            <xpath>self::text()/self::text()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="striding" result-sweep="motionless"/>
+      </result>
+   </test-case>
+</test-set>

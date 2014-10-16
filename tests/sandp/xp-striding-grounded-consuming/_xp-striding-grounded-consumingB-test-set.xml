@@ -1,0 +1,1856 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="xp-striding-grounded-consumingB">
+   <description>
+                    CP: Striding, RP: Grounded, RS: Consuming
+                    Self axis selecting other node-type on child, descendant(-or-self) etc axis is grounded (selects nothing) and remains consuming
+                </description>
+   <test-case name="xp-striding-grounded-consumingB001">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>foo/self::document-node()</xpath>
+            <xpath>foo/self::attribute()</xpath>
+            <xpath>foo/self::attribute(*)</xpath>
+            <xpath>foo/self::attribute(ex:foo)</xpath>
+            <xpath>foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>foo/self::comment()</xpath>
+            <xpath>foo/self::processing-instruction()</xpath>
+            <xpath>foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>foo/self::text()</xpath>
+            <xpath>foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB002">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: ex:foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ex:foo/self::document-node()</xpath>
+            <xpath>ex:foo/self::attribute()</xpath>
+            <xpath>ex:foo/self::attribute(*)</xpath>
+            <xpath>ex:foo/self::attribute(ex:foo)</xpath>
+            <xpath>ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ex:foo/self::comment()</xpath>
+            <xpath>ex:foo/self::processing-instruction()</xpath>
+            <xpath>ex:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ex:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ex:foo/self::text()</xpath>
+            <xpath>ex:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB003">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: Q{http://example.com}foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>Q{http://example.com}foo/self::document-node()</xpath>
+            <xpath>Q{http://example.com}foo/self::attribute()</xpath>
+            <xpath>Q{http://example.com}foo/self::attribute(*)</xpath>
+            <xpath>Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
+            <xpath>Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>Q{http://example.com}foo/self::comment()</xpath>
+            <xpath>Q{http://example.com}foo/self::processing-instruction()</xpath>
+            <xpath>Q{http://example.com}foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>Q{http://example.com}foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>Q{http://example.com}foo/self::text()</xpath>
+            <xpath>Q{http://example.com}foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB004">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: Q{http://example.com}*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>Q{http://example.com}*/self::document-node()</xpath>
+            <xpath>Q{http://example.com}*/self::attribute()</xpath>
+            <xpath>Q{http://example.com}*/self::attribute(*)</xpath>
+            <xpath>Q{http://example.com}*/self::attribute(ex:foo)</xpath>
+            <xpath>Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>Q{http://example.com}*/self::comment()</xpath>
+            <xpath>Q{http://example.com}*/self::processing-instruction()</xpath>
+            <xpath>Q{http://example.com}*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>Q{http://example.com}*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>Q{http://example.com}*/self::text()</xpath>
+            <xpath>Q{http://example.com}*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB005">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::foo/self::document-node()</xpath>
+            <xpath>child::foo/self::attribute()</xpath>
+            <xpath>child::foo/self::attribute(*)</xpath>
+            <xpath>child::foo/self::attribute(ex:foo)</xpath>
+            <xpath>child::foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::foo/self::comment()</xpath>
+            <xpath>child::foo/self::processing-instruction()</xpath>
+            <xpath>child::foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::foo/self::text()</xpath>
+            <xpath>child::foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB006">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::ex:foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::ex:foo/self::document-node()</xpath>
+            <xpath>child::ex:foo/self::attribute()</xpath>
+            <xpath>child::ex:foo/self::attribute(*)</xpath>
+            <xpath>child::ex:foo/self::attribute(ex:foo)</xpath>
+            <xpath>child::ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::ex:foo/self::comment()</xpath>
+            <xpath>child::ex:foo/self::processing-instruction()</xpath>
+            <xpath>child::ex:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::ex:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::ex:foo/self::text()</xpath>
+            <xpath>child::ex:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB007">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::Q{http://example.com}foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::Q{http://example.com}foo/self::document-node()</xpath>
+            <xpath>child::Q{http://example.com}foo/self::attribute()</xpath>
+            <xpath>child::Q{http://example.com}foo/self::attribute(*)</xpath>
+            <xpath>child::Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
+            <xpath>child::Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::Q{http://example.com}foo/self::comment()</xpath>
+            <xpath>child::Q{http://example.com}foo/self::processing-instruction()</xpath>
+            <xpath>child::Q{http://example.com}foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::Q{http://example.com}foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::Q{http://example.com}foo/self::text()</xpath>
+            <xpath>child::Q{http://example.com}foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB008">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::Q{http://example.com}*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::Q{http://example.com}*/self::document-node()</xpath>
+            <xpath>child::Q{http://example.com}*/self::attribute()</xpath>
+            <xpath>child::Q{http://example.com}*/self::attribute(*)</xpath>
+            <xpath>child::Q{http://example.com}*/self::attribute(ex:foo)</xpath>
+            <xpath>child::Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::Q{http://example.com}*/self::comment()</xpath>
+            <xpath>child::Q{http://example.com}*/self::processing-instruction()</xpath>
+            <xpath>child::Q{http://example.com}*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::Q{http://example.com}*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::Q{http://example.com}*/self::text()</xpath>
+            <xpath>child::Q{http://example.com}*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB009">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: *
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>*/self::document-node()</xpath>
+            <xpath>*/self::attribute()</xpath>
+            <xpath>*/self::attribute(*)</xpath>
+            <xpath>*/self::attribute(ex:foo)</xpath>
+            <xpath>*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>*/self::comment()</xpath>
+            <xpath>*/self::processing-instruction()</xpath>
+            <xpath>*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>*/self::text()</xpath>
+            <xpath>*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB010">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: *:foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>*:foo/self::document-node()</xpath>
+            <xpath>*:foo/self::attribute()</xpath>
+            <xpath>*:foo/self::attribute(*)</xpath>
+            <xpath>*:foo/self::attribute(ex:foo)</xpath>
+            <xpath>*:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>*:foo/self::comment()</xpath>
+            <xpath>*:foo/self::processing-instruction()</xpath>
+            <xpath>*:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>*:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>*:foo/self::text()</xpath>
+            <xpath>*:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB011">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: ex:*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>ex:*/self::document-node()</xpath>
+            <xpath>ex:*/self::attribute()</xpath>
+            <xpath>ex:*/self::attribute(*)</xpath>
+            <xpath>ex:*/self::attribute(ex:foo)</xpath>
+            <xpath>ex:*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>ex:*/self::comment()</xpath>
+            <xpath>ex:*/self::processing-instruction()</xpath>
+            <xpath>ex:*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>ex:*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>ex:*/self::text()</xpath>
+            <xpath>ex:*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB012">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::*/self::document-node()</xpath>
+            <xpath>child::*/self::attribute()</xpath>
+            <xpath>child::*/self::attribute(*)</xpath>
+            <xpath>child::*/self::attribute(ex:foo)</xpath>
+            <xpath>child::*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::*/self::comment()</xpath>
+            <xpath>child::*/self::processing-instruction()</xpath>
+            <xpath>child::*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::*/self::text()</xpath>
+            <xpath>child::*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB013">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::*:foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::*:foo/self::document-node()</xpath>
+            <xpath>child::*:foo/self::attribute()</xpath>
+            <xpath>child::*:foo/self::attribute(*)</xpath>
+            <xpath>child::*:foo/self::attribute(ex:foo)</xpath>
+            <xpath>child::*:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::*:foo/self::comment()</xpath>
+            <xpath>child::*:foo/self::processing-instruction()</xpath>
+            <xpath>child::*:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::*:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::*:foo/self::text()</xpath>
+            <xpath>child::*:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB014">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::ex:*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::ex:*/self::document-node()</xpath>
+            <xpath>child::ex:*/self::attribute()</xpath>
+            <xpath>child::ex:*/self::attribute(*)</xpath>
+            <xpath>child::ex:*/self::attribute(ex:foo)</xpath>
+            <xpath>child::ex:*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::ex:*/self::comment()</xpath>
+            <xpath>child::ex:*/self::processing-instruction()</xpath>
+            <xpath>child::ex:*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::ex:*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::ex:*/self::text()</xpath>
+            <xpath>child::ex:*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB015">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: element()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>element()/self::document-node()</xpath>
+            <xpath>element()/self::attribute()</xpath>
+            <xpath>element()/self::attribute(*)</xpath>
+            <xpath>element()/self::attribute(ex:foo)</xpath>
+            <xpath>element()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>element()/self::comment()</xpath>
+            <xpath>element()/self::processing-instruction()</xpath>
+            <xpath>element()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>element()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>element()/self::text()</xpath>
+            <xpath>element()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB016">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::element()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::element()/self::document-node()</xpath>
+            <xpath>child::element()/self::attribute()</xpath>
+            <xpath>child::element()/self::attribute(*)</xpath>
+            <xpath>child::element()/self::attribute(ex:foo)</xpath>
+            <xpath>child::element()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::element()/self::comment()</xpath>
+            <xpath>child::element()/self::processing-instruction()</xpath>
+            <xpath>child::element()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::element()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::element()/self::text()</xpath>
+            <xpath>child::element()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB017">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: node()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB018">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::node()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB019">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: item()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB020">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::item()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB021">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: comment()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>comment()/self::foo</xpath>
+            <xpath>comment()/self::ex:foo</xpath>
+            <xpath>comment()/self::Q{http://example.com}foo</xpath>
+            <xpath>comment()/self::Q{http://example.com}*</xpath>
+            <xpath>comment()/self::*:foo</xpath>
+            <xpath>comment()/self::ex:*</xpath>
+            <xpath>comment()/self::*</xpath>
+            <xpath>comment()/self::document-node()</xpath>
+            <xpath>comment()/self::attribute()</xpath>
+            <xpath>comment()/self::attribute(*)</xpath>
+            <xpath>comment()/self::attribute(ex:foo)</xpath>
+            <xpath>comment()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>comment()/self::processing-instruction()</xpath>
+            <xpath>comment()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>comment()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>comment()/self::text()</xpath>
+            <xpath>comment()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB022">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::comment()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::comment()/self::foo</xpath>
+            <xpath>child::comment()/self::ex:foo</xpath>
+            <xpath>child::comment()/self::Q{http://example.com}foo</xpath>
+            <xpath>child::comment()/self::Q{http://example.com}*</xpath>
+            <xpath>child::comment()/self::*:foo</xpath>
+            <xpath>child::comment()/self::ex:*</xpath>
+            <xpath>child::comment()/self::*</xpath>
+            <xpath>child::comment()/self::document-node()</xpath>
+            <xpath>child::comment()/self::attribute()</xpath>
+            <xpath>child::comment()/self::attribute(*)</xpath>
+            <xpath>child::comment()/self::attribute(ex:foo)</xpath>
+            <xpath>child::comment()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::comment()/self::processing-instruction()</xpath>
+            <xpath>child::comment()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::comment()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::comment()/self::text()</xpath>
+            <xpath>child::comment()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB023">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: processing-instruction()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>processing-instruction()/self::foo</xpath>
+            <xpath>processing-instruction()/self::ex:foo</xpath>
+            <xpath>processing-instruction()/self::Q{http://example.com}foo</xpath>
+            <xpath>processing-instruction()/self::Q{http://example.com}*</xpath>
+            <xpath>processing-instruction()/self::*:foo</xpath>
+            <xpath>processing-instruction()/self::ex:*</xpath>
+            <xpath>processing-instruction()/self::*</xpath>
+            <xpath>processing-instruction()/self::document-node()</xpath>
+            <xpath>processing-instruction()/self::attribute()</xpath>
+            <xpath>processing-instruction()/self::attribute(*)</xpath>
+            <xpath>processing-instruction()/self::attribute(ex:foo)</xpath>
+            <xpath>processing-instruction()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>processing-instruction()/self::comment()</xpath>
+            <xpath>processing-instruction()/self::text()</xpath>
+            <xpath>processing-instruction()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB024">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::processing-instruction()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::processing-instruction()/self::foo</xpath>
+            <xpath>child::processing-instruction()/self::ex:foo</xpath>
+            <xpath>child::processing-instruction()/self::Q{http://example.com}foo</xpath>
+            <xpath>child::processing-instruction()/self::Q{http://example.com}*</xpath>
+            <xpath>child::processing-instruction()/self::*:foo</xpath>
+            <xpath>child::processing-instruction()/self::ex:*</xpath>
+            <xpath>child::processing-instruction()/self::*</xpath>
+            <xpath>child::processing-instruction()/self::document-node()</xpath>
+            <xpath>child::processing-instruction()/self::attribute()</xpath>
+            <xpath>child::processing-instruction()/self::attribute(*)</xpath>
+            <xpath>child::processing-instruction()/self::attribute(ex:foo)</xpath>
+            <xpath>child::processing-instruction()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::processing-instruction()/self::comment()</xpath>
+            <xpath>child::processing-instruction()/self::text()</xpath>
+            <xpath>child::processing-instruction()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB025">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::processing-instruction(xml-stylesheet)
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::processing-instruction(xml-stylesheet)/self::foo</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::ex:foo</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::Q{http://example.com}foo</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::Q{http://example.com}*</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::*:foo</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::ex:*</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::*</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::document-node()</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::attribute()</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::attribute(*)</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::attribute(ex:foo)</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::comment()</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::text()</xpath>
+            <xpath>child::processing-instruction(xml-stylesheet)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB026">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::processing-instruction('xml-stylesheet')
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::processing-instruction('xml-stylesheet')/self::foo</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::ex:foo</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::Q{http://example.com}foo</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::Q{http://example.com}*</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::*:foo</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::ex:*</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::*</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::document-node()</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::attribute()</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::attribute(*)</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::attribute(ex:foo)</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::comment()</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::text()</xpath>
+            <xpath>child::processing-instruction('xml-stylesheet')/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB027">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: text()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>text()/self::foo</xpath>
+            <xpath>text()/self::ex:foo</xpath>
+            <xpath>text()/self::Q{http://example.com}foo</xpath>
+            <xpath>text()/self::Q{http://example.com}*</xpath>
+            <xpath>text()/self::*:foo</xpath>
+            <xpath>text()/self::ex:*</xpath>
+            <xpath>text()/self::*</xpath>
+            <xpath>text()/self::document-node()</xpath>
+            <xpath>text()/self::attribute()</xpath>
+            <xpath>text()/self::attribute(*)</xpath>
+            <xpath>text()/self::attribute(ex:foo)</xpath>
+            <xpath>text()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>text()/self::comment()</xpath>
+            <xpath>text()/self::processing-instruction()</xpath>
+            <xpath>text()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>text()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>text()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB028">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: child::text()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>child::text()/self::foo</xpath>
+            <xpath>child::text()/self::ex:foo</xpath>
+            <xpath>child::text()/self::Q{http://example.com}foo</xpath>
+            <xpath>child::text()/self::Q{http://example.com}*</xpath>
+            <xpath>child::text()/self::*:foo</xpath>
+            <xpath>child::text()/self::ex:*</xpath>
+            <xpath>child::text()/self::*</xpath>
+            <xpath>child::text()/self::document-node()</xpath>
+            <xpath>child::text()/self::attribute()</xpath>
+            <xpath>child::text()/self::attribute(*)</xpath>
+            <xpath>child::text()/self::attribute(ex:foo)</xpath>
+            <xpath>child::text()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>child::text()/self::comment()</xpath>
+            <xpath>child::text()/self::processing-instruction()</xpath>
+            <xpath>child::text()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>child::text()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>child::text()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB029">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::foo/self::document-node()</xpath>
+            <xpath>descendant::foo/self::attribute()</xpath>
+            <xpath>descendant::foo/self::attribute(*)</xpath>
+            <xpath>descendant::foo/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::foo/self::comment()</xpath>
+            <xpath>descendant::foo/self::processing-instruction()</xpath>
+            <xpath>descendant::foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::foo/self::text()</xpath>
+            <xpath>descendant::foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB030">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::ex:foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::ex:foo/self::document-node()</xpath>
+            <xpath>descendant::ex:foo/self::attribute()</xpath>
+            <xpath>descendant::ex:foo/self::attribute(*)</xpath>
+            <xpath>descendant::ex:foo/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::ex:foo/self::comment()</xpath>
+            <xpath>descendant::ex:foo/self::processing-instruction()</xpath>
+            <xpath>descendant::ex:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::ex:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::ex:foo/self::text()</xpath>
+            <xpath>descendant::ex:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB031">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::Q{http://example.com}foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::Q{http://example.com}foo/self::document-node()</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::attribute()</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::attribute(*)</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::comment()</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::processing-instruction()</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::text()</xpath>
+            <xpath>descendant::Q{http://example.com}foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB032">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::Q{http://example.com}*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::Q{http://example.com}*/self::document-node()</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::attribute()</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::attribute(*)</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::comment()</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::processing-instruction()</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::text()</xpath>
+            <xpath>descendant::Q{http://example.com}*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB033">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::*:foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::*:foo/self::document-node()</xpath>
+            <xpath>descendant::*:foo/self::attribute()</xpath>
+            <xpath>descendant::*:foo/self::attribute(*)</xpath>
+            <xpath>descendant::*:foo/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::*:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::*:foo/self::comment()</xpath>
+            <xpath>descendant::*:foo/self::processing-instruction()</xpath>
+            <xpath>descendant::*:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::*:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::*:foo/self::text()</xpath>
+            <xpath>descendant::*:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB034">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::ex:*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::ex:*/self::document-node()</xpath>
+            <xpath>descendant::ex:*/self::attribute()</xpath>
+            <xpath>descendant::ex:*/self::attribute(*)</xpath>
+            <xpath>descendant::ex:*/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::ex:*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::ex:*/self::comment()</xpath>
+            <xpath>descendant::ex:*/self::processing-instruction()</xpath>
+            <xpath>descendant::ex:*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::ex:*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::ex:*/self::text()</xpath>
+            <xpath>descendant::ex:*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB035">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::*/self::document-node()</xpath>
+            <xpath>descendant::*/self::attribute()</xpath>
+            <xpath>descendant::*/self::attribute(*)</xpath>
+            <xpath>descendant::*/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::*/self::comment()</xpath>
+            <xpath>descendant::*/self::processing-instruction()</xpath>
+            <xpath>descendant::*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::*/self::text()</xpath>
+            <xpath>descendant::*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB036">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::node()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB037">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::item()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB038">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::document-node()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::document-node()/self::foo</xpath>
+            <xpath>descendant::document-node()/self::ex:foo</xpath>
+            <xpath>descendant::document-node()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant::document-node()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant::document-node()/self::*:foo</xpath>
+            <xpath>descendant::document-node()/self::ex:*</xpath>
+            <xpath>descendant::document-node()/self::*</xpath>
+            <xpath>descendant::document-node()/self::attribute()</xpath>
+            <xpath>descendant::document-node()/self::attribute(*)</xpath>
+            <xpath>descendant::document-node()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::document-node()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::document-node()/self::comment()</xpath>
+            <xpath>descendant::document-node()/self::processing-instruction()</xpath>
+            <xpath>descendant::document-node()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::document-node()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::document-node()/self::text()</xpath>
+            <xpath>descendant::document-node()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB039">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::comment()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::comment()/self::foo</xpath>
+            <xpath>descendant::comment()/self::ex:foo</xpath>
+            <xpath>descendant::comment()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant::comment()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant::comment()/self::*:foo</xpath>
+            <xpath>descendant::comment()/self::ex:*</xpath>
+            <xpath>descendant::comment()/self::*</xpath>
+            <xpath>descendant::comment()/self::document-node()</xpath>
+            <xpath>descendant::comment()/self::attribute()</xpath>
+            <xpath>descendant::comment()/self::attribute(*)</xpath>
+            <xpath>descendant::comment()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::comment()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::comment()/self::processing-instruction()</xpath>
+            <xpath>descendant::comment()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::comment()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::comment()/self::text()</xpath>
+            <xpath>descendant::comment()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB040">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::processing-instruction()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::processing-instruction()/self::foo</xpath>
+            <xpath>descendant::processing-instruction()/self::ex:foo</xpath>
+            <xpath>descendant::processing-instruction()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant::processing-instruction()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant::processing-instruction()/self::*:foo</xpath>
+            <xpath>descendant::processing-instruction()/self::ex:*</xpath>
+            <xpath>descendant::processing-instruction()/self::*</xpath>
+            <xpath>descendant::processing-instruction()/self::document-node()</xpath>
+            <xpath>descendant::processing-instruction()/self::attribute()</xpath>
+            <xpath>descendant::processing-instruction()/self::attribute(*)</xpath>
+            <xpath>descendant::processing-instruction()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::processing-instruction()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::processing-instruction()/self::comment()</xpath>
+            <xpath>descendant::processing-instruction()/self::text()</xpath>
+            <xpath>descendant::processing-instruction()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB041">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::processing-instruction(xsl-stylesheet)
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::foo</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::ex:foo</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::Q{http://example.com}*</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::*:foo</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::ex:*</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::*</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::document-node()</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::attribute()</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::attribute(*)</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::comment()</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::text()</xpath>
+            <xpath>descendant::processing-instruction(xsl-stylesheet)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB042">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::processing-instruction('xsl-stylesheet')
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::foo</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::ex:foo</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::Q{http://example.com}*</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::*:foo</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::ex:*</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::*</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::document-node()</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::attribute()</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::attribute(*)</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::comment()</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::text()</xpath>
+            <xpath>descendant::processing-instruction('xsl-stylesheet')/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB043">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant::text()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant::text()/self::foo</xpath>
+            <xpath>descendant::text()/self::ex:foo</xpath>
+            <xpath>descendant::text()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant::text()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant::text()/self::*:foo</xpath>
+            <xpath>descendant::text()/self::ex:*</xpath>
+            <xpath>descendant::text()/self::*</xpath>
+            <xpath>descendant::text()/self::document-node()</xpath>
+            <xpath>descendant::text()/self::attribute()</xpath>
+            <xpath>descendant::text()/self::attribute(*)</xpath>
+            <xpath>descendant::text()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant::text()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant::text()/self::comment()</xpath>
+            <xpath>descendant::text()/self::processing-instruction()</xpath>
+            <xpath>descendant::text()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant::text()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant::text()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB044">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::foo/self::document-node()</xpath>
+            <xpath>descendant-or-self::foo/self::attribute()</xpath>
+            <xpath>descendant-or-self::foo/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::foo/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::foo/self::comment()</xpath>
+            <xpath>descendant-or-self::foo/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::foo/self::text()</xpath>
+            <xpath>descendant-or-self::foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB045">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::ex:foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::ex:foo/self::document-node()</xpath>
+            <xpath>descendant-or-self::ex:foo/self::attribute()</xpath>
+            <xpath>descendant-or-self::ex:foo/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::ex:foo/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::ex:foo/self::comment()</xpath>
+            <xpath>descendant-or-self::ex:foo/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::ex:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::ex:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::ex:foo/self::text()</xpath>
+            <xpath>descendant-or-self::ex:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB046">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::Q{http://example.com}foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::document-node()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::attribute()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::comment()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::text()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB047">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::Q{http://example.com}*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::Q{http://example.com}*/self::document-node()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::attribute()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::comment()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::text()</xpath>
+            <xpath>descendant-or-self::Q{http://example.com}*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB048">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::*:foo
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::*:foo/self::document-node()</xpath>
+            <xpath>descendant-or-self::*:foo/self::attribute()</xpath>
+            <xpath>descendant-or-self::*:foo/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::*:foo/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::*:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::*:foo/self::comment()</xpath>
+            <xpath>descendant-or-self::*:foo/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::*:foo/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::*:foo/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::*:foo/self::text()</xpath>
+            <xpath>descendant-or-self::*:foo/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB049">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::ex:*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::ex:*/self::document-node()</xpath>
+            <xpath>descendant-or-self::ex:*/self::attribute()</xpath>
+            <xpath>descendant-or-self::ex:*/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::ex:*/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::ex:*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::ex:*/self::comment()</xpath>
+            <xpath>descendant-or-self::ex:*/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::ex:*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::ex:*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::ex:*/self::text()</xpath>
+            <xpath>descendant-or-self::ex:*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB050">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::*
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::*/self::document-node()</xpath>
+            <xpath>descendant-or-self::*/self::attribute()</xpath>
+            <xpath>descendant-or-self::*/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::*/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::*/self::comment()</xpath>
+            <xpath>descendant-or-self::*/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::*/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::*/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::*/self::text()</xpath>
+            <xpath>descendant-or-self::*/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB051">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::node()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB052">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::item()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding"/>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB053">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::document-node()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::document-node()/self::foo</xpath>
+            <xpath>descendant-or-self::document-node()/self::ex:foo</xpath>
+            <xpath>descendant-or-self::document-node()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::document-node()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::document-node()/self::*:foo</xpath>
+            <xpath>descendant-or-self::document-node()/self::ex:*</xpath>
+            <xpath>descendant-or-self::document-node()/self::*</xpath>
+            <xpath>descendant-or-self::document-node()/self::attribute()</xpath>
+            <xpath>descendant-or-self::document-node()/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::document-node()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::document-node()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::document-node()/self::comment()</xpath>
+            <xpath>descendant-or-self::document-node()/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::document-node()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::document-node()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::document-node()/self::text()</xpath>
+            <xpath>descendant-or-self::document-node()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB054">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::attribute()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::attribute()/self::foo</xpath>
+            <xpath>descendant-or-self::attribute()/self::ex:foo</xpath>
+            <xpath>descendant-or-self::attribute()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::attribute()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::attribute()/self::*:foo</xpath>
+            <xpath>descendant-or-self::attribute()/self::ex:*</xpath>
+            <xpath>descendant-or-self::attribute()/self::*</xpath>
+            <xpath>descendant-or-self::attribute()/self::document-node()</xpath>
+            <xpath>descendant-or-self::attribute()/self::comment()</xpath>
+            <xpath>descendant-or-self::attribute()/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::attribute()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::attribute()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::attribute()/self::text()</xpath>
+            <xpath>descendant-or-self::attribute()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB055">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::attribute(*)
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::attribute(*)/self::foo</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::ex:foo</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::*:foo</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::ex:*</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::*</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::document-node()</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::comment()</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::text()</xpath>
+            <xpath>descendant-or-self::attribute(*)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB056">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::attribute(ex:foo)
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::attribute(ex:foo)/self::foo</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::ex:foo</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::*:foo</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::ex:*</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::*</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::document-node()</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::comment()</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::text()</xpath>
+            <xpath>descendant-or-self::attribute(ex:foo)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB057">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::attribute(Q{http://example.com}foo)
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::foo</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::ex:foo</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::*:foo</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::ex:*</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::*</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::document-node()</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::comment()</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::text()</xpath>
+            <xpath>descendant-or-self::attribute(Q{http://example.com}foo)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB058">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::comment()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::comment()/self::foo</xpath>
+            <xpath>descendant-or-self::comment()/self::ex:foo</xpath>
+            <xpath>descendant-or-self::comment()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::comment()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::comment()/self::*:foo</xpath>
+            <xpath>descendant-or-self::comment()/self::ex:*</xpath>
+            <xpath>descendant-or-self::comment()/self::*</xpath>
+            <xpath>descendant-or-self::comment()/self::document-node()</xpath>
+            <xpath>descendant-or-self::comment()/self::attribute()</xpath>
+            <xpath>descendant-or-self::comment()/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::comment()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::comment()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::comment()/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::comment()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::comment()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::comment()/self::text()</xpath>
+            <xpath>descendant-or-self::comment()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB059">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::processing-instruction()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::processing-instruction()/self::foo</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::ex:foo</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::*:foo</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::ex:*</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::*</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::document-node()</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::attribute()</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::comment()</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::text()</xpath>
+            <xpath>descendant-or-self::processing-instruction()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB060">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::processing-instruction(xsl-stylesheet)
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::foo</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::ex:foo</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::*:foo</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::ex:*</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::*</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::document-node()</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::attribute()</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::comment()</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::text()</xpath>
+            <xpath>descendant-or-self::processing-instruction(xsl-stylesheet)/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB061">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::processing-instruction('xsl-stylesheet')
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::foo</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::ex:foo</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::*:foo</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::ex:*</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::*</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::document-node()</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::attribute()</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::comment()</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::text()</xpath>
+            <xpath>descendant-or-self::processing-instruction('xsl-stylesheet')/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB062">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::text()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::text()/self::foo</xpath>
+            <xpath>descendant-or-self::text()/self::ex:foo</xpath>
+            <xpath>descendant-or-self::text()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::text()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::text()/self::*:foo</xpath>
+            <xpath>descendant-or-self::text()/self::ex:*</xpath>
+            <xpath>descendant-or-self::text()/self::*</xpath>
+            <xpath>descendant-or-self::text()/self::document-node()</xpath>
+            <xpath>descendant-or-self::text()/self::attribute()</xpath>
+            <xpath>descendant-or-self::text()/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::text()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::text()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::text()/self::comment()</xpath>
+            <xpath>descendant-or-self::text()/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::text()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::text()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::text()/self::namespace-node()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+   <test-case name="xp-striding-grounded-consumingB063">
+      <description>
+                CP: striding, RP: grounded, RS: consuming
+                Base expression: descendant-or-self::namespace-node()
+                Separators:      / 
+                With axes:       self
+                With node types: any
+                Invariant:       node-type-unequal
+            </description>
+      <created by="Abel Braaksma" on="2014-10-15"/>
+      <test>
+         <posture-and-sweep context-posture="striding">
+            <xpath>descendant-or-self::namespace-node()/self::foo</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::ex:foo</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::Q{http://example.com}foo</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::Q{http://example.com}*</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::*:foo</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::ex:*</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::*</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::document-node()</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::attribute()</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::attribute(*)</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::attribute(ex:foo)</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::comment()</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::processing-instruction()</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath>descendant-or-self::namespace-node()/self::text()</xpath>
+         </posture-and-sweep>
+      </test>
+      <result>
+         <assert-posture-and-sweep result-posture="grounded" result-sweep="consuming"/>
+      </result>
+   </test-case>
+</test-set>

@@ -56,6 +56,24 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="si-apply-templates-003">
+      <description>Test of xsl:stream instruction containing xsl:apply-templates in unstreamed mode.
+      	From a Saxon bug report by Martin Honnen.</description>
+      <created by="Michael Kay" on="2014-10-08"/>
+      <test>
+         <stylesheet file="si-apply-templates-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+         	<assert>/out/p[1] = 'Document type: E'</assert>
+         	<assert>/out/p[2] = 'Name: John Smith'</assert>
+         	<assert>/out/p[3] = 'Document type: F'</assert>
+         	<assert>/out/p[4] = 'Name: Joe Doe'</assert>
+         </all-of>
+      </result>
+   </test-case>
 
 
 </test-set>
