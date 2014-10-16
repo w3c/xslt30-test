@@ -452,8 +452,8 @@
         <!-- for the catalog -->
         <test-set name="xp-{.('name')}" file="tests/sandp/{$filename}" />
         
-        <xsl:result-document href="file:///D:/Projects/AbraSoft/__HG-ALL__/Exselt/Tests/_Test-Repository/XT3/tests/sandp/{$filename}">
-            <test-set name="xp-{.('name')}||{current-output-uri()}">
+        <xsl:result-document href="{$filename}">
+            <test-set name="xp-{.('name')}">
                 <description xsl:expand-text="yes">
                     CP: {.('cp')}, RP: {.('rp')}, RS: {.('rs')}
                     {.('description')}
