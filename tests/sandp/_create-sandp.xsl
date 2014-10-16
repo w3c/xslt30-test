@@ -452,7 +452,8 @@
         <!-- for the catalog -->
         <test-set name="xp-{.('name')}" file="tests/sandp/{$filename}" />
         
-            <test-set name="xp-{.('name')}">
+        <xsl:result-document href="file:///D:/Projects/AbraSoft/__HG-ALL__/Exselt/Tests/_Test-Repository/XT3/tests/sandp/{$filename}">
+            <test-set name="xp-{.('name')}||{current-output-uri()}">
                 <description xsl:expand-text="yes">
                     CP: {.('cp')}, RP: {.('rp')}, RS: {.('rs')}
                     {.('description')}
@@ -463,6 +464,7 @@
                  <xsl:with-param name="current" select="current()" />
                 </xsl:apply-templates>
             </test-set>
+        </xsl:result-document>
     </xsl:template>
 
     <xsl:template match="production">
