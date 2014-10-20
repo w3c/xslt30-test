@@ -116,7 +116,7 @@
                                    </xsl:if>   
                                 </xsl:for-each>
                             </xsl:variable>
-                            <xsl:sequence select="map:new($totals-map-entries)"/>
+                            <xsl:sequence select="map:merge($totals-map-entries)"/>
                         </xsl:variable>
                         <xsl:sequence select="map{ $category : $totals-map }"/>
                     </xsl:for-each-group>

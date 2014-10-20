@@ -19,7 +19,7 @@
     
     <!-- boolean(), filtered with motionless predicate -->
     
-    <xsl:template name="c-002" use-when="true() or $RUN">
+    <xsl:template name="c-002" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:copy-of select="boolean(./BOOKLIST/BOOKS/ITEM[@CAT='P'])"/>

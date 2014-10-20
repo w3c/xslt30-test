@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="maps">
    <description>Tests maps</description>
@@ -11,6 +12,7 @@
       <description>Basic test of maps in an XSLT 3.0 context</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-03" change="align with current spec, make results predictable"/>
+      <modified by="Abel Braaksma" on="2014-10-20" change="Since Oct 2014 LCWD, map:new is no longer among us, replaced it with map:merge" />
       <dependencies/>
       <test>
          <stylesheet file="maps-001.xsl"/>
@@ -25,6 +27,7 @@
       <description>Test of XSLT 3.0 xsl:map and xsl:map-entry instructions</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-03" change="align with current spec, make results predictable"/>
+      <modified by="Abel Braaksma" on="2014-10-20" change="Since Oct 2014 LCWD, map:new is no longer among us, replaced it with map:merge" />
       <dependencies/>
       <test>
          <stylesheet file="maps-002.xsl"/>
@@ -90,13 +93,14 @@
    <test-case name="maps-007">
       <description>Error if a non-map used in the content of xsl:map</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-20" change="Error changed, the spec requires this to yield error XTTE3375, not XPTY0004"></modified>
       <dependencies/>
       <test>
          <stylesheet file="maps-007.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <error code="XTTE3375"/>
       </result>
    </test-case>
 
@@ -125,4 +129,443 @@
          <assert>count(/out/caught) = 2</assert>
       </result>
    </test-case>
+      
+   <test-case name="maps-901a">
+      <description>map:new() (without args) should throw error (since Oct 2014 LCWD)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-901.xsl"/>
+         <param name="test-case" select="'map:new()'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-901b">
+      <description>map:new(()) (empty seq arg) should throw error (since Oct 2014 LCWD)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-901.xsl"/>
+         <param name="test-case" select="'map:new(())'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-901c">
+      <description>map:new(($map)) should throw error (since Oct 2014 LCWD)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-901.xsl"/>
+         <param name="test-case" select="'map:new((map:entry(0, ''no''), map:entry(1, ''yes'')))'"  static="yes"/>
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-901d">
+      <description>map:new(($map1, $map2)) should throw error (since Oct 2014 LCWD)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-901.xsl"/>
+         <param name="test-case" select="'map:new(($validmap, map:entry(1, ''yes'')))'"  static="yes"/>
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-901e">
+      <description>map:new(($map1, $map2), $collation) should throw error (since Dec 2013 LCWD), collation argument was dropped</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-901.xsl"/>
+         <param name="test-case" select="'map:new(($validmap, map:entry(1, ''yes'')), ''http://example.com'')'"  static="yes"/>
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-902a">
+      <description>map:for-each-entry((), ()) (empty seq args) should throw error (since Oct 2014 LCWD) (actually, this was illegal in the prev. draft as well)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-902.xsl"/>
+         <param name="test-case" select="'map:for-each-entry((),())'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-902b">
+      <description>map:for-each-entry($map, $fun) should throw error (since Oct 2014 LCWD)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-902.xsl"/>
+         <param name="test-case" select="'map:for-each(map{1:''test''}, function($a, $b) {($a)})'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>   
+   
+   <test-case name="maps-903a">
+      <description>map:collation(()) (empty seq) should throw error (since Dec 2013 LCWD) (actually, empty seq was illegal in prev draft)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-903.xsl"/>
+         <param name="test-case" select="'map:collation(())'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-903b">
+      <description>map:collation($map) should throw error (since Dec 2013 LCWD)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-903.xsl"/>
+         <param name="test-case" select="'map:collation(map{1:''test''})'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-903c">
+      <description>map:collation($map) should throw error (since Dec 2013 LCWD)</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-903.xsl"/>
+         <param name="test-case" select="'map:collation($validmap)'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-904a">
+      <description>fn:deep-equal2((), ()) should throw error (since Dec 2013 LCWD), function was used for comparing items that could also be maps</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-904.xsl"/>
+         <param name="test-case" select="'deep-equal2((), ())'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-904b">
+      <description>fn:deep-equal2($map1, $map2) should throw error (since Dec 2013 LCWD), function was used for comparing items that could also be maps</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-904.xsl"/>
+         <param name="test-case" select="'deep-equal2(map{1:''test''}, map{1:''test''})'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-904c">
+      <description>fn:deep-equal2($map1, $map2) should throw error (since Dec 2013 LCWD), function was used for comparing items that could also be maps</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-904.xsl"/>
+         <param name="test-case" select="'deep-equal2($validmap, $validmap)'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-904d">
+      <description>fn:deep-equal2($val1, $val2, $collation) should throw error (since Dec 2013 LCWD), function was used for comparing items that could also be maps</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-904.xsl"/>
+         <param name="test-case" select="'deep-equal2(''a'', ''b'', ''http://example.com'')'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>   
+   
+   <test-case name="maps-905a">
+      <description>map{1 := 'a'} should throw error (since Dec 2013 LCWD), syntax of maps has changed</description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-905.xsl"/>
+         <param name="test-case" select="'map{1 := 'a'}'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+      
+   <test-case name="maps-906a">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:new()'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906b">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:new(($validmap, $validmap))'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906c">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:collation($validmap)'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906d">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:keys($validmap)'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906e">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:contains($validmap)'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906f">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:get($validmap, ''entry'')'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906g">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:entry(1, ''value'')'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906h">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:remove($validmap, ''key'')'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906i">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:put($validmap, ''key'', ''value'')'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906j">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:size($validmap)'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="maps-906k">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:for-each-entry($validmap, function($a, $b) {$a})'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-906l">
+      <description>
+            In earlier drafts, namespace http://www.w3.org/2011/xpath-functions/map was used, it should no longer map to the 
+            map functions (though officially, these could be considered extension functions, this test assumes that the 
+            functions have been remapped to the proper namespace http://www.w3.org/20-05/xpath-functions/map). If this 
+            poses testability issues, we should either remove these tests, or make the result error optional.
+      </description>
+      <created by="Abel Braaksma" on="2014-10-20"/>
+      <dependencies/>
+      <test>
+         <stylesheet file="maps-906.xsl"/>
+         <param name="test-case" select="'mapold:for-each($validmap, function($a, $b) {$a})'" static="yes" />
+         <initial-template name="xsl:initial-template"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
 </test-set>

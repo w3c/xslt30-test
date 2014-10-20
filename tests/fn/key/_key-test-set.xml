@@ -480,7 +480,11 @@ filterspace...SS Section.Exp Section.</root>]]></assert-xml>
    </test-case>
 
    <test-case name="key-025">
-      <description>Test that 'generate-id()' on various kinds of nodes yields unique values for each Get in position so we have nodes on the following axis. Build up a string containing generated IDs for nodes on the following axis, plus attributes they carry.</description>
+      <description>
+        Test that 'generate-id()' on various kinds of nodes yields unique values for each 
+        Get in position so we have nodes on the following axis. Build up a string containing 
+        generated IDs for nodes on the following axis, plus attributes they carry.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="key130.xml"/>
@@ -498,7 +502,11 @@ filterspace...SS Section.Exp Section.</root>]]></assert-xml>
    </test-case>
 
    <test-case name="key-026">
-      <description>Test of 'generate-id()' on namespace nodes Build up a string containing generated IDs for nodes on the namespace axes of self and all lower elements. Since call-template doesn't change context, iterate by position number.</description>
+      <description>
+        Test of 'generate-id()' on namespace nodes Build up a string containing generated IDs
+        for nodes on the namespace axes of self and all lower elements. Since call-template 
+        doesn't change context, iterate by position number.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role="." file="key131.xml"/>
@@ -1604,6 +1612,23 @@ Namespace "" used in 3
       </test>
       <result>
          <assert>/out='3'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="key-087">
+      <description>In XSLT 3.0, the xsl:key match pattern can match namespace nodes.</description>
+      <created by="Michael Kay" on="2014-10-18"/>
+      <environment>
+         <source role="." file="key131.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="key-087.xsl"/>
+      </test>
+      <result>
+         <assert>deep-equal(/out/e/string(), ("doc", "section", "inner"))</assert>
       </result>
    </test-case>
 </test-set>
