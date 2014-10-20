@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
           name="date">
    <description>Tests date</description>
@@ -282,9 +283,11 @@
    <test-case name="date-019">
       <description>XPath 2.0: test sorting of dateTimes</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Change dependency because test contains >9999 year component for xs:dateTime"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year above 9999"/>
       </dependencies>
       <test>
          <stylesheet file="date-019.xsl"/>
@@ -949,9 +952,11 @@
    <test-case name="date-063">
       <description>XPath 2.0: test min/max of dateTimes</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Change dependency because test contains >9999 year component for xs:dateTime"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year above 9999"/>
       </dependencies>
       <test>
          <stylesheet file="date-063.xsl"/>
@@ -1432,4 +1437,5 @@
          <error code="FORG0008"/>
       </result>
    </test-case>
+
 </test-set>
