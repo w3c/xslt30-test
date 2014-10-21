@@ -1392,14 +1392,29 @@
     <xs:element name="xpath">
         <xs:annotation>
             <xs:documentation>
-                <p>Takes an XPath as input and
+                <p>
+                    Takes an XPath as input and
                     can be used to assess the resulting sweep and posture, based on
-                    a given input (context) posture and context type</p>
+                    a given input (context) posture and context type
+                </p>
             </xs:documentation>
         </xs:annotation>
-        <xs:simpleType>
-            <xs:restriction base="xs:string"/>
-        </xs:simpleType>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string" >
+                    <xs:attribute name="part" type="xs:integer">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <p>
+                                    Can be used to distinguish posture-and-sweep parts, i.e. for reports or analysis.
+                                    The value must be an integer.
+                                </p>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
     </xs:element>
 
     <xs:element name="xslt">
