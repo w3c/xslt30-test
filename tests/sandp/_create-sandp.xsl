@@ -458,6 +458,9 @@
                     CP: {.('cp')}, RP: {.('rp')}, RS: {.('rs')}
                     {.('description')}
                 </description>
+                <dependencies>
+                    <sweep_and_posture satisfied="true" value="supports-sweep-and-posture-assessments"/>
+                </dependencies>                
                 <xsl:apply-templates select="$doc-sandp/*/
                      productions[@axis = current()('lh')('axes') or current()('lh')('axes') = 'any']/
                      production[@node-type = current()('lh')('node-types') or current()('lh')('node-types') = 'any']">
@@ -485,7 +488,8 @@
                 With node types: {string-join($current('rh')('node-types'), ', ')}
                 Invariant:       {($current('rh')('invariant'), 'none')[1]}
             </description>
-            <created by="Abel Braaksma" on="{current-date()!format-date(., '[Y1, 4]-[M01]-[D01]')}"/>
+            <created by="Abel Braaksma" on="2014-10-16"/>
+            <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests"/>
             <test>
                 <posture-and-sweep context-posture="{$current('cp')!lower-case(.)}">
 
