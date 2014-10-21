@@ -910,6 +910,35 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="sweep_and_posture" substitutionGroup="dependency">
+        <xs:annotation>
+            <xs:documentation>
+                <p>
+                    Indicates a test that requires assessments or assertions of individual posture
+                    and sweep results. This is an optional feature, not specified at all in the XSLT 3.0 spec,
+                    but it is useful in testing constructs for posture and sweep results.
+                </p>
+                <p>
+                    If you support this, it means you can handle the result/assert-posture-and-sweep and 
+                    the test/posture-and-sweep elements, see there for more information.
+                </p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:restriction base="dependencyType">
+                    <xs:attribute name="value">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="supports-sweep-and-posture-assessments"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:restriction>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    
     <xs:element name="maximum_number_of_decimal_digits" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
