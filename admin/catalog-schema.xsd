@@ -1272,9 +1272,17 @@
     <xs:element name="initial-template">
         <xs:annotation>
             <xs:documentation>
-                <p>Gives the name of the named template to be used as the entry point for the
+                <p>
+                    Gives the name of the named template to be used as the entry point for the
                     transformation, with possible parameters. When this is supplied, it is not
-                    necessary to supplied a source document or initial context item.</p>
+                    necessary to supplied a source document or initial context item.
+                </p>
+                <p>
+                    The default initial template, xsl:initial-template, can be given specifically,
+                    or by leaving out the name attribute. If none of initial-template, initial-function
+                    or initial-mode are present, the default is xsl:initial-template, regardless whether
+                    an initial match selection was specified.
+                </p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1297,7 +1305,7 @@
             <xs:sequence>
                 <xs:group ref="unNamedParameters"/>
             </xs:sequence>
-            <xs:attribute name="name" type="xs:QName"/>
+            <xs:attribute name="name" type="xs:QName" use="required"/>
         </xs:complexType>
     </xs:element>
 
@@ -1306,14 +1314,23 @@
             <xs:documentation>
                 <p>Gives the name of the mode to be used as the entry point for the transformation,
                     with possible parameters. </p><p>To transmit parameters for an invocation in the
-                    stylesheet's default mode, leave out the name attribute.</p>
+                    stylesheet's default mode, use #default, for the unnamed mode, use #unnamed.</p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:group ref="tunnelParameters"/>
             </xs:sequence>
-            <xs:attribute name="name" type="xs:QName" use="optional"/>
+            <xs:attribute name="name" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        <p>The name attribute is required, use #default or #unnamed for special modes</p>
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>                    
+                    <xs:union memberTypes="xs:QName specialInitialModeNames" />
+                </xs:simpleType>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
@@ -2332,7 +2349,32 @@
             <xs:enumeration value="free-ranging"/>
         </xs:restriction>
     </xs:simpleType>
-
+    
+    <xs:simpleType name="specialInitialModeNames">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="#default" >
+                <xs:annotation>
+                    <xs:documentation>
+                        <h4>#default</h4>
+                        <p>
+                            If specified, initialized the stylesheet with the explicit or implicit 
+                            default mode specified on xsl:stylesheet or xsl:package.
+                        </p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="#unnamed">
+                <xs:annotation>
+                    <xs:documentation>
+                        <h4>#unnamed</h4>
+                        <p>
+                            If specified, initializes the stylesheet with the unnamed mode.
+                        </p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:attributeGroup name="valueAttr">
         <xs:annotation>
