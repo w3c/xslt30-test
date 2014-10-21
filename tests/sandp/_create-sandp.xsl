@@ -489,7 +489,7 @@
                 Invariant:       {($current('rh')('invariant'), 'none')[1]}
             </description>
             <created by="Abel Braaksma" on="2014-10-16"/>
-            <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests"/>
+            <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
             <test>
                 <posture-and-sweep context-posture="{$current('cp')!lower-case(.)}">
 
@@ -531,7 +531,7 @@
     <xsl:template match="production" mode="rh-side">
         <xsl:param name="current-expr" />
         <xsl:param name="sandp" />
-        <xpath xsl:expand-text="yes">{$current-expr || '/' || .}</xpath>
+        <xpath xsl:expand-text="yes" part="{position()}">{$current-expr || '/' || .}</xpath>
     </xsl:template>
     
 </xsl:stylesheet>
