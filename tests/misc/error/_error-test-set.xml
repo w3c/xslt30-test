@@ -14,6 +14,12 @@
 </doc>]]></content>
       </source>
    </environment>
+     
+   <environment name="error001a">
+      <source role=".">
+         <content><![CDATA[<doc/>]]></content>
+      </source>
+   </environment>
    
    <environment name="error002">
       <package file="error-base-002.xsl" role="secondary" 
@@ -1468,12 +1474,70 @@ It is a non-recoverable dynamic
                         defaulted to the global context item).</description>
       <created by="Michael Kay" on="2014-08-25"/>
       <modified by="John Lumley" on="2014-09-05" change="Use initial (unnamed) mode"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="initial-mode/@name is now required, specified #default"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="error-0044a.xsl"/>
-         <initial-mode/>
+         <initial-mode name="#default"/>
+      </test>
+      <result>
+         <error code="XTDE0044"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-0044aa">
+      <description>Variant of previous, specify mode=#unnamed explicitly
+         Error: It is a dynamic
+                        error if the invocation of the stylesheet specifies an initial mode and if no initial match selection 
+                                 is supplied (either explicitly, or
+                        defaulted to the global context item).</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0044a.xsl"/>
+         <initial-mode name="#unnamed"/>
+      </test>
+      <result>
+         <error code="XTDE0044"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0044ab">
+      <description>Variant of previous, specify mode=non-existing explicitly
+         Error: It is a dynamic
+                        error if the invocation of the stylesheet specifies an initial mode and if no initial match selection 
+                                 is supplied (either explicitly, or
+                        defaulted to the global context item).</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0044a.xsl"/>
+         <initial-mode name="non-existing"/>
+      </test>
+      <result>
+         <error code="XTDE0044"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-0044ac">
+      <description>Variant of previous, specify mode=existing-mode explicitly
+         Error: It is a dynamic
+                        error if the invocation of the stylesheet specifies an initial mode and if no initial match selection 
+                                 is supplied (either explicitly, or
+                        defaulted to the global context item).</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0044a.xsl"/>
+         <initial-mode name="aMode"/>
       </test>
       <result>
          <error code="XTDE0044"/>
@@ -1499,6 +1563,136 @@ It is a non-recoverable dynamic
       </result>
    </test-case>
 
+   <test-case name="error-0045aa">
+      <description>Tests that the following error DOES NOT occur when the initial mode is explicitly set to #unnamed
+         
+         Error: It is a non-recoverable dynamic
+                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
+                        expanded QName in the
+                        mode attribute of any template defined in the stylesheet.</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <environment ref="error001a"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0045a.xsl"/>
+         <initial-mode name="#unnamed"/>
+      </test>
+      <result>
+         <assert-empty />
+      </result>
+   </test-case>
+
+   <test-case name="error-0045ab">
+      <description>Tests that the following error DOES NOT occur when the initial mode is explicitly set to #default and there is no
+         other default mode specified on xsl:stylesheet or xsl:package.
+         
+         Error: It is a non-recoverable dynamic
+                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
+                        expanded QName in the
+                        mode attribute of any template defined in the stylesheet.</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <environment ref="error001a"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0045a.xsl"/>
+         <initial-mode name="#default"/>
+      </test>
+      <result>
+         <assert-empty />
+      </result>
+   </test-case>
+   
+   <test-case name="error-0045b">
+      <description>Tests the following error with a default-mode attribute on xsl:stylesheet to a non-existing value
+         
+         Error: It is a non-recoverable dynamic
+                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
+                        expanded QName in the
+                        mode attribute of any template defined in the stylesheet.</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <environment ref="error001a"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0045b.xsl"/>
+         <initial-mode name="#default"/>
+      </test>
+      <result>
+         <error code="XTDE0045"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-0045ba">
+      <description>Tests the following error with a default-mode attribute on xsl:stylesheet to a non-existing value
+         AND invoking the stylesheet with yet another non-existing mode.
+         
+         Error: It is a non-recoverable dynamic
+                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
+                        expanded QName in the
+                        mode attribute of any template defined in the stylesheet.</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <environment ref="error001a"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0045b.xsl"/>
+         <initial-mode name="non-existing-other-than-default-mode"/>
+      </test>
+      <result>
+         <error code="XTDE0045"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-0045bb">
+      <description>Tests that following error DOES NOT occur with a default-mode attribute on xsl:stylesheet 
+         to a non-existing value AND with the initial mode set to #unnamed
+         
+         Error: It is a non-recoverable dynamic
+                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
+                        expanded QName in the
+                        mode attribute of any template defined in the stylesheet.</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <environment ref="error001a"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0045b.xsl"/>
+         <initial-mode name="#unnamed"/>
+      </test>
+      <result>
+         <assert-empty />
+      </result>
+   </test-case>
+   
+   <test-case name="error-0045bc">
+      <description>Tests that following error DOES NOT occur with a default-mode attribute on xsl:stylesheet 
+         to a non-existing value AND with the initial mode set to an existing mode
+         
+         Error: It is a non-recoverable dynamic
+                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
+                        expanded QName in the
+                        mode attribute of any template defined in the stylesheet.</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <environment ref="error001a"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0045b.xsl"/>
+         <initial-mode name="main"/>
+      </test>
+      <result>
+         <assert-xml ><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="error-0047a">
       <description>Error: It is a non-recoverable dynamic
                         error if the invocation of the stylesheet specifies both an initial mode and an initial template.</description>
