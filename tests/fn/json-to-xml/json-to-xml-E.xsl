@@ -253,9 +253,10 @@
         <xsl:variable name="metadata">
             <description>Fallback option not function </description>
             <created by="John Lumley" on="2013-10-01"/>
+            <modified by="Abel Braaksma" on="2014-10-21" change="':=' for maps is replaced by ':'" />
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:variable name="json">["String"]</xsl:variable>
-        <xsl:copy-of select="json-to-xml($json,map{'fallback':='dummy'})"/>
+        <xsl:copy-of select="json-to-xml($json,map{'fallback':'dummy'})"/>
     </xsl:template>
 </xsl:stylesheet>
