@@ -20,7 +20,7 @@
       </xslt:element>
    </xslt:template>
 
-   <xslt:template match="element(*, pre:partNumberType)">
+   <xslt:template match="element(*, pre:partNumberType)" priority="3">
       <xslt:element name="B{position()}">
          <xslt:value-of select="."/>
       </xslt:element>
@@ -32,7 +32,7 @@
       </xslt:element>
    </xslt:template>
 
-   <xslt:template match="element(*, pre:partIntegerUnion)">
+   <xslt:template match="element(*, pre:partIntegerUnion)" priority="2">
       <xslt:element name="D{position()}">
          <xslt:value-of select="."/>
       </xslt:element>

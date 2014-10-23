@@ -13,29 +13,29 @@
       </out>
    </xslt:template>
 
-   <xslt:template match="attribute(*, my:partNumberType)">
+   <xslt:template match="attribute(*, my:partNumberType)" priority="5">
       <xslt:element name="A">
          <xslt:value-of select="."/>
       </xslt:element>
    </xslt:template>
 
-   <xslt:template match="attribute(*, my:myListType)">
+   <xslt:template match="attribute(*, my:myListType)" priority="4.5">
       <xslt:element name="B">
          <xslt:value-of select="."/>
       </xslt:element>
    </xslt:template>
 
-   <xslt:template match="attribute(*, xs:NMTOKENS)">
+   <xslt:template match="attribute(*, xs:NMTOKENS)" priority="4.5">
       <xslt:element name="C">
          <xslt:value-of select="."/>
       </xslt:element>
    </xslt:template>
 
-   <xslt:template match="attribute(*, my:partIntegerUnion)">
+   <xslt:template match="attribute(*, my:partIntegerUnion)" priority="3">
       <xslt:element name="D">
          <xslt:value-of select="."/>
       </xslt:element>
    </xslt:template>
 
-   <xslt:template match="attribute(*)"> </xslt:template>
+   <xslt:template match="attribute(*)" priority="4"> </xslt:template>
 </xslt:transform>

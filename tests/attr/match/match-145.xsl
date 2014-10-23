@@ -19,7 +19,7 @@
       </t:element>
    </t:template>
 
-   <t:template match="element(*, partNumberType)">
+   <t:template match="element(*, partNumberType)" priority="4">
       <t:element name="B{position()}">
          <t:value-of select="."/>
       </t:element>
@@ -31,7 +31,7 @@
       </t:element>
    </t:template>
 
-   <t:template match="element(*, partIntegerUnion)">
+   <t:template match="element(*, partIntegerUnion)" priority="3">
       <t:element name="D{position()}">
          <t:value-of select="."/>
       </t:element>

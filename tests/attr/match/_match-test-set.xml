@@ -2698,6 +2698,7 @@
       <description>Test of template matching with element( * ,$type) where $type has a prefix.</description>
       <keywords>xsl:import-schema ElementTest</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2014-10-23" change="add template priorities, caused by bug 27140"/>
       <environment ref="match3002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2715,6 +2716,7 @@
       <description>Test of template matching with element( * ,$type) where $type has no prefix. Show effect of @xpath-default-namespace on $type.</description>
       <keywords>xsl:import-schema ElementTest xpath-default-namespace</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2014-10-23" change="add template priorities, caused by bug 27140"/>
       <environment ref="match3002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -3039,6 +3041,7 @@
       <description>Test of template matching with attribute( * ,$type) where $type has a prefix.</description>
       <keywords>xsl:import-schema AttributeTest</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2014-10-23" change="add template priorities, caused by bug 27140"/>
       <environment ref="match3002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -4236,6 +4239,23 @@
       </test>
       <result>
          <error code="XTTE3110"/>
+      </result>
+   </test-case>
+   
+   <test-case name="match-232">
+      <description>Test of template matching with content type being a union type. Was match-169; rules change in 3.0.</description>
+      <keywords>xsl:import-schema AttributeTest UnionExpr complex-expression</keywords>
+      <created by="Michael Kay" on="2014-10-23"/>
+      <environment ref="match3002"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-232.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>123-AB</A><A>000-SS 000-RR</A><A>44</A><A>75</A><A>red blue green</A><A>123-AB</A></out>]]></assert-xml>
       </result>
    </test-case>
 </test-set>
