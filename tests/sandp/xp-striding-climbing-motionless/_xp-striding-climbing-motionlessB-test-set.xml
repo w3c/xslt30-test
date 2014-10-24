@@ -4,6 +4,9 @@
                     CP: Striding, RP: Climbing, RS: Motionless
                     Self axis on climbing axis, provided node type is same, inherits the climbing axis: climbing and motionless
                 </description>
+   <dependencies>
+      <sweep_and_posture satisfied="true" value="supports-sweep-and-posture-assessments"/>
+   </dependencies>
    <test-case name="xp-striding-climbing-motionlessB001">
       <description>
                 CP: striding, RP: climbing, RS: motionless
@@ -14,13 +17,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute()/self::node()</xpath>
-            <xpath>attribute()/self::attribute()</xpath>
-            <xpath>attribute()/self::attribute(*)</xpath>
-            <xpath>attribute()/self::attribute(ex:foo)</xpath>
-            <xpath>attribute()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute()/self::node()</xpath>
+            <xpath part="2">attribute()/self::attribute()</xpath>
+            <xpath part="3">attribute()/self::attribute(*)</xpath>
+            <xpath part="4">attribute()/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute()/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -37,13 +41,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::foo/self::node()</xpath>
-            <xpath>attribute::foo/self::attribute()</xpath>
-            <xpath>attribute::foo/self::attribute(*)</xpath>
-            <xpath>attribute::foo/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::foo/self::node()</xpath>
+            <xpath part="2">attribute::foo/self::attribute()</xpath>
+            <xpath part="3">attribute::foo/self::attribute(*)</xpath>
+            <xpath part="4">attribute::foo/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::foo/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -60,13 +65,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::ex:foo/self::node()</xpath>
-            <xpath>attribute::ex:foo/self::attribute()</xpath>
-            <xpath>attribute::ex:foo/self::attribute(*)</xpath>
-            <xpath>attribute::ex:foo/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::ex:foo/self::node()</xpath>
+            <xpath part="2">attribute::ex:foo/self::attribute()</xpath>
+            <xpath part="3">attribute::ex:foo/self::attribute(*)</xpath>
+            <xpath part="4">attribute::ex:foo/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -83,13 +89,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::Q{http://example.com}foo/self::node()</xpath>
-            <xpath>attribute::Q{http://example.com}foo/self::attribute()</xpath>
-            <xpath>attribute::Q{http://example.com}foo/self::attribute(*)</xpath>
-            <xpath>attribute::Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::Q{http://example.com}foo/self::node()</xpath>
+            <xpath part="2">attribute::Q{http://example.com}foo/self::attribute()</xpath>
+            <xpath part="3">attribute::Q{http://example.com}foo/self::attribute(*)</xpath>
+            <xpath part="4">attribute::Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -106,13 +113,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::Q{http://example.com}*/self::node()</xpath>
-            <xpath>attribute::Q{http://example.com}*/self::attribute()</xpath>
-            <xpath>attribute::Q{http://example.com}*/self::attribute(*)</xpath>
-            <xpath>attribute::Q{http://example.com}*/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::Q{http://example.com}*/self::node()</xpath>
+            <xpath part="2">attribute::Q{http://example.com}*/self::attribute()</xpath>
+            <xpath part="3">attribute::Q{http://example.com}*/self::attribute(*)</xpath>
+            <xpath part="4">attribute::Q{http://example.com}*/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -129,13 +137,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::*:foo/self::node()</xpath>
-            <xpath>attribute::*:foo/self::attribute()</xpath>
-            <xpath>attribute::*:foo/self::attribute(*)</xpath>
-            <xpath>attribute::*:foo/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::*:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::*:foo/self::node()</xpath>
+            <xpath part="2">attribute::*:foo/self::attribute()</xpath>
+            <xpath part="3">attribute::*:foo/self::attribute(*)</xpath>
+            <xpath part="4">attribute::*:foo/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::*:foo/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -152,13 +161,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::ex:*/self::node()</xpath>
-            <xpath>attribute::ex:*/self::attribute()</xpath>
-            <xpath>attribute::ex:*/self::attribute(*)</xpath>
-            <xpath>attribute::ex:*/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::ex:*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::ex:*/self::node()</xpath>
+            <xpath part="2">attribute::ex:*/self::attribute()</xpath>
+            <xpath part="3">attribute::ex:*/self::attribute(*)</xpath>
+            <xpath part="4">attribute::ex:*/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::ex:*/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -175,13 +185,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::*/self::node()</xpath>
-            <xpath>attribute::*/self::attribute()</xpath>
-            <xpath>attribute::*/self::attribute(*)</xpath>
-            <xpath>attribute::*/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::*/self::node()</xpath>
+            <xpath part="2">attribute::*/self::attribute()</xpath>
+            <xpath part="3">attribute::*/self::attribute(*)</xpath>
+            <xpath part="4">attribute::*/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::*/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -198,13 +209,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::node()/self::node()</xpath>
-            <xpath>attribute::node()/self::attribute()</xpath>
-            <xpath>attribute::node()/self::attribute(*)</xpath>
-            <xpath>attribute::node()/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::node()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::node()/self::node()</xpath>
+            <xpath part="2">attribute::node()/self::attribute()</xpath>
+            <xpath part="3">attribute::node()/self::attribute(*)</xpath>
+            <xpath part="4">attribute::node()/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::node()/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -221,13 +233,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::attribute()/self::node()</xpath>
-            <xpath>attribute::attribute()/self::attribute()</xpath>
-            <xpath>attribute::attribute()/self::attribute(*)</xpath>
-            <xpath>attribute::attribute()/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::attribute()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::attribute()/self::node()</xpath>
+            <xpath part="2">attribute::attribute()/self::attribute()</xpath>
+            <xpath part="3">attribute::attribute()/self::attribute(*)</xpath>
+            <xpath part="4">attribute::attribute()/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::attribute()/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -244,13 +257,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::attribute(*)/self::node()</xpath>
-            <xpath>attribute::attribute(*)/self::attribute()</xpath>
-            <xpath>attribute::attribute(*)/self::attribute(*)</xpath>
-            <xpath>attribute::attribute(*)/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::attribute(*)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::attribute(*)/self::node()</xpath>
+            <xpath part="2">attribute::attribute(*)/self::attribute()</xpath>
+            <xpath part="3">attribute::attribute(*)/self::attribute(*)</xpath>
+            <xpath part="4">attribute::attribute(*)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::attribute(*)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -267,13 +281,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::attribute(ex:foo)/self::node()</xpath>
-            <xpath>attribute::attribute(ex:foo)/self::attribute()</xpath>
-            <xpath>attribute::attribute(ex:foo)/self::attribute(*)</xpath>
-            <xpath>attribute::attribute(ex:foo)/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::attribute(ex:foo)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::attribute(ex:foo)/self::node()</xpath>
+            <xpath part="2">attribute::attribute(ex:foo)/self::attribute()</xpath>
+            <xpath part="3">attribute::attribute(ex:foo)/self::attribute(*)</xpath>
+            <xpath part="4">attribute::attribute(ex:foo)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::attribute(ex:foo)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -290,13 +305,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>attribute::attribute(Q{http://example.com}foo)/self::node()</xpath>
-            <xpath>attribute::attribute(Q{http://example.com}foo)/self::attribute()</xpath>
-            <xpath>attribute::attribute(Q{http://example.com}foo)/self::attribute(*)</xpath>
-            <xpath>attribute::attribute(Q{http://example.com}foo)/self::attribute(ex:foo)</xpath>
-            <xpath>attribute::attribute(Q{http://example.com}foo)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">attribute::attribute(Q{http://example.com}foo)/self::node()</xpath>
+            <xpath part="2">attribute::attribute(Q{http://example.com}foo)/self::attribute()</xpath>
+            <xpath part="3">attribute::attribute(Q{http://example.com}foo)/self::attribute(*)</xpath>
+            <xpath part="4">attribute::attribute(Q{http://example.com}foo)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">attribute::attribute(Q{http://example.com}foo)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -313,13 +329,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@foo/self::node()</xpath>
-            <xpath>@foo/self::attribute()</xpath>
-            <xpath>@foo/self::attribute(*)</xpath>
-            <xpath>@foo/self::attribute(ex:foo)</xpath>
-            <xpath>@foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@foo/self::node()</xpath>
+            <xpath part="2">@foo/self::attribute()</xpath>
+            <xpath part="3">@foo/self::attribute(*)</xpath>
+            <xpath part="4">@foo/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@foo/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -336,13 +353,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@ex:foo/self::node()</xpath>
-            <xpath>@ex:foo/self::attribute()</xpath>
-            <xpath>@ex:foo/self::attribute(*)</xpath>
-            <xpath>@ex:foo/self::attribute(ex:foo)</xpath>
-            <xpath>@ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@ex:foo/self::node()</xpath>
+            <xpath part="2">@ex:foo/self::attribute()</xpath>
+            <xpath part="3">@ex:foo/self::attribute(*)</xpath>
+            <xpath part="4">@ex:foo/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@ex:foo/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -359,13 +377,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@Q{http://example.com}foo/self::node()</xpath>
-            <xpath>@Q{http://example.com}foo/self::attribute()</xpath>
-            <xpath>@Q{http://example.com}foo/self::attribute(*)</xpath>
-            <xpath>@Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
-            <xpath>@Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@Q{http://example.com}foo/self::node()</xpath>
+            <xpath part="2">@Q{http://example.com}foo/self::attribute()</xpath>
+            <xpath part="3">@Q{http://example.com}foo/self::attribute(*)</xpath>
+            <xpath part="4">@Q{http://example.com}foo/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@Q{http://example.com}foo/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -382,13 +401,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@Q{http://example.com}*/self::node()</xpath>
-            <xpath>@Q{http://example.com}*/self::attribute()</xpath>
-            <xpath>@Q{http://example.com}*/self::attribute(*)</xpath>
-            <xpath>@Q{http://example.com}*/self::attribute(ex:foo)</xpath>
-            <xpath>@Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@Q{http://example.com}*/self::node()</xpath>
+            <xpath part="2">@Q{http://example.com}*/self::attribute()</xpath>
+            <xpath part="3">@Q{http://example.com}*/self::attribute(*)</xpath>
+            <xpath part="4">@Q{http://example.com}*/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@Q{http://example.com}*/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -405,13 +425,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@*:foo/self::node()</xpath>
-            <xpath>@*:foo/self::attribute()</xpath>
-            <xpath>@*:foo/self::attribute(*)</xpath>
-            <xpath>@*:foo/self::attribute(ex:foo)</xpath>
-            <xpath>@*:foo/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@*:foo/self::node()</xpath>
+            <xpath part="2">@*:foo/self::attribute()</xpath>
+            <xpath part="3">@*:foo/self::attribute(*)</xpath>
+            <xpath part="4">@*:foo/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@*:foo/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -428,13 +449,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@ex:*/self::node()</xpath>
-            <xpath>@ex:*/self::attribute()</xpath>
-            <xpath>@ex:*/self::attribute(*)</xpath>
-            <xpath>@ex:*/self::attribute(ex:foo)</xpath>
-            <xpath>@ex:*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@ex:*/self::node()</xpath>
+            <xpath part="2">@ex:*/self::attribute()</xpath>
+            <xpath part="3">@ex:*/self::attribute(*)</xpath>
+            <xpath part="4">@ex:*/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@ex:*/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -451,13 +473,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@*/self::node()</xpath>
-            <xpath>@*/self::attribute()</xpath>
-            <xpath>@*/self::attribute(*)</xpath>
-            <xpath>@*/self::attribute(ex:foo)</xpath>
-            <xpath>@*/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@*/self::node()</xpath>
+            <xpath part="2">@*/self::attribute()</xpath>
+            <xpath part="3">@*/self::attribute(*)</xpath>
+            <xpath part="4">@*/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@*/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -474,13 +497,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@node()/self::node()</xpath>
-            <xpath>@node()/self::attribute()</xpath>
-            <xpath>@node()/self::attribute(*)</xpath>
-            <xpath>@node()/self::attribute(ex:foo)</xpath>
-            <xpath>@node()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@node()/self::node()</xpath>
+            <xpath part="2">@node()/self::attribute()</xpath>
+            <xpath part="3">@node()/self::attribute(*)</xpath>
+            <xpath part="4">@node()/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@node()/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -497,13 +521,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@attribute()/self::node()</xpath>
-            <xpath>@attribute()/self::attribute()</xpath>
-            <xpath>@attribute()/self::attribute(*)</xpath>
-            <xpath>@attribute()/self::attribute(ex:foo)</xpath>
-            <xpath>@attribute()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@attribute()/self::node()</xpath>
+            <xpath part="2">@attribute()/self::attribute()</xpath>
+            <xpath part="3">@attribute()/self::attribute(*)</xpath>
+            <xpath part="4">@attribute()/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@attribute()/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -520,13 +545,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@attribute(*)/self::node()</xpath>
-            <xpath>@attribute(*)/self::attribute()</xpath>
-            <xpath>@attribute(*)/self::attribute(*)</xpath>
-            <xpath>@attribute(*)/self::attribute(ex:foo)</xpath>
-            <xpath>@attribute(*)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@attribute(*)/self::node()</xpath>
+            <xpath part="2">@attribute(*)/self::attribute()</xpath>
+            <xpath part="3">@attribute(*)/self::attribute(*)</xpath>
+            <xpath part="4">@attribute(*)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@attribute(*)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -543,13 +569,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@attribute(ex:foo)/self::node()</xpath>
-            <xpath>@attribute(ex:foo)/self::attribute()</xpath>
-            <xpath>@attribute(ex:foo)/self::attribute(*)</xpath>
-            <xpath>@attribute(ex:foo)/self::attribute(ex:foo)</xpath>
-            <xpath>@attribute(ex:foo)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@attribute(ex:foo)/self::node()</xpath>
+            <xpath part="2">@attribute(ex:foo)/self::attribute()</xpath>
+            <xpath part="3">@attribute(ex:foo)/self::attribute(*)</xpath>
+            <xpath part="4">@attribute(ex:foo)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@attribute(ex:foo)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -566,13 +593,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>@attribute(Q{http://example.com}foo)/self::node()</xpath>
-            <xpath>@attribute(Q{http://example.com}foo)/self::attribute()</xpath>
-            <xpath>@attribute(Q{http://example.com}foo)/self::attribute(*)</xpath>
-            <xpath>@attribute(Q{http://example.com}foo)/self::attribute(ex:foo)</xpath>
-            <xpath>@attribute(Q{http://example.com}foo)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">@attribute(Q{http://example.com}foo)/self::node()</xpath>
+            <xpath part="2">@attribute(Q{http://example.com}foo)/self::attribute()</xpath>
+            <xpath part="3">@attribute(Q{http://example.com}foo)/self::attribute(*)</xpath>
+            <xpath part="4">@attribute(Q{http://example.com}foo)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">@attribute(Q{http://example.com}foo)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -589,10 +617,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>namespace::foo/self::node()</xpath>
-            <xpath>namespace::foo/self::namespace-node()</xpath>
+            <xpath part="1">namespace::foo/self::node()</xpath>
+            <xpath part="2">namespace::foo/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -609,10 +638,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>namespace::Q{}foo/self::node()</xpath>
-            <xpath>namespace::Q{}foo/self::namespace-node()</xpath>
+            <xpath part="1">namespace::Q{}foo/self::node()</xpath>
+            <xpath part="2">namespace::Q{}foo/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -629,10 +659,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>namespace::Q{}*/self::node()</xpath>
-            <xpath>namespace::Q{}*/self::namespace-node()</xpath>
+            <xpath part="1">namespace::Q{}*/self::node()</xpath>
+            <xpath part="2">namespace::Q{}*/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -649,10 +680,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>namespace::*:foo/self::node()</xpath>
-            <xpath>namespace::*:foo/self::namespace-node()</xpath>
+            <xpath part="1">namespace::*:foo/self::node()</xpath>
+            <xpath part="2">namespace::*:foo/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -669,10 +701,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>namespace::*/self::node()</xpath>
-            <xpath>namespace::*/self::namespace-node()</xpath>
+            <xpath part="1">namespace::*/self::node()</xpath>
+            <xpath part="2">namespace::*/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -689,10 +722,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>namespace::node()/self::node()</xpath>
-            <xpath>namespace::node()/self::namespace-node()</xpath>
+            <xpath part="1">namespace::node()/self::node()</xpath>
+            <xpath part="2">namespace::node()/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -709,10 +743,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>namespace::namespace-node()/self::node()</xpath>
-            <xpath>namespace::namespace-node()/self::namespace-node()</xpath>
+            <xpath part="1">namespace::namespace-node()/self::node()</xpath>
+            <xpath part="2">namespace::namespace-node()/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -729,16 +764,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::foo/self::foo</xpath>
-            <xpath>parent::foo/self::ex:foo</xpath>
-            <xpath>parent::foo/self::Q{http://example.com}foo</xpath>
-            <xpath>parent::foo/self::Q{http://example.com}*</xpath>
-            <xpath>parent::foo/self::*:foo</xpath>
-            <xpath>parent::foo/self::ex:*</xpath>
-            <xpath>parent::foo/self::*</xpath>
-            <xpath>parent::foo/self::node()</xpath>
+            <xpath part="1">parent::foo/self::foo</xpath>
+            <xpath part="2">parent::foo/self::ex:foo</xpath>
+            <xpath part="3">parent::foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::foo/self::*:foo</xpath>
+            <xpath part="6">parent::foo/self::ex:*</xpath>
+            <xpath part="7">parent::foo/self::*</xpath>
+            <xpath part="8">parent::foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -755,16 +791,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::ex:foo/self::foo</xpath>
-            <xpath>parent::ex:foo/self::ex:foo</xpath>
-            <xpath>parent::ex:foo/self::Q{http://example.com}foo</xpath>
-            <xpath>parent::ex:foo/self::Q{http://example.com}*</xpath>
-            <xpath>parent::ex:foo/self::*:foo</xpath>
-            <xpath>parent::ex:foo/self::ex:*</xpath>
-            <xpath>parent::ex:foo/self::*</xpath>
-            <xpath>parent::ex:foo/self::node()</xpath>
+            <xpath part="1">parent::ex:foo/self::foo</xpath>
+            <xpath part="2">parent::ex:foo/self::ex:foo</xpath>
+            <xpath part="3">parent::ex:foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::ex:foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::ex:foo/self::*:foo</xpath>
+            <xpath part="6">parent::ex:foo/self::ex:*</xpath>
+            <xpath part="7">parent::ex:foo/self::*</xpath>
+            <xpath part="8">parent::ex:foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -781,16 +818,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::Q{http://example.com}foo/self::foo</xpath>
-            <xpath>parent::Q{http://example.com}foo/self::ex:foo</xpath>
-            <xpath>parent::Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
-            <xpath>parent::Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
-            <xpath>parent::Q{http://example.com}foo/self::*:foo</xpath>
-            <xpath>parent::Q{http://example.com}foo/self::ex:*</xpath>
-            <xpath>parent::Q{http://example.com}foo/self::*</xpath>
-            <xpath>parent::Q{http://example.com}foo/self::node()</xpath>
+            <xpath part="1">parent::Q{http://example.com}foo/self::foo</xpath>
+            <xpath part="2">parent::Q{http://example.com}foo/self::ex:foo</xpath>
+            <xpath part="3">parent::Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::Q{http://example.com}foo/self::*:foo</xpath>
+            <xpath part="6">parent::Q{http://example.com}foo/self::ex:*</xpath>
+            <xpath part="7">parent::Q{http://example.com}foo/self::*</xpath>
+            <xpath part="8">parent::Q{http://example.com}foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -807,16 +845,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::Q{http://example.com}*/self::foo</xpath>
-            <xpath>parent::Q{http://example.com}*/self::ex:foo</xpath>
-            <xpath>parent::Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
-            <xpath>parent::Q{http://example.com}*/self::Q{http://example.com}*</xpath>
-            <xpath>parent::Q{http://example.com}*/self::*:foo</xpath>
-            <xpath>parent::Q{http://example.com}*/self::ex:*</xpath>
-            <xpath>parent::Q{http://example.com}*/self::*</xpath>
-            <xpath>parent::Q{http://example.com}*/self::node()</xpath>
+            <xpath part="1">parent::Q{http://example.com}*/self::foo</xpath>
+            <xpath part="2">parent::Q{http://example.com}*/self::ex:foo</xpath>
+            <xpath part="3">parent::Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::Q{http://example.com}*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::Q{http://example.com}*/self::*:foo</xpath>
+            <xpath part="6">parent::Q{http://example.com}*/self::ex:*</xpath>
+            <xpath part="7">parent::Q{http://example.com}*/self::*</xpath>
+            <xpath part="8">parent::Q{http://example.com}*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -833,16 +872,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::*:foo/self::foo</xpath>
-            <xpath>parent::*:foo/self::ex:foo</xpath>
-            <xpath>parent::*:foo/self::Q{http://example.com}foo</xpath>
-            <xpath>parent::*:foo/self::Q{http://example.com}*</xpath>
-            <xpath>parent::*:foo/self::*:foo</xpath>
-            <xpath>parent::*:foo/self::ex:*</xpath>
-            <xpath>parent::*:foo/self::*</xpath>
-            <xpath>parent::*:foo/self::node()</xpath>
+            <xpath part="1">parent::*:foo/self::foo</xpath>
+            <xpath part="2">parent::*:foo/self::ex:foo</xpath>
+            <xpath part="3">parent::*:foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::*:foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::*:foo/self::*:foo</xpath>
+            <xpath part="6">parent::*:foo/self::ex:*</xpath>
+            <xpath part="7">parent::*:foo/self::*</xpath>
+            <xpath part="8">parent::*:foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -859,16 +899,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::ex:*/self::foo</xpath>
-            <xpath>parent::ex:*/self::ex:foo</xpath>
-            <xpath>parent::ex:*/self::Q{http://example.com}foo</xpath>
-            <xpath>parent::ex:*/self::Q{http://example.com}*</xpath>
-            <xpath>parent::ex:*/self::*:foo</xpath>
-            <xpath>parent::ex:*/self::ex:*</xpath>
-            <xpath>parent::ex:*/self::*</xpath>
-            <xpath>parent::ex:*/self::node()</xpath>
+            <xpath part="1">parent::ex:*/self::foo</xpath>
+            <xpath part="2">parent::ex:*/self::ex:foo</xpath>
+            <xpath part="3">parent::ex:*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::ex:*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::ex:*/self::*:foo</xpath>
+            <xpath part="6">parent::ex:*/self::ex:*</xpath>
+            <xpath part="7">parent::ex:*/self::*</xpath>
+            <xpath part="8">parent::ex:*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -885,16 +926,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::*/self::foo</xpath>
-            <xpath>parent::*/self::ex:foo</xpath>
-            <xpath>parent::*/self::Q{http://example.com}foo</xpath>
-            <xpath>parent::*/self::Q{http://example.com}*</xpath>
-            <xpath>parent::*/self::*:foo</xpath>
-            <xpath>parent::*/self::ex:*</xpath>
-            <xpath>parent::*/self::*</xpath>
-            <xpath>parent::*/self::node()</xpath>
+            <xpath part="1">parent::*/self::foo</xpath>
+            <xpath part="2">parent::*/self::ex:foo</xpath>
+            <xpath part="3">parent::*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::*/self::*:foo</xpath>
+            <xpath part="6">parent::*/self::ex:*</xpath>
+            <xpath part="7">parent::*/self::*</xpath>
+            <xpath part="8">parent::*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -911,17 +953,18 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::node()/self::foo</xpath>
-            <xpath>parent::node()/self::ex:foo</xpath>
-            <xpath>parent::node()/self::Q{http://example.com}foo</xpath>
-            <xpath>parent::node()/self::Q{http://example.com}*</xpath>
-            <xpath>parent::node()/self::*:foo</xpath>
-            <xpath>parent::node()/self::ex:*</xpath>
-            <xpath>parent::node()/self::*</xpath>
-            <xpath>parent::node()/self::node()</xpath>
-            <xpath>parent::node()/self::document-node()</xpath>
+            <xpath part="1">parent::node()/self::foo</xpath>
+            <xpath part="2">parent::node()/self::ex:foo</xpath>
+            <xpath part="3">parent::node()/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::node()/self::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::node()/self::*:foo</xpath>
+            <xpath part="6">parent::node()/self::ex:*</xpath>
+            <xpath part="7">parent::node()/self::*</xpath>
+            <xpath part="8">parent::node()/self::node()</xpath>
+            <xpath part="9">parent::node()/self::document-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -938,10 +981,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::document-node()/self::node()</xpath>
-            <xpath>parent::document-node()/self::document-node()</xpath>
+            <xpath part="1">parent::document-node()/self::node()</xpath>
+            <xpath part="2">parent::document-node()/self::document-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -958,16 +1002,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::foo/self::foo</xpath>
-            <xpath>ancestor::foo/self::ex:foo</xpath>
-            <xpath>ancestor::foo/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::foo/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor::foo/self::*:foo</xpath>
-            <xpath>ancestor::foo/self::ex:*</xpath>
-            <xpath>ancestor::foo/self::*</xpath>
-            <xpath>ancestor::foo/self::node()</xpath>
+            <xpath part="1">ancestor::foo/self::foo</xpath>
+            <xpath part="2">ancestor::foo/self::ex:foo</xpath>
+            <xpath part="3">ancestor::foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::foo/self::*:foo</xpath>
+            <xpath part="6">ancestor::foo/self::ex:*</xpath>
+            <xpath part="7">ancestor::foo/self::*</xpath>
+            <xpath part="8">ancestor::foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -984,16 +1029,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::ex:foo/self::foo</xpath>
-            <xpath>ancestor::ex:foo/self::ex:foo</xpath>
-            <xpath>ancestor::ex:foo/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::ex:foo/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor::ex:foo/self::*:foo</xpath>
-            <xpath>ancestor::ex:foo/self::ex:*</xpath>
-            <xpath>ancestor::ex:foo/self::*</xpath>
-            <xpath>ancestor::ex:foo/self::node()</xpath>
+            <xpath part="1">ancestor::ex:foo/self::foo</xpath>
+            <xpath part="2">ancestor::ex:foo/self::ex:foo</xpath>
+            <xpath part="3">ancestor::ex:foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::ex:foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::ex:foo/self::*:foo</xpath>
+            <xpath part="6">ancestor::ex:foo/self::ex:*</xpath>
+            <xpath part="7">ancestor::ex:foo/self::*</xpath>
+            <xpath part="8">ancestor::ex:foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1010,16 +1056,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::Q{http://example.com}foo/self::foo</xpath>
-            <xpath>ancestor::Q{http://example.com}foo/self::ex:foo</xpath>
-            <xpath>ancestor::Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor::Q{http://example.com}foo/self::*:foo</xpath>
-            <xpath>ancestor::Q{http://example.com}foo/self::ex:*</xpath>
-            <xpath>ancestor::Q{http://example.com}foo/self::*</xpath>
-            <xpath>ancestor::Q{http://example.com}foo/self::node()</xpath>
+            <xpath part="1">ancestor::Q{http://example.com}foo/self::foo</xpath>
+            <xpath part="2">ancestor::Q{http://example.com}foo/self::ex:foo</xpath>
+            <xpath part="3">ancestor::Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::Q{http://example.com}foo/self::*:foo</xpath>
+            <xpath part="6">ancestor::Q{http://example.com}foo/self::ex:*</xpath>
+            <xpath part="7">ancestor::Q{http://example.com}foo/self::*</xpath>
+            <xpath part="8">ancestor::Q{http://example.com}foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1036,16 +1083,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::Q{http://example.com}*/self::foo</xpath>
-            <xpath>ancestor::Q{http://example.com}*/self::ex:foo</xpath>
-            <xpath>ancestor::Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::Q{http://example.com}*/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor::Q{http://example.com}*/self::*:foo</xpath>
-            <xpath>ancestor::Q{http://example.com}*/self::ex:*</xpath>
-            <xpath>ancestor::Q{http://example.com}*/self::*</xpath>
-            <xpath>ancestor::Q{http://example.com}*/self::node()</xpath>
+            <xpath part="1">ancestor::Q{http://example.com}*/self::foo</xpath>
+            <xpath part="2">ancestor::Q{http://example.com}*/self::ex:foo</xpath>
+            <xpath part="3">ancestor::Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::Q{http://example.com}*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::Q{http://example.com}*/self::*:foo</xpath>
+            <xpath part="6">ancestor::Q{http://example.com}*/self::ex:*</xpath>
+            <xpath part="7">ancestor::Q{http://example.com}*/self::*</xpath>
+            <xpath part="8">ancestor::Q{http://example.com}*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1062,16 +1110,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::*:foo/self::foo</xpath>
-            <xpath>ancestor::*:foo/self::ex:foo</xpath>
-            <xpath>ancestor::*:foo/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::*:foo/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor::*:foo/self::*:foo</xpath>
-            <xpath>ancestor::*:foo/self::ex:*</xpath>
-            <xpath>ancestor::*:foo/self::*</xpath>
-            <xpath>ancestor::*:foo/self::node()</xpath>
+            <xpath part="1">ancestor::*:foo/self::foo</xpath>
+            <xpath part="2">ancestor::*:foo/self::ex:foo</xpath>
+            <xpath part="3">ancestor::*:foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::*:foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::*:foo/self::*:foo</xpath>
+            <xpath part="6">ancestor::*:foo/self::ex:*</xpath>
+            <xpath part="7">ancestor::*:foo/self::*</xpath>
+            <xpath part="8">ancestor::*:foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1088,16 +1137,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::ex:*/self::foo</xpath>
-            <xpath>ancestor::ex:*/self::ex:foo</xpath>
-            <xpath>ancestor::ex:*/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::ex:*/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor::ex:*/self::*:foo</xpath>
-            <xpath>ancestor::ex:*/self::ex:*</xpath>
-            <xpath>ancestor::ex:*/self::*</xpath>
-            <xpath>ancestor::ex:*/self::node()</xpath>
+            <xpath part="1">ancestor::ex:*/self::foo</xpath>
+            <xpath part="2">ancestor::ex:*/self::ex:foo</xpath>
+            <xpath part="3">ancestor::ex:*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::ex:*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::ex:*/self::*:foo</xpath>
+            <xpath part="6">ancestor::ex:*/self::ex:*</xpath>
+            <xpath part="7">ancestor::ex:*/self::*</xpath>
+            <xpath part="8">ancestor::ex:*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1114,16 +1164,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::*/self::foo</xpath>
-            <xpath>ancestor::*/self::ex:foo</xpath>
-            <xpath>ancestor::*/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::*/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor::*/self::*:foo</xpath>
-            <xpath>ancestor::*/self::ex:*</xpath>
-            <xpath>ancestor::*/self::*</xpath>
-            <xpath>ancestor::*/self::node()</xpath>
+            <xpath part="1">ancestor::*/self::foo</xpath>
+            <xpath part="2">ancestor::*/self::ex:foo</xpath>
+            <xpath part="3">ancestor::*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::*/self::*:foo</xpath>
+            <xpath part="6">ancestor::*/self::ex:*</xpath>
+            <xpath part="7">ancestor::*/self::*</xpath>
+            <xpath part="8">ancestor::*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1140,17 +1191,18 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::node()/self::foo</xpath>
-            <xpath>ancestor::node()/self::ex:foo</xpath>
-            <xpath>ancestor::node()/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::node()/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor::node()/self::*:foo</xpath>
-            <xpath>ancestor::node()/self::ex:*</xpath>
-            <xpath>ancestor::node()/self::*</xpath>
-            <xpath>ancestor::node()/self::node()</xpath>
-            <xpath>ancestor::node()/self::document-node()</xpath>
+            <xpath part="1">ancestor::node()/self::foo</xpath>
+            <xpath part="2">ancestor::node()/self::ex:foo</xpath>
+            <xpath part="3">ancestor::node()/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::node()/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::node()/self::*:foo</xpath>
+            <xpath part="6">ancestor::node()/self::ex:*</xpath>
+            <xpath part="7">ancestor::node()/self::*</xpath>
+            <xpath part="8">ancestor::node()/self::node()</xpath>
+            <xpath part="9">ancestor::node()/self::document-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1167,10 +1219,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::document-node()/self::node()</xpath>
-            <xpath>ancestor::document-node()/self::document-node()</xpath>
+            <xpath part="1">ancestor::document-node()/self::node()</xpath>
+            <xpath part="2">ancestor::document-node()/self::document-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1187,16 +1240,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::foo/self::foo</xpath>
-            <xpath>ancestor-or-self::foo/self::ex:foo</xpath>
-            <xpath>ancestor-or-self::foo/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::foo/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::foo/self::*:foo</xpath>
-            <xpath>ancestor-or-self::foo/self::ex:*</xpath>
-            <xpath>ancestor-or-self::foo/self::*</xpath>
-            <xpath>ancestor-or-self::foo/self::node()</xpath>
+            <xpath part="1">ancestor-or-self::foo/self::foo</xpath>
+            <xpath part="2">ancestor-or-self::foo/self::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::foo/self::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::foo/self::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::foo/self::*</xpath>
+            <xpath part="8">ancestor-or-self::foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1213,16 +1267,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::ex:foo/self::foo</xpath>
-            <xpath>ancestor-or-self::ex:foo/self::ex:foo</xpath>
-            <xpath>ancestor-or-self::ex:foo/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::ex:foo/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::ex:foo/self::*:foo</xpath>
-            <xpath>ancestor-or-self::ex:foo/self::ex:*</xpath>
-            <xpath>ancestor-or-self::ex:foo/self::*</xpath>
-            <xpath>ancestor-or-self::ex:foo/self::node()</xpath>
+            <xpath part="1">ancestor-or-self::ex:foo/self::foo</xpath>
+            <xpath part="2">ancestor-or-self::ex:foo/self::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::ex:foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::ex:foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::ex:foo/self::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::ex:foo/self::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::ex:foo/self::*</xpath>
+            <xpath part="8">ancestor-or-self::ex:foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1239,16 +1294,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::Q{http://example.com}foo/self::foo</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}foo/self::ex:foo</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}foo/self::*:foo</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}foo/self::ex:*</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}foo/self::*</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}foo/self::node()</xpath>
+            <xpath part="1">ancestor-or-self::Q{http://example.com}foo/self::foo</xpath>
+            <xpath part="2">ancestor-or-self::Q{http://example.com}foo/self::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::Q{http://example.com}foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::Q{http://example.com}foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::Q{http://example.com}foo/self::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::Q{http://example.com}foo/self::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::Q{http://example.com}foo/self::*</xpath>
+            <xpath part="8">ancestor-or-self::Q{http://example.com}foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1265,16 +1321,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::Q{http://example.com}*/self::foo</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}*/self::ex:foo</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}*/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}*/self::*:foo</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}*/self::ex:*</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}*/self::*</xpath>
-            <xpath>ancestor-or-self::Q{http://example.com}*/self::node()</xpath>
+            <xpath part="1">ancestor-or-self::Q{http://example.com}*/self::foo</xpath>
+            <xpath part="2">ancestor-or-self::Q{http://example.com}*/self::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::Q{http://example.com}*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::Q{http://example.com}*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::Q{http://example.com}*/self::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::Q{http://example.com}*/self::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::Q{http://example.com}*/self::*</xpath>
+            <xpath part="8">ancestor-or-self::Q{http://example.com}*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1291,16 +1348,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::*:foo/self::foo</xpath>
-            <xpath>ancestor-or-self::*:foo/self::ex:foo</xpath>
-            <xpath>ancestor-or-self::*:foo/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::*:foo/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::*:foo/self::*:foo</xpath>
-            <xpath>ancestor-or-self::*:foo/self::ex:*</xpath>
-            <xpath>ancestor-or-self::*:foo/self::*</xpath>
-            <xpath>ancestor-or-self::*:foo/self::node()</xpath>
+            <xpath part="1">ancestor-or-self::*:foo/self::foo</xpath>
+            <xpath part="2">ancestor-or-self::*:foo/self::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::*:foo/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::*:foo/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::*:foo/self::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::*:foo/self::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::*:foo/self::*</xpath>
+            <xpath part="8">ancestor-or-self::*:foo/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1317,16 +1375,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::ex:*/self::foo</xpath>
-            <xpath>ancestor-or-self::ex:*/self::ex:foo</xpath>
-            <xpath>ancestor-or-self::ex:*/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::ex:*/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::ex:*/self::*:foo</xpath>
-            <xpath>ancestor-or-self::ex:*/self::ex:*</xpath>
-            <xpath>ancestor-or-self::ex:*/self::*</xpath>
-            <xpath>ancestor-or-self::ex:*/self::node()</xpath>
+            <xpath part="1">ancestor-or-self::ex:*/self::foo</xpath>
+            <xpath part="2">ancestor-or-self::ex:*/self::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::ex:*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::ex:*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::ex:*/self::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::ex:*/self::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::ex:*/self::*</xpath>
+            <xpath part="8">ancestor-or-self::ex:*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1343,16 +1402,17 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::*/self::foo</xpath>
-            <xpath>ancestor-or-self::*/self::ex:foo</xpath>
-            <xpath>ancestor-or-self::*/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::*/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::*/self::*:foo</xpath>
-            <xpath>ancestor-or-self::*/self::ex:*</xpath>
-            <xpath>ancestor-or-self::*/self::*</xpath>
-            <xpath>ancestor-or-self::*/self::node()</xpath>
+            <xpath part="1">ancestor-or-self::*/self::foo</xpath>
+            <xpath part="2">ancestor-or-self::*/self::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::*/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::*/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::*/self::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::*/self::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::*/self::*</xpath>
+            <xpath part="8">ancestor-or-self::*/self::node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1369,27 +1429,28 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::node()/self::foo</xpath>
-            <xpath>ancestor-or-self::node()/self::ex:foo</xpath>
-            <xpath>ancestor-or-self::node()/self::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::node()/self::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::node()/self::*:foo</xpath>
-            <xpath>ancestor-or-self::node()/self::ex:*</xpath>
-            <xpath>ancestor-or-self::node()/self::*</xpath>
-            <xpath>ancestor-or-self::node()/self::node()</xpath>
-            <xpath>ancestor-or-self::node()/self::document-node()</xpath>
-            <xpath>ancestor-or-self::node()/self::attribute()</xpath>
-            <xpath>ancestor-or-self::node()/self::attribute(*)</xpath>
-            <xpath>ancestor-or-self::node()/self::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::node()/self::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor-or-self::node()/self::comment()</xpath>
-            <xpath>ancestor-or-self::node()/self::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::node()/self::processing-instruction(xml-stylesheet)</xpath>
-            <xpath>ancestor-or-self::node()/self::processing-instruction('xml-stylesheet')</xpath>
-            <xpath>ancestor-or-self::node()/self::text()</xpath>
-            <xpath>ancestor-or-self::node()/self::namespace-node()</xpath>
+            <xpath part="1">ancestor-or-self::node()/self::foo</xpath>
+            <xpath part="2">ancestor-or-self::node()/self::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::node()/self::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::node()/self::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::node()/self::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::node()/self::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::node()/self::*</xpath>
+            <xpath part="8">ancestor-or-self::node()/self::node()</xpath>
+            <xpath part="9">ancestor-or-self::node()/self::document-node()</xpath>
+            <xpath part="10">ancestor-or-self::node()/self::attribute()</xpath>
+            <xpath part="11">ancestor-or-self::node()/self::attribute(*)</xpath>
+            <xpath part="12">ancestor-or-self::node()/self::attribute(ex:foo)</xpath>
+            <xpath part="13">ancestor-or-self::node()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="14">ancestor-or-self::node()/self::comment()</xpath>
+            <xpath part="15">ancestor-or-self::node()/self::processing-instruction()</xpath>
+            <xpath part="16">ancestor-or-self::node()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath part="17">ancestor-or-self::node()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath part="18">ancestor-or-self::node()/self::text()</xpath>
+            <xpath part="19">ancestor-or-self::node()/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1406,10 +1467,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::document-node()/self::node()</xpath>
-            <xpath>ancestor-or-self::document-node()/self::document-node()</xpath>
+            <xpath part="1">ancestor-or-self::document-node()/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::document-node()/self::document-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1426,13 +1488,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::attribute()/self::node()</xpath>
-            <xpath>ancestor-or-self::attribute()/self::attribute()</xpath>
-            <xpath>ancestor-or-self::attribute()/self::attribute(*)</xpath>
-            <xpath>ancestor-or-self::attribute()/self::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::attribute()/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">ancestor-or-self::attribute()/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::attribute()/self::attribute()</xpath>
+            <xpath part="3">ancestor-or-self::attribute()/self::attribute(*)</xpath>
+            <xpath part="4">ancestor-or-self::attribute()/self::attribute(ex:foo)</xpath>
+            <xpath part="5">ancestor-or-self::attribute()/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1449,13 +1512,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::attribute(*)/self::node()</xpath>
-            <xpath>ancestor-or-self::attribute(*)/self::attribute()</xpath>
-            <xpath>ancestor-or-self::attribute(*)/self::attribute(*)</xpath>
-            <xpath>ancestor-or-self::attribute(*)/self::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::attribute(*)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">ancestor-or-self::attribute(*)/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::attribute(*)/self::attribute()</xpath>
+            <xpath part="3">ancestor-or-self::attribute(*)/self::attribute(*)</xpath>
+            <xpath part="4">ancestor-or-self::attribute(*)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">ancestor-or-self::attribute(*)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1472,13 +1536,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::attribute(ex:foo)/self::node()</xpath>
-            <xpath>ancestor-or-self::attribute(ex:foo)/self::attribute()</xpath>
-            <xpath>ancestor-or-self::attribute(ex:foo)/self::attribute(*)</xpath>
-            <xpath>ancestor-or-self::attribute(ex:foo)/self::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::attribute(ex:foo)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">ancestor-or-self::attribute(ex:foo)/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::attribute(ex:foo)/self::attribute()</xpath>
+            <xpath part="3">ancestor-or-self::attribute(ex:foo)/self::attribute(*)</xpath>
+            <xpath part="4">ancestor-or-self::attribute(ex:foo)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">ancestor-or-self::attribute(ex:foo)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1495,13 +1560,14 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::node()</xpath>
-            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::attribute()</xpath>
-            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::attribute(*)</xpath>
-            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::attribute(Q{http://example.com}foo)/self::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="1">ancestor-or-self::attribute(Q{http://example.com}foo)/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::attribute(Q{http://example.com}foo)/self::attribute()</xpath>
+            <xpath part="3">ancestor-or-self::attribute(Q{http://example.com}foo)/self::attribute(*)</xpath>
+            <xpath part="4">ancestor-or-self::attribute(Q{http://example.com}foo)/self::attribute(ex:foo)</xpath>
+            <xpath part="5">ancestor-or-self::attribute(Q{http://example.com}foo)/self::attribute(Q{http://example.com}foo)</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1518,10 +1584,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::comment()/self::node()</xpath>
-            <xpath>ancestor-or-self::comment()/self::comment()</xpath>
+            <xpath part="1">ancestor-or-self::comment()/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::comment()/self::comment()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1538,12 +1605,13 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::processing-instruction()/self::node()</xpath>
-            <xpath>ancestor-or-self::processing-instruction()/self::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::processing-instruction()/self::processing-instruction(xml-stylesheet)</xpath>
-            <xpath>ancestor-or-self::processing-instruction()/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath part="1">ancestor-or-self::processing-instruction()/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::processing-instruction()/self::processing-instruction()</xpath>
+            <xpath part="3">ancestor-or-self::processing-instruction()/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath part="4">ancestor-or-self::processing-instruction()/self::processing-instruction('xml-stylesheet')</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1560,12 +1628,13 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::node()</xpath>
-            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::processing-instruction(xml-stylesheet)</xpath>
-            <xpath>ancestor-or-self::processing-instruction(xsl-stylesheet)/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath part="1">ancestor-or-self::processing-instruction(xsl-stylesheet)/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::processing-instruction(xsl-stylesheet)/self::processing-instruction()</xpath>
+            <xpath part="3">ancestor-or-self::processing-instruction(xsl-stylesheet)/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath part="4">ancestor-or-self::processing-instruction(xsl-stylesheet)/self::processing-instruction('xml-stylesheet')</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1582,12 +1651,13 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::node()</xpath>
-            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::processing-instruction(xml-stylesheet)</xpath>
-            <xpath>ancestor-or-self::processing-instruction('xsl-stylesheet')/self::processing-instruction('xml-stylesheet')</xpath>
+            <xpath part="1">ancestor-or-self::processing-instruction('xsl-stylesheet')/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::processing-instruction('xsl-stylesheet')/self::processing-instruction()</xpath>
+            <xpath part="3">ancestor-or-self::processing-instruction('xsl-stylesheet')/self::processing-instruction(xml-stylesheet)</xpath>
+            <xpath part="4">ancestor-or-self::processing-instruction('xsl-stylesheet')/self::processing-instruction('xml-stylesheet')</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1604,10 +1674,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::text()/self::node()</xpath>
-            <xpath>ancestor-or-self::text()/self::text()</xpath>
+            <xpath part="1">ancestor-or-self::text()/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::text()/self::text()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -1624,10 +1695,11 @@
                 Invariant:       node-type-equal
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::namespace-node()/self::node()</xpath>
-            <xpath>ancestor-or-self::namespace-node()/self::namespace-node()</xpath>
+            <xpath part="1">ancestor-or-self::namespace-node()/self::node()</xpath>
+            <xpath part="2">ancestor-or-self::namespace-node()/self::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>

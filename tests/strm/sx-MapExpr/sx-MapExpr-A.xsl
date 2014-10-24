@@ -47,7 +47,7 @@
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS/ITEM">
           <xsl:variable name="m" as="map(*)" 
-                        select="map:new(*!map{lower-case(local-name()):string(.)})"/>
+                        select="map:merge(*!map{lower-case(local-name()):string(.)})"/>
           <book author="{$m('author')}" title="{$m('title')}" price="{$m('price')}" publisher="{$m('publisher')}"/>     
         </xsl:for-each>
       </xsl:stream>

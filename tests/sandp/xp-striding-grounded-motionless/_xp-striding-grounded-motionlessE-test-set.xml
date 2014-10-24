@@ -4,6 +4,9 @@
                     CP: Striding, RP: Grounded, RS: Motionless
                     ancestor, parent, following, preceding etc axes on document node selects nothing, so grounded/motionless
                 </description>
+   <dependencies>
+      <sweep_and_posture satisfied="true" value="supports-sweep-and-posture-assessments"/>
+   </dependencies>
    <test-case name="xp-striding-grounded-motionlessE001">
       <description>
                 CP: striding, RP: grounded, RS: motionless
@@ -14,122 +17,123 @@
                 Invariant:       none
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>self::document-node()/parent::foo</xpath>
-            <xpath>self::document-node()/parent::ex:foo</xpath>
-            <xpath>self::document-node()/parent::Q{http://example.com}foo</xpath>
-            <xpath>self::document-node()/parent::Q{http://example.com}*</xpath>
-            <xpath>self::document-node()/parent::*:foo</xpath>
-            <xpath>self::document-node()/parent::ex:*</xpath>
-            <xpath>self::document-node()/parent::*</xpath>
-            <xpath>self::document-node()/parent::node()</xpath>
-            <xpath>self::document-node()/parent::document-node()</xpath>
-            <xpath>self::document-node()/parent::attribute()</xpath>
-            <xpath>self::document-node()/parent::attribute(*)</xpath>
-            <xpath>self::document-node()/parent::attribute(ex:foo)</xpath>
-            <xpath>self::document-node()/parent::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>self::document-node()/parent::comment()</xpath>
-            <xpath>self::document-node()/parent::processing-instruction()</xpath>
-            <xpath>self::document-node()/parent::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>self::document-node()/parent::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>self::document-node()/parent::text()</xpath>
-            <xpath>self::document-node()/parent::namespace-node()</xpath>
-            <xpath>self::document-node()/ancestor::foo</xpath>
-            <xpath>self::document-node()/ancestor::ex:foo</xpath>
-            <xpath>self::document-node()/ancestor::Q{http://example.com}foo</xpath>
-            <xpath>self::document-node()/ancestor::Q{http://example.com}*</xpath>
-            <xpath>self::document-node()/ancestor::*:foo</xpath>
-            <xpath>self::document-node()/ancestor::ex:*</xpath>
-            <xpath>self::document-node()/ancestor::*</xpath>
-            <xpath>self::document-node()/ancestor::node()</xpath>
-            <xpath>self::document-node()/ancestor::document-node()</xpath>
-            <xpath>self::document-node()/ancestor::attribute()</xpath>
-            <xpath>self::document-node()/ancestor::attribute(*)</xpath>
-            <xpath>self::document-node()/ancestor::attribute(ex:foo)</xpath>
-            <xpath>self::document-node()/ancestor::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>self::document-node()/ancestor::comment()</xpath>
-            <xpath>self::document-node()/ancestor::processing-instruction()</xpath>
-            <xpath>self::document-node()/ancestor::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>self::document-node()/ancestor::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>self::document-node()/ancestor::text()</xpath>
-            <xpath>self::document-node()/ancestor::namespace-node()</xpath>
-            <xpath>self::document-node()/following::foo</xpath>
-            <xpath>self::document-node()/following::ex:foo</xpath>
-            <xpath>self::document-node()/following::Q{http://example.com}foo</xpath>
-            <xpath>self::document-node()/following::Q{http://example.com}*</xpath>
-            <xpath>self::document-node()/following::*:foo</xpath>
-            <xpath>self::document-node()/following::ex:*</xpath>
-            <xpath>self::document-node()/following::*</xpath>
-            <xpath>self::document-node()/following::node()</xpath>
-            <xpath>self::document-node()/following::document-node()</xpath>
-            <xpath>self::document-node()/following::attribute()</xpath>
-            <xpath>self::document-node()/following::attribute(*)</xpath>
-            <xpath>self::document-node()/following::attribute(ex:foo)</xpath>
-            <xpath>self::document-node()/following::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>self::document-node()/following::comment()</xpath>
-            <xpath>self::document-node()/following::processing-instruction()</xpath>
-            <xpath>self::document-node()/following::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>self::document-node()/following::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>self::document-node()/following::text()</xpath>
-            <xpath>self::document-node()/following::namespace-node()</xpath>
-            <xpath>self::document-node()/following-sibling::foo</xpath>
-            <xpath>self::document-node()/following-sibling::ex:foo</xpath>
-            <xpath>self::document-node()/following-sibling::Q{http://example.com}foo</xpath>
-            <xpath>self::document-node()/following-sibling::Q{http://example.com}*</xpath>
-            <xpath>self::document-node()/following-sibling::*:foo</xpath>
-            <xpath>self::document-node()/following-sibling::ex:*</xpath>
-            <xpath>self::document-node()/following-sibling::*</xpath>
-            <xpath>self::document-node()/following-sibling::node()</xpath>
-            <xpath>self::document-node()/following-sibling::document-node()</xpath>
-            <xpath>self::document-node()/following-sibling::attribute()</xpath>
-            <xpath>self::document-node()/following-sibling::attribute(*)</xpath>
-            <xpath>self::document-node()/following-sibling::attribute(ex:foo)</xpath>
-            <xpath>self::document-node()/following-sibling::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>self::document-node()/following-sibling::comment()</xpath>
-            <xpath>self::document-node()/following-sibling::processing-instruction()</xpath>
-            <xpath>self::document-node()/following-sibling::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>self::document-node()/following-sibling::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>self::document-node()/following-sibling::text()</xpath>
-            <xpath>self::document-node()/following-sibling::namespace-node()</xpath>
-            <xpath>self::document-node()/preceding::foo</xpath>
-            <xpath>self::document-node()/preceding::ex:foo</xpath>
-            <xpath>self::document-node()/preceding::Q{http://example.com}foo</xpath>
-            <xpath>self::document-node()/preceding::Q{http://example.com}*</xpath>
-            <xpath>self::document-node()/preceding::*:foo</xpath>
-            <xpath>self::document-node()/preceding::ex:*</xpath>
-            <xpath>self::document-node()/preceding::*</xpath>
-            <xpath>self::document-node()/preceding::node()</xpath>
-            <xpath>self::document-node()/preceding::document-node()</xpath>
-            <xpath>self::document-node()/preceding::attribute()</xpath>
-            <xpath>self::document-node()/preceding::attribute(*)</xpath>
-            <xpath>self::document-node()/preceding::attribute(ex:foo)</xpath>
-            <xpath>self::document-node()/preceding::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>self::document-node()/preceding::comment()</xpath>
-            <xpath>self::document-node()/preceding::processing-instruction()</xpath>
-            <xpath>self::document-node()/preceding::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>self::document-node()/preceding::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>self::document-node()/preceding::text()</xpath>
-            <xpath>self::document-node()/preceding::namespace-node()</xpath>
-            <xpath>self::document-node()/preceding-sibling::foo</xpath>
-            <xpath>self::document-node()/preceding-sibling::ex:foo</xpath>
-            <xpath>self::document-node()/preceding-sibling::Q{http://example.com}foo</xpath>
-            <xpath>self::document-node()/preceding-sibling::Q{http://example.com}*</xpath>
-            <xpath>self::document-node()/preceding-sibling::*:foo</xpath>
-            <xpath>self::document-node()/preceding-sibling::ex:*</xpath>
-            <xpath>self::document-node()/preceding-sibling::*</xpath>
-            <xpath>self::document-node()/preceding-sibling::node()</xpath>
-            <xpath>self::document-node()/preceding-sibling::document-node()</xpath>
-            <xpath>self::document-node()/preceding-sibling::attribute()</xpath>
-            <xpath>self::document-node()/preceding-sibling::attribute(*)</xpath>
-            <xpath>self::document-node()/preceding-sibling::attribute(ex:foo)</xpath>
-            <xpath>self::document-node()/preceding-sibling::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>self::document-node()/preceding-sibling::comment()</xpath>
-            <xpath>self::document-node()/preceding-sibling::processing-instruction()</xpath>
-            <xpath>self::document-node()/preceding-sibling::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>self::document-node()/preceding-sibling::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>self::document-node()/preceding-sibling::text()</xpath>
-            <xpath>self::document-node()/preceding-sibling::namespace-node()</xpath>
+            <xpath part="1">self::document-node()/parent::foo</xpath>
+            <xpath part="2">self::document-node()/parent::ex:foo</xpath>
+            <xpath part="3">self::document-node()/parent::Q{http://example.com}foo</xpath>
+            <xpath part="4">self::document-node()/parent::Q{http://example.com}*</xpath>
+            <xpath part="5">self::document-node()/parent::*:foo</xpath>
+            <xpath part="6">self::document-node()/parent::ex:*</xpath>
+            <xpath part="7">self::document-node()/parent::*</xpath>
+            <xpath part="8">self::document-node()/parent::node()</xpath>
+            <xpath part="9">self::document-node()/parent::document-node()</xpath>
+            <xpath part="10">self::document-node()/parent::attribute()</xpath>
+            <xpath part="11">self::document-node()/parent::attribute(*)</xpath>
+            <xpath part="12">self::document-node()/parent::attribute(ex:foo)</xpath>
+            <xpath part="13">self::document-node()/parent::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="14">self::document-node()/parent::comment()</xpath>
+            <xpath part="15">self::document-node()/parent::processing-instruction()</xpath>
+            <xpath part="16">self::document-node()/parent::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="17">self::document-node()/parent::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="18">self::document-node()/parent::text()</xpath>
+            <xpath part="19">self::document-node()/parent::namespace-node()</xpath>
+            <xpath part="20">self::document-node()/ancestor::foo</xpath>
+            <xpath part="21">self::document-node()/ancestor::ex:foo</xpath>
+            <xpath part="22">self::document-node()/ancestor::Q{http://example.com}foo</xpath>
+            <xpath part="23">self::document-node()/ancestor::Q{http://example.com}*</xpath>
+            <xpath part="24">self::document-node()/ancestor::*:foo</xpath>
+            <xpath part="25">self::document-node()/ancestor::ex:*</xpath>
+            <xpath part="26">self::document-node()/ancestor::*</xpath>
+            <xpath part="27">self::document-node()/ancestor::node()</xpath>
+            <xpath part="28">self::document-node()/ancestor::document-node()</xpath>
+            <xpath part="29">self::document-node()/ancestor::attribute()</xpath>
+            <xpath part="30">self::document-node()/ancestor::attribute(*)</xpath>
+            <xpath part="31">self::document-node()/ancestor::attribute(ex:foo)</xpath>
+            <xpath part="32">self::document-node()/ancestor::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="33">self::document-node()/ancestor::comment()</xpath>
+            <xpath part="34">self::document-node()/ancestor::processing-instruction()</xpath>
+            <xpath part="35">self::document-node()/ancestor::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="36">self::document-node()/ancestor::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="37">self::document-node()/ancestor::text()</xpath>
+            <xpath part="38">self::document-node()/ancestor::namespace-node()</xpath>
+            <xpath part="39">self::document-node()/following::foo</xpath>
+            <xpath part="40">self::document-node()/following::ex:foo</xpath>
+            <xpath part="41">self::document-node()/following::Q{http://example.com}foo</xpath>
+            <xpath part="42">self::document-node()/following::Q{http://example.com}*</xpath>
+            <xpath part="43">self::document-node()/following::*:foo</xpath>
+            <xpath part="44">self::document-node()/following::ex:*</xpath>
+            <xpath part="45">self::document-node()/following::*</xpath>
+            <xpath part="46">self::document-node()/following::node()</xpath>
+            <xpath part="47">self::document-node()/following::document-node()</xpath>
+            <xpath part="48">self::document-node()/following::attribute()</xpath>
+            <xpath part="49">self::document-node()/following::attribute(*)</xpath>
+            <xpath part="50">self::document-node()/following::attribute(ex:foo)</xpath>
+            <xpath part="51">self::document-node()/following::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="52">self::document-node()/following::comment()</xpath>
+            <xpath part="53">self::document-node()/following::processing-instruction()</xpath>
+            <xpath part="54">self::document-node()/following::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="55">self::document-node()/following::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="56">self::document-node()/following::text()</xpath>
+            <xpath part="57">self::document-node()/following::namespace-node()</xpath>
+            <xpath part="58">self::document-node()/following-sibling::foo</xpath>
+            <xpath part="59">self::document-node()/following-sibling::ex:foo</xpath>
+            <xpath part="60">self::document-node()/following-sibling::Q{http://example.com}foo</xpath>
+            <xpath part="61">self::document-node()/following-sibling::Q{http://example.com}*</xpath>
+            <xpath part="62">self::document-node()/following-sibling::*:foo</xpath>
+            <xpath part="63">self::document-node()/following-sibling::ex:*</xpath>
+            <xpath part="64">self::document-node()/following-sibling::*</xpath>
+            <xpath part="65">self::document-node()/following-sibling::node()</xpath>
+            <xpath part="66">self::document-node()/following-sibling::document-node()</xpath>
+            <xpath part="67">self::document-node()/following-sibling::attribute()</xpath>
+            <xpath part="68">self::document-node()/following-sibling::attribute(*)</xpath>
+            <xpath part="69">self::document-node()/following-sibling::attribute(ex:foo)</xpath>
+            <xpath part="70">self::document-node()/following-sibling::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="71">self::document-node()/following-sibling::comment()</xpath>
+            <xpath part="72">self::document-node()/following-sibling::processing-instruction()</xpath>
+            <xpath part="73">self::document-node()/following-sibling::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="74">self::document-node()/following-sibling::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="75">self::document-node()/following-sibling::text()</xpath>
+            <xpath part="76">self::document-node()/following-sibling::namespace-node()</xpath>
+            <xpath part="77">self::document-node()/preceding::foo</xpath>
+            <xpath part="78">self::document-node()/preceding::ex:foo</xpath>
+            <xpath part="79">self::document-node()/preceding::Q{http://example.com}foo</xpath>
+            <xpath part="80">self::document-node()/preceding::Q{http://example.com}*</xpath>
+            <xpath part="81">self::document-node()/preceding::*:foo</xpath>
+            <xpath part="82">self::document-node()/preceding::ex:*</xpath>
+            <xpath part="83">self::document-node()/preceding::*</xpath>
+            <xpath part="84">self::document-node()/preceding::node()</xpath>
+            <xpath part="85">self::document-node()/preceding::document-node()</xpath>
+            <xpath part="86">self::document-node()/preceding::attribute()</xpath>
+            <xpath part="87">self::document-node()/preceding::attribute(*)</xpath>
+            <xpath part="88">self::document-node()/preceding::attribute(ex:foo)</xpath>
+            <xpath part="89">self::document-node()/preceding::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="90">self::document-node()/preceding::comment()</xpath>
+            <xpath part="91">self::document-node()/preceding::processing-instruction()</xpath>
+            <xpath part="92">self::document-node()/preceding::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="93">self::document-node()/preceding::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="94">self::document-node()/preceding::text()</xpath>
+            <xpath part="95">self::document-node()/preceding::namespace-node()</xpath>
+            <xpath part="96">self::document-node()/preceding-sibling::foo</xpath>
+            <xpath part="97">self::document-node()/preceding-sibling::ex:foo</xpath>
+            <xpath part="98">self::document-node()/preceding-sibling::Q{http://example.com}foo</xpath>
+            <xpath part="99">self::document-node()/preceding-sibling::Q{http://example.com}*</xpath>
+            <xpath part="100">self::document-node()/preceding-sibling::*:foo</xpath>
+            <xpath part="101">self::document-node()/preceding-sibling::ex:*</xpath>
+            <xpath part="102">self::document-node()/preceding-sibling::*</xpath>
+            <xpath part="103">self::document-node()/preceding-sibling::node()</xpath>
+            <xpath part="104">self::document-node()/preceding-sibling::document-node()</xpath>
+            <xpath part="105">self::document-node()/preceding-sibling::attribute()</xpath>
+            <xpath part="106">self::document-node()/preceding-sibling::attribute(*)</xpath>
+            <xpath part="107">self::document-node()/preceding-sibling::attribute(ex:foo)</xpath>
+            <xpath part="108">self::document-node()/preceding-sibling::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="109">self::document-node()/preceding-sibling::comment()</xpath>
+            <xpath part="110">self::document-node()/preceding-sibling::processing-instruction()</xpath>
+            <xpath part="111">self::document-node()/preceding-sibling::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="112">self::document-node()/preceding-sibling::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="113">self::document-node()/preceding-sibling::text()</xpath>
+            <xpath part="114">self::document-node()/preceding-sibling::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -146,122 +150,123 @@
                 Invariant:       none
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>parent::document-node()/parent::foo</xpath>
-            <xpath>parent::document-node()/parent::ex:foo</xpath>
-            <xpath>parent::document-node()/parent::Q{http://example.com}foo</xpath>
-            <xpath>parent::document-node()/parent::Q{http://example.com}*</xpath>
-            <xpath>parent::document-node()/parent::*:foo</xpath>
-            <xpath>parent::document-node()/parent::ex:*</xpath>
-            <xpath>parent::document-node()/parent::*</xpath>
-            <xpath>parent::document-node()/parent::node()</xpath>
-            <xpath>parent::document-node()/parent::document-node()</xpath>
-            <xpath>parent::document-node()/parent::attribute()</xpath>
-            <xpath>parent::document-node()/parent::attribute(*)</xpath>
-            <xpath>parent::document-node()/parent::attribute(ex:foo)</xpath>
-            <xpath>parent::document-node()/parent::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>parent::document-node()/parent::comment()</xpath>
-            <xpath>parent::document-node()/parent::processing-instruction()</xpath>
-            <xpath>parent::document-node()/parent::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>parent::document-node()/parent::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>parent::document-node()/parent::text()</xpath>
-            <xpath>parent::document-node()/parent::namespace-node()</xpath>
-            <xpath>parent::document-node()/ancestor::foo</xpath>
-            <xpath>parent::document-node()/ancestor::ex:foo</xpath>
-            <xpath>parent::document-node()/ancestor::Q{http://example.com}foo</xpath>
-            <xpath>parent::document-node()/ancestor::Q{http://example.com}*</xpath>
-            <xpath>parent::document-node()/ancestor::*:foo</xpath>
-            <xpath>parent::document-node()/ancestor::ex:*</xpath>
-            <xpath>parent::document-node()/ancestor::*</xpath>
-            <xpath>parent::document-node()/ancestor::node()</xpath>
-            <xpath>parent::document-node()/ancestor::document-node()</xpath>
-            <xpath>parent::document-node()/ancestor::attribute()</xpath>
-            <xpath>parent::document-node()/ancestor::attribute(*)</xpath>
-            <xpath>parent::document-node()/ancestor::attribute(ex:foo)</xpath>
-            <xpath>parent::document-node()/ancestor::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>parent::document-node()/ancestor::comment()</xpath>
-            <xpath>parent::document-node()/ancestor::processing-instruction()</xpath>
-            <xpath>parent::document-node()/ancestor::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>parent::document-node()/ancestor::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>parent::document-node()/ancestor::text()</xpath>
-            <xpath>parent::document-node()/ancestor::namespace-node()</xpath>
-            <xpath>parent::document-node()/following::foo</xpath>
-            <xpath>parent::document-node()/following::ex:foo</xpath>
-            <xpath>parent::document-node()/following::Q{http://example.com}foo</xpath>
-            <xpath>parent::document-node()/following::Q{http://example.com}*</xpath>
-            <xpath>parent::document-node()/following::*:foo</xpath>
-            <xpath>parent::document-node()/following::ex:*</xpath>
-            <xpath>parent::document-node()/following::*</xpath>
-            <xpath>parent::document-node()/following::node()</xpath>
-            <xpath>parent::document-node()/following::document-node()</xpath>
-            <xpath>parent::document-node()/following::attribute()</xpath>
-            <xpath>parent::document-node()/following::attribute(*)</xpath>
-            <xpath>parent::document-node()/following::attribute(ex:foo)</xpath>
-            <xpath>parent::document-node()/following::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>parent::document-node()/following::comment()</xpath>
-            <xpath>parent::document-node()/following::processing-instruction()</xpath>
-            <xpath>parent::document-node()/following::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>parent::document-node()/following::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>parent::document-node()/following::text()</xpath>
-            <xpath>parent::document-node()/following::namespace-node()</xpath>
-            <xpath>parent::document-node()/following-sibling::foo</xpath>
-            <xpath>parent::document-node()/following-sibling::ex:foo</xpath>
-            <xpath>parent::document-node()/following-sibling::Q{http://example.com}foo</xpath>
-            <xpath>parent::document-node()/following-sibling::Q{http://example.com}*</xpath>
-            <xpath>parent::document-node()/following-sibling::*:foo</xpath>
-            <xpath>parent::document-node()/following-sibling::ex:*</xpath>
-            <xpath>parent::document-node()/following-sibling::*</xpath>
-            <xpath>parent::document-node()/following-sibling::node()</xpath>
-            <xpath>parent::document-node()/following-sibling::document-node()</xpath>
-            <xpath>parent::document-node()/following-sibling::attribute()</xpath>
-            <xpath>parent::document-node()/following-sibling::attribute(*)</xpath>
-            <xpath>parent::document-node()/following-sibling::attribute(ex:foo)</xpath>
-            <xpath>parent::document-node()/following-sibling::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>parent::document-node()/following-sibling::comment()</xpath>
-            <xpath>parent::document-node()/following-sibling::processing-instruction()</xpath>
-            <xpath>parent::document-node()/following-sibling::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>parent::document-node()/following-sibling::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>parent::document-node()/following-sibling::text()</xpath>
-            <xpath>parent::document-node()/following-sibling::namespace-node()</xpath>
-            <xpath>parent::document-node()/preceding::foo</xpath>
-            <xpath>parent::document-node()/preceding::ex:foo</xpath>
-            <xpath>parent::document-node()/preceding::Q{http://example.com}foo</xpath>
-            <xpath>parent::document-node()/preceding::Q{http://example.com}*</xpath>
-            <xpath>parent::document-node()/preceding::*:foo</xpath>
-            <xpath>parent::document-node()/preceding::ex:*</xpath>
-            <xpath>parent::document-node()/preceding::*</xpath>
-            <xpath>parent::document-node()/preceding::node()</xpath>
-            <xpath>parent::document-node()/preceding::document-node()</xpath>
-            <xpath>parent::document-node()/preceding::attribute()</xpath>
-            <xpath>parent::document-node()/preceding::attribute(*)</xpath>
-            <xpath>parent::document-node()/preceding::attribute(ex:foo)</xpath>
-            <xpath>parent::document-node()/preceding::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>parent::document-node()/preceding::comment()</xpath>
-            <xpath>parent::document-node()/preceding::processing-instruction()</xpath>
-            <xpath>parent::document-node()/preceding::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>parent::document-node()/preceding::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>parent::document-node()/preceding::text()</xpath>
-            <xpath>parent::document-node()/preceding::namespace-node()</xpath>
-            <xpath>parent::document-node()/preceding-sibling::foo</xpath>
-            <xpath>parent::document-node()/preceding-sibling::ex:foo</xpath>
-            <xpath>parent::document-node()/preceding-sibling::Q{http://example.com}foo</xpath>
-            <xpath>parent::document-node()/preceding-sibling::Q{http://example.com}*</xpath>
-            <xpath>parent::document-node()/preceding-sibling::*:foo</xpath>
-            <xpath>parent::document-node()/preceding-sibling::ex:*</xpath>
-            <xpath>parent::document-node()/preceding-sibling::*</xpath>
-            <xpath>parent::document-node()/preceding-sibling::node()</xpath>
-            <xpath>parent::document-node()/preceding-sibling::document-node()</xpath>
-            <xpath>parent::document-node()/preceding-sibling::attribute()</xpath>
-            <xpath>parent::document-node()/preceding-sibling::attribute(*)</xpath>
-            <xpath>parent::document-node()/preceding-sibling::attribute(ex:foo)</xpath>
-            <xpath>parent::document-node()/preceding-sibling::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>parent::document-node()/preceding-sibling::comment()</xpath>
-            <xpath>parent::document-node()/preceding-sibling::processing-instruction()</xpath>
-            <xpath>parent::document-node()/preceding-sibling::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>parent::document-node()/preceding-sibling::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>parent::document-node()/preceding-sibling::text()</xpath>
-            <xpath>parent::document-node()/preceding-sibling::namespace-node()</xpath>
+            <xpath part="1">parent::document-node()/parent::foo</xpath>
+            <xpath part="2">parent::document-node()/parent::ex:foo</xpath>
+            <xpath part="3">parent::document-node()/parent::Q{http://example.com}foo</xpath>
+            <xpath part="4">parent::document-node()/parent::Q{http://example.com}*</xpath>
+            <xpath part="5">parent::document-node()/parent::*:foo</xpath>
+            <xpath part="6">parent::document-node()/parent::ex:*</xpath>
+            <xpath part="7">parent::document-node()/parent::*</xpath>
+            <xpath part="8">parent::document-node()/parent::node()</xpath>
+            <xpath part="9">parent::document-node()/parent::document-node()</xpath>
+            <xpath part="10">parent::document-node()/parent::attribute()</xpath>
+            <xpath part="11">parent::document-node()/parent::attribute(*)</xpath>
+            <xpath part="12">parent::document-node()/parent::attribute(ex:foo)</xpath>
+            <xpath part="13">parent::document-node()/parent::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="14">parent::document-node()/parent::comment()</xpath>
+            <xpath part="15">parent::document-node()/parent::processing-instruction()</xpath>
+            <xpath part="16">parent::document-node()/parent::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="17">parent::document-node()/parent::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="18">parent::document-node()/parent::text()</xpath>
+            <xpath part="19">parent::document-node()/parent::namespace-node()</xpath>
+            <xpath part="20">parent::document-node()/ancestor::foo</xpath>
+            <xpath part="21">parent::document-node()/ancestor::ex:foo</xpath>
+            <xpath part="22">parent::document-node()/ancestor::Q{http://example.com}foo</xpath>
+            <xpath part="23">parent::document-node()/ancestor::Q{http://example.com}*</xpath>
+            <xpath part="24">parent::document-node()/ancestor::*:foo</xpath>
+            <xpath part="25">parent::document-node()/ancestor::ex:*</xpath>
+            <xpath part="26">parent::document-node()/ancestor::*</xpath>
+            <xpath part="27">parent::document-node()/ancestor::node()</xpath>
+            <xpath part="28">parent::document-node()/ancestor::document-node()</xpath>
+            <xpath part="29">parent::document-node()/ancestor::attribute()</xpath>
+            <xpath part="30">parent::document-node()/ancestor::attribute(*)</xpath>
+            <xpath part="31">parent::document-node()/ancestor::attribute(ex:foo)</xpath>
+            <xpath part="32">parent::document-node()/ancestor::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="33">parent::document-node()/ancestor::comment()</xpath>
+            <xpath part="34">parent::document-node()/ancestor::processing-instruction()</xpath>
+            <xpath part="35">parent::document-node()/ancestor::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="36">parent::document-node()/ancestor::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="37">parent::document-node()/ancestor::text()</xpath>
+            <xpath part="38">parent::document-node()/ancestor::namespace-node()</xpath>
+            <xpath part="39">parent::document-node()/following::foo</xpath>
+            <xpath part="40">parent::document-node()/following::ex:foo</xpath>
+            <xpath part="41">parent::document-node()/following::Q{http://example.com}foo</xpath>
+            <xpath part="42">parent::document-node()/following::Q{http://example.com}*</xpath>
+            <xpath part="43">parent::document-node()/following::*:foo</xpath>
+            <xpath part="44">parent::document-node()/following::ex:*</xpath>
+            <xpath part="45">parent::document-node()/following::*</xpath>
+            <xpath part="46">parent::document-node()/following::node()</xpath>
+            <xpath part="47">parent::document-node()/following::document-node()</xpath>
+            <xpath part="48">parent::document-node()/following::attribute()</xpath>
+            <xpath part="49">parent::document-node()/following::attribute(*)</xpath>
+            <xpath part="50">parent::document-node()/following::attribute(ex:foo)</xpath>
+            <xpath part="51">parent::document-node()/following::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="52">parent::document-node()/following::comment()</xpath>
+            <xpath part="53">parent::document-node()/following::processing-instruction()</xpath>
+            <xpath part="54">parent::document-node()/following::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="55">parent::document-node()/following::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="56">parent::document-node()/following::text()</xpath>
+            <xpath part="57">parent::document-node()/following::namespace-node()</xpath>
+            <xpath part="58">parent::document-node()/following-sibling::foo</xpath>
+            <xpath part="59">parent::document-node()/following-sibling::ex:foo</xpath>
+            <xpath part="60">parent::document-node()/following-sibling::Q{http://example.com}foo</xpath>
+            <xpath part="61">parent::document-node()/following-sibling::Q{http://example.com}*</xpath>
+            <xpath part="62">parent::document-node()/following-sibling::*:foo</xpath>
+            <xpath part="63">parent::document-node()/following-sibling::ex:*</xpath>
+            <xpath part="64">parent::document-node()/following-sibling::*</xpath>
+            <xpath part="65">parent::document-node()/following-sibling::node()</xpath>
+            <xpath part="66">parent::document-node()/following-sibling::document-node()</xpath>
+            <xpath part="67">parent::document-node()/following-sibling::attribute()</xpath>
+            <xpath part="68">parent::document-node()/following-sibling::attribute(*)</xpath>
+            <xpath part="69">parent::document-node()/following-sibling::attribute(ex:foo)</xpath>
+            <xpath part="70">parent::document-node()/following-sibling::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="71">parent::document-node()/following-sibling::comment()</xpath>
+            <xpath part="72">parent::document-node()/following-sibling::processing-instruction()</xpath>
+            <xpath part="73">parent::document-node()/following-sibling::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="74">parent::document-node()/following-sibling::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="75">parent::document-node()/following-sibling::text()</xpath>
+            <xpath part="76">parent::document-node()/following-sibling::namespace-node()</xpath>
+            <xpath part="77">parent::document-node()/preceding::foo</xpath>
+            <xpath part="78">parent::document-node()/preceding::ex:foo</xpath>
+            <xpath part="79">parent::document-node()/preceding::Q{http://example.com}foo</xpath>
+            <xpath part="80">parent::document-node()/preceding::Q{http://example.com}*</xpath>
+            <xpath part="81">parent::document-node()/preceding::*:foo</xpath>
+            <xpath part="82">parent::document-node()/preceding::ex:*</xpath>
+            <xpath part="83">parent::document-node()/preceding::*</xpath>
+            <xpath part="84">parent::document-node()/preceding::node()</xpath>
+            <xpath part="85">parent::document-node()/preceding::document-node()</xpath>
+            <xpath part="86">parent::document-node()/preceding::attribute()</xpath>
+            <xpath part="87">parent::document-node()/preceding::attribute(*)</xpath>
+            <xpath part="88">parent::document-node()/preceding::attribute(ex:foo)</xpath>
+            <xpath part="89">parent::document-node()/preceding::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="90">parent::document-node()/preceding::comment()</xpath>
+            <xpath part="91">parent::document-node()/preceding::processing-instruction()</xpath>
+            <xpath part="92">parent::document-node()/preceding::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="93">parent::document-node()/preceding::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="94">parent::document-node()/preceding::text()</xpath>
+            <xpath part="95">parent::document-node()/preceding::namespace-node()</xpath>
+            <xpath part="96">parent::document-node()/preceding-sibling::foo</xpath>
+            <xpath part="97">parent::document-node()/preceding-sibling::ex:foo</xpath>
+            <xpath part="98">parent::document-node()/preceding-sibling::Q{http://example.com}foo</xpath>
+            <xpath part="99">parent::document-node()/preceding-sibling::Q{http://example.com}*</xpath>
+            <xpath part="100">parent::document-node()/preceding-sibling::*:foo</xpath>
+            <xpath part="101">parent::document-node()/preceding-sibling::ex:*</xpath>
+            <xpath part="102">parent::document-node()/preceding-sibling::*</xpath>
+            <xpath part="103">parent::document-node()/preceding-sibling::node()</xpath>
+            <xpath part="104">parent::document-node()/preceding-sibling::document-node()</xpath>
+            <xpath part="105">parent::document-node()/preceding-sibling::attribute()</xpath>
+            <xpath part="106">parent::document-node()/preceding-sibling::attribute(*)</xpath>
+            <xpath part="107">parent::document-node()/preceding-sibling::attribute(ex:foo)</xpath>
+            <xpath part="108">parent::document-node()/preceding-sibling::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="109">parent::document-node()/preceding-sibling::comment()</xpath>
+            <xpath part="110">parent::document-node()/preceding-sibling::processing-instruction()</xpath>
+            <xpath part="111">parent::document-node()/preceding-sibling::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="112">parent::document-node()/preceding-sibling::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="113">parent::document-node()/preceding-sibling::text()</xpath>
+            <xpath part="114">parent::document-node()/preceding-sibling::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -278,122 +283,123 @@
                 Invariant:       none
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor::document-node()/parent::foo</xpath>
-            <xpath>ancestor::document-node()/parent::ex:foo</xpath>
-            <xpath>ancestor::document-node()/parent::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::document-node()/parent::Q{http://example.com}*</xpath>
-            <xpath>ancestor::document-node()/parent::*:foo</xpath>
-            <xpath>ancestor::document-node()/parent::ex:*</xpath>
-            <xpath>ancestor::document-node()/parent::*</xpath>
-            <xpath>ancestor::document-node()/parent::node()</xpath>
-            <xpath>ancestor::document-node()/parent::document-node()</xpath>
-            <xpath>ancestor::document-node()/parent::attribute()</xpath>
-            <xpath>ancestor::document-node()/parent::attribute(*)</xpath>
-            <xpath>ancestor::document-node()/parent::attribute(ex:foo)</xpath>
-            <xpath>ancestor::document-node()/parent::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor::document-node()/parent::comment()</xpath>
-            <xpath>ancestor::document-node()/parent::processing-instruction()</xpath>
-            <xpath>ancestor::document-node()/parent::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor::document-node()/parent::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor::document-node()/parent::text()</xpath>
-            <xpath>ancestor::document-node()/parent::namespace-node()</xpath>
-            <xpath>ancestor::document-node()/ancestor::foo</xpath>
-            <xpath>ancestor::document-node()/ancestor::ex:foo</xpath>
-            <xpath>ancestor::document-node()/ancestor::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::document-node()/ancestor::Q{http://example.com}*</xpath>
-            <xpath>ancestor::document-node()/ancestor::*:foo</xpath>
-            <xpath>ancestor::document-node()/ancestor::ex:*</xpath>
-            <xpath>ancestor::document-node()/ancestor::*</xpath>
-            <xpath>ancestor::document-node()/ancestor::node()</xpath>
-            <xpath>ancestor::document-node()/ancestor::document-node()</xpath>
-            <xpath>ancestor::document-node()/ancestor::attribute()</xpath>
-            <xpath>ancestor::document-node()/ancestor::attribute(*)</xpath>
-            <xpath>ancestor::document-node()/ancestor::attribute(ex:foo)</xpath>
-            <xpath>ancestor::document-node()/ancestor::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor::document-node()/ancestor::comment()</xpath>
-            <xpath>ancestor::document-node()/ancestor::processing-instruction()</xpath>
-            <xpath>ancestor::document-node()/ancestor::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor::document-node()/ancestor::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor::document-node()/ancestor::text()</xpath>
-            <xpath>ancestor::document-node()/ancestor::namespace-node()</xpath>
-            <xpath>ancestor::document-node()/following::foo</xpath>
-            <xpath>ancestor::document-node()/following::ex:foo</xpath>
-            <xpath>ancestor::document-node()/following::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::document-node()/following::Q{http://example.com}*</xpath>
-            <xpath>ancestor::document-node()/following::*:foo</xpath>
-            <xpath>ancestor::document-node()/following::ex:*</xpath>
-            <xpath>ancestor::document-node()/following::*</xpath>
-            <xpath>ancestor::document-node()/following::node()</xpath>
-            <xpath>ancestor::document-node()/following::document-node()</xpath>
-            <xpath>ancestor::document-node()/following::attribute()</xpath>
-            <xpath>ancestor::document-node()/following::attribute(*)</xpath>
-            <xpath>ancestor::document-node()/following::attribute(ex:foo)</xpath>
-            <xpath>ancestor::document-node()/following::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor::document-node()/following::comment()</xpath>
-            <xpath>ancestor::document-node()/following::processing-instruction()</xpath>
-            <xpath>ancestor::document-node()/following::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor::document-node()/following::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor::document-node()/following::text()</xpath>
-            <xpath>ancestor::document-node()/following::namespace-node()</xpath>
-            <xpath>ancestor::document-node()/following-sibling::foo</xpath>
-            <xpath>ancestor::document-node()/following-sibling::ex:foo</xpath>
-            <xpath>ancestor::document-node()/following-sibling::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::document-node()/following-sibling::Q{http://example.com}*</xpath>
-            <xpath>ancestor::document-node()/following-sibling::*:foo</xpath>
-            <xpath>ancestor::document-node()/following-sibling::ex:*</xpath>
-            <xpath>ancestor::document-node()/following-sibling::*</xpath>
-            <xpath>ancestor::document-node()/following-sibling::node()</xpath>
-            <xpath>ancestor::document-node()/following-sibling::document-node()</xpath>
-            <xpath>ancestor::document-node()/following-sibling::attribute()</xpath>
-            <xpath>ancestor::document-node()/following-sibling::attribute(*)</xpath>
-            <xpath>ancestor::document-node()/following-sibling::attribute(ex:foo)</xpath>
-            <xpath>ancestor::document-node()/following-sibling::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor::document-node()/following-sibling::comment()</xpath>
-            <xpath>ancestor::document-node()/following-sibling::processing-instruction()</xpath>
-            <xpath>ancestor::document-node()/following-sibling::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor::document-node()/following-sibling::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor::document-node()/following-sibling::text()</xpath>
-            <xpath>ancestor::document-node()/following-sibling::namespace-node()</xpath>
-            <xpath>ancestor::document-node()/preceding::foo</xpath>
-            <xpath>ancestor::document-node()/preceding::ex:foo</xpath>
-            <xpath>ancestor::document-node()/preceding::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::document-node()/preceding::Q{http://example.com}*</xpath>
-            <xpath>ancestor::document-node()/preceding::*:foo</xpath>
-            <xpath>ancestor::document-node()/preceding::ex:*</xpath>
-            <xpath>ancestor::document-node()/preceding::*</xpath>
-            <xpath>ancestor::document-node()/preceding::node()</xpath>
-            <xpath>ancestor::document-node()/preceding::document-node()</xpath>
-            <xpath>ancestor::document-node()/preceding::attribute()</xpath>
-            <xpath>ancestor::document-node()/preceding::attribute(*)</xpath>
-            <xpath>ancestor::document-node()/preceding::attribute(ex:foo)</xpath>
-            <xpath>ancestor::document-node()/preceding::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor::document-node()/preceding::comment()</xpath>
-            <xpath>ancestor::document-node()/preceding::processing-instruction()</xpath>
-            <xpath>ancestor::document-node()/preceding::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor::document-node()/preceding::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor::document-node()/preceding::text()</xpath>
-            <xpath>ancestor::document-node()/preceding::namespace-node()</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::foo</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::ex:foo</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::Q{http://example.com}foo</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::Q{http://example.com}*</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::*:foo</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::ex:*</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::*</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::node()</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::document-node()</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::attribute()</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::attribute(*)</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::attribute(ex:foo)</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::comment()</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::processing-instruction()</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::text()</xpath>
-            <xpath>ancestor::document-node()/preceding-sibling::namespace-node()</xpath>
+            <xpath part="1">ancestor::document-node()/parent::foo</xpath>
+            <xpath part="2">ancestor::document-node()/parent::ex:foo</xpath>
+            <xpath part="3">ancestor::document-node()/parent::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor::document-node()/parent::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor::document-node()/parent::*:foo</xpath>
+            <xpath part="6">ancestor::document-node()/parent::ex:*</xpath>
+            <xpath part="7">ancestor::document-node()/parent::*</xpath>
+            <xpath part="8">ancestor::document-node()/parent::node()</xpath>
+            <xpath part="9">ancestor::document-node()/parent::document-node()</xpath>
+            <xpath part="10">ancestor::document-node()/parent::attribute()</xpath>
+            <xpath part="11">ancestor::document-node()/parent::attribute(*)</xpath>
+            <xpath part="12">ancestor::document-node()/parent::attribute(ex:foo)</xpath>
+            <xpath part="13">ancestor::document-node()/parent::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="14">ancestor::document-node()/parent::comment()</xpath>
+            <xpath part="15">ancestor::document-node()/parent::processing-instruction()</xpath>
+            <xpath part="16">ancestor::document-node()/parent::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="17">ancestor::document-node()/parent::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="18">ancestor::document-node()/parent::text()</xpath>
+            <xpath part="19">ancestor::document-node()/parent::namespace-node()</xpath>
+            <xpath part="20">ancestor::document-node()/ancestor::foo</xpath>
+            <xpath part="21">ancestor::document-node()/ancestor::ex:foo</xpath>
+            <xpath part="22">ancestor::document-node()/ancestor::Q{http://example.com}foo</xpath>
+            <xpath part="23">ancestor::document-node()/ancestor::Q{http://example.com}*</xpath>
+            <xpath part="24">ancestor::document-node()/ancestor::*:foo</xpath>
+            <xpath part="25">ancestor::document-node()/ancestor::ex:*</xpath>
+            <xpath part="26">ancestor::document-node()/ancestor::*</xpath>
+            <xpath part="27">ancestor::document-node()/ancestor::node()</xpath>
+            <xpath part="28">ancestor::document-node()/ancestor::document-node()</xpath>
+            <xpath part="29">ancestor::document-node()/ancestor::attribute()</xpath>
+            <xpath part="30">ancestor::document-node()/ancestor::attribute(*)</xpath>
+            <xpath part="31">ancestor::document-node()/ancestor::attribute(ex:foo)</xpath>
+            <xpath part="32">ancestor::document-node()/ancestor::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="33">ancestor::document-node()/ancestor::comment()</xpath>
+            <xpath part="34">ancestor::document-node()/ancestor::processing-instruction()</xpath>
+            <xpath part="35">ancestor::document-node()/ancestor::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="36">ancestor::document-node()/ancestor::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="37">ancestor::document-node()/ancestor::text()</xpath>
+            <xpath part="38">ancestor::document-node()/ancestor::namespace-node()</xpath>
+            <xpath part="39">ancestor::document-node()/following::foo</xpath>
+            <xpath part="40">ancestor::document-node()/following::ex:foo</xpath>
+            <xpath part="41">ancestor::document-node()/following::Q{http://example.com}foo</xpath>
+            <xpath part="42">ancestor::document-node()/following::Q{http://example.com}*</xpath>
+            <xpath part="43">ancestor::document-node()/following::*:foo</xpath>
+            <xpath part="44">ancestor::document-node()/following::ex:*</xpath>
+            <xpath part="45">ancestor::document-node()/following::*</xpath>
+            <xpath part="46">ancestor::document-node()/following::node()</xpath>
+            <xpath part="47">ancestor::document-node()/following::document-node()</xpath>
+            <xpath part="48">ancestor::document-node()/following::attribute()</xpath>
+            <xpath part="49">ancestor::document-node()/following::attribute(*)</xpath>
+            <xpath part="50">ancestor::document-node()/following::attribute(ex:foo)</xpath>
+            <xpath part="51">ancestor::document-node()/following::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="52">ancestor::document-node()/following::comment()</xpath>
+            <xpath part="53">ancestor::document-node()/following::processing-instruction()</xpath>
+            <xpath part="54">ancestor::document-node()/following::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="55">ancestor::document-node()/following::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="56">ancestor::document-node()/following::text()</xpath>
+            <xpath part="57">ancestor::document-node()/following::namespace-node()</xpath>
+            <xpath part="58">ancestor::document-node()/following-sibling::foo</xpath>
+            <xpath part="59">ancestor::document-node()/following-sibling::ex:foo</xpath>
+            <xpath part="60">ancestor::document-node()/following-sibling::Q{http://example.com}foo</xpath>
+            <xpath part="61">ancestor::document-node()/following-sibling::Q{http://example.com}*</xpath>
+            <xpath part="62">ancestor::document-node()/following-sibling::*:foo</xpath>
+            <xpath part="63">ancestor::document-node()/following-sibling::ex:*</xpath>
+            <xpath part="64">ancestor::document-node()/following-sibling::*</xpath>
+            <xpath part="65">ancestor::document-node()/following-sibling::node()</xpath>
+            <xpath part="66">ancestor::document-node()/following-sibling::document-node()</xpath>
+            <xpath part="67">ancestor::document-node()/following-sibling::attribute()</xpath>
+            <xpath part="68">ancestor::document-node()/following-sibling::attribute(*)</xpath>
+            <xpath part="69">ancestor::document-node()/following-sibling::attribute(ex:foo)</xpath>
+            <xpath part="70">ancestor::document-node()/following-sibling::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="71">ancestor::document-node()/following-sibling::comment()</xpath>
+            <xpath part="72">ancestor::document-node()/following-sibling::processing-instruction()</xpath>
+            <xpath part="73">ancestor::document-node()/following-sibling::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="74">ancestor::document-node()/following-sibling::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="75">ancestor::document-node()/following-sibling::text()</xpath>
+            <xpath part="76">ancestor::document-node()/following-sibling::namespace-node()</xpath>
+            <xpath part="77">ancestor::document-node()/preceding::foo</xpath>
+            <xpath part="78">ancestor::document-node()/preceding::ex:foo</xpath>
+            <xpath part="79">ancestor::document-node()/preceding::Q{http://example.com}foo</xpath>
+            <xpath part="80">ancestor::document-node()/preceding::Q{http://example.com}*</xpath>
+            <xpath part="81">ancestor::document-node()/preceding::*:foo</xpath>
+            <xpath part="82">ancestor::document-node()/preceding::ex:*</xpath>
+            <xpath part="83">ancestor::document-node()/preceding::*</xpath>
+            <xpath part="84">ancestor::document-node()/preceding::node()</xpath>
+            <xpath part="85">ancestor::document-node()/preceding::document-node()</xpath>
+            <xpath part="86">ancestor::document-node()/preceding::attribute()</xpath>
+            <xpath part="87">ancestor::document-node()/preceding::attribute(*)</xpath>
+            <xpath part="88">ancestor::document-node()/preceding::attribute(ex:foo)</xpath>
+            <xpath part="89">ancestor::document-node()/preceding::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="90">ancestor::document-node()/preceding::comment()</xpath>
+            <xpath part="91">ancestor::document-node()/preceding::processing-instruction()</xpath>
+            <xpath part="92">ancestor::document-node()/preceding::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="93">ancestor::document-node()/preceding::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="94">ancestor::document-node()/preceding::text()</xpath>
+            <xpath part="95">ancestor::document-node()/preceding::namespace-node()</xpath>
+            <xpath part="96">ancestor::document-node()/preceding-sibling::foo</xpath>
+            <xpath part="97">ancestor::document-node()/preceding-sibling::ex:foo</xpath>
+            <xpath part="98">ancestor::document-node()/preceding-sibling::Q{http://example.com}foo</xpath>
+            <xpath part="99">ancestor::document-node()/preceding-sibling::Q{http://example.com}*</xpath>
+            <xpath part="100">ancestor::document-node()/preceding-sibling::*:foo</xpath>
+            <xpath part="101">ancestor::document-node()/preceding-sibling::ex:*</xpath>
+            <xpath part="102">ancestor::document-node()/preceding-sibling::*</xpath>
+            <xpath part="103">ancestor::document-node()/preceding-sibling::node()</xpath>
+            <xpath part="104">ancestor::document-node()/preceding-sibling::document-node()</xpath>
+            <xpath part="105">ancestor::document-node()/preceding-sibling::attribute()</xpath>
+            <xpath part="106">ancestor::document-node()/preceding-sibling::attribute(*)</xpath>
+            <xpath part="107">ancestor::document-node()/preceding-sibling::attribute(ex:foo)</xpath>
+            <xpath part="108">ancestor::document-node()/preceding-sibling::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="109">ancestor::document-node()/preceding-sibling::comment()</xpath>
+            <xpath part="110">ancestor::document-node()/preceding-sibling::processing-instruction()</xpath>
+            <xpath part="111">ancestor::document-node()/preceding-sibling::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="112">ancestor::document-node()/preceding-sibling::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="113">ancestor::document-node()/preceding-sibling::text()</xpath>
+            <xpath part="114">ancestor::document-node()/preceding-sibling::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>
@@ -410,122 +416,123 @@
                 Invariant:       none
             </description>
       <created by="Abel Braaksma" on="2014-10-16"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
       <test>
          <posture-and-sweep context-posture="striding">
-            <xpath>ancestor-or-self::document-node()/parent::foo</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::ex:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::*:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::ex:*</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::*</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::node()</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::document-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::attribute()</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::attribute(*)</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::comment()</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::text()</xpath>
-            <xpath>ancestor-or-self::document-node()/parent::namespace-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::foo</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::ex:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::*:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::ex:*</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::*</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::node()</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::document-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::attribute()</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::attribute(*)</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::comment()</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::text()</xpath>
-            <xpath>ancestor-or-self::document-node()/ancestor::namespace-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/following::foo</xpath>
-            <xpath>ancestor-or-self::document-node()/following::ex:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/following::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::document-node()/following::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::document-node()/following::*:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/following::ex:*</xpath>
-            <xpath>ancestor-or-self::document-node()/following::*</xpath>
-            <xpath>ancestor-or-self::document-node()/following::node()</xpath>
-            <xpath>ancestor-or-self::document-node()/following::document-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/following::attribute()</xpath>
-            <xpath>ancestor-or-self::document-node()/following::attribute(*)</xpath>
-            <xpath>ancestor-or-self::document-node()/following::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/following::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/following::comment()</xpath>
-            <xpath>ancestor-or-self::document-node()/following::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::document-node()/following::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor-or-self::document-node()/following::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor-or-self::document-node()/following::text()</xpath>
-            <xpath>ancestor-or-self::document-node()/following::namespace-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::foo</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::ex:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::*:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::ex:*</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::*</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::node()</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::document-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::attribute()</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::attribute(*)</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::comment()</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::text()</xpath>
-            <xpath>ancestor-or-self::document-node()/following-sibling::namespace-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::foo</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::ex:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::*:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::ex:*</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::*</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::node()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::document-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::attribute()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::attribute(*)</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::comment()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::text()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding::namespace-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::foo</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::ex:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::Q{http://example.com}foo</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::Q{http://example.com}*</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::*:foo</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::ex:*</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::*</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::node()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::document-node()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::attribute()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::attribute(*)</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::attribute(ex:foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::attribute(Q{http://example.com}foo)</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::comment()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::processing-instruction()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::processing-instruction(xsl-stylesheet)</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::processing-instruction('xsl-stylesheet')</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::text()</xpath>
-            <xpath>ancestor-or-self::document-node()/preceding-sibling::namespace-node()</xpath>
+            <xpath part="1">ancestor-or-self::document-node()/parent::foo</xpath>
+            <xpath part="2">ancestor-or-self::document-node()/parent::ex:foo</xpath>
+            <xpath part="3">ancestor-or-self::document-node()/parent::Q{http://example.com}foo</xpath>
+            <xpath part="4">ancestor-or-self::document-node()/parent::Q{http://example.com}*</xpath>
+            <xpath part="5">ancestor-or-self::document-node()/parent::*:foo</xpath>
+            <xpath part="6">ancestor-or-self::document-node()/parent::ex:*</xpath>
+            <xpath part="7">ancestor-or-self::document-node()/parent::*</xpath>
+            <xpath part="8">ancestor-or-self::document-node()/parent::node()</xpath>
+            <xpath part="9">ancestor-or-self::document-node()/parent::document-node()</xpath>
+            <xpath part="10">ancestor-or-self::document-node()/parent::attribute()</xpath>
+            <xpath part="11">ancestor-or-self::document-node()/parent::attribute(*)</xpath>
+            <xpath part="12">ancestor-or-self::document-node()/parent::attribute(ex:foo)</xpath>
+            <xpath part="13">ancestor-or-self::document-node()/parent::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="14">ancestor-or-self::document-node()/parent::comment()</xpath>
+            <xpath part="15">ancestor-or-self::document-node()/parent::processing-instruction()</xpath>
+            <xpath part="16">ancestor-or-self::document-node()/parent::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="17">ancestor-or-self::document-node()/parent::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="18">ancestor-or-self::document-node()/parent::text()</xpath>
+            <xpath part="19">ancestor-or-self::document-node()/parent::namespace-node()</xpath>
+            <xpath part="20">ancestor-or-self::document-node()/ancestor::foo</xpath>
+            <xpath part="21">ancestor-or-self::document-node()/ancestor::ex:foo</xpath>
+            <xpath part="22">ancestor-or-self::document-node()/ancestor::Q{http://example.com}foo</xpath>
+            <xpath part="23">ancestor-or-self::document-node()/ancestor::Q{http://example.com}*</xpath>
+            <xpath part="24">ancestor-or-self::document-node()/ancestor::*:foo</xpath>
+            <xpath part="25">ancestor-or-self::document-node()/ancestor::ex:*</xpath>
+            <xpath part="26">ancestor-or-self::document-node()/ancestor::*</xpath>
+            <xpath part="27">ancestor-or-self::document-node()/ancestor::node()</xpath>
+            <xpath part="28">ancestor-or-self::document-node()/ancestor::document-node()</xpath>
+            <xpath part="29">ancestor-or-self::document-node()/ancestor::attribute()</xpath>
+            <xpath part="30">ancestor-or-self::document-node()/ancestor::attribute(*)</xpath>
+            <xpath part="31">ancestor-or-self::document-node()/ancestor::attribute(ex:foo)</xpath>
+            <xpath part="32">ancestor-or-self::document-node()/ancestor::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="33">ancestor-or-self::document-node()/ancestor::comment()</xpath>
+            <xpath part="34">ancestor-or-self::document-node()/ancestor::processing-instruction()</xpath>
+            <xpath part="35">ancestor-or-self::document-node()/ancestor::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="36">ancestor-or-self::document-node()/ancestor::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="37">ancestor-or-self::document-node()/ancestor::text()</xpath>
+            <xpath part="38">ancestor-or-self::document-node()/ancestor::namespace-node()</xpath>
+            <xpath part="39">ancestor-or-self::document-node()/following::foo</xpath>
+            <xpath part="40">ancestor-or-self::document-node()/following::ex:foo</xpath>
+            <xpath part="41">ancestor-or-self::document-node()/following::Q{http://example.com}foo</xpath>
+            <xpath part="42">ancestor-or-self::document-node()/following::Q{http://example.com}*</xpath>
+            <xpath part="43">ancestor-or-self::document-node()/following::*:foo</xpath>
+            <xpath part="44">ancestor-or-self::document-node()/following::ex:*</xpath>
+            <xpath part="45">ancestor-or-self::document-node()/following::*</xpath>
+            <xpath part="46">ancestor-or-self::document-node()/following::node()</xpath>
+            <xpath part="47">ancestor-or-self::document-node()/following::document-node()</xpath>
+            <xpath part="48">ancestor-or-self::document-node()/following::attribute()</xpath>
+            <xpath part="49">ancestor-or-self::document-node()/following::attribute(*)</xpath>
+            <xpath part="50">ancestor-or-self::document-node()/following::attribute(ex:foo)</xpath>
+            <xpath part="51">ancestor-or-self::document-node()/following::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="52">ancestor-or-self::document-node()/following::comment()</xpath>
+            <xpath part="53">ancestor-or-self::document-node()/following::processing-instruction()</xpath>
+            <xpath part="54">ancestor-or-self::document-node()/following::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="55">ancestor-or-self::document-node()/following::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="56">ancestor-or-self::document-node()/following::text()</xpath>
+            <xpath part="57">ancestor-or-self::document-node()/following::namespace-node()</xpath>
+            <xpath part="58">ancestor-or-self::document-node()/following-sibling::foo</xpath>
+            <xpath part="59">ancestor-or-self::document-node()/following-sibling::ex:foo</xpath>
+            <xpath part="60">ancestor-or-self::document-node()/following-sibling::Q{http://example.com}foo</xpath>
+            <xpath part="61">ancestor-or-self::document-node()/following-sibling::Q{http://example.com}*</xpath>
+            <xpath part="62">ancestor-or-self::document-node()/following-sibling::*:foo</xpath>
+            <xpath part="63">ancestor-or-self::document-node()/following-sibling::ex:*</xpath>
+            <xpath part="64">ancestor-or-self::document-node()/following-sibling::*</xpath>
+            <xpath part="65">ancestor-or-self::document-node()/following-sibling::node()</xpath>
+            <xpath part="66">ancestor-or-self::document-node()/following-sibling::document-node()</xpath>
+            <xpath part="67">ancestor-or-self::document-node()/following-sibling::attribute()</xpath>
+            <xpath part="68">ancestor-or-self::document-node()/following-sibling::attribute(*)</xpath>
+            <xpath part="69">ancestor-or-self::document-node()/following-sibling::attribute(ex:foo)</xpath>
+            <xpath part="70">ancestor-or-self::document-node()/following-sibling::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="71">ancestor-or-self::document-node()/following-sibling::comment()</xpath>
+            <xpath part="72">ancestor-or-self::document-node()/following-sibling::processing-instruction()</xpath>
+            <xpath part="73">ancestor-or-self::document-node()/following-sibling::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="74">ancestor-or-self::document-node()/following-sibling::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="75">ancestor-or-self::document-node()/following-sibling::text()</xpath>
+            <xpath part="76">ancestor-or-self::document-node()/following-sibling::namespace-node()</xpath>
+            <xpath part="77">ancestor-or-self::document-node()/preceding::foo</xpath>
+            <xpath part="78">ancestor-or-self::document-node()/preceding::ex:foo</xpath>
+            <xpath part="79">ancestor-or-self::document-node()/preceding::Q{http://example.com}foo</xpath>
+            <xpath part="80">ancestor-or-self::document-node()/preceding::Q{http://example.com}*</xpath>
+            <xpath part="81">ancestor-or-self::document-node()/preceding::*:foo</xpath>
+            <xpath part="82">ancestor-or-self::document-node()/preceding::ex:*</xpath>
+            <xpath part="83">ancestor-or-self::document-node()/preceding::*</xpath>
+            <xpath part="84">ancestor-or-self::document-node()/preceding::node()</xpath>
+            <xpath part="85">ancestor-or-self::document-node()/preceding::document-node()</xpath>
+            <xpath part="86">ancestor-or-self::document-node()/preceding::attribute()</xpath>
+            <xpath part="87">ancestor-or-self::document-node()/preceding::attribute(*)</xpath>
+            <xpath part="88">ancestor-or-self::document-node()/preceding::attribute(ex:foo)</xpath>
+            <xpath part="89">ancestor-or-self::document-node()/preceding::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="90">ancestor-or-self::document-node()/preceding::comment()</xpath>
+            <xpath part="91">ancestor-or-self::document-node()/preceding::processing-instruction()</xpath>
+            <xpath part="92">ancestor-or-self::document-node()/preceding::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="93">ancestor-or-self::document-node()/preceding::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="94">ancestor-or-self::document-node()/preceding::text()</xpath>
+            <xpath part="95">ancestor-or-self::document-node()/preceding::namespace-node()</xpath>
+            <xpath part="96">ancestor-or-self::document-node()/preceding-sibling::foo</xpath>
+            <xpath part="97">ancestor-or-self::document-node()/preceding-sibling::ex:foo</xpath>
+            <xpath part="98">ancestor-or-self::document-node()/preceding-sibling::Q{http://example.com}foo</xpath>
+            <xpath part="99">ancestor-or-self::document-node()/preceding-sibling::Q{http://example.com}*</xpath>
+            <xpath part="100">ancestor-or-self::document-node()/preceding-sibling::*:foo</xpath>
+            <xpath part="101">ancestor-or-self::document-node()/preceding-sibling::ex:*</xpath>
+            <xpath part="102">ancestor-or-self::document-node()/preceding-sibling::*</xpath>
+            <xpath part="103">ancestor-or-self::document-node()/preceding-sibling::node()</xpath>
+            <xpath part="104">ancestor-or-self::document-node()/preceding-sibling::document-node()</xpath>
+            <xpath part="105">ancestor-or-self::document-node()/preceding-sibling::attribute()</xpath>
+            <xpath part="106">ancestor-or-self::document-node()/preceding-sibling::attribute(*)</xpath>
+            <xpath part="107">ancestor-or-self::document-node()/preceding-sibling::attribute(ex:foo)</xpath>
+            <xpath part="108">ancestor-or-self::document-node()/preceding-sibling::attribute(Q{http://example.com}foo)</xpath>
+            <xpath part="109">ancestor-or-self::document-node()/preceding-sibling::comment()</xpath>
+            <xpath part="110">ancestor-or-self::document-node()/preceding-sibling::processing-instruction()</xpath>
+            <xpath part="111">ancestor-or-self::document-node()/preceding-sibling::processing-instruction(xsl-stylesheet)</xpath>
+            <xpath part="112">ancestor-or-self::document-node()/preceding-sibling::processing-instruction('xsl-stylesheet')</xpath>
+            <xpath part="113">ancestor-or-self::document-node()/preceding-sibling::text()</xpath>
+            <xpath part="114">ancestor-or-self::document-node()/preceding-sibling::namespace-node()</xpath>
          </posture-and-sweep>
       </test>
       <result>

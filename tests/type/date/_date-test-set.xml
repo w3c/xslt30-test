@@ -11,7 +11,7 @@
    </environment>
 
    <test-case name="date-001">
-      <description>XPath 2.0: dateTime constructor with Z timezone. Also implicitly tests date to string conversion</description>
+      <description>XPath 2.0:  with Z timezone. Also implicitly tests date to string conversion</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="date002"/>
       <dependencies>
@@ -26,7 +26,7 @@
    </test-case>
 
    <test-case name="date-002">
-      <description>XPath 2.0: dateTime constructor with +hh:mm timezone. Also implicitly tests date to string conversion</description>
+      <description>XPath 2.0:  with +hh:mm timezone. Also implicitly tests date to string conversion</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="date002"/>
       <dependencies>
@@ -41,7 +41,7 @@
    </test-case>
 
    <test-case name="date-003">
-      <description>XPath 2.0: dateTime constructor with -hh:mm timezone. Also implicitly tests date to string conversion</description>
+      <description>XPath 2.0:  with -hh:mm timezone. Also implicitly tests date to string conversion</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="date002"/>
       <dependencies>
@@ -56,7 +56,7 @@
    </test-case>
 
    <test-case name="date-004">
-      <description>XPath 2.0: dateTime constructor with no timezone. Also implicitly tests date to string conversion</description>
+      <description>XPath 2.0:  with no timezone. Also implicitly tests date to string conversion</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="date002"/>
       <dependencies>
@@ -71,7 +71,7 @@
    </test-case>
 
    <test-case name="date-005">
-      <description>XPath 2.0: dateTime constructor with milliseconds and timezone. Also implicitly tests date to string conversion</description>
+      <description>XPath 2.0:  with milliseconds and timezone. Also implicitly tests date to string conversion</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="date002"/>
       <dependencies>
@@ -1437,5 +1437,644 @@
          <error code="FORG0008"/>
       </result>
    </test-case>
+
+   <test-case name="date-094a">
+      <description>test xs:date() constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="false" value="support year zero"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''0000-09-05'')'"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="FODT0001"/>
+            <error code="FORG0001"/>
+         </any-of>
+      </result>
+   </test-case>
+
+   <test-case name="date-094b">
+      <description>test xs:date() constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="false" value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''-0001-09-05'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-094c">
+      <description>test xs:date() constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="false" value="support year above 9999"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''10000-09-05'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-094d">
+      <description>test xs:date() constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="false" value="support year above 9999"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''99887766-09-05'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-094e">
+      <description>
+          test xs:date() constructor with invalid date or time range 
+          (this specific test assumes that the year value above 2^32+1 is not supported by any processor
+      </description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year above 9999"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''4294967297-01-02'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-094f">
+      <description>
+          test xs:date() constructor with invalid date or time range 
+          (this specific test assumes that the year value above -2^32+1 is not supported by any processor
+      </description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year above 9999"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''-4294967297-01-02'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-094g">
+      <description>test xs:date() constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''1999-01-32'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-094h">
+      <description>test xs:date() constructor with invalid date or time range (100 is not a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''0100-02-29'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-094i">
+      <description>test xs:date() constructor with invalid date or time range (8100 is not a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''8100-02-29'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-094j">
+      <description>test xs:date() constructor with invalid date or time range (400 is not a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''0400-02-29'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+      
+   <test-case name="date-094k">
+      <description>test xs:date() constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''1999-13-29'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+      
+   <test-case name="date-094l">
+      <description>test xs:date() constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''1999-12-32'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-094m">
+      <description>test xs:date() constructor with valid date range for negative dates (-400 is a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''-0400-02-29'')'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-0400-02-29</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="date-094n">
+      <description>test xs:date() constructor with valid zero-year date (0000 is a leap year in ISO-8601)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year zero"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''0000-02-29'')'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0000-02-29</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="date-094o">
+      <description>test xs:date() constructor with valid zero-year date (-0000 negate sign is not maintained)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year zero"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''-0000-01-30'')'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0000-01-30</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="date-094p">
+      <description>test xs:date() constructor with valid date range (200 is a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''0400-02-29'')'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0200-02-29</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="date-094q">
+      <description>test xs:date() constructor with invalid date range (400 is not a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-094.xsl"/>
+         <param name="test-case" static="yes" select="'xs:date(''0400-02-29'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+
+   <!-- xd:dateTime -->
+   <test-case name="date-095a">
+      <description>test xs:dateTime constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="false" value="support year zero"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''0000-09-05T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="FODT0001"/>
+            <error code="FORG0001"/>
+         </any-of>
+      </result>
+   </test-case>
+
+   <test-case name="date-095b">
+      <description>test xs:dateTime constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="false" value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''-0001-09-05T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-095c">
+      <description>test xs:dateTime constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="false" value="support year above 9999"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''10000-09-05T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-095d">
+      <description>test xs:dateTime constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="false" value="support year above 9999"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''99887766-09-05T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-095e">
+      <description>
+          test xs:dateTime constructor with invalid date or time range 
+          (this specific test assumes that the year value above 2^32+1 is not supported by any processor)
+      </description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year above 9999"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''4294967297-01-02T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-095f">
+      <description>
+          test xs:dateTime constructor with invalid date or time range 
+          (this specific test assumes that the year value above -2^32+1 is not supported by any processor)
+      </description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year above 9999"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''-4294967297-01-02T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-095g">
+      <description>test xs:dateTime constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1999-01-32T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-095h">
+      <description>test xs:dateTime constructor with invalid date or time range (100 is a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''0100-02-29T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095i">
+      <description>test xs:dateTime constructor with invalid date or time range (8100 is not a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''8100-02-29T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095j">
+      <description>test xs:dateTime constructor with invalid date or time range (100 is not a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''0100-02-29T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+      
+   <test-case name="date-095k">
+      <description>test xs:dateTime constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1999-13-29T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+      
+   <test-case name="date-095l">
+      <description>test xs:dateTime constructor with invalid date or time range</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1999-12-32T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095m">
+      <description>test xs:dateTime constructor with valid date range for negative dates (-400 is a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''-0400-02-29T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-0400-02-29T02:23:12.987</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095n">
+      <description>test xs:dateTime constructor with valid zero-year date (0000 is a leap year in ISO-8601)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year zero"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''0000-02-29T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0000-02-29T02:23:12.987</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095o">
+      <description>test xs:dateTime constructor with valid zero-year date (-0000 negate sign is not maintained)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values satisfied="true" value="support year zero"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''-0000-01-30T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0000-01-30T02:23:12.987</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095p">
+      <description>test xs:dateTime constructor with valid date range (400 is a leap year)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''0400-02-29T02:23:12.987'')'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>0400-02-29T02:23:12.987</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="date-095q">
+      <description>test xs:dateTime constructor with invalid date-time range (minute facet)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1996-02-29T02:63:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095r">
+      <description>test xs:dateTime constructor with invalid date-time range (hour facet)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1996-02-29T24:23:12.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095s">
+      <description>test xs:dateTime constructor with invalid date-time range (second facet)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1996-02-29T02:23:74.987'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095t">
+      <description>test xs:dateTime constructor with invalid date-time range (second facet, leap second)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1996-02-29T02:23:60'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095u">
+      <description>test xs:dateTime constructor with invalid date-time range (timezone facet, hour)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1996-02-29T02:23:60+15:00'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095v">
+      <description>test xs:dateTime constructor with invalid date-time range (timezone facet, minute)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1996-02-29T02:23:60+12:60'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="date-095w">
+      <description>test xs:dateTime constructor with invalid date-time range (timezone facet, minute)</description>
+      <created by="Abel Braaksma" on="2014-10-21"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-095.xsl"/>
+         <param name="test-case" static="yes" select="'xs:dateTime(''1996-02-29T02:23:60+14:01'')'"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
+
 
 </test-set>
