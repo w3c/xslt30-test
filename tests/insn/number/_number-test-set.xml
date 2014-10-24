@@ -169,6 +169,66 @@
          <assert-xml><![CDATA[<out><a name="Andy">Zero</a><a name="Thomas">Seven</a><a name="Peter">Fourteen</a><a name="Paul">Twenty One</a><a name="Matthew">Twenty Eight</a></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="number-0106">
+      <description>Use start-at attribute - level=multiple with different start-at values</description>
+      <created by="Michael Kay" on="2014-10-24"/>
+      <environment ref="number-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-0106.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a name="Andy">c.b.b.a</a><a name="Thomas">c.b.b.b</a><a name="Peter">c.b.b.c</a><a name="Paul">c.b.b.d</a><a name="Matthew">c.b.b.e</a></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="number-0107">
+      <description>Use start-at attribute -value attribute, sequence of numbers, sequence of start-at values</description>
+      <created by="Michael Kay" on="2014-10-24"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-0107.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = "0.4.6.10.13.16.20.25.29.41.52"</assert>
+      </result>
+   </test-case>
+
+   <test-case name="number-0108">
+      <description>Use start-at attribute -value attribute, sequence of numbers, sequence of start-at values, with minus signs</description>
+      <created by="Michael Kay" on="2014-10-24"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-0108.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = "0.4.2.10.5.16.8.25.13.41.52"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="number-0109">
+      <description>Invalid start-at attribute</description>
+      <created by="Michael Kay" on="2014-10-24"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-0109.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
 
    <test-case name="number-0201">
       <description></description>
