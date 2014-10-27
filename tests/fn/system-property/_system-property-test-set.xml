@@ -176,4 +176,69 @@
          <assert-xml file="system-property-011.out"/>
       </result>
    </test-case>
+   
+   <test-case name="system-property-012">
+      <description>Test for system-property('supports-streaming') .</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>           
+      <test>
+         <stylesheet file="system-property-012.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'yes'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-013">
+      <description>Test for system-property('supports-streaming') .</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming" satisfied="false"/>
+      </dependencies>           
+      <test>
+         <stylesheet file="system-property-012.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'no'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-014">
+      <description>Test for system-property('supports-dynamic-evaluation') .</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="dynamic_evaluation"/>
+      </dependencies>           
+      <test>
+         <stylesheet file="system-property-014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '4yes'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-015">
+      <description>Test for system-property('supports-dynamic-evaluation') .</description>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="dynamic_evaluation" satisfied="false"/>
+      </dependencies>           
+      <test>
+         <stylesheet file="system-property-014.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'no'</assert>
+      </result>
+   </test-case>
+
 </test-set>
