@@ -15,16 +15,16 @@
    
    <xsl:template match="/">
     <xsl:param name="xsl">xsl:</xsl:param>
-	<out>;
-	<a1>1. <xsl:value-of select="element-available('xsl:value-of')"/> should be true</a1>;
-	<a1>2. <xsl:value-of select="element-available('saxon:assign')"/> should be false</a1>;
-	<a1>3. <xsl:value-of select="element-available('sql:connect')"/> should be false</a1>;
-	<a1>4. <xsl:value-of select="element-available('xsl:key')"/> should be true</a1>;
-	<a1>5. <xsl:value-of select="element-available('xsl:neverHeardOfIt')"/> should be false</a1>;
-	<a1>6. <xsl:value-of select="element-available('saxon:collation')"/> should be false</a1>;
-	<a1>7. <xsl:value-of select="element-available('other:handler')"/> should be false</a1>;
-	<a1>8. <xsl:value-of select="element-available('get-a-life')"/> should be false</a1>;
-	<a1>9. <xsl:value-of select="element-available(concat($xsl, 'text'))"/> should be true</a1>;
+	<out>
+	<a1 actual="{element-available('xsl:value-of')}" expected="true"/>
+	<a2 actual="{element-available('saxon:assign')}" expected="false"/>
+	<a3 actual="{element-available('sql:connect')}" expected="false"/>
+	<a4 actual="{element-available('xsl:key')}" expected="true"/>
+	<a5 actual="{element-available('xsl:neverHeardOfIt')}" expected="false"/>
+	<a6 actual="{element-available('saxon:collation')}" expected="false"/>
+	<a7 actual="{element-available('other:handler')}" expected="false"/>
+	<a8 actual="{element-available('get-a-life')}" expected="false"/>
+	<a9 actual="{element-available(concat($xsl, 'text'))}" expected="false"/>
 	</out>
    </xsl:template>
 

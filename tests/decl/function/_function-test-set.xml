@@ -544,15 +544,36 @@
       <description>Test element-available on a range of names</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2014-10-16" change="Fixes bug#27068, element-available on xsl:key should return true" />
+      <modified by="Michael Kay" on="2014-10-27" chang="split into 2.0 and 3.0 tests"/>
       <environment ref="function-03"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="function-0302.xsl"/>
       </test>
       <result>
-         <assert-xml file="function-0302.out"/>
+         <all-of>
+            <assert>every $a in /out/a except /out/a4 satisfies $a/@actual = $a/@expected</assert>
+            <assert>/out/a4/@actual = 'false'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="function-0302b">
+      <description>Test element-available on a range of names</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-16" change="Fixes bug#27068, element-available on xsl:key should return true" />
+      <modified by="Michael Kay" on="2014-10-27" chang="split into 2.0 and 3.0 tests"/>
+      <environment ref="function-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-0302.xsl"/>
+      </test>
+      <result>
+         <assert>every $a in /out/a satisfies $a/@actual = $a/@expected</assert>
       </result>
    </test-case>
 
