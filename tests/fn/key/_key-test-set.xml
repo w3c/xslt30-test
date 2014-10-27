@@ -1631,4 +1631,25 @@ Namespace "" used in 3
          <assert>deep-equal(/out/e/string(), ("doc", "section", "inner"))</assert>
       </result>
    </test-case>
+   
+   <test-case name="key-088">
+      <description>Test a key having values of several data types including untyped atomic</description>
+      <created by="Michael Kay" on="2014-10-25"/>
+      <environment ref="key101"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="key-088.xsl"/>
+      </test>
+      <result>
+        <all-of>
+          <assert>/out/fields="PittsfieldVT SpringfieldVT"</assert>
+          <assert>/out/non-fields="BristolVT CambridgeVT GraftonVT ManchesterVT NewportVT RochesterVT WashingtonVT"</assert>
+          <assert>/out/sevens="AmherstNH BristolNH EnfieldNH GraftonNH LincolnNH NewportNH"</assert>
+          <assert>/out/u-sevens="BristolRI LincolnRI NewportRI"</assert>
+          <assert>/out/nh="AmherstNH AuburnNH BristolNH EnfieldNH GraftonNH HudsonNH LincolnNH ManchesterNH NewportNH PittsfieldNH RochesterNH SalemNH WashingtonNH"</assert>
+        </all-of>  
+      </result>
+   </test-case>
 </test-set>

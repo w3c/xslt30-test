@@ -3,7 +3,7 @@
 
   <!-- Purpose: Test for xsl:key, with 'composite' attribute. -->
 
-  <xsl:key name="mykey1" match="div" use="title,p" composite="yes"/>  
+  <xsl:key name="mykey1" match="div" use="title,p[1]" composite="yes"/>  
 
   <xsl:template match="doc">
     <out>
