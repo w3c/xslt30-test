@@ -14,7 +14,7 @@
   <xsl:template match="Family">
     <xsl:for-each select=".//Child">
       <a name="{Name/@First}">
-        <xsl:number select="." level="multiple" count="*" format="a.a.a" start-at="3.2.1"/>
+        <xsl:number select="." level="multiple" count="*" format="a.a.a" start-at="3 2 1"/>
       </a>
     </xsl:for-each>
   </xsl:template>
