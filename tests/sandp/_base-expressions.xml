@@ -68,9 +68,6 @@
         <production node-type="text">text()</production>
         <production node-type="text">child::text()</production>
         
-        <!-- if the static result type is an error, it is the empty sequence in posture/sweep analysis
-             note: in XP31 the default axis for such test is the namespace axis, bug#26788 -->
-        <production node-type="error">namespace-node()</production>
         <production node-type="empty">child::namespace-node()</production>
     </productions>
     <productions type="StepExpr" axis="self">
@@ -137,6 +134,14 @@
         <production node-type="empty">@namespace-node()</production>        
     </productions>
     <productions type="StepExpr" axis="namespace">
+        <!-- 
+            note (1): in XP31 the default axis for the following node-test is the namespace axis, bug#26788
+            note (2): this will be implemented at some point as an erratum to XP30, 
+            note (3): the WG has decided (2014-10-23) to treat this as a legal expression 
+        -->
+        <production node-type="namespace">namespace-node()</production>
+        <production node-type="namespace">namespace::namespace-node()</production>        
+
         <production node-type="namespace">namespace::foo</production>
         <production node-type="namespace">namespace::Q{}foo</production>
         <production node-type="empty">namespace::ex:foo</production>
@@ -159,7 +164,6 @@
         <production node-type="empty">namespace::processing-instruction(xsl-stylesheet)</production>
         <production node-type="empty">namespace::processing-instruction('xsl-stylesheet')</production>
         <production node-type="empty">namespace::text()</production>
-        <production node-type="namespace">namespace::namespace-node()</production>        
     </productions>
     <productions type="StepExpr" axis="parent">
         <production node-type="element">parent::foo</production>
