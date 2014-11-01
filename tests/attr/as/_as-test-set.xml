@@ -36,8 +36,12 @@
       </source>
    </environment>  
    
-   <environment name="as-08">
-      <source role="." file="as-08.xml"/>
+   <environment name="as-08a">
+      <source role="." file="as-08a.xml"/>
+   </environment>
+   
+   <environment name="as-08b">
+      <source role="." file="as-08b.xml"/>
    </environment>
    
    <environment name="as-12">
@@ -227,18 +231,65 @@ a:_underscore_
       </description>
       <keywords>xs:anyAtomicType buildin-datatypes conversion AtomicOrUnionType</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, adding high/low year dependencies"/>
       <environment ref="as-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="true"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
       </dependencies>
       <test>
-         <stylesheet file="as-0106.xsl"/>
+         <stylesheet file="as-0106a.xsl"/>
       </test>
       <result>
          <assert>every $var in /out/* satisfies $var = "truetrue"</assert>
       </result>
    </test-case>
 
+   <test-case name="as-0106a">
+      <description>
+         Bug 27216
+         Variant of as-0106, without support for negative or high years, throws error
+         Show that any explicitly constructed built-in atomic type can go in @select when @as="xs:anyAtomicType". 
+         Effective global variable type is both xs:anyAtomicType and the actual type used in @select.
+      </description>
+      <keywords>xs:anyAtomicType buildin-datatypes conversion AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="false"/>
+         <year_component_values value="support year above 9999" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0106a.xsl"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="as-0106b">
+      <description>
+         Bug 27216
+         Variant of as-0106, without dependencies
+         Show that any explicitly constructed built-in atomic type can go in @select when @as="xs:anyAtomicType". 
+         Effective global variable type is both xs:anyAtomicType and the actual type used in @select.
+      </description>
+      <keywords>xs:anyAtomicType buildin-datatypes conversion AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0106b.xsl"/>
+      </test>
+      <result>
+         <assert>every $var in /out/* satisfies $var = "truetrue"</assert>         
+      </result>
+   </test-case>
+   
    <test-case name="as-0107">
       <description>
          Test of two xsl:templates, one returns a sequence of several explicitly constructed different 
@@ -296,15 +347,65 @@ a:_underscore_
    </test-case>
 
    <test-case name="as-0110">
-      <description>Test with global xsl:variable where value in @select is explicitly constructed and of the same type as the built-in atomic type in @as. Types tested are: all built-in primitive types, xs:integer, xs:dayTimeDuration, xs:yearMonthDuration</description>
+      <description>
+         Test with global xsl:variable where value in @select is explicitly constructed and of the same type as the built-in
+         atomic type in @as. Types tested are: all built-in primitive types, xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
       <keywords>buildin-types conversion-to-self AtomicOrUnionType</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, adding high/low year dependencies"/>
+      <environment ref="as-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="true"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0110a.xsl"/>
+      </test>
+      <result>
+         <assert>every $var in /out/* satisfies $var = "true"</assert>
+      </result>
+   </test-case>
+
+   <test-case name="as-0110a">
+      <description>
+         Bug 27216
+         Variant: as previous test, but with negative dependencies, throws static error
+         Test with global xsl:variable where value in @select is explicitly constructed and of the same type as the built-in 
+         atomic type in @as. Types tested are: all built-in primitive types, xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>buildin-types conversion-to-self AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support year above 9999" satisfied="false"/>
+         <year_component_values value="support negative year" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0110a.xsl"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="as-0110b">
+      <description>
+         Bug 27216
+         Variant: as previous test, but without dependencies
+         Test with global xsl:variable where value in @select is explicitly constructed and of the same type as the built-in 
+         atomic type in @as. Types tested are: all built-in primitive types, xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>buildin-types conversion-to-self AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
       <environment ref="as-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="as-0110.xsl"/>
+         <stylesheet file="as-0110b.xsl"/>
       </test>
       <result>
          <assert>every $var in /out/* satisfies $var = "true"</assert>
@@ -312,15 +413,68 @@ a:_underscore_
    </test-case>
 
    <test-case name="as-0111">
-      <description>Test with global xsl:variable without @select, where sequence constructor contains a typed value of the same type as specified in @as. Values for @as tested: all built-in primitive types, xs:integer, xs:dayTimeDuration, xs:yearMonthDuration</description>
+      <description>
+         Test with global xsl:variable without @select, where sequence constructor contains a typed value of the same
+         type as specified in @as. Values for @as tested: all built-in primitive types, xs:integer, xs:dayTimeDuration, 
+         xs:yearMonthDuration
+      </description>
       <keywords>buildin-types conversion-to-self instance-of AtomicOrUnionType</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, adding high/low year dependencies"/>
+      <environment ref="as-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
+         <year_component_values value="support negative year" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0111a.xsl"/>
+      </test>
+      <result>
+         <assert>every $var in /out/* satisfies $var = "true"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="as-0111a">
+      <description>
+         Bug 27216
+         Variant of previous test, with inverted dependencies, should throw overflow error
+         Test with global xsl:variable without @select, where sequence constructor contains a typed value of the same
+         type as specified in @as. Values for @as tested: all built-in primitive types, xs:integer, xs:dayTimeDuration, 
+         xs:yearMonthDuration
+      </description>
+      <keywords>buildin-types conversion-to-self instance-of AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support year above 9999" satisfied="false"/>
+         <year_component_values value="support negative year" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0111a.xsl"/>
+      </test>
+      <result>
+         <error code="FODT0001" />
+      </result>
+   </test-case>
+   
+   <test-case name="as-0111b">
+      <description>
+         Bug 27216
+         Variant of previous test, with negative dependencies
+         Test with global xsl:variable without @select, where sequence constructor contains a typed value of the same
+         type as specified in @as. Values for @as tested: all built-in primitive types, xs:integer, xs:dayTimeDuration, 
+         xs:yearMonthDuration
+      </description>
+      <keywords>buildin-types conversion-to-self instance-of AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
       <environment ref="as-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="as-0111.xsl"/>
+         <stylesheet file="as-0111b.xsl"/>
       </test>
       <result>
          <assert>every $var in /out/* satisfies $var = "true"</assert>
@@ -328,15 +482,22 @@ a:_underscore_
    </test-case>
 
    <test-case name="as-0112">
-      <description>Test with xsl:template which returns an explicitly constructed built-in atomic type value and @as speficies the same type. Verify no typing error is raised. Value types tested: - all built-in primitive types, xs:integer, xs:dayTimeDuration, xs:yearMonthDuration</description>
+      <description>
+         Test with xsl:template which returns an explicitly constructed built-in atomic type value and @as speficies 
+         the same type. Verify no typing error is raised. Value types tested: - all built-in primitive types, xs:integer, 
+         xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
       <keywords>buildin-types conversion-to-self xsl:value-of AtomicOrUnionType</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, adding high/low year dependencies"/>
       <environment ref="as-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
+         <year_component_values value="support negative year" satisfied="true"/>
       </dependencies>
       <test>
-         <stylesheet file="as-0112.xsl"/>
+         <stylesheet file="as-0112a.xsl"/>
       </test>
       <result>
          <all-of>
@@ -351,6 +512,90 @@ a:_underscore_
             <assert>/out/template9 = "21999-05+14:00"</assert>
             <assert>/out/template10 = "1999-05"</assert>
             <assert>/out/template11 = "-0012-05:00"</assert>
+            <assert>/out/template12 = "2005"</assert>
+            <assert>/out/template13 = "--05-31"</assert>
+            <assert>/out/template14 = "--05-31+14:00"</assert>
+            <assert>/out/template15 = "---31+14:00"</assert>
+            <assert>/out/template16 = "---31Z"</assert>
+            <assert>/out/template17 = "--05+14:00"</assert>
+            <assert>/out/template18 = "--05"</assert>
+            <assert>/out/template19 = "true"</assert>
+            <assert>/out/template20 = "PM24"</assert>
+            <assert>/out/template21 = "07FF"</assert>
+            <assert>/out/template22 = "INF"</assert>
+            <assert>/out/template23 = "-0.00175"</assert>
+            <assert>/out/template24 = "-3.4201"</assert>
+            <assert>/out/template25 = "7.8899"</assert>
+            <assert>/out/template26 = "0"</assert>
+            <assert>/out/template27 = "0"</assert>
+            <assert>/out/template28 = "0"</assert>
+            <assert>/out/template29 = "INF"</assert>
+            <assert>/out/template30 = "43"</assert>
+            <assert>/out/template31 = "-300"</assert>
+            <assert>/out/template32 = "http://www.mytypetest.org"</assert>
+            <assert>/out/template34 = "PT1M39.999S"</assert>
+            <assert>/out/template35 = "-PT1H40M"</assert>
+            <assert>/out/template36 = "P1Y2M"</assert>
+            <assert>/out/template37 = "-P1Y9M"</assert>
+            <assert>/out/template38 = "hello"</assert>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="as-0112a">
+      <description>
+         Bug 27216
+         Variant of previous test with inverted dependencies, should throw overflow error.
+         Test with xsl:template which returns an explicitly constructed built-in atomic type value and @as speficies 
+         the same type. Verify no typing error is raised. Value types tested: - all built-in primitive types, xs:integer, 
+         xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>buildin-types conversion-to-self xsl:value-of AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support year above 9999" satisfied="false"/>
+         <year_component_values value="support negative year" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0112a.xsl"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="as-0112b">
+      <description>
+         Bug 27216
+         Variant of previous test without dependencies on high/low year values
+         Test with xsl:template which returns an explicitly constructed built-in atomic type value and @as speficies 
+         the same type. Verify no typing error is raised. Value types tested: - all built-in primitive types, xs:integer, 
+         xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>buildin-types conversion-to-self xsl:value-of AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0112b.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/template1 = "P1Y2M3DT10H30M23S"</assert>
+            <assert>/out/template2 = "-P1Y23DT59.123S"</assert>
+            <assert>/out/template3 = "2000-01-16T00:00:00Z"</assert>
+            <assert>/out/template4 = "9999-05-31T13:20:00+14:00"</assert>
+            <assert>/out/template5 = "13:20:00-05:00"</assert>
+            <assert>/out/template6 = "00:00:00"</assert>
+            <assert>/out/template7 = "0012-12-03-05:00"</assert>
+            <assert>/out/template8 = "1999-05-31"</assert>
+            <assert>/out/template9 = "6999-05+14:00"</assert>
+            <assert>/out/template10 = "1999-05"</assert>
+            <assert>/out/template11 = "0012-05:00"</assert>
             <assert>/out/template12 = "2005"</assert>
             <assert>/out/template13 = "--05-31"</assert>
             <assert>/out/template14 = "--05-31+14:00"</assert>
@@ -1192,11 +1437,68 @@ a:_underscore_
    </test-case>
 
    <test-case name="as-0501">
-      <description>Test with global xsl:variable where @select has an xs:untypedAtomic value and @as is a built-in atomic type. Verify the variable is of the type specified in @as. Values for @as tested: all built-in primitive types, xs:integer, xs:dayTimeDuration, xs:yearMonthDuration</description>
+      <description>
+         Test with global xsl:variable where @select has an xs:untypedAtomic value and @as is a built-in atomic type. 
+         Verify the variable is of the type specified in @as. Values for @as tested: all built-in primitive types,
+         xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
       <keywords>AtomicOrUnionType buildin-datatypes child-select-expression</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, add dependency on negative and high >9999 years"/>
       <environment>
-         <source role="." file="as-05.xml"/>
+         <source role="." file="as-05a.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="true"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0501.xsl"/>
+      </test>
+      <result>
+         <assert>every $var in /out/* satisfies $var = "true"</assert>
+      </result>
+   </test-case>
+
+   <test-case name="as-0501a">
+      <description>
+         Bug 27216
+         Variant of previous test with inverted support for negative and >9999 years
+         Test with global xsl:variable where @select has an xs:untypedAtomic value and @as is a built-in atomic type. 
+         Verify the variable is of the type specified in @as. Values for @as tested: all built-in primitive types,
+         xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>AtomicOrUnionType buildin-datatypes child-select-expression</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment>
+         <source role="." file="as-05a.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="false"/>
+         <year_component_values value="support year above 9999" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0501.xsl"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="as-0501b">
+      <description>
+         Bug 27216
+         Variant of previous test without year-value dependencies
+         Test with global xsl:variable where @select has an xs:untypedAtomic value and @as is a built-in atomic type. 
+         Verify the variable is of the type specified in @as. Values for @as tested: all built-in primitive types,
+         xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>AtomicOrUnionType buildin-datatypes child-select-expression</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment>
+         <source role="." file="as-05b.xml"/>
       </environment>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1290,10 +1592,63 @@ a:_underscore_
    </test-case>
 
    <test-case name="as-0801">
-      <description>Test with a sequence of xs:untypedAtomic values in @select of a global xsl:variable and @as is a built-in atomic type with occurence indicator (*). Verify variable is of type specified in @as. Values for @as tested: all built-in primitive types (except xs:QName), xs:integer, xs:dayTimeDuration, xs:yearMonthDuration</description>
+      <description>
+         Test with a sequence of xs:untypedAtomic values in @select of a global xsl:variable and @as is a built-in atomic 
+         type with occurence indicator (*). Verify variable is of type specified in @as. Values for @as tested: all 
+         built-in primitive types (except xs:QName), xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
       <keywords>buildin-datatypes OccurrenceIndicator child-select-expression xsl:variable AtomicOrUnionType</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-08"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, add dependency on negative and high >9999 years"/>
+      <environment ref="as-08a"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="true"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0801.xsl"/>
+      </test>
+      <result>
+         <assert>every $var in /out/* satisfies $var = "truefalse"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="as-0801a">
+      <description>
+         Bug 27216
+         Variant of previous test with inverted dependencies for year-values, should throw error
+         Test with a sequence of xs:untypedAtomic values in @select of a global xsl:variable and @as is a built-in atomic 
+         type with occurence indicator (*). Verify variable is of type specified in @as. Values for @as tested: all 
+         built-in primitive types (except xs:QName), xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>buildin-datatypes OccurrenceIndicator child-select-expression xsl:variable AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-08a"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="false"/>
+         <year_component_values value="support year above 9999" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0801.xsl"/>
+      </test>
+      <result>
+         <error code="FODT0001" />
+      </result>
+   </test-case>
+   
+   <test-case name="as-0801b">
+      <description>
+         Bug 27216
+         Variant of previous test without year-value dependencies
+         Test with a sequence of xs:untypedAtomic values in @select of a global xsl:variable and @as is a built-in atomic 
+         type with occurence indicator (*). Verify variable is of type specified in @as. Values for @as tested: all 
+         built-in primitive types (except xs:QName), xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>buildin-datatypes OccurrenceIndicator child-select-expression xsl:variable AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-08b"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -1306,12 +1661,19 @@ a:_underscore_
    </test-case>
 
    <test-case name="as-0802">
-      <description>Test with xsl:template which contains a sequence of xs:untypedAtomic values and @as is a built-in type with occurrence indicator (+). Values for @as tested: -all built-in primitive types (except xs:QName), xs:integer, xs:dayTimeDuration, xs:yearMonthDuration</description>
+      <description>
+         Test with xsl:template which contains a sequence of xs:untypedAtomic values and @as is a built-in type 
+         with occurrence indicator (+). Values for @as tested: -all built-in primitive types (except xs:QName), 
+         xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
       <keywords>buildin-datatypes OccurrenceIndicator child-select-expression xsl:sequence AtomicOrUnionType</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="as-08"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, add dependency on negative and high >9999 years"/>
+      <environment ref="as-08a"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="true"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="as-0802.xsl"/>
@@ -1324,6 +1686,73 @@ a:_underscore_
             <assert>/out/template4 = "-0012-12-03-05:00 1999-05-31"</assert>
             <assert>/out/template5 = "21999-05+14:00 1999-05"</assert>
             <assert>/out/template6 = "-0012-05:00 2005"</assert>
+            <assert>/out/template7 = "--05-31 --05-31+14:00"</assert>
+            <assert>/out/template8 = "---31+14:00 ---31Z"</assert>
+            <assert>/out/template9 = "--05+14:00 --05"</assert>
+            <assert>/out/template10 = "true false"</assert>
+            <assert>/out/template11 = "PM24 1010"</assert>
+            <assert>/out/template12 = "07FF ABCD"</assert>
+            <assert>/out/template13 = "1.1234E30 -0.00175"</assert>
+            <assert>/out/template14 = "-3.4201 7.8899 0"</assert>
+            <assert>/out/template15 = "0 0 INF"</assert>
+            <assert>/out/template16 = "43 -300"</assert>
+            <assert>/out/template17 = "http://www.mytypetest.org http://www.hello.org#one"</assert>
+            <assert>/out/template18 = "PT1M39.999S -PT1H40M"</assert>
+            <assert>/out/template19 = "P1Y2M -P1Y9M"</assert>
+            <assert>/out/template20 = "hello one two three"</assert>
+         </all-of>
+      </result>
+   </test-case>
+
+   <test-case name="as-0802a">
+      <description>
+         Bug 27216
+         Variant of previous test with inverted year-value dependencies, should throw error.
+         Test with xsl:template which contains a sequence of xs:untypedAtomic values and @as is a built-in type 
+         with occurrence indicator (+). Values for @as tested: -all built-in primitive types (except xs:QName), 
+         xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>buildin-datatypes OccurrenceIndicator child-select-expression xsl:sequence AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-08a"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="false"/>
+         <year_component_values value="support year above 9999" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0802.xsl"/>
+      </test>
+      <result>
+         <error code="FODT0001"/>
+      </result>
+   </test-case>
+
+   <test-case name="as-0802b">
+      <description>
+         Bug 27216
+         Variant of previous test without dependencies.
+         Test with xsl:template which contains a sequence of xs:untypedAtomic values and @as is a built-in type 
+         with occurrence indicator (+). Values for @as tested: -all built-in primitive types (except xs:QName), 
+         xs:integer, xs:dayTimeDuration, xs:yearMonthDuration
+      </description>
+      <keywords>buildin-datatypes OccurrenceIndicator child-select-expression xsl:sequence AtomicOrUnionType</keywords>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="as-08b"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0802.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/template1 = "P1Y2M3DT10H30M23S -P1Y23DT59.123S"</assert>
+            <assert>/out/template2 = "2000-01-16T00:00:00Z 9999-05-31T13:20:00+14:00"</assert>
+            <assert>/out/template3 = "13:20:00-05:00 00:00:00"</assert>
+            <assert>/out/template4 = "0012-12-03-05:00 1999-05-31"</assert>
+            <assert>/out/template5 = "6999-05+14:00 1999-05"</assert>
+            <assert>/out/template6 = "0012-05:00 2005"</assert>
             <assert>/out/template7 = "--05-31 --05-31+14:00"</assert>
             <assert>/out/template8 = "---31+14:00 ---31Z"</assert>
             <assert>/out/template9 = "--05+14:00 --05"</assert>
