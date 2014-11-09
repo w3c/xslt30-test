@@ -11,7 +11,7 @@
       <xsl:copy-of select="//foo"/>
     </xsl:copy>
   </xsl:variable>  
-  <out copied="{not($var2 is $var1/*)}"/>
+  <out copied="{not($var2 is $var1/*)}" equal="{deep-equal($var2, $var1/*)}"/>
 </xsl:template>
 
 </xsl:stylesheet>

@@ -281,9 +281,9 @@
    </test-case>
 
    <test-case name="date-019">
-      <description>XPath 2.0: test sorting of dateTimes</description>
+      <description>XPath 2.0: test sorting of dateTimes with high >9999 year in date</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Abel Braaksma" on="2014-10-21" change="Change dependency because test contains >9999 year component for xs:dateTime"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Bug 27118, change dependency because test contains >9999 year component for xs:dateTime"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -294,6 +294,21 @@
       </test>
       <result>
          <assert-xml file="date-019.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="date-019a">
+      <description>(Bug 27216) XPath 2.0: test sorting of dateTimes *without* high >9999 year values</description>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="date002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-019a.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="date-019a.out"/>
       </result>
    </test-case>
 
@@ -950,9 +965,9 @@
    </test-case>
 
    <test-case name="date-063">
-      <description>XPath 2.0: test min/max of dateTimes</description>
+      <description>XPath 2.0: test min/max of dateTimes with high >9999 year in date</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Abel Braaksma" on="2014-10-21" change="Change dependency because test contains >9999 year component for xs:dateTime"/>
+      <modified by="Abel Braaksma" on="2014-10-21" change="Bug 27118, change dependency because test contains >9999 year component for xs:dateTime"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -964,6 +979,23 @@
       <result>
          <assert-xml><![CDATA[<A>1995-12-23T13:29:00.2+03:00;
         10000-12-23T13:13:00.2+03:00;        
+    </A>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="date-063a">
+      <description>(Bug 27216) XPath 2.0: test min/max of dateTimes *without* high >9999 year in date</description>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="date002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-063a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<A>1995-12-23T13:29:00.2+03:00;
+        9999-12-23T13:13:00.2+03:00;        
     </A>]]></assert-xml>
       </result>
    </test-case>
@@ -1128,11 +1160,13 @@
    </test-case>
 
    <test-case name="date-074">
-      <description/>
+      <description>xs:date constructor with xsl:value-of and negative year</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, add dependency for negative year values"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="date-074.xsl"/>
@@ -1142,12 +1176,30 @@
       </result>
    </test-case>
 
-   <test-case name="date-075">
-      <description/>
-      <created by="Michael Kay" on="2012-11-07"/>
+   <test-case name="date-074a">
+      <description>xs:date constructor with xsl:value-of and high >9999 year</description>
+      <created by="Abel Braaksma" on="2014-10-31"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-074a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<a xmlns:xs="http://www.w3.org/2001/XMLSchema">195778-01-12</a>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="date-075">
+      <description>xs:dateTime constructor with xsl:value-of and negative year</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, add dependency for negative year values"/>
+      <environment ref="date002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="date-075.xsl"/>
@@ -1157,18 +1209,52 @@
       </result>
    </test-case>
 
-   <test-case name="date-076">
-      <description/>
-      <created by="Michael Kay" on="2012-11-07"/>
+   <test-case name="date-075a">
+      <description>xs:dateTime constructor with xsl:value-of and high >9999 year</description>
+      <created by="Abel Braaksma" on="2014-10-31"/>
       <environment ref="date002"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-075a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<a xmlns:xs="http://www.w3.org/2001/XMLSchema">195778-01-12T12:15:15</a>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="date-076">
+      <description>xs:gYear and xs:gYearMonth constructor with xsl:value-of and negative year</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-31" change="Bug 27216, add dependency for negative year values"/>
+      <environment ref="date002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support negative year" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="date-076.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<x xmlns:xs="http://www.w3.org/2001/XMLSchema"><a>-0055</a><b>-9876-06</b></x>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="date-076a">
+      <description>xs:gYear and xs:gYearMonth constructor with xsl:value-of and >9999 year</description>
+      <created by="Abel Braaksma" on="2014-10-31"/>
+      <environment ref="date002"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <year_component_values value="support year above 9999" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="date-076a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<x xmlns:xs="http://www.w3.org/2001/XMLSchema"><a>195778</a><b>195778-06</b></x>]]></assert-xml>
       </result>
    </test-case>
 

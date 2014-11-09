@@ -490,6 +490,7 @@
             </description>
             <created by="Abel Braaksma" on="2014-10-16"/>
             <modified by="Abel Braaksma" on="2014-10-21" change="Added dependency for sweep and posture tests, added @part attribute for subtests"/>
+            <modified by="Abel Braaksma" on="2014-10-28" change="Changed node-type for namespace-node() tests w/o axis specifier from error to namespace, see bug#26788 (only applies to relevant tests)"/>
             <test>
                 <posture-and-sweep context-posture="{$current('cp')!lower-case(.)}">
 
