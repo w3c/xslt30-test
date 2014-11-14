@@ -23,6 +23,8 @@
       <description/>
       <keywords>xsl:import xsl:include</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2014-10-16" change="changed result assertion"/>
+      <modified by="Michael Kay" on="2014-11-14" change="made this a serialization test"/>
       <environment ref="include-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -31,9 +33,10 @@
          <stylesheet file="include-0101.xsl"/>
          <stylesheet file="include-0101a.xsl" role="secondary"/>
          <stylesheet file="include-0101b.xsl" role="secondary"/>
+         <output serialize="yes"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<body changed="8 Feb 2002" var="E">Text of one-tagText of two-tag<br></body>]]></assert-xml>
+         <assert-serialization><![CDATA[<body changed="8 Feb 2002" var="E">Text of one-tagText of two-tag<br></body>]]></assert-serialization>
       </result>
    </test-case>
 
