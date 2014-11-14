@@ -1,6 +1,7 @@
 <xsl:transform version="3.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:eval="http://example.com/eval">
+  xmlns:eval="http://example.com/eval"
+  exclude-result-prefixes="eval">
 
   <!-- Basic test of saxon:evaluate-node() -->
   <!-- Formerly saxon013 -->

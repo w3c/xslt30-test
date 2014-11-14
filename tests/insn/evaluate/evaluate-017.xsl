@@ -6,7 +6,7 @@
    xmlns:saxon="http://saxon.sf.net/" 
    xmlns:math="http://www.w3.org/2005/xpath-functions/math" 
    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-   exclude-result-prefixes="saxon xs">
+   exclude-result-prefixes="saxon xs math">
 
    <xsl:param name="exp" select="
      if (function-available('saxon:system-id', 0))
