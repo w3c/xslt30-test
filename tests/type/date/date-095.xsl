@@ -1,6 +1,6 @@
 <?xml version="1.0"?> 
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" 
     xmlns:xdt="http://www.w3.org/2005/04/xpath-datatypes"
     exclude-result-prefixes="#all">
