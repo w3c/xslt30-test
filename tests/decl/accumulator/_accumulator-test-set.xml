@@ -732,6 +732,35 @@
          <error code="XTSE0020"/>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-038">
+      <description>Type error evaluating accumulator</description>
+      <keywords>fn:accumulator-after</keywords>
+      <created by="Michael Kay" on="2014-11-19"/>
+      <test>
+         <stylesheet file="accumulator-038.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-039">
+      <description>Local variable in initial-value/new-value of xsl:accumulator</description>
+      <keywords>fn:accumulator-after</keywords>
+      <created by="Michael Kay" on="2014-11-19"/>
+      <test>
+         <stylesheet file="accumulator-039.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>starts-with(/out/last, "2601 2704 2809 2916 3025 3136")</assert>
+           <assert>starts-with(/out/first, "4 9 16 25 36 49 64 81 100 121 144 169")</assert>
+         </all-of>
+      </result>
+   </test-case>
 
 
 </test-set>
