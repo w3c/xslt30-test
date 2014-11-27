@@ -1516,8 +1516,9 @@
 
    <test-case name="match-077">
       <description>FileName: MATCH9053-ERR Test use of an disallowed function at the start of a pattern</description>
-      <keywords>fn:root XTSE0340 XPST0017 priority</keywords>
+      <keywords>XTSE0340 XPST0017</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-11-14" change="change test to fulfil original intent (root() is now legal)"/>
       <environment ref="match1059"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -4256,6 +4257,39 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><A>123-AB</A><A>000-SS 000-RR</A><A>44</A><A>75</A><A>red blue green</A><A>123-AB</A></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-233">
+      <description>Call to root() function in a pattern</description>
+      <created by="Michael Kay" on="2014-10-24"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-233.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="match-234">
+      <description>Next-match with variable-based patterns (Saxon bug 2219 from Martin Honnen)</description>
+      <created by="Michael Kay" on="2014-11-14"/>
+      <environment>
+        <source role="." file="match-234.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-234.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><p>The brown <span><S/>fox</span> jumped over the lazy dog.</p
+         ><p>El zorro marron <span>salto<E/></span> el perro vago.</p></root>]]></assert-xml>
       </result>
    </test-case>
 </test-set>

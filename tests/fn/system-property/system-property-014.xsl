@@ -6,7 +6,7 @@
    
    <xsl:template name="main">
      <out>
-       <xsl:evaluate xpath="2+2" use-when="system-property('xsl:supports-dynamic-evaluation')='yes'"/>
+       <xsl:evaluate xpath="'2+2'" use-when="system-property('xsl:supports-dynamic-evaluation')='yes'"/>
        <xsl:value-of select="system-property('xsl:supports-dynamic-evaluation')"/>
      </out>
    </xsl:template>

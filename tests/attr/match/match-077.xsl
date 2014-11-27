@@ -6,12 +6,14 @@
   <!-- FileName: match9055-err -->
     <!-- Purpose: Test use of an disallowed function at the start of a pattern -->
 
-<xsl:template match="root()//a" priority="5">
+<xsl:template match="copy-of($x)//a" priority="5">
  <out>WRONG!</out>
 </xsl:template>
 
 <xsl:template match="/">
 <out>OK!</out>
 </xsl:template>
+
+<xsl:variable name="x"><a/></xsl:variable>
 
 </xsl:stylesheet>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
+          name="unparsed-entity-uri">
+   <description>Tests the unparsed-entity-uri function</description>
+
+
+   <test-case name="unparsed-entity-uri-050">
+      <description>Test that when multiple entities have the same name, we choose the first. See bug 27369.</description>
+      <created by="Michael Kay" on="2014-11-19"/>
+      <environment>
+        <source role="." file="unparsed-entity-uri-050.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="unparsed-entity-uri-050.xsl"/>
+      </test>
+      <result>
+         <assert>//img/@src="images\epub\dgr-en-08sdexample06-a.jpg"</assert>
+      </result>
+   </test-case>
+
+</test-set>
