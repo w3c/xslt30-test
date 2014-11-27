@@ -1694,9 +1694,13 @@ It is a non-recoverable dynamic
    </test-case>
    
    <test-case name="error-0047a">
-      <description>Error: It is a non-recoverable dynamic
-                        error if the invocation of the stylesheet specifies both an initial mode and an initial template.</description>
+      <description>
+         Note: this error is ambiguous unless there are no other invocation error conditions, hence the added initial match selection.
+         Error: It is a non-recoverable dynamic error if the invocation of the stylesheet specifies both an initial mode and an initial template.
+      </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2014-11-05" change="Was ambiguous, both XTDE0047 and XTDE0044 were possible, fixed with an initial match selection" />
+      <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -1707,6 +1711,28 @@ It is a non-recoverable dynamic
       </test>
       <result>
          <error code="XTDE0047"/>
+      </result>
+   </test-case>
+      
+   <test-case name="error-0047b">
+      <description>
+         Note: this test-case illustrates an ambiguity where there is a missing initial match selection AND a mode and template are specified.
+         Error: It is a non-recoverable dynamic error if the invocation of the stylesheet specifies both an initial mode and an initial template.
+      </description>
+      <created by="Abel Braaksma" on="2014-11-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0047b.xsl"/>
+         <initial-template name="main"/>
+         <initial-mode name="m"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XTDE0047"/>
+            <error code="XTDE0044"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -2153,11 +2179,11 @@ It is a static error if the
    </test-case>
 
    <test-case name="error-0150a">
-      <description>Error: xsl:stylesheet wrong namespace.
-Was error-code-039.
-A literal result element
-                     that is used as the outermost element of a simplified stylesheet module
-                        must have an xsl:version attribute.</description>
+      <description>
+         Error: xsl:stylesheet wrong namespace. A literal result element that is used as the outermost element of 
+         a simplified stylesheet module must have an xsl:version attribute.
+         Was error-code-039.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>

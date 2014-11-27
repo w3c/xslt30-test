@@ -13,7 +13,7 @@
     <xsl:output indent="yes" saxon:line-length="200"
         saxon:attribute-order="name total-count soft-count description instruction"/>
 
-    <xsl:param name="testlocation" select="'file:///D:/Projects/W3.org/XT3'"/>
+    <xsl:param name="testlocation" select="'file:///D:/Projects/AbraSoft/__HG-ALL__/Exselt/W3.Tests/_Test-Repository/XT3'"/>
 
     <xsl:param name="testcat" select="$testlocation || '/catalog.xml'"/>
 
@@ -226,11 +226,21 @@
         <q:set name="sort" description="Instruction xsl:sort" by-instruction="sort"/>
         <q:set name="stream" description="Instruction xsl:stream" by-instruction="stream"/>
         <q:set name="try" description="Instruction xsl:try" by-instruction="try"/>
-        <q:set name="xsl-document" description="Instruction xsl:document" by-instruction="document"
-        />
+        <q:set name="xsl-document" description="Instruction xsl:document" by-instruction="document" />
+        
+        <!-- other groupings -->
+        <q:set name="mode" description="J.1 #2 new xsl:mode declaration" by-instruction="mode" >
+            <q:query group-by="attribute" element-name="mode" />
+        </q:set>
+        <q:set name="merge" description="J.2 #2 new xsl:merge instruction" by-instruction="merge" >
+            <q:query group-by="attribute" element-name="merge" />
+        </q:set>
+        <q:set name="merge" description="J.2 #2 new xsl:merge-source instruction" by-instruction="merge-source" >
+            <q:query group-by="attribute" element-name="merge-source" />
+        </q:set>
     </xsl:variable>
 
-    <xsl:template match="/">
+    <xsl:template match="/" name="xsl:initial-template">
         <xsl:apply-templates select="doc($testcat)" mode="cat"/>
     </xsl:template>
 
@@ -341,7 +351,7 @@
         <xsl:variable name="xsldocs" select="f:getdocs($tests, current()/..)"/>
 
         <xsl:variable name="function-names" as="xs:string*">
-            <xsl:for-each select="$xsldocs//@*">
+            <xsl:for-each select="$xsldocs!(.//@*)">
                 <xsl:analyze-string select="." regex="([-a-z0-9:]+ *)\(">
                     <xsl:matching-substring>
                         <xsl:sequence select="regex-group(1)"/>
@@ -350,10 +360,28 @@
             </xsl:for-each>
         </xsl:variable>
 
-        <!-- count per instruction -->
+        <!-- count per function -->
         <xsl:for-each select="distinct-values($function-names)">
             <function name="{.}" soft-count="{count($function-names[. = current()])}" />
         </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template match="q:query[@group-by='attribute']" mode="query">
+        <xsl:param name="tests"/>
+        <xsl:variable name="q-set" select="current()/.."/>
+        <xsl:variable name="xsldocs" select="f:getdocs($tests, current()/..)"/>
+
+        <xsl:variable name="attributes" as="xs:string*">
+            <xsl:for-each select="$xsldocs!(.//*[local-name() = current()/@element-name])">
+                <xsl:sequence select="@*/name()" />
+            </xsl:for-each>
+        </xsl:variable>
+
+        <!-- count per attribute -->
+        <xsl:for-each select="distinct-values($attributes)">
+            <attribute name="{.}" count="{count($attributes[. = current()])}" />
+        </xsl:for-each>
+        <attribute name="test" count="{count($attributes[. = 'name'])}|{count($xsldocs)}" />
     </xsl:template>
 
     <xsl:function name="f:getdocs" as="document-node()*">

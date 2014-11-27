@@ -11,7 +11,7 @@
     <xsl:output indent="yes" />
     
     <!-- provide a test location base-uri with a trailing slash -->
-    <xsl:param name="test-location" select="'file:///d:/projects/w3.org/xt3/'" />
+    <xsl:param name="test-location" select="'file:///D:/Projects/AbraSoft/__HG-ALL__/Exselt/W3.Tests/_Test-Repository/XT3/'" />
     
     <xsl:mode name="catalog" on-no-match="shallow-skip" />
     <xsl:mode name="test-set" on-no-match="shallow-skip" />
