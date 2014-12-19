@@ -138,6 +138,7 @@
       <description>Basic test of first-class functions</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2013-12-09" change="fn:function-name() - The prefix part of the returned QName is implementation dependent."/>
+      <modified by="Michael Kay" on="2014-12-17" change="Prevent eager evaluation"/>     
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -146,13 +147,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <any-of>
-
-            <assert-xml><![CDATA[<x><a>2</a><b>abs</b><c>1</c><d>1</d></x>]]></assert-xml>
-
-            <assert-xml><![CDATA[<x><a>2</a><b>fn:abs</b><c>1</c><d>1</d></x>]]></assert-xml>
-
-         </any-of>
+         <assert-xml><![CDATA[<x><a>2</a><b>abs</b><c>1</c><d>1</d></x>]]></assert-xml>
       </result>
    </test-case>
 
