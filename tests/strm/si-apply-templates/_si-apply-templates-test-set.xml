@@ -74,6 +74,27 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="si-apply-templates-004">
+      <description>Test of xsl:stream instruction with xsl:apply-templates, 
+      	navigating to attributes; tests that attribute axis is striding.</description>
+      <created by="Michael Kay" on="2014-12-19"/>  
+      <test>
+         <stylesheet file="si-apply-templates-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+         	<assert>/Results/CATEGORIES/CATEGORY[1]/Attributes[Name='CODE' and Value='P' and Name='DESC' and Value='Paperback']</assert>
+         	<assert>/Results/CATEGORIES/CATEGORY[1]/Ancestors[
+         			*[1][self::Name][.='BOOKLIST'] and 
+         			*[2][self::Attributes[not(*)]] and 
+         			*[3][self::Name][.='CATEGORIES'] and
+         			*[4][self::Attributes[Name='DESC' and Value='Miscellaneous categories']]]</assert>
+            <assert>count(/Results/CATEGORIES/CATEGORY) = 3</assert>				
+         </all-of>
+      </result>
+   </test-case>
 
 
 </test-set>
