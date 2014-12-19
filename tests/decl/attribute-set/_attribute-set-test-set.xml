@@ -711,5 +711,38 @@
          <assert-xml><![CDATA[<Data foo="bar"><doc/></Data>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="attribute-set-1813">
+      <description>check use of attribute sets that require use of local variables</description>
+      <keywords>use-attribute-sets xsl:element</keywords>
+      <created by="Michael Kay" on="2014-12-16"/>
+      <environment ref="attribute-set-18"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-1813.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<a sum-sq="55" avg-sq="11"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-set-1814">
+      <description>check use of attribute sets that require use of static context</description>
+      <keywords>use-attribute-sets xsl:element</keywords>
+      <created by="Michael Kay" on="2014-12-16"/>
+      <environment ref="attribute-set-18"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-1814.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<a base-one="http://www.example.com/one"
+   base-two="http://www.example.com/two"/>]]></assert-xml>
+      </result>
+   </test-case>
 
 </test-set>
