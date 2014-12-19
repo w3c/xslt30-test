@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="si-conditional-content">
+   <description>Tests xsl:stream instruction introduced in XSLT 3.0 with xsl:conditional-content.</description>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="si-conditional-content-001">
+      <description>Test of xsl:stream instruction with xsl:conditional-content</description>
+      <created by="Michael Kay" on="2014-12-19"/>  
+      <test>
+         <stylesheet file="si-conditional-content-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<Results><first>one</first><last>last</last></Results>]]></assert-xml>
+      </result>
+   </test-case>
+
+</test-set>
