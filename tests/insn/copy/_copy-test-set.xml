@@ -726,6 +726,7 @@
    <test-case name="copy-1205">
       <description>Test xsl:copy on-empty</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -734,7 +735,7 @@
          <stylesheet file="copy-1205.xsl"/>
       </test>
       <result>
-         <assert>/out/rtf = 'abc'</assert>
+         <assert>/out/doc/rtf = 'abc'</assert>
       </result>
    </test-case>
 
@@ -743,6 +744,7 @@
          copied</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="Test slightly improved by testing for node equality as well, it should be the same node, not just different identity"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -753,7 +755,7 @@
       <result>
          <all-of>
             <assert>/out/@copied = 'true'</assert>
-            <assert>/out/@equal = 'true'</assert>            
+            <assert>/out/@equal = 'false'</assert>            
          </all-of>
       </result>
    </test-case>
@@ -762,6 +764,7 @@
       <description>Test xsl:copy on-empty: selecting empty sequence</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="Result is not element or docuement, quote: 'If the result of the instruction in the absence of the on-empty attribute would be an element or document[...]'. "/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -771,8 +774,7 @@
       </test>
       <result>
          <all-of>
-            <assert>/out</assert>
-            <assert>empty(/out/node())</assert>
+            <assert>/out/rtf = 'abc'</assert>
           </all-of>
       </result>
    </test-case>
@@ -782,6 +784,7 @@
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Michael Kay" on="2014-08-29" change="on-empty must now return an element node"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="Selected item is a doc node: 'If the selected item is not an element node, the attribute has no effect'"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -790,7 +793,7 @@
          <stylesheet file="copy-1208.xsl"/>
       </test>
       <result>
-         <assert>empty(/out/node())</assert>
+         <assert-xml><![CDATA[<out><rtf p="12">abc</rtf></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -799,6 +802,7 @@
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Michael Kay" on="2014-08-29" change="on-empty must now return an element node"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="Selected item is a doc node: 'If the selected item is not an element node, the attribute has no effect'"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -808,7 +812,7 @@
       </test>
       <result>
          <all-of>
-            <assert>empty(/out/rtf)</assert>
+            <assert-xml><![CDATA[<out><rtf p="12">abc</rtf></out>]]></assert-xml>
          </all-of>
       </result>
    </test-case>
@@ -818,6 +822,7 @@
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Michael Kay" on="2014-08-29" change="on-empty must now return an element node"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="Namespace node on a document node is not allowed, on-empty on document node has no effect"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -835,6 +840,7 @@
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Michael Kay" on="2014-08-29" change="on-empty must now return an element node"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="(unchanged, note:) on-empty on document node has no effect"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -851,6 +857,7 @@
       <description>Test xsl:copy on-empty: empty comment node</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="If the selected item is not an element node, the attribute has no effect,"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -861,7 +868,7 @@
       <result>
          <all-of>
             <assert>/out</assert>
-            <assert>/out/comment()</assert>
+            <assert>empty(/out/comment())</assert>
          </all-of>
       </result>
    </test-case>
@@ -869,6 +876,7 @@
    <test-case name="copy-1213">
       <description>Test xsl:copy on-empty: non-empty comment node</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -888,6 +896,7 @@
       <description>Test xsl:copy on-empty: empty text node</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="original test had no effect with or without on-empty, changed such that it tests if on-empty is ignored correctly"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -898,7 +907,7 @@
       <result>
          <all-of>
             <assert>/out</assert>
-            <assert>empty(/out/node())</assert>
+            <assert>/out/foo</assert>
          </all-of>
       </result>
    </test-case>
@@ -907,6 +916,7 @@
       <description>Test xsl:copy on-empty: non-empty text node</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="(unchanged, note:) on-empty on text node has no effect"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -926,6 +936,7 @@
       <description>Test xsl:copy on-empty: empty PI node</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="on-empty on PI node has no effect"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -936,7 +947,7 @@
       <result>
          <all-of>
             <assert>/out</assert>
-            <assert>/out/processing-instruction(go)</assert>
+            <assert>empty(/out/processing-instruction(go))</assert>
          </all-of>
       </result>
    </test-case>
@@ -945,6 +956,7 @@
       <description>Test xsl:copy on-empty: non-empty PI node</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="(unchanged, note:) on-empty on PI node has no effect"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -965,6 +977,7 @@
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Michael Kay" on="2014-08-29" change="on-empty must now return an element node"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="on-empty on attribute node has no effect"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -974,8 +987,8 @@
       </test>
       <result>
          <all-of>
-            <assert>exists(/out/@a)</assert>
-            <assert>/out/@a = ""</assert>
+            <assert>empty(/out/@a)</assert>
+            <assert>/out/@x = ""</assert>
           </all-of>
       </result>
    </test-case>
@@ -985,6 +998,7 @@
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Michael Kay" on="2014-08-29" change="on-empty must now return an element node"/>
       <modified by="Abel Braaksma" on="2014-10-28" change="(unchanged, note:) on-empty on attribute node has no effect"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new on-empty instruction"/>      
       <environment ref="copy-12"/>
       <dependencies>
          <spec value="XSLT30+"/>

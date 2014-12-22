@@ -11,18 +11,18 @@
 
 <xsl:template match="/">
   <out>
-    <a><lre xsl:on-empty="()">12</lre></a>
-    <b><lre xsl:on-empty="()"><x/></lre></b>
-    <c><lre xsl:on-empty="()"><!--heh--></lre></c>
-    <d><lre xsl:on-empty="()"><?pi?></lre></d>
-    <e><lre xsl:on-empty="()"><xsl:attribute name="x">12</xsl:attribute></lre></e>
-    <f><lre xsl:on-empty="()" x="12"/></f>
-    <g><lre xsl:on-empty="()"><xsl:attribute name="x" select="'abc'"/></lre></g>
+    <a><xsl:conditional-content><lre>12</lre></xsl:conditional-content></a>
+    <b><xsl:conditional-content><lre><x/></lre></xsl:conditional-content></b>
+    <c><xsl:conditional-content><lre><!--heh--></lre></xsl:conditional-content></c>
+    <d><xsl:conditional-content><lre><?pi?></lre></xsl:conditional-content></d>
+    <e><xsl:conditional-content><lre><xsl:attribute name="x">12</xsl:attribute></lre></xsl:conditional-content></e>
+    <f><xsl:conditional-content><lre x="12"/></xsl:conditional-content></f>
+    <g><xsl:conditional-content><lre><xsl:attribute name="x" select="'abc'"/></lre></xsl:conditional-content></g>
     
-    <p><lre xsl:on-empty="()"/></p>
-    <q><lre xsl:on-empty="()"></lre></q>
-    <r><lre xsl:on-empty="()"><xsl:value-of select="$zls"/></lre></r>
-    <s><lre xsl:on-empty="()" xmlns:p="http://p.com/"></lre></s>
+    <p><xsl:conditional-content><lre/></xsl:conditional-content></p>
+    <q><xsl:conditional-content><lre></lre></xsl:conditional-content></q>
+    <r><xsl:conditional-content><lre><xsl:value-of select="$zls"/></lre></xsl:conditional-content></r>
+    <s><xsl:conditional-content><lre xmlns:p="http://p.com/"></lre></xsl:conditional-content></s>
   </out>
 </xsl:template>
 

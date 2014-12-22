@@ -151,6 +151,7 @@
    <test-case name="element-0104">
       <description>xsl:element with on-empty.</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="element-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -166,6 +167,7 @@
    <test-case name="element-0105">
       <description>xsl:element with on-empty, producing an element</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="element-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -181,6 +183,7 @@
    <test-case name="element-0106">
       <description>xsl:element with on-empty, with intervening document node</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="element-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -196,6 +199,7 @@
    <test-case name="element-0107">
       <description>xsl:element with on-empty, with intervening empty text node</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="element-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -209,8 +213,9 @@
    </test-case>
 
    <test-case name="element-0108">
-      <description>xsl:element with on-empty, value is an atomic type (not allowed)</description>
+      <description>xsl:element with on-empty, value is an atomic type (now allowed)</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="use new conditional-content instruction"/>
       <environment ref="element-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -219,22 +224,7 @@
          <stylesheet file="element-0108.xsl"/>
       </test>
       <result>
-         <error code="XTTE3310"/>
-      </result>
-   </test-case>
-
-   <test-case name="element-0109">
-      <description>xsl:element with on-empty, value is two elements (not allowed)</description>
-      <created by="Michael Kay" on="2013-07-30"/>
-      <environment ref="element-01"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
-      <test>
-         <stylesheet file="element-0109.xsl"/>
-      </test>
-      <result>
-         <error code="XTTE3310"/>
+         <assert-xml><![CDATA[<out><one><name><e/></name></one><two>ues</two></out>]]></assert-xml>
       </result>
    </test-case>
    

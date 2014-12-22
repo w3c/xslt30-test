@@ -9,7 +9,10 @@
   <xsl:template match="/">
     <xsl:variable name="var1" as="node()"><xsl:value-of select="''"/></xsl:variable>
     <out>
-      <xsl:copy select="$var1" on-empty="my:node()"/>
+      <xsl:conditional-content>
+        <xsl:copy select="$var1"/>
+      </xsl:conditional-content> 
+      <xsl:on-empty select="my:node()"/> 
     </out>  
   </xsl:template>
   

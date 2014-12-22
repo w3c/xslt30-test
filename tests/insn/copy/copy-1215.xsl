@@ -7,7 +7,9 @@
 <xsl:template match="/">
   <xsl:variable name="var1" as="node()"><xsl:value-of select="'Boo!'"/></xsl:variable>
   <out>
-    <xsl:copy select="$var1" on-empty="()"/>
+    <xsl:conditional-content>
+      <xsl:copy select="$var1"/>
+    </xsl:conditional-content>  
   </out>  
 </xsl:template>
 

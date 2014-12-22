@@ -7,8 +7,9 @@
 <xsl:template match="/">
   <xsl:variable name="var1"><rtf/></xsl:variable>
   <out>
-    <xsl:copy on-empty="$var1/*">
-        <xsl:namespace name="n">http://example.com/nnnnnnn</xsl:namespace> 
+    <xsl:copy>
+        <xsl:namespace name="n">http://example.com/nnnnnnn</xsl:namespace>
+        <xsl:on-empty select="$var1/*"/> 
     </xsl:copy>  
   </out>  
 </xsl:template>

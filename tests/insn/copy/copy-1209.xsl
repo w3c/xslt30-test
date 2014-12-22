@@ -7,9 +7,10 @@
 <xsl:template match="/">
   <xsl:variable name="var1"><rtf p="12">abc</rtf></xsl:variable>
   <out>
-    <xsl:copy on-empty="$var1//*">
+    <xsl:copy>
       <xsl:document>
         <xsl:sequence select=".//non-existent"/>
+        <xsl:on-empty select="$var1//*"/>
       </xsl:document>  
     </xsl:copy>  
   </out>  

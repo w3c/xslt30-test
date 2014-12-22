@@ -9,20 +9,26 @@
   <t:template match="/">
 	<out>
 	  <one>
-          <name t:on-empty="$jaq">
+	    <t:conditional-content>
+          <name>
             <t:document>
               <t:value-of select="substring-after($n, 'name')"/>
 			  <t:if test="current-date() gt xs:date('2000-01-01')"><e/></t:if>
 			</t:document>  
 		  </name>
+		</t:conditional-content>
+		<t:on-empty select="$jaq"/>  
 	  </one>
 	  <two>
-		  <name t:on-empty="$jaq">
-		    <t:document>
-		      <t:value-of select="substring-after($n, 'name')"/>
+		 <t:conditional-content>
+          <name>
+            <t:document>
+              <t:value-of select="substring-after($n, 'name')"/>
 			  <t:if test="current-date() lt xs:date('2000-01-01')"><e/></t:if>
 			</t:document>  
 		  </name>
+		</t:conditional-content>
+		<t:on-empty select="$jaq"/>
 	  </two>	  
     </out>
   </t:template>

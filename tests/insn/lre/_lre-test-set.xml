@@ -365,6 +365,7 @@
    <test-case name="lre-019">
       <description>Various test cases for XSLT 3.0 xsl:on-empty attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2014-12-22" change="new syntax in spec"/>
       <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -373,7 +374,7 @@
          <stylesheet file="lre-019.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><a><lre>12</lre></a><b><lre><x/></lre></b><c/><d/><e><lre x="12"/></e><f><lre x="12"/></f><g><lre x="abc"/></g><p/><q/><r/><s/></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><a><lre>12</lre></a><b><lre><x/></lre></b><c/><d/><e/><f/><g/><p/><q/><r/><s/></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -470,6 +471,7 @@
    <test-case name="lre-104">
       <description>LRE with on-empty.</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="new syntax in spec"/>
       <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -485,6 +487,7 @@
    <test-case name="lre-105">
       <description>LRE with on-empty, producing an element</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="new syntax in spec"/>
       <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -500,6 +503,7 @@
    <test-case name="lre-106">
       <description>LRE with on-empty, with intervening document node</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="new syntax in spec"/>
       <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -515,6 +519,7 @@
    <test-case name="lre-107">
       <description>LRE with on-empty, with intervening empty text node</description>
       <created by="Michael Kay" on="2013-07-30"/>
+      <modified by="Michael Kay" on="2014-12-22" change="new syntax in spec"/>
       <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -528,9 +533,10 @@
    </test-case>
    
    <test-case name="lre-108">
-      <description>LRE with on-empty, value is an atomic type (not allowed)</description>
+      <description>LRE with on-empty, value is an atomic type (now allowed)</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2013-12-09" change="Corrected error code from XTTE3310 (specific to xsl:element) into XTTE3300 (specific to LRE)"/>
+      <modified by="Michael Kay" on="2014-12-22" change="new syntax in spec"/>
       <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -539,14 +545,15 @@
          <stylesheet file="lre-108.xsl"/>
       </test>
       <result>
-         <error code="XTTE3300"/>
+         <assert-xml><![CDATA[<out><one><name><e/></name></one><two>ues</two></out>]]></assert-xml>
       </result>
    </test-case>
    
    <test-case name="lre-109">
-      <description>LRE with on-empty, value is two elements (not allowed)</description>
+      <description>LRE with on-empty, value is two elements (now allowed)</description>
       <created by="Michael Kay" on="2013-07-30"/>
       <modified by="Abel Braaksma" on="2013-12-09" change="Corrected error code from XTTE3310 (specific to xsl:element) into XTTE3300 (specific to LRE)"/>
+      <modified by="Michael Kay" on="2014-12-22" change="new syntax in spec"/>
       <environment ref="lre10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -555,7 +562,7 @@
          <stylesheet file="lre-109.xsl"/>
       </test>
       <result>
-         <error code="XTTE3300"/>
+         <assert-xml><![CDATA[<out><one><name><e/></name></one><two><hat>tie</hat><jaq>ues</jaq></two></out>]]></assert-xml>
       </result>
    </test-case>
 
