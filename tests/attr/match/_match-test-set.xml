@@ -167,6 +167,10 @@
       <source role="." file="schemamatch096.xml" validation="strict"/>
       <schema role="source-reference" file="variousTypesSchemaMatch.xsd" xsd-version="1.0"/>
    </environment>
+   
+   <environment name="match-235">
+      <source role="." file="match-235.xml"/>
+   </environment>
 
 
    <test-case name="match-001">
@@ -4296,9 +4300,7 @@
    <test-case name="match-235">
       <description>Match pattern a/descendant::b[1] (Saxon bug from Martin Honnen)</description>
       <created by="Michael Kay" on="2015-01-04"/>
-      <environment>
-        <source role="." file="match-235.xml"/>
-      </environment>
+      <environment ref="match-235"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -4313,9 +4315,7 @@
    <test-case name="match-236">
       <description>Match pattern descendant::text()[1] (Saxon bug from Martin Honnen)</description>
       <created by="Michael Kay" on="2015-01-04"/>
-      <environment>
-        <source role="." file="match-235.xml"/><!-- sic -->
-      </environment>
+      <environment ref="match-235"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -4324,6 +4324,21 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><found>1</found><found>2</found><found>a</found><found>d1</found><found>d2</found><found>X</found></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-237">
+      <description>Match pattern a/descendant::b[last()]</description>
+      <created by="Michael Kay" on="2015-01-04"/>
+      <environment ref="match-235"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-237.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><found><foo>2</foo></found><found><foo>a</foo></found><found><foo>d2</foo></found></out>]]></assert-xml>
       </result>
    </test-case>
 </test-set>
