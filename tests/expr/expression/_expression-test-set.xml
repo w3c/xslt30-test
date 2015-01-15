@@ -1175,12 +1175,12 @@
          <stylesheet file="expression-1901.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>;
-      <a>true</a>;
-      <b/>;
-      <c>false</c>;
-      <d>-//Textuality//TEXT standard boilerplate//EN</d>;      
-    </out>]]></assert-xml>
+         <all-of>
+           <assert>/out/a = 'true'</assert>
+           <assert>/out/b = ''</assert>
+           <assert>/out/c = 'false'</assert>
+           <assert>/out/d = '-//Textuality//TEXT standard boilerplate//EN'</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -1193,6 +1193,41 @@
       </dependencies>
       <test>
          <stylesheet file="expression-1902.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="expression-1903">
+      <description>test unparsed-entity-public-id#2</description>
+      <created by="Michael Kay" on="2015-01-15"/>
+      <environment ref="expression-19"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="expression-1903.xsl"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/a = 'true'</assert>
+           <assert>/out/b = ''</assert>
+           <assert>/out/c = 'false'</assert>
+           <assert>/out/d = '-//Textuality//TEXT standard boilerplate//EN'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="expression-1904">
+      <description>PURPOSE test unparsed-entity-uri#2 function</description>
+      <created by="Michael Kay" on="2015-01-15"/>
+      <environment ref="expression-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="expression-1904.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out>true</out>]]></assert-xml>
