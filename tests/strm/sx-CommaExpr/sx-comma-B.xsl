@@ -246,6 +246,18 @@
           <xsl:value-of select="($insertion, //PRICE/ancestor-or-self::*/@*)" separator="|"/>
         </out>
       </xsl:stream>
-    </xsl:template>               
+    </xsl:template>
+    
+    <!-- Streaming comma operator: striding operand, transmission usage (bug 27668) -->
+    
+    <xsl:template name="r-036" use-when="$RUN">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:for-each select="/*/CATEGORIES/CATEGORY">
+            <v><xsl:value-of select="@DESC, @CODE"/></v>
+          </xsl:for-each>
+        </out>
+      </xsl:stream>
+    </xsl:template>                 
     
 </xsl:stylesheet>

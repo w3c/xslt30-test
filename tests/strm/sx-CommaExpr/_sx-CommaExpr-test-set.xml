@@ -303,6 +303,23 @@
       <result>
          <assert>/out = "MHK|MMP|P|P|P|H|P|A|B"</assert>
       </result>
+   </test-case>
+   
+   <test-case name="sx-comma-036">
+      <description>Streaming comma expression - two potentially consuming operands (bug 27668)</description>
+      <keywords>ParenthesizedExpr mixed-posture crawling-then-climbing leading-double-slash attribute-axis PathExpr ancestor-or-self-axis</keywords>
+      <created by="Michael Kay" on="2015-01-15"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-036"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/v[1] = 'P Paperback'</assert>
+           <assert>/out/v[2] = 'MMP Mass-market Paperback'</assert>
+           <assert>/out/v[3] = 'H Hard Cover'</assert>
+         </all-of>
+      </result>
    </test-case>  
 
 
@@ -599,6 +616,21 @@
       </result>
    </test-case>  
 
-
+   <test-case name="sx-comma-136">
+      <description>Streaming comma expression - two potentially consuming operands (bug 27668)</description>
+      <keywords>ParenthesizedExpr mixed-posture crawling-then-climbing leading-double-slash attribute-axis PathExpr ancestor-or-self-axis</keywords>
+      <created by="Michael Kay" on="2015-01-15"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-036"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/v[1] = 'Paperback P'</assert>
+           <assert>/out/v[2] = 'Mass-market Paperback MMP'</assert>
+           <assert>/out/v[3] = 'Hard Cover H'</assert>
+         </all-of>
+      </result>
+   </test-case>  
 
 </test-set>
