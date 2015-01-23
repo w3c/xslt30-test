@@ -18,7 +18,7 @@
         </out>
     </xsl:template>
     
-    <xsl:accumulator name="big" initial-value="0" as="xs:anyAtomicType*" 
+    <xsl:accumulator name="big" initial-value="0" as="xs:integer*" 
                streamable="no">
         <xsl:accumulator-rule match="*" 
                               new-value="$value, name(.)" phase="start"/>
