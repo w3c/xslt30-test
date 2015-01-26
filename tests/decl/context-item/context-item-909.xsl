@@ -5,8 +5,8 @@
     <!-- Duplicated xsl:context-item -->
   
     <xsl:template name="f:t">
-      <xsl:context-item use="prohibited"/>
-      <xsl:context-item use="prohibited"/>
+      <xsl:context-item use="absent"/>
+      <xsl:context-item use="absent"/>
       <xsl:sequence select="22"/>
     </xsl:template>
     

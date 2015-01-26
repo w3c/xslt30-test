@@ -5,7 +5,7 @@
     <!-- Misplaced xsl:context-item -->
   
     <xsl:function name="f:t">
-      <xsl:context-item use="prohibited"/>
+      <xsl:context-item use="absent"/>
       <xsl:sequence select="22"/>
     </xsl:function>
     

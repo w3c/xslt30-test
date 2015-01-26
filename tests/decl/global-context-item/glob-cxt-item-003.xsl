@@ -5,7 +5,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
 
 
-    <xsl:global-context-item use="prohibited"/>
+    <xsl:global-context-item use="absent"/>
     
     <xsl:variable name="g" select="/doc"/>
 

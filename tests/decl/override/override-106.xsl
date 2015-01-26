@@ -16,7 +16,7 @@
       <!-- illegal override, context item use does not match -->
   
       <xsl:template name="t" as="xs:string" visibility="public">
-        <xsl:context-item use="prohibited"/>
+        <xsl:context-item use="absent"/>
         <xsl:param name="in" as="xs:string"/>
         <xsl:param name="count" as="xs:integer"/>
         <xsl:value-of>

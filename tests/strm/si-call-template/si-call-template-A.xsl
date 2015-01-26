@@ -40,7 +40,7 @@
     </xsl:template>
     
     <xsl:template name="c-002a">
-      <xsl:context-item use="prohibited"/>
+      <xsl:context-item use="absent"/>
       <xsl:param name="price" as="xs:decimal"/>
       <PRICE><xsl:copy-of select="$price"/></PRICE>
     </xsl:template>

@@ -6,7 +6,7 @@
   
     <xsl:template name="f:t">
       banana
-      <xsl:context-item use="prohibited"/>
+      <xsl:context-item use="absent"/>
       <xsl:sequence select="22"/>
     </xsl:template>
     
