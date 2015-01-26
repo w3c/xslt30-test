@@ -5,7 +5,7 @@
          (OK, context item not used).-->
   
     <xsl:template match="doc">
-      <xsl:context-item use="prohibited"/>
+      <xsl:context-item use="absent"/>
       <xsl:param name="t" tunnel="yes"/>
       <xsl:copy-of select="$t"/>
     </xsl:template>

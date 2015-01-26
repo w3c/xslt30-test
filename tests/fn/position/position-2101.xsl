@@ -15,6 +15,7 @@
  <xsl:template match="end">
   <xsl:param name="s" select="()"/>
   <xsl:choose>
+   <xsl:when test="empty($s)"/>
    <xsl:when test="$s[1]=@name">
     <xsl:apply-templates select="following-sibling::*[1]">
      <xsl:with-param name="s" select="$s[position()!=1]"/>

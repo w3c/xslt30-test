@@ -10,25 +10,25 @@
     <xsl:param name="initial-count" static="yes" select="'0'"/>
     
     <!-- Use accumulators to compute min, max, sum, avg, and count in parallel -->
-    <!-- Also tests @applies-to -->
+
     
    <xsl:accumulator name="count"  as="xs:integer" _initial-value="{$initial-count}" 
-   					applies-to="transactions" _streamable="{$streamable}">
+   					 _streamable="{$streamable}">
      <xsl:accumulator-rule match="transaction" select="$value + 1"/>
    </xsl:accumulator>
    
    <xsl:accumulator name="sum"  as="xs:double" initial-value="0" 
-   					applies-to="transactions" _streamable="{$streamable}">
+   					 _streamable="{$streamable}">
      <xsl:accumulator-rule match="transaction" select="$value + @amount"/>
    </xsl:accumulator>
    
    <xsl:accumulator name="min"  as="xs:double" initial-value="999999999999" 
-   					_applies-to="{$applies-to}" _streamable="{$streamable}">
+   					 _streamable="{$streamable}">
      <xsl:accumulator-rule match="transaction" select="if (@amount &lt; $value) then @amount else $value"/>
    </xsl:accumulator>
    
    <xsl:accumulator name="max" as="xs:double" initial-value="-999999999999" 
-   					_applies-to="{$applies-to}" _streamable="{$streamable}">
+   					 _streamable="{$streamable}">
      <xsl:accumulator-rule match="transaction" select="if (@amount &gt; $value) then @amount else $value"/>
    </xsl:accumulator>
    

@@ -24,7 +24,7 @@
     <xsl:accumulator name="big" initial-value="for $i in $g to 100 return $i*$i" 
                streamable="no">
         <xsl:accumulator-rule match="*" 
-                              new-value="for $i in 1 to $g return remove($value, $i)" phase="start"/>
+                              select="for $i in 1 to $g return remove($value, $i)" phase="start"/>
         
     </xsl:accumulator>
 

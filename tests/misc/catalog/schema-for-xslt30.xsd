@@ -243,15 +243,11 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:accumulator-rule" minOccurs="1"  maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute name="name" type="xsl:EQName" />
-          <xs:attribute name="post-descent" type="xsl:EQName" />
-          <xs:attribute name="applies-to" type="xsl:pattern"/>
           <xs:attribute name="initial-value" type="xsl:expression"/>
           <xs:attribute name="as" type="xsl:sequence-type"/>
           <xs:attribute name="visibility" type="xsl:visibility-type"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
           <xs:attribute name="_name" type="xs:string" />
-          <xs:attribute name="_post-descent" type="xs:string" />
-          <xs:attribute name="_applies-to" type="xs:string"/> 
           <xs:attribute name="_initial-value" type="xs:string"/>
           <xs:attribute name="_as" type="xs:string"/>
           <xs:attribute name="_visibility" type="xs:string"/>
@@ -467,6 +463,8 @@ of problems processing the schema using various tools
   </xs:element>
 
   <xs:element name="comment" substitutionGroup="xsl:instruction" type="xsl:sequence-constructor-or-select"/>
+  
+  <xs:element name="conditional-content" substitutionGroup="xsl:instruction" type="xsl:sequence-constructor"/>
 
   <xs:element name="context-item">
     <xs:complexType>
@@ -478,7 +476,7 @@ of problems processing the schema using various tools
               <xs:restriction base="xs:token">
                 <xs:enumeration value="required"/>
                 <xs:enumeration value="optional"/>
-                <xs:enumeration value="prohibited"/>
+                <xs:enumeration value="absent"/>
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
@@ -499,14 +497,12 @@ of problems processing the schema using various tools
           <xs:attribute name="use-attribute-sets" type="xsl:EQNames" default=""/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
-          <xs:attribute name="on-empty" type="xsl:expression"/>
           <xs:attribute name="_select" type="xs:string"/>
           <xs:attribute name="_copy-namespaces" type="xs:string"/>
           <xs:attribute name="_inherit-namespaces" type="xs:string"/>
           <xs:attribute name="_use-attribute-sets" type="xs:string"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
-          <xs:attribute name="_on-empty" type="xs:string"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
               <xs:documentation>
@@ -610,14 +606,12 @@ of problems processing the schema using various tools
           <xs:attribute name="use-attribute-sets" type="xsl:EQNames" default=""/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
-          <xs:attribute name="on-empty" type="xsl:expression"/>
           <xs:attribute name="_name" type="xs:string"/>
           <xs:attribute name="_namespace" type="xs:string"/>
           <xs:attribute name="_inherit-namespaces" type="xs:string"/>
           <xs:attribute name="_use-attribute-sets" type="xs:string"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
-          <xs:attribute name="_on-empty" type="xs:string"/>
           <xs:assert test="exists(@name | @_name)"/>
           <xs:assert test="not(exists(@type) and exists(@validation))">
             <xs:annotation>
@@ -847,14 +841,16 @@ of problems processing the schema using various tools
               <xs:restriction base="xs:token">
                 <xs:enumeration value="required"/>
                 <xs:enumeration value="optional"/>
-                <xs:enumeration value="prohibited"/>
+                <xs:enumeration value="absent"/>
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
+          <xs:attribute name="use-accumulators" type="xsl:accumulator-names"/>         
           <xs:attribute name="_as" type="xs:string"/>
           <xs:attribute name="_use" type="xs:string"/>
           <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_use-accumulators" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1028,6 +1024,7 @@ of problems processing the schema using various tools
           <xs:attribute name="for-each-stream" type="xsl:expression"/>
           <xs:attribute name="select" type="xsl:expression"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
+          <xs:attribute name="use-accumulators" type="xsl:accumulator-names"/>
           <xs:attribute name="sort-before-merge" type="xsl:yes-or-no"/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
@@ -1036,6 +1033,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_for-each-stream" type="xs:string"/>
           <xs:attribute name="_select" type="xs:string"/>
           <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_use-accumulators" type="xs:string"/>
           <xs:attribute name="_sort-before-merge" type="xs:string"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
@@ -1204,6 +1202,10 @@ of problems processing the schema using various tools
   </xs:element>
 
   <xs:element name="on-completion" type="xsl:sequence-constructor-or-select"/>
+  
+  <xs:element name="on-empty" substitutionGroup="xsl:instruction" type="xsl:sequence-constructor-or-select"/>
+  
+  <xs:element name="on-non-empty" substitutionGroup="xsl:instruction" type="xsl:sequence-constructor-or-select"/>
 
   <xs:element name="otherwise" type="xsl:sequence-constructor"/>
 
@@ -1542,9 +1544,11 @@ of problems processing the schema using various tools
       <xs:complexContent>
         <xs:extension base="xsl:sequence-constructor">
           <xs:attribute name="href" type="xsl:avt"/>
+          <xs:attribute name="use-accumulators" type="xsl:accumulator-names"/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
           <xs:attribute name="_href" type="xs:string"/>
+          <xs:attribute name="_use-accumulators" type="xs:string"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
           <xs:assert test="exists(@href | @_href)"/>
@@ -1744,7 +1748,9 @@ of problems processing the schema using various tools
               <xs:element ref="xsl:fallback"/>
             </xs:choice>
           </xs:sequence>
+          <xs:attribute name="rollback-output" type="xsl:yes-or-no" default="yes"/>
           <xs:attribute name="select" type="xsl:expression" use="optional"/>
+          <xs:attribute name="_rollback-output" type="xs:string"/>
           <xs:attribute name="_select" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
@@ -1918,6 +1924,23 @@ of problems processing the schema using various tools
   </xs:annotation>
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
+  <xs:simpleType name="accumulator-names">
+    <xs:annotation>
+      <xs:documentation> The use-accumulators attribute of xsl:stream, xsl:merge-source, or xsl:global-context-item: 
+        either a list, each member being a QName; or the value #all </xs:documentation>
+    </xs:annotation>   
+    <xs:union>
+      <xs:simpleType>
+        <xs:list itemType="xsl:EQName"/>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="#all"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>     
+  </xs:simpleType> 
+  
   <xs:simpleType name="avt">
     <xs:annotation>
       <xs:documentation> This type is used for all attributes that allow an attribute value
@@ -2206,7 +2229,7 @@ of problems processing the schema using various tools
         <p>Although xs:QName would define the correct validation on these
         attributes, a schema processor would expand unprefixed QNames incorrectly when constructing
         the PSVI, because (as defined in XML Schema errata) an unprefixed xs:QName is assumed to be
-        in the default namespace, which is not the correct assumption for XSLT. The data type is therefore
+        in the default namespace, which is not the correct assumption for XSLT. The datatype is therefore
         defined as a union of NCName and QName, so that an unprefixed name will be validated as an 
         NCName and will therefore not be treated as having the semantics of an unprefixed xs:QName. </p>
       </xs:documentation>
@@ -2233,7 +2256,7 @@ of problems processing the schema using various tools
   
   <xs:simpleType name="sequence-type">
     <xs:annotation>
-      <xs:documentation> The description of a data type, conforming to the SequenceType production
+      <xs:documentation> The description of a datatype, conforming to the SequenceType production
         defined in the XPath 2.0 Recommendation </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">

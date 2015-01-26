@@ -21,7 +21,7 @@
     <xsl:accumulator name="big" initial-value="0" as="xs:integer*" 
                streamable="no">
         <xsl:accumulator-rule match="*" 
-                              new-value="$value, name(.)" phase="start"/>
+                              select="$value, name(.)" phase="start"/>
         
     </xsl:accumulator>
 

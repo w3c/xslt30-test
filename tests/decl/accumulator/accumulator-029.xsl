@@ -7,7 +7,7 @@
   
   <xsl:mode streamable="yes"/>
   
-  <xsl:accumulator name="a" as="xs:integer" initial-value="0" applies-to="doc[chap]" streamable="yes">
+  <xsl:accumulator name="a" as="xs:integer" initial-value="0"  streamable="yes">
     <xsl:accumulator-rule match="chap" select="0"/>
     <xsl:accumulator-rule match="fig[caption]" select="$value + 2"/>
   </xsl:accumulator>
