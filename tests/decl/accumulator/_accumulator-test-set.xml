@@ -320,65 +320,6 @@
       </result>
    </test-case>
    
-   <test-case name="accumulator-016">
-      <description>
-      	Multiple accumulators used in parallel; uses @applies-to. Non-streaming.
-      	Error: accumulator does not apply to current document.
-      </description>
-      <created by="Michael Kay" on="2014-07-04"/>
-      <modified by="Michael Kay" on="2014-08-01" change="Backlog (by AB), bug#26330 rename @new-value to @select" />
-      <environment ref="accumulator-004"/>
-      <test>
-         <stylesheet file="accumulator-007.xsl"/>
-         <param name="applies-to" as="xs:string" select="'bananas'" static="yes"/>
-         <param name="streamable" static="yes" select="'no'"/>
-      </test>
-      <result>
-         <error code="XTDE3361"/>
-      </result>
-   </test-case>
-   
-   <test-case name="accumulator-016s">
-      <description>
-      	Applies-to pattern is not motionless. Error case when streaming.
-      </description>
-      <created by="Michael Kay" on="2014-07-04"/>
-      <modified by="Michael Kay" on="2014-08-01" change="Backlog (by AB), bug#26330 rename @new-value to @select" />
-      <environment ref="accumulator-004s"/>
-      <dependencies>
-         <feature value="streaming"/>
-      </dependencies>
-      <test>
-         <stylesheet file="accumulator-007.xsl"/>
-         <param name="applies-to" as="xs:string" select="'transactions[transaction]'" static="yes"/>
-         <param name="streamable" static="yes" select="'yes'"/>
-      </test>
-      <result>
-         <error code="XTSE3430"/>
-      </result>
-   </test-case>
-
-   <test-case name="accumulator-018s">
-      <description>
-      	Multiple accumulators used in parallel; uses @applies-to. Streaming.
-      	Error: accumulator does not apply to current document.
-      </description>
-      <created by="Michael Kay" on="2014-07-04"/>
-      <modified by="Michael Kay" on="2014-08-01" change="Backlog (by AB), bug#26330 rename @new-value to @select" />
-      <environment ref="accumulator-004s"/>
-      <dependencies>
-         <feature value="streaming"/>
-      </dependencies>
-      <test>
-         <stylesheet file="accumulator-007.xsl"/>
-         <param name="applies-to" as="xs:string" select="'bananas'" static="yes"/>
-         <param name="streamable" static="yes" select="'yes'"/>
-      </test>
-      <result>
-         <error code="XTDE3361"/>
-      </result>
-   </test-case>
-   
    <test-case name="accumulator-019s">
       <description>
       	Initial-value expression is not motionless. Error case when streaming.
