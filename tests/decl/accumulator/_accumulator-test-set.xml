@@ -26,6 +26,15 @@
    <environment name="accumulator-015s">
       <source role="." file="accumulator-015.xml" streaming="true"/>
    </environment>
+   <environment name="accumulator-042">
+      <source role="." file="accumulator-042.xml" streaming="true"/>
+   </environment>
+   <environment name="accumulator-043">
+      <source role="." file="books.xml" streaming="true"/>
+   </environment>
+   <environment name="accumulator-044s">
+      <source role="." file="accumulator-044.xhtml" streaming="true"/>
+   </environment>
    <dependencies>
       <spec value="XSLT30+"/>
    </dependencies>
@@ -705,5 +714,43 @@
       </result>
    </test-case>
 
+   <test-case name="accumulator-041">
+      <description>Keep a Word Count</description>
+      <keywords>xsl:accumulator</keywords>
+      <environment ref="accumulator-040s"/>
+      <created by="" on="2015-01-23"/>
+      <test>
+         <stylesheet file="accumulator-041.xsl"/>
+      </test>
+      <result>
+     	 <assert>/p/text() = 'Word count: 27'</assert><!-- count(//text()/tokenize(string(.), '\W+')) -->
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-042">
+      <description>Output Hierarchic Section Numbers</description>
+      <keywords>xsl:accumulator</keywords>
+      <environment ref="accumulator-042"/>
+      <created by="" on="2015-01-23"/>
+      <test>
+         <stylesheet file="accumulator-042.xsl"/>
+      </test>
+      <result>
+     	 <assert-xml><![CDATA[<p>1</p><p>1.1</p><p>1.2</p><p>1.3</p><p>1.3.1</p><p>1.3.2</p>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-043">
+      <description>Compute a Histogram showing the Number of Books, by Publisher</description>
+      <keywords>xsl:accumulator</keywords>
+      <environment ref="accumulator-043"/>
+      <created by="" on="2015-01-26"/>
+      <test>
+         <stylesheet file="accumulator-043.xsl"/>
+      </test>
+      <result>
+     	 <assert-xml><![CDATA[<histogram><publisher name="Modern Library">1</publisher><publisher name="Penguin Classics">2</publisher><publisher name="Bantam Classics">1</publisher><publisher name="Hodder &amp; Stoughton">1</publisher><publisher name="Penguin">1</publisher></histogram>]]></assert-xml>
+      </result>
+   </test-case>
 
 </test-set>
