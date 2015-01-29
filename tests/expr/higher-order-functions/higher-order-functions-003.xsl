@@ -9,8 +9,10 @@
     
     <xsl:import href="higher-order-functions-001.xsl"/>
     
+    <xsl:param name="b" select="true()"/>
+    
     <xsl:template name="main">
-        <out><xsl:value-of select="let $f := local:f#1 return $f(4)"/></out>
+        <out><xsl:value-of select="let $f := (if ($b) then local:f#1 else abs#1) return $f(4)"/></out>
     </xsl:template>
     
 </xsl:stylesheet>

@@ -7,13 +7,15 @@
     
     <!-- inline function literal, used-defined function -->
     
+    <xsl:param name="b" select="true()"/>
+    
     <xsl:function name="local:f" as="xs:integer">
         <xsl:param name="x" as="xs:integer"/>
         <xsl:sequence select="$x + 1"/>
     </xsl:function>
     
     <xsl:template name="main">
-        <out><xsl:value-of select="let $f := local:f#1 return $f(2)"/></out>
+        <out><xsl:value-of select="let $f := (if ($b) then local:f#1 else round#1) return $f(2)"/></out>
     </xsl:template>
     
 </xsl:stylesheet>

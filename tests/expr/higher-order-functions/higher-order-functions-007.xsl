@@ -7,6 +7,7 @@
     
     <!-- inline function literal, constructor function, user-defined atomic type  -->
     
+    <xsl:param name="b" select="true()"/>    
 
     <xsl:import-schema>
         <xs:schema targetNamespace="http://local/">
@@ -19,7 +20,7 @@
     </xsl:import-schema>
     
     <xsl:template name="main">
-        <out><xsl:value-of select="let $f := local:abc123#1 return $f('xyz987')"/></out>
+        <out><xsl:value-of select="let $f := (if ($b) then local:abc123#1 else string#1) return $f('xyz987')"/></out>
     </xsl:template>
     
 </xsl:stylesheet>

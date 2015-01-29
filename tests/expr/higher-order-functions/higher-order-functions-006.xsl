@@ -7,10 +7,10 @@
     
     <!-- inline function literal, constructor function, non default namespace  -->
     
-
+    <xsl:param name="b" select="true()"/>
     
     <xsl:template name="main">
-        <out><xsl:value-of select="let $f := xs:date#1 return $f('2008-01-31')"/></out>
+        <out><xsl:value-of select="let $f := (if ($b) then xs:date#1 else xs:time#1) return $f('2008-01-31')"/></out>
     </xsl:template>
     
 </xsl:stylesheet>

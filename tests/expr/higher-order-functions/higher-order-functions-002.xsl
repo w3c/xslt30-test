@@ -7,6 +7,8 @@
     
     <!-- inline function literal, used-defined function -->
     
+    <xsl:param name="b" select="true()"/>
+    
     <xsl:function name="local:f" as="xs:integer">
         <xsl:sequence select="42"/>
     </xsl:function>
@@ -17,7 +19,7 @@
     </xsl:function>
     
     <xsl:template name="main">
-        <out><xsl:value-of select="let $f := local:f#0 return $f()"/></out>
+        <out><xsl:value-of select="let $f := (if ($b) then local:f#0 else false#0) return $f()"/></out>
     </xsl:template>
     
 </xsl:stylesheet>

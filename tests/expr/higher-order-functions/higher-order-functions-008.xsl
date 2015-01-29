@@ -13,8 +13,10 @@
     </xsl:function>
     
     <xsl:template name="main">
-        <xsl:variable name="f" as="function(*)" select="local:f#1"/>
         <out><xsl:value-of select="$f(2)"/></out>
     </xsl:template>
+    
+    <xsl:param name="f" as="function(*)" select="local:f#1"/>
+        
     
 </xsl:stylesheet>

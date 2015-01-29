@@ -13,8 +13,9 @@
         <xsl:sequence select="$x + $y"/>
     </xsl:function>
     
-    <xsl:template name="main">
-        <xsl:variable name="f" as="function(xs:integer, xs:long) as xs:integer" select="local:f#2"/>
+    <xsl:param name="f" as="function(xs:integer, xs:long) as xs:integer" select="local:f#2"/>
+    
+    <xsl:template name="main">        
         <out><xsl:value-of select="$f(2, xs:long(5))"/></out>
     </xsl:template>
     
