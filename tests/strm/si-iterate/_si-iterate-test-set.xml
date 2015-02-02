@@ -164,6 +164,22 @@
       </result>
    </test-case>
    
+   <test-case name="si-iterate-094">
+      <description>Streaming xsl:iterate, with possibility of early exit. (From Martin Honnen)</description>
+      <created by="Michael Kay" on="2015-02-02"/>
+      <environment>
+        <source role="." streaming="true" file="si-iterate-094.xml"/>
+      </environment>  
+      <test>
+         <stylesheet file="si-iterate-094.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<out><p>foo bar foobar</p><p>foobar baz foo</p></out>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="si-iterate-095">
       <description>within a streaming template, use xsl:iterate to process the subtree</description>
       <created by="Michael Kay" on="2012-11-07"/>
