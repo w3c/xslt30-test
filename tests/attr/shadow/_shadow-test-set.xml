@@ -126,5 +126,23 @@
          <assert>/out = '1'</assert>
       </result>
    </test-case>
+   
+   <test-case name="shadow-007">
+      <description>
+         Underscored attributes on LREs are unaffected
+      </description>
+      <keywords>static-variable xsl:template _xpath-default-namespace</keywords>
+      <created by="Michael Kay" on="2015-02-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="shadow-007.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out one="1" _one="1.0" _two="two"/>]]></assert-xml>
+      </result>
+   </test-case>
 
 </test-set>
