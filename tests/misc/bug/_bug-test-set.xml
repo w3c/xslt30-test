@@ -564,6 +564,25 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="bug-1203">
+      <description>disable-output-escaping affected by optimization. Saxon bug 2312.</description>
+      <created by="Michael Kay" on="2015-02-06"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="bug-1203.xsl"/>
+         <initial-template name="main"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<a>&gt;</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<b>&gt;</b>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="bug-1301">
       <description>BUG: not a bug, as it turned out. Tests numeric sorting.</description>
