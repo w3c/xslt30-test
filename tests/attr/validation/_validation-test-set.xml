@@ -820,6 +820,25 @@
          <assert-xml><![CDATA[<z xmlns:t="http://ns.example.com/val12/"><a>true</a><a>false</a></z>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="validation-1301">
+      <description>
+        Test validation="strict" on an LRE using XSD 1.1 conditional type assignment.
+        Saxon bug 2316.
+      </description>
+      <created by="Michael Kay" on="2015-02-18"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+         <feature value="XSD_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1301.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<list><element type="type2"><child1/><child2/></element></list>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="validation-1401">
       <description>test use of a path expression containing an axis step referring to document-node(element(X))</description>
