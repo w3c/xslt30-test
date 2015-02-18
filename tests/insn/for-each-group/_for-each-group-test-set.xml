@@ -1252,18 +1252,67 @@ while you are in the cinema.</p></o>]]></assert-xml>
       </result>
    </test-case>
    
-   <test-case name="for-each-group-077">
-      <description>ERR XTSE1090: cannot specify composite except with group-by/adjacent</description>
-      <created by="Debbie Lockett" on="2014-08-04"/>
+   <test-case name="for-each-group-078a">
+      <description>A dynamic call on current-group() is a dynamic error</description>
+      <created by="Michael Kay" on="2015-02-07"/>
       <environment ref="group020"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <stylesheet file="for-each-group-077.xsl"/>
+         <stylesheet file="for-each-group-078.xsl"/>
+         <initial-template name="one"/>
       </test>
       <result>
-         <error code="XTSE1090"/>
+         <assert-xml><a/></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-078b">
+      <description>A dynamic call on current-group() is a dynamic error</description>
+      <created by="Michael Kay" on="2015-02-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-078.xsl"/>
+         <initial-template name="two"/>
+      </test>
+      <result>
+         <error code="XTDE1061"/>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-079a">
+      <description>A dynamic call on current-grouping-key() is a dynamic error</description>
+      <created by="Michael Kay" on="2015-02-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-079.xsl"/>
+         <initial-template name="one"/>
+      </test>
+      <result>
+         <assert-xml><a/></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-079b">
+      <description>A dynamic call on current-grouping-key() is a dynamic error</description>
+      <created by="Michael Kay" on="2015-02-07"/>
+      <environment ref="group020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-079.xsl"/>
+         <initial-template name="two"/>
+      </test>
+      <result>
+         <error code="XTDE1061"/>
       </result>
    </test-case>
 </test-set>
