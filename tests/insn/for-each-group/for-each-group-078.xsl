@@ -6,7 +6,7 @@
   </xsl:template>
   <xsl:template name="two">
     <xsl:for-each-group select="1 to 10" group-by=". mod 2">
-      <a value="$f()"/>
+      <a value="{$f()}"/>
     </xsl:for-each-group>
   </xsl:template>
 </xsl:stylesheet>
