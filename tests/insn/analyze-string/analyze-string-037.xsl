@@ -2,7 +2,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
 
-  <!-- PURPOSE: test non-capturing-groups allowed in 2.1 only -->
+  <!-- PURPOSE: test non-capturing-groups allowed from XSLT 3.0 only -->
   
   <xsl:param name="in" select="'ABCDEFGH'"/>
 
