@@ -34,6 +34,10 @@
     
     <xsl:variable name="p:final-var" select="p:f('+', 3)" visibility="final"/>
     
-  
+    <xsl:variable name="p:f-private-ref" select="p:f-private#2" visibility="public"/>
+    
+    <xsl:variable name="p:f-ref" select="p:f#2" visibility="public"/>
+    
+    <xsl:variable name="p:f-partial" select="p:f(?, 3)" visibility="public"/>
   
 </xsl:package>   
