@@ -4,37 +4,41 @@
           name="override">
    <description>Tests xsl:override in XSLT 3.0</description>
    
-   <environment name="override-env-001">
-      <package file="override-base-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-001" package-version="1.0.0"/>
+   <environment name="override-f-A">
+      <package file="override-base-f-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-001" package-version="1.0.0"/>
    </environment>
    
-   <environment name="override-env-101">
-      <package file="override-base-101.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-101" package-version="1.0.0"/>
+   <environment name="override-t-B">
+      <package file="override-base-t-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-101" package-version="1.0.0"/>
    </environment>
    
-   <environment name="override-env-201">
-      <package file="override-base-201.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-201" package-version="1.0.0"/>
+   <environment name="override-v-C">
+      <package file="override-base-v-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-201" package-version="1.0.0"/>
    </environment>
    
-   <environment name="override-env-301">
-      <package file="override-base-301.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-301" package-version="1.0.0"/>
+   <environment name="override-as-D">
+      <package file="override-base-as-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-301" package-version="1.0.0"/>
    </environment>
    
-   <environment name="override-env-901">
-      <package file="override-base-901.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-901" package-version="1.0.0"/>
+   <environment name="override-misc-E">
+      <package file="override-base-misc-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-901" package-version="1.0.0"/>
+   </environment>
+   
+   <environment name="override-misc-F">
+      <package file="override-base-misc-002.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-misc-002" package-version="1.0.0"/>
    </environment>
 
    <dependencies>
       <spec value="XSLT30+"/>
    </dependencies>
 
-   <test-case name="override-001">
+   <test-case name="override-f-001">
       <description>Successful override of a function</description>
       <created by="Michael Kay" on="2013-07-08"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-001.xsl" role="principal"/>
+         <package file="override-f-001.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -42,13 +46,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-002">
+   <test-case name="override-f-002">
       <description>Successful use of override of a function defined in a library package</description>
       <created by="O'Neil Delpratt" on="2013-07-17"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-002.xsl" role="principal"/>
+         <package file="override-f-002.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -56,13 +60,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-003">
+   <test-case name="override-f-003">
       <description>Unsuccessful use of override of a function defined in a library package. Parameter types are different</description>
       <created by="O'Neil Delpratt" on="2013-07-17"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-003.xsl" role="principal"/>
+         <package file="override-f-003.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -70,13 +74,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-004">
+   <test-case name="override-f-004">
       <description>Unsuccessful use of override of a function as it is not defined in a library package.</description>
       <created by="O'Neil Delpratt" on="2013-07-17"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-004.xsl" role="principal"/>
+         <package file="override-f-004.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -84,13 +88,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-005">
+   <test-case name="override-f-005">
       <description>Disallow text as a child of xsl:override.</description>
       <created by="Michael Kay" on="2013-07-19"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-005.xsl" role="principal"/>
+         <package file="override-f-005.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -98,13 +102,13 @@
       </result>
    </test-case>  
    
-   <test-case name="override-006">
+   <test-case name="override-f-006">
       <description>Disallow LRE as a child of xsl:override.</description>
       <created by="Michael Kay" on="2013-07-19"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-006.xsl" role="principal"/>
+         <package file="override-f-006.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -112,13 +116,13 @@
       </result>
    </test-case> 
    
-   <test-case name="override-007">
+   <test-case name="override-f-007">
       <description>Disallow xsl:override as a child of xsl:override.</description>
       <created by="Michael Kay" on="2013-07-19"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-007.xsl" role="principal"/>
+         <package file="override-f-007.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -126,13 +130,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-008">
+   <test-case name="override-f-008">
       <description>Empty xsl:override is allowed.</description>
       <created by="Michael Kay" on="2013-07-19"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-008.xsl" role="principal"/>
+         <package file="override-f-008.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -140,13 +144,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-009">
+   <test-case name="override-f-009">
       <description>Overridden function called from within a stylesheet function</description>
       <created by="Michael Kay" on="2013-10-17"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-009.xsl" role="principal"/>
+         <package file="override-f-009.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -154,13 +158,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-010">
+   <test-case name="override-f-010">
       <description>Overridden function called from within a global variable initializer</description>
       <created by="Michael Kay" on="2013-10-17"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-010.xsl" role="principal"/>
+         <package file="override-f-010.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -168,13 +172,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-011">
+   <test-case name="override-f-011">
       <description>Overridden function called from within a template rule</description>
       <created by="Michael Kay" on="2013-10-17"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-011.xsl" role="principal"/>
+         <package file="override-f-011.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -182,13 +186,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-012">
+   <test-case name="override-f-012">
       <description>Overridden function called from within a global variable in used package</description>
       <created by="Michael Kay" on="2013-10-17"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-012.xsl" role="principal"/>
+         <package file="override-f-012.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -196,12 +200,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-013">
+   <test-case name="override-f-013">
       <description>Overridden function called via function reference in used package</description>
       <created by="Michael Kay" on="2015-02-28"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-013.xsl" role="principal"/>
+         <package file="override-f-013.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -209,12 +213,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-014">
+   <test-case name="override-f-014">
       <description>Private function called via function reference in used package</description>
       <created by="Michael Kay" on="2015-02-28"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-014.xsl" role="principal"/>
+         <package file="override-f-014.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -222,13 +226,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-015">
+   <test-case name="override-f-015">
       <description>Partial function application of an overridden function</description>
       <!-- Currently (2015-02-28) failing in Saxon because we're binding statically to the target function -->
       <created by="Michael Kay" on="2015-02-28"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-015.xsl" role="principal"/>
+         <package file="override-f-015.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -236,12 +240,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-016">
+   <test-case name="override-f-016">
       <description>A function call using xsl:original</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-016.xsl" role="principal"/>
+         <package file="override-f-016.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -249,12 +253,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-017">
+   <test-case name="override-f-017">
       <description>A named function reference using xsl:original</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-017.xsl" role="principal"/>
+         <package file="override-f-017.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -262,12 +266,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-018">
+   <test-case name="override-f-018">
       <description>Partial function application using xsl:original</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-001"/>
+      <environment ref="override-f-A"/>
       <test>
-         <package file="override-018.xsl" role="principal"/>
+         <package file="override-f-018.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -275,13 +279,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-101">
+   <test-case name="override-t-001">
       <description>Successful override of a named template, when called from overriding package</description>
       <created by="Michael Kay" on="2013-07-31"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-101"/>
+      <environment ref="override-t-B"/>
       <test>
-         <package file="override-101.xsl" role="principal"/>
+         <package file="override-t-001.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -289,13 +293,13 @@
       </result>
    </test-case>  
    
-   <test-case name="override-102">
+   <test-case name="override-t-002">
       <description>Successful override of a named template, when called from base package</description>
       <created by="Michael Kay" on="2013-07-31"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-101"/>
+      <environment ref="override-t-B"/>
       <test>
-         <package file="override-102.xsl" role="principal"/>
+         <package file="override-t-002.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -303,13 +307,13 @@
       </result>
    </test-case>   
    
-   <test-case name="override-103">
+   <test-case name="override-t-003">
       <description>Cannot call an abstract template</description>
       <created by="Michael Kay" on="2013-07-31"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-101"/>
+      <environment ref="override-t-B"/>
       <test>
-         <package file="override-103.xsl" role="principal"/>
+         <package file="override-t-003.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -317,12 +321,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-104">
+   <test-case name="override-t-004">
       <description>Illegal template override, parameter types do not match</description>
       <created by="Michael Kay" on="2014-10-10"/>
-      <environment ref="override-env-101"/>
+      <environment ref="override-t-B"/>
       <test>
-         <package file="override-104.xsl" role="principal"/>
+         <package file="override-t-004.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -330,12 +334,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-105">
+   <test-case name="override-t-005">
       <description>Illegal template override, context item types do not match</description>
       <created by="Michael Kay" on="2014-10-10"/>
-      <environment ref="override-env-101"/>
+      <environment ref="override-t-B"/>
       <test>
-         <package file="override-105.xsl" role="principal"/>
+         <package file="override-t-005.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -343,13 +347,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-106">
+   <test-case name="override-t-006">
       <description>Illegal template override, context item use does not match</description>
       <created by="Michael Kay" on="2014-10-10"/>
       <modified by="Michael Kay" on="2015-01-26" change="keyword change: prohibited -> absent"/>
-      <environment ref="override-env-101"/>
+      <environment ref="override-t-B"/>
       <test>
-         <package file="override-106.xsl" role="principal"/>
+         <package file="override-t-006.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -357,12 +361,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-107">
+   <test-case name="override-t-007">
       <description>A named template calling xsl:original</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-101"/>
+      <environment ref="override-t-B"/>
       <test>
-         <package file="override-107.xsl" role="principal"/>
+         <package file="override-t-007.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -370,13 +374,13 @@
       </result>
    </test-case>  
 
-   <test-case name="override-201">
+   <test-case name="override-v-001">
       <description>Successful override of a public global variable</description>
       <created by="Michael Kay" on="2013-10-18"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-201"/>
+      <environment ref="override-v-C"/>
       <test>
-         <package file="override-201.xsl" role="principal"/>
+         <package file="override-v-001.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -384,13 +388,13 @@
       </result>
    </test-case>
    
-   <test-case name="override-202">
+   <test-case name="override-v-002">
       <description>Reference from private variable to overridden public variable</description>
       <created by="Michael Kay" on="2013-10-18"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
-      <environment ref="override-env-201"/>
+      <environment ref="override-v-C"/>
       <test>
-         <package file="override-202.xsl" role="principal"/>
+         <package file="override-v-002.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -398,12 +402,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-203">
+   <test-case name="override-v-003">
       <description>An overridden public global variable using xsl:original</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-201"/>
+      <environment ref="override-v-C"/>
       <test>
-         <package file="override-203.xsl" role="principal"/>
+         <package file="override-v-003.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -411,12 +415,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-301">
+   <test-case name="override-as-001">
       <description>Successful override of a public attribute-set</description>
       <created by="Michael Kay" on="2015-02-28"/>
-      <environment ref="override-env-301"/>
+      <environment ref="override-as-D"/>
       <test>
-         <package file="override-301.xsl" role="principal"/>
+         <package file="override-as-001.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -424,12 +428,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-302">
+   <test-case name="override-as-002">
       <description>Successful override of a public attribute-set with use-attribute-sets="xsl:original"</description>
       <created by="Michael Kay" on="2015-02-28"/>
-      <environment ref="override-env-301"/>
+      <environment ref="override-as-D"/>
       <test>
-         <package file="override-302.xsl" role="principal"/>
+         <package file="override-as-002.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -441,26 +445,25 @@
       </result>
    </test-case>
    
-   <test-case name="override-303">
+   <test-case name="override-as-003">
       <description>Override of a public attribute-set creates a circularity</description>
       <created by="Michael Kay" on="2015-02-28"/>
-      <environment ref="override-env-301"/>
+      <environment ref="override-as-D"/>
       <test>
-         <package file="override-303.xsl" role="principal"/>
+         <package file="override-as-003.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <!--<error code="XXXX9999"/>-->
-         <assert-xml><![CDATA[<err/>]]></assert-xml>
+         <error code="XTDE0640"/>
       </result>
    </test-case>
    
-   <test-case name="override-304">
+   <test-case name="override-as-004">
       <description>Attempt to override a private attribute-set</description>
       <created by="Michael Kay" on="2015-02-28"/>
-      <environment ref="override-env-301"/>
+      <environment ref="override-as-D"/>
       <test>
-         <package file="override-304.xsl" role="principal"/>
+         <package file="override-as-004.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -468,12 +471,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-305">
+   <test-case name="override-as-005">
       <description>Two private attribute sets with the same name in different packages</description>
       <created by="Michael Kay" on="2015-02-28"/>
-      <environment ref="override-env-301"/>
+      <environment ref="override-as-D"/>
       <test>
-         <package file="override-305.xsl" role="principal"/>
+         <package file="override-as-005.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -482,12 +485,12 @@
    </test-case>
    
    
-   <test-case name="override-901">
+   <test-case name="override-misc-001">
       <description>Cannot override a key</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-901"/>
+      <environment ref="override-misc-E"/>
       <test>
-         <package file="override-901.xsl" role="principal"/>
+         <package file="override-misc-001.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -495,12 +498,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-902">
+   <test-case name="override-misc-002">
       <description>Cannot override an accumulator</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-901"/>
+      <environment ref="override-misc-E"/>
       <test>
-         <package file="override-902.xsl" role="principal"/>
+         <package file="override-misc-002.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -508,12 +511,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-903">
+   <test-case name="override-misc-003">
       <description>Cannot override a decimal format</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-901"/>
+      <environment ref="override-misc-E"/>
       <test>
-         <package file="override-903.xsl" role="principal"/>
+         <package file="override-misc-003.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -521,12 +524,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-904">
+   <test-case name="override-misc-004">
       <description>Keys in different packages can have the same name</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-901"/>
+      <environment ref="override-misc-E"/>
       <test>
-         <package file="override-904.xsl" role="principal"/>
+         <package file="override-misc-004.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -534,12 +537,12 @@
       </result>
    </test-case>
    
-   <test-case name="override-905">
+   <test-case name="override-misc-005">
       <description>Accumulators in different packages can have the same name</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-901"/>
+      <environment ref="override-misc-E"/>
       <test>
-         <package file="override-905.xsl" role="principal"/>
+         <package file="override-misc-005.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -547,16 +550,29 @@
       </result>
    </test-case>
    
-   <test-case name="override-906">
+   <test-case name="override-misc-006">
       <description>Decimal formats in different packages can have the same name</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <environment ref="override-env-901"/>
+      <environment ref="override-misc-E"/>
       <test>
-         <package file="override-906.xsl" role="principal"/>
+         <package file="override-misc-006.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out><a>123!456:78</a><b>123.456,78</b></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-misc-007">
+      <description>Streamed accumulators in different packages can have the same name</description>
+      <created by="Michael Kay" on="2015-03-01"/>
+      <environment ref="override-misc-F"/>
+      <test>
+         <package file="override-misc-007.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a><count nodes="78"/><acc value="78"/></a><b><count nodes="78"/><acc value="-78"/></b></out>]]></assert-xml>
       </result>
    </test-case>
    
