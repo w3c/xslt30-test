@@ -437,12 +437,12 @@
   <xsl:template name="cy-047" use-when="$RUN">
     <out>
       <xsl:variable name="a">
-        <a/>
+        <is-empty/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
         <xsl:copy select="/*">
           <xsl:copy-of select="a/b/c/d/e/f/g"/>
-          <xsl:on-empty select="$a/a"/>
+          <xsl:on-empty select="$a/is-empty"/>
         </xsl:copy>
       </xsl:stream>
     </out>
@@ -453,16 +453,51 @@
   <xsl:template name="cy-048" use-when="$RUN">
     <out>
       <xsl:variable name="a">
-        <a/>
+        <is-empty/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
         <xsl:copy>
           <xsl:copy-of select="a/b/c/d/e/f/g"/>
-          <xsl:on-empty select="$a/a"/>
+          <xsl:on-empty select="$a/is-empty"/>
         </xsl:copy>
       </xsl:stream>
     </out>
   </xsl:template>
+  
+    <!-- within xsl:stream, use xsl:copy with xsl:conditional-content: empty element constructed -->
+
+  <xsl:template name="cy-049" use-when="$RUN">
+    <out>
+      <xsl:variable name="a">
+        <a/>
+      </xsl:variable>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:conditional-content>
+          <xsl:copy select="/*">
+            <xsl:copy-of select="a/b/c/d/e/f/g"/>
+          </xsl:copy>
+        </xsl:conditional-content>  
+      </xsl:stream>
+    </out>
+  </xsl:template>
+
+  <!-- within xsl:stream, use xsl:copy with xsl:conditional-content: empty document constructed -->
+
+  <xsl:template name="cy-050" use-when="$RUN">
+    <out>
+      <xsl:variable name="a">
+        <a/>
+      </xsl:variable>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:conditional-content>
+          <xsl:copy>
+            <xsl:copy-of select="a/b/c/d/e/f/g"/>
+          </xsl:copy>
+        </xsl:conditional-content>  
+      </xsl:stream>
+    </out>
+  </xsl:template>
+
 
 
 
