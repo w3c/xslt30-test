@@ -721,13 +721,17 @@
    <test-case name="accumulator-041">
       <description>Keep a Word Count</description>
       <keywords>xsl:accumulator</keywords>
-      <environment ref="accumulator-040s"/>
+      <environment>
+        <source role=".">
+           <content><![CDATA[<html lang="en"><head><title>Test 1</title></head><body><h1>Test 1</h1><p>This is test 1.</p></body></html>]]></content>
+        </source>
+      </environment>
       <created by="" on="2015-01-23"/>
       <test>
          <stylesheet file="accumulator-041.xsl"/>
       </test>
       <result>
-     	 <assert>/p/text() = 'Word count: 27'</assert><!-- count(//text()/tokenize(string(.), '\W+')) -->
+     	 <assert>/p/text() = 'Word count: 9'</assert><!-- count(//text()/tokenize(string(.), '\W+')) -->
       </result>
    </test-case>
 
@@ -756,5 +760,22 @@
      	 <assert-xml><![CDATA[<histogram><publisher name="Modern Library">1</publisher><publisher name="Penguin Classics">2</publisher><publisher name="Bantam Classics">1</publisher><publisher name="Hodder &amp; Stoughton">1</publisher><publisher name="Penguin">1</publisher></histogram>]]></assert-xml>
       </result>
    </test-case>
+
+   <test-case name="accumulator-044s">
+      <description>Remember the Title of a Document</description>
+      <keywords>xsl:accumulator</keywords>
+      <environment ref="accumulator-044s"/>
+      <created by="" on="2015-01-23"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-044.xsl"/>
+      </test>
+      <result>
+     	 <assert>//*:div[@class='heading-1']/text() = 'Moved to'</assert>
+      </result>
+   </test-case>
+
 
 </test-set>
