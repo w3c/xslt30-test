@@ -30,15 +30,15 @@
         <xsl:variable name="this" select="."/>
         <xsl:variable name="played" select="count($matches[team=$this])"/>
         <xsl:variable name="won" 
-            select="count($matches[team=$this][number(team[.=$this]/@score) &gt; number(team[.!=$this]/@score)])"/>
+            select="count($matches[if (team=$this) then number(team[.=$this]/@score) &gt; number(team[.!=$this]/@score) else false()])"/>
         <xsl:variable name="lost"
-            select="count($matches[team=$this][number(team[.=$this]/@score) &lt; number(team[.!=$this]/@score)])"/>
+            select="count($matches[if (team=$this) then number(team[.=$this]/@score) &lt; number(team[.!=$this]/@score) else false()])"/>
         <xsl:variable name="drawn"
-            select="count($matches[team=$this][number(team[.=$this]/@score) = number(team[.!=$this]/@score)])"/>
+            select="count($matches[if (team=$this) then number(team[.=$this]/@score) = number(team[.!=$this]/@score) else false()])"/>
         <xsl:variable name="for"
             select="sum($matches/team[.=current()]/@score)"/>
         <xsl:variable name="against"
-            select="sum($matches[team=$this][team=current()]/team/@score) - $for"/>
+            select="sum($matches[if (team=$this) then team=current() else false()]/team/@score) - $for"/>
 
         <tr>
         <td><xsl:value-of select="."/></td>
