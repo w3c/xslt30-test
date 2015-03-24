@@ -93,6 +93,51 @@
          <assert-xml><![CDATA[<out><test4 color="black" texture="matt"/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="attribute-set-0106">
+      <description>
+         A terminating recursive attribute set. 
+         (It's not entirely clear whether the spec allows this. It works in Saxon 9.6 but not in 9.7)</description>
+      <keywords>xsl:use-attribute-sets lre </keywords>
+      <created by="Michael Kay" on="2015-03-02"/>
+      <environment ref="attribute-set-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-0106.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XTDE0640"/>
+            <assert-xml><![CDATA[<out><test1 color="|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt"
+          texture="matt"/></out>]]></assert-xml>
+         </any-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-set-0107">
+      <description>Focus-dependent attribute set</description>
+      <keywords>xsl:use-attribute-sets lre </keywords>
+      <created by="Michael Kay" on="2015-03-02"/>
+      <environment ref="attribute-set-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-0107.xsl"/>
+      </test>
+      <result>
+        <assert-xml><![CDATA[<out><section class="section" position="1"
+        /><section class="section" position="2"/><p class="p" position="3"/><p class="p" position="4"
+        /><section class="section" position="5"/><p class="p" position="6"
+        /><section class="section" position="7"/><p class="p" position="8"/><p class="p" position="9"
+        /><section class="section" position="10"/><p class="p" position="11"/><p class="p" position="12"/><p class="p" position="13"
+        /><section class="section" position="14"/><p class="p" position="15"/><p class="p" position="16"/></out>
+]]></assert-xml>  
+      </result>
+   </test-case>
+
 
    <test-case name="attribute-set-0201">
       <description>Set attributes of a LRE from multiple attribute sets.</description>

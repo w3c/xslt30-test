@@ -34,7 +34,7 @@
        </xs:schema>
    </xsl:import-schema>
    
-   <xsl:template match="/">
+   <xsl:template match="/" name="main">
        <list xsl:validation="strict"> <!-- strict validation here works -->
            <element xsl:validation="strict"> <!-- strict validation here causes error -->
                <xsl:attribute name="type" select="'type2'"/>

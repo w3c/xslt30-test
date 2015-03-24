@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:package
+  name="http://www.w3.org/xslt30-test/accumulator/accumulator-001"
+  package-version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:f="http://accum001/"
   exclude-result-prefixes="xs f" version="3.0">
 
   <!-- Simple test of an accumulator function -->
   
   <xsl:param name="streamable" static="yes" select="'no'"/>
+  
+  <xsl:global-context-item _streamable="{$streamable}" use-accumulators="figNr"/>
 
   <xsl:accumulator name="figNr" as="xs:integer" initial-value="0" _streamable="{$streamable}">
     <xsl:accumulator-rule match="chap" select="0"/>
@@ -24,4 +29,4 @@
       <xsl:apply-templates/>
     </figures>
   </xsl:template>
-</xsl:stylesheet>
+</xsl:package>
