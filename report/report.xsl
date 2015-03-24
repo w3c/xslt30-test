@@ -687,7 +687,7 @@
         </q:set>
     </xsl:variable>
 
-    <xsl:template match="/" name="xsl:initial-template">
+    <xsl:template match="/" name="xsl-initial-template">
         <xsl:apply-templates select="doc($testcat)" mode="cat"/>
     </xsl:template>
 
@@ -705,6 +705,7 @@
                     <aggregate total-queried-stylesheets="{sum(current-group()/@total-queried-stylesheets)}" 
                         total-tests-in-applicable-testsets="{max(current-group()/@tests-in-test-set)}"
                         applicable-tests="{sum(current-group()/*/@count)}"/>
+                    <xsl:copy-of select="current-group()" />
                     <xsl:apply-templates select="current-group()" mode="post-processing"/>
                 </spec-ref>
             </xsl:for-each-group>
@@ -972,8 +973,9 @@
         <xsl:param name="n" />
         <xsl:param name="query" />
         <xsl:variable name="result">
-            <xsl:evaluate xpath="('if(.[' || $query ||']) then true() else false()', false()!string(.))[1]" context-item="$n" />
+            <!-- TODO: write an XT3 test with an "if(.[]) then true() else false()" expression, as in Saxon it does not raise an exception, with us is does -->
+            <xsl:evaluate xpath="('if(.[' || ($query, '0')[1] ||']) then true() else false()', false()!string(.))[1]" context-item="$n" />
         </xsl:variable>
-        <xsl:sequence select="if(empty($query)) then true() else ($result)" />
+        <xsl:sequence select="if(empty($query)) then true() else $result" />
     </xsl:function>
 </xsl:stylesheet>

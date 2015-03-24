@@ -44,7 +44,7 @@
     </xsl:template>
     
     <xsl:template match="keywords" mode="test-set">
-        <xsl:apply-templates select="tokenize(., ' ')" mode="#current" />
+        <xsl:apply-templates select="tokenize(., '\s+')" mode="#current" />
     </xsl:template>
     
     <xsl:template match=".[. instance of xs:string]" mode="test-set">
