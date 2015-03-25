@@ -1650,6 +1650,7 @@
       <description>Test parens at top level of pattern, allowed in 3.0</description>
       <keywords>not-XTSE0340 not-XPST0017 UnionExpr ParenthesizedExpr</keywords>
       <created by="Michael Kay" on="2013-06-18"/>
+      <modified by="Michael Kay" on="2015-03-25" change="See bug 28335"/>
       <environment ref="match1059"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1658,7 +1659,7 @@
          <stylesheet file="match-082.xsl"/>
       </test>
       <result>
-         <assert>/ok</assert>
+         <assert>/wrong</assert>
       </result>
    </test-case>
 
@@ -2491,9 +2492,10 @@
    </test-case>
 
    <test-case name="match-132">
-      <description>Integer predicate in type pattern (rules unclear, see bug 12455)</description>
+      <description>Integer predicate in type pattern (rules were unclear, see bug 12455)</description>
       <keywords>PredicatePattern InstanceOfExpr xs:integer xpath-comments numeric-predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-03-25" change="See bugs 28366 and 12455"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -2502,7 +2504,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><second><first>17</first></second></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><first>17</first></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -4354,6 +4356,73 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><found><foo>2</foo></found><found><foo>d2</foo></found></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-239">
+      <description>PredicatePattern cannot be parenthesized</description>
+      <keywords>PredicatePattern</keywords>
+      <created by="Michael Kay" on="2015-03-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-239.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+   
+   <test-case name="match-240a">
+      <description>Predicate pattern in which a filter might be numeric or boolean</description>
+      <keywords>PredicatePattern numeric-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-240.xsl"/>
+         <initial-template name="main"/>
+         <param name="N" select="1"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><second><first>17</first></second></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-240b">
+      <description>Predicate pattern in which a filter might be numeric or boolean</description>
+      <keywords>PredicatePattern numeric-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-240.xsl"/>
+         <initial-template name="main"/>
+         <param name="N" select="2"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><first>17</first></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-240c">
+      <description>Predicate pattern in which a filter might be numeric or boolean</description>
+      <keywords>PredicatePattern numeric-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-240.xsl"/>
+         <initial-template name="main"/>
+         <param name="N" select="true()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><second><first>17</first></second></out>]]></assert-xml>
       </result>
    </test-case>
 </test-set>

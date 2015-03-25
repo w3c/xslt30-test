@@ -6,7 +6,7 @@
     version="3.0">
 
 <?spec xslt#patterns?>
-    <!-- Purpose: numeric value of predicate.  -->
+    <!-- Purpose: predicate pattern in which the type is not known statically.  -->
     <!-- Purpose: comments in a pattern.  -->
 
 <xsl:template name="main">
@@ -16,12 +16,13 @@
 </xsl:template>
 
 
-<xsl:template match=".[. instance of xs:integer]">
+<xsl:template match=".[. instance of xs:integer]" priority="5">
   <first><xsl:next-match/></first>
 </xsl:template>
 
-<xsl:template match="(:a(:z:)a:) . (:b:) [. instance (:c:) of xs:integer](:d:)[2](:e:)">
-  <!-- position() = 2 is false, so the predicate does not match -->
+<xsl:param name="N" required="yes"/>
+
+<xsl:template match=".[. instance of xs:integer][$N]" priority="10">
   <second><xsl:next-match/></second>
 </xsl:template>
 
