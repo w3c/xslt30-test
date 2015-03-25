@@ -1691,7 +1691,7 @@
          <stylesheet file="match-082c.xsl"/>
       </test>
       <result>
-         <error>XTDE0540</error>
+         <error code="XTDE0540" />
       </result>
    </test-case>
 
@@ -2527,15 +2527,15 @@
       <description>Integer predicate in type pattern (rules unclear, see bug 12455)</description>
       <keywords>PredicatePattern InstanceOfExpr xs:integer xpath-comments numeric-predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-03-24" change="Bug 28336, fix non-matching numeric predicate in PredicatePattern"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="match-132.xsl"/>
-         <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><second><first>17</first></second></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><first><second>17</second></first></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -4387,6 +4387,21 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><found><foo>2</foo></found><found><foo>d2</foo></found></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-239">
+      <description>PredicatePattern, multiple matches, same priority, sequence of integers, position and last functions</description>
+      <keywords>PredicatePattern InstanceOfExpr xs:integer fn:position fn:last xsl:next-match on-multiple-match</keywords>
+      <created by="Abel Braaksma" on="2015-03-24"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-239.xsl"/>
+      </test>
+      <result>
+         <assert-eq>"1^2 = 1 = 1*1, 2^2 = 4 = 2*2, 3^2 = 9 = 3*3, 5^2 = 25 = 5*5, 7^2 = 49 = 7*7, 13^2 = 169 = 13*13, 17^2 = 289 = 17*17, 19^2 = 361 = 19*19"</assert-eq>
       </result>
    </test-case>
 </test-set>
