@@ -12,7 +12,7 @@
     <xsl:accumulator-rule match="section" phase="end" select="tail($value) (:pop:)"/>
   </xsl:accumulator>
 
-
+  <xsl:global-context-item use-accumulators="#all"/>
   <xsl:mode _streamable="{$streamable}" on-no-match="shallow-copy"/>
 
   <xsl:template match="section">

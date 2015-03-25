@@ -14,7 +14,7 @@
 
 		This can be achieved by remembering the value of the title in an accumulator variable. -->
 	<xsl:accumulator name="firstTitle" as="xs:string?" initial-value="()" streamable="yes" >
-    	<xsl:accumulator-rule match="/x:html/x:head/x:title[1]/text()" select="string(.)"/>
+    	<xsl:accumulator-rule match="/x:html/x:head/x:title/text()" select="($value, string(.))[1]"/>
 	</xsl:accumulator>
 
 	<!-- Subsequently, while processing an h1 element appearing later in the document, the value can be referenced: -->

@@ -7,12 +7,14 @@
   
   <xsl:mode streamable="yes"/>
   
+  <xsl:global-context-item use="absent"/>
+  
   <xsl:accumulator name="a" as="xs:integer" initial-value="0" streamable="yes">
     <xsl:accumulator-rule match="*" select="$value + $count"/>
   </xsl:accumulator>
 
   <xsl:variable name="count">
-    <xsl:stream href="accumulator-001.xml">
+    <xsl:stream href="accumulator-001.xml" use-accumulators="#all">
       <xsl:for-each select="*"/>
       <xsl:value-of select="accumulator-after('a')"/>
     </xsl:stream>

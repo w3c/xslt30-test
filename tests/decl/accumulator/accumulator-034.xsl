@@ -9,6 +9,8 @@
   
   <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip"/>
   
+  <xsl:global-context-item use-accumulators="#all"/>
+  
   <xsl:accumulator name="a" as="xs:integer" initial-value="0" _streamable="{$streamable}">
     <xsl:accumulator-rule match="chap[not(@nr = $seven)]" select="0"/>
     <xsl:accumulator-rule match="fig[every $n in data(@*) satisfies $n = '83']" select="$value + 2"/>

@@ -726,7 +726,7 @@
            <content><![CDATA[<html lang="en"><head><title>Test 1</title></head><body><h1>Test 1</h1><p>This is test 1.</p></body></html>]]></content>
         </source>
       </environment>
-      <created by="" on="2015-01-23"/>
+      <created by="Abel Braaksma" on="2015-01-23"/>
       <test>
          <stylesheet file="accumulator-041.xsl"/>
       </test>
@@ -739,7 +739,7 @@
       <description>Output Hierarchic Section Numbers</description>
       <keywords>xsl:accumulator</keywords>
       <environment ref="accumulator-042"/>
-      <created by="" on="2015-01-23"/>
+      <created by="Abel Braaksma" on="2015-01-23"/>
       <test>
          <stylesheet file="accumulator-042.xsl"/>
       </test>
@@ -752,12 +752,19 @@
       <description>Compute a Histogram showing the Number of Books, by Publisher</description>
       <keywords>xsl:accumulator</keywords>
       <environment ref="accumulator-043"/>
-      <created by="" on="2015-01-26"/>
+      <created by="Abel Braaksma" on="2015-01-26"/>
+      <modified by="Michael Kay" on="2015-03-23" change="keys are untypedAtomic; sort results into predictable order"/> 
       <test>
          <stylesheet file="accumulator-043.xsl"/>
       </test>
       <result>
-     	 <assert-xml><![CDATA[<histogram><publisher name="Modern Library">1</publisher><publisher name="Penguin Classics">2</publisher><publisher name="Bantam Classics">1</publisher><publisher name="Hodder &amp; Stoughton">1</publisher><publisher name="Penguin">1</publisher></histogram>]]></assert-xml>
+     	 <assert-xml><![CDATA[<histogram
+     	 ><publisher name="Bantam Classics">1</publisher
+     	 ><publisher name="Hodder &amp; Stoughton">1</publisher
+     	 ><publisher name="Modern Library">1</publisher
+     	 ><publisher name="Penguin">1</publisher
+     	 ><publisher name="Penguin Classics">2</publisher
+     	 ></histogram>]]></assert-xml>
       </result>
    </test-case>
 
@@ -765,7 +772,8 @@
       <description>Remember the Title of a Document</description>
       <keywords>xsl:accumulator</keywords>
       <environment ref="accumulator-044s"/>
-      <created by="" on="2015-01-23"/>
+      <created by="Abel Braaksma" on="2015-01-23"/>
+      <modified by="Michael Kay" on="2015-03-23" change="make select expression streamable"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>

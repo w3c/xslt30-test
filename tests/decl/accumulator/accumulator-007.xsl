@@ -32,6 +32,8 @@
      <xsl:accumulator-rule match="transaction" select="if (@amount &gt; $value) then @amount else $value"/>
    </xsl:accumulator>
    
+   <xsl:global-context-item _streamable="{$streamable}" use-accumulators="#all"/>
+
    
    <xsl:mode _streamable="{$streamable}" on-no-match="deep-skip"/>
    <xsl:template match="/">
