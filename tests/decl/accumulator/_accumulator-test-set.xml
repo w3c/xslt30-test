@@ -35,6 +35,9 @@
    <environment name="accumulator-044s">
       <source role="." file="accumulator-044.xhtml" streaming="true"/>
    </environment>
+   <environment name="accumulator-045s">
+      <source role="." file="accumulator-045.xhtml" streaming="true"/>
+   </environment>
    <dependencies>
       <spec value="XSLT30+"/>
    </dependencies>
@@ -721,12 +724,12 @@
    <test-case name="accumulator-041">
       <description>Keep a Word Count</description>
       <keywords>xsl:accumulator</keywords>
+      <created by="Abel Braaksma / Eugene" on="2015-01-23"/>
       <environment>
         <source role=".">
            <content><![CDATA[<html lang="en"><head><title>Test 1</title></head><body><h1>Test 1</h1><p>This is test 1.</p></body></html>]]></content>
         </source>
       </environment>
-      <created by="" on="2015-01-23"/>
       <test>
          <stylesheet file="accumulator-041.xsl"/>
       </test>
@@ -738,8 +741,8 @@
    <test-case name="accumulator-042">
       <description>Output Hierarchic Section Numbers</description>
       <keywords>xsl:accumulator</keywords>
+      <created by="Abel Braaksma / Eugene" on="2015-01-23"/>
       <environment ref="accumulator-042"/>
-      <created by="" on="2015-01-23"/>
       <test>
          <stylesheet file="accumulator-042.xsl"/>
       </test>
@@ -751,8 +754,8 @@
    <test-case name="accumulator-043">
       <description>Compute a Histogram showing the Number of Books, by Publisher</description>
       <keywords>xsl:accumulator</keywords>
+      <created by="Abel Braaksma / Eugene" on="2015-01-26"/>
       <environment ref="accumulator-043"/>
-      <created by="" on="2015-01-26"/>
       <test>
          <stylesheet file="accumulator-043.xsl"/>
       </test>
@@ -763,9 +766,10 @@
 
    <test-case name="accumulator-044s">
       <description>Remember the Title of a Document</description>
-      <keywords>xsl:accumulator</keywords>
+      <keywords>xsl:accumulator fn:accumulator-before</keywords>
+      <created by="Abel Braaksma / Eugene" on="2015-01-23"/>
+      <modified by="Abel Braaksma" on="2015-03-23" change="Fix bug 28318"/>
       <environment ref="accumulator-044s"/>
-      <created by="" on="2015-01-23"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -773,9 +777,24 @@
          <stylesheet file="accumulator-044.xsl"/>
       </test>
       <result>
-     	 <assert>//*:div[@class='heading-1']/text() = 'Moved to'</assert>
+     	   <assert>/*:html/*:body/*:div[@class='heading-1']/text() = 'Different TITLE'</assert>
       </result>
    </test-case>
 
-
+   <test-case name="accumulator-045s">
+      <description>Remember the Title of a Document, counter-example of 044s.</description>
+      <keywords>xsl:accumulator fn:accumulator-before</keywords>
+      <created by="Abel Braaksma / Eugene" on="2015-01-23"/>
+      <modified by="Abel Braaksma" on="2015-03-23" change="Fix bug 28318"/>
+      <environment ref="accumulator-045s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-044.xsl"/>
+      </test>
+      <result>
+     	   <assert>empty(/*:html/*:body/*:div[@class='heading-1']/text())</assert>
+      </result>
+   </test-case>
 </test-set>
