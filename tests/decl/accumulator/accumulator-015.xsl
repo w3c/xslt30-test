@@ -15,6 +15,8 @@
        <xsl:accumulator-rule match="cost/text()" select="$value + xs:integer(.)"/>
    </xsl:accumulator>
    
+   <xsl:global-context-item use-accumulators="item-cost"/>
+   
    <!-- The void xsl:for-each in the template below is designed to sow confusion. Although it does nothing useful,
      it still serves to separate the pre-descent and post-descent phases of the sequence constructor. -->
 

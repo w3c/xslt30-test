@@ -8,6 +8,8 @@
     exclude-result-prefixes="xs"
 >
     <xsl:mode on-no-match="shallow-copy"/>
+    
+    <!-- from section 18.2.9 Examples of Accumulators -->
 	
     <!-- Remember the Title of a Document
 	    Consider an XHTML document in which the title of the document is represented by the content of the first title element appearing as a child of the head element,

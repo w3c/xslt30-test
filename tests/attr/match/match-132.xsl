@@ -29,7 +29,6 @@
 
     <xsl:template match="(:a(:z:)a:) . (:b:) [. instance (:c:) of xs:integer](:d:)[2](:e:)">
         <!-- quote from spec: "A predicate with the numeric value 1 (one) always matches, and a predicate with any other numeric value never matches." -->
-        <!-- this template is not matched -->
         <should-not-match>
             <xsl:next-match />
         </should-not-match>

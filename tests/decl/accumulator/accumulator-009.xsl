@@ -26,6 +26,7 @@
      <xsl:accumulator-rule match="transaction" select="if (@amount &gt; $value) then @amount else $value"/>
    </xsl:accumulator>
    
+   <xsl:global-context-item streamable="yes" use-accumulators="count sum min max"/>
    
    <xsl:mode streamable="yes" on-no-match="deep-skip"/>
    <xsl:template match="/">

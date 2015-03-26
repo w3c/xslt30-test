@@ -755,12 +755,19 @@
       <description>Compute a Histogram showing the Number of Books, by Publisher</description>
       <keywords>xsl:accumulator</keywords>
       <created by="Abel Braaksma / Eugene" on="2015-01-26"/>
+      <modified by="Michael Kay" on="2015-03-23" change="keys are untypedAtomic; sort results into predictable order"/> 
       <environment ref="accumulator-043"/>
       <test>
          <stylesheet file="accumulator-043.xsl"/>
       </test>
       <result>
-     	 <assert-xml><![CDATA[<histogram><publisher name="Modern Library">1</publisher><publisher name="Penguin Classics">2</publisher><publisher name="Bantam Classics">1</publisher><publisher name="Hodder &amp; Stoughton">1</publisher><publisher name="Penguin">1</publisher></histogram>]]></assert-xml>
+     	 <assert-xml><![CDATA[<histogram
+     	 ><publisher name="Bantam Classics">1</publisher
+     	 ><publisher name="Hodder &amp; Stoughton">1</publisher
+     	 ><publisher name="Modern Library">1</publisher
+     	 ><publisher name="Penguin">1</publisher
+     	 ><publisher name="Penguin Classics">2</publisher
+     	 ></histogram>]]></assert-xml>
       </result>
    </test-case>
 
@@ -768,6 +775,7 @@
       <description>Remember the Title of a Document</description>
       <keywords>xsl:accumulator fn:accumulator-before</keywords>
       <created by="Abel Braaksma / Eugene" on="2015-01-23"/>
+      <modified by="Michael Kay" on="2015-03-23" change="make select expression streamable"/>
       <modified by="Abel Braaksma" on="2015-03-23" change="Fix bug 28318"/>
       <environment ref="accumulator-044s"/>
       <dependencies>

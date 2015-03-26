@@ -1650,6 +1650,7 @@
       <description>Test parens at top level of pattern, allowed in 3.0</description>
       <keywords>not-XTSE0340 not-XPST0017 UnionExpr ParenthesizedExpr</keywords>
       <created by="Michael Kay" on="2013-06-18"/>
+      <modified by="Michael Kay" on="2015-03-25" change="See bug 28335"/>
       <modified by="Abel Braaksma" on="2015-03-24" change="Bug 28335, fix XSLT version in stylesheet and multiple-match issue (parens do not change priority)" />
       <environment ref="match1059"/>
       <dependencies>
@@ -2524,9 +2525,10 @@
    </test-case>
 
    <test-case name="match-132">
-      <description>Integer predicate in type pattern (rules unclear, see bug 12455)</description>
+      <description>Integer predicate in type pattern (rules were unclear, see bug 12455)</description>
       <keywords>PredicatePattern InstanceOfExpr xs:integer xpath-comments numeric-predicate</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-03-25" change="See bugs 28366 and 12455"/>
       <modified by="Abel Braaksma" on="2015-03-24" change="Bug 28336, fix non-matching numeric predicate in PredicatePattern"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -4391,6 +4393,73 @@
    </test-case>
    
    <test-case name="match-239">
+      <description>PredicatePattern cannot be parenthesized</description>
+      <keywords>PredicatePattern</keywords>
+      <created by="Michael Kay" on="2015-03-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-239.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+   
+   <test-case name="match-240a">
+      <description>Predicate pattern in which a filter might be numeric or boolean</description>
+      <keywords>PredicatePattern numeric-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-240.xsl"/>
+         <initial-template name="main"/>
+         <param name="N" select="1"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><second><first>17</first></second></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-240b">
+      <description>Predicate pattern in which a filter might be numeric or boolean</description>
+      <keywords>PredicatePattern numeric-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-240.xsl"/>
+         <initial-template name="main"/>
+         <param name="N" select="2"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><first>17</first></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-240c">
+      <description>Predicate pattern in which a filter might be numeric or boolean</description>
+      <keywords>PredicatePattern numeric-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-240.xsl"/>
+         <initial-template name="main"/>
+         <param name="N" select="true()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><second><first>17</first></second></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-241">
       <description>PredicatePattern, multiple matches, same priority, sequence of integers, position and last functions</description>
       <keywords>PredicatePattern InstanceOfExpr xs:integer fn:position fn:last xsl:next-match on-multiple-match</keywords>
       <created by="Abel Braaksma" on="2015-03-24"/>
@@ -4398,7 +4467,7 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <stylesheet file="match-239.xsl"/>
+         <stylesheet file="match-241.xsl"/>
       </test>
       <result>
          <assert-eq>"1^2 = 1 = 1*1, 2^2 = 4 = 2*2, 3^2 = 9 = 3*3, 5^2 = 25 = 5*5, 7^2 = 49 = 7*7, 13^2 = 169 = 13*13, 17^2 = 289 = 17*17, 19^2 = 361 = 19*19"</assert-eq>

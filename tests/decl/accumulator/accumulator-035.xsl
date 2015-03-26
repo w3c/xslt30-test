@@ -25,4 +25,5 @@
   </xsl:template>
   
   <xsl:param name="zero" select="0"/>
+  <xsl:global-context-item use-accumulators="a"/>
 </xsl:stylesheet>

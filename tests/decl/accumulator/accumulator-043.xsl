@@ -7,7 +7,7 @@
 >
 	<!-- Compute a Histogram showing the Number of Books, by Publisher
          The contained sequence constructor is evaluated with the variable $value set to the current value, and with the context node as the node being visited. -->
-	<xsl:accumulator name="histogram" as="map(xs:string, xs:integer)"
+	<xsl:accumulator name="histogram" as="map(xs:untypedAtomic, xs:integer)"
     	initial-value="map{}">
 	    <xsl:accumulator-rule match="ITEM">
     	  	<xsl:choose>
@@ -25,6 +25,7 @@
 		<histogram>
 			<xsl:variable name="map" select="accumulator-after('histogram')"/>
 			<xsl:for-each select="map:keys($map)">
+			    <xsl:sort select="."/>
 				<publisher name="{.}">
 					<xsl:value-of select="map:get($map, .)"/>
 				</publisher>

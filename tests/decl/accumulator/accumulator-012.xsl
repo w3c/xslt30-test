@@ -14,7 +14,7 @@
     <xsl:accumulator-rule match="section/p/text()" select="string(.)"/>
   </xsl:accumulator>
 
-
+  <xsl:global-context-item use-accumulators="#all"/>
   <xsl:mode _streamable="{$streamable}" on-no-match="shallow-copy"/>
 
   <xsl:template match="section">
