@@ -536,17 +536,48 @@
    </test-case>
 
    <test-case name="use-when-0127">
-      <description>test use-when expression calling generate-id() function (should fail).</description>
+      <description>test use-when expression calling generate-id() function (should fail in XSLT 2.0, but not 3.0).</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-03-23" change="Bug#28349 Should only fail with XSLT 2.0, not 3.0"/>
       <environment ref="use-when-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="use-when-0127.xsl"/>
       </test>
       <result>
          <error code="XPST0017"/>
+      </result>
+   </test-case>
+
+   <test-case name="use-when-0127a">
+      <description>Bug#28349, use-when expression calling generate-id() legal in XSLT 3.0.</description>
+      <created by="Abel Braaksma" on="2015-03-23"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0127a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>p1p2</out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="use-when-0127b">
+      <description>Bug#28349 use-when expression calling generate-id() legal in XSLT 3.0 (inverse of prev. test).</description>
+      <created by="Abel Braaksma" on="2015-03-23"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0127b.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><p>p1</p><p>p2</p></out>]]></assert-xml>
       </result>
    </test-case>
 
