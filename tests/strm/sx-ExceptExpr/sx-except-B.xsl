@@ -17,106 +17,106 @@
       <b>22</b>
     </xsl:variable>
     
-    <!-- intersect expression (streaming arg 2): grounded operand -->
+    <!-- except expression (streaming arg 2): grounded operand -->
     
     <xsl:template name="r-002" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="($insertion intersect  copy-of(/BOOKLIST/BOOKS/ITEM/PRICE))"/>
+          <xsl:copy-of select="($insertion except  copy-of(/BOOKLIST/BOOKS/ITEM/PRICE))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): striding operand, inspection usage -->
+    <!-- except expression (streaming arg 2): striding operand, inspection usage -->
     
     <xsl:template name="r-010" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="count(($insertion intersect  /BOOKLIST/BOOKS/ITEM/PRICE))"/>
+          <xsl:value-of select="count(($insertion except  /BOOKLIST/BOOKS/ITEM/PRICE))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): striding operand, absorption usage -->
+    <!-- except expression (streaming arg 2): striding operand, absorption usage -->
     
     <xsl:template name="r-011" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="sum(($numeric-insertion intersect /BOOKLIST/BOOKS/ITEM/PRICE))"/>
+          <xsl:value-of select="sum(($numeric-insertion except /BOOKLIST/BOOKS/ITEM/PRICE))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): striding operand, transmission usage -->
+    <!-- except expression (streaming arg 2): striding operand, transmission usage -->
     
     <xsl:template name="r-012" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="($insertion intersect  /BOOKLIST/BOOKS/ITEM/PRICE)[position() mod 2 = 0]"/>
+          <xsl:value-of select="($insertion except  /BOOKLIST/BOOKS/ITEM/PRICE)[position() mod 2 = 0]"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): striding operand, focus-setting usage -->
+    <!-- except expression (streaming arg 2): striding operand, focus-setting usage -->
     
     <xsl:template name="r-013" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="($numeric-insertion intersect /BOOKLIST/BOOKS/ITEM/PRICE) ! (.+1)"/>
+          <xsl:value-of select="($numeric-insertion except /BOOKLIST/BOOKS/ITEM/PRICE) ! (.+1)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): striding operand, focus-controlled usage -->
+    <!-- except expression (streaming arg 2): striding operand, focus-controlled usage -->
     
     <xsl:template name="r-014" use-when="true() or $RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[1] ! ($insertion intersect  *)"/>
+          <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[1] ! ($insertion except  *)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): striding operand, focus-setting usage -->
+    <!-- except expression (streaming arg 2): striding operand, focus-setting usage -->
     
     <xsl:template name="r-015" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:for-each select="($numeric-insertion intersect /BOOKLIST/BOOKS/ITEM/PRICE)">
+          <xsl:for-each select="($numeric-insertion except /BOOKLIST/BOOKS/ITEM/PRICE)">
             <xsl:value-of select=".+1 || ' '"/>
           </xsl:for-each>  
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): striding operand, focus-controlled usage -->
+    <!-- except expression (streaming arg 2): striding operand, focus-controlled usage -->
     
     <xsl:template name="r-016" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:for-each select="/BOOKLIST/BOOKS/ITEM[1]">
-            <xsl:copy-of select="($insertion intersect *)"/>
+            <xsl:copy-of select="($insertion except *)"/>
           </xsl:for-each>  
         </out>
       </xsl:stream>
     </xsl:template>    
     
-    <!-- intersect expression (streaming arg 2): striding operand, focus-setting usage for inspection action -->
+    <!-- except expression (streaming arg 2): striding operand, focus-setting usage for inspection action -->
     
     <xsl:template name="r-017" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="($insertion intersect /BOOKLIST/BOOKS/ITEM[1]/*) ! contains(name(), 'E')"/>
+          <xsl:value-of select="($insertion except /BOOKLIST/BOOKS/ITEM[1]/*) ! contains(name(), 'E')"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): striding operand, apply-templates usage -->
+    <!-- except expression (streaming arg 2): striding operand, apply-templates usage -->
     
     <xsl:template name="r-018" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:apply-templates select="($insertion intersect /BOOKLIST/BOOKS/ITEM[1]/*)" mode="r-018-mode"/>
+          <xsl:apply-templates select="($insertion except /BOOKLIST/BOOKS/ITEM[1]/*)" mode="r-018-mode"/>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -124,143 +124,143 @@
     <xsl:mode name="r-018-mode" streamable="yes" on-no-match="deep-skip"/>
     <xsl:template match="ITEM/*" mode="r-018-mode"><xsl:value-of select="."/></xsl:template>
     
-    <!-- intersect expression (streaming arg 2): crawling operand, inspection usage -->
+    <!-- except expression (streaming arg 2): crawling operand, inspection usage -->
     
     <xsl:template name="r-020" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="count(($insertion intersect //PRICE))"/>
+          <xsl:copy-of select="count(($insertion except //PRICE))"/>
         </out>
       </xsl:stream>
     </xsl:template> 
     
-    <!-- intersect expression (streaming arg 2): crawling operand, absorption usage -->
+    <!-- except expression (streaming arg 2): crawling operand, absorption usage -->
     
     <xsl:template name="r-021" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="count(($insertion intersect /BOOKLIST/BOOKS/ITEM[1]//text()))"/>
+          <xsl:copy-of select="count(($insertion except /BOOKLIST/BOOKS/ITEM[1]//text()))"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): crawling operand, transmission usage -->
+    <!-- except expression (streaming arg 2): crawling operand, transmission usage -->
     
     <xsl:template name="r-022" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="($insertion intersect /BOOKLIST/BOOKS/ITEM[1]//text())[position() lt 4]"/>
+          <xsl:copy-of select="($insertion except /BOOKLIST/BOOKS/ITEM[1]//text())[position() lt 4]"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): crawling operand, focus-setting usage -->
+    <!-- except expression (streaming arg 2): crawling operand, focus-setting usage -->
     
     <xsl:template name="r-023" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="($numeric-insertion intersect //PRICE/text()) ! (.+1)"/>
+          <xsl:copy-of select="($numeric-insertion except //PRICE/text()) ! (.+1)"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): climbing operand, inspection usage -->
+    <!-- except expression (streaming arg 2): climbing operand, inspection usage -->
     
     <xsl:template name="r-030" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="($insertion intersect /BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*) ! name()"/>
+          <xsl:copy-of select="($insertion except /BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*) ! name()"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): climbing operand, inspection usage, removal of duplicates -->
+    <!-- except expression (streaming arg 2): climbing operand, inspection usage, removal of duplicates -->
     
     <xsl:template name="r-031" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="($insertion intersect  /BOOKLIST/BOOKS/ITEM/PRICE/ancestor::*) ! name()"/>
+          <xsl:copy-of select="($insertion except  /BOOKLIST/BOOKS/ITEM/PRICE/ancestor::*) ! name()"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): climbing operand, absorption usage -->
+    <!-- except expression (streaming arg 2): climbing operand, absorption usage -->
     
     <xsl:template name="r-032" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="($insertion intersect /BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*/@*)" separator="|"/>
+          <xsl:value-of select="($insertion except /BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*/@*)" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): climbing operand, absorption usage -->
+    <!-- except expression (streaming arg 2): climbing operand, absorption usage -->
     
     <xsl:template name="r-033" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="($insertion intersect /BOOKLIST/BOOKS/ITEM/ancestor-or-self::*/@CAT)" separator="|"/>
+          <xsl:value-of select="($insertion except /BOOKLIST/BOOKS/ITEM/ancestor-or-self::*/@CAT)" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): climbing operand, absorption usage, removal of duplicates -->
+    <!-- except expression (streaming arg 2): climbing operand, absorption usage, removal of duplicates -->
     
     <xsl:template name="r-034" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="($insertion intersect /BOOKLIST/BOOKS/ITEM/PRICE/ancestor-or-self::*/@CAT)" separator="|"/>
+          <xsl:value-of select="($insertion except /BOOKLIST/BOOKS/ITEM/PRICE/ancestor-or-self::*/@CAT)" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- intersect expression (streaming arg 2): climbing operand, absorption usage, removal of duplicates -->
+    <!-- except expression (streaming arg 2): climbing operand, absorption usage, removal of duplicates -->
     
     <xsl:template name="r-035" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:value-of select="($insertion intersect //PRICE/ancestor-or-self::*/@*)" separator="|"/>
+          <xsl:value-of select="($insertion except //PRICE/ancestor-or-self::*/@*)" separator="|"/>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- Streaming intersect operator: striding operand, transmission usage  -->
+    <!-- Streaming except operator: striding operand, transmission usage  -->
     
     <xsl:template name="r-036" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:for-each select="/*/CATEGORIES/CATEGORY">
-            <v><xsl:value-of select="@DESC intersect @CODE"/></v>
+            <v><xsl:value-of select="@DESC except @CODE"/></v>
           </xsl:for-each>
         </out>
       </xsl:stream>
     </xsl:template>  
     
-    <!-- Streaming intersect operator: two climbing/motionless operands both comprising streamed nodes -->
+    <!-- Streaming except operator: two climbing/motionless operands both comprising streamed nodes -->
     
     <xsl:template name="r-037" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:for-each select="outermost(//WEIGHT)">
-            <v><xsl:value-of select="ancestor-or-self::*/@CAT intersect ../@*"/></v>
+            <v><xsl:value-of select="ancestor-or-self::*/@CAT except ../@*"/></v>
           </xsl:for-each>
         </out>
       </xsl:stream>
     </xsl:template>
     
-    <!-- Streaming intersect operator: a motionless and a striding operand both comprising streamed nodes -->
+    <!-- Streaming except operator: a motionless and a striding operand both comprising streamed nodes -->
     
     <xsl:template name="r-038" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:for-each select="/*/BOOKS/ITEM[1]">
-            <xsl:value-of select="(. intersect *) ! local-name()"/>
+            <xsl:value-of select="(. except *) ! local-name()"/>
           </xsl:for-each>
         </out>
       </xsl:stream>
     </xsl:template>   
     
-    <!-- Streaming intersect operator: a motionless and a striding operand both comprising streamed nodes -->
+    <!-- Streaming except operator: a motionless and a striding operand both comprising streamed nodes -->
     
     <xsl:template name="r-039" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
@@ -272,17 +272,29 @@
       </xsl:stream>
     </xsl:template>  
   
-  <!-- Streaming intersect operator: a motionless and a striding operand both comprising streamed nodes -->
+  <!-- Streaming except operator: a motionless and a striding operand both comprising streamed nodes -->
   
   <xsl:template name="r-040" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:for-each select="/*/BOOKS/ITEM[1]">
-          <xsl:value-of select="(. intersect descendant-or-self::*) ! local-name()"/>
+          <xsl:value-of select="(. except descendant-or-self::*) ! local-name()"/>
         </xsl:for-each>
       </out>
     </xsl:stream>
-  </xsl:template>  
+  </xsl:template> 
+  
+  <!-- Streaming except operator: a motionless and a striding operand both comprising streamed nodes -->
+  
+  <xsl:template name="r-041" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:for-each select="/*/BOOKS/ITEM[1]">
+          <xsl:value-of select="(descendant-or-self::* except .) ! local-name()"/>
+        </xsl:for-each>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
     
                   
     

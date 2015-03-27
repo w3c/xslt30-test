@@ -271,7 +271,19 @@
           </xsl:for-each>
         </out>
       </xsl:stream>
-    </xsl:template>   
+    </xsl:template>
+  
+  <!-- Streaming union operator: a motionless and a striding operand both comprising streamed nodes -->
+  
+  <xsl:template name="r-040" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:for-each select="/*/BOOKS/ITEM[1]">
+          <xsl:value-of select="(. | descendant-or-self::*) ! local-name()"/>
+        </xsl:for-each>
+      </out>
+    </xsl:stream>
+  </xsl:template>  
     
                   
     
