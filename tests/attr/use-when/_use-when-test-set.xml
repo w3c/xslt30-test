@@ -535,18 +535,35 @@
       </result>
    </test-case>
 
-   <test-case name="use-when-0127">
-      <description>test use-when expression calling generate-id() function (should fail).</description>
+   <test-case name="use-when-0127a">
+      <description>test use-when expression calling generate-id() function (should fail in 2.0).</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-03-27" change="see bug 28349"/>
       <environment ref="use-when-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="use-when-0127.xsl"/>
       </test>
       <result>
          <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0127b">
+      <description>test use-when expression calling generate-id() function (should work in 3.0).</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-03-27" change="see bug 28349"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0127.xsl"/>
+      </test>
+      <result>
+         <assert>/doc/section</assert>
       </result>
    </test-case>
 
