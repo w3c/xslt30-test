@@ -39,7 +39,7 @@
                   <t:value-of select="function-available('current')"/>
             </fa>
             <fa f="generate-id">
-                  <t:value-of select="function-available('current')"/>
+                  <t:value-of select="function-available('generate-id')"/>
             </fa>
             <fa f="key">
                   <t:value-of select="function-available('key')"/>
