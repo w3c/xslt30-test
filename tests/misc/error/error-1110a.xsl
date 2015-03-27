@@ -20,7 +20,7 @@
       </xsl:variable>
       <out>
          <xsl:for-each-group select="$pop/*"
-                             group-adjacent="1"
+                             group-adjacent="local-name()"
                              collation="http://unknown.collation.uri/">
             <xsl:value-of select="current-group()"/>
          </xsl:for-each-group>
