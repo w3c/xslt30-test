@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="sx-intersectExpr">
+   <description>intersect expression function with streaming</description>
+   
+   <environment name="sx-intersect-A">
+     <stylesheet file="sx-intersect-A.xsl"/>
+   </environment>
+   
+   <environment name="sx-intersect-B">
+     <stylesheet file="sx-intersect-B.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="sx-intersect-002">
+      <description>Streaming intersect expression - grounded operand</description>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+        <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-010">
+      <description>Streaming intersect expression - striding operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding leading-lone-slash PathExpr fn:count</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-011">
+      <description>Streaming intersect expression - striding operand, absorption usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding leading-lone-slash PathExpr fn:sum</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-012">
+      <description>Streaming intersect expression - striding operand, transmission usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding motionless-predicate fn:position PathExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-013">
+      <description>Streaming intersect expression - striding operand, focus-setting usage</description>
+      <keywords>ParenthesizedExpr mixed-posture AdditiveExpr ContextItemExpr striding leading-lone-slash PathExpr SimpleMapExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-014">
+      <description>Streaming intersect expression - striding operand, focus-controlled usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash AxisStep striding PathExpr positional-predicate SimpleMapExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-015">
+      <description>Streaming intersect expression - striding operand, focus-setting usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding PathExpr AdditiveExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-016">
+      <description>Streaming intersect expression - striding operand, focus-controlled usage</description>
+      <keywords>ParenthesizedExpr mixed-posture xsl:for-each striding AxisStep PathExpr positional-predicate leading-lone-slash</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-017">
+      <description>Streaming intersect expression - striding operand, focus-setting usage for inspection action</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding PathExpr positional-predicate SimpleMapExpr fn:name</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-018">
+      <description>Streaming intersect expression - striding operand, apply-templates usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding xsl:apply-templates PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-020">
+      <description>Streaming intersect expression - crawling operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture xsl:copy-of fn:count crawling PathExpr leading-double-slash</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-021">
+      <description>Streaming intersect expression - crawling operand, absorption usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash text-nodes childless-nodes striding-then-crawling fn:count PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-022">
+      <description>Streaming intersect expression - crawling operand, transmission usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding-then-crawling leading-lone-slash fn:position PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-023">
+      <description>Streaming intersect expression - crawling operand, focus-setting usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-double-slash childless-nodes text-nodes AdditiveExpr PathExpr crawling SimpleMapExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-030">
+      <description>Streaming intersect expression - climbing operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding-then-climbing fn:name leading-lone-slash PathExpr positional-predicate SimpleMapExpr ancestor-axis</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>      
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-031">
+      <description>Streaming intersect expression - climbing operand, inspection usage, removal of duplicates</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding-then-climbing fn:name PathExpr SimpleMapExpr ancestor-axis</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>   
+   </test-case> 
+   
+   <test-case name="sx-intersect-032">
+      <description>Streaming intersect expression - climbing operand, absorption usage</description>
+      <keywords>ParenthesizedExpr mixed-posture climbing-then-climbing attribute-axis PathExpr positional-predicate ancestor-axis leading-lone-slash</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-033">
+      <description>Streaming intersect expression - climbing operand, absorption usage, removal of duplicates</description>
+      <keywords>ParenthesizedExpr mixed-posture climbing-then-climbing leading-lone-slash PathExpr ancestor-or-self-axis climbing</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-034">
+      <description>Streaming intersect expression - climbing operand, absorption usage, removal of duplicates</description>
+      <keywords>ParenthesizedExpr mixed-posture climbing-then-climbing leading-lone-slash PathExpr ancestor-or-self-axis climbing</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-035">
+      <description>Streaming intersect expression - climbing operand, absorption usage, removal of duplicates</description>
+      <keywords>ParenthesizedExpr mixed-posture crawling-then-climbing leading-double-slash attribute-axis PathExpr ancestor-or-self-axis</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-036">
+      <description>Streaming intersect expression - two potentially consuming operands (bug 27668)</description>
+      <keywords>ParenthesizedExpr mixed-posture crawling-then-climbing leading-double-slash attribute-axis PathExpr ancestor-or-self-axis</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-A"/>
+      <test>
+         <initial-template name="r-036"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/v[1] = ''</assert>
+           <assert>/out/v[2] = ''</assert>
+           <assert>/out/v[3] = ''</assert>
+         </all-of>
+      </result>
+   </test-case>  
+
+
+   
+   <test-case name="sx-intersect-102">
+      <description>intersect expression (streaming arg 2) - grounded operand</description>
+      <keywords>leading-lone-slash striding-then-grounded fn:copy-of PathExpr ParenthesizedExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-110">
+      <description>intersect expression (streaming arg 2) - striding operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding leading-lone-slash PathExpr fn:count</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-111">
+      <description>intersect expression (streaming arg 2) - striding operand, absorption usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding leading-lone-slash PathExpr fn:sum</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-112">
+      <description>intersect expression (streaming arg 2) - striding operand, transmission usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding motionless-predicate fn:position PathExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-113">
+      <description>intersect expression (streaming arg 2) - striding operand, focus-setting usage</description>
+      <keywords>ParenthesizedExpr mixed-posture AdditiveExpr ContextItemExpr striding leading-lone-slash PathExpr SimpleMapExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-114">
+      <description>intersect expression (streaming arg 2) - striding operand, focus-controlled usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash AxisStep striding PathExpr positional-predicate SimpleMapExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-115">
+      <description>intersect expression (streaming arg 2) - striding operand, focus-setting usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding PathExpr AdditiveExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-116">
+      <description>intersect expression (streaming arg 2) - striding operand, focus-controlled usage</description>
+      <keywords>ParenthesizedExpr mixed-posture xsl:for-each striding AxisStep PathExpr positional-predicate leading-lone-slash</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-117">
+      <description>intersect expression (streaming arg 2) - striding operand, focus-setting usage for inspection action</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding PathExpr positional-predicate SimpleMapExpr fn:name</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-118">
+      <description>intersect expression (streaming arg 2) - striding operand, apply-templates usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding xsl:apply-templates PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-120">
+      <description>intersect expression (streaming arg 2) - crawling operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture xsl:copy-of fn:count crawling PathExpr leading-double-slash</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-121">
+      <description>intersect expression (streaming arg 2) - crawling operand, absorption usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash text-nodes childless-nodes striding-then-crawling fn:count PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-122">
+      <description>intersect expression (streaming arg 2) - crawling operand, transmission usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding-then-crawling leading-lone-slash fn:position PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-123">
+      <description>intersect expression (streaming arg 2) - crawling operand, focus-setting usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-double-slash childless-nodes text-nodes AdditiveExpr PathExpr crawling SimpleMapExpr</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-130">
+      <description>intersect expression (streaming arg 2) - climbing operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding-then-climbing fn:name leading-lone-slash PathExpr positional-predicate SimpleMapExpr ancestor-axis</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>  
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-131">
+      <description>intersect expression (streaming arg 2) - climbing operand, inspection usage, removal of duplicates</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding-then-climbing fn:name PathExpr SimpleMapExpr ancestor-axis</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-132">
+      <description>intersect expression (streaming arg 2) - climbing operand, absorption usage</description>
+      <keywords>ParenthesizedExpr mixed-posture climbing-then-climbing attribute-axis PathExpr positional-predicate ancestor-axis leading-lone-slash</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>   
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-133">
+      <description>intersect expression (streaming arg 2) - climbing operand, absorption usage, removal of duplicates</description>
+      <keywords>ParenthesizedExpr mixed-posture climbing-then-climbing leading-lone-slash PathExpr ancestor-or-self-axis climbing</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-134">
+      <description>intersect expression (streaming arg 2) - climbing operand, absorption usage, removal of duplicates</description>
+      <keywords>ParenthesizedExpr mixed-posture climbing-then-climbing leading-lone-slash PathExpr ancestor-or-self-axis climbing</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-135">
+      <description>intersect expression (streaming arg 2) - climbing operand, absorption usage, removal of duplicates</description>
+      <keywords>ParenthesizedExpr mixed-posture crawling-then-climbing leading-double-slash attribute-axis PathExpr ancestor-or-self-axis</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>  
+
+   <test-case name="sx-intersect-136">
+      <description>Streaming intersect expression - two potentially consuming operands (bug 27668)</description>
+      <keywords>ParenthesizedExpr mixed-posture crawling-then-climbing leading-double-slash attribute-axis PathExpr ancestor-or-self-axis</keywords>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-036"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/v[1] = ('')</assert>
+           <assert>/out/v[2] = ('')</assert>
+           <assert>/out/v[3] = ('')</assert>
+         </all-of>
+      </result>
+   </test-case>  
+   
+   <test-case name="sx-intersect-137">
+      <description>Streaming intersect expression - intersect of motionless/climbing references to ancestor nodes</description>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-037"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><v>MMP</v><v>P</v><v>P</v><v>P</v><v>H</v><v>P</v></out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-138">
+      <description>Streaming intersect expression - intersect of motionless and consuming striding nodes</description>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-038"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-139">
+      <description>Streaming intersect expression - intersect of motionless and consuming striding nodes</description>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-intersect-B"/>
+      <test>
+         <initial-template name="r-039"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>ITEM</out>]]></assert-xml>
+      </result>
+   </test-case>   
+
+</test-set>
