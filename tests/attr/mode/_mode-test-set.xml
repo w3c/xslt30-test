@@ -1361,6 +1361,7 @@
       <description>Test xsl:mode on-no-match=fail, failure occurs but is caught; streaming</description>
       <keywords>xsl:mode on-no-match-attribute streamable fail xsl:try xsl:catch XTDE0555</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-03-23"/>
       <environment ref="mode-14s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1370,7 +1371,7 @@
          <stylesheet file="mode-1426.xsl"/>
       </test>
       <result>
-         <error code="SXST0060"/>
+         <assert>count(/book/chapter/v/c[. = 'error XTDE055 caught']) = 56</assert>
       </result>
    </test-case>
 

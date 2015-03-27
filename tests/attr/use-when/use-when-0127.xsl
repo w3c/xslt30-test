@@ -5,7 +5,7 @@
 
   <!-- PURPOSE: test use-when expression calling generate-id() function (should fail in 2.0, succeed in 3.0). -->
   <?spec xslt#conditional-inclusion?>
-  <?error XPST0003?>
+  <?error XPST0017?>
 
   <xsl:template match="*">
     <xsl:copy>
