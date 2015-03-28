@@ -20,16 +20,22 @@
       </result>
    </test-case>
 
-   <test-case name="package-901">
-      <description>Error - package has no name</description>
+   <test-case name="package-002">
+      <description>
+         Package without a name is legal if it is the principal package:
+         
+         "Unnamed packages are allowed, but they can only be used as the "top level" 
+         of an application; they cannot be the target of an xsl:use-package declaration 
+         in another package."
+      </description>
       <created by="Michael Kay" on="2013-07-08"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
+      <modified by="Abel Braaksma" on="2015-03-28" change="Bug 24050, principal package does not require a name, renamed test from -901 to -002"/>
       <test>
-         <package file="package-901.xsl" role="principal"/>
-         <initial-template name="main"/>
+         <package file="package-002.xsl" role="principal"/>
       </test>
       <result>
-         <error code="XTSE0010"/>
+         <assert>/ok</assert>
       </result>
    </test-case>
 

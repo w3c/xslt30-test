@@ -9,7 +9,7 @@
     
 
   
-    <xsl:template name="main">
+    <xsl:template name="xsl:initial-template">
       <ok/>
     </xsl:template>
     
