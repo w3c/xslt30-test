@@ -3,10 +3,10 @@
 
    <!-- Static param without select attr, but with an as-clause, implicitly mandatory-->
    
-   <xsl:param name="static-param" static="yes" as="xs:integer" />
+   <xsl:param name="static-param" static="yes" as="xs:integer" select="xs:date('2014-03-03')" />
 
    <xsl:template name="xsl:initial-template" expand-text="yes">
-      {10 * $static-param}
+      {999 * $static-param}
    </xsl:template>
    
 </xsl:transform>

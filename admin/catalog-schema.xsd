@@ -1995,18 +1995,22 @@
                         applying the expression string-join(for $r in $result return string($r), "
                         ") is equal to the string value of the assert-string-value element. Note
                         that this test cannot be used if the result includes items that do not have
-                        a string value (elements with element-only content; function items) If the
-                        normalize-space attribute is present with the value true, then both the
-                        string value of the query result and the value of the assert-string-value
-                        element should be processed as if by the XPath normalize-space() function
-                        before the comparison. </p>
+                        a string value (elements with element-only content; function items).
+                     </p>
+                    <p>
+                        If the normalize-space attribute is present with the value true (which is 
+                        the default), then both the string value of the query result and the value of 
+                        the assert-string-value element should be processed as if by the XPath 
+                        normalize-space() function before the comparison. 
+                        Otherwise, normalization does not take place.
+                    </p>
                 </div>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="normalize-space" type="xs:boolean" default="false"/>
+                    <xs:attribute name="normalize-space" type="xs:boolean" default="true"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>

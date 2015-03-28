@@ -21,7 +21,7 @@
          <stylesheet file="static-001.xsl"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">success</assert-string-value>
+         <assert-string-value>success</assert-string-value>
       </result>
    </test-case>
    
@@ -39,7 +39,7 @@
          <param name="static-param" static="yes" select="'Hello World'"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">Hello World</assert-string-value>
+         <assert-string-value>Hello World</assert-string-value>
       </result>
    </test-case>
    
@@ -56,7 +56,7 @@
          <stylesheet file="static-002.xsl"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">successSUCCESS</assert-string-value>
+         <assert-string-value>successSUCCESS</assert-string-value>
       </result>
    </test-case>
    
@@ -74,7 +74,7 @@
          <param name="static-param" static="yes" select="'ohgoodie'" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">ohgoodieOHGOODIE</assert-string-value>
+         <assert-string-value>ohgoodieOHGOODIE</assert-string-value>
       </result>
    </test-case>
    
@@ -92,7 +92,7 @@
          <param name="alt-param" static="yes" select="'ohgoodie'" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">successohgoodie</assert-string-value>
+         <assert-string-value>successohgoodie</assert-string-value>
       </result>
    </test-case>
    
@@ -111,7 +111,7 @@
          <param name="alt-param" static="yes" select="'est'" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">errare humanum est</assert-string-value>
+         <assert-string-value>errare humanum est</assert-string-value>
       </result>
    </test-case>
    
@@ -147,7 +147,7 @@
          <param name="alt-param" static="yes" select="' in a better world'" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">success in a better world</assert-string-value>
+         <assert-string-value>success in a better world</assert-string-value>
       </result>
    </test-case>
    
@@ -165,7 +165,7 @@
          <param name="req-param" static="yes" select="'required'" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">required-required</assert-string-value>
+         <assert-string-value>required-required</assert-string-value>
       </result>
    </test-case>
    
@@ -304,7 +304,7 @@
          <stylesheet file="static-008.xsl"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">false--true</assert-string-value>
+         <assert-string-value>false--true</assert-string-value>
       </result>
    </test-case>
    
@@ -322,7 +322,7 @@
          <param name="static-param" static="yes" select="'not so empty anymore'" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">false-NOT SO EMPTY ANYMORE-false</assert-string-value>
+         <assert-string-value>false-NOT SO EMPTY ANYMORE-false</assert-string-value>
       </result>
    </test-case>
    
@@ -339,7 +339,7 @@
          <stylesheet file="static-009.xsl"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">true--false</assert-string-value>
+         <assert-string-value>true--false</assert-string-value>
       </result>
    </test-case>
    
@@ -357,7 +357,7 @@
          <param name="static-param" static="yes" as="xs:untypedAtomic" select="23" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">false-230-false</assert-string-value>
+         <assert-string-value>false-230-false</assert-string-value>
       </result>
    </test-case>
    
@@ -375,7 +375,7 @@
          <stylesheet file="static-010.xsl"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">true--</assert-string-value>
+         <assert-string-value>true--</assert-string-value>
       </result>
    </test-case>
    
@@ -393,7 +393,7 @@
          <param name="static-param" as="xs:integer" select="541" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">false-5410-41</assert-string-value>
+         <assert-string-value>false-5410-41</assert-string-value>
       </result>
    </test-case>
    
@@ -413,7 +413,7 @@
          <stylesheet file="static-011.xsl"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">true--false</assert-string-value>
+         <assert-string-value>true--false</assert-string-value>
       </result>
    </test-case>
    
@@ -435,7 +435,7 @@
          <param name="static-param" static="yes" select="()" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">true--false</assert-string-value>
+         <assert-string-value>true--false</assert-string-value>
       </result>
    </test-case>
    
@@ -463,6 +463,7 @@
    <test-case name="static-012">
       <description>
          Simple test with static param that is implicitly mandatory with type xs:integer, no select attr, value NOT set from calling processor, ERROR scenario
+         (this follows the same rules as non-static parameters)
          (See also Bug#28355, this error seems to have disappeared from the spec.)
       </description>
       <keywords>static-variable tvt implicit-default xs:integer occurrence-indicator</keywords>
@@ -496,9 +497,194 @@
          <param name="static-param" static="yes" as="xs:integer" select="23" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">230</assert-string-value>
+         <assert-string-value>230</assert-string-value>
       </result>
    </test-case>
    
+   <test-case name="static-013">
+      <description>
+         Implicitly mandatory param by an incompatible default value, value not set by caller, error
+         (this follows the same rules as non-static parameters)
+         (See also Bug#28355, this error seems to have disappeared from the spec.)
+      </description>
+      <keywords>static-variable tvt implicit-default xs:integer occurrence-indicator</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-013.xsl"/>         
+      </test>
+      <result>
+         <any-of>
+            <!-- see for the error ambiguity: Bug 28355 -->
+            <error code="XTDE0610"/>
+            <error code="XTDE0700"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="static-013a">
+      <description>
+         Implicitly mandatory param by an incompatible default value, value set by caller, no error
+      </description>
+      <keywords>static-variable tvt implicitly-mandatory xs:integer</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-013.xsl"/>
+         <param name="static-param" static="yes" as="xs:integer" select="111" />
+      </test>
+      <result>
+         <assert-string-value>110889</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="static-013b">
+      <description>
+         Implicitly mandatory param by an incompatible default value, value set by caller to a promotable type, no error
+      </description>
+      <keywords>static-variable tvt implicitly-mandatory xs:integer</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-013.xsl"/>
+         <param name="static-param" static="yes" as="xs:untypedAtomic" select="111" />
+      </test>
+      <result>
+         <assert-string-value>110889</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="static-013c">
+      <description>
+         Implicitly mandatory param by an incompatible default value, value set by caller to incompatible type, type error
+      </description>
+      <keywords>static-variable tvt implicitly-mandatory xs:integer err:XTTE0590</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-013.xsl"/>
+         <param name="static-param" static="yes" as="xs:string" select="111" />
+      </test>
+      <result>
+         <error code="XTTE0590"/>
+      </result>
+   </test-case>
+   
+   <test-case name="static-014">
+      <description>
+         Static param with tunnel attribute set, but not referenced, static error.
+      </description>
+      <keywords>static-variable err:XTSE0020</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-014.xsl"/>
+         <param name="static-param" static="yes" as="xs:integer" select="111" />
+      </test>
+      <result>
+         <error code="XTSE0020" />
+      </result>
+   </test-case>
+   
+   <test-case name="static-015">
+      <description>
+         Static param with version attribute set, forward and backward compat behavior has no effect.
+      </description>
+      <keywords>static-variable forward-compatbility backward-compatibility</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-015.xsl"/>
+         <param name="static-param1" static="yes" select="123" />
+         <param name="static-param2" static="yes" select="456" />
+         <param name="static-param3" static="yes" select="789" />
+      </test>
+      <result>
+         <assert-string-value>123456789</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="static-016">
+      <description>
+         Static param with visibility attribute set correctly to private
+      </description>
+      <keywords>static-variable visibility</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-016.xsl"/>
+         <param name="static-param" static="yes" as="xs:string" select="'Private visibility'" />
+      </test>
+      <result>
+         <assert-string-value>Private visiblity</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="static-017">
+      <description>
+         Static param with visibility attribute set incorrectly to abstract
+      </description>
+      <keywords>static-variable visibility</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-017.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020" />
+      </result>
+   </test-case>
+   
+   <test-case name="static-018">
+      <description>
+         Static param with visibility attribute set incorrectly to public
+      </description>
+      <keywords>static-variable visibility</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-018.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020" />
+      </result>
+   </test-case>
+   
+   <test-case name="static-019">
+      <description>
+         Static param with visibility attribute set incorrectly to final
+      </description>
+      <keywords>static-variable visibility</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-019.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020" />
+      </result>
+   </test-case>
+   
+
 
 </test-set>
