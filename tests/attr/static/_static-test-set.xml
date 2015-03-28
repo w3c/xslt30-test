@@ -45,7 +45,7 @@
    
    <test-case name="static-002">
       <description>
-         Using a static param in another static param
+         Using a static param in another static param, which uppercases the value
       </description>
       <keywords>static-variable tvt</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
@@ -62,7 +62,7 @@
    
    <test-case name="static-002a">
       <description>
-         Using a static param in another static param, set base value from the calling processor
+         Using a static param in another static param, set base value from the calling processor, value will be uppercased
       </description>
       <keywords>static-variable tvt</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
@@ -80,7 +80,7 @@
    
    <test-case name="static-002b">
       <description>
-         Using a static param in another static param, set overridden value from the calling processor
+         Using a static param in another static param, set overridden value from the calling processor, the uppercasing param will now have the set value
       </description>
       <keywords>static-variable tvt</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
@@ -92,7 +92,26 @@
          <param name="alt-param" static="yes" select="'ohgoodie'" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">successOHGOODIE</assert-string-value>
+         <assert-string-value normalize-space="true">successohgoodie</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="static-002c">
+      <description>
+         Using a static param in another static param, set overridden and overriding value from the calling processor, the uppercasing param will now have the set value
+      </description>
+      <keywords>static-variable tvt</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-002.xsl"/>
+         <param name="static-param" static="yes" select="'errare humanum '" />
+         <param name="alt-param" static="yes" select="'est'" />
+      </test>
+      <result>
+         <assert-string-value normalize-space="true">errare humanum est</assert-string-value>
       </result>
    </test-case>
    
@@ -161,7 +180,6 @@
       </dependencies>
       <test>
          <stylesheet file="static-004.xsl"/>
-         <param name="req-param" static="yes" select="'required'" />
       </test>
       <result>
          <error code="XTDE0050"/>
@@ -304,7 +322,7 @@
          <param name="static-param" static="yes" select="'not so empty anymore'" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">false-NOT SO EMPTY ANYMORE-true</assert-string-value>
+         <assert-string-value normalize-space="true">false-NOT SO EMPTY ANYMORE-false</assert-string-value>
       </result>
    </test-case>
    
@@ -336,7 +354,7 @@
       </dependencies>
       <test>
          <stylesheet file="static-009.xsl"/>
-         <param name="static-param" static="yes" as="item()*" select="23" />
+         <param name="static-param" static="yes" as="xs:untypedAtomic" select="23" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       </test>
       <result>
          <assert-string-value normalize-space="true">false-230-false</assert-string-value>
@@ -346,6 +364,7 @@
    <test-case name="static-010">
       <description>
          Simple test with static param with implicit default value of xs:integer?, no select attr, value NOT set from calling processor, defaults to empty seq
+         Note: this should behave similarly to setting the default value of a non-static param, i.e., the default value is the empty sequence.
       </description>
       <keywords>static-variable tvt implicit-default xs:integer occurrence-indicator</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
@@ -356,7 +375,7 @@
          <stylesheet file="static-010.xsl"/>
       </test>
       <result>
-         <assert-string-value normalize-space="true">true--false</assert-string-value>
+         <assert-string-value normalize-space="true">true--</assert-string-value>
       </result>
    </test-case>
    
@@ -371,14 +390,77 @@
       </dependencies>
       <test>
          <stylesheet file="static-010.xsl"/>
-         <param name="static-param" static="yes" as="xs:integer" select="23" />
+         <param name="static-param" as="xs:integer" select="541" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
       </test>
       <result>
-         <assert-string-value normalize-space="true">false-230-false</assert-string-value>
+         <assert-string-value normalize-space="true">false-5410-41</assert-string-value>
       </result>
    </test-case>
    
    <test-case name="static-011">
+      <description>
+         Simple test with static param with implicit default value of xs:integer?, no select attr, value NOT set from calling processor, defaults to empty seq
+         Note: this should behave similarly to setting the default value of a non-static param, i.e., the default value is the empty sequence.
+         Note: this tests an edge-case situation where an empty-sequence value of type xs:integer? is deliberately compared with xs:string, which is legal
+         See: https://lists.w3.org/Archives/Member/w3c-xsl-wg/2015Mar/0058.html (member only)
+      </description>
+      <keywords>static-variable tvt implicit-default xs:integer occurrence-indicator</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-011.xsl"/>
+      </test>
+      <result>
+         <assert-string-value normalize-space="true">true--false</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="static-011a">
+      <description>
+         Simple test with static param with implicit default value of xs:integer?, no select attr, value set from calling processor to the empty seq
+         Note: this should behave similarly to setting the default value of a non-static param, i.e., the default value is the empty sequence.
+         Note: this tests an edge-case situation where an empty-sequence value of type xs:integer? is deliberately compared with xs:string, which is legal
+         See: https://lists.w3.org/Archives/Member/w3c-xsl-wg/2015Mar/0058.html (member only)
+      </description>
+      <keywords>static-variable tvt implicit-default xs:integer occurrence-indicator</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-011.xsl"/>
+         <!-- expected value is xs:integer, left untyped to allow empty seq -->
+         <param name="static-param" static="yes" select="()" />
+      </test>
+      <result>
+         <assert-string-value normalize-space="true">true--false</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="static-011b">
+      <description>
+         Simple test with static param with implicit default value of xs:integer?, no select attr, value set from calling processor, defaults to empty seq
+         Note: this tests an edge-case situation where an empty-sequence value of type xs:integer? is deliberately compared with xs:string, which is legal
+         (reverse of prev test, raising the type error if value is set to something other than an empty seq)
+         See: https://lists.w3.org/Archives/Member/w3c-xsl-wg/2015Mar/0058.html (member only)
+      </description>
+      <keywords>static-variable tvt implicit-default xs:integer occurrence-indicator</keywords>
+      <created by="Abel Braaksma" on="2015-03-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-011.xsl"/>
+         <param name="static-param" static="yes" select="124" />
+      </test>
+      <result>
+         <error code="XPTY0004" />
+      </result>
+   </test-case>
+   
+   <test-case name="static-012">
       <description>
          Simple test with static param that is implicitly mandatory with type xs:integer, no select attr, value NOT set from calling processor, ERROR scenario
          (See also Bug#28355, this error seems to have disappeared from the spec.)
@@ -389,14 +471,18 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <stylesheet file="static-011.xsl"/>         
+         <stylesheet file="static-012.xsl"/>         
       </test>
       <result>
-         <error code="XTDE0610"/>
+         <any-of>
+            <!-- see for the error ambiguity: Bug 28355 -->
+            <error code="XTDE0610"/>
+            <error code="XTDE0700"/>
+         </any-of>
       </result>
    </test-case>
    
-   <test-case name="static-011a">
+   <test-case name="static-012a">
       <description>
          Simple test with static param with explicit default value of xs:integer, no select attr, value set from calling processor
       </description>
@@ -406,7 +492,7 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <stylesheet file="static-011.xsl"/>
+         <stylesheet file="static-012.xsl"/>
          <param name="static-param" static="yes" as="xs:integer" select="23" />
       </test>
       <result>
