@@ -10078,12 +10078,17 @@ It is a static error if a character
    </test-case>
 
    <test-case name="error-3370a">
-      <description>Error: It is a static error if the visibility attribute of a stylesheet parameter 
-      that specifies required="yes" and does not specify static="yes" is present with a value other 
-      than public, final, or abstract, or if an xsl:expose or xsl:accept declaration attempts to modify 
-      the visibility of such a component to a value other than public, final, or abstract.
+      <description>
+         Raise XTSE0090 if the visibility attribute is present on an xsl:param
+         
+         In previous drafts, XTSE3370 was the error:
+            "It is a static error if the visibility attribute of a stylesheet parameter 
+            that specifies required="yes" and does not specify static="yes" is present with a value other 
+            than public, final, or abstract, or if an xsl:expose or xsl:accept declaration attempts to modify 
+            the visibility of such a component to a value other than public, final, or abstract."
       </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-03-28" change="Bug 28358, error does not exist anymore"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10093,7 +10098,7 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3370"/>
+         <error code="XTSE0090"/>
       </result>
    </test-case>
 
