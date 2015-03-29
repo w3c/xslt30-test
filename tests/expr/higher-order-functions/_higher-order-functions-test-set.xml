@@ -961,18 +961,17 @@
    
    <test-case name="higher-order-functions-070">
       <description>
-         Global variable cannot refer to itself, even if it makes sense.
-         Should raise circularity error XTDE0640.
+         Global variable cannot refer to itself, even if it makes sense. A variable is not in scope of itself.
       </description>
       <created by="Michael Kay" on="2013-02-07"/>
-      <modified by="Abel Braaksma" on="2015-03-29" change="Bug 28367 and 28366 (fixed invalid sequence type and expected error code)"/>
+      <modified by="Abel Braaksma" on="2015-03-29" change="Bug 28367 and 28366 (fixed invalid sequence type for 28367, but 28366 is reverted, not a bug"/>
       <environment ref="hof-300"/>
       <dependencies/>
       <test>
          <stylesheet file="higher-order-functions-070.xsl"/>
       </test>
       <result>
-         <error code="XTDE0640"/>
+         <error code="XPST0008"/>
       </result>
    </test-case>
 </test-set>
