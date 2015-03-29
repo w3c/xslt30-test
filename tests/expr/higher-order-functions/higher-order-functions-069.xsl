@@ -8,7 +8,7 @@
     <!-- apply-templates to a function item -->
     
     <xsl:template match=".[ . instance of function(*)]">
-      <f name="{function-name(.)}" arity="{function-arity(.)}"/>
+      <f name="{local-name-from-QName(function-name(.))}" arity="{function-arity(.)}"/>
     </xsl:template>
     
     <xsl:function name="f:squared">
@@ -16,7 +16,7 @@
       <xsl:sequence select="$x * $x"/>
     </xsl:function>
     
-    <xsl:template name="main">
+    <xsl:template name="xsl:initial-template">
         <out>
           <xsl:apply-templates select="round#1"/>
           <xsl:apply-templates select="f:squared#1"/>

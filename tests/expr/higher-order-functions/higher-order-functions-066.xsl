@@ -12,17 +12,14 @@
 
     <xsl:function name="local:round" as="xs:double">
         <xsl:param name="x" as="xs:double"/>
-        <xsl:sequence select="fn:floor($x)"/>
+        <xsl:sequence select="floor($x)"/>
     </xsl:function>
     
     <xsl:function name="local:ops" as="(function(xs:double) as xs:double)* ">
         <xsl:sequence select="(abs#1, local:round#1, function($x as xs:float){$x+1}, round-half-to-even(?, 2)) "/>
     </xsl:function>
     
-
-    <xsl:variable name="roundToCeiling" select="local:round(?, upper-case#1)"/>
- 
-    <xsl:template name="main">
+    <xsl:template name="xsl:initial-template">
         <out>
             <xsl:value-of select="for $f in local:ops() 
                                   return string(round-half-to-even($f(xs:decimal('123.456')), 4))"
