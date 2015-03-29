@@ -773,39 +773,61 @@
    <test-case name="higher-order-functions-059">
       <description>Pass a sequence of functions that cannot be coerced to the required type</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-03-29" change="Fix bug 24048, should raise XTTE0790"/>
       <dependencies/>
       <test>
          <stylesheet file="higher-order-functions-059.xsl"/>
-         <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <error code="XTTE0790"/>
       </result>
    </test-case>
 
    <test-case name="higher-order-functions-060">
-      <description>Pass a sequence of functions that cannot be coerced to the required type</description>
+      <description>
+         Pass a sequence of functions that can be coerced to the required type (same arity) 
+         but have wrong return type. Allows both XPTY0004 (if the param uses late binding after
+         coercion and the error in the coercion wrapper is not detected during coercion) or
+         XTTE0790 (if the wrong return type, xs:integer but xs:string expected, is found during
+         coercion but prior to function evaluation in the stylesheet function body)
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-03-29" change="
+         Fix bug 24048, change function body to actually call function items to force evaluation, 
+         allow both XPTY0004 (late evaluation) and XTTE0790 (early detection of wrong return type during coercion)"/>
       <dependencies/>
       <test>
          <stylesheet file="higher-order-functions-060.xsl"/>
-         <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <any-of>
+            <error code="XPTY0004"/>
+            <error code="XTTE0790"/>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="higher-order-functions-061">
-      <description>Pass a sequence of functions that cannot be coerced to the required type</description>
+      <description>
+         Pass a sequence of functions that can be coerced to the required type (same arity) 
+         but have wrong argument type. Allows both XPTY0004 (if the param uses late binding after
+         coercion and the error in the coercion wrapper is not detected during coercion) or
+         XTTE0790 (if the wrong return type, xs:integer but xs:string expected, is found during
+         coercion but prior to function evaluation in the stylesheet function body)
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-03-29" change="
+         Fix bug 24048, change function body to actually call function items to force evaluation, 
+         allow both XPTY0004 (late evaluation) and XTTE0790 (early detection of wrong return type during coercion)"/>
       <dependencies/>
       <test>
          <stylesheet file="higher-order-functions-061.xsl"/>
-         <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <any-of>
+            <error code="XPTY0004"/>
+            <error code="XTTE0790"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -849,16 +871,29 @@
    </test-case>
 
    <test-case name="higher-order-functions-065">
-      <description>partial-apply supplying an incorrect function parameter</description>
+      <description>
+         Partial apply
+         Pass a function item that can be coerced to the required type (same arity) but has wrong 
+         argument type and return type. Allows both XPTY0004 (if the param uses late binding after
+         coercion and the error in the coercion wrapper is not detected during coercion) or
+         XTTE0790 (if the wrong return type, xs:integer but xs:string expected, is found during
+         coercion but prior to function evaluation in the stylesheet function body)
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="Removed redundant right parentheses"/>
+      <modified by="Abel Braaksma" on="2015-03-29" change="
+         Fix bug 24048, allow both XPTY0004 (late evaluation) and XTTE0790 (early detection 
+         of wrong return and argument type (xs:string vs xs:double) during coercion)"/>
       <dependencies/>
       <test>
          <stylesheet file="higher-order-functions-065.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <any-of>
+            <error code="XPTY0004"/>
+            <error code="XTTE0790"/>
+         </any-of>
       </result>
    </test-case>
 
