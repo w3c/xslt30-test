@@ -7,7 +7,7 @@
     
     <!-- global variable cannot refer to itself, even if it would make sense -->
     
-    <xsl:variable name="gcd" as="function()"
+    <xsl:variable name="gcd" as="function(*)"
      select="
      function($x as xs:integer, $y as xs:integer) {
        if ($y eq 0)
@@ -15,7 +15,7 @@
        else $gcd($y,$x mod $y)
      }"/>
      
-     <xsl:template name="main">
+     <xsl:template name="xsl:initial-template">
        <out><xsl:sequence select="$gcd(2,2)"/></out>
      </xsl:template>
 
