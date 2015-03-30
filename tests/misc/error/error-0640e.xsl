@@ -10,6 +10,7 @@
   <xsl:param name="p" select="key('k', '2')"/>
 
   <xsl:template match="/">
+      <!-- in 2.0, the key match may recover by not matching anything, resulting in 0 -->
       <out total="{sum(key('k', '2')/@value)}"/>
   </xsl:template>
    

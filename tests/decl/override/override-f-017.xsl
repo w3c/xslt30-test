@@ -37,7 +37,7 @@
       <xsl:sequence select="'*' || $f($in, $count) || '*'"/>
     </xsl:function>
    
-    <xsl:template name="main">
+    <xsl:template name="xsl:initial-template">
       <xsl:choose>
         <xsl:when test="p:f('x', 5) = '*xxxxx*'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="{p:f('x', 5)}"/></xsl:otherwise>

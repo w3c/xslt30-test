@@ -4456,15 +4456,41 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
       </result>
    </test-case>
 
-   <test-case name="error-0640e">
+   <test-case name="error-0640e-1">
       <description>Test use of variables in a key match pattern (XSLT 2.0) causing a circularity.
-      Result disputed for XSLT 3.0: see bug 26543.
-Was error-code-195.
-In general, a circularity in a stylesheet is a non-recoverable dynamic error.</description>
+         See bug 26543 (in XSLT 2.0 this error can still be 'recovered').
+         Was error-code-195.
+         In general, a circularity in a stylesheet is a non-recoverable dynamic error.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="Bug 26543, error not disputed anymore, but in XSLT 2.0 it may be ignored"/>
       <environment ref="error214"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640e.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <!-- recovery action is to not match the pattern when an error occurs: -->
+            <assert-xml><![CDATA[<out total="0"/>]]></assert-xml>
+            <!-- or to report the error -->
+            <error code="XTDE0640"/>
+          </any-of>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640e-2">
+      <description>Test use of variables in a key match pattern (XSLT 2.0) causing a circularity.
+         See bug 26543 (not disputed anymore for XSLT 3.0).
+         Was error-code-195.
+         In general, a circularity in a stylesheet is a non-recoverable dynamic error.
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <environment ref="error214"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="error-0640e.xsl"/>
