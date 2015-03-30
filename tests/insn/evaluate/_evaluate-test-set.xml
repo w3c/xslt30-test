@@ -333,6 +333,42 @@
          <assert-xml><![CDATA[<out>13</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="evaluate-018a">
+      <description>Test xsl:evaluate with variables specified using @with-params.</description>
+      <created by="Michael Kay" on="2015-03-30"/>
+      <environment ref="eval007"/>
+      <test>
+         <stylesheet file="evaluate-018a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>13</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-018b">
+      <description>Test xsl:evaluate with variables specified using @with-params+child xsl:with-param.</description>
+      <created by="Michael Kay" on="2015-03-30"/>
+      <environment ref="eval007"/>
+      <test>
+         <stylesheet file="evaluate-018b.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>13</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-018c">
+      <description>Test xsl:evaluate with variables specified duplicated on with-params attribute and xsl:with-param child.</description>
+      <created by="Michael Kay" on="2015-03-30"/>
+      <environment ref="eval007"/>
+      <test>
+         <stylesheet file="evaluate-018c.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>13</out>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="evaluate-019">
       <description>test that xsl:evaluate doesn't use the default namespace (bug in 8.7 and previous releases) Test was formerly saxon096</description>
@@ -636,6 +672,24 @@
       </dependencies>
       <test>
          <stylesheet file="evaluate-039.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<Result><out>http://www.w3.org/?0</out><out>http://example.com/#1</out
+            ><out>http://www.w3.org/?2</out><out>http://example.com/?3</out><out>http://www.w3.org/?4</out
+            ><out>http://example.com/?0</out><out>http://www.w3.org/?1</out><out>http://example.com/?2</out
+            ><out>http://www.w3.org/#3</out><out>http://example.com/?4</out></Result>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-040">
+      <description>Same as evaluate-039 but using @with-params</description>
+      <created by="Michael Kay" on="2015-03-30"/>
+      <dependencies>
+         <feature value="schema_aware" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="evaluate-040.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
