@@ -3,6 +3,17 @@
    xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="output">
 
    <description>Tests the xsl:output declaration, and hence serialization generally</description>
+   
+
+   <!-- 
+      NOTE: (ABr, 2015-03-30) added dependency on serialization feature for the whole
+      test-set, if tests are included here that should not need that feature, it 
+      should be overridden in the test, but I assumed that none exist because all 
+      tests here are about serialization
+   -->    
+   <dependencies>
+      <feature value="serialization" satisfied="true"/>
+   </dependencies>
 
    <environment name="output-01">
       <source role=".">
@@ -2276,9 +2287,14 @@
    </test-case>
 
    <test-case name="output-0177">
-      <description>Test for disabling output escaping in xsl:text</description>
+      <description>Test for disabling output escaping in xsl:text when not supported or switched off</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="
+         Bug 23896
+         - Fix to allow for optional recovery,
+         - changed to 2.0 only (error is not allowed in 3.0),
+         - added 3.0 version output-0177a"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2289,7 +2305,30 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <error code="XTRE1620"/>
+         <any-of>
+            <!-- optional recovery option is to ignore it and not raise an error -->
+            <assert-serialization><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><body>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body></html>]]></assert-serialization>
+            
+            <!-- or not recover and raise the error -->
+            <error code="XTRE1620"/>
+         </any-of>
+      </result>
+   </test-case>
+
+   <test-case name="output-0177a">
+      <description>Test for disabling output escaping in xsl:text for XSLT 3.0 when not supported or switched off (no error, must ignore d-o-e)</description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0176.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><body>&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body></html>]]></assert-serialization>
       </result>
    </test-case>
 
@@ -3990,9 +4029,14 @@
    </test-case>
 
    <test-case name="output-0402">
-      <description>Test for disabling output escaping in xsl:value-of</description>
+      <description>Test for disabling output escaping in xsl:value-of in XSLT 2.0</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="
+         Bug 23896
+         - Fix to allow for optional recovery,
+         - changed to 2.0 only (error is not allowed in 3.0),
+         - added 3.0 version output-0402a"/>
       <environment ref="output-04"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -4003,7 +4047,31 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <error code="XTRE1620"/>
+         <any-of>
+            <!-- recovery option: -->
+            <assert-serialization><![CDATA[<out xmlns="http://www.w3.org/1999/xhtml">&lt;p&gt;&amp;nbsp;&lt;/p&gt;</out>]]></assert-serialization>
+            <!-- or raise error -->
+            <error code="XTRE1620"/>
+         </any-of>
+      </result>
+   </test-case>
+
+   <test-case name="output-0402a">
+      <description>Test for disabling output escaping in XSLT 3.0 in xsl:value-of when feature is switched off or not available</description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <environment ref="output-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0401.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-serialization><![CDATA[<out xmlns="http://www.w3.org/1999/xhtml">&lt;p&gt;&amp;nbsp;&lt;/p&gt;</out>]]></assert-serialization>
+         </any-of>
       </result>
    </test-case>
 
