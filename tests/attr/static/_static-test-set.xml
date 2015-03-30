@@ -618,9 +618,9 @@
    
    <test-case name="static-016">
       <description>
-         Static param with visibility attribute set correctly to private
+         Static param with visibility attribute set (this was allowed in earlier drafts)
       </description>
-      <keywords>static-variable visibility</keywords>
+      <keywords>static-variable visibility err:XTSE0090</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -630,15 +630,15 @@
          <param name="static-param" static="yes" as="xs:string" select="'Private visibility'" />
       </test>
       <result>
-         <assert-string-value>Private visiblity</assert-string-value>
+         <error code="XTSE0090" />
       </result>
    </test-case>
    
    <test-case name="static-017">
       <description>
-         Static param with visibility attribute set incorrectly to abstract
+         Static param with visibility attribute set to a previously invalid value (this used to raise XTSE0020)
       </description>
-      <keywords>static-variable visibility</keywords>
+      <keywords>static-variable visibility ERR:XTSE0090</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -647,15 +647,15 @@
          <stylesheet file="static-017.xsl"/>
       </test>
       <result>
-         <error code="XTSE0020" />
+         <error code="XTSE0090" />
       </result>
    </test-case>
    
    <test-case name="static-018">
       <description>
-         Static param with visibility attribute set incorrectly to public
+         Static param with invalid value "YES" for the static attribute
       </description>
-      <keywords>static-variable visibility</keywords>
+      <keywords>static-variable err:XTSE0020</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -670,9 +670,9 @@
    
    <test-case name="static-019">
       <description>
-         Static param with visibility attribute set incorrectly to final
+         Static param referencing itself in the use-when attribute, error scenario.
       </description>
-      <keywords>static-variable visibility</keywords>
+      <keywords>static-variable err:XPST0008</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -681,7 +681,7 @@
          <stylesheet file="static-019.xsl"/>
       </test>
       <result>
-         <error code="XTSE0020" />
+         <error code="XPST0008" />
       </result>
    </test-case>
    
