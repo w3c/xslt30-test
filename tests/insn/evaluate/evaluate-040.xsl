@@ -26,7 +26,7 @@ exclude-result-prefixes="xs ev39">
           <xsl:evaluate xpath="if (position() mod 7 = 0) then $path1 else $path2"
                         base-uri="{if (position() mod 2 = 0) then 'http://www.w3.org/' else 'http://example.com/'}"
                         schema-aware="{if (position() mod 3 = 0) then ' true ' else 'false'}"
-                        with-params="map{xs:QName('', 'v): position() mod 5}"/>
+                        with-params="map{xs:QName('v'): position() mod 5}"/>
         </xsl:variable>
         <xsl:if test="position() ge 90 and position() lt 100">
             <out><xsl:value-of select="$r"/></out>
