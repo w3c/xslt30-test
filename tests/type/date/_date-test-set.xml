@@ -1684,15 +1684,16 @@
    </test-case>
    
    <test-case name="date-094j">
-      <description>test xs:date() constructor with invalid date or time range (400 is not a leap year)</description>
+      <description>test xs:date() constructor with invalid date or time range (200 is not a leap year)</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
       <modified by="Michael Kay" on="2014-11-15" change="depends on XSLT 3.0 (static params)"/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="Bug 27458, 400 is a leap year, changed to 200"></modified>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="date-094.xsl"/>
-         <param name="test-case" static="yes" select="'xs:date(''0400-02-29'')'"/>
+         <param name="test-case" static="yes" select="'xs:date(''0200-02-29'')'"/>
       </test>
       <result>
          <error code="FORG0001"/>
@@ -1738,6 +1739,7 @@
       <dependencies>
          <spec value="XSLT30+"/>
          <year_component_values satisfied="true" value="support negative year"/>
+         <year_component_values satisfied="true" value="support year zero"/>
       </dependencies>
       <test>
          <stylesheet file="date-094.xsl"/>
@@ -1783,7 +1785,7 @@
    </test-case>
    
    <test-case name="date-094p">
-      <description>test xs:date() constructor with valid date range (200 is a leap year)</description>
+      <description>test xs:date() constructor with valid date range (400 is a leap year)</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
       <modified by="Michael Kay" on="2014-11-15" change="depends on XSLT 3.0 (static params)"/>
       <dependencies>
@@ -1799,15 +1801,16 @@
    </test-case>
 
    <test-case name="date-094q">
-      <description>test xs:date() constructor with invalid date range (400 is not a leap year)</description>
+      <description>test xs:date() constructor with invalid date range (200 is not a leap year)</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
       <modified by="Michael Kay" on="2014-11-15" change="depends on XSLT 3.0 (static params)"/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="Bug 27336, 400 is not a leap year, changed to 200" />
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="date-094.xsl"/>
-         <param name="test-case" static="yes" select="'xs:date(''0400-02-29'')'"/>
+         <param name="test-case" static="yes" select="'xs:date(''0200-02-29'')'"/>
       </test>
       <result>
          <error code="FORG0001"/>
@@ -2029,6 +2032,7 @@
       <dependencies>
          <spec value="XSLT30+"/>
          <year_component_values satisfied="true" value="support negative year"/>
+         <year_component_values satisfied="true" value="support year zero"/>
       </dependencies>
       <test>
          <stylesheet file="date-095.xsl"/>
