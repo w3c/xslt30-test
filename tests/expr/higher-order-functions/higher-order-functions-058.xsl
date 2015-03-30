@@ -8,7 +8,7 @@
     <!-- Heterogeneous sequence on rhs of "/" -->
  
     
-    <xsl:variable name="f"><a b="3"/></xsl:variable>
+    <xsl:variable name="f" as="element(*)"><a b="3"/></xsl:variable>
     
  
     <xsl:template name="main">
