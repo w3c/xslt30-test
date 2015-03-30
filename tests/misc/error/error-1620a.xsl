@@ -7,7 +7,7 @@
                   -->
    <xsl:template name="main">
       <out>
-         <xsl:value-of select="&lt;a/&gt;" disable-output-escaping="yes"/>
+         <xsl:value-of select="'&lt;a/&gt;'" disable-output-escaping="yes"/>
       </out>
    </xsl:template>
 </xsl:stylesheet>

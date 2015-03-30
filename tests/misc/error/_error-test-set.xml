@@ -8890,6 +8890,11 @@ It is a static error if a character
                      disable-output-escaping attribute.
       </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="
+         Bug 23896
+         - Fix to allow for optional recovery,
+         - added serialize=yes
+         - added 3.0 version output-0402a"/>
       <dependencies>
          <spec value="XSLT20"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
@@ -8897,9 +8902,34 @@ It is a static error if a character
       <test>
          <stylesheet file="error-1620a.xsl"/>
          <initial-template name="main"/>
+         <output serialize="yes" />
       </test>
       <result>
-         <error code="XTRE1620"/>
+         <any-of>
+            <!-- recovery option -->
+            <assert-serialization><![CDATA[<out>&lt;a/&gt;</out>]]></assert-serialization>
+            <!-- or raise error -->
+            <error code="XTRE1620"/>
+         </any-of>
+      </result>
+   </test-case>
+
+   <test-case name="error-1620b">
+      <description>
+         Test that error XTRE1620 is NOT thrown in XSLT 3.0 when it does not support d-o-e and serialization is ON
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1620a.xsl"/>
+         <initial-template name="main"/>
+         <output serialize="yes" />
+      </test>
+      <result>
+         <assert-serialization><![CDATA[<out>&lt;a/&gt;</out>]]></assert-serialization>
       </result>
    </test-case>
 
@@ -8911,6 +8941,11 @@ It is a static error if a character
                      disable-output-escaping attribute.
       </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="
+         Bug 23896
+         - Fix to allow for optional recovery,
+         - added serialize=no (was a TODO marking)
+         - added 3.0 version output-0402a"/>
       <dependencies>
          <spec value="XSLT20"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
@@ -8918,10 +8953,34 @@ It is a static error if a character
       <test>
          <stylesheet file="error-1630a.xsl"/>
          <initial-template name="main"/>
+         <output serialize="no"/>
       </test>
-      <!-- TODO: specify that the result of this stylesheet is not serialized -->
       <result>
-         <error code="XTRE1630"/>
+         <any-of>
+            <!-- recovery option -->
+            <assert-xml><![CDATA[<out>&lt;a/&gt;</out>]]></assert-xml>
+            <!-- or raise error -->
+            <error code="XTRE1630"/>
+         </any-of>
+      </result>
+   </test-case>
+
+   <test-case name="error-1630b">
+      <description>
+         Not an error (XSLT 3.0+ only), test that this error is NOT thrown when serializing is OFF and d-o-e is not supported.
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1630a.xsl"/>
+         <initial-template name="main"/>
+         <output serialize="no"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>&lt;a/&gt;</out>]]></assert-xml>
       </result>
    </test-case>
 
