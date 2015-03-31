@@ -15,7 +15,7 @@
     <xsl:mode on-no-match="shallow-skip" />
     <xsl:output indent="true" />
     
-    <xsl:variable name="location">../../../../specs/xslt-lcwd30.xml</xsl:variable>
+    <xsl:variable name="location">../../../specs/xslt-lcwd30.xml</xsl:variable>
     
     <xsl:template name="xsl:initial-template">
         <xsl:result-document href="function-2001.xml">
