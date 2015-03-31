@@ -1,6 +1,6 @@
 <?xml version="1.0"?> 
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
     xmlns:fn="http://www.w3.org/2005/xpath-functions" 
     xmlns:op="http://www.w3.org/2005/xpath-operators" 
     xmlns:map="http://www.w3.org/2005/xpath-functions/map" 
@@ -18,8 +18,6 @@
       to be updated regularly, as that spec has been a stable REC for some years now.
     -->
   
-    <xsl:mode on-no-match="shallow-skip" />
-  
     <xsl:output indent="yes" />
 
     <xsl:template match="/">
@@ -27,13 +25,19 @@
             <xsl:apply-templates />
         </out>
     </xsl:template>
-  
-   
+    
+    <xsl:template match="text()" />
+    
     <xsl:template match="function">
         <!-- function-available must return false for op: function and true for fn: functions -->
-        <xsl:if test="if(@name/starts-with(., 'op')) then function-available(@name, @arity) else not(function-available(@name, @arity))">
-            <missing-function name="{@name}" arity="{@arity}"/>
-            <xsl:message expand-text="yes">*** Missing function name={@name} arity={@arity}</xsl:message>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test="if(@name/starts-with(., 'op')) then function-available(@name, @arity) else not(function-available(@name, @arity))">
+                <correctly-missing-function name="{@name}" arity="{@arity}"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message expand-text="yes">*** This function should NOT be available in XSLT 2.0 processors: name={@name} arity={@arity}</xsl:message>
+                <incorrectly-available-function name="{@name}" arity="{@arity}"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>

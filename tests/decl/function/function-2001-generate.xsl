@@ -9,6 +9,7 @@
     <!-- 
          creates: function-1902.xml
          generates a list of functions from the F&O 1.0 spec, for XSLT 2.0
+         Modified (2015-03-30, ABr) fixed path, fixed prefix-adding (prefix is now in the spec as result of resolution of other bug)
     -->
     
     <xsl:mode on-no-match="shallow-skip" />
@@ -32,7 +33,7 @@
         
         <!-- result of bug#27069: for functions that are in a different namespace, we get their name from the h5 elem -->
         <function 
-            name="{(ancestor::dl/preceding-sibling::h5/a[text()]/text(), 'fn:' || .)[1]}" 
+            name="{(ancestor::dl/preceding-sibling::h5/a[text()]/text(), .)[1]}" 
             arity="{count(if(following-sibling::code) 
                           then following-sibling::code[@class='arg'] 
                           else ancestor::table[@summary/starts-with(., 'Function signature')]/tr/td/code[@class='arg'])}"/>
