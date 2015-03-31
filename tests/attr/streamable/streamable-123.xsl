@@ -4,7 +4,7 @@
     xmlns:g="http://www.w3.org/xsl-tests/grouped-transactions-e"
     xmlns="http://www.w3.org/xsl-tests/grouped-transactions-e"
     exclude-result-prefixes="g xs"
-    version="2.1">
+    version="3.0">
        
   
   <!-- within a streaming template, positional predicate in match pattern -->

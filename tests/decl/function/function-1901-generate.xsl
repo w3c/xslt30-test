@@ -9,12 +9,13 @@
     <!-- 
          creates: function-1901.xml
          generates a list of functions from the F&O 3.0 spec, for XSLT 3.0
+         Modified (2015-03-30, ABr) fixed path
     -->
 
     <xsl:mode on-no-match="shallow-skip" />
     <xsl:output indent="true" />
     
-    <xsl:variable name="location">../../../../specs/functions-and-operators-rec30.xml</xsl:variable>
+    <xsl:variable name="location">../../../specs/functions-and-operators-rec30.xml</xsl:variable>
     
     <xsl:template name="xsl:initial-template">
         <xsl:result-document href="function-1901.xml">

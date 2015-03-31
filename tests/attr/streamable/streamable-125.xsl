@@ -2,7 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes=" xs"
-    version="2.1">
+    version="3.0">
        
   
   <!-- within a streaming template, passing a streamed node as a parameter is not allowed, 

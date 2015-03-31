@@ -589,7 +589,7 @@
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="use-when-01"/>
       <dependencies>
-         <spec value="XSLT30"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="use-when-0129.xsl"/>
@@ -604,7 +604,7 @@
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <environment ref="use-when-01"/>
       <dependencies>
-         <spec value="XSLT30"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="use-when-0130.xsl"/>
@@ -1327,9 +1327,9 @@
 
    <test-case name="use-when-0407">
       <description>
-         Tests using function-available for generate-id,
-         system-property, key, current, unparsed-entity-uri, and unparsed-entity-public-id
-         in a use-when instruction.
+         XSLT20 only test
+         Tests using function-available for generate-id, system-property, key, current, 
+         unparsed-entity-uri, and unparsed-entity-public-id in a use-when instruction.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Abel Braaksma" on="2015-03-23" change="Fixed test-part on generate-id (which reported generate-id, but tested fn:current)"/>
@@ -1340,6 +1340,38 @@
       </dependencies>
       <test>
          <stylesheet file="use-when-0407.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/fa[@f="current"]="true"</assert>
+            <assert>/out/fa[@f="generate-id"]="true"</assert>
+            <assert>/out/fa[@f="key"]="true"</assert>
+            <assert>/out/fa[@f="unparsed-entity-uri"]="true"</assert>
+            <assert>/out/fa[@f="unparsed-entity-public-id"]="true"</assert>
+            <assert>/out/fa[@f="system-property"]="true"</assert>
+            <assert>not(/out/in[@f="current"])</assert>
+            <assert>not(/out/in[@f="generate-id"])</assert>
+            <assert>not(/out/in[@f="key"])</assert>
+            <assert>not(/out/in[@f="unparsed-entity-uri"])</assert>
+            <assert>not(/out/in[@f="unparsed-entity-public-id"])</assert>
+            <assert>/out/in[@f="system-property"]="use-when evaluates to true!!!"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0407a">
+      <description>
+         XSLT30+ version of previous test
+         Tests using function-available for generate-id, system-property, key, current,
+         unparsed-entity-uri, and unparsed-entity-public-id in a use-when instruction.
+      </description>
+      <created by="Abel Braaksma" on="2015-03-23"/>
+      <environment ref="use-when-04"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0407a.xsl"/>
       </test>
       <result>
          <all-of>

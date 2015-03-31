@@ -4456,15 +4456,41 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
       </result>
    </test-case>
 
-   <test-case name="error-0640e">
+   <test-case name="error-0640e-1">
       <description>Test use of variables in a key match pattern (XSLT 2.0) causing a circularity.
-      Result disputed for XSLT 3.0: see bug 26543.
-Was error-code-195.
-In general, a circularity in a stylesheet is a non-recoverable dynamic error.</description>
+         See bug 26543 (in XSLT 2.0 this error can still be 'recovered').
+         Was error-code-195.
+         In general, a circularity in a stylesheet is a non-recoverable dynamic error.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="Bug 26543, error not disputed anymore, but in XSLT 2.0 it may be ignored"/>
       <environment ref="error214"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640e.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <!-- recovery action is to not match the pattern when an error occurs: -->
+            <assert-xml><![CDATA[<out total="0"/>]]></assert-xml>
+            <!-- or to report the error -->
+            <error code="XTDE0640"/>
+          </any-of>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640e-2">
+      <description>Test use of variables in a key match pattern (XSLT 2.0) causing a circularity.
+         See bug 26543 (not disputed anymore for XSLT 3.0).
+         Was error-code-195.
+         In general, a circularity in a stylesheet is a non-recoverable dynamic error.
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <environment ref="error214"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="error-0640e.xsl"/>
@@ -4510,8 +4536,8 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
 
    <test-case name="error-0640h">
       <description>Generate error XTDE0640.
-Was error-code-262.
-In general, a circularity in a stylesheet is a non-recoverable dynamic error.</description>
+         Was error-code-262.
+         In general, a circularity in a stylesheet is a non-recoverable dynamic error.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
@@ -4523,6 +4549,151 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
       </test>
       <result>
          <error code="XTDE0640"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640i">
+      <description>
+         Generate error XTDE0640 (circularity error) with xsl:evaluate in xsl:param
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640i.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0640"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640j">
+      <description>
+         Generate error XTDE0640 (circularity error) with xsl:evaluate in xsl:variable
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640j.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0640"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640k">
+      <description>
+         Generate error XTDE0640 (circularity error) with anonymous function in seqtor
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640k.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0640"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640l">
+      <description>
+         Generate error XTDE0640 (circularity error) with anonymous function in select expr
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640l.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0640"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640m">
+      <description>
+         Generate error XTDE0640 (circularity error) and trying to catch it with xsl:try/catch (not allowed, see Bug 28368)
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640m.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0640"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640n">
+      <description>
+         Generate error XTDE0640 (circularity error) raised through xsl:evaluate and trying to catch it with xsl:try/catch in a function (not allowed, see Bug 28368)
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640n.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0640"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640o-1">
+      <description>
+         Generate error XTDE0640 (circularity error) NOT raised for static params (they are not forward in scope, raise XPST0008)
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640o.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640o-2">
+      <description>
+         Generate error XTDE0640 (circularity error) NOT raised for static params if you set the value externally
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640o.xsl"/>
+         <param name="circular" select="true()" />
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="error-0640p">
+      <description>
+         Generate error XTDE0640 (circularity error) NOT raised for static variables (they are not forward in scope, raise XPST0008)
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0640p.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
       </result>
    </test-case>
 
