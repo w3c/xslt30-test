@@ -4,7 +4,7 @@ xmlns:abc="http://abc.uri/">
 
 <!-- Test import precedence for xsl:strip-space -->
 
-<xsl:import href="whitespace-1601a.xsl"/>
+<xsl:import href="strip-space-1601a.xsl"/>
 <xsl:strip-space elements="abc:*"/>
 <xsl:preserve-space elements="abc:w"/>
 
