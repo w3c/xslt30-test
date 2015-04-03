@@ -825,11 +825,11 @@ Position:3,Last:3
    </test-case>
 
    <test-case name="whitespace-1501">
-      <description>test two conflicting xsl:strip-space declarations (recoverable
+      <description>test two conflicting xsl:strip-space/preserve-space declarations (recoverable
          error)</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Abel Braaksma" on="2014-02-11"
-         change="XTSE0270 - is not a recoverable error in XSLT30"/>
+      <modified by="Abel Braaksma" on="2014-02-11" change="XTSE0270 - is not a recoverable error in XSLT30, remove dependency on 3.0."/>
+      <modified by="Abel Braaksma" on="2015-04-02" change="Allow XTRE0270 to be thrown, add 3.0 variant of test"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc><a> </a><b> </b><c> </c></doc>]]></content>
@@ -842,7 +842,29 @@ Position:3,Last:3
          <stylesheet file="whitespace-1501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc><a/><b> </b><c/></doc>]]></assert-xml>
+         <any-of>
+            <error code="XTRE0270" />
+            <assert-xml><![CDATA[<doc><a/><b> </b><c/></doc>]]></assert-xml>
+         </any-of>         
+      </result>
+   </test-case>
+
+   <test-case name="whitespace-1501a">
+      <description>Two conflicting xsl:strip-space/preserve-space declarations (static error in XSLT 3.0)</description>
+      <created by="Abel Braaksma" on="2015-04-02"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><a> </a><b> </b><c> </c></doc>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+" />
+      </dependencies>
+      <test>
+         <stylesheet file="whitespace-1501.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0270" />
       </result>
    </test-case>
 
