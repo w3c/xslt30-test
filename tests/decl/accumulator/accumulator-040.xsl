@@ -1,4 +1,4 @@
-<xsl:stylesheet version="3.0" 
+<xsl:package version="3.0" 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
   exclude-result-prefixes="xs">
@@ -22,4 +22,4 @@
   </xsl:if>
 </xsl:template>
 
-</xsl:stylesheet>
+</xsl:package>
