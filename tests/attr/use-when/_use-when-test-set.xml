@@ -1333,7 +1333,7 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Abel Braaksma" on="2015-03-23" change="Fixed test-part on generate-id (which reported generate-id, but tested fn:current)"/>
-      <modified by="Abel Braaksma" on="2015-03-23" change="Only applies to XSLT 2.0, most of these functions are allowed in XSLT 3.0, see use-when-0407a"/>
+      <modified by="Abel Braaksma" on="2015-03-23" change="Only applies to XSLT 2.0, generate-id is allowed in 3.0, see use-when-0407a"/>
       <environment ref="use-when-04"/>
       <dependencies>
          <spec value="XSLT20"/>
@@ -1361,14 +1361,14 @@
    
    <test-case name="use-when-0407a">
       <description>
-         XSLT30+ version of previous test
+         XSLT30+ version of previous test (generate-id is now available, it is part of FO30)
          Tests using function-available for generate-id, system-property, key, current,
          unparsed-entity-uri, and unparsed-entity-public-id in a use-when instruction.
       </description>
       <created by="Abel Braaksma" on="2015-03-23"/>
       <environment ref="use-when-04"/>
       <dependencies>
-         <spec value="XSLT20"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="use-when-0407a.xsl"/>
@@ -1382,7 +1382,7 @@
             <assert>/out/fa[@f="unparsed-entity-public-id"]="true"</assert>
             <assert>/out/fa[@f="system-property"]="true"</assert>
             <assert>not(/out/in[@f="current"])</assert>
-            <assert>not(/out/in[@f="generate-id"])</assert>
+            <assert>out/in[@f="generate-id"]="use-when evaluates to true!!!"</assert>
             <assert>not(/out/in[@f="key"])</assert>
             <assert>not(/out/in[@f="unparsed-entity-uri"])</assert>
             <assert>not(/out/in[@f="unparsed-entity-public-id"])</assert>
@@ -1450,7 +1450,7 @@
          <error code="XTSE0020"/>
       </result>
    </test-case>
-
+   
    <test-case name="use-when-0501">
       <description>Test case that uses use-when on xsl:sort to avoid ascending sort.</description>
       <created by="Michael Kay" on="2012-10-30"/>
