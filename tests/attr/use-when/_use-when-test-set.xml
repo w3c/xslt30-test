@@ -1437,7 +1437,10 @@
    </test-case>
    
    <test-case name="use-when-0411">
-      <description>Test case using a variable with static="" attribute (not allowed), that uses use-when with an EBV of true on an xsl:choose instruction.</description>
+      <description>
+         Test case using a variable with static="" attribute (not allowed),
+         that uses use-when with an EBV of true on an xsl:choose instruction.
+      </description>
       <created by="Debbie Lockett" on="2014-08-06"/>
       <environment ref="use-when-04"/>
       <dependencies>
@@ -1448,6 +1451,363 @@
       </test>
       <result>
          <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0412">
+      <description>Tests that use-when must not be in the xsl namespace on xsl elements.</description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0412.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+
+   <test-case name="use-when-0413">
+      <description>
+        Tests that use-when must not be in the xsl namespace on xsl elements
+        Variant of previous, using alias namespace, should raise XTSE0090
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0413.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+
+   <test-case name="use-when-0414">
+      <description>
+        Tests that use-when must not be in the xsl namespace on xsl elements
+        Variant of previous, with an actual use-when=false, no error, no conflict, the correct use-when takes precedence
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0414.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result/>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="use-when-0415">
+      <description>
+        Tests that use-when must not be in the xsl namespace on xsl elements
+        Variant of previous, with an actual use-when=true, error, because of second xsl:use-when
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0415.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0416">
+      <description>
+        Tests that use-when must not be in the xsl namespace on xsl elements
+        Variant of previous, with second use-when and a different default namespace, has no effect on no-namespace of attribute
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0416.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0417">
+      <description>
+        Tests that use-when must not be in the xsl namespace on xsl elements
+        Variant of previous, with xslt namespace set as the default namespace, has no effect on no-namespace of attribute
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0417.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result/>]]></assert-xml>
+      </result>
+   </test-case>
+      
+   <test-case name="use-when-0418">
+      <description>
+        Tests that use-when must not be in the xsl namespace on xsl elements
+        xsl:fallback, normally ignored, but use-when errors should be triggered
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0418.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0419">
+      <description>
+        Tests that use-when must not be in the xsl namespace on xsl elements
+        xsl:fallback, normally ignored, but use-when errors should be triggered
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0419.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+
+   <test-case name="use-when-0420">
+      <description>
+        Tests that use-when must not be in the xsl namespace on xsl elements
+        xsl:fallback, normally ignored, with a positive use-when, has no effect
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0420.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result>Success</result>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="use-when-0421">
+      <description>
+         Test case using a variable with static="true" 
+		   variant of use-when-0411, with a valid static var and a body with use-when=false
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0421.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out var="correct"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0422">
+      <description>
+         Tests that use-when must be in the xsl namespace on LREs.
+         In this case, must not throw XPST0003, but simply output the attribute
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0422.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result><row use-when="not///valid///xpath"/></result>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0423">
+      <description>
+         Tests that use-when must be in the xsl namespace on LREs
+         Variant of previous, testing that the error is actually thrown: XPST0003
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0423.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0424">
+      <description>
+         Tests that use-when must be in the xsl namespace on LREs.
+         Variant of previous, with one in the xsl namespace and one not, EBV is false, no error.
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0424.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result />]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0425">
+      <description>
+         Tests that use-when must be in the xsl namespace on LREs.
+         Variant of previous, with one in the xsl namespace and one not, EBV is true, no error.
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0425.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result><row use-when="not///a///valid///xpath"/></result>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0426">
+      <description>
+         Tests that use-when must be in the xsl namespace on LREs.
+         Variant of previous, with second use-when and a different default namespace, has no effect on no-namespace of attribute.
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0426.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result><result><out:row xmlns:out="urn:out" select="'raises no error'" use-when="not///a///valid///xpath"/></result>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0427">
+      <description>
+         Tests that use-when must be in the xsl namespace on LREs.
+         Variant of previous, with xslt namespace set as the default namespace, has no effect on no-namespace of attribute, use-when has no effect
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0427.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result><out:row xmlns:out="urn:out" select="'raises no error'" use-when="wrong///xpath"/></result>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0428">
+      <description>
+         Tests xsl:use-when inside xsl:fallback LRE with static error
+         xsl:fallback, normally ignored, but use-when errors should be triggered
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0428.xsl"/>
+      </test>
+      <result>
+         <error code="XPST0003"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0429">
+      <description>
+         Tests xsl:use-when inside xsl:fallback LRE with dynamic error
+         xsl:fallback, normally ignored, but use-when errors should be triggered
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0429.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0430">
+      <description>
+         Tests xsl:use-when inside xsl:fallback LRE without error
+         Variant of previous, without an error in the xsl:use-when expression inside xsl:fallback
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0430.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result>Success</result>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-when-0431">
+      <description>
+         Test case using a variable with static="true" and error. 
+		   Variant of use-when-0421, with use-when in no-namespace on an LRE, should raise error
+      </description>
+      <created by="Abel Braaksma" on="2015-03-28"/>
+      <environment ref="use-when-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="use-when-0431.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0620" />
       </result>
    </test-case>
    
