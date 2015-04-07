@@ -7,8 +7,7 @@
             
    <xsl:template name="main">
       <out>
-         <xsl:message error-code="Q{http://www.w3.org/2005/xqt-errors}XTDE3175">Test not yet implemented</xsl:message>
-         <x/>
+         <xsl:evaluate xpath="'1 + 2'" />
       </out>
    </xsl:template>
    

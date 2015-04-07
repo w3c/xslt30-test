@@ -9816,8 +9816,10 @@ It is a static error if a character
                instruction is evaluated when use of xsl:evaluate is disabled.
             </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28423, test needed to be implemented, added dependency on dynamic-evaluation"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="dynamic_evaluation" satisfied="false"/>
       </dependencies>
       <test>
          <stylesheet file="error-3175a.xsl"/>
@@ -9974,9 +9976,12 @@ It is a static error if a character
    </test-case>
 
    <test-case name="error-3245a">
-      <description>Error: It is a dynamic error if the value of the validate option is true 
-      and the processor is not schema-aware.</description>
+      <description>
+         Error: It is a dynamic error if the value of the validate option is true 
+         and the processor is not schema-aware.
+      </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Expected error was XTDE3240, but should be XTDE3245 (as in descr of test)" />
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware" satisfied="false"/>
@@ -9986,7 +9991,7 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3240"/>
+         <error code="XTDE3245"/>
       </result>
    </test-case>
 
@@ -10015,6 +10020,7 @@ It is a static error if a character
                      validate, unescape, or fallback,
                      and whose value is not a permitted value for that key.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Fixed typo, as='element' into as='element()'"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10051,6 +10057,7 @@ It is a static error if a character
                   $input is not valid according to the schema for the XML representation of
                   JSON.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Fixed typo, as='element' into as='element()'"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>

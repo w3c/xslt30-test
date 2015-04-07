@@ -6,7 +6,7 @@
                   validate, unescape, or fallback,
                   and whose value is not a permitted value for that key.-->
                   
-   <xsl:variable name="x" as="element">
+   <xsl:variable name="x" as="element()">
      <null xmlns="http://www.w3.org/2013/XSL/json"/>
    </xsl:variable>               
                   
