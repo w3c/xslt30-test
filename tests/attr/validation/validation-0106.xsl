@@ -5,7 +5,7 @@
 <!-- Purpose: Test that an error is raised if @default-validation=preserve is present in 
   				the stylesheet but the processor is a basic processor.-->
 
-   <t:template match="/doc">
+   <t:template match="/">
       <t:element name="elem">2.2</t:element>
    </t:template>
 </t:transform>

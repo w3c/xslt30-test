@@ -249,13 +249,15 @@
 
    <test-case name="validation-0106">
       <description>
+         XSLT20 only:
       	Test that an error is raised if @default-validation=preserve is present in the 
       	stylesheet but the processor is a non-schema-aware processor.
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2015-04-06" change="Bug 28414, split into a 2.0 and 3.0 version"/>
       <environment ref="validation-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
          <feature value="schema_aware" satisfied="false"/>
       </dependencies>
       <test>
@@ -263,6 +265,27 @@
       </test>
       <result>
          <error code="XTSE1660"/>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-0106a">
+      <description>
+         XSLT30+ only:
+      	Test that an error is NOT raised if @default-validation=preserve is present in the 
+      	stylesheet but the processor is a non-schema-aware processor.
+      	See bug 28414.
+      </description>
+      <created by="Abel Braaksma" on="2015-04-05"/>
+      <environment ref="validation-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0106.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<elem>2.2</elem>]]></assert-xml>
       </result>
    </test-case>
    
