@@ -13,6 +13,4 @@ It is a static error if a parameter to xsl:iterate is implicitly mandatory.
          </xsl:iterate>
       </out>
    </xsl:template>
-   
-   <xsl:template match="x[. = current-merge-key()]"/>
 </xsl:stylesheet>
