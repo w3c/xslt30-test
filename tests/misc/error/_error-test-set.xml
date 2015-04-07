@@ -4244,19 +4244,21 @@ If a default value is given explicitly, that is, if there is either a
    </test-case>
 
    <test-case name="error-0610a">
-      <description>Generate error XTDE0610.
-Was error-code-259.
-If an optional parameter has no select attribute and has an empty
-                        sequence constructor, and
-                     if there is an as attribute, then the default value of the
-                     parameter is an empty sequence. If the empty sequence is not a valid instance
-                     of the required type defined in the as attribute, then the
-                     parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
-                     caller supplies no value for the parameter.</description>
+      <description>
+            Generate error XTDE0610 for a template param.
+            Was error-code-259.
+               If an optional parameter has no select attribute and has an empty
+               sequence constructor, and
+               if there is an as attribute, then the default value of the
+               parameter is an empty sequence. If the empty sequence is not a valid instance
+               of the required type defined in the as attribute, then the
+               parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
+               caller supplies no value for the parameter.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28429 and 28355, this error was dropped in 3.0, test forked"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-0610a.xsl"/>
@@ -4267,26 +4269,82 @@ If an optional parameter has no select attribute and has an empty
       </result>
    </test-case>
 
+
    <test-case name="error-0610b">
-      <description>Generate error XTDE0610 for a global parameter.
-Was error-code-410.
-If an optional parameter has no select attribute and has an empty
-                        sequence constructor, and
-                     if there is an as attribute, then the default value of the
-                     parameter is an empty sequence. If the empty sequence is not a valid instance
-                     of the required type defined in the as attribute, then the
-                     parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
-                     caller supplies no value for the parameter.</description>
-      <created by="Colin Adams" on="2012-11-07"/>
+      <description>
+            XSLT 3.0: this error was dropped in favor of XTDE0700, see Bug 28355
+            Generate error XTDE0610 (=XTDE0700 now) for a template param.
+            Was error-code-259.
+               If an optional parameter has no select attribute and has an empty
+               sequence constructor, and
+               if there is an as attribute, then the default value of the
+               parameter is an empty sequence. If the empty sequence is not a valid instance
+               of the required type defined in the as attribute, then the
+               parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
+               caller supplies no value for the parameter.</description>
+      <created by="Abel Braaksma" on="2015-04-07"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <stylesheet file="error-0610b.xsl"/>
+         <stylesheet file="error-0610a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE0700"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0610c">
+      <description>
+            Generate error XTDE0610 for a global parameter.
+            Was error-code-410, was error-0610b
+               If an optional parameter has no select attribute and has an empty
+               sequence constructor, and
+               if there is an as attribute, then the default value of the
+               parameter is an empty sequence. If the empty sequence is not a valid instance
+               of the required type defined in the as attribute, then the
+               parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
+               caller supplies no value for the parameter.
+      </description>
+      <created by="Colin Adams" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28429 and 28355, this error was dropped in 3.0"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0610c.xsl"/>
          <initial-template name="initial"/>
       </test>
       <result>
          <error code="XTDE0610"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0610d">
+      <description>
+            XSLT 3.0: this error was dropped in favor of XTDE0700, see Bug 28355
+            Generate error XTDE0610 (=XTDE0700 now) for a global parameter.
+            Was error-code-410, was error-0610b
+               If an optional parameter has no select attribute and has an empty
+               sequence constructor, and
+               if there is an as attribute, then the default value of the
+               parameter is an empty sequence. If the empty sequence is not a valid instance
+               of the required type defined in the as attribute, then the
+               parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
+               caller supplies no value for the parameter.
+      </description>
+      <created by="Abel Braaksma" on="2015-04-07" />
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0610c.xsl"/>
+         <initial-template name="initial"/>
+      </test>
+      <result>
+         <error code="XTDE0700"/>
       </result>
    </test-case>
 
