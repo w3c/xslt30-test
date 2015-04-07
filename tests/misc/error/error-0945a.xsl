@@ -8,7 +8,7 @@
                      
    <xsl:template name="main">
       <out>
-         <x y="f:f()"/>
+         <x y="{f:f()}"/>
       </out>
    </xsl:template>
    
