@@ -10741,6 +10741,7 @@ It is a static error if a character
                      if an xsl:try instruction is unable to recover the state of a final result tree
                      because recovery has been disabled by use of the attribute rollback-output="no".</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28425, rolling back is very implementation dependent, it is possible that the error would be caught properly, also, rolling back is only applicable to streaming"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10749,7 +10750,10 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3530"/>
+         <any-of>
+            <error code="XTDE3530"/>
+            <assert-xml><![CDATA[<out><c>caught</c></out>]]></assert-xml>
+         </any-of>
       </result>
    </test-case>
 
