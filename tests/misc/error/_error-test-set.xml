@@ -8402,12 +8402,17 @@ It is a non-recoverable dynamic
    </test-case>
 
    <test-case name="error-1495a">
-      <description>Error: It is a recoverable dynamic error
+      <description>
+         NOTE: this error has disappeared from the spec, in 2.0 it was a recoverable error XTRE1495.
+         See also: https://lists.w3.org/Archives/Member/w3c-xsl-wg/2012Oct/0038.html
+         
+         Error: It is a recoverable dynamic error
                      for a transformation to generate two or more final result trees with URIs that
                      identify the same physical resource. The optional recovery action is
                         implementation-dependent, since it may be impossible for the
                      processor to detect the error.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="The test threw XTDE1495 through an xsl:message, but test expected XTRE1495. Error is not in the spec anymore."/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -8416,7 +8421,7 @@ It is a non-recoverable dynamic
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTRE1495"/>
+         <error code="XTDE1495"/>
       </result>
    </test-case>
 
@@ -8741,8 +8746,10 @@ It is a static error if the
                            refers to a complex type definition and one or more of the items being copied
                            is an attribute node.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Test should be schema-aware"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
       </dependencies>
       <test>
          <stylesheet file="error-1535a.xsl"/>
@@ -8750,6 +8757,29 @@ It is a static error if the
       </test>
       <result>
          <error code="XTTE1535"/>
+      </result>
+   </test-case>
+   
+
+   <test-case name="error-1535b">
+      <description>
+         Variant of prev. test for non-schema-aware processors (other error expected: XTSE1650)
+         Error: It is a type error if the
+                           value of the type attribute of an
+                           xsl:copy or xsl:copy-of instruction 
+                           refers to a complex type definition and one or more of the items being copied
+                           is an attribute node.</description>
+      <created by="Abel Braaksma" on="2015-04-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false" />
+      </dependencies>
+      <test>
+         <stylesheet file="error-1535a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE1650"/>
       </result>
    </test-case>
 
@@ -9183,6 +9213,7 @@ It is a static error if a character
                      [xsl:]validation or default-validation attribute
                      with a value other than strip, preserve, or lax.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Error in stylesheet, namespace prefix not declared, fixed" />
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware" satisfied="false"/>
@@ -9204,6 +9235,7 @@ It is a static error if a character
                      atomic value of a type other than those which a basic XSLT processor
                      supports.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28421, no source specified, and this error is unraisable in a processor-independent way, fixed with xsl:assert"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware" satisfied="false"/>
@@ -9271,6 +9303,7 @@ It is a static error if a character
                      instruction, unless the attribute sort-before-merge is present
                   with the value yes.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28422, merge source was not referenced, which may result in not raising the error. Fixed with current-merge-group"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
