@@ -405,6 +405,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          method="html" indent="yes". </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
+      <modified by="Abel Braaksma" on="2015-04-06" change="Bug 28416, allowing an alternative rendition of the serialized outcome"/>
       <environment>
          <source role=".">
             <content><![CDATA[<page-items>
@@ -422,7 +423,10 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="bug-0701.out"/>
+         <any-of>
+            <assert-serialization method="html" file="bug-0701.out"/>
+            <assert-serialization method="html" file="bug-0701-alt.out"/>
+         </any-of>
       </result>
    </test-case>
 
