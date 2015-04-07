@@ -1510,10 +1510,14 @@ z = http://new-z.uri/;
    </test-case>
 
    <test-case name="namespace-2623">
-      <description>Erratum E6: Error when xmlns prefix or corresponding URI is misused</description>
+      <description>
+         Erratum E6: Error when xmlns prefix or corresponding URI is misused
+         NOTE: the error XTDE0865 is not mentioned in the erratum, only XTDE0835 (for xsl:element) was updated
+         However, see discussion in Bug 24113, it can be assumed that the XMLNS namespace must be considered 
+         forbidden for the xsl:attribute/@namespace (and by extension, the xsl:namespace instruction) as well.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Abel Braaksma" on="2013-12-10"
-         change="XTDE0835 instead of XTDE0865 - invalid namespace in xsl:attribute"/>
+      <modified by="Abel Braaksma" on="2013-12-10" change="Bug 24113, XTDE0865 instead of XTDE0835 - invalid namespace in xsl:attribute"/>
       <environment ref="namespace-26"/>
       <dependencies>
          <spec value="XSLT20+"/>
