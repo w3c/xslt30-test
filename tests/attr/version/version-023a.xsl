@@ -4,7 +4,7 @@
 compatibility mode -->
 <?spec xslt#forwards?>
 
-<xsl:template match="/(a|b)">
+<xsl:template match="a/preceding-sibling::b[1]">
   <shouldnt-see-this-element/>
 </xsl:template>
 
