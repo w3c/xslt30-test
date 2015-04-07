@@ -2,7 +2,7 @@
 <xsl:transform xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 exclude-result-prefixes="xs"
-                version="2.0">
+                version="3.0">
 
    <xsl:mode streamable="yes" use-when="system-property('xsl:supports-streaming')='yes'"/>
    

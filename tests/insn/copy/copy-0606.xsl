@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<xsl:stylesheet version='2.0'
+<xsl:stylesheet version='3.0'
 xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
 
     <!-- test use copy-namespaces attribute of xsl:copy, with values "  1"  (with some white-space), "0". (XSLT 3.0) -->
