@@ -347,4 +347,24 @@
          <assert-xml><![CDATA[<out><e>resolve-uri/level1/element.xml</e><p>resolve-uri/level1/pi.xml</p></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="resolve-uri-022">
+      <description>
+         Tests deep dotted paths and paths that try to get past the root, checks the mandatory RFC rules about removing the dots
+         Note that from a recent discussion it is understood that 
+          - if an xml:base contains dotted paths, these are returned unchanged (no dot-replacement)
+          - if resolve-uri has $relative absolute path, it is returned unchanged (no dot-replacement)
+          - if resolve-uri has empty string for $relative, then $absolute is returned unchanged (no dot-replacement)         
+      </description>
+      <created by="Abel Braaksma" on="2015-03-30"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-022.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="resolve-uri-022.out"/>
+      </result>
+   </test-case>
 </test-set>
