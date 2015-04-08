@@ -7835,9 +7835,10 @@ Was error-code-351.
       <description>A dynamic call to the current() function is a dynamic error
       </description>
       <created by="Michael Kay" on="2015-02-07"/>
+      <modified by="Abel Braaksma" on="2015-04-08" change="Bug 28438, uses function items, 2.0 --> 3.0"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="error-1360b.xsl"/>
@@ -9157,6 +9158,7 @@ It is a static error if a character
          - Fix to allow for optional recovery,
          - added serialize=yes
          - added 3.0 version output-1620b"/>
+      <modified by="Abel Braaksma" on="2015-04-08" change="Bug 28439, changed assertion to assert-xml, no need to check exact serialization"/>
       <dependencies>
          <spec value="XSLT20"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
@@ -9169,7 +9171,7 @@ It is a static error if a character
       <result>
          <any-of>
             <!-- recovery option -->
-            <assert-serialization><![CDATA[<out>&lt;a/&gt;</out>]]></assert-serialization>
+            <assert-xml><![CDATA[<out>&lt;a/&gt;</out>]]></assert-xml>
             <!-- or raise error -->
             <error code="XTRE1620"/>
          </any-of>
@@ -9181,6 +9183,7 @@ It is a static error if a character
          Test that error XTRE1620 is NOT thrown in XSLT 3.0 when it does not support d-o-e and serialization is ON
       </description>
       <created by="Abel Braaksma" on="2015-03-30"/>
+      <modified by="Abel Braaksma" on="2015-04-08" change="Bug 28439, changed assertion to assert-xml, no need to check exact serialization"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
@@ -9191,7 +9194,7 @@ It is a static error if a character
          <output serialize="yes" />
       </test>
       <result>
-         <assert-serialization><![CDATA[<out>&lt;a/&gt;</out>]]></assert-serialization>
+         <assert-xml><![CDATA[<out>&lt;a/&gt;</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -9208,6 +9211,7 @@ It is a static error if a character
          - Fix to allow for optional recovery,
          - added serialize=no (was a TODO marking)
          - added 3.0 version output-1630b"/>
+      <modified by="Abel Braaksma" on="2015-04-08" change="Bug 28439, omit xml declaration in serialized result"/>
       <dependencies>
          <spec value="XSLT20"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
