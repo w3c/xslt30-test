@@ -102,13 +102,38 @@
       <created by="Michael Kay" on="2015-03-02"/>
       <environment ref="attribute-set-01"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="attribute-set-0106.xsl"/>
       </test>
       <result>
          <any-of>
+            <error code="XTDE0640"/>
+            <error code="XTSE0720"/>
+            <assert-xml><![CDATA[<out><test1 color="|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt"
+          texture="matt"/></out>]]></assert-xml>
+         </any-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-set-0106a">
+      <description>
+         XSLT 3.0+ version of previous test (different errors)
+         A terminating recursive attribute set. 
+         (It's not entirely clear whether the spec allows this. It works in Saxon 9.6 but not in 9.7)</description>
+      <keywords>xsl:use-attribute-sets lre </keywords>
+      <created by="Abel Braaksma" on="2015-04-08"/>
+      <environment ref="attribute-set-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-0106.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <!-- error XTSE0720 was dropped in XSLT 3.0 -->
             <error code="XTDE0640"/>
             <assert-xml><![CDATA[<out><test1 color="|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt|matt"
           texture="matt"/></out>]]></assert-xml>
