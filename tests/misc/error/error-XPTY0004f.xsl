@@ -7,6 +7,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
 
 <xsl:template match="/">
 <a/>
+  <xsl:value-of select="f:doc()" xmlns:f="http://f.com/"/>
 <xsl:message>***** error not detected! *****</xsl:message>
 </xsl:template>
 

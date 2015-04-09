@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
    xmlns:xs="http://www.w3.org/2001/XMLSchema" name="streamable">
-
+   
    <description>Tests streamable apply-templates and modes</description>
    <keywords>classifying-pattern xsl:apply-templates xsl:mode streamable streamable-mode</keywords>
+
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+
 
    <environment name="ot">
       <source file="ot.xml" uri="ot.xml" streaming="true">
@@ -79,11 +85,6 @@
    <environment name="citygml">
       <source role="." file="citygml.xml" streaming="true"/>
    </environment>
-
-   <dependencies>
-      <spec value="XSLT30+"/>
-      <feature value="streaming"/>
-   </dependencies>
 
    <test-case name="streamable-001">
       <description>streaming templates used to delete selected elements</description>

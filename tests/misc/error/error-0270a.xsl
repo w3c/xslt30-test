@@ -7,7 +7,7 @@
                declaration if both have the same import
                precedence. Two NameTests are considered the same if they match the same set of names
                (which can be determined by comparing them after expanding namespace prefixes to URIs).-->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
 
 <?error XTRE0270?>
 <!-- Either signals the error, or reports two (whitespace) text nodes -->

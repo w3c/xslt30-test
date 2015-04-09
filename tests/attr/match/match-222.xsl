@@ -2,7 +2,7 @@
 <xslt:transform xmlns:my="http://www.example.com/ns/match/var"
    xmlns:pre="http://www.example.com/ns/match/var" xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns:xslt="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="my xs pre"
-   version="2.0">
+   version="3.0">
    
    <!-- derived from match-158 -->
    <!-- Purpose: Test of xsl:mode typed="strict" with union patterns.-->

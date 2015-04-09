@@ -2,7 +2,7 @@
 <t:transform xmlns:fun="http://www.funJobs.com"
              xmlns:easy="http://www.easyJobs.com"
              xmlns:t="http://www.w3.org/1999/XSL/Transform"
-             version="2.0">
+             version="3.0">
 <!-- Purpose: Test case that uses inherit-namespaces = "true" on an xsl:element instruction
   				to verify that the namespace nodes are copied to the children and descendants 
   				of the newly constructed element -->

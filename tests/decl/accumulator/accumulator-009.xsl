@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:package xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:f="http://accum004/"
     exclude-result-prefixes="xs f"
@@ -35,4 +35,4 @@
              avg="{round(accumulator-after('sum') div accumulator-after('count'), 2)}"/> 
    </xsl:template>  
     
-</xsl:stylesheet>
+</xsl:package>

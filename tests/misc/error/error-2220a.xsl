@@ -20,8 +20,8 @@
            <xsl:merge-source name="b" select="reverse(1 to 50)">
              <xsl:merge-key select="."/>
            </xsl:merge-source>
-           <xsl:merge-action>
-             22
+           <xsl:merge-action expand-text="yes">
+             {current-merge-group()}
            </xsl:merge-action>
          </xsl:merge>
       </out>

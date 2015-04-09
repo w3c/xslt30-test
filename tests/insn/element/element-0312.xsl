@@ -2,7 +2,7 @@
 <t:transform xmlns:fun="http://www.funJobs.com"
              xmlns:easy="http://www.easyJobs.com"
              xmlns:t="http://www.w3.org/1999/XSL/Transform"
-             version="2.0">
+             version="3.0">
 	<!-- Purpose: Test case that uses inherit-namespaces ="01" on an xsl:element instruction (not allowed). -->
 
    <t:template match="doc">

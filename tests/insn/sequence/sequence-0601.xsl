@@ -5,6 +5,7 @@
              exclude-result-prefixes="f">
 <!-- Purpose: Simple test of calling xsl:function from within the for loop, which stresses the variable stack. -->
 
+   <t:output indent="no" />
 
    <t:template match="@*|node()">
       <t:copy>

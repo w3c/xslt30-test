@@ -1,6 +1,7 @@
 <xsl:stylesheet version="25.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- Show that an invalid match pattern is *not* ignored in forwardscompatibility mode -->
+<!-- Show that an invalid match pattern is *not* ignored in forwards
+compatibility mode -->
 <?spec xslt#forwards?>
 
 <xsl:template match="/(a|b)">

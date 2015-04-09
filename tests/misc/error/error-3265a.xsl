@@ -5,7 +5,7 @@
                   $input is not valid according to the schema for the XML representation of
                   JSON.-->
                   
-   <xsl:variable name="x" as="element">
+   <xsl:variable name="x" as="element()">
      <null xmlns="http://www.w3.org/2013/XSL/json">0</null>
    </xsl:variable>                  
                   

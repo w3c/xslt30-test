@@ -7,11 +7,12 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
 
 <xsl:template match="/">
 <a/>
+  <xsl:value-of select="f:doc()" xmlns:f="http://f.com/"/>
 <xsl:message>***** error not detected! *****</xsl:message>
 </xsl:template>
 
 <xsl:function name="f:doc" xmlns:f="http://f.com/">
-  <xsl:analyze-string select="'abcd'" regex="efgh">
+  <xsl:analyze-string select="'abcd'" regex="a">
     <xsl:matching-substring>
       <xsl:value-of select="//a"/>
     </xsl:matching-substring>

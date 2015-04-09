@@ -1700,9 +1700,10 @@ It is a non-recoverable dynamic
       </description>
       <created by="Michael Kay" on="2014-08-25"/>
       <modified by="Abel Braaksma" on="2014-11-05" change="Was ambiguous, both XTDE0047 and XTDE0044 were possible, fixed with an initial match selection" />
+      <modified by="Abel Braaksma" on="2015-04-06" change="Bug 28418, error does not exist anymore in 3.0 (but this may be in error), changed spec dependency to 2.0" />
       <environment ref="error001a"/>
       <dependencies>
-         <spec value="XSLT30+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-0047a.xsl"/>
@@ -4243,19 +4244,21 @@ If a default value is given explicitly, that is, if there is either a
    </test-case>
 
    <test-case name="error-0610a">
-      <description>Generate error XTDE0610.
-Was error-code-259.
-If an optional parameter has no select attribute and has an empty
-                        sequence constructor, and
-                     if there is an as attribute, then the default value of the
-                     parameter is an empty sequence. If the empty sequence is not a valid instance
-                     of the required type defined in the as attribute, then the
-                     parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
-                     caller supplies no value for the parameter.</description>
+      <description>
+            Generate error XTDE0610 for a template param.
+            Was error-code-259.
+               If an optional parameter has no select attribute and has an empty
+               sequence constructor, and
+               if there is an as attribute, then the default value of the
+               parameter is an empty sequence. If the empty sequence is not a valid instance
+               of the required type defined in the as attribute, then the
+               parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
+               caller supplies no value for the parameter.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28429 and 28355, this error was dropped in 3.0, test forked"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-0610a.xsl"/>
@@ -4266,26 +4269,82 @@ If an optional parameter has no select attribute and has an empty
       </result>
    </test-case>
 
+
    <test-case name="error-0610b">
-      <description>Generate error XTDE0610 for a global parameter.
-Was error-code-410.
-If an optional parameter has no select attribute and has an empty
-                        sequence constructor, and
-                     if there is an as attribute, then the default value of the
-                     parameter is an empty sequence. If the empty sequence is not a valid instance
-                     of the required type defined in the as attribute, then the
-                     parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
-                     caller supplies no value for the parameter.</description>
-      <created by="Colin Adams" on="2012-11-07"/>
+      <description>
+            XSLT 3.0: this error was dropped in favor of XTDE0700, see Bug 28355
+            Generate error XTDE0610 (=XTDE0700 now) for a template param.
+            Was error-code-259.
+               If an optional parameter has no select attribute and has an empty
+               sequence constructor, and
+               if there is an as attribute, then the default value of the
+               parameter is an empty sequence. If the empty sequence is not a valid instance
+               of the required type defined in the as attribute, then the
+               parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
+               caller supplies no value for the parameter.</description>
+      <created by="Abel Braaksma" on="2015-04-07"/>
+      <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <stylesheet file="error-0610b.xsl"/>
+         <stylesheet file="error-0610a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE0700"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0610c">
+      <description>
+            Generate error XTDE0610 for a global parameter.
+            Was error-code-410, was error-0610b
+               If an optional parameter has no select attribute and has an empty
+               sequence constructor, and
+               if there is an as attribute, then the default value of the
+               parameter is an empty sequence. If the empty sequence is not a valid instance
+               of the required type defined in the as attribute, then the
+               parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
+               caller supplies no value for the parameter.
+      </description>
+      <created by="Colin Adams" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28429 and 28355, this error was dropped in 3.0"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0610c.xsl"/>
          <initial-template name="initial"/>
       </test>
       <result>
          <error code="XTDE0610"/>
+      </result>
+   </test-case>
+
+   <test-case name="error-0610d">
+      <description>
+            XSLT 3.0: this error was dropped in favor of XTDE0700, see Bug 28355
+            Generate error XTDE0610 (=XTDE0700 now) for a global parameter.
+            Was error-code-410, was error-0610b
+               If an optional parameter has no select attribute and has an empty
+               sequence constructor, and
+               if there is an as attribute, then the default value of the
+               parameter is an empty sequence. If the empty sequence is not a valid instance
+               of the required type defined in the as attribute, then the
+               parameter is treated as a required parameter, which means that it is a non-recoverable dynamic error if the
+               caller supplies no value for the parameter.
+      </description>
+      <created by="Abel Braaksma" on="2015-04-07" />
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0610c.xsl"/>
+         <initial-template name="initial"/>
+      </test>
+      <result>
+         <error code="XTDE0700"/>
       </result>
    </test-case>
 
@@ -6026,6 +6085,7 @@ It is a static error if the
                         to use the xsl:copy instruction with no select attribute when the context item is absent.
                      </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-06" change="Bug 28419, changed stylesheet to actually call the function to trigger the error"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -6252,6 +6312,7 @@ It is a type error if the result of
                      instruction is not in the lexical space of xs:integer. The error may be signaled
                   statically if it can be detected statically.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-06" change="Bug 28420, error has disappeared, should (probably) now be XTSE0020"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -6260,7 +6321,7 @@ It is a type error if the result of
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE1001"/>
+         <error code="XTSE0020"/>
       </result>
    </test-case>
 
@@ -7774,9 +7835,10 @@ Was error-code-351.
       <description>A dynamic call to the current() function is a dynamic error
       </description>
       <created by="Michael Kay" on="2015-02-07"/>
+      <modified by="Abel Braaksma" on="2015-04-08" change="Bug 28438, uses function items, 2.0 --> 3.0"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="error-1360b.xsl"/>
@@ -8399,12 +8461,17 @@ It is a non-recoverable dynamic
    </test-case>
 
    <test-case name="error-1495a">
-      <description>Error: It is a recoverable dynamic error
+      <description>
+         NOTE: this error has disappeared from the spec, in 2.0 it was a recoverable error XTRE1495.
+         See also: https://lists.w3.org/Archives/Member/w3c-xsl-wg/2012Oct/0038.html
+         
+         Error: It is a recoverable dynamic error
                      for a transformation to generate two or more final result trees with URIs that
                      identify the same physical resource. The optional recovery action is
                         implementation-dependent, since it may be impossible for the
                      processor to detect the error.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="The test threw XTDE1495 through an xsl:message, but test expected XTRE1495. Error is not in the spec anymore."/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -8413,7 +8480,7 @@ It is a non-recoverable dynamic
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTRE1495"/>
+         <error code="XTDE1495"/>
       </result>
    </test-case>
 
@@ -8738,8 +8805,10 @@ It is a static error if the
                            refers to a complex type definition and one or more of the items being copied
                            is an attribute node.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Test should be schema-aware"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
       </dependencies>
       <test>
          <stylesheet file="error-1535a.xsl"/>
@@ -8747,6 +8816,29 @@ It is a static error if the
       </test>
       <result>
          <error code="XTTE1535"/>
+      </result>
+   </test-case>
+   
+
+   <test-case name="error-1535b">
+      <description>
+         Variant of prev. test for non-schema-aware processors (other error expected: XTSE1650)
+         Error: It is a type error if the
+                           value of the type attribute of an
+                           xsl:copy or xsl:copy-of instruction 
+                           refers to a complex type definition and one or more of the items being copied
+                           is an attribute node.</description>
+      <created by="Abel Braaksma" on="2015-04-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false" />
+      </dependencies>
+      <test>
+         <stylesheet file="error-1535a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE1650"/>
       </result>
    </test-case>
 
@@ -9066,6 +9158,7 @@ It is a static error if a character
          - Fix to allow for optional recovery,
          - added serialize=yes
          - added 3.0 version output-1620b"/>
+      <modified by="Abel Braaksma" on="2015-04-08" change="Bug 28439, changed assertion to assert-xml, no need to check exact serialization"/>
       <dependencies>
          <spec value="XSLT20"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
@@ -9078,7 +9171,7 @@ It is a static error if a character
       <result>
          <any-of>
             <!-- recovery option -->
-            <assert-serialization><![CDATA[<out>&lt;a/&gt;</out>]]></assert-serialization>
+            <assert-xml><![CDATA[<out>&lt;a/&gt;</out>]]></assert-xml>
             <!-- or raise error -->
             <error code="XTRE1620"/>
          </any-of>
@@ -9090,6 +9183,7 @@ It is a static error if a character
          Test that error XTRE1620 is NOT thrown in XSLT 3.0 when it does not support d-o-e and serialization is ON
       </description>
       <created by="Abel Braaksma" on="2015-03-30"/>
+      <modified by="Abel Braaksma" on="2015-04-08" change="Bug 28439, changed assertion to assert-xml, no need to check exact serialization"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
@@ -9100,7 +9194,7 @@ It is a static error if a character
          <output serialize="yes" />
       </test>
       <result>
-         <assert-serialization><![CDATA[<out>&lt;a/&gt;</out>]]></assert-serialization>
+         <assert-xml><![CDATA[<out>&lt;a/&gt;</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -9117,6 +9211,7 @@ It is a static error if a character
          - Fix to allow for optional recovery,
          - added serialize=no (was a TODO marking)
          - added 3.0 version output-1630b"/>
+      <modified by="Abel Braaksma" on="2015-04-08" change="Bug 28439, omit xml declaration in serialized result"/>
       <dependencies>
          <spec value="XSLT20"/>
          <feature value="disabling_output_escaping" satisfied="false"/>
@@ -9180,6 +9275,7 @@ It is a static error if a character
                      [xsl:]validation or default-validation attribute
                      with a value other than strip, preserve, or lax.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Error in stylesheet, namespace prefix not declared, fixed" />
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware" satisfied="false"/>
@@ -9201,6 +9297,7 @@ It is a static error if a character
                      atomic value of a type other than those which a basic XSLT processor
                      supports.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28421, no source specified, and this error is unraisable in a processor-independent way, fixed with xsl:assert"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware" satisfied="false"/>
@@ -9268,6 +9365,7 @@ It is a static error if a character
                      instruction, unless the attribute sort-before-merge is present
                   with the value yes.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28422, merge source was not referenced, which may result in not raising the error. Fixed with current-merge-group"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -9780,8 +9878,10 @@ It is a static error if a character
                instruction is evaluated when use of xsl:evaluate is disabled.
             </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28423, test needed to be implemented, added dependency on dynamic-evaluation"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="dynamic_evaluation" satisfied="false"/>
       </dependencies>
       <test>
          <stylesheet file="error-3175a.xsl"/>
@@ -9938,9 +10038,12 @@ It is a static error if a character
    </test-case>
 
    <test-case name="error-3245a">
-      <description>Error: It is a dynamic error if the value of the validate option is true 
-      and the processor is not schema-aware.</description>
+      <description>
+         Error: It is a dynamic error if the value of the validate option is true 
+         and the processor is not schema-aware.
+      </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Expected error was XTDE3240, but should be XTDE3245 (as in descr of test)" />
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware" satisfied="false"/>
@@ -9950,7 +10053,7 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3240"/>
+         <error code="XTDE3245"/>
       </result>
    </test-case>
 
@@ -9979,6 +10082,7 @@ It is a static error if a character
                      validate, unescape, or fallback,
                      and whose value is not a permitted value for that key.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Fixed typo, as='element' into as='element()'"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10015,6 +10119,7 @@ It is a static error if a character
                   $input is not valid according to the schema for the XML representation of
                   JSON.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Fixed typo, as='element' into as='element()'"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10680,6 +10785,7 @@ It is a static error if a character
       <description>It is a static error if a parameter to xsl:iterate is implicitly mandatory.
       </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28424, removed current-merge-group from match attribute, referenced the variable to force the error"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10697,6 +10803,7 @@ It is a static error if a character
                      if an xsl:try instruction is unable to recover the state of a final result tree
                      because recovery has been disabled by use of the attribute rollback-output="no".</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28425, rolling back is very implementation dependent, it is possible that the error would be caught properly, also, rolling back is only applicable to streaming"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10705,7 +10812,10 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3530"/>
+         <any-of>
+            <error code="XTDE3530"/>
+            <assert-xml><![CDATA[<out><c>caught</c></out>]]></assert-xml>
+         </any-of>
       </result>
    </test-case>
 
@@ -11492,9 +11602,10 @@ It is a static error if a character
       </result>
    </test-case>
 
-   <test-case name="error-XPTY004f">
+   <test-case name="error-XPTY0004f">
       <description>"." used when not a node - optionally a static error even though never executed. Was error-code-182.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braakmsa" on="2015-04-07" change="Bug 28426, the function must be called to raise the error"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -11561,6 +11672,7 @@ It is a static error if a character
    <test-case name="error-XPTY0020b">
       <description>"." used when not a node - static error even though never executed. Was error-code-183.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braakmsa" on="2015-04-07" change="Bug 28426, the function must be called and the body of analyze-string must be evaluated to raise the error"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>

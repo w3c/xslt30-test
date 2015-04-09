@@ -3,7 +3,7 @@
 
    <!-- Static param with private visibility, previously allowed but changed: attribute must not appear on xsl:param -->
    
-   <xsl:variable name="static-param" static="yes" select="'visibility not allowed'" visibility="private" />
+   <xsl:param name="static-param" static="yes" select="'visibility not allowed'" visibility="private" />
 
    <xsl:template name="xsl:initial-template" expand-text="yes">
       {$static-param}

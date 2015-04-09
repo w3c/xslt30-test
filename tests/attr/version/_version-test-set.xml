@@ -429,15 +429,39 @@
    </test-case>
 
    <test-case name="version-023">
-      <description>Show that an invalid match pattern is *not* ignored in forwards compatibility mode</description>
-      <keywords>version-attribute XTSE0340 _WRONG:error-condition-allowed-in-3.0 forwards-compatibility-mode</keywords>
+      <description>
+         XSLT20 only
+         Show that an invalid match pattern is *not* ignored in forwards compatibility mode
+      </description>
+      <keywords>version-attribute XTSE0340 forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-06" change="Bug 28415, only applies to version 2.0, see also version-023a for 3.0 version" />
+      <environment ref="ver17"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="version-023.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+
+   <test-case name="version-023a">
+      <description>
+         XSLT 3.0+ version of previous (which incidentally raises the same error for 2.0)
+         Show that an invalid match pattern is *not* ignored in forwards compatibility mode
+         See Bug 28415
+      </description>
+      <keywords>version-attribute XTSE0340 forwards-compatibility-mode</keywords>
+      <created by="Abel Braaksma" on="2015-04-06"/>
       <environment ref="ver17"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="version-023.xsl"/>
+         <stylesheet file="version-023a.xsl"/>
       </test>
       <result>
          <error code="XTSE0340"/>
