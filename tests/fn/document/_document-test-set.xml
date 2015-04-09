@@ -1282,13 +1282,17 @@
       <description>
          Test use of an escaped URI with document() function.
          NOTE: This test (and the next two) make use of a file
-         whose name is xgespräch.xml. Git isn't very good at
-         handling filenames with non-ASCII characters, especially
-         on Mac. If this file is not present, try renaming the
-         xgesprach.xml file, which is identical, and is present
-         in the repository for this purpose.        
-         </description>
+         whose name is xgespräch.xml. 
+         
+         Mercurial Hg cannot handle this file in a proper way for both Windows,
+         Linux and Mac. If it works on one, it fails on the other (see Bug 20275)
+         
+         As a resolution, copy the file xgesprach.xml to xgespräch.xml. This file
+         should not show up when you update the repository, it is in the ignore 
+         list, so it can safely stay in this directory for the lifetime of your clone.
+      </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-09" change="Bug 20275, see changed description above of how to deal with xgespräch.xml."/>
       <environment ref="document-20"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -1308,6 +1312,7 @@
    <test-case name="document-2005">
       <description>test use of an escaped base URI with document() function</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-09" change="Bug 20275, see changed description in test document-2004 of how to deal with xgespräch.xml."/>
       <environment ref="document-20"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1327,6 +1332,7 @@
    <test-case name="document-2006">
       <description>test use of doc-available function</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-09" change="Bug 20275, see changed description in test document-2004 of how to deal with xgespräch.xml."/>
       <environment ref="document-20"/>
       <dependencies>
          <spec value="XSLT20+"/>
