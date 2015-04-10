@@ -3493,13 +3493,16 @@
    </test-case>
 
    <test-case name="output-0229">
-      <description> Test XHTML 5.0: doctype-public and no doctype-system. See bug 20264. Current
-         test result assumes no DOCTYPE declaration is output in this situation. </description>
+      <description> Test XHTML 5.0: doctype-public and no doctype-system. See bug 20264. 
+         Test result prior to 2015-04-10 assumed no DOCTYPE declaration is output in this situation,
+         but the effect of the ruling on bug 20264 is that a DOCTYPE declaration should be output. 
+      </description>
       <created by="Michael Kay" on="2012-12-06"/>
       <modified by="Abel Braaksma" on="2013-12-10"
          change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
       <modified by="Debbie Lockett" on="2014-08-07" change="Add error in not/any-of assertions"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2015-04-10" change="The decision on bug 20264 means that a DOCTYPE should be output. Change expected result."/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -3509,12 +3512,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <not>
-            <any-of>
-               <error code="*"/>
-               <serialization-matches><![CDATA[<!DOCTYPE\s+html\s*>]]></serialization-matches>
-            </any-of>
-         </not>
+         <serialization-matches><![CDATA[<!DOCTYPE\s+html\s*>]]></serialization-matches>
       </result>
    </test-case>
 
