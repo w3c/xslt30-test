@@ -8,7 +8,7 @@
 
    <test-case name="try-001">
       <description>Simple test of xsl:try</description>
-      <keywords>xsl:try error-handling generic-catch-clause FOAR0001 _WRONG:incorrect-dependency</keywords>
+      <keywords>xsl:try error-handling generic-catch-clause FOAR0001</keywords>
       <created by="Michael Kay" on="2012-11-07"/>      
       <dependencies>
          <spec value="XSLT30+"/>
@@ -24,8 +24,9 @@
 
    <test-case name="try-002">
       <description>Test of xsl:try as a higher-order function</description>
-      <keywords>xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description FORG0001 _IMPROVE:cannot-test-error-variables _WRONG:incorrect-dependency</keywords>
-      <created by="Michael Kay" on="2012-11-07"/>      
+      <keywords>xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description FORG0001</keywords>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-04-19" change="Allow for outcome variants with and without lineinfo and module info"/>      
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -34,15 +35,24 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<o><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" 
-              code="err:FOAR0001" module="try-002.xsl"
-              line="17"><message>Integer division by zero</message></err:error></o>]]></assert-xml>
+         <any-of>
+            <!-- some variants, because line and module info is not always set -->
+            <assert-xml><![CDATA[<o><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" 
+                 code="err:FOAR0001" module="try-002.xsl"
+                 line="17"><message>Integer division by zero</message></err:error></o>]]></assert-xml>
+            <assert-xml><![CDATA[<o><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" 
+                 code="err:FOAR0001" module="try-002.xsl"
+                 line=""><message>Integer division by zero</message></err:error></o>]]></assert-xml>
+            <assert-xml><![CDATA[<o><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" 
+                 code="err:FOAR0001" module=""
+                 line=""><message>Integer division by zero</message></err:error></o>]]></assert-xml>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="try-003">
       <description>Test xsl:try rethrowing the exception</description>
-      <keywords>_IMPROVE:cleanup-redundant-code fn:error xsl:try error-handling generic-catch-clause specific-catch-clause FORG0001 $err:code $err:line-number $err:value _WRONG:incorrect-dependency</keywords>
+      <keywords>_IMPROVE:cleanup-redundant-code fn:error xsl:try error-handling generic-catch-clause specific-catch-clause FORG0001 $err:code $err:line-number $err:value</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -95,7 +105,7 @@
 
    <test-case name="try-006">
       <description>xsl:try element, simple case</description>
-      <keywords>FOAR0001 xsl:try error-handling generic-catch-clause _WRONG:incorrect-dependency</keywords>
+      <keywords>FOAR0001 xsl:try error-handling generic-catch-clause</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -111,7 +121,7 @@
 
    <test-case name="try-007">
       <description>xsl:try element, catch a specific error</description>
-      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR0001 _WRONG:incorrect-dependency</keywords>
+      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR0001</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -127,7 +137,7 @@
 
    <test-case name="try-008">
       <description>xsl:try element, catch a specific error</description>
-      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 FOAR0001 _WRONG:incorrect-dependency</keywords>
+      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 FOAR0001</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -143,7 +153,7 @@
 
    <test-case name="try-009">
       <description>xsl:try element, catch several errors</description>
-      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 err:FOAR0001 _WRONG:incorrect-dependency</keywords>
+      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 err:FOAR0001</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -159,7 +169,7 @@
 
    <test-case name="try-010">
       <description>xsl:try element, use sequence constructor</description>
-      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 err:FOAR0001 _WRONG:incorrect-dependency</keywords>
+      <keywords>xsl:try error-handling generic-catch-clause specific-catch-clause FOAR9876 err:FOAR0001</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -175,7 +185,7 @@
 
    <test-case name="try-011">
       <description>Error: variable declared in xsl:try is not visible with xsl:catch</description>
-      <keywords>XPST0008 variable-scope xsl:try error-handling generic-catch-clause specific-catch-clause _WRONG:incorrect-dependency</keywords>
+      <keywords>XPST0008 variable-scope xsl:try error-handling generic-catch-clause specific-catch-clause</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -191,7 +201,7 @@
 
    <test-case name="try-012">
       <description>element-available in Saxon-SA</description>
-      <keywords>fn:element-available xsl:try xsl:catch _WRONG:incorrect-dependency _WRONG:test-output-incorrect</keywords>
+      <keywords>fn:element-available xsl:try xsl:catch _WRONG:test-output-incorrect</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -289,7 +299,7 @@
 
    <test-case name="try-018">
       <description>xsl:catch with references to error variables in body</description>
-      <keywords>_IMPROVE:cannot-test-error-variables _WRONG:incorrect-dependency xsl:try error-handling generic-catch-clause $err:code $err:description $err:value $err:module $err:line-number $err:column-number FODC0002</keywords>
+      <keywords>_IMPROVE:cannot-test-error-variables xsl:try error-handling generic-catch-clause $err:code $err:description $err:value $err:module $err:line-number $err:column-number FODC0002</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-04-28" change="reproducible results"/>
       <dependencies>
@@ -333,7 +343,7 @@
 
    <test-case name="try-020">
       <description>xsl:result-document within xsl:try which throws a division by zero error</description>
-      <keywords>_IMPROVE:xsl:result-document-href-dependency FOAR0001 _WRONG:incorrect-dependency xsl:result-document xsl:try error-handling generic-catch-clause</keywords>
+      <keywords>_IMPROVE:xsl:result-document-href-dependency FOAR0001 xsl:result-document xsl:try error-handling generic-catch-clause</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -368,7 +378,7 @@
 
    <test-case name="try-022">
       <description>xsl:result-document within xsl:try, which catches a division by zero error in second result-document</description>
-      <keywords>FOAR0001 _IMPROVE:cannot-test-error-variables _WRONG:incorrect-dependency xsl:result-document xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description</keywords>
+      <keywords>FOAR0001 _IMPROVE:cannot-test-error-variables xsl:result-document xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-01-31" change="restructure the test assertions"/>
       <dependencies>
@@ -445,7 +455,7 @@
 
    <test-case name="try-025">
       <description>Invalid child of xsl:try in XSLT 2.0 (not caught by xsl:fallback) (same test as try-016 but run under XSLT 2.0)</description>
-      <keywords>2.0-only-behavior _WRONG:incorrect-dependency XTSE0010 xsl:fallback xsl:try error-handling generic-catch-clause</keywords>
+      <keywords>2.0-only-behavior XTSE0010 xsl:fallback xsl:try error-handling generic-catch-clause</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
          <spec value="XSLT20"/>
