@@ -13,7 +13,6 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-03" change="align with current spec, make results predictable"/>
       <modified by="Abel Braaksma" on="2014-10-20" change="Since Oct 2014 LCWD, map:new is no longer among us, replaced it with map:merge" />
-      <dependencies/>
       <test>
          <stylesheet file="maps-001.xsl"/>
          <initial-template name="main"/>
@@ -28,7 +27,6 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-06-03" change="align with current spec, make results predictable"/>
       <modified by="Abel Braaksma" on="2014-10-20" change="Since Oct 2014 LCWD, map:new is no longer among us, replaced it with map:merge" />
-      <dependencies/>
       <test>
          <stylesheet file="maps-002.xsl"/>
          <initial-template name="main"/>
@@ -41,7 +39,6 @@
    <test-case name="maps-003">
       <description>Simple computed map</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-003.xsl"/>
          <initial-template name="main"/>
@@ -54,7 +51,6 @@
    <test-case name="maps-004">
       <description>Simple computed map using content of xsl:map-entry</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-004.xsl"/>
          <initial-template name="main"/>
@@ -67,7 +63,6 @@
    <test-case name="maps-005">
       <description>xsl:map-entry creates a map that can be used in its own right</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-005.xsl"/>
          <initial-template name="main"/>
@@ -80,7 +75,6 @@
    <test-case name="maps-006">
       <description>Error if a map used in the content of an element constructor</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-006.xsl"/>
          <initial-template name="main"/>
@@ -94,7 +88,6 @@
       <description>Error if a non-map used in the content of xsl:map</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2014-10-20" change="Error changed, the spec requires this to yield error XTTE3375, not XPTY0004"></modified>
-      <dependencies/>
       <test>
          <stylesheet file="maps-007.xsl"/>
          <initial-template name="main"/>
@@ -107,7 +100,6 @@
    <test-case name="maps-008">
       <description>Error if a xsl:map-entry has both select attribute and content</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-008.xsl"/>
          <initial-template name="main"/>
@@ -120,7 +112,6 @@
    <test-case name="maps-009">
       <description>Cannot mix values with and without timezones</description>
       <created by="Michael Kay" on="2014-08-13"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-009.xsl"/>
          <initial-template name="main"/>
@@ -133,7 +124,6 @@
    <test-case name="maps-901a">
       <description>map:new() (without args) should throw error (since Oct 2014 LCWD)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-901.xsl"/>
          <param name="test-case" select="'map:new()'" static="yes" />
@@ -147,7 +137,6 @@
    <test-case name="maps-901b">
       <description>map:new(()) (empty seq arg) should throw error (since Oct 2014 LCWD)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-901.xsl"/>
          <param name="test-case" select="'map:new(())'" static="yes" />
@@ -161,7 +150,6 @@
    <test-case name="maps-901c">
       <description>map:new(($map)) should throw error (since Oct 2014 LCWD)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-901.xsl"/>
          <param name="test-case" select="'map:new((map:entry(0, ''no''), map:entry(1, ''yes'')))'"  static="yes"/>
@@ -175,7 +163,6 @@
    <test-case name="maps-901d">
       <description>map:new(($map1, $map2)) should throw error (since Oct 2014 LCWD)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-901.xsl"/>
          <param name="test-case" select="'map:new(($validmap, map:entry(1, ''yes'')))'"  static="yes"/>
@@ -189,7 +176,6 @@
    <test-case name="maps-901e">
       <description>map:new(($map1, $map2), $collation) should throw error (since Dec 2013 LCWD), collation argument was dropped</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-901.xsl"/>
          <param name="test-case" select="'map:new(($validmap, map:entry(1, ''yes'')), ''http://example.com'')'"  static="yes"/>
@@ -203,7 +189,6 @@
    <test-case name="maps-902a">
       <description>map:for-each-entry((), ()) (empty seq args) should throw error (since Oct 2014 LCWD) (actually, this was illegal in the prev. draft as well)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-902.xsl"/>
          <param name="test-case" select="'map:for-each-entry((),())'" static="yes" />
@@ -218,7 +203,6 @@
       <description>map:for-each-entry($map, $fun) should throw error (since Oct 2014 LCWD)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
       <modified by="Michael Kay" on="2014-11-17" change="Change the test to do what it says it does"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-902.xsl"/>
          <param name="test-case" select="'map:for-each-entry(map{1:''test''}, function($a, $b) {($a)})'" static="yes" />
@@ -232,7 +216,6 @@
    <test-case name="maps-903a">
       <description>map:collation(()) (empty seq) should throw error (since Dec 2013 LCWD) (actually, empty seq was illegal in prev draft)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-903.xsl"/>
          <param name="test-case" select="'map:collation(())'" static="yes" />
@@ -246,7 +229,6 @@
    <test-case name="maps-903b">
       <description>map:collation($map) should throw error (since Dec 2013 LCWD)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-903.xsl"/>
          <param name="test-case" select="'map:collation(map{1:''test''})'" static="yes" />
@@ -260,7 +242,6 @@
    <test-case name="maps-903c">
       <description>map:collation($map) should throw error (since Dec 2013 LCWD)</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-903.xsl"/>
          <param name="test-case" select="'map:collation($validmap)'" static="yes" />
@@ -274,7 +255,6 @@
    <test-case name="maps-904a">
       <description>fn:deep-equal2((), ()) should throw error (since Dec 2013 LCWD), function was used for comparing items that could also be maps</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-904.xsl"/>
          <param name="test-case" select="'deep-equal2((), ())'" static="yes" />
@@ -288,7 +268,6 @@
    <test-case name="maps-904b">
       <description>fn:deep-equal2($map1, $map2) should throw error (since Dec 2013 LCWD), function was used for comparing items that could also be maps</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-904.xsl"/>
          <param name="test-case" select="'deep-equal2(map{1:''test''}, map{1:''test''})'" static="yes" />
@@ -302,7 +281,6 @@
    <test-case name="maps-904c">
       <description>fn:deep-equal2($map1, $map2) should throw error (since Dec 2013 LCWD), function was used for comparing items that could also be maps</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-904.xsl"/>
          <param name="test-case" select="'deep-equal2($validmap, $validmap)'" static="yes" />
@@ -316,7 +294,6 @@
    <test-case name="maps-904d">
       <description>fn:deep-equal2($val1, $val2, $collation) should throw error (since Dec 2013 LCWD), function was used for comparing items that could also be maps</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-904.xsl"/>
          <param name="test-case" select="'deep-equal2(''a'', ''b'', ''http://example.com'')'" static="yes" />
@@ -331,7 +308,6 @@
       <description>map{1 := 'a'} should throw error (since Dec 2013 LCWD), syntax of maps has changed</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
       <modified by="Michael Kay" on="2014-10-21" change="escaped apostrophes by doubling them"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-905.xsl"/>
          <param name="test-case" select="'map{1 := ''a''}'" static="yes" />
@@ -350,7 +326,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:new()'" static="yes" />
@@ -369,7 +344,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:new(($validmap, $validmap))'" static="yes" />
@@ -388,7 +362,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:collation($validmap)'" static="yes" />
@@ -407,7 +380,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:keys($validmap)'" static="yes" />
@@ -426,7 +398,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:contains($validmap)'" static="yes" />
@@ -445,7 +416,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:get($validmap, ''entry'')'" static="yes" />
@@ -464,7 +434,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:entry(1, ''value'')'" static="yes" />
@@ -483,7 +452,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:remove($validmap, ''key'')'" static="yes" />
@@ -502,7 +470,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:put($validmap, ''key'', ''value'')'" static="yes" />
@@ -521,7 +488,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:size($validmap)'" static="yes" />
@@ -540,7 +506,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:for-each-entry($validmap, function($a, $b) {$a})'" static="yes" />
@@ -559,7 +524,6 @@
             poses testability issues, we should either remove these tests, or make the result error optional.
       </description>
       <created by="Abel Braaksma" on="2014-10-20"/>
-      <dependencies/>
       <test>
          <stylesheet file="maps-906.xsl"/>
          <param name="test-case" select="'mapold:for-each($validmap, function($a, $b) {$a})'" static="yes" />

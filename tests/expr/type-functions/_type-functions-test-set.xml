@@ -215,6 +215,7 @@
       <description>Test fn:resolve-uri with arguments coming from typed nodes in input source. Types tested: - xs:string, xs:normalizedString, xs:token, xs:language, xs:Name, xs:NCName, xs:NMTOKEN xs:ID, xs:IDREF - user-defined types derived by restriction from xs:string and all builtin types derived from it</description>
       <keywords>buildin-types derived-builtin-types derived-xs-string xs:string InstanceOfExpr fn:data fn:resolve-uri xsl:import-schema</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Abel Braaksma" on="2015-04-15" change="Bug 20672, no percent encoding takes place with fn:resolve-uri" />
       <environment ref="type-functions-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -226,16 +227,16 @@
          <all-of>
             <assert>/out/e1 = "true , http://base.example.org/ns/hello"</assert>
             <assert>/out/e2 = "true , http://base.example.org/ns/like,"</assert>
-            <assert>/out/e3 = "true , http://base.example.org/ns/two%20organizations"</assert>
+            <assert>/out/e3 = "true , http://base.example.org/ns/two organizations"</assert>
             <assert>/out/e4 = "true , http://base.example.org/ns/PT"</assert>
             <assert>/out/e5 = "true , a:_underscore_"</assert>
             <assert>/out/e6 = "true , http://base.example.org/ns/vwxyz12"</assert>
             <assert>/out/e7 = "true , business-enforcement::link-chain.common"</assert>
             <assert>/out/e8 = "true , http://base.example.org/ns/_ab"</assert>
             <assert>/out/e9 = "true , http://base.example.org/ns/_ab"</assert>
-            <assert>/out/e10 = "true , true , http://base.example.org/ns/Hello%20There"</assert>
+            <assert>/out/e10 = "true , true , http://base.example.org/ns/Hello There"</assert>
             <assert>/out/e11 = "true , true , http://base.example.org/ns/car_"</assert>
-            <assert>/out/e12 = "true , true , http://base.example.org/ns/Az%20Az%20,%20AA%2013121-1314"</assert>
+            <assert>/out/e12 = "true , true , http://base.example.org/ns/Az Az , AA 13121-1314"</assert>
             <assert>/out/e13 = "true , true , http://base.example.org/ns/EN"</assert>
             <assert>/out/e14 = "true , true , colon:name"</assert>
             <assert>/out/e15 = "true , true , http://base.example.org/ns/internationalization"</assert>

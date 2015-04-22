@@ -22,7 +22,7 @@
 
     <xsl:output indent="yes"></xsl:output>
 
-    <xsl:template match="/" name="xsl:initial-template">
+    <xsl:template match="/" name="initial-template">
         
         <out xml:base="http://example.com/a/b/c/d/../d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z">
             <xsl:variable name="base" select="static-base-uri()" xml:base="Z/../Z"/>
