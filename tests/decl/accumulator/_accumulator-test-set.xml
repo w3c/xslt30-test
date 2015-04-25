@@ -843,4 +843,133 @@
      	   <assert>empty(/*:html/*:body/*:div[@class='heading-1']/text())</assert>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-046">
+      <description>Accumulator values are copied by copy-of()</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <environment ref="accumulator-001"/>
+      <test>
+         <stylesheet file="accumulator-046.xsl"/>
+         <param name="streamable" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 3: a third diagram</p><p>Figure 4: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-046s">
+      <description>Accumulator values are copied by copy-of() - streaming</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <environment>
+         <source role="." file="accumulator-001.xml" streaming="true"/>
+   	  </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-046.xsl"/>
+         <param name="streamable" static="yes" select="'yes'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 3: a third diagram</p><p>Figure 4: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-047">
+      <description>Accumulator values are copied by snapshot()</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <environment ref="accumulator-001"/>
+      <test>
+         <stylesheet file="accumulator-047.xsl"/>
+         <param name="streamable" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 3: a third diagram</p><p>Figure 4: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-047s">
+      <description>Accumulator values are copied by snapshot() - streaming</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <environment>
+         <source role="." file="accumulator-001.xml" streaming="true"/>
+   	  </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-047.xsl"/>
+         <param name="streamable" static="yes" select="'yes'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 3: a third diagram</p><p>Figure 4: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-048">
+      <description>Accumulator values are copied by xsl:copy-of with copy-accumulators="yes"</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <environment ref="accumulator-001"/>
+      <test>
+         <stylesheet file="accumulator-048.xsl"/>
+         <param name="streamable" static="yes" select="'no'"/>
+         <param name="copyAcc" static="yes" select="'yes'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 3: a third diagram</p><p>Figure 4: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-048s">
+      <description>Accumulator values are copied by xsl:copy-of with copy-accumulators="yes" - streaming</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <environment>
+         <source role="." file="accumulator-001.xml" streaming="true"/>
+   	  </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-048.xsl"/>
+         <param name="streamable" static="yes" select="'yes'"/>
+         <param name="copyAcc" static="yes" select="'yes'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 3: a third diagram</p><p>Figure 4: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-049">
+      <description>Accumulator values are NOT copied by xsl:copy-of with copy-accumulators="no"</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <environment ref="accumulator-001"/>
+      <test>
+         <stylesheet file="accumulator-048.xsl"/>
+         <param name="streamable" static="yes" select="'no'"/>
+         <param name="copyAcc" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 1: a third diagram</p><p>Figure 2: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="accumulator-049s">
+      <description>Accumulator values are NOT copied by xsl:copy-of with copy-accumulators="yes" - streaming</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <environment>
+         <source role="." file="accumulator-001.xml" streaming="true"/>
+   	  </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-048.xsl"/>
+         <param name="streamable" static="yes" select="'yes'"/>
+         <param name="copyAcc" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><p>Figure 1: a third diagram</p><p>Figure 2: a fourth diagram</p></figures>]]></assert-xml>
+      </result>
+   </test-case>
+
 </test-set>
