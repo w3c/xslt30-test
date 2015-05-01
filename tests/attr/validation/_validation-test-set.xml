@@ -23,6 +23,14 @@
       <schema file="validation-10.xsd"/>
    </environment>
    
+   <environment name="validation-12">
+         <source role="." validation="strict">
+            <content><![CDATA[<test xmlns="http://ns.example.com/val12/"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>]]></content>
+         </source>
+         <schema file="validation-12.xsd"/>
+      </environment>
+   
    <environment name="validation-20">
       <source validation="strict" file="validation-20.xml" uri="validation-20.xml"/>
       <source validation="strict" file="validation-20a.xml" uri="validation-20a.xml"/>
@@ -825,13 +833,7 @@
    <test-case name="validation-1201">
       <description>show the nilled() function</description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment>
-         <source role="." validation="strict">
-            <content><![CDATA[<test xmlns="http://ns.example.com/val12/"
-                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>]]></content>
-         </source>
-         <schema file="validation-12.xsd"/>
-      </environment>
+      <environment ref="validation-12"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="schema_aware"/>
@@ -841,6 +843,54 @@
       </test>
       <result>
          <assert-xml><![CDATA[<z xmlns:t="http://ns.example.com/val12/"><a>true</a><a>false</a></z>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1202">
+      <description>Effect of xsl:copy-of validation="xxx" on the nilled property</description>
+      <created by="Michael Kay" on="2015-05-01"/>
+      <environment ref="validation-12"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1202.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<z xmlns:t="http://ns.example.com/val12/"><a>true</a><a>true</a><a>true</a><a>false</a></z>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1203">
+      <description>Effect of copy-of() and snapshot() on the nilled property</description>
+      <created by="Michael Kay" on="2015-05-01"/>
+      <environment ref="validation-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1203.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<z xmlns:t="http://ns.example.com/val12/"><a>true</a><a>true</a></z>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1204">
+      <description>Effect of xsl:copy with validation on the nilled property</description>
+      <created by="Michael Kay" on="2015-05-01"/>
+      <environment ref="validation-12"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1204.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<z xmlns:t="http://ns.example.com/val12/"><a>true</a><a>true</a><a>false</a><a>false</a></z>]]></assert-xml>
       </result>
    </test-case>
    
