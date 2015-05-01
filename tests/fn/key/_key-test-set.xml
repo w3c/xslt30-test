@@ -1654,4 +1654,31 @@ Namespace "" used in 3
         </all-of>  
       </result>
    </test-case>
+   
+   <test-case name="key-089">
+      <description>key() invoking a user-defined function: a test case from Gerrit Imsieke</description>
+      <created by="Michael Kay" on="2015-04-29"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc>
+ <p key="a">A</p>
+ <p key="b">B</p>
+ <p key="c">C</p>
+</doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="key-089.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/doc/p[@key='a']='A'</assert>
+            <assert>/doc/p[@key='b']='B'</assert>
+            <assert>count(/doc/p) = 2</assert>
+         </all-of>  
+      </result>
+   </test-case>
 </test-set>
