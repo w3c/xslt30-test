@@ -508,6 +508,7 @@
       <keywords>static-variable tvt implicit-default xs:integer occurrence-indicator</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
       <modified by="Abel Braaksma" on="2015-04-07" change="Bug 28429 and 28355, error XTDE0610 was dropped in 3.0"/>
+      <modified by="Abel Braaksma" on="2015-04-30" change="Bug 28355 resolution ended up using XTDE0050  instead of XTDE0700 in this case" />
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -516,7 +517,7 @@
       </test>
       <result>
          <!-- see for the error discussion: Bug 28355 -->
-         <error code="XTDE0700"/>
+         <error code="XTDE0050"/>
       </result>
    </test-case>
    
@@ -526,6 +527,7 @@
       </description>
       <keywords>static-variable tvt implicitly-mandatory xs:integer</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
+      <modified by="Abel Braaksma" on="2015-04-30" change="Bug 28586, a processor may report the error or may allow the set value" />
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -534,7 +536,10 @@
          <param name="static-param" static="yes" as="xs:integer" select="111" />
       </test>
       <result>
-         <assert-string-value>110889</assert-string-value>
+         <any-of>
+            <assert-string-value>110889</assert-string-value>
+            <error code="XTTE0590"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -544,6 +549,7 @@
       </description>
       <keywords>static-variable tvt implicitly-mandatory xs:integer</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
+      <modified by="Abel Braaksma" on="2015-04-30" change="Bug 28586, a processor may report the error or may allow the set value" />
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -552,7 +558,10 @@
          <param name="static-param" static="yes" as="xs:untypedAtomic" select="111" />
       </test>
       <result>
-         <assert-string-value>110889</assert-string-value>
+         <any-of>
+            <assert-string-value>110889</assert-string-value>
+            <error code="XTTE0590"/>
+         </any-of>
       </result>
    </test-case>
    
