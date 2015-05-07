@@ -2452,4 +2452,36 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
       </result>
    </test-case>
+   
+   <test-case name="result-document-1301">
+      <description>Multiple result documents produced, instruction contains 'position() eq last()' expression</description>
+      <created by="Debbie Lockett" on="2015-05-06"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><section>sect1</section><section>sect2</section><section>sect3</section></doc>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1301.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="section1.html">
+               <assert-xml><![CDATA[<html><body><h1>Section 1 of 3</h1><p>position() eq last() = false</p>
+      <p>position() ne last() = true</p></body></html>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="section2.html">
+               <assert-xml><![CDATA[<html><body><h1>Section 2 of 3</h1><p>position() eq last() = false</p>
+      <p>position() ne last() = true</p></body></html>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="section3.html">
+               <assert-xml><![CDATA[<html><body><h1>Section 3 of 3</h1><p>position() eq last() = true</p>
+      <p>position() ne last() = false</p></body></html>]]></assert-xml>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
