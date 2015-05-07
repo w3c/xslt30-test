@@ -15,6 +15,6 @@
 
 <xsl:accumulator name="latest-pick" select="()">
   <xsl:accumulator-rule match="a2" new-value="@pick"/>
-</xsl:accumulator  
+</xsl:accumulator>  
 
 </xsl:stylesheet>
