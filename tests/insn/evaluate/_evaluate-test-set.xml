@@ -361,12 +361,13 @@
    <test-case name="evaluate-018c">
       <description>Test xsl:evaluate with variables specified duplicated on with-params attribute and xsl:with-param child.</description>
       <created by="Michael Kay" on="2015-03-30"/>
+      <modified by="Michael Kay" on="2015-05-07" change="corrected result"/>
       <environment ref="eval007"/>
       <test>
          <stylesheet file="evaluate-018c.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>13</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>49</out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -697,6 +698,30 @@
             ><out>http://www.w3.org/?2</out><out>http://example.com/?3</out><out>http://www.w3.org/?4</out
             ><out>http://example.com/?0</out><out>http://www.w3.org/?1</out><out>http://example.com/?2</out
             ><out>http://www.w3.org/#3</out><out>http://example.com/?4</out></Result>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-041">
+      <description>Param names in @with-params change on subsequent call</description>
+      <created by="Michael Kay" on="2015-05-07"/>
+      <test>
+         <stylesheet file="evaluate-041.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>every $o in /Result/out satisfies $o eq "21"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-042">
+      <description>Param names in @with-params change on subsequent call, leading to "undeclared variable" error</description>
+      <created by="Michael Kay" on="2015-05-07"/>
+      <test>
+         <stylesheet file="evaluate-042.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
       </result>
    </test-case>
 </test-set>

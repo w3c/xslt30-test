@@ -3,7 +3,7 @@
 <!-- A test designed to exercise any caching that the implementation might be doing, uses schema-aware AVT attributes which evaluate to "true" and "false" -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ev39="http://example.com/evaluate39" version="3.0"
+xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ev39="http://example.com/evaluate039" version="3.0"
 exclude-result-prefixes="xs ev39">
 
   <xsl:import-schema>

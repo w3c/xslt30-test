@@ -3,11 +3,11 @@
 <!-- Same as evaluate-039 but using @with-params -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ev39="http://example.com/evaluate39" version="3.0"
-exclude-result-prefixes="xs ev39">
+xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ev40="http://example.com/evaluate040" version="3.0"
+exclude-result-prefixes="xs ev40">
 
   <xsl:import-schema>
-    <xs:schema targetNamespace="http://example.com/evaluate039">
+    <xs:schema targetNamespace="http://example.com/evaluate040">
       <xs:simpleType name="restrictedDate">
         <xs:restriction base="xs:date">
           <xs:minInclusive value="2009-01-01"/>
