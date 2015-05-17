@@ -856,45 +856,57 @@
    <test-case name="number-0819">
       <description>Numbering using circled digits</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-05-16" change="See bug 22524, adding dependency and alternate result"/>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <combinations_for_numbering value="CIRCLED DIGIT ONE" range="0 to 20" />
       </dependencies>
       <test>
          <stylesheet file="number-0819.xsl"/>
       </test>
       <result>
-         <assert-xml file="number-0819.out"/>
+         <any-of>
+            <assert-string-value>⓪ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ ㉑ ㉒ ㉓ ㉔ ㉕</assert-string-value>
+            <assert-string-value>⓪ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ 21 22 23 24 25</assert-string-value>
+         </any-of>
       </result>
    </test-case>
-
+   
    <test-case name="number-0820">
       <description>Numbering using parenthesized digits</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-05-16" change="See bug 22524, adding dependency"/>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <combinations_for_numbering value="PARENTHESIZED DIGIT ONE" range="1 to 20" />
       </dependencies>
       <test>
          <stylesheet file="number-0820.xsl"/>
       </test>
       <result>
-         <assert-xml file="number-0820.out"/>
+         <assert-string-value>0 ⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ 21 22 23 24 25</assert-string-value>
       </result>
    </test-case>
 
    <test-case name="number-0821">
       <description>Numbering using digit-full-stop characters</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-05-16" change="See bug 22524, adding dependency and alternate result"/>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <combinations_for_numbering value="DIGIT ONE FULL STOP" range="1 to 20" />
       </dependencies>
       <test>
          <stylesheet file="number-0821.xsl"/>
       </test>
       <result>
-         <assert-xml file="number-0821.out"/>
+         <any-of>
+            <assert-string-value>0 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ 21 22 23 24 25</assert-string-value>
+            <assert-string-value>&#127232; ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ 21 22 23 24 25</assert-string-value>
+         </any-of>
       </result>
    </test-case>
 
@@ -2932,4 +2944,5 @@ footnote</footnote> and a <citation/></p>
          </all-of>
       </result>
    </test-case>
+
 </test-set>
