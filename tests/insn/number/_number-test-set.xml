@@ -2945,6 +2945,7 @@ footnote</footnote> and a <citation/></p>
       </result>
    </test-case>
 
+   
    <test-case name="number-5001">
       <!--This test is auto-generated using _number-other-create.xsl-->
       <description>Numbering using 'CIRCLED DIGIT ONE' with overflowing range (tested range overflows the supported range)</description>
@@ -3431,7 +3432,7 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="DIGIT ONE FULL STOP" range="0 to 9"/>
+         <combinations_for_numbering value="DIGIT ONE FULL STOP" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
@@ -3442,8 +3443,9 @@ footnote</footnote> and a <citation/></p>
       <result>
          <any-of>
             <!--If a processor supports 0 to 1000, it also supports 1 to 9, 0 to 20 etc, unless range is implied by Unicode range-->
+            <assert-string-value>0 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕</assert-string-value>
             <assert-string-value>🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕</assert-string-value>
-            <assert-string-value>🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ 10 11 12 13 14</assert-string-value>
+            <assert-string-value>0 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ 10 11 12 13 14</assert-string-value>
          </any-of>
       </result>
    </test-case>
@@ -3455,16 +3457,16 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="DIGIT ONE FULL STOP" range="0 to 9"/>
+         <combinations_for_numbering value="DIGIT ONE FULL STOP" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
-         <param name="from" as="xs:integer" select="0"/>
+         <param name="from" as="xs:integer" select="1"/>
          <param name="to" as="xs:integer" select="9"/>
          <param name="format-string" as="xs:string" select="' ⒈'"/>
       </test>
       <result>
-         <assert-string-value>🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐</assert-string-value>
+         <assert-string-value>⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐</assert-string-value>
       </result>
    </test-case>
    
@@ -3963,7 +3965,7 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="DOUBLE CIRCLED DIGIT ONE" range="0 to 9"/>
+         <combinations_for_numbering value="DOUBLE CIRCLED DIGIT ONE" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
@@ -3987,11 +3989,11 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="DOUBLE CIRCLED DIGIT ONE" range="0 to 9"/>
+         <combinations_for_numbering value="DOUBLE CIRCLED DIGIT ONE" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
-         <param name="from" as="xs:integer" select="0"/>
+         <param name="from" as="xs:integer" select="1"/>
          <param name="to" as="xs:integer" select="9"/>
          <param name="format-string" as="xs:string" select="' ⓵'"/>
       </test>
@@ -4220,7 +4222,7 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ONE" range="0 to 9"/>
+         <combinations_for_numbering value="DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ONE" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
@@ -4231,8 +4233,9 @@ footnote</footnote> and a <citation/></p>
       <result>
          <any-of>
             <!--If a processor supports 0 to 1000, it also supports 1 to 9, 0 to 20 etc, unless range is implied by Unicode range-->
+            <assert-string-value>0 ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓</assert-string-value>
             <assert-string-value>🄌 ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ 11 12 13 14</assert-string-value>
-            <assert-string-value>🄌 ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ 10 11 12 13 14</assert-string-value>
+            <assert-string-value>0 ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ 10 11 12 13 14</assert-string-value>
          </any-of>
       </result>
    </test-case>
@@ -4244,16 +4247,16 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ONE" range="0 to 9"/>
+         <combinations_for_numbering value="DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ONE" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
-         <param name="from" as="xs:integer" select="0"/>
+         <param name="from" as="xs:integer" select="1"/>
          <param name="to" as="xs:integer" select="9"/>
          <param name="format-string" as="xs:string" select="' ➊'"/>
       </test>
       <result>
-         <assert-string-value>🄌 ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒</assert-string-value>
+         <assert-string-value>➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒</assert-string-value>
       </result>
    </test-case>
    
@@ -4477,7 +4480,7 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="CIRCLED IDEOGRAPH ONE" range="0 to 9"/>
+         <combinations_for_numbering value="CIRCLED IDEOGRAPH ONE" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
@@ -4501,11 +4504,11 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="CIRCLED IDEOGRAPH ONE" range="0 to 9"/>
+         <combinations_for_numbering value="CIRCLED IDEOGRAPH ONE" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
-         <param name="from" as="xs:integer" select="0"/>
+         <param name="from" as="xs:integer" select="1"/>
          <param name="to" as="xs:integer" select="9"/>
          <param name="format-string" as="xs:string" select="' ㊀'"/>
       </test>
@@ -4561,7 +4564,7 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="AEGEAN NUMBER ONE" range="0 to 9"/>
+         <combinations_for_numbering value="AEGEAN NUMBER ONE" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
@@ -4585,11 +4588,11 @@ footnote</footnote> and a <citation/></p>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <combinations_for_numbering value="AEGEAN NUMBER ONE" range="0 to 9"/>
+         <combinations_for_numbering value="AEGEAN NUMBER ONE" range="1 to 9"/>
       </dependencies>
       <test>
          <stylesheet file="number-5000.xsl"/>
-         <param name="from" as="xs:integer" select="0"/>
+         <param name="from" as="xs:integer" select="1"/>
          <param name="to" as="xs:integer" select="9"/>
          <param name="format-string" as="xs:string" select="' 𐄇'"/>
       </test>
@@ -5137,5 +5140,4 @@ footnote</footnote> and a <citation/></p>
          <assert-string-value>🄂 🄃 🄄 🄅 🄆 🄇 🄈 🄉 🄊</assert-string-value>
       </result>
    </test-case>
-
 </test-set>
