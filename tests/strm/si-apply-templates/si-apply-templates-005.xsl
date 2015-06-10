@@ -3,16 +3,20 @@
 
   <xsl:template match="/*" mode="s">
     <xsl:param name="a" tunnel="yes"/>
-
+    <open/>
     <xsl:if test="$a">
-      <xsl:apply-templates select="node()" mode="#current"/>
+      <copy of="{name()}"><xsl:copy-of select="node()"/></copy>
     </xsl:if>
+    <close/>
   </xsl:template>
 
   <xsl:template name="main">
-    <xsl:apply-templates select="doc('si-apply-templates-003.xml')" mode="s">
-      <xsl:with-param name="a" select="'a'" tunnel="yes"/>
-    </xsl:apply-templates>
+   <out>
+    <xsl:stream href="si-apply-templates-003.xml">
+      <xsl:apply-templates select="." mode="s">
+        <xsl:with-param name="a" select="'a'" tunnel="yes"/>
+      </xsl:apply-templates>
+    </xsl:stream>
+   </out>   
   </xsl:template>
 </xsl:stylesheet>
-
