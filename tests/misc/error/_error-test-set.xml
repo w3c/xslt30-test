@@ -7136,6 +7136,7 @@ It is a non-recoverable dynamic
                   string literal), then the processor may optionally signal
                   this as a static error.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-05-31" change="Bug 28653: Allow non-static error result, which, because error is in a pattern, should be ignored"/>
       <environment ref="error152"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -7144,7 +7145,12 @@ It is a non-recoverable dynamic
          <stylesheet file="error-1260d.xsl"/>
       </test>
       <result>
-         <error code="XTDE1260"/>
+         <any-of>
+            <assert-message>
+               <assert-string-value>Error not detected!</assert-string-value>
+            </assert-message>
+            <error code="XTDE1260"/>
+         </any-of>
       </result>
    </test-case>
 

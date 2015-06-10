@@ -706,6 +706,7 @@
     <xs:complexType name="dependencyType">
         <xs:attribute name="value" type="xs:string"/>
         <xs:attribute name="satisfied" type="xs:boolean" default="true"/>
+        <xs:attribute name="range" type="xs:string" default="unbounded"/>
     </xs:complexType>
 
     <xs:element name="spec" substitutionGroup="dependency">
@@ -810,8 +811,20 @@
     <xs:element name="combinations_for_numbering" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>
-                <p>Indicates dependencies on implementation-defined aspects of xsl:number,
-                    format-number, etc. The full range of values is not yet defined.</p>
+                <p>
+                    Indicates dependencies on implementation-defined aspects of xsl:number,
+                    format-number, etc. The full range of values is not yet defined. The current
+                    list uses the Unicode names of the digit one values of non-digit digits in the
+                    Number, Other category. If implementations support these numbering types
+                    it is assumed (but by no means required) that if the format string contains the 
+                    corresponding unicode character for digit one, *and* the processor supports that
+                    range, that it is rendered with that Unicode range of digits and/or numbers.
+                 </p>
+                <p>
+                    The range attribute can be used to indicate processor support for the given
+                    format. The default is unbounded. For most characters in the Number, Other 
+                    Unicode category, the range is inherently bounded by the available codepoints.
+                </p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -819,7 +832,47 @@
                 <xs:restriction base="dependencyType">
                     <xs:attribute name="value">
                         <xs:simpleType>
-                            <xs:restriction base="xs:string"/>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="CIRCLED DIGIT ONE"/>
+                                <xs:enumeration value="DOUBLE CIRCLED DIGIT ONE"/>
+                                <xs:enumeration value="DIGIT ONE FULL STOP"/>
+                                <xs:enumeration value="PARENTHESIZED DIGIT ONE"/>
+                                <xs:enumeration value="SUBSCRIPT ONE"/>
+                                <xs:enumeration value="SUPERSCRIPT ONE"/>
+                                <xs:enumeration value="TIBETAN DIGIT HALF ONE"/>
+                                <xs:enumeration value="ETHIOPIC DIGIT ONE"/>
+                                <xs:enumeration value="DINGBAT NEGATIVE CIRCLED DIGIT ONE"/>
+                                <xs:enumeration value="DINGBAT CIRCLED SANS-SERIF DIGIT ONE"/>
+                                <xs:enumeration value="DINGBAT NEGATIVE CIRCLED SANS-SERIF DIGIT ONE"/>
+                                <xs:enumeration value="PARENTHESIZED IDEOGRAPH ONE"/>
+                                <xs:enumeration value="CIRCLED IDEOGRAPH ONE"/>
+                                <xs:enumeration value="AEGEAN NUMBER ONE"/>
+                                <xs:enumeration value="COPTIC EPACT DIGIT ONE"/>
+                                <xs:enumeration value="OLD ITALIC NUMERAL ONE"/>
+                                <xs:enumeration value="RUMI DIGIT ONE"/>
+                                <xs:enumeration value="BRAHMI NUMBER ONE"/>
+                                <xs:enumeration value="SINHALA ARCHAIC DIGIT ONE"/>
+                                <xs:enumeration value="MENDE KIKAKUI DIGIT ONE"/>
+                                <xs:enumeration value="COUNTING ROD UNIT DIGIT ONE"/>
+                                <xs:enumeration value="DIGIT ONE COMMA"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="range">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="0 to 9" />
+                                <xs:enumeration value="1 to 9" />
+                                <xs:enumeration value="0 to 10" />
+                                <xs:enumeration value="1 to 10" />
+                                <xs:enumeration value="0 to 20" />
+                                <xs:enumeration value="1 to 20" />
+                                <xs:enumeration value="0 to 50" />
+                                <xs:enumeration value="1 to 50" />
+                                <xs:enumeration value="0 to 1000" />
+                                <xs:enumeration value="1 to 1000" />
+                                <xs:enumeration value="unbounded" />
+                            </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
                 </xs:restriction>
