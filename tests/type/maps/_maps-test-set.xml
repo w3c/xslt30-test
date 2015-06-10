@@ -110,14 +110,33 @@
    </test-case>
    
    <test-case name="maps-009">
-      <description>Cannot mix values with and without timezones</description>
+      <description>Mix values with and without timezones</description>
       <created by="Michael Kay" on="2014-08-13"/>
+      <modified by="Michael Kay" on="2015-06-09" change="decision reversed by bug 28632"/>
       <test>
          <stylesheet file="maps-009.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>count(/out/caught) = 2</assert>
+         <assert>count(/out/size[.='2']) = 2</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-010">
+      <description>Mix values with and without timezones</description>
+      <created by="Michael Kay" on="2015-06-10"/>
+      <test>
+         <stylesheet file="maps-010.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/out/a = "2"</assert>
+           <assert>/out/b = "2:2"</assert>
+           <assert>/out/c = "2:2"</assert>
+           <assert>/out/d = "1:"</assert>
+           <assert>/out/e = "0:"</assert>
+         </all-of>
       </result>
    </test-case>
       

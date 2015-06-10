@@ -5,7 +5,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
-    <!-- cannot mix values with and without timezone -->
+    <!-- Mix values with and without timezone. See bug 28632, overturning 25375 -->
     
     <xsl:template name="main">
       <out>
@@ -18,7 +18,7 @@
            </xsl:variable>
            <size><xsl:value-of select="map:size($m1)"/></size>
            <xsl:catch>
-             <caught error="{$err:code}"/>
+             <wrong>No longer an error</wrong>
            </xsl:catch>
         </xsl:try>      
         <xsl:try>
@@ -30,7 +30,7 @@
            </xsl:variable>
            <size><xsl:value-of select="map:size($m1)"/></size>
            <xsl:catch>
-             <caught error="{$err:code}"/>
+             <wrong>No longer an error</wrong>
            </xsl:catch>
         </xsl:try> 
       </out>  
