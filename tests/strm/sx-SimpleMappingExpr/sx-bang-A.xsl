@@ -1,0 +1,123 @@
+<xsl:transform version="3.0" 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:f="http://localhost/functions"
+    exclude-result-prefixes="map xs f">
+    
+    <xsl:variable name="RUN" select="true()" static="yes"/>
+    <xsl:strip-space elements="*"/>
+   
+  <!-- within xsl:stream, use bang operator -->
+   
+  <xsl:template name="bang-001" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/transactions.xml">
+        <xsl:sequence select="account/transaction[@value &lt; 0] ! copy-of(.)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use bang operator with numbering -->
+   
+  <xsl:template name="bang-002">
+    <out>
+      <xsl:stream href="../docs/transactions.xml">
+        <xsl:sequence select="account/transaction[@value &lt; 0] ! (position(), @*!string())"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use bang operator with positional selection -->
+   
+  <xsl:template name="bang-003">
+    <out>
+      <xsl:stream href="../docs/transactions.xml">
+        <xsl:sequence select="account/transaction[position() &lt; 5] ! (position(), @*!string())"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- bang operator over atomized nodes -->
+   
+  <xsl:template name="bang-004">
+    <out>
+      <xsl:stream href="../docs/transactions.xml">
+        <xsl:sequence select="subsequence(data(account/transaction/@value), 5, 3) ! (position(), .)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- crawling selection, inspection body -->
+   
+  <xsl:template name="bang-005">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:sequence select="(//*)[position()=1 to 6] ! (position(), ':', name())"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- crawling selection, inspection body -->
+   
+  <xsl:template name="bang-006">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:sequence select="//* ! count(ancestor-or-self::*)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use parent axis within bang operator -->
+   
+  <xsl:template name="bang-008">
+    <out>
+      <xsl:stream href="../docs/transactions.xml">
+        <xsl:sequence select="account/transaction[position() lt 5] ! name(..)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use ancestor axis within bang operator -->
+   
+  <xsl:template name="bang-009">
+    <out>
+      <xsl:stream href="../docs/transactions.xml">
+        <xsl:sequence select="subsequence(account/transaction, 1, 4) ! name(ancestor::*[1])"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, use subsequence() within bang operator rhs -->
+   
+  <xsl:template name="bang-010">
+    <out>
+      <xsl:stream href="../docs/transactions.xml">
+        <xsl:sequence select="subsequence(account/transaction, 1, 4) ! copy-of(.)"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, select attributes within bang operator rhs -->
+   
+  <xsl:template name="bang-011">
+    <out>
+      <xsl:stream href="../docs/transactions.xml">
+        <xsl:sequence select="account/transaction/@value ! (if (. > 0) then string(.) else ())"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:stream, iterate over ancestor axis within bang operator rhs -->
+   
+  <xsl:template name="bang-012">
+    <out xmlns="http://loan.shark.com/">
+      <xsl:stream href="../docs/loans.xml">
+        <xsl:sequence select="outermost(//*:extra) ! ancestor::* ! @* ! string()"/>
+      </xsl:stream>
+    </out>
+  </xsl:template>       
+
+       
+</xsl:transform>
+
