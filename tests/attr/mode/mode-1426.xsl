@@ -1,6 +1,6 @@
 <?xml version="1.0"?> 
 
-<!-- mode-onnomatch016s -->
+<!-- mode-1426 -->
 <!-- Michael Kay / mod. by ABr-->
 <!-- on-no-match=fail, failure case, with streaming; the error is caught, and reported back with a motionless construct --> 
 
@@ -29,7 +29,7 @@
                 <xsl:apply-templates />
                 <xsl:catch errors="err:XTDE0555" xmlns:err="http://www.w3.org/2005/xqt-errors"
                     exclude-result-prefixes="err">
-                    <c>error XTDE055 caught</c>
+                    <c>error XTDE0555 caught</c>
                 </xsl:catch>
             </xsl:try>
         </xsl:copy>

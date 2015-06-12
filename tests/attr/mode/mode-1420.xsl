@@ -1,6 +1,6 @@
 <?xml version="1.0"?> 
 
-<!-- mode-onnomatch008s -->
+<!-- mode-1420 -->
 <!-- Michael Kay -->
 <!-- on-no-match="shallow-skip" with streaming --> 
 
@@ -18,6 +18,10 @@
   
   <xsl:template match="bktshort/text()" mode="s">
     <xsl:value-of select="."/>
+  </xsl:template>
+  
+  <xsl:template match="@nr" mode="s">
+    <nr><xsl:value-of select="."/></nr>
   </xsl:template>
   
 

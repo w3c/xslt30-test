@@ -350,6 +350,23 @@
       </result>
    </test-case>
    
+   <test-case name="mode-0015">
+      <description>Test xsl:mode on-no-match matching elements having attribute nodes. See bug 28774.</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip shallow-copy text-only-copy variable-reference namespace-nodes parentless-nodes</keywords>
+      <created by="Michael Kay" on="2015-06-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0015.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><c><foo><matched/></foo></c><d><matched/></d><s/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="mode-0101">
       <description>Simple test of xsl:apply-templates with mode.</description>
       <keywords>matching-mode</keywords>
@@ -1204,7 +1221,7 @@
    </test-case>
 
    <test-case name="mode-1417">
-      <description>Test xsl:mode on-no-match="discard"</description>
+      <description>Test xsl:mode on-no-match="shallow-skip"</description>
       <keywords>xsl:mode on-no-match-attribute shallow-skip matching-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mode-14"/>
@@ -1221,7 +1238,7 @@
    </test-case>
 
    <test-case name="mode-1418">
-      <description>Test xsl:mode on-no-match="discard"; streaming</description>
+      <description>Test xsl:mode on-no-match="shallow-skip"; streaming</description>
       <keywords>xsl:mode on-no-match-attribute streamable shallow-skip matching-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mode-14s"/>
@@ -1239,7 +1256,7 @@
    </test-case>
 
    <test-case name="mode-1419">
-      <description>Test xsl:mode on-no-match="discard"</description>
+      <description>Test xsl:mode on-no-match="shallow-skip"</description>
       <keywords>xsl:mode on-no-match-attribute shallow-skip matching-mode xsl:next-match</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mode-14"/>
@@ -1256,9 +1273,10 @@
    </test-case>
 
    <test-case name="mode-1420">
-      <description>Test xsl:mode on-no-match="discard"; streaming</description>
+      <description>Test xsl:mode on-no-match="shallow-skip"; streaming</description>
       <keywords>xsl:mode on-no-match-attribute streamable shallow-skip matching-mode xsl:next-match</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-06-12" change="spec change for bug 28774"/>
       <environment ref="mode-14s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1269,12 +1287,12 @@
          <initial-mode name="s"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>Genesis</out>]]></assert-xml>
+         <assert-xml><![CDATA[<out>Genesis<nr>1</nr><nr>2</nr></out>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="mode-1421">
-      <description>Test xsl:mode on-no-match="discard"</description>
+      <description>Test xsl:mode on-no-match="shallow-skip"</description>
       <keywords>xsl:mode on-no-match-attribute shallow-copy shallow-skip matching-mode xsl:next-match non-matching-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mode-14"/>
@@ -1291,7 +1309,7 @@
    </test-case>
 
    <test-case name="mode-1422">
-      <description>Test xsl:mode on-no-match="discard"; streaming</description>
+      <description>Test xsl:mode on-no-match="shallow-skip"; streaming</description>
       <keywords>xsl:mode on-no-match-attribute streamable shallow-copy shallow-skip matching-mode non-matching-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="mode-14s"/>
@@ -1371,7 +1389,7 @@
          <stylesheet file="mode-1426.xsl"/>
       </test>
       <result>
-         <assert>count(/book/chapter/v/c[. = 'error XTDE055 caught']) = 56</assert>
+         <assert>count(/book/chapter/v/c[. = 'error XTDE0555 caught']) = 56</assert>
       </result>
    </test-case>
 
