@@ -230,6 +230,10 @@
    <environment name="copy-48">
       <source role="." file="copy-48.xml"/>
    </environment>
+   
+   <environment name="copy-50">
+      <stylesheet file="copy-5001.xsl"/>
+   </environment>
 
 
    <test-case name="copy-0101">
@@ -2054,6 +2058,262 @@
             <assert>//*:f[name()='ns11:f' and namespace-uri()='some11']</assert>
             <assert>not(//*:e/in-scope-prefixes(.) = ('ns2', 'ns3', 'ns4', 'ns5', 'ns6'))</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5001">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-001"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<data><thing id="p1" parts="q1 q2 q3"/><thing id="q1" parts="r1 r2"/><thing id="q2"/><thing id="q3"/><thing id="r1"/><thing id="r2"/></data>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5002">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<data><thing id="p1" parts="q1 q2 q3"/><thing id="q1" parts="r1 r2"/><thing id="q2"/><thing id="q3"/><thing id="r1"/><thing id="r2"/></data>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5003">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-003"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<data><thing id="p1" parts="q1 q2 q3"/><thing id="q1" parts="r1 r2"/><thing id="q2"/><thing id="q3"/><thing id="r1"/><thing id="r2"/></data>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5004">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-004"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<data><thing id="p1" parts="q1 q2 q3"/><thing id="q1" parts="r1 r2"/><thing id="q2"/><thing id="q3"/><thing id="r1"/><thing id="r2"/></data>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5011">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-011"/>
+      </test>
+      <result>
+         <error code="XTTE1555"/>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5012">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-012"/>
+      </test>
+      <result>
+         <error code="XTTE1555"/>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5013">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-013"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<data><thing id="p1" parts="q1 q2 q3"/><thing id="q1" parts="r1 r2"/><thing id="q2"/><thing id="q3"/><thing id="r1"/><thing id="r2"/><thing id="q2"/></data>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5014">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-014"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<data><thing id="p1" parts="q1 q2 q3"/><thing id="q1" parts="r1 r2"/><thing id="q2"/><thing id="q3"/><thing id="r1"/><thing id="r2"/><thing id="q2"/></data>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5021">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-021"/>
+      </test>
+      <result>
+         <error code="XTTE1555"/>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5022">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-022"/>
+      </test>
+      <result>
+         <error code="XTTE1555"/>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5023">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-023"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<data><thing id="p1" parts="q1 q2 q3"/><thing id="q1" parts="r1 r2"/><thing id="q2" parts="s1"/><thing id="q3"/><thing id="r1"/><thing id="r2"/></data>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5024">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-024"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<data><thing id="p1" parts="q1 q2 q3"/><thing id="q1" parts="r1 r2"/><thing id="q2" parts="s1"/><thing id="q3"/><thing id="r1"/><thing id="r2"/></data>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5031">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-031"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>1</a><b>1</b></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5032">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-032"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>1</a><b>1</b></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5033">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-033"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>1</a><b>1</b></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-5034">
+      <description>xsl:copy-of handling of xs:ID and xs:IDREF under validation</description>
+      <created by="Michael Kay" on="2015-06-17"/>
+      <environment ref="copy-50"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <initial-template name="c-034"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a>1</a><b>1</b></out>]]></assert-xml>
       </result>
    </test-case>
 
