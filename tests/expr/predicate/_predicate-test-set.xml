@@ -976,4 +976,34 @@
          <assert-xml><![CDATA[<out><a>ok1</a><a>ok2</a></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="predicate-053">
+      <description>An opportunity for an optimizer to reorder predicates</description>
+      <created by="Michael Kay" on="2015-06-18"/>
+      <environment ref="predicate48"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="predicate-053.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><bar a="1" b="0" c="0" d="0" seq="8"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="predicate-054">
+      <description>Another opportunity for an optimizer to reorder predicates</description>
+      <created by="Michael Kay" on="2015-06-18"/>
+      <environment ref="predicate48"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="predicate-054.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><bar seq="8"/><bar seq="9"/><bar seq="a"/><bar seq="b"/><bar seq="c"/><bar seq="d"/><bar seq="e"/><bar seq="f"/></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>
