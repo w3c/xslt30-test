@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.w3.org/2013/XSL/json">
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:j="http://www.w3.org/2005/xpath-functions">
 
     <!-- Tests for schema aware typing of nodes from json-to-xml()
     Note that these *only* check type and little more -
@@ -17,9 +17,9 @@
     <xsl:param name="s1.null" select="'[null]'"/>
 
 
-    <!--<xsl:import-schema namespace="http://www.w3.org/2013/XSL/json"
+    <!--<xsl:import-schema namespace="http://www.w3.org/2005/xpath-functions"
         schema-location="http://www.w3.org/TR/2013/WD-xslt-30-20131212/schema-for-json.xsd"/>-->
-    <xsl:import-schema namespace="http://www.w3.org/2013/XSL/json"
+    <xsl:import-schema namespace="http://www.w3.org/2005/xpath-functions"
         schema-location="schema-for-json.xsd"/>
 
     <!-- Note that whilst it would be cleaner perhaps to do the type checking in the assertions

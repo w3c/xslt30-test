@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:j="http://www.w3.org/2013/XSL/json"
+    xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:j="http://www.w3.org/2005/xpath-functions"
     name="json-to-xml">
     <description>json-to-xml() function</description>
 
@@ -17,8 +17,8 @@
     <!-- It would be helpful to assert schema-awareness on the stylesheet in a shared environment
     Sadly 'dependencies' aren't appropriate and just adding 'schema' doesn't mean the same thing -->
     <environment name="json-to-xml-typed">
-        <!--<namespace prefix="j" uri="http://www.w3.org/2013/XSL/json"/>-->
-        <!-- <schema uri="http://www.w3.org/2013/XSL/json" file="schema-for-json.xsd">
+        <!--<namespace prefix="j" uri="http://www.w3.org/2005/xpath-functions"/>-->
+        <!-- <schema uri="http://www.w3.org/2005/xpath-functions" file="schema-for-json.xsd">
             <description>JSON XML representation schema</description>
             <created by="John Lumley" on="2013-10-03"/>
         </schema>-->
@@ -36,114 +36,124 @@
     <test-case name="json-to-xml-001">
         <description>Empty object as document-node</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-001"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:map xmlns:j="http://www.w3.org/2013/XSL/json"/>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:map xmlns:j="http://www.w3.org/2005/xpath-functions"/>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-002">
         <description>Empty object</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-002"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:map xmlns:j="http://www.w3.org/2013/XSL/json"/>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:map xmlns:j="http://www.w3.org/2005/xpath-functions"/>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-003">
         <description>Empty array as document-node</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-003"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:array xmlns:j="http://www.w3.org/2013/XSL/json"/>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:array xmlns:j="http://www.w3.org/2005/xpath-functions"/>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-004">
         <description>Empty array</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-004"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:array xmlns:j="http://www.w3.org/2013/XSL/json"/>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:array xmlns:j="http://www.w3.org/2005/xpath-functions"/>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-005">
         <description>Array Number</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-005"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:array xmlns:j="http://www.w3.org/2013/XSL/json"><j:number>1</j:number></j:array>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:array xmlns:j="http://www.w3.org/2005/xpath-functions"><j:number>1</j:number></j:array>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-006">
         <description>Array String</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-006"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:array xmlns:j="http://www.w3.org/2013/XSL/json"><j:string>a</j:string></j:array>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:array xmlns:j="http://www.w3.org/2005/xpath-functions"><j:string>a</j:string></j:array>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-007">
         <description>Array True</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-007"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:array xmlns:j="http://www.w3.org/2013/XSL/json"><j:boolean>true</j:boolean></j:array>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:array xmlns:j="http://www.w3.org/2005/xpath-functions"><j:boolean>true</j:boolean></j:array>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-008">
         <description>Array False</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-008"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:array xmlns:j="http://www.w3.org/2013/XSL/json"><j:boolean>false</j:boolean></j:array>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:array xmlns:j="http://www.w3.org/2005/xpath-functions"><j:boolean>false</j:boolean></j:array>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-009">
         <description>Array Null</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-009"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:array xmlns:j="http://www.w3.org/2013/XSL/json"><j:null/></j:array>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:array xmlns:j="http://www.w3.org/2005/xpath-functions"><j:null/></j:array>]]></assert-xml>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-010">
         <description>Larger JSON input</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-010"/>
@@ -159,6 +169,7 @@
     <test-case name="json-to-xml-011">
         <description>Larger JSON input</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-011"/>
@@ -174,12 +185,13 @@
     <test-case name="json-to-xml-012">
         <description>Escaped text</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-012"/>
         </test>
         <result>
-            <assert-xml><![CDATA[<j:map xmlns:j="http://www.w3.org/2013/XSL/json"><j:string key="key">Data with " within it</j:string></j:map>]]></assert-xml>
+            <assert-xml ignore-prefixes="true"><![CDATA[<j:map xmlns:j="http://www.w3.org/2005/xpath-functions"><j:string key="key">Data with " within it</j:string></j:map>]]></assert-xml>
         </result>
     </test-case>
 
@@ -188,13 +200,14 @@
     <test-case name="json-to-xml-escape-001">
         <description>Escaped quote string</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-001"/>
         </test>
         <result>
             <all-of>
-                <assert>* instance of element(Q{http://www.w3.org/2013/XSL/json}string)</assert>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
                 <assert>. = 'Data with " within it'</assert>
                 <any-of>
                     <assert>empty(*/@escaped)</assert>
@@ -210,13 +223,14 @@
     <test-case name="json-to-xml-escape-002">
         <description>Escaped quote and key string</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-002"/>
         </test>
         <result>
             <all-of>
-                <assert>* instance of element(Q{http://www.w3.org/2013/XSL/json}string)</assert>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
                 <assert>. = 'Data with " within it'</assert>
                 <assert>*/@key eq 'Key " with quote'</assert>
                 <any-of>
@@ -233,13 +247,14 @@
     <test-case name="json-to-xml-escape-003">
         <description>Escaped quote string - remaining escaped</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-003"/>
         </test>
         <result>
             <all-of>
-                <assert>* instance of element(Q{http://www.w3.org/2013/XSL/json}string)</assert>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
                 <assert>. = 'Data with \" within it'</assert>
                 <assert>*/@escaped eq "true"</assert>
                 <any-of>
@@ -252,13 +267,14 @@
     <test-case name="json-to-xml-escape-004">
         <description>Escaped quote string and key - remaining escaped</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-004"/>
         </test>
         <result>
             <all-of>
-                <assert>* instance of element(Q{http://www.w3.org/2013/XSL/json}string)</assert>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
                 <assert>. = 'Data with \" within it'</assert>
                 <assert>*/@key eq 'Key \" with quote'</assert>
                 <assert>*/@escaped eq "true"</assert>
@@ -276,6 +292,7 @@
     <test-case name="json-to-xml-typed-001">
         <description>Basic type</description>
         <created by="John Lumley" on="2013-10-08"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware"/>
@@ -291,6 +308,7 @@
     <test-case name="json-to-xml-typed-002">
         <description>Basic parsing typed</description>
         <created by="John Lumley" on="2013-10-08"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware"/>
@@ -306,6 +324,7 @@
     <test-case name="json-to-xml-typed-003">
         <description>Array Number typed</description>
         <created by="John Lumley" on="2013-10-08"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware"/>
@@ -321,6 +340,7 @@
     <test-case name="json-to-xml-typed-004">
         <description>Array String typed</description>
         <created by="John Lumley" on="2013-10-08"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware"/>
@@ -336,6 +356,7 @@
     <test-case name="json-to-xml-typed-005">
         <description>Array True typed</description>
         <created by="John Lumley" on="2013-10-08"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware"/>
@@ -351,6 +372,7 @@
     <test-case name="json-to-xml-typed-006">
         <description>Array False typed</description>
         <created by="John Lumley" on="2013-10-08"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware"/>
@@ -366,6 +388,7 @@
     <test-case name="json-to-xml-typed-007">
         <description>Array Null typed</description>
         <created by="John Lumley" on="2013-10-08"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware"/>
@@ -383,6 +406,7 @@
         <description>Error when requesting type annotation on a non-schema aware
             processor</description>
         <created by="John Lumley" on="2013-10-08"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-typed"/>
         <dependencies>
             <feature value="schema_aware" satisfied="false"/>
@@ -401,6 +425,7 @@
     <test-case name="json-to-xml-error-001">
         <description>Empty string</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-001"/>
@@ -413,6 +438,7 @@
     <test-case name="json-to-xml-error-002">
         <description>Unknown token</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-002"/>
@@ -425,6 +451,7 @@
     <test-case name="json-to-xml-error-003">
         <description>Unknown token</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-003"/>
@@ -437,6 +464,7 @@
     <test-case name="json-to-xml-error-004">
         <description>Extra token</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-004"/>
@@ -449,6 +477,7 @@
     <test-case name="json-to-xml-error-005">
         <description>Non-string key</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-005"/>
@@ -461,6 +490,7 @@
     <test-case name="json-to-xml-error-006">
         <description>Non-string key</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-006"/>
@@ -473,6 +503,7 @@
     <test-case name="json-to-xml-error-007">
         <description>Missing colon after key</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-007"/>
@@ -485,6 +516,7 @@
     <test-case name="json-to-xml-error-008">
         <description>Extra token after map value</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-008"/>
@@ -497,6 +529,7 @@
     <test-case name="json-to-xml-error-009">
         <description>Extra token after array value</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-009"/>
@@ -509,6 +542,7 @@
     <test-case name="json-to-xml-error-010">
         <description>Leading + on number</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-010"/>
@@ -521,6 +555,7 @@
     <test-case name="json-to-xml-error-011">
         <description>Redundant leading 0 on number</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-011"/>
@@ -533,6 +568,7 @@
     <test-case name="json-to-xml-error-012">
         <description>Hex number</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-012"/>
@@ -545,6 +581,7 @@
     <test-case name="json-to-xml-error-013">
         <description>Trailing backslash</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-013"/>
@@ -557,6 +594,7 @@
     <test-case name="json-to-xml-error-014">
         <description>Short unicode</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-014"/>
@@ -571,6 +609,7 @@
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="John Lumley" on="2014-07-22"
             change="changed from XTDE3240 to correct error code"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-015"/>
@@ -583,6 +622,7 @@
     <test-case name="json-to-xml-error-016">
         <description>Trailing comma in object</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-016"/>
@@ -597,6 +637,7 @@
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="John Lumley" on="2014-07-22"
             change="option 'spec':'liberal' altered to 'liberal':true()"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-017"/>
@@ -612,6 +653,7 @@
     <test-case name="json-to-xml-error-018">
         <description>Trailing comma in array</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-018"/>
@@ -626,6 +668,7 @@
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="John Lumley" on="2014-07-22"
             change="option 'spec':'liberal' altered to 'liberal':true()"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-019"/>
@@ -642,6 +685,7 @@
         <description>Liberal option error</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="John Lumley" on="2014-07-22" change="option 'spec' altered to 'liberal'"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-020"/>
@@ -655,6 +699,7 @@
         <description>Liberal option error</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="John Lumley" on="2014-07-22" change="option 'spec' altered to 'liberal'"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-021"/>
@@ -667,6 +712,7 @@
     <test-case name="json-to-xml-error-022">
         <description>Validate option error</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-022"/>
@@ -679,6 +725,7 @@
     <test-case name="json-to-xml-error-023">
         <description>Validate option error</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-023"/>
@@ -691,6 +738,7 @@
     <test-case name="json-to-xml-error-024">
         <description>Validate option error</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-024"/>
@@ -703,6 +751,7 @@
     <test-case name="json-to-xml-error-025">
         <description>Unescape option error</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-025"/>
@@ -715,6 +764,7 @@
     <test-case name="json-to-xml-error-026">
         <description>Unescape option error</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-026"/>
@@ -727,6 +777,7 @@
     <test-case name="json-to-xml-error-027">
         <description>Unescape option error</description>
         <created by="John Lumley" on="2013-10-01"/>
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-027"/>
@@ -740,6 +791,7 @@
         <description>Fallback option not function </description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Abel Braaksma" on="2014-10-21" change="':=' for maps is replaced by ':'" />
+        <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-028"/>

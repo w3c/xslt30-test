@@ -6,7 +6,7 @@
                   JSON.-->
                   
    <xsl:variable name="x" as="element()">
-     <null xmlns="http://www.w3.org/2013/XSL/json">0</null>
+     <null xmlns="http://www.w3.org/2005/xpath-functions">0</null>
    </xsl:variable>                  
                   
    <xsl:template name="main">

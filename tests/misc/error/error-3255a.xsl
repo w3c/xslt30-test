@@ -7,7 +7,7 @@
                   and whose value is not a permitted value for that key.-->
                   
    <xsl:variable name="x" as="element()">
-     <null xmlns="http://www.w3.org/2013/XSL/json"/>
+     <null xmlns="http://www.w3.org/2005/xpath-functions"/>
    </xsl:variable>               
                   
    <xsl:template name="main">

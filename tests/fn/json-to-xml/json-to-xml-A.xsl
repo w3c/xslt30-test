@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:j="http://www.w3.org/2013/XSL/json">
+    xmlns:j="http://www.w3.org/2005/xpath-functions">
     <xsl:param name="options.escape" select="map{'unescape':false()}"/>
     <xsl:param name="options.validate" select="map{'validate':true()}"/>
 
@@ -46,7 +46,7 @@
         <xsl:variable name="expected-results">
             <all-of>
                 <assert-count>1</assert-count>
-                <assert-type>element(Q{http://www.w3.org/2013/XSL/json}map)</assert-type>
+                <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}map)</assert-type>
                 <assert>count($result/*) eq 0</assert>
             </all-of>
         </xsl:variable>
@@ -75,7 +75,7 @@
         <xsl:variable name="expected-results">
             <all-of>
                 <assert-count>1</assert-count>
-                <assert-type>element(Q{http://www.w3.org/2013/XSL/json}array)</assert-type>
+                <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}array)</assert-type>
                 <assert>count($result/*) eq 0</assert>
             </all-of>
         </xsl:variable>
@@ -90,7 +90,7 @@
         <xsl:variable name="expected-results">
             <all-of>
                 <assert-count>1</assert-count>
-                <assert-type>element(Q{http://www.w3.org/2013/XSL/json}array)</assert-type>
+                <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}array)</assert-type>
                 <assert>count($result/*) eq 1</assert>
                 <assert>$result/*[1] instance of element(j:number,xs:untyped)</assert>
                 <assert>xs:double($result/*[1]) eq 1</assert>
@@ -210,7 +210,7 @@
             <result>
                 <all-of>
                     <!--<assert-count>1</assert-count>
-                    <assert-type>element(Q{http://www.w3.org/2013/XSL/json}string)</assert-type>
+                    <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}string)</assert-type>
                     <assert-string-value>Data with " within it</assert-string-value>
                     <any-of>
                         <assert>empty($result/@escaped)</assert>
@@ -236,7 +236,7 @@
             <result>
                 <all-of>
                     <!--<assert-count>1</assert-count>
-                    <assert-type>element(Q{http://www.w3.org/2013/XSL/json}string)</assert-type>
+                    <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}string)</assert-type>
                     <assert-string-value>Data with " within it</assert-string-value>
                     <assert>$result/@key eq 'Key " with quote'</assert>
                     <any-of>
@@ -263,7 +263,7 @@
             <result>
                 <!-- <all-of>
                     <assert-count>1</assert-count>
-                    <assert-type>element(Q{http://www.w3.org/2013/XSL/json}string)</assert-type>
+                    <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}string)</assert-type>
                     <assert-string-value>Data with \" within it</assert-string-value>
                     <assert>$result/@escaped eq "true"</assert>
                     <any-of>
@@ -286,7 +286,7 @@
             <result>
                 <!--<all-of>
                     <assert-count>1</assert-count>
-                    <assert-type>element(Q{http://www.w3.org/2013/XSL/json}string)</assert-type>
+                    <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}string)</assert-type>
                     <assert-string-value>Data with \" within it</assert-string-value>
                     <assert>$result/@key eq 'Key \" with quote'</assert>
                     <assert>$result/@escaped eq "true"</assert>
