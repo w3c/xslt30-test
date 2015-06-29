@@ -502,4 +502,36 @@
          <assert-xml><![CDATA[<output xmlns:err="http://www.w3.org/2005/xqt-errors"/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="try-028">
+      <description>error in evaluating global variable is not caught</description>
+      <keywords>xsl:try</keywords>
+      <created by="Michael Kay" on="2015-06-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-028.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FOAR0001"/>
+      </result>
+   </test-case>
+   
+    <test-case name="try-029">
+      <description>error in evaluating local variable is not caught</description>
+      <keywords>xsl:try</keywords>
+      <created by="Michael Kay" on="2015-06-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-029.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FOAR0001"/>
+      </result>
+   </test-case>
 </test-set>
