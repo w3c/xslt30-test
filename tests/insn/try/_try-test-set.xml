@@ -200,9 +200,10 @@
    </test-case>
 
    <test-case name="try-012">
-      <description>element-available in Saxon-SA</description>
-      <keywords>fn:element-available xsl:try xsl:catch _WRONG:test-output-incorrect</keywords>
+      <description>element-available on xsl:try/catch</description>
+      <keywords>fn:element-available xsl:try xsl:catch</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <created by="Michael Kay" on="2015-06-29" change="spec of element-available() has changed in 3.0"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -211,12 +212,12 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out try="true" catch="false"/>]]></assert-xml>
+         <assert-xml><![CDATA[<out try="true" catch="true"/>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="try-013">
-      <description>element-available in Saxon-B</description>
+      <description>element-available on xsl:try/catch in XSLT 2.0</description>
       <keywords>fn:element-available xsl:try xsl:catch 2.0-only-behavior</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
@@ -528,6 +529,39 @@
       </dependencies>
       <test>
          <stylesheet file="try-029.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FOAR0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="try-030">
+      <description>error in evaluating local variable is not caught</description>
+      <keywords>xsl:try</keywords>
+      <created by="Michael Kay" on="2015-06-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-030.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FOAR0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="try-031">
+      <description>error in evaluating local variable is not caught</description>
+      <keywords>xsl:try</keywords>
+      <created by="Michael Kay" on="2015-06-29"/>
+      <environment ref="try020"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-031.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
