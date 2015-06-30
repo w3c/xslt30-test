@@ -4,7 +4,7 @@
   <!-- PURPOSE: unparsed entities preserved by fn:snapshot()  -->
 
   <xsl:template match="/">
-    <xsl:variable name="p" as="document-node()" select="snapshot(.)/>
+    <xsl:variable name="p" as="document-node()" select="snapshot(.)"/>
     <out>
       <xsl:for-each select="$p">
         <a><xsl:value-of select="ends-with(unparsed-entity-uri('hatch-pic'), '/expr/grafix/OpenHatch.gif')"/></a>
