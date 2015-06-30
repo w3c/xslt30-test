@@ -800,6 +800,32 @@
                                 <xs:enumeration value="en"/>
                                 <xs:enumeration value="de"/>
                                 <xs:enumeration value="fr"/>
+                                <xs:enumeration value="it"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:restriction>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="ordinal_scheme_name" substitutionGroup="dependency">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Identifies the convention used for identifying variants of ordinal numbering
+                   in the "ordinal" attribute of xsl:number.</p>
+                <p>The two recognised values are "inflection" (a hyphen followed by a grammatical suffix, e.g. "-er")
+                   and "CLDR" (the name of a numbering scheme in the Common Language Data Repository, prefixed by a percent sign)</p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:restriction base="dependencyType">
+                    <xs:attribute name="value">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="inflection"/>
+                                <xs:enumeration value="CLDR"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -855,6 +881,8 @@
                                 <xs:enumeration value="MENDE KIKAKUI DIGIT ONE"/>
                                 <xs:enumeration value="COUNTING ROD UNIT DIGIT ONE"/>
                                 <xs:enumeration value="DIGIT ONE COMMA"/>
+                                <xs:enumeration value="GREEK SMALL LETTER ALPHA (TRADITIONAL)"/>
+                                <xs:enumeration value="GREEK SMALL LETTER ALPHA (ALPHABETIC)"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
@@ -896,6 +924,7 @@
                                 <xs:enumeration value="en"/>
                                 <xs:enumeration value="de"/>
                                 <xs:enumeration value="fr"/>
+                                <xs:enumeration value="it"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
