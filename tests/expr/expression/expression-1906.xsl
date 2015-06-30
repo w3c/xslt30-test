@@ -5,7 +5,7 @@
 
   <xsl:template match="/">
     <xsl:variable name="p" as="document-node()">
-      <xsl:copy select="."/>
+      <xsl:copy/>
     </xsl:variable>
     <out>
       <xsl:for-each select="$p">
