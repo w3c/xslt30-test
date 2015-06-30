@@ -104,4 +104,21 @@
          <assert>not(/out/invalid)</assert>
       </result>
    </test-case>
+   
+   <test-case name="catalog-006">
+      <description>Test that all XSLT element names in non-error stylesheets satisfy element-available()</description>
+      <keywords>catalog-self-test element-available</keywords>
+      <created by="Michael Kay" on="2015-06-30"/>
+      <environment ref="catalog005"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="catalog-006.xsl"/>
+      </test>
+      <result>
+         <assert>not(/out/unavailable)</assert>
+      </result>
+   </test-case>
 </test-set>
