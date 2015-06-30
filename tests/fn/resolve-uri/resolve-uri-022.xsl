@@ -20,7 +20,7 @@
     -->
     
 
-    <xsl:output indent="yes"></xsl:output>
+    <xsl:output indent="no"></xsl:output>
 
     <xsl:template match="/" name="initial-template">
         

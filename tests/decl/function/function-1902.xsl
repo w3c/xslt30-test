@@ -18,7 +18,7 @@
       to be updated regularly, as that spec has been a stable REC for some years now.
     -->
   
-    <xsl:output indent="yes" />
+    <xsl:output indent="no" />
 
     <xsl:template match="/">
         <out>
