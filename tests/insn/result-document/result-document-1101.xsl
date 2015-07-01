@@ -53,7 +53,7 @@
      <g>
       <xsl:perform-sort select="1 to 100">      
 	    <xsl:sort>
-	     <xsl:call-template name="rrr"/>
+	     <xsl:call-template name="uuu"/>
 	    </xsl:sort>
 	  </xsl:perform-sort>  
 	 </g>
@@ -109,14 +109,19 @@
    
    <xsl:template name="sss">
      <xsl:param name="n"/>
-     <foo/>
+     <foo n="{$n}"/>
    </xsl:template>
    
    <xsl:template name="ttt">
      <xsl:param name="n">
        <xsl:call-template name="rrr"/>
      </xsl:param>  
-     <foo/>
+     <foo n="{$n}"/>
+   </xsl:template>
+   
+   <xsl:template name="uuu">
+     <xsl:result-document href="out{.}.xml"><boo/></xsl:result-document>
+     <xsl:sequence select="."/>
    </xsl:template>
    
 </xsl:transform>
