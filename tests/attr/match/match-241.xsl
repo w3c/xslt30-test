@@ -10,6 +10,8 @@
     <!-- Purpose: numeric value of predicate.  -->
     <!-- Purpose: multiple matches, atomic sequence, position and last functions  -->
     
+    <xsl:mode warning-on-multiple-match="no"/>
+    
     <xsl:template name="xsl:initial-template">
         <xsl:apply-templates select="1, 2, 3, 5, 7, 13, 17, 19" />
     </xsl:template>
