@@ -39,7 +39,7 @@
         <out>
           <xsl:value-of select="
             for $x in /BOOKLIST/BOOKS/ITEM/DIMENSIONS/snapshot() 
-            return sum(tokenize($x, ' ')!number()) + count($x/ancestor::node())"/>
+            return sum(tokenize($x, ' ')!xs:decimal(.)) + count($x/ancestor::node())"/>
         </out>
       </xsl:stream>
     </xsl:template>
