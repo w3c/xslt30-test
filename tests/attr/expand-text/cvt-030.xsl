@@ -5,19 +5,14 @@
 
 <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
-<xsl:function name="f:sum" expand-text="yes" as="xs:integer">
+<xsl:function name="f:sum" expand-text="yes">
         <xsl:param name="x" as="xs:integer"/>
         <xsl:param name="y" as="xs:integer"/>
   {$x + $y}
 </xsl:function>
 
-<xsl:template match="/" name="main">
-        <out>
-            <xsl:value-of select="f:sum(1,2)"/>
-        </out>
-</xsl:template>
 
-<xsl:template match="/" name="two">
+<xsl:template match="/" name="main">
         <out>
             <xsl:value-of select="f:sum(1,2) instance of text()"/>
         </out>
