@@ -2,21 +2,161 @@
 <test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="si-conditional-content">
    <description>Tests xsl:stream instruction introduced in XSLT 3.0 with xsl:conditional-content.</description>
    
+   <environment name="si-coco-A">
+     <stylesheet file="si-conditional-content-A.xsl"/>
+   </environment>
+   
    <dependencies>
       <spec value="XSLT30+"/>
       <feature value="streaming"/>
    </dependencies>
    
-   <test-case name="si-conditional-content-001">
-      <description>Test of xsl:stream instruction with xsl:conditional-content</description>
-      <created by="Michael Kay" on="2014-12-19"/>  
+   <test-case name="si-coco-001">
+      <description>xsl:element; value is consuming; xsl:conditional-content</description>
+      <created by="Michael Kay" on="2014-01-06"/>
+      <environment ref="si-coco-A"/>
       <test>
-         <stylesheet file="si-conditional-content-001.xsl"/>
-         <initial-template name="main"/>
+         <initial-template name="s-001"/>
+      </test>
+      <result>
+         <assert>empty(/out/a)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-002">
+      <description>Test of xsl:stream instruction with xsl:conditional-content</description>
+      <created by="Michael Kay" on="2014-12-19"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-002"/>
       </test>
       <result>
          <assert-xml><![CDATA[<Results><first>one</first><last>last</last></Results>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="si-coco-003">
+      <description>Test of xsl:conditional-content with atomic values, some 'empty'</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-003"/>
+      </test>
+      <result>
+         <assert>/out = "23 2011-01-01 0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-004">
+      <description>Test of xsl:conditional-content with xsl:if</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-004"/>
+      </test>
+      <result>
+         <assert>empty(/out/*)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-005">
+      <description>Test of xsl:conditional-content with xsl:if</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-005"/>
+      </test>
+      <result>
+         <assert>exists(/out/a/banana)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-006">
+      <description>Test of xsl:conditional-content with xsl:for-each</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-006"/>
+      </test>
+      <result>
+         <assert>exists(/out/ul/li)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-007">
+      <description>Test of xsl:conditional-content with xsl:for-each</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-007"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-008">
+      <description>Test of xsl:conditional-content with comment nodes</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-008"/>
+      </test>
+      <result>
+         <assert>count(/out/in/comment()[.='3']) = 6</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-009">
+      <description>Test of xsl:conditional-content with text nodes</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-009"/>
+      </test>
+      <result>
+         <assert>count(/out/in[.='3']) = 6</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-010">
+      <description>Test of xsl:conditional-content with xsl:fork</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-010"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><TITLE>Wuthering Heights</TITLE
+         ><TITLE>Tess of the d'Urbervilles</TITLE><TITLE>Jude the Obscure</TITLE><TITLE>The Big Over Easy</TITLE
+         ><TITLE>The Eyre Affair</TITLE><PRICE>4.95</PRICE><PRICE>6.58</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE
+         ><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-011">
+      <description>Test of xsl:conditional-content with xsl:fork</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-011"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-coco-012">
+      <description>Test of xsl:conditional-content with document nodes</description>
+      <created by="Michael Kay" on="2015-07-02"/>
+      <environment ref="si-coco-A"/>  
+      <test>
+         <initial-template name="s-012"/>
+      </test>
+      <result>
+         <assert>/out/in/@value = 'true'</assert>
+      </result>
+   </test-case>
+
 
 </test-set>
