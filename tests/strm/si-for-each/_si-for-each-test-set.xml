@@ -159,6 +159,37 @@
            <assert-xml><![CDATA[<out xmlns="http://loan.shark.com/"><myroot/><ACERequest version="2.1"/><Deal/><Pool id="22"/><Loan/></out>]]></assert-xml>  
       </result>
    </test-case>
+   
+   <test-case name="si-for-each-801">
+      <description>Use streaming xsl:for-each referring to a global variable (Saxon bug 2412)</description>
+      <created by="Michael Kay" on="2015-07-04"/>
+      <environment>
+         <source file="si-for-each-801.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-for-each-801.xsl"/>
+         <param name="node-name" select="'record'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><found/><found/></root>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-for-each-802">
+      <description>
+        Use streaming xsl:for-each referring to a global variable (Saxon bug 2412)
+        Same as -801 but using xsl:stream
+      </description>
+      <created by="Michael Kay" on="2015-07-04"/>
+      <test>
+         <stylesheet file="si-for-each-802.xsl"/>
+         <initial-template name="main"/>
+         <param name="node-name" select="'record'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><found/><found/></root>]]></assert-xml>
+      </result>
+   </test-case>
 
 
    <test-case name="si-for-each-806">
