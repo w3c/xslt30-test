@@ -4,6 +4,7 @@
   exclude-result-prefixes="map xs err">
 
   <xsl:variable name="RUN" select="true()" static="yes"/>
+  <xsl:param name="empty" select="()"/> <!-- to prevent static optimization -->
   <xsl:strip-space elements="*"/>
 
  
@@ -18,6 +19,7 @@
   <xsl:template name="s-001" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
+        <xsl:sequence select="$empty"/>
         <xsl:on-empty>
           <xsl:element name="a">
             <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>
@@ -32,6 +34,7 @@
   <xsl:template name="s-002" use-when="$RUN">
        <xsl:stream href="../docs/books.xml">
            <Results>
+               <xsl:sequence select="$empty"/>
                <xsl:on-empty>
                  <first>one</first>
                  <second/>
@@ -47,6 +50,7 @@
   <xsl:template name="s-003" use-when="$RUN">
        <xsl:stream href="../docs/books.xml">
            <out>
+               <xsl:sequence select="$empty"/>
                <xsl:on-empty>
                  <xsl:sequence select="23, '', xs:date('2011-01-01'), xs:untypedAtomic(''), 0, /JUNK, xs:base64Binary('')"/>
                </xsl:on-empty>
@@ -59,6 +63,7 @@
   <xsl:template name="s-004" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
+        <xsl:sequence select="$empty"/>
         <xsl:on-empty>
           <a>
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
@@ -75,6 +80,7 @@
   <xsl:template name="s-005" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
+        <xsl:sequence select="$empty"/>
         <xsl:on-empty>
           <a>
             <xsl:if test="current-date() gt xs:date('1900-01-01')">
@@ -91,6 +97,7 @@
   <xsl:template name="s-006" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
+        <xsl:sequence select="$empty"/>
         <xsl:on-empty>
           <ul>
             <xsl:for-each select="outermost(//ITEM)">
@@ -107,6 +114,7 @@
   <xsl:template name="s-007" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
+        <xsl:sequence select="$empty"/>
         <xsl:on-empty>
           <ul>
             <xsl:for-each select="outermost(//MAGAZINE)">
@@ -125,6 +133,7 @@
       <out>
         <xsl:for-each select="outermost(//ITEM)">
           <in>
+            <xsl:sequence select="$empty"/>
             <xsl:on-empty>
               <xsl:comment select="TITLE[parent::BOOK]"/>
             </xsl:on-empty>
@@ -144,6 +153,7 @@
       <out>
         <xsl:for-each select="outermost(//ITEM)">
           <in>
+            <xsl:sequence select="$empty"/>
             <xsl:on-empty>
               <xsl:value-of select="TITLE[parent::BOOK]"/>
             </xsl:on-empty>
@@ -161,6 +171,7 @@
   <xsl:template name="s-010" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
+        <xsl:sequence select="$empty"/>
         <xsl:on-empty>
           <a>
             <xsl:fork>
@@ -178,6 +189,7 @@
   <xsl:template name="s-011" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
+        <xsl:sequence select="$empty"/>
         <xsl:on-empty>
           <a>
             <xsl:fork>
@@ -195,7 +207,8 @@
   <xsl:template name="s-012" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:variable name="t" as="document-node()?">          
+        <xsl:variable name="t" as="document-node()?"> 
+          <xsl:sequence select="$empty"/>         
           <xsl:on-empty>
             <xsl:document>
               <xsl:copy-of select="//TITLE[@flamingo]"/>
@@ -266,7 +279,7 @@
       <out>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>  
         <xsl:on-empty>There is no price data</xsl:on-empty>
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')"/>    
+        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[empty($empty)]"/>    
       </out>
     </xsl:stream>
   </xsl:template> 
@@ -276,7 +289,7 @@
   <xsl:template name="s-026" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')"/>  
+        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[empty($empty)]"/>  
         <xsl:on-empty>There is no price data</xsl:on-empty>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>    
       </out>
@@ -302,7 +315,7 @@
   <xsl:template name="s-028" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:sequence select="(1 to 20)[. ge 20]"/>  
+        <xsl:sequence select="(1 to 20)[. ge 20][empty($empty)]"/>  
         <xsl:on-empty>There is no price data</xsl:on-empty>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA/data()"/> 
       </out>
@@ -328,6 +341,7 @@
       <xsl:for-each select="BOOKLIST">
         <out>
           <xsl:variable name="x" select="name()"/>
+          <xsl:sequence select="$empty"/>
           <xsl:on-empty>There is no price data within <xsl:value-of select="$x"/></xsl:on-empty> 
         </out>
       </xsl:for-each>
