@@ -1,0 +1,507 @@
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+  xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  exclude-result-prefixes="map xs err">
+
+  <xsl:variable name="RUN" select="true()" static="yes"/>
+  <xsl:strip-space elements="*"/>
+
+ 
+  <!-- Note, the first few tests are mechanically copied from xsl:conditional-content
+       tests. They don't do anything meaningful, but are retained to ensure the code
+       paths work. -->
+        
+ 
+  
+  <!-- Test of xsl:on-empty with xsl:element (not empty) -->
+
+  <xsl:template name="s-001" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>
+          <xsl:element name="a">
+            <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>
+          </xsl:element>
+        </xsl:on-empty>  
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with multiple elements, some empty -->
+  
+  <xsl:template name="s-002" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <Results>
+               <xsl:on-empty>
+                 <first>one</first>
+                 <second/>
+                 <xsl:copy-of select="BOOKLIST/CATEGORIES/*" />
+                 <last>last</last>
+               </xsl:on-empty>
+           </Results>
+       </xsl:stream>
+   </xsl:template> 
+   
+   <!-- Test of xsl:on-empty with atomic values, some empty -->
+  
+  <xsl:template name="s-003" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <out>
+               <xsl:on-empty>
+                 <xsl:sequence select="23, '', xs:date('2011-01-01'), xs:untypedAtomic(''), 0, /JUNK, xs:base64Binary('')"/>
+               </xsl:on-empty>
+           </out>
+       </xsl:stream>
+   </xsl:template>
+   
+   <!-- Test of xsl:on-empty with xsl:if -->
+
+  <xsl:template name="s-004" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>
+          <a>
+            <xsl:if test="current-date() lt xs:date('1900-01-01')">
+               <banana x="{count(//*)}"/>
+            </xsl:if>
+          </a>
+        </xsl:on-empty>  
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:if -->
+
+  <xsl:template name="s-005" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>
+          <a>
+            <xsl:if test="current-date() gt xs:date('1900-01-01')">
+               <banana x="{count(//*)}"/>
+            </xsl:if>
+          </a>
+        </xsl:on-empty>  
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:for-each -->
+
+  <xsl:template name="s-006" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>
+          <ul>
+            <xsl:for-each select="outermost(//ITEM)">
+              <li><xsl:value-of select="TITLE"/></li>
+            </xsl:for-each>  
+          </ul>
+        </xsl:on-empty>  
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:for-each -->
+
+  <xsl:template name="s-007" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>
+          <ul>
+            <xsl:for-each select="outermost(//MAGAZINE)">
+              <li><xsl:value-of select="TITLE"/></li>
+            </xsl:for-each>  
+          </ul>
+        </xsl:on-empty>  
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with comment nodes -->
+
+  <xsl:template name="s-008" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:for-each select="outermost(//ITEM)">
+          <in>
+            <xsl:on-empty>
+              <xsl:comment select="TITLE[parent::BOOK]"/>
+            </xsl:on-empty>
+            <xsl:on-empty>
+              <xsl:comment select="count(ancestor::node())"/>
+            </xsl:on-empty> 
+          </in>  
+         </xsl:for-each>  
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with text nodes -->
+
+  <xsl:template name="s-009" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:for-each select="outermost(//ITEM)">
+          <in>
+            <xsl:on-empty>
+              <xsl:value-of select="TITLE[parent::BOOK]"/>
+            </xsl:on-empty>
+            <xsl:on-empty>
+              <xsl:value-of select="count(ancestor::node())"/>
+            </xsl:on-empty> 
+          </in>  
+         </xsl:for-each>  
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:fork -->
+
+  <xsl:template name="s-010" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>
+          <a>
+            <xsl:fork>
+              <xsl:sequence select="copy-of(//TITLE)"/>
+              <xsl:sequence select="copy-of(//PRICE)"/>  
+            </xsl:fork>
+          </a>
+        </xsl:on-empty>  
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:fork -->
+
+  <xsl:template name="s-011" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>
+          <a>
+            <xsl:fork>
+              <xsl:sequence select="copy-of(//TITTLE)"/>
+              <xsl:sequence select="copy-of(//PRICLE)"/>  
+            </xsl:fork>
+          </a>
+        </xsl:on-empty>  
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with document nodes -->
+  
+  <xsl:template name="s-012" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:variable name="t" as="document-node()?">          
+          <xsl:on-empty>
+            <xsl:document>
+              <xsl:copy-of select="//TITLE[@flamingo]"/>
+            </xsl:document>
+          </xsl:on-empty>
+        </xsl:variable>
+        <in value="{empty($t)}"/>     
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+ 
+  <!-- Test of xsl:on-empty with xsl:element (empty) -->
+  
+  <xsl:template name="s-021" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:element name="a">
+          <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>
+          <xsl:on-empty>There is no price data</xsl:on-empty>
+        </xsl:element>         
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with xsl:element (not empty) -->
+  
+  <xsl:template name="s-022" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:element name="a">
+          <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE"/>
+          <xsl:on-empty>There is no price data</xsl:on-empty>
+        </xsl:element>         
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with xsl:element (empty) -->
+  
+  <xsl:template name="s-023" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:element name="a">
+          <xsl:on-empty>There is no price data</xsl:on-empty>
+          <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>         
+        </xsl:element>         
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with xsl:element (not empty) -->
+  
+  <xsl:template name="s-024" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:element name="a">
+          <xsl:on-empty>There is no price data</xsl:on-empty>
+          <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE"/>         
+        </xsl:element>         
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with multiple elements, some empty -->
+  
+  <xsl:template name="s-025" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>  
+        <xsl:on-empty>There is no price data</xsl:on-empty>
+        <xsl:sequence select="ends-with(document-uri(), 'books.xml')"/>    
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with multiple elements, some empty -->
+  
+  <xsl:template name="s-026" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:sequence select="ends-with(document-uri(), 'books.xml')"/>  
+        <xsl:on-empty>There is no price data</xsl:on-empty>
+        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>    
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with multiple elements, all empty -->
+  
+  <xsl:template name="s-027" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:for-each select="BOOKLIST">
+          <xsl:sequence select="data(@dummy)"/>  
+          <xsl:on-empty>There is no price data</xsl:on-empty>
+          <xsl:sequence select="BOOKS/ITEM/PRICEDATA"/> 
+        </xsl:for-each>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with atomic values, some empty -->
+  
+  <xsl:template name="s-028" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:sequence select="(1 to 20)[. ge 20]"/>  
+        <xsl:on-empty>There is no price data</xsl:on-empty>
+        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA/data()"/> 
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with atomic values, some empty -->
+  
+  <xsl:template name="s-029" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:sequence select="(1 to 20)[. ge 40]"/>  
+        <xsl:on-empty>There is no price data</xsl:on-empty>
+        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE/data()"/> 
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with xsl:variable -->
+  
+  <xsl:template name="s-030" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <xsl:for-each select="BOOKLIST">
+        <out>
+          <xsl:variable name="x" select="name()"/>
+          <xsl:on-empty>There is no price data within <xsl:value-of select="$x"/></xsl:on-empty> 
+        </out>
+      </xsl:for-each>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with xsl:variable -->
+  
+  <xsl:template name="s-031" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <xsl:for-each select="BOOKLIST">
+        <out>
+          <xsl:sequence select="BOOKS/ITEM/PRICEDATA"/>
+          <xsl:variable name="x" select="name()"/>
+          <xsl:on-empty>There is no price data within <xsl:value-of select="$x"/></xsl:on-empty>
+        </out>
+      </xsl:for-each>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Test of xsl:on-empty with xsl:if -->
+  
+  <xsl:template name="s-032" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+          <xsl:if test="current-date() lt xs:date('1900-01-01')">
+            <banana x="{count(//*)}"/>
+          </xsl:if>
+          <xsl:on-empty>Howdy!</xsl:on-empty>  
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:if -->
+  
+  <xsl:template name="s-033" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+          <xsl:if test="current-date() gt xs:date('1900-01-01')">
+            <banana x="{count(//*)}"/>
+          </xsl:if>
+          <xsl:on-empty>Howdy!</xsl:on-empty>       
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:for-each and xsl:conditional-content -->
+  
+  <xsl:template name="s-034" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:conditional-content>
+          <ul>
+            <xsl:for-each select="outermost(//ITEM)">
+              <xsl:conditional-content>
+                <li><xsl:value-of select="TITTLE-TATTLE"/></li>
+              </xsl:conditional-content>
+            </xsl:for-each>  
+          </ul>
+        </xsl:conditional-content>
+        <xsl:on-empty>There has been no gossip.</xsl:on-empty>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:for-each and xsl:conditional-content -->
+  
+  <xsl:template name="s-035" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>There will be no gossip.</xsl:on-empty>
+        <xsl:conditional-content>
+          <ul>
+            <xsl:for-each select="outermost(//ITEM)">
+              <xsl:conditional-content>
+                <li><xsl:value-of select="TITTLE-TATTLE"/></li>
+              </xsl:conditional-content>
+            </xsl:for-each>  
+          </ul>
+        </xsl:conditional-content>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty (appearing twice) with xsl:for-each and xsl:conditional-content -->
+  
+  <xsl:template name="s-036" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-empty>There will be no gossip.</xsl:on-empty>
+        <xsl:conditional-content>
+          <ul>
+            <xsl:for-each select="outermost(//ITEM)">
+              <xsl:conditional-content>
+                <li><xsl:value-of select="TITTLE-TATTLE"/></li>
+              </xsl:conditional-content>
+            </xsl:for-each>  
+          </ul>
+        </xsl:conditional-content>
+        <xsl:on-empty>There has been no gossip.</xsl:on-empty>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  
+  <!-- Test of xsl:on-empty with xsl:fork -->
+  
+  <xsl:template name="s-037" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <a>
+          <xsl:fork>
+            <xsl:sequence select="copy-of(//TITLE)"/>
+            <xsl:sequence select="copy-of(//PRICE)"/>  
+          </xsl:fork>
+          <xsl:on-empty>The forks were empty.</xsl:on-empty>
+        </a>        
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of xsl:on-empty with xsl:fork -->
+  
+  <xsl:template name="s-038" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <a>
+          <xsl:fork>
+            <xsl:sequence select="copy-of(//TITTLE)"/>
+            <xsl:sequence select="copy-of(//PRICLE)"/>  
+          </xsl:fork>
+          <xsl:on-empty>The forks were empty.</xsl:on-empty>
+        </a>        
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of consuming xsl:on-empty (executed) -->
+  
+  <xsl:template name="s-039" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:if test="current-date() lt xs:date('1900-01-01')">
+          <content/>
+        </xsl:if>
+        <xsl:on-empty>
+          <xsl:for-each select="/BOOKLIST/BOOKS/ITEM">
+            <xsl:copy-of select="TITLE"/>
+          </xsl:for-each>
+        </xsl:on-empty>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Test of consuming xsl:on-empty (not executed) -->
+  
+  <xsl:template name="s-040" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:if test="current-date() gt xs:date('1900-01-01')">
+          <content/>
+        </xsl:if>
+        <xsl:on-empty>
+          <xsl:for-each select="/BOOKLIST/BOOKS/ITEM">
+            <xsl:copy-of select="TITLE"/>
+          </xsl:for-each>
+        </xsl:on-empty>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  
+
+
+
+
+</xsl:stylesheet>
