@@ -18,6 +18,19 @@
     
     <xsl:variable name="v-base" as="xs:integer" visibility="public" select="2"/>
     
+    <xsl:template name="go" visibility="public">
+      <xsl:param name="node" as="node()"/>
+      <go><xsl:apply-templates select="$node"/></go>
+    </xsl:template>
+    
+    <xsl:template match="*[$v-public = 1]">
+      <one/>
+    </xsl:template> 
+    
+    <xsl:template match="*[$v-public != 1]">
+      <not-one/>
+    </xsl:template>   
+    
   
   
 </xsl:package>   
