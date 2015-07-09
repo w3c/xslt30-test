@@ -6,6 +6,10 @@
      <stylesheet file="si-fork-A.xsl"/>
    </environment>
    
+   <environment name="si-fork-B">
+     <stylesheet file="si-fork-B.xsl"/>
+   </environment>
+   
    <dependencies>
       <spec value="XSLT30+"/>
       <feature value="streaming"/>
@@ -150,6 +154,18 @@
 		   <assert>/out/book[1][@title="Pride and Prejudice"][@author="Jane Austen"][@publisher="Modern Library"][@price="4.95"]</assert>
 		   <assert>/out/book[6][@title="The Eyre Affair"][@author="Jasper Fforde"][@publisher="Penguin"][@price="16.47"]</assert>
 		 </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-101">
+      <description>xsl:stream instruction with xsl:fork with xsl:for-each-group</description>
+      <created by="Michael Kay" on="2015-07-09"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-001"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>TBA</out>]]></assert-xml>
       </result>
    </test-case>
    
