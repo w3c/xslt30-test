@@ -4,6 +4,10 @@
     exclude-result-prefixes="xs"
     version="3.0">
     
+    <xsl:variable name="cat-key" as="map(*)"
+      select="map{'MMP':1, 'P':2, 'H':3}"/>
+        
+    
     <!-- xsl:merge with two homogenous files and validation="strict" -->
     <xsl:output method="xml" indent="no"/>
     <xsl:import-schema schema-location="books.xsd"/>
@@ -13,7 +17,7 @@
                 <xsl:merge-source for-each-stream="'books1.xml', 'books2.xml'"
                 	select="BOOKLIST/BOOKS/ITEM"
                 	validation="strict">
-                        <xsl:merge-key select="position()"/>
+                        <xsl:merge-key select="$cat-key(@CAT)"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
                    <xsl:choose>
