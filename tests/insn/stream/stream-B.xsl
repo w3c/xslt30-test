@@ -2,7 +2,8 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes="map xs">
+    xmlns:f="http://local-functions.org/"
+    exclude-result-prefixes="map xs f">
     
     <xsl:variable name="RUN" select="true()" static="yes"/>
     
@@ -67,6 +68,44 @@
         </xsl:stream>
       </out>
     </xsl:template>
+    
+    <!-- xsl:stream called within a function -->
+    
+    <xsl:template name="s-107" use-when="$RUN">
+      <out>
+        <xsl:value-of select="round(avg(f:read-stream('books.xml')), 2)"/>
+      </out>
+    </xsl:template>
+    
+    <xsl:function name="f:read-stream" as="xs:decimal*">
+      <xsl:param name="uri" as="xs:string"/>
+      <xsl:stream href="{$uri}">
+        <xsl:sequence select="//PRICE/data(.)"/>
+      </xsl:stream>
+    </xsl:function>
+    
+    <!-- xsl:stream called within a function with early termination -->
+    
+    <xsl:template name="s-108" use-when="$RUN">
+      <out>
+        <xsl:value-of select="exists(f:read-stream('books.xml'))"/>
+      </out>
+    </xsl:template>
+    
+    <!-- xsl:stream called within a function using a constructor function -->
+    
+    <xsl:template name="s-109" use-when="$RUN">
+      <out>
+        <xsl:value-of select="round(avg(f:read-stream-decimal('books.xml')), 2)"/>
+      </out>
+    </xsl:template>
+    
+    <xsl:function name="f:read-stream-decimal" as="xs:decimal*">
+      <xsl:param name="uri" as="xs:string"/>
+      <xsl:stream href="{$uri}">
+        <xsl:sequence select="//PRICE/xs:decimal(.)"/>
+      </xsl:stream>
+    </xsl:function>    
     
 
 

@@ -276,6 +276,42 @@
       </result>
    </test-case>
    
+   <test-case name="stream-107">
+      <description>Test xsl:stream called within a function</description>
+      <created by="Michael Kay" on="2015-07-09"/>
+      <environment ref="stream-B"/>
+      <test>
+         <initial-template name="s-107"/>
+      </test>
+      <result>
+         <assert>/out = '9.06'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-108">
+      <description>Test xsl:stream called with early termination</description>
+      <created by="Michael Kay" on="2015-07-09"/>
+      <environment ref="stream-B"/>
+      <test>
+         <initial-template name="s-108"/>
+      </test>
+      <result>
+         <assert>/out = 'true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-109">
+      <description>Test xsl:stream called within a function calling a constructor function</description>
+      <created by="Michael Kay" on="2015-07-09"/>
+      <environment ref="stream-B"/>
+      <test>
+         <initial-template name="s-109"/>
+      </test>
+      <result>
+         <assert>/out = '9.06'</assert>
+      </result>
+   </test-case>
+   
    <test-case name="stream-500">
       <description>Test xsl:stream instruction. From a Saxon 9.6 bug report (bug 2389).</description>
       <created by="Michael Kay" on="2015-06-05"/>
@@ -284,7 +320,12 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>false()</assert><!-- expected results TBA -->
+         <assert-xml><![CDATA[<root xmlns="urn:gba:sqg"
+      xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+      xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"><body><cases module="17/7" pseud_procedure="17/5_17/7"
+      ><case><patient twodigitik="10"><pseudonym V="1234567890" alg="0"/></patient><test id="1"/></case
+	  ><case><patient twodigitik="10"><pseudonym V="0987654321" alg="0"/></patient><test id="2"/></case
+	  ></cases></body></root>]]></assert-xml>
       </result>
    </test-case>
 

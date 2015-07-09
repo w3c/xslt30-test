@@ -3,7 +3,7 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="urn:gba:sqg"
 	exclude-result-prefixes="xs xsi ns0">
-	<xsl:output method="xml" encoding="UTF-8" indent="yes" />
+	<xsl:output method="xml" encoding="UTF-8" indent="no" />
 
 	<xsl:param name="doc4" select="'stream-500.xml'"/>
 
@@ -18,7 +18,7 @@
                             <xsl:variable name="lfd" select="@lfdnr" />
                             <case>
                                 <xsl:stream href="{$doc4}">
-                                    <xsl:copy-of select="ns0:root/ns0:body/ns0:case[(@lfdnr) = ($lfd)]/ns0:patient" />
+                                    <xsl:copy-of select="ns0:root/ns0:body/ns0:case[(@lfdnr) = ($lfd)]/ns0:patient" copy-namespaces="false"/>
                                     <test id="{$lfd}" />
                                 </xsl:stream>
                             </case>
