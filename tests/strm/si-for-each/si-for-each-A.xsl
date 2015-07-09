@@ -66,7 +66,7 @@
   <xsl:template name="fe-005" expand-text="yes">
     <out>
       <xsl:stream href="../docs/books.xml">
-        <xsl:for-each select="(//*)[position()=1 to 6]">{position()}:{name()}</xsl:for-each>
+        <xsl:for-each select="(//*)[position()=1 to 6]">{position()}:{name()} </xsl:for-each>
       </xsl:stream>
     </out>
   </xsl:template>
