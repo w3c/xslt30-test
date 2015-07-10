@@ -13,7 +13,7 @@
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:for-each select="head(/BOOKLIST/BOOKS/ITEM)">
-            <xsl:copy-of select="*[namespace-uri(.) = namespace-uri(current())]"/>
+            <a><xsl:copy-of select="*[namespace-uri(.) = namespace-uri(current())]"/></a>
           </xsl:for-each>  
         </out>
       </xsl:stream>
@@ -61,9 +61,9 @@
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:for-each select="1 to 5">
-            <xsl:value-of select="(20 to 21)[. gt current()]"/>
+            <a><xsl:value-of select="(20 to 21)[. gt current()]"/></a>
           </xsl:for-each>  
-          <in><xsl:value-of select="count(//*)"/></in>
+          <b><xsl:value-of select="count(//*)"/></b>
         </out>
       </xsl:stream>
     </xsl:template>
