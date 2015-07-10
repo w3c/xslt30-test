@@ -1,38 +1,40 @@
-<xsl:transform version="3.0" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes="map xs">
-    
-    <xsl:variable name="RUN" select="true()" static="yes"/>
-    <xsl:strip-space elements="*"/>
-   
+<xsl:transform version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:map="http://www.w3.org/2005/xpath-functions/map" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  exclude-result-prefixes="map xs">
+
+  <xsl:variable name="RUN" select="true()" static="yes"/>
+  <xsl:strip-space elements="*"/>
+
   <!-- within xsl:stream, use LRE: atomic values, consuming -->
-  
+
   <xsl:template name="cy-001" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each select="account/transaction[@value &lt; 0]/@value">
-          <value><xsl:sequence select="data(.)"/></value>
+          <value>
+            <xsl:sequence select="data(.)"/>
+          </value>
         </xsl:for-each>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: atomic values, consuming and non-consuming -->
-  
+
   <xsl:template name="cy-002" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each select="data(account/transaction[@value &lt; 0]/@value), 101, 102">
-          <e><xsl:value-of select="."/></e>
-        </xsl:for-each> 
+          <e>
+            <xsl:value-of select="."/>
+          </e>
+        </xsl:for-each>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: climbing posture -->
-  
+
   <xsl:template name="cy-003" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
@@ -43,13 +45,13 @@
             </transaction>
           </xsl:for-each>
         </xsl:variable>
-        <xsl:copy-of select="data($atts)"/>  
+        <xsl:copy-of select="data($atts)"/>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: climbing posture -->
-  
+
   <xsl:template name="cy-004" use-when="$RUN">
     <xsl:variable name="extra" as="element()*">
       <PRICE value="101"/>
@@ -61,16 +63,16 @@
           <xsl:for-each select="account/transaction[@value &lt; 0]/@value, $extra/@value">
             <transaction>
               <xsl:value-of select="."/>
-            </transaction>             
+            </transaction>
           </xsl:for-each>
         </xsl:variable>
-        <xsl:copy-of select="data($atts)"/> 
+        <xsl:copy-of select="data($atts)"/>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: striding posture, element nodes -->
-  
+
   <xsl:template name="cy-005" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
@@ -82,9 +84,9 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: striding posture, text nodes -->
-  
+
   <xsl:template name="cy-006" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
@@ -96,9 +98,9 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: striding posture, text nodes mixed with atomic values -->
-  
+
   <xsl:template name="cy-007" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
@@ -110,9 +112,9 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: striding posture, element nodes mixed with grounded elements -->
-  
+
   <xsl:template name="cy-008" use-when="$RUN">
     <xsl:variable name="extra" as="element()*">
       <PRICE>100.00</PRICE>
@@ -128,23 +130,23 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: descendant text nodes -->
-  
+
   <xsl:template name="cy-009" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="outermost(//PRICE)">
           <PRICE>
-          	<xsl:sequence select="text()"/>
+            <xsl:sequence select="text()"/>
           </PRICE>
         </xsl:for-each>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: descendant text nodes mixed with atomic values -->
-  
+
   <xsl:template name="cy-010" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
@@ -156,9 +158,9 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: whole document unchanged -->
-  
+
   <xsl:template name="cy-011" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
@@ -170,11 +172,11 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
-  
-  
+
+
+
   <!-- within xsl:stream, use LRE: validation="strip" (non-schema-aware) -->
-  
+
   <xsl:template name="cy-022" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/citygml.xml">
@@ -186,9 +188,9 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: validation="preserve" (non-schema-aware) -->
-  
+
   <xsl:template name="cy-023" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/citygml.xml">
@@ -200,9 +202,9 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: validation="lax" (non-schema-aware) -->
-  
+
   <xsl:template name="cy-024" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/citygml.xml">
@@ -214,9 +216,9 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: copy-namespaces="yes", argument grounded and consuming -->
-  
+
   <xsl:template name="cy-025" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/citygml.xml">
@@ -228,9 +230,9 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE: copy-namespaces="no", argument grounded and consuming -->
-  
+
   <xsl:template name="cy-026" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/citygml.xml">
@@ -242,149 +244,204 @@
       </xsl:stream>
     </out>
   </xsl:template>
-  
-  
+
+
   <!-- xsl:element referring to a streamable attribute set -->
-  
+
   <xsl:attribute-set name="as-1" streamable="yes">
     <xsl:attribute name="x" select="1"/>
     <xsl:attribute name="y" select="2"/>
-  </xsl:attribute-set> 
-  
+  </xsl:attribute-set>
+
   <xsl:template name="cy-029" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/citygml.xml">
         <xsl:for-each select="*">
           <dddd xsl:use-attribute-sets="as-1">
-        	<xsl:sequence select="*" />
+            <xsl:sequence select="*"/>
           </dddd>
-        </xsl:for-each>  
+        </xsl:for-each>
       </xsl:stream>
     </out>
-  </xsl:template>   
-  
+  </xsl:template>
+
   <!-- within xsl:stream, use LRE/on-empty: empty sequence selected -->
-  
+
   <xsl:template name="cy-040" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <a xsl:on-empty="$a">
-          <xsl:sequence select="/*[@dummy='not-there']" />
-        </a>
+        <xsl:conditional-content>
+          <a>
+            <xsl:sequence select="/*[@dummy='not-there']"/>
+          </a>
+        </xsl:conditional-content>
+        <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE/on-empty: empty element constructed -->
-  
+
   <xsl:template name="cy-041" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <a xsl:on-empty="$a">
-          <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
-        </a>
+        <xsl:conditional-content>
+          <a>
+            <xsl:if test="current-date() lt xs:date('1900-01-01')">
+              <b/>
+            </xsl:if>
+          </a>
+        </xsl:conditional-content>
+        <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE/on-empty: empty document node constructed -->
-  
+
   <xsl:template name="cy-042" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <a xsl:on-empty="$a">
-          <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
-        </a>
+        <xsl:conditional-content>
+          <a>
+            <xsl:if test="current-date() lt xs:date('1900-01-01')">
+              <b/>
+            </xsl:if>
+          </a>
+        </xsl:conditional-content>
+        <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE/on-empty: empty document node constructed -->
-  
+
   <xsl:template name="cy-043" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <a xsl:on-empty="$a">
-          <xsl:if test="current-date() lt xs:date('1900-01-01')"><b/></xsl:if>
-        </a>
+        <xsl:conditional-content>
+          <a>
+            <xsl:if test="current-date() lt xs:date('1900-01-01')">
+              <b/>
+            </xsl:if>
+          </a>
+        </xsl:conditional-content>
+        <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE/on-empty: empty comment node constructed -->
-  
+
   <xsl:template name="cy-044" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <a xsl:on-empty="$a">
-          <xsl:if test="current-date() lt xs:date('1900-01-01')"><xsl:sequence select="special/comment()[2]"/></xsl:if>
-        </a>
+        <xsl:conditional-content>
+          <a>
+            <xsl:if test="current-date() lt xs:date('1900-01-01')">
+              <xsl:sequence select="special/comment()[2]"/>
+            </xsl:if>
+          </a>
+        </xsl:conditional-content>
+        <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE/on-empty: empty PI node constructed -->
-  
+
   <xsl:template name="cy-045" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <a xsl:on-empty="$a">
-          <xsl:if test="current-date() lt xs:date('1900-01-01')"><xsl:sequence select="special/processing-instruction()[2]"/></xsl:if>
-        </a>
+        <xsl:conditional-content>
+          <a>
+            <xsl:if test="current-date() lt xs:date('1900-01-01')">
+              <xsl:sequence select="special/processing-instruction()[2]"/>
+            </xsl:if>
+          </a>
+        </xsl:conditional-content>
+        <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE/on-empty: empty element node constructed -->
-  
+
   <xsl:template name="cy-046" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/special.xml">
         <xsl:for-each select="special">
-           <special xsl:on-empty="$a">
-        	  <xsl:sequence select="f/@b" />
-           </special>
-        </xsl:for-each>   
+          <xsl:conditional-content>
+            <special>
+              <xsl:sequence select="f/@b"/>
+            </special>
+          </xsl:conditional-content>
+          <xsl:on-empty select="$a"/>
+        </xsl:for-each>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE/on-empty: empty element constructed -->
-  
+
   <xsl:template name="cy-047" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
         <xsl:for-each select="*">
-          <dddd xsl:on-empty="$a">
-            <xsl:copy-of select="a/b/c/d/e/f/g"/>
-          </dddd>
-        </xsl:for-each>  
+          <xsl:conditional-content>
+            <dddd>
+              <xsl:copy-of select="a/b/c/d/e/f/g"/>
+            </dddd>
+          </xsl:conditional-content>
+          <xsl:on-empty select="$a"/>
+        </xsl:for-each>
       </xsl:stream>
     </out>
   </xsl:template>
-  
+
   <!-- within xsl:stream, use LRE/on-empty: empty document constructed -->
-  
+
   <xsl:template name="cy-048" use-when="$RUN">
     <out>
-      <xsl:variable name="a" as="element()"><a/></xsl:variable>
+      <xsl:variable name="a" as="element()">
+        <a/>
+      </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
         <xsl:for-each select="*">
-          <dddd xsl:on-empty="$a">
-            <xsl:copy-of select="a/b/c/d/e/f/g"/>
-          </dddd>
-        </xsl:for-each>  
+          <xsl:conditional-content>
+            <dddd>
+              <xsl:copy-of select="a/b/c/d/e/f/g"/>
+            </dddd>
+          </xsl:conditional-content>
+          <xsl:on-empty select="$a"/>
+        </xsl:for-each>
       </xsl:stream>
     </out>
-  </xsl:template>  
-   
-  
-</xsl:transform>  
+  </xsl:template>
+
+
+</xsl:transform>

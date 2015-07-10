@@ -310,7 +310,9 @@
     <xsl:template name="s-050" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <a xsl:on-empty="()"><xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE/data()"/></a>
+          <xsl:conditional-content>
+            <a><xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE/data()"/></a>
+          </xsl:conditional-content>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -320,7 +322,9 @@
     <xsl:template name="s-051" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <a xsl:on-empty="()"><xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICETAG"/></a>
+          <xsl:conditional-content>
+            <a><xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICETAG"/></a>
+          </xsl:conditional-content>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -330,7 +334,10 @@
     <xsl:template name="s-052" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <a xsl:on-empty="head(//*)"><xsl:sequence select="1 to 10"/></a>
+          <a>
+            <xsl:sequence select="1 to 10"/>
+            <xsl:on-empty select="head(//*)"/>
+          </a>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -341,7 +348,10 @@
       <xsl:param name="s" select="20"/>
       <xsl:stream href="../docs/books.xml">
         <out>
-          <a xsl:on-empty="head(//TITLE)"><xsl:sequence select="$s to 10"/></a>
+          <a>
+            <xsl:sequence select="$s to 10"/>
+            <xsl:on-empty select="head(//TITLE)"/>
+          </a>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -353,7 +363,10 @@
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS">
           <out>
-            <a xsl:on-empty="$e"><xsl:sequence select="ITEM/PRICETAG"/></a>
+            <xsl:conditional-content>
+              <a><xsl:sequence select="ITEM/PRICETAG"/></a>
+            </xsl:conditional-content>
+            <xsl:on-empty select="$e"/>
           </out>
         </xsl:for-each>  
       </xsl:stream>
@@ -371,7 +384,10 @@
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS">
           <out>
-            <a xsl:on-empty="$atts"><xsl:sequence select="ITEM/PRICETAG"/></a>
+            <xsl:conditional-content>
+              <a><xsl:sequence select="ITEM/PRICETAG"/></a>
+            </xsl:conditional-content>
+            <xsl:on-empty select="$atts"/>
           </out>
         </xsl:for-each>  
       </xsl:stream>
@@ -390,7 +406,10 @@
         <xsl:for-each select="BOOKLIST/BOOKS">
           <out>
             <xsl:try>
-              <a xsl:on-empty="$atts"><xsl:sequence select="ITEM/PRICETAG"/></a>
+              <xsl:conditional-content>
+                <a><xsl:sequence select="ITEM/PRICETAG"/></a>
+              </xsl:conditional-content>
+              <xsl:on-empty select="$atts"/>
               <xsl:catch errors="*:XTTE3310">
                 <fallback>OK</fallback>
               </xsl:catch>
