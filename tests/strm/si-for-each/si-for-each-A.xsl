@@ -83,6 +83,18 @@
     </out>
   </xsl:template>
   
+  <!-- xsl:stream / xsl:for-each / xsl:copy-of with a predicate -->
+  
+  <xsl:template name="fe-007">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:for-each select="head(/BOOKLIST/BOOKS/ITEM)">
+            <xsl:copy-of select="*[namespace-uri(.) = '']"/>
+          </xsl:for-each>  
+        </out>
+      </xsl:stream>
+  </xsl:template>
+  
   <!-- within xsl:stream, use parent axis within xsl:for-each -->
    
   <xsl:template name="fe-008">
@@ -147,6 +159,19 @@
         </xsl:for-each>
       </xsl:stream>
     </out>
+  </xsl:template>
+  
+  <!-- xsl:stream / xsl:for-each / xsl:copy-of with a predicate and some local variables-->
+  
+  <xsl:template name="fe-013">
+      <xsl:stream href="../docs/books.xml">
+        <out>
+          <xsl:for-each select="head(/BOOKLIST/BOOKS/ITEM)">
+            <xsl:variable name="x" select="current-date()"/>
+            <xsl:copy-of select="let $y := current-dateTime() return *[namespace-uri(.) != string($x) and local-name(.) != string($y) and name(.) != concat($x, $y)]"/>
+          </xsl:for-each>  
+        </out>
+      </xsl:stream>
   </xsl:template>       
 
        
