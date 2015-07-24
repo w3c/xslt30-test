@@ -13,7 +13,7 @@
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:for-each select="head(/BOOKLIST/BOOKS/ITEM)">
-            <a><xsl:copy-of select="*[namespace-uri(.) = namespace-uri(current())]"/></a>
+            <xsl:copy-of select="*[namespace-uri(.) = namespace-uri(current())]"/>
           </xsl:for-each>  
         </out>
       </xsl:stream>
