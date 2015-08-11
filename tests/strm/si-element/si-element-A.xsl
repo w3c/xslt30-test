@@ -352,7 +352,7 @@
       </xsl:variable>
       <xsl:stream href="../docs/special.xml">
         <xsl:conditional-content>
-          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+          <xsl:element name="{name($a)}" namespace="{namespace-uri($a)}">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <xsl:sequence select="special/comment()[2]"/>
             </xsl:if>
@@ -372,7 +372,7 @@
       </xsl:variable>
       <xsl:stream href="../docs/special.xml">
         <xsl:conditional-content>
-          <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
+          <xsl:element name="{name($a)}" namespace="{namespace-uri($a)}">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <xsl:sequence select="special/processing-instruction()[2]"/>
             </xsl:if>

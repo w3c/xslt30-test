@@ -292,6 +292,7 @@
    <test-case name="si-element-044">
       <description>Use xsl:element: with on-empty</description>
       <created by="Michael Kay" on="2013-12-19"/>
+      <modified by="Michael Kay" on="2015-08-11" change="corrected test (removed unintended dynamic error)"/>
       <environment ref="si-element-A"/>
       <test>
          <initial-template name="cy-044"/>
@@ -304,6 +305,7 @@
    <test-case name="si-element-045">
       <description>Use xsl:element: with on-empty</description>
       <created by="Michael Kay" on="2013-12-19"/>
+      <modified by="Michael Kay" on="2015-08-11" change="corrected test (removed unintended dynamic error)"/>
       <environment ref="si-element-A"/>
       <test>
          <initial-template name="cy-045"/>
@@ -607,6 +609,7 @@
    <test-case name="si-element-118">
       <description>Use xsl:element: schema-aware, validation; on-empty must be empty or valid</description>
       <created by="Michael Kay" on="2014-01-09"/>
+      <modified by="Michael Kay" on="2015-08-11" change="Rewrite test to do what it says on the tin"/>
       <environment ref="si-element-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -615,13 +618,14 @@
          <initial-template name="cy-118"/>
       </test>
       <result>
-         <assert>/out = 'true'</assert>
+         <assert>/out/processingDate = '2015-08-11'</assert>
       </result>
    </test-case>
    
    <test-case name="si-element-119">
       <description>Use xsl:element: schema-aware, validation; on-empty must be empty or valid</description>
       <created by="Michael Kay" on="2014-01-09"/>
+      <modified by="Michael Kay" on="2015-08-11" change="Rewrite test to do what it says on the tin"/>
       <environment ref="si-element-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -630,13 +634,14 @@
          <initial-template name="cy-119"/>
       </test>
       <result>
-         <error code="XTTE1512"/>
+         <error code="XTTE1510"/>
       </result>
    </test-case>
    
    <test-case name="si-element-120">
       <description>Use xsl:element: schema-aware, validation; on-empty must be empty or valid</description>
       <created by="Michael Kay" on="2014-01-09"/>
+      <modified by="Michael Kay" on="2015-08-11" change="Rewrite test to do what it says on the tin"/>
       <environment ref="si-element-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -645,13 +650,14 @@
          <initial-template name="cy-120"/>
       </test>
       <result>
-         <assert>/out/e = '2'</assert>
+         <assert>/out/PoolIdentifier = '29'</assert>
       </result>
    </test-case>
    
    <test-case name="si-element-121">
       <description>Use xsl:element: schema-aware, validation; on-empty must be empty or valid</description>
       <created by="Michael Kay" on="2014-01-09"/>
+      <modified by="Michael Kay" on="2015-08-11" change="Rewrite test to do what it says on the tin"/>
       <environment ref="si-element-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -1052,14 +1058,16 @@
    </test-case>
    
    <test-case name="si-element-255">
-      <description>xsl:element; select is consuming, on-empty is multiple elements - type error</description>
+      <description>xsl:element; select is consuming, on-empty is multiple elements - 
+        (empty, no longer a type error, returns two elements)</description>
       <created by="Michael Kay" on="2014-01-06"/>
+      <modified by="Michael Kay" on="2015-08-11" change="correct expected results"/>
       <environment ref="si-element-C"/>
       <test>
          <initial-template name="s-055"/>
       </test>
       <result>
-         <error code="XTTE3310"/>
+         <assert-xml><![CDATA[<out><n1>1</n1><n2>2</n2></out>]]></assert-xml>
       </result>
    </test-case>
    

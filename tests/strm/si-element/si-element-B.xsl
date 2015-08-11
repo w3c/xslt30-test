@@ -300,16 +300,14 @@
   <xsl:template name="cy-118" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/loans-noNS.xml">
-        <xsl:variable name="copy" as="node()?">
           <xsl:conditional-content>
-            <xsl:for-each select="*">
-              <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" validation="strict">
+            <xsl:for-each select="head(//PoolIdentifier)">
+              <xsl:element name="processingDate" validation="strict">
                 <xsl:copy-of select="*/*/NONEXISTENT"/>
+                <xsl:on-empty select="'2015-08-11'"/>
               </xsl:element>
             </xsl:for-each>
           </xsl:conditional-content>
-        </xsl:variable>
-        <xsl:value-of select="empty($copy)"/>
       </xsl:stream>
     </out>
   </xsl:template>
@@ -317,22 +315,16 @@
   <!-- within xsl:stream, use xsl:element: schema-aware, validation=strict, on-empty must be empty or valid -->
 
   <xsl:template name="cy-119" use-when="$RUN">
-    <xsl:variable name="e" as="element()">
-      <e/>
-    </xsl:variable>
     <out>
       <xsl:stream href="../docs/loans-noNS.xml">
-        <xsl:variable name="copy" as="node()?">
-          <xsl:conditional-content>
-            <xsl:for-each select="*">
-              <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" validation="strict">
+        <xsl:conditional-content>
+            <xsl:for-each select="head(//PoolIdentifier)">
+              <xsl:element  name="processingDate" validation="strict">
                 <xsl:copy-of select="*/*/NONEXISTENT"/>
+                <xsl:on-empty select="'NOT_A_NUMBER'"/>
               </xsl:element>
             </xsl:for-each>
           </xsl:conditional-content>
-          <xsl:on-empty select="$e"/>
-        </xsl:variable>
-        <xsl:value-of select="empty($copy)"/>
       </xsl:stream>
     </out>
   </xsl:template>
@@ -340,24 +332,16 @@
   <!-- within xsl:stream, use xsl:element: schema-aware, validation by type, on-empty must be empty or valid -->
 
   <xsl:template name="cy-120" use-when="$RUN">
-    <xsl:variable name="e" as="element()">
-      <e>2</e>
-    </xsl:variable>
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
-        <xsl:variable name="copy" as="node()?">
+        <xsl:stream href="../docs/loans-noNS.xml">
           <xsl:conditional-content>
-            <xsl:for-each select="*">
-              <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" type="xs:integer">
-                <xsl:value-of select="*/*/NONEXISTENT"/>
+            <xsl:for-each select="head(//PoolIdentifier)">
+              <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" type="FmIdentifierInt">
+                <xsl:copy-of select="*/*/NONEXISTENT"/>
+                <xsl:on-empty select="29"/>
               </xsl:element>
             </xsl:for-each>
           </xsl:conditional-content>
-          <xsl:on-empty>
-            <xsl:copy-of select="$e" validation="strict"/>
-          </xsl:on-empty>
-        </xsl:variable>
-        <xsl:copy-of select="$copy"/>
       </xsl:stream>
     </out>
   </xsl:template>
@@ -365,22 +349,16 @@
   <!-- within xsl:stream, use xsl:element: schema-aware, validation by type, on-empty must be empty or valid -->
 
   <xsl:template name="cy-121" use-when="$RUN">
-    <xsl:variable name="e" as="element()">
-      <e>2.7</e>
-    </xsl:variable>
     <out>
       <xsl:stream href="../docs/loans-noNS.xml">
-        <xsl:variable name="copy" as="node()?">
           <xsl:conditional-content>
-            <xsl:for-each select="*">
-              <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" type="xs:integer">
-                <xsl:value-of select="*/*/NONEXISTENT"/>
+            <xsl:for-each select="head(//PoolIdentifier)">
+              <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" type="FmIdentifierInt">
+                <xsl:copy-of select="*/*/NONEXISTENT"/>
+                <xsl:on-empty select="'NOT_A_NUMBER'"/>
               </xsl:element>
             </xsl:for-each>
           </xsl:conditional-content>
-          <xsl:on-empty select="$e"/>
-        </xsl:variable>
-        <xsl:value-of select="empty($copy)"/>
       </xsl:stream>
     </out>
   </xsl:template>
