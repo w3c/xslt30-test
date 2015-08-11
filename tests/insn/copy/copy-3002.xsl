@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
 
   <!-- xsl:copy-of copy-accumulators="yes"-->
   
@@ -13,8 +13,8 @@
   </out>
 </xsl:template>
 
-<xsl:accumulator name="latest-pick" select="()">
-  <xsl:accumulator-rule match="a2" new-value="@pick"/>
+<xsl:accumulator name="latest-pick" initial-value="()">
+  <xsl:accumulator-rule match="a2" select="@pick"/>
 </xsl:accumulator>  
 
 </xsl:stylesheet>
