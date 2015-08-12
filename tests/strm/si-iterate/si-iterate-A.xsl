@@ -68,7 +68,7 @@
   <xsl:template name="fe-005" expand-text="yes" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
-        <xsl:iterate select="(//*)[position()=1 to 6]">{position()}:{name()}</xsl:iterate>
+        <xsl:iterate select="(//*)[position()=1 to 6]">{position()}:{name()} </xsl:iterate>
       </xsl:stream>
     </out>
   </xsl:template>
