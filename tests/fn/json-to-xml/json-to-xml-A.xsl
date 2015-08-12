@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:j="http://www.w3.org/2005/xpath-functions">
-    <xsl:param name="options.escape" select="map{'unescape':false()}"/>
+    <xsl:param name="options.escape" select="map{'escape':true()}"/>
     <xsl:param name="options.validate" select="map{'validate':true()}"/>
 
     <!--<xsl:param name="options.rfc" select="map{'spec':'RFC4627'}"/>
@@ -20,6 +20,9 @@
     <xsl:param name="escape.1" select="'[&#34;Data with \&#34; within it&#34;]'"/>
     <xsl:param name="escape.2"
         select="'{&#34;Key \&#34; with quote&#34;:&#34;Data with \&#34; within it&#34;}'"/>
+    <xsl:param name="escape.3" select="'[&#34;Data with \u000C within it&#34;]'"/>
+    <xsl:param name="escape.4"
+        select="'{&#34;Key \u000C with special character&#34;:&#34;Data with \f within it&#34;}'"/>
 
 
     <xsl:template name="json-to-xml-001">
@@ -292,6 +295,48 @@
                     <assert>$result/@escaped eq "true"</assert>
                     <assert>$result/@escaped-key eq "true"</assert>
                 </all-of>-->
+            </result>
+        </xsl:variable>
+    </xsl:template>
+    <xsl:template name="json-to-xml-escape-005">
+        <xsl:variable name="metadata">
+            <description>Escaped character string - remaining escaped</description>
+            <created by="Debbie Lockett" on="2015-08-12"/>
+            <environment ref="JSON-XML"/>
+        </xsl:variable>
+        <xsl:copy-of select=" json-to-xml($escape.3,$options.escape)//j:string "/>
+        <xsl:variable name="expected-results">
+            <test> json-to-xml($escape.3,$options.escape)//j:string</test>
+            <result>
+                <!-- <all-of>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
+                <assert>. = 'Data with \f within it'</assert>
+                <assert>*/@escaped eq "true"</assert>
+                <any-of>
+                    <assert>empty(*/@escaped-key)</assert>
+                    <assert>*/@escaped-key eq "false"</assert>
+                </any-of>
+            </all-of>-->
+            </result>
+        </xsl:variable>
+    </xsl:template>
+    <xsl:template name="json-to-xml-escape-006">
+        <xsl:variable name="metadata">
+            <description>Escaped character string and key - remaining escaped</description>
+            <created by="Debbie Lockett" on="2015-08-12"/>
+            <environment ref="JSON-XML"/>
+        </xsl:variable>
+        <xsl:copy-of select=" json-to-xml($escape.4,$options.escape)//j:string "/>
+        <xsl:variable name="expected-results">
+            <test> json-to-xml($escape.4,$options.escape)//j:string</test>
+            <result>
+                <!--<all-of>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
+                <assert>. = 'Data with \f within it'</assert>
+                <assert>*/@key eq 'Key \f with special character'</assert>
+                <assert>*/@escaped eq "true"</assert>
+                <assert>*/@escaped-key eq "true"</assert>
+            </all-of>-->
             </result>
         </xsl:variable>
     </xsl:template>

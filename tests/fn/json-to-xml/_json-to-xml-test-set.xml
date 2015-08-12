@@ -248,6 +248,7 @@
         <description>Escaped quote string - remaining escaped</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Change expected result, quotes not escaped, see bug #28995"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-003"/>
@@ -255,8 +256,8 @@
         <result>
             <all-of>
                 <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
-                <assert>. = 'Data with \" within it'</assert>
-                <assert>*/@escaped eq "true"</assert>
+                <assert>. = 'Data with " within it'</assert>
+                <!--<assert>*/@escaped eq "true"</assert>-->
                 <any-of>
                     <assert>empty(*/@escaped-key)</assert>
                     <assert>*/@escaped-key eq "false"</assert>
@@ -268,6 +269,7 @@
         <description>Escaped quote string and key - remaining escaped</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Change expected result, quotes not escaped, see bug #28995"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-004"/>
@@ -275,8 +277,44 @@
         <result>
             <all-of>
                 <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
-                <assert>. = 'Data with \" within it'</assert>
-                <assert>*/@key eq 'Key \" with quote'</assert>
+                <assert>. = 'Data with " within it'</assert>
+                <assert>*/@key eq 'Key " with quote'</assert>
+                <!--<assert>*/@escaped eq "true"</assert>-->
+                <!--<assert>*/@escaped-key eq "true"</assert>-->
+            </all-of>
+        </result>
+    </test-case>
+    <test-case name="json-to-xml-escape-005">
+        <description>Escaped character string - remaining escaped</description>
+        <created by="Debbie Lockett" on="2015-08-12"/>
+        <environment ref="json-to-xml-A"/>
+        <test>
+            <initial-template name="json-to-xml-escape-005"/>
+        </test>
+        <result>
+            <all-of>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
+                <assert>. = 'Data with \f within it'</assert>
+                <assert>*/@escaped eq "true"</assert>
+                <any-of>
+                    <assert>empty(*/@escaped-key)</assert>
+                    <assert>*/@escaped-key eq "false"</assert>
+                </any-of>
+            </all-of>
+        </result>
+    </test-case>
+    <test-case name="json-to-xml-escape-006">
+        <description>Escaped character string and key - remaining escaped</description>
+        <created by="Debbie Lockett" on="2015-08-12"/>
+        <environment ref="json-to-xml-A"/>
+        <test>
+            <initial-template name="json-to-xml-escape-006"/>
+        </test>
+        <result>
+            <all-of>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
+                <assert>. = 'Data with \f within it'</assert>
+                <assert>*/@key eq 'Key \f with special character'</assert>
                 <assert>*/@escaped eq "true"</assert>
                 <assert>*/@escaped-key eq "true"</assert>
             </all-of>
@@ -426,12 +464,13 @@
         <description>Empty string</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-001"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -439,12 +478,13 @@
         <description>Unknown token</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-002"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -452,12 +492,13 @@
         <description>Unknown token</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-003"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -465,12 +506,13 @@
         <description>Extra token</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-004"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -478,12 +520,13 @@
         <description>Non-string key</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-005"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -491,12 +534,13 @@
         <description>Non-string key</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-006"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -504,12 +548,13 @@
         <description>Missing colon after key</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-007"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -517,12 +562,13 @@
         <description>Extra token after map value</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-008"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -530,12 +576,13 @@
         <description>Extra token after array value</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-009"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -543,12 +590,13 @@
         <description>Leading + on number</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-010"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -556,12 +604,13 @@
         <description>Redundant leading 0 on number</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-011"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -569,12 +618,13 @@
         <description>Hex number</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-012"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -582,12 +632,13 @@
         <description>Trailing backslash</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-013"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -595,12 +646,13 @@
         <description>Short unicode</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-014"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -610,12 +662,19 @@
         <modified by="John Lumley" on="2014-07-22"
             change="changed from XTDE3240 to correct error code"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="No longer an error, use default escape=false and replacement char"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-015"/>
         </test>
         <result>
-            <error code="XTDE3250"/>
+            <all-of>
+                <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}array)</assert>
+                <assert>. = 'String with &#xFFFD; backspace'</assert>
+                <assert>empty(*/@escaped)</assert>
+                <assert>empty(*/@escaped-key)</assert>
+            </all-of>
+            <!--<error code="XTDE3250"/>-->
         </result>
     </test-case>
 
@@ -623,12 +682,13 @@
         <description>Trailing comma in object</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-016"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -638,13 +698,14 @@
         <modified by="John Lumley" on="2014-07-22"
             change="option 'spec':'liberal' altered to 'liberal':true()"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-017"/>
         </test>
         <result>
             <any-of>
-                <error code="XTDE3240"/>
+                <error code="FOJS0001"/>
                 <assert>/*</assert>
             </any-of>
         </result>
@@ -654,12 +715,13 @@
         <description>Trailing comma in array</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-018"/>
         </test>
         <result>
-            <error code="XTDE3240"/>
+            <error code="FOJS0001"/>
         </result>
     </test-case>
 
@@ -669,13 +731,14 @@
         <modified by="John Lumley" on="2014-07-22"
             change="option 'spec':'liberal' altered to 'liberal':true()"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-019"/>
         </test>
         <result>
             <any-of>
-                <error code="XTDE3240"/>
+                <error code="FOJS0001"/>
                 <assert>/*</assert>
             </any-of>
         </result>
@@ -686,12 +749,13 @@
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="John Lumley" on="2014-07-22" change="option 'spec' altered to 'liberal'"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-020"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
@@ -700,12 +764,13 @@
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="John Lumley" on="2014-07-22" change="option 'spec' altered to 'liberal'"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-021"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
@@ -713,12 +778,13 @@
         <description>Validate option error</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-022"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
@@ -726,12 +792,13 @@
         <description>Validate option error</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-023"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
@@ -739,51 +806,55 @@
         <description>Validate option error</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-024"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-error-025">
-        <description>Unescape option error</description>
+        <description>Escape option error</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Change keyword unescape->escape, Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-025"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-error-026">
-        <description>Unescape option error</description>
+        <description>Escape option error</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Change keyword unescape->escape, Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-026"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
     <test-case name="json-to-xml-error-027">
-        <description>Unescape option error</description>
+        <description>Escape option error</description>
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Change keyword unescape->escape, Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-027"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
@@ -792,12 +863,13 @@
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Abel Braaksma" on="2014-10-21" change="':=' for maps is replaced by ':'" />
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
+        <modified by="Debbie Lockett" on="2015-08-12" change="Error code change"/>
         <environment ref="json-to-xml-E"/>
         <test>
             <initial-template name="json-to-xml-error-028"/>
         </test>
         <result>
-            <error code="XTDE3260"/>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 

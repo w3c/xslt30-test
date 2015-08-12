@@ -226,28 +226,31 @@
         <xsl:variable name="metadata">
             <description>Unescape option error</description>
             <created by="John Lumley" on="2013-10-01"/>
+            <modified by="Debbie Lockett" on="2015-08-12" change="Change keyword unescape->escape"/>
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:variable name="json">["String"]</xsl:variable>
-        <xsl:copy-of select="json-to-xml($json, map{'unescape':()})"/>
+        <xsl:copy-of select="json-to-xml($json, map{'escape':()})"/>
     </xsl:template>
     <xsl:template name="json-to-xml-error-026">
         <xsl:variable name="metadata">
-            <description>Unescape option error</description>
+            <description>Escape option error</description>
             <created by="John Lumley" on="2013-10-01"/>
+            <modified by="Debbie Lockett" on="2015-08-12" change="Change keyword unescape->escape"/>
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:variable name="json">["String"]</xsl:variable>
-        <xsl:copy-of select="json-to-xml($json,map{'unescape':(true(),true())})"/>
+        <xsl:copy-of select="json-to-xml($json,map{'escape':(true(),true())})"/>
     </xsl:template>
     <xsl:template name="json-to-xml-error-027">
         <xsl:variable name="metadata">
-            <description>Unescape option error</description>
+            <description>Escape option error</description>
             <created by="John Lumley" on="2013-10-01"/>
+            <modified by="Debbie Lockett" on="2015-08-12" change="Change keyword unescape->escape"/>
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:variable name="json">["String"]</xsl:variable>
-        <xsl:copy-of select="json-to-xml($json, map{'unescape':'EMCA-262'})"/>
+        <xsl:copy-of select="json-to-xml($json, map{'escape':'EMCA-262'})"/>
     </xsl:template>
     <xsl:template name="json-to-xml-error-028">
         <xsl:variable name="metadata">
