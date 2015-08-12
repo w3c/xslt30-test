@@ -951,5 +951,23 @@
          <error code="XTSE0020"/>
       </result>
    </test-case>
+   
+   <test-case name="merge-065">
+      <description>xsl:merge test using accumulators.</description>
+      <created by="Michael Kay" on="2015-08-12"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-065.xsl"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>/events/group[1]/item[1][ends-with(., 'log-file-1.xml - events')]</assert>
+           <assert>/events/group[1]/item[2][ends-with(., 'log-file-2.xml - log/day')]</assert>
+           <assert>/events/group[1]/event[@timestamp="2009-08-20T12:01:01Z"]</assert>
+           <assert>/events/group[1]/record[message='Temperature 15.4C']/time</assert>
+           <assert>/events/group[5]/item[1][ends-with(., 'log-file-2.xml - log/day')]</assert>
+         </all-of>
+      </result>
+   </test-case>
 
 </test-set>
