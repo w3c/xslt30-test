@@ -1571,6 +1571,7 @@ It is a non-recoverable dynamic
                         expanded QName in the
                         mode attribute of any template defined in the stylesheet.</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
+      <modified by="Michael Kay" on="2015-08-11" change="The transformation produces an empty document, not an empty sequence"/>
       <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1580,7 +1581,10 @@ It is a non-recoverable dynamic
          <initial-mode name="#unnamed"/>
       </test>
       <result>
-         <assert-empty />
+         <all-of>
+           <assert-string-value/>
+           <assert>not(/node())</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -1593,6 +1597,7 @@ It is a non-recoverable dynamic
                         expanded QName in the
                         mode attribute of any template defined in the stylesheet.</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
+      <modified by="Michael Kay" on="2015-08-11" change="The transformation produces an empty document, not an empty sequence"/>
       <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1602,7 +1607,10 @@ It is a non-recoverable dynamic
          <initial-mode name="#default"/>
       </test>
       <result>
-         <assert-empty />
+         <all-of>
+           <assert-string-value/>
+           <assert>not(/node())</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -1658,6 +1666,7 @@ It is a non-recoverable dynamic
                         expanded QName in the
                         mode attribute of any template defined in the stylesheet.</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
+      <modified by="Michael Kay" on="2015-08-11" change="The transformation produces an empty document, not an empty sequence"/>
       <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1667,7 +1676,10 @@ It is a non-recoverable dynamic
          <initial-mode name="#unnamed"/>
       </test>
       <result>
-         <assert-empty />
+         <all-of>
+           <assert-string-value/>
+           <assert>not(/node())</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -4726,6 +4738,7 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
    <test-case name="error-0640o-2">
       <description>
          Generate error XTDE0640 (circularity error) NOT raised for static params if you set the value externally
+         (Note: test disputed - see bug 29052)
       </description>
       <created by="Abel Braaksma" on="2015-03-30"/>
       <dependencies>
@@ -6834,23 +6847,33 @@ It is a non-recoverable dynamic
 
    <test-case name="error-1160a">
       <description>Generate error XTRE1160/XTDE1160.
-Was error-code-333.
-When a URI reference supplied to the
-                  document function contains a
-                  fragment identifier, it is a recoverable
-                     dynamic error if the media type is not one that is recognized
+                  Was error-code-333.
+                  
+                  XSLT 2.0 text:
+                  
+                  When a URI reference supplied to the document function contains a
+                  fragment identifier, it is a recoverable dynamic error if the media type is not one that is recognized
                   by the processor, or if the fragment identifier does not conform to the
                   rules for fragment identifiers for that media type, or if the fragment
                   identifier selects something other than a sequence of nodes (for example, if
                   it selects a range of characters within a text node). The
-                     optional recovery
-                        action is to ignore the fragment identifier and return the
-                     document node.
+                  optional recovery action is to ignore the fragment identifier and return the
+                  document node.
+                  
+                  XSLT 3.0 text:
+                  
+                  When a URI reference contains a fragment identifier, it is a dynamic error if the media type
+                  is not one that is recognized by the processor, or if the fragment identifier does not conform 
+                  to the rules for fragment identifiers for that media type, or if the fragment identifier selects 
+                  something other than a sequence of nodes (for example, if it selects a range of characters within a text node).
+
+                  A processor may provide an option which, if selected, causes the processor instead of signaling this error, 
+                  to ignore the fragment identifier and return the document node.
+
                </description>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Michael Kay"
-                on="2014-04-01"
-                change="error code changes in XSLT 3.0"/>
+      <modified by="Michael Kay" on="2014-04-01" change="error code changes in XSLT 3.0"/>
+      <modified by="Michael Kay" on="2015-08-12" change="allow processor to take the option of ignoring the fragment identifier"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -6861,10 +6884,9 @@ When a URI reference supplied to the
       </test>
       <result>
          <any-of>
-           <error code="XTRE1160"/> 
-            <!-- XSLT 2.0 -->
-           <error code="XTDE1160"/> 
-            <!-- XSLT 3.0 -->
+           <error code="XTRE1160"/> <!-- XSLT 2.0 -->            
+           <error code="XTDE1160"/> <!-- XSLT 3.0 -->            
+           <assert>/out/*:schema</assert> <!-- "Ignore fragment identifier" option, allowed in both 2.0 and 3.0 -->
          </any-of>  
       </result>
    </test-case>
@@ -10402,12 +10424,13 @@ It is a static error if a character
    </test-case>
 
    <test-case name="error-3368a">
-      <description>Error: A dynamic error 
+      <description>(At one time the spec said) a dynamic error 
                occurs if the set of keys in a map produced by the
                evaluation of any expression or instruction contains an instance of any of the types xs:dateTime, xs:date, xs:time, xs:gYear
                xs:gYearMonth, xs:gMonth, xs:gMonthDay, or xs:gDay having a timezone and
                also contains an instance of any of these types having no timezone.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Michael Kay" on="2015-08-12" change="the spec has changed."/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10416,7 +10439,7 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3368"/>
+         <assert>/out = '2'</assert>
       </result>
    </test-case>
 

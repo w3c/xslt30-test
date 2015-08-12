@@ -3,7 +3,8 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
            <!--A dynamic error 
-               occurs if the set of keys in a map produced by the
+               #at one time, but no longer, occurred#
+               if the set of keys in a map produced by the
                evaluation of any expression or instruction contains an instance of any 
                of the types xs:dateTime, xs:date, xs:time, xs:gYear
                xs:gYearMonth, xs:gMonth, xs:gMonthDay, or xs:gDay having a timezone and
@@ -17,7 +18,7 @@
             <xsl:map-entry key="xs:date('2014-08-26Z')" select="1"/>
          </xsl:map>
          </xsl:variable>
-         <xsl:value-of select="count($v)"/>
+         <xsl:value-of select="map:size($v)" xmlns:map="http://www.w3.org/2005/xpath-functions/map"/>
       </out>
    </xsl:template>
 </xsl:stylesheet>
