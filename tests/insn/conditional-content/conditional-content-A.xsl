@@ -6,11 +6,12 @@
   <xsl:variable name="RUN" select="true()" static="yes"/>
   <xsl:strip-space elements="*"/>
 
+  <xsl:variable name="doc" select="/"/>
  
   <!-- Test of xsl:conditional-content with xsl:element (not empty) -->
 
   <xsl:template name="s-001" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:conditional-content>
           <xsl:element name="a">
@@ -18,13 +19,13 @@
           </xsl:element>
         </xsl:conditional-content>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template>
   
   <!-- Test of xsl:conditional-content with multiple elements, some empty -->
   
   <xsl:template name="s-002" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:for-each select="$doc">
            <Results>
                <xsl:conditional-content>
                  <first>one</first>
@@ -33,25 +34,25 @@
                  <last>last</last>
                </xsl:conditional-content>
            </Results>
-       </xsl:stream>
+       </xsl:for-each>
    </xsl:template> 
    
    <!-- Test of xsl:conditional-content with atomic values, some empty -->
   
   <xsl:template name="s-003" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:for-each select="$doc">
            <out>
                <xsl:conditional-content>
                  <xsl:sequence select="23, '', xs:date('2011-01-01'), xs:untypedAtomic(''), 0, /JUNK, xs:base64Binary('')"/>
                </xsl:conditional-content>
            </out>
-       </xsl:stream>
+       </xsl:for-each>
    </xsl:template>
    
    <!-- Test of xsl:conditional-content with xsl:if -->
 
   <xsl:template name="s-004" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:conditional-content>
           <a>
@@ -61,13 +62,13 @@
           </a>
         </xsl:conditional-content>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with xsl:if -->
 
   <xsl:template name="s-005" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:conditional-content>
           <a>
@@ -77,13 +78,13 @@
           </a>
         </xsl:conditional-content>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with xsl:for-each -->
 
   <xsl:template name="s-006" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:conditional-content>
           <ul>
@@ -93,13 +94,13 @@
           </ul>
         </xsl:conditional-content>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with xsl:for-each -->
 
   <xsl:template name="s-007" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:conditional-content>
           <ul>
@@ -109,13 +110,13 @@
           </ul>
         </xsl:conditional-content>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with comment nodes -->
 
   <xsl:template name="s-008" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:for-each select="outermost(//ITEM)">
           <in>
@@ -128,13 +129,13 @@
           </in>  
          </xsl:for-each>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with text nodes -->
 
   <xsl:template name="s-009" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:for-each select="outermost(//ITEM)">
           <in>
@@ -147,13 +148,13 @@
           </in>  
          </xsl:for-each>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with xsl:fork -->
 
   <xsl:template name="s-010" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:conditional-content>
           <a>
@@ -164,13 +165,13 @@
           </a>
         </xsl:conditional-content>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with xsl:fork -->
 
   <xsl:template name="s-011" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:conditional-content>
           <a>
@@ -181,13 +182,13 @@
           </a>
         </xsl:conditional-content>  
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template>
   
   <!-- Test of xsl:conditional-content with document nodes -->
   
   <xsl:template name="s-012" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:variable name="t" as="document-node()?">          
           <xsl:conditional-content>
@@ -198,13 +199,13 @@
         </xsl:variable>
         <in value="{empty($t)}"/>     
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with maps (bug 28989) -->
   
   <xsl:template name="s-013" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:variable name="m" as="map(*)?">          
           <xsl:conditional-content>
@@ -218,13 +219,13 @@
         </xsl:variable>
         <in count="{count($m)}"/>     
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
   
   <!-- Test of xsl:conditional-content with maps (bug 28989) -->
   
   <xsl:template name="s-014" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:for-each select="$doc">
       <out>
         <xsl:variable name="m" as="map(*)?">          
           <xsl:conditional-content>
@@ -238,7 +239,7 @@
         </xsl:variable>
         <in count="{count($m)}"/>     
       </out>
-    </xsl:stream>
+    </xsl:for-each>
   </xsl:template> 
  
 
