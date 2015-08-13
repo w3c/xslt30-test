@@ -210,9 +210,11 @@
         <xsl:variable name="t" as="document-node()?"> 
           <xsl:sequence select="$empty"/>         
           <xsl:on-empty>
-            <xsl:document>
-              <xsl:copy-of select="//TITLE[@flamingo]"/>
-            </xsl:document>
+            <xsl:conditional-content>
+              <xsl:document>
+                <xsl:copy-of select="//TITLE[@flamingo]"/>
+              </xsl:document>
+            </xsl:conditional-content>  
           </xsl:on-empty>
         </xsl:variable>
         <in value="{empty($t)}"/>     
