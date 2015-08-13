@@ -604,6 +604,7 @@
    <test-case name="si-lre-118">
       <description>Use literal result element: schema-aware, validation; on-empty must be empty or valid</description>
       <created by="Michael Kay" on="2014-01-09"/>
+      <modified by="Michael Kay" on="2015-08-11" change="Rewrite test to do what it says on the tin"/>
       <environment ref="si-lre-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -612,13 +613,14 @@
          <initial-template name="cy-118"/>
       </test>
       <result>
-         <assert>/out = 'true'</assert>
+         <assert>/out/processingDate = '2015-08-11'</assert>
       </result>
    </test-case>
    
    <test-case name="si-lre-119">
       <description>Use literal result element: schema-aware, validation; on-empty must be empty or valid</description>
       <created by="Michael Kay" on="2014-01-09"/>
+      <modified by="Michael Kay" on="2015-08-11" change="Rewrite test to do what it says on the tin"/>
       <environment ref="si-lre-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -627,13 +629,14 @@
          <initial-template name="cy-119"/>
       </test>
       <result>
-         <error code="XTTE1512"/>
+         <error code="XTTE1510"/>
       </result>
    </test-case>
    
    <test-case name="si-lre-120">
       <description>Use literal result element: schema-aware, validation; on-empty must be empty or valid</description>
       <created by="Michael Kay" on="2014-01-09"/>
+      <modified by="Michael Kay" on="2015-08-11" change="Rewrite test to do what it says on the tin"/>
       <environment ref="si-lre-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -642,13 +645,14 @@
          <initial-template name="cy-120"/>
       </test>
       <result>
-         <assert>/out/e = '2'</assert>
+         <assert>/out/PoolIdentifier = '29'</assert>
       </result>
    </test-case>
    
    <test-case name="si-lre-121">
       <description>Use literal result element: schema-aware, validation; on-empty must be empty or valid</description>
       <created by="Michael Kay" on="2014-01-09"/>
+      <modified by="Michael Kay" on="2015-08-11" change="Rewrite test to do what it says on the tin"/>
       <environment ref="si-lre-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -1036,6 +1040,7 @@
    <test-case name="si-lre-253">
       <description>literal result element; on-empty expression is consuming, and is activated</description>
       <created by="Michael Kay" on="2014-01-06"/>
+      <modified by="Michael Kay" on="2015-08-13" change="Correct test to produce expected results"/>
       <environment ref="si-lre-C"/>
       <test>
          <initial-template name="s-053"/>
@@ -1058,26 +1063,15 @@
    </test-case>
    
    <test-case name="si-lre-255">
-      <description>literal result element; select is consuming, on-empty is multiple elements - type error</description>
+      <description>literal result element; select is consuming, on-empty is multiple elements</description>
       <created by="Michael Kay" on="2014-01-06"/>
+      <modified by="Michael Kay" on="2015-08-13" change="No longer a type error"/>
       <environment ref="si-lre-C"/>
       <test>
          <initial-template name="s-055"/>
       </test>
       <result>
-         <error code="XTTE3310"/>
-      </result>
-   </test-case>
-   
-   <test-case name="si-lre-256">
-      <description>literal result element; select is consuming, on-empty is multiple elements - type error - caught</description>
-      <created by="Michael Kay" on="2014-01-06"/>
-      <environment ref="si-lre-C"/>
-      <test>
-         <initial-template name="s-056"/>
-      </test>
-      <result>
-         <assert>/out/fallback = 'OK'</assert>
+         <assert-xml><![CDATA[<out><n1>1</n1><n2>2</n2></out>]]></assert-xml>
       </result>
    </test-case>
    

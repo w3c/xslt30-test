@@ -348,10 +348,8 @@
       <xsl:param name="s" select="20"/>
       <xsl:stream href="../docs/books.xml">
         <out>
-          <a>
             <xsl:sequence select="$s to 10"/>
             <xsl:on-empty select="head(//TITLE)"/>
-          </a>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -388,32 +386,6 @@
               <a><xsl:sequence select="ITEM/PRICETAG"/></a>
             </xsl:conditional-content>
             <xsl:on-empty select="$atts"/>
-          </out>
-        </xsl:for-each>  
-      </xsl:stream>
-    </xsl:template>
-    
-    <!-- Test of xsl:stream with literal result element/@xsl:on-empty (empty, type error, returns two elements, recovered) -->
-    
-    <xsl:template name="s-056" use-when="$RUN">
-      <xsl:param name="n" select="2"/>
-      <xsl:variable name="atts" as="element()*">
-        <xsl:for-each select="1 to $n">
-          <a name="n{.}"><xsl:sequence select="."/></a>
-        </xsl:for-each>
-      </xsl:variable>
-      <xsl:stream href="../docs/books.xml">
-        <xsl:for-each select="BOOKLIST/BOOKS">
-          <out>
-            <xsl:try>
-              <xsl:conditional-content>
-                <a><xsl:sequence select="ITEM/PRICETAG"/></a>
-              </xsl:conditional-content>
-              <xsl:on-empty select="$atts"/>
-              <xsl:catch errors="*:XTTE3310">
-                <fallback>OK</fallback>
-              </xsl:catch>
-            </xsl:try>  
           </out>
         </xsl:for-each>  
       </xsl:stream>
