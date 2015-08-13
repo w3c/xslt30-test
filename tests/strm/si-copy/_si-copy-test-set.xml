@@ -365,12 +365,13 @@
    <test-case name="si-copy-046">
       <description>Use xsl:copy: with on-empty</description>
       <created by="Michael Kay" on="2012-12-19"/>
+      <modified by="Michael Kay" on="2015-08-13" change="Change expected result (spec change)"/>
       <environment ref="si-copy-A"/>
       <test>
          <initial-template name="cy-046"/>
       </test>
       <result>
-         <assert>/out/a</assert>
+         <assert>/out/@a=''</assert>
       </result>
    </test-case>
    
@@ -402,12 +403,13 @@
    <test-case name="si-copy-049">
       <description>Use xsl:copy: with xsl:conditional-content (empty element constructed)</description>
       <created by="Michael Kay" on="2015-03-16"/>
+      <modified by="Michael Kay" on="2015-08-13" change="Change expected result (spec change)"/>
       <environment ref="si-copy-A"/>
       <test>
          <initial-template name="cy-049"/>
       </test>
       <result>
-         <assert>/out/a</assert>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
    
