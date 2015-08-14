@@ -241,6 +241,117 @@
     </xsl:stream>
   </xsl:template> 
  
+  <!-- Test of xsl:conditional-content with elements having attributes and namespaces -->
+  
+  <xsl:template name="s-015" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <Results>
+               <xsl:conditional-content>
+                 <first one='non-empty'>one</first>
+                 <second one='empty'/>
+                 <third xmlns:x='http://abc.com/'>three</third>
+                 <fourth xmlns:x='http://abc.com/'/>
+               </xsl:conditional-content>
+           </Results>
+       </xsl:stream>
+   </xsl:template>  
+   
+   <!-- Test of xsl:conditional-content with free-standing attributes -->
+  
+  <xsl:template name="s-016" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <Results>
+               <xsl:conditional-content>
+                 <xsl:attribute name="x" select="17"/>
+                 <xsl:attribute name="x" select="''"/>
+                 <inner/>
+                 <xsl:attribute name="y" select="substring(string(current-date()), 842)"/>
+               </xsl:conditional-content>
+           </Results>
+       </xsl:stream>
+   </xsl:template>  
+   
+   <!-- A namespace node with zero-length string value is an error even within conditional-content -->
+  
+  <xsl:template name="s-017" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <Results>
+               <xsl:conditional-content>
+                 <xsl:namespace name="x" select="substring(string(current-date()), 842)"/>
+               </xsl:conditional-content>
+           </Results>
+       </xsl:stream>
+   </xsl:template>
+   
+   <!-- Test of xsl:conditional-content with zero-length text nodes. Note that these are
+   eliminated before the "constructing complex content" rules come into play, so atomic values
+   either side become adjacent. -->
+  
+  <xsl:template name="s-018" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <Results>
+               <xsl:conditional-content>
+                 <xsl:sequence select="17"/>
+                 <xsl:value-of select="//yankee-doodle"/>
+                 <xsl:sequence select="92"/>
+                 <xsl:text/>
+                 <xsl:sequence select="55"/>
+                 <xsl:text>=</xsl:text>
+                 <xsl:value-of>17 92 55</xsl:value-of>
+               </xsl:conditional-content>
+           </Results>
+       </xsl:stream>
+   </xsl:template>  
+   
+   <!-- Test of xsl:conditional-content with zero-length comments. -->
+  
+  <xsl:template name="s-019" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <Results>
+               <xsl:conditional-content>
+                 <xsl:text>1:</xsl:text>
+                 <xsl:comment select="head(//TITLE)"/>
+                 <xsl:text>2:</xsl:text>
+                 <xsl:comment select="unparsed-entity-uri('fandango')"/>
+               </xsl:conditional-content>
+           </Results>
+       </xsl:stream>
+   </xsl:template>     
+   
+   <!-- Test of xsl:conditional-content with zero-length processing-instructions. -->
+  
+  <xsl:template name="s-020" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <Results>
+               <xsl:conditional-content>
+                 <xsl:text>1:</xsl:text>
+                 <xsl:processing-instruction name="mu" select="head(//TITLE)"/>
+                 <xsl:text>2:</xsl:text>
+                 <xsl:processing-instruction name="pi" select="unparsed-entity-uri('fandango')"/>
+               </xsl:conditional-content>
+           </Results>
+       </xsl:stream>
+   </xsl:template>
+   
+   <!-- Test of xsl:conditional-content including local variables. -->
+  
+  <xsl:template name="s-021" use-when="$RUN">
+       <xsl:stream href="../docs/books.xml">
+           <Results>
+               <xsl:conditional-content>
+                 <xsl:variable name="x"/>
+                 <xsl:variable name="y" select="22"/>
+                 <a><xsl:value-of select="$x||$x"/></a>
+                 <b><xsl:value-of select="$y||$y"/></b>
+                 <xsl:variable name="xx"/>
+                 <xsl:variable name="yy" select="22"/>
+                 <a><xsl:value-of select="$xx||$xx"/></a>
+                 <b><xsl:value-of select="$yy||$yy"/></b>
+               </xsl:conditional-content>
+           </Results>
+       </xsl:stream>
+   </xsl:template>         
+ 
 
 
 
