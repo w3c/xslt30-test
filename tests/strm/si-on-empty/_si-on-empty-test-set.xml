@@ -88,6 +88,7 @@
    <test-case name="si-on-empty-007">
       <description>Test of xsl:on-empty with xsl:for-each</description>
       <created by="Michael Kay" on="2015-07-02"/>
+      <modified by="Michael Kay" on="2015-08-16" change="spec change, see bug 28888"/>
       <environment ref="si-on-empty-A"/>  
       <test>
          <initial-template name="s-007"/>
@@ -112,6 +113,7 @@
    <test-case name="si-on-empty-009">
       <description>Test of xsl:on-empty with text nodes</description>
       <created by="Michael Kay" on="2015-07-02"/>
+      <modified by="Michael Kay" on="2015-08-16" change="spec change, see bug 28888"/>
       <environment ref="si-on-empty-A"/>  
       <test>
          <initial-template name="s-009"/>
@@ -214,6 +216,7 @@
    <test-case name="si-on-empty-025">
       <description>Test of xsl:on-empty with multiple elements (some empty)</description>
       <created by="Michael Kay" on="2015-07-02"/>
+      <modified by="Michael Kay" on="2015-08-16" change="spec change, see bug 28888"/>    
       <environment ref="si-on-empty-A"/>  
       <test>
          <initial-template name="s-025"/>
@@ -226,6 +229,7 @@
    <test-case name="si-on-empty-026">
       <description>Test of xsl:on-empty with multiple elements (some empty)</description>
       <created by="Michael Kay" on="2015-07-02"/>
+      <modified by="Michael Kay" on="2015-08-16" change="spec change, see bug 28888"/>    
       <environment ref="si-on-empty-A"/>  
       <test>
          <initial-template name="s-026"/>
@@ -238,6 +242,7 @@
    <test-case name="si-on-empty-027">
       <description>Test of xsl:on-empty with multiple elements (all empty)</description>
       <created by="Michael Kay" on="2015-07-02"/>
+      <modified by="Michael Kay" on="2015-08-16" change="spec change, see bug 28888"/>    
       <environment ref="si-on-empty-A"/>  
       <test>
          <initial-template name="s-027"/>
@@ -250,6 +255,7 @@
    <test-case name="si-on-empty-028">
       <description>Test of xsl:on-empty with atomic values</description>
       <created by="Michael Kay" on="2015-07-02"/>
+      <modified by="Michael Kay" on="2015-08-16" change="spec change, see bug 28888"/>    
       <environment ref="si-on-empty-A"/>  
       <test>
          <initial-template name="s-028"/>
@@ -262,6 +268,7 @@
    <test-case name="si-on-empty-029">
       <description>Test of xsl:on-empty with atomic values</description>
       <created by="Michael Kay" on="2015-07-02"/>
+      <modified by="Michael Kay" on="2015-08-16" change="spec change, see bug 28888"/>    
       <environment ref="si-on-empty-A"/>  
       <test>
          <initial-template name="s-029"/>
@@ -331,30 +338,6 @@
       </result>
    </test-case>
    
-   <test-case name="si-on-empty-035">
-      <description>Test of xsl:on-empty with xsl:for-each and xsl:conditional-content</description>
-      <created by="Michael Kay" on="2015-07-02"/>
-      <environment ref="si-on-empty-A"/>  
-      <test>
-         <initial-template name="s-035"/>
-      </test>
-      <result>
-         <assert>/out = 'There will be no gossip.'</assert>
-      </result>
-   </test-case>
-   
-   <test-case name="si-on-empty-036">
-      <description>Test of xsl:on-empty with xsl:for-each and xsl:conditional-content</description>
-      <created by="Michael Kay" on="2015-07-02"/>
-      <environment ref="si-on-empty-A"/>  
-      <test>
-         <initial-template name="s-036"/>
-      </test>
-      <result>
-         <assert>/out = "There will be no gossip.There has been no gossip."</assert>
-      </result>
-   </test-case>
-   
    <test-case name="si-on-empty-037">
       <description>Test of xsl:on-empty with xsl:fork</description>
       <created by="Michael Kay" on="2015-07-02"/>
@@ -406,6 +389,42 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><content/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-on-empty-041">
+      <description>Zero-length text nodes are considered empty</description>
+      <created by="Michael Kay" on="2015-08-16"/>
+      <environment ref="si-on-empty-A"/>  
+      <test>
+         <initial-template name="s-041"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>EMPTY</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-on-empty-042">
+      <description>Childless document nodes are considered empty</description>
+      <created by="Michael Kay" on="2015-08-16"/>
+      <environment ref="si-on-empty-A"/>  
+      <test>
+         <initial-template name="s-042"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>EMPTY</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-on-empty-043">
+      <description>Document nodes containing whitespace text are not considered empty</description>
+      <created by="Michael Kay" on="2015-08-16"/>
+      <environment ref="si-on-empty-A"/>  
+      <test>
+         <initial-template name="s-043"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>  </out>]]></assert-xml>
       </result>
    </test-case>
 

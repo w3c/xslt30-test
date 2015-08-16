@@ -2,10 +2,9 @@
 
 <xsl:template match="/">
   <out>
-    <xsl:on-empty select="21"/>
     <xsl:copy-of select="/comment()"/>   
-    <xsl:on-empty select="23"/>
-    <xsl:copy-of select="/processing-instruction()"/> 
+    <xsl:copy-of select="/processing-instruction()"/>
+    <xsl:on-empty select="21, 23"/> 
   </out>
 </xsl:template>
 

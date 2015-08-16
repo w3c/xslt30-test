@@ -136,8 +136,6 @@
             <xsl:sequence select="$empty"/>
             <xsl:on-empty>
               <xsl:comment select="TITLE[parent::BOOK]"/>
-            </xsl:on-empty>
-            <xsl:on-empty>
               <xsl:comment select="count(ancestor::node())"/>
             </xsl:on-empty> 
           </in>  
@@ -156,8 +154,6 @@
             <xsl:sequence select="$empty"/>
             <xsl:on-empty>
               <xsl:value-of select="TITLE[parent::BOOK]"/>
-            </xsl:on-empty>
-            <xsl:on-empty>
               <xsl:value-of select="count(ancestor::node())"/>
             </xsl:on-empty> 
           </in>  
@@ -254,8 +250,8 @@
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:element name="a">
-          <xsl:on-empty>There is no price data</xsl:on-empty>
-          <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>         
+          <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/> 
+          <xsl:on-empty>There is no price data</xsl:on-empty>                  
         </xsl:element>         
       </out>
     </xsl:stream>
@@ -267,8 +263,8 @@
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:element name="a">
-          <xsl:on-empty>There is no price data</xsl:on-empty>
-          <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE"/>         
+          <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE"/>
+          <xsl:on-empty>There is no price data</xsl:on-empty>         
         </xsl:element>         
       </out>
     </xsl:stream>
@@ -280,8 +276,8 @@
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>  
-        <xsl:on-empty>There is no price data</xsl:on-empty>
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[empty($empty)]"/>    
+        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[empty($empty)]"/>
+        <xsl:on-empty>There is no price data</xsl:on-empty>    
       </out>
     </xsl:stream>
   </xsl:template> 
@@ -292,8 +288,8 @@
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:sequence select="ends-with(document-uri(), 'books.xml')[empty($empty)]"/>  
-        <xsl:on-empty>There is no price data</xsl:on-empty>
-        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>    
+        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>
+        <xsl:on-empty>There is no price data</xsl:on-empty>    
       </out>
     </xsl:stream>
   </xsl:template> 
@@ -305,8 +301,8 @@
       <out>
         <xsl:for-each select="BOOKLIST">
           <xsl:sequence select="data(@dummy)"/>  
-          <xsl:on-empty>There is no price data</xsl:on-empty>
-          <xsl:sequence select="BOOKS/ITEM/PRICEDATA"/> 
+          <xsl:sequence select="BOOKS/ITEM/PRICEDATA"/>
+          <xsl:on-empty>There is no price data</xsl:on-empty> 
         </xsl:for-each>
       </out>
     </xsl:stream>
@@ -318,8 +314,8 @@
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:sequence select="(1 to 20)[. ge 20][empty($empty)]"/>  
-        <xsl:on-empty>There is no price data</xsl:on-empty>
-        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA/data()"/> 
+        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA/data()"/>
+        <xsl:on-empty>There is no price data</xsl:on-empty> 
       </out>
     </xsl:stream>
   </xsl:template>
@@ -330,8 +326,8 @@
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:sequence select="(1 to 20)[. ge 40]"/>  
-        <xsl:on-empty>There is no price data</xsl:on-empty>
-        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE/data()"/> 
+        <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE/data()"/>
+        <xsl:on-empty>There is no price data</xsl:on-empty> 
       </out>
     </xsl:stream>
   </xsl:template>
@@ -409,46 +405,6 @@
     </xsl:stream>
   </xsl:template> 
   
-  <!-- Test of xsl:on-empty with xsl:for-each and xsl:conditional-content -->
-  
-  <xsl:template name="s-035" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
-      <out>
-        <xsl:on-empty>There will be no gossip.</xsl:on-empty>
-        <xsl:conditional-content>
-          <ul>
-            <xsl:for-each select="outermost(//ITEM)">
-              <xsl:conditional-content>
-                <li><xsl:value-of select="TITTLE-TATTLE"/></li>
-              </xsl:conditional-content>
-            </xsl:for-each>  
-          </ul>
-        </xsl:conditional-content>
-      </out>
-    </xsl:stream>
-  </xsl:template> 
-  
-  <!-- Test of xsl:on-empty (appearing twice) with xsl:for-each and xsl:conditional-content -->
-  
-  <xsl:template name="s-036" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
-      <out>
-        <xsl:on-empty>There will be no gossip.</xsl:on-empty>
-        <xsl:conditional-content>
-          <ul>
-            <xsl:for-each select="outermost(//ITEM)">
-              <xsl:conditional-content>
-                <li><xsl:value-of select="TITTLE-TATTLE"/></li>
-              </xsl:conditional-content>
-            </xsl:for-each>  
-          </ul>
-        </xsl:conditional-content>
-        <xsl:on-empty>There has been no gossip.</xsl:on-empty>
-      </out>
-    </xsl:stream>
-  </xsl:template> 
-  
-  
   <!-- Test of xsl:on-empty with xsl:fork -->
   
   <xsl:template name="s-037" use-when="$RUN">
@@ -512,6 +468,43 @@
           </xsl:for-each>
         </xsl:on-empty>
       </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Zero length text nodes are considered empty -->
+  
+  <xsl:template name="s-041" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="string(/BOOKLIST/BOOKS/ITEM/EXPORT-QUOTA)"/>
+        <xsl:on-empty>EMPTY</xsl:on-empty>
+     </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Childless document nodes are considered empty -->
+  
+  <xsl:template name="s-042" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:document>
+          <xsl:value-of select="string(/BOOKLIST/BOOKS/ITEM/EXPORT-QUOTA)"/>
+        </xsl:document>  
+        <xsl:on-empty>EMPTY</xsl:on-empty>
+     </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Document nodes containing whitespace text are not considered empty -->
+  
+  <xsl:template name="s-043" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:document>
+          <xsl:value-of select="concat(' ', string(/BOOKLIST/BOOKS/ITEM/EXPORT-QUOTA), ' ')"/>
+        </xsl:document>  
+        <xsl:on-empty>EMPTY</xsl:on-empty>
+     </out>
     </xsl:stream>
   </xsl:template> 
   

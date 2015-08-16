@@ -514,6 +514,44 @@
     </xsl:stream>
   </xsl:template> 
   
+  <!-- Zero length text nodes are considered empty -->
+  
+  <xsl:template name="s-041" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="string(/BOOKLIST/BOOKS/ITEM/EXPORT-QUOTA)"/>
+        <xsl:on-non-empty>WRONG</xsl:on-non-empty>
+     </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Childless document nodes are considered empty -->
+  
+  <xsl:template name="s-042" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:document>
+          <xsl:value-of select="string(/BOOKLIST/BOOKS/ITEM/EXPORT-QUOTA)"/>
+        </xsl:document>  
+        <xsl:on-non-empty>WRONG</xsl:on-non-empty>
+     </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Document nodes containing whitespace text are not considered empty -->
+  
+  <xsl:template name="s-043" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:on-non-empty>*</xsl:on-non-empty>
+        <xsl:document>
+          <xsl:value-of select="concat(' ', string(/BOOKLIST/BOOKS/ITEM/EXPORT-QUOTA), ' ')"/>
+        </xsl:document>  
+        <xsl:on-non-empty>*</xsl:on-non-empty>
+     </out>
+    </xsl:stream>
+  </xsl:template> 
+  
   
 
 

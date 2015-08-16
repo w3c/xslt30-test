@@ -168,6 +168,66 @@
          <assert-xml><![CDATA[<out><item>a</item>apple<item>b</item>apple<item>c</item>apple</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="on-non-empty-011">
+      <description>Zero-length text node is considered empty</description>
+      <created by="Michael Kay" on="2015-08-16"/>
+      <environment ref="on-non-empty-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="on-non-empty-011.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="on-non-empty-012">
+      <description>Empty document node is considered empty</description>
+      <created by="Michael Kay" on="2015-08-16"/>
+      <environment ref="on-non-empty-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="on-non-empty-012.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="on-non-empty-013">
+      <description>on-empty must come last</description>
+      <created by="Michael Kay" on="2015-08-16"/>
+      <environment ref="on-non-empty-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="on-non-empty-013.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="on-non-empty-014">
+      <description>on-empty and on-non-empty can coexist</description>
+      <created by="Michael Kay" on="2015-08-16"/>
+      <environment ref="on-non-empty-A"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="on-non-empty-014.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>EMPTY</out>]]></assert-xml>
+      </result>
+   </test-case>
 
 
 </test-set>
