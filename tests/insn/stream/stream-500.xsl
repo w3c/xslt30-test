@@ -6,6 +6,7 @@
 	<xsl:output method="xml" encoding="UTF-8" indent="no" />
 
 	<xsl:param name="doc4" select="'stream-500.xml'"/>
+	<xsl:strip-space elements="*"/>
 
 	<xsl:template match="/" name="main">
 		<root xmlns="urn:gba:sqg" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
@@ -286,6 +287,7 @@
 </root>
 
 	</xsl:variable>
+
 
 </xsl:stylesheet>
 
