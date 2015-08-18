@@ -15,7 +15,7 @@
   <!-- Streamed accumulators in different packages can share the same name -->
   
   <xsl:accumulator name="ac" initial-value="0" streamable="yes">
-    <xsl:accumulator-rule match="*" new-value="$value - 1"></xsl:accumulator-rule>
+    <xsl:accumulator-rule match="*" select="$value - 1"></xsl:accumulator-rule>
   </xsl:accumulator>
   
   <xsl:template name="use-this" visibility="public">

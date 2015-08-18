@@ -18,7 +18,7 @@
     <xsl:override>
   
       <xsl:accumulator name="ac" initial-value="17">
-        <xsl:accumulator-rule match="x" new-value="$value * 2"/>
+        <xsl:accumulator-rule match="x" select="$value * 2"/>
       </xsl:accumulator>
       
     </xsl:override>  

@@ -10,7 +10,7 @@
   <xsl:key name="k" match="*" use="."/>
   
   <xsl:accumulator name="ac" initial-value="0">
-    <xsl:accumulator-rule match="*" new-value="$value+1"/>
+    <xsl:accumulator-rule match="*" select="$value+1"/>
   </xsl:accumulator>
   
   <xsl:decimal-format name="d" grouping-separator="." decimal-separator=","/>

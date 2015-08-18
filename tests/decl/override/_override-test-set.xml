@@ -29,7 +29,7 @@
    </environment>
 
    <dependencies>
-      <spec value="XSLT30+"/>
+      <spec value="XSLT30+"/> 
    </dependencies>
 
    <test-case name="override-f-001">
@@ -259,7 +259,7 @@
       <environment ref="override-f-A"/>
       <test>
          <package file="override-f-017.xsl" role="principal"/>
-         <initial-template name="main"/>
+         <initial-template name="xsl:initial-template" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
       </test>
       <result>
          <assert>/ok</assert>
@@ -324,26 +324,28 @@
    <test-case name="override-t-004">
       <description>Illegal template override, parameter types do not match</description>
       <created by="Michael Kay" on="2014-10-10"/>
+      <modified by="Michael Kay" on="2015-08-18" change="correct expected error code"/>
       <environment ref="override-t-B"/>
       <test>
          <package file="override-t-004.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3080"/>
+         <error code="XTSE3070"/>
       </result>
    </test-case>
    
    <test-case name="override-t-005">
       <description>Illegal template override, context item types do not match</description>
       <created by="Michael Kay" on="2014-10-10"/>
+      <modified by="Michael Kay" on="2015-08-18" change="correct expected error code"/>
       <environment ref="override-t-B"/>
       <test>
          <package file="override-t-005.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3080"/>
+         <error code="XTSE3070"/>
       </result>
    </test-case>
    
@@ -351,13 +353,14 @@
       <description>Illegal template override, context item use does not match</description>
       <created by="Michael Kay" on="2014-10-10"/>
       <modified by="Michael Kay" on="2015-01-26" change="keyword change: prohibited -> absent"/>
+      <modified by="Michael Kay" on="2015-08-18" change="correct expected error code"/>
       <environment ref="override-t-B"/>
       <test>
          <package file="override-t-006.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3080"/>
+         <error code="XTSE3070"/>
       </result>
    </test-case>
    
@@ -417,6 +420,7 @@
    
    <test-case name="override-v-004">
       <description>An overridden public global variable appearing in a match pattern</description>
+      <!-- MHK: Not currently working in Saxon, needs to treat the mode as a component with a single binding vector -->
       <created by="Michael Kay" on="2015-03-01"/>
       <environment ref="override-v-C"/>
       <test>
@@ -487,13 +491,14 @@
    <test-case name="override-as-005">
       <description>Two private attribute sets with the same name in different packages</description>
       <created by="Michael Kay" on="2015-02-28"/>
+      <modified by="Michael Kay" on="2015-08-18" change="correct expected results"/>
       <environment ref="override-as-D"/>
       <test>
          <package file="override-as-005.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><x pub1="pub1" pub2="pub2"/><y priv8="priv8" priv9="priv9"/></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><x base1="base1" priv1="priv1" pub1="pub1" pub2="pub2"/><y priv8="priv8" priv9="priv9"/></out>]]></assert-xml>
       </result>
    </test-case>
    
@@ -553,6 +558,7 @@
    <test-case name="override-misc-005">
       <description>Accumulators in different packages can have the same name</description>
       <created by="Michael Kay" on="2015-03-01"/>
+      <modified by="Michael Kay" on="2014-08-22" change="spec change, @new-value->@select"/>
       <environment ref="override-misc-E"/>
       <test>
          <package file="override-misc-005.xsl" role="principal"/>
@@ -579,6 +585,7 @@
    <test-case name="override-misc-007">
       <description>Streamed accumulators in different packages can have the same name</description>
       <created by="Michael Kay" on="2015-03-01"/>
+      <modified by="Michael Kay" on="2014-08-22" change="spec change, @new-value->@select"/>
       <environment ref="override-misc-F"/>
       <test>
          <package file="override-misc-007.xsl" role="principal"/>
