@@ -2,7 +2,7 @@
 <xsl:package xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                xmlns:f="function"
-               exclude-result-prefixes="#all"
+               exclude-result-prefixes="#all"  declared-modes="no"
                version="3.0">
                
    <!-- Use accumulator-rule containing a sequence constructor -->            

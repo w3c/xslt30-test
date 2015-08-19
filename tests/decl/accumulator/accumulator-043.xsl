@@ -3,7 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
-    exclude-result-prefixes="xs map"
+    exclude-result-prefixes="xs map"  declared-modes="no"
 >
 	<!-- Compute a Histogram showing the Number of Books, by Publisher
          The contained sequence constructor is evaluated with the variable $value set to the current value, and with the context node as the node being visited. -->

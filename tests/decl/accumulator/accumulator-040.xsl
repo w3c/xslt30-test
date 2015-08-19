@@ -1,7 +1,7 @@
 <xsl:package version="3.0" 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-  exclude-result-prefixes="xs">
+  exclude-result-prefixes="xs"  declared-modes="no">
 
 <xsl:accumulator name="firstTitle" as="xs:string?" initial-value="()">
   <xsl:accumulator-rule match="/html/head/title[1]/text()" select="string(.)"/>

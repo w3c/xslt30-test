@@ -4,6 +4,7 @@
   xmlns:f="http://accum001/"
   xmlns:f2="http://accum001/"
   xmlns:g="http://accum002/"
+    declared-modes="no"
   exclude-result-prefixes="xs f f2 g" version="3.0">
 
   <!-- Test valid/invalid accumulator names -->

@@ -5,7 +5,7 @@
     xmlns:acc="http://example.com/accumulators"
     xmlns="http://www.w3.org/1999/xhtml"
     xpath-default-namespace="http://www.w3.org/1999/xhtml"
-    exclude-result-prefixes="xs"
+    exclude-result-prefixes="xs"  declared-modes="no"
 >
     <xsl:mode on-no-match="shallow-copy"/>
     
