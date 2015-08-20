@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:package xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
-  name="http://www.w3.org/xslt30-tests/error-3440a">
+  name="http://www.w3.org/xslt30-tests/error-3440a"
+  declared-modes='no'>
 
 <!--
       In the case of a template rule (that is, an xsl:template element having a match attribute) 

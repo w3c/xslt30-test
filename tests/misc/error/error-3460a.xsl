@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:package xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
-  name="http://www.w3.org/xslt30tests/error-3460a">
+  name="http://www.w3.org/xslt30tests/error-3460a"
+  declared-modes='no'>
 
 <!--
       It is a static error if an xsl:apply-imports element appears in a template rule 
