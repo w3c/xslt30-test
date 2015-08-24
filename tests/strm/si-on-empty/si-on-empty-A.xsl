@@ -8,7 +8,7 @@
   <xsl:strip-space elements="*"/>
 
  
-  <!-- Note, the first few tests are mechanically copied from xsl:conditional-content
+  <!-- Note, the first few tests are mechanically copied from xsl:where-populated
        tests. They don't do anything meaningful, but are retained to ensure the code
        paths work. -->
         
@@ -206,11 +206,11 @@
         <xsl:variable name="t" as="document-node()?"> 
           <xsl:sequence select="$empty"/>         
           <xsl:on-empty>
-            <xsl:conditional-content>
+            <xsl:where-populated>
               <xsl:document>
                 <xsl:copy-of select="//TITLE[@flamingo]"/>
               </xsl:document>
-            </xsl:conditional-content>  
+            </xsl:where-populated>  
           </xsl:on-empty>
         </xsl:variable>
         <in value="{empty($t)}"/>     
@@ -386,20 +386,20 @@
     </xsl:stream>
   </xsl:template> 
   
-  <!-- Test of xsl:on-empty with xsl:for-each and xsl:conditional-content -->
+  <!-- Test of xsl:on-empty with xsl:for-each and xsl:where-populated -->
   
   <xsl:template name="s-034" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <ul>
             <xsl:for-each select="outermost(//ITEM)">
-              <xsl:conditional-content>
+              <xsl:where-populated>
                 <li><xsl:value-of select="TITTLE-TATTLE"/></li>
-              </xsl:conditional-content>
+              </xsl:where-populated>
             </xsl:for-each>  
           </ul>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty>There has been no gossip.</xsl:on-empty>
       </out>
     </xsl:stream>

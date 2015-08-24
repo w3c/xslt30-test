@@ -300,14 +300,14 @@
   <xsl:template name="cy-118" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/loans-noNS.xml">
-          <xsl:conditional-content>
+          <xsl:where-populated>
             <xsl:for-each select="head(//PoolIdentifier)">
               <xsl:element name="processingDate" validation="strict">
                 <xsl:copy-of select="*/*/NONEXISTENT"/>
                 <xsl:on-empty select="'2015-08-11'"/>
               </xsl:element>
             </xsl:for-each>
-          </xsl:conditional-content>
+          </xsl:where-populated>
       </xsl:stream>
     </out>
   </xsl:template>
@@ -317,14 +317,14 @@
   <xsl:template name="cy-119" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/loans-noNS.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
             <xsl:for-each select="head(//PoolIdentifier)">
               <xsl:element  name="processingDate" validation="strict">
                 <xsl:copy-of select="*/*/NONEXISTENT"/>
                 <xsl:on-empty select="'NOT_A_NUMBER'"/>
               </xsl:element>
             </xsl:for-each>
-          </xsl:conditional-content>
+          </xsl:where-populated>
       </xsl:stream>
     </out>
   </xsl:template>
@@ -334,14 +334,14 @@
   <xsl:template name="cy-120" use-when="$RUN">
     <out>
         <xsl:stream href="../docs/loans-noNS.xml">
-          <xsl:conditional-content>
+          <xsl:where-populated>
             <xsl:for-each select="head(//PoolIdentifier)">
               <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" type="FmIdentifierInt">
                 <xsl:copy-of select="*/*/NONEXISTENT"/>
                 <xsl:on-empty select="29"/>
               </xsl:element>
             </xsl:for-each>
-          </xsl:conditional-content>
+          </xsl:where-populated>
       </xsl:stream>
     </out>
   </xsl:template>
@@ -351,14 +351,14 @@
   <xsl:template name="cy-121" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/loans-noNS.xml">
-          <xsl:conditional-content>
+          <xsl:where-populated>
             <xsl:for-each select="head(//PoolIdentifier)">
               <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}" type="FmIdentifierInt">
                 <xsl:copy-of select="*/*/NONEXISTENT"/>
                 <xsl:on-empty select="'NOT_A_NUMBER'"/>
               </xsl:element>
             </xsl:for-each>
-          </xsl:conditional-content>
+          </xsl:where-populated>
       </xsl:stream>
     </out>
   </xsl:template>

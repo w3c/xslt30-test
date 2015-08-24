@@ -11,18 +11,18 @@
 
 <xsl:template match="/">
   <out>
-    <a><xsl:conditional-content><lre>12</lre></xsl:conditional-content></a>
-    <b><xsl:conditional-content><lre><x/></lre></xsl:conditional-content></b>
-    <c><xsl:conditional-content><lre><!--heh--></lre></xsl:conditional-content></c>
-    <d><xsl:conditional-content><lre><?pi?></lre></xsl:conditional-content></d>
-    <e><xsl:conditional-content><lre><xsl:attribute name="x">12</xsl:attribute></lre></xsl:conditional-content></e>
-    <f><xsl:conditional-content><lre x="12"/></xsl:conditional-content></f>
-    <g><xsl:conditional-content><lre><xsl:attribute name="x" select="'abc'"/></lre></xsl:conditional-content></g>
+    <a><xsl:where-populated><lre>12</lre></xsl:where-populated></a>
+    <b><xsl:where-populated><lre><x/></lre></xsl:where-populated></b>
+    <c><xsl:where-populated><lre><!--heh--></lre></xsl:where-populated></c>
+    <d><xsl:where-populated><lre><?pi?></lre></xsl:where-populated></d>
+    <e><xsl:where-populated><lre><xsl:attribute name="x">12</xsl:attribute></lre></xsl:where-populated></e>
+    <f><xsl:where-populated><lre x="12"/></xsl:where-populated></f>
+    <g><xsl:where-populated><lre><xsl:attribute name="x" select="'abc'"/></lre></xsl:where-populated></g>
     
-    <p><xsl:conditional-content><lre/></xsl:conditional-content></p>
-    <q><xsl:conditional-content><lre></lre></xsl:conditional-content></q>
-    <r><xsl:conditional-content><lre><xsl:value-of select="$zls"/></lre></xsl:conditional-content></r>
-    <s><xsl:conditional-content><lre xmlns:p="http://p.com/"></lre></xsl:conditional-content></s>
+    <p><xsl:where-populated><lre/></xsl:where-populated></p>
+    <q><xsl:where-populated><lre></lre></xsl:where-populated></q>
+    <r><xsl:where-populated><lre><xsl:value-of select="$zls"/></lre></xsl:where-populated></r>
+    <s><xsl:where-populated><lre xmlns:p="http://p.com/"></lre></xsl:where-populated></s>
   </out>
 </xsl:template>
 

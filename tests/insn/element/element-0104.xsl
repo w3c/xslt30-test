@@ -8,18 +8,18 @@
   <t:template match="/">
 	<out>
 	  <one>
-	     <t:conditional-content>
+	     <t:where-populated>
           <t:element name="{$n}">
 			<t:if test="current-date() gt xs:date('2000-01-01')"><e/></t:if>
 		  </t:element>
-		 </t:conditional-content> 
+		 </t:where-populated> 
 	  </one>
 	  <two>
-	    <t:conditional-content>
+	    <t:where-populated>
 		  <t:element name="{$n}">
 			<t:if test="current-date() lt xs:date('2000-01-01')"><e/></t:if>
 		  </t:element>
-		</t:conditional-content>  
+		</t:where-populated>  
 	  </two>	  
     </out>
   </t:template>

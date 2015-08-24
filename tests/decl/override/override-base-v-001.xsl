@@ -6,7 +6,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
   
-  
+    <xsl:mode/>
   
     <xsl:variable name="v-public" as="xs:integer" visibility="public" select="$v-private - 1"/>
     

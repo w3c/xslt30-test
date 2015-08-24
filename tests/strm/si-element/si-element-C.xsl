@@ -361,11 +361,11 @@
   <xsl:template name="s-051" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="a">
             <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICETAG"/>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
       </out>
     </xsl:stream>
   </xsl:template>
@@ -375,11 +375,11 @@
   <xsl:template name="s-052" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="a">
             <xsl:sequence select="1 to 10"/>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="head(//*)"/>
       </out>
     </xsl:stream>
@@ -391,11 +391,11 @@
     <xsl:param name="s" select="20"/>
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="a">
             <xsl:sequence select="$s to 10"/>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="head(//TITLE)"/>
       </out>
     </xsl:stream>
@@ -410,11 +410,11 @@
     <xsl:stream href="../docs/books.xml">
       <xsl:for-each select="BOOKLIST/BOOKS">
         <out>
-          <xsl:conditional-content>
+          <xsl:where-populated>
             <xsl:element name="a">
               <xsl:sequence select="ITEM/PRICETAG"/>
             </xsl:element>
-          </xsl:conditional-content>
+          </xsl:where-populated>
           <xsl:on-empty select="$e"/>
         </out>
       </xsl:for-each>
@@ -435,11 +435,11 @@
     <xsl:stream href="../docs/books.xml">
       <xsl:for-each select="BOOKLIST/BOOKS">
         <out>
-          <xsl:conditional-content>
+          <xsl:where-populated>
             <xsl:element name="a">
               <xsl:sequence select="ITEM/PRICETAG"/>
             </xsl:element>
-          </xsl:conditional-content>
+          </xsl:where-populated>
           <xsl:on-empty select="$atts"/>
         </out>
       </xsl:for-each>

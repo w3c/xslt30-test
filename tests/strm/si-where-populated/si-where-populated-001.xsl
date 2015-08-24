@@ -8,12 +8,12 @@
    <xsl:template name="main">
        <xsl:stream href="../docs/books.xml">
            <Results>
-               <xsl:conditional-content>
+               <xsl:where-populated>
                  <first>one</first>
                  <second/>
                  <xsl:copy-of select="BOOKLIST/CATEGORIES/*" />
                  <last>last</last>
-               </xsl:conditional-content>
+               </xsl:where-populated>
            </Results>
        </xsl:stream>
    </xsl:template>

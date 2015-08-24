@@ -273,11 +273,11 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="{name($a)}">
             <xsl:sequence select="/*[@dummy='not-there']"/>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
@@ -291,13 +291,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="{name($a)}">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <b/>
             </xsl:if>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
@@ -311,13 +311,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="{name($a)}">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <b/>
             </xsl:if>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
@@ -331,13 +331,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="{name($a)}">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <b/>
             </xsl:if>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
@@ -351,13 +351,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="{name($a)}" namespace="{namespace-uri($a)}">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <xsl:sequence select="special/comment()[2]"/>
             </xsl:if>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
@@ -371,13 +371,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:element name="{name($a)}" namespace="{namespace-uri($a)}">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <xsl:sequence select="special/processing-instruction()[2]"/>
             </xsl:if>
           </xsl:element>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
@@ -391,13 +391,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:for-each select="special">
             <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
               <xsl:sequence select="f/@b"/>
             </xsl:element>
           </xsl:for-each>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
@@ -411,13 +411,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:for-each select="*">
             <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
               <xsl:copy-of select="a/b/c/d/e/f/g"/>
             </xsl:element>
           </xsl:for-each>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>
@@ -431,13 +431,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:for-each select="*">
             <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
               <xsl:copy-of select="a/b/c/d/e/f/g"/>
             </xsl:element>
           </xsl:for-each>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a"/>
       </xsl:stream>
     </out>

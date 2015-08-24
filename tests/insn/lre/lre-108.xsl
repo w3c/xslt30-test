@@ -9,19 +9,19 @@
   <t:template match="/">
 	<out>
 	  <one>
-	    <t:conditional-content>
+	    <t:where-populated>
           <name>
             <t:if test="current-date() gt xs:date('2000-01-01')"><e/></t:if>
 		  </name>
-		</t:conditional-content>
+		</t:where-populated>
 		<t:on-empty select="data($jaq)"/>  
 	  </one>
 	  <two>
-		<t:conditional-content>
+		<t:where-populated>
           <name>
             <t:if test="current-date() lt xs:date('2000-01-01')"><e/></t:if>
 		  </name>
-		</t:conditional-content>
+		</t:where-populated>
 		<t:on-empty select="data($jaq)"/>
 	  </two>	  
     </out>

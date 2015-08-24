@@ -29,7 +29,7 @@
     
   </xsl:use-package>
   
-  
+    <xsl:mode/>
   
     <xsl:variable name="g"><a/></xsl:variable>
     

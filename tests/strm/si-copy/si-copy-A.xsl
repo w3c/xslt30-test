@@ -308,11 +308,11 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:copy select="/*[@dummy='not-there']">
             <b/>
           </xsl:copy>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
       </xsl:stream>
     </out>
@@ -326,13 +326,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:copy select="/*">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <b/>
             </xsl:if>
           </xsl:copy>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
       </xsl:stream>
     </out>
@@ -346,13 +346,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:copy>
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <b/>
             </xsl:if>
           </xsl:copy>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
       </xsl:stream>
     </out>
@@ -366,13 +366,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:copy>
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <b/>
             </xsl:if>
           </xsl:copy>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
       </xsl:stream>
     </out>
@@ -386,13 +386,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:copy select="special/comment()[2]">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <b/>
             </xsl:if>
           </xsl:copy>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
       </xsl:stream>
     </out>
@@ -406,13 +406,13 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/special.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:copy select="special/processing-instruction()[2]">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
               <b/>
             </xsl:if>
           </xsl:copy>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
       </xsl:stream>
     </out>
@@ -464,7 +464,7 @@
     </out>
   </xsl:template>
   
-    <!-- within xsl:stream, use xsl:copy with xsl:conditional-content: empty element constructed -->
+    <!-- within xsl:stream, use xsl:copy with xsl:where-populated: empty element constructed -->
 
   <xsl:template name="cy-049" use-when="$RUN">
     <out>
@@ -472,16 +472,16 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:copy select="/*">
             <xsl:copy-of select="a/b/c/d/e/f/g"/>
           </xsl:copy>
-        </xsl:conditional-content>  
+        </xsl:where-populated>  
       </xsl:stream>
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy with xsl:conditional-content: empty document constructed -->
+  <!-- within xsl:stream, use xsl:copy with xsl:where-populated: empty document constructed -->
 
   <xsl:template name="cy-050" use-when="$RUN">
     <out>
@@ -489,11 +489,11 @@
         <a/>
       </xsl:variable>
       <xsl:stream href="../docs/citygml.xml">
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <xsl:copy>
             <xsl:copy-of select="a/b/c/d/e/f/g"/>
           </xsl:copy>
-        </xsl:conditional-content>  
+        </xsl:where-populated>  
       </xsl:stream>
     </out>
   </xsl:template>

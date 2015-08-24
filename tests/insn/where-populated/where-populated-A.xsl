@@ -8,6 +8,7 @@
 
   <xsl:param name="doc" select="/"/>
   <xsl:param name="zls" select="''"/>
+  <xsl:param name="zero" select="0"/>
  
   <!-- Test of xsl:where-populated with xsl:element (not empty) -->
 
@@ -335,7 +336,7 @@
        </xsl:for-each>
    </xsl:template>     
  
-<!-- Test of xsl:where-populated including local variables. -->
+  <!-- Test of xsl:where-populated including local variables. -->
   
   <xsl:template name="s-021" use-when="$RUN">
        <xsl:for-each select="$doc">
@@ -352,6 +353,26 @@
                </xsl:where-populated>
            </Results>
        </xsl:for-each>
+   </xsl:template> 
+   
+   <!-- Test of xsl:where-populated using an empty map. -->
+  
+  <xsl:template name="s-022" use-when="$RUN">
+     <xsl:variable name="m" as="map(*)*">
+       <xsl:map>
+         <xsl:for-each select="$zero to 10">
+           <xsl:map-entry key="." select=".*."/>
+         </xsl:for-each>
+       </xsl:map>
+       <xsl:map>  
+         <xsl:for-each select="1 to $zero">
+           <xsl:map-entry key="." select=".*."/>
+         </xsl:for-each>
+       </xsl:map>
+     </xsl:variable>
+     <Results>    
+       <xsl:value-of select="count($m)"/>
+     </Results>  
    </xsl:template> 
 
 

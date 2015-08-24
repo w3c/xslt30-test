@@ -10,7 +10,7 @@
   <xsl:strip-space elements="*"/>
 
  
-  <!-- Note, the first few tests are mechanically copied from xsl:conditional-content
+  <!-- Note, the first few tests are mechanically copied from xsl:where-populated
        tests. They don't do anything meaningful, but are retained to ensure the code
        paths work. -->
         
@@ -389,59 +389,59 @@
     </xsl:stream>
   </xsl:template> 
   
-  <!-- Test of xsl:on-non-empty with xsl:for-each and xsl:conditional-content -->
+  <!-- Test of xsl:on-non-empty with xsl:for-each and xsl:where-populated -->
   
   <xsl:template name="s-034" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <ul>
             <xsl:for-each select="outermost(//ITEM)">
-              <xsl:conditional-content>
+              <xsl:where-populated>
                 <li><xsl:value-of select="TITTLE-TATTLE"/></li>
-              </xsl:conditional-content>
+              </xsl:where-populated>
             </xsl:for-each>  
           </ul>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-non-empty>There has been no gossip.</xsl:on-non-empty>
       </out>
     </xsl:stream>
   </xsl:template> 
   
-  <!-- Test of xsl:on-non-empty with xsl:for-each and xsl:conditional-content -->
+  <!-- Test of xsl:on-non-empty with xsl:for-each and xsl:where-populated -->
   
   <xsl:template name="s-035" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:on-non-empty>There will be no gossip.</xsl:on-non-empty>
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <ul>
             <xsl:for-each select="outermost(//ITEM)">
-              <xsl:conditional-content>
+              <xsl:where-populated>
                 <li><xsl:value-of select="TITTLE-TATTLE"/></li>
-              </xsl:conditional-content>
+              </xsl:where-populated>
             </xsl:for-each>  
           </ul>
-        </xsl:conditional-content>
+        </xsl:where-populated>
       </out>
     </xsl:stream>
   </xsl:template> 
   
-  <!-- Test of xsl:on-non-empty (appearing twice) with xsl:for-each and xsl:conditional-content -->
+  <!-- Test of xsl:on-non-empty (appearing twice) with xsl:for-each and xsl:where-populated -->
   
   <xsl:template name="s-036" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:on-non-empty>There will be no gossip.</xsl:on-non-empty>
-        <xsl:conditional-content>
+        <xsl:where-populated>
           <ul>
             <xsl:for-each select="outermost(//ITEM)">
-              <xsl:conditional-content>
+              <xsl:where-populated>
                 <li><xsl:value-of select="TITTLE-TATTLE"/></li>
-              </xsl:conditional-content>
+              </xsl:where-populated>
             </xsl:for-each>  
           </ul>
-        </xsl:conditional-content>
+        </xsl:where-populated>
         <xsl:on-non-empty>There has been no gossip.</xsl:on-non-empty>
       </out>
     </xsl:stream>

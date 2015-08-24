@@ -310,9 +310,9 @@
     <xsl:template name="s-050" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:conditional-content>
+          <xsl:where-populated>
             <a><xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICE/data()"/></a>
-          </xsl:conditional-content>
+          </xsl:where-populated>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -322,9 +322,9 @@
     <xsl:template name="s-051" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
-          <xsl:conditional-content>
+          <xsl:where-populated>
             <a><xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICETAG"/></a>
-          </xsl:conditional-content>
+          </xsl:where-populated>
         </out>
       </xsl:stream>
     </xsl:template>
@@ -361,9 +361,9 @@
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS">
           <out>
-            <xsl:conditional-content>
+            <xsl:where-populated>
               <a><xsl:sequence select="ITEM/PRICETAG"/></a>
-            </xsl:conditional-content>
+            </xsl:where-populated>
             <xsl:on-empty select="$e"/>
           </out>
         </xsl:for-each>  
@@ -382,9 +382,9 @@
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS">
           <out>
-            <xsl:conditional-content>
+            <xsl:where-populated>
               <a><xsl:sequence select="ITEM/PRICETAG"/></a>
-            </xsl:conditional-content>
+            </xsl:where-populated>
             <xsl:on-empty select="$atts"/>
           </out>
         </xsl:for-each>  
