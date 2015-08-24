@@ -346,7 +346,7 @@
                  <xsl:variable name="xx"/>
                  <xsl:variable name="yy" select="22"/>
                  <a><xsl:value-of select="$xx||$xx"/></a>
-                 <b><xsl:value-of select="$yy||$yywhere-populatedconditinoa-"/></b>
+                 <b><xsl:value-of select="$yy||$yy"/></b>
                </xsl:where-populated>
            </Results>
        </xsl:stream>
