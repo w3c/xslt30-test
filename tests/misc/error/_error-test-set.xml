@@ -10502,16 +10502,18 @@ It is a static error if a character
    </test-case>
 
    <test-case name="error-3380a">
-      <description>Error: If the accumulator is declared with the attribute streamable="yes"
-                  then it is a dynamic error if the
-                     accumulator-before or
-                     accumulator-after function is called unless the evaluation
+      <description>(At one time the spec said:) 
+      Error: If the accumulator is declared with the attribute streamable="yes"
+                  then it is a dynamic error if the accumulator-before or
+                  accumulator-after function is called unless the evaluation
                   is performed in the course of the evaluation of either (a) the
-                  sequence constructor contained in a template rule invoked in a mode declared with streamable="yes", or (b) the
+                  sequence constructor contained in a template rule invoked in a mode 
+                  declared with streamable="yes", or (b) the
                   sequence constructor contained in an xsl:stream instruction, or
                   both. Call the nearest such construct in the chain of causation the
-                     controlling sequence constructor.</description>
+                  controlling sequence constructor.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Michael Kay" on="2015-08-25" change="spec change: no longer an error"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10520,7 +10522,7 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3380"/>
+         <assert>/out = '1'</assert>
       </result>
    </test-case>
 
@@ -10553,6 +10555,7 @@ It is a static error if a character
       <created by="Michael Kay" on="2014-08-25"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <detect_accumulator_cycles value="true"/>
       </dependencies>
       <test>
          <stylesheet file="error-3400a.xsl"/>
