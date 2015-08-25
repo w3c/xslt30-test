@@ -1129,6 +1129,52 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
+    
+    <xs:element name="detect_accumulator_cycles" substitutionGroup="dependency">
+        <xs:annotation>
+            <xs:documentation>
+                <p>The test requires the processor to be able to detect error XTDE3400 (cyclic
+                definition of an accumulator), rather than failing catastrophically.</p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:restriction base="dependencyType">
+                    <xs:attribute name="value">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="false"/>
+                                <xs:enumeration value="true"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:restriction>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="enable_assertions" substitutionGroup="dependency">
+        <xs:annotation>
+            <xs:documentation>
+                <p>The test requires the processor to enable (or disable) checking of assertions.
+                Assertions are disabled by default.</p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:restriction base="dependencyType">
+                    <xs:attribute name="value">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="false"/>
+                                <xs:enumeration value="true"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:restriction>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="unparsed_text_encoding" substitutionGroup="default_output_encoding">
         <xs:annotation>

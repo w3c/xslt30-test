@@ -9,6 +9,7 @@
      
    <dependencies>
       <spec value="XSLT30+"/>
+      <enable_assertions value="true"/>
    </dependencies>
    
    <test-case name="assert-001">
@@ -85,6 +86,25 @@
       </test>
       <result>
          <error xmlns:my="http://example.com/my" code="my:ABCD9999"/>
+      </result>
+   </test-case>
+   
+   <test-case name="assert-007">
+      <description>Simple assertion; no failure because assertions are externally disabled</description>
+      <keywords>xsl:assert ValueComp assert-success</keywords>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment>
+        <!-- separate environment because the stylesheet may need to be compiled differently... -->
+        <stylesheet file="assert001.xsl"/>
+      </environment>  
+      <dependencies>
+         <enable_assertions value="false"/>
+      </dependencies>
+      <test>
+         <initial-template name="go002"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
 </test-set>
