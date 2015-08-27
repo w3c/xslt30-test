@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="expose">
+   <description>Tests xsl:expose in XSLT 3.0</description>
+
+   <dependencies>
+      <spec value="XSLT30+"/>
+   </dependencies>
+
+   <test-case name="expose-001">
+      <description>Syntax variations of xsl:expose</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-001.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   
+   
+   <test-case name="expose-901">
+      <description>Error, attribute set not declared in package</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-901.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-902">
+      <description>Error, variable not declared in package</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-902.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-903">
+      <description>Error, function not declared in package with correct arity</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-903.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-904">
+      <description>Error, cannot reference unnamed mode</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-904.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-905">
+      <description>Error, component is of wrong kind</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-905.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-906">
+      <description>Error, unknown component kind</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-906.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-907">
+      <description>Error, unknown component kind</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-907.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-908">
+      <description>Error, cannot change visibility of xsl:param by masquerading as a variable</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-908.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3020"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-909">
+      <description>Error, cannot increase visibility from private to public</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-909.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-910">
+      <description>Error, cannot increase visibility from private to public</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-910.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-911">
+      <description>Error, cannot increase visibility from private to final</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-911.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-912">
+      <description>Error, cannot increase visibility from private to abstract</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-912.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-913">
+      <description>Error, cannot increase visibility from final to public</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <test>
+         <package file="expose-913.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3010"/>
+      </result>
+   </test-case>
+
+ 
+</test-set>
