@@ -704,10 +704,18 @@
     <xs:element name="dependency" abstract="true" type="dependencyType"> </xs:element>
 
     <xs:complexType name="dependencyType">
-        <xs:attribute name="value" type="xs:string"/>
+        <xs:attribute name="value" type="xs:string" use="optional"/>
         <xs:attribute name="satisfied" type="xs:boolean" default="true"/>
         <xs:attribute name="range" type="xs:string" default="unbounded"/>
     </xs:complexType>
+    
+    <xs:complexType name="dependencyTypeTrue">
+      <xs:complexContent>
+        <xs:restriction base="dependencyType">
+          <xs:attribute name="value" type="xs:string" fixed="true"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>     
 
     <xs:element name="spec" substitutionGroup="dependency">
         <xs:annotation>
@@ -780,20 +788,13 @@
                     that are not part of the test suite, for example pages on the W3C web site.</p>
                 <p>This feature should be used sparingly; it is there to allow testing of features
                     that rely on HTTP protocol information such as media type and encoding.</p>
+                <p>The "value" attribute holds the URI of the required document.</p>    
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-
-    <xs:element name="default_language_for_numbering" substitutionGroup="dependency">
-        <xs:annotation>
-            <xs:documentation>
-                <p>Identifies the default language used by xsl:number and format-integer, for
-                    example en=English.</p>
-                <p>Used only for tests that rely on a specific default language.</p>
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
+    
+    <xs:complexType name="dependencyTypeLanguage">
+              <xs:complexContent>
                 <xs:restriction base="dependencyType">
                     <xs:attribute name="value">
                         <xs:simpleType>
@@ -807,7 +808,16 @@
                     </xs:attribute>
                 </xs:restriction>
             </xs:complexContent>
-        </xs:complexType>
+    </xs:complexType>        
+
+    <xs:element name="default_language_for_numbering" substitutionGroup="dependency" type="dependencyTypeLanguage">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Identifies the default language used by xsl:number and format-integer, for
+                    example en=English.</p>
+                <p>Used only for tests that rely on a specific default language.</p>
+            </xs:documentation>
+        </xs:annotation>
     </xs:element>
     
     <xs:element name="ordinal_scheme_name" substitutionGroup="dependency">
@@ -909,51 +919,13 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="languages_for_numbering" substitutionGroup="dependency">
+    <xs:element name="languages_for_numbering" substitutionGroup="dependency" type="dependencyTypeLanguage">
         <xs:annotation>
             <xs:documentation>
                 <p>Indicates a test that depends on a particular language being supported for number
                     or date formatting.</p>
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="en"/>
-                                <xs:enumeration value="de"/>
-                                <xs:enumeration value="fr"/>
-                                <xs:enumeration value="it"/>
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>
-    
-    <xs:element name="ordinal-scheme-name" substitutionGroup="dependency">
-        <xs:annotation>
-            <xs:documentation>
-                <p>Indicates a convention used for the value of the @ordinal attribute in xsl:number.</p>
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="CLDR"/>
-                                <xs:enumeration value="inflection"/>
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
     </xs:element>
 
     <xs:element name="supported_calendars_in_date_formatting_functions"
@@ -1131,50 +1103,22 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="detect_accumulator_cycles" substitutionGroup="dependency">
+    <xs:element name="detect_accumulator_cycles" substitutionGroup="dependency" type="dependencyTypeTrue">
         <xs:annotation>
             <xs:documentation>
                 <p>The test requires the processor to be able to detect error XTDE3400 (cyclic
                 definition of an accumulator), rather than failing catastrophically.</p>
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="false"/>
-                                <xs:enumeration value="true"/>
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
     </xs:element>
     
-    <xs:element name="enable_assertions" substitutionGroup="dependency">
+    <xs:element name="enable_assertions" substitutionGroup="dependency" type="dependencyTypeTrue">
         <xs:annotation>
             <xs:documentation>
-                <p>The test requires the processor to enable (or disable) checking of assertions.
+                <p>The test requires the processor to enable checking of assertions.
                 Assertions are disabled by default.</p>
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="false"/>
-                                <xs:enumeration value="true"/>
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
     </xs:element>
 
     <xs:element name="unparsed_text_encoding" substitutionGroup="default_output_encoding">
@@ -1207,25 +1151,12 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="recognize_id_as_uri_fragment" substitutionGroup="dependency">
+    <xs:element name="recognize_id_as_uri_fragment" substitutionGroup="dependency" type="dependencyTypeTrue">
         <xs:annotation>
             <xs:documentation>
                 <p>Indicates whether or not the fragments in URIs are recognized as ID values.</p>
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="true"/>
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
     </xs:element>
 
     <xs:element name="on-multiple-match" substitutionGroup="dependency">
@@ -1251,81 +1182,14 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="ignore-doc-failure" substitutionGroup="dependency">
+    <xs:element name="ignore_doc_failure" substitutionGroup="dependency" type="dependencyTypeTrue">
         <xs:annotation>
             <xs:documentation>
                 <p>Indicates whether or not the document() function throws an error if the
                     underlying call on doc() fails</p>
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="false"/>
-                                <xs:enumeration value="true"/>
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
     </xs:element>
-
-
-    <!-- <xs:element name="version-of-xml" substitutionGroup="dependency" >
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="1.0" />
-                                <xs:enumeration value="1.1" />
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>-->
-    <!--
-    <xs:element name="schema-aware" substitutionGroup="dependency" >
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="true" />
-                                <xs:enumeration value="false" />
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>    
-    
-    <xs:element name="streaming" substitutionGroup="dependency" >
-        <xs:complexType>
-            <xs:complexContent>
-                <xs:restriction base="dependencyType">
-                    <xs:attribute name="value">
-                        <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                                <xs:enumeration value="true" />
-                                <xs:enumeration value="false" />
-                            </xs:restriction>
-                        </xs:simpleType>
-                    </xs:attribute>
-                </xs:restriction>
-            </xs:complexContent>
-        </xs:complexType>
-    </xs:element>     
-    -->
 
     <xs:element name="test-case">
         <xs:annotation>
@@ -2462,48 +2326,6 @@
             <xs:pattern value="[A-Za-z]([A-Za-z0-9._-])*"/>
         </xs:restriction>
     </xs:simpleType>
-
-    <!--<xs:attributeGroup name="typeAttr">
-        <xs:annotation>
-                <xs:documentation>
-                    <div>
-                        <h3>type</h3>
-                        <p>
-                            The <code>type</code> attribute of a <code>dependency</code> element indicates what type of dependency
-                            it is: the set of possible values is enumerated.
-                        </p>
-                        <p>
-                            The most common <code>type</code> is <code>spec</code>, which indicates a dependency on specific versions of
-                            XPath or XQuery. In this case the corresponding <code>value</code> attribute is a space-separated list
-                            whose tokens are, for example, "XQ10" indicating XQuery 1.0, "XQ10+" indicating XQuery 1.0 or later, 
-                            "XQ30+" indication XQuery 3.0 or later, or "XP20+" indicating XPath 2.0 or later. The tokens in the list
-                            are alternatives; the test may be run if any of the dependencies is satisfied.
-                        </p>
-                        <p>Similarly, if the <code>type</code> is <code>xml-version</code>, the corresponding value is a space-separated
-                        list whose tokens are "1.0" (XML 1.0), "1.1" (XML 1.1), "1.0:5+" (1.0, 5th edition or later), "1.0:4-" (1.0,
-                        fourth edition or earlier).</p>
-                    </div> 
-                </xs:documentation>
-            </xs:annotation>
-        <xs:attribute name="type" type="dependencyEnumType"/>
-    </xs:attributeGroup>
-    
-    <xs:simpleType name="dependencyEnumType">
-        <xs:restriction base="xs:normalizedString">
-            <xs:enumeration value="calendar" />
-            <xs:enumeration value="collection-stability" />
-            <xs:enumeration value="default-language" />
-            <xs:enumeration value="directory-as-collection-uri" />
-            <xs:enumeration value="feature" />
-            <xs:enumeration value="format-integer-sequence" />
-            <xs:enumeration value="language" />
-            <xs:enumeration value="limits" />
-            <xs:enumeration value="spec" />
-            <xs:enumeration value="schemaAware" />
-            <xs:enumeration value="xml-version" />
-            <xs:enumeration value="xsd-version" />
-        </xs:restriction>
-    </xs:simpleType>-->
 
     <xs:simpleType name="validationEnumType">
         <xs:restriction base="xs:normalizedString">

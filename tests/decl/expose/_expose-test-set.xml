@@ -2,6 +2,14 @@
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="expose">
    <description>Tests xsl:expose in XSLT 3.0</description>
+   
+   <environment name="expose-A">
+      <package file="expose-A.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/expose-A" package-version="1.0.0"/>
+   </environment>
+   
+   <environment name="expose-B">
+      <package file="expose-B.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/expose-B" package-version="1.0.0"/>
+   </environment>
 
    <dependencies>
       <spec value="XSLT30+"/>
@@ -16,6 +24,71 @@
       </test>
       <result>
          <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-002">
+      <description>Simple use of xsl:expose to make everything public</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <environment ref="expose-A"/>
+      <test>
+         <package file="expose-002.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><t1>0</t1><t2>0</t2><f1>1</f1><f2>2</f2></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-003">
+      <description>Failure to access components not made public</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <environment ref="expose-A"/>
+      <test>
+         <package file="expose-003.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPST0017"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-004">
+      <description>Simple use of xsl:expose to make variables and attribute sets final</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <environment ref="expose-B"/>
+      <test>
+         <package file="expose-004.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a1 A="0" B="0"/><a2 A="0"/><v1>0</v1><v2>0</v2></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-005">
+      <description>Fail to override attribute set exposed as final</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <environment ref="expose-B"/>
+      <test>
+         <package file="expose-005.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3060"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-006">
+      <description>Fail to access variable not exposed as public</description>
+      <created by="Michael Kay" on="2015-08-27"/>
+      <environment ref="expose-B"/>
+      <test>
+         <package file="expose-006.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
       </result>
    </test-case>
    
