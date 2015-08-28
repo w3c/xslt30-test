@@ -4,9 +4,9 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
 xmlns:app="http://app.com/" exclude-result-prefixes="app">
 
-  <!-- simple xsl:function, test override-extension-function="yes" and identity-sensitive="yes" accepted -->
+  <!-- simple xsl:function, test override-extension-function="yes" and new-each-time="yes" accepted -->
 
-  <xsl:function name="app:count-elements" override-extension-function="yes" identity-sensitive="yes">
+  <xsl:function name="app:count-elements" override-extension-function="yes" new-each-time="yes">
     <xsl:param name="doc"/>
     <xsl:sequence select="count($doc//*)"/>   
 </xsl:function>

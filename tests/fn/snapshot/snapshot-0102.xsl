@@ -24,7 +24,7 @@
 
 <!-- Following functions are the implementation of fn:snapshot defined in the XSLT 3.0 spec -->
 
-<xsl:function name="f:snapshot" as="node()?" identity-sensitive="no">
+<xsl:function name="f:snapshot" as="node()?" new-each-time="maybe">
   <xsl:param name="origin" as="node()?"/>
   
   <!-- create a copy of the tree containing the supplied node, retaining only

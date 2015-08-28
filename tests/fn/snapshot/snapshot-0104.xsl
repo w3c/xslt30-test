@@ -33,7 +33,7 @@
 
 <!-- Following functions are the implementation of fn:snapshot defined in the XSLT 3.0 spec -->
 
-<xsl:function name="f:snapshot" as="node()*" identity-sensitive="no">
+<xsl:function name="f:snapshot" as="node()*" new-each-time="maybe">
   <xsl:param name="nodes" as="node()*"/>
   <xsl:for-each select="$nodes">
     <xsl:variable name="origin" select="."/>

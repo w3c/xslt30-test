@@ -70,11 +70,11 @@ of problems processing the schema using various tools
 
   <!-- 
     An XSLT stylesheet may contain an in-line schema within an xsl:import-schema element,
-    so the Schema for schemas needs to be imported
+    so the Schema for schemas needs to be imported. We use the XSD 1.1 version.
 -->
 
-  <xs:import namespace="http://www.w3.org/2001/XMLSchema"
-    schemaLocation="http://www.w3.org/2001/XMLSchema.xsd"/>
+ <xs:import namespace="http://www.w3.org/2001/XMLSchema"
+    schemaLocation="http://www.w3.org/TR/xmlschema11-1/XMLSchema.xsd"/>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <xs:annotation>
@@ -245,12 +245,10 @@ of problems processing the schema using various tools
           <xs:attribute name="name" type="xsl:EQName" />
           <xs:attribute name="initial-value" type="xsl:expression"/>
           <xs:attribute name="as" type="xsl:sequence-type"/>
-          <xs:attribute name="visibility" type="xsl:visibility-type"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no"/>
           <xs:attribute name="_name" type="xs:string" />
           <xs:attribute name="_initial-value" type="xs:string"/>
           <xs:attribute name="_as" type="xs:string"/>
-          <xs:attribute name="_visibility" type="xs:string"/>
           <xs:attribute name="_streamable" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
@@ -464,8 +462,6 @@ of problems processing the schema using various tools
 
   <xs:element name="comment" substitutionGroup="xsl:instruction" type="xsl:sequence-constructor-or-select"/>
   
-  <xs:element name="where-populated" substitutionGroup="xsl:instruction" type="xsl:sequence-constructor"/>
-
   <xs:element name="context-item">
     <xs:complexType>
       <xs:complexContent>
@@ -521,10 +517,12 @@ of problems processing the schema using various tools
       <xs:complexContent mixed="true">
         <xs:extension base="xsl:versioned-element-type">
           <xs:attribute name="select" type="xsl:expression"/>
+          <xs:attribute name="copy-accumulators" type="xsl:yes-or-no" default="no"/>
           <xs:attribute name="copy-namespaces" type="xsl:yes-or-no" default="yes"/>
           <xs:attribute name="type" type="xsl:EQName"/>
           <xs:attribute name="validation" type="xsl:validation-type"/>
           <xs:attribute name="_select" type="xs:string"/>
+          <xs:attribute name="_copy-accumulators" type="xs:string"/>
           <xs:attribute name="_copy-namespaces" type="xs:string"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
@@ -792,15 +790,15 @@ of problems processing the schema using various tools
           <xs:attribute name="override" type="xsl:yes-or-no" default="yes"/>
           <xs:attribute name="as" type="xsl:sequence-type" default="item()*"/>
           <xs:attribute name="visibility" type="xsl:visibility-type"/>
-          <xs:attribute name="streamable" type="xsl:yes-or-no"/>
+          <xs:attribute name="streamability" type="xsl:streamability-type"/>
           <xs:attribute name="override-extension-function" type="xsl:yes-or-no"/>
-          <xs:attribute name="identity-sensitive" type="xsl:yes-or-no"/>
-          <xs:attribute name="cache" type="xsl:caching-values"/>
+          <xs:attribute name="new-each-time" type="xsl:yes-or-no-or-maybe"/>
+          <xs:attribute name="cache" type="xsl:yes-or-no"/>
           <xs:attribute name="_name" type="xs:string"/>
           <xs:attribute name="_override" type="xs:string"/>
           <xs:attribute name="_as" type="xs:string"/>
           <xs:attribute name="_visibility" type="xs:string"/>
-          <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_streamability" type="xs:string"/>
           <xs:attribute name="_override-extension-function" type="xs:string"/>
           <xs:attribute name="_identity-sensitive" type="xs:string"/>
           <xs:attribute name="_cache" type="xs:string"/>
@@ -831,7 +829,7 @@ of problems processing the schema using various tools
     </xs:complexType>
   </xs:element>
   
-  <xs:element name="global-context-item">
+  <xs:element name="global-context-item" substitutionGroup="xsl:declaration">
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
@@ -1321,15 +1319,16 @@ of problems processing the schema using various tools
             <xs:choice minOccurs="0" maxOccurs="unbounded">             
               <xs:element ref="xsl:use-package"/>
               <xs:element ref="xsl:expose"/>
-              <xs:element ref="xsl:global-context-item"/>
               <xs:element ref="xsl:declaration"/>
               <xs:any namespace="##other" processContents="lax"/>
             </xs:choice>  
           </xs:sequence>
+          <xs:attribute name="declared-modes" type="xsl:yes-or-no"/> 
           <xs:attribute name="id" type="xs:ID"/>         
           <xs:attribute name="name" type="xs:anyURI"/>
           <xs:attribute name="package-version" type="xs:string"/>
           <xs:attribute name="input-type-annotations" type="xsl:input-type-annotations-type"/>
+          <xs:attribute name="_declared-modes" type="xs:string"/>
           <xs:attribute name="_id" type="xs:string"/>
           <xs:attribute name="_name" type="xs:string"/>
           <xs:attribute name="_package-version" type="xs:string"/>
@@ -1361,17 +1360,6 @@ of problems processing the schema using various tools
           <xs:attribute name="_tunnel" type="xs:string"/>
           <xs:attribute name="_static" type="xs:string"/>
           <xs:assert test="exists(@name | @_name)"/>
-          <xs:assert test="if (normalize-space(@static) = 'yes') 
-                           then normalize-space(@visibility) = ('', 'private', 'final') 
-                           else true()">
-              <xs:annotation>
-                <xs:documentation>
-                  <p>When the static attribute is present with the value yes, 
-                    the visibility attribute must not have a value other than private 
-                    or final.</p>
-                </xs:documentation>
-              </xs:annotation>
-            </xs:assert>
           <xs:assert test="if (normalize-space(@static) = 'yes')
                            then empty((*,text()))
                            else true()">
@@ -1858,6 +1846,8 @@ of problems processing the schema using various tools
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  
+  <xs:element name="where-populated" substitutionGroup="xsl:instruction" type="xsl:sequence-constructor"/>
 
   <xs:element name="with-param">
     <xs:complexType>
@@ -1951,18 +1941,6 @@ of problems processing the schema using various tools
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
   
-  <xs:simpleType name="caching-values">
-    <xs:annotation>
-      <xs:documentation> One of the values "full", "partial", or "no". </xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:enumeration value="full"/>
-      <xs:enumeration value="partial"/>
-      <xs:enumeration value="no"/>
-    </xs:restriction>
-    
-  </xs:simpleType>
-
   <xs:simpleType name="char">
     <xs:annotation>
       <xs:documentation> A string containing exactly one character. </xs:documentation>
@@ -2252,7 +2230,7 @@ of problems processing the schema using various tools
         <xs:restriction base="xsl:EQName">
           <xs:pattern value="Q\{.+\}.+|\i\c*:.+"/>
         </xs:restriction>
-  </xs:simpleType>  
+  </xs:simpleType>
   
   <xs:simpleType name="sequence-type">
     <xs:annotation>
@@ -2262,6 +2240,26 @@ of problems processing the schema using various tools
     <xs:restriction base="xs:token">
       <xs:pattern value=".+"/>
     </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="streamability-type">
+    <xs:annotation>
+      <xs:documentation> Describes the visibility of a component within a package.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="xsl:EQName-in-namespace">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="unclassified"/>
+          <xs:enumeration value="absorbing"/>
+          <xs:enumeration value="inspection"/>
+          <xs:enumeration value="filter"/>
+          <xs:enumeration value="shallow-descent"/>
+          <xs:enumeration value="deep-descent"/>
+          <xs:enumeration value="ascent"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>  
   </xs:simpleType>
   
   <xs:simpleType name="typed-type">
@@ -2348,6 +2346,22 @@ of problems processing the schema using various tools
       <xs:enumeration value="false"/>
       <xs:enumeration value="1"/>
       <xs:enumeration value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="yes-or-no-or-maybe">
+    <xs:annotation>
+      <xs:documentation> One of the values "yes" or "no" or "omit". 
+        The values "true" or "false", or "1" or "0" are accepted as synonyms of "yes" and "no" respectively.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="yes"/>
+      <xs:enumeration value="no"/>
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="maybe"/>
     </xs:restriction>
   </xs:simpleType>
 
