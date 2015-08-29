@@ -10,6 +10,9 @@
   xmlns:q="http://www.w3.org/xslt30tests/expose-B-private"
   exclude-result-prefixes="xs p">
   
+  <xsl:expose visibility="private" component="variable" names="v1"/>
+  <!-- Above declaration has no effect because the last match wins -->
+  
   <xsl:expose visibility="final" component="attribute-set" names="a1 Q{http://www.w3.org/xslt30tests/expose-B}a2"/>
   <xsl:expose visibility="final" component="variable" names="v1 Q{http://www.w3.org/xslt30tests/expose-B}v2"/>
   
