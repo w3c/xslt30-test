@@ -9,7 +9,7 @@ xmlns:app="http://app.com/" exclude-result-prefixes="app">
   <xsl:function name="app:count-elements" override-extension-function="yes" new-each-time="yes">
     <xsl:param name="doc"/>
     <xsl:sequence select="count($doc//*)"/>   
-</xsl:function>
+  </xsl:function>
 
   <xsl:template match="/">
     <out>

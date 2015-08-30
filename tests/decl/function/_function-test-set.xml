@@ -459,6 +459,66 @@
          <error code="XTSE0020"/>
       </result>
    </test-case>
+   
+   <test-case name="function-0119a">
+      <description>simple xsl:function, required='yes' is allowed in 3.0 but disallowed in 2.0</description>
+      <created by="Michael Kay" on="2015-08-30"/>
+      <environment ref="function-01"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-0119.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+   
+   <test-case name="function-0119b">
+      <description>simple xsl:function, required='yes' is allowed in 3.0 but disallowed in 2.0</description>
+      <created by="Michael Kay" on="2015-08-30"/>
+      <environment ref="function-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-0119.xsl"/>
+      </test>
+      <result>
+         <assert>/out = 'true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-0120a">
+      <description>simple xsl:function, required='no' is disallowed in both 2.0 and 3.0</description>
+      <created by="Michael Kay" on="2015-08-30"/>
+      <environment ref="function-01"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-0120.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+   
+   <test-case name="function-0120b">
+      <description>simple xsl:function, required='no' is disallowed in both 2.0 and 3.0</description>
+      <created by="Michael Kay" on="2015-08-30"/>
+      <environment ref="function-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-0120.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
 
    <test-case name="function-0201">
       <description>simple function, 2 args, one atomized</description>
