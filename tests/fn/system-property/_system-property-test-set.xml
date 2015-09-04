@@ -209,7 +209,7 @@
       </result>
    </test-case>
    
-   <test-case name="system-property-014">
+   <test-case name="system-property-014a">
       <description>Test for system-property('supports-dynamic-evaluation') .</description>
       <created by="Michael Kay" on="2014-10-30"/>
       <dependencies>
@@ -225,7 +225,7 @@
       </result>
    </test-case>
    
-   <test-case name="system-property-015">
+   <test-case name="system-property-014b">
       <description>Test for system-property('supports-dynamic-evaluation') .</description>
       <created by="Michael Kay" on="2014-10-30"/>
       <modified by="Michael Kay" on="2014-11-14" change="@xpath must be a string, the inner quotes were missing"/>
@@ -239,6 +239,36 @@
       </test>
       <result>
          <assert>/out = 'no'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-015">
+      <description>Test that xsl:xpath-version is 3.0 or 3.1</description>
+      <created by="Michael Kay" on="2015-09-04"/>
+      <environment ref="systemprop001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="system-property-015.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>truetrue</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-016">
+      <description>Test that xsl:xsd-version is 1.0 or 1.1</description>
+      <created by="Michael Kay" on="2015-09-04"/>
+      <environment ref="systemprop001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="system-property-016.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>truetrue</out>]]></assert-xml>
       </result>
    </test-case>
 
