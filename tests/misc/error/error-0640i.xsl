@@ -9,7 +9,9 @@
   </xsl:param>
   
   <xsl:param name="y">
-    <xsl:evaluate xpath="'$p'" />
+    <xsl:evaluate xpath="'$p'" >
+      <xsl:with-param name="p" select="$p"/>
+    </xsl:evaluate>
   </xsl:param>
 
   <xsl:template name="xsl:initial-template">

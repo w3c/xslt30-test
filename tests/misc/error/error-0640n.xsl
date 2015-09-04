@@ -10,7 +10,9 @@
     See bug 28368 about capturing circularity errors (will likely become disallowed) -->
  
     <xsl:variable name="circular">
-        <xsl:evaluate xpath="'$other'" />
+        <xsl:evaluate xpath="'$other'" >
+          <xsl:with-param name="other" select="$other"/>
+        </xsl:evaluate>
     </xsl:variable>
     
     <xsl:variable name="other">

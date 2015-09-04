@@ -4474,9 +4474,9 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
 
    <test-case name="error-0640b">
       <description>Error: xsl:variable - self-reference.
-Was error-code-145.
-In general, a circularity in a stylesheet is a non-recoverable dynamic error.</description>
+Was error-code-145. In general, a circularity in a stylesheet is a non-recoverable dynamic error.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-09-04" change="Added option of error code XPST0008 - arguably preferable"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -4485,7 +4485,10 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
          <stylesheet file="error-0640b.xsl"/>
       </test>
       <result>
-         <error code="XTDE0640"/>
+        <any-of>
+          <error code="XTDE0640"/>
+          <error code="XPST0008"/>
+        </any-of>  
       </result>
    </test-case>
 
@@ -4628,6 +4631,7 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
          Generate error XTDE0640 (circularity error) with xsl:evaluate in xsl:param
       </description>
       <created by="Abel Braaksma" on="2015-03-30"/>
+      <modified by="Michael Kay" on="2015-09-04" change="The variable reference in xsl:evaluate was unresolved, so this wasn't a circularity as written"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -4644,6 +4648,7 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
          Generate error XTDE0640 (circularity error) with xsl:evaluate in xsl:variable
       </description>
       <created by="Abel Braaksma" on="2015-03-30"/>
+      <modified by="Michael Kay" on="2015-09-04" change="The variable reference in xsl:evaluate was unresolved, so this wasn't a circularity as written"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -4708,6 +4713,7 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
          Generate error XTDE0640 (circularity error) raised through xsl:evaluate and trying to catch it with xsl:try/catch in a function (not allowed, see Bug 28368)
       </description>
       <created by="Abel Braaksma" on="2015-03-30"/>
+      <modified by="Michael Kay" on="2015-09-04" change="The variable reference in xsl:evaluate was unresolved, so this wasn't a circularity as written"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -5395,7 +5401,7 @@ If the as attribute of xsl:function
       </result>
    </test-case>
 
-   <test-case name="error-0790a">
+   <test-case name="error-0790a2">
       <description>Generate error XTTE0790.
 Was error-code-278.
 If the value of a parameter to a stylesheet function cannot be converted to the required type, a
@@ -5403,7 +5409,7 @@ If the value of a parameter to a stylesheet function cannot be converted to the 
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="error-0790a.xsl"/>
@@ -5411,6 +5417,26 @@ If the value of a parameter to a stylesheet function cannot be converted to the 
       </test>
       <result>
          <error code="XTTE0790"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-0790a3">
+      <description>Generate error XTTE0790.
+Was error-code-278.
+If the value of a parameter to a stylesheet function cannot be converted to the required type, a
+                        type error is signaled.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-09-04" change="error code changes in 3.0, test forked"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0790a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
       </result>
    </test-case>
 
@@ -8359,17 +8385,14 @@ It is a non-recoverable dynamic
 
    <test-case name="error-1460d">
       <description>Generate error XTDE1460.
-Was error-code-381.
-It is a non-recoverable dynamic
-                        error if the effective
-                        value of the format attribute of an
-                           xsl:result-document element is not a valid
-                        EQName, or if it does not
-                     match the expanded QName of an
-                        output definition in the
-                        stylesheet. If the processor is able
-                     to detect the error statically (for example, when the format
-                     attribute contains no curly brackets), then the processor
+                   Was error-code-381.
+                        It is a non-recoverable dynamic
+                        error if the effective value of the format attribute of an
+                        xsl:result-document element is not a valid
+                        EQName, or if it does not match the expanded QName of an
+                        output definition in the stylesheet. If the processor is able
+                        to detect the error statically (for example, when the format
+                        attribute contains no curly brackets), then the processor
                         may optionally signal this as a static error.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
