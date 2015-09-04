@@ -27,6 +27,10 @@
    <environment name="override-misc-F">
       <package file="override-base-misc-002.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-misc-002" package-version="1.0.0"/>
    </environment>
+   
+   <environment name="override-m-G">
+      <package file="override-base-m-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-m-001" package-version="1.0.0"/>
+   </environment>
 
    <dependencies>
       <spec value="XSLT30+"/> 
@@ -525,6 +529,58 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><x base1="base1" priv1="priv1" pub1="pub1" pub2="pub2"/><y priv8="priv8" priv9="priv9"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-001">
+      <description>Successful override of a template rule in a public mode</description>
+      <created by="Michael Kay" on="2015-08-30"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-001.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-002">
+      <description>Unsuccessful override of a template rule in a final mode</description>
+      <created by="Michael Kay" on="2015-08-30"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-002.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE9999"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-003">
+      <description>Unsuccessful override of a template rule in a private mode</description>
+      <created by="Michael Kay" on="2015-08-30"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-003.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE9999"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-004">
+      <description>Unsuccessful override of a template rule in the unnamed mode</description>
+      <created by="Michael Kay" on="2015-08-30"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-003.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE9999"/>
       </result>
    </test-case>
    
