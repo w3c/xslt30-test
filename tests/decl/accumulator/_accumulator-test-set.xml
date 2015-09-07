@@ -973,5 +973,19 @@
          <assert-xml><![CDATA[<figures><p>Figure 1: a third diagram</p><p>Figure 2: a fourth diagram</p></figures>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-050">
+      <description>Another variant on the section numbering example</description>
+      <created by="Michael Kay, after Phil Fearon" on="2015-09-06"/>
+      <environment>
+         <source role="." file="accumulator-050.xml" streaming="false"/>
+   	  </environment>
+      <test>
+         <stylesheet file="accumulator-050.xsl"/>
+      </test>
+      <result>
+         <assert>every $p in //p satisfies ($p/following-sibling::text()[1]/normalize-space() = '[' || $p || ']')</assert>
+      </result>
+   </test-case>
 
 </test-set>
