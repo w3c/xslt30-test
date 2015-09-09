@@ -107,4 +107,31 @@
          <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="assert-008">
+      <description>Simple assertion; succeeds; message uses select attribute</description>
+      <keywords>xsl:assert</keywords>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="assert-001"/>
+      <test>
+         <initial-template name="go008"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="assert-009">
+      <description>Simple assertion; fails; message uses select attribute</description>
+      <keywords>xsl:assert</keywords>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="assert-001"/>
+      <test>
+         <initial-template name="go008"/>
+         <param name="p" select="3"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>

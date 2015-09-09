@@ -47,6 +47,14 @@
    			      test="$p eq 3">This message means: Test has succeeded</xsl:assert>
    		</out>
 	</xsl:template>
+	
+	<xsl:variable name="message008">This message means: Test has failed</xsl:variable>
+	
+	<xsl:template name="go008">
+   		<out>
+   			<xsl:assert test="$p eq 2" select="$message008"/>
+   		</out>
+	</xsl:template>
 
  
 </xsl:stylesheet>
