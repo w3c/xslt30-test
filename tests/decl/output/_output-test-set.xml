@@ -3552,7 +3552,31 @@
          <serialization-matches><![CDATA[<!DOCTYPE\s+html\s+PUBLIC\s+"-//W3C//DTD\sXHTML\s1.0\sStrict//EN"\s+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">]]></serialization-matches>
       </result>
    </test-case>
-
+   
+   <test-case name="output-0232">
+      <description>xml method, suppress-indentation </description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0232.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+        <all-of>
+         <serialization-matches><![CDATA[chapter>\s+<p]]></serialization-matches>
+         <serialization-matches><![CDATA[cap><small]]></serialization-matches>
+         <serialization-matches><![CDATA[wizard><cap]]></serialization-matches>
+         <serialization-matches><![CDATA[small></wizard]]></serialization-matches>
+         <serialization-matches><![CDATA[big><little]]></serialization-matches>
+         <serialization-matches><![CDATA[hobbit><big]]></serialization-matches>
+         <serialization-matches><![CDATA[little></hobbit]]></serialization-matches>
+        </all-of> 
+      </result>
+   </test-case>
+   
    <test-case name="output-0280">
       <description>Test that an error is raised on invalid @indent value in
          xsl:output.</description>
