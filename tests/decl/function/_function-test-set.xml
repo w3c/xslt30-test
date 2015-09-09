@@ -1044,6 +1044,148 @@
          <error code="FODF1310"/>
       </result>
    </test-case>
+   
+   <test-case name="function-1025">
+      <description>XSLT 3.0 deterministic function: creates nodes</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1025.xsl"/>
+         <param name="new-each-time" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <assert>/out = "7"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1026">
+      <description>XSLT 3.0 deterministic function: uses generate-id</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1026.xsl"/>
+         <param name="new-each-time" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <assert>/out = "7"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1027">
+      <description>XSLT 3.0 proactive function: creates nodes</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1025.xsl"/>
+         <param name="new-each-time" static="yes" select="'yes'"/>
+      </test>
+      <result>
+         <assert>/out = "10"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1028">
+      <description>XSLT 3.0 proactive function: uses generate-id</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1026.xsl"/>
+         <param name="new-each-time" static="yes" select="'yes'"/>
+      </test>
+      <result>
+         <assert>/out = "10"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1029">
+      <description>XSLT 3.0 elidable function: creates nodes</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1025.xsl"/>
+         <param name="new-each-time" static="yes" select="'maybe'"/>
+      </test>
+      <result>
+         <assert>/out = ("7", "8", "9", "10")</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1030">
+      <description>XSLT 3.0 elidable function: uses generate-id</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1026.xsl"/>
+         <param name="new-each-time" static="yes" select="'maybe'"/>
+      </test>
+      <result>
+         <assert>/out = ("7", "8", "9", "10")</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1031">
+      <description>Memo function: a function that is tediously slow without caching</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1031.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "354224848179261915075"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1032">
+      <description>Deterministic function: input nodes are "the same" based on identity</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1032.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "100"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1033">
+      <description>Tempt the optimizer with a loop-lifting opportunity</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1033.xsl"/>
+      </test>
+      <result>
+         <assert>xs:integer(/out) = (1 to 10000)</assert>
+      </result>
+   </test-case>
+
 
    <test-case name="function-1101">
       <description>recursive stylesheet function test</description>
