@@ -1,6 +1,7 @@
 <!-- base stylesheet for testing variations of xsl:accept -->
 
 <xsl:package
+  id="accept-A"
   name="http://www.w3.org/xslt30tests/accept-A"  
   package-version="1.0.0"
   version="3.0"
