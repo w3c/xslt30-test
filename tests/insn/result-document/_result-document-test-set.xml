@@ -1705,6 +1705,30 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </any-of>
       </result>
    </test-case>
+   
+   <test-case name="result-document-0284">
+      <description>xml method, suppress-indentation </description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0284.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+        <all-of>
+         <serialization-matches><![CDATA[chapter>\s+<p]]></serialization-matches>
+         <serialization-matches><![CDATA[cap><small]]></serialization-matches>
+         <serialization-matches><![CDATA[wizard><cap]]></serialization-matches>
+         <serialization-matches><![CDATA[small></wizard]]></serialization-matches>
+         <serialization-matches><![CDATA[big><little]]></serialization-matches>
+         <serialization-matches><![CDATA[hobbit><big]]></serialization-matches>
+         <serialization-matches><![CDATA[little></hobbit]]></serialization-matches>
+        </all-of> 
+      </result>
+   </test-case>
 
    <test-case name="result-document-0301">
       <description>Test AVT in the @method of an xsl:result-document.</description>
