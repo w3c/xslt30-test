@@ -1294,20 +1294,6 @@ of problems processing the schema using various tools
             <xs:element ref="xsl:param"/>
             <xs:element ref="xsl:attribute-set"/>
           </xs:choice>          
-          <xs:assert test="every $e in * satisfies exists($e/@name)">
-            <xs:annotation>
-              <xs:documentation>
-                <p>Every component that is overridden (in particular, templates) must have a <code>name</code> attribute</p>
-              </xs:documentation>
-            </xs:annotation>
-          </xs:assert>
-          <xs:assert test="every $e in xsl:template satisfies empty($e/@match)">
-            <xs:annotation>
-              <xs:documentation>
-                <p>A template that is overridden must not have a <code>match</code> attribute</p>
-              </xs:documentation>
-            </xs:annotation>
-          </xs:assert>  
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>   
