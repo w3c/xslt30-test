@@ -1096,4 +1096,55 @@ __26,931.4</out>]]></assert-xml>
          <error code="XTSE1295"/>
       </result>
    </test-case>
+   
+   <test-case name="format-number-069a">
+      <description>exponent-separator (XPath 3.1)</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="format-number-069.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = "1.2346E2"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="format-number-069b">
+      <description>exponent-separator (not XPath 3.1)</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="format-number-069.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XXX"/>
+      </result>
+   </test-case>
+   
+   <test-case name="format-number-069c">
+      <description>exponent-separator (not XSLT 3.0)</description>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="format-number-069.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+   
+   
+   
+   
 </test-set>
