@@ -972,5 +972,185 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="merge-070">
+      <description>Merge two real-life data files for Swedish cities, using Swedish collation.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-070.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@name="Arsta"][@lon="18.051399"][@lat="59.297798"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@name="Vasteras"][@lon="16.552759"][@lat="59.616169"][@temp="276.21"][@wind="9.25"]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-071">
+      <description>Merge two real-life data files for Swedish cities, using Swedish collation.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-071.xsl"/>
+         <param name="collation" select="'http://www.w3.org/2013/collation/UCA?lang=sv;caseFirst=upper;alternate=shifted'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@name="Arsta"][@lon="18.051399"][@lat="59.297798"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@name="Vasteras"][@lon="16.552759"][@lat="59.616169"][@temp="276.21"][@wind="9.25"]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-072">
+      <description>Merge failure, using the wrong collation.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-071.xsl"/>
+         <param name="collation" select="'http://www.w3.org/2013/collation/UCA?lang=de;caseFirst=upper;alternate=shifted'"/>
+      </test>
+      <result>
+         <error code="XTDE2220"/>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-073">
+      <description>Merge success, using a different collation with sort-before-merge.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-073.xsl"/>
+         <param name="collation" select="'http://www.w3.org/2013/collation/UCA?lang=de;caseFirst=upper;alternate=shifted'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@name="Arsta"][@lon="18.051399"][@lat="59.297798"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@name="Vasteras"][@lon="16.552759"][@lat="59.616169"][@temp="276.21"][@wind="9.25"]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-074">
+      <description>default-collation not used by xsl:merge (bug 29117)</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-074.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE2220"/>  
+      </result>
+   </test-case>
+   
+   <test-case name="merge-075">
+      <description>Incompatible collations used for different merge sources</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-075.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE2210"/>  
+      </result>
+   </test-case>
+   
+   <test-case name="merge-076">
+      <description>Use current-merge-group#1</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-076.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@name="Arsta"][@lon="18.051399"][@lat="59.297798"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@name="Vasteras"][@lon="16.552759"][@lat="59.616169"][@temp="276.21"][@wind="9.25"]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-077">
+      <description>Use current-merge-group#1 with bad source name</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-077.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3490"/>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-078">
+      <description>Composite merge key.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-078.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@country="SE"][@name="Arsta"][@lon="18.051399"][@lat="59.297798"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@country="SE"][@name="Vasteras"][@lon="16.552759"][@lat="59.616169"][@temp="276.21"][@wind="9.25"]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-079">
+      <description>Failure to access outside snapshot.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-079.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@name="Arsta"][@lon="18.051399"][@lat="59.297798"][@temp=""][@wind=""]</assert>
+            <assert>/weather/city[@name="Vasteras"][@lon="16.552759"][@lat="59.616169"][@temp=""][@wind=""]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-080">
+      <description>Merge a single file (another way of doing group-adjacent).</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-080.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/duplicates/city-name/@name = 'Anderstorp'</assert>
+            <assert>/duplicates/city-name/@name = 'As'</assert>
+            <assert>/duplicates/city-name/@name = 'Brevik'</assert>
+            <assert>/duplicates/city-name/@name = 'Bua'</assert>
+         </all-of>   
+      </result>
+   </test-case>
 
 </test-set>
