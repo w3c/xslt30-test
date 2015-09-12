@@ -13,8 +13,8 @@
      
      <xsl:override>
      
-        <xsl:template match="a" mode="m3">
-          <AA><xsl:apply-templates mode="#current"/></AA>
+        <xsl:template match="A" mode="m3">
+          <aa><xsl:apply-templates mode="#current"/></aa>
         </xsl:template>
         
      </xsl:override>
