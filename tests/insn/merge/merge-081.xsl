@@ -19,8 +19,8 @@
                     <xsl:merge-key select="name" lang="sv" case-order="upper-first"/>
                 </xsl:merge-source>
                 <xsl:merge-source name="weather"
-                        streamable="yes"
-                		for-each-stream="'weather-SE.xml'"
+                        streamable="no"
+                		for-each-item="doc('weather-SE.xml')"
                 		select="city-list/record/city">	
                     <xsl:merge-key select="name" lang="sv" case-order="upper-first"/>
                 </xsl:merge-source>

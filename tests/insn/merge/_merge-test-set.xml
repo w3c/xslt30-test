@@ -1152,5 +1152,75 @@
          </all-of>   
       </result>
    </test-case>
+   
+   <test-case name="merge-081">
+      <description>No failure to access outside snapshot when not streaming.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-081.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@name="Arsta"][@lon="18.051399"][@lat="59.297798"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@name="Vasteras"][@lon="16.552759"][@lat="59.616169"][@temp="276.21"][@wind="9.25"]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-082">
+      <description>Use position() in xsl:merge-key/@select both with streaming and non-streaming.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-082.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@pos="1"][@name1="Abborrberget"][@name2="Arsta"]
+                    [@lon="14.8"][@lat="60.150002"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@pos="1053"][@name1="Östra Vi"][@name2=""]
+                    [@lon="18.316669"][@lat="57.633331"][@temp=""][@wind=""]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-083">
+      <description>Use position() in xsl:merge-action.</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-083.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@name="Arsta"][@pos="47"][@lon="18.051399"][@lat="59.297798"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@name="Vasteras"][@pos="966"][@lon="16.552759"][@lat="59.616169"][@temp="276.21"][@wind="9.25"]</assert>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="merge-084">
+      <description>Use last() in declared-streamable xsl:merge-action (bug 29120).</description>
+      <created by="Michael Kay" on="2015-09-10"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-084.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/weather/city[@name="Arsta"][@pos="49"][@lon="18.051399"][@lat="59.297798"][@temp="273.95"][@wind="5.14"]</assert>
+            <assert>/weather/city[@name="Vasteras"][@pos="966"][@lon="16.552759"][@lat="59.616169"][@temp="276.21"][@wind="9.25"]</assert>
+         </all-of>   
+      </result>
+   </test-case>
 
 </test-set>

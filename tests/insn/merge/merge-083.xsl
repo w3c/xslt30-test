@@ -15,20 +15,20 @@
                 <xsl:merge-source name="cities"
                         streamable="yes"
                 		for-each-stream="'cities-SE.xml'"
-                		select="city-list/city">	
+                		select="city-list/city">
                     <xsl:merge-key select="name" lang="sv" case-order="upper-first"/>
                 </xsl:merge-source>
                 <xsl:merge-source name="weather"
                         streamable="yes"
                 		for-each-stream="'weather-SE.xml'"
-                		select="city-list/record/city">	
-                    <xsl:merge-key select="name" lang="sv" case-order="upper-first"/>
+                		select="city-list/record">
+                    <xsl:merge-key select="(.//sv, city/name)[1]" lang="sv" case-order="upper-first"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
                   <xsl:variable name="g" select="current-merge-group()"/>
-                  <xsl:if test="count($g) ge 2">
-                    <city name="{current-merge-key()}" lon="{$g/self::city/coord/lon}" lat="{$g/self::city/coord/lat}" 
-                          temp="{$g/ancestor::record[1]//temp}" wind="{$g/ancestor::record[1]//wind/speed}"/>
+                  <xsl:if test="$g/self::city and $g/self::record">
+                    <city name="{current-merge-key()}" pos="{position()}" lon="{$g/self::city/coord/lon}" lat="{$g/self::city/coord/lat}" 
+                          temp="{$g/self::record/main/temp}" wind="{$g/self::record/wind/speed}"/>
                   </xsl:if>        
                 </xsl:merge-action>
             </xsl:merge>            

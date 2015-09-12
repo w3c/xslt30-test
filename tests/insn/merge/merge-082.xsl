@@ -16,20 +16,21 @@
                         streamable="yes"
                 		for-each-stream="'cities-SE.xml'"
                 		select="city-list/city">	
-                    <xsl:merge-key select="name" lang="sv" case-order="upper-first"/>
+                    <xsl:merge-key select="position()"/>
                 </xsl:merge-source>
                 <xsl:merge-source name="weather"
-                        streamable="yes"
-                		for-each-stream="'weather-SE.xml'"
-                		select="city-list/record/city">	
-                    <xsl:merge-key select="name" lang="sv" case-order="upper-first"/>
+                        streamable="no"
+                		for-each-item="doc('weather-SE.xml')"
+                		select="city-list/record">	
+                    <xsl:merge-key select="position()"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
-                  <xsl:variable name="g" select="current-merge-group()"/>
-                  <xsl:if test="count($g) ge 2">
-                    <city name="{current-merge-key()}" lon="{$g/self::city/coord/lon}" lat="{$g/self::city/coord/lat}" 
-                          temp="{$g/ancestor::record[1]//temp}" wind="{$g/ancestor::record[1]//wind/speed}"/>
-                  </xsl:if>        
+                  <xsl:variable name="g" select="current-merge-group()/self::city"/>
+                  <xsl:variable name="h" select="current-merge-group()/self::record"/>
+                  <city pos="{current-merge-key()}"
+                          name1="{$g/name}" name2="{$h/city/name}"
+                          lon="{$g/coord/lon}" lat="{$g/coord/lat}" 
+                          temp="{$h//temp}" wind="{$h//wind/speed}"/>       
                 </xsl:merge-action>
             </xsl:merge>            
         </weather>
