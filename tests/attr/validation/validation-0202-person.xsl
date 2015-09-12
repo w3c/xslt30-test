@@ -136,7 +136,7 @@
 
   <!-- function to convert a standard GEDCOM date (DD MMM YYYY) to an xs:date -->
 
-  <xsl:function name="ged:date-to-ISO" as="xs:date">
+  <xsl:function name="ged:date-to-ISO-2" as="xs:date">
     <xsl:param name="date" as="StandardDate"/>
     <xsl:variable name="iso-date">
       <xsl:analyze-string select="$date" regex="^\s*([0-9]+)\s+([A-Z]+)\s+([0-9]+)\s*$">
@@ -155,6 +155,16 @@
     </xsl:variable>
     <xsl:sequence select="xs:date($iso-date)"/>
   </xsl:function>
+  
+  <xsl:function name="ged:date-to-ISO" as="xs:date">
+    <xsl:param name="date" as="StandardDate"/>
+    <xsl:variable name="results" select="(1 to 200)!ged:date-to-ISO-2($date)"/>
+    <xsl:if test="count(distinct-values($results)) > 1">
+      <xsl:message terminate="yes">FAIL!!</xsl:message>
+    </xsl:if> 
+    <xsl:sequence select="$results[1]" />
+  </xsl:function>
+  
 
   <!-- function to format a standard GEDCOM date for display -->
 
