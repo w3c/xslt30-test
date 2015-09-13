@@ -151,6 +151,36 @@
          <error code="XTMM9000"/>
       </result>
    </test-case>
+   
+   <test-case name="message-0009">
+      <description>xsl:message with user-defined error code (as a lexical QName in an AVT)</description>
+      <created by="Michael Kay" on="2015-09-13"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0009.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="Q{http://example.com/err}XXXX8888"/>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0010">
+      <description>xsl:message with user-defined error code (as a URI-Qualified Name in an AVT)</description>
+      <created by="Michael Kay" on="2015-09-13"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0010.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="Q{http://example.com/err}XXXX8888"/>
+      </result>
+   </test-case>
 
    <test-case name="message-0101">
       <description>Test case that uses attribute value template for 'terminate' attribute of an xsl:message instruction, the value of the AVT which is the value of a parameter evalues to 'no'.</description>
