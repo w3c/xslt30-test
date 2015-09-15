@@ -19,7 +19,7 @@
    </xslt:template>
 
    <xslt:template
-      match="my:simpleBuiltin|my:simpleUserElem|my:simpleUserList|my:simpleUserUnion">
+      match="my:simpleBuiltin | my:simpleUserElem | my:simpleUserList | //my:simpleUserUnion">
       <xslt:element name="A{position()}">
          <xslt:value-of select="."/>
       </xslt:element>
