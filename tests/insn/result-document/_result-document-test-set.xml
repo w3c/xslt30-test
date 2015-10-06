@@ -1750,6 +1750,60 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <assert-serialization method="text">hello</assert-serialization>
       </result>
    </test-case>
+   
+   <test-case name="result-document-0302">
+      <description>With xsl:result-document, no href, use build-tree="no" and item-separator</description>
+      <created by="Michael Kay" on="2015-09-29"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><foo>text</foo></doc>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0302.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization method="text">1|2</assert-serialization>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-0303">
+      <description>With xsl:result-document, no href, use JSON serialization</description>
+      <created by="Michael Kay" on="2015-09-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0303.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>"a":22</serialization-matches>
+            <serialization-matches>"b":23</serialization-matches>
+            <serialization-matches>"c":24</serialization-matches>
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-0304">
+      <description>With xsl:result-document, no href, use Adaptive serialization</description>
+      <created by="Michael Kay" on="2015-09-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0304.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization method="adaptive"><![CDATA[{"a":22}|<elem/>|a="5"]]></assert-serialization>  
+      </result>
+   </test-case>
 
    <test-case name="result-document-0401">
       <description>Test AVT in @cdata-section-elements of xsl:result-document.</description>
