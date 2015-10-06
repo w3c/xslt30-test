@@ -610,7 +610,7 @@
    </test-case>
 
    <test-case name="validation-0209">
-      <description/>
+      <description>Test validation of xsl:attribute value against a simple atomic type</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="validation-02"/>
       <dependencies>
@@ -638,6 +638,38 @@
       </test>
       <result>
          <error code="XTSE0265"/>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-0211">
+      <description>Test validation of xsl:result-document: no href: output is invalid</description>
+      <created by="Michael Kay" on="2015-09-29"/>
+      <environment ref="validation-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0211.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-0212">
+      <description>Test validation of xsl:result-document: with href: output is invalid</description>
+      <created by="Michael Kay" on="2015-09-29"/>
+      <environment ref="validation-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0212.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
       </result>
    </test-case>
 
