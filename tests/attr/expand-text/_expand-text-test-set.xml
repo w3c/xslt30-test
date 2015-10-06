@@ -524,6 +524,24 @@
          </all-of>   
       </result>
    </test-case>
+   
+   <test-case name="cvt-032">
+      <description>TVTs enabled but not used within xsl:attribute (Saxon bug from John Lumley)</description>
+      <keywords>expand-text-attribute</keywords>
+      <created by="Michael Kay" on="2015-10-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-032.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<foo xpath-default-namespace="http://www.w3.org/2000/svg"/>]]></assert-xml>
+         </all-of>   
+      </result>
+   </test-case>
 
 
 
