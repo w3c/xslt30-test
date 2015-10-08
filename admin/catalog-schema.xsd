@@ -1593,7 +1593,7 @@
                 <div>
                     <h3>not</h3>
                     <p> Contains an assertion which must be false if the containing assertion is to
-                        succeed. </p>
+                        succeed. This assertion may contain any other assertion or combination of assertions. </p>
                 </div>
             </xs:documentation>
         </xs:annotation>
@@ -1739,7 +1739,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="assert-warning" substitutionGroup="abstractAssertion">
+    <xs:element name="assert-warning" substitutionGroup="abstractAssertion" type="emptyAssertionType">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -1749,9 +1749,6 @@
                 </div>
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:sequence/>
-        </xs:complexType>
     </xs:element>
 
     <xs:element name="assert-serialization" substitutionGroup="abstractAssertion">
@@ -1903,7 +1900,10 @@
                 <div>
                     <h3>assert-type</h3>
                     <p> Asserts that the result of the test matches the sequence type given as the
-                        value of the assert-type element. </p>
+                        value of the assert-type element, using the XPath 'instance of' operator.</p>
+                    <p> For XSLT tests, the result is typically a document node, in which case the type is 
+                        always document-node(). Make sure to set the expected result to raw, or to use the 
+                        function invocation mechanism, which will return a typed sequence.</p>
                 </div>
             </xs:documentation>
         </xs:annotation>
@@ -1924,7 +1924,7 @@
                         numeric literal) which must be equal to the result of the test case under
                         the rules of the XPath 'eq' operator. </p>
                     <p>For example, <code>&lt;assert-eq&gt;12&lt;/assert-eq&gt;</code> asserts that
-                        the result of the test expression is an atomic value that compares equal to
+                        the result of the test case is an atomic value that compares equal to
                         the integer 12 (which means it might be the double value 12.0 or the float
                         value 12.0 or the untyped atomic value "12.0", for example).</p>
                 </div>
@@ -1942,9 +1942,16 @@
             <xs:documentation>
                 <div>
                     <h3>assert-count</h3>
-                    <p> Asserts that the result must be a sequence containing a given number of
+                    <p> Asserts that the result of the test case must be a sequence containing a given number of
                         items. The value of the element is an integer giving the expected length of
-                        the sequence. </p>
+                        the sequence. The test case fails if the sequence length is not matching exactly. Length
+                        can be set to zero, but it is better to use <code>&lt;assert-empty></code> instead.</p>
+                    <p> For XSLT tests, the result is typically a document node, in which case the length is always 1.
+                        Make sure to set the expected result to raw, or to use the function invocation mechanism, which
+                        will return a typed sequence.</p>
+                    <p> For example, <code>&lt;assert-count&gt;42&lt;/assert-count&gt;</code> asserts that
+                        the result of the test case exists of exactly 42 items, of any type. The test 
+                        succeeds if and only if the length of the sequence returned is 42.</p>
                 </div>
             </xs:documentation>
         </xs:annotation>
@@ -1992,8 +1999,11 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- for use with assertions that should have empty content model -->
+    <xs:complexType name="emptyAssertionType">
+    </xs:complexType>
 
-    <xs:element name="assert-empty" substitutionGroup="abstractAssertion">
+    <xs:element name="assert-empty" substitutionGroup="abstractAssertion" type="emptyAssertionType">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -2004,7 +2014,7 @@
         </xs:annotation>
     </xs:element>
 
-    <xs:element name="assert-true" substitutionGroup="abstractAssertion">
+    <xs:element name="assert-true" substitutionGroup="abstractAssertion" type="emptyAssertionType">
         <xs:annotation>
             <xs:documentation>
                 <div>
@@ -2017,7 +2027,7 @@
         </xs:annotation>
     </xs:element>
 
-    <xs:element name="assert-false" substitutionGroup="abstractAssertion">
+    <xs:element name="assert-false" substitutionGroup="abstractAssertion" type="emptyAssertionType">
         <xs:annotation>
             <xs:documentation>
                 <div>
