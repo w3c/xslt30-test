@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xslt:transform xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
-                exclude-result-prefixes="xs"
-                version="2.0">
-<!-- Purpose: Use sequence constructor in xsl:sort instead of select, refer to . in the constructor -->
+<xsl:transform xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="xs" version="2.0">
+   <!-- Purpose: Use sequence constructor in xsl:sort instead of select, refer to . in the constructor -->
 
-   <xslt:output method="xml" encoding="UTF-8" indent="no"/>
+   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
-   <xslt:variable name="var" select="(1,4,0,-2,005,300)" as="xs:anyAtomicType*"/>
+   <xsl:variable name="var" select="(1,4,0,-2,005,300)" as="xs:anyAtomicType*"/>
 
-   <xslt:template match="/">
-	     <out>
-         <xslt:for-each select="$var">
-    		      <xslt:sort data-type="number" order="descending">
-   				        <xslt:value-of select="."/>
-   			      </xslt:sort>
-   			      <xslt:value-of select="."/>
-   			      <xslt:value-of select="' | '"/>
-  		     </xslt:for-each>
+   <xsl:template match="/">
+      <out>
+         <xsl:for-each select="$var">
+            <xsl:sort data-type="number" order="descending">
+               <xsl:value-of select="."/>
+            </xsl:sort>
+            <xsl:value-of select="."/>
+            <xsl:value-of select="' | '"/>
+         </xsl:for-each>
       </out>
-   </xslt:template>
-</xslt:transform>
+   </xsl:template>
+</xsl:transform>
