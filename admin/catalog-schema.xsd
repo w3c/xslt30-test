@@ -174,31 +174,59 @@
         <xs:complexType>
             <xs:attribute name="uri">
                 <xs:simpleType>
-                    <xs:restriction base="xs:anyURI">
-                        <xs:enumeration
-                            value="http://www.w3.org/2005/xpath-functions/collation/codepoint">
-                            <xs:annotation>
-                                <xs:documentation>
-                                    <p>This is the standard codepoint collation which all
-                                        implementations must support</p>
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="http://www.w3.org/xslts/collation/caseblind">
-                            <xs:annotation>
-                                <xs:documentation>
-                                    <p>This URI is used to represent a case-blind collation. Tests
-                                        using this collation will only use it to compare strings
-                                        made up of ASCII letters (a-z, A-Z), and the only
-                                        requirement placed on the collation is that (a) the
-                                        comparison is case-blind (so "a"="A", "b"="B", etc), and
-                                        different characters sort in the conventional order of the
-                                        English alphabet ("a" &lt; "b", etc).</p>
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                    </xs:restriction>
-                </xs:simpleType>
+                    <xs:union> 
+                        <xs:simpleType>
+                            <xs:restriction base="xs:anyURI">
+                                <xs:enumeration value="http://www.w3.org/2005/xpath-functions/collation/codepoint">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            <p>This is the standard codepoint collation which all implementations must support</p>
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="http://www.w3.org/xslts/collation/caseblind">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            <p>This URI is used to represent a case-blind collation. Tests
+                                                using this collation will only use it to compare strings
+                                                made up of ASCII letters (a-z, A-Z), and the only
+                                                requirement placed on the collation is that (a) the
+                                                comparison is case-blind (so "a"="A", "b"="B", etc), and
+                                                different characters sort in the conventional order of the
+                                                English alphabet ("a" &lt; "b", etc).</p>
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            <p>This URI is used to represent a case-blind collation. Tests using this collation
+                                                will only use it to compare strings made up of ASCII letters (a-z, A-Z), and the
+                                                only requirement placed on the collation is that (a) the comparison is case-blind
+                                                (so "a"="A", "b"="B", etc), and different characters sort in the conventional
+                                                order of the English alphabet ("a" &lt; "b", etc).</p>
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            <p>This URI is used to represent the case-blind collation defined in HTML5, which
+                                                must be supported by all XPath 3.1 and XQuery 3.1 processors. It is defined only
+                                                for use in equality comparisons, not for ordering. ASCII letters are compared
+                                                case-blind; all other Unicode characters are compared by codepoint.</p>
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                            </xs:restriction>
+                        </xs:simpleType>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:anyURI">
+                                <xs:pattern value="http://www.w3.org/2013/collation/UCA\?.*"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:union>
+                </xs:simpleType>   
             </xs:attribute>
             <xs:attribute name="default" type="xs:boolean" use="optional" default="false">
                 <xs:annotation>
@@ -655,7 +683,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:choice maxOccurs="unbounded">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
                     <xs:element ref="description"/>
                     <xs:element ref="keywords"/>
                     <xs:element ref="link"/>
@@ -798,7 +826,7 @@
                 <xs:restriction base="dependencyType">
                     <xs:attribute name="value">
                         <xs:simpleType>
-                            <xs:restriction base="xs:string">
+                            <xs:restriction base="xs:language">
                                 <xs:enumeration value="en"/>
                                 <xs:enumeration value="de"/>
                                 <xs:enumeration value="fr"/>
