@@ -16,16 +16,12 @@
     <xsl:param name="s1.false" select="'[false]'"/>
     <xsl:param name="s1.null" select="'[null]'"/>
 
-
-    <!--<xsl:import-schema namespace="http://www.w3.org/2005/xpath-functions"
-        schema-location="http://www.w3.org/TR/2013/WD-xslt-30-20131212/schema-for-json.xsd"/>-->
-    <xsl:import-schema namespace="http://www.w3.org/2005/xpath-functions"
-        schema-location="schema-for-json.xsd"/>
+    <xsl:import-schema namespace="http://www.w3.org/2005/xpath-functions"/>
 
     <!-- Note that whilst it would be cleaner perhaps to do the type checking in the assertions
         (though they are in another file :-( ) there appears to be no way for
         schema association with *result* documents, as opposed to source, 
-        to be described in the XLST test schema 
+        to be described in the XSLT test schema 
     
     Consequently we do the tests here and transmit true/false to the harness, in a very inelegant manner.
     

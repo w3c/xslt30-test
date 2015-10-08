@@ -32,12 +32,10 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s0.map) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>document-node()</assert-type>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-002">
         <xsl:variable name="metadata">
@@ -46,13 +44,11 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s0.map) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}map)</assert-type>
                 <assert>count($result/*) eq 0</assert>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-003">
         <xsl:variable name="metadata">
@@ -61,12 +57,10 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s0.array) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>document-node()</assert-type>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-004">
         <xsl:variable name="metadata">
@@ -75,13 +69,11 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s0.array) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}array)</assert-type>
                 <assert>count($result/*) eq 0</assert>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-005">
         <xsl:variable name="metadata">
@@ -90,15 +82,13 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s1.number) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}array)</assert-type>
                 <assert>count($result/*) eq 1</assert>
                 <assert>$result/*[1] instance of element(j:number,xs:untyped)</assert>
                 <assert>xs:double($result/*[1]) eq 1</assert>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-006">
         <xsl:variable name="metadata">
@@ -107,15 +97,13 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s1.string) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>element(*)</assert-type>
                 <assert>count($result/*) eq 1</assert>
                 <assert>$result/*[1] instance of element(j:string,xs:untyped)</assert>
                 <assert>xs:string($result/*[1]) eq "a"</assert>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-007">
         <xsl:variable name="metadata">
@@ -124,15 +112,13 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s1.true) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>element(*)</assert-type>
                 <assert>count($result/*) eq 1</assert>
                 <assert>$result/*[1] instance of element(j:boolean,xs:untyped)</assert>
                 <assert>xs:boolean($result/*[1]) eq true()</assert>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-008">
         <xsl:variable name="metadata">
@@ -141,15 +127,13 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s1.false) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>element(*)</assert-type>
                 <assert>count($result/*) eq 1</assert>
                 <assert>$result/*[1] instance of element(j:boolean,xs:untyped)</assert>
                 <assert>xs:boolean($result/*[1]) eq false()</assert>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-009">
         <xsl:variable name="metadata">
@@ -158,15 +142,13 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($s1.null) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>element(*)</assert-type>
                 <assert>count($result/*) eq 1</assert>
                 <assert>$result/*[1] instance of element(j:null,xs:untyped)</assert>
                 <assert>empty($result/*[1]/(*|text()))</assert>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-010">
         <xsl:variable name="metadata">
@@ -175,13 +157,11 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml(unparsed-text('data001.json')) "/>
-        <xsl:variable name="expected-results">
-            <all-of>
+        <!--<all-of>
                 <assert-count>1</assert-count>
                 <assert-type>element(*)</assert-type>
                 <assert>count($result/*) eq 1</assert>
-            </all-of>
-        </xsl:variable>
+            </all-of>-->
     </xsl:template>
     <xsl:template name="json-to-xml-011">
         <xsl:variable name="metadata">
@@ -208,11 +188,10 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($escape.1)//j:string "/>
-        <xsl:variable name="expected-results">
-            <test> json-to-xml($escape.1)//j:string</test>
+        <!--<test> json-to-xml($escape.1)//j:string</test>
             <result>
                 <all-of>
-                    <!--<assert-count>1</assert-count>
+                    <!-\-<assert-count>1</assert-count>
                     <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}string)</assert-type>
                     <assert-string-value>Data with " within it</assert-string-value>
                     <any-of>
@@ -222,10 +201,9 @@
                     <any-of>
                         <assert>empty($result/@escaped-key)</assert>
                         <assert>$result/@escaped-key eq "false"</assert>
-                    </any-of>-->
+                    </any-of>-\->
                 </all-of>
-            </result>
-        </xsl:variable>
+            </result>-->
     </xsl:template>
     <xsl:template name="json-to-xml-escape-002">
         <xsl:variable name="metadata">
@@ -234,11 +212,10 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($escape.2)//j:string "/>
-        <xsl:variable name="expected-results">
-            <test> json-to-xml($escape.2)//j:string</test>
+        <!--<test> json-to-xml($escape.2)//j:string</test>
             <result>
                 <all-of>
-                    <!--<assert-count>1</assert-count>
+                    <!-\-<assert-count>1</assert-count>
                     <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}string)</assert-type>
                     <assert-string-value>Data with " within it</assert-string-value>
                     <assert>$result/@key eq 'Key " with quote'</assert>
@@ -249,10 +226,9 @@
                     <any-of>
                         <assert>empty($result/@escaped-key)</assert>
                         <assert>$result/@escaped-key eq "false"</assert>
-                    </any-of>-->
+                    </any-of>-\->
                 </all-of>
-            </result>
-        </xsl:variable>
+            </result>-->
     </xsl:template>
     <xsl:template name="json-to-xml-escape-003">
         <xsl:variable name="metadata">
@@ -261,10 +237,9 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($escape.1,$options.escape)//j:string "/>
-        <xsl:variable name="expected-results">
-            <test> json-to-xml($escape.1,$options.escape)//j:string</test>
+        <!--<test> json-to-xml($escape.1,$options.escape)//j:string</test>
             <result>
-                <!-- <all-of>
+                <!-\- <all-of>
                     <assert-count>1</assert-count>
                     <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}string)</assert-type>
                     <assert-string-value>Data with \" within it</assert-string-value>
@@ -273,9 +248,8 @@
                         <assert>empty($result/@escaped-key)</assert>
                         <assert>$result/@escaped-key eq "false"</assert>
                     </any-of>
-                </all-of>-->
-            </result>
-        </xsl:variable>
+                </all-of>-\->
+            </result>-->
     </xsl:template>
     <xsl:template name="json-to-xml-escape-004">
         <xsl:variable name="metadata">
@@ -284,19 +258,17 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($escape.2,$options.escape)//j:string "/>
-        <xsl:variable name="expected-results">
-            <test> json-to-xml($escape.2,$options.escape)//j:string</test>
+        <!--<test> json-to-xml($escape.2,$options.escape)//j:string</test>
             <result>
-                <!--<all-of>
+                <!-\-<all-of>
                     <assert-count>1</assert-count>
                     <assert-type>element(Q{http://www.w3.org/2005/xpath-functions}string)</assert-type>
                     <assert-string-value>Data with \" within it</assert-string-value>
                     <assert>$result/@key eq 'Key \" with quote'</assert>
                     <assert>$result/@escaped eq "true"</assert>
                     <assert>$result/@escaped-key eq "true"</assert>
-                </all-of>-->
-            </result>
-        </xsl:variable>
+                </all-of>-\->
+            </result>-->
     </xsl:template>
     <xsl:template name="json-to-xml-escape-005">
         <xsl:variable name="metadata">
@@ -305,10 +277,9 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($escape.3,$options.escape)//j:string "/>
-        <xsl:variable name="expected-results">
-            <test> json-to-xml($escape.3,$options.escape)//j:string</test>
+        <!--<test> json-to-xml($escape.3,$options.escape)//j:string</test>
             <result>
-                <!-- <all-of>
+                <!-\- <all-of>
                 <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
                 <assert>. = 'Data with \f within it'</assert>
                 <assert>*/@escaped eq "true"</assert>
@@ -316,9 +287,8 @@
                     <assert>empty(*/@escaped-key)</assert>
                     <assert>*/@escaped-key eq "false"</assert>
                 </any-of>
-            </all-of>-->
-            </result>
-        </xsl:variable>
+            </all-of>-\->
+            </result>-->
     </xsl:template>
     <xsl:template name="json-to-xml-escape-006">
         <xsl:variable name="metadata">
@@ -327,17 +297,15 @@
             <environment ref="JSON-XML"/>
         </xsl:variable>
         <xsl:copy-of select=" json-to-xml($escape.4,$options.escape)//j:string "/>
-        <xsl:variable name="expected-results">
-            <test> json-to-xml($escape.4,$options.escape)//j:string</test>
+        <!--<test> json-to-xml($escape.4,$options.escape)//j:string</test>
             <result>
-                <!--<all-of>
+                <!-\-<all-of>
                 <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
                 <assert>. = 'Data with \f within it'</assert>
                 <assert>*/@key eq 'Key \f with special character'</assert>
                 <assert>*/@escaped eq "true"</assert>
                 <assert>*/@escaped-key eq "true"</assert>
-            </all-of>-->
-            </result>
-        </xsl:variable>
+            </all-of>-\->
+            </result>-->
     </xsl:template>
 </xsl:stylesheet>
