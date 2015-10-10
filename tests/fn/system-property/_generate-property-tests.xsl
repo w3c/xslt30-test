@@ -131,14 +131,11 @@
             <result>
                 <all-of>
                     <assert>/output/@evaluation-method = '{$method}'</assert>
+                    <assert>count(/output/global-variables/(static-context | dynamic-context)/(static-call|ref-call|let-call|anon-call|partial-call|lookup-call)) = 12</assert>
                     <assert>every $res in /output/global-variables/static-context/* satisfies $res = ({$corrected-result})</assert>
                     <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ({$corrected-result})</assert>
                     <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-                    <xsl:if test="$method != 'evaluate'">
-                        <assert>not(empty(/output/static-context/result))</assert>
-                        <assert>not(empty(/output/dynamic-context/result))</assert>
-                        <assert>not(empty(/output/static-context/result-all))</assert>
-                        <assert>not(empty(/output/dynamic-context/result-all))</assert>
+                    <xsl:if test="$method != 'evaluate' and $method != 'static'">
                         <assert>every $res in /output/static-context/result satisfies $res = ({$corrected-result})</assert>
                         <assert>every $res in /output/dynamic-context/result satisfies $res = ({$corrected-result})</assert>
                         <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ({$corrected-result})</assert>
