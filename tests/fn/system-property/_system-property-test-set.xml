@@ -391,19 +391,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
          </all-of>
       </result>
    </test-case>
@@ -431,19 +423,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -471,19 +455,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
          </all-of>
       </result>
    </test-case>
@@ -511,10 +487,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
          </all-of>
       </result>
    </test-case>
@@ -542,10 +516,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -573,10 +545,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
          </all-of>
       </result>
    </test-case>
@@ -604,10 +574,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
          </all-of>
       </result>
    </test-case>
@@ -635,10 +603,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -666,10 +632,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
          </all-of>
       </result>
    </test-case>
@@ -697,10 +661,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
          </all-of>
       </result>
    </test-case>
@@ -728,10 +690,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -759,10 +719,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0')</assert>
          </all-of>
       </result>
    </test-case>
@@ -871,19 +829,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -911,19 +861,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -951,19 +893,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -991,10 +925,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1022,10 +954,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1053,10 +983,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1084,10 +1012,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1115,10 +1041,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1146,10 +1070,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1177,10 +1099,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1208,10 +1128,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1239,10 +1157,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1351,19 +1267,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1391,19 +1299,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1431,19 +1331,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1471,10 +1363,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1502,10 +1392,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1533,10 +1421,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1564,10 +1450,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1595,10 +1479,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1626,10 +1508,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1657,10 +1537,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1688,10 +1566,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1719,10 +1595,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1831,19 +1705,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1871,19 +1737,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1911,19 +1769,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1951,10 +1801,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -1982,10 +1830,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2013,10 +1859,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2044,10 +1888,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2075,10 +1917,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2106,10 +1946,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2137,10 +1975,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2168,10 +2004,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2199,10 +2033,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2311,19 +2143,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2351,19 +2175,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2391,19 +2207,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2431,10 +2239,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2462,10 +2268,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2493,10 +2297,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2524,10 +2326,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2555,10 +2355,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2586,10 +2384,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2617,10 +2413,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2648,10 +2442,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2679,10 +2471,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2791,19 +2581,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2831,19 +2613,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2871,19 +2645,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2911,10 +2677,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2942,10 +2706,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -2973,10 +2735,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3004,10 +2764,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3035,10 +2793,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3066,10 +2822,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3097,10 +2851,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3128,10 +2880,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3159,10 +2909,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3271,19 +3019,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3311,19 +3051,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3351,19 +3083,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3391,10 +3115,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3422,10 +3144,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3453,10 +3173,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3484,10 +3202,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3515,10 +3231,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3546,10 +3260,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3577,10 +3289,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3608,10 +3318,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3639,10 +3347,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('yes', 'no')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('yes', 'no')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('yes', 'no')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3751,19 +3457,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3791,19 +3489,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3831,19 +3521,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3871,10 +3553,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3902,10 +3582,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3933,10 +3611,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3964,10 +3640,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -3995,10 +3669,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4026,10 +3698,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4057,10 +3727,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4088,10 +3756,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4119,10 +3785,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('3.0', '3.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('3.0', '3.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('3.0', '3.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4231,19 +3895,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4271,19 +3927,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4311,19 +3959,11 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-            <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+            <assert>count(/output/evaluate-direct/static-call) = 5</assert>
             <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-            <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-            <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
+            <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4351,10 +3991,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4382,10 +4020,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4413,10 +4049,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4444,10 +4078,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4475,10 +4107,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4506,10 +4136,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4537,10 +4165,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4568,10 +4194,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('')</assert>
          </all-of>
       </result>
    </test-case>
@@ -4599,10 +4223,8 @@
             <assert>every $res in /output/global-variables/static-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ('1.0', '1.1')</assert>
             <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
-            <assert>every $res in /output/static-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
-            <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ('1.0', '1.1')</assert>
+            <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ('1.0', '1.1')</assert>
          </all-of>
       </result>
    </test-case>

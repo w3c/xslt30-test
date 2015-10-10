@@ -136,28 +136,18 @@
                     <assert>every $res in /output/global-variables/dynamic-context/* satisfies $res = ({$corrected-result})</assert>
                     <assert>every $eval in (for $i in 1 to 6 return /output/global-variables/static-context/*[$i] = /output/global-variables/dynamic-context/*[$i]) satisfies $eval</assert>
                     <xsl:if test="$method != 'evaluate' and $method != 'static'">
-                        <assert>every $res in /output/static-context/result satisfies $res = ({$corrected-result})</assert>
-                        <assert>every $res in /output/dynamic-context/result satisfies $res = ({$corrected-result})</assert>
-                        <assert>every $res in /output/static-context/result-all/tokenize(., ' ') satisfies $res = ({$corrected-result})</assert>
-                        <assert>every $res in /output/dynamic-context/result-all/tokenize(., ' ') satisfies $res = ({$corrected-result})</assert>
+                        <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ({$corrected-result})</assert>
+                        <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ({$corrected-result})</assert>
                     </xsl:if>
                     <xsl:if test="$method = 'evaluate'">
                         <!-- direct calls (no var set to a a function item) -->
-                        <assert>not(empty(/output/evaluate-direct/static-call[1]))</assert>
-                        <assert>not(empty(/output/evaluate-direct/static-call[2]))</assert>
-                        <assert>not(empty(/output/evaluate-direct/static-call[3]))</assert>
-                        <assert>not(empty(/output/evaluate-direct/static-call[4]))</assert>
+                        <assert>count(/output/evaluate-direct/static-call) = 5</assert>
                         <assert>every $res in /output/evaluate-direct/static-call satisfies $res = 'CAUGHT'</assert>
 
                         <!-- ref calls (var-for-xsl:evaluate set to reference of function item) -->
-                        <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call))</assert>
-                        <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call))</assert>
-                        <assert>not(empty(/output/evaluate-ref/static-context/dynamic-call-all))</assert>
-                        <assert>not(empty(/output/evaluate-ref/dynamic-context/dynamic-call-all))</assert>
-                        <assert>every $res in /output/evaluate-ref/static-context/dynamic-call satisfies $res = ({$corrected-result})</assert>
-                        <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call satisfies $res = ({$corrected-result})</assert>
-                        <assert>every $res in /output/evaluate-ref/static-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ({$corrected-result})</assert>
-                        <assert>every $res in /output/evaluate-ref/dynamic-context/dynamic-call-all/tokenize(., ' ') satisfies $res = ({$corrected-result})</assert>
+                        <assert>count(/output/evaluate-ref/(dynamic-context | static-context)/(dynamic-call | dynamic-call-all)) = 10</assert>
+                        <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call satisfies $res = ({$corrected-result})</assert>
+                        <assert>every $res in /output/evaluate-ref/(static-context | dynamic-context)/dynamic-call-all/tokenize(., ' ') satisfies $res = ({$corrected-result})</assert>
                     </xsl:if>                    
                 </all-of>
             </result>
