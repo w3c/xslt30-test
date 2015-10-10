@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform"
-             xml:base="http://www.example.org/"
-             version="2.0">
-<!-- Purpose: Test with base-uri($arg) where $arg is a copied single element node (no parents).-->
+<xsl:transform 
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+   xml:base="http://www.example.org/"
+   version="2.0">
+   
+   <!-- Purpose: Test with base-uri($arg) where $arg is a copied single element node (no parent).-->
 
-   <t:template match="/doc">
-	     <out>
-         <t:apply-templates select="str1/*"/>
+   <xsl:template match="/doc">
+      <out>
+         <xsl:apply-templates select="str1/*"/>
       </out>
-   </t:template>
+   </xsl:template>
 
-   <t:template match="substring1">
-	     <t:variable name="elemcopy" as="element()" xml:base="/main/">
-		       <t:copy>new content</t:copy>
-	     </t:variable>
-		
-	     <t:value-of select="base-uri($elemcopy)"/>
-		
-   </t:template>
-</t:transform>
+   <xsl:template match="substring1">
+      <xsl:variable name="elemcopy" as="element()" xml:base="/main/">
+         <xsl:copy>new content</xsl:copy>
+      </xsl:variable>
+
+      <xsl:value-of select="base-uri($elemcopy)"/>
+
+   </xsl:template>
+</xsl:transform>
