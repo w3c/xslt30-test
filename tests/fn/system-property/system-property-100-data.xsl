@@ -27,7 +27,7 @@
             -->
             <arg>$q($property)</arg>
         </method>
-        <method type="evaluate" eval-direct-error="XPST0017">
+        <method type="evaluate" eval-direct-error="XTDE3160">
             <arg>$q($property)</arg>
         </method>
     </data:test>
