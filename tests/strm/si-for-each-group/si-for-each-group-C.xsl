@@ -23,7 +23,7 @@
   
   <!-- within xsl:stream, use xsl:for-each-group  with numbering -->
    
-  <xsl:template name="feg-002">
+  <xsl:template name="feg-002" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each-group group-ending-with="." select="account/transaction[@value &lt; 0]">
@@ -37,7 +37,7 @@
   
   <!-- within xsl:stream, use xsl:for-each-group  with positional selection -->
    
-  <xsl:template name="feg-003">
+  <xsl:template name="feg-003" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each-group group-ending-with="." select="account/transaction[position() &lt; 5]">
@@ -51,7 +51,7 @@
   
   <!-- xsl:for-each-group group-ending-with="."  over atomized nodes -->
    
-  <xsl:template name="feg-004">
+  <xsl:template name="feg-004" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each-group group-ending-with="." select="subsequence(data(account/transaction/@value), 5, 3)">
@@ -65,7 +65,7 @@
   
   <!-- crawling selection, inspection body -->
    
-  <xsl:template name="feg-005" expand-text="yes">
+  <xsl:template name="feg-005" expand-text="yes" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each-group group-ending-with="." select="(//*)[position()=1 to 6]">{position()}:{name()}</xsl:for-each-group>
@@ -75,7 +75,7 @@
   
   <!-- crawling selection, inspection body -->
    
-  <xsl:template name="feg-006">
+  <xsl:template name="feg-006" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each-group group-ending-with="." select="//*">
@@ -87,7 +87,7 @@
   
   <!-- within xsl:stream, use parent axis within xsl:for-each-group  -->
    
-  <xsl:template name="feg-008">
+  <xsl:template name="feg-008" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each-group group-ending-with="." select="account/transaction[position() lt 5]">
@@ -99,7 +99,7 @@
   
   <!-- within xsl:stream, use ancestor axis within xsl:for-each-group  -->
    
-  <xsl:template name="feg-009">
+  <xsl:template name="feg-009" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each-group group-ending-with="." select="subsequence(account/transaction, 1, 4)">
@@ -111,7 +111,7 @@
   
   <!-- within xsl:stream, use subsequence() within xsl:for-each-group  -->
    
-  <xsl:template name="feg-010">
+  <xsl:template name="feg-010" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each-group group-ending-with="." select="subsequence(account/transaction, 1, 4)">
@@ -123,7 +123,7 @@
   
   <!-- within xsl:stream, select attributes within xsl:for-each-group -->
    
-  <xsl:template name="feg-011">
+  <xsl:template name="feg-011" use-when="$RUN">
     <out>
       <xsl:stream href="../docs/transactions.xml">
         <xsl:for-each-group group-ending-with="." select="account/transaction/@value">
@@ -137,7 +137,7 @@
   
   <!-- within xsl:stream, iterate over ancestor axis within xsl:for-each-group  -->
    
-  <xsl:template name="feg-012">
+  <xsl:template name="feg-012" use-when="$RUN">
     <out xmlns="http://loan.shark.com/">
       <xsl:stream href="../docs/loans.xml">
         <xsl:for-each-group group-ending-with="." select="outermost(//*:extra)">
