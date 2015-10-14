@@ -1305,7 +1305,6 @@ of problems processing the schema using various tools
         <xs:extension base="xsl:element-only-versioned-element-type">
           <xs:sequence>
             <xs:choice minOccurs="0" maxOccurs="unbounded">             
-              <xs:element ref="xsl:use-package"/>
               <xs:element ref="xsl:expose"/>
               <xs:element ref="xsl:declaration"/>
               <xs:any namespace="##other" processContents="lax"/>
@@ -1735,7 +1734,7 @@ of problems processing the schema using various tools
     </xs:complexType>
   </xs:element>
   
-  <xs:element name="use-package">
+  <xs:element name="use-package" substitutionGroup="xsl:declaration">
     <xs:annotation>
         <xs:documentation>
             <p>This element appears as a child of <code>xsl:package</code> and defines a dependency
