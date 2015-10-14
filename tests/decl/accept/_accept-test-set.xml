@@ -112,13 +112,14 @@
    <test-case name="accept-020">
       <description>xsl:accept - conflict between two used packages in the absence of xsl:accept</description>
       <created by="Michael Kay" on="2015-08-28"/>
+      <modified by="Michael Kay" on="2015-10-14" change="correct expected results"/>
       <environment ref="accept-B"/>
       <test>
          <package file="accept-020.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><v2>23</v2></out>]]></assert-xml>
+         <error code="XTSE3020"/>
       </result>
    </test-case>
    
@@ -138,13 +139,14 @@
    <test-case name="accept-022">
       <description>xsl:accept - resolve conflict between two used packages using bulk xsl:accept</description>
       <created by="Michael Kay" on="2015-08-28"/>
+      <modified by="Michael Kay" on="2015-10-14" change="correct expected results"/>
       <environment ref="accept-B"/>
       <test>
          <package file="accept-022.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><v2>2</v2></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out><v2>22</v2></out>]]></assert-xml>
       </result>
    </test-case>
    
