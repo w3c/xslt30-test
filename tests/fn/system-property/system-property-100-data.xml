@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<test xmlns="urn:data">
+    <function name="system-property" arguments="1" allowed-in-static="yes" ns="http://www.w3.org/2005/xpath-functions" />
+    <method type="static stylesheet-function apply-templates tunneled">
+        <!-- 
+            NOTE: use an XPath expression that is valid in a static expression context, 
+            the result of that expression becomes the argument LITERAL for the function
+            I.e.: if you want to use the context item, use '.' (quoted), a path expr: 'a/b' (quoted)
+        -->
+        <arg>$q($property)</arg>
+    </method>
+    <method type="evaluate" eval-direct-error="XTDE3160">
+        <arg>$q($property)</arg>
+    </method>
+</test>

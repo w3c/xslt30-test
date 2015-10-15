@@ -62,6 +62,7 @@
         <xsl:param name="result" />
         <xsl:param name="propertyposition" />
         
+            
         <xsl:for-each select="$methods">
             <xsl:variable name="m" select="." />
             <xsl:variable name="relpos" select="position()" />
@@ -70,14 +71,19 @@
                 <xsl:variable name="s" select="." />
                 <xsl:variable name="letter" select="codepoints-to-string(($relpos - 1) * count($ns-scope) + position() + 96)" />
                 
-                <xsl:sequence select="f:create(
-                    f:get-ns-corrected-property($property, $s), 
-                    f:get-ns-corrected-result($result, $s), 
-                    $m, 
-                    $s, 
-                    $propertyposition || $letter)" />
+                <xsl:for-each select="if($property = 'xsl:version') then ('', 'xpath:', 'Q{http://www.w3.org/2005/xpath-functions}') else ''">
+                    <xsl:variable name="prefix" select="."/>
+                    <xsl:variable name="prefix-pos" select="let $pos := position() return ('', '-qname', '-eqname')[$pos]"/>
+                    <xsl:sequence select="f:create(
+                        $prefix,
+                        f:get-ns-corrected-property($property, $s), 
+                        f:get-ns-corrected-result($result, $s), 
+                        $m, 
+                        $s, 
+                        $propertyposition || $letter || $prefix-pos)" />
+                </xsl:for-each>
             </xsl:for-each>
-        </xsl:for-each>        
+        </xsl:for-each>
     </xsl:function>
     
     <xsl:function name="f:get-ns-corrected-property">
@@ -102,6 +108,7 @@
 
     <!-- creator function that, well, creates the test-case -->
     <xsl:function name="f:create" expand-text="yes">
+        <xsl:param name="prefix" />
         <xsl:param name="property" />
         <xsl:param name="result" />
         <xsl:param name="method" />
@@ -112,17 +119,23 @@
         
         <xsl:value-of select="'&#xA;&#xA;'" />
         <test-case name="system-property-{$count}">
-            <!-- wrong indent is here on purpose -->
+            <!-- wrong indent is here on purpose, to keep the result pretty -->
             <description>
-          System-property '{$property}' with method set to '{$method}', testing result = ({$corrected-result}) and ns-scope: '{$scope}'
+          Function-call {$prefix}system-property with arguments '{$property}'.
+          Testing method scope set to '{$method}', testing result = ({$corrected-result})
+          Using namespace variant for static and dynamic global variables: '{$scope}'
           See for a more detailed description of the parameters and how this test works, the file system-property-100.xsl
       </description>
             <created by="Abel Braaksma" on="2015-09-30" />
+            <environment>
+                <source uri="system-property-100-data.xml" file="system-property-100-data.xml" context="static-expression-context" />
+            </environment>
             <dependencies>
                 <spec value="XSLT30+" />
             </dependencies>
             <test>
                 <stylesheet file="system-property-100.xsl" />
+                <param static="yes" name="prefix" select="'{$prefix}'"/>
                 <param static="yes" name="property" select="'{$property}'"/>
                 <param static="yes" name="result" select="{$corrected-result (: already quoted :) }" />
                 <param static="yes" name="method" select="'{$method}'" />
@@ -138,6 +151,8 @@
                     <xsl:if test="$method != 'evaluate' and $method != 'static'">
                         <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res = ({$corrected-result})</assert>
                         <assert>every $res in /output/(static-context | dynamic-context)/result-all/tokenize(., ' ') satisfies $res = ({$corrected-result})</assert>
+                        <assert>every $res in /output/(static-context | dynamic-context)/result satisfies $res/@arity = 1</assert>
+                        <assert>every $res in /output/(static-context | dynamic-context)/result[position() = 1 or position() = last()] satisfies $res/@name/ends-with(., 'system-property')</assert>
                     </xsl:if>
                     <xsl:if test="$method = 'evaluate'">
                         <!-- direct calls (no var set to a a function item) -->

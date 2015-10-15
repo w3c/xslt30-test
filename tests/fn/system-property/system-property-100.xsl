@@ -22,38 +22,66 @@
         does the job: testing a variety of scenarios for each system-property).
         
         Usage (call with default initial template):
-        $property:     the argument to be used in system-property, including 'xsl:'
-        $result:       the items to test for, i.e. '' or '3.0', '3.1'
-        $method:       see below for details on the method. $result should be '' for no-namespace and wrong-namespace
+        $prefix:       the prefix to be used with the function literal ('', 'xpath:' or 'Q{http://www.w3.org/2005/xpath-functions}')
+        $property:     the argument to be used in system-property
+        $result:       the items the resulting function call succeed for, i.e. '' or '3.0', '3.1'
+        $method:       see below for details on the method
+        $ns-scope:     determines what namespaces are in scope for the static and dynamic 
+                       global variables, for use with ns-sensitive functions:
+                       * normal:                  'xsl' is bound to the xsl namespace, 'other' is not defined, default ns is not defined
+                       * other-default-namespace: 'xsl' is bound to the xsl ns, 'other' is not defined, default namespace is set to http://other
+                       * switch-xsl-namespace     'xsl' is bound to something wrong, 'other' is bound to the xsl ns, default ns is not defined.
         
-        If any of these tests fail, the result contains more info on what expressions failed.
+        If any of these tests fail, the result contains additional info, unless a static error occurred.
         
-        In the case of a not-satisfies (not($is-valid)) in the static context, the result
-        will contain a detailed XML that shows what expression returned what result. The $is-valid param
-        simply tests the value of the system-property in the static context for consistency. Once valid
-        the rest of the test tests the system property in a variety of other contexts and calling scenarios.
+        
         
         Available methods and their intentions:
         ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-        all:                    all tests test results of system-property calls for allowed values,
-                                all tests have a static call, a prefixed static call, an eqname static call
-                                a dynamic call in static context, a dynamic call in dynamic context, a 
-                                call inside a let-binding, and a static and dynamic call inside an anon function
-                                all tests test the variants both in static and in dynamic evaluation contexts
+        all:                    For all tests, the following applies
+                                * tests the value when evaluating a direct call (that is, no indirection through variables holding function items)
+                                * tests, if $eval-static is true, evaluation as function items in static expression contexts
+                                * tests the evaluation as function items in the dynamic expression context
+                                * function literal depends on $prefix, which expands to a no-namespace, QName or an EQName version of the function name
+                                * all tests test the following in a global variable of the SC and DC
+                                    * a static call: function-name(var)
+                                    * a ref call: function-name#1(var)
+                                    * a let call: let $f := function-name#1 return $f(var)
+                                    * an anon call: function() { function-name(var) } ()
+                                    * a partial call: function-name(?)(var)
+                                    * a lookup call: let $f := function-lookup(qname, argcnt) return $f(var)
+                                * all tests test whether the result is as expected
                                 
-        static:                 uses static string 'xsl:propname' in a normal evaluation context
-                                (body of a function) 
-        evaluate:               uses static string 'xsl:propname' in an xsl:evaluate context (includes 
-                                expected exceptions)
-        no-namespace:           strips the prefix from 'xsl:propname' and sets the default namespace to the 
-                                XSLT namespace (all props should return empty strings)
-        eqname:                 changes 'xsl:propname' into equiv. EQName, and then the same as static
-        wrong-namespace:        tests 'xsl:propname' but switches locally to a different binding for 'xsl' 
-                                prefix and expects all results to be empty. This also tests namespace scope
-                                of inline function declarations and static bindings
-        other-namespace-prefix: tests 'xyz:propname' with 'xyz' prefix locally bound to a different namespace
-                                This is the positive variant of namespace scoping of 'wrong-namespace' above.
-        qname                   attempts to call the function with a QName(xsl-ns, propname), which should fail
+                                
+        static:                 as above described for "all"
+        
+        evaluate:               in addition to "all":
+                                * tests direct calls of strings-as-xpath in the xsl:evaluate/@xpath attribute
+                                    * static call
+                                    * ref call
+                                    * let call
+                                    * anon call
+                                    * partial call
+                                    * (lookup call is not evaluated, as it may return an empty sequence when others would return an error)
+                                * tests indirect calls with an xsl:with-param set to a function item coming from SC and DC global vars
+                                    * function reference, with-param set to function-name#1
+                                    * partial function application, with-param set to function-name(?)
+                                    * anonomous function, with-param set to function() { function-name(var) }
+                                    * lookup function, with-param set to function-lookup(qname, argcnt)
+                                    
+                                The result contains information on the actual XPath used and the expression 
+                                used to evaluate the function item with-param.
+                                    
+        apply-templates:        applies the function items from DC and SC to templates 
+                                The templates match the function items based on arity, where a zero-arity function
+                                is defined to return itself the four variants of the function items (<result-all>)
+                                The function items are the same as the four function items for DC and SC described
+                                under the "evaluate" method.
+        tunneled:               Same as apply-templates, but uses the function items from DC and SC as 
+                                a tunneled parameter that goes over one matching template without the tunneled
+                                param defined, and a subsequent template with these tunneled params defined.
+                                It deliberately uses a non-tunnel parameter with the same name as the tunnel parameter.
+        stylesheet-function:    Calls a stylesheet function with the function items from DC and SC as arguments
         
     -->
     
@@ -68,15 +96,16 @@
         'other-default-namespace',    (: the default namespace is bound in the static and dynamic variables to something else, the 'other' ns is not in scope, the 'xsl' ns is as normal :) 
         'switch-xsl-namespace'        (: the 'xsl' prefix is bound to something else, the 'other' prefix is bound to the xslt namespace, the default ns is not bound :) 
         )[3] "/>
+    <xsl:param name="prefix" static="yes" select="''"/>
 
-    <xsl:include href="system-property-100-data.xsl" />
-    <xsl:include href="system-property-100-sc-normal.xsl" />
-    <xsl:include href="system-property-100-sc-other.xsl" />
-    <xsl:include href="system-property-100-sc-switch.xsl" />
-    <xsl:include href="system-property-100-dc-normal.xsl" />
-    <xsl:include href="system-property-100-dc-other.xsl" />
-    <xsl:include href="system-property-100-dc-switch.xsl" />
-    <xsl:include href="system-property-100-core.xsl" />
+    <xsl:include href="system-property-100-data.xsl" />         <!-- abstraction and parsing of the <data:test> element -->
+    <xsl:include href="system-property-100-sc-normal.xsl" />    <!-- static context for 'normal' namespace scope -->
+    <xsl:include href="system-property-100-sc-other.xsl" />     <!-- static context for 'other-default-namesapce' namespace scope -->
+    <xsl:include href="system-property-100-sc-switch.xsl" />    <!-- static context for 'switch-xsl-namespace' namespace scope -->
+    <xsl:include href="system-property-100-dc-normal.xsl" />    <!-- dynamic context for 'normal' namespace scope -->
+    <xsl:include href="system-property-100-dc-other.xsl" />     <!-- dynamic context for 'other-default-namesapce' namespace scope -->
+    <xsl:include href="system-property-100-dc-switch.xsl" />    <!-- dynamic context for 'switch-xsl-namespace' namespace scope -->
+    <xsl:include href="system-property-100-core.xsl" />         <!-- templates, stylesheet functions -->
 
 
     <xsl:template name="xsl:initial-template">
