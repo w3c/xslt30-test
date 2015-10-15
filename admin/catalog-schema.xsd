@@ -489,6 +489,7 @@
                     </xs:annotation>
                 </xs:attribute>
                 <xs:attributeGroup ref="xmlVersionAttr"/>
+                <xs:attributeGroup ref="availableInContextAttr" />
             </xs:extension>
         </xs:complexContent>
 
@@ -2163,6 +2164,29 @@
                 <xs:restriction base="xs:decimal">
                     <xs:enumeration value="1.0"/>
                     <xs:enumeration value="1.1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="availableInContextAttr">
+        <xs:attribute name="context" use="optional" default="dynamic-expression-context">
+            <xs:annotation>
+                <xs:documentation>
+                    <p>Indicates whether a resource is available during compilation phase in shadow attributes
+                    or static variables or parameters. Use 'static-expression-context' if the resource
+                    should be made available for the doc() function inside the static expression context.
+                    In absence of this attribute, the value defaults to 'dynamic-expression-context'.</p>
+                    <p>The presence of this attribute does not dicate whether or not the document is available
+                    during the static phase when set to its default, however, when set to 'static-expression-context',
+                    the document <strong>must</strong> be available in the static context. Regardless of this setting
+                    the document is always available to the dynamic context (unless the <code>@role</code> attribute is used).</p>
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="dynamic-expression-context" />
+                    <xs:enumeration value="static-expression-context" />
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
