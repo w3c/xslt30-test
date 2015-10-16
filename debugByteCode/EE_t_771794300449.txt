@@ -1,0 +1,294 @@
+// class version 49.0 (49)
+// access flags 0x1
+public class EE_t_771794300449 extends com/saxonica/ee/bytecode/GeneratedCode  {
+
+
+  // access flags 0x1
+  public <init>()V
+    LINENUMBER 9 L0
+    ALOAD 0
+    INVOKESPECIAL com/saxonica/ee/bytecode/GeneratedCode.<init> ()V
+    RETURN
+    MAXSTACK = 0
+    MAXLOCALS = 0
+
+  // access flags 0x1
+  public process(Lnet/sf/saxon/expr/XPathContext;)V throws net/sf/saxon/trans/XPathException 
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getReceiver ()Lnet/sf/saxon/event/SequenceReceiver;
+    ASTORE 2
+    LINENUMBER 9 L0
+   L1
+    LDC "BlockCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L2
+    LDC "LocalParam-push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    GETSTATIC EE_t_771794300449.nStructuredQName78 : Lnet/sf/saxon/om/StructuredQName;
+    ICONST_0
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.useLocalParameter (Lnet/sf/saxon/om/StructuredQName;IZ)I
+    DUP
+    ICONST_1
+    IF_ICMPNE L3
+    POP
+    ALOAD 1
+    ICONST_0
+    LINENUMBER 8 L4
+   L5
+    LDC "SuppliedParameterReference-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.evaluateLocalVariable (I)Lnet/sf/saxon/om/Sequence;
+    INVOKEINTERFACE net/sf/saxon/om/Sequence.iterate ()Lnet/sf/saxon/om/SequenceIterator;
+    INVOKESTATIC net/sf/saxon/value/SequenceExtent.makeSequenceExtent (Lnet/sf/saxon/om/SequenceIterator;)Lnet/sf/saxon/om/GroundedValue;
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setLocalVariable (ILnet/sf/saxon/om/Sequence;)V
+    GOTO L6
+   L3
+    SIPUSH 159
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ICONST_0
+    IF_ICMPNE L6
+    ALOAD 1
+    ICONST_0
+    ALOAD 1
+    DUP
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getTemporaryOutputState ()I
+    ISTORE 3
+    SIPUSH 208
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setTemporaryOutputState (I)V
+   L7
+    LDC "LiteralCompiler-item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC 3
+    INVOKESTATIC net/sf/saxon/value/Int64Value.makeIntegerValue (J)Lnet/sf/saxon/value/Int64Value;
+    ALOAD 1
+    ILOAD 3
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setTemporaryOutputState (I)V
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setLocalVariable (ILnet/sf/saxon/om/Sequence;)V
+   L6
+    SIPUSH 160
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L8
+    LDC "ChooseCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L9
+    LDC "GeneralComparison-ManyToOne-boolean"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L10
+    LDC "LiteralCompiler-item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 9 L11
+    LDC 3
+    INVOKESTATIC net/sf/saxon/value/Int64Value.makeIntegerValue (J)Lnet/sf/saxon/value/Int64Value;
+    CHECKCAST net/sf/saxon/value/AtomicValue
+    ASTORE 5
+   L12
+    LDC "AtomizerCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L13
+    LDC "LocalVariableReference-Itr - p"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getStackFrame ()Lnet/sf/saxon/expr/StackFrame;
+    INVOKEVIRTUAL net/sf/saxon/expr/StackFrame.getStackFrameValues ()[Lnet/sf/saxon/om/Sequence;
+    ICONST_0
+    AALOAD
+    INVOKEINTERFACE net/sf/saxon/om/Sequence.iterate ()Lnet/sf/saxon/om/SequenceIterator;
+    ICONST_1
+    INVOKESTATIC net/sf/saxon/expr/Atomizer.getAtomizingIterator (Lnet/sf/saxon/om/SequenceIterator;Z)Lnet/sf/saxon/om/SequenceIterator;
+    ASTORE 6
+   L14
+    SIPUSH 161
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 6
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    CHECKCAST net/sf/saxon/value/AtomicValue
+    ASTORE 4
+    ALOAD 4
+    IFNULL L15
+   L16
+    LDC "generateComparisonCode-GeneralComp"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_1
+    ISTORE 7
+    ALOAD 4
+    INSTANCEOF net/sf/saxon/value/UntypedAtomicValue
+    IFEQ L17
+    ALOAD 5
+    INSTANCEOF net/sf/saxon/value/UntypedAtomicValue
+    IFNE L18
+    ALOAD 5
+    INSTANCEOF net/sf/saxon/value/NumericValue
+    IFEQ L19
+    ALOAD 4
+    CHECKCAST net/sf/saxon/value/UntypedAtomicValue
+    ALOAD 5
+    CHECKCAST net/sf/saxon/value/NumericValue
+    BIPUSH 50
+    GETSTATIC EE_t_771794300449.nConversionRules79 : Lnet/sf/saxon/lib/ConversionRules;
+    INVOKESTATIC net/sf/saxon/expr/GeneralComparison.quickCompare (Lnet/sf/saxon/value/UntypedAtomicValue;Lnet/sf/saxon/value/NumericValue;ILnet/sf/saxon/lib/ConversionRules;)Z
+    GOTO L20
+   L19
+    SIPUSH 162
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    GETSTATIC EE_t_771794300449.nStringToInteger80 : Lnet/sf/saxon/type/StringConverter$StringToInteger;
+    ALOAD 4
+    INVOKEVIRTUAL net/sf/saxon/type/Converter.convert (Lnet/sf/saxon/value/AtomicValue;)Lnet/sf/saxon/type/ConversionResult;
+    INVOKEINTERFACE net/sf/saxon/type/ConversionResult.asAtomic ()Lnet/sf/saxon/value/AtomicValue;
+    ASTORE 4
+    ICONST_0
+    ISTORE 7
+   L21
+    SIPUSH 163
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L17
+    SIPUSH 164
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L18
+    SIPUSH 165
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L22
+    SIPUSH 166
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ILOAD 7
+    IFEQ L23
+    ALOAD 4
+    INVOKEVIRTUAL net/sf/saxon/value/AtomicValue.getPrimitiveType ()Lnet/sf/saxon/type/BuiltInAtomicType;
+    ALOAD 5
+    INVOKEVIRTUAL net/sf/saxon/value/AtomicValue.getPrimitiveType ()Lnet/sf/saxon/type/BuiltInAtomicType;
+    ICONST_0
+    INVOKESTATIC net/sf/saxon/type/Type.isGuaranteedComparable (Lnet/sf/saxon/type/BuiltInAtomicType;Lnet/sf/saxon/type/BuiltInAtomicType;Z)Z
+    IFNE L23
+    ALOAD 4
+    ALOAD 5
+    LDC "file:/Users/mike/w3c/xslt30-test-B/tests/decl/context-item/context-item-011.xsl"
+    BIPUSH 9
+    INVOKESTATIC com/saxonica/ee/bytecode/util/Callback.makeNonComparableException (Lnet/sf/saxon/value/AtomicValue;Lnet/sf/saxon/value/AtomicValue;Ljava/lang/String;I)Lnet/sf/saxon/trans/XPathException;
+    ATHROW
+   L23
+    SIPUSH 167
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 4
+    INVOKEVIRTUAL net/sf/saxon/value/AtomicValue.isNaN ()Z
+    IFNE L14
+    GETSTATIC EE_t_771794300449.nGenericAtomicComparer81 : Lnet/sf/saxon/expr/sort/GenericAtomicComparer;
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/sort/AtomicComparer.provideContext (Lnet/sf/saxon/expr/XPathContext;)Lnet/sf/saxon/expr/sort/AtomicComparer;
+    ALOAD 4
+    ALOAD 5
+    TRYCATCHBLOCK L24 L25 L26 java/lang/ClassCastException
+   L24
+    SIPUSH 168
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEINTERFACE net/sf/saxon/expr/sort/AtomicComparer.comparesEqual (Lnet/sf/saxon/value/AtomicValue;Lnet/sf/saxon/value/AtomicValue;)Z
+   L25
+    SIPUSH 169
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    GOTO L20
+   L26
+    SIPUSH 170
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    POP
+    ALOAD 4
+    ALOAD 5
+    LDC "file:/Users/mike/w3c/xslt30-test-B/tests/decl/context-item/context-item-011.xsl"
+    BIPUSH 9
+    INVOKESTATIC com/saxonica/ee/bytecode/util/Callback.makeNonComparableException (Lnet/sf/saxon/value/AtomicValue;Lnet/sf/saxon/value/AtomicValue;Ljava/lang/String;I)Lnet/sf/saxon/trans/XPathException;
+    ATHROW
+    GOTO L20
+   L20
+    SIPUSH 171
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    IFNE L27
+    GOTO L14
+   L27
+    SIPUSH 172
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 6
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.close ()V
+    ICONST_1
+    GOTO L28
+   L15
+    SIPUSH 173
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ICONST_0
+   L28
+    SIPUSH 174
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    IFEQ L29
+   L30
+    LDC "ToItemCompilerPush"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L31
+    LDC "There is no context item"
+    LDC "XPDY0002"
+    LDC "file:/Users/mike/w3c/xslt30-test-B/tests/decl/context-item/context-item-011.xsl"
+    BIPUSH 9
+    ICONST_0
+    INVOKESTATIC com/saxonica/ee/bytecode/util/Callback.makeXPathException (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)Lnet/sf/saxon/trans/XPathException;
+    ATHROW
+   L31
+    SIPUSH 175
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEVIRTUAL net/sf/saxon/event/SequenceReceiver.append (Lnet/sf/saxon/om/Item;)V
+    GOTO L32
+   L29
+    SIPUSH 176
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L33
+    LDC "LocalVariableReference-Push - p"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getStackFrame ()Lnet/sf/saxon/expr/StackFrame;
+    INVOKEVIRTUAL net/sf/saxon/expr/StackFrame.getStackFrameValues ()[Lnet/sf/saxon/om/Sequence;
+    ICONST_0
+    AALOAD
+    ASTORE 8
+    ALOAD 8
+    INSTANCEOF net/sf/saxon/om/NodeInfo
+    IFEQ L34
+    NEW net/sf/saxon/om/ZeroOrOne
+    DUP
+    ALOAD 8
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKESPECIAL net/sf/saxon/om/ZeroOrOne.<init> (Lnet/sf/saxon/om/Item;)V
+    ASTORE 8
+   L34
+    SIPUSH 177
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 8
+    CHECKCAST net/sf/saxon/om/Sequence
+    ALOAD 1
+    GETSTATIC EE_t_771794300449.nNestedLocation82 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    INVOKESTATIC net/sf/saxon/om/SequenceTool.process (Lnet/sf/saxon/om/Sequence;Lnet/sf/saxon/expr/XPathContext;Lnet/sf/saxon/expr/parser/Location;)V
+    GOTO L32
+   L32
+    SIPUSH 178
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    RETURN
+    MAXSTACK = 0
+    MAXLOCALS = 0
+}
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/sort/GenericAtomicComparer; nGenericAtomicComparer81
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/om/StructuredQName; nStructuredQName78
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/lib/ConversionRules; nConversionRules79
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/type/StringConverter$StringToInteger; nStringToInteger80
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation; nNestedLocation82
+}

@@ -1,0 +1,291 @@
+// class version 49.0 (49)
+// access flags 0x1
+public class EE_doc_140434967514 extends com/saxonica/ee/bytecode/GeneratedCode  {
+
+
+  // access flags 0x1
+  public <init>()V
+    LINENUMBER 10 L0
+    ALOAD 0
+    INVOKESPECIAL com/saxonica/ee/bytecode/GeneratedCode.<init> ()V
+    RETURN
+    MAXSTACK = 0
+    MAXLOCALS = 0
+
+  // access flags 0x1
+  public process(Lnet/sf/saxon/expr/XPathContext;)V throws net/sf/saxon/trans/XPathException 
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getReceiver ()Lnet/sf/saxon/event/SequenceReceiver;
+    ASTORE 2
+    LINENUMBER 10 L0
+   L1
+    LDC "BlockCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L2
+    LDC "LocalParam-push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    GETSTATIC EE_doc_140434967514.nStructuredQName141 : Lnet/sf/saxon/om/StructuredQName;
+    ICONST_0
+    ICONST_1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.useLocalParameter (Lnet/sf/saxon/om/StructuredQName;IZ)I
+    DUP
+    ICONST_1
+    IF_ICMPNE L3
+    POP
+    ALOAD 1
+    ICONST_0
+    LINENUMBER 9 L4
+   L5
+    LDC "SuppliedParameterReference-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.evaluateLocalVariable (I)Lnet/sf/saxon/om/Sequence;
+    INVOKEINTERFACE net/sf/saxon/om/Sequence.iterate ()Lnet/sf/saxon/om/SequenceIterator;
+    INVOKESTATIC net/sf/saxon/value/SequenceExtent.makeSequenceExtent (Lnet/sf/saxon/om/SequenceIterator;)Lnet/sf/saxon/om/GroundedValue;
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setLocalVariable (ILnet/sf/saxon/om/Sequence;)V
+    GOTO L6
+   L3
+    SIPUSH 256
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ICONST_0
+    IF_ICMPNE L6
+    ALOAD 1
+    ICONST_0
+    ALOAD 1
+    DUP
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getTemporaryOutputState ()I
+    ISTORE 3
+    SIPUSH 208
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setTemporaryOutputState (I)V
+   L7
+    LDC "LiteralCompiler-item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER -1 L8
+    GETSTATIC net/sf/saxon/value/StringValue.EMPTY_STRING : Lnet/sf/saxon/value/StringValue;
+    ALOAD 1
+    ILOAD 3
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setTemporaryOutputState (I)V
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setLocalVariable (ILnet/sf/saxon/om/Sequence;)V
+   L6
+    SIPUSH 257
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L9
+    LDC "CopyOf - Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 10 L10
+   L11
+    LDC "LocalVariableReference-Itr - t"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getStackFrame ()Lnet/sf/saxon/expr/StackFrame;
+    INVOKEVIRTUAL net/sf/saxon/expr/StackFrame.getStackFrameValues ()[Lnet/sf/saxon/om/Sequence;
+    ICONST_0
+    AALOAD
+    INVOKEINTERFACE net/sf/saxon/om/Sequence.iterate ()Lnet/sf/saxon/om/SequenceIterator;
+    ASTORE 5
+   L12
+    SIPUSH 258
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNULL L13
+    ASTORE 4
+    ALOAD 4
+    IFNULL L14
+    ALOAD 4
+    INSTANCEOF net/sf/saxon/om/NodeInfo
+    IFNE L15
+   L16
+    LDC "Copy_NonNode"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+    ALOAD 4
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_2
+    INVOKEVIRTUAL net/sf/saxon/event/SequenceReceiver.append (Lnet/sf/saxon/om/Item;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L14
+   L15
+    SIPUSH 259
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.getNodeKind ()I
+    TABLESWITCH
+      1: L17
+      2: L18
+      3: L19
+      4: L20
+      5: L20
+      6: L20
+      7: L21
+      8: L22
+      9: L23
+      10: L20
+      11: L20
+      12: L20
+      13: L24
+      default: L20
+   L17
+   L25
+    LDC "CopyOf - Element"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getConfiguration ()Lnet/sf/saxon/Configuration;
+    ALOAD 2
+    NEW net/sf/saxon/lib/ParseOptions
+    DUP
+    INVOKESPECIAL net/sf/saxon/lib/ParseOptions.<init> ()V
+    DUP
+    ICONST_4
+    INVOKEVIRTUAL net/sf/saxon/lib/ParseOptions.setSchemaValidationMode (I)V
+    DUP
+    NEW net/sf/saxon/om/NameOfNode
+    DUP
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKESPECIAL net/sf/saxon/om/NameOfNode.<init> (Lnet/sf/saxon/om/NodeInfo;)V
+    INVOKEINTERFACE net/sf/saxon/om/NodeName.getStructuredQName ()Lnet/sf/saxon/om/StructuredQName;
+    INVOKEVIRTUAL net/sf/saxon/lib/ParseOptions.setTopLevelElement (Lnet/sf/saxon/om/StructuredQName;)V
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    INVOKEVIRTUAL net/sf/saxon/Configuration.getElementValidator (Lnet/sf/saxon/event/SequenceReceiver;Lnet/sf/saxon/lib/ParseOptions;Lnet/sf/saxon/expr/parser/Location;)Lnet/sf/saxon/event/SequenceReceiver;
+    ASTORE 6
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    ALOAD 6
+    BIPUSH 6
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.copy (Lnet/sf/saxon/event/Receiver;ILnet/sf/saxon/expr/parser/Location;)V
+    GOTO L26
+   L18
+   L27
+    LDC "Copy_Attribute"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+    NEW net/sf/saxon/om/NameOfNode
+    DUP
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKESPECIAL net/sf/saxon/om/NameOfNode.<init> (Lnet/sf/saxon/om/NodeInfo;)V
+    ASTORE 7
+    ALOAD 7
+    GETSTATIC net/sf/saxon/type/BuiltInAtomicType.UNTYPED_ATOMIC : Lnet/sf/saxon/type/BuiltInAtomicType;
+    ALOAD 4
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.attribute (Lnet/sf/saxon/om/NodeName;Lnet/sf/saxon/type/SimpleType;Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L26
+   L19
+   L28
+    LDC "Copy - Text"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.getStringValueCS ()Ljava/lang/CharSequence;
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L26
+   L21
+   L29
+    LDC "Copy - PI"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.getDisplayName ()Ljava/lang/String;
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.getStringValueCS ()Ljava/lang/CharSequence;
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.processingInstruction (Ljava/lang/String;Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L26
+   L22
+   L30
+    LDC "Copy - Comment"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.getStringValueCS ()Ljava/lang/CharSequence;
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.comment (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L26
+   L23
+   L31
+    LDC "CopyOf - Document"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getConfiguration ()Lnet/sf/saxon/Configuration;
+    ALOAD 2
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.getBaseURI ()Ljava/lang/String;
+    NEW net/sf/saxon/lib/ParseOptions
+    DUP
+    INVOKESPECIAL net/sf/saxon/lib/ParseOptions.<init> ()V
+    DUP
+    ICONST_4
+    INVOKEVIRTUAL net/sf/saxon/lib/ParseOptions.setSchemaValidationMode (I)V
+    DUP
+    ICONST_0
+    INVOKEVIRTUAL net/sf/saxon/lib/ParseOptions.setStripSpace (I)V
+    INVOKEVIRTUAL net/sf/saxon/Configuration.getDocumentValidator (Lnet/sf/saxon/event/Receiver;Ljava/lang/String;Lnet/sf/saxon/lib/ParseOptions;)Lnet/sf/saxon/event/Receiver;
+    ASTORE 8
+    ALOAD 2
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.getSystemId ()Ljava/lang/String;
+    ASTORE 9
+    ALOAD 9
+    IFNONNULL L32
+    ALOAD 8
+    ALOAD 9
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.setSystemId (Ljava/lang/String;)V
+   L32
+    SIPUSH 260
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    ALOAD 8
+    BIPUSH 6
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.copy (Lnet/sf/saxon/event/Receiver;ILnet/sf/saxon/expr/parser/Location;)V
+    GOTO L26
+   L24
+   L33
+    LDC "Copy - Namespace"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 4
+    CHECKCAST net/sf/saxon/om/NodeInfo
+    ALOAD 2
+    ICONST_0
+    GETSTATIC EE_doc_140434967514.nNestedLocation142 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.copy (Lnet/sf/saxon/event/Receiver;ILnet/sf/saxon/expr/parser/Location;)V
+    GOTO L26
+   L20
+    GOTO L14
+   L26
+   L14
+    SIPUSH 261
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    GOTO L12
+   L13
+    SIPUSH 262
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    POP
+    RETURN
+    MAXSTACK = 0
+    MAXLOCALS = 0
+}
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation; nNestedLocation142
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/om/StructuredQName; nStructuredQName141
+}

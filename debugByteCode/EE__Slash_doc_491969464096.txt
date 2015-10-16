@@ -1,0 +1,974 @@
+// class version 49.0 (49)
+// access flags 0x1
+public class EE__Slash_doc_491969464096 extends com/saxonica/ee/bytecode/GeneratedCode  {
+
+
+  // access flags 0x1
+  public <init>()V
+    LINENUMBER 15 L0
+    ALOAD 0
+    INVOKESPECIAL com/saxonica/ee/bytecode/GeneratedCode.<init> ()V
+    RETURN
+    MAXSTACK = 0
+    MAXLOCALS = 0
+
+  // access flags 0x1
+  public process(Lnet/sf/saxon/expr/XPathContext;)V throws net/sf/saxon/trans/XPathException 
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getReceiver ()Lnet/sf/saxon/event/SequenceReceiver;
+    ASTORE 2
+    LINENUMBER 15 L0
+   L1
+    LDC "FixedElement-out"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L2
+    LDC "ElementCreator-push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+    DUP
+    LDC "Receiver: "
+    SWAP
+    DUP
+    IFNULL L3
+    INVOKEVIRTUAL java/lang/Object.toString ()Ljava/lang/String;
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showObjectVariable (Ljava/lang/String;Ljava/lang/String;)V
+    GOTO L4
+   L3
+    SIPUSH 176
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    POP
+    LDC "null"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showObjectVariable (Ljava/lang/String;Ljava/lang/String;)V
+   L4
+    SIPUSH 177
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.getSystemId ()Ljava/lang/String;
+    IFNONNULL L5
+    ALOAD 2
+    LDC "file:/Users/mike/w3c/xslt30-test-B/tests/attr/avt/avt-0401.xsl"
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.setSystemId (Ljava/lang/String;)V
+   L5
+    SIPUSH 178
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 2
+    GETSTATIC EE__Slash_doc_491969464096.nNoNamespaceName50 : Lnet/sf/saxon/om/NoNamespaceName;
+    GETSTATIC EE__Slash_doc_491969464096.nUntyped51 : Lnet/sf/saxon/type/Untyped;
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation52 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.startElement (Lnet/sf/saxon/om/NodeName;Lnet/sf/saxon/type/SchemaType;Lnet/sf/saxon/expr/parser/Location;I)V
+   L6
+    LDC "BlockCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L7
+    LDC "SimpleNodeConstructorCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+   L8
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC "\n"
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation52 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+   L9
+    LDC "ForEachGroupCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    NEW net/sf/saxon/om/FocusTrackingIterator
+    DUP
+   L10
+    LDC "AxisExpressionCompiler - iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    CHECKCAST net/sf/saxon/om/NodeInfo
+   L11
+    LDC "AxisExpressionCompiler - static method: iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_3
+    GETSTATIC EE__Slash_doc_491969464096.nNameTest53 : Lnet/sf/saxon/pattern/NameTest;
+    LDC "calling iterateAxis"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.iterateAxis (BLnet/sf/saxon/pattern/NodeTest;)Lnet/sf/saxon/tree/iter/AxisIterator;
+    LDC "returning axis iterator"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKESPECIAL net/sf/saxon/om/FocusTrackingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;)V
+    CHECKCAST net/sf/saxon/om/SequenceIterator
+    ASTORE 3
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newMinorContext ()Lnet/sf/saxon/expr/XPathContextMinor;
+    ASTORE 4
+    ALOAD 4
+    ALOAD 3
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setCurrentIterator (Lnet/sf/saxon/om/FocusIterator;)V
+    NEW net/sf/saxon/expr/sort/GroupByIterator
+    DUP
+    ALOAD 3
+    GETSTATIC EE__Slash_doc_491969464096.nAtomizer54 : Lnet/sf/saxon/expr/Atomizer;
+    ALOAD 4
+    GETSTATIC EE__Slash_doc_491969464096.nEnterpriseConfiguration55 : Lcom/saxonica/config/EnterpriseConfiguration;
+   L12
+    LDC "StringJoin-Item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L13
+    LDC "AtomicSequenceConverterCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L14
+    LDC "AtomicSequenceConverterCompiler-string"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    NEW net/sf/saxon/expr/ItemMappingIterator
+    DUP
+   L15
+    LDC "AtomizerCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L16
+    LDC "AxisExpressionCompiler - iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    CHECKCAST net/sf/saxon/om/NodeInfo
+   L17
+    LDC "AxisExpressionCompiler - static method: iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_3
+    GETSTATIC EE__Slash_doc_491969464096.nNameTest56 : Lnet/sf/saxon/pattern/NameTest;
+    LDC "calling iterateAxis"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.iterateAxis (BLnet/sf/saxon/pattern/NodeTest;)Lnet/sf/saxon/tree/iter/AxisIterator;
+    LDC "returning axis iterator"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_1
+    INVOKESTATIC net/sf/saxon/expr/Atomizer.getAtomizingIterator (Lnet/sf/saxon/om/SequenceIterator;Z)Lnet/sf/saxon/om/SequenceIterator;
+    GETSTATIC net/sf/saxon/expr/AtomicSequenceConverter.TO_STRING_MAPPER : Lnet/sf/saxon/expr/AtomicSequenceConverter$ToStringMappingFunction;
+    ICONST_1
+    INVOKESPECIAL net/sf/saxon/expr/ItemMappingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;Lnet/sf/saxon/expr/ItemMappingFunction;Z)V
+   L18
+    LDC "StringJoin-Item-1"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ASTORE 5
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L19
+    POP
+    LDC ""
+    GOTO L20
+   L19
+    SIPUSH 179
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    ASTORE 6
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L21
+    POP
+    ALOAD 6
+    GOTO L20
+   L21
+    SIPUSH 180
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    NEW net/sf/saxon/tree/util/FastStringBuffer
+    DUP
+    BIPUSH 64
+    INVOKESPECIAL net/sf/saxon/tree/util/FastStringBuffer.<init> (I)V
+    ASTORE 7
+    ALOAD 7
+    ALOAD 6
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+   L22
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC " "
+    ASTORE 8
+    ALOAD 7
+    ALOAD 8
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+    SWAP
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+   L23
+    SIPUSH 181
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNULL L24
+    ALOAD 7
+    ALOAD 8
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+    SWAP
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    GOTO L23
+   L24
+    SIPUSH 182
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    POP
+    ALOAD 7
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.condense ()Ljava/lang/CharSequence;
+   L20
+    SIPUSH 183
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEVIRTUAL java/lang/Object.toString ()Ljava/lang/String;
+    GETSTATIC EE__Slash_doc_491969464096.nString57 : Ljava/lang/String;
+    LDC "FOCH0002"
+    INVOKEVIRTUAL net/sf/saxon/Configuration.getCollation (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lnet/sf/saxon/lib/StringCollator;
+    ICONST_0
+    INVOKESPECIAL net/sf/saxon/expr/sort/GroupByIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;Lnet/sf/saxon/expr/Expression;Lnet/sf/saxon/expr/XPathContext;Lnet/sf/saxon/lib/StringCollator;Z)V
+    ASTORE 9
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newContext ()Lnet/sf/saxon/expr/XPathContextMajor;
+    ASTORE 10
+    ALOAD 10
+    ALOAD 9
+    INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentGroupIterator (Lnet/sf/saxon/expr/sort/GroupIterator;)V
+    ALOAD 10
+    NEW net/sf/saxon/om/FocusTrackingIterator
+    DUP
+    ALOAD 9
+    INVOKESPECIAL net/sf/saxon/om/FocusTrackingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;)V
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setCurrentIterator (Lnet/sf/saxon/om/FocusIterator;)V
+    ALOAD 10
+    ACONST_NULL
+    INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentTemplateRule (Lnet/sf/saxon/trans/Rule;)V
+   L25
+    SIPUSH 184
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 10
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getCurrentIterator ()Lnet/sf/saxon/om/FocusIterator;
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    IFNULL L26
+   L27
+    LDC "SimpleNodeConstructorCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+   L28
+    LDC "AtomicSequenceConverterCompiler-Item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 16 L29
+   L30
+    LDC "AtomizerCompiler-String"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 10
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation58 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L25
+   L26
+    SIPUSH 185
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L31
+    LDC "SimpleNodeConstructorCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+   L32
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 15 L33
+    LDC "\n"
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation52 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+   L34
+    LDC "ForEachGroupCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 20 L35
+    NEW net/sf/saxon/om/FocusTrackingIterator
+    DUP
+   L36
+    LDC "AxisExpressionCompiler - iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    CHECKCAST net/sf/saxon/om/NodeInfo
+   L37
+    LDC "AxisExpressionCompiler - static method: iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_3
+    GETSTATIC EE__Slash_doc_491969464096.nNameTest53 : Lnet/sf/saxon/pattern/NameTest;
+    LDC "calling iterateAxis"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.iterateAxis (BLnet/sf/saxon/pattern/NodeTest;)Lnet/sf/saxon/tree/iter/AxisIterator;
+    LDC "returning axis iterator"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKESPECIAL net/sf/saxon/om/FocusTrackingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;)V
+    CHECKCAST net/sf/saxon/om/SequenceIterator
+    ASTORE 3
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newMinorContext ()Lnet/sf/saxon/expr/XPathContextMinor;
+    ASTORE 4
+    ALOAD 4
+    ALOAD 3
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setCurrentIterator (Lnet/sf/saxon/om/FocusIterator;)V
+    NEW net/sf/saxon/expr/sort/GroupByIterator
+    DUP
+    ALOAD 3
+    GETSTATIC EE__Slash_doc_491969464096.nAtomizer59 : Lnet/sf/saxon/expr/Atomizer;
+    ALOAD 4
+    GETSTATIC EE__Slash_doc_491969464096.nEnterpriseConfiguration55 : Lcom/saxonica/config/EnterpriseConfiguration;
+   L38
+    LDC "StringJoin-Item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L39
+    LDC "AtomicSequenceConverterCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L40
+    LDC "AtomicSequenceConverterCompiler-string"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    NEW net/sf/saxon/expr/ItemMappingIterator
+    DUP
+   L41
+    LDC "AtomizerCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L42
+    LDC "VariableReferenceCompiler-Iterator"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    DUP
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getTargetComponent (I)Lnet/sf/saxon/expr/Component;
+    DUP
+    INVOKEVIRTUAL net/sf/saxon/expr/Component.getCode ()Lnet/sf/saxon/expr/instruct/ComponentCode;
+    CHECKCAST net/sf/saxon/expr/instruct/GlobalVariable
+    DUP_X2
+    POP
+    INVOKEVIRTUAL net/sf/saxon/expr/instruct/GlobalVariable.evaluateVariable (Lnet/sf/saxon/expr/XPathContext;Lnet/sf/saxon/expr/Component;)Lnet/sf/saxon/om/Sequence;
+    INVOKEINTERFACE net/sf/saxon/om/Sequence.iterate ()Lnet/sf/saxon/om/SequenceIterator;
+    ICONST_1
+    INVOKESTATIC net/sf/saxon/expr/Atomizer.getAtomizingIterator (Lnet/sf/saxon/om/SequenceIterator;Z)Lnet/sf/saxon/om/SequenceIterator;
+    GETSTATIC net/sf/saxon/expr/AtomicSequenceConverter.TO_STRING_MAPPER : Lnet/sf/saxon/expr/AtomicSequenceConverter$ToStringMappingFunction;
+    ICONST_1
+    INVOKESPECIAL net/sf/saxon/expr/ItemMappingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;Lnet/sf/saxon/expr/ItemMappingFunction;Z)V
+   L43
+    LDC "StringJoin-Item-1"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ASTORE 5
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L44
+    POP
+    LDC ""
+    GOTO L45
+   L44
+    SIPUSH 186
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    ASTORE 8
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L46
+    POP
+    ALOAD 8
+    GOTO L45
+   L46
+    SIPUSH 187
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    NEW net/sf/saxon/tree/util/FastStringBuffer
+    DUP
+    BIPUSH 64
+    INVOKESPECIAL net/sf/saxon/tree/util/FastStringBuffer.<init> (I)V
+    ASTORE 7
+    ALOAD 7
+    ALOAD 8
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+   L47
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC " "
+    ASTORE 11
+    ALOAD 7
+    ALOAD 11
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+    SWAP
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+   L48
+    SIPUSH 188
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNULL L49
+    ALOAD 7
+    ALOAD 11
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+    SWAP
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    GOTO L48
+   L49
+    SIPUSH 189
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    POP
+    ALOAD 7
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.condense ()Ljava/lang/CharSequence;
+   L45
+    SIPUSH 190
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEVIRTUAL java/lang/Object.toString ()Ljava/lang/String;
+    GETSTATIC EE__Slash_doc_491969464096.nString57 : Ljava/lang/String;
+    LDC "FOCH0002"
+    INVOKEVIRTUAL net/sf/saxon/Configuration.getCollation (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lnet/sf/saxon/lib/StringCollator;
+    ICONST_0
+    INVOKESPECIAL net/sf/saxon/expr/sort/GroupByIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;Lnet/sf/saxon/expr/Expression;Lnet/sf/saxon/expr/XPathContext;Lnet/sf/saxon/lib/StringCollator;Z)V
+    ASTORE 9
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newContext ()Lnet/sf/saxon/expr/XPathContextMajor;
+    ASTORE 10
+    ALOAD 10
+    ALOAD 9
+    INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentGroupIterator (Lnet/sf/saxon/expr/sort/GroupIterator;)V
+    ALOAD 10
+    NEW net/sf/saxon/om/FocusTrackingIterator
+    DUP
+    ALOAD 9
+    INVOKESPECIAL net/sf/saxon/om/FocusTrackingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;)V
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setCurrentIterator (Lnet/sf/saxon/om/FocusIterator;)V
+    ALOAD 10
+    ACONST_NULL
+    INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentTemplateRule (Lnet/sf/saxon/trans/Rule;)V
+   L50
+    SIPUSH 191
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 10
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getCurrentIterator ()Lnet/sf/saxon/om/FocusIterator;
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    IFNULL L51
+   L52
+    LDC "SimpleNodeConstructorCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+   L53
+    LDC "AtomicSequenceConverterCompiler-Item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 21 L54
+   L55
+    LDC "AtomizerCompiler-String"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 10
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation60 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L50
+   L51
+    SIPUSH 192
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L56
+    LDC "SimpleNodeConstructorCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+   L57
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 15 L58
+    LDC "\n"
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation52 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+   L59
+    LDC "ForEachGroupCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 27 L60
+    NEW net/sf/saxon/om/FocusTrackingIterator
+    DUP
+   L61
+    LDC "AxisExpressionCompiler - iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    CHECKCAST net/sf/saxon/om/NodeInfo
+   L62
+    LDC "AxisExpressionCompiler - static method: iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_3
+    GETSTATIC EE__Slash_doc_491969464096.nNameTest53 : Lnet/sf/saxon/pattern/NameTest;
+    LDC "calling iterateAxis"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.iterateAxis (BLnet/sf/saxon/pattern/NodeTest;)Lnet/sf/saxon/tree/iter/AxisIterator;
+    LDC "returning axis iterator"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKESPECIAL net/sf/saxon/om/FocusTrackingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;)V
+    CHECKCAST net/sf/saxon/om/SequenceIterator
+    ASTORE 3
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newMinorContext ()Lnet/sf/saxon/expr/XPathContextMinor;
+    ASTORE 4
+    ALOAD 4
+    ALOAD 3
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setCurrentIterator (Lnet/sf/saxon/om/FocusIterator;)V
+    NEW net/sf/saxon/expr/sort/GroupByIterator
+    DUP
+    ALOAD 3
+    GETSTATIC EE__Slash_doc_491969464096.nAtomizer61 : Lnet/sf/saxon/expr/Atomizer;
+    ALOAD 4
+    GETSTATIC EE__Slash_doc_491969464096.nEnterpriseConfiguration55 : Lcom/saxonica/config/EnterpriseConfiguration;
+   L63
+    LDC "Concat-item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    NEW net/sf/saxon/tree/util/FastStringBuffer
+    DUP
+    BIPUSH 64
+    INVOKESPECIAL net/sf/saxon/tree/util/FastStringBuffer.<init> (I)V
+    ASTORE 7
+    ALOAD 7
+   L64
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC "http://"
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+   L65
+    LDC "StringJoin-Item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L66
+    LDC "AtomicSequenceConverterCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L67
+    LDC "AtomicSequenceConverterCompiler-string"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    NEW net/sf/saxon/expr/ItemMappingIterator
+    DUP
+   L68
+    LDC "AtomizerCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L69
+    LDC "AxisExpressionCompiler - iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    CHECKCAST net/sf/saxon/om/NodeInfo
+   L70
+    LDC "AxisExpressionCompiler - static method: iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_3
+    GETSTATIC EE__Slash_doc_491969464096.nNameTest62 : Lnet/sf/saxon/pattern/NameTest;
+    LDC "calling iterateAxis"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.iterateAxis (BLnet/sf/saxon/pattern/NodeTest;)Lnet/sf/saxon/tree/iter/AxisIterator;
+    LDC "returning axis iterator"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_1
+    INVOKESTATIC net/sf/saxon/expr/Atomizer.getAtomizingIterator (Lnet/sf/saxon/om/SequenceIterator;Z)Lnet/sf/saxon/om/SequenceIterator;
+    GETSTATIC net/sf/saxon/expr/AtomicSequenceConverter.TO_STRING_MAPPER : Lnet/sf/saxon/expr/AtomicSequenceConverter$ToStringMappingFunction;
+    ICONST_1
+    INVOKESPECIAL net/sf/saxon/expr/ItemMappingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;Lnet/sf/saxon/expr/ItemMappingFunction;Z)V
+   L71
+    LDC "StringJoin-Item-1"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ASTORE 5
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L72
+    POP
+    LDC ""
+    GOTO L73
+   L72
+    SIPUSH 193
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    ASTORE 11
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L74
+    POP
+    ALOAD 11
+    GOTO L73
+   L74
+    SIPUSH 194
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    NEW net/sf/saxon/tree/util/FastStringBuffer
+    DUP
+    BIPUSH 64
+    INVOKESPECIAL net/sf/saxon/tree/util/FastStringBuffer.<init> (I)V
+    ASTORE 13
+    ALOAD 13
+    ALOAD 11
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+   L75
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC " "
+    ASTORE 14
+    ALOAD 13
+    ALOAD 14
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 13
+    SWAP
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+   L76
+    SIPUSH 195
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNULL L77
+    ALOAD 13
+    ALOAD 14
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 13
+    SWAP
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    GOTO L76
+   L77
+    SIPUSH 196
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    POP
+    ALOAD 13
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.condense ()Ljava/lang/CharSequence;
+   L73
+    SIPUSH 197
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+   L78
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC "collation/codepoint"
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.condense ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL java/lang/Object.toString ()Ljava/lang/String;
+    GETSTATIC EE__Slash_doc_491969464096.nString57 : Ljava/lang/String;
+    LDC "FOCH0002"
+    INVOKEVIRTUAL net/sf/saxon/Configuration.getCollation (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lnet/sf/saxon/lib/StringCollator;
+    ICONST_0
+    INVOKESPECIAL net/sf/saxon/expr/sort/GroupByIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;Lnet/sf/saxon/expr/Expression;Lnet/sf/saxon/expr/XPathContext;Lnet/sf/saxon/lib/StringCollator;Z)V
+    ASTORE 9
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newContext ()Lnet/sf/saxon/expr/XPathContextMajor;
+    ASTORE 10
+    ALOAD 10
+    ALOAD 9
+    INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentGroupIterator (Lnet/sf/saxon/expr/sort/GroupIterator;)V
+    ALOAD 10
+    NEW net/sf/saxon/om/FocusTrackingIterator
+    DUP
+    ALOAD 9
+    INVOKESPECIAL net/sf/saxon/om/FocusTrackingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;)V
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setCurrentIterator (Lnet/sf/saxon/om/FocusIterator;)V
+    ALOAD 10
+    ACONST_NULL
+    INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentTemplateRule (Lnet/sf/saxon/trans/Rule;)V
+   L79
+    SIPUSH 198
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 10
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getCurrentIterator ()Lnet/sf/saxon/om/FocusIterator;
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    IFNULL L80
+   L81
+    LDC "SimpleNodeConstructorCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+   L82
+    LDC "AtomicSequenceConverterCompiler-Item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 28 L83
+   L84
+    LDC "AtomizerCompiler-String"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 10
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation63 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L79
+   L80
+    SIPUSH 199
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+   L85
+    LDC "SimpleNodeConstructorCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+   L86
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 15 L87
+    LDC "\n"
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation52 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+   L88
+    LDC "ForEachGroupCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 34 L89
+    NEW net/sf/saxon/om/FocusTrackingIterator
+    DUP
+   L90
+    LDC "AxisExpressionCompiler - iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    CHECKCAST net/sf/saxon/om/NodeInfo
+   L91
+    LDC "AxisExpressionCompiler - static method: iterate"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ICONST_3
+    GETSTATIC EE__Slash_doc_491969464096.nNameTest53 : Lnet/sf/saxon/pattern/NameTest;
+    LDC "calling iterateAxis"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKEINTERFACE net/sf/saxon/om/NodeInfo.iterateAxis (BLnet/sf/saxon/pattern/NodeTest;)Lnet/sf/saxon/tree/iter/AxisIterator;
+    LDC "returning axis iterator"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    INVOKESPECIAL net/sf/saxon/om/FocusTrackingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;)V
+    CHECKCAST net/sf/saxon/om/SequenceIterator
+    ASTORE 3
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newMinorContext ()Lnet/sf/saxon/expr/XPathContextMinor;
+    ASTORE 4
+    ALOAD 4
+    ALOAD 3
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setCurrentIterator (Lnet/sf/saxon/om/FocusIterator;)V
+    NEW net/sf/saxon/expr/sort/GroupByIterator
+    DUP
+    ALOAD 3
+    GETSTATIC EE__Slash_doc_491969464096.nAtomizer64 : Lnet/sf/saxon/expr/Atomizer;
+    ALOAD 4
+    GETSTATIC EE__Slash_doc_491969464096.nEnterpriseConfiguration55 : Lcom/saxonica/config/EnterpriseConfiguration;
+   L92
+    LDC "Concat-item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    NEW net/sf/saxon/tree/util/FastStringBuffer
+    DUP
+    BIPUSH 64
+    INVOKESPECIAL net/sf/saxon/tree/util/FastStringBuffer.<init> (I)V
+    ASTORE 7
+    ALOAD 7
+   L93
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC "http://"
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+   L94
+    LDC "StringJoin-Item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L95
+    LDC "AtomicSequenceConverterCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L96
+    LDC "AtomicSequenceConverterCompiler-string"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    NEW net/sf/saxon/expr/ItemMappingIterator
+    DUP
+   L97
+    LDC "AtomizerCompiler-Itr"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+   L98
+    LDC "VariableReferenceCompiler-Iterator"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 1
+    DUP
+    ICONST_1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getTargetComponent (I)Lnet/sf/saxon/expr/Component;
+    DUP
+    INVOKEVIRTUAL net/sf/saxon/expr/Component.getCode ()Lnet/sf/saxon/expr/instruct/ComponentCode;
+    CHECKCAST net/sf/saxon/expr/instruct/GlobalVariable
+    DUP_X2
+    POP
+    INVOKEVIRTUAL net/sf/saxon/expr/instruct/GlobalVariable.evaluateVariable (Lnet/sf/saxon/expr/XPathContext;Lnet/sf/saxon/expr/Component;)Lnet/sf/saxon/om/Sequence;
+    INVOKEINTERFACE net/sf/saxon/om/Sequence.iterate ()Lnet/sf/saxon/om/SequenceIterator;
+    ICONST_1
+    INVOKESTATIC net/sf/saxon/expr/Atomizer.getAtomizingIterator (Lnet/sf/saxon/om/SequenceIterator;Z)Lnet/sf/saxon/om/SequenceIterator;
+    GETSTATIC net/sf/saxon/expr/AtomicSequenceConverter.TO_STRING_MAPPER : Lnet/sf/saxon/expr/AtomicSequenceConverter$ToStringMappingFunction;
+    ICONST_1
+    INVOKESPECIAL net/sf/saxon/expr/ItemMappingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;Lnet/sf/saxon/expr/ItemMappingFunction;Z)V
+   L99
+    LDC "StringJoin-Item-1"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ASTORE 5
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L100
+    POP
+    LDC ""
+    GOTO L101
+   L100
+    SIPUSH 200
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    ASTORE 14
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNONNULL L102
+    POP
+    ALOAD 14
+    GOTO L101
+   L102
+    SIPUSH 201
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    NEW net/sf/saxon/tree/util/FastStringBuffer
+    DUP
+    BIPUSH 64
+    INVOKESPECIAL net/sf/saxon/tree/util/FastStringBuffer.<init> (I)V
+    ASTORE 13
+    ALOAD 13
+    ALOAD 14
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+   L103
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC " "
+    ASTORE 15
+    ALOAD 13
+    ALOAD 15
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 13
+    SWAP
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+   L104
+    SIPUSH 202
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 5
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    DUP
+    IFNULL L105
+    ALOAD 13
+    ALOAD 15
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 13
+    SWAP
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    GOTO L104
+   L105
+    SIPUSH 203
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    POP
+    ALOAD 13
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.condense ()Ljava/lang/CharSequence;
+   L101
+    SIPUSH 204
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+   L106
+    LDC "LiteralCompiler-Primitive"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LDC "collation/codepoint"
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.append (Ljava/lang/CharSequence;)V
+    ALOAD 7
+    INVOKEVIRTUAL net/sf/saxon/tree/util/FastStringBuffer.condense ()Ljava/lang/CharSequence;
+    INVOKEVIRTUAL java/lang/Object.toString ()Ljava/lang/String;
+    GETSTATIC EE__Slash_doc_491969464096.nString57 : Ljava/lang/String;
+    LDC "FOCH0002"
+    INVOKEVIRTUAL net/sf/saxon/Configuration.getCollation (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lnet/sf/saxon/lib/StringCollator;
+    ICONST_0
+    INVOKESPECIAL net/sf/saxon/expr/sort/GroupByIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;Lnet/sf/saxon/expr/Expression;Lnet/sf/saxon/expr/XPathContext;Lnet/sf/saxon/lib/StringCollator;Z)V
+    ASTORE 9
+    ALOAD 1
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newContext ()Lnet/sf/saxon/expr/XPathContextMajor;
+    ASTORE 10
+    ALOAD 10
+    ALOAD 9
+    INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentGroupIterator (Lnet/sf/saxon/expr/sort/GroupIterator;)V
+    ALOAD 10
+    NEW net/sf/saxon/om/FocusTrackingIterator
+    DUP
+    ALOAD 9
+    INVOKESPECIAL net/sf/saxon/om/FocusTrackingIterator.<init> (Lnet/sf/saxon/om/SequenceIterator;)V
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.setCurrentIterator (Lnet/sf/saxon/om/FocusIterator;)V
+    ALOAD 10
+    ACONST_NULL
+    INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentTemplateRule (Lnet/sf/saxon/trans/Rule;)V
+   L107
+    SIPUSH 205
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 10
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getCurrentIterator ()Lnet/sf/saxon/om/FocusIterator;
+    INVOKEINTERFACE net/sf/saxon/om/SequenceIterator.next ()Lnet/sf/saxon/om/Item;
+    IFNULL L108
+   L109
+    LDC "SimpleNodeConstructorCompiler-Push"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 2
+   L110
+    LDC "AtomicSequenceConverterCompiler-Item"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    LINENUMBER 35 L111
+   L112
+    LDC "AtomizerCompiler-String"
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+    ALOAD 10
+    INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getContextItem ()Lnet/sf/saxon/om/Item;
+    INVOKEINTERFACE net/sf/saxon/om/Item.getStringValueCS ()Ljava/lang/CharSequence;
+    GETSTATIC EE__Slash_doc_491969464096.nNestedLocation65 : Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation;
+    ICONST_0
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.characters (Ljava/lang/CharSequence;Lnet/sf/saxon/expr/parser/Location;I)V
+    GOTO L107
+   L108
+    SIPUSH 206
+    INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+    ALOAD 2
+    INVOKEINTERFACE net/sf/saxon/event/Receiver.endElement ()V
+    RETURN
+    MAXSTACK = 0
+    MAXLOCALS = 0
+}
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/Atomizer; nAtomizer61
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation; nNestedLocation63
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/Atomizer; nAtomizer54
+
+  // access flags 0x9
+  public static Lcom/saxonica/config/EnterpriseConfiguration; nEnterpriseConfiguration55
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/Atomizer; nAtomizer59
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation; nNestedLocation52
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/om/NoNamespaceName; nNoNamespaceName50
+
+  // access flags 0x9
+  public static Ljava/lang/String; nString57
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/Atomizer; nAtomizer64
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/type/Untyped; nUntyped51
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/pattern/NameTest; nNameTest56
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation; nNestedLocation65
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/pattern/NameTest; nNameTest53
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation; nNestedLocation60
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/pattern/NameTest; nNameTest62
+
+  // access flags 0x9
+  public static Lnet/sf/saxon/expr/parser/XPathParser$NestedLocation; nNestedLocation58
+}

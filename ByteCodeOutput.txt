@@ -1,0 +1,168 @@
+org.objectweb.asm.tree.analysis.AnalyzerException: Error at instruction 129: Method owner: expected Lnet/sf/saxon/expr/instruct/ComponentCode;, but found Lnet/sf/saxon/expr/instruct/TemplateRule;
+	at org.objectweb.asm.tree.analysis.Analyzer.analyze(Unknown Source)
+	at org.objectweb.asm.util.CheckClassAdapter.verify(Unknown Source)
+	at org.objectweb.asm.util.CheckClassAdapter.verify(Unknown Source)
+	at com.saxonica.ee.bytecode.ExpressionCompiler.verify(ExpressionCompiler.java:377)
+	at com.saxonica.ee.bytecode.util.CompilerService.compileToByteCode(CompilerService.java:671)
+	at com.saxonica.ee.optim.OptimizerEE.compileToByteCode(OptimizerEE.java:1531)
+	at net.sf.saxon.style.XSLTemplate.generateByteCode(XSLTemplate.java:822)
+	at net.sf.saxon.style.PrincipalStylesheetModule.compile(PrincipalStylesheetModule.java:1271)
+	at net.sf.saxon.style.Compilation.compilePackage(Compilation.java:215)
+	at net.sf.saxon.style.Compilation.compileSingletonPackage(Compilation.java:100)
+	at net.sf.saxon.s9api.XsltCompiler.compile(XsltCompiler.java:761)
+	at net.sf.saxon.testdriver.Xslt30TestSuiteDriverHE.runTestCase(Xslt30TestSuiteDriverHE.java:263)
+	at net.sf.saxon.testdriver.TestDriver.processTestSet(TestDriver.java:473)
+	at net.sf.saxon.testdriver.TestDriver.processCatalog(TestDriver.java:242)
+	at net.sf.saxon.testdriver.TestDriver.go(TestDriver.java:164)
+	at com.saxonica.testdriver.Xslt30TestSuiteDriver.go(Xslt30TestSuiteDriver.java:55)
+	at com.saxonica.testdriver.Xslt30TestSuiteDriver.main(Xslt30TestSuiteDriver.java:48)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+Caused by: org.objectweb.asm.tree.analysis.AnalyzerException: Method owner: expected Lnet/sf/saxon/expr/instruct/ComponentCode;, but found Lnet/sf/saxon/expr/instruct/TemplateRule;
+	at org.objectweb.asm.tree.analysis.BasicVerifier.naryOperation(Unknown Source)
+	at org.objectweb.asm.tree.analysis.BasicVerifier.naryOperation(Unknown Source)
+	at org.objectweb.asm.tree.analysis.Frame.execute(Unknown Source)
+	... 22 more
+process(Lnet/sf/saxon/expr/XPathContext;)V
+00000 LEE_str1_151690464956; XPathContext . . . . . . . .  :  :     ALOAD 1
+00001 LEE_str1_151690464956; XPathContext . . . . . . . .  : XPathContext  :     INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getReceiver ()Lnet/sf/saxon/event/SequenceReceiver;
+00002 LEE_str1_151690464956; XPathContext . . . . . . . .  : SequenceReceiver  :     ASTORE 2
+00003 LEE_str1_151690464956; XPathContext SequenceReceiver . . . . . . .  :  :     LDC "ApplyImports-push"
+00004 LEE_str1_151690464956; XPathContext SequenceReceiver . . . . . . .  : String  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+00005 LEE_str1_151690464956; XPathContext SequenceReceiver . . . . . . .  :  :     LDC "compileParameterSet"
+00006 LEE_str1_151690464956; XPathContext SequenceReceiver . . . . . . .  : String  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+00007 LEE_str1_151690464956; XPathContext SequenceReceiver . . . . . . .  :  :     ACONST_NULL
+00008 LEE_str1_151690464956; XPathContext SequenceReceiver . . . . . . .  : Lnull;  :     ASTORE 3
+00009 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . . . . . .  :  :     ALOAD 1
+00010 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . . . . . .  : XPathContext  :     INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getTunnelParameters ()Lnet/sf/saxon/expr/instruct/ParameterSet;
+00011 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . . . . . .  : ParameterSet  :     ASTORE 5
+00012 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  :  :     ALOAD 5
+00013 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet  :     IFNONNULL L0
+00014 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  :  :     LDC "compileParameterSet"
+00015 ?                   :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.showMessage (Ljava/lang/String;)V
+00016 ?                   :     ACONST_NULL
+00017 ?                   :     GOTO L1
+00018 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  :  :    L0
+00019 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  :  :     BIPUSH 13
+00020 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : I  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+00021 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  :  :     NEW net/sf/saxon/expr/instruct/ParameterSet
+00022 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet  :     DUP
+00023 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet ParameterSet  :     ALOAD 5
+00024 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet ParameterSet ParameterSet  :     ICONST_0
+00025 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet ParameterSet ParameterSet I  :     INVOKESPECIAL net/sf/saxon/expr/instruct/ParameterSet.<init> (Lnet/sf/saxon/expr/instruct/ParameterSet;I)V
+00026 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet  :    L1
+00027 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet  :     BIPUSH 14
+00028 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet I  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+00029 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; . ParameterSet . . . .  : ParameterSet  :     ASTORE 4
+00030 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  :  :     ALOAD 1
+00031 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : XPathContext  :     INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getCurrentIterator ()Lnet/sf/saxon/om/FocusIterator;
+00032 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : FocusIterator  :     DUP
+00033 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : FocusIterator FocusIterator  :     IFNONNULL L2
+00034 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : FocusIterator  :     LDC "Cannot call xsl:apply-imports when there is no context item"
+00035 ?                   :     LDC "XTDE0565"
+00036 ?                   :     ACONST_NULL
+00037 ?                   :     ICONST_M1
+00038 ?                   :     ICONST_0
+00039 ?                   :     INVOKESTATIC com/saxonica/ee/bytecode/util/Callback.makeXPathException (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)Lnet/sf/saxon/trans/XPathException;
+00040 ?                   :     ATHROW
+00041 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : FocusIterator  :    L2
+00042 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : FocusIterator  :     BIPUSH 15
+00043 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : FocusIterator I  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+00044 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : FocusIterator  :     INVOKEINTERFACE net/sf/saxon/om/FocusIterator.current ()Lnet/sf/saxon/om/Item;
+00045 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet . . . .  : Item  :     ASTORE 6
+00046 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  :  :     ALOAD 1
+00047 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : XPathContext  :     INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getController ()Lnet/sf/saxon/Controller;
+00048 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : Controller  :     INVOKEVIRTUAL net/sf/saxon/Controller.getRuleManager ()Lnet/sf/saxon/trans/RuleManager;
+00049 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager  :     ALOAD 6
+00050 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item  :     ALOAD 1
+00051 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item XPathContext  :     INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getCurrentTemplateRule ()Lnet/sf/saxon/trans/Rule;
+00052 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule  :     DUP
+00053 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Rule  :     IFNONNULL L3
+00054 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule  :     LDC "There is no current template rule"
+00055 ?                   :     LDC "XTDE0560"
+00056 ?                   :     ACONST_NULL
+00057 ?                   :     ICONST_M1
+00058 ?                   :     ICONST_0
+00059 ?                   :     INVOKESTATIC com/saxonica/ee/bytecode/util/Callback.makeXPathException (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZ)Lnet/sf/saxon/trans/XPathException;
+00060 ?                   :     ATHROW
+00061 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule  :    L3
+00062 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule  :     BIPUSH 16
+00063 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule I  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+00064 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule  :     ALOAD 1
+00065 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule XPathContext  :     INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getCurrentMode ()Lnet/sf/saxon/expr/Component;
+00066 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Component  :     DUP
+00067 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Component Component  :     IFNONNULL L4
+00068 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Component  :     POP
+00069 ?                   :     ALOAD 1
+00070 ?                   :     INVOKEINTERFACE net/sf/saxon/expr/XPathContext.getController ()Lnet/sf/saxon/Controller;
+00071 ?                   :     INVOKEVIRTUAL net/sf/saxon/Controller.getRuleManager ()Lnet/sf/saxon/trans/RuleManager;
+00072 ?                   :     INVOKEVIRTUAL net/sf/saxon/trans/RuleManager.getUnnamedMode ()Lnet/sf/saxon/trans/Mode;
+00073 ?                   :     GOTO L5
+00074 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Component  :    L4
+00075 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Component  :     BIPUSH 17
+00076 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Component I  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+00077 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Component  :     INVOKEVIRTUAL net/sf/saxon/expr/Component.getCode ()Lnet/sf/saxon/expr/instruct/ComponentCode;
+00078 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule ComponentCode  :     CHECKCAST net/sf/saxon/trans/Mode
+00079 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Mode  :    L5
+00080 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Mode  :     BIPUSH 18
+00081 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Mode I  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+00082 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Mode  :     DUP
+00083 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item . . .  : RuleManager Item Rule Mode Mode  :     ASTORE 7
+00084 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Rule Mode  :     SWAP
+00085 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Mode Rule  :     DUP
+00086 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Mode Rule Rule  :     INVOKEVIRTUAL net/sf/saxon/trans/Rule.getMinImportPrecedence ()I
+00087 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Mode Rule I  :     SWAP
+00088 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Mode I Rule  :     INVOKEVIRTUAL net/sf/saxon/trans/Rule.getPrecedence ()I
+00089 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Mode I I  :     ICONST_1
+00090 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Mode I I I  :     ISUB
+00091 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Mode I I  :     ALOAD 1
+00092 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : RuleManager Item Mode I I XPathContext  :     INVOKEVIRTUAL net/sf/saxon/trans/RuleManager.getTemplateRule (Lnet/sf/saxon/om/Item;Lnet/sf/saxon/trans/Mode;IILnet/sf/saxon/expr/XPathContext;)Lnet/sf/saxon/trans/Rule;
+00093 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : Rule  :     DUP
+00094 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : Rule Rule  :     IFNONNULL L6
+00095 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : Rule  :     POP
+00096 ?                   :     ALOAD 7
+00097 ?                   :     INVOKEVIRTUAL net/sf/saxon/trans/Mode.getBuiltInRuleSet ()Lnet/sf/saxon/trans/BuiltInRuleSet;
+00098 ?                   :     ALOAD 6
+00099 ?                   :     ALOAD 3
+00100 ?                   :     ALOAD 4
+00101 ?                   :     ALOAD 1
+00102 ?                   :     GETSTATIC EE_str1_151690464956.nExplicitLocation16 : Lnet/sf/saxon/expr/parser/ExplicitLocation;
+00103 ?                   :     INVOKEINTERFACE net/sf/saxon/trans/BuiltInRuleSet.process (Lnet/sf/saxon/om/Item;Lnet/sf/saxon/expr/instruct/ParameterSet;Lnet/sf/saxon/expr/instruct/ParameterSet;Lnet/sf/saxon/expr/XPathContext;Lnet/sf/saxon/expr/parser/Location;)V
+00104 ?                   :     GOTO L7
+00105 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : Rule  :    L6
+00106 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : Rule  :     BIPUSH 19
+00107 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : Rule I  :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+00108 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode . .  : Rule  :     ASTORE 8
+00109 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  :  :     ALOAD 1
+00110 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContext  :     INVOKEINTERFACE net/sf/saxon/expr/XPathContext.newContext ()Lnet/sf/saxon/expr/XPathContextMajor;
+00111 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor  :     DUP
+00112 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor  :     ALOAD 3
+00113 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor Lnull;  :     INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setLocalParameters (Lnet/sf/saxon/expr/instruct/ParameterSet;)V
+00114 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor  :     DUP
+00115 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor  :     ALOAD 4
+00116 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor ParameterSet  :     INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setTunnelParameters (Lnet/sf/saxon/expr/instruct/ParameterSet;)V
+00117 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor  :     DUP
+00118 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor  :     ALOAD 8
+00119 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor Rule  :     INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setCurrentTemplateRule (Lnet/sf/saxon/trans/Rule;)V
+00120 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor  :     DUP
+00121 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor  :     GETSTATIC EE_str1_151690464956.nApplyImports17 : Lnet/sf/saxon/expr/instruct/ApplyImports;
+00122 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor ApplyImports  :     INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.setOrigin (Lnet/sf/saxon/expr/ContextOriginator;)V
+00123 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor  :     DUP
+00124 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor  :     ALOAD 8
+00125 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor Rule  :     INVOKEVIRTUAL net/sf/saxon/trans/Rule.getAction ()Lnet/sf/saxon/trans/RuleTarget;
+00126 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor RuleTarget  :     CHECKCAST net/sf/saxon/expr/instruct/TemplateRule
+00127 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor TemplateRule  :     DUP
+00128 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule .  : XPathContextMajor XPathContextMajor TemplateRule TemplateRule  :     ASTORE 9
+00129 LEE_str1_151690464956; XPathContext SequenceReceiver Lnull; ParameterSet ParameterSet Item Mode Rule TemplateRule  : XPathContextMajor XPathContextMajor TemplateRule  :     INVOKEVIRTUAL net/sf/saxon/expr/instruct/ComponentCode.getStackFrameMap ()Lnet/sf/saxon/expr/instruct/SlotManager;
+00130 ?                   :     INVOKEVIRTUAL net/sf/saxon/expr/XPathContextMajor.openStackFrame (Lnet/sf/saxon/expr/instruct/SlotManager;)V
+00131 ?                   :     ALOAD 9
+00132 ?                   :     SWAP
+00133 ?                   :     INVOKEVIRTUAL net/sf/saxon/expr/instruct/TemplateRule.apply (Lnet/sf/saxon/expr/XPathContextMajor;)V
+00134 ?                   :    L7
+00135 ?                   :     BIPUSH 20
+00136 ?                   :     INVOKESTATIC com/saxonica/ee/bytecode/util/ByteCodeTrace.trace (I)V
+00137 ?                   :     RETURN
+
