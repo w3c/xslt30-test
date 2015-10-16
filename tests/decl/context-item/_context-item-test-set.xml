@@ -226,16 +226,17 @@
    
    <test-case name="context-item-016">
       <description>
-        Test xsl:context-item with apply-templates use="absent". 
+        Test xsl:context-item with apply-templates use="prohibited". 
       </description>
       <created by="Michael Kay" on="2014-10-09"/>
       <modified by="Michael Kay" on="2015-01-26" change="keyword change: prohibited -> absent"/>
+      <modified by="Michael Kay" on="2015-10-16" change="static error: If the containing xsl:template element has no name attribute then the only permitted value is required."/>
       <environment ref="context-item-A"/>
       <test>
          <stylesheet file="context-item-016.xsl"/>
       </test>
       <result>
-         <error code="XPDY0002"/>
+         <error code="XTSE0020"/>
       </result>
    </test-case>
    
@@ -245,6 +246,7 @@
       </description>
       <created by="Michael Kay" on="2014-10-09"/>
       <modified by="Michael Kay" on="2015-01-26" change="keyword change: prohibited -> absent"/>
+      <modified by="Michael Kay" on="2015-10-16" change="add a template name so use='absent' becomes legal"/>     
       <environment ref="context-item-A"/>
       <test>
          <stylesheet file="context-item-017.xsl"/>
@@ -260,6 +262,7 @@
       </description>
       <created by="Michael Kay" on="2014-10-09"/>
       <modified by="Michael Kay" on="2015-01-26" change="keyword change: prohibited -> absent"/>
+      <modified by="Michael Kay" on="2015-10-16" change="add a template name so use='absent' becomes legal"/>     
       <environment ref="context-item-A"/>
       <test>
          <stylesheet file="context-item-018.xsl"/>

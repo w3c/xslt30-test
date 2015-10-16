@@ -3,7 +3,7 @@
 
     <!-- Test xsl:context-item with next-match and use="absent" (dynamic error).-->
   
-    <xsl:template match="doc">
+    <xsl:template match="doc" name="unused">
       <xsl:context-item use="absent"/>
       <xsl:copy-of select="."/>
     </xsl:template>
