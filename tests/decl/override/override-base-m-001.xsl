@@ -7,19 +7,19 @@
   xmlns:p="http://www.w3.org/xslt30tests/override-base-m-001"
   exclude-result-prefixes="xs p">
   
-<!--
+
   <xsl:mode name="m1" visibility="private"/>
   
   <xsl:mode name="m2" visibility="final"/>
   
   <xsl:template match="a" mode="m2">
-    <A><xsl:apply-templates/></A>
+    <A><xsl:apply-templates mode="m2"/></A>
   </xsl:template>
   
   <xsl:template match="b" mode="m2">
-    <B><xsl:apply-templates/></B>
+    <B><xsl:apply-templates mode="m2"/></B>
   </xsl:template>
--->  
+  
   <xsl:mode name="m3" visibility="public"/>
   
   <xsl:template match="A" mode="m3">
@@ -27,8 +27,14 @@
   </xsl:template>
   
   <xsl:template match="B" mode="m3">
+    <xsl:call-template name="B"/>
+  </xsl:template>
+  
+  <xsl:template name="B" visibility="final">
     <b><xsl:apply-templates mode="#current"/></b>
   </xsl:template>
+  
+  <xsl:template name="alpha" visibility="public"/>
   
   
   

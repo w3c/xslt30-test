@@ -567,7 +567,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE9999"/>
+         <error code="XTSE3060"/>
       </result>
    </test-case>
    
@@ -580,7 +580,7 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE9999"/>
+         <error code="XTSE3060"/>
       </result>
    </test-case>
    
@@ -589,11 +589,115 @@
       <created by="Michael Kay" on="2015-08-30"/>
       <environment ref="override-m-G"/>
       <test>
-         <package file="override-m-003.xsl" role="principal"/>
+         <package file="override-m-004.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE9999"/>
+         <error code="XTSE3440"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-005">
+      <description>Within override, template referring to its own mode</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-005.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><aa><b>22</b></aa></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-006">
+      <description>Within override, template using next-match</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-006.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><aa><a><b>22</b></a></aa></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-007">
+      <description>Within override, template using next-match indirectly</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-007.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><aa><a><b>22</b></a></aa></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-008">
+      <description>Within override, two matching templates; last one wins</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-008.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a2><a1><a><b>22</b></a></a1></a2></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-009">
+      <description>Within override, two matching templates; explicit priority</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-009.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a1><a2><a><b>22</b></a></a2></a1></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-010">
+      <description>Within override, default-mode attribute</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-010.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a1><a2><b>22</b></a2></a1></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-011">
+      <description>Within override, overriding template has a match pattern and a name but the name is unknown</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-011.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3058"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-012">
+      <description>Within override, overriding template has a match pattern and a name; it overrides both</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-012.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a1><beta/><beta/></a1></out>]]></assert-xml>
       </result>
    </test-case>
    
