@@ -701,6 +701,58 @@
       </result>
    </test-case>
    
+   <test-case name="override-m-013">
+      <description>Within override, cannot override the xsl:mode declaration itself</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-013.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-014">
+      <description>Within override, override a template in two modes at once</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-014.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a1><a><b>22</b></a></a1><a1/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-015">
+      <description>Within override, two overriding templates passing each other tunnel parameters</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-015.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><x1><a><b1 T="55"><b>22</b></b1></a></x1></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-016">
+      <description>Within override, cannot override a template rule in a mode accepted as final</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-016.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3060"/>
+      </result>
+   </test-case>
+   
    
    <test-case name="override-misc-001">
       <description>Cannot override a key</description>

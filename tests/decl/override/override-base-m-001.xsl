@@ -34,6 +34,8 @@
     <b><xsl:apply-templates mode="#current"/></b>
   </xsl:template>
   
+  <xsl:mode name="m4" visibility="public" on-no-match="deep-skip"/>
+  
   <xsl:template name="alpha" visibility="public"/>
   
   
