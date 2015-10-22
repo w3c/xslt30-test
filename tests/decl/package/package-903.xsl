@@ -13,7 +13,7 @@
   
     <xsl:template name="main">
       <xsl:expose component="template" names="*" visibility="public"/>
-      <ok/>
+      <not-ok/>
     </xsl:template>
     
 

@@ -39,6 +39,349 @@
       </result>
    </test-case>
 
+   <test-case name="package-003">
+      <description>An empty package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-003.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-004">
+      <description>An empty package with a declared default mode</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-004.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-005">
+      <description>An empty package with a weird package version number</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-005.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-006">
+      <description>An empty package with a package version number as static AVT</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-006.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-007">
+      <description>An empty package with a exclude-result-prefixes as static AVT</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-007.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-008">
+      <description>An empty package with an xsl:output declaration</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-008.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-serialization>Some random input file</assert-serialization>
+      </result>
+   </test-case>
+
+   <test-case name="package-009">
+      <description>An empty package with an unnamed mode with shallow-skip</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-009.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-string-value></assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-010">
+      <description>
+         An empty package with a named mode and an initial mode with shallow-skip 
+         (tests whether declared modes does not prevent the unnamed mode to not exist)
+      </description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-010.xsl" role="principal"/>
+         <initial-mode name="output-nothing" />
+      </test>
+      <result>
+         <assert-string-value></assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-011">
+      <description>An empty package with a named mode and the default mode set to that named mode with shallow-skip</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-011.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-string-value></assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-012">
+      <description>An empty package with a named mode and the initial mode set to the default mode with shallow-skip</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-011.xsl" role="principal"/>
+         <initial-mode name="#default"></initial-mode>
+      </test>
+      <result>
+         <assert-string-value></assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-013">
+      <description>An empty package with a named mode and the initial mode set to the unnamed mode (override default) with shallow-skip</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-013.xsl" role="principal"/>
+         <initial-mode name="#unnamed"></initial-mode>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-014">
+      <description>Package version is not required</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-014.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-015">
+      <description>Use xsl:import on a package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-015.xsl" role="principal"/>
+         <stylesheet file="package-015-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-016">
+      <description>A package using a package, with both having an unnamed mode, used pkg will fail if its unnamed mode is triggered</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-016.xsl" role="principal"/>
+         <package file="package-016-used.xsl" uri="urn:use-me" package-version="0.1" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-016a">
+      <description>A package using a package, with both having an unnamed mode, used pkg will fail if its unnamed mode is triggered</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-016a.xsl" role="principal"/>
+         <package file="package-016-used.xsl" uri="urn:use-me" package-version="0.1" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-016b">
+      <description>A package using a package, with both having an unnamed mode, used pkg will fail if its unnamed mode is triggered</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-016b.xsl" role="principal"/>
+         <package file="package-016-used.xsl" uri="urn:use-me" package-version="0.1" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-016c">
+      <description>A package using a package, with both having an unnamed mode, used pkg will fail if its unnamed mode is triggered</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-016c.xsl" role="principal"/>
+         <package file="package-016-used.xsl" uri="urn:use-me" package-version="0.1" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-017">
+      <description>A package using a package twice, accepting two functions</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-017.xsl" role="principal"/>
+         <package file="package-017-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+
+   <test-case name="package-018">
+      <description>
+         A package using a package twice, accepting two functions, hiding once, publicizing in the second 
+         (is this allowed? XTSE3050 suggests it is, it says "other than hidden")
+      </description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-018.xsl" role="principal"/>
+         <package file="package-018-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>Some random input file</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-100">
+      <description>CSV package from the spec, section 3.5.7.2</description>
+      <created by="Abel Braaksma" on="2015-10-01"/>
+      <test>
+         <package file="package-100.xsl" role="principal"/>
+      </test>
+      <result>
+      <assert-xml><![CDATA[<csv>
+         <row/>
+         <row/>
+         <row>
+            <field quoted="no">name</field>
+            <field quoted="no">id</field>
+            <field quoted="no">postal code</field>
+          </row>
+         <row>
+            <field quoted="yes">Abel Braaksma</field>
+            <field quoted="no">34291</field>
+            <field quoted="no">1210 KA</field>
+         </row>
+         <row>
+            <field quoted="yes">Anders Berglund</field>
+            <field quoted="no">473892</field>
+            <field quoted="no">9843 ZD</field>
+         </row>
+         <row/>
+      </csv>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="package-101">
+      <description>Using / overriding CSV package from the spec, section 3.5.7.2</description>
+      <created by="Abel Braaksma" on="2015-10-01"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-100.xsl" uri="http://example.com/csv-parser" package-version="1.0.0" role="secondary"/>
+         <stylesheet file="package-101.xsl" role="principal"/>
+      </test>
+      <result>
+      <assert-xml><![CDATA[<root>
+         <row>
+           <field quoted="no" type="string">name</field>
+           <field quoted="no" type="string">id</field>
+           <field quoted="no" type="string">postal code</field>
+         </row>
+         <row>
+           <field quoted="yes" type="string">Braaksma Abel</field>
+           <field quoted="no" type="numeric">34291</field>
+           <field quoted="no" type="string">1210 KA</field>
+         </row>
+         <row>
+           <field quoted="yes" type="string">Berglund Anders</field>
+           <field quoted="no" type="numeric">473892</field>
+           <field quoted="no" type="string">9843 ZD</field>
+         </row>
+      </root>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="package-902">
       <description>Error - package has inappropriate child</description>
       <created by="Michael Kay" on="2013-07-08"/>
@@ -81,12 +424,35 @@
    </test-case>
 
    <test-case name="package-905">
-      <description>Error - 2 xsl:stylesheet elements</description>
+      <description>xsl:stylesheet element as child of xsl:package</description>
       <created by="Michael Kay" on="2013-07-08"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
+      <modified by="Abel Braaksma" on="2015-10-22" change="xsl:stylesheet is not allowed at all anymore as child of xsl:package, so testing with single stylesheet element now"/>
       <test>
          <package file="package-905.xsl" role="principal"/>
          <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="package-905a">
+      <description>xsl:transform element as child of xsl:package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <test>
+         <package file="package-905a.xsl" role="principal"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
+
+   <test-case name="package-905b">
+      <description>xsl:transform element as child of xsl:package without version attribute, should still raise XTSE0010</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <test>
+         <package file="package-905b.xsl" role="principal"/>
       </test>
       <result>
          <error code="XTSE0010"/>
@@ -111,14 +477,74 @@
       <description>Error - invalid version attribute on xsl:package</description>
       <created by="Michael Kay" on="2013-07-08"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
+      <modified by="Abel Braaksma" on="2015-10-22" change="Bug 29228: proper error for a wrong @version is XTSE0110, not the more generic XTSE0020"/>
       <test>
          <package file="package-907.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
+         <error code="XTSE0110"/>
+      </result>
+   </test-case>
+
+   <test-case name="package-908">
+      <description>An empty package with no declared modes</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-908.xsl" role="principal"/>
+      </test>
+      <result>
+         <error code="XTSE3085"/>
+      </result>
+   </test-case>
+
+   <test-case name="package-909">
+      <description>An empty package with a declared default mode, but wrongly, the name of the xsl:mode is set to #unnamed</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-909.xsl" role="principal"/>
+      </test>
+      <result>
          <error code="XTSE0020"/>
       </result>
    </test-case>
+
+   <test-case name="package-910">
+      <description>Use xsl:import on a package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-910.xsl" role="principal"/>
+         <stylesheet file="package-910-import.xsl" role="secondary" />
+      </test>
+      <result>
+         <error code="XTSE0150" />
+      </result>
+   </test-case>
+
+   <test-case name="package-911">
+      <description>Use xsl:import in a package with import precedence resulting in FAIL</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-911.xsl" role="principal"/>
+         <stylesheet file="package-911-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTDE0555" />
+      </result>
+   </test-case>
+
 
 
 </test-set>
