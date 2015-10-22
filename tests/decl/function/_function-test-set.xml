@@ -1048,6 +1048,7 @@
    <test-case name="function-1025">
       <description>XSLT 3.0 deterministic function: creates nodes</description>
       <created by="Michael Kay" on="2015-09-09"/>
+      <modified by="Abel Braaksma" on="2015-10-22" change="Fixed stylesheet for xslt version 2.0 --> 3.0, fixed bug#29223, allowing alternative outcomes"/>
       <environment ref="function-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1057,13 +1058,20 @@
          <param name="new-each-time" static="yes" select="'no'"/>
       </test>
       <result>
-         <assert>/out = "7"</assert>
+         <any-of>
+            <!-- function does not *have* to cache, and he may consider a certain predefined max for caching, hence each of the following is allowed -->
+            <assert>/out = "7"</assert>
+            <assert>/out = "8"</assert>
+            <assert>/out = "9"</assert>
+            <assert>/out = "10"</assert>
+         </any-of>
       </result>
    </test-case>
    
    <test-case name="function-1026">
       <description>XSLT 3.0 deterministic function: uses generate-id</description>
       <created by="Michael Kay" on="2015-09-09"/>
+      <modified by="Abel Braaksma" on="2015-10-22" change="Fixed stylesheet for xslt version 2.0 --> 3.0, fixed bug#29223, allowing alternative outcomes"/>
       <environment ref="function-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1073,7 +1081,13 @@
          <param name="new-each-time" static="yes" select="'no'"/>
       </test>
       <result>
-         <assert>/out = "7"</assert>
+         <any-of>
+            <!-- function does not *have* to cache, and he may consider a certain predefined max for caching, hence each of the following is allowed -->
+            <assert>/out = "7"</assert>
+            <assert>/out = "8"</assert>
+            <assert>/out = "9"</assert>
+            <assert>/out = "10"</assert>
+         </any-of>
       </result>
    </test-case>
    
@@ -1250,6 +1264,7 @@
    <test-case name="function-1501">
       <description>Test the available-environment-variables#0 and get-environment-variable#1 functions of XSLT3.0 spec</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2015-10-22" change="See bug#29222, non-existing environment variables do not return an empty string, but an empty sequence" />
       <environment ref="function-15"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1331,10 +1346,11 @@
       <modified by="Michael Kay" on="2014-06-04" change="Update results for renamed functions; output only the discrepancies to make results comparison easier"/>
       <modified by="Abel Braaksma" on="2014-10-16" change="Changed the auto-generation of this test, it is now dependent on actual XHTML spec, and updated the set of functions it tests"/>
       <modified by="Michael Kay" on="2014-11-14" change="Changed test assertion to pass catalog-004"/>
-      <modified by="Abel Braaksma" on="2015-03-30" change="Bug 20843: Updated autogen xslt to exclude xslt20 functions, updated test to create more useful output, added output comparison file."/>
+      <modified by="Abel Braaksma" on="2015-03-30" change="Bug 20843: Updated autogen xslt to exclude xslt30 functions, updated test to create more useful output, added output comparison file."/>
+      <modified by="Abel Braaksma" on="2015-10-22" change="changed XSLT file and test to have version 2.0" />
       <environment ref="function-1902"/>
       <dependencies>
-         <spec value="XSLT30+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="function-1902.xsl"/>
