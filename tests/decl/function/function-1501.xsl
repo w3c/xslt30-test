@@ -5,7 +5,6 @@
   <!-- Testing fn:available-environment-variables#0 and fn:environment-variable#1-->
   <?spec fo#func-available-environment-variables?>
   <?spec fo#func-get-available-environment-variable?>
-  <xsl:variable name="test"/>
   <x>
    <xsl:value-of select="
     every $s in ('user', 'USER', 'shell', 'SHELL', 'path', 'PATH', 'zzz', '', '%$£*!') satisfies

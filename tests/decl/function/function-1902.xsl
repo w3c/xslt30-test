@@ -1,6 +1,6 @@
 <?xml version="1.0"?> 
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
     xmlns:fn="http://www.w3.org/2005/xpath-functions" 
     xmlns:op="http://www.w3.org/2005/xpath-operators" 
     xmlns:map="http://www.w3.org/2005/xpath-functions/map" 
