@@ -1248,8 +1248,9 @@
    </test-case>
 
    <test-case name="function-1501">
-      <description>Test the available-environment-variables#0 and get-environment-variable#1 functions of XSLT3.0 spec</description>
+      <description>Test the available-environment-variables#0 and environment-variable#1 functions of XPath3.0 spec</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-10-22" change="See bug 29222"/>
       <environment ref="function-15"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1258,7 +1259,7 @@
          <stylesheet file="function-1501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<x><out>true</out><out>true</out></x>]]></assert-xml>
+         <assert>/x = 'true'</assert>
       </result>
    </test-case>
 
@@ -1267,9 +1268,10 @@
          Test the available-environment-variables#0 and get-environment-variable#1 functions of XSLT3.0 spec
          with a compile-time use-when</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-10-22" change="See bug 29222"/>
       <environment>
          <source role=".">
-            <content><![CDATA[<doc><section><para>p1</para><para>p2</para></section></doc>]]></content>
+            <content><![CDATA[<para>p1</para>]]></content>
          </source>
       </environment>
       <dependencies>
@@ -1279,7 +1281,7 @@
          <stylesheet file="function-1601.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc><section><p ok="string-length($user) ge 0"><para>p1</para></p><p ok="string-length($user) ge 0"><para>p2</para></p></section></doc>]]></assert-xml>
+         <assert>/ok</assert>
       </result>
    </test-case>
 

@@ -5,17 +5,15 @@
   <!-- PURPOSE: test use-when="available-environment-variables()". -->
 
   <xsl:variable name="user" select="environment-variable('USER')"/>
-  <xsl:template match="*">
-    <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates/>
-    </xsl:copy>
-  </xsl:template>
+  
+  <xsl:mode on-no-match="shallow-copy"/>
 
-  <xsl:template match="para" use-when="exists(available-environment-variables())">
-    <p ok="string-length($user) ge 0">
-      <xsl:next-match/>
-    </p>
+  <xsl:template match="para" use-when="available-environment-variables() = 'USER' or empty(environment-variable('USER'))" priority="2">
+    <ok/>
+  </xsl:template>
+  
+  <xsl:template match="para" priority="1">
+    <wrong/>
   </xsl:template>
   
   <xsl:strip-space elements="*"/>
