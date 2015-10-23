@@ -11,7 +11,7 @@
   
   
     <xsl:template name="main">
-      <ok/>
+      <not-ok/>
        <xsl:use-package name="http://www.w3.org/xslt30tests/package-903"/>  
     </xsl:template>
     

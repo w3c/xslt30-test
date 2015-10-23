@@ -11,7 +11,7 @@
   
   
     <xsl:template name="main">
-      <ok/>
+      <not-ok/>
     </xsl:template>
     
   
