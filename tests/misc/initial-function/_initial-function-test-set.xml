@@ -72,6 +72,7 @@
          <error code="XTDE0041"/>
       </result>
    </test-case>
+   
    <test-case name="initial-function-902">
       <description>test initial-function to stylesheet function with wrong arity - too
          small</description>
@@ -92,6 +93,7 @@
          <error code="XTDE0041"/>
       </result>
    </test-case>
+   
    <test-case name="initial-function-903">
       <description>test initial-function to stylesheet function with wrong arity - too
          large</description>
@@ -112,6 +114,25 @@
       </test>
       <result>
          <error code="XTDE0041"/>
+      </result>
+   </test-case>
+   
+   <test-case name="initial-function-904">
+      <description>test initial-function calling xsl:result-document</description>
+      <created by="Michael Kay" on="2015-10-24"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-function-001.xsl"/>
+         <initial-function xmlns:my="http://my.net/" name="my:bad">
+            <param select="1234"/>
+            <param select="5678"/>
+         </initial-function>
+         <output tree="no" serialize="no"/>
+      </test>
+      <result>
+         <error code="XTDE1480"/>
       </result>
    </test-case>
 

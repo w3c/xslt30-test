@@ -10,11 +10,27 @@
     <xsl:param name="b"/>
     <simple-data><xsl:value-of select="$b"/>Simple Data<xsl:value-of select="$a"/></simple-data>
   </xsl:function>
+  
   <xsl:function name="my:bar" as="item()*">
     <xsl:param name="a"/>
     <xsl:param name="b"/>
     <xsl:sequence select="$a,$b"/>
   </xsl:function>
+  
+  <xsl:function name="my:bad" as="item()*">
+    <xsl:param name="a"/>
+    <xsl:param name="b"/>
+    <xsl:variable name="v">
+      <x><xsl:copy-of select="$a"/></x>
+    </xsl:variable>
+    <xsl:apply-templates select="$v"/>
+  </xsl:function>
+  
+  <xsl:template match="*">
+    <xsl:result-document href="output.xml">
+      <secondary-result/>
+    </xsl:result-document>
+  </xsl:template>
 
   
 
