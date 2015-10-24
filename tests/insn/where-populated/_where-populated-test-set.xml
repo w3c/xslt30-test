@@ -277,5 +277,22 @@
          <assert-xml><![CDATA[<Results>2</Results>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="coco-100">
+      <description> Recursive use of xsl:where-populated to remove empty elements at every level</description>
+      <created by="Michael Kay" on="2015-08-21"/>  
+      <test>
+         <stylesheet file="where-populated-100.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><xsl:stylesheet 
+                   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   version="3.0"
+                   exclude-result-prefixes="xs"
+       ><xsl:template name="extra">Hello world!</xsl:template></xsl:stylesheet></out>]]></assert-xml>
+      </result>
+   </test-case>
 
 </test-set>
