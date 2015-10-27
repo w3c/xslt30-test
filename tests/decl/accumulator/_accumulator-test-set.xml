@@ -38,6 +38,10 @@
    <environment name="accumulator-045s">
       <source role="." file="accumulator-045.xhtml" streaming="true"/>
    </environment>
+   <environment name="accumulator-052">
+      <source role="." file="accumulator-001.xml"/>
+      <stylesheet file="accumulator-052.xsl"/>
+   </environment>
    <dependencies>
       <spec value="XSLT30+"/>
    </dependencies>
@@ -1033,6 +1037,38 @@
             /><end name="B" state="(A (B (C C) (D D) B)"
             /><end name="A" state="(A (B (C C) (D D) B) A)"
             /><end state="(A (B (C C) (D D) B) A)"/></root>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-052a">
+      <description>Accumulator dependent on current dateTime. The idea here is to run the same stylesheet
+      twice against the same document, in two separate transformations; the accumulator values should
+      be different in each transformation. Ideally the transformations would run concurrently, though
+      we can't control that in the test driver environment. This test is useless (but still works...)
+      unless stylesheets and source documents defined in an environment are reused across tests.</description>
+      <created by="Michael Kay" on="2015-10-26"/>
+      <environment ref="accumulator-052"/>
+      <test>
+         <param name="start" select="12"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><end value="45"/></root>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-052b">
+      <description>Accumulator dependent on current dateTime. The idea here is to run the same stylesheet
+         twice against the same document, in two separate transformations; the accumulator values should
+         be different in each transformation. Ideally the transformations would run concurrently, though
+         we can't control that in the test driver environment. This test is useless (but still works...)
+         unless stylesheets and source documents defined in an environment are reused across tests.</description>
+      <created by="Michael Kay" on="2015-10-26"/>
+      <environment ref="accumulator-052"/>
+      <test>
+         <param name="start" select="24"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><end value="57"/></root>]]></assert-xml>
       </result>
    </test-case>
  
