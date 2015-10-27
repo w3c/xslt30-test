@@ -4510,4 +4510,22 @@
          <assert-xml><![CDATA[<out><E28>-1.0001</E28><E29>123.456788</E29><E30>1048.576</E30><E31>1234.123</E31><E32>8888888.8888</E32><E33>1.1</E33></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="match-244">
+      <description>Test xsl:mode typed="strict" with match="//elname": error case. Derived from match-218.</description>
+      <keywords>xsl:import-schema child-axis xsl:mode typed-strict</keywords>
+      <created by="Michael Kay" on="2015-09-14"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-244.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3105"/>
+      </result>
+   </test-case>
 </test-set>
