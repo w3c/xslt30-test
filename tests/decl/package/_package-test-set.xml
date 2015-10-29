@@ -322,6 +322,102 @@
       </result>
    </test-case>
    
+   <test-case name="package-019">
+      <description>Using xsl:include to include xsl:use-package definitions in another package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-019.xsl" role="principal"/>
+         <package file="package-019-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-019-include.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-020">
+      <description>Using xsl:import to import xsl:use-package definitions in another package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-020.xsl" role="principal"/>
+         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-020-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-020a">
+      <description>Using xsl:import to import xsl:use-package definitions in another package, override a component that uses a component of a package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-020a.xsl" role="principal"/>
+         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-020-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-020b">
+      <description>Using xsl:import to import xsl:use-package definitions in another package, override a component and use a component of the imported use-package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-020b.xsl" role="principal"/>
+         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-020-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-020c">
+      <description>Using xsl:import to import xsl:use-package definitions in another package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-020c.xsl" role="principal"/>
+         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-020-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-020d">
+      <description>Using xsl:import to import xsl:use-package definitions in another package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-020a.xsl" role="principal"/>
+         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-020-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
    <test-case name="package-100">
       <description>CSV package from the spec, section 3.5.7.2</description>
       <created by="Abel Braaksma" on="2015-10-01"/>
