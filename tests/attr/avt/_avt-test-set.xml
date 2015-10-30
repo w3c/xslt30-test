@@ -666,6 +666,22 @@
          <assert-xml><![CDATA[<out href="pfu"/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="avt-2102">
+      <description>Absent expression in AVTs (Bug 29226)</description>
+      <keywords>lre select-expression</keywords>
+      <created by="Michael Kay" on="2015-10-30"/>
+      <environment ref="avt-21"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="avt-2102.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out a="xyz" b="" c="xyz" d="" e=""/>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="avt-2201">
       <description>this one works @@1 this one gives "not a QName" error @@2 this one gives "not a QName" error this one works</description>
