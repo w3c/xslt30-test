@@ -7,7 +7,7 @@
    
    <xsl:template name="main">
       <xsl:variable name="x" select="3"/>
-      <out><xsl:value-of _select="${$N}"/></out>
+      <out><xsl:value-of _select="${}{$N}"/></out>
    </xsl:template>
    
 </xsl:transform>
