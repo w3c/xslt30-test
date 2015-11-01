@@ -322,6 +322,32 @@
       </result>
    </test-case>
    
+   <test-case name="override-f-022">
+      <description>Unsuccessful attempt to override a function outside xsl:override</description>
+      <created by="Michael Kay" on="2015-10-26"/>
+      <environment ref="override-f-A"/>
+      <test>
+         <package file="override-f-022.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3050"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-f-023">
+      <description>Unsuccessful attempt to override a function outside xsl:override</description>
+      <created by="Michael Kay" on="2015-10-26"/>
+      <environment ref="override-f-A"/>
+      <test>
+         <package file="override-f-023.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3050"/>
+      </result>
+   </test-case>
+   
    <test-case name="override-t-001">
       <description>Successful override of a named template, when called from overriding package</description>
       <created by="Michael Kay" on="2013-07-31"/>
@@ -418,7 +444,33 @@
       <result>
          <assert>/out = '*xxxxx*'</assert>
       </result>
-   </test-case>  
+   </test-case>
+   
+   <test-case name="override-t-008">
+      <description>Unsuccessful override of a named template, declared outside xsl:override</description>
+      <created by="Michael Kay" on="2015-10-26"/>
+      <environment ref="override-t-B"/>
+      <test>
+         <package file="override-t-008.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3050"/>
+      </result>
+   </test-case> 
+   
+   <test-case name="override-t-009">
+      <description>Unsuccessful override of a named template, declared outside xsl:override</description>
+      <created by="Michael Kay" on="2015-10-26"/>
+      <environment ref="override-t-B"/>
+      <test>
+         <package file="override-t-009.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3050"/>
+      </result>
+   </test-case> 
 
    <test-case name="override-v-001">
       <description>Successful override of a public global variable</description>
@@ -463,7 +515,6 @@
    
    <test-case name="override-v-004">
       <description>An overridden public global variable appearing in a match pattern</description>
-      <!-- MHK: Not currently working in Saxon, needs to treat the mode as a component with a single binding vector -->
       <created by="Michael Kay" on="2015-03-01"/>
       <environment ref="override-v-C"/>
       <test>
@@ -472,6 +523,109 @@
       </test>
       <result>
          <assert>/go/not-one</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-v-005">
+      <description>An overridden variable using a different union type with the same member types</description>
+      <created by="Michael Kay" on="2015-10-24"/>
+      <test>
+         <package file="override-v-005.xsl" role="principal"/>
+         <package file="override-base-v-002.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert>/out = 'true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-v-006">
+      <description>An overridden variable using a different union type with different member types</description>
+      <created by="Michael Kay" on="2015-10-24"/>
+      <test>
+         <package file="override-v-006.xsl" role="principal"/>
+         <package file="override-base-v-002.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE3070"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-v-007">
+      <description>An overridden variable using a different built-in type</description>
+      <created by="Michael Kay" on="2015-10-25"/>
+      <test>
+         <package file="override-v-007.xsl" role="principal"/>
+         <package file="override-base-v-003.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE3070"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-v-008">
+      <description>Overriding a variable with a required parameter</description>
+      <created by="Michael Kay" on="2015-10-25"/>
+      <test>
+         <package file="override-v-008.xsl" role="principal"/>
+         <package file="override-base-v-003.xsl" role="secondary"/>
+         <param name="var" select="xs:int(23)"/>
+         <param name="req" select="xs:NCName('n')"/>
+      </test>
+      <result>
+         <assert>/out = '23'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-v-009">
+      <description>Overriding a variable with an optional parameter</description>
+      <created by="Michael Kay" on="2015-10-25"/>
+      <test>
+         <package file="override-v-009.xsl" role="principal"/>
+         <package file="override-base-v-003.xsl" role="secondary"/>
+         <param name="var" select="xs:int(23)"/>
+         <param name="req" select="xs:NCName('n')"/>
+      </test>
+      <result>
+         <assert>/out = '23'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-v-010">
+      <description>Overriding a required parameter with an optional parameter. (But see bug 29242)</description>
+      <created by="Michael Kay" on="2015-10-25"/>
+      <test>
+         <package file="override-v-010.xsl" role="principal"/>
+         <package file="override-base-v-003.xsl" role="secondary"/>
+         <param name="req" select="xs:NCName('abc')"/>
+      </test>
+      <result>
+         <assert>/out = 'abc'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-v-011">
+      <description>Overriding variable appearing outside xsl:override</description>
+      <created by="Michael Kay" on="2015-10-26"/>
+      <test>
+         <package file="override-v-011.xsl" role="principal"/>
+         <package file="override-base-v-003.xsl" role="secondary"/>
+         <param name="req" select="xs:NCName('abc')"/>
+      </test>
+      <result>
+         <error code="XTSE3050"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-v-012">
+      <description>Overriding variable appearing outside xsl:override</description>
+      <created by="Michael Kay" on="2015-10-26"/>
+      <test>
+         <package file="override-v-012.xsl" role="principal"/>
+         <package file="override-base-v-003.xsl" role="secondary"/>
+         <param name="req" select="xs:NCName('abc')"/>
+      </test>
+      <result>
+         <error code="XTSE3050"/>
       </result>
    </test-case>
    
@@ -750,6 +904,58 @@
       </test>
       <result>
          <error code="XTSE3060"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-017">
+      <description>Unsuccessful attempt to redeclare a mode defined in a used package</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-017.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3050"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-018">
+      <description>Unsuccessful attempt to add a template rule to a mode from a used package outwith xsl:override</description>
+      <created by="Michael Kay" on="2015-10-21"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-018.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3050"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-019">
+      <description>Two overriding templates passing each other tunnel parameters, in separate xsl:override elements</description>
+      <created by="Michael Kay" on="2015-10-25"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-019.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><x1><a><b1 T="55"><b>22</b></b1></a></x1></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="override-m-020">
+      <description>Use a public mode in a used package without overriding any template rules</description>
+      <created by="Michael Kay" on="2015-10-25"/>
+      <environment ref="override-m-G"/>
+      <test>
+         <package file="override-m-020.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a><b/></a></out>]]></assert-xml>
       </result>
    </test-case>
    
