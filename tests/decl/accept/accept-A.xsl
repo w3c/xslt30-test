@@ -49,7 +49,7 @@
   <xsl:mode name="p:m2"/>
   
 
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="private">
       <ok/>
     </xsl:template>
     
