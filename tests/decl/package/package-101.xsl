@@ -14,9 +14,9 @@
    </xsl:variable>
 
    <!-- entry point -->
-   <xsl:template name="xsl:initial-template">
+   <!--<xsl:template name="xsl:initial-template">
        <xsl:copy-of select="csv:parse($input)" />
-   </xsl:template>
+   </xsl:template>-->
 
 
 

@@ -12,11 +12,10 @@
     <xsl:output indent="yes" />
     
     <!-- example input "file"  -->
-    <xsl:variable name="input" as="xs:string">
-        name,id,postal code
+    <xsl:variable name="input" as="xs:string"
+       >name,id,postal code
         "Abel Braaksma",34291,1210 KA
-        "Anders Berglund",473892,9843 ZD
-    </xsl:variable>
+        "Anders Berglund",473892,9843 ZD</xsl:variable>
     
     <!-- entry point -->
     <xsl:template name="xsl:initial-template">
@@ -35,12 +34,10 @@
     
     <xsl:variable name="csv:quote" as="xs:string" select="'&quot;'" visibility="public"/>
     
-    <xsl:variable name="csv:csv-quote-ok" visibility="private">
-        <xsl:sequence select="
+    <xsl:variable name="csv:validated-quote" as="xs:string" visibility="private" select="
             if (string-length($csv:quote) ne 1) 
             then error(xs:QName('csv:ERR001'), 'Incorrect length for $csv:quote, should be 1') 
-            else ()" />
-    </xsl:variable>
+            else $csv:quote" />
     
     <xsl:template match="." mode="csv:parse-line">
         <row>
@@ -50,12 +47,12 @@
         </row>
     </xsl:template>
     
-    <xsl:template match="." mode="csv:parse-field" expand-text="yes">
-        <xsl:variable name="string-body-pattern" as="xs:string" select="'([^' || $csv:quote || ']*)'"/>
-        <xsl:variable name="quoted-value" as="xs:string" select="$csv:quote || $string-body-pattern || $csv:quote"/>
+    <xsl:template match="." mode="csv:parse-field">
+        <xsl:variable name="string-body-pattern" as="xs:string" select="'([^' || $csv:validated-quote || ']*)'"/>
+        <xsl:variable name="quoted-value" as="xs:string" select="$csv:validated-quote || $string-body-pattern || $csv:validated-quote"/>
         <xsl:variable name="unquoted-value" as="xs:string" select="'(.+)'"/>
         
-        <field xsl:use-attribute-sets="csv:field-attributes">{
+        <field xsl:use-attribute-sets="csv:field-attributes" xsl:expand-text="yes">{
             csv:preprocess-field(
               replace(., 
                       $quoted-value || '|' || $unquoted-value, 
@@ -81,8 +78,7 @@
         <xsl:variable name="result" as="element()">
             <csv>
                 <xsl:apply-templates 
-                    select="$csv:csv-quote-ok, 
-                            (tokenize($input, $csv:line-separator) 
+                    select="(tokenize($input, $csv:line-separator) 
                             ! csv:preprocess-line(.))" 
                     mode="csv:parse-line" />
             </csv>

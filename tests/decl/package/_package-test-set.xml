@@ -289,7 +289,7 @@
    </test-case>
 
    <test-case name="package-017">
-      <description>A package using a package twice, accepting two functions</description>
+      <description>A package using a package twice, accepting two functions (NOTE: See bug 29233)</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
@@ -306,7 +306,8 @@
    <test-case name="package-018">
       <description>
          A package using a package twice, accepting two functions, hiding once, publicizing in the second 
-         (is this allowed? XTSE3050 suggests it is, it says "other than hidden")
+         (is this allowed? XTSE3050 suggests it is, it says "other than hidden") 
+         (NOTE: See bug 29233)
       </description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <environment>
@@ -324,61 +325,45 @@
    <test-case name="package-100">
       <description>CSV package from the spec, section 3.5.7.2</description>
       <created by="Abel Braaksma" on="2015-10-01"/>
+      <modified by="Michael Kay" on="2015-11-02" change="resolve whitespace problems"/>
       <test>
          <package file="package-100.xsl" role="principal"/>
       </test>
       <result>
-      <assert-xml><![CDATA[<csv>
-         <row/>
-         <row/>
-         <row>
-            <field quoted="no">name</field>
-            <field quoted="no">id</field>
-            <field quoted="no">postal code</field>
-          </row>
-         <row>
-            <field quoted="yes">Abel Braaksma</field>
-            <field quoted="no">34291</field>
-            <field quoted="no">1210 KA</field>
-         </row>
-         <row>
-            <field quoted="yes">Anders Berglund</field>
-            <field quoted="no">473892</field>
-            <field quoted="no">9843 ZD</field>
-         </row>
-         <row/>
-      </csv>]]></assert-xml>
+         <all-of>
+            <assert>/csv/row[1]/field[1][@quoted="no"] = "name"</assert>
+            <assert>/csv/row[1]/field[2][@quoted="no"] = "id"</assert>
+            <assert>/csv/row[1]/field[3][@quoted="no"] = "postal code"</assert>
+            <assert>/csv/row[2]/field[1][@quoted="yes"] = "Abel Braaksma"</assert>
+            <assert>/csv/row[2]/field[2][@quoted="no"] = "34291"</assert>
+            <assert>/csv/row[2]/field[3][@quoted="no"] = "1210 KA"</assert>
+            <assert>/csv/row[3]/field[1][@quoted="yes"] = "Anders Berglund"</assert>
+            <assert>/csv/row[3]/field[2][@quoted="no"] = "473892"</assert>
+            <assert>/csv/row[3]/field[3][@quoted="no"] = "9843 ZD"</assert>
+         </all-of>
       </result>
    </test-case>
    
    <test-case name="package-101">
       <description>Using / overriding CSV package from the spec, section 3.5.7.2</description>
       <created by="Abel Braaksma" on="2015-10-01"/>
-      <!--<environment>
-         <source file="package-000.xml" uri="package-000.xml" role="."/>
-      </environment>-->
+      <modified by="Michael Kay" on="2015-11-02" change="Use XPath assertions to cope with indented results"/>
       <test>
          <package file="package-100.xsl" uri="http://example.com/csv-parser" package-version="1.0.0" role="secondary"/>
          <stylesheet file="package-101.xsl" role="principal"/>
       </test>
       <result>
-      <assert-xml><![CDATA[<root>
-         <row>
-           <field quoted="no" type="string">name</field>
-           <field quoted="no" type="string">id</field>
-           <field quoted="no" type="string">postal code</field>
-         </row>
-         <row>
-           <field quoted="yes" type="string">Braaksma Abel</field>
-           <field quoted="no" type="numeric">34291</field>
-           <field quoted="no" type="string">1210 KA</field>
-         </row>
-         <row>
-           <field quoted="yes" type="string">Berglund Anders</field>
-           <field quoted="no" type="numeric">473892</field>
-           <field quoted="no" type="string">9843 ZD</field>
-         </row>
-      </root>]]></assert-xml>
+         <all-of>
+            <assert>/root/row[1]/field[1][@quoted="no" and @type="string"] = "name"</assert>
+            <assert>/root/row[1]/field[2][@quoted="no" and @type="string"] = "id"</assert>
+            <assert>/root/row[1]/field[3][@quoted="no" and @type="string"] = "postal code"</assert>
+            <assert>/root/row[2]/field[1][@quoted="yes" and @type="string"] = "Braaksma Abel"</assert>
+            <assert>/root/row[2]/field[2][@quoted="no" and @type="numeric"] = "34291"</assert>
+            <assert>/root/row[2]/field[3][@quoted="no" and @type="string"] = "1210 KA"</assert>
+            <assert>/root/row[3]/field[1][@quoted="yes" and @type="string"] = "Berglund Anders"</assert>
+            <assert>/root/row[3]/field[2][@quoted="no" and @type="numeric"] = "473892"</assert>
+            <assert>/root/row[3]/field[3][@quoted="no" and @type="string"] = "9843 ZD"</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -488,7 +473,7 @@
    </test-case>
 
    <test-case name="package-908">
-      <description>An empty package with no declared modes</description>
+      <description>An empty package with no declared modes. (NOTE: see bug 29234)</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
