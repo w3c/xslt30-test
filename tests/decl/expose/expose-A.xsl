@@ -38,11 +38,4 @@
   <xsl:mode name="m1"/>
   <xsl:mode name="p:m2"/>
   
-
-    <xsl:template name="main">
-      <ok/>
-    </xsl:template>
-    
-
-
 </xsl:package>   
