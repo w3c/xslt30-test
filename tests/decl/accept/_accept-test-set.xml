@@ -11,6 +11,10 @@
       <package file="accept-A.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/accept-A" package-version="1.0.0"/>
       <package file="accept-B.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/accept-B" package-version="1.0.0"/>
    </environment>
+   
+   <environment name="accept-C">
+      <package file="accept-C.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/accept-C" package-version="1.0.0"/>
+   </environment>
 
    <dependencies>
       <spec value="XSLT30+"/>
@@ -148,6 +152,230 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><v2>22</v2></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-040">
+      <description>xsl:accept - OK to have an absent function that isn't called</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-040.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out a="22">22</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-041a">
+      <description>xsl:accept - OK to have a static reference to an absent function that isn't called</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-041.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="go" select="false()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out a="22">22</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-041b">
+      <description>xsl:accept - cannot call an absent function</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-041.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="go" select="true()"/>
+      </test>
+      <result>
+         <error code="XTDE3052"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-041c">
+      <description>xsl:accept - must override an abstract function</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-041.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="accept" select="false()" static="yes"/>
+         <param name="go" select="true()"/>
+      </test>
+      <result>
+         <error code="*"/> <!-- No error code defined in spec? -->
+      </result>
+   </test-case>
+   
+   <test-case name="accept-042">
+      <description>xsl:accept - OK to have an absent variable that isn't referenced</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-042.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out a="22">1</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-043a">
+      <description>xsl:accept - OK to have a static reference to an absent variable that isn't evaluated</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-043.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="go" select="false()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out a="22">22</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-043b">
+      <description>xsl:accept - cannot evaluate an absent variable</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-043.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="go" select="true()"/>
+      </test>
+      <result>
+         <error code="XTDE3052"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-043c">
+      <description>xsl:accept - must override an abstract variable</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-043.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="accept" select="false()" static="yes"/>
+         <param name="go" select="true()"/>
+      </test>
+      <result>
+         <error code="*"/> <!-- No error code defined in spec? -->
+      </result>
+   </test-case>
+   
+   <test-case name="accept-044">
+      <description>xsl:accept - OK to have an absent named template that isn't referenced</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-044.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out a="22">622</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-045a">
+      <description>xsl:accept - OK to have a static reference to an absent named template that isn't evaluated</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-045.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="go" select="false()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out a="22">6</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-045b">
+      <description>xsl:accept - cannot evaluate an absent named template</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-045.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="go" select="true()"/>
+      </test>
+      <result>
+         <error code="XTDE3052"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-045c">
+      <description>xsl:accept - must override an abstract named template</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-045.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="accept" select="false()" static="yes"/>
+         <param name="go" select="true()"/>
+      </test>
+      <result>
+         <error code="*"/> <!-- No error code defined in spec? -->
+      </result>
+   </test-case>
+   
+   <test-case name="accept-046">
+      <description>xsl:accept - OK to have an absent attribute set that isn't referenced</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-046.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>2</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-047a">
+      <description>xsl:accept - OK to have a static reference to an absent attribute set that isn't evaluated</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-047.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="go" select="false()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>3</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-047b">
+      <description>xsl:accept - cannot evaluate an absent attribute set</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-047.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="go" select="true()"/>
+      </test>
+      <result>
+         <error code="XTDE3052"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-047c">
+      <description>xsl:accept - must override an abstract attribute set</description>
+      <created by="Michael Kay" on="2015-11-02"/>
+      <environment ref="accept-C"/>
+      <test>
+         <package file="accept-047.xsl" role="principal"/>
+         <initial-template name="main"/>
+         <param name="accept" select="false()" static="yes"/>
+         <param name="go" select="true()"/>
+      </test>
+      <result>
+         <error code="*"/> <!-- No error code defined in spec? -->
       </result>
    </test-case>
    
