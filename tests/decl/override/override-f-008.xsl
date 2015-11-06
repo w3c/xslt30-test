@@ -14,7 +14,7 @@
     package-version="1.0.0">
   
     <xsl:override/>
-    
+    <xsl:accept component="function" names="*:f-abstract" visibility="absent"/>
   </xsl:use-package>
   
   

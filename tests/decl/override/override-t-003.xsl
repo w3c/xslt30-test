@@ -25,9 +25,9 @@
           <xsl:text>*</xsl:text>
         </xsl:value-of>
       </xsl:template>
-    
 
-    </xsl:override>  
+    </xsl:override>
+    
     
   </xsl:use-package>
   

@@ -17,6 +17,7 @@
         <xsl:sequence select="string-join((1 to $count)!$in, ',')"/>
       </xsl:function>
     </xsl:override>
+    <xsl:accept component="function" names="*:f-abstract" visibility="absent"/>
   </xsl:use-package>
 
   
