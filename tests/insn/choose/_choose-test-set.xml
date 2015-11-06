@@ -568,6 +568,51 @@ Joe Smith
          <assert-xml><![CDATA[<out>TREE: *A+B+B+C-B+C+D|*A+B+C:C:C+D+E-*A+B+C+D:D+E-D+E-C:C+D-C-B+</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="choose-1202">
+      <description>An optimizable xsl:choose</description>
+      <created by="Michael Kay" on="2015-11-05"/>
+      <environment ref="choose-12"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="choose-1202.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "*A*B*B*C*B*C*D*A*B*C*C*C*D*E*A*B*C*D*D*E*D*E*C*C*D*C*B*"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="choose-1203">
+      <description>An optimizable xsl:choose</description>
+      <created by="Michael Kay" on="2015-11-05"/>
+      <environment ref="choose-12"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="choose-1203.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "**HTH*HXH*H*H*H*H*HXHXH*H*H*H*H*H*H*H*H*H*H*HXH*H*HXHTH"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="choose-1204">
+      <description>An optimizable xsl:choose using case-blind collation</description>
+      <created by="Michael Kay" on="2015-11-05"/>
+      <environment ref="choose-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="choose-1204.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "*A*B*B*C*B*C*D*A*B*C*C*C*D*E*A*B*C*D*D*E*D*E*C*C*D*C*B*"</assert>
+      </result>
+   </test-case>
 
    <test-case name="choose-1301">
       <description>Purpose: Test two xsl:when elements using a variable in the test.</description>
