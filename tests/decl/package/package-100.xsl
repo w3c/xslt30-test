@@ -9,19 +9,6 @@
     declared-modes="yes"
     version="3.0">
     
-    <xsl:output indent="yes" />
-    
-    <!-- example input "file"  -->
-    <xsl:variable name="input" as="xs:string"
-       >name,id,postal code
-        "Abel Braaksma",34291,1210 KA
-        "Anders Berglund",473892,9843 ZD</xsl:variable>
-    
-    <!-- entry point -->
-    <xsl:template name="xsl:initial-template">
-        <xsl:copy-of select="csv:parse($input)" />
-    </xsl:template>
-    
     <xsl:mode name="csv:parse-line" visibility="public"/>
     
     <xsl:mode name="csv:parse-field" on-no-match="shallow-copy" visibility="public"/>
