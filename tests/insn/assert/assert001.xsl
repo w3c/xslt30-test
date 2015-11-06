@@ -55,6 +55,19 @@
    			<xsl:assert test="$p eq 2" select="$message008"/>
    		</out>
 	</xsl:template>
+	
+	<xsl:template name="go010">
+		<out>
+			<xsl:try>
+				<!-- When an xsl:assert fails, following-sibling instructions are not evaluated-->
+				<xsl:text>A</xsl:text>
+				<xsl:assert test="$p eq 0" select="$message008"/>
+				<xsl:value-of select="10000 div $p"/>
+				<xsl:catch errors="*:XTMM9001">B</xsl:catch>	
+			</xsl:try>
+			<xsl:text>C</xsl:text>
+		</out>
+	</xsl:template>
 
  
 </xsl:stylesheet>

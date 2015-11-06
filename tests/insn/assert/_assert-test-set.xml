@@ -134,4 +134,18 @@
          <error code="XTMM9001"/>
       </result>
    </test-case>
+   
+   <test-case name="assert-010">
+      <description>When xsl:assert fails, following sibling instructions are not evaluated</description>
+      <keywords>xsl:assert</keywords>
+      <created by="Michael Kay" on="2015-09-09"/>
+      <environment ref="assert-001"/>
+      <test>
+         <param name="p" select="3"/>
+         <initial-template name="go008"/> <!--sic -->       
+      </test>
+      <result>
+         <assert>/out = "ABC"</assert>
+      </result>
+   </test-case>
 </test-set>
