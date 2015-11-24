@@ -1,4 +1,4 @@
-<!-- xsl:expose - fail to access components not exposed as final -->
+<!-- xsl:accept - syntax variations -->
 
 <xsl:package
   name="http://www.w3.org/xslt30tests/accept-001"  
