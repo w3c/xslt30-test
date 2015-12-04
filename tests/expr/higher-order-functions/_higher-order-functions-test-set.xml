@@ -920,11 +920,24 @@
    
    <test-case name="higher-order-functions-071">
       <description>
-         Inline function with closure referencing XSLT template parameters
+         Inline function with closure referencing XSLT template parameters (Saxon bug 2523)
       </description>
       <created by="Michael Kay" on="2015-12-04"/>
       <test>
          <stylesheet file="higher-order-functions-071.xsl"/>
+      </test>
+      <result>
+         <assert>/out = '{"a":44,"b":46,"c":48,"d":50,"e":52,"f":54}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="higher-order-functions-072">
+      <description>
+         Return a function with a closure referencing XSLT template parameters; nested inline functions (Saxon bug 2527)
+      </description>
+      <created by="Michael Kay" on="2015-12-04"/>
+      <test>
+         <stylesheet file="higher-order-functions-072.xsl"/>
       </test>
       <result>
          <assert>/out = '{"a":44,"b":46,"c":48,"d":50,"e":52,"f":54}'</assert>
