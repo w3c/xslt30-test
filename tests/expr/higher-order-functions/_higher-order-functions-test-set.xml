@@ -11,7 +11,7 @@
    </dependencies>
 
    <test-case name="higher-order-functions-001">
-      <description>inline function literal, user-defined function</description>
+      <description>named function reference, user-defined function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2015-01-29" change="inhibit optimization"/>
       <test>
@@ -24,7 +24,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-002">
-      <description>inline function literal, user-defined function</description>
+      <description>named function reference, user-defined function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2015-01-29" change="inhibit optimization"/>
       <test>
@@ -37,7 +37,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-003">
-      <description>inline function literal, imported user-defined function</description>
+      <description>named function reference, imported user-defined function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2015-01-29" change="inhibit optimization"/>
       <test>
@@ -51,7 +51,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-004">
-      <description>inline function literal, system function</description>
+      <description>named function reference, system function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2015-01-29" change="inhibit optimization"/>
       <test>
@@ -64,7 +64,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-005">
-      <description>inline function literal, system function</description>
+      <description>named function reference, system function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="higher-order-functions-005.xsl"/>
@@ -76,7 +76,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-006">
-      <description>inline function literal, constructor function</description>
+      <description>named function reference, constructor function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2015-01-29" change="inhibit optimization"/>
       <test>
@@ -89,7 +89,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-007">
-      <description>inline function literal, constructor function, user-defined type</description>
+      <description>named function reference, constructor function, user-defined type</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="Added schema_aware dependency"/>
       <modified by="Michael Kay" on="2015-01-29" change="inhibit optimization"/>
@@ -590,7 +590,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-048">
-      <description>inline function literal, unknown user-defined function</description>
+      <description>named function reference, unknown user-defined function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="higher-order-functions-048.xsl"/>
@@ -602,7 +602,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-049">
-      <description>inline function literal, unknown user-defined function</description>
+      <description>named function reference, unknown user-defined function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="higher-order-functions-049.xsl"/>
@@ -614,7 +614,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-050">
-      <description>inline function literal, unknown function</description>
+      <description>named function reference, unknown function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="higher-order-functions-050.xsl"/>
@@ -626,7 +626,7 @@
    </test-case>
 
    <test-case name="higher-order-functions-051">
-      <description>inline function literal, unknown function</description>
+      <description>named function reference, unknown function</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <test>
          <stylesheet file="higher-order-functions-051.xsl"/>
@@ -915,6 +915,19 @@
       </test>
       <result>
          <error code="XPST0008"/>
+      </result>
+   </test-case>
+   
+   <test-case name="higher-order-functions-071">
+      <description>
+         Inline function with closure referencing XSLT template parameters
+      </description>
+      <created by="Michael Kay" on="2015-12-04"/>
+      <test>
+         <stylesheet file="higher-order-functions-071.xsl"/>
+      </test>
+      <result>
+         <assert>/out = '{"a":44,"b":46,"c":48,"d":50,"e":52,"f":54}'</assert>
       </result>
    </test-case>
 </test-set>
