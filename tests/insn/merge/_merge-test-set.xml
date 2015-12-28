@@ -1222,5 +1222,42 @@
          </all-of>   
       </result>
    </test-case>
+   
+   <test-case name="merge-085">
+      <description>xsl:merge allows xsl:fallback as last child.</description>
+      <created by="Michael Kay" on="2015-12-28"/>
+      <environment>
+         <collection uri="log-files">
+            <source file="log-files/log-file1.xml" uri="log-files/log-file1.xml"/>
+            <source file="log-files/log-file2.xml" uri="log-files/log-file2.xml"/>
+         </collection>
+      </environment>
+      <test>
+         <stylesheet file="merge-085.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<events><event timestamp="2009-08-20T12:01:01Z">Transaction T1234 started</event
+            ><event timestamp="2009-08-20T12:01:05Z">Transaction T1236 started</event
+            ><event timestamp="2009-08-20T12:01:08Z">Transaction T1235 started</event
+            ><event timestamp="2009-08-20T12:01:09Z">Transaction T1236 ended</event
+            ><event timestamp="2009-08-20T12:01:11Z">Transaction T1237 started</event
+            ><event timestamp="2009-08-20T12:01:12Z">Transaction T1235 ended</event
+            ><event timestamp="2009-08-20T12:01:15Z">Transaction T1234 ended</event
+            ><event timestamp="2009-08-20T12:01:17Z">Transaction T1237 ended</event></events>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-086">
+      <description>xsl:fallback can appear only after xsl:merge-action child elements</description>
+      <created by="Michael Kay" on="2015-12-28"/>
+      <environment ref="merge001"/>
+      <test>
+         <stylesheet file="merge-086.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
+      </result>
+   </test-case>
 
 </test-set>
