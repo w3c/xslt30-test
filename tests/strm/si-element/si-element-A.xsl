@@ -442,6 +442,20 @@
       </xsl:stream>
     </out>
   </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:element (XSLT equivalent of test case in Saxon bug 2550 -->
+  
+  <xsl:template name="cy-049" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/citygml.xml">
+        <xsl:for-each select="*/*">
+          <xsl:element name="{name()}" namespace="{namespace-uri()}">
+            <xsl:copy-of select="node()"/>
+          </xsl:element>
+        </xsl:for-each>
+      </xsl:stream>
+    </out>
+  </xsl:template>
 
 
 
