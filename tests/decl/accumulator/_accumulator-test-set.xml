@@ -1071,5 +1071,28 @@
          <assert-xml><![CDATA[<root><end value="57"/></root>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-053">
+      <description>Check that accumulator-after is the value AFTER applying the post-descent rule (Saxon bug 2478)</description>
+      <created by="Michael Kay, after Martin Honnen" on="2016-01-02"/>
+      <environment>
+         <source role="." file="accumulator-053.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-053.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><start state=""
+            /><start name="A" state="(A"
+            /><start name="B" state="(A (B"
+            /><start name="C" state="(A (B (C"
+            /><end name="C" state="(A (B (C C)"
+            /><start name="D" state="(A (B (C C) (D"
+            /><end name="D" state="(A (B (C C) (D D)"
+            /><end name="B" state="(A (B (C C) (D D) B)"
+            /><end name="A" state="(A (B (C C) (D D) B) A)"
+            /><end state="(A (B (C C) (D D) B) A)"/></root>]]></assert-xml>
+      </result>
+   </test-case>
  
 </test-set>
