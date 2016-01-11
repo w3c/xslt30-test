@@ -2132,6 +2132,21 @@
          <assert-xml file="math-3301.out"/>
       </result>
    </test-case>
+   
+   <test-case name="math-3301a">
+      <description>Test of round-half-to-even on integers: variant test forcing run-time evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3301a.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="math-3301.out"/>
+      </result>
+   </test-case>
 
    <test-case name="math-3302">
       <description>Test of round-half-to-even on decimals.</description>
@@ -2142,6 +2157,21 @@
       </dependencies>
       <test>
          <stylesheet file="math-3302.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="math-3302.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="math-3302a">
+      <description>Test of round-half-to-even on decimals; variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3302a.xsl"/>
       </test>
       <result>
          <assert-xml file="math-3302.out"/>
@@ -2162,6 +2192,21 @@
          <assert-xml file="math-3303.out"/>
       </result>
    </test-case>
+   
+   <test-case name="math-3303a">
+      <description>Test of round-half-to-even on doubles: variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3303a.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="math-3303.out"/>
+      </result>
+   </test-case>
 
    <test-case name="math-3304">
       <description>Test of round-half-to-even on floats.</description>
@@ -2177,6 +2222,21 @@
          <assert-xml file="math-3304.out"/>
       </result>
    </test-case>
+   
+   <test-case name="math-3304a">
+      <description>Test of round-half-to-even on floats. Variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3304a.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="math-3304.out"/>
+      </result>
+   </test-case>
 
    <test-case name="math-3305">
       <description>Test of abs() on all numeric data types.</description>
@@ -2187,6 +2247,21 @@
       </dependencies>
       <test>
          <stylesheet file="math-3305.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="math-3305.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="math-3305a">
+      <description>Test of abs() on all numeric data types. Variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3305a.xsl"/>
       </test>
       <result>
          <assert-xml file="math-3305.out"/>
@@ -2208,6 +2283,22 @@
 <decimal a="3" b="-3"/><double a="3" b="-3"/><float a="3" b="-3"/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="math-3306a">
+      <description>Test that casting to integer truncates towards zero. Variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3306a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema">;
+<decimal a="3" b="-3"/><double a="3" b="-3"/><float a="3" b="-3"/></out>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="math-3307">
       <description>Test that the result of dividing two integers is a decimal.</description>
@@ -2218,6 +2309,21 @@
       </dependencies>
       <test>
          <stylesheet file="math-3307.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" result="true"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="math-3307a">
+      <description>Test that the result of dividing two integers is a decimal. Variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3307a.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" result="true"/>]]></assert-xml>
@@ -2238,6 +2344,21 @@
          <assert-xml><![CDATA[<out>NaN</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="math-3308a">
+      <description>Bug in 7.8: converting a string of spaces to a number crashes. Variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3308a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>NaN</out>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="math-3309">
       <description>Test whitespace trimming in string-to-number conversion</description>
@@ -2253,6 +2374,21 @@
          <assert-xml><![CDATA[<out>-2</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="math-3309a">
+      <description>Test whitespace trimming in string-to-number conversion. Variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3309a.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>-2</out>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="math-3310">
       <description>test value comparisons on NaN</description>
@@ -2263,6 +2399,24 @@
       </dependencies>
       <test>
          <stylesheet file="math-3310.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>every $b in //t satisfies $b = 'true'</assert>
+            <assert>every $b in //f satisfies $b = 'false'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="math-3310a">
+      <description>test value comparisons on NaN. Variant forcing runtime evaluation</description>
+      <created by="Michael Kay" on="2016-01-11"/>
+      <environment ref="math-33"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3310a.xsl"/>
       </test>
       <result>
          <all-of>
