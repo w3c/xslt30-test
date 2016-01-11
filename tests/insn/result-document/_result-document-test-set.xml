@@ -1729,6 +1729,33 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
         </all-of> 
       </result>
    </test-case>
+   
+   <test-case name="result-document-0285">
+      <description>Test AVT in the @format attribute of an xsl:result-document. (Saxon bug 2559)</description>
+      <created by="Michael Kay" on="2016-01-06"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><foo>text</foo></doc>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0285.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="out1.xml">
+               <serialization-matches><![CDATA[^<out><doc>]]></serialization-matches>
+            </assert-result-document>
+            <assert-result-document uri="out2.xml">
+               <serialization-matches><![CDATA[^<\?xml.+<out>\s+<doc>.+]]></serialization-matches>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="result-document-0301">
       <description>Test AVT in the @method of an xsl:result-document.</description>
