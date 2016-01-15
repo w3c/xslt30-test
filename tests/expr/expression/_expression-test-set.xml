@@ -334,6 +334,7 @@
    <test-case name="expression-0802">
       <description>test identity of nodes in a single-node result tree fragment &lt;xsl:message&gt;Should have Fred and Bill in Result&lt;/xsl:message&gt;</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-01-14" change="remove dependency on document order across different trees"/>
       <environment ref="expression-08"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -342,7 +343,10 @@
          <stylesheet file="expression-0802.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<Result>fredbill</Result>]]></assert-xml>
+         <any-of>
+            <assert-xml><![CDATA[<Result>fredbill</Result>]]></assert-xml>
+            <assert-xml><![CDATA[<Result>billfred</Result>]]></assert-xml>
+         </any-of>
       </result>
    </test-case>
 
