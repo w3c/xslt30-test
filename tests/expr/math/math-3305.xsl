@@ -5,7 +5,7 @@
 <!-- PURPOSE:  Test of abs() on all numeric data types. -->
 
 <xsl:template match="doc">
-<out>;
+<out>
 <int a="{abs(3)}" b="{abs(-3)}" c="{abs(0)}"/>
 <decimal a="{abs(3.2)}" b="{abs(-3.2)}" c="{abs(0.0)}"/>
 <double a="{abs(3.2e0)}" b="{abs(-3.2e0)}" c="{abs(0.0e0)}" d="{abs(-0.0e0)}" e="{abs(number('NaN'))}"
