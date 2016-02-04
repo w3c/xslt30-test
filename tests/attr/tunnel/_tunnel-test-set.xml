@@ -912,6 +912,7 @@
    <test-case name="tunnel-0406">
       <description>Test case where the intial template launches on an element other than root. Initially the template gets invoked and does not have any tunnel parameters. Further processing would invoke another template which is aimed to be called on the same initial node and passes some tunnel parameters to it.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2016-01-28" change="produce well-formed result document"/>
       <environment ref="tunnel-04"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -920,7 +921,7 @@
          <stylesheet file="tunnel-0406.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>Parameter foo is: default_value</out><out>Parameter foo is: passed_value</out>]]></assert-xml>
+         <assert-xml><![CDATA[<doc><out>Parameter foo is: default_value</out><out>Parameter foo is: passed_value</out></doc>]]></assert-xml>
       </result>
    </test-case>
 
