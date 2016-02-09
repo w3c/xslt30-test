@@ -896,6 +896,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2012-12-06"/>
       <modified by="Abel Braaksma" on="2013-12-10"
          change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
+      <modified by="Abel Braaksma" on="2016-02-07" change="Wrong error code, 'five' is a faulty decimal value and should not raise SEPM0016 but XPSE0020, see #29423"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -904,7 +905,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <stylesheet file="result-document-0243.xsl"/>
       </test>
       <result>
-         <error code="SEPM0016"/>
+         <error code="XTSE0020"/>
       </result>
    </test-case>
 
@@ -1803,6 +1804,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <created by="Michael Kay" on="2015-09-29"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0303.xsl"/>
@@ -1821,8 +1823,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <description>With xsl:result-document, no href, use Adaptive serialization</description>
       <created by="Michael Kay" on="2015-09-29"/>
       <modified by="Michael Kay" on="2015-10-13" change="correct expected result"/>
+      <modified by="Abel Braaksma" on="2016-02-07" change="Dependency on XP31"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0304.xsl"/>
