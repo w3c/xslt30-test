@@ -312,6 +312,76 @@
       </result>
    </test-case>
    
+   <test-case name="stream-200">
+      <description>Extract two parts from a partwise MusicXML score</description>
+      <created by="Michael Kay" on="2016-02-13"/>
+      <test>
+         <stylesheet file="stream-200.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>exists(//part[@id="P1"])</assert>
+            <assert>exists(//part[@id="P2"])</assert>
+            <assert>empty(//part[@id="P3"])</assert>
+            <assert>empty(//part[@id="P4"])</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-201">
+      <description>Extract two parts from a partwise MusicXML score: variant using predicate in pattern</description>
+      <created by="Michael Kay" on="2016-02-13"/>
+      <test>
+         <stylesheet file="stream-201.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>exists(//part[@id="P1"])</assert>
+            <assert>exists(//part[@id="P2"])</assert>
+            <assert>empty(//part[@id="P3"])</assert>
+            <assert>empty(//part[@id="P4"])</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-202">
+      <description>Extract two parts from a partwise MusicXML score: variant using xs:string in map</description>
+      <created by="Michael Kay" on="2016-02-13"/>
+      <test>
+         <stylesheet file="stream-202.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>exists(//part[@id="P1"])</assert>
+            <assert>exists(//part[@id="P2"])</assert>
+            <assert>empty(//part[@id="P3"])</assert>
+            <assert>empty(//part[@id="P4"])</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-203">
+      <description>Extract two parts from a partwise MusicXML score: cannot put xs:untypedAtomic in map that expects xs:string</description>
+      <created by="Michael Kay" on="2016-02-13"/>
+      <test>
+         <stylesheet file="stream-203.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
+   <test-case name="stream-204">
+      <description>Extract two parts from a partwise MusicXML score: variant with non-motionless pattern in accumulator rule</description>
+      <created by="Michael Kay" on="2016-02-13"/>
+      <test>
+         <stylesheet file="stream-204.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
    <test-case name="stream-500">
       <description>Test xsl:stream instruction. From a Saxon 9.6 bug report (bug 2389).</description>
       <created by="Michael Kay" on="2015-06-05"/>
