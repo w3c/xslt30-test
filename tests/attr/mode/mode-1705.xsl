@@ -7,7 +7,7 @@
   declared-modes="yes"
   default-mode="a">
   
-  <xsl:mode name="a"/>
+  <xsl:mode name="a" visibility="public"/>
   <xsl:mode/>  
 
   <xsl:template match="/">

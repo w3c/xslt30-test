@@ -6,7 +6,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
   
-  <xsl:mode visibility="public"/>
+  <xsl:mode visibility="public" />
   
   <xsl:template match="unstreamable" name="main">
     <xsl:value-of select="a+b+c"/>

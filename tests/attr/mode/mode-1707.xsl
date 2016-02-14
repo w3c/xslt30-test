@@ -5,7 +5,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs">
   
-  <xsl:mode name="a"/>
+  <xsl:mode name="a" visibility="public"/>
   <xsl:mode/>  
   
   <xsl:template match="/" default-mode="a">
