@@ -354,7 +354,37 @@
           <xsl:value-of select="sum(descendant::n)"/>
         </out>
       </xsl:stream>
-    </xsl:template>    
+    </xsl:template>
+  
+  <!-- Streaming sum(): crawling operand, second argument is ignored when first is non-empty (bug 29420) -->
+  
+  <xsl:template name="s-057" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="sum(//PRICE, 123)" separator="|"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Streaming sum(): first operand grounded and motionless, second argument consuming -->
+  
+  <xsl:template name="s-058" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="sum((1 to 5)[. gt year-from-date(current-date())], sum(//PRICE))" separator="|"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Streaming sum(): first operand grounded and motionless, second argument consuming, but not actually evaluated -->
+  
+  <xsl:template name="s-059" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="sum((1 to 5)[. lt year-from-date(current-date())], sum(//PRICE))" separator="|"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
                          
                                                 
     
