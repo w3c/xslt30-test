@@ -1075,6 +1075,7 @@
    <test-case name="accumulator-053">
       <description>Check that accumulator-after is the value AFTER applying the post-descent rule (Saxon bug 2478)</description>
       <created by="Michael Kay, after Martin Honnen" on="2016-01-02"/>
+      <modified by="Michael Kay" on="2016-02-14" change="the expected results were the (unrelated) results of test -051"/>
       <environment>
          <source role="." file="accumulator-053.xml" streaming="true"/>
       </environment>
@@ -1082,16 +1083,13 @@
          <stylesheet file="accumulator-053.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<root><start state=""
-            /><start name="A" state="(A"
-            /><start name="B" state="(A (B"
-            /><start name="C" state="(A (B (C"
-            /><end name="C" state="(A (B (C C)"
-            /><start name="D" state="(A (B (C C) (D"
-            /><end name="D" state="(A (B (C C) (D D)"
-            /><end name="B" state="(A (B (C C) (D D) B)"
-            /><end name="A" state="(A (B (C C) (D D) B) A)"
-            /><end state="(A (B (C C) (D D) B) A)"/></root>]]></assert-xml>
+         <all-of>
+            <!--map{"damson":1,"banana":2,"raspberry":1,"quince":1,"elderberry":1,"tangerine":1,"strawberry":1,"plum":1,"cherry":2,"apple":2,"greengage":1}-->
+            <assert>contains(., '"damson":1')</assert>
+            <assert>contains(., '"quince":1')</assert>
+            <assert>contains(., '"apple":2')</assert>
+            <assert>contains(., '"greengage":1')</assert>
+         </all-of>
       </result>
    </test-case>
  
