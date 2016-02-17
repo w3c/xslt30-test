@@ -10,7 +10,7 @@
         <xsl:copy-of select="doc/sf:shallow-descent(section[1])/p[2]" />
     </xsl:template>
     
-    <xsl:function name="sf:shallow-descent" streamability="shallow-desccent"  as="node()*">
+    <xsl:function name="sf:shallow-descent" streamability="shallow-descent"  as="node()*">
         <xsl:param name="node" as="node()"/>
         <xsl:sequence select="$node/section" />
     </xsl:function>
