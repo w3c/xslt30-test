@@ -158,7 +158,7 @@
   
   <xsl:function name="ged:date-to-ISO" as="xs:date">
     <xsl:param name="date" as="StandardDate"/>
-    <xsl:variable name="results" select="(1 to 200)!ged:date-to-ISO-2($date)"/>
+    <xsl:variable name="results" select="for $x in (1 to 200) return ged:date-to-ISO-2($date)"/>
     <xsl:if test="count(distinct-values($results)) > 1">
       <xsl:message terminate="yes">FAIL!!</xsl:message>
     </xsl:if> 
