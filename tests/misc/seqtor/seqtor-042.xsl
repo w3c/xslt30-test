@@ -5,15 +5,15 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     
-    <xsl:variable name="foo" as="text()">
-        <!-- multiple text nodes are combined into one -->
+    <xsl:variable name="foo" as="text()*">
         <xsl:text expand-text="yes">{ (:hello:) 'non-empty'}</xsl:text>
         <xsl:text> </xsl:text>
         <xsl:text expand-text="yes">{ (:hello:) 'and more'[true()]}</xsl:text>
     </xsl:variable>
     
     <xsl:template match="/" name="xsl:initial-template">
-        <result><xsl:copy-of select="$foo" /></result>
+        <!-- multiple text nodes are combined into one, no extra spaces -->
+        <result><count><xsl:copy-of select="count($foo)" /></count><text><xsl:copy-of select="$foo" /></text></result>
     </xsl:template>
     
 </xsl:stylesheet>
