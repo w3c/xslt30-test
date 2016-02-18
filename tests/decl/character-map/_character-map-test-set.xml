@@ -506,4 +506,25 @@
          <serialization-matches>&lt;z&gt;1plus2&lt;/z&gt;</serialization-matches>
       </result>
    </test-case>
+   
+   <test-case name="character-map-025">
+      <description>Test that characters produced by a character map are immune to Unicode normalization</description>
+      <keywords>single-character-map xml-output-method</keywords>
+      <created by="Michael Kay" on="2016-02-18"/>
+      <environment ref="charmap001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="character-map-025.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <!-- The first c-cedilla is in composed form as codepoint (231); the second is in decomposed form as (99, 807) -->
+            <!-- The "." in the regex matches codepoint 807, but I'm having difficulty expressing this -->
+            <serialization-matches>&lt;out>ab#&#231;#&#99;.de&lt;/out></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
