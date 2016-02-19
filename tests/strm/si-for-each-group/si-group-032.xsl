@@ -5,7 +5,7 @@
     <xsl:param name="block-size" as="xs:integer" select="10"/>
 
     <xsl:output indent="yes"/>
-    <xsl:mode streamable="yes"/>
+    <xsl:mode streamable="no"/>
 
     <xsl:template match="/*">
         <xsl:variable name="root" as="element()">
@@ -14,9 +14,9 @@
         <out>
             <xsl:for-each-group select="product" group-adjacent="(position() - 1) idiv $block-size">
                 <xsl:result-document href="product{current-grouping-key()}.xml">
-                    <xsl:copy select="$root">
+                    <xsl:element name="{name($root)}" namespace="{namespace-uri($root)}">
                         <xsl:copy-of select="current-group()"/>
-                    </xsl:copy>
+                    </xsl:element>
                 </xsl:result-document>
             </xsl:for-each-group>
         </out>
