@@ -5,7 +5,7 @@
     <xsl:param name="block-size" as="xs:integer" select="10"/>
 
     <xsl:output indent="yes"/>
-    <xsl:mode streamable="no"/>
+    <xsl:mode streamable="yes"/>
 
     <xsl:template match="/*">
         <xsl:variable name="root" as="element()">
