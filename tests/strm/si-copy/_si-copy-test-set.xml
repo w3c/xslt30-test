@@ -829,7 +829,21 @@
       <result>
          <error code="XTTE0570"/>
       </result>
-   </test-case>      
+   </test-case> 
+   
+   <test-case name="si-copy-200">
+      <description>Use streaming apply-templates with copy-of() switching modes (Saxon bug 2630)</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-02-19"/>
+      <environment>
+         <source role="." streaming="true" file="../docs/novel-addresses.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="si-copy-200.xsl"/>
+      </test>
+      <result>
+         <assert>count(//Address[LastName="ghi"][FirstName="foo"]) = 2</assert>
+      </result>
+   </test-case> 
    
    
    <test-case name="si-copy-901">
