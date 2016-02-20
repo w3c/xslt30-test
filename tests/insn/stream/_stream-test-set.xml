@@ -382,6 +382,24 @@
       </result>
    </test-case>
    
+   <test-case name="stream-210">
+      <description>xsl:stream reading the same input file more than once</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-02-19"/>
+      <test>
+         <stylesheet file="stream-210.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="product-1-result.xml">
+               <assert-xml><![CDATA[<root xmlns:xs="http://www.w3.org/2001/XMLSchema"><product type="product-1"><foo>BOOT</foo></product><product type="product-1"><foo>HAT</foo></product></root>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="product-3-result.xml">
+               <assert-xml><![CDATA[<root xmlns:xs="http://www.w3.org/2001/XMLSchema"><product type="product-3"><foo>SCARF</foo></product></root>]]></assert-xml>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="stream-500">
       <description>Test xsl:stream instruction. From a Saxon 9.6 bug report (bug 2389).</description>
       <created by="Michael Kay" on="2015-06-05"/>
