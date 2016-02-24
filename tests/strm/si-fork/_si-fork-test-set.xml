@@ -165,7 +165,31 @@
          <initial-template name="g-001"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>TBA</out>]]></assert-xml>
+         <all-of>
+            <assert>count(/out/CAT) = 3</assert>
+            <assert>count(/out/CAT[@ID="MMP"]/ITEM) = 1</assert>
+            <assert>count(/out/CAT[@ID="P"]/ITEM) = 4</assert>
+            <assert>count(/out/CAT[@ID="H"]/ITEM) = 1</assert>
+            <assert>every $I in //ITEM satisfies $I/@CAT = $I/../@ID</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-102">
+      <description>xsl:stream instruction with xsl:fork with xsl:for-each-group, population is grounded</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-002"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 3</assert>
+            <assert>count(/out/CAT[@ID="MMP"]/ITEM) = 1</assert>
+            <assert>count(/out/CAT[@ID="P"]/ITEM) = 4</assert>
+            <assert>count(/out/CAT[@ID="H"]/ITEM) = 1</assert>
+            <assert>every $I in //ITEM satisfies $I/@CAT = $I/../@ID</assert>
+         </all-of>
       </result>
    </test-case>
    
