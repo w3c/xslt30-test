@@ -38,6 +38,54 @@
       </xsl:stream>
     </out>
   </xsl:template>
+  
+  <!-- within xsl:stream, use xsl:fork/xsl:for-each-group/xsl:result-document -->
+  
+  <xsl:template name="g-003" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@CAT">
+            <xsl:result-document href="{current-grouping-key()}.xml">
+              <CAT ID="{current-grouping-key()}">
+                <xsl:copy-of select="current-group()"/>
+              </CAT>
+            </xsl:result-document>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- Aggregation over current-group -->
+  
+  <xsl:template name="g-004" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@CAT">
+            <CAT ID="{current-grouping-key()}" SIZE="{count(current-group())}"/>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- Non-consuming action -->
+  
+  <xsl:template name="g-005" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@CAT">
+            <CAT ID="{current-grouping-key()}"/>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  
 
 
 

@@ -193,6 +193,71 @@
       </result>
    </test-case>
    
+   <test-case name="si-fork-103">
+      <description>xsl:stream/xsl:fork/xsl:for-each-group/@group-by, multiple result documents, population is striding</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-003"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="P.xml">
+               <all-of>
+                  <assert>/CAT[@ID="P"]/ITEM</assert>
+                  <assert>count(/CAT/ITEM) = 4</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="MMP.xml">
+               <all-of>
+                  <assert>/CAT[@ID="MMP"]/ITEM</assert>
+                  <assert>count(/CAT/ITEM) = 1</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="H.xml">
+               <all-of>
+                  <assert>/CAT[@ID="H"]/ITEM</assert>
+                  <assert>count(/CAT/ITEM) = 1</assert>
+               </all-of>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-104">
+      <description>xsl:stream/xsl:fork/xsl:for-each-group/@group-by, aggregate over current-group</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-004"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 3</assert>
+            <assert>/out/CAT[@ID="MMP"][@SIZE="1"]</assert>
+            <assert>/out/CAT[@ID="P"][@SIZE="4"]</assert>
+            <assert>/out/CAT[@ID="H"][@SIZE="1"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-105">
+      <description>xsl:stream/xsl:fork/xsl:for-each-group/@group-by, non-consuming action</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-005"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 3</assert>
+            <assert>/out/CAT[@ID="MMP"]</assert>
+            <assert>/out/CAT[@ID="P"]</assert>
+            <assert>/out/CAT[@ID="H"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="si-fork-901">
       <description>Non-streamable xsl:fork - returns streamed nodes</description>
       <keywords>multiple-xsl-sequence-children AxisStep striding XTSE3430 illegally-returning-streamed-nodes</keywords>
@@ -218,6 +283,84 @@
          <error code="XTSE3430"/>
       </result>
    </test-case>
+   
+   <test-case name="si-fork-951">
+      <description>Non-streamable xsl:fork/xsl:for-each-group: current-group() used repeatedly</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <test>
+         <stylesheet file="si-fork-951.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-952">
+      <description>Non-streamable xsl:fork/xsl:for-each-group: 2 down-selections from current-group()</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <test>
+         <stylesheet file="si-fork-952.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-953">
+      <description>Non-streamable xsl:fork/xsl:for-each-group: sorted groups (should this be an error?)</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <test>
+         <stylesheet file="si-fork-953.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-954">
+      <description>Non-streamable xsl:fork/xsl:for-each-group: Down-selection from current-group() and from "."</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <test>
+         <stylesheet file="si-fork-954.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-955">
+      <description>Non-streamable xsl:fork/xsl:for-each-group: Population is crawling</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <test>
+         <stylesheet file="si-fork-955.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-956">
+      <description>Non-streamable xsl:fork/xsl:for-each-group: current-group() appears in higher-order operand</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <test>
+         <stylesheet file="si-fork-956.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-957">
+      <description>Non-streamable xsl:fork/xsl:for-each-group: group-by expression not motionless</description>
+      <created by="Michael Kay" on="2016-02-24"/>
+      <test>
+         <stylesheet file="si-fork-957.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
 
 
 
