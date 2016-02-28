@@ -16,6 +16,22 @@
       <a>11</a>
       <b>22</b>
     </xsl:variable>
+  
+  <xsl:variable name="extraItem" as="element(ITEM)">
+    <ITEM CAT="H">
+      <TITLE>Ulysses</TITLE>
+      <AUTHOR>James Joyce</AUTHOR>
+      <PUBLISHER>HarperCollins</PUBLISHER>
+      <PUB-DATE>1935-06-02</PUB-DATE>
+      <LANGUAGE>English</LANGUAGE>
+      <PRICE>18.90</PRICE>
+      <QUANTITY>235</QUANTITY>
+      <ISBN>0186701805</ISBN>
+      <PAGES>830</PAGES>
+      <DIMENSIONS UNIT="in">7.2 5.6 1.2</DIMENSIONS>
+      <WEIGHT UNIT="oz">11.0</WEIGHT>
+    </ITEM>
+  </xsl:variable>
     
     <!-- Comma expression (streaming arg 2): grounded operand -->
     
@@ -258,6 +274,49 @@
           </xsl:for-each>
         </out>
       </xsl:stream>
-    </xsl:template>                 
+    </xsl:template>
+  
+  <!-- Mixed striding and grounded sequence.  -->
+  
+  <xsl:template name="r-040" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:copy-of select="(/BOOKLIST/BOOKS/ITEM, $extraItem)!PRICE"/>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Mixed striding and grounded sequence.  -->
+  
+  <xsl:template name="r-041" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:copy-of select="(/BOOKLIST/BOOKS/ITEM, $extraItem) / PRICE"/>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Mixed striding and grounded sequence.  -->
+  
+  <xsl:template name="r-042" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM, $extraItem)!PRICE"/>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Mixed striding and grounded sequence.  -->
+  
+  <xsl:template name="r-043" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM, $extraItem) / PRICE"/>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  
+  
     
 </xsl:stylesheet>

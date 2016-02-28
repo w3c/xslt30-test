@@ -320,9 +320,65 @@
            <assert>/out/v[3] = 'H Hard Cover'</assert>
          </all-of>
       </result>
-   </test-case>  
-
-
+   </test-case>
+   
+   <test-case name="sx-comma-040">
+      <description>Streaming comma expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-040"/>
+      </test>
+      <result>
+         <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-041">
+      <description>Streaming comma expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-041"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>          
+         </any-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-042">
+      <description>Streaming comma expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-042"/>
+      </test>
+      <result>
+         <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-043">
+      <description>Streaming comma expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-comma-A"/>
+      <test>
+         <initial-template name="r-043"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+            <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+         </any-of>
+      </result>
+   </test-case>
 
    <test-case name="sx-comma-101">
       <description>comma expression (streaming arg 2) - grounded operand</description>
@@ -631,6 +687,76 @@
            <assert>/out/v[3] = 'Hard Cover H'</assert>
          </all-of>
       </result>
-   </test-case>  
+   </test-case>
+   
+   <test-case name="sx-comma-140">
+      <description>Streaming comma expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-040"/>
+      </test>
+      <result>
+         <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-141">
+      <description>Streaming comma expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-041"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>          
+         </any-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-142">
+      <description>Streaming comma expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-042"/>
+      </test>
+      <result>
+         <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-143">
+      <description>Streaming comma expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-comma-B"/>
+      <test>
+         <initial-template name="r-043"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+            <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-comma-201">
+      <description>Mixed-posture comma expression, crawlilng and grounded - not streamable</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <test>
+         <stylesheet file="sx-comma-201.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
 
 </test-set>

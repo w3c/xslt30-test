@@ -322,7 +322,71 @@
            <assert>/out/v[3] = 'H Hard Cover'</assert>
          </all-of>
       </result>
-   </test-case>  
+   </test-case>
+   
+   <test-case name="sx-union-040">
+      <description>Streaming union expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-union-A"/>
+      <test>
+         <initial-template name="r-040"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>          
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-041">
+      <description>Streaming union expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-union-A"/>
+      <test>
+         <initial-template name="r-041"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>          
+         </any-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-042">
+      <description>Streaming union expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-union-A"/>
+      <test>
+         <initial-template name="r-042"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+            <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-043">
+      <description>Streaming union expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-union-A"/>
+      <test>
+         <initial-template name="r-043"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+            <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+         </any-of>
+      </result>
+   </test-case>
 
 
    
@@ -529,6 +593,18 @@
       </result>
    </test-case>
    
+   <test-case name="sx-union-129">
+      <description>Streaming union expression - union of motionless and consuming striding nodes (was -140)</description>
+      <created by="Michael Kay" on="2015-03-26"/>
+      <environment ref="sx-union-B"/>
+      <test>
+         <initial-template name="r-029"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>ITEM TITLE AUTHOR PUBLISHER PUB-DATE LANGUAGE PRICE QUANTITY ISBN PAGES DIMENSIONS WEIGHT</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="sx-union-130">
       <description>union expression (streaming arg 2) - climbing operand, inspection usage</description>
       <keywords>ParenthesizedExpr mixed-posture striding-then-climbing fn:name leading-lone-slash PathExpr positional-predicate SimpleMapExpr ancestor-axis</keywords>
@@ -679,15 +755,86 @@
    </test-case> 
    
    <test-case name="sx-union-140">
-      <description>Streaming union expression - union of motionless and consuming striding nodes</description>
-      <created by="Michael Kay" on="2015-03-26"/>
+      <description>Streaming union expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
       <environment ref="sx-union-B"/>
       <test>
          <initial-template name="r-040"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>ITEM TITLE AUTHOR PUBLISHER PUB-DATE LANGUAGE PRICE QUANTITY ISBN PAGES DIMENSIONS WEIGHT</out>]]></assert-xml>
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>          
+         </any-of>
       </result>
-   </test-case> 
+   </test-case>
+   
+   <test-case name="sx-union-141">
+      <description>Streaming union expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-union-B"/>
+      <test>
+         <initial-template name="r-041"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>          
+         </any-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-142">
+      <description>Streaming union expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-union-B"/>
+      <test>
+         <initial-template name="r-042"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+            <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-143">
+      <description>Streaming union expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sx-union-B"/>
+      <test>
+         <initial-template name="r-043"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+            <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-201">
+      <description>
+         Streaming union expression - mixed posture. Not streamable
+      </description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <test>
+         <stylesheet file="sx-union-201.xsl"/>
+      </test>
+      <result>
+         <!--
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>
+         </any-of>-->
+         <error code="XTSE3430"/>        
+      </result>
+   </test-case>
 
 </test-set>

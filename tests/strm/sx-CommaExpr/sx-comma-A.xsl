@@ -16,6 +16,22 @@
       <a>11</a>
       <b>22</b>
     </xsl:variable>
+  
+    <xsl:variable name="extraItem" as="element(ITEM)">
+      <ITEM CAT="H">
+        <TITLE>Ulysses</TITLE>
+        <AUTHOR>James Joyce</AUTHOR>
+        <PUBLISHER>HarperCollins</PUBLISHER>
+        <PUB-DATE>1935-06-02</PUB-DATE>
+        <LANGUAGE>English</LANGUAGE>
+        <PRICE>18.90</PRICE>
+        <QUANTITY>235</QUANTITY>
+        <ISBN>0186701805</ISBN>
+        <PAGES>830</PAGES>
+        <DIMENSIONS UNIT="in">7.2 5.6 1.2</DIMENSIONS>
+        <WEIGHT UNIT="oz">11.0</WEIGHT>
+      </ITEM>
+    </xsl:variable>
     
     <!-- Streaming comma operator: grounded operand -->
     
@@ -89,7 +105,7 @@
     
     <!-- Streaming comma operator: striding operand, focus-controlled usage -->
     
-    <xsl:template name="r-014" use-when="true() or $RUN">
+    <xsl:template name="r-014" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[1] ! (*, $insertion)"/>
@@ -143,6 +159,8 @@
     
     <xsl:mode name="r-018-mode" streamable="yes" on-no-match="deep-skip"/>
     <xsl:template match="ITEM/*" mode="r-018-mode"><xsl:value-of select="."/></xsl:template>
+  
+  
     
     <!-- Streaming comma operator: crawling operand, inspection usage -->
     
@@ -254,6 +272,48 @@
           </xsl:for-each>
         </out>
       </xsl:stream>
-    </xsl:template>               
+    </xsl:template>
+  
+  <!-- Mixed striding and grounded sequence.  -->
+  
+  <xsl:template name="r-040" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:copy-of select="($extraItem, /BOOKLIST/BOOKS/ITEM)!PRICE"/>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Mixed striding and grounded sequence.  -->
+  
+  <xsl:template name="r-041" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:copy-of select="($extraItem, /BOOKLIST/BOOKS/ITEM) / PRICE"/>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Mixed striding and grounded sequence.  -->
+  
+  <xsl:template name="r-042" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="($extraItem, /BOOKLIST/BOOKS/ITEM)!PRICE"/>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  <!-- Mixed striding and grounded sequence.  -->
+  
+  <xsl:template name="r-043" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="($extraItem, /BOOKLIST/BOOKS/ITEM) / PRICE"/>
+      </out>
+    </xsl:stream>
+  </xsl:template> 
+  
+  
     
 </xsl:stylesheet>
