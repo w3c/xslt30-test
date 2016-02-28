@@ -301,7 +301,64 @@
       </result>
    </test-case>  
 
-
+   <test-case name="sf-insert-before-040">
+      <description>Streaming insert-before expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-040"/>
+      </test>
+      <result>
+         <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-041">
+      <description>Streaming insert-before expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-041"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>          
+         </any-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-042">
+      <description>Streaming insert-before expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-042"/>
+      </test>
+      <result>
+         <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-043">
+      <description>Streaming insert-before expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sf-insert-before-A"/>
+      <test>
+         <initial-template name="r-043"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+            <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+         </any-of>
+      </result>
+   </test-case>
+   
 
    <test-case name="sf-insert-before-101">
       <description>insert-before() (streaming arg 3) - grounded operand</description>
@@ -587,7 +644,66 @@
       <result>
          <assert>/out = "A|MHK|MMP|P|P|P|H|P|B"</assert>
       </result>
-   </test-case>  
+   </test-case>
+   
+   <test-case name="sf-insert-before-140">
+      <description>Streaming insert-before expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-040"/>
+      </test>
+      <result>
+         <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 18.90, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-141">
+      <description>Streaming insert-before expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-041"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (18.90, 4.95, 6.58, 4.95, 4.95, 16.47, 16.47))</assert>
+            <assert>deep-equal(/out/PRICE/xs:decimal(.), (4.95, 6.58, 4.95, 4.95, 16.47, 16.47, 18.90))</assert>          
+         </any-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-142">
+      <description>Streaming insert-before expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-042"/>
+      </test>
+      <result>
+         <assert>/out = "4.95 18.90 6.58 4.95 4.95 16.47 16.47"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sf-insert-before-143">
+      <description>Streaming insert-before expression - bug 29507</description>
+      <keywords>ParenthesizedExpr mixed-posture </keywords>
+      <created by="Michael Kay" on="2016-02-26"/>
+      <environment ref="sf-insert-before-B"/>
+      <test>
+         <initial-template name="r-043"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "18.90 4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+            <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47 18.90"</assert>
+         </any-of>
+      </result>
+   </test-case>
+ 
 
 
 

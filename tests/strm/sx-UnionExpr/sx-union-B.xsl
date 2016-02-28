@@ -308,7 +308,7 @@
   <xsl:template name="r-040" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:copy-of select="(/BOOKLIST/BOOKS/ITEM, $extraItem)!PRICE"/>
+        <xsl:copy-of select="(/BOOKLIST/BOOKS/ITEM | $extraItem)!PRICE"/>
       </out>
     </xsl:stream>
   </xsl:template> 
@@ -318,7 +318,7 @@
   <xsl:template name="r-041" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:copy-of select="(/BOOKLIST/BOOKS/ITEM, $extraItem) / PRICE"/>
+        <xsl:copy-of select="(/BOOKLIST/BOOKS/ITEM | $extraItem) / PRICE"/>
       </out>
     </xsl:stream>
   </xsl:template> 
@@ -328,7 +328,7 @@
   <xsl:template name="r-042" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM, $extraItem)!PRICE"/>
+        <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM | $extraItem)!PRICE"/>
       </out>
     </xsl:stream>
   </xsl:template> 
@@ -338,7 +338,7 @@
   <xsl:template name="r-043" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
-        <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM, $extraItem) / PRICE"/>
+        <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM | $extraItem) / PRICE"/>
       </out>
     </xsl:stream>
   </xsl:template> 
