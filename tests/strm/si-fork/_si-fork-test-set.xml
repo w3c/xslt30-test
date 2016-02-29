@@ -258,6 +258,146 @@
       </result>
    </test-case>
    
+   <test-case name="si-fork-106">
+      <description>xsl:for-each-group with both striding and grounded items</description>
+      <created by="Michael Kay" on="2016-02-25"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-006"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 3</assert>
+            <assert>count(/out/CAT[@ID="MMP"]/ITEM) = 1</assert>
+            <assert>count(/out/CAT[@ID="P"]/ITEM) = 4</assert>
+            <assert>count(/out/CAT[@ID="H"]/ITEM) = 2</assert>
+            <assert>every $I in //ITEM satisfies $I/@CAT = $I/../@ID</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-107">
+      <description>xsl:for-each-group with both striding and grounded items</description>
+      <created by="Michael Kay" on="2016-02-25"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-007"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 3</assert>
+            <assert>count(/out/CAT[@ID="MMP"]/ITEM) = 1</assert>
+            <assert>count(/out/CAT[@ID="P"]/ITEM) = 4</assert>
+            <assert>count(/out/CAT[@ID="H"]/ITEM) = 2</assert>
+            <assert>every $I in //ITEM satisfies $I/@CAT = $I/../@ID</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-108">
+      <description>xsl:for-each-group downward selection from current-group(), mixed posture</description>
+      <created by="Michael Kay" on="2016-02-25"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-008"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 3</assert>
+            <assert>count(/out/CAT[@ID="MMP"]/PRICE) = 1</assert>
+            <assert>count(/out/CAT[@ID="P"]/PRICE) = 4</assert>
+            <assert>count(/out/CAT[@ID="H"]/PRICE) = 2</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-109">
+      <description>xsl:for-each-group downward selection from current-group(), mixed posture</description>
+      <created by="Michael Kay" on="2016-02-25"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-009"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 3</assert>
+            <assert>count(/out/CAT[@ID="MMP"]/PRICE) = 1</assert>
+            <assert>count(/out/CAT[@ID="P"]/PRICE) = 4</assert>
+            <assert>count(/out/CAT[@ID="H"]/PRICE) = 2</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-110">
+      <description>xsl:for-each-group - group-by - composite key</description>
+      <created by="Michael Kay" on="2016-02-29"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-010"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 5</assert>
+            <assert>/out/CAT[@DATE="2002-12-31"][@LANG="English"][@AVG-PRICE="5.765"]</assert>
+            <assert>/out/CAT[@DATE="1984-05-01"][@LANG="English"][@AVG-PRICE="4.95"]</assert>
+            <assert>/out/CAT[@DATE="1998-09-01"][@LANG="English"][@AVG-PRICE="4.95"]</assert>
+            <assert>/out/CAT[@DATE="2005-07-11"][@LANG="English"][@AVG-PRICE="16.47"]</assert>
+            <assert>/out/CAT[@DATE="2003-02-25"][@LANG="English"][@AVG-PRICE="16.47"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-111">
+      <description>xsl:for-each-group - group-by - composite key</description>
+      <created by="Michael Kay" on="2016-02-29"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-011"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/CAT) = 4</assert>
+            <assert>/out/CAT[@ID="MMP"][@COUNT="1"][@AVG-QTY="187"][@AUTHOR="Jane Austen"][@PRICE="4.95"]</assert>
+            <assert>/out/CAT[@ID="P"][@COUNT="1"][@AVG-QTY="113"][@AUTHOR="Charlotte Brontë"][@PRICE="6.58"]</assert>
+            <assert>/out/CAT[@ID="P"][@COUNT="2"][@AVG-QTY="107"][@AUTHOR="Thomas Hardy"][@PRICE="4.95"]</assert>
+            <assert>/out/CAT[@ID=("H P", "P H")][@COUNT="2"][@AVG-QTY="129"][@AUTHOR="Jasper Fforde"][@PRICE="16.47"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-112">
+      <description>xsl:for-each-group - group-by - position() of groups</description>
+      <created by="Michael Kay" on="2016-02-29"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-012"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/g) = 4</assert>
+            <assert>/out/g[@author="Jane Austen" and @position="1"]</assert>
+            <assert>/out/g[@author="Charlotte Brontë" and @position="2"]</assert>
+            <assert>/out/g[@author="Thomas Hardy" and @position="3"]</assert>
+            <assert>/out/g[@author="Jasper Fforde" and @position="4"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-113">
+      <description>xsl:for-each-group - group-by - current-grouping-key() not available in called template</description>
+      <created by="Michael Kay" on="2016-02-29"/>
+      <environment ref="si-fork-B"/>
+      <test>
+         <initial-template name="g-013"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/g/h) = 4</assert>
+            <assert>every $h in /out/g/h satisfies $h/@key = "#absent#"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="si-fork-901">
       <description>Non-streamable xsl:fork - returns streamed nodes</description>
       <keywords>multiple-xsl-sequence-children AxisStep striding XTSE3430 illegally-returning-streamed-nodes</keywords>

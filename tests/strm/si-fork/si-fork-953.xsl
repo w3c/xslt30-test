@@ -5,7 +5,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs err">
     
-  <!-- Non-streamable fork/for-each-group: 2 down-selections from current-group() -->
+  <!-- Non-streamable fork/for-each-group: sorted groups -->
   
   <xsl:template name="xsl:initial-template">
     <xsl:stream href="../docs/books.xml">

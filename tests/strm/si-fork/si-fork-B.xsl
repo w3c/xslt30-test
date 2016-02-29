@@ -5,6 +5,22 @@
 
   <xsl:variable name="RUN" select="true()" static="yes"/>
   <xsl:strip-space elements="*"/>
+  
+  <xsl:variable name="extra" as="element(ITEM)">
+    <ITEM CAT="H">
+      <TITLE>Ulysses</TITLE>
+      <AUTHOR>James Joyce</AUTHOR>
+      <PUBLISHER>HarperCollins</PUBLISHER>
+      <PUB-DATE>1935-06-02</PUB-DATE>
+      <LANGUAGE>English</LANGUAGE>
+      <PRICE>18.90</PRICE>
+      <QUANTITY>235</QUANTITY>		
+      <ISBN>0186701805</ISBN>
+      <PAGES>830</PAGES>
+      <DIMENSIONS UNIT="in">7.2 5.6 1.2</DIMENSIONS>
+      <WEIGHT UNIT="oz">11.0</WEIGHT>
+    </ITEM>
+  </xsl:variable>
 
 
   <!-- within xsl:stream, use xsl:fork/xsl:for-each-group -->
@@ -83,6 +99,145 @@
         </xsl:fork>
       </xsl:stream>
     </out>
+  </xsl:template>
+  
+  <!-- within xsl:for-each-group with both striding and grounded items -->
+  
+  <xsl:template name="g-006" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="(/BOOKLIST/BOOKS/ITEM, $extra)" group-by="@CAT">
+            <CAT ID="{current-grouping-key()}">
+              <xsl:copy-of select="current-group()"/>
+            </CAT>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:for-each-group with both striding and grounded items -->
+  
+  <xsl:template name="g-007" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="($extra, /BOOKLIST/BOOKS/ITEM)" group-by="@CAT">
+            <CAT ID="{current-grouping-key()}">
+              <xsl:copy-of select="current-group()"/>
+            </CAT>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:for-each-group downward selection from current-group(), mixed posture -->
+  
+  <xsl:template name="g-008" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="($extra, /BOOKLIST/BOOKS/ITEM)" group-by="@CAT">
+            <CAT ID="{current-grouping-key()}">
+              <xsl:copy-of select="current-group()!PRICE"/>
+            </CAT>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- within xsl:for-each-group downward selection from current-group(), mixed posture -->
+  <!-- Note: see bug 29507 -->
+  
+  <xsl:template name="g-009" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="($extra, /BOOKLIST/BOOKS/ITEM)" group-by="@CAT">
+            <CAT ID="{current-grouping-key()}">
+              <xsl:copy-of select="current-group() / PRICE"/>
+            </CAT>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group with composite key -->
+  
+  <xsl:template name="g-010" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books-atts.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@PUB-DATE, @LANGUAGE">
+            <CAT DATE="{current-grouping-key()[1]}" LANG="{current-grouping-key()[2]}"
+              AVG-PRICE="{round(avg(current-group() / @PRICE), 3)}">
+            </CAT>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group with composite key (context item is first in group) -->
+  
+  <xsl:template name="g-011" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books-atts.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR, @PRICE">
+            <xsl:variable name="group" select="copy-of(current-group())"/>
+            <CAT ID="{distinct-values($group/@CAT)}" AUTHOR="{@AUTHOR}" PRICE="{@PRICE}"
+              COUNT="{count($group)}"
+              AVG-QTY="{round(avg($group / @QUANTITY), 3)}">
+            </CAT>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group: position of groups  -->
+  
+  <xsl:template name="g-012" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books-atts.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
+            <g author="{current-grouping-key()}" position="{position()}"/>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group: current-grouping-key not available in called template -->
+  
+  <xsl:template name="g-013" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books-atts.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
+            <g author="{current-grouping-key()}">
+              <xsl:call-template name="cgk"/>
+            </g>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <xsl:template name="cgk">
+    <xsl:context-item use="absent"/>
+    <xsl:try>
+      <h key="{current-grouping-key()}"/>
+      <xsl:catch errors="XTDE1071">
+        <h key="#absent#"/>
+      </xsl:catch>
+    </xsl:try>  
   </xsl:template>
   
   
