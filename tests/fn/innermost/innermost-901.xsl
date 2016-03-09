@@ -7,14 +7,14 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <!-- Non-Streaming innermost(): non-grounded operand -->
+    <!-- Non-Streaming innermost() -->
     
     <xsl:template name="r-901" use-when="$RUN">
-      <xsl:stream href='../../strm/docs/recursive.xml'>
+      <xsl:for-each select="doc('../../strm/docs/recursive.xml')">
         <out>
           <xsl:value-of select="innermost(/chapter//section)/@id"/>
         </out>
-      </xsl:stream>
+      </xsl:for-each>
     </xsl:template>
 
     
