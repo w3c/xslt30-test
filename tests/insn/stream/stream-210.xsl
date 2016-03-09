@@ -8,8 +8,6 @@
     
     <xsl:param name="input-uri" as="xs:string" select="'stream-210.xml'"/>
     
-    <xsl:output indent="yes"/>
-    
     <xsl:template name="xsl:initial-template">
         <xsl:iterate select="$extract-products">
             <xsl:variable name="product-type" as="xs:string" select="."/>
