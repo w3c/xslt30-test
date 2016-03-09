@@ -10,11 +10,11 @@
     <!-- Non-Streaming innermost(): non-grounded operand -->
     
     <xsl:template name="r-901" use-when="$RUN">
-      <xsl:for-each select="doc('../../strm/docs/recursive.xml')">
+      <xsl:stream href='../../strm/docs/recursive.xml'>
         <out>
           <xsl:value-of select="innermost(/chapter//section)/@id"/>
         </out>
-      </xsl:for-each>
+      </xsl:stream>
     </xsl:template>
 
     
