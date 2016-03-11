@@ -234,8 +234,88 @@
     <xsl:context-item use="absent"/>
     <xsl:try>
       <h key="{current-grouping-key()}"/>
-      <xsl:catch errors="XTDE1071">
+      <xsl:catch errors="*:XTDE1071">
         <h key="#absent#"/>
+      </xsl:catch>
+    </xsl:try>  
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group: current-group not available in called template -->
+  
+  <xsl:template name="g-014" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books-atts.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
+            <g author="{current-grouping-key()}">
+              <xsl:call-template name="cg"/>
+            </g>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <xsl:template name="cg">
+    <xsl:context-item use="absent"/>
+    <xsl:try>
+      <h size="{count(current-group())}"/>
+      <xsl:catch errors="*:XTDE1061">
+        <h size="#absent#"/>
+      </xsl:catch>
+    </xsl:try>  
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group: current-grouping-key not available in applied template -->
+  
+  <xsl:template name="g-015" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books-atts.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
+            <g author="{current-grouping-key()}">
+              <xsl:apply-templates select="current-group()" mode="cgk"/>
+            </g>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <xsl:mode name="cgk" streamable="yes"/>
+  
+  <xsl:template match="." mode="cgk">
+    <xsl:try>
+      <h key="{current-grouping-key()}"/>
+      <xsl:catch errors="*:XTDE1071">
+        <h key="#absent#"/>
+      </xsl:catch>
+    </xsl:try>  
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group: current-group not available in applied template -->
+  
+  <xsl:template name="g-016" use-when="$RUN">
+    <out>
+      <xsl:stream href="../docs/books-atts.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
+            <g author="{current-grouping-key()}">
+              <xsl:apply-templates select="current-group()" mode="cgk"/>
+            </g>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:stream>
+    </out>
+  </xsl:template>
+  
+  <xsl:mode name="cgk" streamable="yes"/>
+  
+  <xsl:template match="." mode="cgk">
+    <xsl:try>
+      <h size="{count(current-group())}"/>
+      <xsl:catch errors="*:XTDE1061">
+        <h size="#absent#"/>
       </xsl:catch>
     </xsl:try>  
   </xsl:template>
