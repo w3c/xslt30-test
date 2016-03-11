@@ -468,6 +468,7 @@
       <description>test union operation applied to namespace nodes</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2016-03-11" change="Remove serialization requirement"/>
       <environment>
          <source role="." file="namespace-07.xml"/>
       </environment>
@@ -477,10 +478,12 @@
       </dependencies>
       <test>
          <stylesheet file="namespace-0701.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="text" file="namespace-0701.out"/>
+         <assert-xml><![CDATA[<out
+            ><A><z/><z/><z/><z/><z>xml</z><z>xml</z><z>xml</z><z>xsl</z><z>xsl</z><z>xsl</z><z>xsl:apply-templates</z><z>xsl:template</z><z>xsl:transform</z><a>13 combined nodes</a></A
+            ><B><z>xml</z><z>xml</z><z>xml</z><z>xsl</z><z>xsl</z><z>xsl</z><b>6 namespace nodes</b></B
+            ><C><z>xsl:transform</z><z/><z>xsl:template</z><z/><z>xsl:apply-templates</z><z/><z/><c>7 node()s</c></C></out>]]></assert-xml>
       </result>
    </test-case>
 
