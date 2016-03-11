@@ -10,7 +10,7 @@
     <xsl:apply-templates/>
   </out>
 </xsl:template>
-
+  
 <xsl:template match="doc">
     <xsl:apply-templates select="@*"/>
 </xsl:template>
