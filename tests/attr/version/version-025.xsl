@@ -4,11 +4,11 @@
       <?spec xslt#forwards?>
 
 
-<xsl:template match="/*" use-when="system-property('supports-namespace-axis')='yes'">
+<xsl:template match="/*" use-when="system-property('xsl:supports-namespace-axis')='yes'">
   <out ns="{namespace::xml}"/>  
 </xsl:template>
 
-<xsl:template match="/*" use-when="system-property('supports-namespace-axis')!='yes'">
+<xsl:template match="/*" use-when="system-property('xsl:supports-namespace-axis')!='yes'">
   <out ns="{namespace-uri-for-prefix(in-scope-prefixes(.)[.='xml'], .)}"/> 
 </xsl:template>
 

@@ -488,12 +488,28 @@
       <description>Call supports-namespace-axis system property introducted by erratum E14</description>
       <keywords>erratum-XT.E14 _WRONG:incorrect-system-property xsl:supports-namespace-axis fn:system-property use-when-attribute forwards-compatibility-mode</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-11" change="change test to use correct system property name"/>
       <environment ref="ver17"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
          <stylesheet file="version-025.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out ns="http://www.w3.org/XML/1998/namespace"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="version-025a">
+      <description>Variant of versino-025 that does things unconditionally the 2.0 way</description>
+      <created by="Michael Kay" on="2016-03-11"/>
+      <environment ref="ver17"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="version-025a.xsl"/>
       </test>
       <result>
          <assert-xml><![CDATA[<out ns="http://www.w3.org/XML/1998/namespace"/>]]></assert-xml>
