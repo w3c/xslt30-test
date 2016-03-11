@@ -2,11 +2,9 @@
 
 <?spec xslt#patterns?>
 <!-- test a pattern that includes range variable declarations in a predicate -->
-  
-  <xsl:output method="text" />
-  
+
   <xsl:template match="/">
-    <xsl:apply-templates />
+    <out><xsl:apply-templates /></out>
   </xsl:template>
   
   <!-- default -->
@@ -24,10 +22,10 @@
    
    <xsl:template name="block-table">
      <xsl:variable name="testvar">the text to begin with</xsl:variable>
-     testvar: "<xsl:value-of select="$testvar" />"
+     <t>testvar: "<xsl:value-of select="$testvar" />"</t>
      <xsl:for-each select="./*">
        <xsl:apply-templates select="." />
-       testvar: "<xsl:value-of select="$testvar" />"
+       <t>testvar: "<xsl:value-of select="$testvar" />"</t>
      </xsl:for-each>
   </xsl:template> 
 
