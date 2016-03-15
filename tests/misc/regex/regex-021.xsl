@@ -9,8 +9,10 @@
   <xsl:output encoding="iso-8859-1"/>
   
   <xsl:template match="/">
+    <out>
      <a><xsl:value-of select='matches("abc", "a\sbc", "x")'/></a>
      <a><xsl:value-of select='matches("a bc", "a\sbc", "x")'/></a>
+    </out>
   </xsl:template>
 
 </xsl:stylesheet>
