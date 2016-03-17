@@ -319,6 +319,7 @@
    <test-case name="expression-0801">
       <description>test identity of nodes in a result tree fragment</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-17" change="order of nodes in different trees is impl-dependent"/>
       <environment ref="expression-08"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -327,7 +328,10 @@
          <stylesheet file="expression-0801.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<Result><Fred/><Bill/></Result>]]></assert-xml>
+         <any-of>
+            <assert-xml><![CDATA[<Result><Fred/><Bill/></Result>]]></assert-xml>
+            <assert-xml><![CDATA[<Result><Bill/><Fred/></Result>]]></assert-xml>
+         </any-of>        
       </result>
    </test-case>
 
