@@ -113,16 +113,23 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2016-03-22" change="Remove serialization requirement"/>
       <environment ref="strip-space-04"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
          <stylesheet file="strip-space-003.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="strip-space-003.out"/>
+         <all-of>
+            <assert>string-join(string-to-codepoints(/out/b[1])!string(), " ") = "10 32 32 32 9 9 101 108 101 109 49 10 32 32 32 9 9 10"</assert>
+            <assert>string-join(string-to-codepoints(/out/b[2])!string(), " ") = "32 32 32 101 108 101 109 50 32 32 32"</assert>
+            <assert>string-join(string-to-codepoints(/out/b[3])!string(), " ") = "10 32 32 32 101 108 101 109 51"</assert>
+            <assert>string-join(string-to-codepoints(/out/b[4])!string(), " ") = "101 108 101 109 52 9 9 9"</assert>
+            <assert>string-join(string-to-codepoints(/out/b[5])!string(), " ") = "10 32 32 32 9 101 108 101 109 53 10"</assert>
+            <assert>string-join(string-to-codepoints(/out/b[6])!string(), " ") = "32 101 108 101 109 54 32"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -134,16 +141,24 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2016-03-22" change="Remove serialization requirement"/>
       <environment ref="strip-space-04"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
          <stylesheet file="strip-space-004.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="strip-space-004.out"/>
+         <all-of>
+            <assert>/out/b[1] eq "elem1"</assert>
+            <assert>/out/b[2] eq "elem2"</assert>
+            <assert>/out/b[3] eq "elem3"</assert>
+            <assert>/out/b[4] eq "elem4"</assert>
+            <assert>/out/b[5] eq "elem5"</assert>
+            <assert>/out/b[6] eq "elem6"</assert>
+            <assert>count(/out/text()[string-to-codepoints(.) eq 10]) = 7</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -155,16 +170,23 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2016-03-22" change="Remove serialization requirement"/>
       <environment ref="strip-space-05"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
          <stylesheet file="strip-space-005.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="strip-space-005.out"/>
+         <all-of>
+            <assert>string-join(string-to-codepoints(/out/*[1][self::b])!string(), " ") = "10 32 32 32 9 9 101 108 49 10 32 32 32 9 9 10"</assert>
+            <assert>string-join(string-to-codepoints(/out/*[2][self::b])!string(), " ") = "32 32 32 101 108 101 109 50 32 32 32"</assert>
+            <assert>string-join(string-to-codepoints(/out/*[3][self::c])!string(), " ") = "101 108 101 109 51"</assert>
+            <assert>string-join(string-to-codepoints(/out/*[4][self::c])!string(), " ") = "101 108 101 109 52"</assert>
+            <assert>string-join(string-to-codepoints(/out/*[5][self::b])!string(), " ") = "10 32 32 32 9 105 116 101 109 53 10"</assert>
+            <assert>string-join(string-to-codepoints(/out/*[6][self::c])!string(), " ") = "101 108 101 109 54"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -176,16 +198,24 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2016-03-22" change="Remove serialization requirement"/>
       <environment ref="strip-space-05"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
          <stylesheet file="strip-space-006.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="strip-space-006.out"/>
+         <assert-xml><![CDATA[<out>
+<b>el1</b>
+<b>elem2</b>
+<c>
+   elem3</c>
+<c>elem4			</c>
+<b>item5</b>
+<c> elem6 </c>
+</out>]]></assert-xml>>
       </result>
    </test-case>
 
@@ -545,6 +575,7 @@ Position:3,Last:3
       <description>Was: whitespace-1801</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2016-03-22" change="Remove serialization requirement"/>
       <environment>
          <source role=".">
             <content><![CDATA[<a xml:space="preserve">
@@ -562,10 +593,16 @@ Position:3,Last:3
       </dependencies>
       <test>
          <stylesheet file="strip-space-022.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xml" file="strip-space-022.out"/>
+         <all-of>
+            <assert>/a[@xml:space='preserve']</assert>
+            <assert>string(/a/*[1][self::b][@xml:space="default"]) = ""</assert>
+            <assert>string(/a/*[2][self::c]) = "  "</assert>
+            <assert>string(/a/*[3][self::d][@xml:space='preserve']) = "  "</assert>
+            <assert>string(/a/*[4][self::e][@xml:space='default']) = "  "</assert>
+            <assert>string(/a/*[4][self::e][@xml:space='default']/f[@xml:space='preserve']) = "  "</assert>
+         </all-of>
       </result>
    </test-case>
 </test-set>
