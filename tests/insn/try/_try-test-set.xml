@@ -26,7 +26,8 @@
       <description>Test of xsl:try as a higher-order function</description>
       <keywords>xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description FORG0001</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
-      <modified by="Abel Braaksma" on="2015-04-19" change="Allow for outcome variants with and without lineinfo and module info"/>      
+      <modified by="Abel Braaksma" on="2015-04-19" change="Allow for outcome variants with and without lineinfo and module info"/>
+      <modified by="Michael Kay" on="2016-03-23" change="Further attempt to improve interoperability"/>      
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -35,18 +36,13 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <any-of>
-            <!-- some variants, because line and module info is not always set -->
-            <assert-xml><![CDATA[<o><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" 
-                 code="err:FOAR0001" module="try-002.xsl"
-                 line="17"><message>Integer division by zero</message></err:error></o>]]></assert-xml>
-            <assert-xml><![CDATA[<o><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" 
-                 code="err:FOAR0001" module="try-002.xsl"
-                 line=""><message>Integer division by zero</message></err:error></o>]]></assert-xml>
-            <assert-xml><![CDATA[<o><err:error xmlns:err="http://www.w3.org/2005/xqt-errors" 
-                 code="err:FOAR0001" module=""
-                 line=""><message>Integer division by zero</message></err:error></o>]]></assert-xml>
-         </any-of>
+         <all-of xmlns:err="http://www.w3.org/2005/xqt-errors">
+            <assert>/o/err:error/@code = "err:FOAR0001"</assert>
+            <assert>/o/err:error/message[contains(lower-case(.), 'divi')]</assert>
+            <assert>/o/err:error/message[contains(lower-case(.), 'by zero')]</assert>
+            <assert>/o/err:error/@line = ("17", "")</assert>
+            <assert>/o/err:error/@module[. = "" or contains(., "try-002.xsl")]</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -70,8 +66,10 @@
       <description>Use xsl:try to catch a validation error. Should not report the error.</description>
       <keywords>stylesheet-function XTTE1540 xsl:import-schema xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description _WRONG:not-sure-test-is-correct xsl:function fn:boolean _IMPROVE:cannot-test-error-variables</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-23" change="Add dependency on schema awareness"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
       </dependencies>
       <test>
          <stylesheet file="try-004.xsl"/>
@@ -91,8 +89,10 @@
       </description>
       <keywords>_WRONG:not-sure-test-is-correct stylesheet-function xsl:import-schema xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description xsl:function</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-23" change="Add dependency on schema awareness"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
       </dependencies>
       <test>
          <stylesheet file="try-005.xsl"/>
@@ -382,6 +382,7 @@
       <keywords>FOAR0001 _IMPROVE:cannot-test-error-variables xsl:result-document xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-01-31" change="restructure the test assertions"/>
+      <modified by="Michael Kay" on="2016-03-23" change="improve the test assertions"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -392,7 +393,7 @@
       <result>
          <all-of>
            <assert>/result/*:error[@code="err:FOAR0001" and @module="try-022.xsl" and @line="21"]</assert>
-           <assert>/result/*:error/message="Integer division by zero"</assert>
+           <assert>contains(/result/*:error/message, "zero")</assert>
            <assert>/result/output = "main document"</assert>
            <assert-result-document uri="try-022-1.out">
              <assert>/output</assert>
@@ -431,6 +432,7 @@
       <keywords>FOAR0001 complex-use-case _IMPROVE:cannot-test-error-variables xsl:result-document xsl:try error-handling generic-catch-clause $err:code $err:module $err:line-number $err:description</keywords>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2013-04-05" change="restructure the test assertions"/>
+      <modified by="Michael Kay" on="2016-03-23" change="improve the test assertions"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -447,7 +449,7 @@
                <all-of>
                   <assert>/output/output/note = "secondary document written"</assert>
                   <assert>/output/output/*:error/@code[contains(.,"FOAR0001")]</assert>
-                  <assert>/output/output/*:error/message = "Integer division by zero"</assert>
+                  <assert>contains(/output/output/*:error/message, "zero")</assert>
                </all-of>   
             </assert-result-document>
          </all-of>
@@ -492,9 +494,11 @@
       <description>xsl:evaluate within xsl:try</description>
       <keywords>xsl:evaluate _IMPROVE:cleanup-test xsl:try error-handling generic-catch-clause $err:description</keywords>
       <created by="Toshihito Makita" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-23" change="add dependency on dynamic evaluation"/>
       <environment ref="try020"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="dynamic_evaluation"/>
       </dependencies>
       <test>
          <stylesheet file="try-027.xsl"/>
