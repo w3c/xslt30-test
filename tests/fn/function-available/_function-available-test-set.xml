@@ -162,5 +162,40 @@
          </all-of>  
       </result>
    </test-case>
+   
+   <test-case name="function-available-1017">
+      <description>Test of function-available() on map functions</description>
+      <keywords>fn:function-available maps</keywords>
+      <created by="Michael Kay" on="2016-03-21"/>
+      <environment ref="function-available-10"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-available-1017.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>every $n in /out/*/*[not(self::z)] satisfies $n = 'true'</assert>
+            <assert>every $n in /out/*/z satisfies $n = 'false'</assert>
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="function-available-1018">
+      <description>Test of function-available() on higher-order functions</description>
+      <keywords>fn:function-available maps</keywords>
+      <created by="Michael Kay" on="2016-03-21"/>
+      <environment ref="function-available-10"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-available-1018.xsl"/>
+      </test>
+      <result>
+         <assert>every $n in /out/* satisfies $n = 'true'</assert>
+      </result>
+   </test-case>
 
 </test-set>
