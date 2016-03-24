@@ -3226,23 +3226,22 @@ In the case of a prefixed lexical QName used as the
    </test-case>
 
    <test-case name="error-0290a">
-      <description>Generate error XTDE1460.
-Was error-code-381.
-Where the result of evaluating an XPath expression (or an attribute value
-                        template) is required to be a lexical
-                           QName, or if it is permitted to be a
-                        lexical QName and the actual value
-                        takes the form of a lexical QName,
+      <description>Generate error XTDE1460 or XTDE0290.
+                        Was error-code-381.
+                        Where the result of evaluating an XPath expression (or an attribute value
+                        template) is required to be a lexical QName, or if it is permitted to be a
+                        lexical QName and the actual value takes the form of a lexical QName,
                         then unless otherwise specified it is a non-recoverable dynamic error if the
-                        value has a prefix and the
-                        defining element has no
+                        value has a prefix and the defining element has no
                         namespace node whose name matches that prefix. This error
                         may be signaled as a static error if the value of the expression can be determined
                         statically.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-17" change="A processor that does not implement serialization may ignore the format attribute"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="serialization"/>
       </dependencies>
       <test>
          <stylesheet file="error-0290a.xsl"/>
@@ -3520,8 +3519,10 @@ It is a non-recoverable dynamic
                                  error if the result sequence contains a function item.
                            </description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Michael Kay" on="2016-03-17" change="dependency on HOF feature"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="higher_order_functions"/>
       </dependencies>
       <test>
          <stylesheet file="error-0450a.xsl"/>
@@ -7923,9 +7924,11 @@ Was error-code-351.
                   node, or when the root of the tree containing the context node
                   is not a document node.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-18" change="Add DTD dependency"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="dtd"/>
       </dependencies>
       <test>
          <stylesheet file="error-1370a.xsl"/>
@@ -7945,9 +7948,11 @@ It is a non-recoverable dynamic
                      node, or when the root of the tree containing the context node
                   is not a document node.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-18" change="Add DTD dependency"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="dtd"/>
       </dependencies>
       <test>
          <stylesheet file="error-1370b.xsl"/>
@@ -7967,9 +7972,11 @@ It is a non-recoverable dynamic
                      node, or when the root of the tree containing the context node
                   is not a document node.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-18" change="Add DTD dependency"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="dtd"/>
       </dependencies>
       <test>
          <stylesheet file="error-1380a.xsl"/>
@@ -7989,9 +7996,11 @@ It is a non-recoverable dynamic
                      node, or when the root of the tree containing the context node
                   is not a document node.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-18" change="Add DTD dependency"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="dtd"/>
       </dependencies>
       <test>
          <stylesheet file="error-1380b.xsl"/>
@@ -8407,9 +8416,11 @@ It is a non-recoverable dynamic
                         attribute contains no curly brackets), then the processor
                         may optionally signal this as a static error.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-18" change="A processor that is not serializing may ignore the format attribute"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="serialization"/>
       </dependencies>
       <test>
          <stylesheet file="error-1460d.xsl"/>
