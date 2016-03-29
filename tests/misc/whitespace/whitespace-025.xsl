@@ -16,10 +16,12 @@
   </xsl:function>
 
   <xsl:template match="/">
-    <xsl:text>'</xsl:text>
-    <xsl:value-of select="foo:write1('test')"/>
-    <xsl:text>'</xsl:text>
-    <xsl:value-of select="foo:write2('test')"/>
+    <out>
+      <xsl:text>'</xsl:text>
+      <xsl:value-of select="foo:write1('test')"/>
+      <xsl:text>'</xsl:text>
+      <xsl:value-of select="foo:write2('test')"/>
+    </out>
   </xsl:template>
 
 </xsl:stylesheet>

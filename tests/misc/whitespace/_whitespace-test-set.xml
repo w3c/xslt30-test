@@ -100,9 +100,11 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2016-03-24" change="Declared serialization dependency"/>
       <environment ref="whitespace-01"/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization"/>
       </dependencies>
       <test>
          <stylesheet file="whitespace-003.xsl"/>
@@ -254,9 +256,12 @@
       </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2016-03-24" change="Declared serialization and DTD dependencies"/>
       <environment ref="whitespace-01"/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="dtd"/>
+         <feature value="serialization"/>
       </dependencies>
       <test>
          <stylesheet file="whitespace-011.xsl"/>
@@ -401,12 +406,14 @@
    <test-case name="whitespace-019">
       <description>Was: whitespace-1004</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-24" change="say that output is not well-formed"/>
       <environment ref="whitespace-10"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
          <stylesheet file="whitespace-019.xsl"/>
+         <output well-formed="no"/>
       </test>
       <result>
          <!-- result is a tree containing a document node owning a text node -->
@@ -451,12 +458,14 @@
    <test-case name="whitespace-022">
       <description>Was: whitespace-1202</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-24" change="say that output is not well-formed"/>
       <environment ref="whitespace-12"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
          <stylesheet file="whitespace-022.xsl"/>
+         <output well-formed="no"/>
       </test>
       <result>
          <all-of>
@@ -469,12 +478,14 @@
    <test-case name="whitespace-023">
       <description>Was: whitespace-1203</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-03-24" change="say that output is not well-formed"/>
       <environment ref="whitespace-12"/>
       <dependencies>
          <spec value="XSLT10+"/>
       </dependencies>
       <test>
          <stylesheet file="whitespace-023.xsl"/>
+         <output well-formed="no"/>
       </test>
       <result>
          <all-of>
@@ -508,6 +519,7 @@
    <test-case name="whitespace-025">
       <description>Was: whitespace-1701</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2015-03-24" change="produce well-formed output"/>
       <environment ref="whitespace-17"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -516,10 +528,7 @@
          <stylesheet file="whitespace-025.xsl"/>
       </test>
       <result>
-         <all-of>
-            <assert>/text() = "'test''test'"</assert>
-            <assert>not(/*)</assert>
-         </all-of>
+         <assert>/out = "'test''test'"</assert>
       </result>
    </test-case>
 
