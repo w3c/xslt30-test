@@ -212,6 +212,32 @@
       </result>
    </test-case>
    
+   <test-case name="xml-to-json-A015">
+      <description>Test of xml-to-json: empty array not the last member of an array</description>
+      <keywords>json-array json-string fn:xml-to-json fn:json-to-xml simple-content</keywords>
+      <created by="Debbie Lockett" on="2016-04-01"/>
+      <environment ref="xml-to-json-A"/>
+      <test>
+         <initial-template name="t015"/>
+      </test>
+      <result>
+         <assert>/t015 = '[[],1]'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-A016">
+      <description>Test of xml-to-json: empty map not the last member of an array</description>
+      <keywords>json-array json-string fn:xml-to-json fn:json-to-xml simple-content</keywords>
+      <created by="Debbie Lockett" on="2016-04-01"/>
+      <environment ref="xml-to-json-A"/>
+      <test>
+         <initial-template name="t016"/>
+      </test>
+      <result>
+         <assert>/t016 = '[{},1]'</assert>
+      </result>
+   </test-case>
+   
    <test-case name="xml-to-json-B001">
       <description>Test of xml-to-json: simple "null" content, indented</description>
       <keywords>simple-content json-null json-indented fn:xml-to-json fn:json-to-xml</keywords>
@@ -423,6 +449,34 @@
          <!-- Note: order not guaranteed! -->
       </result>
    </test-case>  
+   
+   <test-case name="xml-to-json-B015">
+      <description>Test of xml-to-json: empty array not the last member of an array</description>
+      <keywords>json-array json-string fn:xml-to-json fn:json-to-xml simple-content</keywords>
+      <created by="Debbie Lockett" on="2016-04-01"/>
+      <environment ref="xml-to-json-B"/>
+      <test>
+         <initial-template name="t015"/>
+      </test>
+      <result>
+         <assert>translate(/t015, ' 
+            &#xD;', '') = '[[],1]'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-B016">
+      <description>Test of xml-to-json: empty map not the last member of an array</description>
+      <keywords>json-array json-string fn:xml-to-json fn:json-to-xml simple-content</keywords>
+      <created by="Debbie Lockett" on="2016-04-01"/>
+      <environment ref="xml-to-json-B"/>
+      <test>
+         <initial-template name="t016"/>
+      </test>
+      <result>
+         <assert>translate(/t016, ' 
+            &#xD;', '') = '[{},1]'</assert>
+      </result>
+   </test-case>
 
  
 </test-set>
