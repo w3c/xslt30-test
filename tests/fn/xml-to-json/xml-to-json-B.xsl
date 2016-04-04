@@ -87,6 +87,16 @@
         <t016><xsl:sequence select="xml-to-json(json-to-xml($in), $indent)"/></t016>
     </xsl:template>
     
+    <xsl:template name="t017">
+        <xsl:variable name="in">{"A":{}, "B":1}</xsl:variable>
+        <t017><xsl:sequence select="xml-to-json(json-to-xml($in), $indent)"/></t017>
+    </xsl:template>
+    
+    <xsl:template name="t018">
+        <xsl:variable name="in">{"A":[], "B":1}</xsl:variable>
+        <t018><xsl:sequence select="xml-to-json(json-to-xml($in), $indent)"/></t018>
+    </xsl:template>
+    
   
     
 </xsl:stylesheet>

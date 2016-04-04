@@ -238,6 +238,34 @@
       </result>
    </test-case>
    
+   <test-case name="xml-to-json-A017">
+      <description>Test of xml-to-json: empty map not the last value of a map</description>
+      <keywords>json-map json-string fn:xml-to-json fn:json-to-xml simple-content</keywords>
+      <created by="Debbie Lockett" on="2016-04-04"/>
+      <environment ref="xml-to-json-A"/>
+      <test>
+         <initial-template name="t017"/>
+      </test>
+      <result>
+         <assert>/t017 = '{"A":{},"B":1}'</assert>
+         <!-- Note: order not guaranteed! -->
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-A018">
+      <description>Test of xml-to-json: empty array not the last value of a map</description>
+      <keywords>json-map json-string fn:xml-to-json fn:json-to-xml simple-content</keywords>
+      <created by="Debbie Lockett" on="2016-04-04"/>
+      <environment ref="xml-to-json-A"/>
+      <test>
+         <initial-template name="t018"/>
+      </test>
+      <result>
+         <assert>/t018 = '{"A":[],"B":1}'</assert>
+         <!-- Note: order not guaranteed! -->
+      </result>
+   </test-case>
+   
    <test-case name="xml-to-json-B001">
       <description>Test of xml-to-json: simple "null" content, indented</description>
       <keywords>simple-content json-null json-indented fn:xml-to-json fn:json-to-xml</keywords>
@@ -475,6 +503,36 @@
       <result>
          <assert>translate(/t016, ' 
             &#xD;', '') = '[{},1]'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-B017">
+      <description>Test of xml-to-json: empty map not the last value of a map</description>
+      <keywords>json-map json-string fn:xml-to-json fn:json-to-xml simple-content</keywords>
+      <created by="Debbie Lockett" on="2016-04-04"/>
+      <environment ref="xml-to-json-B"/>
+      <test>
+         <initial-template name="t017"/>
+      </test>
+      <result>
+         <assert>translate(/t017, ' 
+            &#xD;', '') = '{"A":{},"B":1}'</assert>
+         <!-- Note: order not guaranteed! -->
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-B018">
+      <description>Test of xml-to-json: empty array not the last value of a map</description>
+      <keywords>json-map json-string fn:xml-to-json fn:json-to-xml simple-content</keywords>
+      <created by="Debbie Lockett" on="2016-04-04"/>
+      <environment ref="xml-to-json-B"/>
+      <test>
+         <initial-template name="t018"/>
+      </test>
+      <result>
+         <assert>translate(/t018, ' 
+            &#xD;', '') = '{"A":[],"B":1}'</assert>
+         <!-- Note: order not guaranteed! -->
       </result>
    </test-case>
 
