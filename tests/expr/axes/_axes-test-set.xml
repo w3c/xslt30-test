@@ -1448,6 +1448,7 @@ B:doc/foo/baz/is not new
    <test-case name="axes-066">
       <description>test use of axes within a tree that has an element node as its root AUTHOR: Michael Kay</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-04-04" change="see bug 29557"/>
       <environment ref="axes061"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1456,12 +1457,11 @@ B:doc/foo/baz/is not new
          <stylesheet file="axes-066.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><v>element: a; preceding: 0</v
-            ><v>element: x; preceding: 0</v
-            ><v>element: b; preceding: 0</v
-            ><v>element: x; preceding: 0</v
-            ><v>element: c; preceding: 0</v
-            ><v>element: x; preceding: 0</v></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/v[.="element: a; preceding: 0"]/following-sibling::v[1][.="element: x; preceding: 0"]</assert>
+            <assert>/out/v[.="element: b; preceding: 0"]/following-sibling::v[1][.="element: x; preceding: 0"]</assert>
+            <assert>/out/v[.="element: c; preceding: 0"]/following-sibling::v[1][.="element: x; preceding: 0"]</assert>
+         </all-of>
       </result>
    </test-case>
 
