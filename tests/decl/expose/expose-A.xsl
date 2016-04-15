@@ -10,6 +10,7 @@
   xmlns:q="http://www.w3.org/xslt30tests/expose-A-private"
   exclude-result-prefixes="xs p">
   
+  <xsl:expose visibility="private" component="*" names="*"/>
   <xsl:expose visibility="public" component="template" names="*"/>
   <xsl:expose visibility="public" component="function" names="p:*"/>
   
