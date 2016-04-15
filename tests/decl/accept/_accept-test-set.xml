@@ -112,6 +112,19 @@
       </result>
    </test-case>
    
+   <test-case name="accept-008">
+      <description>xsl:accept with component="*"</description>
+      <created by="Michael Kay" on="2016-04-14"/>
+      <environment ref="accept-A"/>
+      <test>
+         <package file="accept-008.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a1 A="A" B="B"/><a2 A="0"/><v1>1</v1><v2>2</v2></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
    
    
    <test-case name="accept-020">
@@ -153,6 +166,19 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><v2>22</v2></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accept-023">
+      <description>xsl:accept - can't use xsl:accept component="*" with a specific name (must be a wildcard). See bug 29478.</description>
+      <created by="Michael Kay" on="2016-04-15" change="correct expected results"/>
+      <environment ref="accept-B"/>
+      <test>
+         <package file="accept-023.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3032"/>
       </result>
    </test-case>
    
