@@ -701,6 +701,26 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-033">
+      <description>
+         Streamed grouping - group-ending-with - using snapshots of text nodes
+      </description>
+      <created by="Michael Kay after Martin Honnen" on="2016-04-19"/>
+      <environment>
+         <source file="si-group-033.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-033.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<note
+><group><para>customer name :</para><para>mr. Joe Someone</para></group
+><group><para>calling from :</para><para>1234567</para></group
+><group><para>device model :</para><para>ABC-123</para></group><group><para>issue:</para><para>some info</para><para>some more info</para><para>and even more info</para></group
+><group><para>solution :</para><para>some solutions</para><para>and some more solutions</para></group></note>]]></assert-xml>
+      </result>
+   </test-case>
+   
 
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>
