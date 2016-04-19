@@ -8,7 +8,6 @@
         "Yes", "RESPONSE_ORDER": "1" }, { "TYPE_ID": "21", "QUESTION_ID": "417", "RESPONSE_TYPE":
         "Radio buttons", "QUESTIONVAL": "abc", "RESPONSE": "Yes,No", "RESPONSE_ORDER": "1,2" } ]}} </xsl:variable>
 
-    <xsl:output method="text" indent="yes"/>
 
     <xsl:mode on-no-match="shallow-copy"/>
 
@@ -17,7 +16,7 @@
         <xsl:variable name="outputAsXml">
             <xsl:apply-templates select="$inputAsXml"/>
         </xsl:variable>
-        <xsl:value-of select="xml-to-json($outputAsXml)"/>
+        <out><xsl:value-of select="xml-to-json($outputAsXml)"/></out>
     </xsl:template>
 
     <xsl:template match="*[@key='d']">

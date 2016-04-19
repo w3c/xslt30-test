@@ -198,12 +198,13 @@
     <test-case name="json-to-xml-101">
         <description>Real life JSON transformation: from http://stackoverflow.com/questions/33304789</description>
         <created by="Michael Kay" on="2015-10-23"/>
+        <modified by="Michael Kay" on="2016-04-19" change="remove serialization dependency"/>
         <test>
             <stylesheet file="json-to-xml-101.xsl"/>
             <initial-template name="main"/>
         </test>
         <result>
-            <assert-serialization><![CDATA[{"results":[{"TYPE_ID":"20","QUESTION_ID":"41333","RESPONSE_TYPE":"Checkboxes","QUESTIONVAL":"xssdsdd","Response&Order":[{"RESPONSE":"Yes","RESPONSE_ORDER":"1"}]},{"TYPE_ID":"21","QUESTION_ID":"417","RESPONSE_TYPE":"Radio buttons","QUESTIONVAL":"abc","Response&Order":[{"RESPONSE":"Yes","RESPONSE_ORDER":"1"},{"RESPONSE":"No","RESPONSE_ORDER":"2"}]}]}]]></assert-serialization>
+            <assert-xml><![CDATA[<out>{"results":[{"TYPE_ID":"20","QUESTION_ID":"41333","RESPONSE_TYPE":"Checkboxes","QUESTIONVAL":"xssdsdd","Response&amp;Order":[{"RESPONSE":"Yes","RESPONSE_ORDER":"1"}]},{"TYPE_ID":"21","QUESTION_ID":"417","RESPONSE_TYPE":"Radio buttons","QUESTIONVAL":"abc","Response&amp;Order":[{"RESPONSE":"Yes","RESPONSE_ORDER":"1"},{"RESPONSE":"No","RESPONSE_ORDER":"2"}]}]}</out>]]></assert-xml>
         </result>
     </test-case>
     
@@ -344,6 +345,72 @@
                 <assert>*/@escaped eq "true"</assert>
                 <assert>*/@escaped-key eq "true"</assert>
             </all-of>
+        </result>
+    </test-case>
+    
+    <test-case name="json-to-xml-duplicates-001">
+        <description>Duplicates: use-first</description>
+        <created by="Michael Kay" on="2016-04-19"/>
+        <test>
+            <stylesheet file="json-to-xml-duplicates-A.xsl"/>
+            <param name="duplicates" select="'use-first'"/>
+        </test>
+        <result>
+            <assert-xml><![CDATA[<map xmlns="http://www.w3.org/2005/xpath-functions"
+   ><map key="one"><number key="a">2</number><number key="b">3</number><number key="c">4</number></map
+   ><map key="two"><number key="a">2</number><number key="b">3</number><number key="c">4</number></map></map>]]></assert-xml>
+        </result>
+    </test-case>
+    
+    <test-case name="json-to-xml-duplicates-002">
+        <description>Duplicates: retain</description>
+        <created by="Michael Kay" on="2016-04-19"/>
+        <test>
+            <stylesheet file="json-to-xml-duplicates-A.xsl"/>
+            <param name="duplicates" select="'retain'"/>
+        </test>
+        <result>
+            <assert-xml><![CDATA[<map xmlns="http://www.w3.org/2005/xpath-functions"
+   ><map key="one"><number key="a">2</number><number key="b">3</number><number key="c">4</number><number key="a">5</number></map
+   ><map key="two"><number key="a">2</number><number key="b">3</number><number key="c">4</number><number key="a">5</number></map
+   ><map key="one"><number key="a">3</number><number key="b">4</number><number key="c">5</number><number key="a">6</number></map
+   ><map key="two"><number key="a">3</number><number key="b">4</number><number key="c">5</number><number key="a">6</number></map></map>]]></assert-xml>
+        </result>
+    </test-case>
+    
+    <test-case name="json-to-xml-duplicates-003">
+        <description>Duplicates: reject</description>
+        <created by="Michael Kay" on="2016-04-19"/>
+        <test>
+            <stylesheet file="json-to-xml-duplicates-A.xsl"/>
+            <param name="duplicates" select="'reject'"/>
+        </test>
+        <result>
+            <error code="FOJS0003"/>
+        </result>
+    </test-case>
+    
+    <test-case name="json-to-xml-duplicates-004">
+        <description>Duplicates: invalid</description>
+        <created by="Michael Kay" on="2016-04-19"/>
+        <test>
+            <stylesheet file="json-to-xml-duplicates-A.xsl"/>
+            <param name="duplicates" select="'use-last'"/>
+        </test>
+        <result>
+            <error code="FOJS0005"/>
+        </result>
+    </test-case>
+    
+    <test-case name="json-to-xml-duplicates-005">
+        <description>Duplicates: wrong type</description>
+        <created by="Michael Kay" on="2016-04-19"/>
+        <test>
+            <stylesheet file="json-to-xml-duplicates-A.xsl"/>
+            <param name="duplicates" select="true()"/>
+        </test>
+        <result>
+            <error code="XPTY0004"/>
         </result>
     </test-case>
 
