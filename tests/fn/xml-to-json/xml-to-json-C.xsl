@@ -100,6 +100,61 @@
         <t018><xsl:sequence select="xml-to-json($in)"/></t018>
     </xsl:template>
     
-  
+    <xsl:template name="t019">
+        <xsl:variable name="in"><j:boolean>maybe</j:boolean></xsl:variable>
+        <t019><xsl:sequence select="xml-to-json($in)"/></t019>
+    </xsl:template>
+    
+    <xsl:template name="t020">
+        <xsl:variable name="in"><j:boolean/></xsl:variable>
+        <t020><xsl:sequence select="xml-to-json($in)"/></t020>
+    </xsl:template>
+    
+    <xsl:template name="t021">
+        <xsl:variable name="in"><j:boolean j:what-is-this="22">true</j:boolean></xsl:variable>
+        <t021><xsl:sequence select="xml-to-json($in)"/></t021>
+    </xsl:template>
+    
+    <xsl:template name="t022">
+        <xsl:variable name="in"><j:number>\u0030</j:number></xsl:variable>
+        <t022><xsl:sequence select="xml-to-json($in)"/></t022>
+    </xsl:template>
+    
+    <xsl:template name="t023">
+        <xsl:variable name="in"><j:number escaped="true">\u0030</j:number></xsl:variable>
+        <t023><xsl:sequence select="xml-to-json($in)"/></t023>
+    </xsl:template>
+    
+    <xsl:template name="t024">
+        <xsl:variable name="in"><j:string escaped="true">\</j:string></xsl:variable>
+        <t024><xsl:sequence select="xml-to-json($in)"/></t024>
+    </xsl:template>
+    
+    <xsl:template name="t100">
+        <xsl:variable name="in"><j:null/></xsl:variable>
+        <t100><xsl:sequence select="xml-to-json($in, map{'indent': 'yes'})"/></t100>
+    </xsl:template>
+    
+    <xsl:template name="t101">
+        <xsl:variable name="in"><j:null/></xsl:variable>
+        <t101><xsl:sequence select="xml-to-json($in, map{'indent': 'true'})"/></t101>
+    </xsl:template>
+    
+    <xsl:template name="t102">
+        <xsl:variable name="in"><j:null/></xsl:variable>
+        <t101><xsl:sequence select="xml-to-json($in, map{'indent': ()})"/></t101>
+    </xsl:template>
+    
+    <xsl:template name="t103">
+        <xsl:variable name="in"><j:null/></xsl:variable>
+        <t103><xsl:sequence select="xml-to-json($in, map{'indent': (true(), false())})"/></t103>
+    </xsl:template>
+    
+    <xsl:template name="t104">
+        <xsl:variable name="in"><j:null/></xsl:variable>
+        <t103><xsl:sequence select="xml-to-json($in, map{'indent': xs:untypedAtomic('2')})"/></t103>
+    </xsl:template>
+    
+    
     
 </xsl:stylesheet>
