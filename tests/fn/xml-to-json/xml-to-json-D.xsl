@@ -55,6 +55,54 @@
         <t><xsl:sequence select="xml-to-json($in)"/></t>
     </xsl:template>
     
+    <xsl:template name="t010">
+        <xsl:variable name="in"><j:string escaped="1">-"-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t011">
+        <xsl:variable name="in"><j:string escaped="1">-&#xa;-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t012">
+        <xsl:variable name="in"><j:string escaped="1">-&#xd;-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t013">
+        <xsl:variable name="in"><j:string escaped="1">-&#x9;-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t014">
+        <xsl:variable name="in"><j:string escaped="1">-&#127;-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+   <!-- <xsl:template name="t015">
+        <!-\- backspace -\->
+        <xsl:variable name="in"><j:string escaped="1">-<xsl:value-of select="codepoints-to-string(8)"/>-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>-->
+    
+    <xsl:template name="t016">
+        <xsl:variable name="in"><j:string escaped="1">-&#144;-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <!--<xsl:template name="t017">
+        <!-\- bell -\->
+        <xsl:variable name="in"><j:string escaped="1">-<xsl:value-of select="codepoints-to-string(7)"/>-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t018">
+        <!-\- form feed -\->
+        <xsl:variable name="in"><j:string escaped="1">-<xsl:value-of select="codepoints-to-string(12)"/>-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>-->
+    
     <xsl:template name="t101">
         <xsl:variable name="in"><j:boolean> 0 <xsl:comment>false</xsl:comment></j:boolean></xsl:variable>
         <t><xsl:sequence select="xml-to-json($in)"/></t>
@@ -170,6 +218,47 @@
         <t><xsl:sequence select="xml-to-json($in)"/></t>
     </xsl:template>
     
- 
+    <xsl:template name="t504">
+        <xsl:variable name="in"><j:map><j:string key='\"' escaped-key="true">1</j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t505">
+        <xsl:variable name="in"><j:map><j:string key='\\' escaped-key="&#x9;1&#xd; ">1</j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t506">
+        <xsl:variable name="in"><j:map><j:string key='\uD834\uDD1E' escaped-key=" true ">1</j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t507">
+        <xsl:variable name="in"><j:map><j:string key='\"' escaped-key=" true ">1</j:string><j:string key='\"' escaped-key=" false ">0</j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t508">
+        <xsl:variable name="in"><j:map><j:string key='A'>1</j:string>  <j:string key='B' xml:space="preserve">  </j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t509">
+        <xsl:variable name="in"><j:map><j:string key='-&#xa;-'>1</j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t510">
+        <xsl:variable name="in"><j:map><j:string key='-&#xd;-'>1</j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    <xsl:template name="t511">
+        <xsl:variable name="in"><j:map><j:string key='-&#x9;-'>1</j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
+    
+    
+
     
 </xsl:stylesheet>

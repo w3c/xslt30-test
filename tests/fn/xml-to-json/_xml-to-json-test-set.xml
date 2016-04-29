@@ -941,14 +941,14 @@
    </test-case>
    
    <test-case name="xml-to-json-D005">
-      <description>Test of xml-to-json: valid strings</description>
+      <description>Test of xml-to-json: valid strings ("Any valid escape sequence is copied unchanged to the output")</description>
       <created by="Michael Kay" on="2016-04-25"/>
       <environment ref="xml-to-json-D"/>
       <test>
          <initial-template name="t005"/>
       </test>
       <result>
-         <assert>deep-equal(string-to-codepoints(/t), (34, 119070, 34))</assert>
+         <assert>/t = '"\uD834\uDD1E"'</assert>
       </result>
    </test-case>
    
@@ -997,6 +997,125 @@
       </test>
       <result>
          <assert>/t eq '"  "'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D010">
+      <description>Test of xml-to-json: valid strings</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t010"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\"-"'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D011">
+      <description>Test of xml-to-json: valid strings</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t011"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\n-"'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D012">
+      <description>Test of xml-to-json: valid strings</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t012"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\r-"'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D013">
+      <description>Test of xml-to-json: valid strings</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t013"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\t-"'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D014">
+      <description>Test of xml-to-json: valid strings</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t014"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\u007F-"'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D015">
+      <description>Test of xml-to-json: valid strings - backspace</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <dependencies>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-to-json-D2.xsl"/>
+         <initial-template name="t015"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\b-"'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D016">
+      <description>Test of xml-to-json: valid strings</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t016"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\u0090-"'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D017">
+      <description>Test of xml-to-json: valid strings - bell</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <environment ref="xml-to-json-D"/>
+      <dependencies>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-to-json-D2.xsl"/>
+         <initial-template name="t017"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\u0007-"'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D018">
+      <description>Test of xml-to-json: valid strings - form feed</description>
+      <created by="Michael Kay" on="2016-04-25"/>
+      <environment ref="xml-to-json-D"/>
+      <dependencies>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xml-to-json-D2.xsl"/>
+         <initial-template name="t018"/>
+      </test>
+      <result>
+         <assert>/t eq '"-\f-"'</assert>
       </result>
    </test-case>
    
@@ -1275,6 +1394,118 @@
          <assert>/t eq '{"\n":"1","\n":"2"}'</assert>
       </result>
    </test-case>
+   
+   <test-case name="xml-to-json-D504">
+      <description>Test of xml-to-json: valid maps</description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t504"/>
+      </test>
+      <result>
+         <assert>/t eq '{"\"":"1"}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D505">
+      <description>Test of xml-to-json: valid maps</description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t505"/>
+      </test>
+      <result>
+         <assert>/t eq '{"\\":"1"}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D506">
+      <description>Test of xml-to-json: valid maps </description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t506"/>
+      </test>
+      <result>
+         <assert>/t eq '{"\uD834\uDD1E":"1"}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D507">
+      <description>Test of xml-to-json: valid maps </description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t507"/>
+      </test>
+      <result>
+         <assert>/t eq '{"\n":"1","\n":"2"}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D508">
+      <description>Test of xml-to-json: valid maps</description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t508"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/t eq '{"A":"1","B":"  "}'</assert>
+            <assert>/t eq '{"B":"  ","A":"1"}'</assert>
+         </any-of>       
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D509">
+      <description>Test of xml-to-json: valid maps </description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t509"/>
+      </test>
+      <result>
+         <assert>/t eq '{"-\n-":"1"}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D510">
+      <description>Test of xml-to-json: valid maps </description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t510"/>
+      </test>
+      <result>
+         <assert>/t eq '{"-\r-":"1"}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="xml-to-json-D511">
+      <description>Test of xml-to-json: valid maps</description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t511"/>
+      </test>
+      <result>
+         <assert>/t eq '{"-\t-":"1"}'</assert>
+      </result>
+   </test-case>
+   
+   <!--
+   <test-case name="xml-to-json-D512">
+      <description>Test of xml-to-json: valid maps </description>
+      <created by="Michael Kay" on="2016-04-29"/>
+      <environment ref="xml-to-json-D"/>
+      <test>
+         <initial-template name="t512"/>
+      </test>
+      <result>
+         <assert>/t eq '{"\n":"1","\n":"2"}'</assert>
+      </result>
+   </test-case>-->
    
    
    

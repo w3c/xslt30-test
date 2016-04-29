@@ -6,7 +6,7 @@
     
     <xsl:mode streamable="yes"/>
     
-    <xsl:output indent="yes"/>
+    <xsl:output indent="no"/>
     
     <xsl:template match="note">
         <xsl:copy>
