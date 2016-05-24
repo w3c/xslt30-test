@@ -1092,5 +1092,19 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-054">
+      <description>Accumulators and streaming (see https://saxonica.plan.io/issues/2568)</description>
+      <created by="Michael Kay, after Martin Honnen" on="2016-05-03"/>
+      <environment>
+         <source role="." file="accumulator-054.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-054.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><item group-head="class1" class="class1">item 1</item><item group-head="class2" class="class2">item 2</item><item class="class1">item 3</item><item class="class1">item 4</item><item group-head="class3" class="class3">item 5</item><item class="class2">item 6</item></root>]]></assert-xml>
+      </result>
+   </test-case>
  
 </test-set>
