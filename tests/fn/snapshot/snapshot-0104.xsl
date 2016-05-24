@@ -14,13 +14,30 @@
   <xsl:comment>Fascinating</xsl:comment>
   <xsl:processing-instruction name="go">west young man</xsl:processing-instruction>
 </xsl:variable>
+  
+
 
 <xsl:template match="/">
  <out>
+   <xsl:variable name="actual" select="snapshot($orphans)"/>
+   <xsl:variable name="expected" select="f:snapshot($orphans)"/>
+   <xsl:if test="not(deep-equal($actual, $expected))"> 
+     <wrong test="orphans">
+       <actual count="{count($actual)}">
+         <xsl:for-each select="$actual!root()">
+           <t><xsl:sequence select="."/></t>
+         </xsl:for-each>
+       </actual>
+       <expected count="{count($expected)}">
+         <xsl:for-each select="$expected!root()">
+           <t><xsl:sequence select="."/></t>
+         </xsl:for-each>
+       </expected>
+     </wrong>
+   </xsl:if>
 
-    <xsl:if test="not(deep-equal(snapshot($orphans), f:snapshot($orphans)) 
-                       and deep-equal(snapshot(.)/root(), f:snapshot(.)/root()))"> 
-      <wrong node="{generate-id(.)}">
+    <xsl:if test="not(deep-equal(snapshot(.)/root(), f:snapshot(.)/root()))"> 
+      <wrong test=".">
         <actual><xsl:sequence select="snapshot(.)/root()"/></actual>
         <expected><xsl:sequence select="f:snapshot(.)/root()"/></expected>
       </wrong>
@@ -51,7 +68,7 @@
     </xsl:variable>
     
     <!-- find and return the node in the copied tree that corresponds to the origin node
-         --> 
+         -->
     <xsl:sequence select="$root-copy/descendant-or-self::node()/(.|@*|namespace::*)
         [f:corresponds(., $origin)]"/>
   </xsl:for-each>  
