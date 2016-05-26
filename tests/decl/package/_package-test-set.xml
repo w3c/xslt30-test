@@ -338,6 +338,60 @@
       </result>
    </test-case>
    
+   <test-case name="package-020">
+      <description>Using xsl:include 3 levels deep to include xsl:use-package definitions in another package, see resolution in bug 29453</description>
+      <created by="Abel Braaksma" on="2016-05-26"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-020.xsl" role="principal"/>
+         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-020-includeA.xsl" role="secondary"/>
+         <stylesheet file="package-020-includeB.xsl" role="secondary"/>
+         <stylesheet file="package-020-includeC.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-021">
+      <description>Using xsl:include 3 levels deep and using xsl:use-package twice with the same declaration, follow-up on bug 29453</description>
+      <created by="Abel Braaksma" on="2016-05-26"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-021.xsl" role="principal"/>
+         <package file="package-021-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-021-includeA.xsl" role="secondary"/>
+         <stylesheet file="package-021-includeB.xsl" role="secondary"/>
+         <stylesheet file="package-021-includeC.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-022">
+      <description>Using xsl:include 3 levels deep and using xsl:use-package twice with the different declaration (public follows hidden), follow-up on bug 29453</description>
+      <created by="Abel Braaksma" on="2016-05-26"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-022.xsl" role="principal"/>
+         <package file="package-022-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-022-includeA.xsl" role="secondary"/>
+         <stylesheet file="package-022-includeB.xsl" role="secondary"/>
+         <stylesheet file="package-022-includeC.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+
    <test-case name="package-100">
       <description>CSV package from the spec, section 3.5.7.2</description>
       <created by="Abel Braaksma" on="2015-10-01"/>
