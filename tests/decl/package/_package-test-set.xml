@@ -323,7 +323,7 @@
    </test-case>
    
    <test-case name="package-019">
-      <description>Using xsl:include to include xsl:use-package definitions in another package</description>
+      <description>Using xsl:include to include xsl:use-package definitions in another package, see resolution in bug 29453</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
@@ -341,6 +341,7 @@
    <test-case name="package-020">
       <description>Using xsl:import to import xsl:use-package definitions in another package</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
+      <modified by="Abel Braaksma" on="2016-05-26" change="See bug 29453: [ERR XTSE3008] It is a static error if an xsl:use-package declaration appears in a stylesheet module that is not in the same stylesheet level as the principal stylesheet module of the package."/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
@@ -350,7 +351,7 @@
          <stylesheet file="package-020-import.xsl" role="secondary"/>
       </test>
       <result>
-         <assert-string-value>You found me!</assert-string-value>
+         <error code="XTSE3008"/>
       </result>
    </test-case>
    
@@ -462,6 +463,18 @@
             <assert>/root/row[3]/field[2][@quoted="no" and @type="numeric"] = "473892"</assert>
             <assert>/root/row[3]/field[3][@quoted="no" and @type="string"] = "9843 ZD"</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="package-200">
+      <description>Package used/imported with xsl:include</description>
+      <created by="Abel Braaksma" on="2016-05-26"/>
+      <test>
+         <package file="package-200.xsl" role="principal"/>
+         <package file="package-200-used.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
       </result>
    </test-case>
    
