@@ -367,6 +367,26 @@
       </result>
    </test-case>
    
+   <test-case name="mode-0016">
+      <description>Test xsl:mode on-no-match matching elements having namespace nodes..</description>
+      <keywords>xsl:mode on-no-match-attribute shallow-skip shallow-copy text-only-copy variable-reference namespace-nodes parentless-nodes</keywords>
+      <created by="Michael Kay" on="2016-06-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-0016.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out
+            ><c><x:foo xmlns:x="http://ns.x/" xmlns:y="http://ns.y/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><matched attribute="bar"/><matched attribute="type"/>3</x:foo></c
+            ><d><matched attribute="bar"/><matched attribute="type"/></d
+            ><s>3</s></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="mode-0101">
       <description>Simple test of xsl:apply-templates with mode.</description>
       <keywords>matching-mode</keywords>
