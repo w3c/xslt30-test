@@ -8,7 +8,7 @@
     <xsl:mode on-no-match="text-only-copy" />
     
     <!-- testing using a pkg through an include -->    
-    <xsl:include href="package-020-includeA.xsl"/>
+    <xsl:import href="package-020-import.xsl"/>
     
     <!-- an (almost) empty package -->
     

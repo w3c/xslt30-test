@@ -323,7 +323,7 @@
    </test-case>
    
    <test-case name="package-019">
-      <description>Using xsl:include to include xsl:use-package definitions in another package</description>
+      <description>Using xsl:include to include xsl:use-package definitions in another package, see resolution in bug 29453</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
@@ -339,85 +339,59 @@
    </test-case>
    
    <test-case name="package-020">
-      <description>Using xsl:import to import xsl:use-package definitions in another package</description>
-      <created by="Abel Braaksma" on="2015-10-22"/>
+      <description>Using xsl:include 3 levels deep to include xsl:use-package definitions in another package, see resolution in bug 29453</description>
+      <created by="Abel Braaksma" on="2016-05-26"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
       <test>
          <package file="package-020.xsl" role="principal"/>
          <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
-         <stylesheet file="package-020-import.xsl" role="secondary"/>
+         <stylesheet file="package-020-includeA.xsl" role="secondary"/>
+         <stylesheet file="package-020-includeB.xsl" role="secondary"/>
+         <stylesheet file="package-020-includeC.xsl" role="secondary"/>
       </test>
       <result>
          <assert-string-value>You found me!</assert-string-value>
       </result>
    </test-case>
    
-   <test-case name="package-020a">
-      <description>Using xsl:import to import xsl:use-package definitions in another package, override a component that uses a component of a package</description>
-      <created by="Abel Braaksma" on="2015-10-22"/>
+   <test-case name="package-021">
+      <description>Using xsl:include 3 levels deep and using xsl:use-package twice with the same declaration, follow-up on bug 29453</description>
+      <created by="Abel Braaksma" on="2016-05-26"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
       <test>
-         <package file="package-020a.xsl" role="principal"/>
-         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
-         <stylesheet file="package-020-import.xsl" role="secondary"/>
+         <package file="package-021.xsl" role="principal"/>
+         <package file="package-021-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-021-includeA.xsl" role="secondary"/>
+         <stylesheet file="package-021-includeB.xsl" role="secondary"/>
+         <stylesheet file="package-021-includeC.xsl" role="secondary"/>
       </test>
       <result>
          <assert-string-value>You found me!</assert-string-value>
       </result>
    </test-case>
    
-   <test-case name="package-020b">
-      <description>Using xsl:import to import xsl:use-package definitions in another package, override a component and use a component of the imported use-package</description>
-      <created by="Abel Braaksma" on="2015-10-22"/>
+   <test-case name="package-022">
+      <description>Using xsl:include 3 levels deep and using xsl:use-package twice with the different declaration (public follows hidden), follow-up on bug 29453</description>
+      <created by="Abel Braaksma" on="2016-05-26"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
       <test>
-         <package file="package-020b.xsl" role="principal"/>
-         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
-         <stylesheet file="package-020-import.xsl" role="secondary"/>
+         <package file="package-022.xsl" role="principal"/>
+         <package file="package-022-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-022-includeA.xsl" role="secondary"/>
+         <stylesheet file="package-022-includeB.xsl" role="secondary"/>
+         <stylesheet file="package-022-includeC.xsl" role="secondary"/>
       </test>
       <result>
          <assert-string-value>You found me!</assert-string-value>
       </result>
    </test-case>
-   
-   <test-case name="package-020c">
-      <description>Using xsl:import to import xsl:use-package definitions in another package</description>
-      <created by="Abel Braaksma" on="2015-10-22"/>
-      <environment>
-         <source file="package-000.xml" uri="package-000.xml" role="."/>
-      </environment>
-      <test>
-         <package file="package-020c.xsl" role="principal"/>
-         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
-         <stylesheet file="package-020-import.xsl" role="secondary"/>
-      </test>
-      <result>
-         <assert-string-value>You found me!</assert-string-value>
-      </result>
-   </test-case>
-   
-   <test-case name="package-020d">
-      <description>Using xsl:import to import xsl:use-package definitions in another package</description>
-      <created by="Abel Braaksma" on="2015-10-22"/>
-      <environment>
-         <source file="package-000.xml" uri="package-000.xml" role="."/>
-      </environment>
-      <test>
-         <package file="package-020a.xsl" role="principal"/>
-         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
-         <stylesheet file="package-020-import.xsl" role="secondary"/>
-      </test>
-      <result>
-         <assert-string-value>You found me!</assert-string-value>
-      </result>
-   </test-case>
-   
+
    <test-case name="package-100">
       <description>CSV package from the spec, section 3.5.7.2</description>
       <created by="Abel Braaksma" on="2015-10-01"/>
@@ -462,6 +436,18 @@
             <assert>/root/row[3]/field[2][@quoted="no" and @type="numeric"] = "473892"</assert>
             <assert>/root/row[3]/field[3][@quoted="no" and @type="string"] = "9843 ZD"</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="package-200">
+      <description>Package used/imported with xsl:include</description>
+      <created by="Abel Braaksma" on="2016-05-26"/>
+      <test>
+         <package file="package-200.xsl" role="principal"/>
+         <package file="package-200-used.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE0010"/>
       </result>
    </test-case>
    
@@ -573,6 +559,7 @@
    <test-case name="package-908">
       <description>An empty package with no declared modes. (NOTE: see bug 29234)</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
+      <modified by="Abel Braaksma" on="2016-05-26" change="Changed error code XTSE3085 to XTDE0045, see discussion and resolution in bug 29234"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
@@ -580,7 +567,7 @@
          <package file="package-908.xsl" role="principal"/>
       </test>
       <result>
-         <error code="XTSE3085"/>
+         <error code="XTDE0045"/>
       </result>
    </test-case>
 
@@ -643,6 +630,57 @@
       </result>
    </test-case>
 
-
+   <test-case name="package-913">
+      <description>Using xsl:import to import xsl:use-package definitions in another package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <modified by="Abel Braaksma" on="2016-05-26" change="See bug 29453: [ERR XTSE3008] It is a static error if an xsl:use-package declaration appears in a stylesheet module that is not in the same stylesheet level as the principal stylesheet module of the package."/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-020.xsl" role="principal"/>
+         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-020-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE3008"/>
+      </result>
+   </test-case>
+   
+   <test-case name="package-913a">
+      <description>Using xsl:import to import xsl:use-package definitions in another package, override a component that uses a component of a package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <modified by="Abel Braaksma" on="2016-05-26" change="See bug 29453: [ERR XTSE3008] It is a static error if an xsl:use-package declaration appears in a stylesheet module that is not in the same stylesheet level as the principal stylesheet module of the package."/>
+      <modified by="Abel Braaksma" on="2016-05-26" change="Renaming test, sources and fixing missing resources" />
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-913a.xsl" role="principal"/>
+         <package file="package-913-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-913-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE3008"/>
+      </result>
+   </test-case>
+   
+   <test-case name="package-913b">
+      <description>Using xsl:import to import xsl:use-package definitions in another package, override a component and use a component of the imported use-package</description>
+      <created by="Abel Braaksma" on="2015-10-22"/>
+      <modified by="Abel Braaksma" on="2016-05-26" change="See bug 29453: [ERR XTSE3008] It is a static error if an xsl:use-package declaration appears in a stylesheet module that is not in the same stylesheet level as the principal stylesheet module of the package."/> 
+      <modified by="Abel Braaksma" on="2016-05-26" change="Renaming test, sources and fixing missing resources" />
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-913b.xsl" role="principal"/>
+         <package file="package-913-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-913-import.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE3008"/>
+      </result>
+   </test-case>
 
 </test-set>
