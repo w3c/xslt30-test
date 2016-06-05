@@ -350,6 +350,52 @@
       </result>
    </test-case>
    
+   <test-case name="override-f-024">
+      <description>Override a function called indirectly (from XML London workshop)</description>
+      <created by="Michael Kay" on="2016-06-05"/>
+      <environment>
+         <package file="override-f-024a.xsl" role="secondary" uri="http://london2016/override-f-024/package-1" package-version="1.0.0"/>
+      </environment>
+      <test>
+         <package file="override-f-024b.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert>/out = '52'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-f-025">
+      <description>Override a function that doesn't exist</description>
+      <created by="Michael Kay" on="2016-06-05"/>
+      <environment>
+         <package file="override-f-024a.xsl" role="secondary" uri="http://london2016/override-f-024/package-1" package-version="1.0.0"/>
+      </environment>
+      <test>
+         <package file="override-f-025.xsl" role="principal"/>
+      </test>
+      <result>
+         <error code="XTSE3058"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-f-026">
+      <description>Override an abstract function</description>
+      <created by="Michael Kay" on="2016-06-05"/>
+      <environment>
+         <package file="override-f-026a.xsl" role="secondary" uri="http://london2016/graph-lib" package-version="1.0.0"/>
+      </environment>
+      <test>
+         <package file="override-f-026b.xsl" role="principal"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/results/a-is-cyclic = 'true'</assert>
+            <assert>/results/e-is-cyclic = 'false'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   
    <test-case name="override-t-001">
       <description>Successful override of a named template, when called from overriding package</description>
       <created by="Michael Kay" on="2013-07-31"/>
