@@ -395,6 +395,56 @@
       </result>
    </test-case>
    
+   <test-case name="override-f-027">
+      <description>Override a function, argument and result types are implicit</description>
+      <created by="Michael Kay" on="2016-06-05"/>
+      <environment>
+         <package file="override-f-027a.xsl" role="secondary" uri="http://london2016/override-f-027/package-1" package-version="1.0"/>
+      </environment>
+      <test>
+         <package file="override-f-027b.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert>/out = '51'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-f-028">
+      <description>Top level can use xsl:stylesheet rather than xsl:package</description>
+      <created by="Michael Kay" on="2016-06-06"/>
+      <environment ref="override-f-A"/>
+      <test>
+         <package file="override-f-028.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert>/out = 'xxx3'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-f-029">
+      <description>xsl:use=package can be reached via xsl:include</description>
+      <created by="Michael Kay" on="2016-06-06"/>
+      <environment ref="override-f-A"/>
+      <test>
+         <package file="override-f-029.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert>/out = 'xxx3'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-f-030">
+      <description>xsl:use=package cannot be reached via xsl:import</description>
+      <created by="Michael Kay" on="2016-06-06"/>
+      <environment ref="override-f-A"/>
+      <test>
+         <package file="override-f-030.xsl" role="principal"/>
+      </test>
+      <result>
+         <error code="XTSE3008"/>
+      </result>
+   </test-case>
+   
    
    <test-case name="override-t-001">
       <description>Successful override of a named template, when called from overriding package</description>
