@@ -104,4 +104,48 @@
 </doc><a id="frag2"/><out>Got it right!</out></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="collection-005">
+      <description>test collection() function with xsl:strip-space</description>
+      <created by="Michael Kay" on="2016-06-10"/>
+      <environment ref="collection-e04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collection-005.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/a = ""</assert>
+            <assert>/out/b = " "</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="collection-006">
+      <description>test collection() function with different xsl:strip-space declarations in different packages</description>
+      <created by="Michael Kay" on="2016-06-10"/>
+      <environment>
+         <collection uri="collection-006.cxn">
+            <source file="doc14.xml" uri="doc14.xml"/>
+         </collection>
+         <package uri="http://www.w3.org/xslts/collection-006" package-version="3.0" file="collection-006a.xsl" role="secondary"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collection-006b.xsl" role="principal"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/pack-a/doc/a = ""</assert>
+            <assert>/out/pack-b/doc/a = " "</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   
+   
 </test-set>

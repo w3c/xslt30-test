@@ -143,6 +143,8 @@
    
    
    
+   
+   
    <test-case name="document-0105">
       <description>
          Test document() function. Argument is a sequence of xs:string: 
@@ -1429,6 +1431,51 @@
          </all-of>
       </result>
    </test-case>
-
+   
+   <test-case name="document-2401">
+      <description>
+         Test document() function in an overriding package, with strip-space declarations differing between the two packages</description>
+      <created by="Michael Kay" on="2016-06-11"/>
+      <environment>
+         <package uri="http://www.w3.org/xslts/document-2401a" package-version="3.0" file="document-2401a.xsl" role="secondary"/>        
+      </environment>
+      
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="document-2401b.xsl" role="principal"/>
+         <initial-template name="a"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/stripped = '0'</assert>
+            <assert>/out/unstripped = '4'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="document-2402">
+      <description>
+         Test doc() function in an overriding package, with strip-space declarations differing between the two packages</description>
+      <created by="Michael Kay" on="2016-06-11"/>
+      <environment>
+         <package uri="http://www.w3.org/xslts/document-2402a" package-version="3.0" file="document-2402a.xsl" role="secondary"/>        
+      </environment>
+      
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="document-2402b.xsl" role="principal"/>
+         <initial-template name="a"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/stripped = '0'</assert>
+            <assert>/out/unstripped = '4'</assert>
+         </all-of>
+      </result>
+   </test-case>
 
 </test-set>
