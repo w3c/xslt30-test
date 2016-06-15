@@ -5,6 +5,7 @@
     name="http://london2016/graph-lib"
     package-version="0.0.1"
     exclude-result-prefixes="xs g"
+    expand-text="true"
     version="3.0">
     
     <xsl:expose component="function" names="g:transitive-closure#1 g:refers-to-self#1" visibility="public"/>
@@ -22,6 +23,7 @@
     <xsl:function name="g:transitive-closure" visibility="private" as="node()*">
         <xsl:param name="from" as="node()"/>
         <xsl:param name="route" as="node()*"/>
+        <xsl:message>Closure: from {$from/@id}, route = {$route/@id}</xsl:message>
         <xsl:variable name="direct" select="g:neighbours($from)"/>
         <xsl:sequence select="$direct | (($direct except $route) ! g:transitive-closure(., ($route, .)))"/>
     </xsl:function>

@@ -17,6 +17,7 @@
         <xsl:override>
             <xsl:function name="g:neighbours" visibility="private" as="node()*">
                 <xsl:param name="from" as="node()"/>
+                <xsl:message>Neighbours: {$from/@idref}</xsl:message>
                 <xsl:sequence select="key('id', tokenize($from/@idref, '\s+'), root($from))"/>
             </xsl:function>
         </xsl:override>
