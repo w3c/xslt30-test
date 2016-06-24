@@ -445,6 +445,27 @@
       </result>
    </test-case>
    
+   <test-case name="override-f-031">
+      <description>Override a function called indirectly (from XML London workshop)</description>
+      <created by="Michael Kay" on="2016-06-05"/>
+      <environment>
+         <package file="override-f-031a.xsl" role="secondary" uri="http://london2016/override-f-031/package-1" package-version="1.0.0"/>
+      </environment>
+      <test>
+         <package file="override-f-031b.xsl" role="principal"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/a = 'true'</assert>
+            <assert>/out/b = 'true'</assert>
+            <assert>/out/c = 'false'</assert>
+            <assert>/out/d = 'true'</assert>
+            <assert>/out/e = 'true'</assert>
+            <assert>/out/f = 'true'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    
    <test-case name="override-t-001">
       <description>Successful override of a named template, when called from overriding package</description>
