@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="package-version">
+   <description>Tests the effect of the package-version attribute</description>
+
+   <dependencies>
+     <spec value="XSLT30+"/>
+   </dependencies>
+   
+   <test-case name="package-version-001">
+      <description>Basic package-version test, absence of package-version is allowed on xsl:package</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <test>
+         <stylesheet file="package-version-001.xsl"/>
+      </test>
+      <result>
+         <assert-string-value>A package without a version is allowed</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-version-002">
+      <description>Basic package-version test, with a simple version</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <test>
+         <stylesheet file="package-version-002.xsl"/>
+      </test>
+      <result>
+         <assert>package-version = "1.0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="package-version-003">
+      <description>Basic package-version test, with a more complex version</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <test>
+         <stylesheet file="package-version-003.xsl"/>
+      </test>
+      <result>
+         <assert>package-version = "1.0-alpha"</assert>
+      </result>
+   </test-case>
+   
+   
+   <test-case name="package-version-900">
+      <description>Basic package-version test, error scenario, not allowed on xsl:stylesheet</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <test>
+         <stylesheet file="package-version-900.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+   
+   <test-case name="package-version-901">
+      <description>Basic package-version test, error scenario, not allowed on xsl:transform</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <test>
+         <stylesheet file="package-version-901.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
+   
+</test-set> 
