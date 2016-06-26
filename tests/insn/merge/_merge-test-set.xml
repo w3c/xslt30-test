@@ -1283,5 +1283,24 @@
          <error code="XTDE3480"/>
       </result>
    </test-case>
+   
+   <test-case name="merge-089">
+      <description>Nested xsl:merge (bug 29697)</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-06-26"/>
+      <environment>
+         <source role="." file="merge-089.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="merge-089.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/group[@key='a']/nested-group[@key='1'][value = 1 and value = 2]</assert>
+            <assert>/root/group[@key='a']/nested-group[@key='2'][value = 3]</assert>
+            <assert>/root/group[@key='b']/nested-group[@key='1'][value = 4 and value = 5]</assert>
+            <assert>/root/group[@key='b']/nested-group[@key='2'][value = 6]</assert>
+         </all-of>
+      </result>
+   </test-case>
 
 </test-set>
