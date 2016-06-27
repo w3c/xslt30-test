@@ -1302,5 +1302,22 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="merge-090">
+      <description>Nested xsl:merge (Saxon bug 2815)</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-06-26"/>
+      <environment>
+         <source role="." file="merge-090.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="merge-090.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/Personenliste/Person/@Firma="Company A"</assert>
+            <assert>/Personenliste/Person[Vorname = "John" and Nachname = "Doe"]</assert>
+         </all-of>
+      </result>
+   </test-case>
 
 </test-set>
