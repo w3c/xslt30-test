@@ -12,7 +12,7 @@
       <xsl:stream href="../docs/bullets.xml">
         <xsl:variable name="current" select="."/>
         <xsl:iterate select="1 to 5">
-           <in><xsl:value-of select=". + count($current/*)"/></in>
+           <in><xsl:value-of select=". + count($current/*[current()])"/></in>
         </xsl:iterate>  
       </xsl:stream>
     </out>
