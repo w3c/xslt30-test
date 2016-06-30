@@ -1604,6 +1604,16 @@
             <xs:sequence>
                 <xs:element ref="abstractAssertion"/>
             </xs:sequence>
+            <xs:attribute name="early-exit-possible" type="xs:boolean" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        <p>This attribute is documentary; it indicates a streaming test where there is a known
+                        execution strategy that evaluates the query without reading the source document to completion.
+                        Streaming test drivers may wish to monitor whether the implementation quits parsing early
+                        for tests carrying this label; but there is no conformance implication if not.</p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
