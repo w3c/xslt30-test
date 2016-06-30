@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="su-absorbing">
+   <description>Streamable stylesheet functions: category "absorbing"</description>
+   
+   <environment name="su-absorbing-A">
+      <stylesheet file="su-absorbing-A.xsl"/>
+   </environment>
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="streaming"/>
+   </dependencies>
+   
+   <test-case name="su-absorbing-001">
+      <description>Call an arity-1 stylesheet function - single node</description>
+      <created by="Michael Kay" on="2016-06-27"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-001"/>
+      </test>
+      <result>
+         <assert>/out = "11 11 11 11 11 11"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-002">
+      <description>Call an arity-1 stylesheet function - sequence of nodes, processed using "!"</description>
+      <created by="Michael Kay" on="2016-06-27"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-002"/>
+      </test>
+      <result>
+         <assert>/out = "66"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-003">
+      <description>Call an arity-1 stylesheet function - single node</description>
+      <created by="Michael Kay" on="2016-06-27"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-003"/>
+      </test>
+      <result>
+         <assert>/out = "11 11 11 11 11 11"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-004">
+      <description>Call an arity-1 stylesheet function - sequence of nodes, processed using "/"</description>
+      <created by="Michael Kay" on="2016-06-27"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-004"/>
+      </test>
+      <result>
+         <assert>/out = "66"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-005">
+      <description>Recursive absorbing function</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-005"/>
+      </test>
+      <result>
+         <assert>/out =  "12 12 12 12 12 12"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-006">
+      <description>Recursive absorbing function with grounded input</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-006"/>
+      </test>
+      <result>
+         <assert>/out = "12 12 12 12 12 12"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-007">
+      <description>Two references to the variable allowed if you're careful</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-007"/>
+      </test>
+      <result>
+         <assert>/out = "#ITEM?true #ITEM?true #ITEM?true #ITEM?true #ITEM?true #ITEM?true"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-008">
+      <description>Invoke streamable template from streamable function</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-008"/>
+      </test>
+      <result>
+         <assert>/out/data = "4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-901">
+      <description>Invalid absorbing function - not grounded</description>
+      <created by="Michael Kay" on="2016-06-27"/>
+      <test>
+         <stylesheet file="su-absorbing-901.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-902">
+      <description>Invalid absorbing function - body not consuming (bug see bug 29712)</description>
+      <created by="Michael Kay" on="2016-06-27"/>
+      <test>
+         <stylesheet file="su-absorbing-902.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-903">
+      <description>Invalid absorbing function call - argument is crawling</description>
+      <created by="Michael Kay" on="2016-06-27"/>
+      <test>
+         <stylesheet file="su-absorbing-903.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-904">
+      <description>Invalid absorbing function call - supplies streamed node in second argument</description>
+      <created by="Michael Kay" on="2016-06-27"/>
+      <test>
+         <stylesheet file="su-absorbing-904.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-905">
+      <description>Invalid absorbing function - two downward selections</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <test>
+         <stylesheet file="su-absorbing-905.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-906">
+      <description>Invalid absorbing function - consuming reference in a loop</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <test>
+         <stylesheet file="su-absorbing-906.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-907">
+      <description>Invalid absorbing function - function body must be consuming (But see bug 29712)</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <test>
+         <stylesheet file="su-absorbing-907.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-908">
+      <description>Invalid absorbing function - two consuming references to the variable</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <test>
+         <stylesheet file="su-absorbing-908.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-909">
+      <description>Invalid absorbing function - has-children() is not deemed consuming. (But see bug 29712)</description>
+      <created by="Michael Kay" on="2016-06-28"/>
+      <test>
+         <stylesheet file="su-absorbing-909.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+ 
+
+
+</test-set>
