@@ -112,6 +112,77 @@
     </xsl:stream>
   </xsl:template>
   
+  <!-- recursive absorbing function -->
+  
+  <xsl:function name="f:count-descendants-009" as="xs:integer" streamability="absorbing">
+    <xsl:param name="input" as="node()"/>
+    <!--<xsl:sequence select="if (has-children($input)) then sum($input/* ! (1 + f:count-descendants-009(.))) else 0"/>-->
+    <xsl:sequence select="sum($input/* ! (1 + f:count-descendants-009(.)))"/>
+  </xsl:function>
+  
+  <xsl:template name="t-009" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:count-descendants-009(.)"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- recursive absorbing function using has-children() -->
+  
+  <xsl:function name="f:count-descendants-010" as="xs:integer" streamability="absorbing">
+    <xsl:param name="input" as="node()?"/>
+    <xsl:sequence select="if (has-children($input)) then sum($input/* ! (1 + f:count-descendants-010(.))) else 0"/>
+  </xsl:function>
+  
+  <xsl:template name="t-010" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:count-descendants-010(.)"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Call streaming function supplying an empty sequence -->
+  
+  <xsl:template name="t-011" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="f:count-descendants-001(/BOOKLIST/MAGAZINES)"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Call singleton absorbing function supplying an empty sequence -->
+  
+  <xsl:template name="t-012" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="f:count-descendants-010(/BOOKLIST/MAGAZINES)"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Call absorbing function supplying grounded but consuming sequence -->
+  
+  <xsl:template name="t-013" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="f:count-descendants-001(copy-of(/BOOKLIST/BOOKS/ITEM))"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Call singleton absorbing function supplying grounded but consuming sequence -->
+  
+  <xsl:template name="t-014" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml" streaming="true">
+      <out>
+        <xsl:value-of select="/BOOKLIST/BOOKS/ITEM ! f:count-descendants-010(copy-of(TITLE))"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
   
   
 

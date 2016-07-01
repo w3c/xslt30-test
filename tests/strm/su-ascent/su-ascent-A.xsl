@@ -3,7 +3,7 @@
   xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:f="http://www.w3.org/xslt30tests/functions" exclude-result-prefixes="map xs err f">
 
-  <xsl:variable name="RUN" select="false()" static="yes"/>
+  <xsl:variable name="RUN" select="true()" static="yes"/>
   <xsl:strip-space elements="*"/>
 
 
@@ -14,7 +14,7 @@
     <xsl:sequence select="count($input/ancestor-or-self::*)"/>
   </xsl:function>
 
-  <xsl:template name="t-001" use-when="true() or $RUN">
+  <xsl:template name="t-001" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:depth-001(.)"/>
@@ -29,7 +29,7 @@
     <xsl:sequence select="if ($input/.. instance of document-node()) then 1 else f:depth-002($input/..) + 1"/>
   </xsl:function>
   
-  <xsl:template name="t-002" use-when="true() or $RUN">
+  <xsl:template name="t-002" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:depth-002(.)"/>
@@ -45,7 +45,7 @@
     <xsl:sequence select="string($element/@*[local-name() = $attribute-name])"/>
   </xsl:function>
 
-  <xsl:template name="t-003" use-when="true() or $RUN">
+  <xsl:template name="t-003" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:sequence select="/BOOKLIST/BOOKS/ITEM/WEIGHT ! f:get-attribute-value-003(., 'UNIT')"/>
@@ -65,7 +65,7 @@
       else f:get-inherited-attribute-value-004($element/.., $attribute-name)"/>
   </xsl:function>
   
-  <xsl:template name="t-004" use-when="true() or $RUN">
+  <xsl:template name="t-004" use-when="$RUN">
     <xsl:stream href="../docs/books.xml">
       <out>
         <xsl:sequence select="/BOOKLIST/BOOKS/ITEM/WEIGHT ! f:get-inherited-attribute-value-004(., 'CAT')"/>
@@ -80,7 +80,7 @@
     <xsl:sequence select="if ($input/ancestor::section) then f:outermost-section($input/ancestor::section[1]) else $input"/>
   </xsl:function>
   
-  <xsl:template name="t-005" use-when="true() or $RUN">
+  <xsl:template name="t-005" use-when="$RUN">
     <xsl:stream href="../docs/recursive.xml">
       <out>
         <xsl:value-of select="//foot ! f:outermost-section(.) ! @id"/>
@@ -95,7 +95,7 @@
     <xsl:sequence select="if ($input) then if (matches($input/@id, '^[0-9]+\.[0-9]+$')) then $input else f:outermost-section-id($input/..) else ()"/>
   </xsl:function>
   
-  <xsl:template name="t-006" use-when="true() or $RUN">
+  <xsl:template name="t-006" use-when="$RUN">
     <xsl:stream href="../docs/recursive.xml">
       <out>
         <xsl:value-of select="//foot ! f:outermost-section-id(.) ! @id"/>
