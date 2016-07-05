@@ -110,7 +110,7 @@
     
     <!-- Test of "=" selecting both streamed nodes and literals while also filtering -->
     
-    <xsl:template name="s-013" use-when="true() or $RUN">
+    <xsl:template name="s-013" use-when="$RUN">
       <xsl:stream href="../docs/books.xml">
         <out>
           <xsl:value-of select="((tail(./BOOKLIST/BOOKS/ITEM/PAGES)/number(), 31, 32)) = 31"/>
