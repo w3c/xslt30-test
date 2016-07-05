@@ -3,7 +3,7 @@
   xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:f="http://www.w3.org/xslt30tests/functions" exclude-result-prefixes="map xs err f">
 
-  <xsl:variable name="RUN" select="true()" static="yes"/>
+  <xsl:variable name="RUN" select="false()" static="yes"/>
   <xsl:strip-space elements="*"/>
 
 
@@ -179,6 +179,56 @@
     <xsl:stream href="../docs/books.xml" streaming="true">
       <out>
         <xsl:value-of select="/BOOKLIST/BOOKS/ITEM ! f:count-descendants-010(copy-of(TITLE))"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Call streamable function from streamable function -->
+  
+  <xsl:function name="f:f-015a" as="xs:integer*" streamability="absorbing">
+    <xsl:param name="input" as="node()*"/>
+    <xsl:sequence select="$input ! f:f-015b(.)"/>
+  </xsl:function>
+  
+  <xsl:function name="f:f-015b" as="xs:integer" streamability="absorbing">
+    <xsl:param name="input" as="node()"/>
+    <xsl:sequence select="string-length($input)"/>
+  </xsl:function>
+  
+  <xsl:template name="t-015" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml" streaming="true">
+      <out>
+        <xsl:value-of select="f:f-015a(/BOOKLIST/BOOKS/ITEM/TITLE)"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Call absorbing function from streamable template -->
+  
+  <xsl:mode name="m-016" streamable="true"/>
+  
+  <xsl:template match="TITLE" mode="m-016">
+    <xsl:sequence select="f:f-015b(.)"/>
+  </xsl:template>
+  
+  <xsl:template match="TITLE/text()" mode="m-016">
+    <xsl:sequence select="f:f-015b(.)"/>
+  </xsl:template>
+  
+  <xsl:template name="t-016" use-when="$RUN">
+    <xsl:stream href="../docs/books.xml" streaming="true">
+      <out>
+        <xsl:apply-templates select="/BOOKLIST/BOOKS/ITEM/TITLE" mode="m-016"/>
+      </out>
+    </xsl:stream>
+  </xsl:template>
+  
+  <!-- Call absorbing function with text nodes -->
+  
+  <xsl:template name="t-017" use-when="true() or $RUN">
+    <xsl:stream href="../docs/books.xml" streaming="true">
+      <out>
+        <xsl:apply-templates select="/BOOKLIST/BOOKS/ITEM/TITLE/text()" mode="m-016"/>
       </out>
     </xsl:stream>
   </xsl:template>

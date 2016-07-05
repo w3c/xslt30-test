@@ -179,6 +179,42 @@
       </result>       
    </test-case>
    
+   <test-case name="su-absorbing-015">
+      <description>Call absorbing function from absorbing function</description>
+      <created by="Michael Kay" on="2016-07-02"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-015"/>
+      </test>
+      <result>
+         <assert>/out =  "19 17 25 16 17 15"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-016">
+      <description>Call absorbing function from streamable template</description>
+      <created by="Michael Kay" on="2016-07-02"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-016"/>
+      </test>
+      <result>
+         <assert>/out =  "19 17 25 16 17 15"</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-017">
+      <description>Call absorbing function with text nodes</description>
+      <created by="Michael Kay" on="2016-07-02"/>
+      <environment ref="su-absorbing-A"/>
+      <test>
+         <initial-template name="t-017"/>
+      </test>
+      <result>
+         <assert>/out =  "19 17 25 16 17 15"</assert>
+      </result>       
+   </test-case>
+   
    <test-case name="su-absorbing-901">
       <description>Invalid absorbing function - not grounded</description>
       <created by="Michael Kay" on="2016-06-27"/>
@@ -280,6 +316,42 @@
       <created by="Michael Kay" on="2016-06-28"/>
       <test>
          <stylesheet file="su-absorbing-909.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-910">
+      <description>Streamable absorbing function fails with dynamic error</description>
+      <created by="Michael Kay" on="2016-07-01"/>
+      <test>
+         <stylesheet file="su-absorbing-910.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FOAR0001"/>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-911">
+      <description>Streamable absorbing function fails with dynamic error</description>
+      <created by="Michael Kay" on="2016-07-01"/>
+      <test>
+         <stylesheet file="su-absorbing-911.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'divide-by-zero'</assert>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-912">
+      <description>The path() function is not streamable</description>
+      <created by="Michael Kay" on="2016-07-01"/>
+      <test>
+         <stylesheet file="su-absorbing-912.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
