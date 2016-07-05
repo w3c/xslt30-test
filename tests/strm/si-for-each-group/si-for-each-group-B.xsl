@@ -75,7 +75,7 @@
   
   <!-- crawling selection, inspection body -->
    
-  <xsl:template name="feg-006">
+  <xsl:template name="feg-006" use-when="false()">
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each-group group-adjacent="position()" select="//*">

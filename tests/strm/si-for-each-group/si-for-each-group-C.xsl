@@ -75,7 +75,7 @@
   
   <!-- crawling selection, inspection body -->
    
-  <xsl:template name="feg-006" use-when="$RUN">
+  <xsl:template name="feg-006" use-when="false() and $RUN">
     <out>
       <xsl:stream href="../docs/books.xml">
         <xsl:for-each-group group-ending-with="." select="//*">
