@@ -29,13 +29,35 @@
    </test-case>
    
    <test-case name="package-version-003">
-      <description>Basic package-version test, with a more complex version</description>
+      <description>Basic package-version test, with a NamePart</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
       <test>
          <stylesheet file="package-version-003.xsl"/>
       </test>
       <result>
          <assert>package-version = "1.0-alpha"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="package-version-004">
+      <description>Basic package-version test, with a longer NamePart</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <test>
+         <stylesheet file="package-version-004.xsl"/>
+      </test>
+      <result>
+         <assert>package-version = "1.0-alpha-beta-gamma"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="package-version-005">
+      <description>Basic package-version test, with a NamePart having all NCName characters</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <test>
+         <stylesheet file="package-version-004.xsl"/>
+      </test>
+      <result>
+         <assert>package-version = "1.0-_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</assert>
       </result>
    </test-case>
    
