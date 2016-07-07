@@ -2282,6 +2282,7 @@
    <test-case name="mode-1701">
       <description>Test attribute default-mode on package element</description>
       <created by="Debbie Lockett" on="2015-09-07"/>
+      <modified by="Abel Braaksma" on="2016-07-07" change="Bug 29376, made mode public"/>
       <environment ref="mode-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2294,15 +2295,47 @@
       </result>
    </test-case>
    
+   
+   <test-case name="mode-1701a">
+      <description>Test attribute default-mode on package element, which is hidden by default</description>
+      <created by="Abel Braaksma" on="2016-07-07"/>
+      <environment ref="mode-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <package file="mode-1701a.xsl" role="principal"/>
+      </test>
+      <result>
+         <error code="XTDE0045"/>
+      </result>
+   </test-case>
+   
    <test-case name="mode-1702">
       <description>Test attribute default-mode on package element, with declared-modes="no"</description>
       <created by="Debbie Lockett" on="2015-09-07"/>
+      <modified by="Abel Braaksma" on="2016-07-07" change="Bug 29376, made mode public (implicit modes are always private)"/>
       <environment ref="mode-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <package file="mode-1702.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1702a">
+      <description>Test attribute default-mode on package element, with declared-modes="no", error scenario</description>
+      <created by="Abel Braaksma" on="2016-07-07"/>
+      <environment ref="mode-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <package file="mode-1702a.xsl" role="principal"/>
       </test>
       <result>
          <assert>/ok</assert>

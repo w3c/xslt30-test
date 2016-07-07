@@ -6,7 +6,7 @@
   exclude-result-prefixes="xs"
   default-mode="a">
   
-  <xsl:mode name="a"/>
+  <xsl:mode name="a" visibility="public"/>
   
   <xsl:template match="/">
     <ok/>

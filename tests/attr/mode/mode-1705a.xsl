@@ -4,14 +4,18 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs"
-  declared-modes="no"
+  declared-modes="yes"
   default-mode="a">
-    
-    <!-- default mode that gets invoked must be public -->
-    <xsl:mode visibility="public" />
+  
+  <xsl:mode name="a" />
+  <xsl:mode/>  
 
   <xsl:template match="/">
       <ok/>
+  </xsl:template>  
+  
+  <xsl:template match="/" mode="#unnamed">
+    <ok-unnamed/>
   </xsl:template>
 
 </xsl:package>   
