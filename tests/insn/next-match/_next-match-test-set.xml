@@ -525,4 +525,49 @@ Example of apply-imports</div>
          <assert-xml><![CDATA[<one><two><three/>alphabetagammadelta</two></one>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="next-match-029">
+      <description>Test xsl:next-match inside a named template with context-item use="absent"</description>
+      <created by="Michael Kay" on="2016-07-10"/>
+      <environment ref="next-match015"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="next-match-029.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0560"/>
+      </result>
+   </test-case>
+   
+   <test-case name="next-match-030">
+      <description>Test xsl:next-match inside xsl:copy with a select attribute</description>
+      <created by="Michael Kay" on="2016-07-10"/>
+      <environment ref="next-match015"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="next-match-030.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0560"/>
+      </result>
+   </test-case>
+   
+   <test-case name="next-match-031">
+      <description>Test xsl:next-match inside xsl:for-each</description>
+      <created by="Michael Kay" on="2016-07-10"/>
+      <environment ref="next-match015"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="next-match-031.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE0560"/>
+      </result>
+   </test-case>
 </test-set>
