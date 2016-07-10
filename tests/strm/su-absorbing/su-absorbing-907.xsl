@@ -8,11 +8,11 @@
 
 
 
-  <!-- Non-streamable absorbing function - the spec requires the function body to be consuming -->
+  <!-- Non-streamable absorbing function - the spec no longer requires the function body to be consuming -->
   
   <xsl:function name="f:enumerate" as="xs:string*" streamability="absorbing">
     <xsl:param name="element" as="node()"/>
-    <xsl:sequence select="for $i in 1 to 3 return name($element)"/>
+    <xsl:sequence select="name($element)"/>
   </xsl:function>
   
   <xsl:template name="main" >

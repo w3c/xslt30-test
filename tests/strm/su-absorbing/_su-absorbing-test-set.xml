@@ -228,14 +228,15 @@
    </test-case>
    
    <test-case name="su-absorbing-902">
-      <description>Invalid absorbing function - body not consuming (bug see bug 29712)</description>
+      <description>Invalid absorbing function - body not consuming (but see bug 29712)</description>
       <created by="Michael Kay" on="2016-06-27"/>
+      <modified by="Michael Kay" on="2016-07-10" change="non-consuming body now allowed (bug 29712)"/>
       <test>
          <stylesheet file="su-absorbing-902.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3430"/>
+         <assert>/out =  "MMP P P P H P"</assert>
       </result>       
    </test-case>
    
@@ -290,12 +291,13 @@
    <test-case name="su-absorbing-907">
       <description>Invalid absorbing function - function body must be consuming (But see bug 29712)</description>
       <created by="Michael Kay" on="2016-06-28"/>
+      <modified by="Michael Kay" on="2016-07-10" change="non-consuming body now allowed (bug 29712)"/>
       <test>
          <stylesheet file="su-absorbing-907.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3430"/>
+         <assert>starts-with(/out, "TITLE AUTHOR PUBLISHER PUB-DATE LANGUAGE PRICE QUANTITY ISBN PAGES DIMENSIONS WEIGHT TITLE AUTHOR PUBLISHER ")</assert>
       </result>       
    </test-case>
    

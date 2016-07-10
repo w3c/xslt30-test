@@ -8,12 +8,12 @@
 
 
 
-  <!-- Non-streamable absorbing function - body is not consuming -->
+  <!-- Non-streamable absorbing function - body is not consuming. Now allowed, see bug 29712 -->
   
   <xsl:function name="f:get-inherited-attribute-value-004"  streamability="absorbing" as="xs:string?">
     <xsl:param name="element" as="node()*"/>
     <xsl:param name="attribute-name" as="xs:string"/>
-    <xsl:sequence select="$attribute-name"/>
+    <xsl:sequence select="$element/ancestor-or-self::*/@*[local-name() = $attribute-name]"/>
   </xsl:function>
   
   <xsl:template name="main" >

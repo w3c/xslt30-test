@@ -3,7 +3,7 @@
   xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:f="http://www.w3.org/xslt30tests/functions" exclude-result-prefixes="map xs err f">
 
-  <xsl:variable name="RUN" select="false()" static="yes"/>
+  <xsl:variable name="RUN" select="true()" static="yes"/>
   <xsl:strip-space elements="*"/>
 
 
