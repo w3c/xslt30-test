@@ -80,7 +80,7 @@
         <t><xsl:sequence select="xml-to-json($in)"/></t>
     </xsl:template>
     
-   <!-- <xsl:template name="t015">
+    <!--<xsl:template name="t015">
         <!-\- backspace -\->
         <xsl:variable name="in"><j:string escaped="1">-<xsl:value-of select="codepoints-to-string(8)"/>-</j:string></xsl:variable>
         <t><xsl:sequence select="xml-to-json($in)"/></t>
@@ -102,6 +102,12 @@
         <xsl:variable name="in"><j:string escaped="1">-<xsl:value-of select="codepoints-to-string(12)"/>-</j:string></xsl:variable>
         <t><xsl:sequence select="xml-to-json($in)"/></t>
     </xsl:template>-->
+    
+    <xsl:template name="t019">
+        <!-- Solidus is escaped, see bug 29665 -->
+        <xsl:variable name="in"><j:string escaped="1">-/-</j:string></xsl:variable>
+        <t><xsl:sequence select="xml-to-json($in)"/></t>
+    </xsl:template>
     
     <xsl:template name="t101">
         <xsl:variable name="in"><j:boolean> 0 <xsl:comment>false</xsl:comment></j:boolean></xsl:variable>
