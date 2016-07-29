@@ -82,10 +82,6 @@
       <source role="." file="strmode001a.xml" streaming="true"/>
    </environment>
 
-   <environment name="citygml">
-      <source role="." file="citygml.xml" streaming="true"/>
-   </environment>
-
    <test-case name="streamable-001">
       <description>streaming templates used to delete selected elements</description>
       <keywords>leading-lone-slash xsl:copy striding motionless-pattern xsl:strip-space</keywords>
@@ -2637,6 +2633,18 @@
            <assert>/account/account-number[not(@empty)]</assert>
            <assert>/account/transaction[@empty='true']</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="streamable-136">
+      <description>xsl:number on streamed nodes is not streamable</description>
+      <created by="Michael Kay" on="2016-07-29"/>
+      <environment ref="strmode001a"/>
+      <test>
+         <stylesheet file="streamable-136.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 </test-set>
