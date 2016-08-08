@@ -769,6 +769,46 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-037">
+      <description>
+         Streamed grouping - group-adjacent with composite keys - Saxon bug 2852
+      </description>
+      <created by="Michael Kay after Martin Honnen" on="2016-07-25"/>
+      <environment>
+         <source file="si-group-037.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-037.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-038">
+      <description>Streamed grouping - group-adjacent - motionless access to first item after consuming the group</description>
+      <created by="Michael Kay" on="2016-07-26"/>
+      <test>
+         <stylesheet file="si-group-038.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/group[1][key/@date="2006-02-13"][first/@value="13.24"]</assert>
+            <assert>/out/group[2][key/@date="2006-02-15"][first/@value="-15.00"]</assert>
+            <assert>/out/group[3][key/@date="2006-02-16"][first/@value="6.00"]</assert>
+            <assert>/out/group[4][key/@date="2006-02-17"][first/@value="0.50"]</assert>
+            <assert>/out/group[5][key/@date="2006-02-20"][first/@value="-5.00"]</assert>
+            <assert>/out/group[6][key/@date="2006-02-21"][first/@value="8.99"]</assert>
+            <assert>/out/group[7][key/@date="2006-02-22"][first/@value="16.00"]</assert>
+            <assert>/out/group[8][key/@date="2006-02-23"][first/@value="-2.33"]</assert>
+            <assert>/out/group[9][key/@date="2006-02-24"][first/@value="6.78"]</assert>
+            <assert>/out/group[10][key/@date="2006-02-25"][first/@value="12.00"]</assert>
+            <assert>/out/group[11][key/@date="2006-02-26"][first/@value="14.20"]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>
@@ -857,6 +897,42 @@
          <assert-xml><![CDATA[<Root
             ><Group><Item><Id>Item 2</Id></Item><Item><Id>Item 3</Id></Item></Group
             ><Group/><Group><Item><Id>Item 7</Id></Item></Group><Group/></Root>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-204">
+      <description>Streamed grouping - nested group-by within xsl:fork</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-08-08"/>
+      <environment>
+         <source role="." file="si-group-204.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-204.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="account01826370.xml">
+               <all-of>
+                  <assert>count(/transactions[@account="01826370"]/year[@value="2016"]/transaction) = 2</assert>
+                  <assert>count(/transactions[@account="01826370"]/year[@value="2015"]/transaction) = 1</assert>
+                  <assert>count(/transactions[@account="01826370"]/year[@value="2014"]/transaction) = 0</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="account92741838.xml">
+               <all-of>
+                  <assert>count(/transactions[@account="92741838"]/year[@value="2016"]/transaction) = 1</assert>
+                  <assert>count(/transactions[@account="92741838"]/year[@value="2015"]/transaction) = 1</assert>
+                  <assert>count(/transactions[@account="92741838"]/year[@value="2014"]/transaction) = 0</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="account43861562.xml">
+               <all-of>
+                  <assert>count(/transactions[@account="43861562"]/year[@value="2016"]/transaction) = 0</assert>
+                  <assert>count(/transactions[@account="43861562"]/year[@value="2015"]/transaction) = 0</assert>
+                  <assert>count(/transactions[@account="43861562"]/year[@value="2014"]/transaction) = 2</assert>
+               </all-of>
+            </assert-result-document>
+         </all-of>
       </result>
    </test-case>
    
