@@ -743,6 +743,40 @@
          </assert-result-document>
       </result>
    </test-case>
+   
+   <test-case name="si-result-document-302">
+      <description>Streaming - calling xsl:result-document</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-08-16"/>
+      <environment>
+         <source role="." file="si-result-document-302.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-result-document-302.xsl"/>
+      </test>
+      <result>
+         <assert-result-document uri="test2016081202Result2.xml">
+            <assert-xml><![CDATA[<root>
+    <header>
+        <foo xmlns:x="http://bar.com/" id="x:bar">
+            <bar>baz</bar>
+        </foo>
+    </header>
+    <body>
+        <data>1</data>
+        <data>2</data>
+        <data>3</data>
+        <data>4</data>
+        <data>5</data>
+        <data>6</data>
+        <data>7</data>
+        <data>8</data>
+        <data>9</data>
+        <data>10</data>
+    </body>
+</root>]]></assert-xml>
+         </assert-result-document>
+      </result>
+   </test-case>
 
 
 </test-set>
