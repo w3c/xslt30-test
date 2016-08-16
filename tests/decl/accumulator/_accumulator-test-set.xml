@@ -1106,5 +1106,45 @@
          <assert-xml><![CDATA[<root><item group-head="class1" class="class1">item 1</item><item group-head="class2" class="class2">item 2</item><item class="class1">item 3</item><item class="class1">item 4</item><item group-head="class3" class="class3">item 5</item><item class="class2">item 6</item></root>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-055">
+      <description>Accumulators used to count text node siblings (see https://saxonica.plan.io/issues/2864)</description>
+      <created by="Michael Kay, after Martin Honnen" on="2016-08-01"/>
+      <environment>
+         <source role="." file="accumulator-055.xml" streaming="false"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-055.xsl"/>
+         <param name="streamable" static="yes" select="false()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/p[1]/text()[1] = 'Tekst '</assert>
+            <assert>/root/p[1]/text()[2] = ' etc..'</assert>
+            <assert>/root/p[2]/text()[1] = 'Tekst '</assert>
+            <assert>/root/p[2]/text()[2] = ' etc..'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-055s">
+      <description>Accumulators used to count text node siblings (see https://saxonica.plan.io/issues/2864)</description>
+      <created by="Michael Kay, after Martin Honnen" on="2016-08-01"/>
+      <environment>
+         <source role="." file="accumulator-055.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-055.xsl"/>
+         <param name="streamable" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/p[1]/text()[1] = 'Tekst '</assert>
+            <assert>/root/p[1]/text()[2] = ' etc..'</assert>
+            <assert>/root/p[2]/text()[1] = 'Tekst '</assert>
+            <assert>/root/p[2]/text()[2] = ' etc..'</assert>
+         </all-of>
+      </result>
+   </test-case>
  
 </test-set>
