@@ -2644,4 +2644,77 @@
          <error code="XTSE3430"/>
       </result>
    </test-case>
+   
+   <test-case name="streamable-137">
+      <description>Streamed stylesheet involving ancestor access</description>
+      <created by="Michael Kay" on="2016-08-05"/>
+      <environment>
+         <source role="." file="streamable-137.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="streamable-137.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><p>/r</p
+            ><p>/r/a[@id="i1"]</p
+            ><p>/r/b[@id="i2"]</p
+            ><p>/r/b[@id="i2"]/c[@id="i3"]</p
+            ><t>/r/b[@id="i2"]/c[@id="i3"]/text()[.="e"]</t
+            ><t>/r/b[@id="i2"]/text()[.="d"]</t
+            ><p>/r/b[@id="i2"]/c[@id="i4"]</p
+            ><t>/r/b[@id="i2"]/c[@id="i4"]/text()[.="f"]</t
+            ></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="streamable-138">
+      <description>Streamed stylesheet involving ancestor access with multiple modes</description>
+      <created by="Michael Kay" on="2016-08-05"/>
+      <environment>
+         <source role="." file="streamable-137.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="streamable-138.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/t = '/r/b[@id="i2"]/c[@id="i3"]/text()[.="e"]'</assert>
+            <assert>/out/t = '/r/b[@id="i2"]/c[@id="i4"]/text()[.="f"]'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="streamable-139">
+      <description>Streamed stylesheet involving ancestor access with multiple modes (consuming + grounded selection)</description>
+      <created by="Michael Kay" on="2016-08-05"/>
+      <environment>
+         <source role="." file="streamable-137.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="streamable-139.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/t = '/r/b[@id="i2"]/c[@id="i3"]/text()[.="e"]'</assert>
+            <assert>/out/t = '/r/b[@id="i2"]/c[@id="i4"]/text()[.="f"]'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="streamable-140">
+      <description>Streamed stylesheet involving a streamable template processing a map</description>
+      <created by="Michael Kay" on="2016-08-05"/>
+      <environment>
+         <source role="." file="streamable-140.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="streamable-140.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/data/coordinates[1][lat='1.1'][long='1.2']</assert>
+            <assert>/root/data/coordinates[2][lat='2.1'][long='2.2']</assert>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
