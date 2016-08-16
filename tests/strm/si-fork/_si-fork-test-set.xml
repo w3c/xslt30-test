@@ -443,6 +443,66 @@
       </result>
    </test-case>
    
+   <test-case name="si-fork-801">
+      <description>Streamable xsl:fork - returns streamed nodes</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-08-15"/>
+      <environment>
+         <source role="." file="si-fork-801.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-fork-801.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/doc/body/*[1][self::heading='TOC']</assert>
+            <assert>/doc/body/*[2][self::ordered-list][count(list-item/link/@href) = 3]</assert>
+            <assert>/doc/body/*[3][self::heading][.='heading 1']['#'||@id = (//@href)[1]]</assert>
+            <assert>/doc/body/*[4][self::section][.='section 1']</assert>
+            <assert>/doc/body/*[5][self::heading][.='heading 2']['#'||@id = (//@href)[2]]</assert>
+            <assert>/doc/body/*[6][self::section][.='section 2']</assert>
+            <assert>/doc/body/*[7][self::heading][.='heading 3']['#'||@id = (//@href)[3]]</assert>
+            <assert>/doc/body/*[8][self::section][.='section 3']</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-802">
+      <description>Streamable xsl:fork</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-08-15"/>
+      <environment>
+         <source role="." file="si-fork-802.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-fork-802.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="account01826370.xml">
+               <all-of>
+                  <assert>count(/transactions/transaction) = 3</assert>
+                  <assert>/transactions/transaction[1]/value = "5.60"</assert>
+                  <assert>/transactions/transaction[2]/value = "-3.40"</assert>
+                  <assert>/transactions/transaction[3]/value = "2.51"</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="account92741838.xml">
+               <all-of>
+                  <assert>count(/transactions/transaction) = 2</assert>
+                  <assert>/transactions/transaction[1]/value = "11.20"</assert>
+                  <assert>/transactions/transaction[2]/value = "8.90"</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="account43861562.xml">
+               <all-of>
+                  <assert>count(/transactions/transaction) = 2</assert>
+                  <assert>/transactions/transaction[1]/value = "-1.99"</assert>
+                  <assert>/transactions/transaction[2]/value = "5.31"</assert>
+               </all-of>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="si-fork-901">
       <description>Non-streamable xsl:fork - returns streamed nodes</description>
       <keywords>multiple-xsl-sequence-children AxisStep striding XTSE3430 illegally-returning-streamed-nodes</keywords>
