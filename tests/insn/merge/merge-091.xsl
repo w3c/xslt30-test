@@ -5,7 +5,7 @@
     expand-text="yes" version="3.0">
     
     <xsl:strip-space elements="*"/>
-    <xsl:output indent="yes"/>
+
     
     <xsl:mode on-no-match="shallow-copy"/>
     

@@ -6,7 +6,6 @@
     
     <xsl:param name="input-uri" select="'si-group-203.xml'"/>
     
-    <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
     <xsl:template name="main">

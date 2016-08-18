@@ -5,7 +5,6 @@
     exclude-result-prefixes="xs math" 
     version="3.0">
     
-    <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
     <xsl:mode streamable="yes"/>
