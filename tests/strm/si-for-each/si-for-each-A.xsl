@@ -11,11 +11,11 @@
    
   <xsl:template name="fe-001" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="account/transaction[@value &lt; 0]">
           <xsl:copy-of select="."/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -23,13 +23,13 @@
    
   <xsl:template name="fe-002">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="account/transaction[@value &lt; 0]">
           <transaction nr="{position()}">
             <xsl:copy-of select="@*"/>
           </transaction>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -37,13 +37,13 @@
    
   <xsl:template name="fe-003">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="account/transaction[position() &lt; 5]">
           <transaction nr="{position()}">
             <xsl:copy-of select="@*"/>
           </transaction>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -51,13 +51,13 @@
    
   <xsl:template name="fe-004">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="subsequence(data(account/transaction/@value), 5, 3)">
           <transaction nr="{position()}">
             <xsl:value-of select="."/>
           </transaction>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -65,9 +65,9 @@
    
   <xsl:template name="fe-005" expand-text="yes">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="(//*)[position()=1 to 6]">{position()}:{name()} </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -75,35 +75,35 @@
    
   <xsl:template name="fe-006">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="//*">
           <xsl:sequence select="count(ancestor-or-self::*)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
   <!-- xsl:stream / xsl:for-each / xsl:copy-of with a predicate -->
   
   <xsl:template name="fe-007">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:for-each select="head(/BOOKLIST/BOOKS/ITEM)">
             <xsl:copy-of select="*[namespace-uri(.) = '']"/>
           </xsl:for-each>  
         </out>
-      </xsl:stream>
+      </xsl:source-document>
   </xsl:template>
   
   <!-- within xsl:stream, use parent axis within xsl:for-each -->
    
   <xsl:template name="fe-008">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="account/transaction[position() lt 5]">
           <xsl:sequence select="name(..)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -111,11 +111,11 @@
    
   <xsl:template name="fe-009">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="subsequence(account/transaction, 1, 4)">
           <xsl:sequence select="name(ancestor::*[1])"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -123,11 +123,11 @@
    
   <xsl:template name="fe-010">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="subsequence(account/transaction, 1, 4)">
           <xsl:copy-of select="."/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -135,13 +135,13 @@
    
   <xsl:template name="fe-011">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="account/transaction/@value">
           <xsl:if test=". >= 0">
             <xsl:sequence select="string(.)"/>
           </xsl:if>  
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -149,7 +149,7 @@
    
   <xsl:template name="fe-012">
     <out xmlns="http://loan.shark.com/">
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:for-each select="outermost(//*:extra)">
           <xsl:for-each select="ancestor::*">
             <xsl:copy>
@@ -157,21 +157,21 @@
             </xsl:copy>
           </xsl:for-each>  
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
   <!-- xsl:stream / xsl:for-each / xsl:copy-of with a predicate and some local variables-->
   
   <xsl:template name="fe-013">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:for-each select="head(/BOOKLIST/BOOKS/ITEM)">
             <xsl:variable name="x" select="current-date()"/>
             <xsl:copy-of select="let $y := current-dateTime() return *[namespace-uri(.) != string($x) and local-name(.) != string($y) and name(.) != concat($x, $y)]"/>
           </xsl:for-each>  
         </out>
-      </xsl:stream>
+      </xsl:source-document>
   </xsl:template>       
 
        

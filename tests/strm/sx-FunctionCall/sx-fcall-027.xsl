@@ -9,11 +9,11 @@
     <!-- Not streamable without some very smart analysis... -->
     
     <xsl:template name="main">
-      <xsl:stream href="books.xml">
+      <xsl:source-document streamable="yes" href="books.xml">
         <out>
           <xsl:value-of select="max(//ITEM/DIMENSIONS!f:dimensions(.))"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <xsl:function name="f:dimensions" as="xs:decimal">

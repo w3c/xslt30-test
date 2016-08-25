@@ -811,6 +811,35 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-039">
+      <description>Streamed grouping - group-by</description>
+      <created by="Michael Kay after Dak Tapaal" on="2016-08-23"/>
+      <environment>
+         <source role="." file="si-group-039.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-039.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="si-group-039.out">
+               <assert>/out/group[1][key/@date="2006-02-13"][first/@value="13.24"]</assert>
+               <assert>/out/group[2][key/@date="2006-02-15"][first/@value="-15.00"]</assert>
+               <assert>/out/group[3][key/@date="2006-02-16"][first/@value="6.00"]</assert>
+               <assert>/out/group[4][key/@date="2006-02-17"][first/@value="0.50"]</assert>
+               <assert>/out/group[5][key/@date="2006-02-20"][first/@value="-5.00"]</assert>
+               <assert>/out/group[6][key/@date="2006-02-21"][first/@value="8.99"]</assert>
+               <assert>/out/group[7][key/@date="2006-02-22"][first/@value="16.00"]</assert>
+               <assert>/out/group[8][key/@date="2006-02-23"][first/@value="-2.33"]</assert>
+               <assert>/out/group[9][key/@date="2006-02-24"][first/@value="6.78"]</assert>
+               <assert>/out/group[10][key/@date="2006-02-25"][first/@value="12.00"]</assert>
+               <assert>/out/group[11][key/@date="2006-02-26"][first/@value="14.20"]</assert>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
 
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>
@@ -904,7 +933,7 @@
    </test-case>
    
    <test-case name="si-group-204">
-      <description>Streamed grouping - nested group-by within xsl:fork</description>
+      <description>Streamed grouping - nested group-by within xsl:fork.</description>
       <created by="Michael Kay after Martin Honnen" on="2016-08-08"/>
       <environment>
          <source role="." file="si-group-204.xml" streaming="true"/>
@@ -933,6 +962,41 @@
                   <assert>count(/transactions[@account="43861562"]/year[@value="2016"]/transaction) = 0</assert>
                   <assert>count(/transactions[@account="43861562"]/year[@value="2015"]/transaction) = 0</assert>
                   <assert>count(/transactions[@account="43861562"]/year[@value="2014"]/transaction) = 2</assert>
+               </all-of>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-205">
+      <description>Streamed grouping - nested group-by within xsl:fork.
+         As si-group-204, but the groups are straight copies of the input.
+         This is the classic "coloured widgets" use case where it should be
+         possible to directly stream events from the input file to one
+         of the output files.
+      </description>
+      <created by="Michael Kay after Martin Honnen" on="2016-08-24"/>
+      <environment>
+         <source role="." file="si-group-204.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-205.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="account01826370.xml">
+               <all-of>
+                  <assert>count(/transactions[@account="01826370"]/transaction) = 3</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="account92741838.xml">
+               <all-of>
+                  <assert>count(/transactions[@account="92741838"]/transaction) = 2</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="account43861562.xml">
+               <all-of>
+                  <assert>count(/transactions[@account="43861562"]/transaction) = 2</assert>
                </all-of>
             </assert-result-document>
          </all-of>

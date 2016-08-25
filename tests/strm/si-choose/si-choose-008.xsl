@@ -9,7 +9,7 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/bullets.xml">
+      <xsl:source-document streamable="yes" href="../docs/bullets.xml">
         <xsl:for-each select="/*/*">
           <xsl:choose>
             <xsl:when test="name() = 'p'"><para/></xsl:when>
@@ -20,7 +20,7 @@
             <xsl:otherwise><xsl:copy-of select="."/></xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

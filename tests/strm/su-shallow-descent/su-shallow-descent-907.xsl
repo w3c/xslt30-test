@@ -17,13 +17,13 @@
   </xsl:function>
   
   <xsl:template name="main" >
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM">
           <xsl:sequence select="f:g(., *)"/>
         </xsl:for-each>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
  

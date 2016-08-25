@@ -8,7 +8,7 @@
   <!-- Non-streamable fork/for-each-group: group-by expression not motionless -->
   
   <xsl:template name="xsl:initial-template">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
           <xsl:fork>
             <xsl:for-each-group select="//ITEM" group-by="PRICE">
@@ -16,7 +16,7 @@
             </xsl:for-each-group>
           </xsl:fork>
       </out>  
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   

@@ -5,11 +5,11 @@
  
 
 <xsl:template name="main">
- <xsl:stream href="sf-snapshot-01.xml">
+ <xsl:source-document streamable="yes" href="sf-snapshot-01.xml">
    <out>
     <xsl:sequence select="snapshot(/a/b/c/d/e)"/>
    </out>
- </xsl:stream>  
+ </xsl:source-document>  
 </xsl:template> 
  
 

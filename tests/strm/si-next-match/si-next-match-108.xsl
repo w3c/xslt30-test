@@ -18,7 +18,7 @@
       
     <xsl:template name="main" match="/">
       <out>
-        <xsl:stream href="../docs/loans.xml"><xsl:apply-templates select="." mode="s"/></xsl:stream>
+        <xsl:source-document streamable="yes" href="../docs/loans.xml"><xsl:apply-templates select="." mode="s"/></xsl:source-document>
       </out>
     </xsl:template>
     

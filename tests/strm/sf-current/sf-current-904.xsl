@@ -13,11 +13,11 @@
   <xsl:variable name="cat" select="'MMP'"/>
 
   <xsl:template name="xsl:initial-template">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:apply-templates/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <xsl:template match="ITEM[namespace-uri(current()) = '']">

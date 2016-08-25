@@ -13,11 +13,11 @@
    
   <xsl:template name="fe-001" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction[@value &lt; 0]">
           <xsl:copy-of select="."/>
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -25,13 +25,13 @@
    
   <xsl:template name="fe-002" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction[@value &lt; 0]">
           <transaction nr="{position()}">
             <xsl:copy-of select="@*"/>
           </transaction>
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -39,13 +39,13 @@
    
   <xsl:template name="fe-003" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction[position() &lt; 5]">
           <transaction nr="{position()}">
             <xsl:copy-of select="@*"/>
           </transaction>
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -53,13 +53,13 @@
    
   <xsl:template name="fe-004" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:iterate select="subsequence(data(account/transaction/@value), 5, 3)">
           <transaction nr="{position()}">
             <xsl:value-of select="."/>
           </transaction>
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -67,9 +67,9 @@
    
   <xsl:template name="fe-005" expand-text="yes" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:iterate select="(//*)[position()=1 to 6]">{position()}:{name()} </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -77,11 +77,11 @@
    
   <xsl:template name="fe-006" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:iterate select="//*">
           <xsl:sequence select="count(ancestor-or-self::*)"/>
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -89,11 +89,11 @@
    
   <xsl:template name="fe-008" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction[position() lt 5]">
           <xsl:sequence select="name(..)"/>
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -101,11 +101,11 @@
    
   <xsl:template name="fe-009" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:iterate select="subsequence(account/transaction, 1, 4)">
           <xsl:sequence select="name(ancestor::*[1])"/>
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -113,11 +113,11 @@
    
   <xsl:template name="fe-010" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:iterate select="subsequence(account/transaction, 1, 4)">
           <xsl:copy-of select="."/>
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -125,13 +125,13 @@
    
   <xsl:template name="fe-011" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:iterate select="account/transaction/@value">
           <xsl:if test=". >= 0">
             <xsl:sequence select="string(.)"/>
           </xsl:if>  
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -139,7 +139,7 @@
    
   <xsl:template name="fe-012" use-when="$RUN">
     <out xmlns="http://loan.shark.com/">
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:iterate select="outermost(//*:extra)">
           <xsl:iterate select="ancestor::*">
             <xsl:copy>
@@ -147,7 +147,7 @@
             </xsl:copy>
           </xsl:iterate>  
         </xsl:iterate>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>       
 

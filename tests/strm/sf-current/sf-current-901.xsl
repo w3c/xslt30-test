@@ -10,13 +10,13 @@
     <!-- non-streamable use of current() in predicate -->
     
     <xsl:template name="main" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:for-each select="head(/BOOKLIST/BOOKS/ITEM)">
             <xsl:copy-of select="*[string(.) = string(current())]"/>
           </xsl:for-each>  
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
 

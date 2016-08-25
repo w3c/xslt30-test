@@ -14,7 +14,7 @@
   
   <xsl:template name="f-001" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:sequence>
             <a><xsl:value-of select="round(avg(/BOOKLIST/BOOKS/ITEM/PRICE), 2)"/></a>
@@ -23,7 +23,7 @@
             <b><xsl:value-of select="round(avg(/BOOKLIST/BOOKS/ITEM/PAGES), 2)"/></b>
           </xsl:sequence>
         </xsl:fork>   
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -31,7 +31,7 @@
   
   <xsl:template name="f-002" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:sequence select="'['"/>
           <xsl:sequence>
@@ -42,7 +42,7 @@
           </xsl:sequence>
           <xsl:sequence select="']'"/>
         </xsl:fork>   
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -50,7 +50,7 @@
   
   <xsl:template name="f-003" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:fork>
           <xsl:sequence>
             <xsl:result-document href="debits.xml">
@@ -67,7 +67,7 @@
             </xsl:result-document>  
           </xsl:sequence>
         </xsl:fork>   
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -75,7 +75,7 @@
   
   <xsl:template name="f-004" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <in>
           <xsl:fork>
             <xsl:sequence select="'['"/>
@@ -88,7 +88,7 @@
             <xsl:sequence select="']'"/>
           </xsl:fork> 
         </in>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -96,7 +96,7 @@
   
   <xsl:template name="f-005" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM">
           <xsl:variable name="v" as="xs:anyAtomicType+">
             <xsl:fork>
@@ -108,7 +108,7 @@
           </xsl:variable>
           <book title="{$v[1]}" price-per-page="{round($v[3] div $v[2], 4)}" element="{$v[4]}"/>  
         </xsl:for-each>
-      </xsl:stream>  
+      </xsl:source-document>  
     </out>
   </xsl:template>
   
@@ -116,7 +116,7 @@
   
   <xsl:template name="f-006" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM">
           <book>
             <xsl:fork>
@@ -127,7 +127,7 @@
             </xsl:fork>
           </book>      
         </xsl:for-each>
-      </xsl:stream>  
+      </xsl:source-document>  
     </out>
   </xsl:template>
   
@@ -135,7 +135,7 @@
   
   <xsl:template name="f-007" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
             <xsl:fork>
               <xsl:sequence select="sum(outermost(//PAGES))"/>
               <xsl:sequence>
@@ -146,7 +146,7 @@
               </xsl:sequence>    
               <xsl:sequence select="round(avg(outermost(//PRICE)), 2)"/>
             </xsl:fork>
-      </xsl:stream>  
+      </xsl:source-document>  
     </out>
   </xsl:template>
   
@@ -154,7 +154,7 @@
   
   <xsl:template name="f-008" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:try>
             <xsl:fork>
               <xsl:sequence select="sum(outermost(//PAGES))"/>
@@ -163,7 +163,7 @@
             </xsl:fork>
            <xsl:catch errors="*:XPTY0004"/>
          </xsl:try>
-      </xsl:stream>  
+      </xsl:source-document>  
     </out>
   </xsl:template>
   
@@ -171,7 +171,7 @@
   
   <xsl:template name="f-009" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM">
           <book>
             <xsl:fork>
@@ -190,7 +190,7 @@
             </xsl:fork>
           </book>      
         </xsl:for-each>
-      </xsl:stream>  
+      </xsl:source-document>  
     </out>
   </xsl:template>
   

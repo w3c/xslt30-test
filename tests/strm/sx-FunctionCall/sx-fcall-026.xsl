@@ -11,11 +11,11 @@
          So the remaining problem is that there are two downward selections. -->
     
     <xsl:template name="main">
-      <xsl:stream href="books.xml">
+      <xsl:source-document streamable="yes" href="books.xml">
         <out>
           <xsl:value-of select="/BOOKLIST/BOOKS/ITEM[f:largestSide(.) gt 20]/TITLE" separator=","/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <xsl:function name="f:largestSide" as="xs:decimal">

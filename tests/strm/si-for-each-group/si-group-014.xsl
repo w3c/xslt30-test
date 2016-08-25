@@ -8,7 +8,7 @@
   
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group select="account/transaction"
          group-adjacent="year-from-date(xs:date(@date)), format-date(xs:date(@date), '[W]')"
          composite="yes">
@@ -16,7 +16,7 @@
             <total><xsl:value-of select="sum(current-group()/xs:decimal(@value))"/></total>
          </batch>
         </xsl:for-each-group> 
-      </xsl:stream>
+      </xsl:source-document>
     </out>  
   </xsl:template> 
 

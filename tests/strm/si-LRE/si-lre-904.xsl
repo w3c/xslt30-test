@@ -16,13 +16,13 @@
   
   <xsl:template name="cy-904" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:for-each select="*">
           <dddd xsl:use-attribute-sets="as-5">
             <xsl:sequence select="*" />
           </dddd>
         </xsl:for-each>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   

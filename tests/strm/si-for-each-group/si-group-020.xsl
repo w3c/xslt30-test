@@ -7,14 +7,14 @@
   <!-- within xsl:stream, use xsl:for-each-group group-adjacent, position reference to group only-->
 
   <xsl:template name="main">
-    <xsl:stream href="../docs/transactions.xml">
+    <xsl:source-document streamable="yes" href="../docs/transactions.xml">
      <out>
       <xsl:for-each-group select="/account/transaction"
          group-adjacent="@date">
          <g pos="{position()}"/>
       </xsl:for-each-group> 
      </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
 
        

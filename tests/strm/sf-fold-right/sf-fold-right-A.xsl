@@ -22,11 +22,11 @@
     <!-- Test of xsl:stream with fold-right() -->
     
     <xsl:template name="s-003" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="fold-right(./BOOKLIST/BOOKS/ITEM/PRICE/data(), 0, f:add#2)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
 

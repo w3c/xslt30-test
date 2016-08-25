@@ -16,13 +16,13 @@
   </xsl:function>
   
   <xsl:template name="t-001" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:for-each select="f:alternate-children(/BOOKLIST/BOOKS)">
           <xsl:copy-of select="TITLE"/>
         </xsl:for-each>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-- Test arity=1 recursive shallow-descent function -->
@@ -35,19 +35,19 @@
   </xsl:function>
   
   <xsl:template name="t-002" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:copy-of select="f:odd-children(/BOOKLIST, 2)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <xsl:template name="t-003" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:copy-of select="f:odd-children(copy-of(/BOOKLIST), 2)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-- Motionless body is allowed -->
@@ -60,11 +60,11 @@
   </xsl:function>
   
   <xsl:template name="t-004" use-when="true() or $RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:copy-of select="f:first-born(/BOOKLIST)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 <!--  
   <!-\- Test arity=2 shallow-descent function -\->
@@ -76,11 +76,11 @@
   </xsl:function>
   
   <xsl:template name="t-003" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="/BOOKLIST/BOOKS/ITEM/WEIGHT ! f:get-attribute-value-003(., 'UNIT')"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-\- Test arity=2 shallow-descent function with recursion -\->
@@ -96,11 +96,11 @@
   </xsl:function>
   
   <xsl:template name="t-004" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="/BOOKLIST/BOOKS/ITEM/WEIGHT ! f:get-inherited-attribute-value-004(., 'CAT')"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-\- Test arity=1 recursive shallow-descent function returning an ancestor node-\->
@@ -111,11 +111,11 @@
   </xsl:function>
   
   <xsl:template name="t-005" use-when="$RUN">
-    <xsl:stream href="../docs/recursive.xml">
+    <xsl:source-document streamable="yes" href="../docs/recursive.xml">
       <out>
         <xsl:value-of select="//foot ! f:outermost-section(.) ! @id"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-\- Test arity=1 shallow-descent function returning an ancestor node-\->
@@ -126,11 +126,11 @@
   </xsl:function>
   
   <xsl:template name="t-006" use-when="$RUN">
-    <xsl:stream href="../docs/recursive.xml">
+    <xsl:source-document streamable="yes" href="../docs/recursive.xml">
       <out>
         <xsl:value-of select="//foot ! f:outermost-section-id(.) ! @id"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
  

@@ -12,13 +12,13 @@
     <!-- Test of xsl:stream with xsl:call-template with a grounded context node -->
     
     <xsl:template name="c-001" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:for-each select="/BOOKLIST/BOOKS/ITEM/copy-of(.)">
              <xsl:call-template name="c-001a"/>
           </xsl:for-each>   
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <xsl:template name="c-001a">
@@ -28,7 +28,7 @@
     <!-- Use xsl:call-template with prohibited context item and atomized parameter -->
     
     <xsl:template name="c-002" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:for-each select="/BOOKLIST/BOOKS/ITEM">
              <xsl:call-template name="c-002a">
@@ -36,7 +36,7 @@
              </xsl:call-template>
           </xsl:for-each>   
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <xsl:template name="c-002a">

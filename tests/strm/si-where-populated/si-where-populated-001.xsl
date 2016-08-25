@@ -6,7 +6,7 @@
    <xsl:mode streamable="yes" on-no-match="shallow-copy"/>
 
    <xsl:template name="main">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <first>one</first>
@@ -15,7 +15,7 @@
                  <last>last</last>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>
 
 </xsl:stylesheet>

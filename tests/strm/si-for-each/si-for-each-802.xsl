@@ -4,12 +4,12 @@
     <xsl:param name="node-name" required="yes"/>
     <xsl:mode streamable="yes"/>
     <xsl:template name="main">
-      <xsl:stream href="si-for-each-801.xml">
+      <xsl:source-document streamable="yes" href="si-for-each-801.xml">
         <root>
             <xsl:for-each select="//node()[name() = $node-name]">
                 <found/>
             </xsl:for-each>
         </root>
-      </xsl:stream>  
+      </xsl:source-document>  
     </xsl:template>
 </xsl:stylesheet>

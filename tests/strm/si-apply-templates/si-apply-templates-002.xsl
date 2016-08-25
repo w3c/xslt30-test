@@ -6,11 +6,11 @@
    <xsl:mode streamable="yes" on-no-match="shallow-copy"/>
 
    <xsl:template match="/">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:apply-templates select="BOOKLIST/CATEGORIES" />
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>
 
    <xsl:template match="CATEGORY">

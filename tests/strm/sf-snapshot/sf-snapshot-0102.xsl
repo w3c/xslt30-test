@@ -7,7 +7,7 @@
  implementation given in the XSLT spec --> 
  
 <xsl:template name="main">
- <xsl:stream href="sf-snapshot-01.xml">
+ <xsl:source-document streamable="yes" href="sf-snapshot-01.xml">
   <out>
    <xsl:for-each select="snapshot(//*)">
     <xsl:variable name="p" select="position()" as="xs:integer"/>
@@ -21,7 +21,7 @@
     </xsl:if>
    </xsl:for-each>
   </out>
- </xsl:stream>   
+ </xsl:source-document>   
 </xsl:template> 
 
 

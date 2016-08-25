@@ -16,11 +16,11 @@
   </xsl:function>
   
   <xsl:template name="main">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="f:count-descendants-or-self(/BOOKLIST/BOOKS/ITEM)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
 </xsl:stylesheet>

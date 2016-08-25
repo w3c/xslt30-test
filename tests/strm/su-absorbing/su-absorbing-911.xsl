@@ -16,14 +16,14 @@
   </xsl:function>
   
   <xsl:template name="main">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:try>
           <xsl:value-of select="f:z(/BOOKLIST/BOOKS/ITEM)"/>
           <xsl:catch errors="*:FOAR0001">divide-by-zero</xsl:catch>
         </xsl:try>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
 </xsl:stylesheet>

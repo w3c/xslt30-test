@@ -8,9 +8,9 @@
 
 <xsl:template name="main">
 <out>
- <xsl:stream href="{$input-xml}">
+ <xsl:source-document streamable="yes" href="{$input-xml}">
    <xsl:apply-templates select="Report/Document/copy-of()"/>
- </xsl:stream>
+ </xsl:source-document>
 </out> 
 </xsl:template>
 

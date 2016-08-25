@@ -10,7 +10,7 @@
   <!-- Test of xsl:where-populated with xsl:element (not empty) -->
 
   <xsl:template name="s-001" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:where-populated>
           <xsl:element name="a">
@@ -18,13 +18,13 @@
           </xsl:element>
         </xsl:where-populated>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-- Test of xsl:where-populated with multiple elements, some empty -->
   
   <xsl:template name="s-002" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <first>one</first>
@@ -33,25 +33,25 @@
                  <last>last</last>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template> 
    
    <!-- Test of xsl:where-populated with atomic values, some empty -->
   
   <xsl:template name="s-003" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <out>
                <xsl:where-populated>
                  <xsl:sequence select="23, '', xs:date('2011-01-01'), xs:untypedAtomic(''), 0, /JUNK, xs:base64Binary('')"/>
                </xsl:where-populated>
            </out>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>
    
    <!-- Test of xsl:where-populated with xsl:if -->
 
   <xsl:template name="s-004" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:where-populated>
           <a>
@@ -61,13 +61,13 @@
           </a>
         </xsl:where-populated>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with xsl:if -->
 
   <xsl:template name="s-005" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:where-populated>
           <a>
@@ -77,13 +77,13 @@
           </a>
         </xsl:where-populated>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with xsl:for-each -->
 
   <xsl:template name="s-006" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:where-populated>
           <ul>
@@ -93,13 +93,13 @@
           </ul>
         </xsl:where-populated>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with xsl:for-each -->
 
   <xsl:template name="s-007" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:where-populated>
           <ul>
@@ -109,13 +109,13 @@
           </ul>
         </xsl:where-populated>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with comment nodes -->
 
   <xsl:template name="s-008" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:for-each select="outermost(//ITEM)">
           <in>
@@ -128,13 +128,13 @@
           </in>  
          </xsl:for-each>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with text nodes -->
 
   <xsl:template name="s-009" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:for-each select="outermost(//ITEM)">
           <in>
@@ -147,13 +147,13 @@
           </in>  
          </xsl:for-each>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with xsl:fork -->
 
   <xsl:template name="s-010" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:where-populated>
           <a>
@@ -164,13 +164,13 @@
           </a>
         </xsl:where-populated>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with xsl:fork -->
 
   <xsl:template name="s-011" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:where-populated>
           <a>
@@ -181,13 +181,13 @@
           </a>
         </xsl:where-populated>  
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-- Test of xsl:where-populated with document nodes -->
   
   <xsl:template name="s-012" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:variable name="t" as="document-node()?">          
           <xsl:where-populated>
@@ -198,13 +198,13 @@
         </xsl:variable>
         <in value="{empty($t)}"/>     
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with maps (bug 28989) -->
   
   <xsl:template name="s-013" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:variable name="m" as="map(*)?">          
           <xsl:where-populated>
@@ -218,13 +218,13 @@
         </xsl:variable>
         <in count="{count($m)}"/>     
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
   
   <!-- Test of xsl:where-populated with maps (bug 28989) -->
   
   <xsl:template name="s-014" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:variable name="m" as="map(*)?">          
           <xsl:where-populated>
@@ -238,13 +238,13 @@
         </xsl:variable>
         <in count="{count($m)}"/>     
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
  
   <!-- Test of xsl:where-populated with elements having attributes and namespaces -->
   
   <xsl:template name="s-015" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <first one='non-empty'>one</first>
@@ -253,13 +253,13 @@
                  <fourth xmlns:x='http://abc.com/'/>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>  
    
    <!-- Test of xsl:where-populated with free-standing attributes -->
   
   <xsl:template name="s-016" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <xsl:attribute name="x" select="17"/>
@@ -268,19 +268,19 @@
                  <xsl:attribute name="y" select="substring(string(current-date()), 842)"/>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>  
    
    <!-- A namespace node with zero-length string value is an error even within where-populated -->
   
   <xsl:template name="s-017" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <xsl:namespace name="x" select="substring(string(current-date()), 842)"/>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>
    
    <!-- Test of xsl:where-populated with zero-length text nodes. Note that these are
@@ -288,7 +288,7 @@
    either side become adjacent. -->
   
   <xsl:template name="s-018" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <xsl:sequence select="17"/>
@@ -300,13 +300,13 @@
                  <xsl:value-of>17 92 55</xsl:value-of>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>  
    
    <!-- Test of xsl:where-populated with zero-length comments. -->
   
   <xsl:template name="s-019" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <xsl:text>1:</xsl:text>
@@ -315,13 +315,13 @@
                  <xsl:comment select="unparsed-entity-uri('fandango')"/>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>     
    
    <!-- Test of xsl:where-populated with zero-length processing-instructions. -->
   
   <xsl:template name="s-020" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <xsl:text>1:</xsl:text>
@@ -330,13 +330,13 @@
                  <xsl:processing-instruction name="pi" select="unparsed-entity-uri('fandango')"/>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>
    
    <!-- Test of xsl:where-populated including local variables. -->
   
   <xsl:template name="s-021" use-when="$RUN">
-       <xsl:stream href="../docs/books.xml">
+       <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
                <xsl:where-populated>
                  <xsl:variable name="x"/>
@@ -349,7 +349,7 @@
                  <b><xsl:value-of select="$yy||$yy"/></b>
                </xsl:where-populated>
            </Results>
-       </xsl:stream>
+       </xsl:source-document>
    </xsl:template>         
  
 

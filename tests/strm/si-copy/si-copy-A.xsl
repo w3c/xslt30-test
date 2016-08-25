@@ -9,11 +9,11 @@
 
   <xsl:template name="cy-001" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="account/transaction[@value &lt; 0]/@value">
           <xsl:copy select="data(.)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -21,11 +21,11 @@
 
   <xsl:template name="cy-002" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="data(account/transaction[@value &lt; 0]/@value), 101, 102">
           <xsl:copy/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -33,14 +33,14 @@
 
   <xsl:template name="cy-003" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:variable name="atts" as="attribute(*)*">
           <xsl:for-each select="account/transaction[@value &lt; 0]/@value">
             <xsl:copy/>
           </xsl:for-each>
         </xsl:variable>
         <xsl:copy-of select="data($atts)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -52,14 +52,14 @@
       <PRICE value="102"/>
     </xsl:variable>
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:variable name="atts" as="attribute(*)*">
           <xsl:for-each select="account/transaction[@value &lt; 0]/@value, $extra/@value">
             <xsl:copy/>
           </xsl:for-each>
         </xsl:variable>
         <xsl:copy-of select="data($atts)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -67,13 +67,13 @@
 
   <xsl:template name="cy-005" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM/PRICE">
           <xsl:copy>
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -81,11 +81,11 @@
 
   <xsl:template name="cy-006" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM/PRICE/text()">
           <xsl:copy/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -93,11 +93,11 @@
 
   <xsl:template name="cy-007" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="/BOOKLIST/BOOKS/ITEM/PRICE/text(), 101, 102">
           <xsl:copy/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -109,13 +109,13 @@
       <PRICE>101.00</PRICE>
     </xsl:variable>
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="$extra, /BOOKLIST/BOOKS/ITEM/PRICE">
           <xsl:copy>
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -123,11 +123,11 @@
 
   <xsl:template name="cy-009" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="outermost(//PRICE)">
           <xsl:copy select="text()"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -135,13 +135,13 @@
 
   <xsl:template name="cy-010" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="100, 101, /BOOKLIST/BOOKS/ITEM/PRICE">
           <xsl:copy>
             <xsl:value-of select="text()"/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -149,13 +149,13 @@
 
   <xsl:template name="cy-011" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <head/>
         <xsl:copy>
           <xsl:copy-of select="child::node()"/>
         </xsl:copy>
         <tail/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -163,13 +163,13 @@
 
   <xsl:template name="cy-020" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:for-each select="/*/*:description">
           <xsl:copy copy-namespaces="no">
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -177,13 +177,13 @@
 
   <xsl:template name="cy-021" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:for-each select="/*/*:description">
           <xsl:copy copy-namespaces="yes">
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -191,13 +191,13 @@
 
   <xsl:template name="cy-022" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:for-each select="/*/*:description">
           <xsl:copy copy-namespaces="no" validation="strip">
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -205,13 +205,13 @@
 
   <xsl:template name="cy-023" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:for-each select="/*/*:description">
           <xsl:copy copy-namespaces="no" validation="preserve">
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -219,13 +219,13 @@
 
   <xsl:template name="cy-024" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:for-each select="/*/*:description">
           <xsl:copy copy-namespaces="no" validation="lax">
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -233,13 +233,13 @@
 
   <xsl:template name="cy-025" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:for-each select="copy-of(/*/*:description)">
           <xsl:copy copy-namespaces="yes">
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -247,13 +247,13 @@
 
   <xsl:template name="cy-026" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:for-each select="copy-of(/*/*:description)">
           <xsl:copy copy-namespaces="no">
             <xsl:value-of select="."/>
           </xsl:copy>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -261,9 +261,9 @@
 
   <xsl:template name="cy-027" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:copy select="/*/*"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -271,7 +271,7 @@
 
   <xsl:template name="cy-028" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:copy>
           <xsl:copy select="*">
             <xsl:copy select="*:cityObjectMember[1]">
@@ -281,7 +281,7 @@
             </xsl:copy>
           </xsl:copy>
         </xsl:copy>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -294,9 +294,9 @@
 
   <xsl:template name="cy-029" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:copy select="*" use-attribute-sets="as-1"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -307,14 +307,14 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:where-populated>
           <xsl:copy select="/*[@dummy='not-there']">
             <b/>
           </xsl:copy>
         </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -325,7 +325,7 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:where-populated>
           <xsl:copy select="/*">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
@@ -334,7 +334,7 @@
           </xsl:copy>
         </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -345,7 +345,7 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:where-populated>
           <xsl:copy>
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
@@ -354,7 +354,7 @@
           </xsl:copy>
         </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -365,7 +365,7 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:where-populated>
           <xsl:copy>
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
@@ -374,7 +374,7 @@
           </xsl:copy>
         </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -385,7 +385,7 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/special.xml">
+      <xsl:source-document streamable="yes" href="../docs/special.xml">
         <xsl:where-populated>
           <xsl:copy select="special/comment()[2]">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
@@ -394,7 +394,7 @@
           </xsl:copy>
         </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -405,7 +405,7 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/special.xml">
+      <xsl:source-document streamable="yes" href="../docs/special.xml">
         <xsl:where-populated>
           <xsl:copy select="special/processing-instruction()[2]">
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
@@ -414,7 +414,7 @@
           </xsl:copy>
         </xsl:where-populated>
         <xsl:on-empty select="$a/a"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -425,10 +425,10 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/special.xml">
+      <xsl:source-document streamable="yes" href="../docs/special.xml">
         <xsl:copy select="special/f/@a"/>
         <xsl:on-empty select="$a/a"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -439,12 +439,12 @@
       <xsl:variable name="a">
         <is-empty/>
       </xsl:variable>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:copy select="/*">
           <xsl:copy-of select="a/b/c/d/e/f/g"/>
           <xsl:on-empty select="$a/is-empty"/>
         </xsl:copy>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -455,12 +455,12 @@
       <xsl:variable name="a">
         <is-empty/>
       </xsl:variable>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:copy>
           <xsl:copy-of select="a/b/c/d/e/f/g"/>
           <xsl:on-empty select="$a/is-empty"/>
         </xsl:copy>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -471,13 +471,13 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:where-populated>
           <xsl:copy select="/*">
             <xsl:copy-of select="a/b/c/d/e/f/g"/>
           </xsl:copy>
         </xsl:where-populated>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -488,13 +488,13 @@
       <xsl:variable name="a">
         <a/>
       </xsl:variable>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:where-populated>
           <xsl:copy>
             <xsl:copy-of select="a/b/c/d/e/f/g"/>
           </xsl:copy>
         </xsl:where-populated>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

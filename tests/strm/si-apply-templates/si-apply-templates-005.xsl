@@ -12,11 +12,11 @@
 
   <xsl:template name="main">
    <out>
-    <xsl:stream href="si-apply-templates-003.xml">
+    <xsl:source-document streamable="yes" href="si-apply-templates-003.xml">
       <xsl:apply-templates select="." mode="s">
         <xsl:with-param name="a" select="'a'" tunnel="yes"/>
       </xsl:apply-templates>
-    </xsl:stream>
+    </xsl:source-document>
    </out>   
   </xsl:template>
 </xsl:stylesheet>

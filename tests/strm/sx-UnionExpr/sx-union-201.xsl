@@ -28,11 +28,11 @@
    (though the rules for scanning expressions could easily be extended to cover this case) -->
   
   <xsl:template name="xsl:initial-template" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:copy-of select="($extraItem | //ITEM)/PRICE"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
             
     

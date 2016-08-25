@@ -16,11 +16,11 @@
     <!-- Streaming filter(): grounded atomic operand -->
     
     <xsl:template name="r-003" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:value-of select="/BOOKLIST/BOOKS/ITEM/DIMENSIONS ! filter(tokenize(., ' '), f:test#1)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
             

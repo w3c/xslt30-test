@@ -27,11 +27,11 @@
   <!-- Mixed crawling and grounded sequence. Not streamable (the LHS of "/" is not a scanning expression) -->
   
   <xsl:template name="xsl:initial-template" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:copy-of select="($extraItem, //ITEM)/PRICE"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
             
     

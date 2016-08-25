@@ -9,12 +9,12 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/bullets.xml">
+      <xsl:source-document streamable="yes" href="../docs/bullets.xml">
         <xsl:variable name="current" select="."/>
         <xsl:for-each select="1 to 5">
            <in><xsl:value-of select=". + count($current/*[current()])"/></in>
         </xsl:for-each>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

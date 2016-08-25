@@ -14,11 +14,11 @@
   </xsl:function>
 
   <xsl:template name="t-001" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[position() ne f:f-001()]"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <!-- Test arity=1 unclassified function that atomizes first argument -->
@@ -29,11 +29,11 @@
   </xsl:function>
 
   <xsl:template name="t-002" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="f:f-002(/BOOKLIST/BOOKS/ITEM/PRICE)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <!-- Test arity=1 unclassified recursive function that atomizes first argument -->
@@ -45,11 +45,11 @@
 
   <xsl:template name="t-003" use-when="true() or $RUN">
     <!--<test><xsl:value-of select="f:f-003(doc('../docs/books.xml')/BOOKLIST/BOOKS/ITEM/PRICE)"/></test>-->
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="f:f-003(/BOOKLIST/BOOKS/ITEM/PRICE)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <!-- Test arity=2 unclassified function that atomizes first argument -->
@@ -61,11 +61,11 @@
   </xsl:function>
 
   <xsl:template name="t-004" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="f:f-004(/BOOKLIST/BOOKS/ITEM/PRICE, 2)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <!-- Test arity=2 unclassified recursive function that atomizes first argument -->
@@ -77,12 +77,12 @@
   </xsl:function>
 
   <xsl:template name="t-005" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <!--<test><xsl:value-of select="f:f-005(doc('../docs/books.xml')/BOOKLIST/BOOKS/ITEM/PRICE, 2)"/></test>-->
       <out>
         <xsl:sequence select="f:f-005(/BOOKLIST/BOOKS/ITEM/PRICE, 2)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-- Test arity=2 unclassified recursive function that atomizes second argument -->
@@ -94,12 +94,12 @@
   </xsl:function>
   
   <xsl:template name="t-006" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <!--<test><xsl:value-of select="f:f-005(doc('../docs/books.xml')/BOOKLIST/BOOKS/ITEM/PRICE, 2)"/></test>-->
       <out>
         <xsl:sequence select="f:f-006(2, /BOOKLIST/BOOKS/ITEM/PRICE)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
 

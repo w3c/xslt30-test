@@ -16,11 +16,11 @@
   </xsl:function>
   
   <xsl:template name="main" >
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="(/BOOKLIST/BOOKS/ITEM/*) ! f:enumerate(.)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
  

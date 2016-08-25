@@ -10,74 +10,74 @@
     <!-- Streaming zero-or-one(): grounded operand -->
     
     <xsl:template name="r-001" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:value-of select="zero-or-one(copy-of(/BOOKLIST/BOOKS/ITEM/PRICE))"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <!-- Streaming zero-or-one(): grounded operand -->
     
     <xsl:template name="r-002" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="zero-or-one(copy-of(/BOOKLIST/BOOKS/ITEM)[TITLE='Pride and Prejudice'])"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <!-- Streaming zero-or-one(): grounded operand -->
     
     <xsl:template name="r-003" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="zero-or-one(copy-of(/BOOKLIST/BOOKS/ITEM)[TITLE='Pride and Jealousy'])"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <!-- Streaming zero-or-one(): striding operand - error case -->
     
     <xsl:template name="r-004" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:value-of select="zero-or-one(/BOOKLIST/BOOKS/ITEM/PRICE)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <!-- Streaming zero-or-one(): striding operand -->
     
     <xsl:template name="r-005" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="zero-or-one(/BOOKLIST/BOOKS/ITEM[@CAT='H'])"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <!-- Streaming zero-or-one(): striding operand -->
     
     <xsl:template name="r-006" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="zero-or-one(/BOOKLIST/BOOKS/ITEM[@CAT='J'])"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <!-- Streaming zero-or-one(): striding operand - error case, recovered -->
     
     <xsl:template name="r-007" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:try>
              <xsl:value-of select="zero-or-one(/BOOKLIST/BOOKS/ITEM/PRICE)"/>
              <xsl:catch errors="*:FORG0003" select="'caught'"/>
           </xsl:try>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>    
     
 

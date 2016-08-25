@@ -10,7 +10,7 @@
     
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/bullets.xml">
+      <xsl:source-document streamable="yes" href="../docs/bullets.xml">
         <xsl:for-each-group select="chapter/*" group-adjacent="node-name()">
           <xsl:choose>
             <xsl:when test="self::bullet">
@@ -23,7 +23,7 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>  
   </xsl:template> 
 

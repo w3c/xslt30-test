@@ -16,11 +16,11 @@
     <!-- Streaming filter(): striding operand -->
     
     <xsl:template name="r-001" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:value-of select="filter(/BOOKLIST/BOOKS/ITEM/PRICE, f:test#1)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
       
     

@@ -9,11 +9,11 @@
    
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each select="account/transaction[@value &lt; 0]">
           <xsl:sequence select="."/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template> 
 

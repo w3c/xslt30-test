@@ -12,13 +12,13 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/bullets.xml">
+      <xsl:source-document streamable="yes" href="../docs/bullets.xml">
         <in/>
         <xsl:if test="current-date() gt xs:date('1900-01-01')">
             <xsl:apply-templates mode="s"/>
         </xsl:if>
         <in/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

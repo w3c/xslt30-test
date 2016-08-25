@@ -10,7 +10,7 @@
        
     
   <xsl:template name="main">
-    <xsl:stream href="../docs/transactions.xml">
+    <xsl:source-document streamable="yes" href="../docs/transactions.xml">
      <out>
       <xsl:for-each-group select="account/transaction" group-adjacent="@date">
          <batch date="{current-grouping-key()}">
@@ -18,7 +18,7 @@
          </batch>
       </xsl:for-each-group> 
      </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
 
 

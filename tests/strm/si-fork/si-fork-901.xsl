@@ -13,7 +13,7 @@
   <!-- Non-streamable fork: returns streamed nodes -->
   
   <xsl:template name="f-901" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:for-each select="BOOKLIST/BOOKS/ITEM">
           <xsl:fork>
@@ -22,7 +22,7 @@
           </xsl:fork>
         </xsl:for-each>
       </out>  
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   

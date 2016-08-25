@@ -13,11 +13,11 @@
    
   <xsl:template name="feg-001" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group group-adjacent="position()" select="account/transaction[@value &lt; 0]">
           <xsl:copy-of select="current-group()"/>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -25,13 +25,13 @@
    
   <xsl:template name="feg-002">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group group-adjacent="position()" select="account/transaction[@value &lt; 0]">
           <transaction nr="{position()}">
             <xsl:copy-of select="current-group()/@*"/>
           </transaction>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -39,13 +39,13 @@
    
   <xsl:template name="feg-003">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group group-adjacent="position()" select="account/transaction[position() &lt; 5]">
           <transaction nr="{position()}">
             <xsl:copy-of select="current-group()/@*"/>
           </transaction>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -53,13 +53,13 @@
    
   <xsl:template name="feg-004">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group group-adjacent="position()" select="subsequence(data(account/transaction/@value), 5, 3)">
           <transaction nr="{position()}">
             <xsl:value-of select="current-group()"/>
           </transaction>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -67,9 +67,9 @@
    
   <xsl:template name="feg-005" expand-text="yes">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each-group group-adjacent="position()" select="(//*)[position()=1 to 6]">{position()}:{name()}</xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -77,11 +77,11 @@
    
   <xsl:template name="feg-006" use-when="false()">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each-group group-adjacent="position()" select="//*">
           <xsl:sequence select="count(current-group()/ancestor-or-self::*)"/>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -89,11 +89,11 @@
    
   <xsl:template name="feg-008">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group group-adjacent="position()" select="account/transaction[position() lt 5]">
           <xsl:sequence select="current-group()/name(..)"/>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -101,11 +101,11 @@
    
   <xsl:template name="feg-009">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group group-adjacent="position()" select="subsequence(account/transaction, 1, 4)">
           <xsl:sequence select="current-group()/name(ancestor::*[1])"/>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -113,11 +113,11 @@
    
   <xsl:template name="feg-010">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group group-adjacent="position()" select="subsequence(account/transaction, 1, 4)">
           <xsl:copy-of select="current-group()"/>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -125,13 +125,13 @@
    
   <xsl:template name="feg-011">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:for-each-group group-adjacent="position()" select="account/transaction/@value">
           <xsl:if test=". >= 0">
             <xsl:sequence select="current-group()/string(.)"/>
           </xsl:if>  
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -139,7 +139,7 @@
    
   <xsl:template name="feg-012">
     <out xmlns="http://loan.shark.com/">
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:for-each-group group-adjacent="position()" select="outermost(//*:extra)">
           <xsl:for-each-group group-adjacent="position()" select="ancestor::*">
             <xsl:copy>
@@ -147,7 +147,7 @@
             </xsl:copy>
           </xsl:for-each-group>  
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>       
 

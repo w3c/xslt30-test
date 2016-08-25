@@ -10,12 +10,12 @@
     <xsl:mode streamable="yes" on-no-match="shallow-copy"/>
     
     <xsl:template name="main">
-        <xsl:stream href="si-copy-of-801.xml">
+        <xsl:source-document streamable="yes" href="si-copy-of-801.xml">
             <xsl:apply-templates
                 select="copy-of(outermost(//p))[.//*[local-name() = $word-type]]">
                 <xsl:with-param name="tagName" select="$word-type" tunnel="yes"/>
             </xsl:apply-templates>
-        </xsl:stream>      
+        </xsl:source-document>      
     </xsl:template>
     
     <xsl:template match="*">

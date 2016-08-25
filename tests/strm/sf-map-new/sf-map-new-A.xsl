@@ -14,7 +14,7 @@
   
   <xsl:template name="m-001" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS/ITEM">
           <xsl:variable name="m" as="map(*)">
             <xsl:map>
@@ -26,7 +26,7 @@
           </xsl:variable>
           <book author="{$m('author')}" title="{$m('title')}" price="{$m('price')}" publisher="{$m('publisher')}"/>     
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -34,7 +34,7 @@
   
   <xsl:template name="m-002" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
           <xsl:variable name="m" as="map(*)">
             <xsl:map>
               <xsl:map-entry key="'authors'" select="/BOOKLIST/BOOKS/ITEM/AUTHOR/string()"/>
@@ -44,7 +44,7 @@
             </xsl:map>
           </xsl:variable>
           <books authors="{$m('authors')}" titles="{$m('titles')}" prices="{$m('prices')}" publishers="{$m('publishers')}"/>     
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -52,7 +52,7 @@
   
   <xsl:template name="m-003" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS/ITEM">
           <xsl:variable name="m" as="map(*)">
             <xsl:map>
@@ -63,7 +63,7 @@
           </xsl:variable>
           <book author="{$m('author')}" title="{$m('title')}" price="{$m('price')}" publisher="{$m('publisher')}"/>     
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -71,7 +71,7 @@
   
   <xsl:template name="m-004" use-when="$RUN" expand-text="yes">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
           <xsl:variable name="m" as="map(*)">
             <xsl:map>
               <xsl:map-entry key="'min'" select="min(outermost(//PRICE)/number())"/>
@@ -80,7 +80,7 @@
           </xsl:variable>
           <min>{$m('min')}</min> 
           <max>{$m('max')}</max>    
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>  
   
@@ -88,7 +88,7 @@
   
   <xsl:template name="m-005" use-when="$RUN" expand-text="yes">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
           <xsl:variable name="m" as="map(*)">
             <xsl:map>
               <xsl:map-entry key="'min'" select="outermost(//PRICEZZZ)/number()"/>
@@ -97,7 +97,7 @@
           </xsl:variable>
           <min>{count($m('min'))}</min> 
           <max>{count($m('max'))}</max>    
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -105,7 +105,7 @@
   
   <xsl:template name="m-006" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS/ITEM[1]">
           <xsl:variable name="m" as="map(*)">
             <xsl:map>
@@ -116,7 +116,7 @@
           </xsl:variable>
           <xsl:if test="$m('Jane Austen') and $m('Pride and Prejudice')"><ok/></xsl:if>    
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -125,7 +125,7 @@
   <xsl:template name="m-007" use-when="$RUN">
     <xsl:param name="a" select="'author'"/>
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS/ITEM">
           <xsl:variable name="m" as="map(*)">
             <xsl:map>
@@ -137,7 +137,7 @@
           </xsl:variable>
           <book author="{$m('author')}" title="{$m('title')}" price="{$m('price')}" publisher="{$m('publisher')}"/>     
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template> 
   
@@ -148,7 +148,7 @@
       <xsl:map-entry key="'outcome'" select="'success'"/>
     </xsl:param>
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS/ITEM">
           <xsl:variable name="m" as="map(*)">
             <xsl:map>
@@ -158,7 +158,7 @@
           </xsl:variable>
           <book author="{$m('AUTHOR')}" title="{$m('TITLE')}" price="{$m('PRICE')}" publisher="{$m('PUBLISHER')}" outcome="{$m('outcome')}"/>     
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   

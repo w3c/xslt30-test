@@ -10,11 +10,11 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="//ITEM/TITLE">
            <title><xsl:value-of select="."/></title>
         </xsl:for-each>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

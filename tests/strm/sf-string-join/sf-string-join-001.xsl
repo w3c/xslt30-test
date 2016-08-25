@@ -8,31 +8,31 @@
     <!-- Test of xsl:stream calling string-join(), first argument consuming and striding  -->
     
     <xsl:template name="j-001">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:value-of select="string-join(/BOOKLIST/BOOKS/ITEM/TITLE, ', ')"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <!-- Test of xsl:stream calling string-join(), first argument motionless, second argument streamed  -->
     
     <xsl:template name="j-002">      
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:value-of select="string-join((1 to 10)!string(), /BOOKLIST/BOOKS/ITEM[1]/@CAT)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <!-- Test of xsl:stream calling string-join(), first argument consuming and striding, second argument omitted  -->
     
     <xsl:template name="j-003">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:value-of select="string-join(/BOOKLIST/BOOKS/ITEM/TITLE)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     

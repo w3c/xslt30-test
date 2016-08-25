@@ -2,11 +2,11 @@
 
 <xsl:template name="main">
   <out>
-  <xsl:stream href="../docs/works.xml">
+  <xsl:source-document streamable="yes" href="../docs/works.xml">
      <xsl:for-each select="snapshot(works/department/employee[1]/empnum/text())">
         <emp num="{.}" name="{../../@name}" gender="{../../@gender}" dept="{../../../@name}"/>
      </xsl:for-each>
-  </xsl:stream>
+  </xsl:source-document>
   </out>
 </xsl:template>
 

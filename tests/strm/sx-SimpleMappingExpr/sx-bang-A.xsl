@@ -12,9 +12,9 @@
    
   <xsl:template name="bang-001" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:sequence select="account/transaction[@value &lt; 0] ! copy-of(.)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -22,9 +22,9 @@
    
   <xsl:template name="bang-002">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:sequence select="account/transaction[@value &lt; 0] ! (position(), @*!string())"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -32,9 +32,9 @@
    
   <xsl:template name="bang-003">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:sequence select="account/transaction[position() &lt; 5] ! (position(), @*!string())"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -42,9 +42,9 @@
    
   <xsl:template name="bang-004">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:sequence select="subsequence(data(account/transaction/@value), 5, 3) ! (position(), .)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -52,9 +52,9 @@
    
   <xsl:template name="bang-005">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:sequence select="(//*)[position()=1 to 6] ! (position(), ':', name())"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -62,9 +62,9 @@
    
   <xsl:template name="bang-006">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:sequence select="//* ! count(ancestor-or-self::*)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -72,9 +72,9 @@
    
   <xsl:template name="bang-008">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:sequence select="account/transaction[position() lt 5] ! name(..)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -82,9 +82,9 @@
    
   <xsl:template name="bang-009">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:sequence select="subsequence(account/transaction, 1, 4) ! name(ancestor::*[1])"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -92,9 +92,9 @@
    
   <xsl:template name="bang-010">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:sequence select="subsequence(account/transaction, 1, 4) ! copy-of(.)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -102,9 +102,9 @@
    
   <xsl:template name="bang-011">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:sequence select="account/transaction/@value ! (if (. > 0) then string(.) else ())"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -112,9 +112,9 @@
    
   <xsl:template name="bang-012">
     <out xmlns="http://loan.shark.com/">
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:sequence select="outermost(//*:extra) ! ancestor::* ! @* ! string()"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>       
 

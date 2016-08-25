@@ -23,9 +23,9 @@
     
     <xsl:template name="xsl:initial-template" use-when="$test-root1">
         <xsl:variable name="root">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <out>
             <xsl:value-of select="deep-equal($doc, $root)"/>
@@ -36,9 +36,9 @@
 
     <xsl:template name="xsl:initial-template" use-when="$test-root2">
         <xsl:variable name="root">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="root()"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <out>
             <xsl:value-of select="deep-equal($doc, $root)"/>
@@ -49,9 +49,9 @@
     
     <xsl:template name="xsl:initial-template" use-when="$test-root-pred1">
         <xsl:variable name="root">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="(/)[self::node()]"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <out>
             <xsl:value-of select="deep-equal($doc, $root)"/>
@@ -62,9 +62,9 @@
     
     <xsl:template name="xsl:initial-template" use-when="$test-root-pred2">
         <xsl:variable name="root">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="(/)[self::node() instance of document-node()]"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <out>
             <xsl:value-of select="deep-equal($doc, $root)"/>
@@ -75,9 +75,9 @@
     
     <xsl:template name="xsl:initial-template" use-when="$test-root-numpred">
         <xsl:variable name="root">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="(/)[1]"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <out>
             <xsl:value-of select="deep-equal($doc, $root)"/>
@@ -88,35 +88,35 @@
     
     <xsl:template name="xsl:initial-template" use-when="$test-rootelem">
         <xsl:variable name="root1">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/BOOKLIST"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root2">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/*"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root3">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/element()"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root4">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="root(.)/*"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root5">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="(root(self::node()) treat as document-node())/*"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root6">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <!-- see 19.8.7.8 item (1) and bug#xxx -->
                 <xsl:copy-of select="(//*)[1]"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <out>
             <xsl:value-of
@@ -135,29 +135,29 @@
     
     <xsl:template name="xsl:initial-template" use-when="$test-rootelem-self">
         <xsl:variable name="root1">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/BOOKLIST"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root2">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/*"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root3">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/element()"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root4">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="root(.)/*"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root5">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="(root(self::node()) treat as document-node())/*"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <out>
             <xsl:value-of
@@ -172,24 +172,24 @@
     
     <xsl:template name="xsl:initial-template" use-when="false()">
         <xsl:variable name="root2" as="element()">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/BOOKLIST"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root3" as="element()">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="*"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root4" as="element()">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/*/self::node()[1]"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <xsl:variable name="root5" as="element()">
-            <xsl:stream href="{$docurl}">
+            <xsl:source-document streamable="yes" href="{$docurl}">
                 <xsl:copy-of select="/*/self::node()[1]"/>
-            </xsl:stream>
+            </xsl:source-document>
         </xsl:variable>
         <out>
             <xsl:value-of

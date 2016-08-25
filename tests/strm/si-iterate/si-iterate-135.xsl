@@ -3,7 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:map="http://www.w3.org/2005/xpath-functions/map"
   exclude-result-prefixes="xs map" version="3.0">
   <xsl:template name="main">
-    <xsl:stream href="../docs/citygml.xml">
+    <xsl:source-document streamable="yes" href="../docs/citygml.xml">
       <elements>
         <xsl:variable name="histogram" as="map(xs:string, xs:integer)">
           <xsl:iterate select=".//*/name()">
@@ -22,6 +22,6 @@
           <e name="{.}" count="{$histogram(.)}"/>
         </xsl:for-each>
       </elements>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 </xsl:stylesheet>

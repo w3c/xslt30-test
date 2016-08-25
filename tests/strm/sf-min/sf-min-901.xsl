@@ -7,11 +7,11 @@
     <!-- Test of xsl:stream with min(), filtered with a predicate that uses last() -->
     
     <xsl:template name="main">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:sequence select="min(./BOOKLIST/BOOKS/*:ITEM[position() ne last()]/PRICE)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>   
     
 </xsl:stylesheet>

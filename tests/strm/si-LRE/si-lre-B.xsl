@@ -12,7 +12,7 @@
 
   <xsl:template name="cy-101" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:for-each select="*">
           <xsl:variable name="copy">
             <myroot xsl:validation="strict">
@@ -21,7 +21,7 @@
           </xsl:variable>
           <xsl:value-of select="$copy/* instance of element(*, myroot)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -29,7 +29,7 @@
 
   <xsl:template name="cy-102" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:for-each select="*">
           <xsl:variable name="copy">
             <myroot xsl:validation="lax">
@@ -38,7 +38,7 @@
           </xsl:variable>
           <xsl:value-of select="$copy/* instance of element(*, myroot)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -46,7 +46,7 @@
 
   <xsl:template name="cy-103" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:for-each select="*">
           <xsl:variable name="copy">
             <myroot xsl:validation="strip">
@@ -55,7 +55,7 @@
           </xsl:variable>
           <xsl:value-of select="$copy/* instance of element(*, myroot)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -63,7 +63,7 @@
 
   <xsl:template name="cy-104" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:for-each select="*">
           <xsl:variable name="copy">
             <myroot xsl:validation="preserve">
@@ -72,7 +72,7 @@
           </xsl:variable>
           <xsl:value-of select="$copy/* instance of element(*, myroot)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -80,7 +80,7 @@
 
   <xsl:template name="cy-105" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:for-each select="*">
           <xsl:variable name="copy">
             <myroot xsl:type="myroot">
@@ -89,7 +89,7 @@
           </xsl:variable>
           <xsl:value-of select="$copy/* instance of element(*, myroot)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -97,7 +97,7 @@
 
   <xsl:template name="cy-106" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:for-each select="*">
           <xsl:variable name="copy">
             <myroot xsl:validation="strict">
@@ -106,7 +106,7 @@
           </xsl:variable>
           <xsl:value-of select="$copy/* instance of element(*, myroot)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -114,7 +114,7 @@
 
   <xsl:template name="cy-107" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:for-each select="*">
           <xsl:variable name="copy">
             <root xsl:validation="lax">
@@ -123,7 +123,7 @@
           </xsl:variable>
           <xsl:value-of select="$copy/* instance of element(*, myroot)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -131,7 +131,7 @@
 
   <xsl:template name="cy-108" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:for-each select="*">
           <xsl:variable name="copy">
             <myroot xsl:type="myroot">
@@ -140,7 +140,7 @@
           </xsl:variable>
           <xsl:value-of select="$copy/* instance of element(*, myroot)"/>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -148,7 +148,7 @@
 
   <xsl:template name="cy-109" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:for-each select="*">
           <xsl:try>
             <myroot xsl:validation="strict">
@@ -159,7 +159,7 @@
             </xsl:catch>
           </xsl:try>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -167,7 +167,7 @@
 
   <xsl:template name="cy-110" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:for-each select="*">
           <xsl:try>
             <myroot xsl:type="myroot">
@@ -178,7 +178,7 @@
             </xsl:catch>
           </xsl:try>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -186,7 +186,7 @@
 
   <xsl:template name="cy-111" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:variable name="copy" as="node()">
           <xsl:for-each select="copy-of(/*/*)">
             <ACERequest xsl:validation="strict">
@@ -195,7 +195,7 @@
           </xsl:for-each>
         </xsl:variable>
         <xsl:value-of select="$copy instance of element(*, ACERequest)*"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -203,7 +203,7 @@
 
   <xsl:template name="cy-112" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:variable name="copy" as="node()">
           <xsl:for-each select="copy-of(/*/*)">
             <ACERequest xsl:validation="lax">
@@ -212,7 +212,7 @@
           </xsl:for-each>
         </xsl:variable>
         <xsl:value-of select="$copy instance of element(*, ACERequest)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -220,7 +220,7 @@
 
   <xsl:template name="cy-113" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:variable name="copy" as="node()">
           <xsl:for-each select="copy-of(/*/*)">
             <ACERequest xsl:validation="strip">
@@ -229,7 +229,7 @@
           </xsl:for-each>
         </xsl:variable>
         <xsl:value-of select="$copy instance of element(*, ACERequest)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -237,7 +237,7 @@
 
   <xsl:template name="cy-114" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:variable name="copy" as="node()">
           <xsl:for-each select="copy-of(/*/*)">
             <ACERequest xsl:validation="preserve">
@@ -246,7 +246,7 @@
           </xsl:for-each>
         </xsl:variable>
         <xsl:value-of select="$copy instance of element(*, ACERequest)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -254,7 +254,7 @@
 
   <xsl:template name="cy-115" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:variable name="copy" as="node()">
           <xsl:for-each select="copy-of(/*/*)">
             <ACERequest xsl:type="ACERequest">
@@ -263,7 +263,7 @@
           </xsl:for-each>
         </xsl:variable>
         <xsl:value-of select="$copy instance of element(*, ACERequest)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -271,13 +271,13 @@
 
   <xsl:template name="cy-116" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:for-each select="*">
           <myroot xsl:type="xs:decimal">
             <xsl:value-of select="*/@version"/>
           </myroot>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -285,13 +285,13 @@
 
   <xsl:template name="cy-117" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:for-each select="*">
           <myroot xsl:type="xs:date">
             <xsl:value-of select="*/@version"/>
           </myroot>
         </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -299,7 +299,7 @@
 
   <xsl:template name="cy-118" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:where-populated>
             <xsl:for-each select="head(//PoolIdentifier)">
               <processingDate xsl:validation="strict">
@@ -308,7 +308,7 @@
               </processingDate>
             </xsl:for-each>
           </xsl:where-populated>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -316,7 +316,7 @@
 
   <xsl:template name="cy-119" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:where-populated>
             <xsl:for-each select="head(//PoolIdentifier)">
               <processingDate xsl:validation="strict">
@@ -325,7 +325,7 @@
               </processingDate>
             </xsl:for-each>
           </xsl:where-populated>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -333,7 +333,7 @@
 
   <xsl:template name="cy-120" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:where-populated>
             <xsl:for-each select="head(//PoolIdentifier)">
               <PoolIdentifier xsl:type="FmIdentifierInt">
@@ -342,7 +342,7 @@
               </PoolIdentifier>
             </xsl:for-each>
           </xsl:where-populated>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -350,7 +350,7 @@
 
   <xsl:template name="cy-121" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:where-populated>
             <xsl:for-each select="head(//PoolIdentifier)">
               <PoolIdentifier xsl:type="FmIdentifierInt">
@@ -359,7 +359,7 @@
               </PoolIdentifier>
             </xsl:for-each>
           </xsl:where-populated>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

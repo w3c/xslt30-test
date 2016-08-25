@@ -15,19 +15,19 @@
   </xsl:function>
 
   <xsl:template name="t-001" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:filter-001(.) / @CAT"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <xsl:template name="t-002" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:filter-001(.) / WEIGHT"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-- Test arity=2 filter function -->
@@ -39,19 +39,19 @@
   </xsl:function>
   
   <xsl:template name="t-003" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:filter-003(., true()) / @CAT"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <xsl:template name="t-004" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:filter-003(., false()) / @CAT"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <!-- Test arity=2 filter function -->
@@ -63,11 +63,11 @@
   </xsl:function>
 
   <xsl:template name="t-005" use-when="false() and $RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="/BOOKLIST/BOOKS/ITEM/WEIGHT ! f:get-attribute-value-003(., 'UNIT')"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <!-- Test arity=2 filter function with recursion -->
@@ -83,11 +83,11 @@
   </xsl:function>
   
   <xsl:template name="t-006" use-when="false() and $RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="/BOOKLIST/BOOKS/ITEM/WEIGHT ! f:get-inherited-attribute-value-004(., 'CAT')"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
  

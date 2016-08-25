@@ -12,12 +12,12 @@
   
   <xsl:template name="cy-003" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:variable name="atts" as="attribute(*)*">
           <xsl:sequence select="copy-of(account/transaction[@value &lt; 0]/@value)"/>
         </xsl:variable>
         <xsl:copy-of select="data($atts)"/>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -29,12 +29,12 @@
       <PRICE value="102"/>
     </xsl:variable>
     <out>
-      <xsl:stream href="../docs/transactions.xml">
+      <xsl:source-document streamable="yes" href="../docs/transactions.xml">
         <xsl:variable name="atts" as="attribute(*)*">
           <xsl:sequence select="copy-of((account/transaction[@value &lt; 0]/@value, $extra/@value))"/>
         </xsl:variable>
         <xsl:copy-of select="data($atts)"/> 
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -42,9 +42,9 @@
   
   <xsl:template name="cy-005" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:sequence select="copy-of(/BOOKLIST/BOOKS/ITEM/PRICE)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -52,9 +52,9 @@
   
   <xsl:template name="cy-006" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:sequence select="copy-of(/BOOKLIST/BOOKS/ITEM/PRICE/text())"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -66,9 +66,9 @@
       <PRICE>101.00</PRICE>
     </xsl:variable>
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:sequence select="copy-of(($extra, /BOOKLIST/BOOKS/ITEM/PRICE))"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -76,9 +76,9 @@
   
   <xsl:template name="cy-009" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:sequence select="copy-of(//PRICE/text())"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -86,11 +86,11 @@
   
   <xsl:template name="cy-011" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <head/>
         <xsl:sequence select="copy-of(.)"/>
         <tail/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -98,9 +98,9 @@
   
   <xsl:template name="cy-021" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:sequence select="copy-of(/*/*:description)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -108,9 +108,9 @@
   
   <xsl:template name="cy-025" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:sequence select="copy-of(snapshot(/*/*:description))"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -118,9 +118,9 @@
   
   <xsl:template name="cy-027" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/nested-numbers.xml">
+      <xsl:source-document streamable="yes" href="../docs/nested-numbers.xml">
         <xsl:sequence select="copy-of(descendant::n)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   

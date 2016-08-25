@@ -15,11 +15,11 @@
   </xsl:function>
 
   <xsl:template name="t-001" use-when="true() or $RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:depth-001(.)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <!-- Test arity=1 recursive inspection function -->
@@ -30,11 +30,11 @@
   </xsl:function>
   
   <xsl:template name="t-002" use-when="true() or $RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:depth-002(.)"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <!-- Test arity=2 inspection function -->
@@ -46,11 +46,11 @@
   </xsl:function>
 
   <xsl:template name="t-003" use-when="true() or $RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="/BOOKLIST/BOOKS/ITEM/WEIGHT ! f:get-attribute-value-003(., 'UNIT')"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
 
   <!-- Test arity=2 inspection function with recursion -->
@@ -66,11 +66,11 @@
   </xsl:function>
   
   <xsl:template name="t-004" use-when="true() or $RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="/BOOKLIST/BOOKS/ITEM/WEIGHT ! f:get-inherited-attribute-value-004(., 'CAT')"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
  

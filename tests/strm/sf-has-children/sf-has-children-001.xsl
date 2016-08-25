@@ -11,9 +11,9 @@
     <xsl:mode name="s" streamable="true"/>
     
     <xsl:template name="main" >
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:apply-templates mode="s"/>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
     
     <xsl:template match="*" mode="s">

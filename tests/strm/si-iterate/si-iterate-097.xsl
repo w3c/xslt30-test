@@ -17,7 +17,7 @@
      
     <xsl:template name="main">
       <out>
-        <xsl:stream href="../docs/loans.xml">
+        <xsl:source-document streamable="yes" href="../docs/loans.xml">
         	<loans>
         		<xsl:iterate select="outermost(.//UnpaidPrincipalBalanceAmount)">
           			<xsl:param name="acc" as="xs:decimal" select="0.00"/>
@@ -38,7 +38,7 @@
           			</xsl:choose>
         		</xsl:iterate>
       		</loans>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
 

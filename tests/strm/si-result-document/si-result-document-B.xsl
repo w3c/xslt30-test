@@ -14,11 +14,11 @@
   
   <xsl:template name="d-101" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:result-document href="d-101.xml" validation="strict">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-        </xsl:stream>
+        </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -26,11 +26,11 @@
   
   <xsl:template name="d-102" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-102.xml" validation="lax">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -38,11 +38,11 @@
   
   <xsl:template name="d-103" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-103.xml" validation="strip">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -50,11 +50,11 @@
   
   <xsl:template name="d-104" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-104.xml" validation="preserve">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>  
   
@@ -62,11 +62,11 @@
   
   <xsl:template name="d-105" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-105.xml" type="myroot">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -74,11 +74,11 @@
   
   <xsl:template name="d-106" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
           <xsl:result-document href="d-106.xml" validation="strict">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -86,11 +86,11 @@
   
   <xsl:template name="d-107" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
           <xsl:result-document href="d-107.xml" validation="lax">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template> 
   
@@ -98,11 +98,11 @@
   
   <xsl:template name="d-108" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
           <xsl:result-document href="d-108.xml" validation="strict">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -110,7 +110,7 @@
   
   <xsl:template name="d-109" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:try>
           <xsl:result-document href="d-109.xml" validation="strict">
             <xsl:copy-of select="child::node()"/>
@@ -119,7 +119,7 @@
             <xsl:value-of select="local-name-from-QName($err:code)"/>
           </xsl:catch>
         </xsl:try>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -127,7 +127,7 @@
   
   <xsl:template name="d-110" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
         <xsl:try>
           <xsl:result-document href="d-110.xml" type="myroot">
             <xsl:copy-of select="child::node()"/>
@@ -136,7 +136,7 @@
             <xsl:value-of select="local-name-from-QName($err:code)"/>
           </xsl:catch>
         </xsl:try>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -144,13 +144,13 @@
   
   <xsl:template name="d-111" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:for-each select="/*/*">
             <xsl:result-document href="d-111.xml" validation="strict">
               <xsl:copy-of select="."/>
             </xsl:result-document>
           </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -158,13 +158,13 @@
   
   <xsl:template name="d-112" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:for-each select="/*/*">
             <xsl:result-document href="d-112.xml" validation="lax">
               <xsl:copy-of select="."/>
             </xsl:result-document>
           </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -172,13 +172,13 @@
   
   <xsl:template name="d-113" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:for-each select="copy-of(/*/*)">
             <xsl:result-document href="d-113.xml" validation="strip">
               <xsl:copy-of select="child::node()"/>
             </xsl:result-document>
           </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -186,13 +186,13 @@
   
   <xsl:template name="d-114" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
          <xsl:for-each select="copy-of(/*/*)">
             <xsl:result-document href="d-114.xml" validation="preserve">
               <xsl:copy-of select="child::node()"/>
             </xsl:result-document>
           </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>  
   
@@ -200,13 +200,13 @@
   
   <xsl:template name="d-115" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:for-each select="/*/*">
             <xsl:result-document href="d-115.xml" type="ACERequest">
               <xsl:copy-of select="."/>
             </xsl:result-document>
           </xsl:for-each>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -214,11 +214,11 @@
   
   <xsl:template name="d-116" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:result-document href="d-116.xml" type="xs:decimal">
           <in><xsl:value-of select="head(//@version)"/></in>
         </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template> 
   
@@ -226,11 +226,11 @@
   
   <xsl:template name="d-117" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:result-document href="d-117.xml" type="xs:date">
           <in><xsl:value-of select="count(//*)"/></in>
         </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -238,11 +238,11 @@
   
   <xsl:template name="d-121" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-121.xml" validation="strict">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -250,11 +250,11 @@
   
   <xsl:template name="d-122" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-122.xml" validation="lax">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -262,11 +262,11 @@
   
   <xsl:template name="d-123" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-123.xml" validation="strip">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -274,11 +274,11 @@
   
   <xsl:template name="d-124" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-124.xml" validation="preserve">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>  
   
@@ -286,11 +286,11 @@
   
   <xsl:template name="d-125" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans-noNS.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
           <xsl:result-document href="d-125.xml" type="myroot">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -298,11 +298,11 @@
   
   <xsl:template name="d-126" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
           <xsl:result-document href="d-126.xml" validation="strict">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -310,11 +310,11 @@
   
   <xsl:template name="d-127" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
           <xsl:result-document href="d-127.xml" validation="lax">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template> 
   
@@ -322,11 +322,11 @@
   
   <xsl:template name="d-128" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/loans.xml">
+      <xsl:source-document streamable="yes" href="../docs/loans.xml">
           <xsl:result-document href="d-128.xml" type="myroot">
             <xsl:copy-of select="child::node()"/>
           </xsl:result-document>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>    
    

@@ -21,11 +21,11 @@
   </xsl:function>
   
   <xsl:template name="main" >
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="f:get-inherited-attribute-value-004(//*, 'CAT')"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
  

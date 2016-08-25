@@ -7,11 +7,11 @@
     <!-- Test of xsl:stream with "&lt;", filtered with non-motionless predicate -->
     
     <xsl:template name="main">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:value-of select="(./BOOKLIST/BOOKS/ITEM/PAGES[. &lt; 1000]) &lt; 432"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>   
     
 </xsl:stylesheet>

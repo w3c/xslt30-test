@@ -17,9 +17,9 @@
   
   <xsl:template name="cy-903" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/citygml.xml">
+      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
         <xsl:element name="e" use-attribute-sets="as-3"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>  
   

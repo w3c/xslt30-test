@@ -12,10 +12,10 @@
   
   <xsl:template name="m-902" use-when="$RUN" expand-text="yes">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
           <xsl:variable name="m" as="map(*)" select="map{head(//AUTHOR):data(head(//TITLE))}"/>
           <authors>{count($m('Jane Austen'))}</authors>    
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>  
   

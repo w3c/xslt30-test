@@ -14,11 +14,11 @@
     
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/ot.xml">
+      <xsl:source-document streamable="yes" href="../docs/ot.xml">
         <xsl:apply-templates select=".">
           <xsl:with-param name="p" select="17" tunnel="yes"/> 
         </xsl:apply-templates>
-      </xsl:stream>  
+      </xsl:source-document>  
     </out>
   </xsl:template>
   

@@ -10,11 +10,11 @@
     <!-- Non-Streaming innermost(): non-grounded operand -->
     
     <xsl:template name="r-901" use-when="$RUN">
-      <xsl:stream href="../docs/recursive.xml">
+      <xsl:source-document streamable="yes" href="../docs/recursive.xml">
         <out>
           <xsl:value-of select="innermost(/chapter//section)/@id"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
 
     

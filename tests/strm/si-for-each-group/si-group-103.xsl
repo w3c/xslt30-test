@@ -10,7 +10,7 @@
     
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/sections.xml">
+      <xsl:source-document streamable="yes" href="../docs/sections.xml">
         <xsl:for-each-group select="chapter/*" group-starting-with="h1">
           <div>
             <xsl:for-each-group select="current-group()" group-starting-with="h2">
@@ -24,7 +24,7 @@
             </xsl:for-each-group>
           </div>
         </xsl:for-each-group>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template> 
 

@@ -9,13 +9,13 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/bullets.xml">
+      <xsl:source-document streamable="yes" href="../docs/bullets.xml">
         <xsl:choose>
           <xsl:when test=".//plastic"><magic/></xsl:when>
           <xsl:when test="$p = 5"><sorcery/></xsl:when>
           <xsl:otherwise><cool/></xsl:otherwise>
         </xsl:choose>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

@@ -9,11 +9,11 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/bullets.xml">
+      <xsl:source-document streamable="yes" href="../docs/bullets.xml">
         <xsl:iterate select="child::node()">
            <in><xsl:value-of select="count(*) + count(*/*)"/></in>
         </xsl:iterate>  
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

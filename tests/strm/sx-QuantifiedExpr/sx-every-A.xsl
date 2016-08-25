@@ -11,50 +11,50 @@
         Use two references to the range variable to avoid inlining. -->
   
   <xsl:template name="r-001" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="every $x in /BOOKLIST/BOOKS/ITEM/DIMENSIONS/string() 
           satisfies sum(tokenize($x, ' ')!xs:decimal(.)) + string-length($x) gt 10"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <xsl:template name="r-002" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="every $x in /BOOKLIST/BOOKS/ITEM/DIMENSIONS/data() 
           satisfies sum(tokenize($x, ' ')!xs:decimal(.)) + string-length($x) gt 10"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <xsl:template name="r-003" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="every $x in /BOOKLIST/BOOKS/ITEM/DIMENSIONS/copy-of() 
           satisfies sum(tokenize($x, ' ')!xs:decimal(.)) + string-length($x) gt 10"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <xsl:template name="r-004" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="
           every $x in /BOOKLIST/BOOKS/ITEM/DIMENSIONS/snapshot() 
           satisfies sum(tokenize($x, ' ')!number()) + count($x/ancestor::node()) gt 10"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   <xsl:template name="r-005" use-when="$RUN">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="
           every $x in /BOOKLIST/BOOKS/ITEM/DIMENSIONS/ancestor-or-self::*/@*/node-name() 
           satisfies ('Q{'||namespace-uri-from-QName($x)||'}'||local-name-from-QName($x))"/>
       </out>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   

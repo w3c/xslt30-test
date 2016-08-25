@@ -12,7 +12,7 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:stream href="../docs/bullets.xml">
+      <xsl:source-document streamable="yes" href="../docs/bullets.xml">
         <in/>
         <xsl:choose>
           <xsl:when test="current-date() lt xs:date('1900-01-01')">
@@ -23,7 +23,7 @@
           </xsl:otherwise>
         </xsl:choose>
         <in/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 

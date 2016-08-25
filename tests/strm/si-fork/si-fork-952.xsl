@@ -8,7 +8,7 @@
   <!-- Non-streamable fork/for-each-group: 2 down-selections from current-group() -->
   
   <xsl:template name="xsl:initial-template">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
           <xsl:fork>
             <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@CAT">
@@ -18,7 +18,7 @@
             </xsl:for-each-group>
           </xsl:fork>
       </out>  
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template>
   
   

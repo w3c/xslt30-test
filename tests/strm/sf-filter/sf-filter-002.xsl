@@ -16,11 +16,11 @@
     <!-- Streaming filter(): grounded operand -->
     
     <xsl:template name="r-002" use-when="$RUN">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="filter(copy-of(/BOOKLIST/BOOKS/ITEM/PRICE), f:test#1)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>
             
     

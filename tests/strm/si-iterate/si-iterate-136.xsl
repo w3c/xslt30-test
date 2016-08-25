@@ -5,7 +5,7 @@
        in a way that works with streaming -->
 
   <xsl:template name="main">
-    <xsl:stream href="../docs/transactions.xml">
+    <xsl:source-document streamable="yes" href="../docs/transactions.xml">
       <out>
         <xsl:iterate select="/*/transaction">
           <xsl:param name="prev" select="()" as="element(transaction)?"/>
@@ -20,7 +20,7 @@
           </xsl:next-iteration>
         </xsl:iterate>
       </out>
-    </xsl:stream>    
+    </xsl:source-document>    
   </xsl:template>
   
 </xsl:stylesheet>

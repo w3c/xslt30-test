@@ -10,9 +10,9 @@
        
     
   <xsl:template name="main">
-    <xsl:stream href="../docs/transactions.xml">
+    <xsl:source-document streamable="yes" href="../docs/transactions.xml">
       <xsl:apply-templates select="./account" mode="s"/>
-    </xsl:stream>  
+    </xsl:source-document>  
   </xsl:template> 
 
 

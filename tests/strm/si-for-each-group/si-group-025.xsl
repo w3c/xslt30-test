@@ -10,9 +10,9 @@
        
     
   <xsl:template name="main">
-    <xsl:stream href="../docs/books.xml">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
     	<xsl:apply-templates select="/BOOKLIST/BOOKS" mode="s"/>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:template> 
 
 

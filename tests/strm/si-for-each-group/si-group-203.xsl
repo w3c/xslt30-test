@@ -9,7 +9,7 @@
     <xsl:strip-space elements="*"/>
     
     <xsl:template name="main">
-        <xsl:stream href="{$input-uri}">
+        <xsl:source-document streamable="yes" href="{$input-uri}">
             <Root>
                 <xsl:for-each-group select="//Item/copy-of()" group-starting-with="Item[processing-instruction('start')]">
                     <xsl:for-each-group select="current-group() except ." group-ending-with="Item[processing-instruction('end')]">
@@ -19,7 +19,7 @@
                     </xsl:for-each-group>
                 </xsl:for-each-group>
             </Root>
-        </xsl:stream>
+        </xsl:source-document>
     </xsl:template>
     
 </xsl:stylesheet>

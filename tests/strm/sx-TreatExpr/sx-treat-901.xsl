@@ -7,11 +7,11 @@
     <!-- Test of xsl:stream with empty(), filtered with non-motionless predicate -->
     
     <xsl:template name="main">
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="(./BOOKLIST/BOOKS/ITEM[AUTHOR='Jasper Fforde']) treat as element(ITEM)"/>
         </out>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template>   
     
 </xsl:stylesheet>

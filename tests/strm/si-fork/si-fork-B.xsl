@@ -27,7 +27,7 @@
 
   <xsl:template name="g-001" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@CAT">
             <CAT ID="{current-grouping-key()}">
@@ -35,7 +35,7 @@
             </CAT>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
 
@@ -43,7 +43,7 @@
 
   <xsl:template name="g-002" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM/copy-of()" group-by="@CAT">
             <CAT ID="{current-grouping-key()}">
@@ -51,7 +51,7 @@
             </CAT>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -59,7 +59,7 @@
   
   <xsl:template name="g-003" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@CAT">
             <xsl:result-document href="{current-grouping-key()}.xml">
@@ -69,7 +69,7 @@
             </xsl:result-document>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -77,13 +77,13 @@
   
   <xsl:template name="g-004" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@CAT">
             <CAT ID="{current-grouping-key()}" SIZE="{count(current-group())}"/>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -91,13 +91,13 @@
   
   <xsl:template name="g-005" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@CAT">
             <CAT ID="{current-grouping-key()}"/>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -105,7 +105,7 @@
   
   <xsl:template name="g-006" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="(/BOOKLIST/BOOKS/ITEM, $extra)" group-by="@CAT">
             <CAT ID="{current-grouping-key()}">
@@ -113,7 +113,7 @@
             </CAT>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -121,7 +121,7 @@
   
   <xsl:template name="g-007" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="($extra, /BOOKLIST/BOOKS/ITEM)" group-by="@CAT">
             <CAT ID="{current-grouping-key()}">
@@ -129,7 +129,7 @@
             </CAT>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -137,7 +137,7 @@
   
   <xsl:template name="g-008" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="($extra, /BOOKLIST/BOOKS/ITEM)" group-by="@CAT">
             <CAT ID="{current-grouping-key()}">
@@ -145,7 +145,7 @@
             </CAT>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -154,7 +154,7 @@
   
   <xsl:template name="g-009" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books.xml">
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:fork>
           <xsl:for-each-group select="($extra, /BOOKLIST/BOOKS/ITEM)" group-by="@CAT">
             <CAT ID="{current-grouping-key()}">
@@ -162,7 +162,7 @@
             </CAT>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -170,7 +170,7 @@
   
   <xsl:template name="g-010" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books-atts.xml">
+      <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@PUB-DATE, @LANGUAGE">
             <CAT DATE="{current-grouping-key()[1]}" LANG="{current-grouping-key()[2]}"
@@ -178,7 +178,7 @@
             </CAT>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -186,7 +186,7 @@
   
   <xsl:template name="g-011" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books-atts.xml">
+      <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR, @PRICE">
             <xsl:variable name="group" select="copy-of(current-group())"/>
@@ -196,7 +196,7 @@
             </CAT>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -204,13 +204,13 @@
   
   <xsl:template name="g-012" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books-atts.xml">
+      <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
             <g author="{current-grouping-key()}" position="{position()}"/>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -218,7 +218,7 @@
   
   <xsl:template name="g-013" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books-atts.xml">
+      <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
             <g author="{current-grouping-key()}">
@@ -226,7 +226,7 @@
             </g>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -244,7 +244,7 @@
   
   <xsl:template name="g-014" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books-atts.xml">
+      <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
             <g author="{current-grouping-key()}">
@@ -252,7 +252,7 @@
             </g>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -270,7 +270,7 @@
   
   <xsl:template name="g-015" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books-atts.xml">
+      <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
             <g author="{current-grouping-key()}">
@@ -278,7 +278,7 @@
             </g>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
@@ -297,7 +297,7 @@
   
   <xsl:template name="g-016" use-when="$RUN">
     <out>
-      <xsl:stream href="../docs/books-atts.xml">
+      <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
           <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR">
             <g author="{current-grouping-key()}">
@@ -305,7 +305,7 @@
             </g>
           </xsl:for-each-group>
         </xsl:fork>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   
