@@ -16,7 +16,7 @@
       
      <xsl:template name="main" match="/">
        <out>
-         <xsl:stream href="overlapping.xml"><xsl:apply-templates select="." mode="s"/></xsl:stream>
+         <xsl:source-document streamable="true" href="overlapping.xml"><xsl:apply-templates select="." mode="s"/></xsl:source-document>
        </out>
      </xsl:template>
      

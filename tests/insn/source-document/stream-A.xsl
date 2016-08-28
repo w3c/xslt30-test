@@ -13,7 +13,7 @@
     
     <xsl:template name="s-001" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml"/>
+        <xsl:source-document streamable="true" href="books.xml"/>
       </out>
     </xsl:template>
     
@@ -21,9 +21,9 @@
     
     <xsl:template name="s-002" use-when="$RUN">
       <out>
-        <xsl:stream href="absent.xml">
+        <xsl:source-document streamable="true" href="absent.xml">
           <in/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -32,11 +32,11 @@
     <xsl:param name="u" select="'books.xml'"/>
     <xsl:template name="s-003" use-when="$RUN">
       <out>
-        <xsl:stream href="{$u}">
+        <xsl:source-document streamable="true" href="{$u}">
           <xsl:for-each select="*">
             <xsl:copy/>
           </xsl:for-each>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -44,29 +44,29 @@
     
     <xsl:template name="s-004" use-when="$RUN" xml:base="../../..">
       <out>
-        <xsl:stream href="catalog.xml">
+        <xsl:source-document streamable="true" href="catalog.xml">
           <xsl:for-each select="*">
             <xsl:copy/>
           </xsl:for-each>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
     <!-- Context position is 1, context item is document node -->
     
     <xsl:template name="s-005" use-when="$RUN">
-        <xsl:stream href="books.xml">
+        <xsl:source-document streamable="true" href="books.xml">
           <out base-uri="{base-uri(.)}" position="{position()}" is-doc="{. instance of document-node()}"/>
-        </xsl:stream>
+        </xsl:source-document>
     </xsl:template>
     
     <!-- Invalid URI -->
     
     <xsl:template name="s-006" use-when="$RUN">
       <out>
-        <xsl:stream href="c:\my\doc\{$u}">
+        <xsl:source-document streamable="true" href="c:\my\doc\{$u}">
           <in/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -74,9 +74,9 @@
     
     <xsl:template name="s-007" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml">
+        <xsl:source-document streamable="true" href="books.xml">
           <xsl:value-of select="count(/BOOKLIST/BOOKS/text())"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -84,9 +84,9 @@
     
     <xsl:template name="s-008" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml">
+        <xsl:source-document streamable="true" href="books.xml">
           <xsl:value-of select="count(/BOOKLIST/CATEGORIES/text())"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -94,11 +94,11 @@
     
     <xsl:template name="s-009" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml" version="3.0">
+        <xsl:source-document streamable="true" href="books.xml" version="3.0">
           <xsl:fallback>(((</xsl:fallback>
           <xsl:value-of select="count(/BOOKLIST/CATEGORIES/text())"/>
           <xsl:fallback>)))</xsl:fallback>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -106,14 +106,14 @@
     
     <xsl:template name="s-010" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml">
+        <xsl:source-document streamable="true" href="books.xml">
           <xsl:for-each select="/BOOKLIST/CATEGORIES/CATEGORY">
             <xsl:variable name="category" select="string(@CODE)"/>
-            <xsl:stream href="books.xml">
+            <xsl:source-document streamable="true" href="books.xml">
               <cat code="{$category}" count="{count(/BOOKLIST/BOOKS/ITEM[@CAT = $category])}"/>
-            </xsl:stream>
+            </xsl:source-document>
           </xsl:for-each>  
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -121,9 +121,9 @@
     
     <xsl:template name="s-011" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml" validation="strip">
+        <xsl:source-document streamable="true" href="books.xml" validation="strip">
           <xsl:value-of select="/BOOKLIST/CATEGORIES/CATEGORY instance of element(*, xs:untyped)+"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -131,9 +131,9 @@
     
     <xsl:template name="s-012" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml" validation="preserve">
+        <xsl:source-document streamable="true" href="books.xml" validation="preserve">
           <xsl:value-of select="/BOOKLIST/CATEGORIES/CATEGORY/@CODE instance of attribute(*, xs:untypedAtomic)+"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -141,9 +141,9 @@
     
     <xsl:template name="s-013" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml" validation=" lax ">
+        <xsl:source-document streamable="true" href="books.xml" validation=" lax ">
           <xsl:value-of select="/BOOKLIST/CATEGORIES/CATEGORY instance of element(*, xs:untyped)+"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     

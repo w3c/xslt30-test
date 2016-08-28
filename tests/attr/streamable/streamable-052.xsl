@@ -12,7 +12,7 @@
     
   <xsl:template name="main">
     <out>
-      <xsl:stream href="mixed.xml"><xsl:apply-templates select="."/></xsl:stream>
+      <xsl:source-document streamable="true" href="mixed.xml"><xsl:apply-templates select="."/></xsl:source-document>
     </out>
   </xsl:template>
   

@@ -14,10 +14,10 @@
   </xsl:accumulator>
 
   <xsl:variable name="count" use-when="$streamable='yes'">
-    <xsl:stream href="accumulator-001.xml">
+    <xsl:source-document streamable="true" href="accumulator-001.xml">
       <!--<xsl:for-each select="*"/>-->
       <xsl:value-of select="accumulator-after('a')"/>
-    </xsl:stream>
+    </xsl:source-document>
   </xsl:variable>
   
   <xsl:variable name="count" use-when="$streamable='no'">

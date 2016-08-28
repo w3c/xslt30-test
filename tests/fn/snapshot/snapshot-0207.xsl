@@ -2,11 +2,11 @@
 
 <xsl:template name="main">
   <out>
-  <xsl:stream href="snapshot-02.xml">
+  <xsl:source-document streamable="true" href="snapshot-02.xml">
      <xsl:for-each select="remove(snapshot(works/department/employee[1]/empnum/text()), 2)">
         <emp num="{.}" name="{../../@name}" gender="{../../@gender}" dept="{../../../@name}"/>
      </xsl:for-each>
-  </xsl:stream>
+  </xsl:source-document>
   </out>
 </xsl:template>
 

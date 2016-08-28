@@ -11,7 +11,7 @@
     <xsl:param name="parts" required="no" select="'Cantus+Altus'"/>     <!-- names of the parts to be selected, separated by "+"-->
     <xsl:variable name="selected-parts" select="tokenize($parts, '\+')"/>    
         
-    <xsl:accumulator name="selected-part-ids" as="map(xs:string, xs:boolean)" initial-value="map{}" streamable="yes">
+    <xsl:accumulator name="selected-part-ids" as="map(xs:untypedAtomic, xs:boolean)" initial-value="map{}" streamable="yes">
         <xsl:accumulator-rule match="part-name/text()[$selected-parts = current()]">
             <xsl:sequence select="map:put($value, ../../@id, true())"/>
         </xsl:accumulator-rule>
@@ -20,12 +20,16 @@
     <xsl:mode name="m" on-no-match="shallow-copy" streamable="yes"/>    
     
     <xsl:template name="xsl:initial-template">
-        <xsl:stream href="{$in}" use-accumulators="selected-part-ids">
+        <xsl:source-document streamable="true" href="{$in}" use-accumulators="selected-part-ids">
             <xsl:apply-templates mode="m"/>
-        </xsl:stream>
+        </xsl:source-document>
     </xsl:template>
     
-    <xsl:template match="part[not(map:contains(accumulator-before('selected-part-ids'), @id))]" mode="m"/>
+    <xsl:template match="part" mode="m">
+        <xsl:if test="map:contains(accumulator-before('selected-part-ids'), @id)">
+            <xsl:next-match/>
+        </xsl:if>
+    </xsl:template>
     
     <!--
         MHK Note:

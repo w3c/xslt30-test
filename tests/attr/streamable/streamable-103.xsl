@@ -12,9 +12,9 @@
     <xsl:output method="xml" indent="yes" encoding="UTF-8" />
       
     <xsl:template name="main">
-       <xsl:stream href="transactions.xml">
+       <xsl:source-document streamable="true" href="transactions.xml">
         <xsl:apply-templates select="account" mode="s"/>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:template> 
   
   

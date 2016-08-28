@@ -16,7 +16,7 @@
      
     <xsl:template name="main" match="/">
       <out>
-        <xsl:stream href="grouped-transactions-e.xml"><xsl:apply-templates select="." mode="s"/></xsl:stream>
+        <xsl:source-document streamable="true" href="grouped-transactions-e.xml"><xsl:apply-templates select="." mode="s"/></xsl:source-document>
       </out>
     </xsl:template>
     

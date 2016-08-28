@@ -356,10 +356,10 @@
                and are based in Dubai. Because there are two accesses using the child axis, it is
                not possible to do this without buffering each employee in memory, which can be
                achieved using the <function>copy-of</function> function.</p>
-            <eg xml:space="preserve"><![CDATA[<xsl:stream href="employees.xml">
+            <eg xml:space="preserve"><![CDATA[<xsl:source-document streamable="true" href="employees.xml">
   <xsl:sequence select="employees/employee/copy-of()
                           [department='Marketing' and location='Dubai']"/>
-</xsl:stream>]]></eg>
+</xsl:source-document>]]></eg>
          </fos:example>
       </fos:examples>   
       
@@ -503,7 +503,7 @@
                employee in memory. The <function>snapshot</function> function is used in
                preference to the simpler <function>copy-of</function> so that access to
                attributes of the parent <code>location</code> element remains possible.</p>
-            <eg xml:space="preserve"><![CDATA[<xsl:stream href="employees.xml">
+            <eg xml:space="preserve"><![CDATA[<xsl:source-document streamable="true" href="employees.xml">
   <xsl:for-each select="locations/location[@name='Dubai']
                           /employee/snapshot()[department='Marketing']">
     <employee>
@@ -511,7 +511,7 @@
       <salary value="{salary}"/>
     </employee>
   </xsl:for-each>
-</xsl:stream>]]></eg>
+</xsl:source-document>]]></eg>
          </fos:example>
       </fos:examples>
    </fos:function>

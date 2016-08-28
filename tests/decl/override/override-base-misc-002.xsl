@@ -15,9 +15,9 @@
   
   
   <xsl:template name="use-base" visibility="public">
-    <xsl:stream href="../accumulator/books.xml" use-accumulators="ac">
+    <xsl:source-document streamable="true" href="../accumulator/books.xml" use-accumulators="ac">
       <a><count nodes="{count(//*)}"/><acc value="{accumulator-after('ac')}"/></a>
-    </xsl:stream>  
+    </xsl:source-document>  
   </xsl:template>
 
   

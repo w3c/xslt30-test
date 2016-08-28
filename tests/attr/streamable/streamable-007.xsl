@@ -11,9 +11,9 @@
   <xsl:mode name="s" streamable="yes"/>
   
   <xsl:template name="main">
-    <xsl:stream href="ot2.xml">
+    <xsl:source-document streamable="true" href="ot2.xml">
         <xsl:apply-templates select="." mode="s"/>
-    </xsl:stream>  
+    </xsl:source-document>  
   </xsl:template>
   
   <xsl:template match="*" mode="s">

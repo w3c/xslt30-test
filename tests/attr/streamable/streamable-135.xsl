@@ -10,9 +10,9 @@
 	<xsl:output method="xml" indent="no"/>
 	
 	<xsl:template name="main">
-	  <xsl:stream href="transactions.xml">
+	  <xsl:source-document streamable="true" href="transactions.xml">
 	    <xsl:apply-templates select="."/>
-	  </xsl:stream>
+	  </xsl:source-document>
 	</xsl:template>
 	
 	<xsl:template match="/">

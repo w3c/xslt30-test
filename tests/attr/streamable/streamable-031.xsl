@@ -13,7 +13,7 @@
 
   <xsl:template name="main">
     <out>
-      <xsl:stream href="ot2.xml"><xsl:apply-templates select="."/></xsl:stream>
+      <xsl:source-document streamable="true" href="ot2.xml"><xsl:apply-templates select="."/></xsl:source-document>
     </out>
   </xsl:template>
 

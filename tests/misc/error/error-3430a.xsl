@@ -10,9 +10,9 @@
    
    <xsl:template name="main">
       <out>
-        <xsl:stream href="error-3430a.xsl">
+        <xsl:source-document streamable="true" href="error-3430a.xsl">
           <xsl:value-of select="//a + //b"/>
-        </xsl:stream>         
+        </xsl:source-document>         
       </out>
    </xsl:template>
 </xsl:stylesheet>

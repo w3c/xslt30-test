@@ -20,16 +20,12 @@
     <xsl:mode name="m" on-no-match="shallow-copy" streamable="yes"/>    
     
     <xsl:template name="xsl:initial-template">
-        <xsl:stream href="{$in}" use-accumulators="selected-part-ids">
+        <xsl:source-document streamable="true" href="{$in}" use-accumulators="selected-part-ids">
             <xsl:apply-templates mode="m"/>
-        </xsl:stream>
+        </xsl:source-document>
     </xsl:template>
     
-    <xsl:template match="part" mode="m">
-        <xsl:if test="map:contains(accumulator-before('selected-part-ids'), @id)">
-            <xsl:next-match/>
-        </xsl:if>
-    </xsl:template>
+    <xsl:template match="part[not(map:contains(accumulator-before('selected-part-ids'), @id))]" mode="m"/>
     
     <!--
         MHK Note:

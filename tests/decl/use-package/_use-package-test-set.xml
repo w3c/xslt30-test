@@ -30,6 +30,12 @@
       <package file="use-package-base-004e.xsl" role="secondary"
          uri="http://www.w3.org/xslt30tests/use-package-base-004" package-version="2.0.0-beta"/>
    </environment>
+   
+   <environment name="use-package-xml-to-json">
+      <source file="use-package-150.xml" role="."/>
+      <package file="use-package-xml-to-json.xsl" role="secondary"
+         uri="http://www.w3.org/2013/XSLT/xml-to-json.xsl" package-version="1.0"/>
+   </environment>
 
    <dependencies>
       <spec value="XSLT30+"/>
@@ -235,6 +241,19 @@
       <test>
          <package file="use-package-108.xsl" role="principal"/>
          <initial-template name="main"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<out xmlns:p="[^"]*">ZZZZZZ</out>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-150">
+      <description>Simple call of xml-to-json package extracted from the spec</description>
+      <created by="Michael Kay" on="2016-08-23"/>
+      <environment ref="use-package-xml-to-json"/>
+      <test>
+         <package file="use-package-150.xsl" role="principal"/>
          <output serialize="yes"/>
       </test>
       <result>

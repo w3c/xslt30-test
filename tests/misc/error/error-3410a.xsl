@@ -12,10 +12,10 @@
 
    <xsl:template name="main">
       <out>
-         <xsl:stream href="error-0700a.xsl">
+         <xsl:source-document streamable="true" href="error-0700a.xsl">
            <xsl:copy-of select="."/>
            <xsl:value-of select="accumulator-before('a')"/>
-         </xsl:stream>  
+         </xsl:source-document>  
       </out>
    </xsl:template>
    

@@ -12,11 +12,11 @@
      
    <xsl:template name="main">
      <out>
-       <xsl:stream href="mixed.xml">
+       <xsl:source-document streamable="true" href="mixed.xml">
          <xsl:apply-templates select=".">
            <xsl:with-param name="p" select="17"/> <!-- implicitly passed through first built-in template -->
          </xsl:apply-templates>
-       </xsl:stream>
+       </xsl:source-document>
      </out>
    </xsl:template>
    

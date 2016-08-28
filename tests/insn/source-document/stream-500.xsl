@@ -18,10 +18,10 @@
                         <xsl:for-each select="ns0:case">
                             <xsl:variable name="lfd" select="@lfdnr" />
                             <case>
-                                <xsl:stream href="{$doc4}">
+                                <xsl:source-document streamable="true" href="{$doc4}">
                                     <xsl:copy-of select="ns0:root/ns0:body/ns0:case[(@lfdnr) = ($lfd)]/ns0:patient" copy-namespaces="false"/>
                                     <test id="{$lfd}" />
-                                </xsl:stream>
+                                </xsl:source-document>
                             </case>
                         </xsl:for-each>
                     </cases>

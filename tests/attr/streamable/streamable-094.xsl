@@ -10,9 +10,9 @@
     
     <xsl:template name="main">
     <out>
-      <xsl:stream href="ot.xml">
+      <xsl:source-document streamable="true" href="ot.xml">
         <xsl:apply-templates select="outermost(//book)" mode="s"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
     </xsl:template>
     

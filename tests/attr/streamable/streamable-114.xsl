@@ -17,9 +17,9 @@
     
   <xsl:template name="main" match="/">
     <out>
-      <xsl:stream href="xmark1.xml">
+      <xsl:source-document streamable="true" href="xmark1.xml">
         <xsl:apply-templates select="." mode="s"/>
-      </xsl:stream>
+      </xsl:source-document>
     </out>
   </xsl:template>
   

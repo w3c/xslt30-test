@@ -17,9 +17,9 @@
     <xsl:key name="change" match="change" use="@id"/>
     
     <xsl:template name="xsl:initial-template">
-        <xsl:stream href="{$input-uri1}">
+        <xsl:source-document streamable="true" href="{$input-uri1}">
             <xsl:apply-templates/>
-        </xsl:stream>
+        </xsl:source-document>
     </xsl:template>
     
     <xsl:template match="item[key('change', @id, $doc2)]/foo">

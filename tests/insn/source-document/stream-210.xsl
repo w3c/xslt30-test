@@ -13,11 +13,11 @@
             <xsl:variable name="product-type" as="xs:string" select="."/>
             <xsl:result-document href="{$product-type}-result.xml">
                 <root>
-                    <xsl:stream href="{$input-uri}">
+                    <xsl:source-document streamable="true" href="{$input-uri}">
                         <xsl:for-each select="*/product[@type = $product-type]">
                             <xsl:copy-of select="."/>
                         </xsl:for-each>
-                    </xsl:stream>
+                    </xsl:source-document>
                 </root>
             </xsl:result-document>
         </xsl:iterate>

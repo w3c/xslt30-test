@@ -13,9 +13,9 @@
     
     <xsl:template name="s-101" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml" validation="strict">
+        <xsl:source-document streamable="true" href="books.xml" validation="strict">
           <xsl:value-of select="//PRICE instance of element(*, xs:decimal)+"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -23,9 +23,9 @@
     
     <xsl:template name="s-102" use-when="$RUN">
       <out>
-        <xsl:stream href="books-invalid.xml" validation="strict">
+        <xsl:source-document streamable="true" href="books-invalid.xml" validation="strict">
           <xsl:value-of select="//PRICE instance of element(*, xs:decimal)+"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -33,9 +33,9 @@
     
     <xsl:template name="s-103" use-when="$RUN">
       <out>
-        <xsl:stream href="books.xml" type="BOOKLIST-type">
+        <xsl:source-document streamable="true" href="books.xml" type="BOOKLIST-type">
           <xsl:value-of select="//PRICE instance of element(*, xs:decimal)+"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -43,9 +43,9 @@
     
     <xsl:template name="s-104" use-when="$RUN">
       <out>
-        <xsl:stream href="books-invalid.xml" type="BOOKLIST-type">
+        <xsl:source-document streamable="true" href="books-invalid.xml" type="BOOKLIST-type">
           <xsl:value-of select="//PRICE instance of element(*, xs:decimal)+"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -53,9 +53,9 @@
     
     <xsl:template name="s-105" use-when="$RUN">
       <out>
-        <xsl:stream href="books-invalid.xml">
+        <xsl:source-document streamable="true" href="books-invalid.xml">
           <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[1]" validation="strict"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -63,9 +63,9 @@
     
     <xsl:template name="s-106" use-when="$RUN">
       <out>
-        <xsl:stream href="books-invalid.xml">
+        <xsl:source-document streamable="true" href="books-invalid.xml">
           <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[2]" validation="strict"/>
-        </xsl:stream>
+        </xsl:source-document>
       </out>
     </xsl:template>
     
@@ -79,9 +79,9 @@
     
     <xsl:function name="f:read-stream" as="xs:decimal*">
       <xsl:param name="uri" as="xs:string"/>
-      <xsl:stream href="{$uri}">
+      <xsl:source-document streamable="true" href="{$uri}">
         <xsl:sequence select="//PRICE/data(.)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:function>
     
     <!-- xsl:stream called within a function with early termination -->
@@ -102,9 +102,9 @@
     
     <xsl:function name="f:read-stream-decimal" as="xs:decimal*">
       <xsl:param name="uri" as="xs:string"/>
-      <xsl:stream href="{$uri}">
+      <xsl:source-document streamable="true" href="{$uri}">
         <xsl:sequence select="//PRICE/xs:decimal(.)"/>
-      </xsl:stream>
+      </xsl:source-document>
     </xsl:function>    
     
 

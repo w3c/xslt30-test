@@ -1116,6 +1116,21 @@
       </result>
    </test-case>
    
+   <test-case name="override-m-021">
+      <description>Use a public mode in a used package without overriding any template rules</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-08-26"/>
+      <environment>
+         <package file="override-m-021-base.xsl" role="secondary" uri="http://example.com/override-m-021-base" package-version="1.0"/>
+         <source role="." file="override-m-021.xml"/>
+      </environment>
+      <test>
+         <package file="override-m-021.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><list><item><bar>foo 1</bar><list><item><bar>foo 2</bar></item></list></item></list></root>]]></assert-xml>
+      </result>
+   </test-case>
+   
    
    <test-case name="override-misc-001">
       <description>Cannot override a key</description>

@@ -13,11 +13,11 @@
    
    <xsl:template name="main">
       <out>
-         <xsl:stream href="error-0700a.xsl">
+         <xsl:source-document streamable="true" href="error-0700a.xsl">
            <xsl:for-each select="*/*">
              <xsl:value-of select="../accumulator-before('a')"/>
            </xsl:for-each>  
-         </xsl:stream>
+         </xsl:source-document>
       </out>
    </xsl:template>
 </xsl:stylesheet>

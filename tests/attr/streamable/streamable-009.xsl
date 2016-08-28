@@ -13,9 +13,9 @@
     
   <xsl:template name="main" match="/">
     <myroot>
-      <xsl:stream href="loans.xml" validation="strict">
+      <xsl:source-document streamable="true" href="loans.xml" validation="strict">
         <xsl:apply-templates select="." mode="s"/>
-      </xsl:stream>  
+      </xsl:source-document>  
     </myroot>
   </xsl:template>
   

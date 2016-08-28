@@ -10,7 +10,7 @@
       
     <xsl:template name="main" match="/">
       <out>
-        <xsl:stream href="sections.xml"><xsl:apply-templates select="." mode="s"/></xsl:stream>
+        <xsl:source-document streamable="true" href="sections.xml"><xsl:apply-templates select="." mode="s"/></xsl:source-document>
       </out>
     </xsl:template>
     
