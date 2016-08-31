@@ -13,7 +13,7 @@
             </xsl:on-completion>
             <xsl:variable name="count" as="xs:integer?" select="($m(.), 0)[1]"/>
             <xsl:next-iteration>
-              <xsl:with-param name="m" select="map:merge(($m, map:entry(., $count+1)))"/>
+              <xsl:with-param name="m" select="map:merge((map:entry(., $count+1), $m))"/>
             </xsl:next-iteration>           
           </xsl:iterate>
         </xsl:variable>
