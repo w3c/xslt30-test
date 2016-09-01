@@ -4543,15 +4543,31 @@
       </result>
    </test-case>
    
-   <test-case name="match-246">
-      <description>Purpose: Test comments in patterns.</description>
+   <test-case name="match-246a">
+      <description>Purpose: Test comments in patterns, 3.0 version</description>
       <created by="Michael Kay" on="2016-06-17"/>
+      <modified by="Abel Braaksma" on="2016-09-01" change="Split in a 2.0 and 3.0 version, resolves bug 29799"/>
       <environment ref="match1004"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
       <test>
-         <stylesheet file="match-246.xsl"/>
+         <stylesheet file="match-246a.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "ZYXWVUTSRQP"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="match-246b">
+      <description>Purpose: Test comments in patterns, 2.0 version</description>
+      <created by="Abel Braaksma" on="2016-09-01"/>
+      <environment ref="match1004"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-246b.xsl"/>
       </test>
       <result>
          <assert>/out = "ZYXWVUTSRQP"</assert>
