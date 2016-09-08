@@ -16,7 +16,7 @@
                     <xsl:merge-key select="xs:date(substring-before(., ' '))"/>
                 </xsl:merge-source>
                 <xsl:merge-source name="transactions"
-                    for-each-stream="'../docs/transactions.xml'" 
+                    for-each-source="'../docs/transactions.xml'" 
                     select="/account/transaction" 
                     streamable="yes">
                     <xsl:merge-key select="xs:date(@date)"/>

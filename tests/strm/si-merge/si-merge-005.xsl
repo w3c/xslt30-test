@@ -13,14 +13,14 @@
                 <xsl:merge-source
                     name="gold"
                     streamable=" true "
-                    for-each-stream="'../docs/goldPrice.xml'" 
+                    for-each-source="'../docs/goldPrice.xml'" 
                 	select="dataset/data/datum">
                         <xsl:merge-key select="xs:date(datum[1])" order="descending"/>
                 </xsl:merge-source>
                 <xsl:merge-source
                     name="uranium" 
                 	streamable=" 1 "
-                    for-each-stream="'../docs/uraniumPrice.xml'" 
+                    for-each-source="'../docs/uraniumPrice.xml'" 
                 	select="dataset/data/datum">
                         <xsl:merge-key select="xs:date(datum[1])" order="descending"/>
                 </xsl:merge-source>
