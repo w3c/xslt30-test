@@ -6974,7 +6974,7 @@
                  constraint="not"
                  namespaces="##local http://www.w3.org/1999/XSL/Transform"/>
    <scm:attribute id="C687"
-                  name="for-each-stream"
+                  name="for-each-source"
                   type="C156"
                   global="false"
                   inheritable="false"
@@ -9846,7 +9846,7 @@
                   inheritable="false"
                   containingComplexType="C459"/>
    <scm:attribute id="C696"
-                  name="_for-each-stream"
+                  name="_for-each-source"
                   type="#string"
                   global="false"
                   inheritable="false"
