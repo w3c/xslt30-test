@@ -1368,6 +1368,7 @@ B:doc/foo/baz/is not new
    <test-case name="axes-061">
       <description>Test optimization of path expressions under union, intersect, and difference .</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-009-05" change="make expected results independent of attribute order"/>
       <environment ref="axes059"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1376,7 +1377,13 @@ B:doc/foo/baz/is not new
          <stylesheet file="axes-061.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><u>2,9,3,4</u><d>2</d></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/d = '2'</assert>
+            <any-of>
+               <assert>/out/u = '2,9,3,4'</assert>
+               <assert>/out/u = '9,2,3,4'</assert>
+            </any-of>
+         </all-of>
       </result>
    </test-case>
 
@@ -2426,6 +2433,7 @@ From baz: 5= e, e, a, e, a;
    <test-case name="axes-129">
       <description>Check the namespace axis starting from an attribute; should be empty To suppress empty lines</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-09-05" change="expected results should not depend on order of attributes"/>
       <environment ref="axes129"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2435,7 +2443,11 @@ From baz: 5= e, e, a, e, a;
          <stylesheet file="axes-129.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><ns-count attr="x" count="0"/><ns-count attr="test:y" count="0"/><ns-count attr="jad:z" count="0"/></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/ns-count[@attr='x'][@count='0']</assert>
+            <assert>/out/ns-count[@attr='test:y'][@count='0']</assert>
+            <assert>/out/ns-count[@attr='jad:z'][@count='0']</assert>
+         </all-of>
       </result>
    </test-case>
 
