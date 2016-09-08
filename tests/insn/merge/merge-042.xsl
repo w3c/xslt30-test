@@ -15,7 +15,7 @@
                 <xsl:merge-source select="$doc1/events/event">
                         <xsl:merge-key select="xs:dateTime(@timestamp)" order="{$asc_or_desc}" data-type="{$data-type}"/>
                 </xsl:merge-source>
-                <xsl:merge-source for-each-stream="'log-file-2.xml'" 
+                <xsl:merge-source for-each-source="'log-file-2.xml'"  streamable="yes"
                                   for-each-item="doc('log-file-2.xml')"
                                   select="log/day/record">
                         <xsl:merge-key select="dateTime(../@date, time)" order='ascending' data-type="text"/>

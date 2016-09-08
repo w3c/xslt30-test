@@ -14,8 +14,9 @@
     <xsl:template name="main">
         <books>
             <xsl:merge>
-                <xsl:merge-source for-each-stream="'books1.xml', 'books2.xml'"
+                <xsl:merge-source for-each-source="'books1.xml', 'books2.xml'"
                 	select="BOOKLIST/BOOKS/ITEM"
+                	streamable="yes"
                 	validation="strict">
                         <xsl:merge-key select="$cat-key(@CAT)"/>
                 </xsl:merge-source>

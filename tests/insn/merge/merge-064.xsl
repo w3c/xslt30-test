@@ -11,10 +11,10 @@
         
         <events>
             <xsl:merge>
-                <xsl:merge-source for-each-stream="'log-file-1.xml'" select="events/event" streamable="No">
+                <xsl:merge-source for-each-source="'log-file-1.xml'" select="events/event" streamable="No">
                         <xsl:merge-key select="xs:dateTime(@timestamp)"/>
                 </xsl:merge-source>
-                <xsl:merge-source for-each-stream="'log-file-2.xml'" select="log/day/record" streamable="no">
+                <xsl:merge-source for-each-source="'log-file-2.xml'" select="log/day/record" streamable="no">
                         <xsl:merge-key select="dateTime(../@date, time)"/>
                 </xsl:merge-source>
                 <xsl:merge-action>

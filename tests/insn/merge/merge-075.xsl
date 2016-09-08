@@ -15,13 +15,13 @@
             <xsl:merge>                
                 <xsl:merge-source name="cities"
                         streamable="yes"
-                		for-each-stream="'cities-SE.xml'"
+                		for-each-source="'cities-SE.xml'"
                 		select="city-list/city">
                     <xsl:merge-key select="name" collation="http://www.w3.org/2013/collation/UCA?lang=de;caseFirst=upper;alternate=shifted"/>
                 </xsl:merge-source>
                 <xsl:merge-source name="weather"
                         streamable="yes"
-                		for-each-stream="'weather-SE.xml'"
+                		for-each-source="'weather-SE.xml'"
                 		select="city-list/record">
                     <xsl:merge-key select="(.//sv, city/name)[1]" collation="http://www.w3.org/2013/collation/UCA?lang=de;caseFirst=upper"/>
                 </xsl:merge-source>

@@ -14,7 +14,7 @@
             <xsl:merge>                
                 <xsl:merge-source name="cities"
                         streamable="yes"
-                		for-each-stream="'cities-SE.xml'"
+                		for-each-source="'cities-SE.xml'"
                 		select="city-list/city">	
                     <xsl:merge-key select="position()"/>
                 </xsl:merge-source>

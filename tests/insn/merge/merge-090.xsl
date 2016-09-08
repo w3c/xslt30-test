@@ -8,7 +8,7 @@
     <xsl:template match="/" name="main">
         <Personenliste>
             <xsl:merge>
-                <xsl:merge-source for-each-stream="'merge-090.xml'" streamable="yes" select="Company/Person/Name">
+                <xsl:merge-source for-each-source="'merge-090.xml'" streamable="yes" select="Company/Person/Name">
                     <xsl:merge-key select="Surname" />
                 </xsl:merge-source>
                 <xsl:merge-action>

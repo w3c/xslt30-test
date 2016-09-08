@@ -10,7 +10,8 @@
         <events>
             <xsl:merge>                
                 <xsl:merge-source 
-                		for-each-stream="uri-collection('log-files')"
+                		for-each-source="uri-collection('log-files')"
+                		streamable="yes"
                 		select="events/event">
                     <xsl:merge-key select="@timestamp"/>
                 </xsl:merge-source>

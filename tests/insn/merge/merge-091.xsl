@@ -13,11 +13,11 @@
         <root>
             <subjects>
                 <xsl:merge>
-                    <xsl:merge-source name="books" for-each-stream="'merge-091b.xml'" select="books/book" >
+                    <xsl:merge-source name="books" for-each-source="'merge-091b.xml'" streamable="yes" select="books/book" >
                         <xsl:merge-key select="subject"/>
                     </xsl:merge-source>
-                    <xsl:merge-source name="casts" for-each-stream="'merge-091a.xml'" 
-                        select="root/list/cast">
+                    <xsl:merge-source name="casts" for-each-source="'merge-091a.xml'" 
+                        select="root/list/cast" streamable="yes">
                         <xsl:merge-key select="@subject"/>
                     </xsl:merge-source>
                     <xsl:merge-action>

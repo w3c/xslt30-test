@@ -10,7 +10,8 @@
     <xsl:template name="main">
         <books>
             <xsl:merge>
-                <xsl:merge-source for-each-stream="'books1.xml', 'books-invalid.xml'"
+                <xsl:merge-source for-each-source="'books1.xml', 'books-invalid.xml'"
+                    streamable="yes"
                 	select="BOOKLIST/BOOKS/ITEM"
                 	validation="strict">
                         <xsl:merge-key select="position()"/>
