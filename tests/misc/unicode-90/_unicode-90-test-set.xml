@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="unicode-90">
+   <description>Tests whitespace</description>
+   
+   <dependencies>
+      <spec value="XSLT30+" />
+      <unicode-version value="9.0" satisfied="true"/>
+   </dependencies>
+   
+   <test-case name="unicode90-001">
+      <description>Tests the new decimals in Unicode 9.0</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-001.xsl"/>
+         <param name="regex" static="yes" select="'\d'" />
+      </test>
+      <result>
+         <assert>/count = 370</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="unicode90-002">
+      <description>Tests the new non-decimals in Unicode 9.0</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-001.xsl"/>
+         <param name="regex" static="yes" select="'\D'" />
+      </test>
+      <result>
+         <assert>/count = 63084</assert>
+      </result>
+   </test-case>
+      
+   <test-case name="unicode90-003">
+      <description>Tests the new word characters in Unicode 9.0</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-001.xsl"/>
+         <param name="regex" static="yes" select="'\w'" />
+      </test>
+      <result>
+         <assert>/count = 54516</assert>
+      </result>
+   </test-case>
+      
+   <test-case name="unicode90-004">
+      <description>Tests the new non-word characters in Unicode 9.0</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-001.xsl"/>
+         <param name="regex" static="yes" select="'\W'" />
+      </test>
+      <result>
+         <assert>/count = 8938</assert>
+      </result>
+   </test-case>
+      
+   <test-case name="unicode90-005">
+      <description>Tests the new new generic Number category chars in Unicode 9.0</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-001.xsl"/>
+         <param name="regex" static="yes" select="'\p{N}'" />
+      </test>
+      <result>
+         <assert>/count = 735</assert>
+      </result>
+   </test-case>
+      
+   <test-case name="unicode90-006">
+      <description>Tests the new generic Number category chars in Unicode 9.0</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-001.xsl"/>
+         <param name="regex" static="yes" select="'\P{N}'" />
+      </test>
+      <result>
+         <assert>/count = 62719</assert>
+      </result>
+   </test-case>
+      
+   <test-case name="unicode90-007">
+      <description>Tests the new generic Letter category chars in Unicode 9.0</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-001.xsl"/>
+         <param name="regex" static="yes" select="'\p{L}'" />
+      </test>
+      <result>
+         <assert>/count = 48739</assert>
+      </result>
+   </test-case>
+      
+   <test-case name="unicode90-008">
+      <description>Tests the new generic non-Letter category chars in Unicode 9.0</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-001.xsl"/>
+         <param name="regex" static="yes" select="'\P{L}'" />
+      </test>
+      <result>
+         <assert>/count = 14715</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="unicode90-100">
+      <description>Tests the some new scripts (blocks) in Unicode 9.0: Adlam</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-002.xsl"/>
+         <param name="regex" static="yes" select="'\p{IsAdlam}'" />
+      </test>
+      <result>
+         <assert>/count = 96</assert>
+      </result>
+   </test-case>   
+
+   <test-case name="unicode90-101">
+      <description>Tests the some new scripts (blocks) in Unicode 9.0: Adlam</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-002.xsl"/>
+         <param name="regex" static="yes" select="'\p{IsAdlam}'" />
+      </test>
+      <result>
+         <assert>/count = 13907</assert>
+      </result>
+   </test-case>  
+
+   <test-case name="unicode90-102">
+      <description>Tests the some new scripts (blocks) in Unicode 9.0: Bhaiksuki</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-002.xsl"/>
+         <param name="regex" static="yes" select="'\p{IsBhaiksuki}'" />
+      </test>
+      <result>
+         <assert>/count = 110</assert>
+      </result>
+   </test-case>  
+
+   <test-case name="unicode90-103">
+      <description>Tests the some new scripts (blocks) in Unicode 9.0: Bhaiksuki</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-002.xsl"/>
+         <param name="regex" static="yes" select="'\p{IsBhaiksuki}'" />
+      </test>
+      <result>
+         <assert>/count = 13893</assert>
+      </result>
+   </test-case>  
+
+   <test-case name="unicode90-104">
+      <description>Tests the some new scripts (blocks) in Unicode 9.0: Marchen</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-002.xsl"/>
+         <param name="regex" static="yes" select="'\p{IsMarchen}'" />
+      </test>
+      <result>
+         <assert>/count = 80</assert>
+      </result>
+   </test-case>  
+
+   <test-case name="unicode90-105">
+      <description>Tests the some new scripts (blocks) in Unicode 9.0: Marchen</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-002.xsl"/>
+         <param name="regex" static="yes" select="'\p{IsMarchen}'" />
+      </test>
+      <result>
+         <assert>/count = 13923</assert>
+      </result>
+   </test-case>  
+   
+   <test-case name="unicode90-106">
+      <description>Tests the some new scripts (blocks) in Unicode 9.0: Tangut</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-002.xsl"/>
+         <param name="regex" static="yes" select="'\p{IsMarchen}'" />
+      </test>
+      <result>
+         <assert>/count = 6144</assert>
+      </result>
+   </test-case>  
+
+   <test-case name="unicode90-107">
+      <description>Tests the some new scripts (blocks) in Unicode 9.0: Tangut</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <test>
+         <stylesheet file="unicode90-002.xsl"/>
+         <param name="regex" static="yes" select="'\p{IsTangut}'" />
+      </test>
+      <result>
+         <assert>/count = 7859</assert>
+      </result>
+   </test-case>  
+</test-set>

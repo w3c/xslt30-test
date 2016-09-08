@@ -7,8 +7,8 @@
   declared-modes="no"
   default-mode="a">
     
-    <!-- default mode that gets invoked must be public -->
-    <xsl:mode visibility="public" />
+    <!-- default mode is implicitly private, but is still publicly invocable -->
+    <xsl:mode />
 
   <xsl:template match="/">
       <ok/>

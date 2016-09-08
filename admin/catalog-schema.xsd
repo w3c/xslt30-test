@@ -1127,6 +1127,27 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
+    
+    <xs:element name="unicode-version" substitutionGroup="dependency">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Indicates a test that dependent is on a certain Unicode version</p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:restriction base="dependencyType">
+                    <xs:attribute name="value">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:pattern value="[0-9]+.[0-9]"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:restriction>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="collation_uri" substitutionGroup="dependency">
         <xs:annotation>
