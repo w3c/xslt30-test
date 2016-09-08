@@ -1339,6 +1339,63 @@ footnote</footnote> and a <citation/></p>
          <assert-xml><![CDATA[<out>1|2|3|</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="number-1902">
+      <description>Use a local variable within the xsl:number/@count pattern (level=single)</description>
+      <created by="Michael Kay" on="2016-09-06"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<root><foo bar="1">1</foo><foo bar="2">2</foo><foo bar="3">3</foo></root>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-1902.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1|1|1|</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="number-1903">
+      <description>Use a local variable within the xsl:number/@count pattern (level=any)</description>
+      <created by="Michael Kay" on="2016-09-06"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<root><foo bar="1">1</foo><foo bar="2">2</foo><foo bar="3">3</foo></root>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-1903.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1|1|1|</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="number-1904">
+      <description>Use a local variable declared locally within the xsl:number/@count pattern (level=any)</description>
+      <created by="Michael Kay" on="2016-09-06"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<root><foo bar="1">1</foo><foo bar="2">3</foo><foo bar="3">9</foo></root>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-1904.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1|1|2|</out>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="number-2001">
       <description>Test of numbering of multi-level document with no attributes specified. </description>
