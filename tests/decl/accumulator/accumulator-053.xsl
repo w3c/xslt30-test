@@ -6,8 +6,7 @@
   exclude-result-prefixes="xs map"
   version="3.0">
   
-  <xsl:mode streamable="yes"/>
-  <xsl:global-context-item use-accumulators="type-count"/>
+  <xsl:mode streamable="yes" use-accumulators="type-count"/>
   
   <xsl:output method="text"/>
   

@@ -7,9 +7,9 @@
   
   <xsl:param name="streamable" static="yes" required="yes"/>
   
-  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip"/>
+  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip" use-accumulators="#all"/>
   
-  <xsl:global-context-item use-accumulators="#all"/>
+  <xsl:global-context-item/>
   
   <xsl:accumulator name="a" as="xs:integer" initial-value="0" _streamable="{$streamable}">
     <xsl:accumulator-rule match="chap[not(@nr = $seven)]" select="0"/>

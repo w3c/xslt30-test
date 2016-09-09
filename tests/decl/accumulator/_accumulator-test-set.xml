@@ -1146,5 +1146,67 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-056">
+      <description>Dynamic error in xsl:accumulator/@initial-value</description>
+      <created by="Michael Kay" on="2016-09-09"/>
+      <environment ref="accumulator-001"/>
+      <test>
+         <stylesheet file="accumulator-056.xsl"/>
+         <param name="streamable" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><divide-by-zero/><divide-by-zero/><divide-by-zero/><divide-by-zero/></figures>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-056s">
+      <description>Dynamic error in xsl:accumulator/@initial-value</description>
+      <created by="Michael Kay" on="2016-09-09"/>
+      <environment>
+         <source role="." file="accumulator-001.xml" streaming="true"/>
+      </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-056.xsl"/>
+         <param name="streamable" static="yes" select="'yes'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><divide-by-zero/><divide-by-zero/><divide-by-zero/><divide-by-zero/></figures>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-057">
+      <description>Dynamic error in xsl:accumulator-rule/@select</description>
+      <created by="Michael Kay" on="2016-09-09"/>
+      <environment ref="accumulator-001"/>
+      <test>
+         <stylesheet file="accumulator-057.xsl"/>
+         <param name="streamable" static="yes" select="'no'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><divide-by-zero/><divide-by-zero/><divide-by-zero/><divide-by-zero/></figures>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-057s">
+      <description>Dynamic error in xsl:accumulator-rule/@select</description>
+      <created by="Michael Kay" on="2016-09-09"/>
+      <environment>
+         <source role="." file="accumulator-001.xml" streaming="true"/>
+      </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-057.xsl"/>
+         <param name="streamable" static="yes" select="'yes'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<figures><divide-by-zero/><divide-by-zero/><divide-by-zero/><divide-by-zero/></figures>]]></assert-xml>
+      </result>
+   </test-case>
  
 </test-set>

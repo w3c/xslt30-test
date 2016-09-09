@@ -6,8 +6,7 @@
     version="3.0">
     
     <xsl:param name="streamable" static="true" required="true"/>
-    <xsl:mode on-no-match="shallow-copy" _streamable="{$streamable}"/>
-    <xsl:global-context-item use-accumulators="text-in-p-count" _streamable="{$streamable}"/>
+    <xsl:mode on-no-match="shallow-copy" _streamable="{$streamable}" use-accumulators="text-in-p-count"/>
     
     <xsl:accumulator name="text-in-p-count" as="xs:integer" _streamable="{$streamable}" initial-value="0">
         <xsl:accumulator-rule match="p" select="0"/>

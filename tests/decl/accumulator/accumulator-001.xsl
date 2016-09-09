@@ -11,14 +11,13 @@
   
   <xsl:param name="streamable" static="yes" select="'no'"/>
   
-  <xsl:global-context-item _streamable="{$streamable}" use-accumulators="figNr"/>
 
   <xsl:accumulator name="figNr" as="xs:integer" initial-value="0" _streamable="{$streamable}">
     <xsl:accumulator-rule match="chap" select="0"/>
     <xsl:accumulator-rule match="fig" select="$value + 1"/>
   </xsl:accumulator>
 
-  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip"/>
+  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip" use-accumulators="figNr"/>
   
   <xsl:template match="fig">
     <xsl:apply-templates/>

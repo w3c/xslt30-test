@@ -6,8 +6,8 @@
     exclude-result-prefixes="xs math map" 
     version="3.0">
     
-    <xsl:mode on-no-match="shallow-copy" streamable="yes"/>
-    <xsl:global-context-item streamable="yes" use-accumulators="item-group"/>
+    <xsl:mode on-no-match="shallow-copy" streamable="yes" use-accumulators="item-group"/>
+
     
     <xsl:accumulator name="item-group" as="map(xs:string, xs:integer)" initial-value="map{}" streamable="yes">
         <xsl:accumulator-rule match="item" 

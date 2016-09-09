@@ -5,7 +5,7 @@
 
   <!-- Local variables in initial-value and select expressions -->
   
-  <xsl:mode streamable="yes" on-no-match="shallow-skip"/>
+  <xsl:mode streamable="yes" on-no-match="shallow-skip" use-accumulators="a"/>
   
   <xsl:accumulator name="a" as="xs:integer" initial-value="min(for $i in $zero to 5 return $i*2)"
   			streamable="yes">
@@ -25,5 +25,5 @@
   </xsl:template>
   
   <xsl:param name="zero" select="0"/>
-  <xsl:global-context-item use-accumulators="a"/>
+  <xsl:global-context-item/>
 </xsl:package>

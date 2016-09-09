@@ -25,10 +25,8 @@
    <xsl:accumulator name="max" as="xs:double" initial-value="-999999999999" streamable="yes">
      <xsl:accumulator-rule match="transaction" select="if (@amount &gt; $value) then @amount else $value"/>
    </xsl:accumulator>
-   
-   <xsl:global-context-item streamable="yes" use-accumulators="count sum min max"/>
-   
-   <xsl:mode streamable="yes" on-no-match="deep-skip"/>
+ 
+  <xsl:mode streamable="yes" on-no-match="deep-skip" use-accumulators="count sum min max"/>
    <xsl:template match="/">
      <result min="{accumulator-after('min')}" max="{accumulator-after('max')}" 
              sum="{accumulator-after('sum')}" count="{accumulator-after('count')}" 

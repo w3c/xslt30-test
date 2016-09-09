@@ -6,8 +6,6 @@
   <!-- Get post-descent value of accumulator -->
   
   <xsl:param name="streamable" static="yes" select="'no'"/>
-  
-  <xsl:global-context-item _streamable="{$streamable}" use-accumulators="f:figNr"/>
 
 
   <xsl:accumulator name="f:figNr" as="xs:decimal" initial-value="0"
@@ -17,7 +15,7 @@
     <xsl:accumulator-rule match="diag" select="$value + 0.5"/>
   </xsl:accumulator>
 
-  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip"/>
+  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip" use-accumulators="f:figNr"/>
   <xsl:template match="fig">
     <pix>
       <p>Figure <xsl:value-of select="accumulator-before('f:figNr')"/> start</p>

@@ -11,9 +11,9 @@
    
    <xsl:param name="streamable" static="yes"/>
 
-   <xsl:mode _streamable="{$streamable}" />
+   <xsl:mode _streamable="{$streamable}"  use-accumulators="#all"/>
    
-   <xsl:global-context-item use-accumulators="#all"/>
+   <xsl:global-context-item/>
   
 
    <xsl:accumulator name="item-cost" _streamable="{$streamable}" 
