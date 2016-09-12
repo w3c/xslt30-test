@@ -9,8 +9,7 @@
 	<xsl:mode streamable="yes"/>
 	
 	<xsl:output indent="no"/>
-	
-	<xsl:global-context-item streamable="yes"/>
+
 	
 	<xsl:template match="/*">
 		<xsl:copy>
@@ -22,5 +21,7 @@
 			</xsl:iterate>
 		</xsl:copy>
 	</xsl:template>
+	
+	<xsl:template match="processing-instruction()"><xsl:copy-of select="."/></xsl:template>
 	
 </xsl:stylesheet>
