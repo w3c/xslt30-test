@@ -54,4 +54,67 @@
       </result>
    </test-case>
    
+   <test-case name="glob-cxt-item-004">
+      <description>It is a static error if more than one xsl:global-context-item declaration appears within a stylesheet module</description>
+      <created by="Michael Kay" on="2016-09-12"/>
+      <environment ref="glob-cxt-item-A"/>    
+      <test>
+         <package file="glob-cxt-item-004.xsl" role="principal"/>
+         <initial-mode name="m"/>
+      </test>
+      <result>
+         <error code="XTSE3087"/>
+      </result>
+   </test-case>
+   
+   <test-case name="glob-cxt-item-005">
+      <description>It is a static error if ... several modules within a single package contain inconsistent xsl:global-context-item declarations</description>
+      <created by="Michael Kay" on="2016-09-12"/>
+      <environment ref="glob-cxt-item-A"/>    
+      <test>
+         <package file="glob-cxt-item-005.xsl" role="principal"/>
+         <initial-mode name="m"/>
+      </test>
+      <result>
+         <error code="XTSE3087"/>
+      </result>
+   </test-case>
+   
+   <test-case name="glob-cxt-item-006">
+      <description>By implication: it is not a static error if ... several modules within a single package contain consistent xsl:global-context-item declarations</description>
+      <created by="Michael Kay" on="2016-09-12"/>   
+      <test>
+         <package file="glob-cxt-item-006.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert>/out = '23'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="glob-cxt-item-007">
+      <description>It is a static error if ... several modules within a single package contain inconsistent xsl:global-context-item declarations</description>
+      <created by="Michael Kay" on="2016-09-12"/>
+      <environment ref="glob-cxt-item-A"/>    
+      <test>
+         <package file="glob-cxt-item-007.xsl" role="principal"/>
+         <initial-mode name="m"/>
+      </test>
+      <result>
+         <error code="XTSE3087"/>
+      </result>
+   </test-case>
+   
+   <test-case name="glob-cxt-item-008">
+      <description>By implication: it is not a static error if ... several modules within a single package contain consistent xsl:global-context-item declarations</description>
+      <created by="Michael Kay" on="2016-09-12"/>
+      <environment ref="glob-cxt-item-A"/>    
+      <test>
+         <package file="glob-cxt-item-008.xsl" role="principal"/>
+         <initial-mode name="m"/>
+      </test>
+      <result>
+         <assert>/out/doc</assert>
+      </result>
+   </test-case>
+   
 </test-set>
