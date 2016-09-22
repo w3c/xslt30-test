@@ -4,7 +4,8 @@
    <description>Tests whitespace</description>
    
    <dependencies>
-      <spec value="XSLT30+" />
+      <!-- the unicode tests have deliberately be written in a 2.0 backward compatible way -->
+      <spec value="XSLT20+" />
       <unicode-version value="9.0" satisfied="true"/>
    </dependencies>
    
@@ -57,7 +58,7 @@
    </test-case>
       
    <test-case name="unicode90-005">
-      <description>Tests the new new generic Number category chars in Unicode 9.0</description>
+      <description>Tests the new generic Number category chars in Unicode 9.0</description>
       <created by="Abel Braaksma" on="2016-09-08"/>
       <test>
          <stylesheet file="unicode90-001.xsl"/>
@@ -739,6 +740,36 @@
       <test>
          <stylesheet file="unicode90-Gen-001.xsl"/>
          <initial-mode name="fn-replace6"/>
+      </test>
+      <result>
+         <assert>/res = 'true'</assert>
+      </result>
+   </test-case>
+      
+   <test-case name="unicode90-Ll-037">
+      <description>Tests general category 'Ll' with fn:replace</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <environment>
+         <source file="docs/unicode-Ll.xml" role="." />
+      </environment>
+      <test>
+         <stylesheet file="unicode90-Gen-001.xsl"/>
+         <initial-mode name="fn-replace7"/>
+      </test>
+      <result>
+         <assert>/res = 'true'</assert>
+      </result>
+   </test-case>
+      
+   <test-case name="unicode90-Ll-038">
+      <description>Tests general category 'Ll' with fn:replace</description>
+      <created by="Abel Braaksma" on="2016-09-08"/>
+      <environment>
+         <source file="docs/unicode-Ll.xml" role="." />
+      </environment>
+      <test>
+         <stylesheet file="unicode90-Gen-001.xsl"/>
+         <initial-mode name="fn-replace8"/>
       </test>
       <result>
          <assert>/res = 'true'</assert>

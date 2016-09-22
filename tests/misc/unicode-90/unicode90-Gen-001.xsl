@@ -16,10 +16,10 @@
     <xsl:variable name="validrangeX" select="(9, 10, 13, 32 to $lowupperbound)" />  <!-- (9, 10, 13, 32 to 55295, 57344 to 65533, 65537 to 1114111) -->
     <xsl:variable name="validrange" select="(9, 10, 13, 32 to $lowupperbound, 57344 to 65533, 65537 to $highupperbound)" />  <!-- (9, 10, 13, 32 to 55295, 57344 to 65533, 65537 to 1114111) -->
     
-    <xsl:param name="source" select="doc('docs/unicode-Ll.xml')" />
+    <xsl:param name="source" select="doc(concat('docs/unicode-', $charclass, '.xml'))" />
     
     <xsl:template name="start" match="/">
-        <xsl:apply-templates select="$source" mode="fn-matches7" />
+        <xsl:apply-templates select="$source" mode="fn-replace8" />
     </xsl:template>
     
     <xsl:template match="/" mode="fn-matches1">
@@ -370,7 +370,7 @@
     </xsl:template>
 
     <xsl:template match="/" mode="fn-translate4">
-        <!-- tests whether we can translate these characters properly into oblivion -->
+        <!-- tests whether we can translate these characters properly into oblivion using reverse string -->
         <xsl:variable name="str" select="string-join(*/c/@c, '')" />
         <xsl:variable name="rev" select="string-join(reverse(*/c/@c), '')" />
         <res>
@@ -409,7 +409,7 @@
     <xsl:template match="/" mode="fn-replace4">
         <!-- tests whether each character is replaced with itself (\P{X})(\1)? with $1$2 -->
         <xsl:variable name="regex" select="concat('(', $negclass, ')(\1)?')" />
-        <res charclass="{$charclass}" regex="{$regex}" replace="**">
+        <res charclass="{$charclass}" regex="{$regex}" replace="$1$2">
             <xsl:variable name="c" select="*/c/@d/xs:integer(.)" />
             <xsl:variable name="allcharsnot" as="xs:string*">
                 <xsl:sequence select="for $i in $validrange[not(. = $c)] return codepoints-to-string($i)"/>                
@@ -421,7 +421,7 @@
     <xsl:template match="/" mode="fn-replace5">
         <!-- tests whether NOTHING gets replaced with for anying in \p{X}, when regex is (\P{X}) and repl string is '||$1||' -->
         <xsl:variable name="regex" select="concat('(', $negclass, ')')" />
-        <res charclass="{$charclass}" regex="{$regex}" replace="$1">
+        <res charclass="{$charclass}" regex="{$regex}" replace="||$1||">
             <xsl:value-of select="string-join(*/c/replace(@c, $regex, '||$1||'), '') = string-join(*/c, '')" />
         </res>
     </xsl:template>
@@ -429,12 +429,34 @@
     <xsl:template match="/" mode="fn-replace6">
         <!-- tests whether NOTHING gets replaced with for anying in \P{X}, when regex is (\p{X}) and repl string is '||$1||' -->
         <xsl:variable name="regex" select="concat('(', $posclass, ')')" />
-        <res charclass="{$charclass}" regex="{$regex}" replace="**">
+        <res charclass="{$charclass}" regex="{$regex}" replace="||$1||">
             <xsl:variable name="c" select="*/c/@d/xs:integer(.)" />
             <xsl:variable name="allcharsnot" as="xs:string*">
                 <xsl:sequence select="for $i in $validrange[not(. = $c)] return codepoints-to-string($i)"/>                
             </xsl:variable>
             <xsl:value-of select="string-join(for $char in $allcharsnot return replace($char, $regex, '||$1||'), '') = string-join($allcharsnot, '')" />
+        </res>
+    </xsl:template>
+    
+    <xsl:template match="/" mode="fn-replace7">
+        <!-- take all valid Unicode characters and replace each \p{X} with nothing, result should be same as all \p{X} characters  -->
+        <xsl:variable name="regex" select="$posclass" />
+        <res charclass="{$charclass}" regex="{$regex}" replace="">
+            <xsl:variable name="c" select="*/c/@d/xs:integer(.)" />
+            <xsl:variable name="allcharsnotString" as="xs:string">
+                <xsl:sequence select="string-join(for $i in $validrange[not(. = $c)] return codepoints-to-string($i), '')"/>                
+            </xsl:variable>
+            <xsl:variable name="allUnicodeCharsString" as="xs:string*" select="string-join(for $i in $validrange return codepoints-to-string($i), '')" />
+            <xsl:value-of select="string-join(replace($allUnicodeCharsString, $regex, ''), '') = $allcharsnotString" />
+        </res>
+    </xsl:template>
+    
+    <xsl:template match="/" mode="fn-replace8">
+        <!-- take all valid Unicode characters and replace each \P{X} with nothing, result should be same as all \p{X} characters  -->
+        <xsl:variable name="regex" select="$negclass" />
+        <res charclass="{$charclass}" regex="{$regex}" replace="">
+            <xsl:variable name="allUnicodeCharsString" as="xs:string*" select="string-join(for $i in $validrange return codepoints-to-string($i), '')" />
+            <xsl:value-of select="string-join(replace($allUnicodeCharsString, $regex, ''), '') = string-join(*/c/@c, '')" />
         </res>
     </xsl:template>
     
