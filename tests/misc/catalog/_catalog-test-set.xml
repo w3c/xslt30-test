@@ -17,8 +17,12 @@
       <schema role="secondary" file="../../../admin/xml.xsd" xsd-version="1.1"/>
       <schema role="source-reference" file="schema-for-xslt30.xsd" xsd-version="1.1"/>
    </environment>
-   
-   <dependencies>
+  
+  <environment name="catalog010">
+    <source role="." file="../../../catalog.xml" validation="strict"/>
+  </environment>
+  
+  <dependencies>
       <feature value="schema_aware"/>
    </dependencies>
 
@@ -177,4 +181,21 @@
          <assert>empty(/out/error)</assert>        
       </result>
    </test-case>
+
+  <test-case name="catalog-010">
+    <description>Test that all non-error stylesheets are valid against the RelaxNG schema for stylesheets</description>
+    <keywords>catalog-self-test tests-stylesheet-schema-validity relaxng rng</keywords>
+    <created by="Charles Foster" on="2016-08-25"/>
+    <environment ref="catalog010"/>
+    <dependencies>
+      <spec value="XSLT30+"/>
+    </dependencies>
+    <test>
+      <stylesheet file="catalog-010.xsl"/>
+    </test>
+    <result>
+      <assert>not(/out/invalid)</assert>
+    </result>
+  </test-case>
+  
 </test-set>
