@@ -783,7 +783,17 @@
          <stylesheet file="si-group-037.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+         <all-of>
+            <assert>normalize-space(/root/p[1]) eq "Some text broken tags in my content which is really annoying."</assert>
+            <assert>normalize-space(/root/p[2]) eq "Testing the code with some other samples."</assert>
+            <assert>normalize-space(/root/p[3]) eq "Testing adjacent elements of different name."</assert>
+            <assert>/root/p[1]/span[@class='italic'] = 'broken tags'</assert>
+            <assert>/root/p[1]/span[@class='italic'] = 'really annoying'</assert>
+            <assert>/root/p[2]/span[@class='class1'] = 'the code'</assert>
+            <assert>/root/p[2]/span[not(@class)] = ' with '</assert>
+            <assert>/root/p[3]/b[@class = 'foo'] = 'adjacent '</assert>
+            <assert>/root/p[3]/i[@class = 'foo'] = 'elements'</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -814,6 +824,7 @@
    <test-case name="si-group-039">
       <description>Streamed grouping - group-by</description>
       <created by="Michael Kay after Dak Tapaal" on="2016-08-23"/>
+      <modified by="Michael Kay" on="2016-09-19" change="provide expected results"/>
       <environment>
          <source role="." file="si-group-039.xml" streaming="true"/>
       </environment>
@@ -824,18 +835,31 @@
       <result>
          <all-of>
             <assert-result-document uri="si-group-039.out">
-               <assert>/out/group[1][key/@date="2006-02-13"][first/@value="13.24"]</assert>
-               <assert>/out/group[2][key/@date="2006-02-15"][first/@value="-15.00"]</assert>
-               <assert>/out/group[3][key/@date="2006-02-16"][first/@value="6.00"]</assert>
-               <assert>/out/group[4][key/@date="2006-02-17"][first/@value="0.50"]</assert>
-               <assert>/out/group[5][key/@date="2006-02-20"][first/@value="-5.00"]</assert>
-               <assert>/out/group[6][key/@date="2006-02-21"][first/@value="8.99"]</assert>
-               <assert>/out/group[7][key/@date="2006-02-22"][first/@value="16.00"]</assert>
-               <assert>/out/group[8][key/@date="2006-02-23"][first/@value="-2.33"]</assert>
-               <assert>/out/group[9][key/@date="2006-02-24"][first/@value="6.78"]</assert>
-               <assert>/out/group[10][key/@date="2006-02-25"][first/@value="12.00"]</assert>
-               <assert>/out/group[11][key/@date="2006-02-26"][first/@value="14.20"]</assert>
+               <all-of>
+                  <assert>count(/RootNode/Groups/Formatted-Group) eq 2</assert>
+                  <assert>deep-equal(/RootNode/Groups/Formatted-Group[@groupId='G1']/specifics/specific/string(), ("Subgroup1","Subgroup2","Subgroup3","Subgroup4",))</assert>
+                  <assert>deep-equal(/RootNode/Groups/Formatted-Group[@groupId='G2']/specifics/specific/string(), ("Subgroup1","Subgroup2","Subgroup5","Subgroup6",))</assert>
+               </all-of>
             </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-040">
+      <description>Streamed grouping - group-adjacent</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-09-18"/>
+      <environment>
+         <source role="." file="si-group-040.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-040.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/root[1]/item-chunk/item) = 10</assert>
+            <assert>count(/out/root[2]/item-chunk/item) = 10</assert>
+            <assert>count(/out/root[3]/item-chunk/item) = 10</assert>
+            <assert>count(/out/root[4]/item-chunk/item) = 5</assert>
          </all-of>
       </result>
    </test-case>

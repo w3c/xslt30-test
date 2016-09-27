@@ -10,23 +10,23 @@
 
    <environment name="stream-A">
      <stylesheet file="stream-A.xsl"/>
-     <param name="STREAMABLE" static="true" select="true()"/> 
+     <param name="STREAMABLE" static="yes" select="true()"/> 
    </environment>
    
    <environment name="stream-B">
      <stylesheet file="stream-B.xsl"/>
-     <param name="STREAMABLE" static="true" select="true()"/>
+     <param name="STREAMABLE" static="yes" select="true()"/>
      <schema role="stylesheet-import" file="books.xsd"/> 
    </environment>
    
    <environment name="non-stream-A">
       <stylesheet file="stream-A.xsl"/>
-      <param name="STREAMABLE" static="true" select="false()"/> 
+      <param name="STREAMABLE" static="yes" select="false()"/> 
    </environment>
    
    <environment name="non-stream-B">
       <stylesheet file="stream-B.xsl"/>
-      <param name="STREAMABLE" static="true" select="false()"/>
+      <param name="STREAMABLE" static="yes" select="false()"/>
       <schema role="stylesheet-import" file="books.xsd"/> 
    </environment>
    
@@ -376,6 +376,7 @@
    <test-case name="stream-203">
       <description>Extract two parts from a partwise MusicXML score: cannot put xs:untypedAtomic in map that expects xs:string</description>
       <created by="Michael Kay" on="2016-02-13"/>
+      <modified by="Michael Kay" on="2016-09-12" change="move the call to accumulator-before() out of the pattern so the error is not masked"/>
       <test>
          <stylesheet file="stream-203.xsl"/>
       </test>
@@ -447,7 +448,7 @@
       <test>
          <initial-template name="s-001"/>
       </test>
-      <result early-exit-possible="true">
+      <result>
          <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
@@ -495,7 +496,7 @@
       <test>
          <initial-template name="s-005"/>
       </test>
-      <result early-exit-possible="true">
+      <result>
          <all-of>
             <assert>/out/@position = "1"</assert>
             <assert>/out/@is-doc = "true"</assert>
@@ -713,7 +714,7 @@
       <test>
          <initial-template name="s-108"/>
       </test>
-      <result early-exit-possible="true">
+      <result>
          <assert>/out = 'true'</assert>
       </result>
    </test-case>
@@ -733,7 +734,6 @@
    <test-case name="non-stream-200">
       <description>Test xsl:source-document (streamable="no") does not have to satisfy streamability constraints</description>
       <created by="Michael Kay" on="2016-08-28"/>
-      <environment ref="non-stream-B"/>
       <test>
          <stylesheet file="non-stream-200.xsl"/>
       </test>
@@ -745,6 +745,17 @@
             <assert>empty(//part[@id="P4"])</assert>
             <assert>/processing-instruction(count) = '1251'</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="non-stream-201">
+      <description>Use-accumulators applies even when not streaming</description>
+      <created by="Michael Kay" on="2016-09-12"/>
+      <test>
+         <stylesheet file="non-stream-201.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3362"/>
       </result>
    </test-case>
    

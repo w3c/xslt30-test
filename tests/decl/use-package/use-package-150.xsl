@@ -9,7 +9,7 @@
     <xsl:use-package name="http://www.w3.org/2013/XSLT/xml-to-json.xsl"/>
     
     <xsl:template match="/">
-        <xsl:sequence select="fn:xml-to-json(.)"/>
+        <out><xsl:sequence select="fn:xml-to-json(.)"/></out>
     </xsl:template>
     
 </xsl:stylesheet>

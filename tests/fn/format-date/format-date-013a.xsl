@@ -67,13 +67,13 @@
         <t a="456">
           <xsl:value-of select="format-dateTime($t, '[f,2-5]')"/>
         </t>
-        <t a="46">
+        <t a="45">
           <xsl:value-of select="format-dateTime($t, '[f,2-2]')"/>
         </t>
         <t a="456">
           <xsl:value-of select="format-dateTime($t, '[f,1-*]')"/>
         </t>
-        <t a="46">
+        <t a="45">
           <xsl:value-of select="format-dateTime($t, '[f,*-2]')"/>
         </t>
         <t a="456">

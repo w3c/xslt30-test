@@ -2,10 +2,10 @@
     <xsl:mode name="stream" streamable="yes" on-no-match="shallow-copy"/>
     <xsl:output method="xml" indent="yes"/>
     <!--Define Global Variables by Streaming Input XML -->
-    <xsl:param name="fileHref" select="'file:///Users/mike/Desktop/temp/For-EachGroup-Issue.xml'"/>
+    <xsl:param name="fileHref" select="'si-group-039.xml'"/>
     <xsl:variable name="outDir" select="substring-before($fileHref, tokenize($fileHref,'/')[last()])"/>
     <xsl:variable name="OutFileName" select="substring-before($fileHref,'.xml') || '-Formatted.xml'"/>
-    <xsl:template match="/">
+    <xsl:template match="/" name="main">
         <xsl:result-document href="si-group-039.out">
             <xsl:source-document streamable="yes" href="{$fileHref}">
                 <xsl:apply-templates mode="stream"/>

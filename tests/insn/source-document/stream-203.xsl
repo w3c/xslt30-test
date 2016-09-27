@@ -25,18 +25,12 @@
         </xsl:source-document>
     </xsl:template>
     
-    <xsl:template match="part[not(map:contains(accumulator-before('selected-part-ids'), @id))]" mode="m"/>
+    <xsl:template match="part" mode="m">
+        <xsl:if test="map:contains(accumulator-before('selected-part-ids'), @id)">
+            <xsl:next-match/>
+        </xsl:if>
+    </xsl:template>
     
-    <!--
-        MHK Note:
-        Mistakes I made while writing this (excluding silly typos).
-        
-        1. Failed to declare the stylesheet with version="3.0" -> Saxon didn't recognise accumulator-before() function
-        2. Failed to cast ../../@id to xs:string -> Type error, map key is xs:untypedAtomic but required type is xs:string
-        3. Failed to declare the accumulator as streamable
-        4. Tried in the match="part" template to put the accumulator test in a predicate of the the match pattern. Failed saying
-        the pattern wasn't motionless
-    
-    -->
+  
     
 </xsl:stylesheet>

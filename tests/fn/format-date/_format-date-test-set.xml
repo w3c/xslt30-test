@@ -23,14 +23,30 @@
       <description>XSLT 2.0: test format-time: basic numeric formats</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="format-date-002.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="format-date-002.out"/>
+         <assert>every $t in //tr satisfies $t/@a eq $t/@x</assert> 
+      </result>
+   </test-case>
+   
+   <test-case name="format-date-002a">
+      <description>XSLT 2.0: test format-time: basic numeric formats</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-09-19" change="Rounding rules for fractional seconds change in XPath 3.1"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="format-date-002a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>every $t in //tr satisfies $t/@a eq $t/@x</assert> 
       </result>
    </test-case>
 
@@ -38,14 +54,30 @@
       <description>XSLT 2.0: test format-dateTime: basic numeric formats</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="format-date-003.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="format-date-003.out"/>
+         <assert>every $t in //tr satisfies $t/@a eq $t/@x</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="format-date-003a">
+      <description>XSLT 2.0: test format-dateTime: basic numeric formats</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-09-19" change="Rounding rules for fractional seconds change in XPath 3.1"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="format-date-003a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>every $t in //tr satisfies $t/@a eq $t/@x</assert>
       </result>
    </test-case>
 
@@ -192,14 +224,30 @@
       <description>XSLT 2.0: test format-dateTime: width specifiers</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT20"/>
       </dependencies>
       <test>
          <stylesheet file="format-date-013.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="format-date-013.out"/>
+         <assert>every $t in //t satisfies $t/@a eq $t</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="format-date-013a">
+      <description>XSLT 2.0: test format-dateTime: width specifiers</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-09-19" change="Rounding rules for fractional seconds change in XPath 3.1"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="format-date-013a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>every $t in //t satisfies $t/@a eq $t</assert>
       </result>
    </test-case>
 

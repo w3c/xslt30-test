@@ -111,6 +111,25 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="si-apply-templates-006">
+      <description>Test streaming apply-templates where the consuming operand is a grounded xsl:with-param.</description>
+      <created by="Michael Kay" on="2016-09-18"/>
+      <environment>
+         <source role="." streaming="true" file="si-apply-templates-006.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="si-apply-templates-006.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/root[1]/item-chunk/item = "item 001"</assert>
+            <assert>/out/root[2]/item-chunk/item = "item 002"</assert>
+            <assert>/out/root[35]/item-chunk/item = "item 035"</assert>
+            <assert>not(/out/root[36])</assert>
+         </all-of>
+      </result>
+   </test-case>
 
 
 </test-set>

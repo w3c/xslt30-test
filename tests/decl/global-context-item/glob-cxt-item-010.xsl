@@ -1,14 +1,12 @@
 <xsl:package
-  name="http://www.w3.org/xslt30-test/glob-cxt-item-005"
+  name="http://www.w3.org/xslt30-test/glob-cxt-item-010"
   package-version="1.0"
   version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
-  
-    <xsl:strip-space elements="*"/>
 
     <xsl:mode name="m" visibility="public"/>
 
-    <xsl:global-context-item use="absent"/>
+    <xsl:global-context-item use="required" as="document-node(element(doc))"/>
     
     <xsl:variable name="g" select="/doc"/>
 
@@ -18,6 +16,7 @@
       </out>
     </xsl:template> 
   
-    <xsl:include href="glob-cxt-item-005b.xsl"/>
+  <xsl:use-package name="http://www.w3.org/xslt30-test/glob-cxt-item-010b"
+    package-version="1.0"/>
           
   </xsl:package>
