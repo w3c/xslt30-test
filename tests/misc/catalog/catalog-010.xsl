@@ -10,11 +10,11 @@
   <!-- Test that all non-error stylesheets are valid against the
        RelaxNG schema for stylesheets -->
   
-  <xsl:template name="xsl:initial-template" use-when="function-available('rng:schema-report', 1)">
-    
+  <xsl:template name="xsl:initial-template" match="/" use-when="function-available('rng:schema-report', 1)">
+    <xsl:message>Performing RelaxNG Schema testing. RNG XPath extension Function is available.</xsl:message>
     <xsl:variable
       name="report-generator"
-      select="rng:schema-report('schema-for-xslt30.rnc')" />
+      select="rng:schema-report(resolve-uri('schema-for-xslt30.rnc', static-base-uri()))" />
     
     <out>
       <xsl:for-each
@@ -49,7 +49,7 @@
     </out>
   </xsl:template>
   
-  <xsl:template name="xsl:initial-template" use-when="not(function-available('rng:schema-report', 1))">
+  <xsl:template name="xsl:initial-template" match="/" use-when="not(function-available('rng:schema-report', 1))">
     <xsl:message>Skipping RelaxNG Schema testing. RNG XPath extension Function is unavailable.</xsl:message>
   </xsl:template>
   
