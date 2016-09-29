@@ -99,6 +99,21 @@
          <assert-xml><![CDATA[<result value="true"/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="element-0006">
+      <description>Zero-length element name is rejected </description>
+      <created by="Michael Kay after Michael Wirth (Saxon bug 2971)" on="2016-09-29"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="element-0006.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE0820"/>
+      </result>
+   </test-case>
 
    <test-case name="element-0101">
       <description>Test case that uses xsl:sequence inside xsl:element to create children and
