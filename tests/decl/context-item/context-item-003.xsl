@@ -4,7 +4,7 @@
     <!-- Test xsl:context-item with required type element(x); supplied value is correct type -->
   
     <xsl:template name="t">
-      <xsl:context-item as="element(doc)"/>
+      <xsl:context-item as="(:1:) element (:2:) ( (:3:) doc (:4:) ) (:5:)"/>
       <xsl:sequence select="."/>
     </xsl:template>
     

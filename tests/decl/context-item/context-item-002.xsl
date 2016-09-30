@@ -4,7 +4,7 @@
     <!-- Test xsl:context-item with required type; supplied value is wrong type -->
   
     <xsl:template name="t">
-      <xsl:context-item as="xs:string"/>
+      <xsl:context-item as="(:a single:) xs:string (:yes, just one:)"/>
       <xsl:sequence select="."/>
     </xsl:template>
     

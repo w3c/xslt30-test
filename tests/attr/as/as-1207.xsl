@@ -10,9 +10,9 @@
       </a>
    </t:variable>
 
-   <t:variable name="var1" select="/doc/item/comment()" as="comment()"/>
+   <t:variable name="var1" select="/doc/item/comment()" as="(:simple:) comment() (:ok?:)"/>
 
-   <t:variable name="var2" select="$temporary-tree/a/comment()" as="comment()"/>
+   <t:variable name="var2" select="$temporary-tree/a/comment(:fore:)()(:aft:)" as="comment((:sneaky:))"/>
 
    <t:template match="/doc">
       <out>
