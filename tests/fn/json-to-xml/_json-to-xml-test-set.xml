@@ -277,6 +277,7 @@
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <modified by="Debbie Lockett" on="2015-08-12" change="Change expected result, quotes not escaped, see bug #28995"/>
+        <modified by="Michael Kay" on="2016-09-30" change="Spec change, bug 29872"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-003"/>
@@ -284,8 +285,8 @@
         <result>
             <all-of>
                 <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
-                <assert>. = 'Data with " within it'</assert>
-                <!--<assert>*/@escaped eq "true"</assert>-->
+                <assert>. = 'Data with \" within it'</assert>
+                <assert>*/@escaped eq "true"</assert>
                 <any-of>
                     <assert>empty(*/@escaped-key)</assert>
                     <assert>*/@escaped-key eq "false"</assert>
@@ -298,6 +299,7 @@
         <created by="John Lumley" on="2013-10-01"/>
         <modified by="Michael Kay" on="2015-06-23" change="Namespace change resulting from bug 28174"/>
         <modified by="Debbie Lockett" on="2015-08-12" change="Change expected result, quotes not escaped, see bug #28995"/>
+        <modified by="Michael Kay" on="2016-09-30" change="Spec change, bug 29872"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-004"/>
@@ -305,16 +307,17 @@
         <result>
             <all-of>
                 <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
-                <assert>. = 'Data with " within it'</assert>
-                <assert>*/@key eq 'Key " with quote'</assert>
-                <!--<assert>*/@escaped eq "true"</assert>-->
-                <!--<assert>*/@escaped-key eq "true"</assert>-->
+                <assert>. = 'Data with \" within it'</assert>
+                <assert>*/@key eq 'Key \" with quote'</assert>
+                <assert>*/@escaped eq "true"</assert>
+                <assert>*/@escaped-key eq "true"</assert>
             </all-of>
         </result>
     </test-case>
     <test-case name="json-to-xml-escape-005">
         <description>Escaped character string - remaining escaped</description>
         <created by="Debbie Lockett" on="2015-08-12"/>
+        <modified by="Michael Kay" on="2016-09-30" change="Spec change, bug 29872"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-005"/>
@@ -322,7 +325,7 @@
         <result>
             <all-of>
                 <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
-                <assert>. = 'Data with \f within it'</assert>
+                <assert>. = 'Data with \u000C within it'</assert>
                 <assert>*/@escaped eq "true"</assert>
                 <any-of>
                     <assert>empty(*/@escaped-key)</assert>
@@ -334,6 +337,7 @@
     <test-case name="json-to-xml-escape-006">
         <description>Escaped character string and key - remaining escaped</description>
         <created by="Debbie Lockett" on="2015-08-12"/>
+        <modified by="Michael Kay" on="2016-09-30" change="Spec change, bug 29872"/>
         <environment ref="json-to-xml-A"/>
         <test>
             <initial-template name="json-to-xml-escape-006"/>
@@ -342,7 +346,7 @@
             <all-of>
                 <assert>* instance of element(Q{http://www.w3.org/2005/xpath-functions}string)</assert>
                 <assert>. = 'Data with \f within it'</assert>
-                <assert>*/@key eq 'Key \f with special character'</assert>
+                <assert>*/@key eq 'Key \u000C with special character'</assert>
                 <assert>*/@escaped eq "true"</assert>
                 <assert>*/@escaped-key eq "true"</assert>
             </all-of>
