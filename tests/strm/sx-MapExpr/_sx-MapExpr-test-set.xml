@@ -179,6 +179,43 @@
       </result>
    </test-case>
    
+   <test-case name="sx-MapExpr-101">
+      <description>Saxon bug 2972: map expression within xsl:for-each-group</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-09-30"/>
+      <environment>
+         <source role="." file="sx-MapExpr-101.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="sx-MapExpr-101.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/section/div[1][h1='heading 1'][count(p)=2]</assert>
+            <assert>/section/div[2][h1='heading 2'][count(p)=1]</assert>
+            <assert>/section/h1[.='heading 3']</assert>
+            <assert>/section/div[3][h1='heading 4'][count(p)=1]</assert>
+         </all-of>
+         <!--<root>
+            <section>
+               <div>
+                  <h1>heading 1</h1>
+                  <p>...</p>
+                  <p>...</p>
+               </div>
+               <div>
+                  <h1>heading 2</h1>
+                  <p>...</p>
+               </div>
+               <h1>heading 3</h1>
+               <div>
+                  <h1>heading 4</h1>
+                  <p>...</p>
+               </div>
+            </section>
+         </root>-->
+      </result>
+   </test-case>
+   
    <test-case name="sx-MapExpr-901">
       <description>Use MapExpr within xsl:stream, attempt to save streamed nodes in map value</description>
       <created by="Michael Kay" on="2014-01-22"/>
