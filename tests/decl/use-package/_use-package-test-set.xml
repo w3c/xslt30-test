@@ -36,6 +36,13 @@
       <package file="use-package-xml-to-json.xsl" role="secondary"
          uri="http://www.w3.org/2013/XSLT/xml-to-json.xsl" package-version="1.0"/>
    </environment>
+   
+   <environment name="use-package-xml-to-json-with-streaming">
+      <source file="use-package-150.xml" role="."  streaming="true"/>
+      <package file="use-package-xml-to-json.xsl" role="secondary"
+         uri="http://www.w3.org/2013/XSLT/xml-to-json.xsl" package-version="1.0"/>
+      <param name="STREAMABLE" as="xs:boolean" static="true" select="true()"/>
+   </environment>
 
    <dependencies>
       <spec value="XSLT30+"/>
@@ -254,7 +261,37 @@
       <modified by="Michael Kay" on="2016-09-20" change="add expected result"/>
       <environment ref="use-package-xml-to-json"/>
       <test>
-         <package file="use-package-150.xsl" role="principal"/>
+         <stylesheet file="use-package-150.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert>/out = '{"desc":"Distances between several cities, in kilometers.","updated":"2014-02-04T18:50:45","uptodate":true,"author":null,"cities":{"Brussels":[{"to":"London","distance":322},{"to":"Paris","distance":265},{"to":"Amsterdam","distance":173}],"London":[{"to":"Brussels","distance":322},{"to":"Paris","distance":344},{"to":"Amsterdam","distance":358}],"Paris":[{"to":"Brussels","distance":265},{"to":"London","distance":344},{"to":"Amsterdam","distance":431}],"Amsterdam":[{"to":"Brussels","distance":173},{"to":"London","distance":358},{"to":"Paris","distance":431}]}}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-151">
+      <description>Call xml-to-json package extracted from the spec, with option indent=true()</description>
+      <created by="Michael Kay" on="2016-10-06"/>
+      <environment ref="use-package-xml-to-json"/>
+      <test>
+         <stylesheet file="use-package-150.xsl" role="principal"/>
+         <initial-mode name="local-indent"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>contains(/out, " {")</assert>
+            <assert>contains(/out, " [")</assert>
+            <assert>replace(/out, "\s*([,:\{\}\[\]])\s*", "$1") =
+               '{"desc":"Distances between several cities,in kilometers.","updated":"2014-02-04T18:50:45","uptodate":true,"author":null,"cities":{"Brussels":[{"to":"London","distance":322},{"to":"Paris","distance":265},{"to":"Amsterdam","distance":173}],"London":[{"to":"Brussels","distance":322},{"to":"Paris","distance":344},{"to":"Amsterdam","distance":358}],"Paris":[{"to":"Brussels","distance":265},{"to":"London","distance":344},{"to":"Amsterdam","distance":431}],"Amsterdam":[{"to":"Brussels","distance":173},{"to":"London","distance":358},{"to":"Paris","distance":431}]}}'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-152">
+      <description>Simple call of xml-to-json package extracted from the spec, with streaming</description>
+      <created by="Michael Kay" on="2016-10-06"/>
+      <environment ref="use-package-xml-to-json-with-streaming"/>
+      <test>
+         <stylesheet file="use-package-150.xsl" role="principal"/>
       </test>
       <result>
          <assert>/out = '{"desc":"Distances between several cities, in kilometers.","updated":"2014-02-04T18:50:45","uptodate":true,"author":null,"cities":{"Brussels":[{"to":"London","distance":322},{"to":"Paris","distance":265},{"to":"Amsterdam","distance":173}],"London":[{"to":"Brussels","distance":322},{"to":"Paris","distance":344},{"to":"Amsterdam","distance":358}],"Paris":[{"to":"Brussels","distance":265},{"to":"London","distance":344},{"to":"Amsterdam","distance":431}],"Amsterdam":[{"to":"Brussels","distance":173},{"to":"London","distance":358},{"to":"Paris","distance":431}]}}'</assert>
