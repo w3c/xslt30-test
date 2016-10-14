@@ -5,7 +5,7 @@
     xmlns:f="http://local.functions/"
     exclude-result-prefixes="map xs f">
     
-    <!-- Test of xsl:stream calling codepoints-to-string()  -->
+    <!-- Test of xsl:source-document calling codepoints-to-string()  -->
     
     <xsl:template name="c-001">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -15,7 +15,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling codepoints-to-string() - error case -->
+    <!-- Test of xsl:source-document calling codepoints-to-string() - error case -->
     
     <xsl:template name="c-002">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -25,7 +25,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling codepoints-to-string() - error case, recovered -->
+    <!-- Test of xsl:source-document calling codepoints-to-string() - error case, recovered -->
     
     <xsl:template name="c-003">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -38,7 +38,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling codepoints-to-string(), empty case  -->
+    <!-- Test of xsl:source-document calling codepoints-to-string(), empty case  -->
     
     <xsl:template name="c-004">
       <xsl:source-document streamable="yes" href="../docs/books.xml">

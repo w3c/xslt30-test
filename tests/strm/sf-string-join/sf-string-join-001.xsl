@@ -5,7 +5,7 @@
     xmlns:f="http://local.functions/"
     exclude-result-prefixes="map xs f">
     
-    <!-- Test of xsl:stream calling string-join(), first argument consuming and striding  -->
+    <!-- Test of xsl:source-document calling string-join(), first argument consuming and striding  -->
     
     <xsl:template name="j-001">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -15,7 +15,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling string-join(), first argument motionless, second argument streamed  -->
+    <!-- Test of xsl:source-document calling string-join(), first argument motionless, second argument streamed  -->
     
     <xsl:template name="j-002">      
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -25,7 +25,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling string-join(), first argument consuming and striding, second argument omitted  -->
+    <!-- Test of xsl:source-document calling string-join(), first argument consuming and striding, second argument omitted  -->
     
     <xsl:template name="j-003">
       <xsl:source-document streamable="yes" href="../docs/books.xml">

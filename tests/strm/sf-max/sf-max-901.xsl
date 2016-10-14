@@ -4,7 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
-    <!-- Test of xsl:stream with max(), filtered with a predicate that uses last() -->
+    <!-- Test of xsl:source-document with max(), filtered with a predicate that uses last() -->
     
     <xsl:template name="main">
       <xsl:source-document streamable="yes" href="../docs/books.xml">

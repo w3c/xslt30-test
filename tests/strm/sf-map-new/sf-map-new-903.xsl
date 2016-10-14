@@ -8,7 +8,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
   
-  <!-- within xsl:stream, implicit fork only works when all children of xsl:map are xsl:map-entry elements -->
+  <!-- within xsl:source-document, implicit fork only works when all children of xsl:map are xsl:map-entry elements -->
   
   <xsl:template name="m-903" use-when="$RUN" expand-text="yes">
     <out>

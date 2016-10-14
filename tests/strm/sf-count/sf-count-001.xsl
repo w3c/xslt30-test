@@ -7,7 +7,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <!-- Simple use of xsl:stream with count() -->
+    <!-- Simple use of xsl:source-document with count() -->
     
     <xsl:template name="c-001" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -169,7 +169,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with count() and a boolean filter -->
+    <!-- Test of xsl:source-document with count() and a boolean filter -->
     
     <xsl:template name="c-017" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -179,7 +179,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with count() and both a positional and a boolean filter -->
+    <!-- Test of xsl:source-document with count() and both a positional and a boolean filter -->
     
     <xsl:template name="c-018" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">

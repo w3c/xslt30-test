@@ -7,7 +7,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
    
-  <!-- within xsl:stream, use xsl:iterate -->
+  <!-- within xsl:source-document, use xsl:iterate -->
   
   <!-- the tests in this stylesheet use xsl:iterate to emulate xsl:for-each -->
    
@@ -21,7 +21,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:iterate with numbering -->
+  <!-- within xsl:source-document, use xsl:iterate with numbering -->
    
   <xsl:template name="fe-002" use-when="$RUN">
     <out>
@@ -35,7 +35,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:iterate with positional selection -->
+  <!-- within xsl:source-document, use xsl:iterate with positional selection -->
    
   <xsl:template name="fe-003" use-when="$RUN">
     <out>
@@ -85,7 +85,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use parent axis within xsl:iterate -->
+  <!-- within xsl:source-document, use parent axis within xsl:iterate -->
    
   <xsl:template name="fe-008" use-when="$RUN">
     <out>
@@ -97,7 +97,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use ancestor axis within xsl:iterate -->
+  <!-- within xsl:source-document, use ancestor axis within xsl:iterate -->
    
   <xsl:template name="fe-009" use-when="$RUN">
     <out>
@@ -109,7 +109,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use subsequence() within xsl:iterate/@select -->
+  <!-- within xsl:source-document, use subsequence() within xsl:iterate/@select -->
    
   <xsl:template name="fe-010" use-when="$RUN">
     <out>
@@ -121,7 +121,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, select attributes within xsl:iterate/@select -->
+  <!-- within xsl:source-document, select attributes within xsl:iterate/@select -->
    
   <xsl:template name="fe-011" use-when="$RUN">
     <out>
@@ -135,7 +135,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, iterate over ancestor axis within xsl:iterate/@select -->
+  <!-- within xsl:source-document, iterate over ancestor axis within xsl:iterate/@select -->
    
   <xsl:template name="fe-012" use-when="$RUN">
     <out xmlns="http://loan.shark.com/">

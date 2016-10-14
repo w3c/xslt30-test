@@ -5,7 +5,7 @@
   <xsl:variable name="RUN" select="true()" static="yes"/>
   <xsl:strip-space elements="*"/>
 
-  <!-- within xsl:stream, use xsl:copy: atomic values, consuming -->
+  <!-- within xsl:source-document, use xsl:copy: atomic values, consuming -->
 
   <xsl:template name="cy-001" use-when="$RUN">
     <out>
@@ -17,7 +17,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: atomic values, consuming and non-consuming -->
+  <!-- within xsl:source-document, use xsl:copy: atomic values, consuming and non-consuming -->
 
   <xsl:template name="cy-002" use-when="$RUN">
     <out>
@@ -29,7 +29,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: climbing posture -->
+  <!-- within xsl:source-document, use xsl:copy: climbing posture -->
 
   <xsl:template name="cy-003" use-when="$RUN">
     <out>
@@ -44,7 +44,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: climbing posture -->
+  <!-- within xsl:source-document, use xsl:copy: climbing posture -->
 
   <xsl:template name="cy-004" use-when="$RUN">
     <xsl:variable name="extra" as="element()*">
@@ -63,7 +63,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: striding posture, element nodes -->
+  <!-- within xsl:source-document, use xsl:copy: striding posture, element nodes -->
 
   <xsl:template name="cy-005" use-when="$RUN">
     <out>
@@ -77,7 +77,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: striding posture, text nodes -->
+  <!-- within xsl:source-document, use xsl:copy: striding posture, text nodes -->
 
   <xsl:template name="cy-006" use-when="$RUN">
     <out>
@@ -89,7 +89,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: striding posture, text nodes mixed with atomic values -->
+  <!-- within xsl:source-document, use xsl:copy: striding posture, text nodes mixed with atomic values -->
 
   <xsl:template name="cy-007" use-when="$RUN">
     <out>
@@ -101,7 +101,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: striding posture, element nodes mixed with grounded elements -->
+  <!-- within xsl:source-document, use xsl:copy: striding posture, element nodes mixed with grounded elements -->
 
   <xsl:template name="cy-008" use-when="$RUN">
     <xsl:variable name="extra" as="element()*">
@@ -119,7 +119,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: descendant text nodes -->
+  <!-- within xsl:source-document, use xsl:copy: descendant text nodes -->
 
   <xsl:template name="cy-009" use-when="$RUN">
     <out>
@@ -131,7 +131,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: descendant text nodes mixed with atomic values -->
+  <!-- within xsl:source-document, use xsl:copy: descendant text nodes mixed with atomic values -->
 
   <xsl:template name="cy-010" use-when="$RUN">
     <out>
@@ -145,7 +145,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: whole document unchanged -->
+  <!-- within xsl:source-document, use xsl:copy: whole document unchanged -->
 
   <xsl:template name="cy-011" use-when="$RUN">
     <out>
@@ -159,7 +159,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: copy-namespaces=no -->
+  <!-- within xsl:source-document, use xsl:copy: copy-namespaces=no -->
 
   <xsl:template name="cy-020" use-when="$RUN">
     <out>
@@ -173,7 +173,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: copy-namespaces=yes -->
+  <!-- within xsl:source-document, use xsl:copy: copy-namespaces=yes -->
 
   <xsl:template name="cy-021" use-when="$RUN">
     <out>
@@ -187,7 +187,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: validation="strip" (non-schema-aware) -->
+  <!-- within xsl:source-document, use xsl:copy: validation="strip" (non-schema-aware) -->
 
   <xsl:template name="cy-022" use-when="$RUN">
     <out>
@@ -201,7 +201,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: validation="preserve" (non-schema-aware) -->
+  <!-- within xsl:source-document, use xsl:copy: validation="preserve" (non-schema-aware) -->
 
   <xsl:template name="cy-023" use-when="$RUN">
     <out>
@@ -215,7 +215,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: validation="lax" (non-schema-aware) -->
+  <!-- within xsl:source-document, use xsl:copy: validation="lax" (non-schema-aware) -->
 
   <xsl:template name="cy-024" use-when="$RUN">
     <out>
@@ -229,7 +229,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: copy-namespaces="yes", argument grounded and consuming -->
+  <!-- within xsl:source-document, use xsl:copy: copy-namespaces="yes", argument grounded and consuming -->
 
   <xsl:template name="cy-025" use-when="$RUN">
     <out>
@@ -243,7 +243,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: copy-namespaces="no", argument grounded and consuming -->
+  <!-- within xsl:source-document, use xsl:copy: copy-namespaces="no", argument grounded and consuming -->
 
   <xsl:template name="cy-026" use-when="$RUN">
     <out>
@@ -257,7 +257,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: type error, more than one item selected -->
+  <!-- within xsl:source-document, use xsl:copy: type error, more than one item selected -->
 
   <xsl:template name="cy-027" use-when="$RUN">
     <out>
@@ -267,7 +267,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy: nested -->
+  <!-- within xsl:source-document, use xsl:copy: nested -->
 
   <xsl:template name="cy-028" use-when="$RUN">
     <out>
@@ -300,7 +300,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty sequence selected -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty sequence selected -->
 
   <xsl:template name="cy-040" use-when="$RUN">
     <out>
@@ -318,7 +318,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty element constructed -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty element constructed -->
 
   <xsl:template name="cy-041" use-when="$RUN">
     <out>
@@ -338,7 +338,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty document node constructed -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty document node constructed -->
 
   <xsl:template name="cy-042" use-when="$RUN">
     <out>
@@ -358,7 +358,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty document node constructed -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty document node constructed -->
 
   <xsl:template name="cy-043" use-when="$RUN">
     <out>
@@ -378,7 +378,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty comment node constructed -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty comment node constructed -->
 
   <xsl:template name="cy-044" use-when="$RUN">
     <out>
@@ -398,7 +398,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty PI node constructed -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty PI node constructed -->
 
   <xsl:template name="cy-045" use-when="$RUN">
     <out>
@@ -418,7 +418,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty attribute node constructed -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty attribute node constructed -->
 
   <xsl:template name="cy-046" use-when="$RUN">
     <out>
@@ -432,7 +432,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty element constructed -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty element constructed -->
 
   <xsl:template name="cy-047" use-when="$RUN">
     <out>
@@ -448,7 +448,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy/on-empty: empty document constructed -->
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty document constructed -->
 
   <xsl:template name="cy-048" use-when="$RUN">
     <out>
@@ -464,7 +464,7 @@
     </out>
   </xsl:template>
   
-    <!-- within xsl:stream, use xsl:copy with xsl:where-populated: empty element constructed -->
+    <!-- within xsl:source-document, use xsl:copy with xsl:where-populated: empty element constructed -->
 
   <xsl:template name="cy-049" use-when="$RUN">
     <out>
@@ -481,7 +481,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:copy with xsl:where-populated: empty document constructed -->
+  <!-- within xsl:source-document, use xsl:copy with xsl:where-populated: empty document constructed -->
 
   <xsl:template name="cy-050" use-when="$RUN">
     <out>

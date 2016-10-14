@@ -9,7 +9,7 @@
                   is performed in the course of the evaluation of either (a) the
                   sequence constructor contained in a template rule invoked in a mode 
                   declared with streamable="yes", or (b) the
-                  sequence constructor contained in an xsl:stream instruction, or
+                  sequence constructor contained in an xsl:source-document instruction, or
                   both. -->
                   
    <xsl:accumulator name="a" streamable="yes" initial-value="0">

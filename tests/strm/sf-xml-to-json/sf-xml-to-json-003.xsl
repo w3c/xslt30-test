@@ -6,9 +6,9 @@
     version="3.0">
     
  <xsl:template name="xsl:initial-template">
-     <xsl:stream href="sf-xml-to-json-A.xml">
+     <xsl:source-document href="sf-xml-to-json-A.xml">
          <json>{xml-to-json(/*, map{'indent':true()})}</json>
-     </xsl:stream>
+     </xsl:source-document>
  </xsl:template>
     
 </xsl:stylesheet>

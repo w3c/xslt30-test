@@ -7,7 +7,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
    
-  <!-- within xsl:stream, use xsl:for-each -->
+  <!-- within xsl:source-document, use xsl:for-each -->
    
   <xsl:template name="fe-001" use-when="$RUN">
     <out>
@@ -19,7 +19,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:for-each with numbering -->
+  <!-- within xsl:source-document, use xsl:for-each with numbering -->
    
   <xsl:template name="fe-002">
     <out>
@@ -33,7 +33,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:for-each with positional selection -->
+  <!-- within xsl:source-document, use xsl:for-each with positional selection -->
    
   <xsl:template name="fe-003">
     <out>
@@ -83,7 +83,7 @@
     </out>
   </xsl:template>
   
-  <!-- xsl:stream / xsl:for-each / xsl:copy-of with a predicate -->
+  <!-- xsl:source-document / xsl:for-each / xsl:copy-of with a predicate -->
   
   <xsl:template name="fe-007">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -95,7 +95,7 @@
       </xsl:source-document>
   </xsl:template>
   
-  <!-- within xsl:stream, use parent axis within xsl:for-each -->
+  <!-- within xsl:source-document, use parent axis within xsl:for-each -->
    
   <xsl:template name="fe-008">
     <out>
@@ -107,7 +107,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use ancestor axis within xsl:for-each -->
+  <!-- within xsl:source-document, use ancestor axis within xsl:for-each -->
    
   <xsl:template name="fe-009">
     <out>
@@ -119,7 +119,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use subsequence() within xsl:for-each/@select -->
+  <!-- within xsl:source-document, use subsequence() within xsl:for-each/@select -->
    
   <xsl:template name="fe-010">
     <out>
@@ -131,7 +131,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, select attributes within xsl:for-each/@select -->
+  <!-- within xsl:source-document, select attributes within xsl:for-each/@select -->
    
   <xsl:template name="fe-011">
     <out>
@@ -145,7 +145,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, iterate over ancestor axis within xsl:for-each/@select -->
+  <!-- within xsl:source-document, iterate over ancestor axis within xsl:for-each/@select -->
    
   <xsl:template name="fe-012">
     <out xmlns="http://loan.shark.com/">
@@ -161,7 +161,7 @@
     </out>
   </xsl:template>
   
-  <!-- xsl:stream / xsl:for-each / xsl:copy-of with a predicate and some local variables-->
+  <!-- xsl:source-document / xsl:for-each / xsl:copy-of with a predicate and some local variables-->
   
   <xsl:template name="fe-013">
       <xsl:source-document streamable="yes" href="../docs/books.xml">

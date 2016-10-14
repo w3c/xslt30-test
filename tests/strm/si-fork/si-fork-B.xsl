@@ -23,7 +23,7 @@
   </xsl:variable>
 
 
-  <!-- within xsl:stream, use xsl:fork/xsl:for-each-group -->
+  <!-- within xsl:source-document, use xsl:fork/xsl:for-each-group -->
 
   <xsl:template name="g-001" use-when="$RUN">
     <out>
@@ -39,7 +39,7 @@
     </out>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:fork/xsl:for-each-group with a grounded population -->
+  <!-- within xsl:source-document, use xsl:fork/xsl:for-each-group with a grounded population -->
 
   <xsl:template name="g-002" use-when="$RUN">
     <out>
@@ -55,7 +55,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:fork/xsl:for-each-group/xsl:result-document -->
+  <!-- within xsl:source-document, use xsl:fork/xsl:for-each-group/xsl:result-document -->
   
   <xsl:template name="g-003" use-when="$RUN">
     <out>

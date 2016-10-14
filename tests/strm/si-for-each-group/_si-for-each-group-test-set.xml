@@ -340,6 +340,34 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-015a">
+      <description>Streamed grouping - group-adjacent - with xsl:sequence;
+         using only the first item in every group. Same as si-group-015, but modified
+         to use "." in place of current-group()[1]
+      </description>
+      <created by="Michael Kay" on="2016-10-10"/>
+      <test>
+         <stylesheet file="si-group-015a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>deep-equal(/out/first[1]/transaction/@value/number(), (13.24))</assert>
+            <assert>deep-equal(/out/first[2]/transaction/@value/number(), (-15.00))</assert>
+            <assert>deep-equal(/out/first[3]/transaction/@value/number(), (6.00))</assert>
+            <assert>deep-equal(/out/first[4]/transaction/@value/number(), (0.50))</assert>
+            <assert>deep-equal(/out/first[5]/transaction/@value/number(), (-5.00))</assert>
+            <assert>deep-equal(/out/first[6]/transaction/@value/number(), (8.99))</assert>
+            <assert>deep-equal(/out/first[7]/transaction/@value/number(), (16.00))</assert>
+            <assert>deep-equal(/out/first[8]/transaction/@value/number(), (-2.33))</assert>
+            <assert>deep-equal(/out/first[9]/transaction/@value/number(), (6.78))</assert>
+            <assert>deep-equal(/out/first[10]/transaction/@value/number(), (12.00))</assert>
+            <assert>deep-equal(/out/first[11]/transaction/@value/number(), (14.20))</assert>
+            <assert>count(/out/first) = 11</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="si-group-016">
       <description>Streamed grouping - group-adjacent - with xsl:sequence;
         using only the first item in every group</description>
@@ -860,6 +888,94 @@
             <assert>count(/out/root[2]/item-chunk/item) = 10</assert>
             <assert>count(/out/root[3]/item-chunk/item) = 10</assert>
             <assert>count(/out/root[4]/item-chunk/item) = 5</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-041">
+      <description>Streamed grouping - position() within current-group()</description>
+      <created by="Michael Kay" on="2016-10-10"/>
+      <test>
+         <stylesheet file="si-group-041.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>deep-equal(/out/group!number(), (12,1,1,123,1,1,1,123,123,12,1))</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-042">
+      <description>Streamed grouping - filter current-group() by position() (using xsl:copy-of)</description>
+      <created by="Michael Kay" on="2016-10-10"/>
+      <test>
+         <stylesheet file="si-group-042.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>empty(/out/group/transaction[2])</assert>
+            <assert>/out/group[1]/transaction/@value="8.12"</assert>
+            <assert>/out/group[2]/transaction/@value="2.33"</assert>
+            <assert>/out/group[3]/transaction/@value="5.60"</assert>
+            <assert>/out/group[4]/transaction/@value="12.20"</assert>
+            <assert>/out/group[5]/transaction/@value="13.99"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-043">
+      <description>Streamed grouping - filter current-group() by position() (using xsl:sequence)</description>
+      <created by="Michael Kay" on="2016-10-10"/>
+      <test>
+         <stylesheet file="si-group-043.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>empty(/out/group/transaction[2])</assert>
+            <assert>/out/group[1]/transaction/@value="8.12"</assert>
+            <assert>/out/group[2]/transaction/@value="2.33"</assert>
+            <assert>/out/group[3]/transaction/@value="5.60"</assert>
+            <assert>/out/group[4]/transaction/@value="12.20"</assert>
+            <assert>/out/group[5]/transaction/@value="13.99"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-044">
+      <description>Streamed grouping - filter current-group() by position() (using xsl:for-each/xsl:copy-of)</description>
+      <created by="Michael Kay" on="2016-10-10"/>
+      <test>
+         <stylesheet file="si-group-044.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>empty(/out/group/transaction[2])</assert>
+            <assert>/out/group[1]/transaction/@value="8.12"</assert>
+            <assert>/out/group[2]/transaction/@value="2.33"</assert>
+            <assert>/out/group[3]/transaction/@value="5.60"</assert>
+            <assert>/out/group[4]/transaction/@value="12.20"</assert>
+            <assert>/out/group[5]/transaction/@value="13.99"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-045">
+      <description>Streamed grouping - filter current-group() by position() (using xsl:for-each/xsl:sequence)</description>
+      <created by="Michael Kay" on="2016-10-10"/>
+      <test>
+         <stylesheet file="si-group-045.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>empty(/out/group/transaction[2])</assert>
+            <assert>/out/group[1]/transaction/@value="8.12"</assert>
+            <assert>/out/group[2]/transaction/@value="2.33"</assert>
+            <assert>/out/group[3]/transaction/@value="5.60"</assert>
+            <assert>/out/group[4]/transaction/@value="12.20"</assert>
+            <assert>/out/group[5]/transaction/@value="13.99"</assert>
          </all-of>
       </result>
    </test-case>

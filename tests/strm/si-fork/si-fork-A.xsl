@@ -10,7 +10,7 @@
     
   <xsl:import-schema schema-location="../docs/loans.xsd"/>  
    
-  <!-- within xsl:stream, use xsl:fork: 2 prongs, both consuming -->
+  <!-- within xsl:source-document, use xsl:fork: 2 prongs, both consuming -->
   
   <xsl:template name="f-001" use-when="$RUN">
     <out>
@@ -27,7 +27,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:fork with some motionless prongs -->
+  <!-- within xsl:source-document, use xsl:fork with some motionless prongs -->
   
   <xsl:template name="f-002" use-when="$RUN">
     <out>
@@ -46,7 +46,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:fork, splitting the input to multiple result files (the classic "coloured widget" use case) -->
+  <!-- within xsl:source-document, use xsl:fork, splitting the input to multiple result files (the classic "coloured widget" use case) -->
   
   <xsl:template name="f-003" use-when="$RUN">
     <out>
@@ -71,7 +71,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:fork with all prongs motionless -->
+  <!-- within xsl:source-document, use xsl:fork with all prongs motionless -->
   
   <xsl:template name="f-004" use-when="$RUN">
     <out>
@@ -92,7 +92,7 @@
     </out>
   </xsl:template>
   
-  <!-- xsl:stream / xsl:for-each / xsl:fork -->
+  <!-- xsl:source-document / xsl:for-each / xsl:fork -->
   
   <xsl:template name="f-005" use-when="$RUN">
     <out>

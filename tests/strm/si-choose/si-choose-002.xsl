@@ -2,7 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes=" xs" version="3.0">
 
-  <!-- streaming, xsl:choose as child of xsl:stream -->
+  <!-- streaming, xsl:choose as child of xsl:source-document -->
 
   <xsl:strip-space elements="*"/>
 

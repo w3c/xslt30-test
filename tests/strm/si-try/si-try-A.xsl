@@ -8,7 +8,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <!-- Simple use of xsl:stream with "treat as" -->
+    <!-- Simple use of xsl:source-document with "treat as" -->
     
     <xsl:template name="c-001" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -170,7 +170,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with "treat as" and a boolean filter -->
+    <!-- Test of xsl:source-document with "treat as" and a boolean filter -->
     
     <xsl:template name="c-017">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -180,7 +180,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with "treat as" and both a positional and a boolean filter -->
+    <!-- Test of xsl:source-document with "treat as" and both a positional and a boolean filter -->
     
     <xsl:template name="c-018">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">

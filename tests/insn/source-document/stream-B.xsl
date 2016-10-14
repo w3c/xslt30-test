@@ -70,7 +70,7 @@
       </out>
     </xsl:template>
     
-    <!-- xsl:stream called within a function -->
+    <!-- xsl:source-document called within a function -->
     
     <xsl:template name="s-107" use-when="$RUN">
       <out>
@@ -85,7 +85,7 @@
       </xsl:source-document>
     </xsl:function>
     
-    <!-- xsl:stream called within a function with early termination -->
+    <!-- xsl:source-document called within a function with early termination -->
     
     <xsl:template name="s-108" use-when="$RUN">
       <out>
@@ -93,7 +93,7 @@
       </out>
     </xsl:template>
     
-    <!-- xsl:stream called within a function using a constructor function -->
+    <!-- xsl:source-document called within a function using a constructor function -->
     
     <xsl:template name="s-109" use-when="$RUN">
       <out>

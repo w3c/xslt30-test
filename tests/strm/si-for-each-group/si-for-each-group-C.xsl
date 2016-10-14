@@ -7,7 +7,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
    
-  <!-- within xsl:stream, use xsl:for-each-group  -->
+  <!-- within xsl:source-document, use xsl:for-each-group  -->
   <!-- These tests are mechanically generated from the xsl:for-each tests and do not do any interesting
        grouping, but are designed to take the population in different postures -->
    
@@ -21,7 +21,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:for-each-group  with numbering -->
+  <!-- within xsl:source-document, use xsl:for-each-group  with numbering -->
    
   <xsl:template name="feg-002" use-when="$RUN">
     <out>
@@ -35,7 +35,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:for-each-group  with positional selection -->
+  <!-- within xsl:source-document, use xsl:for-each-group  with positional selection -->
    
   <xsl:template name="feg-003" use-when="$RUN">
     <out>
@@ -85,7 +85,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use parent axis within xsl:for-each-group  -->
+  <!-- within xsl:source-document, use parent axis within xsl:for-each-group  -->
    
   <xsl:template name="feg-008" use-when="$RUN">
     <out>
@@ -97,7 +97,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use ancestor axis within xsl:for-each-group  -->
+  <!-- within xsl:source-document, use ancestor axis within xsl:for-each-group  -->
    
   <xsl:template name="feg-009" use-when="$RUN">
     <out>
@@ -109,7 +109,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use subsequence() within xsl:for-each-group  -->
+  <!-- within xsl:source-document, use subsequence() within xsl:for-each-group  -->
    
   <xsl:template name="feg-010" use-when="$RUN">
     <out>
@@ -121,7 +121,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, select attributes within xsl:for-each-group -->
+  <!-- within xsl:source-document, select attributes within xsl:for-each-group -->
    
   <xsl:template name="feg-011" use-when="$RUN">
     <out>
@@ -135,7 +135,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, iterate over ancestor axis within xsl:for-each-group  -->
+  <!-- within xsl:source-document, iterate over ancestor axis within xsl:for-each-group  -->
    
   <xsl:template name="feg-012" use-when="$RUN">
     <out xmlns="http://loan.shark.com/">

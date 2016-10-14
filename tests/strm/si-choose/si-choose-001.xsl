@@ -4,7 +4,7 @@
     exclude-result-prefixes=" xs"
     version="3.0">
   
-  <!-- streaming, xsl:choose as child of xsl:stream -->
+  <!-- streaming, xsl:choose as child of xsl:source-document -->
   
   <xsl:strip-space elements="*"/>
   

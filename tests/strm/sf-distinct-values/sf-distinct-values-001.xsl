@@ -6,7 +6,7 @@
     
     <xsl:variable name="RUN" static="yes" select="true()"/>
     
-    <!-- Test of xsl:stream with distinct-values() applied to an attribute -->
+    <!-- Test of xsl:source-document with distinct-values() applied to an attribute -->
     
     <xsl:template name="d-001" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -16,7 +16,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-    <!-- Test of xsl:stream with distinct-values() - empty input -->
+    <!-- Test of xsl:source-document with distinct-values() - empty input -->
     
     <xsl:template name="d-002" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -26,7 +26,7 @@
       </xsl:source-document>
     </xsl:template>   
     
-    <!-- Test of xsl:stream with distinct-values() - numeric values -->
+    <!-- Test of xsl:source-document with distinct-values() - numeric values -->
     
     <xsl:template name="d-003" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -36,7 +36,7 @@
       </xsl:source-document>
     </xsl:template>   
     
-    <!-- Test of xsl:stream with distinct-values() - handling of NaN -->
+    <!-- Test of xsl:source-document with distinct-values() - handling of NaN -->
     
     <xsl:template name="d-004" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -46,7 +46,7 @@
       </xsl:source-document>
     </xsl:template>  
     
-    <!-- Test of xsl:stream with distinct-values() - applied to an element -->
+    <!-- Test of xsl:source-document with distinct-values() - applied to an element -->
     
     <xsl:template name="d-005" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -56,7 +56,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-    <!-- Test of xsl:stream with distinct-values() - with collation specified -->
+    <!-- Test of xsl:source-document with distinct-values() - with collation specified -->
     
     <xsl:template name="d-006" use-when="$RUN">
       <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/codepoint'"/>
@@ -67,7 +67,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-    <!-- Test of xsl:stream with distinct-values() - with unknown collation specified -->
+    <!-- Test of xsl:source-document with distinct-values() - with unknown collation specified -->
     
     <xsl:template name="d-007" use-when="$RUN">
       <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/unknown'"/>
@@ -78,7 +78,7 @@
       </xsl:source-document>
     </xsl:template>   
     
-    <!-- Test of xsl:stream with distinct-values() - with unknown collation specified, error is caught -->
+    <!-- Test of xsl:source-document with distinct-values() - with unknown collation specified, error is caught -->
     
     <xsl:template name="d-008" use-when="$RUN">
       <xsl:param name="c" select="'http://www.w3.org/2005/xpath-functions/collation/unknown'"/>
@@ -92,7 +92,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-    <!-- Test of xsl:stream with distinct-values() - with collation from consuming argument -->
+    <!-- Test of xsl:source-document with distinct-values() - with collation from consuming argument -->
     
     <xsl:template name="d-009" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/special.xml">
@@ -102,7 +102,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-    <!-- Test of xsl:stream with distinct-values() - with unknown collation from consuming argument -->
+    <!-- Test of xsl:source-document with distinct-values() - with unknown collation from consuming argument -->
     
     <xsl:template name="d-010" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/special.xml">
@@ -112,7 +112,7 @@
       </xsl:source-document>
     </xsl:template>   
     
-    <!-- Test of xsl:stream with distinct-values() - with unknown collation from consuming argument, error is caught -->
+    <!-- Test of xsl:source-document with distinct-values() - with unknown collation from consuming argument, error is caught -->
     
     <xsl:template name="d-011" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/special.xml">

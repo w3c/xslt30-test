@@ -19,7 +19,7 @@
      even when the first argument is grounded, because it processes the items in right-to-left order. -->
 
     
-    <!-- Test of xsl:stream with fold-right() -->
+    <!-- Test of xsl:source-document with fold-right() -->
     
     <xsl:template name="s-003" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">

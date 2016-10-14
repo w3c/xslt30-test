@@ -5,7 +5,7 @@
   <xsl:variable name="RUN" select="true()" static="yes"/>
   <xsl:strip-space elements="*"/>
 
-  <!-- within xsl:stream, use xsl:document: atomic values, consuming -->
+  <!-- within xsl:source-document, use xsl:document: atomic values, consuming -->
 
   <xsl:template name="d-001" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/transactions.xml">
@@ -19,7 +19,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: atomic values, consuming and non-consuming -->
+  <!-- within xsl:source-document, use xsl:document: atomic values, consuming and non-consuming -->
 
   <xsl:template name="d-002" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/transactions.xml">
@@ -33,7 +33,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: climbing posture -->
+  <!-- within xsl:source-document, use xsl:document: climbing posture -->
 
   <xsl:template name="d-003" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/transactions.xml">
@@ -47,7 +47,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: climbing posture -->
+  <!-- within xsl:source-document, use xsl:document: climbing posture -->
 
   <xsl:template name="d-004" use-when="$RUN">
     <xsl:variable name="extra" as="element()*">
@@ -70,7 +70,7 @@
 
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: striding posture, element nodes -->
+  <!-- within xsl:source-document, use xsl:document: striding posture, element nodes -->
 
   <xsl:template name="d-005" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -84,7 +84,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: striding posture, text nodes -->
+  <!-- within xsl:source-document, use xsl:document: striding posture, text nodes -->
 
   <xsl:template name="d-006" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -98,7 +98,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: striding posture, text nodes mixed with atomic values -->
+  <!-- within xsl:source-document, use xsl:document: striding posture, text nodes mixed with atomic values -->
 
   <xsl:template name="d-007" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -110,7 +110,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: striding posture, element nodes mixed with grounded elements -->
+  <!-- within xsl:source-document, use xsl:document: striding posture, element nodes mixed with grounded elements -->
 
   <xsl:template name="d-008" use-when="$RUN">
     <xsl:variable name="extra" as="element()*">
@@ -128,7 +128,7 @@
 
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: descendant text nodes -->
+  <!-- within xsl:source-document, use xsl:document: descendant text nodes -->
 
   <xsl:template name="d-009" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -142,7 +142,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: descendant text nodes mixed with atomic values -->
+  <!-- within xsl:source-document, use xsl:document: descendant text nodes mixed with atomic values -->
 
   <xsl:template name="d-010" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -156,7 +156,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: whole document unchanged -->
+  <!-- within xsl:source-document, use xsl:document: whole document unchanged -->
 
   <xsl:template name="d-011" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -171,7 +171,7 @@
   </xsl:template>
 
 
-  <!-- within xsl:stream, use xsl:document: validation="strip" (non-schema-aware) -->
+  <!-- within xsl:source-document, use xsl:document: validation="strip" (non-schema-aware) -->
 
   <xsl:template name="d-022" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/citygml.xml">
@@ -185,7 +185,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: validation="preserve" (non-schema-aware) -->
+  <!-- within xsl:source-document, use xsl:document: validation="preserve" (non-schema-aware) -->
 
   <xsl:template name="d-023" use-when="$RUN">
 
@@ -201,7 +201,7 @@
 
   </xsl:template>
 
-  <!-- within xsl:stream, use xsl:document: validation="lax" (non-schema-aware) -->
+  <!-- within xsl:source-document, use xsl:document: validation="lax" (non-schema-aware) -->
 
   <xsl:template name="d-024" use-when="$RUN">
 
@@ -219,7 +219,7 @@
 
 
 
-  <!-- within xsl:stream, use xsl:document/on-empty: empty sequence selected ->
+  <!-- within xsl:source-document, use xsl:document/on-empty: empty sequence selected ->
   
   <xsl:template name="d-040" use-when="$RUN">
     <out>
@@ -232,7 +232,7 @@
     </out>
   </xsl:template>
   
-  <!- within xsl:stream, use xsl:document/on-empty: empty element constructed ->
+  <!- within xsl:source-document, use xsl:document/on-empty: empty element constructed ->
   
   <xsl:template name="d-041" use-when="$RUN">
     <out>
@@ -245,7 +245,7 @@
     </out>
   </xsl:template>
   
-  <!- within xsl:stream, use xsl:document/on-empty: empty document node constructed ->
+  <!- within xsl:source-document, use xsl:document/on-empty: empty document node constructed ->
   
   <xsl:template name="d-042" use-when="$RUN">
     <out>
@@ -258,7 +258,7 @@
     </out>
   </xsl:template>
   
-  <!- within xsl:stream, use xsl:document/on-empty: empty document node constructed ->
+  <!- within xsl:source-document, use xsl:document/on-empty: empty document node constructed ->
   
   <xsl:template name="d-043" use-when="$RUN">
     <out>
@@ -271,7 +271,7 @@
     </out>
   </xsl:template>
   
-  <!- within xsl:stream, use xsl:document/on-empty: empty comment node constructed ->
+  <!- within xsl:source-document, use xsl:document/on-empty: empty comment node constructed ->
   
   <xsl:template name="d-044" use-when="$RUN">
     <out>
@@ -284,7 +284,7 @@
     </out>
   </xsl:template>
   
-  <!- within xsl:stream, use xsl:document/on-empty: empty PI node constructed ->
+  <!- within xsl:source-document, use xsl:document/on-empty: empty PI node constructed ->
   
   <xsl:template name="d-045" use-when="$RUN">
     <out>
@@ -297,7 +297,7 @@
     </out>
   </xsl:template>
   
-  <!- within xsl:stream, use xsl:document/on-empty: empty attribute node constructed ->
+  <!- within xsl:source-document, use xsl:document/on-empty: empty attribute node constructed ->
   
   <xsl:template name="d-046" use-when="$RUN">
     <out>
@@ -308,7 +308,7 @@
     </out>
   </xsl:template>
   
-  <!- within xsl:stream, use xsl:document/on-empty: empty element constructed ->
+  <!- within xsl:source-document, use xsl:document/on-empty: empty element constructed ->
   
   <xsl:template name="d-047" use-when="$RUN">
     <out>
@@ -321,7 +321,7 @@
     </out>
   </xsl:template>
   
-  <!- within xsl:stream, use xsl:document/on-empty: empty document constructed ->
+  <!- within xsl:source-document, use xsl:document/on-empty: empty document constructed ->
   
   <xsl:template name="d-048" use-when="$RUN">
     <out>

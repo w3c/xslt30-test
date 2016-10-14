@@ -8,7 +8,7 @@
     <xsl:strip-space elements="*"/>
    
 
-  <!-- within xsl:stream, use fn:snapshot(): climbing posture -->
+  <!-- within xsl:source-document, use fn:snapshot(): climbing posture -->
   
   <xsl:template name="cy-003" use-when="$RUN">
     <out>
@@ -21,7 +21,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): climbing posture -->
+  <!-- within xsl:source-document, use fn:snapshot(): climbing posture -->
   
   <xsl:template name="cy-004" use-when="$RUN">
     <xsl:variable name="extra" as="element()*">
@@ -38,7 +38,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): striding posture, element nodes -->
+  <!-- within xsl:source-document, use fn:snapshot(): striding posture, element nodes -->
   
   <xsl:template name="cy-005" use-when="$RUN">
     <out>
@@ -48,7 +48,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): striding posture, text nodes -->
+  <!-- within xsl:source-document, use fn:snapshot(): striding posture, text nodes -->
   
   <xsl:template name="cy-006" use-when="$RUN">
     <out>
@@ -58,7 +58,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): striding posture, element nodes mixed with grounded elements -->
+  <!-- within xsl:source-document, use fn:snapshot(): striding posture, element nodes mixed with grounded elements -->
   
   <xsl:template name="cy-008" use-when="$RUN">
     <xsl:variable name="extra" as="element()*">
@@ -72,7 +72,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): descendant text nodes -->
+  <!-- within xsl:source-document, use fn:snapshot(): descendant text nodes -->
   
   <xsl:template name="cy-009" use-when="$RUN">
     <out>
@@ -82,7 +82,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): whole document unchanged -->
+  <!-- within xsl:source-document, use fn:snapshot(): whole document unchanged -->
   
   <xsl:template name="cy-011" use-when="$RUN">
     <out>
@@ -94,7 +94,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): copy-namespaces=yes -->
+  <!-- within xsl:source-document, use fn:snapshot(): copy-namespaces=yes -->
   
   <xsl:template name="cy-021" use-when="$RUN">
     <out>
@@ -104,7 +104,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): copy-namespaces="yes", argument grounded and consuming -->
+  <!-- within xsl:source-document, use fn:snapshot(): copy-namespaces="yes", argument grounded and consuming -->
   
   <xsl:template name="cy-025" use-when="$RUN">
     <out>
@@ -114,7 +114,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use fn:snapshot(): argument crawling and consuming, nested nodes -->
+  <!-- within xsl:source-document, use fn:snapshot(): argument crawling and consuming, nested nodes -->
   
   <xsl:template name="cy-027" use-when="$RUN">
     <out>

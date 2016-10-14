@@ -9,7 +9,7 @@
     <xsl:strip-space elements="*"/>
 
     
-    <!-- Test of xsl:stream/xsl:try with avg() -->
+    <!-- Test of xsl:source-document/xsl:try with avg() -->
     
     <xsl:template name="s-103" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -19,7 +19,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), filtered with a motionless predicate -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), filtered with a motionless predicate -->
     
     <xsl:template name="s-104" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -29,7 +29,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), filtered with a positional predicate -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), filtered with a positional predicate -->
     
     <xsl:template name="s-105" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -39,7 +39,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), filtered with a positional predicate -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), filtered with a positional predicate -->
     
     <xsl:template name="s-106" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -49,7 +49,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), filtered with a positional predicate -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), filtered with a positional predicate -->
     
     <xsl:template name="s-107" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -59,7 +59,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), filtered using data() to make it streamable -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), filtered using data() to make it streamable -->
     
     <xsl:template name="s-108" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -69,7 +69,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), filtered using text() to make it streamable -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), filtered using text() to make it streamable -->
     
     <xsl:template name="s-109" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -81,7 +81,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), filtered using number() to make it streamable -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), filtered using number() to make it streamable -->
     
     <xsl:template name="s-110" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -91,7 +91,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), selecting nothing and returning empty result -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), selecting nothing and returning empty result -->
     
     <xsl:template name="s-111" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -101,7 +101,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg() selecting both streamed nodes and literals -->
+  <!-- Test of xsl:source-document/xsl:try with avg() selecting both streamed nodes and literals -->
     
     <xsl:template name="s-112" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -111,7 +111,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg() selecting both streamed nodes and literals while also filtering -->
+  <!-- Test of xsl:source-document/xsl:try with avg() selecting both streamed nodes and literals while also filtering -->
     
     <xsl:template name="s-113" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -121,7 +121,7 @@
       </xsl:source-document>
     </xsl:template>   
     
-    <!-- Test of xsl:stream/xsl:try with sum of a computed value -->
+    <!-- Test of xsl:source-document/xsl:try with sum of a computed value -->
     
     <xsl:template name="s-115" use-when="true() or $RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -133,7 +133,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with sum of a computed value -->
+  <!-- Test of xsl:source-document/xsl:try with sum of a computed value -->
     
     <xsl:template name="s-116" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -143,7 +143,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg(), filtered using copy-of() to make it streamable -->
+  <!-- Test of xsl:source-document/xsl:try with avg(), filtered using copy-of() to make it streamable -->
     
     <xsl:template name="s-117" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -153,7 +153,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg() applied to an attribute -->
+  <!-- Test of xsl:source-document/xsl:try with avg() applied to an attribute -->
     
     <xsl:template name="s-118" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -163,7 +163,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg() over attribute values, filtered -->
+  <!-- Test of xsl:source-document/xsl:try with avg() over attribute values, filtered -->
     
     <xsl:template name="s-119" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -173,7 +173,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-  <!-- Test of xsl:stream/xsl:try with avg() over attribute values, computed -->
+  <!-- Test of xsl:source-document/xsl:try with avg() over attribute values, computed -->
     
     <xsl:template name="s-120" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -183,7 +183,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg() of a conditional value -->
+  <!-- Test of xsl:source-document/xsl:try with avg() of a conditional value -->
     
     <xsl:template name="s-121" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -194,7 +194,7 @@
       </xsl:source-document>
     </xsl:template>
     
-  <!-- Test of xsl:stream/xsl:try with avg() with a loop used to compute each item -->
+  <!-- Test of xsl:source-document/xsl:try with avg() with a loop used to compute each item -->
     
     <xsl:template name="s-122" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -204,7 +204,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream/xsl:try calling avg() using //x/y -->
+    <!-- Test of xsl:source-document/xsl:try calling avg() using //x/y -->
     <!-- Saxon makes this streamable by rewriting //X/Y as .//Y[parent::X] -->
     
     <xsl:template name="s-123" use-when="$RUN">

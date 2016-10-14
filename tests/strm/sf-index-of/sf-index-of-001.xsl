@@ -7,7 +7,7 @@
     
     <xsl:variable name="RUN" static="yes" select="true()"/>
     
-    <!-- Test of xsl:stream calling index-of(), first argument consuming and climbing  -->
+    <!-- Test of xsl:source-document calling index-of(), first argument consuming and climbing  -->
     
     <xsl:template name="i-001" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -17,7 +17,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling index-of(), first argument motionless, second argument streamed  -->
+    <!-- Test of xsl:source-document calling index-of(), first argument motionless, second argument streamed  -->
     
     <xsl:template name="i-002" use-when="$RUN">
       <xsl:variable name="accounts" as="element()*">
@@ -37,7 +37,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling index-of(), empty case  -->
+    <!-- Test of xsl:source-document calling index-of(), empty case  -->
     
     <xsl:template name="i-003" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">

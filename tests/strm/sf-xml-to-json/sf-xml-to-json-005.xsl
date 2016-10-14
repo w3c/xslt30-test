@@ -8,9 +8,9 @@
  <xsl:strip-space elements="*"/>   
     
  <xsl:template name="xsl:initial-template">
-     <xsl:stream href="sf-xml-to-json-A.xml">
+     <xsl:source-document href="sf-xml-to-json-A.xml">
          <json>{xml-to-json(/descendant::node()[../@key='Brussels'][1], map{'indent':false()})}</json>
-     </xsl:stream>
+     </xsl:source-document>
  </xsl:template>
     
 </xsl:stylesheet>

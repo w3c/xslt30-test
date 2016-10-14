@@ -9,7 +9,7 @@
     <xsl:strip-space elements="*"/>
 
     
-    <!-- Test of xsl:stream with avg() -->
+    <!-- Test of xsl:source-document with avg() -->
     
     <xsl:template name="s-003" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -19,7 +19,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), filtered with a motionless predicate -->
+    <!-- Test of xsl:source-document with avg(), filtered with a motionless predicate -->
     
     <xsl:template name="s-004" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -29,7 +29,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with avg(), filtered with a positional predicate -->
     
     <xsl:template name="s-005" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -39,7 +39,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with avg(), filtered with a positional predicate -->
     
     <xsl:template name="s-006" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -49,7 +49,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with avg(), filtered with a positional predicate -->
     
     <xsl:template name="s-007" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -59,7 +59,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), filtered using data() to make it streamable -->
+    <!-- Test of xsl:source-document with avg(), filtered using data() to make it streamable -->
     
     <xsl:template name="s-008" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -69,7 +69,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), filtered using text() to make it streamable -->
+    <!-- Test of xsl:source-document with avg(), filtered using text() to make it streamable -->
     
     <xsl:template name="s-009" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -79,7 +79,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), filtered using number() to make it streamable -->
+    <!-- Test of xsl:source-document with avg(), filtered using number() to make it streamable -->
     
     <xsl:template name="s-010" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -89,7 +89,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), selecting nothing and returning empty result -->
+    <!-- Test of xsl:source-document with avg(), selecting nothing and returning empty result -->
     
     <xsl:template name="s-011" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -119,7 +119,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of avg() output feeding directly into xsl:stream -->
+    <!-- Test of avg() output feeding directly into xsl:source-document -->
     
     <xsl:template name="s-014" use-when="$RUN">
       <out>
@@ -130,7 +130,7 @@
     </xsl:template>
        
     
-    <!-- Test of xsl:stream with sum of a computed value -->
+    <!-- Test of xsl:source-document with sum of a computed value -->
     
     <xsl:template name="s-015" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -142,7 +142,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with sum of a computed value -->
+    <!-- Test of xsl:source-document with sum of a computed value -->
     
     <xsl:template name="s-016" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -152,7 +152,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg(), filtered using copy-of() to make it streamable -->
+    <!-- Test of xsl:source-document with avg(), filtered using copy-of() to make it streamable -->
     
     <xsl:template name="s-017" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -162,7 +162,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg() applied to an attribute -->
+    <!-- Test of xsl:source-document with avg() applied to an attribute -->
     
     <xsl:template name="s-018" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -172,7 +172,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with avg() over attribute values, filtered -->
+    <!-- Test of xsl:source-document with avg() over attribute values, filtered -->
     
     <xsl:template name="s-019" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -182,7 +182,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-    <!-- Test of xsl:stream with avg() over attribute values, computed -->
+    <!-- Test of xsl:source-document with avg() over attribute values, computed -->
     
     <xsl:template name="s-020" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -213,7 +213,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling avg() using striding select expr with grounding mapping operator of the form /x/y!z -->
+    <!-- Test of xsl:source-document calling avg() using striding select expr with grounding mapping operator of the form /x/y!z -->
     
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">

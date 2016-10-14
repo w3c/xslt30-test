@@ -8,7 +8,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
   
-  <!-- within xsl:stream, attempt to save streamed nodes in map value -->
+  <!-- within xsl:source-document, attempt to save streamed nodes in map value -->
   
   <xsl:template name="m-901" use-when="$RUN" expand-text="yes">
     <out>

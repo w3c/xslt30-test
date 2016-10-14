@@ -8,7 +8,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
    
-  <!-- within xsl:stream, use bang operator -->
+  <!-- within xsl:source-document, use bang operator -->
    
   <xsl:template name="bang-001" use-when="$RUN">
     <out>
@@ -18,7 +18,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use bang operator with numbering -->
+  <!-- within xsl:source-document, use bang operator with numbering -->
    
   <xsl:template name="bang-002">
     <out>
@@ -28,7 +28,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use bang operator with positional selection -->
+  <!-- within xsl:source-document, use bang operator with positional selection -->
    
   <xsl:template name="bang-003">
     <out>
@@ -68,7 +68,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use parent axis within bang operator -->
+  <!-- within xsl:source-document, use parent axis within bang operator -->
    
   <xsl:template name="bang-008">
     <out>
@@ -78,7 +78,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use ancestor axis within bang operator -->
+  <!-- within xsl:source-document, use ancestor axis within bang operator -->
    
   <xsl:template name="bang-009">
     <out>
@@ -88,7 +88,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use subsequence() within bang operator rhs -->
+  <!-- within xsl:source-document, use subsequence() within bang operator rhs -->
    
   <xsl:template name="bang-010">
     <out>
@@ -98,7 +98,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, select attributes within bang operator rhs -->
+  <!-- within xsl:source-document, select attributes within bang operator rhs -->
    
   <xsl:template name="bang-011">
     <out>
@@ -108,7 +108,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, iterate over ancestor axis within bang operator rhs -->
+  <!-- within xsl:source-document, iterate over ancestor axis within bang operator rhs -->
    
   <xsl:template name="bang-012">
     <out xmlns="http://loan.shark.com/">

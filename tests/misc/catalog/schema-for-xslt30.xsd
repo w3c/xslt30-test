@@ -16,7 +16,8 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  targetNamespace="http://www.w3.org/1999/XSL/Transform" elementFormDefault="qualified">
+  targetNamespace="http://www.w3.org/1999/XSL/Transform" elementFormDefault="qualified"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <xs:annotation>
@@ -176,7 +177,7 @@ of problems processing the schema using various tools
       <xs:restriction base="xsl:sequence-constructor-and-select">
         <xs:group ref="xsl:sequence-constructor-group" minOccurs="0" maxOccurs="unbounded"/>
         <xs:anyAttribute namespace="##other" processContents="lax"/>
-        <xs:assert test="not(exists(@select) and (exists(* except xsl:fallback) or exists(text()[normalize-space()])))"/>
+        <xs:assert test="not(exists(@select | @_select) and (exists(* except xsl:fallback) or exists(text()[normalize-space()])))"/>
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
@@ -323,7 +324,7 @@ of problems processing the schema using various tools
           <xs:attribute name="mode" type="xsl:mode"/>
           <xs:attribute name="_select" type="xs:string"/>
           <xs:attribute name="_mode" type="xs:string"/>
-          <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/@stable)">
+          <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/(@stable | @_stable))">
             <xs:annotation>
               <xs:documentation>
                 <p>It is a static error if an xsl:sort element other than the first in a 
@@ -367,7 +368,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_separator" type="xs:string"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
-          <xs:assert test="not(exists(@type) and exists(@validation))">
+          <xs:assert test="not(exists(@type | @_type) and exists(@validation | @_validation))">
             <xs:annotation>
               <xs:documentation>
                 <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
@@ -499,7 +500,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_use-attribute-sets" type="xs:string"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
-          <xs:assert test="not(exists(@type) and exists(@validation))">
+          <xs:assert test="not(exists(@type | @_type) and exists(@validation | @_validation))">
             <xs:annotation>
               <xs:documentation>
                 <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
@@ -526,7 +527,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_copy-namespaces" type="xs:string"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
-          <xs:assert test="not(exists(@type) and exists(@validation))">
+          <xs:assert test="not(exists(@type | @_type) and exists(@validation | @_validation))">
             <xs:annotation>
               <xs:documentation>
                 <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
@@ -548,7 +549,7 @@ of problems processing the schema using various tools
           <xs:attribute name="validation" type="xsl:validation-type"/>
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
-          <xs:assert test="not(exists(@type) and exists(@validation))">
+          <xs:assert test="not(exists(@type | @_type) and exists(@validation | @_validation))">
             <xs:annotation>
               <xs:documentation>
                 <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
@@ -611,7 +612,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_type" type="xs:string"/>
           <xs:attribute name="_validation" type="xs:string"/>
           <xs:assert test="exists(@name | @_name)"/>
-          <xs:assert test="not(exists(@type) and exists(@validation))">
+          <xs:assert test="not(exists(@type | @_type) and exists(@validation | @_validation))">
             <xs:annotation>
               <xs:documentation>
                 <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
@@ -686,7 +687,7 @@ of problems processing the schema using various tools
           </xs:sequence>
           <xs:attribute name="select" type="xsl:expression"/>
           <xs:attribute name="_select" type="xs:string"/>
-          <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/@stable)">
+          <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/(@stable | @_stable))">
             <xs:annotation>
               <xs:documentation>
                 <p>It is a static error if an xsl:sort element other than the first in a 
@@ -724,7 +725,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_composite" type="xs:string"/>
           <xs:attribute name="_collation" type="xs:string"/>
           <xs:assert test="exists(@select | @_select)"/>
-          <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/@stable)">
+          <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/(@stable | @_stable))">
             <xs:annotation>
               <xs:documentation>
                 <p>It is a static error if an xsl:sort element other than the first in a 
@@ -733,7 +734,8 @@ of problems processing the schema using various tools
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="count((@group-by, @group-adjacent, @group-starting-with, @group-ending-with)) = 1">
+          <xs:assert test="count(((@group-by|@_group-by)[1], (@group-adjacent|@_group-adjacent)[1], 
+                            (@group-starting-with|@_group-starting-with)[1], (@group-ending-with|@_group-ending-with)[1])) = 1">
             <xs:annotation>
               <xs:documentation>
                 <p>These four attributes are mutually exclusive: it is a static error 
@@ -742,7 +744,8 @@ of problems processing the schema using various tools
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="if (exists(@collation) or exists(@composite)) then (exists(@group-by) or exists(@group-adjacent)) else true()">
+          <xs:assert test="if (exists(@collation|@_collation) or exists(@composite|@_composite)) 
+                           then (exists(@group-by|@_group-by) or exists(@group-adjacent|@_group-adjacent)) else true()">
             <xs:annotation>
               <xs:documentation>
                 <p>It is an error to specify the collation attribute or the composite attribute 
@@ -803,21 +806,21 @@ of problems processing the schema using various tools
           <xs:attribute name="_identity-sensitive" type="xs:string"/>
           <xs:attribute name="_cache" type="xs:string"/>
           <xs:assert test="exists(@name | @_name)"/>
-          <xs:assert test="every $e in xsl:param satisfies (empty($e/@select) and empty($e/child::node()))">
+          <xs:assert test="every $e in xsl:param satisfies (empty($e/(@select | @_select)) and empty($e/child::node()))">
             <xs:annotation>
               <xs:documentation>
                 <p>A parameter for a function must have no default value.</p>
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="every $e in xsl:param satisfies empty($e/@visibility)">
+          <xs:assert test="every $e in xsl:param satisfies empty($e/(@visibility | @_visibility))">
             <xs:annotation>
               <xs:documentation>
                 <p>A parameter for a function must have no <code>visibility</code> attribute.</p>
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="every $e in xsl:param satisfies empty($e/@required)">
+          <xs:assert test="every $e in xsl:param satisfies empty($e/(@required | @_required))">
             <xs:annotation>
               <xs:documentation>
                 <p>A parameter for a function must have no <code>required</code> attribute.</p>
@@ -842,13 +845,9 @@ of problems processing the schema using various tools
                 <xs:enumeration value="absent"/>
               </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="streamable" type="xsl:yes-or-no"/>
-          <xs:attribute name="use-accumulators" type="xsl:accumulator-names"/>         
+          </xs:attribute>        
           <xs:attribute name="_as" type="xs:string"/>
           <xs:attribute name="_use" type="xs:string"/>
-          <xs:attribute name="_streamable" type="xs:string"/>
-          <xs:attribute name="_use-accumulators" type="xs:string"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -890,7 +889,7 @@ of problems processing the schema using various tools
           <xs:attribute name="schema-location" type="xs:anyURI"/>
           <xs:attribute name="_namespace" type="xs:string"/>
           <xs:attribute name="_schema-location" type="xs:string"/>
-          <xs:assert test="not(exists(@schema-location) and exists(xs:schema))">
+          <xs:assert test="not(exists(@schema-location | @_schema-location) and exists(xs:schema))">
             <xs:annotation>
               <xs:documentation>
                 <p>XTSE0215: It is a static error if an xsl:import-schema element that contains an 
@@ -1062,6 +1061,7 @@ of problems processing the schema using various tools
         <xs:extension base="xsl:element-only-versioned-element-type">
           <xs:attribute name="name" type="xsl:EQName"/>
           <xs:attribute name="streamable" type="xsl:yes-or-no" default="no"/>
+          <xs:attribute name="use-accumulators" type="xsl:accumulator-names"/>
           <xs:attribute name="on-no-match" type="xsl:on-no-match-type" default="shallow-skip"/>
           <xs:attribute name="on-multiple-match" type="xsl:on-multiple-match-type" default="use-last"/>
           <xs:attribute name="warning-on-no-match" type="xsl:yes-or-no"/>
@@ -1084,15 +1084,6 @@ of problems processing the schema using various tools
           <xs:attribute name="_warning-on-multiple-match" type="xs:string"/>
           <xs:attribute name="_typed" type="xs:string"/>
           <xs:attribute name="_visibility" type="xs:string"/>
-          <xs:assert test="not(exists(@name) and normalize-space(@visibility) = 'private' and exists(xsl:context-item))">
-            <xs:annotation>
-              <xs:documentation>
-                <p>It is a static error if a named xsl:mode declaration specifying visibility="private" 
-                  contains an xsl:context-item element.
-                </p>
-              </xs:documentation>
-            </xs:annotation>
-          </xs:assert> 
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1121,8 +1112,8 @@ of problems processing the schema using various tools
           <xs:attribute name="_result-prefix" type="xs:string"/>
           <xs:assert test="exists(@stylesheet-prefix | @_stylesheet-prefix)"/>
           <xs:assert test="exists(@result-prefix | @_result-prefix)"/>
-          <xs:assert test="every $prefix in (@stylesheet-prefix, @result-prefix)[. ne '#default']
-            satisfies $prefix = in-scope-prefixes(.)"/>
+          <xs:assert test="every $prefix in (@stylesheet-prefix, @result-prefix)/normalize-space(.)[. ne '#default']
+                           satisfies $prefix = in-scope-prefixes(.)"/>
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -1185,7 +1176,8 @@ of problems processing the schema using various tools
           <xs:attribute name="_start-at" type="xs:string"/>
           <xs:attribute name="_grouping-separator" type="xs:string"/>
           <xs:attribute name="_grouping-size" type="xs:string"/>
-          <xs:assert test="if (exists(@value)) then empty((@select, @count, @from)) and @level='single' else true()">
+          <xs:assert test="if (exists(@value | @_value)) then empty((@select | @_select, @count | @_count, @from | @_from)) 
+            and (exists(@_level) or normalize-space(@level)='single') else true()">
             <xs:annotation>
               <xs:documentation>
                 <p>It is a static error if the value attribute of xsl:number is present unless the 
@@ -1347,7 +1339,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_tunnel" type="xs:string"/>
           <xs:attribute name="_static" type="xs:string"/>
           <xs:assert test="exists(@name | @_name)"/>
-          <xs:assert test="if (normalize-space(@static) = 'yes')
+          <xs:assert test="if (normalize-space(@static) = ('yes', 'true', '1'))
                            then empty((*,text()))
                            else true()">
             <xs:annotation>
@@ -1373,7 +1365,7 @@ of problems processing the schema using various tools
             <xs:group ref="xsl:sequence-constructor-group" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
           <xs:attribute name="select" type="xsl:expression"/>
-          <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/@stable)">
+          <xs:assert test="every $e in subsequence(xsl:sort, 2) satisfies empty($e/(@stable | @_stable))">
             <xs:annotation>
               <xs:documentation>
                 <p>It is a static error if an xsl:sort element other than the first in a 
@@ -1466,7 +1458,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_undeclare-prefixes" type="xs:string"/>
           <xs:attribute name="_use-character-maps" type="xs:string"/>
           <xs:attribute name="_output-version" type="xs:string"/>
-          <xs:assert test="not(exists(@type) and exists(@validation))">
+          <xs:assert test="not(exists(@type | @_type) and exists(@validation | @_validation))">
             <xs:annotation>
               <xs:documentation>
                 <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
@@ -1501,6 +1493,34 @@ of problems processing the schema using various tools
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  
+  <xs:element name="source-document" substitutionGroup="xsl:instruction">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xsl:sequence-constructor">
+          <xs:attribute name="href" type="xsl:avt"/>
+          <xs:attribute name="streamable" type="xsl:yes-or-no" default="no"/>
+          <xs:attribute name="use-accumulators" type="xsl:accumulator-names"/>
+          <xs:attribute name="type" type="xsl:EQName"/>
+          <xs:attribute name="validation" type="xsl:validation-type"/>
+          <xs:attribute name="_href" type="xs:string"/>
+          <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_use-accumulators" type="xs:string"/>
+          <xs:attribute name="_type" type="xs:string"/>
+          <xs:attribute name="_validation" type="xs:string"/>
+          <xs:assert test="exists(@href | @_href)"/>
+          <xs:assert test="not(exists(@type | @_type) and exists(@validation | @_validation))">
+            <xs:annotation>
+              <xs:documentation>
+                <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
+                  (if one is present, the other must be absent).</p>
+              </xs:documentation>
+            </xs:annotation>
+          </xs:assert>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
 
   <xs:element name="strip-space" substitutionGroup="xsl:declaration">
     <xs:complexType>
@@ -1516,32 +1536,7 @@ of problems processing the schema using various tools
 
   <xs:element name="stylesheet" substitutionGroup="xsl:transform"/>
 
-  <xs:element name="stream" substitutionGroup="xsl:instruction">
-    <xs:complexType>
-      <xs:complexContent>
-        <xs:extension base="xsl:sequence-constructor">
-          <xs:attribute name="href" type="xsl:avt"/>
-          <xs:attribute name="use-accumulators" type="xsl:accumulator-names"/>
-          <xs:attribute name="type" type="xsl:EQName"/>
-          <xs:attribute name="validation" type="xsl:validation-type"/>
-          <xs:attribute name="_href" type="xs:string"/>
-          <xs:attribute name="_use-accumulators" type="xs:string"/>
-          <xs:attribute name="_type" type="xs:string"/>
-          <xs:attribute name="_validation" type="xs:string"/>
-          <xs:assert test="exists(@href | @_href)"/>
-          <xs:assert test="not(exists(@type) and exists(@validation))">
-            <xs:annotation>
-              <xs:documentation>
-                <p>The <code>type</code> and <code>validation</code> attributes are mutually exclusive
-                  (if one is present, the other must be absent).</p>
-              </xs:documentation>
-            </xs:annotation>
-          </xs:assert>
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
-
+  
   <xs:element name="template" substitutionGroup="xsl:declaration">
     <xs:complexType>
       <xs:complexContent mixed="true">
@@ -1563,21 +1558,21 @@ of problems processing the schema using various tools
           <xs:attribute name="_name" type="xs:string"/>
           <xs:attribute name="_as" type="xs:string"/>
           <xs:attribute name="_visibility" type="xs:string"/>
-          <xs:assert test="exists(@match) or exists(@name)">
+          <xs:assert test="exists(@match | @_match) or exists(@name | @_name)">
             <xs:annotation>
               <xs:documentation>
                 <p>An xsl:template element must have either a match attribute or a name attribute, or both.</p>
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="if (empty(@match)) then (empty(@mode) and empty(@priority)) else true()">
+          <xs:assert test="if (empty(@match | @_match)) then (empty(@mode | @_mode) and empty(@priority | @_priority)) else true()">
             <xs:annotation>
               <xs:documentation>
                 <p>An xsl:template element that has no match attribute must have no mode attribute and no priority attribute.</p>
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="not(exists(@visibility) and empty(@name))">
+          <xs:assert test="not(exists(@visibility | @_visibility) and empty(@name | @_name))">
             <xs:annotation>
               <xs:documentation>
                 <p>An xsl:template element that has no name attribute must have no visibility attribute</p>
@@ -1599,7 +1594,7 @@ of problems processing the schema using various tools
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="every $e in xsl:param satisfies empty($e/@visibility)">
+          <xs:assert test="every $e in xsl:param satisfies empty($e/(@visibility | @_visibility))">
             <xs:annotation>
               <xs:documentation>
                 <p>A parameter for a template must have no <code>visibility</code> attribute.</p>
@@ -1621,18 +1616,6 @@ of problems processing the schema using various tools
       </xs:restriction>
     </xs:simpleContent>
   </xs:complexType>
-
-  <!--* first cut (for reference)
-<xs:element name="text" substitutionGroup="xsl:instruction">
-  <xs:complexType>
-    <xs:simpleContent>
-      <xs:extension base="xsl:text-element-base-type">
-        <xs:attribute name="disable-output-escaping" type="xsl:yes-or-no" default="no"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-</xs:element>
-*-->
 
   <xs:complexType name="text-element-type">
     <xs:simpleContent>
@@ -1684,7 +1667,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_input-type-annotations" type="xs:string"/>
           <!--* The 'static' attribute may be used on 'param' and 'variable'
               * only when they are top-level elements. *-->
-          <xs:assert test="every $v in (.//xsl:param, .//xsl:variable)[@static]
+          <xs:assert test="every $v in (.//xsl:param, .//xsl:variable)[exists(@static | @_static)]
             satisfies
             $v[parent::xsl:stylesheet or parent::xsl:transform or parent::xsl:override]
             ">
@@ -1795,8 +1778,8 @@ of problems processing the schema using various tools
           <xs:attribute name="_visibility" type="xs:string"/>
           <xs:attribute name="_static" type="xs:string"/>
           <xs:assert test="exists(@name | @_name)"/>
-          <xs:assert test="if (normalize-space(@static) = 'yes') 
-                           then normalize-space(@visibility) = ('', 'private', 'final') 
+          <xs:assert test="if (normalize-space(@static) = ('yes', 'true', '1')) 
+                           then (exists(@_visibility) or normalize-space(@visibility) = ('', 'private', 'final')) 
                            else true()">
             <xs:annotation>
               <xs:documentation>
@@ -1806,8 +1789,8 @@ of problems processing the schema using various tools
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="if (normalize-space(@static) = 'yes')
-                           then (empty((*,text())) and @select) 
+          <xs:assert test="if (normalize-space(@static) = ('yes', 'true', '1'))
+                           then (empty((*, text())) and exists(@select | @_select)) 
                            else true()">
             <xs:annotation>
               <xs:documentation>
@@ -1905,7 +1888,7 @@ of problems processing the schema using various tools
 
   <xs:simpleType name="accumulator-names">
     <xs:annotation>
-      <xs:documentation> The use-accumulators attribute of xsl:stream, xsl:merge-source, or xsl:global-context-item: 
+      <xs:documentation> The use-accumulators attribute of xsl:source-document, xsl:merge-source, or xsl:global-context-item: 
         either a list, each member being a QName; or the value #all </xs:documentation>
     </xs:annotation>   
     <xs:union>
@@ -1950,6 +1933,7 @@ of problems processing the schema using various tools
       <xs:enumeration value="variable"/>
       <xs:enumeration value="attribute-set"/>
       <xs:enumeration value="mode"/>
+      <xs:enumeration value="*"/>
     </xs:restriction>
   </xs:simpleType>
   
@@ -2204,7 +2188,7 @@ of problems processing the schema using various tools
     <xs:union memberTypes="xs:NCName xs:QName">
       <xs:simpleType>
         <xs:restriction base="xs:token">
-          <xs:pattern value="Q\{.*\}\i\c*"/>
+          <xs:pattern value="Q\{[^{}]*\}[\i-[:]][\c-[:]]*"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:union>
@@ -2233,7 +2217,7 @@ of problems processing the schema using various tools
   
   <xs:simpleType name="streamability-type">
     <xs:annotation>
-      <xs:documentation> Describes the visibility of a component within a package.
+      <xs:documentation> Describes the catgory to which a function belongs, with regards to its streaming behavior.
       </xs:documentation>
     </xs:annotation>
     <xs:union memberTypes="xsl:EQName-in-namespace">

@@ -9,7 +9,7 @@
     <xsl:strip-space elements="*"/>
 
     
-    <!-- Test of xsl:stream with xsl:value-of -->
+    <!-- Test of xsl:source-document with xsl:value-of -->
     
     <xsl:template name="s-003" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -19,7 +19,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, filtered with a motionless predicate -->
+    <!-- Test of xsl:source-document with xsl:value-of, filtered with a motionless predicate -->
     
     <xsl:template name="s-004" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -29,7 +29,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with xsl:value-of, filtered with a positional predicate -->
     
     <xsl:template name="s-005" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -39,7 +39,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with xsl:value-of, filtered with a positional predicate -->
     
     <xsl:template name="s-006" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -49,7 +49,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with xsl:value-of, filtered with a positional predicate -->
     
     <xsl:template name="s-007" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -59,7 +59,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, filtered using data() to make it streamable -->
+    <!-- Test of xsl:source-document with xsl:value-of, filtered using data() to make it streamable -->
     
     <xsl:template name="s-008" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -69,7 +69,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, filtered using text() to make it streamable -->
+    <!-- Test of xsl:source-document with xsl:value-of, filtered using text() to make it streamable -->
     
     <xsl:template name="s-009" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -79,7 +79,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, filtered using number() to make it streamable -->
+    <!-- Test of xsl:source-document with xsl:value-of, filtered using number() to make it streamable -->
     
     <xsl:template name="s-010" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -89,7 +89,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, selecting nothing  -->
+    <!-- Test of xsl:source-document with xsl:value-of, selecting nothing  -->
     
     <xsl:template name="s-011" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -119,7 +119,7 @@
       </xsl:source-document>
     </xsl:template>   
     
-    <!-- Test of xsl:stream with xsl:value-of of a computed value -->
+    <!-- Test of xsl:source-document with xsl:value-of of a computed value -->
     
     <xsl:template name="s-015" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -131,7 +131,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of of a computed value -->
+    <!-- Test of xsl:source-document with xsl:value-of of a computed value -->
     
     <xsl:template name="s-016" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -141,7 +141,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of, filtered using copy-of() to make it streamable -->
+    <!-- Test of xsl:source-document with xsl:value-of, filtered using copy-of() to make it streamable -->
     
     <xsl:template name="s-017" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -151,7 +151,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of applied to an attribute -->
+    <!-- Test of xsl:source-document with xsl:value-of applied to an attribute -->
     
     <xsl:template name="s-018" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -161,7 +161,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with xsl:value-of over attribute values, filtered -->
+    <!-- Test of xsl:source-document with xsl:value-of over attribute values, filtered -->
     
     <xsl:template name="s-019" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -171,7 +171,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-    <!-- Test of xsl:stream with xsl:value-of over attribute values, computed -->
+    <!-- Test of xsl:source-document with xsl:value-of over attribute values, computed -->
     
     <xsl:template name="s-020" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -202,7 +202,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling xsl:value-of using //x/y -->
+    <!-- Test of xsl:source-document calling xsl:value-of using //x/y -->
     <!-- Saxon makes this streamable by rewriting //X/Y as .//Y[parent::X] -->
     
     <xsl:template name="s-023" use-when="$RUN">
@@ -213,7 +213,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- within xsl:stream, use xsl:value-of: argument crawling and consuming, nested nodes -->
+    <!-- within xsl:source-document, use xsl:value-of: argument crawling and consuming, nested nodes -->
   
     <xsl:template name="s-027" use-when="$RUN">
       <out>

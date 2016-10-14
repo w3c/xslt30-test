@@ -8,7 +8,7 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
   
-  <!-- within xsl:stream, map key and value are both consuming -->
+  <!-- within xsl:source-document, map key and value are both consuming -->
   
   <xsl:template name="m-902" use-when="$RUN" expand-text="yes">
     <out>

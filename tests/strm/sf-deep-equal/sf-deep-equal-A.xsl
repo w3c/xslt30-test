@@ -8,7 +8,7 @@
     <xsl:strip-space elements="*"/>
 
     
-    <!-- Test of xsl:stream with deep-equal() - atomized -->
+    <!-- Test of xsl:source-document with deep-equal() - atomized -->
     
     <xsl:template name="s-003" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -18,7 +18,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal() - atomized -->
+    <!-- Test of xsl:source-document with deep-equal() - atomized -->
     
     <xsl:template name="s-003a" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -28,7 +28,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal() - atomized -->
+    <!-- Test of xsl:source-document with deep-equal() - atomized -->
     
     <xsl:template name="s-003b" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -38,7 +38,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal() - atomized -->
+    <!-- Test of xsl:source-document with deep-equal() - atomized -->
     
     <xsl:template name="s-003c" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -48,7 +48,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal() - atomized -->
+    <!-- Test of xsl:source-document with deep-equal() - atomized -->
     
     <xsl:template name="s-003d" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -58,7 +58,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal() - atomized -->
+    <!-- Test of xsl:source-document with deep-equal() - atomized -->
     
     <xsl:template name="s-003e" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -68,7 +68,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal(), filtered with a motionless predicate - atomized -->
+    <!-- Test of xsl:source-document with deep-equal(), filtered with a motionless predicate - atomized -->
     
     <xsl:template name="s-004" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -78,7 +78,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal(), filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with deep-equal(), filtered with a positional predicate -->
     
     <xsl:template name="s-005" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -88,7 +88,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal(), filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with deep-equal(), filtered with a positional predicate -->
     
     <xsl:template name="s-006" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -98,7 +98,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal(), grounded element nodes -->
+    <!-- Test of xsl:source-document with deep-equal(), grounded element nodes -->
     
     <xsl:template name="s-007" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -179,7 +179,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal(), non-grounded element nodes -->
+    <!-- Test of xsl:source-document with deep-equal(), non-grounded element nodes -->
     
     <xsl:template name="s-008" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -260,7 +260,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal(), filtered using text() to make it streamable -->
+    <!-- Test of xsl:source-document with deep-equal(), filtered using text() to make it streamable -->
     
     <xsl:template name="s-009" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -278,7 +278,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal(), selecting nothing and returning false -->
+    <!-- Test of xsl:source-document with deep-equal(), selecting nothing and returning false -->
     
     <xsl:template name="s-011" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -298,7 +298,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with deep-equal() applied to an attribute -->
+    <!-- Test of xsl:source-document with deep-equal() applied to an attribute -->
     
     <xsl:template name="s-018" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">

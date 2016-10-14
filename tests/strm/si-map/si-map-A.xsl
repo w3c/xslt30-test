@@ -10,7 +10,7 @@
     
   <xsl:import-schema schema-location="../docs/loans.xsd"/>  
    
-  <!-- within xsl:stream, use xsl:map -->
+  <!-- within xsl:source-document, use xsl:map -->
   
   <xsl:template name="m-001" use-when="$RUN">
     <out>
@@ -30,7 +30,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:map with multi-valued map entries -->
+  <!-- within xsl:source-document, use xsl:map with multi-valued map entries -->
   
   <xsl:template name="m-002" use-when="$RUN">
     <out>
@@ -48,7 +48,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:map with computed key expressions -->
+  <!-- within xsl:source-document, use xsl:map with computed key expressions -->
   
   <xsl:template name="m-003" use-when="$RUN">
     <out>
@@ -67,7 +67,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:map to compute max and min simultaneously -->
+  <!-- within xsl:source-document, use xsl:map to compute max and min simultaneously -->
   
   <xsl:template name="m-004" use-when="$RUN" expand-text="yes">
     <out>
@@ -84,7 +84,7 @@
     </out>
   </xsl:template>  
   
-  <!-- within xsl:stream, use xsl:map selecting an empty sequence -->
+  <!-- within xsl:source-document, use xsl:map selecting an empty sequence -->
   
   <xsl:template name="m-005" use-when="$RUN" expand-text="yes">
     <out>
@@ -101,7 +101,7 @@
     </out>
   </xsl:template>
   
-  <!-- within xsl:stream, use xsl:map with consuming key expressions -->
+  <!-- within xsl:source-document, use xsl:map with consuming key expressions -->
   
   <xsl:template name="m-006" use-when="$RUN">
     <out>

@@ -11,7 +11,7 @@
     <!-- This test set is derived by direct conversion of si-attribute-A to use elements instead of attributes -->
 
     
-    <!-- Test of xsl:stream with literal result element -->
+    <!-- Test of xsl:source-document with literal result element -->
     
     <xsl:template name="s-003" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -21,7 +21,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, filtered with a motionless predicate -->
+    <!-- Test of xsl:source-document with literal result element, filtered with a motionless predicate -->
     
     <xsl:template name="s-004" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -31,7 +31,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with literal result element, filtered with a positional predicate -->
     
     <xsl:template name="s-005" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -41,7 +41,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with literal result element, filtered with a positional predicate -->
     
     <xsl:template name="s-006" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -51,7 +51,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, filtered with a positional predicate -->
+    <!-- Test of xsl:source-document with literal result element, filtered with a positional predicate -->
     
     <xsl:template name="s-007" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -61,7 +61,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, filtered using data() to make it streamable -->
+    <!-- Test of xsl:source-document with literal result element, filtered using data() to make it streamable -->
     
     <xsl:template name="s-008" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -71,7 +71,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, filtered using text() to make it streamable -->
+    <!-- Test of xsl:source-document with literal result element, filtered using text() to make it streamable -->
     
     <xsl:template name="s-009" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -81,7 +81,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, filtered using number() to make it streamable -->
+    <!-- Test of xsl:source-document with literal result element, filtered using number() to make it streamable -->
     
     <xsl:template name="s-010" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -91,7 +91,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, selecting nothing  -->
+    <!-- Test of xsl:source-document with literal result element, selecting nothing  -->
     
     <xsl:template name="s-011" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -121,7 +121,7 @@
       </xsl:source-document>
     </xsl:template>   
     
-    <!-- Test of xsl:stream with literal result element of a computed value -->
+    <!-- Test of xsl:source-document with literal result element of a computed value -->
     
     <xsl:template name="s-015" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -135,7 +135,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element of a computed value -->
+    <!-- Test of xsl:source-document with literal result element of a computed value -->
     
     <xsl:template name="s-016" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -145,7 +145,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element, filtered using copy-of() to make it streamable -->
+    <!-- Test of xsl:source-document with literal result element, filtered using copy-of() to make it streamable -->
     
     <xsl:template name="s-017" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -155,7 +155,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element applied to an attribute -->
+    <!-- Test of xsl:source-document with literal result element applied to an attribute -->
     
     <xsl:template name="s-018" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -165,7 +165,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element over attribute values, filtered -->
+    <!-- Test of xsl:source-document with literal result element over attribute values, filtered -->
     
     <xsl:template name="s-019" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -175,7 +175,7 @@
       </xsl:source-document>
     </xsl:template> 
     
-    <!-- Test of xsl:stream with literal result element over attribute values, computed -->
+    <!-- Test of xsl:source-document with literal result element over attribute values, computed -->
     
     <xsl:template name="s-020" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
@@ -208,7 +208,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream calling xsl:element using outermost(//x/y) -->
+    <!-- Test of xsl:source-document calling xsl:element using outermost(//x/y) -->
     
     <xsl:template name="s-023" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -305,7 +305,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element/@xsl:on-empty (not empty) -->
+    <!-- Test of xsl:source-document with literal result element/@xsl:on-empty (not empty) -->
     
     <xsl:template name="s-050" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -317,7 +317,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element/@xsl:on-empty (empty) -->
+    <!-- Test of xsl:source-document with literal result element/@xsl:on-empty (empty) -->
     
     <xsl:template name="s-051" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -329,7 +329,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element/@xsl:on-empty, with xsl:on-empty consuming (not empty) -->
+    <!-- Test of xsl:source-document with literal result element/@xsl:on-empty, with xsl:on-empty consuming (not empty) -->
     
     <xsl:template name="s-052" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -342,7 +342,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element/@xsl:on-empty, with xsl:on-empty consuming (empty) -->
+    <!-- Test of xsl:source-document with literal result element/@xsl:on-empty, with xsl:on-empty consuming (empty) -->
     
     <xsl:template name="s-053" use-when="$RUN">
       <xsl:param name="s" select="20"/>
@@ -354,7 +354,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element/@xsl:on-empty (empty, returns a new element) -->
+    <!-- Test of xsl:source-document with literal result element/@xsl:on-empty (empty, returns a new element) -->
     
     <xsl:template name="s-054" use-when="$RUN">
       <xsl:variable name="e" as="element()"><e/></xsl:variable>
@@ -370,7 +370,7 @@
       </xsl:source-document>
     </xsl:template>
     
-    <!-- Test of xsl:stream with literal result element/@xsl:on-empty (empty, type error, returns two elements) -->
+    <!-- Test of xsl:source-document with literal result element/@xsl:on-empty (empty, type error, returns two elements) -->
     
     <xsl:template name="s-055" use-when="$RUN">
       <xsl:param name="n" select="2"/>
