@@ -16,8 +16,8 @@
   <xsl:template match="section">
     <xsl:copy>
       <xsl:for-each-group select="*" group-starting-with="h1">
-        <xsl:variable name="head-and-tail" as="item()" 
-          select="map { 1 : copy-of(.), 2 : copy-of(current-group()[position() gt 1]) }"/>
+        <xsl:variable name="head-and-tail" as="map(xs:integer, element()*)" 
+          select="map { 1 : copy-of(head(current-group())), 2 : copy-of(tail(current-group())) }"/>
         <xsl:choose>
           <xsl:when test="$head-and-tail?2">
             <div>

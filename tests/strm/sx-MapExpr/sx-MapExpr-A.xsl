@@ -42,7 +42,7 @@
   
   <!-- within xsl:stream, use map expression with computed key expressions -->
   
-  <xsl:template name="m-003" use-when="$RUN">
+  <xsl:template name="m-003" use-when="true() or $RUN">
     <out>
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="BOOKLIST/BOOKS/ITEM">
@@ -133,7 +133,7 @@
     </out>
   </xsl:template>
   
-  <xsl:template match="ITEM" mode="m-008">
+  <xsl:template match="ITEM" mode="m-008" use-when="$RUN">
     <xsl:sequence 
             select="map{ 'author': string(AUTHOR),
                          'title': string(TITLE),
@@ -145,7 +145,7 @@
   
   <!-- Streaming map, type error because the input sequence includes a non-map -->
   
-  <xsl:template name="m-009">
+  <xsl:template name="m-009" use-when="$RUN">
     <xsl:call-template name="m-008">
       <xsl:with-param name="a" select="93.7"/>
     </xsl:call-template>

@@ -190,29 +190,11 @@
       </test>
       <result>
          <all-of>
-            <assert>/section/div[1][h1='heading 1'][count(p)=2]</assert>
-            <assert>/section/div[2][h1='heading 2'][count(p)=1]</assert>
-            <assert>/section/h1[.='heading 3']</assert>
-            <assert>/section/div[3][h1='heading 4'][count(p)=1]</assert>
+            <assert>/root/section/div[1][h1='heading 1'][count(p)=2]</assert>
+            <assert>/root/section/div[2][h1='heading 2'][count(p)=1]</assert>
+            <assert>/root/section/h1[.='heading 3']</assert>
+            <assert>/root/section/div[3][h1='heading 4'][count(p)=1]</assert>
          </all-of>
-         <!--<root>
-            <section>
-               <div>
-                  <h1>heading 1</h1>
-                  <p>...</p>
-                  <p>...</p>
-               </div>
-               <div>
-                  <h1>heading 2</h1>
-                  <p>...</p>
-               </div>
-               <h1>heading 3</h1>
-               <div>
-                  <h1>heading 4</h1>
-                  <p>...</p>
-               </div>
-            </section>
-         </root>-->
       </result>
    </test-case>
    
@@ -229,10 +211,52 @@
       </test>
       <result>
          <all-of>
-            <assert>/section/div[1][h1='heading 1'][count(p)=2]</assert>
-            <assert>/section/div[2][h1='heading 2'][count(p)=1]</assert>
-            <assert>/section/h1[.='heading 3']</assert>
-            <assert>/section/div[3][h1='heading 4'][count(p)=1]</assert>
+            <assert>/root/section/div[1][h1='heading 1'][count(p)=2]</assert>
+            <assert>/root/section/div[2][h1='heading 2'][count(p)=1]</assert>
+            <assert>/root/section/h1[.='heading 3']</assert>
+            <assert>/root/section/div[3][h1='heading 4'][count(p)=1]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-MapExpr-103">
+      <description>
+         Saxon bug 2972: map expression within xsl:for-each-group. 
+         Variant of -101 using head(current-group()) and tail(current-group())</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-10-10"/>
+      <environment>
+         <source role="." file="sx-MapExpr-101.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="sx-MapExpr-103.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/section/div[1][h1='heading 1'][count(p)=2]</assert>
+            <assert>/root/section/div[2][h1='heading 2'][count(p)=1]</assert>
+            <assert>/root/section/h1[.='heading 3']</assert>
+            <assert>/root/section/div[3][h1='heading 4'][count(p)=1]</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-MapExpr-104">
+      <description>
+         Saxon bug 2972: map expression within xsl:for-each-group. 
+         Variant of -101 using [self::x] predicates</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-10-10"/>
+      <environment>
+         <source role="." file="sx-MapExpr-101.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="sx-MapExpr-104.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/section/div[1][h1='heading 1'][count(p)=2]</assert>
+            <assert>/root/section/div[2][h1='heading 2'][count(p)=1]</assert>
+            <assert>/root/section/h1[.='heading 3']</assert>
+            <assert>/root/section/div[3][h1='heading 4'][count(p)=1]</assert>
          </all-of>
       </result>
    </test-case>

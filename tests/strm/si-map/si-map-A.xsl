@@ -58,7 +58,7 @@
             <xsl:map>
               <xsl:for-each select="*">
                 <xsl:map-entry key="lower-case(local-name())" select="string(.)"/>
-			  </xsl:for-each> 
+			        </xsl:for-each> 
             </xsl:map>
           </xsl:variable>
           <book author="{$m('author')}" title="{$m('title')}" price="{$m('price')}" publisher="{$m('publisher')}"/>     
