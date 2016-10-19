@@ -6,7 +6,7 @@
     version="3.0">
     
  <xsl:template name="xsl:initial-template">
-     <xsl:source-document href="sf-xml-to-json-A.xml">
+     <xsl:source-document href="sf-xml-to-json-A.xml" streamable="true">
          <json>{xml-to-json(.)}</json>
      </xsl:source-document>
  </xsl:template>
