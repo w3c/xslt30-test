@@ -1055,6 +1055,24 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-050">
+      <description>Streamed grouping - with serialization. Test uses serialization because
+      that's where Saxon 9.7 breaks - see Saxon bug 2998.</description>
+      <created by="Michael Kay after Martin Honnen" on="2016-10-19"/>
+      <environment>
+         <source file="si-group-050.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-050.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<Orders><Order><OrderNumber>100</OrderNumber><Date>116256</Date></Order><Order><OrderNumber>101</OrderNumber><Date>116257</Date></Order><Order><OrderNumber>102</OrderNumber><Date>116286</Date></Order><Order><OrderNumber>102</OrderNumber><Date>116286</Date></Order></Orders>]]></serialization-matches> 
+         </all-of>
+      </result>
+   </test-case>
+   
 
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>
