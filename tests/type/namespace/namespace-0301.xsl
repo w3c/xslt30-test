@@ -8,7 +8,9 @@
   
   <xsl:template match="a">
     <out>
-      <xsl:apply-templates select="@a:*"/>
+      <xsl:apply-templates select="@a:*">
+        <xsl:sort select="namespace-uri(.)"/>
+      </xsl:apply-templates>
       <foo><xsl:apply-templates select="@*"/></foo>
     </out>
   </xsl:template>
