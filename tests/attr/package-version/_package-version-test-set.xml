@@ -111,7 +111,8 @@
    
    <test-case name="package-version-010">
       <description>Setting part of the package-version equal to the product version (note: this test may fail if the product version is not a valid package version)</description>
-      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <created by="Abel Braaksma" on="2016-06-06"/> 
+      <modified by="Michael Kay" on="2016-10-26" change=""/> 
       <test>
          <stylesheet file="package-version-010.xsl"/>
       </test>
@@ -133,23 +134,31 @@
    
    <test-case name="package-version-012">
       <description>Setting the package-version to a bunch of very high numbers</description>
-      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <created by="Abel Braaksma" on="2016-06-06"/>   
+      <modified by="Michael Kay" on="2016-10-26" change="Allow error, see bug 29880"/>   
       <test>
          <stylesheet file="package-version-012.xsl"/>
       </test>
       <result>
-         <assert>/res = 'Success'</assert>
+         <any-of>
+            <assert>/res = 'Success'</assert>
+            <error code="XTSE0020"/>
+         </any-of>
       </result>
    </test-case>
       
    <test-case name="package-version-013">
       <description>Setting the package-version to a a LOT of NumericPart, there is no imposed limit</description>
-      <created by="Abel Braaksma" on="2016-06-06"/>     
+      <created by="Abel Braaksma" on="2016-06-06"/>
+      <modified by="Michael Kay" on="2016-10-26" change="Allow error, see bug 29880"/>   
       <test>
          <stylesheet file="package-version-013.xsl"/>
       </test>
       <result>
-         <assert>/res = 'Success'</assert>
+         <any-of>
+            <assert>/res = 'Success'</assert>
+            <error code="XTSE0020"/>
+         </any-of>
       </result>
    </test-case>
       
@@ -206,7 +215,18 @@
       <result>
          <assert>/res = 'Success'</assert>
       </result>
-   </test-case>   
+   </test-case>
+
+   <test-case name="package-version-019">
+      <description>Test up to the maximum limits that processors must accept</description>
+      <created by="Abel Braaksma" on="2016-10-26"/>     
+      <test>
+         <stylesheet file="package-version-019.xsl"/>
+      </test>
+      <result>
+         <assert>/res = 'Success'</assert>
+      </result>
+   </test-case>
    
    <test-case name="package-version-101a">
       <description>Loading a versionless package by its name</description>

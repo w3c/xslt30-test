@@ -7,7 +7,7 @@
 
   <xsl:template match="/">
     <out>
-      <no-from>
+      <!--<no-from>
         <xsl:for-each select="//@*">
           <n att="{name()}">
             <xsl:number/>
@@ -27,7 +27,7 @@
             <xsl:number count="@*"/>
           </n>
         </xsl:for-each>
-      </matching-count>
+      </matching-count>-->
       <non-matching-count>
         <xsl:for-each select="//@*">
           <n att="{name()}">
