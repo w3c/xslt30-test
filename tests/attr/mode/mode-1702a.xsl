@@ -11,6 +11,8 @@
 
   <xsl:template match="/">
       <ok/>
+      <!-- creating an implicit, named mode that is private -->
+      <xsl:apply-templates select="*" mode="test" />
   </xsl:template>
 
 </xsl:package>   
