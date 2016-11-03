@@ -172,7 +172,7 @@
     <out>
       <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
-          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@PUB-DATE, @LANGUAGE">
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@PUB-DATE, @LANGUAGE" composite="yes">
             <CAT DATE="{current-grouping-key()[1]}" LANG="{current-grouping-key()[2]}"
               AVG-PRICE="{round(avg(current-group() / @PRICE), 3)}">
             </CAT>
@@ -188,7 +188,7 @@
     <out>
       <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
-          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR, @PRICE">
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="@AUTHOR, @PRICE" composite="true">
             <xsl:variable name="group" select="copy-of(current-group())"/>
             <CAT ID="{distinct-values($group/@CAT)}" AUTHOR="{@AUTHOR}" PRICE="{@PRICE}"
               COUNT="{count($group)}"
