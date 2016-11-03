@@ -15,6 +15,13 @@
             <xsl:for-each-group select="product" group-adjacent="(position() - 1) idiv $block-size">
                 <xsl:result-document href="product{current-grouping-key()}.xml">
                     <xsl:copy select="$root">
+                        <!-- 
+                            (AB 20161103)
+                            Per bug 29482 the following may be considered a higher-order invalid use of current-group() 
+                            However, as the analysis shows, this is not the case, as the construct does not *require* multiple
+                            evaluations of the streamed node, because its focus-changing construct, here $root, is bound to a
+                            grounded node
+                         -->
                         <xsl:copy-of select="current-group()"/>
                     </xsl:copy>
                 </xsl:result-document>
