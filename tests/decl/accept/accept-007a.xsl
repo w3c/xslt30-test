@@ -1,5 +1,4 @@
-<!-- xsl:accept - reduce visibility to hidden with a wildcard, trumped by xsl:override -->
-
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:package
   name="http://www.w3.org/xslt30tests/accept-007"  
   package-version="1.0.0"
@@ -13,12 +12,7 @@
      name="http://www.w3.org/xslt30tests/accept-A"
      package-version="1.0.0">
      
-    <xsl:override>
-      <!-- this variable is marked *final*, attempting to override will yield error XTSE3060 -->
-      <xsl:variable name="p:v2" select="23"/>
-    </xsl:override> 
-     
-    <xsl:accept component="variable" names="v1" visibility="private"/>
+    <xsl:accept component="variable" names="p:v2" visibility="private"/>
     
     <xsl:accept component="variable" names="*" visibility="hidden"/>
     <xsl:accept component="template" names="*" visibility="hidden"/>

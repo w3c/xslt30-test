@@ -1714,8 +1714,9 @@
    </test-case>
 
    <test-case name="function-5015">
-      <description>Base test SC: shallow-descent, making sure no error is raised. NOTE: see bug 29777.</description>
+      <description>Base test SC: shallow-descent, making sure no error is raised.</description>
       <created by="Abel Braaksma" on="2015-12-31"/>
+      <modified by="Abel Braaksma" change="Added missing files, fixed expected result, fix bug 29777" on="2016-11-02"/>
       <environment ref="function-01s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1725,13 +1726,14 @@
          <stylesheet file="function-5015.xsl"/>
       </test>
       <result>
-         <assert>/p[. = 'Hello again.']</assert>
+         <assert-xml><![CDATA[<p>Hello</p><p>Hello again.</p><p>Hello</p><p>Hello again.</p><p>Hello</p><p>Hello again.</p><p>Hello</p><p>Hello again.</p>]]></assert-xml>
       </result>
    </test-case>
 
    <test-case name="function-5016">
-      <description>Base test SC: deep-descent, making sure no error is raised. NOTE: see bug 29777.</description>
+      <description>Base test SC: deep-descent, making sure no error is raised.</description>
       <created by="Abel Braaksma" on="2015-12-31"/>
+      <modified by="Abel Braaksma" change="Added missing files, fixed expected result, fix bug 29777" on="2016-11-02"/>
       <environment ref="function-01s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1741,13 +1743,14 @@
          <stylesheet file="function-5016.xsl"/>
       </test>
       <result>
-         <assert>/p[. = 'Hello again.']</assert>
+         <assert-xml><![CDATA[<result>section1 subSection1.1 section2 subSection2.1 subSection2.2 subSection2.3</result>]]></assert-xml>
       </result>
    </test-case>
    
    <test-case name="function-5017">
-      <description>Base test SC: ascent, making sure no error is raised. NOTE: see bug 29777.</description>
+      <description>Base test SC: ascent, making sure no error is raised, tests overlapping nodes returned by ascent function.</description>
       <created by="Abel Braaksma" on="2015-12-31"/>
+      <modified by="Abel Braaksma" change="Added missing files, fixed expected result, fix bug 29777" on="2016-11-02"/>
       <environment ref="function-01s"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1757,7 +1760,7 @@
          <stylesheet file="function-5017.xsl"/>
       </test>
       <result>
-         <assert>/p[. = 'Hello again.']</assert>
+         <assert-xml><![CDATA[<result><inverted-section name="section1" depth="1"/><inverted-section name="subSection1.1" depth="2"/><inverted-section name="section2" depth="1"/><inverted-section name="subSection2.1" depth="2"/><inverted-section name="subSection2.2" depth="2"/><inverted-section name="subSection2.3" depth="2"/></result>]]></assert-xml>
       </result>
    </test-case>
 </test-set>
