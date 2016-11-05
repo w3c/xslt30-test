@@ -26,7 +26,7 @@
                  return f:fib($n - 1, $first)" />
     </xsl:function>
 
-    <xsl:template name="main">
+    <xsl:template name="xsl:initial-template">
         <out><xsl:value-of select="f:fib(11, function($a) {$a})" /></out>
     </xsl:template>
     
