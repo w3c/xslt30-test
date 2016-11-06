@@ -620,16 +620,17 @@
    </test-case>
 
    <test-case name="package-913">
-      <description>Using xsl:import to import xsl:use-package definitions in another package</description>
+      <description>Error XTSE3008, using xsl:import to import xsl:use-package definitions in another package</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <modified by="Abel Braaksma" on="2016-05-26" change="See bug 29453: [ERR XTSE3008] It is a static error if an xsl:use-package declaration appears in a stylesheet module that is not in the same stylesheet level as the principal stylesheet module of the package."/>
+      <modified by="Abel Braaksma" on="2016-11-05" change="Wrong filenames fixed, re bug 29777" />
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
       <test>
-         <package file="package-020.xsl" role="principal"/>
-         <package file="package-020-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
-         <stylesheet file="package-020-import.xsl" role="secondary"/>
+         <package file="package-913.xsl" role="principal"/>
+         <package file="package-913-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-913-import.xsl" role="secondary"/>
       </test>
       <result>
          <error code="XTSE3008"/>
@@ -637,7 +638,7 @@
    </test-case>
    
    <test-case name="package-913a">
-      <description>Using xsl:import to import xsl:use-package definitions in another package, override a component that uses a component of a package</description>
+      <description>Error XTSE3008, using xsl:import to import xsl:use-package definitions in another package, override a component that uses a component of a package</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <modified by="Abel Braaksma" on="2016-05-26" change="See bug 29453: [ERR XTSE3008] It is a static error if an xsl:use-package declaration appears in a stylesheet module that is not in the same stylesheet level as the principal stylesheet module of the package."/>
       <modified by="Abel Braaksma" on="2016-05-26" change="Renaming test, sources and fixing missing resources" />
@@ -655,7 +656,7 @@
    </test-case>
    
    <test-case name="package-913b">
-      <description>Using xsl:import to import xsl:use-package definitions in another package, override a component and use a component of the imported use-package</description>
+      <description>Error XTSE3008, using xsl:import to import xsl:use-package definitions in another package, override a component and use a component of the imported use-package</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <modified by="Abel Braaksma" on="2016-05-26" change="See bug 29453: [ERR XTSE3008] It is a static error if an xsl:use-package declaration appears in a stylesheet module that is not in the same stylesheet level as the principal stylesheet module of the package."/> 
       <modified by="Abel Braaksma" on="2016-05-26" change="Renaming test, sources and fixing missing resources" />
@@ -671,5 +672,6 @@
          <error code="XTSE3008"/>
       </result>
    </test-case>
+
 
 </test-set>

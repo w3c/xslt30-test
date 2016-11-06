@@ -7,8 +7,8 @@
     
     <xsl:mode on-no-match="text-only-copy" />
     
-    <!-- testing using a pkg through an include -->    
-    <xsl:import href="package-020-import.xsl"/>
+    <!-- testing using a pkg through an import should raise XTSE3008 -->    
+    <xsl:import href="package-913-import.xsl"/>
     
     <!-- an (almost) empty package -->
     

@@ -7,7 +7,7 @@
     
     <xsl:mode on-no-match="text-only-copy" />
     
-    <!-- testing using a pkg through an include -->    
+    <!-- testing using a pkg through an import should raise XTSE3008 -->    
     <xsl:import href="package-020-import.xsl"/>
     
     <!-- use normal import precedence to override -->
