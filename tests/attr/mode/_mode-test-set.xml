@@ -882,6 +882,181 @@
          <assert-xml><![CDATA[<out><mode-X at="doc"/><inside>mode-X: brown-fox</inside></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="mode-1106a">
+      <description>
+         Test xsl:mode/@use-accumulators, non-streaming.</description>
+      <created by="Michael Kay" on="2016-10-30"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><str>brown-fox</str><yet>lazy-dog</yet></doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <param name="STREAMABLE" static="true" select="false()"/>
+         <stylesheet file="mode-1106.xsl"/>
+         <initial-mode name="X"/>
+      </test>
+      <result>
+         <assert>/out = 3</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1106b">
+      <description>
+         Test xsl:mode/@use-accumulators, non-streaming.</description>
+      <created by="Michael Kay" on="2016-10-30"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><str>brown-fox</str><yet>lazy-dog</yet></doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <param name="STREAMABLE" static="true" select="false()"/>
+         <stylesheet file="mode-1106.xsl"/>
+         <initial-mode name="Y"/>
+      </test>
+      <result>
+         <error code="XTDE3362"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1106c">
+      <description>
+         Test xsl:mode/@use-accumulators, non-streaming.</description>
+      <created by="Michael Kay" on="2016-10-30"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><str>brown-fox</str><yet>lazy-dog</yet></doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <param name="STREAMABLE" static="true" select="false()"/>
+         <stylesheet file="mode-1106.xsl"/>
+         <initial-mode name="Z"/>
+      </test>
+      <result>
+         <assert>/out = 3</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1106d">
+      <description>
+         Test xsl:mode/@use-accumulators, non-streaming.</description>
+      <created by="Michael Kay" on="2016-10-30"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><str>brown-fox</str><yet>lazy-dog</yet></doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <param name="STREAMABLE" static="true" select="false()"/>
+         <stylesheet file="mode-1106.xsl"/>
+      </test>
+      <result>
+         <assert>/out = 3</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1106e">
+      <description>
+         Test xsl:mode/@use-accumulators, non-streaming.</description>
+      <created by="Michael Kay" on="2016-10-30"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><str>brown-fox</str><yet>lazy-dog</yet></doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <param name="STREAMABLE" static="true" select="false()"/>
+         <stylesheet file="mode-1106.xsl"/>
+         <initial-mode name="Y"/>
+      </test>
+      <result>
+         <error code="XTDE3362"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1107a">
+      <description>
+         Test xsl:mode/@use-accumulators with streaming.</description>
+      <created by="Michael Kay" on="2016-10-30"/>
+      <environment>
+         <source role="." streaming="true">
+            <content><![CDATA[<doc><str>brown-fox</str><yet>lazy-dog</yet></doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <param name="STREAMABLE" static="true" select="true()"/>
+         <stylesheet file="mode-1106.xsl"/>
+         <initial-mode name="X"/>
+      </test>
+      <result>
+         <assert>/out = 3</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1107b">
+      <description>
+         Test xsl:mode/@use-accumulators with streaming.</description>
+      <created by="Michael Kay" on="2016-10-30"/>
+      <environment>
+         <source role="." streaming="true">
+            <content><![CDATA[<doc><str>brown-fox</str><yet>lazy-dog</yet></doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <param name="STREAMABLE" static="true" select="true()"/>
+         <stylesheet file="mode-1106.xsl"/>
+         <initial-mode name="Y"/>
+      </test>
+      <result>
+         <error code="*"/>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1107c">
+      <description>
+         Test xsl:mode/@use-accumulators with streaming.</description>
+      <created by="Michael Kay" on="2016-10-30"/>
+      <environment>
+         <source role="." streaming="true">
+            <content><![CDATA[<doc><str>brown-fox</str><yet>lazy-dog</yet></doc>]]></content>
+         </source>
+      </environment>   
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <param name="STREAMABLE" static="true" select="true()"/>
+         <stylesheet file="mode-1106.xsl"/>
+         <initial-mode name="Z"/>
+      </test>
+      <result>
+         <assert>/out = 3</assert>
+      </result>
+   </test-case>
 
    <test-case name="mode-1201">
       <description>Basic test for mode="#all" (XSLT 2.0)</description>

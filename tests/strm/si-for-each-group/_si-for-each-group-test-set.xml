@@ -672,11 +672,12 @@
    
    <test-case name="si-group-031">
       <description>
-         Streamed grouping - group-starting-with - pattern not motionless - test case from Martin Honnen.
+         Streamed grouping - test case for xsl:copy from Martin Honnen.
          See also bug 29482.
       </description>
       <created by="Michael Kay after Martin Honnen" on="2016-02-18"/>
-      <modified by="Abel Braaksma" on="2016-03-11" change="Added comment explaining resolution of bug 29482, see XSL"></modified>
+      <modified by="Abel Braaksma" on="2016-03-11" change="Added comment explaining resolution of bug 29482, see XSL"/>
+      <modified by="Michael Kay" on="2016-11-10" change="Resolution of bug 29482 says this is not streamable"/>
       <environment>
          <source file="si-group-031.xml" role="." streaming="true"/>
       </environment>
@@ -684,20 +685,7 @@
          <stylesheet file="si-group-031.xsl"/>
       </test>
       <result>
-         <all-of>
-            <assert-result-document uri="product0.xml">
-               <assert>count(/product-list/product) = 10</assert>
-            </assert-result-document>
-            <assert-result-document uri="product1.xml">
-               <assert>count(/product-list/product) = 10</assert>
-            </assert-result-document>
-            <assert-result-document uri="product9.xml">
-               <assert>count(/product-list/product) = 10</assert>
-            </assert-result-document>
-            <assert-result-document uri="product10.xml">
-               <assert>count(/product-list/product) = 5</assert>
-            </assert-result-document>
-         </all-of>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    
