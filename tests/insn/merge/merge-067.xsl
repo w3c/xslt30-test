@@ -13,11 +13,11 @@
         <events>
             <xsl:merge>
                 <xsl:merge-source name="s-1" for-each-source="'log-file-1.xml'" select="events/event" 
-                    use-accumulators="latest-1 interval-1" _streamable="{$STREAMABLE}">
+                    use-accumulators="interval-1" _streamable="{$STREAMABLE}">
                     <xsl:merge-key select="xs:dateTime(@timestamp)"/>
                 </xsl:merge-source>
                 <xsl:merge-source name="s-2" for-each-source="'log-file-2.xml'" select="log/day/record" 
-                    use-accumulators="latest-2 interval-2" _streamable="{$STREAMABLE}">
+                    use-accumulators="interval-2" _streamable="{$STREAMABLE}">
                     <xsl:merge-key select="dateTime(../@date, time)"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
@@ -43,8 +43,7 @@
         <xsl:accumulator-rule match="event" select="map{0:$value?1, 1:xs:dateTime(@timestamp)}"/>
     </xsl:accumulator>
     
-    <xsl:accumulator name="latest-2" initial-value="map{0:$ORIGIN, 1:$ORIGIN}" as="map(*)" _streamable="{$STREAMABLE}"
-        saxon:trace="yes" xmlns:saxon="http://saxon.sf.net/">
+    <xsl:accumulator name="latest-2" initial-value="map{0:$ORIGIN, 1:$ORIGIN}" as="map(*)" _streamable="{$STREAMABLE}">
         <xsl:accumulator-rule match="time" select="map{0:$value?1, 1:dateTime(xs:date(../../@date), xs:time(.))}"/>
     </xsl:accumulator>
     

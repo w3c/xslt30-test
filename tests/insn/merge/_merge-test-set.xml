@@ -977,21 +977,33 @@
       <description>xsl:merge test using more complex accumulators.</description>
       <created by="Michael Kay" on="2016-11-04"/>
       <environment ref="merge002"/>
-      <dependencies>
-         <feature value="streaming"/>
-      </dependencies>
       <test>
          <stylesheet file="merge-066.xsl"/>
       </test>
       <result>
-         <assert>/TBA</assert>
-         <!--<all-of>
-            <assert>/events/group[1]/item[1][ends-with(., 'log-file-1.xml - events')]</assert>
-            <assert>/events/group[1]/item[2][ends-with(., 'log-file-2.xml - log/day')]</assert>
-            <assert>/events/group[1]/event[@timestamp="2009-08-20T12:01:01Z"]</assert>
-            <assert>/events/group[1]/record[message='Temperature 15.4C']/time</assert>
-            <assert>/events/group[5]/item[1][ends-with(., 'log-file-2.xml - log/day')]</assert>
-         </all-of>-->
+         <all-of>
+            <assert>/events/group[1]/interval[@in='log-1'] = "P231DT12H1M1S"</assert>
+            <assert>/events/group[1]/interval[@in='log-2'] = "P231DT12H1M1S"</assert>
+            <assert>/events/group[2]/interval[@in='log-1'] = "PT7S"</assert>
+            <assert>/events/group[3]/interval[@in='log-1'] = "PT4S"</assert>
+            <assert>/events/group[4]/interval[@in='log-1'] = "PT3S"</assert>
+            <assert>/events/group[5]/interval[@in='log-2'] = "PT1M59S"</assert>
+            <assert>count(/events/group) = 5</assert>
+            <assert>count(/events/group/interval[@in='log-1'] ) = 4</assert>
+            <assert>count(/events/group/interval[@in='log-2'] ) = 2</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-067">
+      <description>xsl:merge test using an inapplicable accumulator.</description>
+      <created by="Michael Kay" on="2016-11-07"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-067.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3362"/>
       </result>
    </test-case>
    
