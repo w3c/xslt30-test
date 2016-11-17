@@ -36,6 +36,7 @@
     <xsl:template name="t-abstract" as="xs:string" visibility="abstract" >
       <xsl:param name="in" as="xs:string"/>
       <xsl:param name="count" as="xs:integer"/>
+      <xsl:param name="extra" tunnel="yes" as="xs:integer" required="no" select="0"/>
     </xsl:template>
     
     <xsl:template name="u" as="xs:string" visibility="public">

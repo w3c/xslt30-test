@@ -615,6 +615,45 @@
       <result>
          <error code="XTSE3060"/>
       </result>
+   </test-case>
+   
+   <test-case name="override-t-011">
+      <description>Successful override of a named template, override has an extra tunnel parameter (bug 29981)</description>
+      <created by="Michael Kay" on="2016-11-17"/>
+      <environment ref="override-t-B"/>
+      <test>
+         <package file="override-t-011.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '*xxxxxxx*'</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="override-t-012">
+      <description>Unsuccessful override of a named template, override declares a tunnel parameter with the wrong type</description>
+      <created by="Michael Kay" on="2016-11-17"/>
+      <environment ref="override-t-B"/>
+      <test>
+         <package file="override-t-012.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3070"/>
+      </result>
+   </test-case> 
+   
+   <test-case name="override-t-013">
+      <description>Unsuccessful override of a named template, override declares a tunnel parameter overriding a non-tunnel-parameter</description>
+      <created by="Michael Kay" on="2016-11-17"/>
+      <environment ref="override-t-B"/>
+      <test>
+         <package file="override-t-013.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3070"/>
+      </result>
    </test-case> 
 
    <test-case name="override-v-001">
