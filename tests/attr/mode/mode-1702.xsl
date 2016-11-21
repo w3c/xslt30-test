@@ -10,7 +10,7 @@
     <!-- default mode is implicitly private, but is still publicly invocable -->
     <xsl:mode />
 
-  <xsl:template match="/">
+  <xsl:template match="/" mode="#unnamed">
       <ok/>
   </xsl:template>
 
