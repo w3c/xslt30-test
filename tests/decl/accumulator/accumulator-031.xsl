@@ -13,7 +13,7 @@
     <xsl:accumulator-rule match="*" select="$value + $count"/>
   </xsl:accumulator>
 
-  <xsl:variable name="count">
+  <xsl:variable name="count" as="xs:integer">
     <xsl:source-document streamable="true" href="accumulator-001.xml" use-accumulators="#all">
       <xsl:for-each select="*"/>
       <xsl:value-of select="accumulator-after('a')"/>

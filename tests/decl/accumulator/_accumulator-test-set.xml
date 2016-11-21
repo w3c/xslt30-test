@@ -210,6 +210,7 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-08-01" change="Backlog (by AB), bug#26330 rename @new-value to @select" />
       <modified by="Abel Braaksma" on="2015-04-06" change="Bug 28410, change xsl:stylesheet to xsl:package (no version or name, not required)"/>
+      <modified by="Michael Kay" on="2016-11-21" change="Bug 30018: test should succeed under current rules"/>
       <environment ref="accumulator-004s"/>
       <dependencies>
          <feature value="streaming"/>
@@ -218,7 +219,7 @@
          <stylesheet file="accumulator-009.xsl"/>
       </test>
       <result>
-         <error code="XTDE3420"/>
+         <assert-xml><![CDATA[<result min="-16" max="182" sum="277.43" count="16" avg="17.34"/>]]></assert-xml> <!-- check these results -->
       </result>
    </test-case>
 
@@ -552,6 +553,7 @@
       <created by="Michael Kay" on="2014-07-07"/>
       <modified by="Michael Kay" on="2014-08-01" change="Backlog (by AB), bug#26330 rename @new-value to @select" />
       <modified by="Abel Braaksma" on="2015-04-06" change="Bug 28410, change xsl:stylesheet to xsl:package (no version or name, not required)"/>
+      <modified by="Michael Kay" on="2016-11-21" change="Bug 30019 - remove unintended type error"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1245,6 +1247,23 @@
       </test>
       <result>
          <assert>//result = 'Total count of words in document : 14'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-059">
+      <description>Call on accumulator-after in pre-descent phase</description>
+      <created by="Michael Kay" on="2016-11-21"/>
+      <environment>
+         <source role="." file="accumulator-058.xml" streaming="true"/>
+      </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-059.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
  
