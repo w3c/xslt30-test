@@ -5,7 +5,7 @@
 <?spec xslt#unparsed-entity-uri?>
   <xsl:template match="doc">
     <out>
-      <xsl:value-of select="ends-with(unparsed-entity-uri('hatch-pic'), '/expr/grafix/OpenHatch.gif')"/>
+      <xsl:value-of select="ends-with(unparsed-entity-uri('hatch-pic'), '/fn/grafix/OpenHatch.gif')"/>
     </out>
   </xsl:template>
  

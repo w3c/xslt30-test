@@ -1281,14 +1281,25 @@
    </test-case>
    
    <test-case name="accumulator-061">
-      <description>Dynamic call to accumulator-after - not streamable</description>
+      <description>Dynamic call to accumulator-after with streaming - gives dynamic error "no context item" (see 10.3.6)</description>
       <created by="Michael Kay" on="2016-11-22"/>
       <environment ref="accumulator-002"/>
       <test>
          <stylesheet file="accumulator-061.xsl"/>
       </test>
       <result>
-         <error code="XTSE3430"/>
+         <error code="XTSE3500"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-062">
+      <description>Dynamic call to accumulator-after - non-streaming - succeeds with early binding of context item</description>
+      <created by="Michael Kay" on="2016-11-22"/>
+      <test>
+         <stylesheet file="accumulator-062.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
  

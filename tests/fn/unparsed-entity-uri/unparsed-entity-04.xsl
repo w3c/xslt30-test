@@ -12,7 +12,7 @@ xmlns:f="http://example.com/expression-1904" exclude-result-prefixes="f">
   
     <xsl:function name="f:f">
     <xsl:param name="doc"/>
-    <xsl:value-of select="ends-with(unparsed-entity-uri('hatch-pic', $doc), '/expr/grafix/OpenHatch.gif')"/>
+    <xsl:value-of select="ends-with(unparsed-entity-uri('hatch-pic', $doc), '/fn/grafix/OpenHatch.gif')"/>
    </xsl:function>         
  
  
