@@ -5,7 +5,7 @@
     default-mode="output-nothing"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     
-    <xsl:mode name="output-nothing" on-no-match="shallow-skip" />
+    <xsl:mode name="output-nothing" on-no-match="shallow-skip" visibility="public"/>
     
     <!-- an empty package -->
   
