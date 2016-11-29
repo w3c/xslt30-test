@@ -605,4 +605,24 @@ Position:3,Last:3
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="strip-space-023">
+      <description>Input node is a whitespace text node subject to space-stripping</description>
+      <created by="Michael Kay" on="2016-11-28"/>
+      <environment>
+         <source role="." select="/a/b/text()">
+            <content><![CDATA[<a><b> </b><c> </c></a>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="strip-space-023.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>     
+   </test-case>
 </test-set>
