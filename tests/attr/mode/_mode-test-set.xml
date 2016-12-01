@@ -896,8 +896,8 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <param name="STREAMABLE" static="true" select="false()"/>
          <stylesheet file="mode-1106.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
          <initial-mode name="X"/>
       </test>
       <result>
@@ -918,8 +918,8 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <param name="STREAMABLE" static="true" select="false()"/>
          <stylesheet file="mode-1106.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
          <initial-mode name="Y"/>
       </test>
       <result>
@@ -940,8 +940,8 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <param name="STREAMABLE" static="true" select="false()"/>
          <stylesheet file="mode-1106.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
          <initial-mode name="Z"/>
       </test>
       <result>
@@ -962,8 +962,8 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <param name="STREAMABLE" static="true" select="false()"/>
          <stylesheet file="mode-1106.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
       </test>
       <result>
          <assert>/out = 3</assert>
@@ -983,8 +983,8 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <param name="STREAMABLE" static="true" select="false()"/>
          <stylesheet file="mode-1106.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
          <initial-mode name="Y"/>
       </test>
       <result>
@@ -1005,8 +1005,8 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <param name="STREAMABLE" static="true" select="true()"/>
          <stylesheet file="mode-1106.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
          <initial-mode name="X"/>
       </test>
       <result>
@@ -1027,8 +1027,8 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <param name="STREAMABLE" static="true" select="true()"/>
          <stylesheet file="mode-1106.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
          <initial-mode name="Y"/>
       </test>
       <result>
@@ -1049,8 +1049,8 @@
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
-         <param name="STREAMABLE" static="true" select="true()"/>
          <stylesheet file="mode-1106.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
          <initial-mode name="Z"/>
       </test>
       <result>
@@ -2707,6 +2707,74 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out>no-mode:a-text</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1801">
+      <description>Global context item differs from initial match selection</description>
+      <created by="Michael Kay" on="2016-11-29"/>
+      <environment>
+         <source role="." file="mode-14.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1801.xsl" role="principal"/>
+         <initial-mode name="m" select="1 to 5"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="verse1.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="1"><v>In the beginning <deity>God</deity> created the heaven and the earth.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="verse2.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="2"><v>And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of <deity>God</deity> moved upon the face of the waters.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="verse3.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="3"><v>And <deity>God</deity> said, Let there be light: and there was light.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="verse4.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="4"><v>And <deity>God</deity> saw the light, that it was good: and <deity>God</deity> divided the light from the darkness.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="verse5.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="5"><v>And <deity>God</deity> called the light Day, and the darkness he called Night. And the evening and the morning were the first day.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1802">
+      <description>Space-stripping nodes in initial match selection</description>
+      <created by="Michael Kay" on="2016-11-29"/>
+      <environment>
+         <source role="." file="mode-14.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1802.xsl" role="principal"/>
+         <initial-mode name="m" select="doc('mode-14.xml')//v[position() = 1 to 5]"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-result-document uri="verse1.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="1" book="Genesis"><v>In the beginning <deity>God</deity> created the heaven and the earth.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="verse2.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="2" book="Genesis"><v>And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of <deity>God</deity> moved upon the face of the waters.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="verse3.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="3" book="Genesis"><v>And <deity>God</deity> said, Let there be light: and there was light.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="verse4.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="4" book="Genesis"><v>And <deity>God</deity> saw the light, that it was good: and <deity>God</deity> divided the light from the darkness.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+            <assert-result-document uri="verse5.xml">
+               <assert-xml><![CDATA[<chapter nr="1" verse="5" book="Genesis"><v>And <deity>God</deity> called the light Day, and the darkness he called Night. And the evening and the morning were the first day.</v></chapter>]]></assert-xml>
+            </assert-result-document>
+         </all-of>
       </result>
    </test-case>
    
