@@ -203,9 +203,27 @@
          <assert-xml><![CDATA[<result min="-16" max="182" sum="277.43" count="16" avg="17.34"/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="accumulator-008s">
+      <description>post-descent accumulator function used in multiple instructions, with no preceding consuming instruction</description>
+      <created by="Michael Kay" on="2016-12-09"/>
+      <environment ref="accumulator-004s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-008.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result min="-16" max="182" sum="277.43" count="16" avg="17.34"/>]]></assert-xml> 
+      </result>
+   </test-case>
 
    <test-case name="accumulator-009s">
-      <description>Error: post-descent accumulator function used in a pre-descent instruction</description>
+      <description>
+         Error: post-descent accumulator function used repeatedly in a single instruction,
+         with no preceding consuming instruction. This case differs from accumulator-008s because 
+         the rules take into account the order of instructions within a sequence constructor.</description>
       <keywords>xsl:mode on-no-match-attribute deep-skip multiple-accumulators fn:accumulator-after streamable XTDE3420</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-08-01" change="Backlog (by AB), bug#26330 rename @new-value to @select" />
@@ -219,7 +237,7 @@
          <stylesheet file="accumulator-009.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<result min="-16" max="182" sum="277.43" count="16" avg="17.34"/>]]></assert-xml> <!-- check these results -->
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 
@@ -1283,23 +1301,33 @@
    <test-case name="accumulator-061">
       <description>Dynamic call to accumulator-after with streaming - gives dynamic error "no context item" (see 10.3.6)</description>
       <created by="Michael Kay" on="2016-11-22"/>
-      <environment ref="accumulator-002"/>
+      <modified by="Michael Kay" on="2016-12-08" change="correct expected error code"/>
+      <environment ref="accumulator-002s"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
       <test>
          <stylesheet file="accumulator-061.xsl"/>
       </test>
       <result>
-         <error code="XTSE3500"/>
+         <error code="XTDE3350"/>
       </result>
    </test-case>
    
    <test-case name="accumulator-062">
       <description>Dynamic call to accumulator-after - non-streaming - succeeds with early binding of context item</description>
       <created by="Michael Kay" on="2016-11-22"/>
+      <modified by="Michael Kay" on="2016-12-08" change="add expected result"/>
       <test>
          <stylesheet file="accumulator-062.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out/>]]></assert-xml>
+         <all-of>
+            <assert>/doc/@aa="0"</assert>
+            <assert>/doc/a/@aa="1"</assert>
+            <assert>/doc/b/@aa="1"</assert>
+            <assert>/doc/c/@aa="1"</assert>
+         </all-of>        
       </result>
    </test-case>
  
