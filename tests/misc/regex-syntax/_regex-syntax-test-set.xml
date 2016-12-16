@@ -842,16 +842,39 @@
    <test-case name="regex-syntax-0056">
       <description>see regex-syntax-0001</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-12-16" change="created XSD 1.0 and XSD 1.1 versions of test"/>
       <environment ref="regex-syntax"/>
+      <dependencies>
+         <feature value="XSD_1.1" satisfied="false"/>
+      </dependencies>
       <test>
          <param name="regex" as="xs:string" select="'[^a-d-b-c]'"/>
-         <param name="match" as="xs:string" select="''"/>
+         <param name="match" as="xs:string" select="'x'"/>
          <param name="nonmatch" as="xs:string" select="'a-b,c-c,ab,cc'"/>
          <param name="delimiter" as="xs:string" select="','"/>
          <initial-template name="go"/>
       </test>
       <result>
          <error code="FORX0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="regex-syntax-0056a">
+      <description>see regex-syntax-0001</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <environment ref="regex-syntax"/>
+      <dependencies>
+         <feature value="XSD_1.1" satisfied="true"/>
+      </dependencies>
+      <test>
+         <param name="regex" as="xs:string" select="'[^a-d-b-c]'"/>
+         <param name="match" as="xs:string" select="'x'"/>
+         <param name="nonmatch" as="xs:string" select="'a-b,c-c,ab,cc'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
+         <initial-template name="go"/>
+      </test>
+      <result>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -1316,6 +1339,10 @@
    <test-case name="regex-syntax-0086">
       <description>see regex-syntax-0001</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-12-16" change="created XSD 1.0 and XSD 1.1 variants of test"/>
+      <dependencies>
+         <feature value="XSD_1.1" satisfied="false"/>
+      </dependencies>
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'[a-c-1-4x-z-7-9]*'"/>
@@ -1326,6 +1353,25 @@
       </test>
       <result>
          <error code="FORX0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="regex-syntax-0086a">
+      <description>see regex-syntax-0001</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <feature value="XSD_1.1" satisfied="true"/>
+      </dependencies>
+      <environment ref="regex-syntax"/>
+      <test>
+         <param name="regex" as="xs:string" select="'[a-c-1-4x-z-7-9]*'"/>
+         <param name="match" as="xs:string" select="',a-1x-7,c-4z-9,a-1z-8a-1z-9,a1z-9,a-1z8,a-1,z-9'"/>
+         <param name="nonmatch" as="xs:string" select="''"/>
+         <param name="delimiter" as="xs:string" select="','"/>
+         <initial-template name="go"/>
+      </test>
+      <result>
+         <assert>/true</assert>
       </result>
    </test-case>
 
@@ -1557,6 +1603,10 @@
    <test-case name="regex-syntax-0102">
       <description>see regex-syntax-0001</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-12-16" change="created XSD 1.0 and XSD 1.1 variants of test"/>
+      <dependencies>
+         <feature value="XSD_1.1" satisfied="false"/>
+      </dependencies>
       <environment ref="regex-syntax"/>
       <test>
          <param name="regex" as="xs:string" select="'[a-a-x-x]+'"/>
@@ -1567,6 +1617,26 @@
       </test>
       <result>
          <error code="FORX0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="regex-syntax-0102a">
+      <description>see regex-syntax-0001</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2016-12-16" change="created XSD 1.0 and XSD 1.1 variants of test"/>
+      <dependencies>
+         <feature value="XSD_1.1" satisfied="true"/>
+      </dependencies>
+      <environment ref="regex-syntax"/>
+      <test>
+         <param name="regex" as="xs:string" select="'[a-a-x-x]+'"/>
+         <param name="match" as="xs:string" select="'a-x'"/>
+         <param name="nonmatch" as="xs:string" select="'j,a-b'"/>
+         <param name="delimiter" as="xs:string" select="','"/>
+         <initial-template name="go"/>
+      </test>
+      <result>
+         <assert>/true</assert>
       </result>
    </test-case>
 
