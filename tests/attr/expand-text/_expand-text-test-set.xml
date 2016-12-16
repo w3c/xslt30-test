@@ -242,6 +242,7 @@
       <description>Nested expression ending in a right curly</description>
       <keywords>xsl:template expand-text-attribute lre nested-curlies</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
+      <modified by="Michael Kay" on="2016-12-16" change="allow statically-detected type error - bug 30016"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -250,7 +251,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>/out = '4'</assert>
+         <any-of>
+            <assert>/out = '4'</assert>
+            <error code="FOTY0013"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -258,6 +262,7 @@
       <description>Nested expression ending in a right curly: now allowed under resolution of bug 20874</description>
       <keywords>bug-20874 expand-text-attribute xsl:template nested-curlies lre</keywords>
       <created by="Michael Kay" on="2013-02-05"/>
+      <modified by="Michael Kay" on="2016-12-16" change="allow statically-detected type error - bug 30016"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -266,7 +271,10 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>/out = "4"</assert>
+         <any-of>
+            <assert>/out = '4'</assert>
+            <error code="FOTY0013"/>
+         </any-of>
       </result>
    </test-case>
    
