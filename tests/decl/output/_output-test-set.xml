@@ -4441,5 +4441,47 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="output-0701">
+      <description>JSON serialization</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0701.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <any-of>
+               <serialization-matches>\{"value":9,"index":3\}</serialization-matches>
+               <serialization-matches>\{"index":3,"index":9\}</serialization-matches>
+            </any-of>
+            <any-of>
+               <serialization-matches>\{"value":16,"index":4\}</serialization-matches>
+               <serialization-matches>\{"index":4,"index":16\}</serialization-matches>
+            </any-of>
+            <serialization-matches>^\[\{</serialization-matches>
+            <serialization-matches>\}\]$</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   <test-case name="output-0702">
+      <description>JSON serialization with nested HTML</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0702.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[\{"doc1":"<html xmlns=\\"http:\\/\\/www.w3.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\"><\\/meta><title>Document 1<\\/title>]]></serialization-matches>          
+         </all-of>
+      </result>
+   </test-case>
 
 </test-set>
