@@ -4467,6 +4467,7 @@
          </all-of>
       </result>
    </test-case>
+   
    <test-case name="output-0702">
       <description>JSON serialization with nested HTML</description>
       <created by="Michael Kay" on="2016-12-16"/>
@@ -4483,5 +4484,86 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="output-0703">
+      <description>Serialization with item-separator</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0703.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>^11~12~13~14~15~16~17~18~19~20$</serialization-matches>          
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0704">
+      <description>JSON serialization with allow-duplicate-names=yes</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0704.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <any-of>
+            <serialization-matches>\{"23:00:00Z":"alpha","23:00:00Z":"beta"\}</serialization-matches>
+            <serialization-matches>\{"23:00:00Z":"beta","23:00:00Z":"alpha"\}</serialization-matches>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0705">
+      <description>JSON serialization with allow-duplicate-names=no</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0705.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <error code="SERE0022"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0706">
+      <description>JSON serialization parameter document and character map</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0706.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <serialization-matches>\{"AAA":"AAA","BBB":"BBB","CCC":"CCC","d":"DDD","e":"EEE","f":"FFF","g":"GGG"\}</serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0707">
+      <description>Adaptive serialization: no errors</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0707.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <serialization-matches>.+</serialization-matches>
+      </result>
+   </test-case>
+   
 
 </test-set>
