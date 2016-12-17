@@ -2691,4 +2691,128 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="result-document-1401">
+      <description>JSON serialization</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1401.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <any-of>
+               <serialization-matches>\{"value":9,"index":3\}</serialization-matches>
+               <serialization-matches>\{"index":3,"index":9\}</serialization-matches>
+            </any-of>
+            <any-of>
+               <serialization-matches>\{"value":16,"index":4\}</serialization-matches>
+               <serialization-matches>\{"index":4,"index":16\}</serialization-matches>
+            </any-of>
+            <serialization-matches>^\[\{</serialization-matches>
+            <serialization-matches>\}\]$</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1402">
+      <description>JSON serialization with nested HTML</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1402.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[\{"doc1":"<html xmlns=\\"http:\\/\\/www.w3.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\"><\\/meta><title>Document 1<\\/title>]]></serialization-matches>          
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1403">
+      <description>Serialization with item-separator</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1403.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches>^11~12~13~14~15~16~17~18~19~20$</serialization-matches>          
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1404">
+      <description>JSON serialization with allow-duplicate-names=yes</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1404.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <any-of>
+            <serialization-matches>\{"23:00:00Z":"alpha","23:00:00Z":"beta"\}</serialization-matches>
+            <serialization-matches>\{"23:00:00Z":"beta","23:00:00Z":"alpha"\}</serialization-matches>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1405">
+      <description>JSON serialization with allow-duplicate-names=no</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1405.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <error code="SERE0022"/>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1406">
+      <description>JSON serialization parameter document and character map</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1406.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <serialization-matches>\{"AAA":"AAA","BBB":"BBB","CCC":"CCC","d":"DDD","e":"EEE","f":"FFF","g":"GGG"\}</serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1407">
+      <description>Adaptive serialization: no errors</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1407.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <serialization-matches>.+</serialization-matches>
+      </result>
+   </test-case>
+   
 </test-set>
