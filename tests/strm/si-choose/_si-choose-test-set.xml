@@ -115,5 +115,41 @@
             ><bullet>point two</bullet><bullet>point three</bullet><para/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="si-choose-009">
+      <description>Streaming, xsl:choose does downward selection within the second condition</description>
+      <created by="Michael Kay" on="2016-12-18"/>
+      <test>
+         <stylesheet file="si-choose-009.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result early-exit-possible="true">
+         <assert>/out/magic</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-choose-010">
+      <description>Use xsl:choose within xsl:stream, both branches are grounded and consuming</description>
+      <created by="Michael Kay" on="2016-12-19"/>
+      <test>
+         <stylesheet file="si-choose-010.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '10'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-choose-011">
+      <description>Use xsl:choose within xsl:stream, both branches are grounded and consuming</description>
+      <created by="Michael Kay" on="2016-12-19"/>
+      <test>
+         <stylesheet file="si-choose-011.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '[HeadingOneTwoThreepoint onepoint twopoint threeFourHeadingOneTwoThreepoint onepoint twopoint threeFour]'</assert>
+      </result>
+   </test-case>
 
 </test-set>

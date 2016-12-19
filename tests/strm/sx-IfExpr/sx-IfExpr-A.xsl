@@ -238,6 +238,23 @@
           <xsl:value-of select="if ($condition) then () else (//PRICE/ancestor-or-self::*/@*)" separator="|"/>
         </out>
       </xsl:source-document>
-    </xsl:template>               
+    </xsl:template>    
+  
+  <!-- Streaming if() expression: in select attribute of xsl:apply-templates; streamed action -->
+  
+  <xsl:template name="r-036" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:apply-templates select="if ($condition) then () else /BOOKLIST/BOOKS/ITEM/PRICE" mode="m-036"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <xsl:mode name="m-036" streamable="yes"/>
+  
+  <xsl:template match="PRICE" mode="m-036">
+    <price><xsl:value-of select="."/></price>
+  </xsl:template>
+  
     
 </xsl:stylesheet>

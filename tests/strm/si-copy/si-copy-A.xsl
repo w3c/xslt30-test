@@ -497,6 +497,41 @@
       </xsl:source-document>
     </out>
   </xsl:template>
+  
+  <!-- within xsl:source-document, use xsl:copy/on-empty: empty PI node constructed (body of xsl:copy is ignored for a PI node) -->
+  
+  <xsl:template name="cy-051" use-when="$RUN">
+    <out>
+      <xsl:variable name="a">
+        <a/>
+      </xsl:variable>
+      <xsl:source-document streamable="yes" href="../docs/special.xml">
+        <xsl:where-populated>
+          <xsl:copy select="special/processing-instruction()[2]">
+            <xsl:if test="current-date() gt xs:date('1900-01-01')">
+              <b/>
+            </xsl:if>
+          </xsl:copy>
+        </xsl:where-populated>
+        <xsl:on-empty select="$a/a"/>
+      </xsl:source-document>
+    </out>
+  </xsl:template>
+  
+  <!-- Body of xsl:copy ignored for a processing instruction node -->
+  
+  <xsl:template name="cy-052" use-when="$RUN">
+    <out>
+      <xsl:variable name="a">
+        <a/>
+      </xsl:variable>
+      <xsl:source-document streamable="yes" href="../docs/special.xml">
+          <xsl:copy select="special/node()[4]">
+            <xsl:copy-of select="child::node()"/>
+          </xsl:copy>
+      </xsl:source-document>
+    </out>
+  </xsl:template>
 
 
 
