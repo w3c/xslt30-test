@@ -295,7 +295,7 @@
   
   <!-- streamed xsl:for-each-group: current-group not available in applied template -->
   
-  <xsl:template name="g-016" use-when="$RUN">
+  <xsl:template name="g-016" use-when="false() and $RUN">
     <out>
       <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
         <xsl:fork>
@@ -311,13 +311,47 @@
   
   <xsl:mode name="cgk" streamable="yes"/>
   
-  <xsl:template match="." mode="cgk">
+  <xsl:template match="." mode="cgk" use-when="false() and $RUN">
     <xsl:try>
       <h size="{count(current-group())}"/>
       <xsl:catch errors="*:XTDE1061">
         <h size="#absent#"/>
       </xsl:catch>
     </xsl:try>  
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group: items can be in mode than one group -->
+  
+  <xsl:template name="g-017" use-when="$RUN">
+    <out>
+      <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="/BOOKLIST/BOOKS/ITEM" group-by="string-to-codepoints(@AUTHOR) ! codepoints-to-string(.)" composite="no">
+            <g author-contains="{current-grouping-key()}">
+              <books>
+                <xsl:value-of select="current-group()/@TITLE" separator="|"/>
+              </books>
+            </g>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:source-document>
+    </out>
+  </xsl:template>
+  
+  <!-- streamed xsl:for-each-group: items can be in mode than one group -->
+  
+  <xsl:template name="g-018" use-when="$RUN">
+    <out>
+      <xsl:source-document streamable="yes" href="../docs/books.xml">
+        <xsl:fork>
+          <xsl:for-each-group select="($extra, /BOOKLIST/BOOKS/ITEM)" group-by="string-to-codepoints(@CAT) ! codepoints-to-string(.)" composite="no">
+            <CAT ID="{current-grouping-key()}">
+              <xsl:value-of select="current-group() / TITLE" separator="|"/>
+            </CAT>
+          </xsl:for-each-group>
+        </xsl:fork>
+      </xsl:source-document>
+    </out>
   </xsl:template>
   
   
