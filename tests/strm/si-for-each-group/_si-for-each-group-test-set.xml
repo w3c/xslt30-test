@@ -1062,6 +1062,38 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-051">
+      <description>Streamed grouping - reference to current-grouping-key() within a nested xsl:source-document instruction.</description>
+      <created by="Michael Kay" on="2016-12-20"/>
+      <environment>
+         <source file="si-group-051.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-051.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/Orders/group[@number="100"]/value="-15.00"</assert>
+            <assert>/Orders/group[@number="101"]/value="6.00"</assert>
+            <assert>/Orders/group[@number="102"]/value="-5.00"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-052">
+      <description>Streamed grouping - unstreamable reference to current-group() within a nested xsl:source-document instruction.</description>
+      <created by="Michael Kay" on="2016-12-20"/>
+      <environment>
+         <source file="si-group-051.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-052.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
 
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>
