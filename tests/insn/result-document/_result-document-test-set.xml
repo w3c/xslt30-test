@@ -2815,4 +2815,36 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </result>
    </test-case>
    
+   <test-case name="result-document-1501">
+      <description>xsl:result-document within xsl:analyze-string</description>
+      <created by="Michael Kay" on="2016-12-21"/>
+      <environment>
+         <source role="." file="../../strm/docs/ot.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1501.xsl"/>
+      </test>
+      <result>
+         <!-- This test is really to detect potential multi-threading issues in Saxon.
+              We test the content of a few of the result documents chosen at random -->
+         <all-of>
+            <assert-result-document uri="Person188.xml">
+               <assert>/out="erson"</assert>
+            </assert-result-document>
+            <assert-result-document uri="Christendom202.xml">
+               <assert>/out="hristendom"</assert>
+            </assert-result-document>
+            <assert-result-document uri="Majesty224.xml">
+               <assert>/out="ajesty"</assert>
+            </assert-result-document>
+            <assert-result-document uri="England258.xml">
+               <assert>/out="ngland"</assert>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
 </test-set>
