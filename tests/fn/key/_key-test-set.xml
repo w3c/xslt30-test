@@ -1681,4 +1681,22 @@ Namespace "" used in 3
          </all-of>  
       </result>
    </test-case>
+   
+   <test-case name="key-090">
+      <description>In XSLT 3.0, the xsl:key match pattern can match namespace nodes. (Variant of -087)</description>
+      <created by="Michael Kay" on="2016-12-22"/>=
+      <environment>
+         <source role="." file="key131.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="namespace_axis" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="key-090.xsl"/>
+      </test>
+      <result>
+         <assert>deep-equal(/out/e/string(), ("doc", "section", "inner"))</assert>
+      </result>
+   </test-case>
 </test-set>
