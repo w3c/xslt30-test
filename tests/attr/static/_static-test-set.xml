@@ -690,6 +690,128 @@
       </result>
    </test-case>
    
+   <test-case name="static-020">
+      <description>
+         Static param declared repeatedly with different import precedences.
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2017-01-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-020.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3450"/>
+      </result>
+   </test-case>
+   
+   <test-case name="static-021">
+      <description>
+         Static param declared repeatedly with different import precedences: ok because the declarations are consistent
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2017-01-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-021.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result v1="1" v4="1"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="static-022">
+      <description>
+         Static param declared repeatedly with higher-precedence first: OK even though inconsistent
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2017-01-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-022.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result v1="3" v4="3"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="static-023">
+      <description>
+         Inconsistent static declarations: variable versus param
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2017-01-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-023.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3450"/>
+      </result>
+   </test-case>
+   
+   <test-case name="static-024">
+      <description>
+         Inconsistent static declarations: variable versus param; but higher precedence declaration comes first so it's OK
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2017-01-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-024.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<result v1="1" v4="1"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="static-025">
+      <description>
+         Error case, static="yes" on non-global param
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2017-01-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-025.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XTSE0020"/>
+            <error code="XTSE0090"/>
+         </any-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="static-026">
+      <description>
+         Error case, static="yes" with visibility="final"
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2017-01-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-026.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0020"/>
+      </result>
+   </test-case>
+   
 
 
 </test-set>
