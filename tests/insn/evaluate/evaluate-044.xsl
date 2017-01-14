@@ -8,7 +8,7 @@
   exclude-result-prefixes="xsd foo"
   version="3.0">
   
-  <xsl:function name="fox:a" as="xs:string?">
+  <xsl:function name="fox:a" as="xs:string?" visibility="public">
     <xsl:param name="context" as="xs:string"/>
     <xsl:sequence select="$context"/>
   </xsl:function>
