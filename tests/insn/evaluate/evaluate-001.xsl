@@ -11,7 +11,7 @@
     </out>
   </xsl:template>
 
-  <xsl:function name="my:f">
+  <xsl:function name="my:f" visibility="public">
     <xsl:sequence select="$p"/>
   </xsl:function>
 

@@ -22,7 +22,7 @@
   
   <xsl:strip-space elements="*"/>
   
-  <xsl:function name="eval:node">
+  <xsl:function name="eval:node" visibility="final">
     <xsl:param name="node" as="element()" />
     
     <xsl:evaluate xpath="string($node)" base-uri="{base-uri($node)}" namespace-context="$node" />

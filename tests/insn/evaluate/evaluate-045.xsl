@@ -6,6 +6,7 @@
   exclude-result-prefixes="f fn xs math">
 
   <!--  test availability of functions within xsl:evaluate -->
+  <!-- access to a private function should fail -->
 
   <xsl:param name="e1">true()</xsl:param>
   <xsl:param name="e2">concat('a', 'b')</xsl:param>
@@ -26,7 +27,7 @@
 
   </xsl:template>
 
-  <xsl:function name="f:square" as="xs:integer" visibility="public">
+  <xsl:function name="f:square" as="xs:integer">
     <xsl:param name="x" as="xs:integer"/>
     <xsl:sequence select="$x*$x"/>
   </xsl:function>
