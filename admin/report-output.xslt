@@ -25,24 +25,25 @@
                     { 
                         width: 60px; 
                         border: 1px solid black;
+                        border-right: 1px dotted grey;
+                        border-left:  1px dotted grey;
                         padding: 2px;
-                        text-align: right;
+                        text-align: center;
                     }
                     .head th { text-align: left } 
                     th + th,
                     td + th {
-                        border-right: none;
+                        border-right: none;                        
                     }
-                    th + td,
+                    /*th + td,
                     th + td + td {  
                     border-left: none; 
                     border-right: none 
+                    }*/
+                    th + td + td + td + td + td,
+                    th + td + td + td + td + td + td + td + td + td { 
+                        font-weight: bold;                        
                     }
-                    th + td + td + td {  
-                        border-left: none; 
-                    }
-                    th + td + td + td + td + td { font-weight: bold; }
-                    th + td + td + td + td + td + td + td + td + td { font-weight: bold; }
                 </style>
             </head>
             <body>
@@ -52,9 +53,9 @@
                         <thead>
                             <tr class="head">
                                 <th>Name</th>
-                                <th colspan="4">XSLT 1.0</th>
-                                <th colspan="4">XSLT 2.0</th>
-                                <th colspan="4">XSLT 3.0</th>
+                                <th>1.0+</th>
+                                <th colspan="3">XSLT 2.0</th>
+                                <th colspan="2">XSLT 3.0</th>
                                 <th colspan="2">Unspecified</th>
                             </tr>
                         </thead>
@@ -62,23 +63,20 @@
                             <tr class="head" >
                                 <th>&#xA0;</th>
                                 <th>all</th>
-                                <th>spec</th>
-                                <th>back</th>
-                                <th>for</th>
                                 <th>all</th>
-                                <th>spec</th>
-                                <th>back</th>
-                                <th>for</th>
+                                <th>only</th>
+                                <th>plus+</th>
                                 <th>all</th>
-                                <th>spec</th>
-                                <th>back</th>
-                                <th>for</th>
-                                <th>nospec</th>
+                                <th>plus+</th>
                                 <th>wrong</th>
+                                <th>total</th>
                             </tr>
                             
                             
-                            <xsl:apply-templates select="report/test-set" />
+                            <xsl:apply-templates select="report/test-set" >
+                                <xsl:sort data-type="text" select="@uri" />
+                                <xsl:sort data-type="text" select="@name" />
+                            </xsl:apply-templates>
                         </tbody>
                     </table>
                 </div>
@@ -90,7 +88,8 @@
         <tr>
             <th>
                 <a href="{@uri}" title="{@description}">
-                    <xsl:value-of select="@name" />
+                    <xsl:value-of select="replace(@uri, '.*tip/tests/([a-z]+).*', '$1')" />
+                    <xsl:value-of select="' -> ' || @name" />
                 </a>
             </th>
         
@@ -98,7 +97,7 @@
         </tr>
     </xsl:template>
     
-    <xsl:template match="xslt1 | xslt2 | xslt3">
+    <xsl:template match="xslt2 | xslt3">
         <th>
             <xsl:value-of select="@count-total" />
         </th>
@@ -106,11 +105,23 @@
             <xsl:value-of select="@count-specific" />
         </td>
         <td>
-            <xsl:value-of select="@count-backward" />
+            <xsl:value-of select="@count-forward" />
         </td>
+    </xsl:template>
+    
+    <xsl:template match="xslt3">
+        <th>
+            <xsl:value-of select="@count-total" />
+        </th>
         <td>
             <xsl:value-of select="@count-forward" />
         </td>
+    </xsl:template>
+    
+    <xsl:template match="xslt1 ">
+        <th>
+            <xsl:value-of select="@count-total" />
+        </th>
     </xsl:template>
     
     <xsl:template match="other">
@@ -118,7 +129,7 @@
             <xsl:value-of select="@count-nospec" />
         </td>
         <td>
-            <xsl:value-of select="@count-wrongvalue" />
+            <xsl:value-of select="@count-total" />
         </td>
     </xsl:template>
 </xsl:stylesheet>
