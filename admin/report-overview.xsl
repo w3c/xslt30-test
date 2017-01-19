@@ -5,6 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xt="http://xt3report.com/functions"
     xmlns:cat="http://www.w3.org/2012/10/xslt-test-catalog"
+    xmlns:f="urn:functions"
     xpath-default-namespace="http://www.w3.org/2012/10/xslt-test-catalog"
     exclude-result-prefixes="math xs xsi cat xt"
     expand-text="yes"
@@ -109,7 +110,7 @@
     <xsl:template match="category/overview">
         <tr>
             <th xsl:use-attribute-sets="first-cell">
-                <a href="#{encode-for-uri(parent::category/@name)}-xt3">{parent::category/@name}</a>
+                <a href="#{f:encode(parent::category/@name)}-xt3"  id="{f:encode(parent::category/@name)}-xt3-source">{parent::category/@name}</a>
             </th>
             <td xsl:use-attribute-sets="cell">{xslt2-specific/@count}</td>
             <td xsl:use-attribute-sets="cell">{xslt3-specific/@count}</td>
@@ -120,7 +121,7 @@
     
     <xsl:template match="report/category">
         <table>
-            <caption><a id="{encode-for-uri(@name)}-xt3" />{@name} (XT3)</caption>
+            <caption><a id="{f:encode(@name)}-xt3" />{@name} (XT3) <a style="text-decoration:none" href="#{f:encode(@name)}-xt3-source" >↑↑</a></caption>
             <xsl:apply-templates select="overview" mode="cat-overview" />
             <xsl:apply-templates select="test-set" />
         </table>
@@ -139,7 +140,7 @@
     <xsl:template match="category/test-set">
         <tr>
             <th xsl:use-attribute-sets="first-cell">
-                <a href="#{encode-for-uri(@description)}-keywords">{@description}</a>
+                <a href="#{f:encode(@description)}-keywords" id="{f:encode(@description)}-key-overview">{@description}</a>
             </th>
             <td xsl:use-attribute-sets="cell">{xslt2-specific/@count}</td>
             <td xsl:use-attribute-sets="cell">{xslt3-specific/@count}</td>
@@ -164,7 +165,7 @@
             <xsl:for-each-group select="feature" group-adjacent="@group">
                 <tr>
                     <th xsl:use-attribute-sets="first-cell">
-                        <a href="#{encode-for-uri(current-grouping-key())}">{current-grouping-key()}</a>
+                        <a href="#{f:encode(current-grouping-key())}" id="{f:encode(current-grouping-key())}-feature-source">{current-grouping-key()}</a>
                     </th>
                     <td xsl:use-attribute-sets="cell">{sum(current-group()/self::feature/@count[not(contains(., 'unknown'))])}</td>
                 </tr>    
@@ -173,7 +174,7 @@
         
         <xsl:for-each-group select="feature" group-adjacent="@group">
             <table>
-                <caption><a id="{encode-for-uri(current-grouping-key())}" />Feature: {current-grouping-key()}</caption>
+                <caption><a id="{f:encode(current-grouping-key())}"/>Feature: {current-grouping-key()} <a  href="#{f:encode(current-grouping-key())}-feature-source">↑↑</a></caption>
                 <xsl:apply-templates select="current-group()" />
             </table>    
         </xsl:for-each-group>
@@ -188,7 +189,7 @@
     
     <xsl:template match="keywords">
         <table style="width:300px">
-            <caption><a id="{encode-for-uri(../@description)}-keywords" />{../@name} (keywords)
+            <caption><a id="{f:encode(../@description)}-keywords" />{../@name} (keywords) <a style="text-decoration:none" href="#{f:encode(../@description)}-key-overview" >↑↑</a>
                 <div style="padding-top:.5em;font-size:8pt;font-weight:normal">(description: {../@description})</div>
             </caption>
             <xsl:if test="key">
@@ -213,6 +214,11 @@
             <td xsl:use-attribute-sets="cell">{@count}</td>
         </tr>
     </xsl:template>
+    
+    <xsl:function name="f:encode">
+        <xsl:param name="id" />
+        <xsl:value-of select="translate($id, ' ', '-')" />
+    </xsl:function>
     
     
 </xsl:stylesheet>
