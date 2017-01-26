@@ -15,15 +15,19 @@
     <xsl:variable
       name="report-generator"
       select="rng:schema-report(resolve-uri('schema-for-xslt30.rnc', static-base-uri()))" />
-    
+
     <out>
+      
       <xsl:for-each
         select="/*/cat:test-set/document(@file)
-        //cat:stylesheet[not(ancestor::cat:test-case//cat:error)]/@file">
-        <!--<xsl:copy-of select="document(.)" validation="strict"/>-->
+        //cat:stylesheet[
+          not(ancestor::cat:test-case//cat:error) and
+          not(ancestor::cat:test-set/cat:dependencies/cat:feature/@value = 'XML_1.1')
+        ]/@file">
+
         <xsl:message>RNG Validating <xsl:value-of select="."/></xsl:message>
         <xsl:variable name="doc" select="document(.)"/>
-        
+
         <xsl:choose>
           <xsl:when
             test="not($doc/xsl:*) or 
