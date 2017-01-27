@@ -5,16 +5,17 @@
     version="3.0">
     <!-- xsl:merge test using accumulators. -->
     
+    <xsl:param name="STREAMABLE" static="yes" select="false()"/>
     <xsl:output method="xml" indent="no"/>
     <xsl:strip-space elements="*"/>
     <xsl:template match="/">
         
         <events>
             <xsl:merge>
-                <xsl:merge-source for-each-source="'log-file-1.xml'" select="events/event">
+                <xsl:merge-source for-each-source="'log-file-1.xml'" select="events/event" _streamable="{$STREAMABLE}">
                         <xsl:merge-key select="xs:dateTime(@timestamp)"/>
                 </xsl:merge-source>
-                <xsl:merge-source for-each-source="'log-file-2.xml'" select="log/day/record">
+                <xsl:merge-source for-each-source="'log-file-2.xml'" select="log/day/record" _streamable="{$STREAMABLE}">
                         <xsl:merge-key select="dateTime(../@date, time)"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
@@ -30,7 +31,7 @@
         
     </xsl:template>
     
-    <xsl:accumulator name="path" initial-value="''">
+    <xsl:accumulator name="path" initial-value="''" _streamable="{$STREAMABLE}">
       <xsl:accumulator-rule match="*" select="concat(document-uri(/), ' - ', string-join(ancestor::*/name(), '/'))"/>
     </xsl:accumulator>  
 </xsl:stylesheet>
