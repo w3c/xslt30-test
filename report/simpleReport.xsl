@@ -26,6 +26,7 @@
     
     <xsl:variable name="categories" as="map(*)*">
         <xsl:sequence select="map{'name':'all', 'filter': function($testcase) { f:is30($testcase) }}"/>
+        <xsl:sequence select="map{'name':'basic conformance', 'filter': function($testcase) { f:is30($testcase) and not($testcase/(dependencies|../dependencies)/feature)}}"/>
         <xsl:sequence select="map{'name':'streaming', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='streaming' }}"/>
         <xsl:sequence select="map{'name':'dynamic evaluation', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='dynamic_evaluation' }}"/>
         <xsl:sequence select="map{'name':'higher order functions', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='higher_order_functions' }}"/>
