@@ -16,7 +16,9 @@
       <xsl:accumulator-rule match="*" select="$value + 1"/>
    </xsl:accumulator>
    
-   <xsl:mode name="Q" _streamable="{$STREAMABLE}"/>
+   <xsl:mode name="Q" _streamable="{$STREAMABLE}">
+      <xsl:apply-templates select="." mode="Z"/>
+   </xsl:mode>
    
    <xsl:mode name="X" use-accumulators="counter" _streamable="{$STREAMABLE}"/>
    
