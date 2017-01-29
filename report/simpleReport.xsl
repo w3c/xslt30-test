@@ -19,21 +19,38 @@
         <result name="Saxon 9.8">file:/Users/mike/w3c/xslt30-test-saxon/results_XSLT3.0_9.8.0.1-2016-12-16.xml</result>
     </xsl:variable>
     
+    <xsl:function name="f:dependencies" as="element(*)*">
+        <xsl:param name="test" as="element(test-case)"/>
+        <xsl:sequence select="$test/(dependencies|../dependencies)/*"/>
+    </xsl:function>
+    
+    <xsl:function name="f:non-spec-dependencies" as="element(*)*">
+        <xsl:param name="test" as="element(test-case)"/>
+        <xsl:sequence select="$test/(dependencies|../dependencies)/*[not(self::spec)]"/>
+    </xsl:function>
+    
     <xsl:function name="f:is30" as="xs:boolean">
         <xsl:param name="test" as="element(test-case)"/>
-        <xsl:sequence select="not($test/(dependencies|../dependencies)/spec/@value[contains(., 'XSLT20') and not(contains(., 'XSLT20+') or contains(., 'XSLT30'))])"/>
+        <xsl:sequence select="not(f:dependencies($test)[self::spec]/@value[contains(., 'XSLT20') and not(contains(., 'XSLT20+') or contains(., 'XSLT30'))])"/>
     </xsl:function>
     
     <xsl:variable name="categories" as="map(*)*">
         <xsl:sequence select="map{'name':'all', 'filter': function($testcase) { f:is30($testcase) }}"/>
-        <xsl:sequence select="map{'name':'basic conformance', 'filter': function($testcase) { f:is30($testcase) and not($testcase/(dependencies|../dependencies)/feature)}}"/>
-        <xsl:sequence select="map{'name':'streaming', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='streaming' }}"/>
-        <xsl:sequence select="map{'name':'dynamic evaluation', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='dynamic_evaluation' }}"/>
-        <xsl:sequence select="map{'name':'higher order functions', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='higher_order_functions' }}"/>
-        <xsl:sequence select="map{'name':'1.0 compatibility', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='backwards_compatibility' }}"/>
-        <xsl:sequence select="map{'name':'serialization', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='serialization' }}"/>       
-        <xsl:sequence select="map{'name':'schema aware', 'filter': function($testcase) { $testcase/(dependencies|../dependencies)/feature/@value='schema_aware' }}"/>
+        <xsl:sequence select="map{'name':'basic conformance', 'filter': function($testcase) { f:is30($testcase) and empty(f:non-spec-dependencies($testcase))}}"/>
+        <xsl:sequence select="map{'name':'streaming', 'filter': f:dependency-filter('streaming')}"/>
+        <xsl:sequence select="map{'name':'dynamic evaluation', 'filter': f:dependency-filter('dynamic_evaluation')}"/>
+        <xsl:sequence select="map{'name':'higher order functions', 'filter': f:dependency-filter('higher_order_functions')}"/>
+        <xsl:sequence select="map{'name':'1.0 compatibility', 'filter': f:dependency-filter('backwards_compatibility')}"/>
+        <xsl:sequence select="map{'name':'serialization', 'filter': f:dependency-filter('serialization') }"/>       
+        <xsl:sequence select="map{'name':'schema awareness', 'filter': f:dependency-filter('schema_aware') }"/>
     </xsl:variable>
+    
+    <xsl:function name="f:dependency-filter" as="function(*)">
+        <xsl:param name="feature" as="xs:string"/>
+        <xsl:sequence select="function($testcase) { f:is30($testcase) and
+            exists(f:non-spec-dependencies($testcase)[self::feature[@value = $feature]]) and
+            empty(f:non-spec-dependencies($testcase)[not(self::feature[@value = $feature])])}"/>
+    </xsl:function>
     
     <xsl:template name="xsl:initial-template">
         <html>
@@ -75,6 +92,17 @@
                         </xsl:for-each>
                     </tbody>
                 </table>
+                <h1>Basic Conformance Tests Not Run</h1>
+                <xsl:for-each select="$results">
+                    <h2>{@name}</h2>
+                    <xsl:variable name="filter" select="$categories[?name='basic conformance']?filter"/>
+                    <xsl:variable name="selected" select="$test-cases[$filter(.)]/@name"/>
+                    <xsl:variable name="results" select="doc(.)//r:test-case"/>
+                    <h3>Reported as not run</h3>
+                    <xsl:value-of select="$results[@name = $selected][@result='notRun']/@name"/>
+                    <h3>Not Reported</h3>
+                    <xsl:value-of select="$selected[let $n := . return not($results[@name = $n])]"/>
+                </xsl:for-each>
             </body>
         </html>
     </xsl:template>
