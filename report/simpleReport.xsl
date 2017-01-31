@@ -17,6 +17,7 @@
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="">
         <result name="Saxon 9.7">file:/Users/mike/w3c/xslt30-test-saxon/results_XSLT3.0_9.7.0.7-2016-08-16.xml</result>
         <result name="Saxon 9.8">file:/Users/mike/w3c/xslt30-test-saxon/results_XSLT3.0_9.8.0.1-2016-12-16.xml</result>
+        <result name="Parrot">file:/Users/mike/w3c/xslt30-test-altova/results_XSLT3.0_2017-01-31.xml</result>
     </xsl:variable>
     
     <xsl:function name="f:dependencies" as="element(*)*">
