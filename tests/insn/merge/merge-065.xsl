@@ -12,10 +12,10 @@
         
         <events>
             <xsl:merge>
-                <xsl:merge-source for-each-source="'log-file-1.xml'" select="events/event" _streamable="{$STREAMABLE}">
+                <xsl:merge-source for-each-source="'log-file-1.xml'" select="events/event" _streamable="{$STREAMABLE}" use-accumulators="path">
                         <xsl:merge-key select="xs:dateTime(@timestamp)"/>
                 </xsl:merge-source>
-                <xsl:merge-source for-each-source="'log-file-2.xml'" select="log/day/record" _streamable="{$STREAMABLE}">
+                <xsl:merge-source for-each-source="'log-file-2.xml'" select="log/day/record" _streamable="{$STREAMABLE}" use-accumulators="path">
                         <xsl:merge-key select="dateTime(../@date, time)"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
