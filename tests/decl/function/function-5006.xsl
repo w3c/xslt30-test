@@ -10,7 +10,7 @@
     <xsl:template match="/">
         <!-- scanning expression with posture striding -->
         <result>
-            <xsl:for-each select="doc/sf:deep-descent(section[1])/text()" >
+            <xsl:for-each select="outermost(doc/sf:deep-descent(section[1]))/text()" >
                 <xsl:copy-of select="self::text()" />
             </xsl:for-each>
         </result>
