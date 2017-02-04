@@ -1318,4 +1318,37 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <error code="XTDE1071"/>
       </result>
    </test-case>
+   
+   <test-case name="for-each-group-080">
+      <description>Value of last() when processing groups</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-02-02"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[
+<root>
+    <items>
+        <item key="a" value="a1"/>
+        <item key="b" value="b1"/>
+        <item key="a" value="a2"/>
+        <item key="c" value="c1"/>
+        <item key="a" value="a3"/>
+        <item key="c" value="c2"/>
+    </items>
+</root>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-080.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/item) = 5</assert>
+            <assert>string-join(/out/item/@pos, '|') = '1|2|3|4|5'</assert>
+            <assert>string-join(/out/item/@last, '|') = '5|5|5|5|5'</assert>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
