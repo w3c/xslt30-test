@@ -4,12 +4,12 @@
    
    <environment name="xml-to-json-A">
       <stylesheet file="xml-to-json-A.xsl"/>
-      <param name="use-xslt-implementation" static="true" select="false()"/>
+      <param name="use-xslt-implementation" static="yes" select="false()"/>
    </environment>
    
    <environment name="xml-to-json-B">
       <stylesheet file="xml-to-json-B.xsl"/>
-      <param name="use-xslt-implementation" static="true" select="false()"/>
+      <param name="use-xslt-implementation" static="yes" select="false()"/>
    </environment>
    
    <environment name="xml-to-json-C">
@@ -22,14 +22,14 @@
    
    <environment name="xml-to-json-A2">
       <stylesheet file="xml-to-json-A.xsl"/>
-      <package name="http://www.w3.org/2013/XSLT/xml-to-json" role="secondary" file="xml-to-json.xsl"/>
-      <param name="use-xslt-implementation" static="true" select="true()"/>
+      <package uri="http://www.w3.org/2013/XSLT/xml-to-json" role="secondary" file="xml-to-json.xsl"/>
+      <param name="use-xslt-implementation" static="yes" select="true()"/>
    </environment>
    
    <environment name="xml-to-json-B2">
       <stylesheet file="xml-to-json-B.xsl"/>
-      <package name="http://www.w3.org/2013/XSLT/xml-to-json" role="secondary" file="xml-to-json.xsl"/>
-      <param name="use-xslt-implementation" static="true" select="true()"/>
+      <package uri="http://www.w3.org/2013/XSLT/xml-to-json" role="secondary" file="xml-to-json.xsl"/>
+      <param name="use-xslt-implementation" static="yes" select="true()"/>
    </environment>
    
    <dependencies>
@@ -1264,12 +1264,13 @@
    <test-case name="xml-to-json-C016">
       <description>Test of xml-to-json: invalid input</description>
       <created by="Michael Kay" on="2016-04-22"/>
+      <modified by="Michael Kay" on="2017-02-04" change="no longer invalid (key attribute now allowed at top level)"/>
       <environment ref="xml-to-json-C"/>
       <test>
          <initial-template name="t016"/>
       </test>
       <result>
-         <error code="FOJS0006"/>
+         <assert>/t016 = '"xxxx"'</assert>
       </result>
    </test-case>
    
