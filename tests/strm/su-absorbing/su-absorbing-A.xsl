@@ -176,7 +176,7 @@
   <!-- Call singleton absorbing function supplying grounded but consuming sequence -->
   
   <xsl:template name="t-014" use-when="$RUN">
-    <xsl:source-document streamable="yes" href="../docs/books.xml" streaming="true">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="/BOOKLIST/BOOKS/ITEM ! f:count-descendants-010(copy-of(TITLE))"/>
       </out>
@@ -196,7 +196,7 @@
   </xsl:function>
   
   <xsl:template name="t-015" use-when="$RUN">
-    <xsl:source-document streamable="yes" href="../docs/books.xml" streaming="true">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="f:f-015a(/BOOKLIST/BOOKS/ITEM/TITLE)"/>
       </out>
@@ -216,7 +216,7 @@
   </xsl:template>
   
   <xsl:template name="t-016" use-when="$RUN">
-    <xsl:source-document streamable="yes" href="../docs/books.xml" streaming="true">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:apply-templates select="/BOOKLIST/BOOKS/ITEM/TITLE" mode="m-016"/>
       </out>
@@ -226,7 +226,7 @@
   <!-- Call absorbing function with text nodes -->
   
   <xsl:template name="t-017" use-when="true() or $RUN">
-    <xsl:source-document streamable="yes" href="../docs/books.xml" streaming="true">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:apply-templates select="/BOOKLIST/BOOKS/ITEM/TITLE/text()" mode="m-016"/>
       </out>
