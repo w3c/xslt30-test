@@ -23,13 +23,13 @@
                              $doc//xs:*[not(ancestor::xsl:import-schema)]">
                  <!-- don't attempt to validate documents rooted at an LRE, or those in forwards compatibility mode, 
                       or using use-when, or using xsi:type, or creating elements in the schema namespace -->
-                 <skip file="{.}"/>
+                <!-- <skip file="{.}"/>-->
               </xsl:when>
               <xsl:otherwise>
                 <xsl:variable name="copy">
             	  <xsl:copy-of select="$doc" validation="strict"/>
                 </xsl:variable>
-                <ok file="{.}" size="{count($copy//*)}"/>
+                <!--<ok file="{.}" size="{count($copy//*)}"/>-->
                 </xsl:otherwise>
               </xsl:choose>     
             <xsl:catch>

@@ -43,7 +43,7 @@
     </xsl:variable>
     
     <xsl:variable name="actualElementAttributePairs" as="xs:string*">
-        <xsl:for-each select="$testCatalog/*/cat:test-set/document(@file)//(cat:stylesheet|cat:package)[not(ancestor::cat:test-case//cat:error)]/@file">
+        <xsl:for-each select="$testCatalog/*/cat:test-set/document(@file)//(cat:stylesheet|cat:package)[not(ancestor::cat:test-case//cat:error[not(@code='UIOP9876')])]/@file">
             <xsl:message>Processing <xsl:value-of select="."/></xsl:message>
             <xsl:try>
                 <xsl:variable name="doc" select="document(.)"/>
@@ -51,7 +51,8 @@
                     $doc//xsl:*/@Q{}*
                         [not(starts-with(local-name(), '_'))]
                         [not(local-name() = $standardAttributes)]
-                        [not(ancestor::*[xs:decimal(@*:version) gt 3.0])] 
+                        [not(ancestor::*[xs:decimal(@*:version) gt 3.0])]
+                        [not(ancestor-or-self::xsl:*[@use-when[not(.='$RUN')]])]
                         /(local-name(..) || '/@' || local-name(.)))"/>    
                 <xsl:catch>
                     <xsl:message select="$err:code, $err:description">Failed to process <xsl:value-of select="."/></xsl:message>
