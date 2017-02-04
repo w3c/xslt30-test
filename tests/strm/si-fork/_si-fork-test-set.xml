@@ -416,30 +416,26 @@
    <test-case name="si-fork-115">
       <description>xsl:for-each-group - group-by - current-grouping-key() not available in applied template</description>
       <created by="Michael Kay" on="2016-02-29"/>
-      <environment ref="si-fork-B"/>
+      <modified by="Michael Kay" on="2017-02-04" change="extracted test into separate stylesheet as it's a static error"/>
       <test>
+         <stylesheet file="si-fork-115.xsl"/>
          <initial-template name="g-015"/>
       </test>
       <result>
-         <all-of>
-            <assert>count(/out/g/h) = 4</assert>
-            <assert>every $h in /out/g/h satisfies $h/@key = "#absent#"</assert>
-         </all-of>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    
    <test-case name="si-fork-116">
       <description>xsl:for-each-group - group-by - current-group() not available in applied template</description>
       <created by="Michael Kay" on="2016-02-29"/>
-      <environment ref="si-fork-B"/>
+      <modified by="Michael Kay" on="2017-02-04" change="extracted test into separate stylesheet as it's a static error"/>
       <test>
+         <stylesheet file="si-fork-116.xsl"/>
          <initial-template name="g-016"/>
       </test>
       <result>
-         <all-of>
-            <assert>count(/out/g/h) = 4</assert>
-            <assert>every $h in /out/g/h satisfies $h/@size = "#absent#"</assert>
-         </all-of>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
    
