@@ -573,4 +573,26 @@
          <assert-xml><![CDATA[<out><E1>false</E1><E2>false</E2><E3>false</E3><E4>false</E4><E5>id1</E5><E7>id2</E7><E8>ref refs</E8><E9>refs</E9></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="strip-type-annotations-027">
+      <description>
+         Test that type annotations from the initial source tree are retained if an included stylesheet 
+         has @input-type-annotations="unspecified". The primary stylesheet has @input-type-annotations="strip".
+         The outermost element is xsl:package rather than xsl:transform.
+      </description>
+      <created by="Michael Kay" on="2017-02-04"/>
+      <environment ref="striptype001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="strip-type-annotations-027.xsl"/>
+         <stylesheet file="import_unspecified.xsl"/>
+      </test>
+      <result>
+         <assert>every $e in /out/*/* satisfies $e='falsetrue'</assert>
+      </result>
+   </test-case>
 </test-set>
