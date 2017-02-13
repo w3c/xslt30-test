@@ -16,6 +16,7 @@
     
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="">
         <result name="Saxon 9.8">submission/Saxon_9.8.xml</result>
+        <result name="Saxon-JS">submission/Saxon-JS_1.0.xml</result>
         <result name="Parrot">submission/Parrot_2017.xml</result>
     </xsl:variable>
     
@@ -81,7 +82,8 @@
                     shares a front end with Saxon/J, but the back end (run-time) was developed independently from scratch. This is a first release
                     of the product. Some of the test failures are unavoidable (for example, float arithmetic delivers double-precision results,
                     which is deemed non-conformant), but others will be lifted in time especially as Javascript 6 rolls out more completely
-                    across the browsers.</p></li>
+                    across the browsers. The results reported here were obtained using the Nashorn Javascript engine; results on other platforms
+                    vary slightly.</p></li>
                 </ol>
                 <table border="1">
                     <thead>
