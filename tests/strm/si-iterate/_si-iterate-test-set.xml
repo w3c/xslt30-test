@@ -179,7 +179,32 @@
          <assert-xml><![CDATA[<root><header>...</header><item name="1">...</item><item name="2"
             >...</item><item name="3">...</item><item name="4">...</item></root><?pi?>]]></assert-xml>
       </result>
-   </test-case>  
+   </test-case>
+     
+   <test-case name="si-iterate-035">
+      <description>xsl:iterate instruction, streamed, binding parameter to a streamed node. See bug 30060.</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-02-14"/>
+      <test>
+         <stylesheet file="si-iterate-035.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0340"/>
+      </result>
+   </test-case>
+   
+   <test-case name="si-iterate-036">
+      <description>xsl:iterate instruction, streamed, binding parameter to copy of a streamed node. See bug 30060.</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-02-14"/>
+      <test>
+         <stylesheet file="si-iterate-036.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/highest-paid-employees = "Employee a Employee c"</assert>
+            <assert>/out/lowest-paid-employees = "Employee b"</assert>
+         </all-of>
+      </result>
+   </test-case>
    
    <test-case name="si-iterate-094">
       <description>Streaming xsl:iterate, with possibility of early exit. (From Martin Honnen)</description>
