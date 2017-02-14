@@ -110,9 +110,9 @@
                                 <td>{f:total(?filter)}</td>
                                 <xsl:for-each select="$results">
                                     <xsl:variable name="score" select="f:score(string(.), $category?filter)" as="map(*)"/>
-                                    <td>{$score?passed} <a href="viewer/passes.html?product={@name}&amp;category={$category?code}">[?]</a></td>
-                                    <td>{$score?failed} <a href="viewer/failures.html?product={@name}&amp;category={$category?code}">[?]</a></td>
-                                    <td>{$score?notrun} <a href="viewer/notruns.html?product={@name}&amp;category={$category?code}">[?]</a></td>
+                                    <td>{$score?passed} <a href="viewer/passes.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
+                                    <td>{$score?failed} <a href="viewer/failures.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
+                                    <td>{$score?notrun} <a href="viewer/notruns.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
                                 </xsl:for-each>
                             </tr>
                         </xsl:for-each>

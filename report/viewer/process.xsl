@@ -33,7 +33,12 @@
           <ul>
             <xsl:for-each select="$submission-doc//*:test-set/*:test-case[@result=$result-type]
                                                         [f:isInCategory(../@name, @name, ixsl:query-params()?category)]">
-                <li><a href="testcase.html?t={@name}&amp;s={../@name}">{@name}</a></li>
+                <li>
+                  <a href="testcase.html?t={@name}&amp;s={../@name}">{@name}</a>
+                  <xsl:if test="@comment">
+                      ({@comment})  
+                  </xsl:if>
+                </li>
             </xsl:for-each>
           </ul>
         </xsl:result-document>
