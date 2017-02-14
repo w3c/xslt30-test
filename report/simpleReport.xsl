@@ -15,7 +15,7 @@
     <xsl:variable name="test-cases" select="$test-sets/*/test-case"/>
     
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="">
-        <result name="Saxon 9.8">submission/Saxon_9.8.xml</result>
+        <result name="Saxon-9.8">submission/Saxon_9.8.xml</result>
         <result name="Saxon-JS">submission/Saxon-JS_1.0.xml</result>
         <result name="Parrot">submission/Parrot_2017.xml</result>
     </xsl:variable>
@@ -41,15 +41,15 @@
     </xsl:function>
     
     <xsl:variable name="categories" as="map(*)*">
-        <xsl:sequence select="map{'name':'all', 'filter': function($testcase) { f:is30($testcase) }}"/>
-        <xsl:sequence select="map{'name':'Basic Conformance', 'filter': function($testcase) { f:is30($testcase) and empty(f:non-spec-dependencies($testcase))}}"/>
-        <xsl:sequence select="map{'name':'Streaming', 'filter': f:dependency-filter('streaming')}"/>
-        <xsl:sequence select="map{'name':'Schema Awareness', 'filter': f:dependency-filter('schema_aware') }"/>
-        <xsl:sequence select="map{'name':'Serialization', 'filter': f:dependency-filter('serialization') }"/>       
-        <xsl:sequence select="map{'name':'1.0 compatibility', 'filter': f:dependency-filter('backwards_compatibility')}"/>       
-        <xsl:sequence select="map{'name':'Dynamic Evaluation', 'filter': f:dependency-filter('dynamic_evaluation')}"/>
-        <xsl:sequence select="map{'name':'XPath 3.1', 'filter': f:dependency-filter('XPath_3.1')}"/>
-        <xsl:sequence select="map{'name':'Higher Order Functions', 'filter': f:dependency-filter('higher_order_functions')}"/>
+        <!--<xsl:sequence select="map{'name':'all', 'filter': function($testcase) { f:is30($testcase) }}"/>-->
+        <xsl:sequence select="map{'name':'Basic Conformance', 'code':'BC', 'filter': function($testcase) { f:is30($testcase) and empty(f:non-spec-dependencies($testcase))}}"/>
+        <xsl:sequence select="map{'name':'Streaming', 'code':'STRM', 'filter': f:dependency-filter('streaming')}"/>
+        <xsl:sequence select="map{'name':'Schema Awareness', 'code':'SA', 'filter': f:dependency-filter('schema_aware') }"/>
+        <xsl:sequence select="map{'name':'Serialization', 'code':'SER', 'filter': f:dependency-filter('serialization') }"/>       
+        <xsl:sequence select="map{'name':'1.0 compatibility', 'code':'XP10', 'filter': f:dependency-filter('backwards_compatibility')}"/>       
+        <xsl:sequence select="map{'name':'Dynamic Evaluation', 'code':'EVAL', 'filter': f:dependency-filter('dynamic_evaluation')}"/>
+        <xsl:sequence select="map{'name':'XPath 3.1', 'code':'XP31', 'filter': f:dependency-filter('XPath_3.1')}"/>
+        <xsl:sequence select="map{'name':'Higher Order Functions', 'code':'HOF', 'filter': f:dependency-filter('higher_order_functions')}"/>
         
     </xsl:variable>
     
@@ -111,7 +111,7 @@
                                 <xsl:for-each select="$results">
                                     <xsl:variable name="score" select="f:score(string(.), $category?filter)" as="map(*)"/>
                                     <td>{$score?passed}</td>
-                                    <td>{$score?failed}</td>
+                                    <td>{$score?failed} <a href="viewer/failures.html?product={@name}&amp;category={$category?code}">[?]</a></td>
                                     <td>{$score?notrun}</td>
                                 </xsl:for-each>
                             </tr>
@@ -224,10 +224,17 @@
        <xsl:variable name="selected" select="$test-cases[$filter(.)]/@name"/>
        <xsl:variable name="results" select="doc($results-uri)//r:test-case"/>
        <xsl:map>
-           <xsl:map-entry key="'passed'" select="count($results[@name = $selected][@result=('pass', 'wrongError')])"/>
-           <xsl:map-entry key="'failed'" select="count($results[@name = $selected][@result='fail'])"/>
-           <xsl:map-entry key="'notrun'" select="count($results[@name = $selected][@result='notRun']) + 
-               count($selected[let $n := . return not($results[@name = $n])])"/>
+           <xsl:variable name="tests-passed" select="$results[@name = $selected][@result=('pass', 'wrongError')]"/>
+           <xsl:variable name="tests-failed" select="$results[@name = $selected][@result='fail']"/>
+           <xsl:variable name="tests-notRun" select="$results[@name = $selected][@result='notRun']"/>
+           <xsl:variable name="tests-notReported" select="$selected[let $n := . return not($results[@name = $n])]/.."/>
+           <xsl:map-entry key="'passed'" select="count($tests-passed)"/>
+           <xsl:map-entry key="'failed'" select="count($tests-failed)"/>
+           <xsl:map-entry key="'notrun'" select="count($tests-notRun) + count($tests-notReported)"/>
+           <xsl:map-entry key="'test-cases-passed'" select="$tests-passed"/>
+           <xsl:map-entry key="'test-cases-failed'" select="$tests-failed"/>
+           <xsl:map-entry key="'test-cases-notrun'" select="$tests-notRun"/>
+           <xsl:map-entry key="'test-cases-notReported'" select="$tests-notReported"/>
        </xsl:map>      
    </xsl:function>
 </xsl:stylesheet>

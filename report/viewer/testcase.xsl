@@ -7,19 +7,40 @@
     extension-element-prefixes="ixsl prop style">
 
 
-
-    <xsl:template match="/" name="main">
-        <ixsl:schedule-action document="{resolve-uri(//cat:test-set[@name=ixsl:query-params()?s]/@file, base-uri(.))}">
+    <xsl:template name="main">
+        <xsl:message>Started...</xsl:message>
+        <xsl:result-document href="#title">
+            Test Case {ixsl:query-params()?t} (in test set {ixsl:query-params()?s}) 
+        </xsl:result-document>
+        <xsl:call-template name="handle-catalog">
+            <xsl:with-param name="catalog-doc" select="document('/catalog.xml')"></xsl:with-param>
+        </xsl:call-template>
+        <!--<ixsl:schedule-action document="{resolve-uri(//cat:test-set[@name=ixsl:query-params()?s]/@file, base-uri(.))}">
             <xsl:call-template name="handle-test-set"/>
-        </ixsl:schedule-action>
+        </ixsl:schedule-action>-->
+    </xsl:template>
+    
+    <xsl:template name="handle-catalog">
+        <xsl:param name="catalog-doc"/>
+        <xsl:message>In handle-catalog... {count($catalog-doc)}</xsl:message>
+        <xsl:call-template name="handle-test-set">
+            <xsl:with-param name="test-set-doc" select="document($catalog-doc//cat:test-set[@name=ixsl:query-params()?s]/@file)"/>
+        </xsl:call-template>
     </xsl:template>
 
 
     <xsl:template name="handle-test-set">
-        <xsl:variable name="test-case" select="//cat:test-case[@name=ixsl:query-params()?t]"/>
+        <xsl:param name="test-set-doc"/>
+        <xsl:variable name="test-case-name" select="ixsl:query-params()?t"/>
+        <xsl:variable name="test-case" select="$test-set-doc//cat:test-case[@name=$test-case-name]"/>
         <xsl:result-document href="#metadata" method="ixsl:replace-content">
             <pre>
-                <xsl:copy-of select="$test-case"/>
+                <xsl:copy-of select="serialize($test-case)"/>
+            </pre>
+        </xsl:result-document>
+        <xsl:result-document href="#stylesheet" method="ixsl:replace-content">
+            <pre>
+                <xsl:value-of select="unparsed-text(resolve-uri($test-case//cat:stylesheet/@file, base-uri($test-case)))"/>
             </pre>
         </xsl:result-document>
     </xsl:template>
