@@ -98,7 +98,7 @@
         </xsl:choose>
     </xsl:function>
     
-    <xsl:function name="f:has-dependency" as="xs:boolean">
+    <xsl:function name="f:has-dependency" as="xs:boolean" xpath-default-namespace="http://www.w3.org/2012/10/xslt-test-catalog">
         <xsl:param name="testcase" as="element()"/>
         <xsl:param name="feature" as="xs:string"/>
         <xsl:sequence select="f:is30($testcase) and
