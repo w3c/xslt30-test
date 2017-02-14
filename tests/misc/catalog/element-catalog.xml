@@ -79,6 +79,8 @@
       </e:choice>
       <e:allowed-parents>
          <e:parent name="package"/>
+         <e:parent name="stylesheet"/>
+         <e:parent name="transform"/>
       </e:allowed-parents>
    </e:element-syntax>
 
@@ -89,6 +91,7 @@
          <e:constant value="attribute-set"/>
          <e:constant value="variable"/>
          <e:constant value="mode"/>
+         <e:constant value="*"/>
       </e:attribute>
       <e:attribute name="names" required="yes">
          <e:data-type name="tokens"/>
@@ -113,6 +116,7 @@
          <e:constant value="attribute-set"/>
          <e:constant value="variable"/>
          <e:constant value="mode"/>
+         <e:constant value="*"/>
       </e:attribute>
       <e:attribute name="names" required="yes">
          <e:data-type name="tokens"/>
@@ -123,7 +127,6 @@
          <e:constant value="final"/>
          <e:constant value="abstract"/>
          <e:constant value="hidden"/>
-         <e:constant value="absent"/>
       </e:attribute>
       <e:empty/>
       <e:allowed-parents>
@@ -414,6 +417,9 @@
       <e:attribute name="streamable">
          <e:data-type name="boolean"/>
       </e:attribute>
+      <e:attribute name="use-accumulators">
+         <e:data-type name="tokens"/>
+      </e:attribute>
       <e:attribute name="on-no-match">
          <e:constant value="deep-copy"/>
          <e:constant value="shallow-copy"/>
@@ -475,12 +481,6 @@
          <e:constant value="required"/>
          <e:constant value="optional"/>
          <e:constant value="absent"/>
-      </e:attribute>
-      <e:attribute name="streamable">
-         <e:data-type name="boolean"/>
-      </e:attribute>
-      <e:attribute name="use-accumulators">
-         <e:data-type name="tokens"/>
       </e:attribute>
       <e:empty/>
       <e:allowed-parents>
@@ -1109,7 +1109,7 @@
          <e:parent-category name="sequence-constructor"/>
       </e:allowed-parents>
    </e:element-syntax>
-   
+
    <e:element-syntax name="where-populated">
       <e:in-category name="instruction"/>
       <e:model name="sequence-constructor"/>
@@ -1117,7 +1117,7 @@
          <e:parent-category name="sequence-constructor"/>
       </e:allowed-parents>
    </e:element-syntax>
-   
+
    <e:element-syntax name="on-empty">
       <e:in-category name="instruction"/>
       <e:attribute name="select" required="no">
@@ -1128,7 +1128,7 @@
          <e:parent-category name="sequence-constructor"/>
       </e:allowed-parents>
    </e:element-syntax>
-   
+
    <e:element-syntax name="on-non-empty">
       <e:in-category name="instruction"/>
       <e:attribute name="select" required="no">
@@ -1465,12 +1465,15 @@
 
    <!-- Streaming -->
 
-   <e:element-syntax name="stream">
+   <e:element-syntax name="source-document">
       <e:in-category name="instruction"/>
       <e:attribute name="href" required="yes">
          <e:attribute-value-template>
             <e:data-type name="uri"/>
          </e:attribute-value-template>
+      </e:attribute>
+      <e:attribute name="streamable">
+         <e:data-type name="boolean"/>
       </e:attribute>
       <e:attribute name="use-accumulators">
          <e:data-type name="tokens"/>
@@ -1664,13 +1667,15 @@
          <e:data-type name="eqname"/>
       </e:attribute>
       <e:attribute name="method">
-         <e:constant value="xml"/>
-         <e:constant value="html"/>
-         <e:constant value="xhtml"/>
-         <e:constant value="text"/>
-         <e:constant value="json"/>
-         <e:constant value="adaptive"/>
-         <e:data-type name="eqname"/>
+         <e:attribute-value-template>
+            <e:constant value="xml"/>
+            <e:constant value="html"/>
+            <e:constant value="xhtml"/>
+            <e:constant value="text"/>
+            <e:constant value="json"/>
+            <e:constant value="adaptive"/>
+            <e:data-type name="eqname"/>
+         </e:attribute-value-template>
       </e:attribute>
       <e:attribute name="allow-duplicate-names">
          <e:attribute-value-template>
@@ -1733,11 +1738,13 @@
          </e:attribute-value-template>
       </e:attribute>
       <e:attribute name="json-node-output-method">
-         <e:constant value="xml"/>
-         <e:constant value="html"/>
-         <e:constant value="xhtml"/>
-         <e:constant value="text"/>
-         <e:data-type name="eqname"/>
+         <e:attribute-value-template>
+            <e:constant value="xml"/>
+            <e:constant value="html"/>
+            <e:constant value="xhtml"/>
+            <e:constant value="text"/>
+            <e:data-type name="eqname"/>
+         </e:attribute-value-template>
       </e:attribute>
       <e:attribute name="media-type">
          <e:attribute-value-template>
