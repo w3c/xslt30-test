@@ -110,9 +110,9 @@
                                 <td>{f:total(?filter)}</td>
                                 <xsl:for-each select="$results">
                                     <xsl:variable name="score" select="f:score(string(.), $category?filter)" as="map(*)"/>
-                                    <td>{$score?passed}</td>
+                                    <td>{$score?passed} <a href="viewer/passes.html?product={@name}&amp;category={$category?code}">[?]</a></td>
                                     <td>{$score?failed} <a href="viewer/failures.html?product={@name}&amp;category={$category?code}">[?]</a></td>
-                                    <td>{$score?notrun}</td>
+                                    <td>{$score?notrun} <a href="viewer/notruns.html?product={@name}&amp;category={$category?code}">[?]</a></td>
                                 </xsl:for-each>
                             </tr>
                         </xsl:for-each>
@@ -127,6 +127,7 @@
                 <xsl:call-template name="report-against-success-criteria"/>
             </body>
         </html>
+        <xsl:call-template name="generate-tests-categories"/>
     </xsl:template>
     
     <xsl:template name="report-against-success-criteria">
@@ -237,4 +238,43 @@
            <xsl:map-entry key="'test-cases-notReported'" select="$tests-notReported"/>
        </xsl:map>      
    </xsl:function>
+    
+    <xsl:template name="generate-tests-categories">
+        <xsl:result-document href="tests-categories.xml" method="xml">
+            <all-tests>
+               <xsl:for-each select="$test-sets">
+                   <xsl:apply-templates select="." mode="trim-tests-categories"/>
+               </xsl:for-each>                
+            </all-tests>
+        </xsl:result-document>
+    </xsl:template>
+    
+    <xsl:template match="*" mode="trim-tests-categories"/>
+    
+    <xsl:template match="*:test-set (:| *:feature | *:dependencies | *:spec:)" mode="trim-tests-categories">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates mode="trim-tests-categories"/>
+      </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="*:test-case" mode="trim-tests-categories">
+        <xsl:variable name="test-case" select="."/>
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:attribute name="categories">
+                <xsl:for-each select="$categories">
+                    <xsl:variable name="filter" select="?filter"/>
+                    <xsl:if test="exists($test-case[$filter(.)])">
+                        <xsl:value-of select="?code"/>
+                        <xsl:text> </xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+            </xsl:attribute>
+            <xsl:apply-templates mode="trim-tests-categories"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="text()[normalize-space(.) = '']" mode="trim-tests-categories"/>
+    
 </xsl:stylesheet>
