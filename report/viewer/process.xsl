@@ -7,6 +7,8 @@
     exclude-result-prefixes="#all" expand-text="yes" 
     extension-element-prefixes="ixsl prop style">
     
+    <xsl:param name="result-type" as="xs:string" select="'fail'"/>
+    
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="" xmlns="">
         <result name="Saxon-9.8">/report/submission/Saxon_9.8.xml</result>
         <result name="Saxon-JS">/report/submission/Saxon-JS_1.0.xml</result>
@@ -53,7 +55,7 @@
         <xsl:message>In handle-submission... {count($submission-doc)}</xsl:message>
         <xsl:result-document href="#content">
             <ul>
-                <xsl:for-each select="$submission-doc//*:test-case[@result='fail'][f:isInCategory(../@name, @name, ixsl:query-params()?category)]">
+                <xsl:for-each select="$submission-doc//*:test-case[@result=$result-type][f:isInCategory(../@name, @name, ixsl:query-params()?category)]">
                     <li><a href="testcase.html?t={@name}&amp;s={../@name}">{@name}</a></li>
                 </xsl:for-each>
             </ul>
