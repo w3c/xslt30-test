@@ -43,6 +43,13 @@
                 <xsl:value-of select="unparsed-text(resolve-uri($test-case//cat:stylesheet/@file, base-uri($test-case)))"/>
             </pre>
         </xsl:result-document>
+        <xsl:result-document href="#source" method="ixsl:replace-content">
+            <xsl:variable name="env" select="$test-case/cat:environment"/>
+            <xsl:variable name="document-filename" select="($env/cat:source/@file, $test-case/../cat:environment[@name = $env/@ref]/cat:source/@file)[1]"/>            
+            <pre>
+                <xsl:value-of select="unparsed-text(resolve-uri($document-filename, base-uri($test-case)))"/>
+            </pre>
+        </xsl:result-document>
     </xsl:template>
 
 
