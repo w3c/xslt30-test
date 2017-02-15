@@ -44,7 +44,7 @@
         </xsl:result-document>
     </xsl:template>
     
-    <xsl:variable name="tests-doc" select="doc(resolve-uri('../tests-categories.xml', ixsl:get(ixsl:source(), 'baseURI')))"/>
+    <xsl:variable name="tests-doc" select="doc(resolve-uri('../tests-categories.xml', ixsl:get(ixsl:window(), 'location.href')))"/>
     
     <xsl:key name="test-cases" match="cat:test-case" use="@name"/>
     
