@@ -11,6 +11,7 @@
     <xsl:param name="notReported" as="xs:boolean" select="false()"/>
     
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="" xmlns="">
+        <result name="Exselt">../submission/Exselt.xml</result>
         <result name="Saxon-9.8">../submission/Saxon_9.8.xml</result>
         <result name="Saxon-JS">../submission/Saxon-JS_1.0.xml</result>
         <result name="Parrot">../submission/Parrot_2017.xml</result>
