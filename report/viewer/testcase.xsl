@@ -28,7 +28,6 @@
         </xsl:call-template>
     </xsl:template>
 
-
     <xsl:template name="handle-test-set">
         <xsl:param name="test-set-doc"/>
         <xsl:variable name="test-case-name" select="ixsl:query-params()?t"/>

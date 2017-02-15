@@ -6,10 +6,14 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.0" xmlns:cat="http://www.w3.org/2012/10/xslt-test-catalog"
     exclude-result-prefixes="#all" expand-text="yes" 
     extension-element-prefixes="ixsl prop style">
-    
+
+    <!-- Type of result to be processed -->
     <xsl:param name="result-type" as="xs:string+"/>
+    
+    <!-- Should be not reported tests listed? -->
     <xsl:param name="notReported" as="xs:boolean" select="false()"/>
     
+    <!-- Locations of submission files -->
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="" xmlns="">
         <result name="Exselt">../submission/exselt.xml</result>
         <result name="Saxon-9.8">../submission/Saxon_9.8.xml</result>
@@ -17,10 +21,13 @@
         <result name="Parrot">../submission/Parrot_2017.xml</result>
     </xsl:variable>
     
+    <!-- Easy access to query parameters -->
+    <xsl:variable name="category" select="ixsl:query-params()?category"/>
+    
     <xsl:template name="main">
         <xsl:message>Started...</xsl:message>
         <xsl:result-document href="#subtitle">
-            for {ixsl:query-params()?product} (in category {ixsl:query-params()?category}) 
+            for {ixsl:query-params()?product} (in category {$category}) 
         </xsl:result-document>
         <xsl:message select="'Fetching: ', $results[@name=ixsl:query-params()?product]"/>
         <xsl:call-template name="handle-submission">
@@ -33,10 +40,10 @@
         <xsl:message>In handle-submission... {count($submission-doc)}</xsl:message>
         <xsl:result-document href="#content" method="ixsl:replace-content">
           <ul>
-            <xsl:for-each select="$submission-doc//*:test-set/*:test-case[@result=$result-type]
-                                                        [f:isInCategory(../@name, @name, ixsl:query-params()?category)]">
+            <xsl:for-each select="$submission-doc/*:test-suite-result/*:test-set/*:test-case[@result=$result-type]
+                                                        [f:isInCategory(../@name, @name, $category)]">
                 <li>
-                  <a href="testcase.html?t={@name}&amp;s={../@name}">{@name}</a>
+                  <a href="testcase.html?t={@name}&amp;s={../@name}" target="testcase">{@name}</a>
                   <xsl:if test="@comment">
                       ({@comment})  
                   </xsl:if>
@@ -44,8 +51,8 @@
             </xsl:for-each>
           </ul>
           <xsl:if test="$notReported">
-              <xsl:variable name="runned-test" select="$submission-doc//*:test-set/*:test-case/string(@name)"/>
-              <xsl:variable name="not-reported" select="$tests-doc//*:test-case[not(@name = $runned-test)][contains-token(@categories, ixsl:query-params()?category)]"/>
+              <xsl:variable name="runned-test" select="$submission-doc/*:test-suite-result/*:test-set/*:test-case/string(@name)"/>
+              <xsl:variable name="not-reported" select="$tests-doc/*/*:test-set/*:test-case[contains-token(@categories, $category)][not(@name = $runned-test)]"/>
               <xsl:if test="exists($not-reported)">
                   <h3>Not reported tests</h3>
                   <ul>
