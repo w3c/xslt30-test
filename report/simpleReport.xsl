@@ -15,6 +15,7 @@
     <xsl:variable name="test-cases" select="$test-sets/*/test-case"/>
     
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="">
+        <result name="Exselt">submission/Exselt.xml</result>
         <result name="Saxon-9.8">submission/Saxon_9.8.xml</result>
         <result name="Saxon-JS">submission/Saxon-JS_1.0.xml</result>
         <result name="Parrot">submission/Parrot_2017.xml</result>
@@ -118,12 +119,10 @@
                         </xsl:for-each>
                     </tbody>
                 </table>
-                <p><emph>Note: Except for the first row, this table omits all tests with multiple dependencies. For example a test that requires
-                support for both streaming and schema awareness will appear in the "all" category, but not in either the streaming or
+                <p><emph>Note: This table omits all tests with multiple dependencies. For example a test that requires
+                support for both streaming and schema awareness will not appear in either the streaming or
                 schema awareness categories.</emph></p>
-                <xsl:call-template name="tests-not-run">
-                    <xsl:with-param name="results" select="$results[@name = 'Saxon 9.8']"/>
-                </xsl:call-template>
+
                 <xsl:call-template name="report-against-success-criteria"/>
             </body>
         </html>
