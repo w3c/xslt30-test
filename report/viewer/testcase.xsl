@@ -3,9 +3,9 @@
     xmlns:prop="http://saxonica.com/ns/html-property"
     xmlns:style="http://saxonica.com/ns/html-style-property"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.0" xmlns:cat="http://www.w3.org/2012/10/xslt-test-catalog"
-    exclude-result-prefixes="#all" expand-text="yes" 
+    exclude-result-prefixes="#all" expand-text="yes"
+    xmlns:f="internal"
     extension-element-prefixes="ixsl prop style">
-
 
     <xsl:template name="main">
         <xsl:message>Started...</xsl:message>
@@ -34,28 +34,29 @@
         <xsl:variable name="test-case-name" select="ixsl:query-params()?t"/>
         <xsl:variable name="test-case" select="$test-set-doc//cat:test-case[@name=$test-case-name]"/>
         <xsl:result-document href="#metadata" method="ixsl:replace-content">
-            <pre>
+            <pre class="xml" id="test">
                 <xsl:copy-of select="serialize($test-case)"/>
             </pre>
         </xsl:result-document>
+        <xsl:sequence select="ixsl:eval('colorize(&quot;test&quot;)')"/>
         <xsl:result-document href="#stylesheet" method="ixsl:replace-content">
             <xsl:variable name="env" select="$test-case/cat:environment"/>
             <xsl:variable name="stylesheet-filename" select="($env/cat:stylesheet/@file, $test-case/../cat:environment[@name = $env/@ref]/cat:stylesheet/@file)[1]"/>
-            <pre>
-                <xsl:value-of select="unparsed-text(resolve-uri($stylesheet-filename, base-uri($test-case)))"/>
+            <xsl:variable name="stylesheet-uri" select="resolve-uri($stylesheet-filename, base-uri($test-case))"/>
+            <pre class="xml" id="xsl">
+              <xsl:value-of select="unparsed-text($stylesheet-uri)"/>  
             </pre>
         </xsl:result-document>
+        <xsl:sequence select="ixsl:eval('colorize(&quot;xsl&quot;)')"/>
         <xsl:result-document href="#source" method="ixsl:replace-content">
             <xsl:variable name="env" select="$test-case/cat:environment"/>
-            <xsl:variable name="document-filename" select="($env/cat:source/@file, $test-case/../cat:environment[@name = $env/@ref]/cat:source/@file)[1]"/>            
-            <pre>
-                <xsl:value-of select="unparsed-text(resolve-uri($document-filename, base-uri($test-case)))"/>
+            <xsl:variable name="document-filename" select="($env/cat:source/@file, $test-case/../cat:environment[@name = $env/@ref]/cat:source/@file)[1]"/>
+            <xsl:variable name="document-uri" select="resolve-uri($document-filename, base-uri($test-case))"/>            
+            <pre class="xml" id="xml">
+              <xsl:value-of select="unparsed-text($document-uri)"/>
             </pre>
         </xsl:result-document>
+        <xsl:sequence select="ixsl:eval('colorize(&quot;xml&quot;)')"/>
     </xsl:template>
-
-
-
-
 
 </xsl:transform>
