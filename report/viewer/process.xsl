@@ -29,19 +29,31 @@
         <xsl:result-document href="#subtitle">
             for {ixsl:query-params()?product} (in category {$category}) 
         </xsl:result-document>
-        <xsl:message select="'Fetching: ', $results[@name=ixsl:query-params()?product]"/>
-        <xsl:call-template name="handle-submission">
-            <xsl:with-param name="submission-doc" select="doc(resolve-uri($results[@name=ixsl:query-params()?product], ixsl:get(ixsl:window(), 'location.href')))"/>
-        </xsl:call-template>
+        <xsl:message>Fetching tests and their categories...</xsl:message>
+        <ixsl:schedule-action document="{resolve-uri('../tests-categories.xml', ixsl:location())}">
+            <xsl:call-template name="load-aux-data"/>
+        </ixsl:schedule-action>
     </xsl:template>
-    
+
+    <xsl:template name="load-aux-data">
+        <xsl:variable name="tests-doc" select="doc(resolve-uri('../tests-categories.xml', ixsl:location()))"/>
+        <xsl:message select="'Fetching: ', $results[@name=ixsl:query-params()?product]"/>
+        <ixsl:schedule-action document="{resolve-uri($results[@name=ixsl:query-params()?product], ixsl:location())}">
+            <xsl:call-template name="handle-submission">
+                <xsl:with-param name="submission-doc" select="doc(resolve-uri($results[@name=ixsl:query-params()?product], ixsl:location()))"/>
+                <xsl:with-param name="tests-doc" select="$tests-doc"/>
+            </xsl:call-template>
+        </ixsl:schedule-action>
+    </xsl:template>
+
     <xsl:template name="handle-submission">
         <xsl:param name="submission-doc"/>
-        <xsl:message>In handle-submission... {count($submission-doc)}</xsl:message>
+        <xsl:param name="tests-doc"/>
+        <xsl:message>Processing submission...</xsl:message>
         <xsl:result-document href="#content" method="ixsl:replace-content">
           <ul>
             <xsl:for-each select="$submission-doc/*:test-suite-result/*:test-set/*:test-case[@result=$result-type]
-                                                        [f:isInCategory(../@name, @name, $category)]">
+                                                        [f:isInCategory($tests-doc, @name, $category)]">
                 <li>
                   <a href="testcase.html?t={@name}&amp;s={../@name}" target="testcase">{@name}</a>
                   <xsl:if test="@comment">
@@ -68,12 +80,10 @@
         </xsl:result-document>
     </xsl:template>
     
-    <xsl:variable name="tests-doc" select="doc(resolve-uri('../tests-categories.xml', ixsl:get(ixsl:window(), 'location.href')))"/>
-    
     <xsl:key name="test-cases" match="cat:test-case" use="@name"/>
     
     <xsl:function name="f:isInCategory" as="xs:boolean">
-        <xsl:param name="test-set" as="xs:string"/>
+        <xsl:param name="tests-doc" as="document-node()"/>
         <xsl:param name="test-case" as="xs:string"/>
         <xsl:param name="category-code" as="xs:string"/>
         <xsl:sequence select="contains-token(key('test-cases', $test-case, $tests-doc)/@categories, $category-code)"/>
