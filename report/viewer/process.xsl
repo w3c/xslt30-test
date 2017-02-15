@@ -8,6 +8,7 @@
     extension-element-prefixes="ixsl prop style">
     
     <xsl:param name="result-type" as="xs:string+"/>
+    <xsl:param name="notReported" as="xs:boolean" select="false()"/>
     
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="" xmlns="">
         <result name="Saxon-9.8">../submission/Saxon_9.8.xml</result>
@@ -41,6 +42,21 @@
                 </li>
             </xsl:for-each>
           </ul>
+          <xsl:if test="$notReported">
+              <xsl:variable name="runned-test" select="$submission-doc//*:test-set/*:test-case/string(@name)"/>
+              <xsl:variable name="not-reported" select="$tests-doc//*:test-case[not(@name = $runned-test)][contains-token(@categories, ixsl:query-params()?category)]"/>
+              <xsl:if test="exists($not-reported)">
+                  <h3>Not reported tests</h3>
+                  <ul>
+                      <xsl:for-each select="$not-reported">
+                          <li>
+                              <a href="testcase.html?t={@name}&amp;s={../@name}">{@name}</a>
+                          </li>
+                      </xsl:for-each>
+                  </ul>
+              </xsl:if>
+          </xsl:if>
+          
         </xsl:result-document>
     </xsl:template>
     

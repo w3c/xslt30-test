@@ -1,229 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://ns.saxonica.com/xslt/export" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vv="http://saxon.sf.net/generated-variable" xmlns:java-type="http://saxon.sf.net/java-type" version="30" packageVersion="1" saxonVersion="9.7.0.15" timeStamp="2017-02-15T11:12:46.539+01:00" target="JS">
+<package xmlns="http://ns.saxonica.com/xslt/export" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vv="http://saxon.sf.net/generated-variable" xmlns:java-type="http://saxon.sf.net/java-type" version="30" packageVersion="1" saxonVersion="9.7.0.15" timeStamp="2017-02-15T11:40:36.158+01:00" target="JS">
  <co id="0" binds="1">
-  <function name="Q{http://myfunction}isInCategory" line="51" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" eval="8" flags="pU" as="xs:boolean" slots="3">
-   <arg name="test-set" as="xs:string"/>
-   <arg name="test-case" as="xs:string"/>
-   <arg name="category-code" as="xs:string"/>
-   <fn role="body" vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="55" name="contains-token">
-    <cvUntyped to="xs:string">
-     <data>
-      <slash>
-       <fn name="key">
-        <str val="test-cases"/>
-        <varRef name="test-case" slot="1"/>
-        <gVarRef name="Q{http://saxon.sf.net/generated-variable}gg1950701640" bSlot="0"/>
-       </fn>
-       <axis name="attribute" nodeTest="attribute(Q{}categories)" jsTest="return item.name=='categories'"/>
-      </slash>
-     </data>
-    </cvUntyped>
-    <varRef name="category-code" slot="2"/>
-   </fn>
-  </function>
- </co>
- <co id="2" binds="">
-  <globalVariable name="Q{}tests-doc" type="document-node()?" line="47" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="function test(item) {return SaxonJS.U.isNode(item) &amp;&amp; (item.nodeType==9||item.nodeType==11);};if (test(val)) {return val;} else {throw SaxonJS.XError('Conversion failed', 'XTTE0590');}" jsCardCheck="function c(n) {return n&lt;=1;};">
-   <fn vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="47" name="doc">
-    <fn name="resolve-uri">
-     <str val="../tests-categories.xml"/>
-     <treat as="xs:string" jsTest="return SaxonJS.U.Atomic.string.matches(item);" diag="0|1||resolve-uri">
-      <check card="1" diag="0|1||resolve-uri">
-       <cvUntyped to="xs:string">
-        <data>
-         <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" name="ixsl:get" type="item()*">
-          <ifCall name="ixsl:window" type="item()?"/>
-          <str val="location.href"/>
-         </ifCall>
-        </data>
-       </cvUntyped>
-      </check>
-     </treat>
-    </fn>
-   </fn>
-  </globalVariable>
- </co>
- <co id="3" binds="2 4">
-  <template name="Q{}handle-submission" flags="os" line="29" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" slots="2">
-   <sequence role="body" vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="30">
-    <param name="submission-doc" slot="0">
-     <str role="select" val=""/>
-     <supplied role="conversion" slot="0"/>
-    </param>
-    <message line="31">
-     <valueOf role="select" flags="e">
-      <fn name="concat">
-       <str val="In handle-submission... "/>
-       <convert from="xs:integer" to="xs:string">
-        <fn name="count">
-         <varRef name="submission-doc" slot="0"/>
-        </fn>
-       </convert>
-      </fn>
-     </valueOf>
-     <str role="terminate" val="no"/>
-     <str role="error" val="Q{http://www.w3.org/2005/xqt-errors}XTMM9000"/>
-    </message>
-    <resultDoc line="32" global="#&#xD;&#xA;#Wed Feb 15 11:12:46 CET 2017&#xD;&#xA;" local="#&#xD;&#xA;#Wed Feb 15 11:12:46 CET 2017&#xD;&#xA;method={http\://saxonica.com/ns/interactiveXSLT}replace-content&#xD;&#xA;">
-     <str role="href" val="#content"/>
-     <elem role="content" line="35" name="ul" nsuri="http://www.w3.org/1999/xhtml" flags="d">
-      <forEach>
-       <docOrder intra="0">
-        <let var="vv:loc879583678" as="document-node()" slot="1" eval="7">
-         <check line="55" card="1" diag="0|2||key">
-          <gVarRef name="Q{}tests-doc" bSlot="0"/>
-         </check>
-         <filter flags="b">
-          <filter flags="b">
-           <slash>
-            <conditionalSort>
-             <fn name="exists">
-              <tail start="2">
-               <treat as="node()" jsTest="return SaxonJS.U.isNode(item);" diag="1|0|XPTY0019|/">
-                <varRef name="submission-doc" slot="0"/>
-               </treat>
-              </tail>
-             </fn>
-             <docOrder intra="0">
-              <slash>
-               <treat as="node()" jsTest="return SaxonJS.U.isNode(item);" diag="1|0|XPTY0019|/">
-                <varRef name="submission-doc" slot="0"/>
-               </treat>
-               <axis name="descendant" nodeTest="*:test-set" jsTest="var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1&amp;&amp;q.local == 'test-set'"/>
-              </slash>
-             </docOrder>
-            </conditionalSort>
-            <axis name="child" nodeTest="*:test-case" jsTest="var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1&amp;&amp;q.local == 'test-case'"/>
-           </slash>
-           <gcEE op="=" card="N:1" comp="CCC">
-            <gVarRef name="Q{}result-type" bSlot="1"/>
-            <data>
-             <axis name="attribute" nodeTest="attribute(Q{}result)" jsTest="return item.name=='result'"/>
-            </data>
-           </gcEE>
-          </filter>
-          <fn line="55" name="contains-token">
-           <cvUntyped to="xs:string">
-            <data>
-             <slash>
-              <fn name="key">
-               <str val="test-cases"/>
-               <check line="35" card="1" diag="0|1||f:isInCategory">
-                <cvUntyped to="xs:string">
-                 <data>
-                  <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
-                 </data>
-                </cvUntyped>
-               </check>
-               <varRef line="35" name="vv:loc879583678" slot="1"/>
-              </fn>
-              <axis name="attribute" nodeTest="attribute(Q{}categories)" jsTest="return item.name=='categories'"/>
-             </slash>
-            </data>
-           </cvUntyped>
-           <treat line="35" as="xs:string" jsTest="return SaxonJS.U.Atomic.string.matches(item);" diag="0|2||f:isInCategory">
-            <check card="1" diag="0|2||f:isInCategory">
-             <cvUntyped to="xs:string">
-              <data>
-               <ifCall xmlns:map="http://www.w3.org/2005/xpath-functions/map" name="map:get" type="item()*">
-                <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" name="ixsl:query-params" type="map(*)"/>
-                <str val="category"/>
-               </ifCall>
-              </data>
-             </cvUntyped>
-            </check>
-           </treat>
-          </fn>
-         </filter>
-        </let>
-       </docOrder>
-       <elem line="37" name="li" nsuri="http://www.w3.org/1999/xhtml" flags="dl">
-        <sequence>
-         <elem name="a" nsuri="http://www.w3.org/1999/xhtml" flags="dl">
-          <sequence>
-           <att name="href" flags="l">
-            <fn name="concat">
-             <str val="testcase.html?t="/>
-             <fn name="string">
-              <convert from="xs:untypedAtomic" to="xs:string">
-               <data>
-                <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
-               </data>
-              </convert>
-             </fn>
-             <str val="&amp;s="/>
-             <fn name="string-join">
-              <convert from="xs:untypedAtomic" to="xs:string">
-               <data>
-                <slash>
-                 <axis name="parent" nodeTest="(document-node()|element())" jsTest="return SaxonJS.U.isNode(item) &amp;&amp; (item.nodeType==9||item.nodeType==11||item.nodeType==1);"/>
-                 <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
-                </slash>
-               </data>
-              </convert>
-              <str val=" "/>
-             </fn>
-            </fn>
-           </att>
-           <valueOf flags="el">
-            <convert from="xs:untypedAtomic" to="xs:string">
-             <data>
-              <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
-             </data>
-            </convert>
-           </valueOf>
-          </sequence>
-         </elem>
-         <choose line="38">
-          <fn name="exists">
-           <axis name="attribute" nodeTest="attribute(Q{}comment)" jsTest="return item.name=='comment'"/>
-          </fn>
-          <valueOf flags="el">
-           <fn name="concat">
-            <str val="&#xA;                      ("/>
-            <fn name="string">
-             <convert from="xs:untypedAtomic" to="xs:string">
-              <data>
-               <axis name="attribute" nodeTest="attribute(Q{}comment)" jsTest="return item.name=='comment'"/>
-              </data>
-             </convert>
-            </fn>
-            <str val=")  &#xA;                  "/>
-           </fn>
-          </valueOf>
-         </choose>
-        </sequence>
-       </elem>
-      </forEach>
-     </elem>
-    </resultDoc>
-   </sequence>
-  </template>
- </co>
- <co id="5" binds="6">
-  <globalVariable name="Q{http://saxon.sf.net/generated-variable}gg1374754488" type="item()+" line="23" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="return val;" jsCardCheck="function c(n) {return n&gt;=1;};">
-   <sequence vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="23">
-    <str val="Fetching: "/>
-    <indexedFilter use="right">
-     <gVarRef name="Q{}results" bSlot="0"/>
-     <gc op="=" card="M:N" comp="GAC|http://www.w3.org/2005/xpath-functions/collation/codepoint">
-      <data>
-       <ifCall xmlns:map="http://www.w3.org/2005/xpath-functions/map" name="map:get" type="item()*">
-        <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" name="ixsl:query-params" type="map(*)"/>
-        <str val="product"/>
-       </ifCall>
-      </data>
-      <data>
-       <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
-      </data>
-     </gc>
-    </indexedFilter>
-   </sequence>
-  </globalVariable>
- </co>
- <co id="7" binds="6">
-  <globalVariable name="Q{http://saxon.sf.net/generated-variable}gg640113647" type="xs:string?" line="25" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="return SaxonJS.U.Atomic.string.cast(val);" jsCardCheck="function c(n) {return n&lt;=1;};">
-   <check vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="25" card="?" diag="0|0||resolve-uri">
+  <globalVariable name="Q{http://saxon.sf.net/generated-variable}gg1710265848" type="xs:string?" line="26" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="return SaxonJS.U.Atomic.string.cast(val);" jsCardCheck="function c(n) {return n&lt;=1;};">
+   <check vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="26" card="?" diag="0|0||resolve-uri">
     <cvUntyped to="xs:string">
      <data>
       <indexedFilter use="right">
@@ -245,24 +24,347 @@
    </check>
   </globalVariable>
  </co>
- <co id="1" binds="2">
-  <globalVariable name="Q{http://saxon.sf.net/generated-variable}gg1950701640" type="document-node()" line="55" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="function test(item) {return SaxonJS.U.isNode(item) &amp;&amp; (item.nodeType==9||item.nodeType==11);};if (test(val)) {return val;} else {throw SaxonJS.XError('Conversion failed', 'XTTE0590');}" jsCardCheck="function c(n) {return n==1;};">
-   <check vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="55" card="1" diag="0|2||key">
-    <gVarRef name="Q{}tests-doc" bSlot="0"/>
-   </check>
+ <co id="2" binds="3">
+  <function name="Q{http://myfunction}isInCategory" line="67" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" eval="8" flags="pU" as="xs:boolean" slots="3">
+   <arg name="test-set" as="xs:string"/>
+   <arg name="test-case" as="xs:string"/>
+   <arg name="category-code" as="xs:string"/>
+   <fn role="body" vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="71" name="contains-token">
+    <cvUntyped to="xs:string">
+     <data>
+      <slash>
+       <fn name="key">
+        <str val="test-cases"/>
+        <varRef name="test-case" slot="1"/>
+        <gVarRef name="Q{http://saxon.sf.net/generated-variable}gg515184459" bSlot="0"/>
+       </fn>
+       <axis name="attribute" nodeTest="attribute(Q{}categories)" jsTest="return item.name=='categories'"/>
+      </slash>
+     </data>
+    </cvUntyped>
+    <varRef name="category-code" slot="2"/>
+   </fn>
+  </function>
+ </co>
+ <co id="4" binds="">
+  <globalVariable name="Q{}tests-doc" type="document-node()?" line="63" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="function test(item) {return SaxonJS.U.isNode(item) &amp;&amp; (item.nodeType==9||item.nodeType==11);};if (test(val)) {return val;} else {throw SaxonJS.XError('Conversion failed', 'XTTE0590');}" jsCardCheck="function c(n) {return n&lt;=1;};">
+   <fn vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="63" name="doc">
+    <fn name="resolve-uri">
+     <str val="../tests-categories.xml"/>
+     <treat as="xs:string" jsTest="return SaxonJS.U.Atomic.string.matches(item);" diag="0|1||resolve-uri">
+      <check card="1" diag="0|1||resolve-uri">
+       <cvUntyped to="xs:string">
+        <data>
+         <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" name="ixsl:get" type="item()*">
+          <ifCall name="ixsl:window" type="item()?"/>
+          <str val="location.href"/>
+         </ifCall>
+        </data>
+       </cvUntyped>
+      </check>
+     </treat>
+    </fn>
+   </fn>
   </globalVariable>
+ </co>
+ <co id="5" vis="PUBLIC" binds="">
+  <globalParam name="Q{}notReported" type="xs:boolean" line="0" visibility="PUBLIC" jsAcceptor="return SaxonJS.U.Atomic.boolean.cast(val);" jsCardCheck="function c(n) {return n==1;};">
+   <false/>
+  </globalParam>
+ </co>
+ <co id="6" binds="4 7 5 4">
+  <template name="Q{}handle-submission" flags="os" line="30" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" slots="4">
+   <sequence role="body" vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="31">
+    <param name="submission-doc" slot="0">
+     <str role="select" val=""/>
+     <supplied role="conversion" slot="0"/>
+    </param>
+    <message line="32">
+     <valueOf role="select" flags="e">
+      <fn name="concat">
+       <str val="In handle-submission... "/>
+       <convert from="xs:integer" to="xs:string">
+        <fn name="count">
+         <varRef name="submission-doc" slot="0"/>
+        </fn>
+       </convert>
+      </fn>
+     </valueOf>
+     <str role="terminate" val="no"/>
+     <str role="error" val="Q{http://www.w3.org/2005/xqt-errors}XTMM9000"/>
+    </message>
+    <resultDoc line="33" global="#&#xD;&#xA;#Wed Feb 15 11:40:36 CET 2017&#xD;&#xA;" local="#&#xD;&#xA;#Wed Feb 15 11:40:36 CET 2017&#xD;&#xA;method={http\://saxonica.com/ns/interactiveXSLT}replace-content&#xD;&#xA;">
+     <str role="href" val="#content"/>
+     <sequence role="content" line="36">
+      <elem name="ul" nsuri="http://www.w3.org/1999/xhtml" flags="d">
+       <forEach>
+        <docOrder intra="0">
+         <let var="vv:loc243194708" as="document-node()" slot="1" eval="7">
+          <check line="71" card="1" diag="0|2||key">
+           <gVarRef name="Q{}tests-doc" bSlot="0"/>
+          </check>
+          <filter flags="b">
+           <filter flags="b">
+            <slash>
+             <conditionalSort>
+              <fn name="exists">
+               <tail start="2">
+                <treat as="node()" jsTest="return SaxonJS.U.isNode(item);" diag="1|0|XPTY0019|/">
+                 <varRef name="submission-doc" slot="0"/>
+                </treat>
+               </tail>
+              </fn>
+              <docOrder intra="0">
+               <slash>
+                <treat as="node()" jsTest="return SaxonJS.U.isNode(item);" diag="1|0|XPTY0019|/">
+                 <varRef name="submission-doc" slot="0"/>
+                </treat>
+                <axis name="descendant" nodeTest="*:test-set" jsTest="var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1&amp;&amp;q.local == 'test-set'"/>
+               </slash>
+              </docOrder>
+             </conditionalSort>
+             <axis name="child" nodeTest="*:test-case" jsTest="var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1&amp;&amp;q.local == 'test-case'"/>
+            </slash>
+            <gcEE op="=" card="N:1" comp="CCC">
+             <gVarRef name="Q{}result-type" bSlot="1"/>
+             <data>
+              <axis name="attribute" nodeTest="attribute(Q{}result)" jsTest="return item.name=='result'"/>
+             </data>
+            </gcEE>
+           </filter>
+           <fn line="71" name="contains-token">
+            <cvUntyped to="xs:string">
+             <data>
+              <slash>
+               <fn name="key">
+                <str val="test-cases"/>
+                <check line="36" card="1" diag="0|1||f:isInCategory">
+                 <cvUntyped to="xs:string">
+                  <data>
+                   <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+                  </data>
+                 </cvUntyped>
+                </check>
+                <varRef line="36" name="vv:loc243194708" slot="1"/>
+               </fn>
+               <axis name="attribute" nodeTest="attribute(Q{}categories)" jsTest="return item.name=='categories'"/>
+              </slash>
+             </data>
+            </cvUntyped>
+            <treat line="36" as="xs:string" jsTest="return SaxonJS.U.Atomic.string.matches(item);" diag="0|2||f:isInCategory">
+             <check card="1" diag="0|2||f:isInCategory">
+              <cvUntyped to="xs:string">
+               <data>
+                <ifCall xmlns:map="http://www.w3.org/2005/xpath-functions/map" name="map:get" type="item()*">
+                 <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" name="ixsl:query-params" type="map(*)"/>
+                 <str val="category"/>
+                </ifCall>
+               </data>
+              </cvUntyped>
+             </check>
+            </treat>
+           </fn>
+          </filter>
+         </let>
+        </docOrder>
+        <elem line="38" name="li" nsuri="http://www.w3.org/1999/xhtml" flags="dl">
+         <sequence>
+          <elem name="a" nsuri="http://www.w3.org/1999/xhtml" flags="dl">
+           <sequence>
+            <att name="href" flags="l">
+             <fn name="concat">
+              <str val="testcase.html?t="/>
+              <fn name="string">
+               <convert from="xs:untypedAtomic" to="xs:string">
+                <data>
+                 <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+                </data>
+               </convert>
+              </fn>
+              <str val="&amp;s="/>
+              <fn name="string-join">
+               <convert from="xs:untypedAtomic" to="xs:string">
+                <data>
+                 <slash>
+                  <axis name="parent" nodeTest="(document-node()|element())" jsTest="return SaxonJS.U.isNode(item) &amp;&amp; (item.nodeType==9||item.nodeType==11||item.nodeType==1);"/>
+                  <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+                 </slash>
+                </data>
+               </convert>
+               <str val=" "/>
+              </fn>
+             </fn>
+            </att>
+            <valueOf flags="el">
+             <convert from="xs:untypedAtomic" to="xs:string">
+              <data>
+               <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+              </data>
+             </convert>
+            </valueOf>
+           </sequence>
+          </elem>
+          <choose line="39">
+           <fn name="exists">
+            <axis name="attribute" nodeTest="attribute(Q{}comment)" jsTest="return item.name=='comment'"/>
+           </fn>
+           <valueOf flags="el">
+            <fn name="concat">
+             <str val="&#xA;                      ("/>
+             <fn name="string">
+              <convert from="xs:untypedAtomic" to="xs:string">
+               <data>
+                <axis name="attribute" nodeTest="attribute(Q{}comment)" jsTest="return item.name=='comment'"/>
+               </data>
+              </convert>
+             </fn>
+             <str val=")  &#xA;                  "/>
+            </fn>
+           </valueOf>
+          </choose>
+         </sequence>
+        </elem>
+       </forEach>
+      </elem>
+      <choose line="45">
+       <gVarRef name="Q{}notReported" bSlot="2"/>
+       <let line="46" var="runned-test" as="xs:string*" slot="2" eval="3">
+        <slash>
+         <docOrder intra="0">
+          <slash>
+           <conditionalSort>
+            <fn name="exists">
+             <tail start="2">
+              <treat as="node()" jsTest="return SaxonJS.U.isNode(item);" diag="1|0|XPTY0019|/">
+               <varRef name="submission-doc" slot="0"/>
+              </treat>
+             </tail>
+            </fn>
+            <docOrder intra="0">
+             <slash>
+              <treat as="node()" jsTest="return SaxonJS.U.isNode(item);" diag="1|0|XPTY0019|/">
+               <varRef name="submission-doc" slot="0"/>
+              </treat>
+              <axis name="descendant" nodeTest="*:test-set" jsTest="var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1&amp;&amp;q.local == 'test-set'"/>
+             </slash>
+            </docOrder>
+           </conditionalSort>
+           <axis name="child" nodeTest="*:test-case" jsTest="var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1&amp;&amp;q.local == 'test-case'"/>
+          </slash>
+         </docOrder>
+         <fn name="string">
+          <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+         </fn>
+        </slash>
+        <let line="47" var="not-reported" as="*:test-case*" slot="3" eval="3">
+         <filter flags="b">
+          <filter flags="b">
+           <slash simple="1">
+            <gVarRef name="Q{}tests-doc" bSlot="3"/>
+            <axis name="descendant" nodeTest="*:test-case" jsTest="var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1&amp;&amp;q.local == 'test-case'"/>
+           </slash>
+           <fn name="not">
+            <gcEE op="=" card="N:1" comp="CCC">
+             <varRef name="runned-test" slot="2"/>
+             <data>
+              <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+             </data>
+            </gcEE>
+           </fn>
+          </filter>
+          <fn name="contains-token">
+           <cvUntyped to="xs:string">
+            <data>
+             <axis name="attribute" nodeTest="attribute(Q{}categories)" jsTest="return item.name=='categories'"/>
+            </data>
+           </cvUntyped>
+           <treat as="xs:string" jsTest="return SaxonJS.U.Atomic.string.matches(item);" diag="0|1||contains-token">
+            <check card="1" diag="0|1||contains-token">
+             <cvUntyped to="xs:string">
+              <data>
+               <ifCall xmlns:map="http://www.w3.org/2005/xpath-functions/map" name="map:get" type="item()*">
+                <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" name="ixsl:query-params" type="map(*)"/>
+                <str val="category"/>
+               </ifCall>
+              </data>
+             </cvUntyped>
+            </check>
+           </treat>
+          </fn>
+         </filter>
+         <choose line="48">
+          <fn name="exists">
+           <varRef name="not-reported" slot="3"/>
+          </fn>
+          <sequence line="49">
+           <elem name="h3" nsuri="http://www.w3.org/1999/xhtml" flags="d">
+            <valueOf flags="el">
+             <str val="Not reported tests"/>
+            </valueOf>
+           </elem>
+           <elem line="51" name="ul" nsuri="http://www.w3.org/1999/xhtml" flags="d">
+            <forEach>
+             <varRef name="not-reported" slot="3"/>
+             <elem line="53" name="li" nsuri="http://www.w3.org/1999/xhtml" flags="dl">
+              <elem name="a" nsuri="http://www.w3.org/1999/xhtml" flags="dl">
+               <sequence>
+                <att name="href" flags="l">
+                 <fn name="concat">
+                  <str val="testcase.html?t="/>
+                  <fn name="string">
+                   <convert from="xs:untypedAtomic" to="xs:string">
+                    <data>
+                     <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+                    </data>
+                   </convert>
+                  </fn>
+                  <str val="&amp;s="/>
+                  <fn name="string-join">
+                   <convert from="xs:untypedAtomic" to="xs:string">
+                    <data>
+                     <slash>
+                      <axis name="parent" nodeTest="(document-node()|element())" jsTest="return SaxonJS.U.isNode(item) &amp;&amp; (item.nodeType==9||item.nodeType==11||item.nodeType==1);"/>
+                      <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+                     </slash>
+                    </data>
+                   </convert>
+                   <str val=" "/>
+                  </fn>
+                 </fn>
+                </att>
+                <valueOf flags="el">
+                 <convert from="xs:untypedAtomic" to="xs:string">
+                  <data>
+                   <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+                  </data>
+                 </convert>
+                </valueOf>
+               </sequence>
+              </elem>
+             </elem>
+            </forEach>
+           </elem>
+          </sequence>
+         </choose>
+        </let>
+       </let>
+      </choose>
+     </sequence>
+    </resultDoc>
+   </sequence>
+  </template>
  </co>
  <co id="8" binds="">
-  <globalVariable name="Q{http://saxon.sf.net/generated-variable}gg124323713" type="item()?" line="25" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="return val;" jsCardCheck="function c(n) {return n&lt;=1;};">
-   <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="25" name="ixsl:window" type="item()?"/>
+  <globalVariable name="Q{http://saxon.sf.net/generated-variable}gg1504642150" type="item()?" line="26" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="return val;" jsCardCheck="function c(n) {return n&lt;=1;};">
+   <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="26" name="ixsl:window" type="item()?"/>
   </globalVariable>
  </co>
- <co id="4" vis="PUBLIC" binds="">
+ <co id="7" vis="PUBLIC" binds="">
   <globalParam name="Q{}result-type" type="xs:string+" line="0" visibility="PUBLIC" flags="i" jsAcceptor="return SaxonJS.U.Atomic.string.cast(val);" jsCardCheck="function c(n) {return n&gt;=1;};"/>
  </co>
- <co id="9" binds="5 3 7 8">
-  <template name="Q{}main" flags="os" line="18" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" slots="0">
-   <sequence role="body" vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="19">
+ <co id="9" binds="10 6 0 8">
+  <template name="Q{}main" flags="os" line="19" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" slots="0">
+   <sequence role="body" vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="20">
     <message>
      <valueOf role="select" flags="Se">
       <str val="Started..."/>
@@ -270,7 +372,7 @@
      <str role="terminate" val="no"/>
      <str role="error" val="Q{http://www.w3.org/2005/xqt-errors}XTMM9000"/>
     </message>
-    <resultDoc line="20" global="#&#xD;&#xA;#Wed Feb 15 11:12:46 CET 2017&#xD;&#xA;" local="#&#xD;&#xA;#Wed Feb 15 11:12:46 CET 2017&#xD;&#xA;">
+    <resultDoc line="21" global="#&#xD;&#xA;#Wed Feb 15 11:40:36 CET 2017&#xD;&#xA;" local="#&#xD;&#xA;#Wed Feb 15 11:40:36 CET 2017&#xD;&#xA;">
      <str role="href" val="#subtitle"/>
      <valueOf role="content" flags="e">
       <fn name="concat">
@@ -306,22 +408,22 @@
       </fn>
      </valueOf>
     </resultDoc>
-    <message line="23">
-     <gVarRef role="select" name="Q{http://saxon.sf.net/generated-variable}gg1374754488" bSlot="0"/>
+    <message line="24">
+     <gVarRef role="select" name="Q{http://saxon.sf.net/generated-variable}gg1804379080" bSlot="0"/>
      <str role="terminate" val="no"/>
      <str role="error" val="Q{http://www.w3.org/2005/xqt-errors}XTMM9000"/>
     </message>
-    <callT line="24" name="handle-submission" bSlot="1">
+    <callT line="25" name="handle-submission" bSlot="1">
      <withParam name="submission-doc" flags="c" as="document-node()?">
-      <fn line="25" name="doc">
+      <fn line="26" name="doc">
        <fn name="resolve-uri">
-        <gVarRef name="Q{http://saxon.sf.net/generated-variable}gg640113647" bSlot="2"/>
+        <gVarRef name="Q{http://saxon.sf.net/generated-variable}gg1710265848" bSlot="2"/>
         <treat as="xs:string" jsTest="return SaxonJS.U.Atomic.string.matches(item);" diag="0|1||resolve-uri">
          <check card="1" diag="0|1||resolve-uri">
           <cvUntyped to="xs:string">
            <data>
             <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" name="ixsl:get" type="item()*">
-             <gVarRef name="Q{http://saxon.sf.net/generated-variable}gg124323713" bSlot="3"/>
+             <gVarRef name="Q{http://saxon.sf.net/generated-variable}gg1504642150" bSlot="3"/>
              <str val="location.href"/>
             </ifCall>
            </data>
@@ -335,9 +437,9 @@
    </sequence>
   </template>
  </co>
- <co id="6" binds="">
-  <globalVariable name="Q{}results" type="element(Q{}result)+" line="12" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" flags="x" jsAcceptor="function test(item) {function a() {var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1 &amp;&amp; q.uri==''&amp;&amp;q.local=='result';};function b() {function a() {var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1 &amp;&amp; q.uri==''&amp;&amp;q.local=='result';};function b() {return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1;};return a()&amp;&amp;b();};return a()&amp;&amp;b();};if (test(val)) {return val;} else {throw SaxonJS.XError('Conversion failed', 'XTTE0590');}" jsCardCheck="function c(n) {return n&gt;=1;};">
-   <treat vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="13" as="element(Q{}result)" jsTest="var q=SaxonJS.U.nameOfNode(item); return item.nodeType==1 &amp;&amp; q.uri==''&amp;&amp;q.local=='result';" diag="3|0|XTTE0570|results">
+ <co id="1" binds="">
+  <globalVariable name="Q{}results" type="element(Q{}result)+" line="13" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" flags="x" jsAcceptor="function test(item) {function a() {var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1 &amp;&amp; q.uri==''&amp;&amp;q.local=='result';};function b() {function a() {var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1 &amp;&amp; q.uri==''&amp;&amp;q.local=='result';};function b() {return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1;};return a()&amp;&amp;b();};return a()&amp;&amp;b();};if (test(val)) {return val;} else {throw SaxonJS.XError('Conversion failed', 'XTTE0590');}" jsCardCheck="function c(n) {return n&gt;=1;};">
+   <treat vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="14" as="element(Q{}result)" jsTest="var q=SaxonJS.U.nameOfNode(item); return item.nodeType==1 &amp;&amp; q.uri==''&amp;&amp;q.local=='result';" diag="3|0|XTTE0570|results">
     <sequence>
      <elem name="result">
       <sequence>
@@ -349,7 +451,7 @@
        </valueOf>
       </sequence>
      </elem>
-     <elem line="14" name="result">
+     <elem line="15" name="result">
       <sequence>
        <att name="name" flags="l">
         <str val="Saxon-JS"/>
@@ -359,7 +461,7 @@
        </valueOf>
       </sequence>
      </elem>
-     <elem line="15" name="result">
+     <elem line="16" name="result">
       <sequence>
        <att name="name" flags="l">
         <str val="Parrot"/>
@@ -373,13 +475,41 @@
    </treat>
   </globalVariable>
  </co>
- <co id="10" binds="">
+ <co id="3" binds="4">
+  <globalVariable name="Q{http://saxon.sf.net/generated-variable}gg515184459" type="document-node()" line="71" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="function test(item) {return SaxonJS.U.isNode(item) &amp;&amp; (item.nodeType==9||item.nodeType==11);};if (test(val)) {return val;} else {throw SaxonJS.XError('Conversion failed', 'XTTE0590');}" jsCardCheck="function c(n) {return n==1;};">
+   <check vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="71" card="1" diag="0|2||key">
+    <gVarRef name="Q{}tests-doc" bSlot="0"/>
+   </check>
+  </globalVariable>
+ </co>
+ <co id="11" binds="">
   <mode onNo="TC" flags="dW" patternSlots="0"/>
  </co>
+ <co id="10" binds="1">
+  <globalVariable name="Q{http://saxon.sf.net/generated-variable}gg1804379080" type="item()+" line="24" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" visibility="PRIVATE" jsAcceptor="return val;" jsCardCheck="function c(n) {return n&gt;=1;};">
+   <sequence vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="24">
+    <str val="Fetching: "/>
+    <indexedFilter use="right">
+     <gVarRef name="Q{}results" bSlot="0"/>
+     <gc op="=" card="M:N" comp="GAC|http://www.w3.org/2005/xpath-functions/collation/codepoint">
+      <data>
+       <ifCall xmlns:map="http://www.w3.org/2005/xpath-functions/map" name="map:get" type="item()*">
+        <ifCall xmlns:ixsl="http://saxonica.com/ns/interactiveXSLT" name="ixsl:query-params" type="map(*)"/>
+        <str val="product"/>
+       </ifCall>
+      </data>
+      <data>
+       <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
+      </data>
+     </gc>
+    </indexedFilter>
+   </sequence>
+  </globalVariable>
+ </co>
  <overridden/>
- <key name="Q{}test-cases" line="49" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" binds="">
+ <key name="Q{}test-cases" line="65" module="file:/e:/src/xslt30-test/report/viewer/process.xsl" binds="">
   <p.nodeTest test="element(Q{http://www.w3.org/2012/10/xslt-test-catalog}test-case)" jsTest="var q=SaxonJS.U.nameOfNode(item); return SaxonJS.U.isNode(item) &amp;&amp; item.nodeType==1 &amp;&amp; q.uri=='http://www.w3.org/2012/10/xslt-test-catalog'&amp;&amp;q.local=='test-case';"/>
-  <data vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="49">
+  <data vn="31" baseUri="file:/e:/src/xslt30-test/report/viewer/process.xsl" ns="=http://www.w3.org/1999/xhtml xsl=http://www.w3.org/1999/XSL/Transform f=http://myfunction prop=http://saxonica.com/ns/html-property cat=http://www.w3.org/2012/10/xslt-test-catalog ixsl=http://saxonica.com/ns/interactiveXSLT style=http://saxonica.com/ns/html-style-property xs=http://www.w3.org/2001/XMLSchema" line="65">
    <axis name="attribute" nodeTest="attribute(Q{}name)" jsTest="return item.name=='name'"/>
   </data>
  </key>
@@ -388,4 +518,4 @@
  </output>
  <decimalFormat decimal-separator="46" grouping-separator="44" digit="35" minus-sign="45" percent="37" per-mille="8240" zero-digit="48" exponent-separator="101" pattern-separator="59" infinity="Infinity" NaN="NaN"/>
 </package>
-<?Σ d54c20d1?>
+<?Σ 1a91542b?>
