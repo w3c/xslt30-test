@@ -39,8 +39,10 @@
             </pre>
         </xsl:result-document>
         <xsl:result-document href="#stylesheet" method="ixsl:replace-content">
+            <xsl:variable name="env" select="$test-case/cat:environment"/>
+            <xsl:variable name="stylesheet-filename" select="($env/cat:stylesheet/@file, $test-case/../cat:environment[@name = $env/@ref]/cat:stylesheet/@file)[1]"/>
             <pre>
-                <xsl:value-of select="unparsed-text(resolve-uri($test-case//cat:stylesheet/@file, base-uri($test-case)))"/>
+                <xsl:value-of select="unparsed-text(resolve-uri($stylesheet-filename, base-uri($test-case)))"/>
             </pre>
         </xsl:result-document>
         <xsl:result-document href="#source" method="ixsl:replace-content">
