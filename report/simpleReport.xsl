@@ -15,7 +15,7 @@
     <xsl:variable name="test-cases" select="$test-sets/*/test-case"/>
     
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="">
-        <result name="Exselt">submission/Exselt.xml</result>
+        <result name="Exselt">submission/exselt.xml</result>
         <result name="Saxon-9.8">submission/Saxon_9.8.xml</result>
         <result name="Saxon-JS">submission/Saxon-JS_1.0.xml</result>
         <result name="Parrot">submission/Parrot_2017.xml</result>
