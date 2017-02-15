@@ -13,7 +13,7 @@
             Test Case {ixsl:query-params()?t} (in test set {ixsl:query-params()?s}) 
         </xsl:result-document>
         <xsl:call-template name="handle-catalog">
-            <xsl:with-param name="catalog-doc" select="document('/catalog.xml')"></xsl:with-param>
+            <xsl:with-param name="catalog-doc" select="document('../../catalog.xml')"></xsl:with-param>
         </xsl:call-template>
         <!--<ixsl:schedule-action document="{resolve-uri(//cat:test-set[@name=ixsl:query-params()?s]/@file, base-uri(.))}">
             <xsl:call-template name="handle-test-set"/>

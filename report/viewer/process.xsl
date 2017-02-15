@@ -44,7 +44,7 @@
         </xsl:result-document>
     </xsl:template>
     
-    <xsl:variable name="tests-doc" select="document('/report/tests-categories.xml')"/>
+    <xsl:variable name="tests-doc" select="document('../tests-categories.xml')"/>
     
     <xsl:key name="test-cases" match="cat:test-case" use="@name"/>
     
