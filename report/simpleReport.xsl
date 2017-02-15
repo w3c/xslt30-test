@@ -65,6 +65,7 @@
         <html>
             <head>
                 <title>XSLT 3.0 Test Results</title>
+                <link rel="stylesheet" href="viewer/style.css"/>
             </head>
             <body>
                 <h1>XSLT 3.0 Test Results</h1>
@@ -97,9 +98,9 @@
                         </tr>
                         <tr>
                             <xsl:for-each select="$results">
-                                <td>Passed</td>
-                                <td>Failed</td>
-                                <td>Not Run</td>
+                                <td class="passed">Passed</td>
+                                <td class="failed">Failed</td>
+                                <td class="notrun">Not Run</td>
                             </xsl:for-each>
                         </tr>
                     </thead>
@@ -111,9 +112,9 @@
                                 <td>{f:total(?filter)}</td>
                                 <xsl:for-each select="$results">
                                     <xsl:variable name="score" select="f:score(string(.), $category?filter)" as="map(*)"/>
-                                    <td>{$score?passed} <a href="viewer/passes.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
-                                    <td>{$score?failed} <a href="viewer/failures.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
-                                    <td>{$score?notrun} <a href="viewer/notruns.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
+                                    <td class="passed">{$score?passed} <a href="viewer/passes.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
+                                    <td class="failed">{$score?failed} <a href="viewer/failures.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
+                                    <td class="notrun">{$score?notrun} <a href="viewer/notruns.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
                                 </xsl:for-each>
                             </tr>
                         </xsl:for-each>
