@@ -10,9 +10,9 @@
     <xsl:param name="result-type" as="xs:string+"/>
     
     <xsl:variable name="results" as="element(result)*" xpath-default-namespace="" xmlns="">
-        <result name="Saxon-9.8">/report/submission/Saxon_9.8.xml</result>
-        <result name="Saxon-JS">/report/submission/Saxon-JS_1.0.xml</result>
-        <result name="Parrot">/report/submission/Parrot_2017.xml</result>
+        <result name="Saxon-9.8">../submission/Saxon_9.8.xml</result>
+        <result name="Saxon-JS">../submission/Saxon-JS_1.0.xml</result>
+        <result name="Parrot">../submission/Parrot_2017.xml</result>
     </xsl:variable>
     
     <xsl:template name="main">
@@ -22,7 +22,7 @@
         </xsl:result-document>
         <xsl:message select="'Fetching: ', $results[@name=ixsl:query-params()?product]"/>
         <xsl:call-template name="handle-submission">
-            <xsl:with-param name="submission-doc" select="doc($results[@name=ixsl:query-params()?product])"/>
+            <xsl:with-param name="submission-doc" select="doc(resolve-uri($results[@name=ixsl:query-params()?product], ixsl:get(ixsl:window(), 'location.href')))"/>
         </xsl:call-template>
     </xsl:template>
     
