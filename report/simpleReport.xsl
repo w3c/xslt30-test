@@ -112,9 +112,30 @@
                                 <td>{f:total(?filter)}</td>
                                 <xsl:for-each select="$results">
                                     <xsl:variable name="score" select="f:score(string(.), $category?filter)" as="map(*)"/>
-                                    <td class="passed">{$score?passed} <a href="viewer/passes.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
-                                    <td class="failed">{$score?failed} <a href="viewer/failures.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
-                                    <td class="notrun">{$score?notrun} <a href="viewer/notruns.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">[?]</a></td>
+                                    <td class="passed">
+                                        <xsl:choose>
+                                            <xsl:when test="$score?passed = 0">0</xsl:when>
+                                            <xsl:otherwise>
+                                                <a href="viewer/passes.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">{$score?passed}</a>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </td>
+                                    <td class="failed">
+                                        <xsl:choose>
+                                            <xsl:when test="$score?failed = 0">0</xsl:when>
+                                            <xsl:otherwise>
+                                                <a href="viewer/failures.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">{$score?failed}</a>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </td>
+                                    <td class="notrun">
+                                        <xsl:choose>
+                                            <xsl:when test="$score?notrun = 0">0</xsl:when>
+                                            <xsl:otherwise>
+                                                <a href="viewer/notruns.html?product={@name}&amp;category={$category?code}" title="Drilldown to test cases">{$score?notrun}</a>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </td>
                                 </xsl:for-each>
                             </tr>
                         </xsl:for-each>
