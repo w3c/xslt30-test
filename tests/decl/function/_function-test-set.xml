@@ -975,6 +975,7 @@
    <test-case name="function-1019">
       <description>Error: wrong type of value passed as argument to a function</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-02-16" change="XSLT 3.0 has different error code"/>
       <environment ref="function-10"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -984,8 +985,8 @@
       </test>
       <result>
          <any-of>
-            <assert-xml/>
-            <error code="XTTE0790"/>
+            <error code="XPTY0004"/> <!-- XSLT 3.0 -->
+            <error code="XTTE0790"/> <!-- XSLT 2.0 -->
          </any-of>
       </result>
    </test-case>
@@ -1768,8 +1769,7 @@
    
    <test-case name="function-5018">
       <description>Inlined equivalent of -5017, for comparison.</description>
-      <created by="Abel Braaksma" on="2015-12-31"/>
-      <modified by="Abel Braaksma" change="Added missing files, fixed expected result, fix bug 29777" on="2016-11-02"/>
+      <created by="Michael Kay" on="2017-02-10"/>
       <environment ref="function-01s"/>
       <dependencies>
          <spec value="XSLT30+"/>
