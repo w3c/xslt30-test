@@ -64,12 +64,17 @@
    <test-case name="su-shallow-descent-004">
       <description>Call stylesheet function whose body is motionless</description>
       <created by="Michael Kay" on="2016-07-15"/>
+      <modified by="Michael Kay" on="2017-02-15" change="add expected results"/>
       <environment ref="su-shallow-descent-A"/>
       <test>
          <initial-template name="t-004"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><TITLE>Pride and Prejudice</TITLE><TITLE>Tess of the d'Urbervilles</TITLE><TITLE>The Big Over Easy</TITLE></out>]]></assert-xml>
+         <all-of>
+            <assert>count(/out/BOOKLIST/BOOKS/ITEM) = 6</assert>
+            <assert>count(/out/BOOKLIST/CATEGORIES/CATEGORY) = 3</assert>
+            <assert>/out/BOOKLIST/BOOKS/ITEM[6]/TITLE='The Eyre Affair'</assert>
+         </all-of>
       </result>       
    </test-case>
 
