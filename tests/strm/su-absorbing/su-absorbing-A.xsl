@@ -56,7 +56,7 @@
     <xsl:sequence select="1 + sum($input/* ! f:count-descendants-or-self-005(.))"/>
   </xsl:function>
   
-  <xsl:template name="t-005" use-when="$RUN">
+  <xsl:template name="t-005" use-when="true() or $RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="(/BOOKLIST/BOOKS/ITEM) ! f:count-descendants-or-self-005(.)"/>
@@ -76,7 +76,7 @@
   
   <!-- two references to the variable allowed if you're careful -->
   
-  <xsl:function name="f:f-007" as="xs:string" streamability="absorbing">
+  <xsl:function name="f:f-007" as="xs:string" streamability="absorbing" use-when="$RUN">
     <xsl:param name="input" as="node()"/>
     <xsl:sequence select="namespace-uri($input) || '#' || local-name($input) || '?' || exists($input/*)"/>
   </xsl:function>
@@ -97,7 +97,7 @@
     <xsl:sequence select="string(PRICE)"/>
   </xsl:template>
   
-  <xsl:function name="f:f-008" as="element(data)" streamability="absorbing">
+  <xsl:function name="f:f-008" as="element(data)" streamability="absorbing" use-when="$RUN">
     <xsl:param name="input" as="node()*"/>
     <data>
       <xsl:apply-templates select="$input" mode="m-008"/>
@@ -107,14 +107,14 @@
   <xsl:template name="t-008" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:value-of select="f:f-008(/BOOKLIST/BOOKS/ITEM)"/>
+        <xsl:copy-of select="f:f-008(/BOOKLIST/BOOKS/ITEM)"/>
       </out>
     </xsl:source-document>
   </xsl:template>
   
   <!-- recursive absorbing function -->
   
-  <xsl:function name="f:count-descendants-009" as="xs:integer" streamability="absorbing">
+  <xsl:function name="f:count-descendants-009" as="xs:integer" streamability="absorbing" use-when="$RUN">
     <xsl:param name="input" as="node()"/>
     <!--<xsl:sequence select="if (has-children($input)) then sum($input/* ! (1 + f:count-descendants-009(.))) else 0"/>-->
     <xsl:sequence select="sum($input/* ! (1 + f:count-descendants-009(.)))"/>
@@ -130,7 +130,7 @@
   
   <!-- recursive absorbing function using has-children() -->
   
-  <xsl:function name="f:count-descendants-010" as="xs:integer" streamability="absorbing">
+  <xsl:function name="f:count-descendants-010" as="xs:integer" streamability="absorbing" use-when="$RUN">
     <xsl:param name="input" as="node()?"/>
     <xsl:sequence select="if (has-children($input)) then sum($input/* ! (1 + f:count-descendants-010(.))) else 0"/>
   </xsl:function>
@@ -185,12 +185,12 @@
   
   <!-- Call streamable function from streamable function -->
   
-  <xsl:function name="f:f-015a" as="xs:integer*" streamability="absorbing">
+  <xsl:function name="f:f-015a" as="xs:integer*" streamability="absorbing" use-when="$RUN">
     <xsl:param name="input" as="node()*"/>
     <xsl:sequence select="$input ! f:f-015b(.)"/>
   </xsl:function>
   
-  <xsl:function name="f:f-015b" as="xs:integer" streamability="absorbing">
+  <xsl:function name="f:f-015b" as="xs:integer" streamability="absorbing" use-when="$RUN">
     <xsl:param name="input" as="node()"/>
     <xsl:sequence select="string-length($input)"/>
   </xsl:function>
@@ -207,11 +207,11 @@
   
   <xsl:mode name="m-016" streamable="true"/>
   
-  <xsl:template match="TITLE" mode="m-016">
+  <xsl:template match="TITLE" mode="m-016" use-when="$RUN">
     <xsl:sequence select="f:f-015b(.)"/>
   </xsl:template>
   
-  <xsl:template match="TITLE/text()" mode="m-016">
+  <xsl:template match="TITLE/text()" mode="m-016" use-when="$RUN">
     <xsl:sequence select="f:f-015b(.)"/>
   </xsl:template>
   
@@ -225,7 +225,7 @@
   
   <!-- Call absorbing function with text nodes -->
   
-  <xsl:template name="t-017" use-when="true() or $RUN">
+  <xsl:template name="t-017" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:apply-templates select="/BOOKLIST/BOOKS/ITEM/TITLE/text()" mode="m-016"/>

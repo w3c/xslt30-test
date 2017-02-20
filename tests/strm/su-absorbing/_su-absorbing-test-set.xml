@@ -314,14 +314,15 @@
    </test-case>
    
    <test-case name="su-absorbing-909">
-      <description>Invalid absorbing function - has-children() is not deemed consuming. (But see bug 29712)</description>
+      <description>has-children() is not deemed consuming. (But see bug 29712)</description>
       <created by="Michael Kay" on="2016-06-28"/>
+      <modified by="Michael Kay" on="2017-02-20" change="non-consuming body now allowed"/>
       <test>
          <stylesheet file="su-absorbing-909.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3430"/>
+         <assert>/out = "true true true true true true"</assert>
       </result>       
    </test-case>
    

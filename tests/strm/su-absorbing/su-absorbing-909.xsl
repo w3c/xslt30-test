@@ -12,7 +12,7 @@
   
   <xsl:function name="f:has-children" as="xs:boolean" streamability="absorbing">
     <xsl:param name="input" as="node()"/>
-    <xsl:sequence select="has-children(.)"/>
+    <xsl:sequence select="has-children($input)"/>
   </xsl:function>
   
   <xsl:template name="main">
