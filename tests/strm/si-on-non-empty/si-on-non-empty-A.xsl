@@ -6,22 +6,19 @@
   <xsl:variable name="RUN" select="true()" static="yes"/>
   <!-- Parameters used to inhibit static optimizations -->
   <xsl:param name="empty" select="()"/>
-  <xsl:param name="non-empty" select="''"/>
+  <xsl:param name="param-string" select="''"/>
+  <xsl:param name="underscore" select="'_'"/>
   <xsl:strip-space elements="*"/>
 
  
-  <!-- Note, the first few tests are mechanically copied from xsl:where-populated
-       tests. They don't do anything meaningful, but are retained to ensure the code
-       paths work. -->
-        
- 
+  
   
   <!-- Test of xsl:on-non-empty with xsl:element (not empty) -->
 
   <xsl:template name="s-001" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="$non-empty"/>
+        <xsl:sequence select="$param-string"/>
         <xsl:on-non-empty>
           <xsl:element name="a">
             <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>
@@ -36,7 +33,7 @@
   <xsl:template name="s-002" use-when="$RUN">
        <xsl:source-document streamable="yes" href="../docs/books.xml">
            <Results>
-               <xsl:sequence select="$non-empty"/>
+               <xsl:sequence select="$param-string"/>
                <xsl:on-non-empty>
                  <first>one</first>
                  <second/>
@@ -52,7 +49,7 @@
   <xsl:template name="s-003" use-when="$RUN">
        <xsl:source-document streamable="yes" href="../docs/books.xml">
            <out>
-               <xsl:sequence select="$non-empty"/>
+               <xsl:sequence select="$param-string"/>
                <xsl:on-non-empty>
                  <xsl:sequence select="23, '', xs:date('2011-01-01'), xs:untypedAtomic(''), 0, /JUNK, xs:base64Binary('')"/>
                </xsl:on-non-empty>
@@ -65,7 +62,7 @@
   <xsl:template name="s-004" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="$non-empty"/>
+        <xsl:sequence select="$param-string"/>
         <xsl:on-non-empty>
           <a>
             <xsl:if test="current-date() lt xs:date('1900-01-01')">
@@ -82,7 +79,7 @@
   <xsl:template name="s-005" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="$non-empty"/>
+        <xsl:sequence select="$param-string"/>
         <xsl:on-non-empty>
           <a>
             <xsl:if test="current-date() gt xs:date('1900-01-01')">
@@ -99,7 +96,7 @@
   <xsl:template name="s-006" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="$non-empty"/>
+        <xsl:sequence select="$param-string"/>
         <xsl:on-non-empty>
           <ul>
             <xsl:for-each select="outermost(//ITEM)">
@@ -116,7 +113,7 @@
   <xsl:template name="s-007" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="$non-empty"/>
+        <xsl:sequence select="$param-string"/>
         <xsl:on-non-empty>
           <ul>
             <xsl:for-each select="outermost(//MAGAZINE)">
@@ -135,7 +132,7 @@
       <out>
         <xsl:for-each select="outermost(//ITEM)">
           <in>
-            <xsl:sequence select="$non-empty"/>
+            <xsl:sequence select="$param-string"/>
             <xsl:on-non-empty>
               <xsl:comment select="TITLE[parent::BOOK]"/>
             </xsl:on-non-empty>
@@ -155,7 +152,7 @@
       <out>
         <xsl:for-each select="outermost(//ITEM)">
           <in>
-            <xsl:sequence select="$non-empty"/>
+            <xsl:sequence select="$param-string"/>
             <xsl:on-non-empty>
               <xsl:value-of select="TITLE[parent::BOOK]"/>
             </xsl:on-non-empty>
@@ -173,7 +170,7 @@
   <xsl:template name="s-010" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="$non-empty"/>
+        <xsl:sequence select="$underscore"/>
         <xsl:on-non-empty>
           <a>
             <xsl:fork>
@@ -191,7 +188,7 @@
   <xsl:template name="s-011" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="$non-empty"/>
+        <xsl:sequence select="$param-string"/>
         <xsl:on-non-empty>
           <a>
             <xsl:fork>
@@ -280,7 +277,7 @@
       <out>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>  
         <xsl:on-non-empty>There is some price data</xsl:on-non-empty>
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[exists($non-empty)]"/>    
+        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[exists($param-string)]"/>    
       </out>
     </xsl:source-document>
   </xsl:template> 
@@ -290,7 +287,7 @@
   <xsl:template name="s-026" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[exists($non-empty)]"/>  
+        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[exists($param-string)]"/>  
         <xsl:on-non-empty>There is some price data</xsl:on-non-empty>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>    
       </out>
@@ -316,7 +313,7 @@
   <xsl:template name="s-028" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="(1 to 20)[. ge 20][exists($non-empty)]"/>  
+        <xsl:sequence select="(1 to 20)[. ge 20][exists($param-string)]"/>  
         <xsl:on-non-empty>There is some price data</xsl:on-non-empty>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA/data()"/> 
       </out>
@@ -342,7 +339,7 @@
       <xsl:for-each select="BOOKLIST">
         <out>
           <xsl:variable name="x" select="name()"/>
-          <xsl:sequence select="$non-empty"/>
+          <xsl:sequence select="$param-string"/>
           <xsl:on-non-empty>There is no price data within <xsl:value-of select="$x"/></xsl:on-non-empty> 
         </out>
       </xsl:for-each>
