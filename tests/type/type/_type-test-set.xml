@@ -957,6 +957,7 @@
    <test-case name="type-0164">
       <description>cast to a non-atomic type</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-02-18" change="alternative error code for XP3.1"/>
       <environment ref="type-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -965,7 +966,10 @@
          <stylesheet file="type-0164.xsl"/>
       </test>
       <result>
-         <error code="XPST0051"/>
+         <any-of>
+            <error code="XPST0051"/> <!-- XPath 2.0 -->
+            <error code="XQST0052"/> <!-- XPath 3.1 -->
+         </any-of>
       </result>
    </test-case>
 

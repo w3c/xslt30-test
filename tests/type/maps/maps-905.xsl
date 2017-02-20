@@ -7,7 +7,7 @@
     
     <!--
         tests old syntax of maps: map { 1 := 'a' }
-        this syntax existed in an earlier draft, tests should throw static error XPST0017, even though the variable is not referenced
+        this syntax existed in an earlier draft, tests should throw static error XPST0003, even though the variable is not referenced
     -->
     
     <xsl:param name="test-case" static="yes" required="yes" />

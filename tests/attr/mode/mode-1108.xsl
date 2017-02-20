@@ -2,7 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    >
-<!-- Purpose: Use of accumulators that are / are not applicable to the initial mode. -->
+<!-- Purpose: Error: xsl:mode must be empty. -->
 
    <xsl:output method="xml" encoding="UTF-8" indent="no"/>
    

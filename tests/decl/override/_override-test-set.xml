@@ -301,13 +301,17 @@
    <test-case name="override-f-020">
       <description>Override conflicts with locally-declared function</description>
       <created by="Michael Kay" on="2015-08-28"/>
+      <modified by="Michael Kay" on="2017-02-19" change="add alternative error code"/>
       <environment ref="override-f-A"/>
       <test>
          <package file="override-f-020.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE0770"/>
+         <any-of>
+            <error code="XTSE0770"/>
+            <error code="XTSE3050"/>
+         </any-of>
       </result>
    </test-case>
    

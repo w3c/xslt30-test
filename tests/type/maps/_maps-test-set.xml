@@ -75,12 +75,13 @@
    <test-case name="maps-006">
       <description>Error if a map used in the content of an element constructor</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-02-18" change="correct expected error code"/>
       <test>
          <stylesheet file="maps-006.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <error code="XTDE0450"/>
       </result>
    </test-case>
 
@@ -341,13 +342,14 @@
       <description>map{1 := 'a'} should throw error (since Dec 2013 LCWD), syntax of maps has changed</description>
       <created by="Abel Braaksma" on="2014-10-20"/>
       <modified by="Michael Kay" on="2014-10-21" change="escaped apostrophes by doubling them"/>
+      <modified by="Michael Kay" on="2017-02-18" change="corrected expected error code"/>
       <test>
          <stylesheet file="maps-905.xsl"/>
          <param name="test-case" select="'map{1 := ''a''}'" static="yes" />
          <initial-template name="xsl:initial-template"/>
       </test>
       <result>
-         <error code="XPST0017"/>
+         <error code="XPST0003"/>
       </result>
    </test-case>
       

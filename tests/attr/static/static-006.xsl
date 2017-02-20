@@ -3,7 +3,7 @@
 
    <!-- Req param with select attr: ERROR scenario -->
    
-   <xsl:param name="req-param" static="yes" required="yes">
+   <xsl:param name="req-param" static="yes" required="no">
       This will fail with XTSE0010
    </xsl:param>
 

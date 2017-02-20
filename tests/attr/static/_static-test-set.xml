@@ -227,11 +227,13 @@
       </description>
       <keywords>static-variable required-param tvt err:XTSE0010</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
+      <modified by="Michael Kay" on="2017-02-19" change="supply param value to prevent alternative error results"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="static-006.xsl"/>
+         <param name="req-param" static="yes" select="'this will not work'" />
       </test>
       <result>
          <error code="XTSE0010"/>
