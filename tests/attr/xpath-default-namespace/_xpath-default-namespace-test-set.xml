@@ -71,6 +71,7 @@
       <description>Test with xpath-default-namespace attribute declared on the xsl:stylesheet element.</description>
       <keywords>xsl:stylesheet</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2017-02-27" change="whitespace resilience"/>
       <environment ref="xpath-default-namespace-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -79,7 +80,18 @@
          <stylesheet file="xpath-default-namespace-0101.xsl"/>
       </test>
       <result>
-         <assert-xml file="xpath-default-namespace-0101.out"/>
+         <all-of>
+            <assert>/out/alpha = "a,atr1 atr2 atr3,atr1 atr2 atr3"</assert>
+            <assert>/out/group[1] = "a"</assert>
+            <assert>/out/group[2] = "b"</assert>
+            <assert>/out/group[3] = "c"</assert>
+            <assert>/out/beta/elem[1] = "1 a"</assert>
+            <assert>/out/beta/elem[2] = "2 b"</assert>
+            <assert>/out/beta/elem[3] = "3 c"</assert>
+            <assert>/out/beta/elem[4] = "4 Good Morning!"</assert>
+            <assert>/out/beta/elem[5] = "5 Good Afternoon!"</assert>
+            <assert>/out/beta/elem[6] = "6 Goodnight!"</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -87,6 +99,7 @@
       <description>Test with xpath-default-namespace declared on the element that itself contains XPath expressions with unprefixed element names inside a select attribute.</description>
       <keywords> xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2017-02-27" change="whitespace resilience"/>
       <environment ref="xpath-default-namespace-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -95,8 +108,11 @@
          <stylesheet file="xpath-default-namespace-0102.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>,,atr1 atr2 atr3
-</out>]]></assert-xml>
+         <all-of>
+            <assert>/out/alpha = ",,atr1 atr2 atr3"</assert>
+            <assert>empty(/out/group)</assert>
+            <assert>/out/beta = ""</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -165,6 +181,7 @@
       <description>Test with xpath-default-namespace declared and then reset it back to null for some elements.</description>
       <keywords>undeclared-xpath-default-namespace xsl:value-of xsl:apply-templates _IMPROVE:does-not-test-null-namespace</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2017-02-27" change="whitespace resilience"/>
       <environment ref="xpath-default-namespace-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -173,11 +190,13 @@
          <stylesheet file="xpath-default-namespace-0106.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>a,,atr1 atr2 atr3
-<group>a</group>
-<group>b</group>
-<group>c</group>
-</out>]]></assert-xml>
+         <all-of>
+            <assert>/out/alpha = "a,,atr1 atr2 atr3"</assert>
+            <assert>/out/group[1] = "a"</assert>
+            <assert>/out/group[2] = "b"</assert>
+            <assert>/out/group[3] = "c"</assert>
+            <assert>/out/beta = ""</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -185,6 +204,7 @@
       <description>Testcase to verify that the default namespace is not used for unprefixed elements and the only way to set a namespace for them is by use of xpath-default-namespace.</description>
       <keywords> xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2017-02-27" change="whitespace resilience"/>
       <environment ref="xpath-default-namespace-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -193,7 +213,7 @@
          <stylesheet file="xpath-default-namespace-0107.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns="http://example.org/hal">,,atr1 atr2 atr3</out>]]></assert-xml>
+         <assert>/Q{http://example.org/hal}out = ",,atr1 atr2 atr3"</assert>
       </result>
    </test-case>
 

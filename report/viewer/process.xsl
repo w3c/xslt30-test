@@ -21,13 +21,24 @@
         <result name="Parrot">../submission/Parrot_2017.xml</result>
     </xsl:variable>
     
+    <xsl:variable name="category-names" as="map(xs:string, xs:string)" select='map{
+        "BC" : "Basic Conformance",
+        "STRM" : "Streaming",
+        "SA" : "Schema-Aware",
+        "XP10" : "Backwards Compatibility",
+        "XP31" : "XPath 3.1",
+        "HOF" : "Higher-Order Functions",
+        "SER" : "Serialization",
+        "EVAL" : "Dynamic Evaluation"
+        }'/>
+    
     <!-- Easy access to query parameters -->
     <xsl:variable name="category" select="ixsl:query-params()?category"/>
     
     <xsl:template name="main">
         <xsl:message>Started...</xsl:message>
         <xsl:result-document href="#subtitle">
-            for {ixsl:query-params()?product} (in category {$category}) 
+            for {ixsl:query-params()?product} (in category {$category-names($category)}) 
         </xsl:result-document>
         <xsl:message>Fetching tests and their categories...</xsl:message>
         <ixsl:schedule-action document="{resolve-uri('../tests-categories.xml', ixsl:location())}">

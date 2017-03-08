@@ -5,24 +5,18 @@
 <!-- Purpose: Test with xpath-default-namespace declared and then reset it back to null for some elements. -->
 
    <t:template match="/">
-      <t:text>
-</t:text>
       <out>
-         <t:value-of select="doc/item[1]/subitem"/>
+         <alpha><t:value-of select="doc/item[1]/subitem"/>
          <t:text>,</t:text>
          <t:value-of select="doc/item/attribute::attr" xpath-default-namespace="''"/>
          <t:text>,</t:text>
-         <t:value-of select="doc/child::item/@attr"/>
+         <t:value-of select="doc/child::item/@attr"/></alpha>
          <t:for-each-group select="child::doc/*[name()='item']" group-starting-with="item">
-    	       <t:text>
-</t:text>
     	       <group>
                <t:value-of select="./*"/>
             </group>
          </t:for-each-group>
-         <t:apply-templates select="doc/item|doc/str" xpath-default-namespace="''"/>
-         <t:text>
-</t:text>
+         <beta><t:apply-templates select="doc/item|doc/str" xpath-default-namespace="''"/></beta>
       </out>
    </t:template>
 

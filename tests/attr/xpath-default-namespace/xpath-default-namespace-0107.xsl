@@ -6,8 +6,6 @@
   				in Xpath expressions and the only way to set a default namespace for them is by use of xpath-default-namespace. -->
 
    <t:template match="/">
-      <t:text>
-</t:text>
       <out >
          <t:value-of select="doc/item[1]/subitem"/>
          <t:text>,</t:text>

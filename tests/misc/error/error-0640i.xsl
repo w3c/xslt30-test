@@ -5,7 +5,9 @@
 <!-- Test circular reference through xsl:evaluate in a param XPDE0640 -->
 
   <xsl:param name="p">
-    <xsl:evaluate xpath="'$y'" />
+    <xsl:evaluate xpath="'$y'" >
+      <xsl:with-param name="y" select="$y"/>
+    </xsl:evaluate>
   </xsl:param>
   
   <xsl:param name="y">

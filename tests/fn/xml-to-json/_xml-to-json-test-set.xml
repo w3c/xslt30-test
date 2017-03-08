@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="xml-to-json">
    <description>xml-to-json() function</description>
    
@@ -1709,12 +1709,16 @@
    <test-case name="xml-to-json-C104">
       <description>Test of xml-to-json: invalid options</description>
       <created by="Michael Kay" on="2016-04-22"/>
+      <modified by="Michael Kay" on="2017-02-21" change="alternative error code. See bug 30069."/>
       <environment ref="xml-to-json-C"/>
       <test>
          <initial-template name="t104"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <any-of>
+            <error code="XPTY0004"/>
+            <error code="FORG0001"/>
+         </any-of>        
       </result>
    </test-case>
    

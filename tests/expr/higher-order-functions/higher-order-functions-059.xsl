@@ -15,7 +15,7 @@
         <xsl:value-of select="for $f in $fns return $f($s)" />
     </xsl:function>
     
-    <!-- last item has wrong arity, coercion MUST raise XTTE0790 (not XPTY0004) -->
+    <!-- last item has wrong arity, coercion MUST raise XPTY0004 -->
     <xsl:variable name="ops" as="item()*" 
         select="(upper-case#1, lower-case#1, function($x){translate($x, 'e', 'i')}, substring-before(?, ' ', ?))"/>
     

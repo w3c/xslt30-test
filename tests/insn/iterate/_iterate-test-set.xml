@@ -101,12 +101,16 @@
    <test-case name="iterate-007">
       <description>Basic Test of xsl:iterate instruction. Error, xsl:break must be lexically within xsl:iterate</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-02-21" change="Allow alternative error code"/>
       <environment ref="iterate001"/>
       <test>
          <stylesheet file="iterate-007.xsl"/>
       </test>
       <result>
-         <error code="XTSE0010"/>
+         <any-of>
+            <error code="XTSE0010"/>
+            <error code="XTSE3120"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -474,12 +478,13 @@
       <description>xsl:on-completion refers to a local variable: see bug 24179</description>
       <created by="Michael Kay" on="2013-12-30"/>
       <modified by="Michael Kay" on="2014-04-28" change="reflect decision on bug 24179"/>
+      <modified by="Michael Kay" on="2017-02-21" change="correct expected error code"/>
       <test>
          <stylesheet file="iterate-032.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE0008"/>
+         <error code="XPST0008"/>
       </result>
    </test-case>
    
@@ -523,12 +528,13 @@
    <test-case name="iterate-902">
       <description>Error, xsl:param must have a valid initial value. See spec bug 25158.</description>
       <created by="Michael Kay" on="2014-03-26"/>
+      <modified by="Michael Kay" on="2017-02-21" change="add expected error code"/>
       <environment ref="iterate001"/>
       <test>
          <stylesheet file="iterate902err.xsl"/>
       </test>
       <result>
-         <error code="XTSExxxx"/>
+         <error code="XTSE3520"/>
       </result>
    </test-case>
 

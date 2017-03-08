@@ -9,7 +9,7 @@
 <!-- Error: xsl:include - not top-level -->
 
    <xsl:variable name="test">
-      <xsl:include href="error-0180a.xsl"/>
+      <xsl:include href="error-0010a.xsl"/>
    </xsl:variable>
   
   <xsl:template match="doc">

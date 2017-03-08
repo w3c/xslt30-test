@@ -7,7 +7,7 @@
     version="3.0">
 
 <!-- Test circular reference, trying to catch the error XPDE0640 when dynamically raised with xsl:evaluate
-    See bug 28368 about capturing circularity errors (will likely become disallowed) -->
+    See bug 28368 about capturing circularity errors (effect is implementation-dependent) -->
  
     <xsl:variable name="circular">
         <xsl:evaluate xpath="'$other'" >
@@ -16,7 +16,9 @@
     </xsl:variable>
     
     <xsl:variable name="other">
-        <xsl:evaluate xpath="'$circular'" />
+        <xsl:evaluate xpath="'$circular'" >
+            <xsl:with-param name="circular" select="$circular"/>
+        </xsl:evaluate>
     </xsl:variable>
   
     <xsl:template name="xsl:initial-template">
@@ -27,7 +29,7 @@
         <xsl:try>
             <xsl:value-of select="$other" />
             <xsl:catch errors="err:XTDE0640">
-                B) You cannot catch this error!
+                B) You cannot reliably catch this error!
             </xsl:catch>
         </xsl:try>
     </xsl:function>

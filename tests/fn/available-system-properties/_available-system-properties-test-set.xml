@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="available-system-properties">
+   
+   <dependencies>
+      <spec value="XSLT30+" />
+   </dependencies>
 
 
     <test-case name="available-system-properties-001">
         <description>Tests availability of fn:available-system-properties in the static context</description>
-        <created by="Abel Braaksma" on="2015-10-12" />
-        <dependencies>
-            <spec value="XSLT30+" />
-        </dependencies>
+        <created by="Abel Braaksma" on="2015-10-12" />       
+       <dependencies>
+          <feature value="higher_order_functions"/>
+       </dependencies>
         <test>
             <stylesheet file="available-system-properties-001.xsl" />
             <param name="use-static" select="true()" as="xs:boolean" static="yes"/>            
@@ -21,9 +25,9 @@
     <test-case name="available-system-properties-002">
         <description>Tests availability of fn:available-system-properties in the dynamic context</description>
         <created by="Abel Braaksma" on="2015-10-12" />
-        <dependencies>
-            <spec value="XSLT30+" />
-        </dependencies>
+       <dependencies>
+          <spec value="XSLT30+" />
+       </dependencies>
         <test>            
             <stylesheet file="available-system-properties-001.xsl" />
            <param name="use-static" select="false()" as="xs:boolean" static="yes"/>            
@@ -36,9 +40,6 @@
    <test-case name="available-system-properties-003">
       <description>Tests whether available-system-properties returns a proper QName of xsl:version</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'version'"/>
@@ -51,9 +52,6 @@
    <test-case name="available-system-properties-004">
       <description>Tests whether available-system-properties returns a proper QName of xsl:vendor</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'vendor'"/>
@@ -66,9 +64,6 @@
    <test-case name="available-system-properties-005">
       <description>Tests whether available-system-properties returns a proper QName of xsl:vendor-url</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'vendor-url'"/>
@@ -81,9 +76,6 @@
    <test-case name="available-system-properties-006">
       <description>Tests whether available-system-properties returns a proper QName of xsl:product-name</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'product-name'"/>
@@ -96,9 +88,6 @@
    <test-case name="available-system-properties-007">
       <description>Tests whether available-system-properties returns a proper QName of xsl:product-version</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'product-version'"/>
@@ -111,9 +100,6 @@
    <test-case name="available-system-properties-008">
       <description>Tests whether available-system-properties returns a proper QName of xsl:is-schema-aware</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'is-schema-aware'"/>
@@ -126,9 +112,6 @@
    <test-case name="available-system-properties-009">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-serialization</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'supports-serialization'"/>
@@ -141,9 +124,6 @@
    <test-case name="available-system-properties-010">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-backwards-compatibility</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'supports-backwards-compatibility'"/>
@@ -156,9 +136,6 @@
    <test-case name="available-system-properties-011">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-namespace-axis</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'supports-namespace-axis'"/>
@@ -171,9 +148,6 @@
    <test-case name="available-system-properties-012">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-streaming</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'supports-streaming'"/>
@@ -186,9 +160,6 @@
    <test-case name="available-system-properties-013">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-dynamic-evaluation</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'supports-dynamic-evaluation'"/>
@@ -201,9 +172,6 @@
    <test-case name="available-system-properties-014">
       <description>Tests whether available-system-properties returns a proper QName of xsl:xpath-version</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'xpath-version'"/>
@@ -216,9 +184,6 @@
    <test-case name="available-system-properties-015">
       <description>Tests whether available-system-properties returns a proper QName of xsl:xsd-version</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-002.xsl"/>
          <param name="propname" as="xs:string" select="'xsd-version'"/>
@@ -230,10 +195,6 @@
 
    <test-case name="available-system-properties-016">
       <description>Tests whether available-system-properties returns a proper QName of xsl:version *and* returns the same value with system-property</description>
-      <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'version'"/>
@@ -246,9 +207,6 @@
    <test-case name="available-system-properties-017">
       <description>Tests whether available-system-properties returns a proper QName of xsl:vendor *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'vendor'"/>
@@ -261,9 +219,6 @@
    <test-case name="available-system-properties-018">
       <description>Tests whether available-system-properties returns a proper QName of xsl:vendor-url *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'vendor-url'"/>
@@ -276,9 +231,6 @@
    <test-case name="available-system-properties-019">
       <description>Tests whether available-system-properties returns a proper QName of xsl:product-name *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'product-name'"/>
@@ -291,9 +243,6 @@
    <test-case name="available-system-properties-020">
       <description>Tests whether available-system-properties returns a proper QName of xsl:product-version *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'product-version'"/>
@@ -306,9 +255,6 @@
    <test-case name="available-system-properties-021">
       <description>Tests whether available-system-properties returns a proper QName of xsl:is-schema-aware *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'is-schema-aware'"/>
@@ -321,9 +267,6 @@
    <test-case name="available-system-properties-022">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-serialization *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'supports-serialization'"/>
@@ -336,9 +279,6 @@
    <test-case name="available-system-properties-023">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-backwards-compatibility *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'supports-backwards-compatibility'"/>
@@ -351,9 +291,6 @@
    <test-case name="available-system-properties-024">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-namespace-axis *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'supports-namespace-axis'"/>
@@ -366,9 +303,6 @@
    <test-case name="available-system-properties-025">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-streaming *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'supports-streaming'"/>
@@ -381,9 +315,6 @@
    <test-case name="available-system-properties-026">
       <description>Tests whether available-system-properties returns a proper QName of xsl:supports-dynamic-evaluation *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'supports-dynamic-evaluation'"/>
@@ -396,9 +327,6 @@
    <test-case name="available-system-properties-027">
       <description>Tests whether available-system-properties returns a proper QName of xsl:xpath-version *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'xpath-version'"/>
@@ -411,9 +339,6 @@
    <test-case name="available-system-properties-028">
       <description>Tests whether available-system-properties returns a proper QName of xsl:xsd-version *and* returns the same value with system-property</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-003.xsl"/>
          <param name="propname" as="xs:string" select="'xsd-version'"/>
@@ -426,9 +351,6 @@
    <test-case name="available-system-properties-101">
       <description>Tests whether available-system-properties returns a correct set (compared with all required-to-be-supported properties)</description>
       <created by="Abel Braaksma" on="2015-10-12"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
       <test>
          <stylesheet file="available-system-properties-004.xsl"/>
       </test>
