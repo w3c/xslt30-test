@@ -22,6 +22,10 @@
 		<xsl:accumulator-rule match="section" phase="end" 
                  	 select="tail($value) (:pop:)"/>
 	</xsl:accumulator>
+	
+	<xsl:template match="/">
+		<out><xsl:apply-templates/></out>
+	</xsl:template>
 
 	<!-- The section number for a section can thus be generated as: -->	
 	<xsl:template match="section">
