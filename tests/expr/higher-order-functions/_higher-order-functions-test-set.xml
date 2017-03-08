@@ -729,11 +729,12 @@
       <description>Pass a sequence of functions that cannot be coerced to the required type</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2015-03-29" change="Fix bug 24048, should raise XTTE0790"/>
+      <modified by="Michael Kay" on="2017-02-21" change="Fix bug 28379, should raise XPTY0004"/>
       <test>
          <stylesheet file="higher-order-functions-059.xsl"/>
       </test>
       <result>
-         <error code="XTTE0790"/>
+         <error code="XPTY0004"/>
       </result>
    </test-case>
 
@@ -749,14 +750,12 @@
       <modified by="Abel Braaksma" on="2015-03-29" change="
          Fix bug 24048, change function body to actually call function items to force evaluation, 
          allow both XPTY0004 (late evaluation) and XTTE0790 (early detection of wrong return type during coercion)"/>
+      <modified by="Michael Kay" on="2017-02-21" change="Error XTTE0790 no longer exists (bug 28379)"/>
       <test>
          <stylesheet file="higher-order-functions-060.xsl"/>
       </test>
       <result>
-         <any-of>
             <error code="XPTY0004"/>
-            <error code="XTTE0790"/>
-         </any-of>
       </result>
    </test-case>
 
@@ -772,14 +771,12 @@
       <modified by="Abel Braaksma" on="2015-03-29" change="
          Fix bug 24048, change function body to actually call function items to force evaluation, 
          allow both XPTY0004 (late evaluation) and XTTE0790 (early detection of wrong return type during coercion)"/>
+      <modified by="Michael Kay" on="2017-02-21" change="Error XTTE0790 no longer exists (bug 28379)"/>
       <test>
          <stylesheet file="higher-order-functions-061.xsl"/>
       </test>
       <result>
-         <any-of>
-            <error code="XPTY0004"/>
-            <error code="XTTE0790"/>
-         </any-of>
+         <error code="XPTY0004"/>
       </result>
    </test-case>
 
@@ -833,15 +830,13 @@
       <modified by="Abel Braaksma" on="2015-03-29" change="
          Fix bug 24048, allow both XPTY0004 (late evaluation) and XTTE0790 (early detection 
          of wrong return and argument type (xs:string vs xs:double) during coercion)"/>
+      <modified by="Michael Kay" on="2017-02-21" change="Error XTTE0790 no longer exists (bug 28379)"/>
       <test>
          <stylesheet file="higher-order-functions-065.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <any-of>
-            <error code="XPTY0004"/>
-            <error code="XTTE0790"/>
-         </any-of>
+         <error code="XPTY0004"/>
       </result>
    </test-case>
 
