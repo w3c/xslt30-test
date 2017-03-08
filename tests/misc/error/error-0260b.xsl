@@ -7,7 +7,7 @@
 
 <!-- Error: xsl:import - non-empty element -->
 <?spec xslt#errors?><?error XTSE0260?>
-   <xsl:import href="../copy/copy01.xsl">text</xsl:import>
+   <xsl:import href="error-ok.xsl">text</xsl:import>
   
   <xsl:template match="doc">
       <out>

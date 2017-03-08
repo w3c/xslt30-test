@@ -541,6 +541,7 @@ It is a static error if an
                         required attribute is omitted, or if the content of the
                      element does not correspond to the content that is allowed for the element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-02-21" change="different included module, to prevent spurious errors"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -587,6 +588,7 @@ It is a static error if an
                         required attribute is omitted, or if the content of the
                      element does not correspond to the content that is allowed for the element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-02-21" change="different imported module, to prevent spurious errors"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1513,6 +1515,7 @@ It is a non-recoverable dynamic
                                  is supplied (either explicitly, or
                         defaulted to the global context item).</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
+      <modified by="Michael Kay" on="2017-02-21" change="add alternative error code"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -1521,7 +1524,10 @@ It is a non-recoverable dynamic
          <initial-mode name="non-existing"/>
       </test>
       <result>
-         <error code="XTDE0044"/>
+         <any-of>
+            <error code="XTDE0044"/>
+            <error code="XTDE0045"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -2953,12 +2959,12 @@ It is a static error if the synthetic
 
    <test-case name="error-0260a">
       <description>Error: xsl:include - non-empty element.
-Was error-code-092.
-Within an XSLT element that is
-                        required to be empty, any content other than comments or
+                     Was error-code-092.
+                     Within an XSLT element that is required to be empty, any content other than comments or
                      processing instructions, including any whitespace text node preserved using the
-                        xml:space="preserve" attribute, is a static error.</description>
+                     xml:space="preserve" attribute, is a static error.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-02-21" change="include different module to avoid spurious error"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -4633,6 +4639,7 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
       </description>
       <created by="Abel Braaksma" on="2015-03-30"/>
       <modified by="Michael Kay" on="2015-09-04" change="The variable reference in xsl:evaluate was unresolved, so this wasn't a circularity as written"/>
+      <modified by="Michael Kay" on="2017-02-21" change="Another attempt to solve the same problem"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10586,8 +10593,10 @@ It is a static error if a character
          <assert>/out = '1'</assert>
       </result>
    </test-case>
+   
+   <!-- Test deleted because the error no longer exists. MHK 2017-02-22 -->
 
-   <test-case name="error-3390a">
+   <!--<test-case name="error-3390a">
       <description>Error: If the accumulator is declared with the attribute streamable="yes"
                   then it is a dynamic error if the
                      accumulator-before or
@@ -10605,7 +10614,7 @@ It is a static error if a character
       <result>
          <error code="XTDE3390"/>
       </result>
-   </test-case>
+   </test-case>-->
 
    <test-case name="error-3400a">
       <description>Error: It is a dynamic error if the
@@ -10628,12 +10637,9 @@ It is a static error if a character
    </test-case>
 
    <test-case name="error-3410a">
-      <description>Error: If the accumulator is declared with the attribute streamable="yes"
-                  then it is a dynamic error if the
-                     accumulator-before function is called unless the
-                  evaluation is performed in the course of the evaluation of a pre-descent instruction within the controlling sequence
-                     constructor.</description>
+      <description>Circular accumulator definition.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Michael Kay" on="2017-02-22" change="change expected error code"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -10642,7 +10648,7 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3410"/>
+         <error code="XTDE3400"/>
       </result>
    </test-case>
 
@@ -10655,6 +10661,7 @@ It is a static error if a character
       <created by="Michael Kay" on="2014-08-25"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="streaming"/>
       </dependencies>
       <test>
          <stylesheet file="error-3420a.xsl"/>

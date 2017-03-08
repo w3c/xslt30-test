@@ -5,13 +5,9 @@
                      element does not correspond to the content that is allowed for the element.-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-<!-- Error: xsl:import - not top-level -->
+<!-- Error: <xsl:param> must come first -->
 <?spec xslt#errors?><?error XTSE0010?>
 
-   <xsl:variable name="test">
-      <xsl:import href="error-0010a.xsl"/>
-   </xsl:variable>
-  
   <xsl:template match="doc">
       <out>
          <xsl:message>Error not detected!</xsl:message>

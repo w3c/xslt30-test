@@ -8,7 +8,7 @@
 <!-- Error: xsl:include - non-empty element -->
 <?spec xslt#errors?><?error XTSE0260?>
 
-   <xsl:include href="../copy/copy01.xsl">text</xsl:include>
+   <xsl:include href="error-ok.xsl">text</xsl:include>
   
   <xsl:template match="doc">
       <out>
