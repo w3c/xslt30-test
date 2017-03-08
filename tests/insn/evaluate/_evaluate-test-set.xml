@@ -419,19 +419,17 @@
    </test-case>
 
    <test-case name="evaluate-022">
-      <description>test type error occurring within xsl:evaluate. Formerly saxon9083-err</description>
+      <description>test type error occurring within xsl:evaluate. </description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2013-12-10" change="xsl:evaluate occured in xslt3.0 spec, set stylesheet @version to 3.0"/>
       <modified by="Abel Braaksma" on="2014-09-14" change="Bug#26796: Remove redundant Java namespace, fix ext. function call to use one from the standard math namespace"/>
+      <modified by="Michael Kay" on="2017-02-21" change="Make function public; drop obsolete error code XTTE0790"/>
       <environment ref="eval012"/>
       <test>
          <stylesheet file="evaluate-022.xsl"/>
       </test>
       <result>
-         <any-of>
-            <error code="XTTE0790"/>
-            <error code="XPTY0004"/>
-         </any-of>        
+         <error code="XPTY0004"/>
       </result>
    </test-case>
 
@@ -758,9 +756,10 @@
    <test-case name="evaluate-045">
       <description>Call on stylesheet function within xsl:evaluate fails because function is private</description>
       <created by="Michael Kay" on="2017-01-13"/>
+      <modified by="Michael Kay" on="2017-02-21" change="Correct name of initial template"/>
       <test>
          <stylesheet file="evaluate-045.xsl"/>
-         <initial-template name="go"/>
+         <initial-template name="main"/>
       </test>
       <result>
          <error code="XTDE3160"/>
