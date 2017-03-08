@@ -458,11 +458,12 @@
    <test-case name="merge-032">
       <description>xsl:merge-key test with select attribute has non-empty content</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-02-21" change="change expected error code (obsolete)"/>
       <test>
          <stylesheet file="merge-032.xsl"/>
       </test>
       <result>
-         <error code="XTSE2190"/>
+         <error code="XTSE0020"/>
       </result>
    </test-case>
 
@@ -604,12 +605,13 @@
       	Error - can't specify both for-each-item and for-each-source
       </description>
       <created by="Michael Kay" on="2014-04-10"/>
+      <modified by="Michael Kay" on="2017-02-21" change="more specific error code"/>
       <environment ref="merge002"/>
       <test>
          <stylesheet file="merge-042.xsl"/>
       </test>
       <result>
-         <error code="XTSE0020"/>
+         <error code="XTSE3195"/>
       </result>
    </test-case>
    
@@ -725,7 +727,11 @@
       </description>
       <created by="Michael Kay" on="2014-04-10"/>
       <modified by="Michael Kay" on="2015-07-08" change="Bug 28762 means merging on position() no longer makes sense"/>
+      <modified by="Michael Kay" on="2017-03-03" change="Label as schema-aware"/>
       <environment ref="merge049"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
       <test>
          <stylesheet file="merge-049.xsl"/>
          <initial-template name="main"/>
@@ -758,7 +764,11 @@
          xsl:merge: merge two documents with validation by type
       </description>
       <created by="Michael Kay" on="2014-04-10"/>
+      <modified by="Michael Kay" on="2017-03-03" change="Label as schema-aware"/>
       <environment ref="merge049"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
       <test>
          <stylesheet file="merge-051.xsl"/>
          <initial-template name="main"/>
