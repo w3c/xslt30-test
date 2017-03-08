@@ -43,7 +43,7 @@
     </xsl:variable>
     
     <xsl:variable name="actualElementAttributePairs" as="xs:string*">
-        <xsl:for-each select="$testCatalog/*/cat:test-set/document(@file)//(cat:stylesheet|cat:package)[not(ancestor::cat:test-case//cat:error[not(@code='UIOP9876')])]/@file">
+        <xsl:for-each select="$testCatalog/*/cat:test-set/document(@file)//(cat:stylesheet|cat:package)[not(ancestor::cat:test-case//cat:error[not(@code='Q{}UIOP9876')])]/@file">
             <xsl:message>Processing <xsl:value-of select="."/></xsl:message>
             <xsl:try>
                 <xsl:variable name="doc" select="document(.)"/>
