@@ -275,6 +275,9 @@
     <xsl:template match="*:test-set (:| *:feature | *:dependencies | *:spec:)" mode="trim-tests-categories">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
+        <xsl:attribute name="description">
+            <xsl:sequence select="document($catalog/catalog/test-set[@name = current()/@name]/@file)/test-set/description/normalize-space(.)"/>
+        </xsl:attribute>
         <xsl:apply-templates mode="trim-tests-categories"/>
       </xsl:copy>
     </xsl:template>

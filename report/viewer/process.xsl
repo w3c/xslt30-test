@@ -62,14 +62,28 @@
         <xsl:param name="tests-doc"/>
         <xsl:message>Processing submission...</xsl:message>
         <xsl:result-document href="#content" method="ixsl:replace-content">
-          <ul>
-            <xsl:for-each select="$submission-doc/*:test-suite-result/*:test-set/*:test-case[@result=$result-type]
-                                                        [f:isInCategory($tests-doc, @name, $category)]">
-                <li>
-                  <a href="testcase.html?t={@name}&amp;s={../@name}" target="testcase">{@name}</a>
-                  <xsl:if test="@comment">
-                      ({@comment})  
-                  </xsl:if>
+          <ul class="list-group">
+            <xsl:for-each select="$submission-doc/*:test-suite-result/*:test-set[*:test-case[@result=$result-type]
+                                                        [f:isInCategory($tests-doc, @name, $category)]]">
+                <li class="list-group-item">
+                    <a class="btn btn-default" data-toggle="collapse" href="#{@name}" >
+                        <xsl:value-of select="$tests-doc/*:all-tests/*:test-set[@name = current()/@name]/@description"/> 
+                        [<xsl:value-of select="@name"/>]
+                        <xsl:text> </xsl:text>
+                        <span class="badge"><xsl:value-of select="count(*:test-case[@result=$result-type]
+                            [f:isInCategory($tests-doc, @name, $category)])"/></span>
+                    </a>
+                    <ul id="{@name}" class="collapse list-group">
+                        <xsl:for-each select="*:test-case[@result=$result-type]
+                            [f:isInCategory($tests-doc, @name, $category)]">
+                            <li class="list-group-item">
+                                <a href="testcase.html?t={@name}&amp;s={../@name}" target="testcase">{@name}</a>
+                                <xsl:if test="@comment">
+                                    ({@comment})  
+                                </xsl:if>
+                            </li>
+                        </xsl:for-each>
+                    </ul>
                 </li>
             </xsl:for-each>
           </ul>
