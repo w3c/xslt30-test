@@ -6,8 +6,7 @@
             <xsl:for-each select="1 to 10">
                 <xsl:choose>
                     <xsl:when test="position() mod 2" expand-text="yes">
-                        <xsl:value-of separator="" expand-text="no">{'foo-',
-                            position()}</xsl:value-of>
+                        <xsl:value-of separator="" expand-text="no">{'foo-', position()}</xsl:value-of>
                     </xsl:when>
                 </xsl:choose>
             </xsl:for-each>
