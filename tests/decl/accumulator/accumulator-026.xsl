@@ -13,7 +13,7 @@
     <xsl:accumulator-rule match="@alt" select="$value + 100000"/>
   </xsl:accumulator>
 
-  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip"/>
+  <xsl:mode _streamable="{$streamable}" on-no-match="shallow-skip" use-accumulators="figNr"/>
   
   <xsl:template match="fig">
     <xsl:apply-templates/>

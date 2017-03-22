@@ -32,5 +32,7 @@
 			</xsl:for-each>
         </histogram>  		
 	</xsl:template>
+	
+	<xsl:mode use-accumulators="histogram"/>
 
 </xsl:package>

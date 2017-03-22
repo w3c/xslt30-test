@@ -22,7 +22,7 @@
     <xsl:accumulator-rule match="fig" select="$value + 1"/>
   </xsl:accumulator>
 
-  <xsl:mode on-no-match="shallow-skip"/>
+  <xsl:mode on-no-match="shallow-skip" _use-accumulators="{$one} {$two}"/>
   
   <xsl:template match="fig">
     <xsl:apply-templates/>

@@ -4,7 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"  declared-modes="no"
 >
-	<xsl:mode on-no-match="shallow-skip"/>
+	<xsl:mode on-no-match="shallow-skip" use-accumulators="word-count"/>
 
     <!-- Keep a Word Count
     	Suppose that there is a requirement to output, at the end of the HTML rendition of a document, a paragraph giving the total number of words in the document. 

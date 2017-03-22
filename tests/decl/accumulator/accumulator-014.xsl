@@ -12,7 +12,7 @@
     <xsl:accumulator-rule match="fig" select="$value + (let $value := $increment + 1 return $value)"/>
   </xsl:accumulator>
 
-  <xsl:mode streamable="no" on-no-match="shallow-skip"/>
+  <xsl:mode streamable="no" on-no-match="shallow-skip" use-accumulators="figNr"/>
   <xsl:template match="fig">
     <xsl:apply-templates/>
     <p>Figure <xsl:value-of select="accumulator-before('figNr')"/>: <xsl:value-of select="@alt"/></p>

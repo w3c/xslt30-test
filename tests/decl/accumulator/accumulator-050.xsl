@@ -7,6 +7,8 @@
       select="0, head($value)+1, tail($value)"/>
     <xsl:accumulator-rule match="section" phase="end" select="tail($value) (:pop:)"/>
   </xsl:accumulator>
+  
+  <xsl:mode use-accumulators="section-nr"/>
 
   <xsl:template match="node()|@*">
     <xsl:copy>

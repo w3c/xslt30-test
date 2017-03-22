@@ -12,6 +12,8 @@
     <xsl:accumulator-rule match="fig" select="$value + 2"/>
   </xsl:accumulator>
   
+  <xsl:mode use-accumulators="a"/>
+  
   <xsl:template match="fig">
     <xsl:apply-templates/>
     <p>Figure <xsl:value-of select="accumulator-before('a')"/>: <xsl:value-of select="@alt"/></p>
