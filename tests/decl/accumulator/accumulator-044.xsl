@@ -7,7 +7,7 @@
     xpath-default-namespace="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="xs"  declared-modes="no"
 >
-    <xsl:mode on-no-match="shallow-copy"/>
+    <xsl:mode on-no-match="shallow-copy" use-accumulators="acc:firstTitle"/>
     
     <!-- from section 18.2.9 Examples of Accumulators -->
 	

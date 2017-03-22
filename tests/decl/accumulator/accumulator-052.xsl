@@ -14,6 +14,8 @@
         <xsl:accumulator-rule match="/" phase="end"   select="$value + 33"/>
     </xsl:accumulator>
 
+    <xsl:mode use-accumulators="time"/>
+    
 
     <xsl:template match="/">
         <root>

@@ -6,6 +6,7 @@
 >
 	<xsl:output omit-xml-declaration="yes" />
 	<xsl:strip-space elements="*"/>
+	<xsl:mode use-accumulators="section-nr"/>
 
 	<!-- Output Hierarchic Section Numbers
          Consider a document in which section elements are nested within section elements to arbitrary depth,

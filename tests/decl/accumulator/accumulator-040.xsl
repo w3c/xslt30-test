@@ -6,6 +6,8 @@
 <xsl:accumulator name="firstTitle" as="xs:string?" initial-value="()">
   <xsl:accumulator-rule match="/html/head/title[1]/text()" select="string(.)"/>
 </xsl:accumulator>
+  
+<xsl:mode use-accumulators="firstTitle"/>  
 
 <xsl:template match="@* | node()">
   <xsl:copy>

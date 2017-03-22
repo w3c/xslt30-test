@@ -5,7 +5,7 @@
 
   <!-- Accumulator has dependency on global variable -->
   
-  <xsl:mode streamable="no" on-no-match="shallow-skip"/>
+  <xsl:mode streamable="no" on-no-match="shallow-skip" use-accumulators=" a "/>
   
   <xsl:accumulator name="a" as="xs:integer" initial-value="0">
     <xsl:accumulator-rule match="chap" select="0"/>

@@ -9,7 +9,9 @@
         <xsl:accumulator-rule match="*" phase="end"   select="($value, concat(name(),')'))"/>
         <xsl:accumulator-rule match="*" phase="start" select="($value, concat('(',name()))"/>
     </xsl:accumulator>
-
+    
+    <xsl:mode use-accumulators="state"/>
+    
 
     <xsl:template match="/">
         <root>
