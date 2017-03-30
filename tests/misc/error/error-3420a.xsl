@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
 
-              <!--If the accumulator is declared with the attribute streamable="yes"
-                  then it is a dynamic error if the
-                  accumulator-after function is called unless the evaluation
-                  is performed in the course of the evaluation of a post-descent instruction 
-                  within the controlling sequence constructor.-->
+  <!--If no enclosing node N of the [accumulator-after()] function call has a preceding sibling node P such that 
+      (a) N and P are part of the same sequence constructor, and 
+      (b) the sweep of P is consuming, 
+      then the function call is consuming. 
+  
+      So the call of accumulator-after() is consuming, 
+      and since xsl:copy-of is also consuming, the construct fails
+      the streamability rules because there are two consuming sub-expressions.
+  -->
                   
    <xsl:accumulator name="a" initial-value="0">
      <xsl:accumulator-rule match="*" select="$value + accumulator-before('a')"/>

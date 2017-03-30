@@ -10653,12 +10653,9 @@ It is a static error if a character
    </test-case>
 
    <test-case name="error-3420a">
-      <description>Error: If the accumulator is declared with the attribute streamable="yes"
-                  then it is a dynamic error if the
-                     accumulator-after function is called unless the evaluation
-                  is performed in the course of the evaluation of a post-descent instruction within the controlling sequence
-                     constructor.</description>
+      <description>A call to accumulator-after() is consuming when there are no preceding consuming instructions</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Michael Kay" on="2017-03-29" change="changed error code; XTDE3420 no longer exists"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="streaming"/>
@@ -10668,7 +10665,7 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3420"/>
+         <error code="XTSE3430"/>
       </result>
    </test-case>
 

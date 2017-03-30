@@ -6,7 +6,7 @@
     exclude-result-prefixes="xs math f"
     version="3.0">
     
-    <xsl:function name="f:test">
+    <xsl:function name="f:test" visibility="final">
         <xsl:param name="p" as="item()*" />
         <xsl:sequence select="$p" />
     </xsl:function>
