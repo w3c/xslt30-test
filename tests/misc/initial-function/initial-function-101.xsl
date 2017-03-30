@@ -10,32 +10,32 @@
     
     <!-- purpose: testing various naming possibilities for initial functions -->
     
-    <xsl:function name="f:square1">
+    <xsl:function name="f:square1" visibility="public">
         <xsl:param name="p" as="xs:integer" />
         <xsl:sequence select="$p * $p" />
     </xsl:function>
     
-    <xsl:function name="Q{urn:functions}square2">
+    <xsl:function name="Q{urn:functions}square2" visibility="public">
         <xsl:param name="p" as="xs:integer" />
         <xsl:sequence select="$p * $p" />
     </xsl:function>
     
-    <xsl:function _name="f:square3">
+    <xsl:function _name="f:square3" visibility="public">
         <xsl:param name="p" as="xs:integer" />
         <xsl:sequence select="$p * $p" />
     </xsl:function>
     
-    <xsl:function _name="{'f:'}{'square' || 4}">
+    <xsl:function _name="{'f:'}{'square' || 4}" visibility="public">
         <xsl:param name="p" as="xs:integer" />
         <xsl:sequence select="$p * $p" />
     </xsl:function>
     
-    <xsl:function _name="{QName('urn:functions', 'x:square5')}" xmlns:x="urn:functions">
+    <xsl:function _name="{QName('urn:functions', 'x:square5')}" xmlns:x="urn:functions" visibility="public">
         <xsl:param name="p" as="xs:integer" />
         <xsl:sequence select="$p * $p" />
     </xsl:function>
     
-    <xsl:function _name="{$function-name}">
+    <xsl:function _name="{$function-name}" visibility="public">
         <xsl:param name="p" as="xs:integer" />
         <xsl:sequence select="$p * $p" />
     </xsl:function>

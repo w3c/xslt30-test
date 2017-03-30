@@ -36,7 +36,7 @@
         
     </xsl:template>
     
-    <xsl:variable name="ORIGIN" select="xs:dateTime('2009-01-01T00:00:00')"/>
+    <xsl:variable name="ORIGIN" select="xs:dateTime('2009-01-01T00:00:00Z')"/>
     
     <xsl:accumulator name="latest-1" initial-value="map{0:$ORIGIN, 1:$ORIGIN}" as="map(*)"
         _streamable="{$STREAMABLE}">

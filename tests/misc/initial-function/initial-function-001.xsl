@@ -5,19 +5,19 @@
 
   <!-- PURPOSE test initial-function invocation -->
 
-  <xsl:function name="my:foo">
+  <xsl:function name="my:foo" visibility="public">
     <xsl:param name="a"/>
     <xsl:param name="b"/>
     <simple-data><xsl:value-of select="$b"/>Simple Data<xsl:value-of select="$a"/></simple-data>
   </xsl:function>
   
-  <xsl:function name="my:bar" as="item()*">
+  <xsl:function name="my:bar" as="item()*" visibility="public">
     <xsl:param name="a"/>
     <xsl:param name="b"/>
     <xsl:sequence select="$a,$b"/>
   </xsl:function>
   
-  <xsl:function name="my:bad" as="item()*">
+  <xsl:function name="my:bad" as="item()*" visibility="public">
     <xsl:param name="a"/>
     <xsl:param name="b"/>
     <xsl:variable name="v">
@@ -32,6 +32,10 @@
     </xsl:result-document>
   </xsl:template>
 
-  
+  <xsl:function name="my:private">
+    <xsl:param name="a"/>
+    <xsl:param name="b"/>
+    <simple-data><xsl:value-of select="$b"/>Simple Data<xsl:value-of select="$a"/></simple-data>
+  </xsl:function>
 
 </xsl:stylesheet>
