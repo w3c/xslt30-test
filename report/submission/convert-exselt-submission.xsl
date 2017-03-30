@@ -4,12 +4,18 @@
     xmlns:r="http://www.w3.org/2012/11/xslt30-test-results"
     xmlns:cat="http://www.w3.org/2012/10/xslt-test-catalog"
     exclude-result-prefixes="#all"
-    version="2.0">
+    version="3.0">
+    
+    <xsl:output indent="yes"></xsl:output>
     
     <!-- Convert Exselt test submission into standard format -->
     
     <xsl:variable name="catalog" select="doc('../../catalog.xml')"/>
     <xsl:variable name="submission" select="doc('exselt-test-report-basic.xml')"/>
+    
+    <xsl:template match="/">
+        <xsl:call-template name="xsl:initial-template" />
+    </xsl:template>
     
     <xsl:template name="xsl:initial-template">
         <r:test-suite-result>

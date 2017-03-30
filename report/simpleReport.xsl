@@ -61,6 +61,10 @@
             empty(f:non-spec-dependencies($testcase)[not(self::feature[@value = $feature])])}"/>
     </xsl:function>
     
+    <xsl:template match="/">
+        <xsl:call-template name="xsl:initial-template" />
+    </xsl:template>
+    
     <xsl:template name="xsl:initial-template">
         <html>
             <head>
