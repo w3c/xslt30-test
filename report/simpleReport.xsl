@@ -75,21 +75,19 @@
                 <h1>XSLT 3.0 Test Results</h1>
                 <p>Test results were submitted for the following processors:</p>
                 <ol>
-                    <li><p><b>Exselt</b> is...</p></li>
-                    <li><p><b>Parrot</b> is a pseudonym for a product produced by a company that is not a member of the Working Group and
-                    that has not participated actively in the development of the specification. The product is on general release; as such
-                    it should be regarded as an implementation of the 2015 Candidate Recommendation rather than the 2017 version. The test
-                    results were not submitted by the vendor, but were obtained by a member of the working group using a hastily-written
-                    test driver; as such, many of the test failures may be attributed either (a) to inadequacies in the test driver,
-                    or (b) to changes in the spec since 2015.</p></li>
+                    <li><p><b>Exselt</b> is a new XSLT 3.0 processor developed by Abrasoft. The company is owned by Abel Braaksma, who
+                    is a member of the XSL Working Group. Tests were run against a development snapshot of the product.</p></li>
+                    
                     <li><p><b>Saxon 9.8</b> is the forthcoming version of the commercial Saxon-EE/J product for the Java platform, produced by
-                    Saxonica. Tests were run on a development snapshot rather than a final quality release.</p></li>
+                    Saxonica. The company is owned by Michael Kay who is a member of the Working Group and editor of the specification.
+                    Tests were run on against a development snapshot of the product.</p></li>
                     <li><p><b>Saxon-JS</b> is an implementation of XSLT 3.0 written in Javascript designed to run in the browser, also from Saxonica. The product
-                    shares a front end with Saxon/J, but the back end (run-time) was developed independently from scratch. This is a first release
-                    of the product. Some of the test failures are unavoidable (for example, float arithmetic delivers double-precision results,
-                    which is deemed non-conformant), but others will be lifted in time especially as Javascript 6 rolls out more completely
-                    across the browsers. The results reported here were obtained using the Nashorn Javascript engine; results on other platforms
-                    vary slightly.</p></li>
+                    shares a front end with Saxon-EE/J, but the back end (run-time) was developed independently from scratch. 
+                    The results reported here were obtained using the Nashorn Javascript engine; results on other platforms
+                    vary slightly, depending on the level of JS6 and Unicode support.</p></li>
+                    <li><p><b>Parrot</b> is a pseudonym for a product produced by a company that is not a member of the Working Group. 
+                        The product implements the 2015 Candidate Recommendation rather than the 2017 version. The test
+                        results were obtained by a member of the working group and are incomplete.</p></li>
                 </ol>
                 <table border="1">
                     <thead>
@@ -157,10 +155,12 @@
     
     <xsl:template name="report-against-success-criteria">
         <h1>Report against Success Criteria</h1>
+        <p>The transition criteria published in the Candidate Recommendation are:</p>
         <blockquote>To demonstrate achievement of the criteria for transition to Proposed Recommendation the Working Group plans 
             to provide evidence of two independent and substantially complete implementations of the basic XSLT processor conformance 
             level as well as the optional streaming feature, and at least one substantially complete implementation of other optional 
             features defined in 27 Conformance. </blockquote>
+        
         <h2>Basic Conformance</h2>
         
         <blockquote>...two independent and substantially complete implementations of the basic XSLT processor conformance 
@@ -194,10 +194,26 @@
         
         <h2>Other optional features</h2>
         
-        <blockquote>... and at least one substantially complete implementation of other optional 
+        <p>The optional features defined in the specification (apart from Streaming) are: 
+            <ul>
+                <li>Schema Awareness</li>
+                <li>Serialization</li>
+                <li>1.0 compatibility</li>
+                <li>Dynamic Evaluation</li>
+                <li>XPath 3.1</li>
+                <li>Higher Order Functions</li>
+        </ul>
+           
+        </p>
+        
+        <p>As demonstrated by the figures above, the target to demonstrate </p>
+        
+        <blockquote>... at least one substantially complete implementation of other optional 
             features defined in 27 Conformance.</blockquote>
         
+        <p>has been comfortably achieved.</p>
         
+        <!--
         <xsl:for-each select="subsequence($categories, 4)">
             <xsl:variable name="category" select="."/>
             <h3>{?name}</h3>
@@ -211,7 +227,7 @@
             <p>Of these, <big>{count($tests-with-one-pass)} ({format-number(count($tests-with-one-pass) div $total, '99.99%')})</big> 
                 were passed by at least one processor.</p>
             
-        </xsl:for-each>
+        </xsl:for-each>-->
         
     </xsl:template>
     
@@ -261,7 +277,9 @@
            <xsl:map-entry key="'test-cases-failed'" select="$tests-failed"/>
            <xsl:map-entry key="'test-cases-notrun'" select="$tests-notRun"/>
            <xsl:map-entry key="'test-cases-notReported'" select="$tests-notReported"/>
-       </xsl:map>      
+           <xsl:message select="'*** Failures for ', doc($results-uri)//r:implementation/@name/string(), $tests-failed/@name/string()"/>
+       </xsl:map> 
+       
    </xsl:function>
     
     <xsl:template name="generate-tests-categories">
