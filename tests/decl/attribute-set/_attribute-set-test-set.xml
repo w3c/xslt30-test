@@ -829,5 +829,20 @@
    base-two="http://www.example.com/two"/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="attribute-set-1815">
+      <description>Import the same attribute set with two different precedences. Saxon bug 3195.</description>
+      <created by="Michael Kay" on="2017-04-12"/>
+      <environment ref="attribute-set-18"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-set-1815.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><foo baz="one"/></out>]]></assert-xml>
+      </result>
+   </test-case>
 
 </test-set>
