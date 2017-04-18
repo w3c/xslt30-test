@@ -3600,4 +3600,100 @@
          <assert>/out = "9.087"</assert>
       </result>
    </test-case>
+   
+   <test-case name="import-schema-194">
+      <description>Test validation on xsl:result-document using default-validation at xsl:template level.</description>
+      <created by="Michael Kay, Saxonica" on="2017-04-18"/>
+      <environment ref="import-schema-e01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="import-schema-194.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<e xmlns:xs="http://www.w3.org/2001/XMLSchema"><e1>A001</e1><e2>A002</e2><e3>003</e3><e4>2002-10-20</e4></e>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="import-schema-195">
+      <description>Test validation on xsl:result-document using xsl:default-validation at LRE level.</description>
+      <created by="Michael Kay, Saxonica" on="2017-04-18"/>
+      <environment ref="import-schema-e01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="import-schema-195.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<e xmlns:xs="http://www.w3.org/2001/XMLSchema"><e1>A001</e1><e2>A002</e2><e3>003</e3><e4>2002-10-20</e4></e>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="import-schema-196">
+      <description>Test validation on temporary tree using xsl:default-validation=strip at LRE level.</description>
+      <created by="Michael Kay, Saxonica" on="2017-04-18"/>
+      <environment ref="import-schema-e01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="import-schema-196.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema"><string/><integer/><date/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="import-schema-197">
+      <description>Test validation on temporary tree using xsl:default-validation=preserve at LRE level.</description>
+      <created by="Michael Kay, Saxonica" on="2017-04-18"/>
+      <environment ref="import-schema-e01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="import-schema-197.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema"><string>A001 A002</string><integer>3</integer><date>2002-10-20</date></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="import-schema-198">
+      <description>Test validation on temporary tree using default-validation=strip at xsl:sequence level.</description>
+      <created by="Michael Kay, Saxonica" on="2017-04-18"/>
+      <environment ref="import-schema-e01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="import-schema-198.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema"><string/><integer/><date/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="import-schema-199">
+      <description>Test validation on temporary tree using default-validation=preserve at xsl:sequence level.</description>
+      <created by="Michael Kay, Saxonica" on="2017-04-18"/>
+      <environment ref="import-schema-e01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="import-schema-199.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema"><string>A001 A002</string><integer>3</integer><date>2002-10-20</date></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>
