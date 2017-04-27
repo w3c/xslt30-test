@@ -147,6 +147,16 @@
         </xsl:source-document>
       </out>
     </xsl:template>
+  
+  <!-- default-validation has no effect -->
+  
+  <xsl:template name="s-014" use-when="$RUN">
+    <out xsl:default-validation="preserve">
+      <xsl:source-document _streamable="{$STREAMABLE}" href="books.xml">
+        <xsl:value-of select="/BOOKLIST/CATEGORIES/CATEGORY instance of element(*, xs:untyped)+"/>
+      </xsl:source-document>
+    </out>
+  </xsl:template>
     
 
               
