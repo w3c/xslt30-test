@@ -965,4 +965,25 @@ world</E1><E2>*</E2></out>]]></assert-xml>
       </result>
    </test-case>
    
+   <test-case name="analyze-string-097">
+      <description>Test of analyze-string with non-capturing groups, Saxon bug 3211 from Henry Thompson</description>
+      <created by="Michael Kay" on="2017-04-27"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-097.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<analyze-string-result xmlns="http://www.w3.org/2005/xpath-functions"
+            ><match><group nr="4">SUM(</group></match
+            ><match><group nr="8">A1</group></match
+            ><match><group nr="10">:</group></match
+            ><match><group nr="8">B2</group></match
+            ><match><group nr="5">)</group></match
+            ></analyze-string-result>]]></assert-xml>
+      </result>
+   </test-case>
+   
 </test-set>
