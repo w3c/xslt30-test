@@ -4,7 +4,7 @@
   <!-- PURPOSE: See if a namespace undeclaration (using undeclare-prefixes="T" on xsl:result-document) in a stylesheet works (not allowed) -->
 
 <xsl:template match="/">
-  <xsl:result-document method="xml" version="1.1" undeclare-prefixes="T">
+  <xsl:result-document method="xml" output-version="1.1" undeclare-prefixes="T">
   <doc xmlns:a="http://a/" xsl:inherit-namespaces="no">
     <chap xsl:inherit-namespaces="no">
       <para/>
