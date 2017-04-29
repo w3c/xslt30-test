@@ -6,7 +6,7 @@
 <xsl:param name="yes"> yes </xsl:param>
 
 <xsl:template match="/">
-  <xsl:result-document method="xml" version="1.1" undeclare-prefixes="{$yes}">
+  <xsl:result-document method="xml" output-version="1.1" undeclare-prefixes="{$yes}">
   <doc xmlns:a="http://a/" xsl:inherit-namespaces="no">
     <chap xsl:inherit-namespaces="no">
       <para/>

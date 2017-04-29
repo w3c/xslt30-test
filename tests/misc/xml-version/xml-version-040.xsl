@@ -3,7 +3,7 @@
 <!-- Purpose: Tests undeclare-prefixes="0" on xsl:result-document element where the method is 'xml' and version is '1.1', the namespace is an IRI.  -->
 
    <t:template match="/">
-   	<t:result-document method="xml" version="1.1" undeclare-prefixes="0">
+   	<t:result-document method="xml" output-version="1.1" undeclare-prefixes="0">
 		    <out>
          <t:element name="a" inherit-namespaces="yes">
 	    		     <t:namespace name="pref">http://example.org/preÀ</t:namespace>
