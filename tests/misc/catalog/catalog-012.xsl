@@ -7,7 +7,7 @@
 <xsl:template match="/">
       <out>
         <xsl:for-each select="/*/cat:test-set/document(@file)/*/cat:test-case">
-          <xsl:if test="not((.|..)/cat:dependencies/cat:feature[@value='backwards_compatibility'])
+          <xsl:if test="not((.|..)/cat:dependencies/cat:feature[@value='backwards_compatibility' and not(@satisfied='false')])
                         and cat:test/cat:stylesheet/document(@file)//*[self::xsl:* except self::xsl:output][@version='1.0' and not(@_version)]">
             <backwards><xsl:value-of select="@name"/></backwards>
           </xsl:if>

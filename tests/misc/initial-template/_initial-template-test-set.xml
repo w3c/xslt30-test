@@ -103,6 +103,38 @@
          <error code="XTDE0060"/>
       </result>
    </test-case>
+   
+   <test-case name="initial-template-080">
+      <description>A processor that doesn't support backwards compatibility raises no error unless 1.0 code is executed</description>
+      <created by="Michael Kay" on="2017-04-29"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="backwards_compatibility" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-080.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = '23'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="initial-template-081">
+      <description>A processor that doesn't support backwards compatibility raises an error if 1.0 code is executed</description>
+      <created by="Michael Kay" on="2017-04-29"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="backwards_compatibility" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-080.xsl"/>
+         <initial-template name="other"/>
+      </test>
+      <result>
+         <error code="XTDE0160"/>
+      </result>
+   </test-case>
 
    <test-case name="initial-template-901">
       <description>initial-template invocation to missing template</description>
