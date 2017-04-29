@@ -1,4 +1,4 @@
-<xslt:transform version="1.0"
+<xslt:transform version="2.0"
                 xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
                 xmlns:pre="http://pre.uri/">
 

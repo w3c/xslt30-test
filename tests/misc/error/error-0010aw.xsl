@@ -12,7 +12,7 @@
     <xsl:template match="/">
       <result>
         <xsl:attribute name="test_attr">
-            <xsl:stylesheet version="1.0">xsl:stylesheet</xsl:stylesheet>
+            <xsl:stylesheet version="2.0">xsl:stylesheet</xsl:stylesheet>
         </xsl:attribute>
       </result>
     </xsl:template>

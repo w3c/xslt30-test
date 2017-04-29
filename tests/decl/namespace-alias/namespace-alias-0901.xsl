@@ -14,7 +14,7 @@
     <xsl:apply-templates select="$bar"/>
   </xsl:template>
   <xsl:template match="/foo">
-    <xxx:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xxx:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
           <xsl:apply-templates select="*"/>
     </xxx:stylesheet>
   </xsl:template>

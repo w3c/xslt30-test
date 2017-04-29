@@ -1,5 +1,5 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:axsl="http://axsl.uri/"
- version="1.0">
+ version="2.0">
 
  <!-- BUG: Saxon 5.2/020 -->
  <!-- DESCRIPTION: xsl:namespace-alias must come before the relevant xsl:template elements -->

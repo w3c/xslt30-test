@@ -1,7 +1,5 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="1.0"
-			    xmlns:saxon="http://icl.com/saxon" 
-                extension-element-prefixes="saxon" 
-				>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="2.0"
+			    >
 <?spec xslt#named-templates?>
 <!-- BUG: Saxon 5.3.1/003 -->
 <!-- DESCRIPTION: Under certain conditions passing a parameter in xsl:with-param that is

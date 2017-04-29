@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 <?spec xslt#for-each?>
 <?error XTSE0010?>
 <!-- PURPOSE:   Test within xsl:for-each, xsl:sort must come first -->

@@ -5,11 +5,8 @@
 <!-- DESCRIPTION: The parent of a namespace node is the element on which the namespace was
     declared, not the element on whose namespace axis the namespace node lies. -->
 
-<out xsl:version="1.0"
-   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:saxon="http://icl.com/saxon"
-   xsl:exclude-result-prefixes="saxon"
->
+<out xsl:version="2.0"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:for-each select="//*">
   <element><xsl:value-of select="name()"/>:

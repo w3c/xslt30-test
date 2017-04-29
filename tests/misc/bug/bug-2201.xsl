@@ -11,7 +11,7 @@
     all the namespace nodes are returned in the result, whether or not their name matches "x". -->
     
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                 version="1.0" xmlns:a="http://a.com/" xmlns:b="http://b.com/">
+                 version="2.0" xmlns:a="http://a.com/" xmlns:b="http://b.com/">
 <xsl:output method="text"/>
 
 <xsl:template match="/">                         <!--root rule-->

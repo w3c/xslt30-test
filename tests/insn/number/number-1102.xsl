@@ -2,7 +2,7 @@
 <?spec xslt#number?>
 <!-- Test xsl:number level="single" applied to attribute nodes -->
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="2.0">
 
 
   <xsl:template match="/">

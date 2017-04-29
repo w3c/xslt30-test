@@ -1,8 +1,6 @@
 <?xml version="1.0" ?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:saxon="http://icl.com/saxon"
-                extension-element-prefixes="saxon"
-                version="1.0">
+                version="2.0">
 
 <?spec ser#cdata-section-elements?>
 <!-- BUG: Saxon 5.5/002 -->

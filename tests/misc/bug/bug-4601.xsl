@@ -3,7 +3,7 @@
          xmlns:bib="http://greenbytes.de/2000/xmlns/bibliography"
          xmlns="http://www.w3.org/1999/xhtml"
          exclude-result-prefixes="bib"
-         version="1.0"
+         version="2.0"
  >
  
  <?spec xpath#node-tests?>

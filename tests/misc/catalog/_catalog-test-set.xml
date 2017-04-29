@@ -223,5 +223,22 @@
          <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>-->
+   
+   <test-case name="catalog-012">
+      <description>A stylesheet using version="1.0" must have a dependency on backwards_compatibility</description>
+      <keywords>catalog-self-test assert-xml-usage-check</keywords>
+      <created by="Michael Kay" on="2017-04-29"/>
+      <environment ref="catalog001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="XML_1.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="catalog-012.xsl"/>
+      </test>
+      <result>
+         <assert>not(/out/backwards)</assert>
+      </result>
+   </test-case>
 
 </test-set>

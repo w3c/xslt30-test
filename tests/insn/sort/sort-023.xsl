@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <?spec xslt#sorting?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
   <!-- FileName: SORT13 -->
   <!-- Document: http://www.w3.org/TR/xslt -->
