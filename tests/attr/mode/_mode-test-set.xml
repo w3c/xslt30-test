@@ -2192,6 +2192,70 @@
       </result>
    </test-case>   
    
+   <test-case name="mode-1510">
+      <description>Conflicting xsl:mode/@use-accumulators</description>
+      <created by="Michael Kay" on="2017-05-02"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1510.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0545"/>
+      </result>
+   </test-case>   
+   
+   <test-case name="mode-1511">
+      <description>Non-Conflicting xsl:mode/@use-accumulators because precedence differs </description>
+      <created by="Michael Kay" on="2017-05-02"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1511.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out='12'</assert>
+      </result>
+   </test-case>   
+   
+   <test-case name="mode-1512">
+      <description>Changing the order of use-accumulator names is not a conflict </description>
+      <created by="Michael Kay" on="2017-05-02"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1512.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out='8'</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="mode-1513">
+      <description>No conflict between use-accumulator names if masked by something with higher precedence </description>
+      <created by="Michael Kay" on="2017-05-02"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1513.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out='8'</assert>
+      </result>
+   </test-case> 
+   
    <test-case name="mode-1601">
       <description>Test attribute default-mode (named mode) on literal result element</description>
       <created by="Debbie Lockett" on="2015-09-07"/>
