@@ -20,7 +20,7 @@
       <f><xsl:value-of select="$hof eq function-available('fold-left', 3)"/></f> 
       <g><xsl:value-of select="$hof eq function-available('fold-right', 3)"/></g>
       <h><xsl:value-of select="$hof eq function-available('for-each-pair', 3)"/></h>
-      <i><xsl:value-of select="($hof and $xp31) eq function-available('sort', 2)"/></i>
+      <i><xsl:value-of select="($hof and $xp31) eq function-available('sort', 3)"/></i>
       <j><xsl:value-of select="($hof and $xp31) eq function-available('apply', 2)"/></j>
     </out>
   </xsl:template>
