@@ -2256,6 +2256,38 @@
       </result>
    </test-case> 
    
+   <test-case name="mode-1514">
+      <description>No conflict between use-accumulator names. Namespace prefixes and order of declaration differ.</description>
+      <created by="Michael Kay" on="2017-05-02"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1514.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out='8'</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="mode-1515">
+      <description>Conflict between use-accumulator names, although namespace prefixes differ.</description>
+      <created by="Michael Kay" on="2017-05-02"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1515.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0545"/>
+      </result>
+   </test-case> 
+   
    <test-case name="mode-1601">
       <description>Test attribute default-mode (named mode) on literal result element</description>
       <created by="Debbie Lockett" on="2015-09-07"/>
