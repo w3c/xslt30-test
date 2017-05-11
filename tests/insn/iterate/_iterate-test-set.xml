@@ -511,7 +511,38 @@
             /><day date="2015-01-03" days.left="3"/><day date="2015-01-04" days.left="2"
             /><day date="2015-01-05" days.left="1"/><day date="2015-01-06" days.left="0"/></out>]]></assert-xml>
       </result>
-   </test-case>  
+   </test-case>
+   
+   <test-case name="iterate-035">
+      <description>xsl:break within xsl:try.</description>
+      <created by="Michael Kay" on="2017-05-11"/>
+      <environment ref="iterate005"/>
+      <test>
+         <stylesheet file="iterate-035.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/p) = 10</assert>
+            <assert>/out/pos = "12"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="iterate-036">
+      <description>xsl:break within xsl:catch.</description>
+      <created by="Michael Kay" on="2017-05-11"/>
+      <environment ref="iterate005"/>
+      <test>
+         <stylesheet file="iterate-036.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/p) = 10</assert>
+            <assert>/out/divide-by-zero</assert>
+            <assert>not(/out/pos)</assert>
+         </all-of>
+      </result>
+   </test-case>
    
    <test-case name="iterate-901">
       <description>Basic Test of xsl:iterate instruction. Error, xsl:param must come first</description>
