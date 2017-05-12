@@ -2,13 +2,13 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
-  <!-- Purpose: d-o-e is ignored when writing a tree-valued variable -->
+  <!-- Purpose: d-o-e is ignored when writing a sequence-valued variable -->
   
   <xsl:output omit-xml-declaration="yes"/>
 
 <xsl:template match="/">
   <out>
-    <xsl:variable name="x">
+    <xsl:variable name="x" as="text()">
       <xsl:apply-templates select="'&lt;'" mode="doe"/>
     </xsl:variable>
     <xsl:copy-of select="$x"/>

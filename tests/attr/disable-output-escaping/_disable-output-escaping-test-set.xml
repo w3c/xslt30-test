@@ -21,7 +21,9 @@
       <source role="." file="doe04.xml"/>
    </environment>
 
- 
+   <environment name="doe-08">
+      <source role="." file="doe08.xml" streaming="true"/>
+   </environment>
    
    <test-case name="doe-0176">
       <description>Test for disabling output escaping in xsl:text</description>
@@ -250,7 +252,7 @@
    </test-case>
    
    <test-case name="doe-0183">
-      <description>d-o-e is ignored when writing a variable</description>
+      <description>d-o-e is ignored when writing a tree-valued variable</description>
       <created by="Michael Kay" on="2017-05-12"/>
       <environment ref="doe-01"/>
       <dependencies>
@@ -282,7 +284,75 @@
          <assert-serialization><![CDATA[<out>&lt;&lt;</out>]]></assert-serialization>
       </result>
    </test-case>
+   
+   <test-case name="doe-0185">
+      <description>d-o-e is ignored when writing a tree-valued variable with element nodes</description>
+      <created by="Michael Kay" on="2017-05-12"/>
+      <environment ref="doe-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0185.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization><![CDATA[<out><elem>&lt;</elem>&lt;</out>]]></assert-serialization>
+      </result>
+   </test-case>
+    
+   <test-case name="doe-0186">
+      <description>d-o-e is ignored when writing a sequence-valued variable</description>
+      <created by="Michael Kay" on="2017-05-12"/>
+      <environment ref="doe-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0186.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization><![CDATA[<out>&lt;&lt;</out>]]></assert-serialization>
+      </result>
+   </test-case>
 
+
+   <test-case name="doe-0190">
+      <description>d-o-e works within try/catch, writing text nodes</description>
+      <created by="Michael Kay" on="2017-05-12"/>
+      <environment ref="doe-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0190.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization><![CDATA[<out>&lt;10</out>]]></assert-serialization>
+      </result>
+   </test-case>
+   
+   <test-case name="doe-0191">
+      <description>d-o-e works within try/catch, writing element nodes</description>
+      <created by="Michael Kay" on="2017-05-12"/>
+      <environment ref="doe-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0191.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization><![CDATA[<out>&lt;10</out>]]></assert-serialization>
+      </result>
+   </test-case>
   
 
    <test-case name="doe-0401">
@@ -459,6 +529,61 @@
             <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
          </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="doe-0801">
+      <description>Test for disabling-output-escaping within a streamed xsl:fork (where output is typically buffered)</description>
+      <created by="Michael Kay" on="2017-05-12"/>
+      <environment ref="doe-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0801.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<out>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</out>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="doe-0802">
+      <description>Test for disabling-output-escaping when streaming</description>
+      <created by="Michael Kay" on="2017-05-12"/>
+      <environment ref="doe-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0802.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<out><v>&lt;</v><v>&lt;</v><v>&lt;</v><v>&lt;</v><v>&lt;</v><v>&lt;</v><v>&lt;</v><v>&lt;</v><v>&lt;</v></out>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="doe-0803">
+      <description>Test for disabling-output-escaping within a streamed xsl:fork (where output is typically buffered)</description>
+      <!-- MHK 2017-05-12: Saxon can't handle this one at present. Buffering trees containing the d-o-e property on selected text nodes is challenging. -->
+      <created by="Michael Kay" on="2017-05-12"/>
+      <environment ref="doe-08"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0803.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<out><A>&lt;</A><C>&lt;</C><E>&lt;</E><I>&lt;</I><B>&lt;</B><H>&lt;</H><F>&lt;</F><D>&lt;</D><G>&lt;</G></out>]]></serialization-matches>
       </result>
    </test-case>
 
