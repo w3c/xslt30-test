@@ -7,6 +7,13 @@
    <dependencies>
       <spec value="XSLT30+"/>
    </dependencies>
+   
+   <environment name="maps-012">
+      <stylesheet file="maps-012.xsl"/>
+      <source role=".">
+         <content><![CDATA[<doc><e ref='1'/></doc>]]></content>
+      </source>
+   </environment>
 
    <test-case name="maps-001">
       <description>Basic test of maps in an XSLT 3.0 context</description>
@@ -156,6 +163,30 @@
          <all-of>
             <assert>/out = '51'</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-012">
+      <description>Check that key is atomized for function call on maps and arrays</description>
+      <created by="Debbie Lockett" on="2017-05-15"/>
+      <environment ref="maps-012"/>
+      <test>
+         <param name="param" select="'map'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>1st</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-013">
+      <description>Check that key is atomized for function call on maps and arrays</description>
+      <created by="Debbie Lockett" on="2017-05-15"/>
+      <environment ref="maps-012"/>
+      <test>
+         <param name="param" select="'array'"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>first</out>]]></assert-xml>
       </result>
    </test-case>
       
