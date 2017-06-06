@@ -544,6 +544,28 @@
       </result>
    </test-case>
    
+   <test-case name="iterate-037">
+      <description>Absent focus within xsl:on-completion</description>
+      <created by="Michael Kay" on="2017-06-05"/>
+      <test>
+         <stylesheet file="iterate-037.xsl"/>
+      </test>
+      <result>
+         <error code="XPDY0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="iterate-038">
+      <description>Variable inlining into xsl:on-completion - Saxon bug 3243</description>
+      <created by="Michael Kay" on="2017-06-05"/>
+      <test>
+         <stylesheet file="iterate-038.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><book>Genesis</book><book>Exodus</book><book>Leviticus</book><book>Numbers</book><book>Deuteronomy</book><tome name="pentateuch"><book>Genesis</book><book>Exodus</book><book>Leviticus</book><book>Numbers</book><book>Deuteronomy</book></tome></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="iterate-901">
       <description>Basic Test of xsl:iterate instruction. Error, xsl:param must come first</description>
       <created by="Michael Kay" on="2012-11-07"/>
