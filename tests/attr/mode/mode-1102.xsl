@@ -5,13 +5,13 @@
 
    <t:output method="xml" encoding="UTF-8" indent="no"/>
 
-   <t:template match="doc" mode="b X c">
+   <t:template match="doc" mode="b X  c ">
 		    <out>
 	 	 mode-bXc (doc): <t:call-template name="my-temp"/>
       </out>
 	  </t:template>
 
-   <t:template match="doc" mode="a">
+   <t:template match="doc" mode=" a">
 	  mode-a (doc): <t:call-template name="my-temp"/>
 	  </t:template>
 
@@ -19,12 +19,12 @@
 	  inside named-templates: <t:apply-templates select="str" mode="#current"/>
 	  </t:template>
 
-   <t:template match="str" mode="a">
+   <t:template match="str" mode="a ">
 	     <t:text>mode-a: </t:text>
 	     <t:value-of select="."/>
 	  </t:template>
 
-   <t:template match="str" mode="X">
+   <t:template match="str" mode=" X ">
 	     <t:text>mode-X: </t:text>
 	     <t:value-of select="."/>
 	  </t:template>

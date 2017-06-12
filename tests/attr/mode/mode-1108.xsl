@@ -28,7 +28,7 @@
    
    <xsl:mode use-accumulators="counter" _streamable="{$STREAMABLE}"/>
 
-   <xsl:template match="/" mode="X Y Z #unnamed">
+   <xsl:template match="/" mode="X &#x9; Y &#xa; Z &#xd; #unnamed"> <!-- fancy whitespace separators -->
 	  <out>
 	 	 <xsl:value-of select="accumulator-after('counter')"/>
       </out>
