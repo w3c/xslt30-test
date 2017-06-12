@@ -189,6 +189,21 @@ Who knows?: Prince</out>]]></assert-xml>
          <error code="XTTE0505"/>
       </result>
    </test-case>
+   
+   <test-case name="choose-0105">
+      <description>Potential optimization (in Saxon, to a switch). Saxon bug 3261</description>
+      <created by="Michael Kay" on="2015-06-12"/>
+      <environment ref="choose-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="choose-0105.xsl"/>
+      </test>
+      <result>
+         <assert>/out/*:circle[@r="0" and @cx="10" and @cy="20"]</assert>
+      </result>
+   </test-case>
 
    <test-case name="choose-0201">
       <description>Wben test occurs with attribute node, with no matches and is missing otherwise clause. No expected output.</description>

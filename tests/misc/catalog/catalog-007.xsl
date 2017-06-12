@@ -5,6 +5,7 @@
     xmlns:cat="http://www.w3.org/2012/10/xslt-test-catalog"
     xmlns:err="http://www.w3.org/2005/xqt-errors"
     exclude-result-prefixes="xs scm cat err"
+    expand-text="yes"
     version="3.0">
     
     <!-- Check that the attributes on XSLT elements permitted by the schema all appear in some test stylesheet -->
@@ -44,7 +45,7 @@
     
     <xsl:variable name="actualElementAttributePairs" as="xs:string*">
         <xsl:for-each select="$testCatalog/*/cat:test-set/document(@file)//(cat:stylesheet|cat:package)[not(ancestor::cat:test-case//cat:error[not(@code='Q{}UIOP9876')])]/@file">
-            <xsl:message>Processing <xsl:value-of select="."/></xsl:message>
+            <xsl:message>Processing {.}</xsl:message>
             <xsl:try>
                 <xsl:variable name="doc" select="document(.)"/>
                 <xsl:sequence select="distinct-values(
@@ -55,7 +56,7 @@
                         [not(ancestor-or-self::xsl:*[@use-when[not(.='$RUN')]])]
                         /(local-name(..) || '/@' || local-name(.)))"/>    
                 <xsl:catch>
-                    <xsl:message select="$err:code, $err:description">Failed to process <xsl:value-of select="."/></xsl:message>
+                    <xsl:message>{$err:code} {$err:description} - Failed to process {.}</xsl:message>
                 </xsl:catch>
             </xsl:try>
         </xsl:for-each>  
