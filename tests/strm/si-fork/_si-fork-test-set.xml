@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="si-fork">
-   <description>xsl:value-of instruction with streaming</description>
+   <description>xsl:fork instruction with streaming</description>
    
    <environment name="si-fork-A">
      <stylesheet file="si-fork-A.xsl"/>
@@ -530,6 +530,25 @@
                   <assert>/transactions/transaction[2]/value = "5.31"</assert>
                </all-of>
             </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-803">
+      <description>Streamable xsl:fork containing xsl:for-each-group containing a map constructor</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-15"/>
+      <environment>
+         <source role="." file="si-fork-803.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-fork-803.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>deep-equal(data(/html/body/table/tr/*[1]), ("Position", "1", "2", "3"))</assert>
+            <assert>deep-equal(data(/html/body/table/tr/*[2]), ("Country", "Italia", "France", "Deutschland"))</assert>
+            <assert>deep-equal(data(/html/body/table/tr/*[3]), ("City List", "Milano, Venezia", "Paris, Lyon, Toulouse", "München"))</assert>
+            <assert>deep-equal(data(/html/body/table/tr/*[4]), ("Population", "6", "15", "4"))</assert>
          </all-of>
       </result>
    </test-case>
