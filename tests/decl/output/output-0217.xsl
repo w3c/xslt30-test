@@ -14,7 +14,6 @@
                 <base/>
                 <br/>
                 <col/>
-                <command/>
                 <embed/>
                 <hr/>
                 <img/>

@@ -15,7 +15,6 @@
                 <base class="s"/>
                 <br class="s"/>
                 <col class="s"/>
-                <command class="s"/>
                 <embed class="s"/>
                 <hr class="s"/>
                 <img class="s"/>
