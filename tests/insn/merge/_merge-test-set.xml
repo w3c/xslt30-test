@@ -765,6 +765,7 @@
       </description>
       <created by="Michael Kay" on="2014-04-10"/>
       <modified by="Michael Kay" on="2017-03-03" change="Label as schema-aware"/>
+      <modified by="Michael Kay" on="2017-06-22" change="Fix bug 30131"/>
       <environment ref="merge049"/>
       <dependencies>
          <feature value="schema_aware"/>
@@ -1241,6 +1242,7 @@
    <test-case name="merge-082">
       <description>Use position() in xsl:merge-key/@select both with streaming and non-streaming.</description>
       <created by="Michael Kay" on="2015-09-10"/>
+      <modified by="Michael Kay" on="2017-06-22" change="Fix bug 30131"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1407,6 +1409,18 @@
             ><subject name="XSLT"><media type="cast"><title>cast 4</title></media><media type="cast"><title>cast 5</title></media
             ><media type="book"><title>book 3</title></media><media type="book"><title>book 4</title></media></subject
             ></subjects></root>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-092">
+      <description>Merge keys are evaluated with singleton focus</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-21"/>
+      <test>
+         <stylesheet file="merge-092.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><group key="1"><foo>foo 1</foo><bar>bar 1</bar><bar>bar 2</bar><foo>foo 2</foo><baz>baz 1</baz><foo>foo a</foo><bar>bar a</bar><bar>bar b</bar><foo>foo b</foo><baz>baz a</baz></group></root>
+]]></assert-xml>
       </result>
    </test-case>
 

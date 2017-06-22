@@ -9,20 +9,30 @@
           and sorted by city name in Swedish collating order. -->
     <xsl:output method="xml" indent="no"/>
     
+    <xsl:accumulator name="cities-counter" as="xs:integer" initial-value="0">
+        <xsl:accumulator-rule match="city-list/city" select="$value + 1"/>
+    </xsl:accumulator>
+    
+    <xsl:accumulator name="weather-counter" as="xs:integer" initial-value="0">
+        <xsl:accumulator-rule match="city-list/record" select="$value + 1"/>
+    </xsl:accumulator>
+    
     <xsl:template name="xsl:initial-template">
         <weather>
             <xsl:merge>                
                 <xsl:merge-source name="cities"
                         streamable="yes"
                 		for-each-source="'cities-SE.xml'"
+                		use-accumulators="cities-counter"
                 		select="city-list/city">	
-                    <xsl:merge-key select="position()"/>
+                    <xsl:merge-key select="accumulator-before('cities-counter')"/>
                 </xsl:merge-source>
                 <xsl:merge-source name="weather"
                         streamable="no"
                 		for-each-item="doc('weather-SE.xml')"
+                		use-accumulators="weather-counter"
                 		select="city-list/record">	
-                    <xsl:merge-key select="position()"/>
+                    <xsl:merge-key select="accumulator-before('weather-counter')"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
                   <xsl:variable name="g" select="current-merge-group()/self::city"/>

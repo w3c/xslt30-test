@@ -1104,7 +1104,53 @@
          <stylesheet file="si-group-053.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+         <all-of>
+            <assert>count(/chapter/pageset[1]/page) = 2</assert>
+            <assert>count(/chapter/pageset[2]/page) = 1</assert>
+            <assert>count(/chapter/pageset[3]/page) = 2</assert>
+            <assert>count(/chapter/pageset) = 3</assert>
+            <assert>empty(//pb)</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-054">
+      <description>Streamed grouping - access context item (not current-group()) within group action. Saxon bug 3255.</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-13"/>
+      <environment>
+         <source file="si-group-054.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-054.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<contents><unnumbered type="PT"><title>Title one</title></unnumbered
+               ><unnumbered type="PT"><title>Title Two</title></unnumbered
+               ><unnumbered type="PT"><title>Title Three</title></unnumbered
+               ><unnumbered type="PT"><title>Title Four</title></unnumbered
+               ></contents>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-055">
+      <description>Streamed grouping - access context item (not current-group()) within group action. Saxon bug 3256.</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-20"/>
+      <environment>
+         <source file="si-group-054.xml" role="." streaming="true"/> <!-- sic -->
+      </environment> 
+      <test>
+         <stylesheet file="si-group-055.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<contents><unnumbered type="PT"><title>Title one</title><unnumbered type="chapter" manid="01"
+               /><unnumbered type="chapter" manid="02"/><unnumbered type="chapter" manid="03"/></unnumbered><unnumbered type="PT"
+               ><title>Title Two</title><unnumbered type="chapter" manid="04"/><unnumbered type="chapter" manid="05"/><unnumbered type="chapter" manid="06"/></unnumbered><unnumbered type="PT"
+               ><title>Title Three</title><unnumbered type="chapter" manid="07"/><unnumbered type="chapter" manid="08"/><unnumbered type="chapter" manid="09"/><unnumbered type="chapter" manid="10"/></unnumbered><unnumbered type="PT"
+               ><title>Title Four</title><unnumbered type="chapter" manid="11"/><unnumbered type="chapter" manid="12"/><unnumbered type="chapter" manid="13"/><unnumbered type="chapter" manid="14"/><unnumbered type="chapter" manid="15"/></unnumbered></contents>]]></assert-xml>
+         </all-of>
       </result>
    </test-case>
    
