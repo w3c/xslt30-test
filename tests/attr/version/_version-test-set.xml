@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="version">
-   <description>Tests version</description>
+   <description>Tests the version attribute, forwards compatibility, and xsl:fallback</description>
    <environment name="ver01">
       <source role=".">
          <content><![CDATA[<doc>
@@ -613,6 +613,21 @@
       </test>
       <result>
          <error code="XTDE0160"/>
+      </result>
+   </test-case>
+   
+   <test-case name="version-032">
+      <description>Test xsl:fallback with an XSLT instruction child.</description>
+      <created by="Michael Kay" on="2017-06-13"/>
+      <environment ref="xsltversionerr003"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="version-032.xsl"/>
+      </test>
+      <result>
+         <assert>/out="Fallback: extension was not found."</assert>
       </result>
    </test-case>
 </test-set>
