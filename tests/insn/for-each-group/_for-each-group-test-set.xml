@@ -1385,4 +1385,24 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <error code="XTDE1061"/>
       </result>
    </test-case>
+   
+   <test-case name="for-each-group-082">
+      <description>group elements by local-name</description>
+      <created by="Debbie Lockett" on="2017-06-22"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-082.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out
+            ><group><line att="1"/><line att="2"/><line att="4"/><line att="7"/><line att="8"/><line att="11"/></group
+            ><group><line2 att="3"/></group
+            ><group><line3 att="5"/><line3 att="6"/><line3 att="9"/><line3 att="10"/></group
+            ><group><a:line xmlns:a="http://example.com" att="12"/><a:line xmlns:a="http://example.com" att="13"/><b:line xmlns:b="http://example.com" att="16"/></group
+            ><group><a:line3 xmlns:a="http://example.com" att="14"/><b:line3 xmlns:b="http://example.com" att="15"/></group></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>
