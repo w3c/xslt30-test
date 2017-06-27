@@ -572,6 +572,20 @@
       </result>
    </test-case>
    
+   <test-case name="si-fork-805">
+      <description>Streamable xsl:fork containing xsl:for-each-group</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-22"/>
+      <environment>
+         <source role="." file="si-fork-805.xml" streaming="true"/> 
+      </environment>
+      <test>
+         <stylesheet file="si-fork-805.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<Root><Brand><Vehicle>Car</Vehicle></Brand><Brand><Vehicle>Truck</Vehicle></Brand><Brand><Vehicle>Motorcycle</Vehicle></Brand></Root>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="si-fork-901">
       <description>Non-streamable xsl:fork - returns streamed nodes</description>
       <keywords>multiple-xsl-sequence-children AxisStep striding XTSE3430 illegally-returning-streamed-nodes</keywords>
