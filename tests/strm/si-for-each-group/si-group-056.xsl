@@ -15,20 +15,11 @@
         <xsl:copy>
             <xsl:for-each-group select="unnumbered" group-starting-with="unnumbered[@type = 'PT']">
                 <xsl:copy>
-                    <xsl:copy-of select="@*"/>
-                    <xsl:fork>
-                        <xsl:sequence>
-                            <xsl:copy-of select="node()"/>
-                        </xsl:sequence>
-                        <xsl:sequence>
-                            <xsl:apply-templates select="current-group() except ."/>
-                        </xsl:sequence>
-                    </xsl:fork>
+                    <xsl:apply-templates select="@*"/>
+                    <xsl:copy-of select="current-group()/node()"/>
                 </xsl:copy>
             </xsl:for-each-group>
         </xsl:copy>
     </xsl:template>
-    
-    <xsl:template match="subtitle"/>
     
 </xsl:stylesheet>

@@ -1154,6 +1154,82 @@
       </result>
    </test-case>
    
+   <test-case name="si-group-056">
+      <description>Streamed grouping - access children of current-group() within group action. Variant of si-group-054.</description>
+      <created by="Michael Kay" on="2017-06-22"/>
+      <environment>
+         <source file="si-group-054.xml" role="." streaming="true"/> <!-- sic -->
+      </environment>
+      <test>
+         <stylesheet file="si-group-056.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<contents><unnumbered type="PT"><title>Title one</title><subtitle>Chapter Two</subtitle></unnumbered
+               ><unnumbered type="PT"><title>Title Two</title></unnumbered
+               ><unnumbered type="PT"><title>Title Three</title><subtitle>Chapter Eight</subtitle></unnumbered
+               ><unnumbered type="PT"><title>Title Four</title></unnumbered></contents>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-057">
+      <description>Streamed grouping - test existence of current-group()[2].</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-26"/>
+      <environment>
+         <source file="si-group-057.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-057.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<Element><group><h1><title>Name1</title></h1
+               ><para/></group><group><h1><title>Name2</title></h1
+               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
+               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-058">
+      <description>Streamed grouping - test existence of current-group()[2].</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-26"/>
+      <environment>
+         <source file="si-group-057.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-058.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<Element><group><h1><title>Name1</title></h1
+               ><para/></group><group><h1><title>Name2</title></h1
+               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
+               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-059">
+      <description>Streamed grouping - test existence of current-group()[2].</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-26"/>
+      <environment>
+         <source file="si-group-057.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-059.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<Element><group><h1><title>Name1</title></h1
+               ><para/></group><group><h1><title>Name2</title></h1
+               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
+               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
 
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>
