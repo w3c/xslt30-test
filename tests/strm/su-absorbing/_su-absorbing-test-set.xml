@@ -235,6 +235,40 @@
       </result>       
    </test-case>
    
+   <test-case name="su-absorbing-202">
+      <description>Absorbing function - (Saxon NPE - Saxon bug 3325)</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-29"/>
+      <environment>
+         <source file="su-absorbing-202.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="su-absorbing-202.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<Items Title="Title" Icon="Icon" Description="Description"><Item Value="01" Name="Agriculture"
+            ><Item Value="011" Name="Horticulture and Fruit Growing"><Item Value="0111" Name="Plant Nurseries"
+            ><Item Value="011101" Name="Bulb Propagating"/></Item><Item Value="0112" Name="Cut Flower and Flower Seed Growing"
+            ><Item Value="011201" Name="Display Foliage Growing"/></Item></Item></Item></Items>]]></assert-xml>
+      </result>       
+   </test-case>
+   
+   <test-case name="su-absorbing-203">
+      <description>Absorbing function - (Saxon incorrect type checking - Saxon bug 3325)</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-29"/>
+      <environment>
+         <source file="su-absorbing-202.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="su-absorbing-203.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<Items Title="Title" Icon="Icon" Description="Description"><Item Value="01" Name="Agriculture"
+            ><Item Value="011" Name="Horticulture and Fruit Growing"><Item Value="0111" Name="Plant Nurseries"
+            ><Item Value="011101" Name="Bulb Propagating"/></Item><Item Value="0112" Name="Cut Flower and Flower Seed Growing"
+            ><Item Value="011201" Name="Display Foliage Growing"/></Item></Item></Item></Items>]]></assert-xml>
+      </result>       
+   </test-case>
+   
    <test-case name="su-absorbing-901">
       <description>Invalid absorbing function - not grounded</description>
       <created by="Michael Kay" on="2016-06-27"/>
