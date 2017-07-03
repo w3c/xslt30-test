@@ -124,6 +124,10 @@ while you are in the cinema.</p>]]></content>
 </a>]]></content>
       </source>
    </environment>
+   <environment name="group086">
+      <source role="." file="group086.xml"/>
+      <collation uri="http://www.w3.org/xslts/collation/caseblind" />
+   </environment>
 
    <test-case name="for-each-group-001">
       <description>simple test of value-based grouping</description>
@@ -1458,6 +1462,38 @@ while you are in the cinema.</p></o>]]></assert-xml>
       </test>
       <result>
          <assert-xml><![CDATA[<out><t n="T"><tt n="U"/><tt n="U"/></t><t n="U"><tt n="U"/><tt n="U"/></t><t n="V"><tt n="U"/><tt n="U"/></t><t n="W"><tt n="U"/><tt n="U"/></t></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-086">
+      <description>Test position() and last() with the result of xsl:for-each-group group-adjacent
+         with a case-blind collation (modification of for-each-group-038)</description>
+      <created by="Debbie Lockett" on="2017-07-03"/>
+      <environment ref="group086"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-086.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-038.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-087">
+      <description>XSLT 3.0 grouping using group-by with composite keys and a case-blind collation 
+         (modification of for-each-group-043)</description>
+      <created by="Debbie Lockett" on="2017-07-03"/>
+      <environment ref="group086"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-087.xsl"/>
+      </test>
+      <result>
+         <assert-xml file="for-each-group-043.out"/>
       </result>
    </test-case>
 </test-set>
