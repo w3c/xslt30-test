@@ -1347,6 +1347,90 @@
          </all-of>        
       </result>
    </test-case>
+   
+   <test-case name="accumulator-063">
+      <description>Copying accumulator values using xsl:copy-of() before the first reference to the accumulator is evaluated</description>
+      <created by="Michael Kay" on="2017-06-27"/>
+      <test>
+         <stylesheet file="accumulator-063.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/doc/b-acc='3'</assert>
+            <assert>/doc/c-acc='4'</assert>
+         </all-of>           
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-064">
+      <description>Copying accumulator values using fn:copy-of() before the first reference to the accumulator is evaluated</description>
+      <created by="Michael Kay" on="2017-06-27"/>
+      <test>
+         <stylesheet file="accumulator-064.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/doc/b-acc='3'</assert>
+            <assert>/doc/c-acc='4'</assert>
+         </all-of>           
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-065">
+      <description>Copying accumulator values using dynamic call on fn:copy-of() before the first reference to the accumulator is evaluated</description>
+      <created by="Michael Kay" on="2017-06-27"/>
+      <test>
+         <stylesheet file="accumulator-065.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/doc/b-acc='3'</assert>
+            <assert>/doc/c-acc='4'</assert>
+         </all-of>           
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-066">
+      <description>Copying accumulator values using static call on fn:snapshot() before the first reference to the accumulator is evaluated</description>
+      <created by="Michael Kay" on="2017-06-27"/>
+      <test>
+         <stylesheet file="accumulator-066.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/doc/b-acc='3'</assert>
+            <assert>/doc/c-acc='4'</assert>
+         </all-of>           
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-067">
+      <description>Copying accumulator values using dynamic call on fn:snapshot() before the first reference to the accumulator is evaluated</description>
+      <created by="Michael Kay" on="2017-06-27"/>
+      <test>
+         <stylesheet file="accumulator-067.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/doc/b-acc='3'</assert>
+            <assert>/doc/c-acc='4'</assert>
+         </all-of>           
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-068">
+      <description>Streamable accumulator test</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-28"/>
+      <test>
+         <stylesheet file="accumulator-068.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <assert-xml><![CDATA[<out>{"1":"Message 1","2":"Message 2"}</out>]]></assert-xml>
+            <assert-xml><![CDATA[<out>{"2":"Message 2","1":"Message 1"}</out>]]></assert-xml>
+         </any-of>           
+      </result>
+   </test-case>
  
  
 </test-set>
