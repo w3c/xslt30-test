@@ -3,7 +3,7 @@
   
   <!-- group elements by local-name -->
   
-  <xsl:output encoding="UTF-8" indent="yes" method="xml"/>
+  <xsl:output encoding="UTF-8" method="xml"/>
   
   <xsl:variable name="in">
     <root xmlns:a="http://example.com" xmlns:b="http://example.com">

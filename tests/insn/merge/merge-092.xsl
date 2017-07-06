@@ -26,8 +26,7 @@
             <baz>baz a</baz>
         </root>
     </xsl:param>
-    
-    <xsl:output indent="yes"/>
+
     
     <xsl:template name="xsl:initial-template" match="/">
         <root>

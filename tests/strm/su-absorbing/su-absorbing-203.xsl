@@ -10,8 +10,6 @@
     
     <xsl:mode _streamable="{$STREAMABLE}" on-no-match="shallow-copy"/>
     
-    <xsl:output indent="yes"/>
-    
     <!-- differs from su-absorbing-202 by declaring the required type of the result -->
     
     <xsl:function name="mf:group" as="element(Item)*" _streamability="{if ($STREAMABLE) then 'absorbing' else 'unclassified'}">

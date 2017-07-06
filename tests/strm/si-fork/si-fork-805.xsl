@@ -7,8 +7,6 @@
     
     <xsl:mode _streamable="{$STREAMABLE}"/>
     
-    <xsl:output indent="yes"/>
-    
     <xsl:template match="Root">
         <xsl:copy>
             <xsl:fork>
