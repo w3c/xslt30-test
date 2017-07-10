@@ -907,6 +907,24 @@
       </result>
    </test-case>
    
+   <test-case name="override-v-015">
+      <description>Overriding a param, calling in a non-default mode. Saxon issue 3338.</description>
+      <created by="Michael Kay after Mark Dunn" on="2016-09-05"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><a foo="bar">Lorem Ipsum</a></doc>]]></content>
+         </source>
+      </environment>
+      <test>
+         <package file="override-v-015a.xsl" role="principal"/>
+         <package file="override-v-015b.xsl" role="secondary"/>
+         <initial-mode name="transform"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<override-success><doc><a foo="bar">Lorem Ipsum</a></doc></override-success>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="override-as-001">
       <description>Successful override of a public attribute-set</description>
       <created by="Michael Kay" on="2015-02-28"/>
