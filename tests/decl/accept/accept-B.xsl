@@ -23,6 +23,8 @@
   <xsl:expose component="attribute-set" names="p:*" visibility="final"/>
   <xsl:expose component="mode" names="p:*" visibility="final"/>
   
+  <xsl:expose component="function" names="q:f3" visibility="private"/>
+  
   <xsl:variable name="v1" select="11"/>
   <xsl:variable name="p:v2" select="22"/>
   
@@ -32,6 +34,7 @@
   <xsl:function name="p:f1"><xsl:sequence select="11"/></xsl:function>
   <xsl:function name="p:f2"><xsl:sequence select="22"/></xsl:function>
   <xsl:function name="q:f2"><xsl:sequence select="33"/></xsl:function>
+  <xsl:function name="q:f3"><xsl:sequence select="44"/></xsl:function>
   
   <xsl:attribute-set name="a1">
     <xsl:attribute name="A" select="'AA'"/>

@@ -23,6 +23,8 @@
   <xsl:expose component="attribute-set" names="p:*" visibility="final"/>
   <xsl:expose component="mode" names="p:*" visibility="final"/>
   
+  <xsl:expose component="*" names="q:*" visibility="private"/>
+  
   <xsl:variable name="v1" select="1"/>
   <xsl:variable name="p:v2" select="2"/>
   
