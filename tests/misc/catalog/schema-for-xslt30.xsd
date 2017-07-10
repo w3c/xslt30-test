@@ -223,7 +223,7 @@ of problems processing the schema using various tools
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
           <xs:attribute name="component" type="xsl:component-kind-type"/>
-          <xs:attribute name="names" type="xsl:EQNames"/>
+          <xs:attribute name="names" type="xsl:component-tests"/>
           <xs:attribute name="visibility" type="xsl:visibility-type"/>
           <xs:attribute name="_component" type="xs:string"/>
           <xs:attribute name="_names" type="xs:string"/>
@@ -665,7 +665,7 @@ of problems processing the schema using various tools
       <xs:complexContent>
         <xs:extension base="xsl:element-only-versioned-element-type">
           <xs:attribute name="component" type="xsl:component-kind-type"/>
-          <xs:attribute name="names" type="xsl:EQNames"/>
+          <xs:attribute name="names" type="xsl:component-tests"/>
           <xs:attribute name="visibility" type="xsl:visibility-not-hidden-type"/>
           <xs:attribute name="_component" type="xs:string"/>
           <xs:attribute name="_names" type="xs:string"/>
@@ -803,7 +803,7 @@ of problems processing the schema using various tools
           <xs:attribute name="_visibility" type="xs:string"/>
           <xs:attribute name="_streamability" type="xs:string"/>
           <xs:attribute name="_override-extension-function" type="xs:string"/>
-          <xs:attribute name="_identity-sensitive" type="xs:string"/>
+          <xs:attribute name="_new-each-time" type="xs:string"/>
           <xs:attribute name="_cache" type="xs:string"/>
           <xs:assert test="exists(@name | @_name)"/>
           <xs:assert test="every $e in xsl:param satisfies (empty($e/(@select | @_select)) and empty($e/child::node()))">
@@ -820,10 +820,10 @@ of problems processing the schema using various tools
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
-          <xs:assert test="every $e in xsl:param satisfies empty($e/(@required | @_required))">
+          <xs:assert test="every $e in xsl:param/@required satisfies normalize-space($e) = ('yes', 'true', '1')">
             <xs:annotation>
               <xs:documentation>
-                <p>A parameter for a function must have no <code>required</code> attribute.</p>
+                <p>If parameter for a function has a <code>required</code> attribute then it must have the value "yes".</p>
               </xs:documentation>
             </xs:annotation>
           </xs:assert>
@@ -1078,6 +1078,7 @@ of problems processing the schema using various tools
           </xs:attribute>
           <xs:attribute name="_name" type="xs:string"/>
           <xs:attribute name="_streamable" type="xs:string"/>
+          <xs:attribute name="_use-accumulators" type="xs:string"/>
           <xs:attribute name="_on-no-match" type="xs:string"/>
           <xs:attribute name="_on-multiple-match" type="xs:string"/>
           <xs:attribute name="_warning-on-no-match" type="xs:string"/>
@@ -1937,6 +1938,24 @@ of problems processing the schema using various tools
     </xs:restriction>
   </xs:simpleType>
   
+  <xs:simpleType name="component-test">
+    <xs:annotation>
+      <xs:documentation>
+        <p> A NameTest or a named function reference. </p>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="xsl:nametest xsl:named-function-reference"/>
+  </xs:simpleType>
+  
+  <xs:simpleType name="component-tests">
+    <xs:annotation>
+      <xs:documentation>
+        <p> A list of NameTests or named function references</p>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:list itemType="xsl:component-test"/>
+  </xs:simpleType>
+  
   <xs:simpleType name="default-mode-type">
     <xs:annotation>
       <xs:documentation> The default-mode attribute of xsl:stylesheet, xsl:transform, 
@@ -2049,29 +2068,52 @@ of problems processing the schema using various tools
         </xs:simpleType>
       </xs:union>     
   </xs:simpleType>
-
+  
+  <xs:simpleType name="named-function-reference">
+    <xs:annotation>
+      <xs:documentation>
+        <p> In simple terms, this is an EQName followed by "#arity" where "arity" is a non-negative integer. However,
+          XSD doesn't allow us to reuse the definition of EQName in this way, so it has to be defined from scratch. The simplest
+          way to do this is with an assertion. However, the assertion cannot exploit types such as xsl:EQName defined in this
+        schema</p>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="((Q\{.*\})|(\i\c+:))?\i\c+#[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  
+  <xs:simpleType name="nametest">
+    <xs:annotation>
+      <xs:documentation>
+        <p> A list of NameTests, as defined in the XPath 31 Recommendation. Each NameTest is either
+          an EQName, or "*", or "prefix:*", or "*:localname", or the wildcard Q{uri}*. </p>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="xsl:EQName">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="*"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:pattern value="\i\c*:\*"/>
+          <xs:pattern value="\*:\i\c*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  
   <xs:simpleType name="nametests">
     <xs:annotation>
-      <xs:documentation> A list of NameTests, as defined in the XPath 2.0 Recommendation. Each
-        NameTest is either a QName, or "*", or "prefix:*", or "*:localname" </xs:documentation>
+      <xs:documentation>
+        <p> A list of NameTests, as defined in the XPath 2.0 Recommendation. Each NameTest is either
+          a QName, or "*", or "prefix:*", or "*:localname" </p>
+      </xs:documentation>
     </xs:annotation>
-    <xs:list>
-      <xs:simpleType>
-        <xs:union memberTypes="xsl:EQName">
-          <xs:simpleType>
-            <xs:restriction base="xs:token">
-              <xs:enumeration value="*"/>
-            </xs:restriction>
-          </xs:simpleType>
-          <xs:simpleType>
-            <xs:restriction base="xs:token">
-              <xs:pattern value="\i\c*:\*"/>
-              <xs:pattern value="\*:\i\c*"/>
-            </xs:restriction>
-          </xs:simpleType>
-        </xs:union>
-      </xs:simpleType>
-    </xs:list>
+    <xs:list itemType="xsl:nametest"/>
   </xs:simpleType>
   
   <xs:simpleType name="on-multiple-match-type">
@@ -2130,6 +2172,8 @@ of problems processing the schema using various tools
           <xs:enumeration value="xhtml"/>
           <xs:enumeration value="html"/>
           <xs:enumeration value="text"/>
+          <xs:enumeration value="json"/>
+          <xs:enumeration value="adaptive"/>
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType>
