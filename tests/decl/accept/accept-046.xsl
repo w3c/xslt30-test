@@ -27,7 +27,7 @@
       
     </xsl:override>
     
-    <xsl:accept component="attribute-set" names="a1" visibility="absent"/>
+    <xsl:accept component="attribute-set" names="a1" visibility="hidden"/>
   </xsl:use-package>  
   
   

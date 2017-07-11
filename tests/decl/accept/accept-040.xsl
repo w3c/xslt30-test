@@ -25,7 +25,7 @@
       
     </xsl:override>
     
-    <xsl:accept component="function" names="C:f1" visibility="absent"/>
+    <xsl:accept component="function" names="C:f1" visibility="hidden"/>
   </xsl:use-package>  
   
   

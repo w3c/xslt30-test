@@ -28,14 +28,14 @@
       
     </xsl:override>
     
-    <xsl:accept component="function" names="C:f1" visibility="absent" use-when="$accept"/>
+    <xsl:accept component="function" names="C:f1" visibility="hidden" use-when="$accept"/>
   </xsl:use-package>  
   
   
   <xsl:template name="main">
     <out xsl:use-attribute-sets="a1">
       <xsl:if test="$go">
-        <xsl:value-of select="C:f1('London')"/>
+        <xsl:value-of select="C:f1-proxy('London')"/>
       </xsl:if>
       <xsl:call-template name="t1">
         <xsl:with-param name="p1" select="string($v1)"/>

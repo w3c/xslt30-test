@@ -8,16 +8,34 @@
 
 
   <xsl:variable name="v1" as="xs:integer" visibility="abstract"/>
+  
+  <xsl:variable name="v1-proxy" as="xs:integer" visibility="public" select="$v1"/>
 
   <xsl:template name="t1" as="xs:integer" visibility="abstract">
     <xsl:param name="p1" as="xs:string"/>
   </xsl:template>
+  
+  <xsl:template name="t1-proxy" as="xs:integer" visibility="public">
+    <xsl:param name="p1" as="xs:string"/>
+    <xsl:call-template name="t1">
+      <xsl:with-param name="p1" select="$p1"/>
+    </xsl:call-template>
+  </xsl:template>
 
   <xsl:attribute-set name="a1" visibility="abstract"/>
+  
+  <xsl:attribute-set name="a1-proxy" use-attribute-sets="a1" visibility="public"/>
 
   <xsl:function name="C:f1" as="xs:integer" visibility="abstract">
     <xsl:param name="p1" as="xs:string"/>
   </xsl:function>
+  
+  <xsl:function name="C:f1-proxy" as="xs:integer" visibility="public">
+    <xsl:param name="p1" as="xs:string"/>
+    <xsl:sequence select="C:f1($p1) + 1"/>
+  </xsl:function>
+  
+  
 
 
 </xsl:package>

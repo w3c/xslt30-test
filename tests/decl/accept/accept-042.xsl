@@ -29,7 +29,7 @@
       
     </xsl:override>
     
-    <xsl:accept component="variable" names="v1" visibility="absent"/>
+    <xsl:accept component="variable" names="v1" visibility="hidden"/>
   </xsl:use-package>  
   
   

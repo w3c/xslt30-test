@@ -26,7 +26,7 @@
       
     </xsl:override>
     
-    <xsl:accept component="template" names="t1" visibility="absent"/>
+    <xsl:accept component="template" names="t1" visibility="hidden"/>
   </xsl:use-package>  
   
   
