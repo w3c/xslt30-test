@@ -19,7 +19,7 @@
             <xsl:choose>
               <xsl:when test="not($doc/xsl:*) or 
                              ($doc//@version/number() > 3) or
-                             ($doc//@xsl:version/number() > 3)
+                             ($doc//@xsl:version/number() > 3) or
                              ($doc//@use-when) or ($doc//@xsl:use-when) or
                              ($doc//@Q{http://www.w3.org/2001/XMLSchema-instance}type) or
                              $doc//xs:*[not(ancestor::xsl:import-schema)] or
