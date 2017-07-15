@@ -1431,6 +1431,48 @@
          </any-of>           
       </result>
    </test-case>
+   
+   <test-case name="accumulator-069">
+      <description>Grouping using accumulators and maps (non-streamable version)</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-07-14"/>
+      <environment>
+         <source file="accumulator-069.xml" role="."/>
+      </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-069.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<TRANSACTION-LIST><transaction key="a"><count>2</count><amount>20</amount></transaction
+            ><transaction key="b"><count>2</count><amount>20</amount></transaction
+            ><transaction key="c"><count>2</count><amount>20</amount></transaction
+            ></TRANSACTION-LIST>]]></assert-xml>         
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-069s">
+      <description>Grouping using accumulators and maps (streamable version)</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-07-14"/>
+      <environment>
+         <source file="accumulator-069.xml" role="." streaming="true"/>
+      </environment>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-069.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<TRANSACTION-LIST><transaction key="a"><count>2</count><amount>20</amount></transaction
+            ><transaction key="b"><count>2</count><amount>20</amount></transaction
+            ><transaction key="c"><count>2</count><amount>20</amount></transaction
+            ></TRANSACTION-LIST>]]></assert-xml>        
+      </result>
+   </test-case>
  
  
 </test-set>
