@@ -43,6 +43,28 @@
          uri="http://www.w3.org/2013/XSLT/xml-to-json.xsl" package-version="1.0"/>
       <param name="STREAMABLE" as="xs:boolean" static="yes" select="true()"/>
    </environment>
+   
+   <environment name="use-package-160">
+      <source file="use-package-160.xml" role="."/>
+      <package file="use-package-160-variables.xsl" role="secondary"
+         uri="http://www.160.com/generalVariables" package-version="0.1"/>
+      <package file="use-package-160-functions.xsl" role="secondary"
+         uri="http://www.160.com/generalFunctions" package-version="0.1"/>
+      <package file="use-package-160-logger.xsl" role="secondary"
+         uri="http://www.160.com/logger" package-version="0.1"/>
+      <package file="use-package-160-runner.xsl" role="secondary"
+         uri="http://www.160.com/runner" package-version="0.1"/>
+      <package file="use-package-160-common.xsl" role="secondary"
+         uri="http://www.160.com/common" package-version="0.1"/>
+   </environment>
+   
+   <environment name="use-package-170">
+      <source file="use-package-170.xml" role="."/>
+      <package file="use-package-170c.xsl" role="secondary"
+         uri="urn:170c" package-version="1.0"/>
+      <package file="use-package-170b.xsl" role="secondary"
+         uri="urn:170b" package-version="1.0"/>
+   </environment>
 
    <dependencies>
       <spec value="XSLT30+"/>
@@ -324,6 +346,85 @@
          <assert>/out = '{"desc":"Distances between several cities, in kilometers.","updated":"2014-02-04T18:50:45","uptodate":true,"author":null,"cities":{"Brussels":[{"to":"London","distance":322},{"to":"Paris","distance":265},{"to":"Amsterdam","distance":173}],"London":[{"to":"Brussels","distance":322},{"to":"Paris","distance":344},{"to":"Amsterdam","distance":358}],"Paris":[{"to":"Brussels","distance":265},{"to":"London","distance":344},{"to":"Amsterdam","distance":431}],"Amsterdam":[{"to":"Brussels","distance":173},{"to":"London","distance":358},{"to":"Paris","distance":431}]}}'</assert>
       </result>
    </test-case>
+   
+   <test-case name="use-package-160">
+      <description>A more complex package hierarchy</description>
+      <created by="Michael Kay after Mark Dunn" on="2017-07-17"/>
+      <environment ref="use-package-160"/>
+      <test>
+         <stylesheet file="use-package-160a.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<output><log>Oxford</log><city>Oxford</city></output>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-161">
+      <description>A more complex package hierarchy</description>
+      <created by="Michael Kay after Mark Dunn" on="2017-07-17"/>
+      <environment ref="use-package-160"/>
+      <test>
+         <stylesheet file="use-package-160b.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<output><log>Oxford</log><city>Oxford</city></output>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-170">
+      <description>A more complex package hierarchy</description>
+      <created by="Michael Kay after Toshihito Makita" on="2017-07-17"/>
+      <environment ref="use-package-170"/>
+      <test>
+         <stylesheet file="use-package-170a.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" color="red"
+            ><fo:inline>ph:Phrase text</fo:inline><fo:inline font-weight="bold">Bold text</fo:inline></fo:block>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-171">
+      <description>Variant of -170 with a mode explicitly accepted</description>
+      <created by="Michael Kay after Toshihito Makita" on="2017-07-17"/>
+      <environment ref="use-package-170"/>
+      <test>
+         <stylesheet file="use-package-171a.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" color="red"
+            ><fo:inline>ph:Phrase text</fo:inline><fo:inline font-weight="bold">Bold text</fo:inline></fo:block>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-172">
+      <description>Variant of -170 with multiple layers of template rule overriding</description>
+      <created by="Michael Kay" on="2017-07-17"/>
+      <environment ref="use-package-170"/>
+      <test>
+         <stylesheet file="use-package-172a.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" color="red"
+            ><fo:inline>right:Phrase text</fo:inline><fo:inline>right:Bold text</fo:inline></fo:block>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-173">
+      <description>Variant of -170 with multiple layers of template rule overriding and next-match</description>
+      <created by="Michael Kay" on="2017-07-17"/>
+      <environment ref="use-package-170"/>
+      <test>
+         <stylesheet file="use-package-173a.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" color="red"
+            ><fo:inline>one:<fo:inline>two:<fo:inline>ph:Phrase text</fo:inline></fo:inline
+            ></fo:inline><fo:inline>one:<fo:inline>two:<fo:inline>ph:Bold text</fo:inline
+            ></fo:inline></fo:inline></fo:block>]]></assert-xml>
+      </result>
+   </test-case>
+   
 
    <test-case name="use-package-201">
       <description>Testing package versioning - version 1.0.0</description>
