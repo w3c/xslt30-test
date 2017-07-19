@@ -3,9 +3,17 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:f="http://accum001/"
   exclude-result-prefixes="xs f" version="3.0"  declared-modes="no" expand-text="yes">
 
-  <!-- A test that copying of accumulator values works even if the
-       accumulator has not yet been used at the time of the copy -->
+  <!-- Test xsl:copy-of using copy-accumulators=true and validation=strict -->
  
+  <xsl:import-schema>
+    <xs:schema>
+      <xs:element name="b">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </xsl:import-schema>
 
   <xsl:variable name="data">
     <doc><a/><b/><c/></doc>
@@ -16,13 +24,11 @@
     <xsl:accumulator-rule match="*" select="$value + 1"/>
   </xsl:accumulator>
   
-  <xsl:param name="snapshotFn" select="snapshot#1"/>
-  
   <xsl:mode on-no-match="shallow-copy"/>
   
   <xsl:template match="b">
     <xsl:variable name="x" as="element()">
-      <xsl:sequence select="$snapshotFn(.)"/>
+      <xsl:copy-of select="." copy-accumulators="yes" validation="strict"/>
     </xsl:variable>
     <xsl:for-each select="$x">
       <b-acc>{accumulator-before('f:elementNr')}</b-acc>

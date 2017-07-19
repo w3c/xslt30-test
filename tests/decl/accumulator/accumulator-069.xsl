@@ -11,8 +11,6 @@
     
     <xsl:mode _streamable="{$STREAMABLE}" on-no-match="shallow-skip" use-accumulators="item1-count subitem groups"/>
     
-    <xsl:output indent="yes"/>
-    
     <xsl:accumulator name="item1-count" as="xs:integer" initial-value="0" _streamable="{$STREAMABLE}">
         <xsl:accumulator-rule match="TRANSACTION" select="0"/>
         <xsl:accumulator-rule match="TRANSACTION/ITEM1" select="$value + 1"/>

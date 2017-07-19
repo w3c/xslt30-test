@@ -19,10 +19,10 @@
   <xsl:mode on-no-match="shallow-copy"/>
   
   <xsl:template match="b">
-    <xsl:variable name="x">
+    <xsl:variable name="x" as="element()">
       <xsl:sequence select="copy-of(.)"/>
     </xsl:variable>
-    <xsl:for-each select="$x/*">
+    <xsl:for-each select="$x">
       <b-acc>{accumulator-before('f:elementNr')}</b-acc>
     </xsl:for-each>
   </xsl:template>
