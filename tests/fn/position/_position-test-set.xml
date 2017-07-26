@@ -273,7 +273,7 @@
       <source role=".">
          <content><![CDATA[<doc>
   <a mark="a1"/>
-  <b mark="b1"/>
+  <b mark="b1"><bb/></b>
   <c mark="c1"/>
   <c mark="c2"/>
   <a mark="a2"/>
@@ -2848,6 +2848,67 @@ C:  Comment-4
       </result>
    </test-case>
 
+   <test-case name="position-4102">
+      <description>position() used in pattern predicate: scope for optimization</description>
+      <created by="Michael Kay" on="2017-07-23"/>
+      <environment ref="position-41"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="position-4102.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><odd/><even/><odd/><even/><odd/><even/><odd/><even/><odd/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="position-4103">
+      <description>position() used in pattern predicate: scope for optimization</description>
+      <created by="Michael Kay" on="2017-07-23"/>
+      <environment ref="position-41"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="position-4103.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a-odd/><b-odd/><c-odd/><c-even/><a-even/><a-odd/><b-even/><c-odd/><b-odd/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="position-4104">
+      <description>position() used in pattern predicate using the descendant axis</description>
+      <created by="Michael Kay" on="2017-07-26"/>
+      <environment ref="position-41"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="position-4104.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><odd/><even/><even/><odd/><even/><odd/><even/><odd/><even/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="position-4105">
+      <description>position() used in pattern predicate in for-each-group: scope for optimization</description>
+      <created by="Michael Kay" on="2017-07-26"/>
+      <environment ref="position-41"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="position-4105.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><group><a mark="a1"/><b mark="b1"><bb/></b></group><group><c mark="c1"/><c mark="c2"/></group
+            ><group><a mark="a2"/><a mark="a3"/></group><group><b mark="b2"/><c mark="c3"/></group><group><b mark="b3"/></group></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="position-4201">
       <description>Section: 4.1</description>
       <created by="Michael Kay" on="2012-11-07"/>
