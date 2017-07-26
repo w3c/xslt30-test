@@ -3,19 +3,10 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:f="http://accum001/"
   exclude-result-prefixes="xs f" version="3.0"  declared-modes="no" expand-text="yes">
 
-  <!-- Test xsl:copy-of using copy-accumulators=true and validation=strict -->
+  <!-- Test xsl:copy-of using copy-accumulators=true and copy-namespaces=false -->
  
-  <xsl:import-schema>
-    <xs:schema>
-      <xs:element name="b" type="b-type"/>
-      <xs:complexType name="b-type">
-         <xs:sequence/>
-      </xs:complexType>
-    </xs:schema>
-  </xsl:import-schema>
-
   <xsl:variable name="data">
-    <doc><a/><b/><c/></doc>
+    <doc xmlns:p="http://www.p.com"><a/><b/><c/></doc>
   </xsl:variable>
 
   <xsl:accumulator name="f:elementNr" as="xs:integer" initial-value="0"
@@ -27,10 +18,13 @@
   
   <xsl:template match="b">
     <xsl:variable name="x" as="element()">
-      <xsl:copy-of select="." copy-accumulators="yes" validation="strict"/>
+      <xsl:copy-of select="." copy-accumulators="yes" copy-namespaces="no"/>
     </xsl:variable>
     <xsl:for-each select="$x">
-      <b-acc typed="{. instance of element(*, b-type)}">{accumulator-before('f:elementNr')}</b-acc>
+      <b-acc>
+        <xsl:copy-of select="namespace::*"/>
+        <xsl:text>{accumulator-before('f:elementNr')}</xsl:text>
+      </b-acc>
     </xsl:for-each>
   </xsl:template>
 

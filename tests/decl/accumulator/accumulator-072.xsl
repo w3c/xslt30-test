@@ -3,16 +3,9 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:f="http://accum001/"
   exclude-result-prefixes="xs f" version="3.0"  declared-modes="no" expand-text="yes">
 
-  <!-- Test xsl:copy-of using copy-accumulators=true and validation=strict -->
+  <!-- A test that copying of accumulator values works even if the
+       accumulator has not yet been used at the time of the copy -->
  
-  <xsl:import-schema>
-    <xs:schema>
-      <xs:element name="b" type="b-type"/>
-      <xs:complexType name="b-type">
-         <xs:sequence/>
-      </xs:complexType>
-    </xs:schema>
-  </xsl:import-schema>
 
   <xsl:variable name="data">
     <doc><a/><b/><c/></doc>
@@ -27,10 +20,10 @@
   
   <xsl:template match="b">
     <xsl:variable name="x" as="element()">
-      <xsl:copy-of select="." copy-accumulators="yes" validation="strict"/>
+      <xsl:call-template name="copy-with-accumulators"/>
     </xsl:variable>
     <xsl:for-each select="$x">
-      <b-acc typed="{. instance of element(*, b-type)}">{accumulator-before('f:elementNr')}</b-acc>
+      <b-acc>{accumulator-before('f:elementNr')}</b-acc>
     </xsl:for-each>
   </xsl:template>
 
@@ -40,6 +33,10 @@
   
   <xsl:template name="xsl:initial-template">
     <xsl:apply-templates select="$data"/>
+  </xsl:template>
+  
+  <xsl:template name="copy-with-accumulators">
+    <xsl:copy-of select="." copy-accumulators="yes"/>
   </xsl:template>
 
 </xsl:package>
