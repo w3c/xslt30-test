@@ -1,7 +1,7 @@
 <?spec xslt#grouping?>
 <!-- Use case for multilevel grouping to do a hierarchic inversion -->
 
-<html xsl:version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<not-html xsl:version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <body>
     <h2>
       <xsl:text>Bug Summary (</xsl:text>
@@ -40,4 +40,4 @@
       </tr>
     </table>
   </body>
-</html>
+</not-html>
