@@ -1233,6 +1233,7 @@
    <test-case name="si-group-060">
       <description>Streamed grouping - average of attribute values in group.</description>
       <created by="Michael Kay after Martin Honnen" on="2017-07-13"/>
+      <modified by="Michael Kay" on="2017-08-08" change="add expected results"/>
       <environment>
          <source file="si-group-060.xml" role="." streaming="true"/>
       </environment>
@@ -1241,7 +1242,9 @@
       </test>
       <result>
          <all-of>
-            <assert-xml><![CDATA[<Element>TBA</Element>]]></assert-xml>
+            <assert>/out/p[1] = 'Milano, Italia, 5.26'</assert>
+            <assert>/out/p[2] = 'Padova, Italia, 0.81'</assert>
+            <assert>/out/p[3] = 'Paris, France, 7.4'</assert>
          </all-of>
       </result>
    </test-case>
@@ -1257,7 +1260,9 @@
       </test>
       <result>
          <all-of>
-            <assert-xml><![CDATA[<Element>TBA</Element>]]></assert-xml>
+            <assert>/out/p[1] = 'Milano, Italia, 5.23, 5.29'</assert>
+            <assert>/out/p[2] = 'Padova, Italia, 0.69, 0.93'</assert>
+            <assert>/out/p[3] = 'Paris, France, 7.2, 7.6'</assert>
          </all-of>
       </result>
    </test-case>
