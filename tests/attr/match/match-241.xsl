@@ -13,7 +13,7 @@
     <xsl:mode warning-on-multiple-match="no"/>
     
     <xsl:template name="xsl:initial-template">
-        <xsl:apply-templates select="1, 2, 3, 5, 7, 13, 17, 19" />
+        <out><xsl:apply-templates select="1, 2, 3, 5, 7, 13, 17, 19" /></out>
     </xsl:template>
 
     <xsl:template match=".[. instance of xs:integer]">
