@@ -295,7 +295,7 @@
   <xsl:template name="r-040" use-when="$RUN">
     <xsl:source-document streamable="no" href="{$books-doc}">
       <out>
-        <xsl:copy-of select="[$extraItem, /BOOKLIST/BOOKS/ITEM/copy-of()]?*!PRICE"/>
+        <xsl:copy-of select="[$extraItem, /BOOKLIST/BOOKS/ITEM]?*!PRICE"/>
       </out>
     </xsl:source-document>
   </xsl:template> 
@@ -305,7 +305,7 @@
   <xsl:template name="r-041" use-when="$RUN">
     <xsl:source-document streamable="no" href="{$books-doc}">
       <out>
-        <xsl:copy-of select="[$extraItem, /BOOKLIST/BOOKS/ITEM/copy-of()]?* / PRICE"/>
+        <xsl:copy-of select="[$extraItem, /BOOKLIST/BOOKS/ITEM]?* / PRICE"/>
       </out>
     </xsl:source-document>
   </xsl:template> 
@@ -315,7 +315,7 @@
   <xsl:template name="r-042" use-when="$RUN">
     <xsl:source-document streamable="no" href="{$books-doc}">
       <out>
-        <xsl:value-of select="[$extraItem, /BOOKLIST/BOOKS/ITEM/copy-of()]?* !PRICE"/>
+        <xsl:value-of select="[$extraItem, /BOOKLIST/BOOKS/ITEM]?* !PRICE"/>
       </out>
     </xsl:source-document>
   </xsl:template> 
@@ -325,7 +325,7 @@
   <xsl:template name="r-043" use-when="$RUN">
     <xsl:source-document streamable="no" href="{$books-doc}">
       <out>
-        <xsl:value-of select="[$extraItem, /BOOKLIST/BOOKS/ITEM/copy-of()]?* / PRICE"/>
+        <xsl:value-of select="[$extraItem, /BOOKLIST/BOOKS/ITEM]?* / PRICE"/>
       </out>
     </xsl:source-document>
   </xsl:template> 
