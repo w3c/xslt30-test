@@ -391,15 +391,18 @@
    <test-case name="attribute-1101">
       <description>Verify that attributes that contain text nodes with a newline, the output must contain a character reference.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-08-10" change="Revert to original intent as a serialization test"/>
       <environment ref="attribute-11"/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="attribute-1101.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<Out attr1="x&#xA;&#x9;  y"/>]]></assert-xml>
+         <serialization-matches><![CDATA[attr1=["']x&#(0*10|x0*A);&#x?0*9;  y["']/>]]></serialization-matches>
       </result>
    </test-case>
 

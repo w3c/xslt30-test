@@ -6,6 +6,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 <!-- Bug 788748 reported by Oliver Becker, ClassCastException -->
 
 <template match="/">
+  <element name="out" namespace="">
     <value-of select="2,
 for $x in (3 to 1000) 
 return 
@@ -18,6 +19,7 @@ return
   then $x 
   else ()" 
 separator=", " />
+  </element>
 </template>
 
 </stylesheet>

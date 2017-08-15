@@ -201,6 +201,7 @@
       <environment ref="bug-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-0304.xsl"/>
@@ -464,6 +465,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="dtd"/>
       </dependencies>
       <test>
          <stylesheet file="bug-0901.xsl"/>
@@ -597,6 +599,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-1301.xsl"/>
@@ -692,6 +695,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       <environment ref="bug-14"/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-1405.xsl"/>
@@ -711,6 +715,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       <environment ref="bug-14"/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-1406.xsl"/>
@@ -780,6 +785,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </environment>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-1701.xsl"/>
@@ -919,6 +925,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="namespace_axis"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-2201.xsl"/>
@@ -1160,6 +1167,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-3001.xsl"/>
@@ -1275,6 +1283,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-3501.xsl"/>
@@ -1376,6 +1385,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    <test-case name="bug-4001">
       <description>BUG 5.5/tba DESCRIPTION: Escaping of ] ] &gt; works incorrectly</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-08-10" change="Make this a serialization test as originally intended"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc>text ]]&gt; more text</doc>]]></content>
@@ -1383,12 +1393,14 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-4001.xsl"/>
+         <output serialize="yes"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<doc>text ]]&gt; more text</doc>]]></assert-xml>
+         <serialization-matches><![CDATA[<doc>text \]\]&gt; more text</doc>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -1756,6 +1768,7 @@ text
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-5601.xsl"/>
@@ -1897,6 +1910,7 @@ text
    <test-case name="bug-6301">
       <description>Bug 788748 reported by Oliver Becker, ClassCastException</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2017-08-10" change="Deliver well-formed XML output"/>
       <environment>
          <source role="." file="bug-63.xml"/>
       </environment>
@@ -1907,7 +1921,7 @@ text
          <stylesheet file="bug-6301.xsl"/>
       </test>
       <result>
-         <assert-xml file="bug-6301.out"/>
+         <assert>/out = "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997"</assert>
       </result>
    </test-case>
 
