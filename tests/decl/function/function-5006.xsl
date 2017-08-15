@@ -16,7 +16,7 @@
         </result>
     </xsl:template>
     
-    <xsl:function name="sf:deep-descent"  as="node()*">
+    <xsl:function name="sf:deep-descent"  as="node()*" streamability="deep-descent">
         <xsl:param name="node" as="node()"/>
         <xsl:for-each select="$node">
             <xsl:sequence select="self::node()//section//p" />    
