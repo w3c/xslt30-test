@@ -4,6 +4,6 @@
     
     <xsl:use-package name='http://www.ctk.cz/B/'/>
     <xsl:template name="xsl:initial-template">
-        <out><xsl:sequence select="pB:fB()"/></out>
+        <out xsl:exclude-result-prefixes="#all"><xsl:sequence select="pB:fB()"/></out>
     </xsl:template>
 </xsl:stylesheet>
