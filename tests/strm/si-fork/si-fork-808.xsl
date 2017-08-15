@@ -12,8 +12,6 @@
     
     <xsl:mode name="num" _streamable="{$STREAMABLE}"/>
     
-    <xsl:output indent="yes"/>
-    
     <xsl:function name="mf:nest" as="node()*" 
         _streamability="{if ($STREAMABLE) then 'absorbing' else 'unclassified'}">
         <xsl:param name="input" as="node()*"/>
