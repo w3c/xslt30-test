@@ -18,6 +18,9 @@
     
     <xsl:function name="sf:deep-descent"  as="node()*" streamability="deep-descent">
         <xsl:param name="node" as="node()"/>
+        <!-- Written this way to circumvent a bug in the streamability rules: $node//section/p is not a scanning expression,
+            because when considered as a pattern it is not motionless, because a pattern that contains a rooted path (like $node)
+            is deemed not to be motionless. See bug 30064. -->
         <xsl:for-each select="$node">
             <xsl:sequence select="self::node()//section//p" />    
         </xsl:for-each>        
