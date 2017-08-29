@@ -2775,4 +2775,29 @@
       </result>
    </test-case>
    
+   <test-case name="streamable-145">
+      <description>Copy comments and PI children of the document node</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-08-21"/>
+      <environment>
+         <source role="." file="streamable-145.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="streamable-145.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/processing-instruction(pi) = 'a'</assert>
+            <assert>/comment() = ' comment 1 '</assert>
+            <assert>/root/processing-instruction(pi) = 'b'</assert>
+            <assert>/root/comment() = ' comment 2 '</assert>
+            <assert>/root/items/processing-instruction(pi) = 'c'</assert>
+            <assert>/root/items/comment() = ' comment 3 '</assert>
+            <assert>/root/processing-instruction(pi) = 'd'</assert>
+            <assert>/root/comment() = ' comment 4 '</assert>
+            <assert>/processing-instruction(pi) = 'e'</assert>
+            <assert>/comment() = ' comment 5 '</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 </test-set>
