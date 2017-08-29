@@ -796,4 +796,24 @@
          <error code="XTDE3160"/>
       </result>
    </test-case>
+   
+   <test-case name="evaluate-048">
+      <description>A dynamic call to fn:document() may or may not succeed (spec bug 30049)</description>
+      <created by="Michael Kay" on="2017-08-17"/>
+      <dependencies>
+         <feature value="dynamic_evaluation"/>
+         <feature value="higher_order_functions"/>
+         <feature value="XPath_3.1"/>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="evaluate-048.xsl"/>        
+      </test>
+      <result>
+         <any-of>
+            <assert>/out/*:html</assert>
+            <error code="XTDE3160"/>
+         </any-of>       
+      </result>
+   </test-case>
 </test-set>
