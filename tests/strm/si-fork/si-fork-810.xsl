@@ -16,7 +16,7 @@
         _streamability="{if ($STREAMABLE) then 'absorbing' else 'unclassified'}">
         <xsl:param name="input" as="node()*"/>
         <xsl:param name="level" as="xs:integer"/>
-        <!--<xsl:where-populated>-->
+        <xsl:where-populated>
             <orderlist type="manual">
                 <xsl:for-each-group select="$input" 
                     group-starting-with="*[@class = $prefix || $level]">
@@ -30,12 +30,14 @@
                                     <xsl:apply-templates select="node()[position() gt 2]"/>
                                 </para>                               
                             </xsl:sequence>
-                            <xsl:sequence select="mf:nest(current-group()[position() gt 1], $level + 1)"/>                            
+                            <xsl:sequence>
+                                <rest size="{count(current-group())}"/>
+                            </xsl:sequence>
                         </xsl:fork>                     
                     </item>
                 </xsl:for-each-group>
             </orderlist>
-        <!--</xsl:where-populated>-->
+        </xsl:where-populated>
     </xsl:function>
     
     <xsl:template match="root">
