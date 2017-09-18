@@ -5968,17 +5968,56 @@ It is a non-recoverable dynamic
    <test-case name="error-0905a">
       <description>Generate error XTDE0905.
 Was error-code-296.
-It is a non-recoverable dynamic
-                     error if the string value of the new namespace
+It is a non-recoverable dynamic error if the string value of the new namespace
                      node is not valid in the lexical space of the datatype xs:anyURI,
                      or if it is the string http://www.w3.org/2000/xmlns/.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="XSD_1.1" satisfied="false"/>
       </dependencies>
       <test>
          <stylesheet file="error-0905a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE0905"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-0905b">
+      <description>No error XTDE0905 for XSD 1.1 (see bug 30180).
+         It is a non-recoverable dynamic error if the string value of the new namespace
+         node is not valid in the lexical space of the datatype xs:anyURI,
+         or if it is the string http://www.w3.org/2000/xmlns/.</description>
+      <created by="Michael Kay" on="2017-09-11"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="XSD_1.1" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0905a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/*:out/namespace::ns="####"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="error-0905c">
+      <description>Generate error XTDE0905.
+         It is a non-recoverable dynamic error if the string value of the new namespace
+         node is not valid in the lexical space of the datatype xs:anyURI,
+         or if it is the string http://www.w3.org/2000/xmlns/.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment ref="error001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-0905c.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
