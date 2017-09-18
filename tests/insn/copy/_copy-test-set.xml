@@ -1655,6 +1655,44 @@
          <assert-xml><![CDATA[<out attr1="Hello&#xA;        Success&#xA;        &#xA;      More"/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="copy-3802">
+      <description>Test deep-equal on the result of a copy including comments, namespaces, etc</description>
+      <created by="Michael Kay" on="2017-09-15"/>
+      <environment ref="copy-38"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-3802.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/a = "true"</assert>
+            <assert>/out/b = "true"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-3803">
+      <description>Test parent and sibling axes work after deep copy</description>
+      <created by="Michael Kay" on="2017-09-15"/>
+      <environment ref="copy-38"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-3803.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/a = "true"</assert>
+            <assert>/out/b = "true"</assert>
+            <assert>/out/c = "true"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
    <test-case name="copy-3901">
       <description>FileName: copy57 Document: http://www.w3.org/TR/xslt DocVersion: 19991116

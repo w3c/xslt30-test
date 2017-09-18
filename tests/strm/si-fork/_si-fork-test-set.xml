@@ -636,6 +636,63 @@
       </result>
    </test-case>
    
+   <test-case name="si-fork-809">
+      <description>Streamable xsl:fork containing xsl:for-each-group (Saxon bug 3399)</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-08-31"/>
+      <environment>
+         <source role="." file="si-fork-809.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-fork-809.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/text()) = 12</assert>
+            <assert>/out/text()[1] = "Comedy, New, Paperback, 3"</assert>
+            <assert>/out/text()[2] = "Comedy, Old, Paperback, 3"</assert>
+            <assert>/out/text()[3] = "Comedy, New, Hardback, 3"</assert>
+            <assert>/out/text()[4] = "Comedy, Old, Hardback, 3"</assert>
+            <assert>/out/text()[5] = "Drama, New, Paperback, 3"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-810">
+      <description>Streamable xsl:fork containing xsl:for-each-group (Saxon bug 3375) - simplified version of -808</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-08-31"/>
+      <environment>
+         <source role="." file="si-fork-808.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-fork-810.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/orderlist/item[@num="(a)"]/rest/@size = "2"</assert>
+            <assert>/root/orderlist/item[@num="(b)"]/rest/@size = "1"</assert>
+            <assert>/root/orderlist/item[@num="(c)"]/rest/@size = "7"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-fork-811">
+      <description>Streamable xsl:fork containing xsl:for-each-group (Saxon bug 3375) - simplified version of -808</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-08-31"/>
+      <environment>
+         <source role="." file="si-fork-808.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-fork-811.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/orderlist/item[@num="(a)"]/rest/@size = "1"</assert>
+            <assert>/root/orderlist/item[@num="(b)"]/rest/@size = "0"</assert>
+            <assert>/root/orderlist/item[@num="(c)"]/rest/@size = "6"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="si-fork-901">
       <description>Non-streamable xsl:fork - returns streamed nodes</description>
       <keywords>multiple-xsl-sequence-children AxisStep striding XTSE3430 illegally-returning-streamed-nodes</keywords>
