@@ -536,6 +536,18 @@
       </result>
    </test-case>
    
+   <test-case name="override-f-033">
+      <description>Call an overridden functions from an overridden function</description>
+      <created by="Michael Kay" on="2017-09-07"/>
+      <test>
+         <package file="override-f-033a.xsl" role="principal"/>
+         <package file="override-f-033b.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert>/out = "29"</assert>
+      </result>
+   </test-case>
+   
    
    <test-case name="override-t-001">
       <description>Successful override of a named template, when called from overriding package</description>
@@ -1353,8 +1365,12 @@
    <test-case name="override-misc-007">
       <description>Streamed accumulators in different packages can have the same name</description>
       <created by="Michael Kay" on="2015-03-01"/>
-      <modified by="Michael Kay" on="2014-08-22" change="spec change, @new-value->@select"/>
+      <modified by="Michael Kay" on="2015-08-22" change="spec change, @new-value->@select"/>
+      <modified by="Michael Kay" on="2017-09-11" change="add dependency on streaming"/>
       <environment ref="override-misc-F"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
       <test>
          <package file="override-misc-007.xsl" role="principal"/>
          <initial-template name="main"/>
