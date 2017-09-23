@@ -15,6 +15,9 @@
         </data>     
     </xsl:template>
     
-    <xsl:template match="a"/>
+    <xsl:template match="school">
+        <xsl:param name="assignment"/>
+        <a details="{@Genre}-{@Format}-{@Condition}" args="{$assignment}"/>
+    </xsl:template>
     
 </xsl:stylesheet>

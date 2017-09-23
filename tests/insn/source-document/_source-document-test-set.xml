@@ -411,22 +411,30 @@
    <test-case name="stream-205">
       <description>Streamability issue with xsl:with-param</description>
       <created by="Michael Kay after David Rudel" on="2017-08-31"/>
+      <modified by="Michael Kay" on="2017-09-20" change="add expected results"/>
       <test>
          <stylesheet file="stream-205.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+         <all-of>
+            <assert>count(distinct-values(//@args)) = 2</assert>
+            <assert>count(distinct-values(//@details)) = 12</assert>
+         </all-of>
       </result>
    </test-case>
    
    <test-case name="stream-206">
       <description>Streamability issue with xsl:with-param</description>
       <created by="Michael Kay after David Rudel" on="2017-08-31"/>
+      <modified by="Michael Kay" on="2017-09-20" change="add expected results"/>
       <test>
-         <stylesheet file="stream-205.xsl"/>
+         <stylesheet file="stream-206.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<tba/>]]></assert-xml>
+         <all-of>
+            <assert>count(distinct-values(//@args)) = 1</assert>
+            <assert>count(distinct-values(//@details)) = 12</assert>
+         </all-of>
       </result>
    </test-case>
    

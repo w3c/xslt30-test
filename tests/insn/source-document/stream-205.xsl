@@ -31,6 +31,6 @@
     <xsl:template match="school">
         <xsl:param name="grade"/>
         <xsl:param name="assignment"/>
-        <a/>
+        <a details="{@Genre}-{@Format}-{@Condition}" args="{$grade}-{$assignment}"/>
     </xsl:template>
 </xsl:stylesheet>
