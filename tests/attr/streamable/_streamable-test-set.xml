@@ -2800,4 +2800,28 @@
       </result>
    </test-case>
    
+   <test-case name="streamable-146">
+      <description>Saxon bug: loop-lifting made the code non-streamable</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-10-03"/>
+      <environment>
+         <source role="." file="streamable-146.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="streamable-146.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/header = "id,dummyAttr1,dummyAttr2,dummyAttr3,dummyAttr4"</assert>
+            <assert>/out/row[1] = "930,nine,three,zero,"</assert>
+            <assert>/out/row[2] = "931,nine,,one,"</assert>
+            <assert>/out/row[3] = "932,,three,two,"</assert>
+            <assert>/out/row[4] = "933,,,three,point"</assert>
+            <assert>/out/row[5] = "940,lorem,ipsum,,"</assert>
+            <assert>/out/row[6] = "941,dolor,,sit,"</assert>
+            <assert>/out/row[7] = "942,,,amet,"</assert>
+            <assert>count(/out/row) = 7</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 </test-set>
