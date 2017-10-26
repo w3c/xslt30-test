@@ -14,7 +14,7 @@
     <xsl:copy select="$n">
         <xsl:attribute name="position" select="position()"/>
         <xsl:attribute name="last" select="last()"/>
-        <xsl:sequence select="*/f:copy-node(.)"/>
+        <xsl:sequence select="*!f:copy-node(.)"/>
     </xsl:copy>
 </xsl:function>
      
