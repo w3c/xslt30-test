@@ -10,11 +10,12 @@
             <xsl:sequence select="''" />
             <xsl:sequence select="''" />
         </xsl:variable>
-        
-        <xsl:processing-instruction name="foo">
+        <out>
+          <xsl:processing-instruction name="foo">
             <xsl:copy-of select="$non-empty"/>
             <xsl:on-empty>WRONG! the document node contains a space, it is not empty!!!</xsl:on-empty>
-        </xsl:processing-instruction>
+          </xsl:processing-instruction>
+        </out>
     </xsl:template>
     
 </xsl:stylesheet>

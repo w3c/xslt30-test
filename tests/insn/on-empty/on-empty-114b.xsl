@@ -4,6 +4,7 @@
     <xsl:output method="text" />
   
     <xsl:template match="/" name="xsl:initial-template">
+      <out> 
         <xsl:for-each select="1 to 100">
             <xsl:text expand-text="yes">{ if(. = 1) then 'START-->' else ''}</xsl:text>
             <xsl:sequence select="''" />
@@ -13,6 +14,7 @@
             <xsl:on-non-empty select="''" />
             <xsl:on-empty select="'|'" />
         </xsl:for-each>
+      </out> 
     </xsl:template>
 
 </xsl:stylesheet>
