@@ -20,7 +20,9 @@
   </xsl:variable>
 
   <xsl:template name="main" as="element()*">
-    <xsl:copy-of select="$data[@id mod 2 = 0]"/>
+    <out>
+      <xsl:copy-of select="$data[@id mod 2 = 0]"/>
+    </out>
   </xsl:template>
 
   <xsl:template name="param1" as="element()*">
