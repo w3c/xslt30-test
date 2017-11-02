@@ -584,4 +584,86 @@ Example of apply-imports</div>
          <assert-xml><![CDATA[<out>found</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="next-match-033">
+      <description>Test of xsl:next-match and no other matching templates are found. 
+         Verifies that built-in template rules are invoked. Uses explicit on-no-match.</description>
+      <created by="Michael Kay" on="2017-11-02"/>
+      <environment ref="next-match022"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="next-match-033.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><tag><tag>Example of apply-imports</tag></tag><bag><bag>Example of apply-templates</bag></bag></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="next-match-034">
+      <description>Test of xsl:next-match and no other matching templates are found. 
+         Verifies that built-in template rules are invoked. Uses explicit on-no-match.</description>
+      <created by="Michael Kay" on="2017-11-02"/>
+      <environment ref="next-match022"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="next-match-034.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><tag></tag><bag></bag></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="next-match-035">
+      <description>Test of xsl:next-match and no other matching templates are found. 
+         Verifies that built-in template rules are invoked. Uses explicit on-no-match.</description>
+      <created by="Michael Kay" on="2017-11-02"/>
+      <environment ref="next-match022"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="next-match-035.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><tag>[Example of apply-imports]</tag><bag>[Example of apply-templates]</bag></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="next-match-036">
+      <description>Test of xsl:next-match across package boundaries.</description>
+      <created by="Michael Kay" on="2017-11-02"/>
+      <environment ref="next-match022"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <package name="http://xslt-tests/next-match-036-lib" file="next-match-036-lib.xsl" role="secondary"/>
+         <stylesheet file="next-match-036.xsl"/>
+         <initial-mode name="m"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><tag2><tag>Example of apply-imports</tag></tag2><bag>Example of apply-templates</bag></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="next-match-037">
+      <description>Test of xsl:next-match across package boundaries via call-template.</description>
+      <created by="Michael Kay" on="2017-11-02"/>
+      <environment ref="next-match022"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <package name="http://xslt-tests/next-match-036-lib" file="next-match-036-lib.xsl" role="secondary"/>
+         <stylesheet file="next-match-037.xsl"/>
+         <initial-mode name="m"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><tag2><ttt><tag>[Example of apply-imports]</tag></ttt></tag2><bag>[Example of apply-templates]</bag></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>
