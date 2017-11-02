@@ -5,7 +5,8 @@
     
     <!-- No match for document node, but spec has changed so its children get processed -->
     
-    <xsl:mode streamable="yes" on-no-match="deep-skip" />
+    <xsl:param name="STREAMABLE" static="yes" select="true()"/>
+    <xsl:mode _streamable="{$STREAMABLE}" on-no-match="deep-skip" />
     
     <xsl:template match="book | bktlong">
       <o>

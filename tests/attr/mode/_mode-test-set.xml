@@ -1849,6 +1849,23 @@
       </result>
    </test-case>
    
+   <test-case name="mode-1437a">
+      <description>Non-streaming version of mode-1437</description>
+      <keywords>xsl:mode on-no-match-attribute deep-skip document-node</keywords>
+      <created by="Michael Kay" on="2017-11-02"/>
+      <environment ref="mode-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1437.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<o>book<o>bktlong</o></o>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="mode-1438">
       <description>Test xsl:mode with typed="yes", fails because nodes are untyped</description>
       <keywords>xsl:mode on-no-match-attribute shallow-copy typed-yes XTTE3100</keywords>
