@@ -105,6 +105,30 @@
       </result>
    </test-case>
    
+   <test-case name="initial-template-004">
+      <description>test initial-template returning a sequence</description>
+      <created by="Michael Kay" on="2017-11-11"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="initial-template-004.xsl"/>
+         <initial-template name="main"/>
+         <output tree="no" result-var="result"/>
+         <!-- Bug 30196 introduces test driver capability for the query to return a sequence -->
+      </test>
+      <result>
+         <assert>deep-equal($result, (123.5,
+            -18,
+            12.6,
+            14.2,
+            123.6,
+            -56,
+            123.5,
+            123.6))</assert>
+      </result>
+   </test-case>
+   
    <test-case name="initial-template-080">
       <description>A processor that doesn't support backwards compatibility raises no error unless 1.0 code is executed</description>
       <created by="Michael Kay" on="2017-04-29"/>
