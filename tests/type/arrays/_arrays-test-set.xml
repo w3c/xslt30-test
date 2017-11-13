@@ -780,5 +780,27 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="arrays-301">
+      <description>Built-in template rule for arrays (text-only copy)</description>
+      <created by="Michael Kay" on="2017-11-13"/>
+      <test>
+         <stylesheet file="arrays-301.xsl"/>
+      </test>
+      <result>
+            <assert>deep-equal(/out/element/@name/string(), ("a", "b", "c", "d"))</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="arrays-302">
+      <description>Built-in template rule for arrays (shallow-skip)</description>
+      <created by="Michael Kay" on="2017-11-13"/>
+      <test>
+         <stylesheet file="arrays-302.xsl"/>
+      </test>
+      <result>
+         <assert>deep-equal(/out/element/@name/string(), ("a", "b", "c", "d"))</assert>
+      </result>
+   </test-case>
 
 </test-set>

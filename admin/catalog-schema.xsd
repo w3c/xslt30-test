@@ -1588,6 +1588,9 @@
                     tree is written. The location should be given as a relative URI, and should be
                     within a subdirectory of the directory that contains the test set XML file.</p>
                 <p>Directions for output post-processing can also be declared.</p>
+                <p>If the result-var attribute is present then the result of the transformation is
+                bound to a named variable rather than to the context item. This allows testing of
+                transformations that return a non-singleton sequence (see bug 30196).</p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1595,6 +1598,7 @@
             <xs:attribute name="tree" type="yesNoType" use="optional"/>
             <xs:attribute name="serialize" type="yesNoType" use="optional"/>
             <xs:attribute name="well-formed" type="yesNoType" use="optional"/>
+            <xs:attribute name="result-var" type="xs:NCName" use="optional"/>
         </xs:complexType>
     </xs:element>
 
