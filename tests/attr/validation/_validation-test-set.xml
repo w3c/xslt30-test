@@ -673,6 +673,71 @@
          <error code="XTTE1510"/>
       </result>
    </test-case>
+   
+   <test-case name="validation-0213">
+      <description>Test validation of xsl:result-document: no href: output is valid</description>
+      <created by="Michael Kay" on="2017-11-30"/>
+      <environment ref="validation-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0213.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/*:html/*:head/*:title = 'Index of names'</assert>
+            <assert>/*:html/*:body/*:h1 = 'Index of names'</assert>
+            <assert>/comment() = 'The start'</assert>
+            <assert>/comment() = 'The end'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-0214">
+      <description>Test validation of xsl:result-document: no href: output is invalid because of item-separator</description>
+      <created by="Michael Kay" on="2017-11-30"/>
+      <environment ref="validation-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0214.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+         <!--<all-of>
+            <assert>/*:html/*:head/*:title = 'Index of names'</assert>
+            <assert>/*:html/*:body/*:h1 = 'Index of names'</assert>
+            <assert>/comment() = 'The start'</assert>
+            <assert>/comment() = 'The end'</assert>
+         </all-of>-->
+      </result>
+   </test-case>
+   
+   <test-case name="validation-0215">
+      <description>Test validation=strip of xsl:result-document: no href: item-separator</description>
+      <created by="Michael Kay" on="2017-11-30"/>
+      <environment ref="validation-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-0215.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/*:html/*:head/*:title = 'Index of names'</assert>
+            <assert>/*:html/*:body/*:h1 = 'Index of names'</assert>
+            <assert>/comment() = 'The start'</assert>
+            <assert>/comment() = 'The end'</assert>
+            <assert>/text() = '+++'</assert>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="validation-0301">
       <description>show atomization of type-annotated element nodes</description>
