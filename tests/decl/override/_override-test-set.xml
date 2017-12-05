@@ -725,6 +725,33 @@
          <error code="XTSE3070"/>
       </result>
    </test-case> 
+   
+   <test-case name="override-t-014">
+      <description>Two different overrides of selected components in the same library package</description>
+      <created by="Michael Kay" on="2017-11-28"/>
+      <test>
+         <package file="override-t-014.xsl" role="principal"/>
+         <package file="override-t-014-lib.xsl" role="secondary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><ttt override="yes"/><uuu override="yes"/></out>]]></assert-xml>
+      </result>
+   </test-case> 
+   
+   <test-case name="override-t-015">
+      <description>Two different overrides of selected components in different versions of the same library package</description>
+      <created by="Michael Kay" on="2017-11-28"/>
+      <test>
+         <package file="override-t-015.xsl" role="principal"/>
+         <package file="override-t-015-lib-v1.xsl" role="secondary"/>
+         <package file="override-t-015-lib-v2.xsl" role="secondary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><override><ttt/></override><override><uuu/></override></out>]]></assert-xml>
+      </result>
+   </test-case> 
 
    <test-case name="override-v-001">
       <description>Successful override of a public global variable</description>
