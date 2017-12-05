@@ -1918,6 +1918,27 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <assert-serialization method="adaptive"><![CDATA[map{"a":22}|<elem/>|a="5"]]></assert-serialization>  
       </result>
    </test-case>
+   
+   <test-case name="result-document-0305">
+      <description>With xsl:result-document, override item-separator specifying #absent</description>
+      <created by="Michael Kay" on="2017-12-05"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><foo>text</foo></doc>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="serialization" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0305.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization method="text"><![CDATA[<!--begin-->1 2<!--end-->]]></assert-serialization>
+      </result>
+   </test-case>
 
    <test-case name="result-document-0401">
       <description>Test AVT in @cdata-section-elements of xsl:result-document.</description>
@@ -2828,6 +2849,24 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <serialization-matches>.+</serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1408">
+      <description>Serialization with item-separator outputting nodes</description>
+      <created by="Michael Kay" on="2017-12-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="serialization" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1408.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<!--start-->~11~12~13~14~15~<!--middle-->~16~17~18~19~20~<!--end-->$]]></serialization-matches>          
+         </all-of>
       </result>
    </test-case>
    
