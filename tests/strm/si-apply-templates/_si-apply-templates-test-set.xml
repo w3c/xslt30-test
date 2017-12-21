@@ -131,5 +131,26 @@
       </result>
    </test-case>
 
+   <test-case name="si-apply-templates-007">
+      <description>Test streaming apply-templates with a schema-aware match pattern (Saxon bug 3563).</description>
+      <created by="Michael Kay" on="2017-12-08"/>
+      <environment>
+         <schema file="../docs/books.xsd"/>
+         <source role="." streaming="true" file="../docs/books.xml" validation="strict"/>
+      </environment>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="si-apply-templates-007.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>empty(//AUTHOR)</assert>
+            <assert>exists(//TITLE)</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
 </test-set>
