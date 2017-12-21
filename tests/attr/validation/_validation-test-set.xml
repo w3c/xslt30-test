@@ -31,6 +31,13 @@
          <schema file="validation-12.xsd"/>
       </environment>
    
+   <environment name="validation-16">
+      <source role="." validation="skip">
+         <content><![CDATA[<test/>]]></content>
+      </source>
+      <schema file="validation-16.xsd"/>
+   </environment>
+   
    <environment name="validation-20">
       <source validation="strict" file="validation-20.xml" uri="validation-20.xml"/>
       <source validation="strict" file="validation-20a.xml" uri="validation-20a.xml"/>
@@ -1054,6 +1061,154 @@
       </test>
       <result>
          <assert-xml file="validation-1501.out"/>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1601">
+      <description>
+         Test whether the implicit result document is validated. Bug 30211. default-validation="preserve"
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1601.xsl"/>
+      </test>
+      <result>
+         <all-of>
+           <assert>not(/* instance of element(*,xs:untyped))</assert>
+           <assert-false/> <!--TBA pending resolution of 30211-->
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1602">
+      <description>
+         Test whether the implicit result document is validated. Bug 30211. Explicit validation at document level.
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1602.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1555"/>"
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1603">
+      <description>
+         Test whether the implicit result document is validated. Bug 30211. default-validation="strip"
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1603.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>not(/* instance of element(*,xs:untyped))</assert>
+            <assert-false/> <!--TBA pending resolution of 30211-->
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1604">
+      <description>
+         Test whether the implicit result document is validated. Bug 30211. 
+         default-validation="strip" on top level, ="preserve" on imported module
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1604.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>not(/* instance of element(*,xs:untyped))</assert>
+            <assert-false/> <!--TBA pending resolution of 30211-->
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1605">
+      <description>
+         Test whether the implicit result document is validated. Bug 30211. 
+         default-validation="preserve" on top level, ="strip" on imported module
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1605.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>not(/* instance of element(*,xs:untyped))</assert>
+            <assert-false/> <!--TBA pending resolution of 30211-->
+         </all-of>  
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1606">
+      <description>
+         Test whether the implicit result document is validated. Bug 30211. 
+         default-validation="preserve" on initial template
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1606.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>not(/* instance of element(*,xs:untyped))</assert>
+            <assert-false/> <!--TBA pending resolution of 30211-->
+         </all-of>   
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1607">
+      <description>
+         Test whether the implicit result document is validated. Bug 30211. 
+         default-validation="strip" on initial template
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1607.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>not(/* instance of element(*,xs:untyped))</assert>
+            <assert-false/> <!--TBA pending resolution of 30211-->
+         </all-of>   
       </result>
    </test-case>
    
