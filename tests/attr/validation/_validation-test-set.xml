@@ -1212,6 +1212,158 @@
       </result>
    </test-case>
    
+   <test-case name="validation-1701">
+      <description>
+         Invalid xsi:type attribute - strict validation
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1701.xsl"/>
+         <param name="VALIDATION" static="true" select="'strict'"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/> 
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1702">
+      <description>
+         Invalid xsi:type attribute - lax validation
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1701.xsl"/>
+         <param name="VALIDATION" static="true" select="'lax'"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/> 
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1703">
+      <description>
+         Invalid xsi:type attribute - preserve validation
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1701.xsl"/>
+         <param name="VALIDATION" static="true" select="'preserve'"/>
+      </test>
+      <result>
+         <assert>exists(/*:doc)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1704">
+      <description>
+         Invalid xsi:type attribute - strip validation
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1701.xsl"/>
+         <param name="VALIDATION" static="true" select="'strip'"/>
+      </test>
+      <result>
+         <assert>exists(/*:doc)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1705">
+      <description>
+         Valid xsi:type attribute - strict validation
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1705.xsl"/>
+         <param name="VALIDATION" static="true" select="'strict'"/>
+      </test>
+      <result>
+         <assert>/*:doc instance of schema-element(Q{http://ns.example.com/val16/}doc)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1706">
+      <description>
+         Valid xsi:type attribute - lax validation
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1705.xsl"/>
+         <param name="VALIDATION" static="true" select="'lax'"/>
+      </test>
+      <result>
+         <assert>/*:doc instance of schema-element(Q{http://ns.example.com/val16/}doc)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1707">
+      <description>
+         Valid xsi:type attribute - preserve validation
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1705.xsl"/>
+         <param name="VALIDATION" static="true" select="'preserve'"/>
+      </test>
+      <result>
+         <assert>exists(/*:doc)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="validation-1708">
+      <description>
+         Valid xsi:type attribute - strip validation
+      </description>
+      <created by="Michael Kay" on="2017-12-21"/>
+      <environment ref="validation-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="validation-1705.xsl"/>
+         <param name="VALIDATION" static="true" select="'strip'"/>
+      </test>
+      <result>
+         <assert>exists(/*:doc)</assert>
+      </result>
+   </test-case>
+   
    <test-case name="validation-2001">
       <description>show patterns matching against nilled and unnilled elements in the source</description>
       <created by="Michael Kay" on="2012-11-07"/>
