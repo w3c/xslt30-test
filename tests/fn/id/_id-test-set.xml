@@ -287,10 +287,14 @@
    <test-case name="id-015">
       <description>Purpose: Test for id().</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2018-01-09" change="Move DOCTYPE inline to make life easier for test drivers"/>
       <environment>
          <source role=".">
             <content><![CDATA[
-<!DOCTYPE t04 SYSTEM "id104.dtd">
+<!DOCTYPE t04 [
+  <!ELEMENT t04 (a*)>
+  <!ELEMENT a EMPTY>
+  <!ATTLIST a  id ID #REQUIRED> ]>
 <t04><a id="a"/><a id="b"/><a id="c"/><a id="d"/></t04>]]></content>
          </source>
       </environment>
