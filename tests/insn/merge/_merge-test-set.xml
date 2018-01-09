@@ -1437,5 +1437,36 @@
             ></Notifications>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="merge-094">
+      <description>xsl:merge test on two heterogeneous files; not streamable because select expression is crawling</description>
+      <created by="Michael Kay" on="2018-01-08"/>
+      <environment ref="merge002"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-094.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-095">
+      <description>xsl:merge test on two heterogeneous files; not streamable because sort-before-merge="yes"</description>
+      <created by="Michael Kay" on="2018-01-08"/>
+      <environment ref="merge002"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-095.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
 
 </test-set>
