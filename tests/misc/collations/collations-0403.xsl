@@ -5,15 +5,8 @@
    <t:key name="key1" match="item" use="@target"/>
 
    <t:template match="/"> 
-      <t:text>
-</t:text>
       <out>
-         <t:text>
-</t:text>
          <t:value-of select="key('key1', 'a')/@num"/>
-         <t:text> * </t:text>
-         <t:text>
-</t:text>
       </out>
    </t:template>
 </t:transform>

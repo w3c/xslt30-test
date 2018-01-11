@@ -8,15 +8,8 @@
           collation="http://www.w3.org/2005/xpath-functions/collation/codepoint"/>
 
    <t:template match="/"> 
-      <t:text>
-</t:text>
       <out>
-         <t:text>
-</t:text>
          <t:value-of select="key('key1', 'a')/@num"/>
-         <t:text> * </t:text>
-         <t:text>
-</t:text>
       </out>
    </t:template>
 </t:transform>
