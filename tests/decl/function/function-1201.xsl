@@ -14,7 +14,7 @@
  <xsl:template match="/">
    <xsl:variable name="vSorted" as="node()+"
      select="f:sorted-nodelist(/*/book/@author)"/>
-
+   <out>
    <xsl:for-each select="f:value-setS(/*/book/@author)">
      <author value="{@value}">
        <xsl:for-each select="
@@ -29,6 +29,7 @@
        </xsl:for-each>
      </author>
    </xsl:for-each>
+   </out>
  </xsl:template>
 
  <xsl:function name="f:sorted-nodelist" as="node()*"
