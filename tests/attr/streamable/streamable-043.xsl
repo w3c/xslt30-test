@@ -13,7 +13,9 @@
      
    <xsl:template name="main">
      <out>
-       <xsl:source-document streamable="true" href="loans.xml"><xsl:apply-templates select="."/></xsl:source-document>
+       <xsl:source-document streamable="true" href="loans.xml" validation="strict">
+         <xsl:apply-templates select="."/>
+       </xsl:source-document>
      </out>
    </xsl:template>
     
