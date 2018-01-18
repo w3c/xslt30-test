@@ -36,6 +36,13 @@
       </source>
       <schema file="loans.xsd" uri="loans.xsd"/>
    </environment>
+   
+   <environment name="bad-loans">
+      <source file="bad-loans.xml" uri="bad-loans.xml" streaming="true" validation="strict">
+         <description>Invalid data instance</description>
+      </source>
+      <schema file="loans.xsd" uri="loans.xsd"/>
+   </environment>
 
    <environment name="mixed">
       <source file="mixed.xml" uri="mixed.xml" streaming="true">
@@ -2852,5 +2859,57 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="streamable-147">
+      <description>xsl:source-document: validate source, but strip type annotations</description>
+      <created by="Michael Kay" on="2018-01-16"/>
+      <environment ref="loans"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-147.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+            <assert>//Amount[@decimal='false']</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="streamable-148">
+      <description>xsl:source-document: validate source, and preserve type annotations</description>
+      <created by="Michael Kay" on="2018-01-16"/>
+      <environment ref="loans"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-148.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>//Amount[@decimal='true']</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="streamable-149">
+      <description>xsl:source-document: validate source, and strip type annotations; invalid input</description>
+      <created by="Michael Kay" on="2018-01-16"/>
+      <environment ref="bad-loans"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="streamable-149.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+      </result>
+   </test-case>
+   
    
 </test-set>
