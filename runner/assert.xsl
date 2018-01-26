@@ -29,7 +29,7 @@
         <xsl:sequence select="if ($code = @code) then 'pass' else 'wrong-error (expected ' || @code || ', got ' || $code ||')'"/>
     </xsl:template>
     
-    <xsl:template match="all-of" mode="expects-error" as="xs:string">
+    <xsl:template match="c:all-of" mode="expects-error" as="xs:string">
         <xsl:iterate select="*">
             <xsl:on-completion select="'pass'"/>
             <xsl:variable name="t" as="xs:string">
@@ -41,9 +41,9 @@
         </xsl:iterate>
     </xsl:template>
     
-    <xsl:template match="any-of" mode="expects-error" as="xs:string">
+    <xsl:template match="c:any-of" mode="expects-error" as="xs:string">
         <xsl:iterate select="*">
-            <xsl:param name="result" as="xs:string" select="'fail"/>
+            <xsl:param name="result" as="xs:string" select="'fail'"/>
             <xsl:on-completion select="$result"/>
             <xsl:variable name="t" as="xs:string">
                 <xsl:apply-templates select="." mode="#current"/>
@@ -83,7 +83,7 @@
     
     <xsl:template match="c:serialization-matches" mode="check-result" as="xs:boolean">
         <xsl:param name="result" tunnel="yes"/>
-        <xsl:sequence select="matches($result, string(.))"/>
+        <xsl:sequence select="matches($result, string(.), string(@flags))"/>
     </xsl:template>
     
     <xsl:template match="c:assert-serialization" mode="check-result" as="xs:boolean">
@@ -146,7 +146,7 @@
     <xsl:template match="c:assert-result-document" mode="check-result" as="xs:boolean">
         <xsl:param name="outcome" tunnel="yes"/>
         <xsl:param name="namespaces" as="element()?" tunnel="yes"/>
-        <xsl:variable name="absolute-uri" select="string(resolve-uri(@uri, $base-output-dir))"/>
+        <xsl:variable name="absolute-uri" select="string(resolve-uri(ancestor::c:test-case/@name || '/' || @uri, $base-output-dir))"/>
         <xsl:choose>
             <xsl:when test="$outcome($absolute-uri)">
                 <xsl:apply-templates select="*" mode="#current">
@@ -187,7 +187,12 @@
                                 ()
                             else
                                 $result"
-                    with-params="map{ xs:QName('result'):$result}" namespace-context="$nsContext" xpath-default-namespace=""/>
+                    with-params="map{ xs:QName('result'):$result}" 
+                    namespace-context="$nsContext" 
+                    xpath-default-namespace=""
+                    schema-aware="yes"
+                    saxon:allow-any-schema-namespace="yes"
+                    xmlns:saxon="http://saxon.sf.net/"/>
             </xsl:variable>
             <xsl:if test="not($assertion)">
                 <xsl:message select="'FAILED ASSERT: {', string(.), '}'" use-when="$debug-assert"/>
