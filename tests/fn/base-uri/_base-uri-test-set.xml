@@ -869,13 +869,13 @@
    <test-case name="base-uri-051">
       <description>base-uri() applied to elements within an external entity.</description>
       <created by="Michael Kay" on="2016-12-21"/>
+      <environment>
+         <source role="." file="baseuri051.xml"/>
+      </environment>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="dtd"/>
       </dependencies>
-      <environment>
-         <source role="." file="baseuri051.xml"/>
-      </environment>
       <test>
          <stylesheet file="base-uri-051.xsl"/>
       </test>
@@ -891,14 +891,14 @@
    </test-case>
    
    <test-case name="base-uri-052">
-      <description>base-uri() applied to elements within a document read using XInclude.</description>
-      <created by="Michael Kay" on="2016-12-21"/>
-      <dependencies>
-         <spec value="XSLT30+"/>
-      </dependencies>
+      <description>base-uri() applied to elements within a document read using XInclude. (Saxon bug 3530)</description>
+      <created by="Michael Kay" on="2016-12-21"/>     
       <environment>
          <source role="." file="baseuri052.xml" xinclude="true"/>
       </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
       <test>
          <stylesheet file="base-uri-051.xsl"/> <!--sic-->
       </test>

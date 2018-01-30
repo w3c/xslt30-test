@@ -545,6 +545,15 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
+                <xs:attribute name="xinclude" type="xs:boolean" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <p>If true, indicates that this source file MUST be processed with
+                                XInclude expansion enabled. (Processors that do not support XInclude
+                                processing should skip this test.)</p>
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
                 <xs:attributeGroup ref="xmlVersionAttr"/>
                 <xs:attributeGroup ref="availableInContextAttr" />
             </xs:extension>
@@ -584,7 +593,20 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
-                <xs:attribute name="package-version" type="xs:string"/>
+                <xs:attribute name="name" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <p>The package name. Optional.</p>
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="package-version" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <p>The package version. Optional.</p>
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
             </xs:extension>
         </xs:complexContent>
 
@@ -857,6 +879,7 @@
                                 <xs:enumeration value="built_in_derived_types"/>
                                 <xs:enumeration value="serialization"/>
                                 <xs:enumeration value="streaming"/>
+                                <xs:enumeration value="streaming-fallback"/>
                                 <xs:enumeration value="xquery_invocation"/>
                                 <xs:enumeration value="XML_1.1"/>
                                 <xs:enumeration value="XPath_3.1"/>
