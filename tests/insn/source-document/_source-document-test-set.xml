@@ -441,6 +441,7 @@
    <test-case name="stream-207">
       <description>Same streamed input file as principal input and read using xsl:source-document</description>
       <created by="Michael Kay" on="2017-11-28"/>
+      <modified by="Michael Kay" on="2018-01-31" change="supply expected results"/>
       <environment>
          <source role="." file="Psalm100.xml" streaming="true"/>
       </environment>
@@ -449,8 +450,10 @@
       </test>
       <result>
          <all-of>
-            <assert>count(distinct-values(//@args)) = 1</assert>
-            <assert>count(distinct-values(//@details)) = 12</assert>
+            <assert>/data/part[@id='P1'][@name='Cantus'][@measures='4']</assert>
+            <assert>/data/part[@id='P2'][@name='Altus'][@measures='4']</assert>
+            <assert>/data/part[@id='P3'][@name='Tenor'][@measures='4']</assert>
+            <assert>/data/part[@id='P4'][@name='Bassus'][@measures='4']</assert>
          </all-of>
       </result>
    </test-case>
