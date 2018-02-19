@@ -1213,6 +1213,26 @@
          <assert>xs:integer(/out) = (1 to 10000)</assert>
       </result>
    </test-case>
+   
+   <test-case name="function-1034">
+      <description>Functions with cache=yes and various types of argument</description>
+      <created by="Michael Kay" on="2018-02-19"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1034.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><int-int><a>4</a><b>2</b><c>4</c><d>-3</d><e>4</e></int-int
+            ><str-str><a>14</a><b>9</b><c>18</c><d>14</d></str-str
+            ><qn-qn><a>true</a><b>false</b><c>true</c></qn-qn
+            ><node-node><a>true</a><b>false</b><c>true</c></node-node
+            ><map-map><a>30~30</a><b>30~30</b><c>30~50</c><d>30~30</d></map-map
+            ><fn-fn><a>xypq</a><b>xypq</b><c>xypq</c><d>xypq</d></fn-fn></out>]]></assert-xml>
+      </result>
+   </test-case>
 
 
    <test-case name="function-1101">
