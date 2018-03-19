@@ -765,19 +765,23 @@
       <description>Mixed-posture square-array expression, crawlilng and grounded - not streamable</description>
       <keywords>ParenthesizedExpr mixed-posture </keywords>
       <created by="Michael Kay" on="2016-12-19"/>
+      <modified by="Michael Kay" on="2018-03-13" change="allow a streamability error. See bug 30228"/>
       <test>
          <stylesheet file="square-array-201.xsl"/>
       </test>
       <result>
-         <all-of>
-            <assert>/out/PRICE[1] = 4.95</assert>
-            <assert>/out/PRICE[2] = 6.58</assert>
-            <assert>/out/PRICE[3] = 4.95</assert>
-            <assert>/out/PRICE[4] = 4.95</assert>
-            <assert>/out/PRICE[5] = 16.47</assert>
-            <assert>/out/PRICE[6] = 16.47</assert>
-            <assert>/out/PRICE[7] = 18.90</assert>
-         </all-of>
+         <any-of>
+            <all-of>
+               <assert>/out/PRICE[1] = 4.95</assert>
+               <assert>/out/PRICE[2] = 6.58</assert>
+               <assert>/out/PRICE[3] = 4.95</assert>
+               <assert>/out/PRICE[4] = 4.95</assert>
+               <assert>/out/PRICE[5] = 16.47</assert>
+               <assert>/out/PRICE[6] = 16.47</assert>
+               <assert>/out/PRICE[7] = 18.90</assert>
+            </all-of>
+            <error code="XTSE3430"/>
+         </any-of>
       </result>
    </test-case>
    
