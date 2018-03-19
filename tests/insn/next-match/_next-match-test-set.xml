@@ -666,4 +666,21 @@ Example of apply-imports</div>
          <assert-xml><![CDATA[<out><tag2><ttt><tag>[Example of apply-imports]</tag></ttt></tag2><bag>[Example of apply-templates]</bag></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="next-match-038">
+      <description>Test of xsl:next-match when template rules call used-defined functions (Saxon bug 3706).</description>
+      <created by="Michael Kay" on="2018-03-02"/>
+      <environment>
+         <source role="." file="next-match-038.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="next-match-038.xsl"/>
+      </test>
+      <result>
+         <assert>/out[not(node())]</assert>
+      </result>
+   </test-case>
 </test-set>

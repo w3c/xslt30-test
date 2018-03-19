@@ -17,4 +17,10 @@
          <t:apply-templates/>
       </b>
    </t:template>
+   
+   <t:template match="*[some $x in * satisfies name($x) = 'foobar']">
+      <b xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+         <t:apply-templates/>
+      </b>
+   </t:template>
 </t:transform>
