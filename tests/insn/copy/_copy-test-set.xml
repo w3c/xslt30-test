@@ -1704,9 +1704,10 @@
    <test-case name="copy-3803">
       <description>Test parent and sibling axes work after deep copy</description>
       <created by="Michael Kay" on="2017-09-15"/>
+      <modified by="Michael Kay" on="2018-03-20" change="requires 3.0 for concat operator"/>
       <environment ref="copy-38"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="copy-3803.xsl"/>
@@ -1715,6 +1716,23 @@
          <all-of>
             <assert>/out/a = "true"</assert>
             <assert>/out/b = "true"</assert>
+            <assert>/out/c = "true"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-3804">
+      <description>Test atomizing works after deep copy</description>
+      <created by="Michael Kay" on="2018-04-10"/>
+      <environment ref="copy-38"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-3804.xsl"/>
+      </test>
+      <result>
+         <all-of>
             <assert>/out/c = "true"</assert>
          </all-of>
       </result>
