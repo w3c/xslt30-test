@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="transform">
+   <description>Tests transform() function in XSLT 3.0 (requires XPath 3.1)</description>
+   
+   
+   <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="XPath_3.1"/>
+      <feature value="higher_order_functions"/>
+   </dependencies>
+
+   <test-case name="transform-001">
+      <description>Returns error, module is not available (non-existent file)</description>
+      <created by="Michael Kay" on="2018-04-18"/>           
+      <test>
+         <stylesheet file="transform-001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FOXT0002"/>
+      </result>
+   </test-case>
+   
+   <test-case name="transform-002">
+      <description>Simple successful transformation</description>
+      <created by="Michael Kay" on="2018-04-18"/>           
+      <test>
+         <stylesheet file="transform-002.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out/in = 59</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="transform-003">
+      <description>fn:transform() returns a function which is then called in the calling stylesheet</description>
+      <created by="Michael Kay" on="2018-04-18"/>           
+      <test>
+         <stylesheet file="transform-003.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 3.142</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="transform-004">
+      <description>fn:transform() in a static expression returns a function</description>
+      <created by="Michael Kay" on="2018-04-18"/>           
+      <test>
+         <stylesheet file="transform-004.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 42</assert>
+      </result>
+   </test-case>
+
+
+</test-set>
