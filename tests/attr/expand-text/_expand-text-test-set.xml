@@ -892,6 +892,22 @@
          <assert>/out = '1 2 3'</assert>
       </result>
    </test-case>
+   
+   <test-case name="cvt-042">
+      <description>Content value template in xsl:variable (Saxon bug 3748)</description>
+      <keywords>expand-text-attribute</keywords>
+      <created by="Michael Kay" on="2018-04-17"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-042.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>starts-with(/out/time/@now, 'Time now: 20')</assert>
+      </result>
+   </test-case>
 
 
 
