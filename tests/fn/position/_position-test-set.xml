@@ -3832,4 +3832,21 @@ E: center
 </out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="position-8301">
+      <description>Saxon bug 3758: loop-lifting subexpression that depends on position()</description>
+      <created by="Michael Kay" on="2018-04-24"/>
+      <environment>
+         <source file="position-83.xml" role="."/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="position-8301.xsl"/>
+      </test>
+      <result>
+         <assert>/out = '212'</assert>
+      </result>
+   </test-case>
 </test-set>
