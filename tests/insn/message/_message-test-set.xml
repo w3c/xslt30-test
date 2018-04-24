@@ -704,4 +704,57 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="message-0404">
+      <description>Tests dynamic error evaluating content of xsl:message instruction.</description>
+      <created by="Michael Kay" on="2018-03-28"/>
+      <environment ref="message-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0404.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <!-- Outcome is not well-defined by the spec, but I think with terminate=no, the error can be ignored -->
+            <assert>/out</assert>
+            <error code="FOAR0001"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0405">
+      <description>Tests dynamic error evaluating error-code of xsl:message instruction.</description>
+      <created by="Michael Kay" on="2018-03-28"/>
+      <environment ref="message-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0405.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <!-- Outcome is not well-defined by the spec, but I think with terminate=no, the error can be ignored -->
+            <assert>/out</assert>
+            <error code="FOAR0001"/>
+         </any-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="message-0406">
+      <description>Tests error-code of xsl:message instruction not being a valid QName - revert to XTMM9000</description>
+      <created by="Michael Kay" on="2018-03-28"/>
+      <environment ref="message-04"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0406.xsl"/>
+      </test>
+      <result>
+         <error code="XTMM9000"/>
+      </result>
+   </test-case>
 </test-set>
