@@ -13,7 +13,7 @@
             <xsl:function name="f:add" visibility="public">
                 <xsl:param name='x'/>
                 <xsl:param name="y"/>
-                <xsl:sequence select="$x + $y + (if(exists(function-lookup(QName('http://www.w3.org/1999/XSL/Transform', 'override'), 2))) then 1 else 0)"/>
+                <xsl:sequence select="$x + $y + (if(exists(function-lookup(QName('http://www.w3.org/1999/XSL/Transform', 'original'), 2))) then 1 else 0)"/>
             </xsl:function>
             <xsl:function name="f:subtract" visibility="public">
                 <xsl:param name='x'/>
