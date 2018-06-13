@@ -1620,7 +1620,9 @@ It is a non-recoverable dynamic
       </result>
    </test-case>
    
-   <test-case name="error-0045b">
+   <!-- Test case deleted: see bug 30221 for rationale -->
+   
+   <!--<test-case name="error-0045b">
       <description>Tests the following error with a default-mode attribute on xsl:stylesheet to a non-existing value
          
          Error: It is a non-recoverable dynamic
@@ -1628,7 +1630,7 @@ It is a non-recoverable dynamic
                         expanded QName in the
                         mode attribute of any template defined in the stylesheet.</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
-      <!-- Challenged by bug 30221 -->
+      <!-\- Challenged by bug 30221 -\->
       <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1640,7 +1642,7 @@ It is a non-recoverable dynamic
       <result>
          <error code="XTDE0045"/>
       </result>
-   </test-case>
+   </test-case>-->
    
    <test-case name="error-0045ba">
       <description>Tests the following error with a default-mode attribute on xsl:stylesheet to a non-existing value
@@ -4709,6 +4711,8 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
          Generate error XTDE0640 (circularity error) and trying to catch it with xsl:try/catch (not allowed, see Bug 28368)
       </description>
       <created by="Abel Braaksma" on="2015-03-30"/>
+      <modified by="Michael Kay" on="2018-05-22" 
+         change="The final spec says that the outcome of catching XTDE0640 is implementation-defined"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -4716,7 +4720,10 @@ In general, a circularity in a stylesheet is a non-recoverable dynamic error.</d
          <stylesheet file="error-0640m.xsl"/>
       </test>
       <result>
-         <error code="XTDE0640"/>
+         <any-of>
+            <error code="XTDE0640"/>
+            <assert>exists(/out/@wrong)</assert>
+         </any-of>
       </result>
    </test-case>
 

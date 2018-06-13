@@ -7,6 +7,14 @@
 
 <!-- Test circular reference, trying to catch the error XPDE0640
     See bug 28368 about capturing circularity errors (will likely become disallowed) -->
+    
+    <!-- What the spec actually says is: 
+        
+        Although a circularity is detected as a dynamic error, there is no unique instruction whose 
+        evaluation triggers the error condition, and the result of any attempt to catch the error using 
+        an xsl:try instruction is therefore implementation-dependent.
+        
+    -->    
  
   <xsl:variable name="circular">
       <xsl:try>
