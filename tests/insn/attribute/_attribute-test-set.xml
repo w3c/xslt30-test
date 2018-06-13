@@ -92,6 +92,7 @@
    <test-case name="attribute-0002">
       <description>Test that the attribute namespace is cast to a string if supplied as a anyURI</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2018-05-31" change="remove dependency on arbitrary generated namespace prefixes"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -100,7 +101,14 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:p="http://ns.p.com/" xmlns:p_1="http://ns.p.com/2" p_1:local="content"/>]]></assert-xml>
+         <all-of>
+            <assert>exists(/out)</assert>
+            <assert>count(/out/@*) = 1</assert>
+            <assert>local-name(/out/@*) = "local"</assert>
+            <assert>namespace-uri(/out/@*) = "http://ns.p.com/2"</assert>
+            <assert>exists(/out/namespace::p[.="http://ns.p.com/"])</assert>
+            <assert>exists(/out/namespace::*[.="http://ns.p.com/2"])</assert>
+         </all-of>
       </result>
    </test-case>
 
