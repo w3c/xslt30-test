@@ -544,6 +544,390 @@
          <assert>//red[namespace::rose="http://www.rose.com"]</assert>
       </result>
    </test-case>
+   
+   <test-case name="copy-0612">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied document, using in-scope-prefixes)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0612.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'true'"/>
+         <param name="INHERIT" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='p'][@uri='uri:p'][@in-scope='|=uri:p|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='q'][@uri='uri:q'][@in-scope='|=uri:q|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|b=uri:b|d=uri:d|s=uri:s']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0613">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied document, using in-scope-prefixes)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0612.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'true'"/>
+         <param name="INHERIT" static="yes" select="'false'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='p'][@uri='uri:p'][@in-scope='|=uri:p']</assert>
+            <assert>/out/element[@name='q'][@uri='uri:q'][@in-scope='|=uri:q']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|s=uri:s']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0614">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied document, using in-scope-prefixes)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0612.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'false'"/>
+         <param name="INHERIT" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='p'][@uri='uri:p'][@in-scope='|=uri:p|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='q'][@uri='uri:q'][@in-scope='|=uri:q|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|b=uri:b|d=uri:d']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0615">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied document, using in-scope-prefixes)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0612.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'false'"/>
+         <param name="INHERIT" static="yes" select="'false'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='p'][@uri='uri:p'][@in-scope='|=uri:p']</assert>
+            <assert>/out/element[@name='q'][@uri='uri:q'][@in-scope='|=uri:q']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0616">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied document, using namespace axis)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0616.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'true'"/>
+         <param name="INHERIT" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='p'][@uri='uri:p'][@in-scope='|=uri:p|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='q'][@uri='uri:q'][@in-scope='|=uri:q|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|b=uri:b|d=uri:d|s=uri:s']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0617">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied document, using namespace axis)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0616.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'true'"/>
+         <param name="INHERIT" static="yes" select="'false'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='p'][@uri='uri:p'][@in-scope='|=uri:p']</assert>
+            <assert>/out/element[@name='q'][@uri='uri:q'][@in-scope='|=uri:q']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|s=uri:s']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0618">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied document, using namespace axis)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0616.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'false'"/>
+         <param name="INHERIT" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='p'][@uri='uri:p'][@in-scope='|=uri:p|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='q'][@uri='uri:q'][@in-scope='|=uri:q|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|b=uri:b|d=uri:d']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0619">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied document, using namespace axis)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0616.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'false'"/>
+         <param name="INHERIT" static="yes" select="'false'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='p'][@uri='uri:p'][@in-scope='|=uri:p']</assert>
+            <assert>/out/element[@name='q'][@uri='uri:q'][@in-scope='|=uri:q']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0620">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied element, using in-scope-prefixes)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0620.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'true'"/>
+         <param name="INHERIT" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|b=uri:b|d=uri:d|s=uri:s']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0621">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied element, using in-scope-prefixes)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0620.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'true'"/>
+         <param name="INHERIT" static="yes" select="'false'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|s=uri:s']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0622">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied element, using in-scope-prefixes)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0620.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'false'"/>
+         <param name="INHERIT" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|b=uri:b|d=uri:d']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0623">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied element, using in-scope-prefixes)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0620.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'false'"/>
+         <param name="INHERIT" static="yes" select="'false'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0624">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied element, using namespace axis)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0624.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'true'"/>
+         <param name="INHERIT" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|b=uri:b|d=uri:d|s=uri:s']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0625">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied element, using namespace axis)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0624.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'true'"/>
+         <param name="INHERIT" static="yes" select="'false'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|s=uri:s']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0626">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied element, using namespace axis)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0624.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'false'"/>
+         <param name="INHERIT" static="yes" select="'true'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r|b=uri:b|d=uri:d']</assert>
+         </all-of>        
+      </result>
+   </test-case>
+   
+   <test-case name="copy-0627">
+      <description>test combinations of inherit=yes|no and copy-namespaces=yes|no (copied element, using namespace axis)</description>
+      <created by="Michael Kay" on="2018-05-17"/>
+      <environment ref="copy-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-0624.xsl"/>
+         <initial-template name="main"/>
+         <param name="COPY" static="yes" select="'false'"/>
+         <param name="INHERIT" static="yes" select="'false'"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/element[@name='a'][@uri='uri:a'][@in-scope='|=uri:a']</assert>
+            <assert>/out/element[@name='b'][@uri='uri:b'][@in-scope='|=uri:a|b=uri:b']</assert>
+            <assert>/out/element[@name='c'][@uri='uri:c'][@in-scope='|=uri:c|b=uri:b|d=uri:d']</assert>
+            <assert>/out/element[@name='r'][@uri='uri:r'][@in-scope='|=uri:r']</assert>
+         </all-of>        
+      </result>
+   </test-case>
 
    <test-case name="copy-0701">
       <description> Test for copy-of with '*' wildcard pattern. This test also checks handling of
