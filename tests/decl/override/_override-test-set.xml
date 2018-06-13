@@ -51,7 +51,7 @@
       <result>
          <assert>/ok</assert>
       </result>
-   </test-case>
+   </test-case> 
    
    <test-case name="override-f-002">
       <description>Successful use of override of a function defined in a library package</description>
@@ -585,6 +585,21 @@
       </test>
       <result>
          <assert>/out = "29"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="override-f-034">
+      <description>
+         Overriding function has different properties from overridden: try to confuse the optimizer.
+         See Saxon bug 3762.
+      </description>
+      <created by="Michael Kay" on="2018-04-26"/>
+      <test>
+         <package file="override-f-034.xsl" role="principal"/>
+         <package file="override-base-f-002.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert>/out = "3"</assert>
       </result>
    </test-case>
    
