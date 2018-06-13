@@ -293,8 +293,7 @@
          <assert>/out = "  " (:2 spaces only:)</assert>
       </result>
    </test-case>
-   
-   
+  
    
    <test-case name="context-item-901">
       <description>Occurrence indicator not allowed in xsl:context-item/@as</description>
@@ -413,6 +412,30 @@
       </test>
       <result>
          <error code="XTSE0090"/>
+      </result>
+   </test-case>
+   
+   <test-case name="context-item-911">
+      <description>xsl:context-item specifying a more precise type than the match pattern; type error detectable statically</description>
+      <created by="Michael Kay" on="2018-05-11"/>    
+      <test>
+         <stylesheet file="context-item-911.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPTY0019"/>
+      </result>
+   </test-case>
+   
+   <test-case name="context-item-912">
+      <description>xsl:context-item inconsistent with the match pattern; type error detectable statically</description>
+      <created by="Michael Kay" on="2018-05-11"/>    
+      <test>
+         <stylesheet file="context-item-912.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
       </result>
    </test-case>
 
