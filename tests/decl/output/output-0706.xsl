@@ -17,4 +17,9 @@
          <xsl:map-entry key="'g'" select="'GGG'"/>
       </xsl:map>
    </xsl:template>
+   
+   <xsl:template match="." mode="m">
+      <xsl:call-template name="xsl:initial-template"/>
+   </xsl:template>
+   
 </xsl:transform>

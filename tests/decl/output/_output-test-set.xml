@@ -4089,8 +4089,10 @@
    <test-case name="output-0701">
       <description>JSON serialization</description>
       <created by="Michael Kay" on="2016-12-16"/>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
       </dependencies>
       <test>
          <stylesheet file="output-0701.xsl"/>
@@ -4114,9 +4116,11 @@
    
    <test-case name="output-0702">
       <description>JSON serialization with nested HTML</description>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <created by="Michael Kay" on="2016-12-16"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
       </dependencies>
       <test>
          <stylesheet file="output-0702.xsl"/>
@@ -4132,8 +4136,10 @@
    <test-case name="output-0703">
       <description>Serialization with item-separator</description>
       <created by="Michael Kay" on="2016-12-16"/>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
       </dependencies>
       <test>
          <stylesheet file="output-0703.xsl"/>
@@ -4149,8 +4155,10 @@
    <test-case name="output-0704">
       <description>JSON serialization with allow-duplicate-names=yes</description>
       <created by="Michael Kay" on="2016-12-16"/>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
       </dependencies>
       <test>
          <stylesheet file="output-0704.xsl"/>
@@ -4167,8 +4175,10 @@
    <test-case name="output-0705">
       <description>JSON serialization with allow-duplicate-names=no</description>
       <created by="Michael Kay" on="2016-12-16"/>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
       </dependencies>
       <test>
          <stylesheet file="output-0705.xsl"/>
@@ -4182,8 +4192,10 @@
    <test-case name="output-0706">
       <description>JSON serialization parameter document and character map</description>
       <created by="Michael Kay" on="2016-12-16"/>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
       </dependencies>
       <test>
          <stylesheet file="output-0706.xsl"/>
@@ -4194,11 +4206,31 @@
       </result>
    </test-case>
    
+   <test-case name="output-0706a">
+      <description>JSON serialization parameter document and character map: variant of -0706 using apply-templates invocation</description>
+      <created by="Michael Kay" on="2016-12-16"/>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0706.xsl"/>
+         <initial-mode name="m" select="0"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <serialization-matches>\{"AAA":"AAA","BBB":"BBB","CCC":"CCC","d":"DDD","e":"EEE","f":"FFF","g":"GGG"\}</serialization-matches>
+      </result>
+   </test-case>
+   
    <test-case name="output-0707">
       <description>Adaptive serialization: no errors</description>
       <created by="Michael Kay" on="2016-12-16"/>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
          <feature value="higher_order_functions"/>
       </dependencies>
       <test>
@@ -4213,8 +4245,10 @@
    <test-case name="output-0708">
       <description>JSON serialization: use character map to suppress escaping of forwards slash</description>
       <created by="Michael Kay" on="2017-05-23"/>
+      <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
       </dependencies>
       <test>
          <stylesheet file="output-0708.xsl"/>
@@ -4239,6 +4273,131 @@
          <all-of>
             <serialization-matches>^11~12~13~14~15~16~17~18~19~20$</serialization-matches>          
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0710">
+      <description>Serializing a map fails with XML output method</description>
+      <created by="Michael Kay" on="2018-05-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0710.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <error code="SENR0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0711">
+      <description>Serializing a map fails with HTML output method</description>
+      <created by="Michael Kay" on="2018-05-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0711.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <error code="SENR0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0712">
+      <description>Serializing a map fails with dynamically-selected output method</description>
+      <created by="Michael Kay" on="2018-05-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0712.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <error code="SENR0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0713">
+      <description>An array is flattened by the XML output method</description>
+      <created by="Michael Kay" on="2018-05-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0713.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <assert-serialization><![CDATA[<?xml version="1.0" encoding="UTF-8"?><out><e1 id="1"/><e1 id="1"/></out>]]></assert-serialization>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0714">
+      <description>An array is flattened by the HTML output method</description>
+      <created by="Michael Kay" on="2018-05-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0714.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>A document</title></head><body><p>Some content</p></body></html>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0715">
+      <description>An array is flattened by the dynamically-selected output method</description>
+      <created by="Michael Kay" on="2018-05-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0715.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches>http-equiv="Content-Type"</serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0716">
+      <description>JSON node-output-method = html</description>
+      <created by="Michael Kay" on="2018-05-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0716.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[\["<head><meta http-equiv=\\"Content-Type\\"]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0717">
+      <description>JSON node-output-method = xml</description>
+      <created by="Michael Kay" on="2018-05-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0717.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[\["<head><title]]></serialization-matches>
       </result>
    </test-case>
    
