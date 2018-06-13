@@ -4,6 +4,7 @@
     xmlns:s="http://s.com/" exclude-result-prefixes="s">
     
     <!-- PURPOSE: Test xsl:merge-key context: visibility of variable defined in xsl:merge-input  -->
+    <!-- NOTE 2018-05-12: changes to the spec mean the original purpose of this test has been lost -->
     
     <xsl:output indent="no"/>
     
