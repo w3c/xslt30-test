@@ -403,6 +403,8 @@
     </xsl:template>
     
     <!-- xsl:element content cannot contain a function item - error - recovered -->
+    <!-- modified by="Michael Kay" on="2018-06-26" change="Added XTDE0450 which is the correct error code, but left FOTY0013 for old times sake" -->
+      
     
     <xsl:template name="s-058" use-when="$RUN">
       <xsl:param name="s" select="false#0"/>
@@ -410,7 +412,7 @@
         <out>
           <xsl:try>
             <a><xsl:sequence select="1, 2, head(//text()), $s"/></a>
-            <xsl:catch errors="*:FOTY0013">caught</xsl:catch>
+            <xsl:catch errors="*:FOTY0013 *:XTDE0450">caught</xsl:catch>
           </xsl:try>
         </out>
       </xsl:source-document>
