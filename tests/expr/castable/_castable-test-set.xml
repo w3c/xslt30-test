@@ -68,4 +68,36 @@
          <assert-xml><![CDATA[<out xmlns:xs="http://www.w3.org/2001/XMLSchema"><a>true</a><a>true</a><a>true</a><a>true</a><b>false</b><b>false</b><b>false</b><b>false</b></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="castable-005">
+      <description>Test "castable as" operator applied to schema-defined union types (conversion of QT3 tests)</description>
+      <created by="Michael Kay" on="2018-06-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="castable-005.xsl"/>
+      </test>
+      <result>
+         <assert>empty(/out/failure)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="castable-006">
+      <description>Test "castable as" operator applied to schema-defined list types (conversion of QT3 tests)</description>
+      <created by="Michael Kay" on="2018-06-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="castable-006.xsl"/>
+      </test>
+      <result>
+         <assert>empty(/out/failure)</assert>
+      </result>
+   </test-case>
 </test-set>
