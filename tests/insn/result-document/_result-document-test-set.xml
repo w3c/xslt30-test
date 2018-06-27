@@ -2126,7 +2126,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <any-of>
-            <error code="XTRE1495"/>
+            <error code="XTRE1495"/> <!-- dropped in 3.0 -->
             <error code="XTDE1490"/>
          </any-of>
       </result>
@@ -2145,7 +2145,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <any-of>
-            <error code="XTRE1495"/>
+            <error code="XTRE1495"/> <!-- dropped in 3.0 -->
             <error code="XTDE1490"/>
          </any-of>
       </result>
@@ -2164,7 +2164,61 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <any-of>
-            <error code="XTRE1495"/>
+            <error code="XTRE1495"/> <!-- dropped in 3.0 -->
+            <error code="XTDE1490"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1004">
+      <description> Test for two xsl:result-document instructions both using the principal output URI </description>
+      <created by="Michael Kay" on="2018-06-15"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1004.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XTRE1495"/> <!-- dropped in 3.0 -->
+            <error code="XTDE1490"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1005">
+      <description> Test for nested xsl:result-document instructions implicitly using the principal output URI </description>
+      <created by="Michael Kay" on="2018-06-15"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1005.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XTRE1495"/> <!-- dropped in 3.0 -->
+            <error code="XTDE1490"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1006">
+      <description> Test for nested xsl:result-document instructions explicitly using the principal output URI </description>
+      <created by="Michael Kay" on="2018-06-17"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1006.xsl"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XTRE1495"/> <!-- dropped in 3.0 -->
             <error code="XTDE1490"/>
          </any-of>
       </result>
