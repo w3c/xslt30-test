@@ -1070,6 +1070,26 @@
       </environment>
       <test>
          <stylesheet file="si-group-051.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/Orders/group[@number="100"]/value="-15.00"</assert>
+            <assert>/Orders/group[@number="101"]/value="6.00"</assert>
+            <assert>/Orders/group[@number="102"]/value="-5.00"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-051-ns">
+      <description>As -051 with streaming disabled.</description>
+      <created by="Michael Kay" on="2018-06-26"/>
+      <environment>
+         <source file="si-group-051.xml" role="." streaming="false"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-051.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
       </test>
       <result>
          <all-of>
@@ -1088,6 +1108,7 @@
       </environment>
       <test>
          <stylesheet file="si-group-052.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
       </test>
       <result>
          <error code="XTSE3430"/>
@@ -1102,6 +1123,28 @@
       </environment>
       <test>
          <stylesheet file="si-group-053.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/chapter/pageset[1]/page) = 2</assert>
+            <assert>count(/chapter/pageset[2]/page) = 1</assert>
+            <assert>count(/chapter/pageset[3]/page) = 2</assert>
+            <assert>count(/chapter/pageset) = 3</assert>
+            <assert>empty(//pb)</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-053-ns">
+      <description>As -053 with streaming disabled</description>
+      <created by="Michael Kay after Martin Honnen" on="2018-06-26"/>
+      <environment>
+         <source file="si-group-053.xml" role="." streaming="false"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-053.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
       </test>
       <result>
          <all-of>
@@ -1122,6 +1165,28 @@
       </environment>
       <test>
          <stylesheet file="si-group-054.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<contents><unnumbered type="PT"><title>Title one</title></unnumbered
+               ><unnumbered type="PT"><title>Title Two</title></unnumbered
+               ><unnumbered type="PT"><title>Title Three</title></unnumbered
+               ><unnumbered type="PT"><title>Title Four</title></unnumbered
+               ></contents>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-054-ns">
+      <description>As -054 with streaming disabled</description>
+      <created by="Michael Kay after Martin Honnen" on="2018-06-26"/>
+      <environment>
+         <source file="si-group-054.xml" role="." streaming="false"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-054.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
       </test>
       <result>
          <all-of>
@@ -1142,6 +1207,28 @@
       </environment> 
       <test>
          <stylesheet file="si-group-055.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<contents><unnumbered type="PT"><title>Title one</title><unnumbered type="chapter" manid="01"
+               /><unnumbered type="chapter" manid="02"/><unnumbered type="chapter" manid="03"/></unnumbered><unnumbered type="PT"
+               ><title>Title Two</title><unnumbered type="chapter" manid="04"/><unnumbered type="chapter" manid="05"/><unnumbered type="chapter" manid="06"/></unnumbered><unnumbered type="PT"
+               ><title>Title Three</title><unnumbered type="chapter" manid="07"/><unnumbered type="chapter" manid="08"/><unnumbered type="chapter" manid="09"/><unnumbered type="chapter" manid="10"/></unnumbered><unnumbered type="PT"
+               ><title>Title Four</title><unnumbered type="chapter" manid="11"/><unnumbered type="chapter" manid="12"/><unnumbered type="chapter" manid="13"/><unnumbered type="chapter" manid="14"/><unnumbered type="chapter" manid="15"/></unnumbered></contents>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-055-ns">
+      <description>As -055 with streaming disabled</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-20"/>
+      <environment>
+         <source file="si-group-054.xml" role="." streaming="false"/> <!-- sic -->
+      </environment> 
+      <test>
+         <stylesheet file="si-group-055.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
       </test>
       <result>
          <all-of>
@@ -1162,6 +1249,27 @@
       </environment>
       <test>
          <stylesheet file="si-group-056.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<contents><unnumbered type="PT"><title>Title one</title><subtitle>Chapter Two</subtitle></unnumbered
+               ><unnumbered type="PT"><title>Title Two</title></unnumbered
+               ><unnumbered type="PT"><title>Title Three</title><subtitle>Chapter Eight</subtitle></unnumbered
+               ><unnumbered type="PT"><title>Title Four</title></unnumbered></contents>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-056-ns">
+      <description>As -056 with streaming disabled</description>
+      <created by="Michael Kay" on="2018-06-28"/>
+      <environment>
+         <source file="si-group-054.xml" role="." streaming="false"/> <!-- sic -->
+      </environment>
+      <test>
+         <stylesheet file="si-group-056.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
       </test>
       <result>
          <all-of>
@@ -1181,6 +1289,27 @@
       </environment>
       <test>
          <stylesheet file="si-group-057.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<Element><group><h1><title>Name1</title></h1
+               ><para/></group><group><h1><title>Name2</title></h1
+               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
+               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-057-ns">
+      <description>As -057 with streaming disabled</description>
+      <created by="Michael Kay after Martin Honnen" on="2017-06-26"/>
+      <environment>
+         <source file="si-group-057.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-057.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
       </test>
       <result>
          <all-of>
@@ -1200,6 +1329,27 @@
       </environment>
       <test>
          <stylesheet file="si-group-058.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<Element><group><h1><title>Name1</title></h1
+               ><para/></group><group><h1><title>Name2</title></h1
+               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
+               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-058-ns">
+      <description>As -058 with streaming disabled.</description>
+      <created by="Michael Kay after Martin Honnen" on="2018-06-28"/>
+      <environment>
+         <source file="si-group-057.xml" role="." streaming="false"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-058.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
       </test>
       <result>
          <all-of>
@@ -1219,10 +1369,71 @@
       </environment>
       <test>
          <stylesheet file="si-group-059.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
       </test>
       <result>
          <all-of>
             <assert-xml><![CDATA[<Element><group><h1><title>Name1</title></h1
+               ><para/></group><group><h1><title>Name2</title></h1
+               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
+               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-059-ns">
+      <description>As -059 with streaming disabled</description>
+      <created by="Michael Kay after Martin Honnen" on="2018-06-28"/>
+      <environment>
+         <source file="si-group-057.xml" role="." streaming="false"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-059.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<Element><group><h1><title>Name1</title></h1
+               ><para/></group><group><h1><title>Name2</title></h1
+               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
+               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-059a">
+      <description>Streamed grouping - conditional within xsl:for-each-group (variant of -059 with different source document).</description>
+      <created by="Michael Kay" on="2017-07-06"/>
+      <environment>
+         <source file="si-group-059.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-059.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<Element><para>Test0</para><group><h1><title>Name1</title></h1
+               ><para/></group><group><h1><title>Name2</title></h1
+               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
+               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-group-059a-ns">
+      <description>As -059a with streaming disabled.</description>
+      <created by="Michael Kay" on="2018-06-28"/>
+      <environment>
+         <source file="si-group-059.xml" role="." streaming="false"/>
+      </environment>
+      <test>
+         <stylesheet file="si-group-059.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<Element><para>Test0</para><group><h1><title>Name1</title></h1
                ><para/></group><group><h1><title>Name2</title></h1
                ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
                ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
@@ -1267,25 +1478,23 @@
       </result>
    </test-case>
    
-   <test-case name="si-group-059a">
-      <description>Streamed grouping - conditional within xsl:for-each-group (variant of -059 with different source document).</description>
-      <created by="Michael Kay" on="2017-07-06"/>
+   <test-case name="si-group-062">
+      <description>Non-streamable xsl:source-document instruction within a streamable template</description>
+      <created by="Michael Kay" on="2018-06-28"/>
       <environment>
-         <source file="si-group-059.xml" role="." streaming="true"/>
+         <source file="si-group-051.xml" role="." streaming="true"/>
       </environment>
       <test>
-         <stylesheet file="si-group-059.xsl"/>
+         <stylesheet file="si-group-062.xsl"/>
       </test>
       <result>
          <all-of>
-            <assert-xml><![CDATA[<Element><para>Test0</para><group><h1><title>Name1</title></h1
-               ><para/></group><group><h1><title>Name2</title></h1
-               ><para>Test1</para><para>Test2</para></group><group><h1><title>Name3</title></h1
-               ><para>Test3</para><para>Test4</para></group></Element>]]></assert-xml>
+            <assert>/Orders/group[@number="100"]/value="-15.00"</assert>
+            <assert>/Orders/group[@number="101"]/value="6.00"</assert>
+            <assert>/Orders/group[@number="102"]/value="-5.00"</assert>
          </all-of>
       </result>
    </test-case>
-   
 
    <test-case name="si-group-101">
       <description>Streamed grouping - group-starting-with </description>

@@ -15,7 +15,7 @@
     <xsl:copy>
       <xsl:for-each-group select="Order" group-adjacent="@number">
         <group number="{current-grouping-key()}">
-          <xsl:source-document href="../docs/transactions.xml">
+          <xsl:source-document href="../docs/transactions.xml" _streamable="{$STREAMABLE}">
             <xsl:for-each select="//transaction[@date = current-group()[1]/Date]">
               <value>
                 <xsl:value-of select="@value"/>
