@@ -340,6 +340,7 @@
    <test-case name="doe-0191">
       <description>d-o-e works within try/catch, writing element nodes</description>
       <created by="Michael Kay" on="2017-05-12"/>
+      <modified by="Michael Kay" on="2018-06-27" change="correct expected results"/>
       <environment ref="doe-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -350,7 +351,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization><![CDATA[<out>&lt;10</out>]]></assert-serialization>
+         <assert-serialization><![CDATA[<out><z>&lt;</z>10</out>]]></assert-serialization>
       </result>
    </test-case>
   
@@ -570,7 +571,6 @@
    
    <test-case name="doe-0803">
       <description>Test for disabling-output-escaping within a streamed xsl:fork (where output is typically buffered)</description>
-      <!-- MHK 2017-05-12: Saxon can't handle this one at present. Buffering trees containing the d-o-e property on selected text nodes is challenging. -->
       <created by="Michael Kay" on="2017-05-12"/>
       <environment ref="doe-08"/>
       <dependencies>

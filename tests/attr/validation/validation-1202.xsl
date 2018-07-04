@@ -23,7 +23,7 @@ xmlns:t="http://ns.example.com/val12/"
     <xsl:variable name="u" as="document-node()">
       <xsl:copy-of select="." validation="strip"/>
     </xsl:variable>
-    <xsl:apply-templates select="($s, $l, $t, $u)//t:test"/>
+    <xsl:apply-templates select="for $X in ($s, $l, $t, $u) return $X//t:test"/>  <!-- need to retain order... -->
   </z>
   </xsl:template>
   
