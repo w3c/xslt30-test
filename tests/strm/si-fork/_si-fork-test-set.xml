@@ -647,6 +647,31 @@
       </result>
    </test-case>
    
+   <test-case name="si-fork-808-ns">
+      <description>As -808 with streaming disabled, for comparison</description>
+     <created by="Michael Kay after Martin Honnen" on="2017-08-07"/>
+      <modified by="Michael Kay after Martin Honnen" on="2018-02-02" change="add expected results, based on non-streamed evaluation"/>
+      <environment>
+         <source role="." file="si-fork-808.xml" streaming="false"/>
+      </environment>
+      <test>
+         <stylesheet file="si-fork-808.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><orderlist type="manual"><item num="(a)"><para>blah blah</para
+    ><orderlist type="manual"><item num="(i)"><para>blah blah</para
+    ><orderlist type="manual"/></item></orderlist></item><item num="(b)"><para>blah blah</para
+    ><orderlist type="manual"/></item><item num="(c)"><para>blah blah</para
+    ><orderlist type="manual"><item num="(i)"><para>blah blah</para
+    ><orderlist type="manual"><item num="(1)"><para>blah blah</para
+    ><orderlist type="manual"/></item><item num="(2)"><para>blah blah</para
+    ><orderlist type="manual"/></item></orderlist></item><item num="(ii)"><para>blah blah</para
+    ><orderlist type="manual"/></item><item num="(iii)"><para>blah blah</para><orderlist type="manual"/></item><item num="(iv)"><para>blah blah</para
+    ><orderlist type="manual"/></item></orderlist></item></orderlist></root>]]></assert-xml>
+      </result>
+   </test-case>
+   
    <test-case name="si-fork-809">
       <description>Streamable xsl:fork containing xsl:for-each-group (Saxon bug 3399)</description>
       <created by="Michael Kay after Martin Honnen" on="2017-08-31"/>
