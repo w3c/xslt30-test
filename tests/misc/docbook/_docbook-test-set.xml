@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="number">
+          name="docbook">
    
    <description>Tests using the docbook stylesheets</description>
  
    <test-case name="docbook-001">
       <description>Transform a docbook article to XHTML</description>
       <created by="Michael Kay" on="2018-08-18"/>
+      <modified by="Debbie Lockett" on="2018-08-20" change="add backwards compatibility dependency"/>
       <environment>
          <source role="." file="prague2016mhk.xml"/>
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="backwards_compatibility"/>
       </dependencies>
       <test>
          <stylesheet file="docbook-xsl-1.79.1/xhtml5/docbook.xsl"/>
@@ -29,11 +31,13 @@
    <test-case name="docbook-002">
       <description>Transform a docbook article to XSL-FO</description>
       <created by="Michael Kay" on="2018-08-18"/>
+      <modified by="Debbie Lockett" on="2018-08-20" change="add backwards compatibility dependency"/>
       <environment>
          <source role="." file="prague2016mhk.xml"/>
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="backwards_compatibility"/>
       </dependencies>
       <test>
          <stylesheet file="docbook-xsl-1.79.1/fo/docbook.xsl"/>
