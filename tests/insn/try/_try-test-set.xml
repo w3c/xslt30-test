@@ -588,4 +588,36 @@
          <assert>/out='test: Bang!'</assert>
       </result>
    </test-case>
+   
+   <test-case name="try-033">
+      <description>rollback-output="no": recovery still possible because no output written</description>
+      <keywords>xsl:try</keywords>
+      <created by="Michael Kay" on="2018-07-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-033.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out='Error err:FODC0002 was caught!'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="try-034">
+      <description>rollback-output="no": recovery not possible because lots of output written</description>
+      <keywords>xsl:try</keywords>
+      <created by="Michael Kay" on="2018-07-26"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-034.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTDE3530"/>
+      </result>
+   </test-case>
 </test-set>
