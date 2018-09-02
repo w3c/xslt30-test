@@ -1798,4 +1798,21 @@ Namespace "" used in 3
          <assert>/out = "Hot July brings cooling showers, Apricots and gillyflowers."</assert>
       </result>
    </test-case>
+   
+   <test-case name="key-097">
+      <description>Composite key. Saxon problem raised at https://saxonica.plan.io/boards/3/topics/7274?pn=1</description>
+      <created by="Michael Kay after Martin Honnen" on="2018-07-28"/>
+      <environment>
+         <source role="." file="key097.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="key-097.xsl"/>
+      </test>
+      <result>
+         <assert>count(/Message2/Response/CE) = 2</assert>
+      </result>
+   </test-case>
 </test-set>

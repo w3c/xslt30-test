@@ -29,9 +29,10 @@
    <test-case name="message-0001">
       <description>
          Output a message that cannot be serialized - specifically, a free-standing attribute node. 
-         Under erratum E20, this is a recoverable error - the processor may fail or may report an error. 
+         Under erratum E20 for XSLT 2.0, this is a recoverable error - the processor may fail or may report an error. 
          This test shows both paths.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2018-09-02" change="See bug 30283. Stylesheet changed and test split into 2.0/3.0 versions"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -44,6 +45,24 @@
             <assert-xml><![CDATA[<out/>]]></assert-xml>
             <error code="XTDE0420"/>
          </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0001a">
+      <description>
+         Output a message that cannot be serialized - specifically, a free-standing attribute node. 
+         XSLT 3.0 says that the transformation does not fail (though the output is left unspecified)</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2018-09-02" change="See bug 30283. Stylesheet changed and test split into 2.0/3.0 versions"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0001.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+            <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
 
@@ -708,19 +727,16 @@
    <test-case name="message-0404">
       <description>Tests dynamic error evaluating content of xsl:message instruction.</description>
       <created by="Michael Kay" on="2018-03-28"/>
+      <modified by="Michael Kay" on="2018-09-02" change="Bug 30283. Make this an XSLT 3.0 test. The XSLT 3.0 spec is clear that the transformation must not fail."/>
       <environment ref="message-04"/>
       <dependencies>
-         <spec value="XSLT20+"/>
+         <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="message-0404.xsl"/>
       </test>
       <result>
-         <any-of>
-            <!-- Outcome is not well-defined by the spec, but I think with terminate=no, the error can be ignored -->
-            <assert>/out</assert>
-            <error code="FOAR0001"/>
-         </any-of>
+         <assert>/out</assert>
       </result>
    </test-case>
    
@@ -755,6 +771,52 @@
       </test>
       <result>
          <error code="XTMM9000"/>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0407">
+      <description>xsl:message outputs an array</description>
+      <created by="Michael Kay" on="2018-09-02"/>
+      <environment ref="message-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XPath_3.1"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0407.xsl"/>
+      </test>
+      <result>
+         <assert>/out</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0408">
+      <description>xsl:message outputs a map. The transformation succeeds, but the message content is undefined.</description>
+      <created by="Michael Kay" on="2018-09-02"/>
+      <environment ref="message-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0408.xsl"/>
+      </test>
+      <result>
+         <assert>/out</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="message-0409">
+      <description>xsl:message outputs a function item. The transformation succeeds, but the message content is undefined.</description>
+      <created by="Michael Kay" on="2018-09-02"/>
+      <environment ref="message-04"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0409.xsl"/>
+      </test>
+      <result>
+         <assert>/out</assert>
       </result>
    </test-case>
 </test-set>

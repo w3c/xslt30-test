@@ -204,6 +204,38 @@ Who knows?: Prince</out>]]></assert-xml>
          <assert>/out/*:circle[@r="0" and @cx="10" and @cy="20"]</assert>
       </result>
    </test-case>
+   
+   <test-case name="choose-0106">
+      <description>Same comparison done repeatedly with different namespace contexts</description>
+      <created by="Michael Kay" on="2018-07-31"/>
+      <environment ref="choose-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="choose-0106.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'Three'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="choose-0107">
+      <description>Same comparison done repeatedly with different default collations</description>
+      <created by="Michael Kay" on="2018-07-31"/>
+      <environment ref="choose-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="choose-0107.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = 'Two'</assert>
+      </result>
+   </test-case>
 
    <test-case name="choose-0201">
       <description>Wben test occurs with attribute node, with no matches and is missing otherwise clause. No expected output.</description>

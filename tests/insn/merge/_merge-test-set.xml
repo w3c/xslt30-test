@@ -1470,5 +1470,75 @@
       </result>
    </test-case>
    
+   <test-case name="merge-096">
+      <description>current-merge-group() called in arguments of function call - Saxon bug 3884</description>
+      <created by="Michael Kay" on="2018-08-24"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-096.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/data/foo[1]/value = "foo 1, 1"</assert>
+            <assert>/root/data/foo[2]/value = "foo 2, 1"</assert>
+            <assert>/root/data/foo[3]/value = "foo 1, 2"</assert>
+            <assert>/root/data/*[6][self::bar]/value = "bar 1, 1"</assert>
+            <assert>/root/data/*[11][self::foo]/value = "foo 3, 2"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-097">
+      <description>Saxon bug 3883. With streamable="no", the output contains 8 item elements.
+         See https://saxonica.plan.io/issues/3883 for reasoning. No snapshot of the nodes is taken.</description>
+      <created by="Michael Kay" on="2018-08-24"/>
+      <test>
+         <stylesheet file="merge-097.xsl"/>
+         <param name="STREAMABLE" static="yes" select="false()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(//item) = 8</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-097s">
+      <description>Saxon bug 3883.  With streamable="yes", the output contains 4 item elements.
+         See https://saxonica.plan.io/issues/3883 for reasoning. A snapshot is taken of each node.</description>
+      <created by="Michael Kay" on="2018-08-24"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-097.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(//item) = 4</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-097sf">
+      <description>Saxon bug 3883.  With streamable="yes", the output contains 4 item elements.
+      A snapshot is taken of each node even though we are falling back to use a non-streaming processor.</description>
+      <created by="Michael Kay" on="2018-08-24"/>
+      <dependencies>
+         <feature value="streaming"/>
+         <feature value="streaming-fallback"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-097.xsl"/>
+         <param name="STREAMABLE" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(//item) = 4</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
 </test-set>
