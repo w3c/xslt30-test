@@ -831,6 +831,28 @@
       </result>
    </test-case>
    
+   <test-case name="si-fork-816">
+      <description>Streaming with xsl:fork and map expressions. See Saxon bug 3888.</description>
+      <created by="Michael Kay after Martin Honnen" on="2018-08-29"/>
+      <environment>
+         <source file="si-fork-816.xml" role="." streaming="true"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+         <feature value="serialization"/>
+      </dependencies>
+      <test>
+         <stylesheet file="si-fork-816.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>deep-equal(/CustInvoiceJour/CustInvoiceTrans/LineAmount/number(), (125, 215, 40))</assert>
+            <assert>deep-equal(/CustInvoiceJour/TaxTrans/TaxValue/number(), (21, 21, 15))</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="si-fork-901">
       <description>Non-streamable xsl:fork - returns streamed nodes</description>
       <keywords>multiple-xsl-sequence-children AxisStep striding XTSE3430 illegally-returning-streamed-nodes</keywords>
