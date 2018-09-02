@@ -46,6 +46,11 @@
          <content><![CDATA[<doc><a:a xmlns:a="http://a.uri/"> </a:a><b:a xmlns:b="http://b.uri/"> </b:a><A:b xmlns:A="http://a.uri/"> </A:b><B:b xmlns:B="http://b.uri/"> </B:b></doc>]]></content>
       </source>
    </environment>
+   
+   <environment name="namespace-19">
+      <source role="." file="namespace-19a.xml"/>
+      <source file="namespace-19b.xml"/>
+   </environment>
 
    <environment name="namespace-23">
       <source role=".">
@@ -976,6 +981,24 @@ z = http://new-z.uri/;
             <assert>count(d/namespace/name[.='xml']) = 1</assert>
             <assert>count(d/namespace) = 1</assert>
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-1901">
+      <description>Test that a no-namespace element copied into a document having a default namespace
+         acquires an xmlns="" undeclaration. Saxon bug 3889.</description>
+      <created by="Michael Kay" on="2018-08-31"/>
+      <environment ref="namespace-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="serialization"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-1901.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<header xmlns=['"]['"]><x>]]></serialization-matches>
       </result>
    </test-case>
 
