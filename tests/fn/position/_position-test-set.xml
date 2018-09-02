@@ -509,6 +509,27 @@
          <assert-xml><![CDATA[<out>X X</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="position-0103">
+      <description>Pass argument depending on position() to user function call: Saxon bug report.</description>
+      <created by="Micahel Kay after Martin Honnen" on="2018-08-24"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="position-0103.xsl"/>
+         <initial-template name="go"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/m/out[1][@pos="1"][@value="foo 1, 1"]</assert>
+            <assert>/m/out[2][@pos="1 8"][@value="foo 1, 2"]</assert>
+            <assert>/m/out[3][@pos="1 8 27"][@value="foo 2, 1"]</assert>
+            <assert>/m/out[4][@pos="1 8 27 64"][@value="foo 2, 2"]</assert>
+            <assert>/m/out[5][@pos="1 8 27 64 125"][@value="foo 3, 2"]</assert>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="position-0201">
       <description>Node Set Functions Test of 'position()' function with wildcard.</description>
