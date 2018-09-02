@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
           xmlns="http://www.w3.org/2012/10/xslt-test-catalog"
-          name="number">
+          name="docbook">
    
    <description>Tests using the docbook stylesheets</description>
+   
+   <dependencies>
+      <spec value="XSLT10+"/>
+      <feature value="backwards_compatibility"/>
+   </dependencies>
  
    <test-case name="docbook-001">
       <description>Transform a docbook article to XHTML</description>
@@ -11,9 +16,6 @@
       <environment>
          <source role="." file="prague2016mhk.xml"/>
       </environment>
-      <dependencies>
-         <spec value="XSLT10+"/>
-      </dependencies>
       <test>
          <stylesheet file="docbook-xsl-1.79.1/xhtml5/docbook.xsl"/>
       </test>
