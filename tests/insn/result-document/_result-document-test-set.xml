@@ -2506,6 +2506,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
    <test-case name="result-document-1138">
       <description> xsl:result-document in temporary output state </description>
       <created by="Michael Kay" on="2013-08-09"/>
+      <modified by="Michael Kay" on="2018-09-03" change="xsl:message no longer sets temporary output state. Bug 30283."/>
       <environment ref="result-document-113"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2514,7 +2515,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <initial-template name="h"/>
       </test>
       <result>
-         <error code="XTDE1480"/>
+         <assert>/h</assert>
       </result>
    </test-case>
 
@@ -2920,6 +2921,43 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <result>
          <all-of>
             <serialization-matches><![CDATA[<!--start-->~11~12~13~14~15~<!--middle-->~16~17~18~19~20~<!--end-->$]]></serialization-matches>          
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1409">
+      <description>Serialization with item-separator outputting nodes; separator is a newline</description>
+      <created by="Michael Kay" on="2018-09-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="serialization" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1408.xsl"/>
+         <param name="twiddle" select="'&#x0A;'"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<!--start-->\n11\n12\n13\n14\n15\n<!--middle-->\n16\n17\n18\n19\n20\n<!--end-->$]]></serialization-matches>          
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1410">
+      <description>Serialization with item-separator outputting nodes; separator is a newline</description>
+      <created by="Michael Kay" on="2018-09-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="serialization" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1410.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<!--start-->\n11\n12\n13\n14\n15\n<!--middle-->\n16\n17\n18\n19\n20\n<!--end-->$]]></serialization-matches>          
          </all-of>
       </result>
    </test-case>
