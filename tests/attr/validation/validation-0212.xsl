@@ -1,7 +1,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns="http://www.w3.org/1999/xhtml"
-    exclude-result-prefixes="xs"
+    xmlns:saxon="http://saxon.sf.net/"
     version="2.0">
 
     <!-- xsl:result-document validation: no href; invalid -->
