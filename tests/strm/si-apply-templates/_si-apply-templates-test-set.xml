@@ -190,5 +190,41 @@
       </result>
    </test-case>
    
+   <test-case name="si-apply-templates-010">
+      <description>Large set of streamable template rules all matching text nodes. Saxon bug 3901, based on 
+         StackOverflow question 52259180 by user Jerome.</description>
+      <created by="Michael Kay" on="2018-09-10"/>
+      <environment>
+         <source role="." streaming="true" file="si-apply-templates-010.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="si-apply-templates-010.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>//id = "10_ID"</assert>
+            <assert>//id = "9_ID"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="si-apply-templates-011">
+      <description>Large set of streamable template rules all matching text nodes. Same as -010, but with a much larger set of
+         template rules, most of which will never match anything.</description>
+      <created by="Michael Kay" on="2018-09-10"/>
+      <environment>
+         <source role="." streaming="true" file="si-apply-templates-010.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="si-apply-templates-011.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>//id = "10_ID"</assert>
+            <assert>//id = "9_ID"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
 </test-set>
