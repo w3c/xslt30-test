@@ -1005,4 +1005,22 @@ world</E1><E2>*</E2></out>]]></assert-xml>
       </result>
    </test-case>
    
+   <test-case name="analyze-string-099">
+      <description>A test for non-greedy matching</description>
+      <created by="Michael Kay after Vladimir Nestorovsky" on="2018-09-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-099.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/out/match) = 2</assert>
+            <assert>/out/match[1] = '"a"'</assert>
+            <assert>/out/match[2] = '"b"'</assert> 
+         </all-of>
+      </result>
+   </test-case>
+   
 </test-set>
