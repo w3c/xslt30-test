@@ -4,7 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
-  <xsl:template name="xsl:initial-template" >
+  <xsl:template name="xsl:initial-template">
     <xsl:source-document streamable="yes" href="../docs/big-transactions.xml">
       <out>
         <xsl:value-of

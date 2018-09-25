@@ -381,6 +381,7 @@
   <test-case name="si-document-106">
       <description>Use xsl:document: schema-aware, validation=strict, no element declaration available</description>
       <created by="Michael Kay" on="2014-01-10"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-document-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -389,7 +390,10 @@
          <initial-template name="d-106"/>
       </test>
       <result>
-         <error code="XTTE1510"/>
+         <any-of>
+            <error code="XTTE1510"/>
+            <error code="XTTE1512"/>
+         </any-of>
       </result>
    </test-case>
   
@@ -411,6 +415,7 @@
    <test-case name="si-document-108">
       <description>Use xsl:document: schema-aware, validation by type, invalid (wrong namespace)</description>
       <created by="Michael Kay" on="2014-01-10"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-document-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -419,13 +424,17 @@
          <initial-template name="d-108"/>
       </test>
       <result>
-         <error code="XTTE1510"/>
+         <any-of>
+            <error code="XTTE1510"/>
+            <error code="XTTE1512"/>
+         </any-of>
       </result>
    </test-case>
   
   <test-case name="si-document-109">
       <description>Use xsl:document: schema-aware, validation=strict, no element declaration available, caught</description>
       <created by="Michael Kay" on="2014-01-10"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-document-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -434,7 +443,10 @@
          <initial-template name="d-109"/>
       </test>
       <result>
-         <assert>/out = "XTTE1510"</assert>
+         <any-of>
+            <assert>/out = "XTTE1510"</assert>
+            <assert>/out = "XTTE1512"</assert>
+         </any-of>
       </result>
    </test-case>
   
@@ -636,6 +648,7 @@
   <test-case name="si-document-126">
       <description>Use xsl:document: schema-aware, validation=strict, element node, no element declaration available</description>
       <created by="Michael Kay" on="2014-01-10"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-document-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -644,7 +657,10 @@
          <initial-template name="d-126"/>
       </test>
       <result>
-         <error code="XTTE1510"/>
+         <any-of>
+            <error code="XTTE1510"/>
+            <error code="XTTE1512"/>
+         </any-of>
       </result>
    </test-case>
   

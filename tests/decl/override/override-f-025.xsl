@@ -14,7 +14,7 @@
             <xsl:function name="f:non-existent" as="xs:integer" visibility="public">
                 <xsl:param name="x" as="xs:integer"/>
                 <xsl:param name="y" as="xs:integer"/>
-                <xsl:sequence select="xsl:original($x, $y)"/>
+                <xsl:sequence select="$x + $y"/>
             </xsl:function>
         </xsl:override>
     </xsl:use-package>

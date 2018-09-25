@@ -5,7 +5,7 @@
     version="2.0">
     <!-- streamed xsl:for-each-group: current-grouping-key not available in applied template -->
     
-    <xsl:template name="g-015" use-when="$RUN">
+    <xsl:template name="g-015">
         <out>
             <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
                 <xsl:fork>

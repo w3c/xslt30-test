@@ -18,7 +18,9 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:j="http://www.w3.org/2013/XSLT/xml-to-json"
-    exclude-result-prefixes="xs fn j" default-mode="j:xml-to-json" version="3.0">
+    exclude-result-prefixes="xs fn j" 
+    default-mode="j:xml-to-json" 
+    version="3.0">
 
     <xsl:variable name="quot" visibility="private">"</xsl:variable>
     <xsl:param name="indent-spaces" select="2"/>
@@ -27,6 +29,7 @@
     
     <xsl:param name="STREAMABLE" static="yes" as="xs:boolean" select="true()"/>
     
+    <xsl:mode name="j:xml-to-json"/>  <!-- see spec bug 30288 -->
     <xsl:mode name="indent" _streamable="{$STREAMABLE}" visibility="public"/>
     <xsl:mode name="no-indent" _streamable="{$STREAMABLE}" visibility="public"/>
     <xsl:mode name="key-attribute" streamable="false" on-no-match="fail" visibility="public"/>

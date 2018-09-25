@@ -7,7 +7,9 @@
 <xsl:output method="xml" encoding="UTF-8"/>
 
 <xsl:template match="test">
-  <xsl:copy-of select="*|@*"/>
+  <xsl:document>
+    <xsl:copy-of select="*|@*"/>
+  </xsl:document>
 </xsl:template>
 
 </xsl:stylesheet>

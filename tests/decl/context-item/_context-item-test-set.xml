@@ -309,25 +309,33 @@
    
    <test-case name="context-item-902">
       <description>Unknown type in xsl:context-item/@as</description>
-      <created by="Michael Kay" on="2014-10-09"/>    
+      <created by="Michael Kay" on="2014-10-09"/> 
+      <modified by="Michael Kay" on="2018-09-25" change="allow a more specific error code"/>
       <test>
          <stylesheet file="context-item-902.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE0020"/>
+         <any-of>
+            <error code="XTSE0020"/>
+            <error code="XPST0051"/>
+         </any-of>
       </result>
    </test-case>
    
    <test-case name="context-item-903">
       <description>Unknown type in xsl:context-item/@as</description>
       <created by="Michael Kay" on="2014-10-09"/>    
+      <modified by="Michael Kay" on="2018-09-25" change="allow a more specific error code"/>
       <test>
          <stylesheet file="context-item-903.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE0020"/>
+         <any-of>
+            <error code="XTSE0020"/>
+            <error code="XPST0008"/>
+         </any-of>
       </result>
    </test-case>
    

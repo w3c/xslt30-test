@@ -350,6 +350,7 @@
       <description>Test different naming schemes and influence of static expressions in the name, error scenario, invalid argument</description>
       <created by="Abel Braaksma" on="2015-11-19"/>
       <modified by="Michael Kay" on="2017-03-28" change="Initial function must be public (bug 30082)"/>
+      <modified by="Michael Kay" on="2018-09-25" change="Change expected error code from FORG0001 to XPTY0004"/>
       <test>
          <stylesheet file="initial-function-101.xsl"/>
          <initial-function xmlns:f="urn:functions" name="f:square2">
@@ -358,7 +359,7 @@
          <output tree="no" serialize="no"/>
       </test>
       <result>
-         <error code="FORG0001"/>
+         <error code="XPTY0004"/>
       </result>
    </test-case>
 
@@ -585,6 +586,7 @@
    <test-case name="initial-function-904">
       <description>test initial-function calling xsl:result-document</description>
       <created by="Michael Kay" on="2015-10-24"/>
+      <modified by="Michael Kay" on="2018-09-25" change="Original intent of the test is unclear, but as written it produces XTDE0041 not XTDE1480"/>
       <test>
          <stylesheet file="initial-function-001.xsl"/>
          <initial-function xmlns:my="http://my.net/" name="my:nonsuch">
@@ -594,7 +596,7 @@
          <output tree="no" serialize="no"/>
       </test>
       <result>
-         <error code="XTDE1480"/>
+         <error code="XTDE0041"/>
       </result>
    </test-case>
    

@@ -339,6 +339,7 @@
   <test-case name="si-copy-of-106">
       <description>Use xsl:copy-of: schema-aware, validation=strict, no element declaration available</description>
       <created by="Michael Kay" on="2012-12-18"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-copy-of-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -347,7 +348,10 @@
          <initial-template name="cy-106"/>
       </test>
       <result>
-         <error code="XTTE1510"/>
+         <any-of>
+            <error code="XTTE1510"/>
+            <error code="XTTE1512"/>
+         </any-of>
       </result>
    </test-case>
   
@@ -369,6 +373,7 @@
    <test-case name="si-copy-of-108">
       <description>Use xsl:copy-of: schema-aware, validation by type, invalid (wrong namespace)</description>
       <created by="Michael Kay" on="2012-12-18"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-copy-of-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -377,13 +382,17 @@
          <initial-template name="cy-108"/>
       </test>
       <result>
-         <error code="XTTE1510"/>
+         <any-of>
+            <error code="XTTE1510"/>
+            <error code="XTTE1512"/>
+         </any-of>
       </result>
    </test-case>
   
   <test-case name="si-copy-of-109">
       <description>Use xsl:copy-of: schema-aware, validation=strict, no element declaration available, caught</description>
       <created by="Michael Kay" on="2012-12-18"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-copy-of-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -392,7 +401,10 @@
          <initial-template name="cy-109"/>
       </test>
       <result>
-         <assert>/out = "XTTE1510"</assert>
+         <any-of>
+            <assert>/out = "XTTE1510"</assert>
+            <assert>/out = "XTTE1512"</assert>
+         </any-of>
       </result>
    </test-case>
   
@@ -595,6 +607,7 @@
   <test-case name="si-copy-of-126">
       <description>Use xsl:copy-of: schema-aware, validation=strict, element node, no element declaration available</description>
       <created by="Michael Kay" on="2012-12-18"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-copy-of-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -603,7 +616,10 @@
          <initial-template name="cy-126"/>
       </test>
       <result>
-         <error code="XTTE1510"/>
+         <any-of>
+            <error code="XTTE1510"/>
+            <error code="XTTE1512"/>
+         </any-of>
       </result>
    </test-case>
   
@@ -625,6 +641,7 @@
    <test-case name="si-copy-of-128">
       <description>Use xsl:copy-of: schema-aware, validation by type, element node, invalid (wrong namespace)</description>
       <created by="Michael Kay" on="2012-12-18"/>
+      <modified by="Michael Kay" on="2018-09-24" change="Error code should be XTTE1512 not XTTE1510, but keep the old result as an alternative"/>
       <environment ref="si-copy-of-B"/>
       <dependencies>
         <feature value="schema_aware"/>
@@ -633,7 +650,10 @@
          <initial-template name="cy-128"/>
       </test>
       <result>
-         <error code="XTTE1510"/>
+         <any-of>
+            <error code="XTTE1510"/>
+            <error code="XTTE1512"/>
+         </any-of>
       </result>
    </test-case>
    

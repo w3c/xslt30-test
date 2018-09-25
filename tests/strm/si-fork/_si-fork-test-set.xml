@@ -417,12 +417,21 @@
       <description>xsl:for-each-group - group-by - current-grouping-key() not available in applied template</description>
       <created by="Michael Kay" on="2016-02-29"/>
       <modified by="Michael Kay" on="2017-02-04" change="extracted test into separate stylesheet as it's a static error"/>
+      <modified by="Michael Kay" on="2018-09-25" change="First, there was a spurious static error (invalid use-when attribute). When we
+         fix that, XTDE1071 is thrown: but it gets caught, so the test as a whole succeeds. The processor has the option of catching
+         XTDE1071 statically, but that can't happen here (or anywhere??) because the processor can't know where the template with
+         the offending call of current-grouping-key() is going to be called from."/>
       <test>
          <stylesheet file="si-fork-115.xsl"/>
          <initial-template name="g-015"/>
       </test>
       <result>
-         <error code="XTSE3430"/>
+         <all-of>
+            <assert>/out/g[@author='Jane Austen'][count(h)=1 and h/@key="#absent#"]</assert>
+            <assert>/out/g[starts-with(@author, 'Charlotte Bront')][count(h)=1 and h/@key="#absent#"]</assert>
+            <assert>/out/g[@author='Thomas Hardy'][count(h)=2 and h/@key="#absent#"]</assert>
+            <assert>/out/g[@author='Jasper Fforde'][count(h)=2 and h/@key="#absent#"]</assert>
+         </all-of>
       </result>
    </test-case>
    

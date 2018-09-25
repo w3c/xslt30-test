@@ -19,13 +19,6 @@
             </t:map>
          </t:for-each>
       </t:variable>
-      <html>
-         <head>
-            <title>This isn't going to work</title>
-         </head>
-         <body>
-            <t:sequence select="$maps"/>
-         </body>
-      </html>
+      <t:sequence select="$maps"/>
    </t:template>
 </t:transform>

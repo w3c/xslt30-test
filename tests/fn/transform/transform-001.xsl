@@ -7,7 +7,7 @@
     
     <xsl:template name="main">
         <out>
-            <xsl:sequence select="transform( map { 'stylesheet-location': 'non-existent.xsl', 'initial-match-selection' : 42})"/>
+            <xsl:sequence select="transform( map { 'stylesheet-location': 'non-existent.xsl', 'initial-match-selection' : 42})?*"/>
         </out>
     </xsl:template>
     

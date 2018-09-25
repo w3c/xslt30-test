@@ -562,6 +562,8 @@
          1.0</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2018-09-25" change="The 'IJ' character is allowed in recent editions of XML 1.0, so SERE0005 no longer arises. 
+         Instead, SERE0006 is reported in respect of the BEL character appearing in a text node"/>
       <environment ref="xml-version-06"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -571,7 +573,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization-error code="SERE0005"/>
+         <any-of>
+            <assert-serialization-error code="SERE0005"/>
+            <assert-serialization-error code="SERE0006"/>
+         </any-of>
       </result>
    </test-case>
 

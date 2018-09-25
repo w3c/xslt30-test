@@ -19,8 +19,6 @@
             </t:map>
          </t:for-each>
       </t:variable>
-      <out>
-         <t:sequence select="$maps"/>
-      </out>
+      <t:sequence select="$maps"/>     
    </t:template>
 </t:transform>

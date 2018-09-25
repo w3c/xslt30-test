@@ -7,7 +7,7 @@
         
         <!-- streamed xsl:for-each-group: current-group not available in applied template -->
         
-        <xsl:template name="g-016" use-when="$RUN">
+        <xsl:template name="g-016">
             <out>
                 <xsl:source-document streamable="yes" href="../docs/books-atts.xml">
                     <xsl:fork>
@@ -23,7 +23,7 @@
         
         <xsl:mode name="cgk" streamable="yes"/>
         
-        <xsl:template match="." mode="cgk" use-when="$RUN">
+        <xsl:template match="." mode="cgk">
             <xsl:try>
                 <h size="{count(current-group())}"/>
                 <xsl:catch errors="*:XTDE1061">

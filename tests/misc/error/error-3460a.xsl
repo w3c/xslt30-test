@@ -12,7 +12,7 @@
    <xsl:use-package name="http://www.w3.org/xslt30tests/error-base-005" package-version="1.0.0">
      <xsl:override>
      
-       <xsl:template match="a">
+       <xsl:template match="a" mode="m">
          <a><xsl:apply-imports/></a>
        </xsl:template>
        
