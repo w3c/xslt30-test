@@ -12,6 +12,11 @@
       <package file="override-base-t-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-101" package-version="1.0.0"/>
    </environment>
    
+   <environment name="override-t-B2">
+      <package file="override-base-t-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-101" package-version="1.0.0"/>
+      <package file="override-t-003.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-t-003" package-version="1.0.0"/>     
+   </environment>
+   
    <environment name="override-v-C">
       <package file="override-base-v-001.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/override-base-201" package-version="1.0.0"/>
    </environment>
@@ -644,6 +649,18 @@
       </test>
       <result>
          <error code="XTSE3080"/>
+      </result>
+   </test-case>
+   
+   <test-case name="override-t-003a">
+      <description>Overriding an abstract template imported indirectly</description>
+      <created by="Michael Kay" on="2018-09-25"/>
+      <environment ref="override-t-B2"/>
+      <test>
+         <package file="override-t-003a.xsl" role="principal"/>
+      </test>
+      <result>
+         <assert>/outa='*corn*'</assert>
       </result>
    </test-case>
    

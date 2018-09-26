@@ -7,7 +7,7 @@
                               into a using package with visibility="absent") is evaluated.-->
                               
    <xsl:use-package name="http://www.w3.org/xslt30tests/error-base-004" package-version="1.0.0">  
-     <xsl:accept component="template" names="t-abstract" visibility="absent"/>
+     <xsl:accept component="template" names="t-abstract" visibility="hidden"/>
    </xsl:use-package> 
 
    <xsl:template name="main">

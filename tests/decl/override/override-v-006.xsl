@@ -8,7 +8,7 @@
   
   <xsl:import-schema>
     <xs:schema>
-      <xs:simpleType name="u2">
+      <xs:simpleType name="u6">
         <xs:union memberTypes="xs:dateTime xs:date "/>
       </xs:simpleType>
     </xs:schema>
@@ -16,7 +16,7 @@
   
   <xsl:use-package name="http://www.w3.org/xslt30tests/override-base-v-002" package-version="*">
     <xsl:override>
-      <xsl:variable name="var" as="u2" select="current-date()" visibility="public"/>
+      <xsl:variable name="var" as="u6" select="current-date()" visibility="public"/>
     </xsl:override>
   </xsl:use-package>
   

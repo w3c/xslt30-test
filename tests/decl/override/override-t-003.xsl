@@ -10,6 +10,8 @@
   <xsl:use-package
     name="http://www.w3.org/xslt30tests/override-base-101"
     package-version="1.0.0">
+    
+    <xsl:accept component="template" names="t-abstract" visibility="abstract"/>
   
     <xsl:override>
   

@@ -9124,13 +9124,10 @@ It is a type error if, when
    <test-case name="error-1555c">
       <description>Generate error XTTE1555.
 Was error-code-402.
-It is a type error if, when
-                        validating a document node, document-level constraints (such as ID/IDREF constraints) are not satisfied.
-                        
-                        These constraints include identity constraints (xs:unique,
-                           xs:key, and xs:keyref) and ID/IDREF
-                        constraints.</description>
+It is a type error if, when validating a document node, document-level constraints (such as ID/IDREF constraints) are not satisfied.
+These constraints include identity constraints (xs:unique, xs:key, and xs:keyref) and ID/IDREF constraints.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2018-09-26" change="key/unique/keyref are not document-level constraints and do not generate XTTE1555"/>
       <environment ref="error001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -9141,7 +9138,7 @@ It is a type error if, when
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTTE1555"/>
+         <error code="XTTE1510"/>
       </result>
    </test-case>
 
@@ -9685,6 +9682,7 @@ It is a static error if a character
                               if an invocation of an absent component (that is, an abstract component accepted
                               into a using package with visibility="absent") is evaluated.</description>
       <created by="Michael Kay" on="2014-08-25"/>
+      <modified by="Michael Kay" on="2018-09-25" change="visibility='absent' no longer exists; replaced by nearest equivalent"/>
       <environment ref="error004"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -9694,7 +9692,7 @@ It is a static error if a character
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTDE3052"/>
+         <error code="XTSE0650"/>
       </result>
    </test-case>
 

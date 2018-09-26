@@ -5,6 +5,9 @@
                         These constraints include identity constraints (xs:unique,
                            xs:key, and xs:keyref) and ID/IDREF
                         constraints.-->
+
+<!-- MHK 2018-09-26: the above is incorrect. xs:unique/key/keyref are not document-level constraints, and they do not result in the 1555 error code -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:my="http://my.com/"
