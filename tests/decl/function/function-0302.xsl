@@ -24,7 +24,7 @@
 	<a6 actual="{element-available('saxon:collation')}" expected="false"/>
 	<a7 actual="{element-available('other:handler')}" expected="false"/>
 	<a8 actual="{element-available('get-a-life')}" expected="false"/>
-	<a9 actual="{element-available(concat($xsl, 'text'))}" expected="false"/>
+	<a9 actual="{element-available(concat($xsl, 'text'))}" expected="true"/>
 	</out>
    </xsl:template>
 
