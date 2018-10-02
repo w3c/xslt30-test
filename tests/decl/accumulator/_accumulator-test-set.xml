@@ -1554,5 +1554,113 @@
       </result>
    </test-case>
    
+   <test-case name="accumulator-075">
+      <description>A streaming accumulator test (Saxon bug 3932)</description>
+      <created by="Michael Kay after Martin Honnen" on="2018-10-02"/>
+      <environment>
+         <source role="." file="accumulator-075.xml"/>
+      </environment>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-075.xsl"/>
+         <param static="yes" name="STREAMABLE" select="false()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/html/body/section/h2 = 'Results'</assert>
+            <assert-result-document uri="item-results.xml">
+               <all-of>
+                  <assert>(//li)[1][@id='i1'][@pos='1'][@attPos='1'][@accum='']</assert>
+                  <assert>(//li)[2][@id='i2'][@pos='2'][@attPos='2'][@accum='i1']</assert>
+                  <assert>(//li)[3][@id='i3'][@pos='3'][@attPos='3'][@accum='i2']</assert>
+                  <assert>(//li)[4][@id='i4'][@pos='4'][@attPos='4'][@accum='i3']</assert>
+                  <assert>(//li)[5][@id='i5'][@pos='5'][@attPos='5'][@accum='i4']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i1.xml">
+               <all-of>
+                  <assert>Item[@id='i1'][@accum='']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i2.xml">
+               <all-of>
+                  <assert>Item[@id='i2'][@accum='i1']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i3.xml">
+               <all-of>
+                  <assert>Item[@id='i3'][@accum='i2']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i4.xml">
+               <all-of>
+                  <assert>Item[@id='i4'][@accum='i3']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i5.xml">
+               <all-of>
+                  <assert>Item[@id='i5'][@accum='i4']</assert>
+               </all-of>
+            </assert-result-document>
+         </all-of>            
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-075s">
+      <description>A streaming accumulator test involving xsl:result-document (Saxon bug 3932)</description>
+      <created by="Michael Kay after Martin Honnen" on="2018-10-02"/>
+      <environment>
+         <source role="." file="accumulator-075.xml"/>
+      </environment>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="accumulator-075.xsl"/>
+         <param static="yes" name="STREAMABLE" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/html/body/section/h2 = 'Results'</assert>
+            <assert-result-document uri="item-results.xml">
+               <all-of>
+                  <assert>(//li)[1][@id='i1'][@pos='1'][@attPos='1'][@accum='']</assert>
+                  <assert>(//li)[2][@id='i2'][@pos='2'][@attPos='2'][@accum='i1']</assert>
+                  <assert>(//li)[3][@id='i3'][@pos='3'][@attPos='3'][@accum='i2']</assert>
+                  <assert>(//li)[4][@id='i4'][@pos='4'][@attPos='4'][@accum='i3']</assert>
+                  <assert>(//li)[5][@id='i5'][@pos='5'][@attPos='5'][@accum='i4']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i1.xml">
+               <all-of>
+                  <assert>Item[@id='i1'][@accum='']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i2.xml">
+               <all-of>
+                  <assert>Item[@id='i2'][@accum='i1']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i3.xml">
+               <all-of>
+                  <assert>Item[@id='i3'][@accum='i2']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i4.xml">
+               <all-of>
+                  <assert>Item[@id='i4'][@accum='i3']</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i5.xml">
+               <all-of>
+                  <assert>Item[@id='i5'][@accum='i4']</assert>
+               </all-of>
+            </assert-result-document>
+         </all-of>        
+      </result>
+   </test-case>
+   
  
 </test-set>
