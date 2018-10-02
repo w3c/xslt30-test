@@ -11,7 +11,7 @@
          
     <xsl:output method="xml" indent="yes" encoding="UTF-8" />
     
-    <xsl:import-schema schema-location="grouped-transactions.xsd"/>
+  <xsl:import-schema namespace="http://www.w3.org/xsl-tests/grouped-transactions" schema-location="grouped-transactions.xsd"/>
   
     <xsl:strip-space elements="*"/>
       
