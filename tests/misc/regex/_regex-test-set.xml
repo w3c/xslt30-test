@@ -1017,7 +1017,7 @@ Tak, tak, tak! - da kommen sie.</poem>]]></content>
       </result>
    </test-case>
    
-   <test-case name="regex-07k">
+   <test-case name="regex-070k">
       <description>test replace() with special characters in replacement string (with and without
          'q' flag).</description>
       <created by="Debbie Lockett" on="2018-07-02"/>
@@ -1055,6 +1055,26 @@ Tak, tak, tak! - da kommen sie.</poem>]]></content>
             <assert>/out/B = "Special characters$&amp;"</assert>
             <assert>/out/C = "Special characters\?"</assert>
             <assert>/out/D = "Special characters$1"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="regex-071">
+      <description>test replace() with special characters in replacement string</description>
+      <created by="Debbie Lockett" on="2018-10-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="regex-071.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/A = "Replace some WORDSWORDS in this SENTENCESENTENCE."</assert>
+            <assert>/out/B = "Replace some $$ in this $$."</assert>
+            <assert>/out/C = "Replace some WORDS-WORDS in this SENTENCE-SENTENCE."</assert>
+            <assert>/out/D = "Replace some $-$ in this $-$."</assert>
          </all-of>
       </result>
    </test-case>
