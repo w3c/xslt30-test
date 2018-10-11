@@ -93,14 +93,13 @@
       <description>Simple assertion; no failure because assertions are externally disabled</description>
       <keywords>xsl:assert ValueComp assert-success</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
-      <environment>
-        <!-- separate environment because the stylesheet may need to be compiled differently... -->
-        <stylesheet file="assert001.xsl"/>
-      </environment>  
+      <modified by="Debbie Lockett" on="2018-10-11" change="move stylesheet from local environment into test"/>
+      <!-- Don't use assert-001 environment because the stylesheet may need to be compiled differently... -->
       <dependencies>
          <enable_assertions satisfied="false"/>
       </dependencies>
       <test>
+         <stylesheet file="assert001.xsl"/>
          <initial-template name="go002"/>
       </test>
       <result>
