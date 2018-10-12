@@ -66,6 +66,31 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="result-document-0102">
+      <description>Base URI of nodes in secondary result document</description>
+      <created by="Michael Kay" on="2018-10-09"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0102.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert-xml><![CDATA[<out><log>Before redirect</log><log>After redirect</log></out>]]></assert-xml>
+            <assert-result-document uri="out/second.xml">
+               <all-of>
+                  <assert>ends-with(base-uri(/), "/out/second.xml")</assert>
+                  <assert>ends-with(base-uri(/*), "/out/second.xml")</assert>
+                  <assert>ends-with(base-uri(/*/k), "/out/second.xml")</assert>
+                  <assert>ends-with(base-uri(/*/l), "/out/in/third.xml")</assert>
+               </all-of>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="result-document-0201">
       <description>Use named output format on secondary output</description>
