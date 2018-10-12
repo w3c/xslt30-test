@@ -494,7 +494,25 @@
       </test>
       <result>
          <all-of>
-            <assert>false() (:TBA:)</assert>
+            <assert>every $i in 1 to 5 satisfies matches(//li[$i], 'Item i' || $i || ', position: ' || $i || ', attribute pos: ' || $i)</assert>
+            <assert-result-document uri="item_i1.html">
+               <all-of>
+                  <assert>not(//a[.='prev'])</assert>
+                  <assert>//a[.='next']/@href = 'item_i2.html'</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i2.html">
+               <all-of>
+                  <assert>//a[.='prev']/@href = 'item_i1.html'</assert>
+                  <assert>//a[.='next']/@href = 'item_i3.html'</assert>
+               </all-of>
+            </assert-result-document>
+            <assert-result-document uri="item_i5.html">
+               <all-of>
+                  <assert>not(//a[.='next'])</assert>
+                  <assert>//a[.='prev']/@href = 'item_i4.html'</assert>
+               </all-of>
+            </assert-result-document>
          </all-of>
       </result>
    </test-case>

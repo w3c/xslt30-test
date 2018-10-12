@@ -10,7 +10,7 @@
         <xsl:accumulator-rule match="*" phase="start" select="($value, concat('(',name()))"/>
     </xsl:accumulator>
     
-    <xsl:mode use-accumulators="state"/>
+    <xsl:mode use-accumulators="state" _streamable="{$streamable}"/>
     
 
     <xsl:template match="/">

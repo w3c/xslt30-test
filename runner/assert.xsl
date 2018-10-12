@@ -191,7 +191,7 @@
                     namespace-context="$nsContext" 
                     xpath-default-namespace=""
                     schema-aware="yes"
-                    saxon:allow-any-schema-namespace="yes"
+                    saxon:options="map{'allow-any-schema-namespace':true()}"
                     xmlns:saxon="http://saxon.sf.net/"/>
             </xsl:variable>
             <xsl:if test="not($assertion)">

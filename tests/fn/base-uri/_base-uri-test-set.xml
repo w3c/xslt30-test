@@ -890,6 +890,51 @@
       </result>
    </test-case>
    
+   <test-case name="base-uri-051a">
+      <description>base-uri() applied to elements within an external entity, read using the doc() function</description>
+      <created by="Michael Kay" on="2016-12-21"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="dtd"/>
+      </dependencies>
+      <test>
+         <stylesheet file="base-uri-051.xsl"/>
+         <initial-template name="base-uri-051a"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>ends-with(/out/one, 'fn/base-uri/baseuri051.xml')</assert>
+            <assert>ends-with(/out/two, 'fn/base-uri/dir/data.xml')</assert>
+            <assert>ends-with(/out/three, 'fn/base-uri/dir/dir2/data.xml')</assert>
+            <assert>ends-with(/out/four, 'fn/base-uri/dir/data.xml')</assert>
+            <assert>ends-with(/out/five, 'fn/base-uri/dir/dir5/data.xml')</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="base-uri-051b">
+      <description>base-uri() applied to elements within an external entity, read using the document() function</description>
+      <created by="Michael Kay" on="2016-12-21"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="dtd"/>
+      </dependencies>
+      <test>
+         <stylesheet file="base-uri-051.xsl"/>
+         <initial-template name="base-uri-051b"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>ends-with(/out/one, 'fn/base-uri/baseuri051.xml')</assert>
+            <assert>ends-with(/out/two, 'fn/base-uri/dir/data.xml')</assert>
+            <assert>ends-with(/out/three, 'fn/base-uri/dir/dir2/data.xml')</assert>
+            <assert>ends-with(/out/four, 'fn/base-uri/dir/data.xml')</assert>
+            <assert>ends-with(/out/five, 'fn/base-uri/dir/dir5/data.xml')</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   
    <test-case name="base-uri-052">
       <description>base-uri() applied to elements within a document read using XInclude. (Saxon bug 3530)</description>
       <created by="Michael Kay" on="2016-12-21"/>     

@@ -85,14 +85,16 @@
         <xsl:copy>
             <xsl:choose>
                 <xsl:when test="node-name(.) != node-name($b)">
-                    <xsl:message>FIRST:  name: {name(.)} local: {local-name(.)}: uri: {namespace-uri(.)}</xsl:message>
-                    <xsl:message>SECOND: name: {name($b)} local: {local-name($b)}: uri: {namespace-uri($b)}</xsl:message>
+                    <!--<xsl:message>FIRST:  name: {name(.)} local: {local-name(.)}: uri: {namespace-uri(.)}</xsl:message>
+                    <xsl:message>SECOND: name: {name($b)} local: {local-name($b)}: uri: {namespace-uri($b)}</xsl:message>-->
                     <xsl:sequence select="d:show-difference(., $b, 'Different element name')"/>
                 </xsl:when>
                 <xsl:when test="contains($flags, 'F') and name(.) != name($b)">
                     <xsl:sequence select="d:show-difference(., $b, 'Different prefix')"/>
                 </xsl:when>
-                <xsl:when test="not(deep-equal(d:sorted-attributes(.), d:sorted-attributes($b)))">
+                <xsl:when test="not(deep-equal(d:sorted-attributes(.), d:sorted-attributes($b)) or d:deep-equal-untyped(d:sorted-attributes(.), d:sorted-attributes($b)))">
+                    <!--<xsl:message select="'D1:', @*!(local-name(), string(.))"/>
+                    <xsl:message select="'D2:', $b/@*!(local-name(), string(.))"/>-->
                     <xsl:sequence select="d:show-difference(., $b, 'Different attributes')"/>
                 </xsl:when>
                 <xsl:otherwise>
@@ -162,6 +164,19 @@
                 </xsl:copy>
             </d:_2>
         </d:DIFFERENCE>
+    </xsl:function>
+    
+    <xsl:function name="d:deep-equal-untyped" as="xs:boolean">
+        <!-- Variant of deep-equal that strips any type annotations -->
+        <xsl:param name="a" as="item()*"/>
+        <xsl:param name="b" as="item()*"/>
+        <xsl:variable name="a2" as="item()*">
+          <xsl:copy-of select="$a" validation="strip"/>
+        </xsl:variable>
+        <xsl:variable name="b2" as="item()*">
+            <xsl:copy-of select="$b" validation="strip"/>
+        </xsl:variable>
+        <xsl:sequence select="deep-equal($a2, $b2)"/>
     </xsl:function>
     
     <xsl:template name="xsl:initial-template">

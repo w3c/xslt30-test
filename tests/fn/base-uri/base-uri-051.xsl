@@ -4,7 +4,6 @@
 <!-- Purpose: Test base-uri applied to input nodes created using external entities.-->
 
    <xsl:template match="/">
-      <xsl:message><xsl:copy-of select="."/></xsl:message>
       <out>
          <one>{base-uri(//para[.='one'])}</one>
          <two>{base-uri(//item[.='two'])}</two>
@@ -12,6 +11,14 @@
          <four>{base-uri(//item[.='three']/ancestor::para)}</four>
          <five>{base-uri(//para[.='five'])}</five>
       </out>
+   </xsl:template>
+   
+   <xsl:template name="base-uri-051a">
+      <xsl:apply-templates select="doc('baseuri051.xml')"/>
+   </xsl:template>
+   
+   <xsl:template name="base-uri-051b">
+      <xsl:apply-templates select="document('baseuri051.xml')"/>
    </xsl:template>
  
 </xsl:transform>
