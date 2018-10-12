@@ -15,6 +15,10 @@
         <c:year_component_values value="support year above 9999" satisfied="true"/>
         <c:default_language_for_numbering value="en" satisifed="true"/>
         <c:default_output_encoding value="UTF-8" satisfied="true"/>
+        <!-- the first match is the one that wins -->       
+        <c:combinations_for_numbering value="COPTIC EPACT DIGIT ONE" satisfied="false"/>
+        <c:combinations_for_numbering value="SINHALA ARCHAIC DIGIT ONE" satisfied="false"/>
+        <c:combinations_for_numbering value="MENDE KIKAKUI DIGIT ONE" satisfied="false"/>
         <c:combinations_for_numbering value="*" satisfied="true"/>
         <c:feature value="backwards_compatibility" satisfied="true"/>
         <c:feature value="built_in_derived_types" satisfied="true"/>
@@ -75,7 +79,8 @@
         select="'validation-0201', 'validation-0202', 'validation-0203', 'validation-0204', 'validation-0205', 
         'validation-0206', 'validation-0207', 'validation-0208', 'validation-0213', 'validation-0215', '', 
         'validation-1101','validation-1201','validation-2001','validation-2002',
-        'si-copy-109', 'si-copy-of-107', 'si-copy-of-109', 'si-document-101', 'si-result-document-101', 'si-element-101', 'si-LRE-101'"/>
+        'si-copy-109', 'si-copy-of-107', 'si-copy-of-109', 'si-document-101', 'si-result-document-101', 'si-element-101', 'si-LRE-101', 'match-136'
+        , 'match-137', 'match-138', 'match-139', 'match-140', 'match-141', 'match-142', 'match-143', 'match-203', 'match-204', 'match-218', 'match-220', 'match-221', 'match-243'"/>
     
     <xsl:function name="c:needs-new-configuration" as="xs:boolean">
         <xsl:param name="test" as="element(c:test-case)"/>

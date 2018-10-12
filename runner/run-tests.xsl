@@ -96,17 +96,16 @@
         <xsl:variable name="ok" as="xs:boolean">
             <xsl:iterate select="$test-dependencies">
                 <xsl:on-completion select="true()"/>
-                <xsl:variable name="product-features" select="$satisfied-dependencies[node-name(.) eq node-name(current())]"/>
+                <xsl:variable name="product-features" 
+                    select="$satisfied-dependencies[node-name(.) eq node-name(current())]
+                                [@value = current()/@value or @value = '*'][1]"/>
+                <!--<xsl:message select="'product features ', node-name(), @value, @satisfied"/>-->
                 <xsl:choose>
                     <xsl:when test="empty($product-features)">
                         <xsl:message>No support for dependency {local-name()}</xsl:message>
                         <xsl:break select="false()"/>
                     </xsl:when>
-                    <xsl:when test="not($product-features/@value = '*' or $product-features/@value = @value)">
-                        <xsl:message>No support for dependency {local-name()} value {@value}</xsl:message>
-                        <xsl:break select="false()"/>
-                    </xsl:when>
-                    <xsl:when test="$product-features/@satisfied  != @satisfied">
+                    <xsl:when test="$product-features/(@satisfied, 'true')[1]  != (@satisfied, 'true')[1]">
                         <xsl:message>Mismatched support for dependency {local-name()} value {@value}</xsl:message>
                         <xsl:break select="false()"/>
                     </xsl:when>
@@ -116,6 +115,7 @@
                 </xsl:choose>
             </xsl:iterate>
         </xsl:variable>
+        <!--<xsl:message select="'dependency: ', $ok"/>-->
         <xsl:sequence select="$ok"/>
     </xsl:function>
     
@@ -343,18 +343,22 @@
     
     <xsl:template match="c:source[@role='.'][c:content]" mode="get-source-documents" priority="12">
         <xsl:param name="options" as="map(xs:string, item()*)"/>
-        <xsl:variable name="tree" select="parse-xml(string(c:content))"/>
+        <xsl:variable name="tree" select="c:parse-xml(c:content)"/>
         <xsl:sequence select="map:put($options, 'source-node', $tree)"/>
     </xsl:template>
     
     <xsl:template match="c:source[@role='.'][c:content][@validation='strict']" mode="get-source-documents" priority="13">
         <xsl:param name="options" as="map(xs:string, item()*)"/>
-        <xsl:variable name="tree" select="parse-xml(string(c:content))"/>
+        <xsl:variable name="tree" select="c:parse-xml(c:content)"/>
         <xsl:variable name="vtree" select="c:validate-tree($tree, resolve-uri(../c:schema[not(@role='secondary')]/@file, base-uri(.)))"/>
         <xsl:sequence select="map:put($options, 'source-node', $vtree)"/>
     </xsl:template>
     
-    
+    <xsl:function name="c:parse-xml" as="node()">
+        <!-- Differs from the standard parse-xml() in taking the base URI from the element that contains the XML to be parsed -->
+        <xsl:param name="container" as="node()"/>
+        <xsl:evaluate xpath="'parse-xml(string(.))'" context-item="$container" base-uri="{base-uri($container)}"/>
+    </xsl:function>
     
     
     <!-- Resolve a lexical QName against the namespace context of a supplied element.
