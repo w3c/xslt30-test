@@ -7,7 +7,7 @@
     
     <xsl:mode _streamable="{$STREAMABLE}" use-accumulators="#all"/>
     
-    <xsl:accumulator name="last-id" as="xs:string?" initial-value="()" _streamable="{$STREAMABLE}">
+    <xsl:accumulator name="last-id" as="xs:string?" initial-value="()" _streamable="{$STREAMABLE}" saxon:trace="yes" xmlns:saxon="http://saxon.sf.net/">
         <xsl:accumulator-rule match="item" phase="end" select="string(@id)"/>
     </xsl:accumulator>
    
