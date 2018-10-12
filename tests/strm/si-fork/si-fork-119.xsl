@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all" expand-text="yes"
     version="3.0">
     
@@ -7,17 +8,15 @@
     
     <xsl:mode _streamable="{$STREAMABLE}"/>
     
-    <xsl:output method="html" indent="yes" version="5.0"/>
+    <xsl:output method="adaptive"/>
     
     <xsl:template match=".[. instance of map(xs:string, element()?)]">
-        <!--<xsl:context-item use="required" as=" map(xs:string, element()?)"/>-->
         <xsl:param name="current-item" as="element()" select="?current-item"/>
         <xsl:param name="previous-item" as="element()?" select="?previous-item"/>
         <xsl:param name="next-item" as="element()?" select="?next-item"/>
-        <xsl:message select="'item-doc', ., $current-item, $previous-item, $next-item"/>
         <xsl:for-each select="$current-item">
             
-            <xsl:result-document href="item_{@id}.html">
+            <xsl:result-document href="item_{@id}.html" method="html" indent="yes" version="5.0">
                 <html>
                     <head>
                         <title>Item {@id}</title>
@@ -65,7 +64,6 @@
                         <xsl:param name="current-item" as="element(item)*" select="()"/>
                         
                         <xsl:on-completion>
-                            <xsl:message select="'remaing'"/>
                             <xsl:apply-templates select="map { 'current-item' : $current-item, 'previous-item' : $previous-item }"/>
                         </xsl:on-completion>
                         
