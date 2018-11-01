@@ -351,12 +351,13 @@
       </description>
       <keywords>static-variable tvt implicit-default item occurrence-indicator</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
+      <modified by="Michael Kay" on="2018-10-24" change="supply an xs:untypedAtomic value as expected by the test"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="static-009.xsl"/>
-         <param name="static-param" static="yes" as="xs:untypedAtomic" select="23" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <param name="static-param" static="yes" as="xs:untypedAtomic" select="xs:untypedAtomic(23)" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       </test>
       <result>
          <assert-string-value>false-230-false</assert-string-value>
@@ -387,12 +388,13 @@
       </description>
       <keywords>static-variable tvt implicit-default xs:integer occurrence-indicator</keywords>
       <created by="Abel Braaksma" on="2015-03-10"/>
+      <modified by="Michael Kay" on="2018-10-24" change="put static=yes on the param element as clearly intended by the test"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="static-010.xsl"/>
-         <param name="static-param" as="xs:integer" select="541" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+         <param name="static-param" as="xs:integer" static="yes" select="541" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
       </test>
       <result>
          <assert-string-value>false-5410-41</assert-string-value>
