@@ -444,6 +444,56 @@
       </result>
    </test-case>
    
+   <test-case name="use-package-175">
+      <description>Diamond structure: package D imported by two different routes with different overrides</description>
+      <created by="Michael Kay" on="2018-11-08"/>
+      <environment>
+         <package file="use-package-175a.xsl" role="principal"
+            uri="urn:175a"/>
+         <package file="use-package-175d.xsl" role="secondary"
+            uri="urn:175d"/>
+         <package file="use-package-175b.xsl" role="secondary"
+            uri="urn:175b"/>
+         <package file="use-package-175c.xsl" role="secondary"
+            uri="urn:175c"/>        
+      </environment>
+      <test>
+         <package file="use-package-175a.xsl" role="principal"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/bb/b = "bbbbb"</assert>
+            <assert>/out/cc/c = "ccccc"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="use-package-176">
+      <description>Diamond structure: different versions of package D imported by different routes</description>
+      <created by="Michael Kay" on="2018-11-08"/>
+      <environment>
+         <package file="use-package-176a.xsl" role="principal"
+            uri="urn:176a"/>
+         <package file="use-package-176d1.xsl" role="secondary"
+            uri="urn:176d" package-version="1.0.1"/>
+         <package file="use-package-176d2.xsl" role="secondary"
+            uri="urn:176d" package-version="2.0.1"/>
+         <package file="use-package-176b.xsl" role="secondary"
+            uri="urn:176b"/>
+         <package file="use-package-176c.xsl" role="secondary"
+            uri="urn:176c"/>        
+      </environment>
+      <test>
+         <package file="use-package-176a.xsl" role="principal"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/bb/b = "bbbbb"</assert>
+            <assert>/out/cc/c = "ccccc"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
    <test-case name="use-package-201">
       <description>Testing package versioning - version 1.0.0</description>
