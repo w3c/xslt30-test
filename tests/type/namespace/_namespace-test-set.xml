@@ -699,6 +699,30 @@ z = http://new-z.uri/;
          <assert-xml><![CDATA[<out><check>true</check><check>true</check><check>true</check></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="namespace-0911">
+      <description>Check that exclude-result-prefixes applies to URIs, not to prefixes</description>
+      <created by="Michael Kay" on="2018-11-20"/>
+      <environment ref="namespace-09"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-0911.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/alpha/namespace::b = 'b.uri'</assert>
+            <assert>/alpha/beta/namespace::c = 'e.uri'</assert>
+            <assert>empty(/alpha/namespace::a)</assert>
+            <assert>empty(/alpha/namespace::c)</assert>
+            <assert>empty(/alpha/beta/namespace::a)</assert>
+            <assert>/alpha/beta/namespace::b = 'b.uri'</assert>
+         </all-of>
+        
+      </result>
+   </test-case>
 
    <test-case name="namespace-1101">
       <description>TEST xsl:namespace (XSLT 2.0)</description>
