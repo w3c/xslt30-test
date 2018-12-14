@@ -4801,5 +4801,24 @@
          <error code="XTDE0540"/>
       </result>
    </test-case>
+   
+   <test-case name="match-261">
+      <description>Bug 30375 - default priority of Q{uri}* patterns</description>
+      <keywords>Wildcard priority</keywords>
+      <created by="Michael Kay" on="2018-12-14"/>
+      <environment>
+         <source role="." file="match1058.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-261.xsl"/>
+      </test>
+      <result>
+         <!-- This result assumes that the correct priority of the wildcard pattern is -0.25 -->
+         <assert>exists(out/plus1.5/minus-0.1/wildcard/minus-0.4/minus-2.0)</assert>
+      </result>
+   </test-case>
  
 </test-set>
