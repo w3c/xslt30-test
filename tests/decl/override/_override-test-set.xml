@@ -623,7 +623,23 @@
       <result>
          <assert>/out = "0 1 2 3 4 5 7 8 9 10"</assert>
       </result>
-   </test-case> 
+   </test-case>
+   
+   <test-case name="override-f-036">
+      <description>Use two packages; try to override a component from the wrong used package</description>
+      <created by="Michael Kay" on="2018-11-20"/>
+      <dependencies>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <package file="override-f-036.xsl" role="principal"/>
+         <package file="override-f-032b.xsl" role="secondary"/>
+         <package file="override-f-033b.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE3058"/>
+      </result>
+   </test-case>
    
    
    <test-case name="override-t-001">
