@@ -338,6 +338,25 @@
       </result>
    </test-case>
    
+   <test-case name="call-template-0110">
+      <description>Use constructs needing context item in a named template where there may or may not be a context item.</description>
+      <created by="Michael Kay" on="2018-11-10"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="call-template-0110.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/getAtt[1]/@status = "caught"</assert>
+            <assert>/out/getAtt[2]/@status = "ok"</assert>
+            <assert>/out/getChild[1]/@status = "caught"</assert>
+            <assert>/out/getChild[2]/@status = "ok"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="call-template-0201">
       <description>Launch transformation with initial named template and also with initial node specified, and the template references the node (as .)</description>
       <created by="Michael Kay" on="2012-10-30"/>
