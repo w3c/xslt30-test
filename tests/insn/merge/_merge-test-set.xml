@@ -530,12 +530,13 @@
    <test-case name="merge-038">
       <description>Testing a sequence of more than one item is not allowed as the @select attr of merge-key</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="XTTE1020 is no longer the correct error here, when a merge-key cannot be compared, the errors should be XTTE2230"/>
       <environment ref="merge917err"/>   
       <test>
          <stylesheet file="merge-038.xsl"/>
       </test>
       <result>
-         <error code="XTTE1020"/>
+         <error code="XTTE2230"/>
       </result>
    </test-case>
    
@@ -606,11 +607,10 @@
    </test-case>
    
    <test-case name="merge-042">
-      <description>
-      	Error - can't specify both for-each-item and for-each-source
-      </description>
+      <description>Error - can't specify both for-each-item and for-each-source</description>
       <created by="Michael Kay" on="2014-04-10"/>
       <modified by="Michael Kay" on="2017-02-21" change="more specific error code"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="XTSE0020 is no longer valid, for this specific scenario, the spec has XTSE3195 now"/>
       <environment ref="merge002"/>
       <test>
          <stylesheet file="merge-042.xsl"/>
