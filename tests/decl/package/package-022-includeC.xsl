@@ -4,7 +4,9 @@
     xmlns:pkg="urn:use-me"
     version="3.0">
     
-    <!-- hidden in the previous xsl:include, public in this one -->    
+    <!-- two xsl:use-package with the same package, are considered two different packages with the same content
+        to resolve a conflict, overlapping declarations can be hidden in one use-package and accepted in the other -->
+    
     <xsl:use-package name="urn:use-me" package-version="*"  >
         <xsl:accept component="function" names="pkg:function1" visibility="hidden" />
     </xsl:use-package>
