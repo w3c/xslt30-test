@@ -54,26 +54,42 @@
     
     <xsl:template match="/" mode="report">
         <xsl:copy>
-            <xsl:copy-of select="@*" />
             <overview total-tests-in-xt3="{sum(//test-set/@total-tests)}">
                 <xslt3-specific count="{sum(//xslt3-specific/@count)}" />
                 <xslt2-specific count="{sum(//xslt2-specific/@count)}" />
                 <xslt-other count="{sum(//xslt-other/@count)}" />
+                <pass1 count="{sum(//pass1/@count)}" />
+                <pass2 count="{sum(//pass2/@count)}" />
             </overview>
             <changes-since-xslt2>
                 <!-- packages -->
-                <feature group="Packages" name="Packages - versioning" count="{15 (: deep query needed :)}" />
+                <feature group="Packages" name="Packages - versioning" count="{37 (: deep query needed :)}" />
                 <feature group="Packages" name="Packages - package" count="{sum(//category[@name='Declarations']/test-set[@name=('package')]/@total-tests)}" />
                 <feature group="Packages" name="Packages - use-package" count="{sum(//category[@name='Declarations']/test-set[@name=('use-package')]/@total-tests)}" />
                 <feature group="Packages" name="Packages - override" count="{sum(//category[@name='Declarations']/test-set[@name=('override')]/@total-tests)}" />
                 <feature group="Packages" name="Packages - xquery" count="{'unknown'}" />
 
                 <!-- streaming -->
-                <feature group="Streaming" name="Streaming - instructions" count="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'si')]/@total-tests)}" />
-                <feature group="Streaming" name="Streaming - functions" count="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'sf')]/@total-tests)}" />
-                <feature group="Streaming" name="Streaming - expressions" count="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'sx')]/@total-tests)}" />
-                <feature group="Streaming" name="Streaming - posture and sweep" count="{sum(//category[@name=('Posture and Sweep')]/test-set/@total-tests)}" />
-                <feature group="Streaming" name="Streaming - other" count="{sum(//category[@name='Streaming']/test-set[@name[not(starts-with(., 'si') or starts-with(., 'sf') or starts-with(., 'sx'))]]/@total-tests)}" />
+                <feature group="Streaming" name="Streaming - instructions" 
+                    count="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'si')]/@total-tests)}" 
+                    pass1="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'si')]//pass1/@count)}"
+                    pass2="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'si')]//pass2/@count)}" />
+                <feature group="Streaming" name="Streaming - functions" 
+                    count="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'sf')]/@total-tests)}"
+                    pass1="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'sf')]//pass1/@count)}"
+                    pass2="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'sf')]//pass2/@count)}"/>
+                <feature group="Streaming" name="Streaming - expressions" 
+                    count="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'sx')]/@total-tests)}" 
+                    pass1="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'sx')]//pass1/@count)}" 
+                    pass2="{sum(//category[@name='Streaming']/test-set[@name/starts-with(., 'sx')]//pass2/@count)}" />
+                <feature group="Streaming" name="Streaming - posture and sweep" 
+                    count="{sum(//category[@name=('Posture and Sweep')]/test-set/@total-tests)}"
+                    pass1="{sum(//category[@name=('Posture and Sweep')]/test-set//pass1/@count)}"
+                    pass2="{sum(//category[@name=('Posture and Sweep')]/test-set//pass2/@count)}"/>
+                <feature group="Streaming" name="Streaming - other" 
+                    count="{sum(//category[@name='Streaming']/test-set[@name[not(starts-with(., 'si') or starts-with(., 'sf') or starts-with(., 'sx'))]]/@total-tests)}" 
+                    pass1="{sum(//category[@name='Streaming']/test-set[@name[not(starts-with(., 'si') or starts-with(., 'sf') or starts-with(., 'sx'))]]//pass1/@count)}" 
+                    pass2="{sum(//category[@name='Streaming']/test-set[@name[not(starts-with(., 'si') or starts-with(., 'sf') or starts-with(., 'sx'))]]//pass2/@count)}" />
                 
                 <!-- new declarations -->
                 <feature group="Declarations" name="Accumulators" count="{sum(//category[@name='Declarations']/test-set[@name='accumulator']/@total-tests)}" />
@@ -178,6 +194,8 @@
                  <xslt3-specific count="{sum(.//xslt3-specific/@count)}" />
                  <xslt2-specific count="{sum(.//xslt2-specific/@count)}" />
                  <xslt-other count="{sum(.//xslt-other/@count)}" />
+                 <pass1 count="{sum(.//pass1/@count)}" />
+                 <pass2 count="{sum(.//pass2/@count)}" />
              </overview>
              <xsl:apply-templates mode="report" />
          </xsl:copy>
@@ -189,6 +207,8 @@
                  <xslt3-specific count="{sum(//xslt3-specific/@count)}" />
                  <xslt2-specific count="{sum(//xslt2-specific/@count)}" />
                  <xslt-other count="{sum(//xslt-other/@count)}" />
+                 <pass1 count="{sum(//pass1/@count)}" />
+                 <pass2 count="{sum(//pass2/@count)}" />
              </overview>
              <xsl:apply-templates />
          </xsl:copy>
@@ -200,18 +220,25 @@
         <xsl:apply-templates select="doc(concat('../', @file))" mode="test-set" />
     </xsl:template>
     
+    <xsl:variable name="rep" select="doc('../report/results_XSLT3.0_9.7.0.11.xml')" />
+    
     <!-- count the number of tests depending on the XSLT version supported -->
     <xsl:template match="/" mode="test-set">
         
         
         <xsl:variable name="xslt3" select="xt:count-tests-by-spec-version(test-set, 'XSLT30')" />
         <xsl:variable name="xslt2" select="xt:count-tests-by-spec-version(test-set, 'XSLT20')" />
+        <xsl:variable name="anchor" select="." />
         
         <test-set total-tests="{count(test-set/test-case)}" name="{test-set/@name}" description="{normalize-space(test-set/description)}">
             <xslt3-specific count="{$xslt3}" />
             <xslt2-specific count="{$xslt2}" />
             <xslt-other  count="{count(test-set/test-case) - $xslt3 - $xslt2}" />
-            <keywords use-when="false()">
+            <pass1 xsl:use-when="false() (:TODO:)" count="{count($rep//*:test-set[@name = $anchor/test-set/@name]/*:test-case[@result='pass'])}" />
+            <pass1 count="0" />
+            <pass2 count="{count($rep//*:test-set[@name = $anchor/test-set/@name]/*:test-case[@result='pass'])}" />
+
+            <keywords xsl:use-when="false()">
                 <xsl:variable name="keywords" select="distinct-values(test-set/test-case/keywords/tokenize(., ' '))"/>
                 <xsl:variable name="keywords-with-dupes" select="test-set/test-case/keywords/tokenize(., ' ')" />
                 <xsl:for-each select="$keywords">
