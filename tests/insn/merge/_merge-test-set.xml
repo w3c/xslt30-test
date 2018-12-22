@@ -758,19 +758,20 @@
       <created by="Michael Kay" on="2014-04-10"/>
       <modified by="Michael Kay" on="2015-07-08" change="Bug 28762 means merging on position() no longer makes sense"/>
       <modified by="Michael Kay" on="2017-03-03" change="Label as schema-aware"/>
+      <modified by="Abel Braaksma" on="2018-12-23" change="Making the test valid for non-schema-aware processors: XTSE1650" />
       <environment ref="merge049"/>
-      <dependencies>
-         <feature value="schema_aware"/>
-      </dependencies>
       <test>
          <stylesheet file="merge-049.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <all-of>
-           <assert>count(/books/ok) = 3</assert>
-           <assert>count(/books/bad) = 0</assert>
-         </all-of>  
+         <any-of>
+            <all-of>
+              <assert>count(/books/ok) = 3</assert>
+              <assert>count(/books/bad) = 0</assert>
+            </all-of>  
+            <error code="XTSE1650"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -779,13 +780,17 @@
          xsl:merge: merge two documents with validation failure
       </description>
       <created by="Michael Kay" on="2014-04-10"/>
+      <modified by="Abel Braaksma" on="2018-12-23" change="Making the test valid for non-schema-aware processors: XTSE1650" />
       <environment ref="merge049"/>
       <test>
          <stylesheet file="merge-050.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTTE1510"/>
+         <any-of>
+            <error code="XTTE1510"/>
+            <error code="XTSE1650"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -817,13 +822,17 @@
          xsl:merge: merge two documents with validation by type, failure
       </description>
       <created by="Michael Kay" on="2014-04-10"/>
+      <modified by="Abel Braaksma" on="2018-12-23" change="Making the test valid for non-schema-aware processors: XTSE1650" />
       <environment ref="merge049"/>
       <test>
          <stylesheet file="merge-052.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTTE1540"/>
+         <any-of>
+            <error code="XTTE1540"/>
+            <error code="XTSE1650"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -832,13 +841,17 @@
          xsl:merge: merge two documents with validation; both validation and type specified, error.
       </description>
       <created by="Michael Kay" on="2014-04-10"/>
+      <modified by="Abel Braaksma" on="2018-12-23" change="Making the test valid for non-schema-aware processors: XTSE1650 can also be raised before XTSE1505 is encountered" />
       <environment ref="merge049"/>
       <test>
          <stylesheet file="merge-053.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE1505"/>
+         <any-of>
+            <error code="XTSE1505"/>
+            <error code="XTSE1650"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -847,13 +860,17 @@
          xsl:merge: merge two documents with validation; validation specified without for-each-source, error.
       </description>
       <created by="Michael Kay" on="2014-04-10"/>
+      <modified by="Abel Braaksma" on="2018-12-23" change="Making the test valid for non-schema-aware processors: XTSE1650" />
       <environment ref="merge049"/>
       <test>
          <stylesheet file="merge-054.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE0020"/>
+         <any-of>
+            <error code="XTSE0020"/>
+            <error code="XTSE1650"/>
+         </any-of>
       </result>
    </test-case>   
    
