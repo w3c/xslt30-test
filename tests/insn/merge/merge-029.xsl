@@ -5,13 +5,15 @@
   
   <xsl:mode on-no-match="shallow-copy"/>
   
+  <xsl:output indent="yes" />
+  
   <xsl:strip-space elements="*"/>
   
   <xsl:variable name="original" select="doc('merge018-current.xml')"/>
   <xsl:variable name="updates" select="doc('merge018-updates.xml')"/>
   
-  <xsl:template name="main">
-    <xsl:apply-templates select="$original"/>
+  <xsl:template match="/" name="main">
+    <xsl:apply-templates select="$original/*"/>
   </xsl:template>  
   
   <xsl:template match="Addresses">
@@ -26,9 +28,17 @@
             if (count(current-merge-group()) = 1)
             then if (current-merge-group()[1]/root(.) is $original) then 'Deleted' else 'New'
             else if (deep-equal(current-merge-group()[1], current-merge-group()[2])) then 'NoChange' else 'Updated'"/>
-          <Address status="{$status}">
-            <xsl:copy-of select="current-merge-group()[1]/(AddressesId, Street)"/>
-          </Address>
+          <groups>
+            <CurrentMergeGroup>
+              <xsl:copy-of select="current-merge-group()[1]" />
+            </CurrentMergeGroup>
+            <CurrentMergeGroup>
+              <xsl:copy-of select="current-merge-group()[2]" />
+            </CurrentMergeGroup>
+            <CurrentMergeGroup>
+              <xsl:copy-of select="current-merge-group()[3]" />
+            </CurrentMergeGroup>
+          </groups>
         </xsl:merge-action>
       </xsl:merge>
     </Addresses>

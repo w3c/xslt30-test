@@ -224,6 +224,7 @@
    <test-case name="merge-013">
       <description>xsl:merge test - selects two anchor items in the same document</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="Fixed merge-013.out to contain self-closing tags (deep-equal the same with prev. version, but closer to expected output)"/>
       <environment ref="merge004"/>
       <test>
          <stylesheet file="merge-013.xsl"/>
@@ -236,6 +237,7 @@
    <test-case name="merge-014">
       <description>xsl:merge test - selects two anchor items from two document</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="Fixed merge-014.out to contain self-closing tags (deep-equal the same with prev. version, but closer to expected output)"/>
       <environment ref="merge004"/>
       <test>
          <stylesheet file="merge-014.xsl"/>
@@ -248,6 +250,7 @@
    <test-case name="merge-015">
       <description>xsl:merge test - selects three anchor items from two document</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="Fixed merge-015.out to contain self-closing tags (deep-equal the same with prev. version, but closer to expected output)"/>
       <environment ref="merge004"/>
       <test>
          <stylesheet file="merge-015.xsl"/>
@@ -422,16 +425,13 @@
    <test-case name="merge-029">
       <description>xsl:merge: live use case, see http://stackoverflow.com/questions/10271639/xslt-merge-challenge</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="Replaced CDATA XML with standard XML file (same data, no indentation)"/>
       <test>
          <stylesheet file="merge-029.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<Customer><CustId>1</CustId><CustName>Acme</CustName
-            ><Addresses><Address status="NoChange"><AddressesId>1</AddressesId><Street>123 Main</Street></Address
-            ><Address status="Updated"><AddressesId>2</AddressesId><Street>999 Updated St.</Street></Address
-            ><Address status="New"><AddressesId>3</AddressesId><Street>3999 New St.</Street></Address
-            ><Address status="Deleted"><AddressesId>4</AddressesId><Street>888 Goner St.</Street></Address></Addresses></Customer>]]></assert-xml>
+         <assert-xml file="merge-029.out" />
       </result>
    </test-case>
 
