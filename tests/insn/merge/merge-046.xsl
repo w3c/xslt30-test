@@ -4,10 +4,9 @@
     exclude-result-prefixes="xs"
     version="3.0">
     
-    <!-- xsl:merge test on two heterogeneous files- output using the current-merge-group -->
-    <!-- Also output the name of the corresponding merge source -->
+    <!-- testing invalid names: either XTSE0020 or XTDE3490 -->
     <xsl:output method="xml" indent="no"/>
-    <xsl:template name="main">
+    <xsl:template name="xsl:initial-template">
         <events>
             <xsl:merge>
                 <xsl:merge-source 
