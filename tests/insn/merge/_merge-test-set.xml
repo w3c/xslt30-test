@@ -275,12 +275,13 @@
    <test-case name="merge-017">
       <description>The @select attribute of xsl:merge-key should be a singleton, but evaluated to be a sequence of items</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="For incomparable merge-keys, the error should be XTTE2230 instead of XTTE1020"/>
       <environment ref="merge004"/>
       <test>
          <stylesheet file="merge-017.xsl"/>
       </test>
       <result>
-         <error code="XTTE1020"/>
+         <error code="XTTE2230"/>
       </result>
    </test-case>
 
@@ -322,14 +323,15 @@
    </test-case>
 
    <test-case name="merge-021">
-      <description>Test xsl:merge-input with incorrect order.</description>
+      <description>Test xsl:merge-input with keys that have different order attributes.</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="XTDE2210 instead of XTSE2220, updated description, the order attributes are different."/>
       <environment ref="merge008"/>
       <test>
          <stylesheet file="merge-021.xsl"/>
       </test>
       <result>
-         <error code="XTDE2220"/>
+         <error code="XTDE2210"/>
       </result>
    </test-case>
 
@@ -461,11 +463,12 @@
       <description>xsl:merge-key test with select attribute has non-empty content</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2017-02-21" change="change expected error code (obsolete)"/>
+      <modified by="Abel Braaksma" on="2018-12-22" change="Error XTSE2190 doesn't exist anymore, correct error is XTSE3200"/>
       <test>
          <stylesheet file="merge-032.xsl"/>
       </test>
       <result>
-         <error code="XTSE0020"/>
+         <error code="XTSE3200"/>
       </result>
    </test-case>
 
