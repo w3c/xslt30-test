@@ -10,6 +10,6 @@
     </xsl:use-package>
 
     <!-- cause two xsl:use-package on the same stylesheet level, this is allowed -->
-    <xsl:include href="package-020-includeC.xsl"/>
+    <xsl:include href="package-021-includeC.xsl"/>
     
 </xsl:stylesheet>
