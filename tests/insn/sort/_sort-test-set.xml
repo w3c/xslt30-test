@@ -290,6 +290,7 @@
    <test-case name="sort-012">
       <description>Test xsl:sort with sort parameters given as AVTs, changing the values on successive runs</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Abel Braaksma" on="2018-12-27" change="W3C Bug #30386: Removed collation attribute from xsl:sort, as it would throw an error XTDE1030, see sort-012err" />
       <environment ref="sort008"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -299,6 +300,21 @@
       </test>
       <result>
          <assert-xml file="sort-012.out"/>
+      </result>
+   </test-case>
+
+   <test-case name="sort-012err">
+      <description>Originally this was sort-012, see bug #30386. Combination of data-type="number" and collation is an error.</description>
+      <created by="Abel Braaksma" on="2018-12-27"/>
+      <environment ref="sort008"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sort-012err.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE1030" />
       </result>
    </test-case>
 

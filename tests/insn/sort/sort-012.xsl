@@ -30,7 +30,7 @@
     <xsl:param name="data-type" select="'text'"/>
     <run>
       <xsl:for-each select="/doc/num[number(.) = number(.)]"> <!-- exclude the NaN values -->
-        <xsl:sort data-type="{$data-type}" order="{$order}" collation="http://www.w3.org/2005/xpath-functions/collation/codepoint"/>
+        <xsl:sort data-type="{$data-type}" order="{$order}"/>
         <o><xsl:value-of select="."/></o>;
       </xsl:for-each>
     </run>
