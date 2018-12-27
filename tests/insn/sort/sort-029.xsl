@@ -14,7 +14,7 @@
 
 <xsl:template match="/">
    <out lang="default-order">
-    <xsl:for-each select="//item">
+    <xsl:for-each select="//alpha">
       <xsl:sort select="." data-type="text" lang="'{$lang}'"/>
       <xsl:value-of select="."/>
     </xsl:for-each>
