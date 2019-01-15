@@ -1860,6 +1860,50 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="result-document-0286">
+      <description>Use EQName in the format attribute of xsl:result-document</description>
+      <created by="Michael Kay" on="2019-01-14"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="serialization" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0286.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<out xmlns:my="http://example.com"><log>Before redirect</log><log>After redirect</log></out>$]]></serialization-matches>
+            <assert-result-document uri="multresult2.out">
+               <assert-serialization method="text">This should come out as plain text.</assert-serialization>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-0287">
+      <description>Use dynamic EQName in the format attribute of xsl:result-document</description>
+      <created by="Michael Kay" on="2019-01-15"/>
+      <environment ref="result-document-02"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="serialization" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-0287.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<out><log>Before redirect</log><log>After redirect</log></out>$]]></serialization-matches>
+            <assert-result-document uri="multresult2.out">
+               <assert-serialization method="text">This should come out as plain text.</assert-serialization>
+            </assert-result-document>
+         </all-of>
+      </result>
+   </test-case>
 
    <test-case name="result-document-0301">
       <description>Test AVT in the @method of an xsl:result-document.</description>
