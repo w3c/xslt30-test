@@ -645,4 +645,91 @@ Position:3,Last:3
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="strip-space-025">
+      <description>
+         Test EQNames in strip-space
+      </description>
+      <created by="Michael Kay" on="2019-01-25"/>
+      <environment ref="strip-space-07"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="strip-space-025.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>ab
+       c
+       d
+  </out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="strip-space-026">
+      <description>
+         no confict reported in 2.0 if there are two identical strip-space or
+         preserve-space declarations (using EQName syntax)
+      </description>
+      <created by="Michael Kay" on="2019-01-25"/>
+      <environment ref="strip-space-17"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="strip-space-026.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<document><section/><section/><section/></document>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="strip-space-027">
+      <description>
+         Test import precedence for xsl:strip-space using EQName syntax
+      </description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<abc:doc xmlns:abc="http://abc.uri/">
+<abc:w>   </abc:w>
+<abc:x>   </abc:x>
+<abc:y>   </abc:y>
+<abc:z>   </abc:z>
+<q>    </q>
+</abc:doc>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="strip-space-027.xsl"/>
+         <stylesheet file="strip-space-020a.xsl" role="secondary"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<abc:doc xmlns:abc="http://abc.uri/"><abc:w>   </abc:w><abc:x/><abc:y/><abc:z/><q>    </q></abc:doc>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="strip-space-028">
+      <description>
+         Two conflicting xsl:strip-space/preserve-space declarations (static error in XSLT 3.0)
+      </description>
+      <created by="Michael Kay" on="2019-01-25"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<doc><a> </a><b> </b><c> </c></doc>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+" />
+      </dependencies>
+      <test>
+         <stylesheet file="strip-space-028.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0270" />
+      </result>
+   </test-case>
 </test-set>
