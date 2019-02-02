@@ -132,11 +132,75 @@
       </result>
    </test-case>
 
+   <test-case name="namespace-alias-1003">
+      <description>Test multiple namespace-alias declarations with namespaces declared locally</description>
+      <created by="Michael Kay" on="2019-01-23"/>
+      <environment ref="namespace-alias-10"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-alias-1003.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A:v xmlns:A="http://A.com/"/><B:w xmlns:B="http://B.com/"
+            /><C:x xmlns:C="http://C.com/"/><D:y xmlns:D="http://D.com/"/><E:z xmlns:E="http://E.com/"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-alias-1004">
+      <description>Test multiple namespace-alias declarations with the same target; namespaces declared locally</description>
+      <created by="Michael Kay" on="2019-01-23"/>
+      <environment ref="namespace-alias-10"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-alias-1004.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A:v xmlns:A="http://A.com/"/><B:w xmlns:B="http://A.com/"
+            /><C:x xmlns:C="http://A.com/"/><D:y xmlns:D="http://A.com/"/><E:z xmlns:E="http://A.com/"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-alias-1005">
+      <description>Test multiple namespace-alias declarations with the same target prefix and URI</description>
+      <created by="Michael Kay" on="2019-01-23"/>
+      <environment ref="namespace-alias-10"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-alias-1005.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A:v xmlns:A="http://A.com/"/><A:w xmlns:A="http://A.com/"
+            /><A:x xmlns:A="http://A.com/"/><A:y xmlns:A="http://A.com/"/><A:z xmlns:A="http://A.com/"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-alias-1006">
+      <description>A circular chain of namespace aliases</description>
+      <created by="Michael Kay" on="2019-01-23"/>
+      <environment ref="namespace-alias-10"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-alias-1006.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><b:v xmlns:b="http://b.com/"/><c:w xmlns:c="http://c.com/"
+            /><d:x xmlns:d="http://d.com/"/><e:y xmlns:e="http://e.com/"/><a:z xmlns:a="http://a.com/"/></out>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="namespace-alias-1901">
       <description>TEST xsl:namespace-alias - stylesheet-prefix="#default"</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2012-12-11" change="deleted xml:space=preserve - see bug 20270"/>
+      <modified by="Michael Kay" on="2019-01-24" change="see discussion in W3C bug 30397"/>
       <environment ref="namespace-alias-19"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -198,7 +262,7 @@
    </test-case>
 
    <test-case name="namespace-alias-1905">
-      <description/>
+      <description>Alias the XML namespace</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-alias-19"/>
       <dependencies>
@@ -317,7 +381,9 @@
    </test-case>
 
    <test-case name="namespace-alias-4701">
-      <description>Purpose: Test basic functionality of namespace-alias. Where XSL elements are created by using Literal Result Elements. namespace24 is very similar, but it creates the axsl:stylesheet element via xsl:element.</description>
+      <description>Purpose: Test basic functionality of namespace-alias. 
+         Where XSL elements are created by using Literal Result Elements. 
+         namespace24 is very similar, but it creates the axsl:stylesheet element via xsl:element.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="namespace-alias-47"/>
       <dependencies>
@@ -347,7 +413,7 @@
    </test-case>
 
    <test-case name="namespace-alias-5801">
-      <description>namespace35</description>
+      <description>Another test for aliasing the XSL namespace</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment>
          <source role=".">
