@@ -6,7 +6,7 @@
                      xmlns:x = "http://www.w3.org/1999/XSL/Transform"
                      xmlns:f = "http://local/functions"
                     xmlns:xs = "http://www.w3.org/2001/XMLSchema"
-  extension-element-prefixes = "f xs"
+  exclude-result-prefixes = "f xs"
 >
 
 <!-- A user-supplied test that once revealed a bug -->
