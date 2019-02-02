@@ -2785,8 +2785,9 @@
    </test-case>
 
    <test-case name="math-3701">
-      <description>Round with different test cases for xs:Double</description>
+      <description>Round with different test cases for xs:double</description>
       <created by="ONeil Delpratt, Saxonica" on="2012-11-07"/>
+      <modified by="Michael Kay, Saxonica" on="2019-01-21" change="correct unintended error (see math-3702)"/>
       <environment ref="math-37"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2799,9 +2800,25 @@
       </result>
    </test-case>
 
+   <test-case name="math-3702">
+      <description>extension-element-prefixes cannot use a reserved namespace. Was math-3701, now corrected to raise an error</description>
+      <created by="Michael Kay, Saxonica" on="2019-01-21"/>
+      <environment ref="math-37"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="math-3702.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0085"/>
+      </result>
+   </test-case>
+   
    <test-case name="math-3801">
       <description>Round with different test cases for xs:Decimal</description>
       <created by="ONeil Delpratt, Saxonica" on="2012-11-07"/>
+      <modified by="Michael Kay, Saxonica" on="2019-01-21" change="correct unintended error (see math-3702)"/>
       <environment ref="math-38"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2817,6 +2834,7 @@
    <test-case name="math-3901">
       <description>Round with different test cases for xs:Float</description>
       <created by="ONeil Delpratt, Saxonica" on="2012-11-07"/>
+      <modified by="Michael Kay, Saxonica" on="2019-01-21" change="correct unintended error (see math-3702)"/>
       <environment ref="math-39"/>
       <dependencies>
          <spec value="XSLT30+"/>
