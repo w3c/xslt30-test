@@ -1514,4 +1514,29 @@ while you are in the cinema.</p></o>]]></assert-xml>
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="for-each-group-089">
+      <description>group elements by local-name, while retaining accumulator values and dropping namespace declarations</description>
+      <created by="Michael Kay" on="2019-01-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="for-each-group-089.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><line att="1" accumulator="1"/><line att="2" accumulator="3"
+            /><line att="4" accumulator="10"/><line att="7" accumulator="28"
+            /><line att="8" accumulator="36"/><line att="11" accumulator="66"
+            /><line2 att="3" accumulator="6"/><line3 att="5" accumulator="15"
+            /><line3 att="6" accumulator="21"/><line3 att="9" accumulator="45"
+            /><line3 att="10" accumulator="55"
+            /><a:line xmlns:a="http://example.com" att="12" accumulator="78"
+            /><a:line xmlns:a="http://example.com" att="13" accumulator="91"
+            /><b:line xmlns:b="http://example.com" att="16" accumulator="136"
+            /><a:line3 xmlns:a="http://example.com" att="14" accumulator="105"
+            /><b:line3 xmlns:b="http://example.com" att="15" accumulator="120"/></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>
