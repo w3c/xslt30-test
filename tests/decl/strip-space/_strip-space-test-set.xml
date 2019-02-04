@@ -732,4 +732,27 @@ Position:3,Last:3
          <error code="XTSE0270" />
       </result>
    </test-case>
+   
+   <test-case name="strip-space-029">
+      <description>
+         xsl:strip-space/preserve-space referring to xsl namespace
+      </description>
+      <created by="Michael Kay" on="2019-02-04"/>
+      <environment>
+         <source role="." file="strip-space-029.xsl"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+" />
+      </dependencies>
+      <test>
+         <stylesheet file="strip-space-029.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>contains(/out, ' &lt;xsl:attribute')</assert>
+            <assert>contains(/out, '&gt;&lt;xsl:text&gt;  &lt;/xsl:text&gt;&lt;')</assert>
+            <assert>contains(/out, '&lt;/xsl:attribute&gt; ')</assert>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
