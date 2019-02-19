@@ -1017,6 +1017,7 @@ z = http://new-z.uri/;
       <description>Test that a no-namespace element copied into a document having a default namespace
          acquires an xmlns="" undeclaration. Saxon bug 3889.</description>
       <created by="Michael Kay" on="2018-08-31"/>
+      <modified by="Michael Kay" on="2019-02-07" change="Use absolute namespace URIs, to stop XOM barfing"/>
       <environment ref="namespace-19"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -3655,6 +3656,7 @@ Testing 1 2 3 quos</out>]]></assert-xml>
       <description>Test for resetting of a namespace prefix by copy-of. Note: results affected by
          erratum XT.E37: see member bugzilla 931.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2019-02-05" change="cosmetic changes only"/>
       <environment ref="namespace-43"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -3663,9 +3665,7 @@ Testing 1 2 3 quos</out>]]></assert-xml>
          <stylesheet file="namespace-4301.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out xmlns:n="http://ns.test.com">
-<n:x>from stylesheet</n:x>
-<e xmlns="http://literalURI"><n:a xmlns:n="http://example.com">content</n:a></e></out>]]></assert-xml>
+         <assert-xml><![CDATA[<out xmlns:n="http://ns.test.com"><n:x>from stylesheet</n:x><e xmlns="http://literalURI"><n:a xmlns:n="http://example.com">content</n:a></e></out>]]></assert-xml>
       </result>
    </test-case>
 
@@ -3673,6 +3673,7 @@ Testing 1 2 3 quos</out>]]></assert-xml>
       <description>Test copying of a namespace node by copy-of. Note: results affected by erratum
          XT.E37: see member bugzilla 931.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2019-02-05" change="break down expected results"/>
       <environment ref="namespace-43"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -3681,7 +3682,26 @@ Testing 1 2 3 quos</out>]]></assert-xml>
          <stylesheet file="namespace-4302.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-4302.out"/>
+         <all-of>
+            <assert>/out/namespace::s="http://example.com"</assert>
+            <assert>/out/namespace::n="http://ns.test.com"</assert>
+            <assert>count(/out/namespace::*) eq 3</assert>
+            <assert>/out/*:x/namespace::s="http://example.com"</assert>
+            <assert>/out/*:x/namespace::n="http://ns.test.com"</assert>
+            <assert>count(/out/*:x/namespace::*) eq 3</assert>
+            <assert>/out/*:e/namespace::s="http://example.com"</assert>
+            <assert>/out/*:e/namespace::n="http://ns.test.com"</assert>
+            <assert>/out/*:e/namespace::*[name()="" and .="http://literalURI"]</assert>
+            <assert>count(/out/*:e/namespace::*) eq 4</assert>
+            <assert>/out/*:e/*:a/namespace::s="http://example.com"</assert>
+            <assert>/out/*:e/*:a/namespace::n="http://example.com"</assert>
+            <assert>/out/*:e/*:a/namespace::*[name()="" and .="http://literalURI"]</assert>
+            <assert>count(/out/*:e/*:a/namespace::*) eq 4</assert>
+         </all-of>
+         <!--<assert-xml file="namespace-4302.out"/>
+         <out xmlns:s="http://example.com" xmlns:n="http://ns.test.com">
+            <n:x>from stylesheet</n:x>
+            <e xmlns="http://literalURI"><n:a xmlns:n="http://example.com">content</n:a></e></out>-->
       </result>
    </test-case>
 
