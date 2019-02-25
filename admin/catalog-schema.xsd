@@ -603,7 +603,10 @@
                 <xs:attribute name="package-version" type="xs:string">
                     <xs:annotation>
                         <xs:documentation>
-                            <p>The package version. Optional.</p>
+                            <p>
+                                The package version. Optional. This should match the production rules for xsl:package/@package-version. 
+                                When absent, package-version 1 is assumed (section 3.5 in the spec)
+                            </p>
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
@@ -1379,7 +1382,16 @@
                     <h3>test</h3>
                     <p> The content of the element identifies the stylesheet to be used for the
                         transformation, plus entry conditions such as the values of parameters or an
-                        initial template name. </p>
+                        initial template name, mode or function. 
+                    </p>
+                    <p>
+                        Resolution if none of initial-template, initial-functionor initial-mode are present is as follows:
+                        <ul>
+                        <li>the default named template is xsl:initial-template, if not present in the stylesheet</li>
+                        <li>the default is mode #default, if default-mode attribute is absent</li>
+                        <li>the default is the #unnamed mode</li>
+                        </ul>
+                    </p>
                 </div>
             </xs:documentation>
         </xs:annotation>
@@ -1467,9 +1479,14 @@
                 </p>
                 <p>
                     The default initial template, xsl:initial-template, can be given specifically,
-                    or by leaving out the name attribute. If none of initial-template, initial-function
-                    or initial-mode are present, the default is xsl:initial-template, regardless whether
-                    an initial match selection was specified.
+                    or by leaving out the name attribute.</p>
+                <p>
+                    Resolution if none of initial-template, initial-functionor initial-mode are present is as follows:
+                    <ul>
+                    <li>the default named template is xsl:initial-template, if not present in the stylesheet</li>
+                    <li>the default is mode #default, if default-mode attribute is absent</li>
+                    <li>the default is the #unnamed mode</li>
+                    </ul>
                 </p>
             </xs:documentation>
         </xs:annotation>
@@ -1484,9 +1501,19 @@
     <xs:element name="initial-function">
         <xs:annotation>
             <xs:documentation>
-                <p>Gives the name of the function to be used as the entry point for the
+                <p>
+                    Gives the name of the function to be used as the entry point for the
                     transformation. When this is supplied, it is not necessary to supplied a source
-                    document or initial context item.</p>
+                    document or initial context item.
+                </p>
+                <p>
+                    Resolution if none of initial-template, initial-functionor initial-mode are present is as follows:
+                    <ul>
+                    <li>the default named template is xsl:initial-template, if not present in the stylesheet</li>
+                    <li>the default is mode #default, if default-mode attribute is absent</li>
+                    <li>the default is the #unnamed mode</li>
+                    </ul>
+                </p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1500,11 +1527,30 @@
     <xs:element name="initial-mode">
         <xs:annotation>
             <xs:documentation>
-                <p>Gives the name of the mode to be used as the entry point for the transformation,
-                    with possible parameters. </p>
-                <p>To transmit parameters for an invocation in the
-                    stylesheet's default mode, use #default, for the unnamed mode, use #unnamed.</p>
-                <p>It is also possible to specify the initial match selection.</p>
+                <p>
+                    Gives the name of the mode to be used as the entry point for the transformation,
+                    with possible parameters, resolution is as follows:
+                    <ul>
+                    <li>A named initial mode must exist in the stylesheet (err:XTDE0045 otherwise)</li>
+                    <li>#default can be used to specify whatever is in the top-level default-mode attribute, if such attribute is not present, selects the #unnamed mode</li>
+                    <li>#unnamed can be used to explicitly specify the unnamed mode (which never raises XTDE0045)</li>
+                    </ul>
+                </p>
+                <p>
+                    To transmit parameters for a mode, this element must be present. For transmitting parameters for the unnamed mode, use #unnamed, for the 
+                    mode declared in the top-level element with the declared-mode attribute, use #default.
+                </p>
+                <p>
+                    It is also possible to specify the initial match selection through the select attribute
+                </p>
+                <p>
+                    Resolution if none of initial-template, initial-functionor initial-mode are present is as follows:
+                    <ul>
+                    <li>the default named template is xsl:initial-template, if not present in the stylesheet</li>
+                    <li>the default is mode #default, if default-mode attribute is absent</li>
+                    <li>the default is the #unnamed mode</li>
+                    </ul>
+                </p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1514,7 +1560,14 @@
             <xs:attribute name="name" use="required">
                 <xs:annotation>
                     <xs:documentation>
-                        <p>The name attribute is required, use #default or #unnamed for special modes</p>
+                        <p>
+                            The name attribute is required, use #default or #unnamed for special modes:
+                            <ul>
+                            <li>A named initial mode must exist in the stylesheet (err:XTDE0045 otherwise)</li>
+                            <li>#default can be used to specify whatever is in the top-level default-mode attribute, if such attribute is not present, selects the #unnamed mode</li>
+                            <li>#unnamed can be used to explicitly specify the unnamed mode (which never raises XTDE0045)</li>
+                            </ul>
+                        </p>
                     </xs:documentation>
                 </xs:annotation>
                 <xs:simpleType>                    
@@ -1524,10 +1577,12 @@
             <xs:attribute name="select" use="optional" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        <p>If the select attribute is present, it defines the initial match selection. The
-                        value is an XPath expression, which is evaluated with an absent focus. In the absence
-                        of the select attribute, the initial match selection is the same as the global
-                        context item.</p>
+                        <p>
+                            If the select attribute is present, it defines the initial match selection. The
+                            value is an XPath expression, which is evaluated with an absent focus. In the absence
+                            of the select attribute, the initial match selection is the same as the global
+                            context item.
+                        </p>
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -1611,7 +1666,7 @@
                     tree is written. The location should be given as a relative URI, and should be
                     within a subdirectory of the directory that contains the test set XML file.</p>
                 <p>Directions for output post-processing can also be declared.</p>
-                <p>If the result-var attribute is present then the result of the transformation is
+                <p>If the result-var attribute is present with the value 'yes' then the result of the transformation is
                 bound to a named variable rather than to the context item. This allows testing of
                 transformations that return a non-singleton sequence (see bug 30196).</p>
             </xs:documentation>
@@ -2585,7 +2640,8 @@
                         <h4>#default</h4>
                         <p>
                             If specified, initialized the stylesheet with the explicit or implicit 
-                            default mode specified on xsl:stylesheet or xsl:package.
+                            default mode specified on xsl:stylesheet or xsl:package. 
+                            If the default-mode attribute is not present, this is equal to specifying #unnamed.
                         </p>
                     </xs:documentation>
                 </xs:annotation>
@@ -2629,6 +2685,9 @@
                     <p>For source documents, the URI can be used in a call to the doc() function to
                         retrieve this source document (so the actual query does not need to know its
                         location.</p>
+                    <p>For packages, the URI should match the name of the package if the name attribute is absent.
+                        If name is present, the URI can be used to retrieve the source document just like with doc(),
+                        while the name should match the actual name of the referenced package.</p>
                     <p>For modules, the URI defines the module URI and is again independent of
                         location.</p>
                     <p>For schemas, the URI defines the target namespace URI.</p>
@@ -2707,14 +2766,14 @@
                         <h3>The context type of a posture-and-sweep test</h3>
                         <p>The context type needs to be set prior to a posture and sweep test is run.
                             It can be any of:
-                            <ol>
+                            <ul>
                                 <li>item(): either a streamed node or an atomic item</li>
                                 <li>node(): any streamed node</li>
                                 <li>document-node(): a streamed document node</li>
                                 <li>element(): a streamed element node</li>
                                 <li>atomic: any atomic item</li>
                                 <li>childless-node-kind: any node of comment(), attribute(), text(), processing-instruction(), namespace()</li>
-                            </ol>
+                            </ul>
                             The context posture applies to all &lt;xpath&gt; and &lt;xslt&gt; tests in the posture-and-sweep subset.
                             This attribute is optional and defaults to "item()".
                         </p>
