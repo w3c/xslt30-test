@@ -5,6 +5,6 @@
     
     <!-- xsl:package with a name, and without a package-version -->
 
-    <xsl:template name="xsl:initial-template"><res>Success</res></xsl:template>
+    <xsl:template name="xsl:initial-template" visibility="public"><res>Success</res></xsl:template>
 
 </xsl:package>

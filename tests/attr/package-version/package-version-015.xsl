@@ -6,6 +6,6 @@
     
     <!-- backwards compatibility mode -->
     
-    <xsl:template name="xsl:initial-template"><res>Success</res></xsl:template>
+    <xsl:template name="xsl:initial-template" visibility="public"><res>Success</res></xsl:template>
 
 </xsl:package>

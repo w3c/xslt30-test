@@ -10,8 +10,11 @@
       <description>Basic package-version test, absence of package-version is allowed on xsl:package</description>
       <created by="Abel Braaksma" on="2016-06-06"/>
       <modified by="Abel Braaksma" on="2016-09-05" change="Added a name, so it can be reused in the -1xx versions of these tests"/>
+      <modified by="Abel Braaksma" on="2018-01-17" change="Removed package-version attribute to reflect the intent of the test"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public (with static param defaulting to private, as this otherwise conflicts with tests using this package), private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-001.xsl"/>
+         <param name="initialVisibility" static="yes" as="xs:string" select="'public'"/>
       </test>
       <result>
          <assert-string-value>A package without a version is allowed</assert-string-value>
@@ -22,6 +25,7 @@
       <description>Basic package-version test, with a simple version</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
       <modified by="Abel Braaksma" on="2016-09-05" change="Added a name, so it can be reused in the -1xx versions of these tests"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-002.xsl"/>
       </test>
@@ -34,6 +38,7 @@
       <description>Basic package-version test, with a NamePart</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
       <modified by="Abel Braaksma" on="2016-09-05" change="Added a name, so it can be reused in the -1xx versions of these tests"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-003.xsl"/>
       </test>
@@ -46,6 +51,7 @@
       <description>Basic package-version test, with a longer NamePart</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
       <modified by="Abel Braaksma" on="2016-09-05" change="Added a name, so it can be reused in the -1xx versions of these tests"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-004.xsl"/>
       </test>
@@ -57,6 +63,7 @@
    <test-case name="package-version-005">
       <description>Basic package-version test, testing some weird, but allowed characters in the NamePart</description>
       <created by="Abel Braaksma" on="2016-09-04"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-005.xsl"/>
       </test>
@@ -68,6 +75,7 @@
    <test-case name="package-version-006">
       <description>More advanced: overriding the package version with a shadow attribute</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-006.xsl"/>
       </test>
@@ -79,6 +87,7 @@
    <test-case name="package-version-007">
       <description>More advanced: overriding the package version with a shadow attribute, original package-version is invalid</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-007.xsl"/>
       </test>
@@ -90,6 +99,7 @@
    <test-case name="package-version-008">
       <description>Getting the version from the DTD declaration</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-008.xsl"/>
       </test>
@@ -101,6 +111,7 @@
    <test-case name="package-version-009">
       <description>Setting the package-version equal to the XSLT version, both in shadow attributes</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-009.xsl"/>
       </test>
@@ -113,6 +124,7 @@
       <description>Setting part of the package-version equal to the product version (note: this test may fail if the product version is not a valid package version)</description>
       <created by="Abel Braaksma" on="2016-06-06"/> 
       <modified by="Michael Kay" on="2016-10-26" change=""/> 
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-010.xsl"/>
       </test>
@@ -124,6 +136,7 @@
    <test-case name="package-version-011">
       <description>Setting the package-version to the XSLT version in a creative manner</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-011.xsl"/>
       </test>
@@ -136,6 +149,7 @@
       <description>Setting the package-version to a bunch of very high numbers</description>
       <created by="Abel Braaksma" on="2016-06-06"/>   
       <modified by="Michael Kay" on="2016-10-26" change="Allow error, see bug 29880"/>   
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-012.xsl"/>
       </test>
@@ -151,6 +165,7 @@
       <description>Setting the package-version to a a LOT of NumericPart, there is no imposed limit</description>
       <created by="Abel Braaksma" on="2016-06-06"/>
       <modified by="Michael Kay" on="2016-10-26" change="Allow error, see bug 29880"/>   
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-013.xsl"/>
       </test>
@@ -165,6 +180,7 @@
    <test-case name="package-version-014">
       <description>Using package-version in forwards compatibility mode</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-014.xsl"/>
       </test>
@@ -176,6 +192,7 @@
    <test-case name="package-version-015">
       <description>Using package-version in backwards compatibility mode</description>
       <created by="Abel Braaksma" on="2016-06-06"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <dependencies>
          <feature value="backwards_compatibility"/>
       </dependencies>
@@ -190,6 +207,7 @@
    <test-case name="package-version-016">
       <description>Present package-version, absent name (allowed, but has no effect for top-level packages)</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-016.xsl"/>
       </test>
@@ -201,6 +219,7 @@
    <test-case name="package-version-017">
       <description>Absent package-version, absent name</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-017.xsl"/>
       </test>
@@ -212,6 +231,7 @@
    <test-case name="package-version-018">
       <description>Absent package-version, present name</description>
       <created by="Abel Braaksma" on="2016-06-06"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-018.xsl"/>
       </test>
@@ -223,6 +243,7 @@
    <test-case name="package-version-019">
       <description>Test up to the maximum limits that processors must accept</description>
       <created by="Abel Braaksma" on="2016-10-26"/>     
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <stylesheet file="package-version-019.xsl"/>
       </test>

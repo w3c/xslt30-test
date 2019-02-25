@@ -6,7 +6,7 @@
     
     <xsl:output omit-xml-declaration="yes" />
     
-    <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
         <package-version>
             <xsl:value-of select="doc('')//@package-version" />
         </package-version>
