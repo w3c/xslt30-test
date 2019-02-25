@@ -293,11 +293,28 @@
       </result>
    </test-case>
    
-   <test-case name="expose-912">
-      <description>Error, cannot increase visibility from private to abstract</description>
+   <test-case name="expose-912a">
+      <description>Error, cannot increase visibility from private to abstract, matching function components have mixed declared and non-declared visibility</description>
       <created by="Michael Kay" on="2015-08-27"/>
+      <modified by="Abel Braaksma" on="2019-02-15" change="Allow also XTSE3025, see -912b/c/d for stricter variants"></modified>
       <test>
-         <package file="expose-912.xsl" role="principal"/>
+         <package file="expose-912a.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XTSE3010"/>
+            <error code="XTSE3025"/>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-912b">
+      <description>Error, cannot increase visibility from private to abstract, all matching function components have a declared visibility</description>
+      <created by="Abel Braaksma" on="2019-02-15"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make main public, private named templates are not eligible initial templates (bug #30398)"/>
+      <test>
+         <package file="expose-912b.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
@@ -305,6 +322,33 @@
       </result>
    </test-case>
    
+   <test-case name="expose-912c">
+      <description>Error, cannot increase visibility from implicitly private to abstract, all matching function components have no declared visibility</description>
+      <created by="Abel Braaksma" on="2019-02-15"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make main public, private named templates are not eligible initial templates (bug #30398)"/>
+      <test>
+         <package file="expose-912c.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3025"/>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-912d">
+      <description>Error, cannot increase visibility from implicitly private to abstract, with wildcard match</description>
+      <created by="Abel Braaksma" on="2019-02-15"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make main public, private named templates are not eligible initial templates (bug #30398)"/>
+      <test>
+         <package file="expose-912d.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE3025"/>
+      </result>
+   </test-case>
+   
+
    <test-case name="expose-913">
       <description>Error, cannot increase visibility from final to public</description>
       <created by="Michael Kay" on="2015-08-27"/>

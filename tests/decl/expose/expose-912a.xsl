@@ -1,7 +1,7 @@
 <!-- xsl:expose - error, cannot increase visibility -->
 
 <xsl:package
-  name="http://www.w3.org/xslt30tests/package-912"  
+  name="http://www.w3.org/xslt30tests/package-912a"  
   package-version="1.0.0"
   version="3.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
