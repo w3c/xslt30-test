@@ -45,12 +45,16 @@
       in which case it fails dynamically with XPDY0002 because the context item is absent.</description>
       <created by="Michael Kay" on="2014-10-10"/>
       <modified by="Michael Kay" on="2015-01-26" change="keyword change: prohibited -> absent"/>
+      <modified by="Abel Braaksma" on="2018-02-04" change="Specification says that 'an error' should be raised but does not speficy which one. In line with xsl:context-item, I've added XTSE3088 as a sensible candidate next to XPDY0002, which implementers may choose not to use, as a context item *is* supplied here, yet is is forbidden"/>
       <environment ref="glob-cxt-item-A"/>    
       <test>
          <package file="glob-cxt-item-003.xsl" role="principal"/>
       </test>
       <result>
-         <error code="XPDY0002"/>
+         <any-of>
+            <error code="XPDY0002"/>
+            <error coce="XTSE3088"/>
+         </any-of>
       </result>
    </test-case>
    
