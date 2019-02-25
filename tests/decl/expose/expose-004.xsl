@@ -14,7 +14,7 @@
      name="http://www.w3.org/xslt30tests/expose-B"
      package-version="1.0.0"/>
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>
       <a1 xsl:use-attribute-sets="a1"/>
       <a2 xsl:use-attribute-sets="p:a2"/>

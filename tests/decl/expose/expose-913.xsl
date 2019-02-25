@@ -39,7 +39,7 @@
   </xsl:accumulator>  
   
 
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <ok/>
     </xsl:template>
     

@@ -1,7 +1,7 @@
 <!-- xsl:expose - error, cannot use #unnamed mode -->
 
 <xsl:package
-  name="http://www.w3.org/xslt30tests/package-903"  
+  name="http://www.w3.org/xslt30tests/package-904"  
   package-version="1.0.0"
   version="3.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -35,7 +35,7 @@
   <xsl:mode name="p:m2"/>
   
 
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <ok/>
     </xsl:template>
     
