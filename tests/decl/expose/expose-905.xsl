@@ -1,7 +1,7 @@
-<!-- xsl:expose - error, cannot use #unnamed mode -->
+<!-- xsl:expose - error, trying to expose component that matches by name but not by kind -->
 
 <xsl:package
-  name="http://www.w3.org/xslt30tests/package-903"  
+  name="http://www.w3.org/xslt30tests/package-905"  
   package-version="1.0.0"
   version="3.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -45,7 +45,7 @@
     <xsl:expose visibility="private" component="function" names="p:f1#0 p:f2#0"/>
     
     <xsl:expose visibility="public" component="attribute-set" names="p:* *:a2"/>
-    <xsl:expose visibility="public" component="mode" names="*:m2 #unnamed"/>
+    <xsl:expose visibility="public" component="mode" names="*:m2"/>
     
     <xsl:expose visibility="public" component="variable" names="*"/>
 
