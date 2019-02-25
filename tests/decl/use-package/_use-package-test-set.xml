@@ -296,6 +296,7 @@
       <created by="Michael Kay" on="2013-07-18"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Abel Braaksma" on="2018-02-02" change="Use of exclude-result-prefixes was not taken into account in expected test result, see also variant -108b"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'main' public, private named templates are not eligible initial templates (bug #30398)"/>
       <environment ref="use-package-env-002"/>
       <test>
@@ -304,7 +305,21 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<out xmlns:p="[^"]*">ZZZZZZ</out>]]></serialization-matches>
+         <serialization-matches><![CDATA[<out>ZZZZZZ</out>]]></serialization-matches>
+      </result>
+   </test-case>
+
+   <test-case name="use-package-108b">
+      <description>Namespace aliases and xsl:output declarations are local to a package (definition in principal package does not override library pkg)</description>
+      <created by="Abel Braaksma" on="2019-02-02"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'xsl:initial-template' public, private named templates are not eligible initial templates (bug #30398)"/>
+      <test>
+         <package file="use-package-108b.xsl" role="principal"/>
+         <package file="use-package-108b-package.xsl" role="secondary" uri="http://www.w3.org/xslt30tests/use-package-008b" package-version="1.0.0" />
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[^<aliased:out xmlns:aliased="http://www.w3.org/xslt30tests/use-package-base-002">ZZZZZZ</aliased:out>$]]></serialization-matches>
       </result>
    </test-case>
    
