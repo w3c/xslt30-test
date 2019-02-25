@@ -9,7 +9,7 @@ declared-modes='true'>
     <xsl:value-of select="."/>
   </xsl:template>
 
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <a/>
   </xsl:template>
 

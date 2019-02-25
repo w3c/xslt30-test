@@ -8,7 +8,7 @@
     <xsl:value-of select="."/>
   </xsl:template>
 
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <xsl:text>no-mode:</xsl:text>
     <xsl:value-of select="."/>
   </xsl:template>

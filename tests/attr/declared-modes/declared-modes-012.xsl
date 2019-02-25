@@ -4,7 +4,7 @@ declared-modes='no'>
 
   <!-- PURPOSE:  Use of unnamed mode on xsl:apply-templates is an error (declared-modes = true). -->
 
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <xsl:apply-templates select="()"/>
     <a/>
   </xsl:template>
