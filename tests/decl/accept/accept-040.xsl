@@ -29,7 +29,7 @@
   </xsl:use-package>  
   
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out xsl:use-attribute-sets="a1">
       <xsl:call-template name="t1">
         <xsl:with-param name="p1" select="string($v1)"/>

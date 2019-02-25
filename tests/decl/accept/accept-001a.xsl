@@ -1,4 +1,4 @@
-<!-- xsl:accept - syntax variations -->
+<!-- xsl:accept - syntax variations, error case, initial template not public -->
 
 <xsl:package
   name="http://www.w3.org/xslt30tests/accept-001"  
@@ -27,7 +27,7 @@
          
   </xsl:use-package>  
   
-  <xsl:template name="main" visibility="public">
+  <xsl:template name="main">
     <out>
       <a1 xsl:use-attribute-sets="a1"/>
       <a2 xsl:use-attribute-sets="p:a2"/>

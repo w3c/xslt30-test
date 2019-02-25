@@ -20,7 +20,7 @@
          
   </xsl:use-package>  
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out foo="{q:f2()}"/>
   </xsl:template>  
   

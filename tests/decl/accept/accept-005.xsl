@@ -23,7 +23,7 @@
          
   </xsl:use-package>  
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>
       <v1><xsl:value-of select="$v1"/></v1>
     </out>

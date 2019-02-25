@@ -24,7 +24,7 @@
      <xsl:accept component="variable" names="Q{}*" visibility="hidden"/>        
   </xsl:use-package>  
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>
       <v2><xsl:value-of select="$B:v2"/></v2>
     </out>

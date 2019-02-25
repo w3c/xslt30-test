@@ -34,7 +34,7 @@
   </xsl:use-package>  
   
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>
       <xsl:if test="$go">
         <in  xsl:use-attribute-sets="a1-proxy"/>

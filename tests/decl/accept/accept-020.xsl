@@ -20,7 +20,7 @@
      package-version="1.0.0">         
   </xsl:use-package>  
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>
       <v2><xsl:value-of select="$A:v2"/></v2>
     </out>

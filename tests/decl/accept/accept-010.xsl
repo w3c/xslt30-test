@@ -22,7 +22,7 @@
          
   </xsl:use-package>  
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out foo="{$p:v2}"/>
   </xsl:template>  
   

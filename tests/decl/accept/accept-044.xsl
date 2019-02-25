@@ -30,7 +30,7 @@
   </xsl:use-package>  
   
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out xsl:use-attribute-sets="a1">
         <xsl:value-of select="string(C:f1('London')) || $v1"/>
     </out>
