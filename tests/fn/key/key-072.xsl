@@ -4,7 +4,7 @@
 
 <x:stylesheet version="2.0" xmlns:x="http://www.w3.org/1999/XSL/Transform"
   xmlns:fn="http://local/functions" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  extension-element-prefixes="fn xs">
+  exclude-result-prefixes="fn xs">
 
   <x:key name="key1" match="*" use="@name"/>
 

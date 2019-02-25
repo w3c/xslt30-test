@@ -5,8 +5,6 @@
   
   <xsl:mode on-no-match="shallow-copy"/>
   
-  <xsl:output indent="yes" />
-  
   <xsl:strip-space elements="*"/>
   
   <xsl:variable name="original" select="doc('merge018-current.xml')"/>

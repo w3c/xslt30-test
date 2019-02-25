@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns="http://www.w3.org/2012/10/xslt-test-catalog" name="copy">
-   <description>Tests copy</description>
+   <description>Tests the xsl:copy and xsl:copy-of instructions</description>
    <environment name="copy-01">
       <source role=".">
          <content><![CDATA[ 
@@ -1397,6 +1397,45 @@
       </test>
       <result>
          <assert>/out/@y = '3'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-1220">
+      <description>Test xsl:copy-of with namespaces tree-to-tree; copy-namespaces="yes"</description>
+      <created by="Michael Kay" on="2019-02-12"/>
+      <environment ref="copy-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-1220.xsl"/>
+         <initial-template name="xsl:initial-template"/>
+         <param name="COPY_NS" static="yes" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>true()</assert>
+            <assert-xml><![CDATA[<out/>]]></assert-xml>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-1221">
+      <description>Test xsl:copy-of with namespaces tree-to-tree; copy-namespaces="no"</description>
+      <created by="Michael Kay" on="2019-02-12"/>
+      <environment ref="copy-12"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-1220.xsl"/>
+         <param name="COPY_NS" static="yes" select="false()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>true()</assert>
+            <assert-xml><![CDATA[<out/>]]></assert-xml>
+         </all-of>
       </result>
    </test-case>
 

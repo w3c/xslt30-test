@@ -10,11 +10,7 @@
 
 <xsl:template match = "/">
   <out>
-    <xsl:text>
-</xsl:text>
     <n:x>from stylesheet</n:x>
-    <xsl:text>
-</xsl:text>
     <xsl:element name="e" namespace="http://literalURI">
       <xsl:copy-of select="doc/s:a"/>
     </xsl:element>

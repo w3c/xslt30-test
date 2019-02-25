@@ -959,4 +959,21 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="base-uri-053">
+      <description>Base URI of nodes constructed using built-in templates (shallow-copy and deep-copy). Saxon bug 4097.</description>
+      <created by="Michael Kay" on="2019-01-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="base-uri-053.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>every $a in /out/*/@a satisfies ends-with($a, 'base-uri/base-uri-001.out')</assert>
+            <assert>every $b in /out/*/@b satisfies ends-with($b, 'base-uri/base-uri-002.out')</assert>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>

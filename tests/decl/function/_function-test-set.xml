@@ -143,6 +143,7 @@
       <modified by="Abel Braaksma" on="2013-12-09" change="fn:function-name() - The prefix part of the returned QName is implementation dependent."/>
       <modified by="Michael Kay" on="2014-12-17" change="Prevent eager evaluation"/>
       <modified by="Michael Kay" on="2016-04-06" change="Add HOF dependency"/>
+      <modified by="Michael Kay" on="2019-01-21" change="correct unintended error (reserved namespace in extension-element-prefixes)"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="higher_order_functions"/>
@@ -540,6 +541,21 @@
          <assert-xml><![CDATA[<out>17</out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="function-0122">
+      <description>Even with EQName syntax, the function name must be in a namespace</description>
+      <created by="Michael Kay" on="2019-02-12"/>
+      <environment ref="function-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-0122.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0740"/>
+      </result>
+   </test-case>
 
    <test-case name="function-0201">
       <description>simple function, 2 args, one atomized</description>
@@ -738,6 +754,7 @@
    <test-case name="function-0901">
       <description>A user-supplied test that once revealed a bug</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2019-01-21" change="correct unintended error (reserved namespace in extension-element-prefixes)"/>
       <environment ref="function-09"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -921,6 +938,21 @@
       </test>
       <result>
          <assert-xml><![CDATA[<result>10</result>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="function-1015">
+      <description>Promotion of xs:anyURI argument supplied to a function expecting a string</description>
+      <created by="Michael Kay" on="2018-12-21"/>
+      <environment ref="function-10"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1015.xsl"/>
+      </test>
+      <result>
+         <assert>/out = 'false'</assert>
       </result>
    </test-case>
 
@@ -1288,8 +1320,9 @@
    </test-case>
 
    <test-case name="function-1401">
-      <description>Test the node-name#0 function of XSLT2.1 spec</description>
+      <description>Test the node-name#0 function of XSLT 3.0 spec</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2019-01-21" change="correct unintended error (reserved namespace in extension-element-prefixes)"/>
       <environment ref="function-14"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1306,6 +1339,7 @@
       <description>Test the available-environment-variables#0 and environment-variable#1 functions of XPath3.0 spec</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2015-10-22" change="See bug 29222"/>
+      <modified by="Michael Kay" on="2019-01-21" change="correct unintended error (reserved namespace in extension-element-prefixes)"/>
       <environment ref="function-15"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1324,6 +1358,7 @@
          with a compile-time use-when</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Michael Kay" on="2015-10-22" change="See bug 29222"/>
+      <modified by="Michael Kay" on="2019-01-21" change="correct unintended error (reserved namespace in extension-element-prefixes)"/>
       <environment>
          <source role=".">
             <content><![CDATA[<para>p1</para>]]></content>
