@@ -977,5 +977,63 @@
       </result>
    </test-case>
 
+   <test-case name="package-914a">
+      <description>Error XTDE0044, an empty package cannot be executed without an initial match selection</description>
+      <created by="Abel Braaksma" on="2018-01-18"/>
+      <test>
+         <package file="package-914a.xsl" role="principal"/>
+      </test>
+      <result>
+         <error code="XTDE0044"/>
+      </result>
+   </test-case>
+
+   <test-case name="package-914b">
+      <description>Error XTDE0044, a package with a declared mode, set as default mode, cannot be executed without an initial match selection</description>
+      <created by="Abel Braaksma" on="2018-01-18"/>
+      <test>
+         <package file="package-914b.xsl" role="principal"/>
+         <initial-mode name="#default" />
+      </test>
+      <result>
+         <error code="XTDE0044"/>
+      </result>
+   </test-case>
+
+   <test-case name="package-914c">
+      <description>Error XTDE0044, a named mode in a package cannot be executed without an initial match selection</description>
+      <created by="Abel Braaksma" on="2018-01-18"/>
+      <test>
+         <package file="package-914c.xsl" role="principal"/>
+         <initial-mode name="mymode" />
+      </test>
+      <result>
+         <error code="XTDE0044"/>
+      </result>
+   </test-case>
+
+   <test-case name="package-914d">
+      <description>Error XTSE3085, static errors come before dynamic errors, XTDE0044 is not raised, but XTSE3085 is (default mode not declared)</description>
+      <created by="Abel Braaksma" on="2018-01-18"/>
+      <test>
+         <package file="package-914d.xsl" role="principal"/>
+         <initial-mode name="#default" />
+      </test>
+      <result>
+         <error code="XTSE3085"/>
+      </result>
+   </test-case>
+
+   <test-case name="package-914e">
+      <description>Error XTSE3085, static errors come before dynamic errors, XTDE0045 is not raised, but XTSE3085 is (default-mode attribute value is not declared)</description>
+      <created by="Abel Braaksma" on="2018-01-18"/>
+      <test>
+         <package file="package-914e.xsl" role="principal"/>
+         <initial-mode name="non-existing-mode" />
+      </test>
+      <result>
+         <error code="XTSE3085"/>
+      </result>
+   </test-case>
 
 </test-set>
