@@ -6,7 +6,7 @@
     
     <!-- testing invalid names: either XTSE0020 or XTDE3490 -->
     <xsl:output method="xml" indent="no"/>
-    <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
         <events>
             <xsl:merge>
                 <xsl:merge-source 

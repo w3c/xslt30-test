@@ -6,7 +6,7 @@
     
     <!-- testing invalid name: XTDE3490 -->
     <xsl:output method="xml" indent="no"/>
-    <xsl:template name="xsl:initial-template" match="/">
+    <xsl:template name="xsl:initial-template" match="/" visibility="public">
         <events>
             <xsl:merge>
                 <xsl:merge-source 
