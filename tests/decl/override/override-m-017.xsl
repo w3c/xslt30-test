@@ -9,7 +9,7 @@
   
   <xsl:mode name="m3"/>
 
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>12</out>
   </xsl:template>
 

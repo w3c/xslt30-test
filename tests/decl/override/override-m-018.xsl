@@ -11,7 +11,7 @@
     <wrong/>
   </xsl:template>
 
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>12</out>
   </xsl:template>
 

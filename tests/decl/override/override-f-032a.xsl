@@ -19,7 +19,7 @@
     </xsl:override>
   </xsl:use-package>
   
-  <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
     <out>{f:f()()}</out>
   </xsl:template>
 

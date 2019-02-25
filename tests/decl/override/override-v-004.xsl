@@ -24,7 +24,7 @@
   
   
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:variable name="doc"><a><b/></a></xsl:variable>
       <xsl:call-template name="go">
         <xsl:with-param name="node" select="$doc//b"/>

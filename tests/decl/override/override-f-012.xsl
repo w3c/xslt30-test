@@ -32,7 +32,7 @@
  
   
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="$p:final-var = '*+++*'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="{$p:final-var}"/></xsl:otherwise>

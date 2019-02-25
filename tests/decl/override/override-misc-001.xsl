@@ -25,7 +25,7 @@
   
  
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out><xsl:value-of select="$data/key('k', 23)"/></out>
     </xsl:template>
     

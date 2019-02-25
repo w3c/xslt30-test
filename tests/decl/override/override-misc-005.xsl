@@ -19,7 +19,7 @@
     <xsl:accumulator-rule match="*" select="$value - 1"></xsl:accumulator-rule>
   </xsl:accumulator>
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:for-each select="$data">
         <out>
           <a><xsl:copy-of select="accumulator-after('ac')"/></a>

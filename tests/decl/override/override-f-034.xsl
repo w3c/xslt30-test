@@ -32,7 +32,7 @@
   
  
    
-    <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
       <out>
         <xsl:sequence select="p:relatives($data/data)"/>
       </out>

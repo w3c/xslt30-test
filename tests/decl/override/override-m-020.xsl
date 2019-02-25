@@ -10,7 +10,7 @@
     <X><A><B/></A></X>
   </xsl:variable>
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out><xsl:apply-templates select="$in" mode="m3"/></out>
   </xsl:template>
 

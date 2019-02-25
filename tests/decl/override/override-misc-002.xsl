@@ -27,7 +27,7 @@
   
  
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out><xsl:value-of select="$data/accumulator-after('ac')"/></out>
     </xsl:template>
     

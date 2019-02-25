@@ -17,7 +17,7 @@
   
   <xsl:decimal-format name="d" grouping-separator="!" decimal-separator=":"/>
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:for-each select="$data">
         <out>
           <a><xsl:value-of select="format-number(123456.78, '0!000:00', 'd')"/></a>

@@ -33,7 +33,7 @@
   
  
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="$p:f-partial('o') = '*ooo*'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="{$p:f-partial('o')}"/></xsl:otherwise>

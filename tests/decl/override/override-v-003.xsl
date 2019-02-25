@@ -22,7 +22,7 @@
   
   
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="$v-public = 14"><ok/></xsl:when>
         <xsl:otherwise><wrong value="{$v-public}"/></xsl:otherwise>

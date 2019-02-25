@@ -37,7 +37,7 @@
       <xsl:sequence select="p:f('x', 5)"/>
     </xsl:template>  
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:variable name="v" as="xs:string">
         <xsl:apply-templates select="$g//a"/>
       </xsl:variable>

@@ -26,7 +26,7 @@
     
   </xsl:use-package>
   
-  <xsl:template name="xsl:initial-template">
+  <xsl:template name="xsl:initial-template" visibility="public">
     <outa>
       <xsl:call-template name="t">
         <xsl:with-param name="in" select="'cornucopia'"/>

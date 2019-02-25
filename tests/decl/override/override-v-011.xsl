@@ -12,7 +12,7 @@
   
   <xsl:variable name="var" as="xs:decimal" select="12.2"/>
   
-  <xsl:template name="xsl:initial-template">
+  <xsl:template name="xsl:initial-template" visibility="public">
     <out><xsl:value-of select="$var[. instance of xs:int]"/></out>
   </xsl:template>
 

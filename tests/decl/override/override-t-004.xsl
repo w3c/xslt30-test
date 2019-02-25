@@ -40,14 +40,14 @@
   
  
    
-    <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>
       <xsl:call-template name="t">
             <xsl:with-param name="in" select="'x'"/>
             <xsl:with-param name="count" select="5"/>
       </xsl:call-template>
     </out>  
-    </xsl:template>
+  </xsl:template>
     
 
   

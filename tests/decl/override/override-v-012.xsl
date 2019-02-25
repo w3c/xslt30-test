@@ -12,7 +12,7 @@
   
   <xsl:use-package name="http://www.w3.org/xslt30tests/override-base-v-003" package-version="*"/>
   
-  <xsl:template name="xsl:initial-template">
+  <xsl:template name="xsl:initial-template" visibility="public">
     <out><xsl:value-of select="$var[. instance of xs:int]"/></out>
   </xsl:template>
 

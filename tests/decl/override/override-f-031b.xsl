@@ -26,7 +26,7 @@
         </xsl:override>
     </xsl:use-package>
 
-    <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
         <out>
             <a>{f:a(12e0) instance of xs:double}</a>
             <b>{f:a(12.0) instance of xs:decimal}</b>

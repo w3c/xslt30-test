@@ -12,7 +12,7 @@
   
   <xsl:variable name="data" select="0 to 10"/>
 
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>{filter($data, p:f#1)}</out>
   </xsl:template>
 

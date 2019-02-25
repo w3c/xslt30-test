@@ -25,7 +25,7 @@
        <Z><Y><X><A><B>22</B></A></X></Y></Z>
      </xsl:variable>
      
-     <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
        <out>
          <xsl:apply-templates select="$in" mode="m3"/>
        </out>

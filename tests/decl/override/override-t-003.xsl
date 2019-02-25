@@ -37,14 +37,14 @@
   
     <!-- Demonstrate that the named template u in the base package is rebound to the declaration of t in this package -->
    
-    <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>
       <xsl:call-template name="u">
             <xsl:with-param name="in" select="'x'"/>
             <xsl:with-param name="count" select="5"/>
       </xsl:call-template>
     </out>  
-    </xsl:template>
+  </xsl:template>
     
   
   

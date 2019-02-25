@@ -19,7 +19,7 @@
   
   
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out/>
     </xsl:template>
     

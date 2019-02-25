@@ -33,7 +33,7 @@
   
     <xsl:variable name="v" select="p:f('x', 5)"/>
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="$v = '*xxxxx*'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="{$v}"/></xsl:otherwise>

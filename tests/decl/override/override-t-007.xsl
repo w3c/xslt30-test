@@ -38,7 +38,7 @@
   
  
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
     <out>
       <xsl:call-template name="t">
             <xsl:with-param name="in" select="'x'"/>

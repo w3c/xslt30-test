@@ -8,7 +8,7 @@
     
     <xsl:import href="override-f-028.xsl"/>
     
-    <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
         <out2>XX</out2>
     </xsl:template>
     

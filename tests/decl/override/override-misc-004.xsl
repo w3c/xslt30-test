@@ -17,7 +17,7 @@
   
   <xsl:key name="k" match="*" use="name()"/>
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out>
         <a><xsl:copy-of select="$data/key('k', 'x')"/></a>
         <xsl:for-each select="$data">

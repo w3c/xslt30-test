@@ -24,7 +24,7 @@
         </X>
   </xsl:variable>
 
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <out>
       <xsl:apply-templates select="$in//A" mode="m3"/>
       <xsl:apply-templates select="$in//A" mode="m4"/>

@@ -22,7 +22,7 @@
         </xsl:override>
     </xsl:use-package>
 
-    <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
         <out>{
             p:f('xxx', 3)
         }</out>

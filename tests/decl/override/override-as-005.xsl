@@ -26,7 +26,7 @@
     <xsl:attribute name="priv9" select="'priv9'"/>
   </xsl:attribute-set>
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out>
         <x xsl:use-attribute-sets="as-public"/>
         <y xsl:use-attribute-sets="as-private"/>

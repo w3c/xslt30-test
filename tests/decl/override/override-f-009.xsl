@@ -36,7 +36,7 @@
       <xsl:sequence select="if ($cond) then p:f('x', 5) else p:local-function(true())"/>
     </xsl:function>
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="p:local-function(true()) = '*xxxxx*'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="{p:local-function(true())}"/></xsl:otherwise>

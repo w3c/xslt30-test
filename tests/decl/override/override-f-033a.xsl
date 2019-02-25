@@ -21,7 +21,7 @@
     </xsl:override>
   </xsl:use-package>
   
-  <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
     <out>{p:f((1,2,3))}</out>
   </xsl:template>
   

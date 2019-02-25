@@ -28,7 +28,7 @@
   
   
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out>
         <x xsl:use-attribute-sets="as-public"/>
         <y xsl:use-attribute-sets="as-abstract"/>

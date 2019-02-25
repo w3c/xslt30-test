@@ -35,7 +35,7 @@
         </nodes>
     </xsl:variable>
     
-    <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
         <results>
             <a-is-cyclic>{g:refers-to-self($test-data//node[@id='a'])}</a-is-cyclic>
             <e-is-cyclic>{g:refers-to-self($test-data//node[@id='e'])}</e-is-cyclic>
