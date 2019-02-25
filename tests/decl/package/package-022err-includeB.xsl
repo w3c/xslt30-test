@@ -6,11 +6,12 @@
     
     <!-- deny here, accept in the next xsl:include -->    
     <xsl:use-package name="urn:use-me" package-version="*"  >
-        <xsl:accept component="function" names="pkg:function1" visibility="hidden" />
-        <!-- deliberately forgetting to hide pkg:function2, see bug #30389 --> 
+        <!-- pkg:function1 is accepted here as 'private', but also accepted in package-022err-includeC.xsl as 'public', this is an error XTSE3050 --> 
+        <xsl:accept component="function" names="pkg:function1" visibility="private" />
+        <xsl:accept component="function" names="pkg:function2" visibility="private" />
     </xsl:use-package>
 
     <!-- cause two xsl:use-package on the same stylesheet level, this is allowed -->
-    <xsl:include href="package-022-includeC.xsl"/>
+    <xsl:include href="package-022err-includeC.xsl"/>
     
 </xsl:stylesheet>

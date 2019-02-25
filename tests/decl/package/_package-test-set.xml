@@ -620,6 +620,7 @@
       <description>Using xsl:include 3 levels deep and using xsl:use-package twice with the same declaration, follow-up on bug 29453</description>
       <created by="Abel Braaksma" on="2016-05-26"/>
       <modified by="Abel Braaksma" on="2018-12-23" change="Fix, test included **-020.xsl files instead of **-021.xsl and therefore tested the wrong assumptions"/>
+      <modified by="Abel Braaksma" on="2018-01-10" change="Fix to reflect resolution of bug #30389"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
@@ -635,11 +636,31 @@
       </result>
    </test-case>
    
+   <test-case name="package-021err">
+      <description>Variant of package-022, error scenario (see bug #30389). Diamond problem caused by multiple xsl:include in different levels cause the homonymous components to come into scope</description>
+      <created by="Abel Braaksma" on="2018-01-10"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-021err.xsl" role="principal"/>
+         <package file="package-021err-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-021err-includeA.xsl" role="secondary"/>
+         <stylesheet file="package-021err-includeB.xsl" role="secondary"/>
+         <stylesheet file="package-021err-includeC.xsl" role="secondary"/>
+      </test>
+      <result>
+         <!-- caused by duplicate using pkg:function1 through multiple xsl:include -->
+         <error code="XTSE3050" />
+      </result>
+   </test-case>
+   
    <test-case name="package-022">
       <description>Using xsl:include 3 levels deep and using xsl:use-package twice with the different declaration (public follows hidden), follow-up on bug 29453 and 29667</description>
       <created by="Abel Braaksma" on="2016-05-26"/>
       <modified by="Abel Braaksma" on="2016-06-03" change="Added different visibilities in package-022-includeC.xsl per Bug 29667"/>
       <modified by="Abel Braaksma" on="2018-12-23" change="Fix, test included **-020.xsl files instead of **-022.xsl and therefore tested the wrong assumptions"/>
+      <modified by="Abel Braaksma" on="2018-01-10" change="Fix another -020 vs -022 typo (result of merge?), and fix to reflect resolution of bug #30389"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
@@ -652,6 +673,24 @@
       </test>
       <result>
          <assert-string-value>You found me!</assert-string-value>
+      </result>
+   </test-case>
+   
+   <test-case name="package-022err">
+      <description>Variant of package-022 error scenario (see bug #30389), diamond problem, using xsl:include resulting in multiple times the same package, not fully matched xsl:accept, resulting in conflict</description>
+      <created by="Abel Braaksma" on="2018-01-10"/>
+      <environment>
+         <source file="package-000.xml" uri="package-000.xml" role="."/>
+      </environment>
+      <test>
+         <package file="package-022err.xsl" role="principal"/>
+         <package file="package-022err-used.xsl" uri="urn:use-me" package-version="0.1"  role="secondary"/>
+         <stylesheet file="package-022err-includeA.xsl" role="secondary"/>
+         <stylesheet file="package-022err-includeB.xsl" role="secondary"/>
+         <stylesheet file="package-022err-includeC.xsl" role="secondary"/>
+      </test>
+      <result>
+         <error code="XTSE3050" />
       </result>
    </test-case>
    
@@ -854,7 +893,7 @@
    </test-case>
 
    <test-case name="package-911">
-      <description>Use xsl:import in a package with import precedence resulting in FAIL</description>
+      <description>Use xsl:import to import a stylesheet from within in a package with import precedence resulting in xsl:mode default FAIL</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
@@ -871,12 +910,13 @@
    <test-case name="package-912">
       <description>Global variables in a library package cannot access the global context item (spec section 2.3.2)</description>
       <created by="Michael Kay" on="2015-10-24"/>
+      <modified by="Abel Braaksma" on="2018-01-19" change="Added uri, packages that are not principal, should specify the name"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
       </environment>
       <test>
          <package file="package-912.xsl" role="principal"/>
-         <package file="package-912-used.xsl" role="secondary"/>
+         <package file="package-912-used.xsl" uri="urn:package-912-base" role="secondary"/>
       </test>
       <result>
          <error code="XPDY0002" />
