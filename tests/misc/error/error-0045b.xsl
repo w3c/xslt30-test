@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:package xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
    version="3.0" 
    default-mode="does-not-exist">
 
                     <!--                       
                        Tests several variants of invocation that relate to throwing or not throwing the 
-                       following error. Difference with 0045a is that this file has a default-mode set 
-                       and that the name="main" is now mode="main"
-                       
-                       It is a non-recoverable dynamic
-                        error if the invocation of the stylesheet specifies an initial 
-                        mode (other than the default mode) that does not match the
-                        expanded QName in the
-                        mode attribute of any template defined in the stylesheet.
+                       following error. If the invocation specifies #default, it takes whatever is in @default-mode
+                       However, in an xsl:package, this default mode must exist or will raise XTSE3085 
+                       (this error comes before XTDE0045, which is not applicable here, see bug #30221)
                     -->
                     
    <xsl:template match="/" mode="main">
       <out />
    </xsl:template>
-</xsl:stylesheet>
+</xsl:package>
 
