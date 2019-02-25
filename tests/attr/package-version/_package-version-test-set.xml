@@ -252,14 +252,57 @@
       </result>
    </test-case>
    
-   <test-case name="package-version-101a">
-      <description>Loading a versionless package by its name</description>
+   <test-case name="package-version-101">
+      <description>Loading a versionless package by its name, using version "*"</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>
+      <modified by="Abel Braaksma" on="2018-01-17" change="Renumbered from 101a. Removed package-version attribute from package xsl file."/>
+      <environment>
+         <package file="package-version-001.xsl" uri="urn:simple" role="secondary" />
+      </environment>
+      <test>
+         <stylesheet file="package-version-101.xsl"/>
+      </test>
+      <result>
+         <assert>/res = 'Success'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="package-version-102">
+      <description>Loading a versionless package by its name, using version 1 (the default acc. to section 3.5)</description>
       <created by="Abel Braaksma" on="2016-06-06"/>
       <environment>
          <package file="package-version-001.xsl" uri="urn:simple" role="secondary" />
       </environment>
       <test>
-         <stylesheet file="package-version-101a.xsl"/>
+         <stylesheet file="package-version-102.xsl"/>
+      </test>
+      <result>
+         <assert>/res = 'Success'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="package-version-103">
+      <description>Loading a versionless package by its name, using explicit version 1.0.0</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>
+      <environment>
+         <package file="package-version-001.xsl" uri="urn:simple" role="secondary" />
+      </environment>
+      <test>
+         <stylesheet file="package-version-103.xsl"/>
+      </test>
+      <result>
+         <assert>/res = 'Success'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="package-version-104">
+      <description>Loading a versionless package by its name, using explicit version 1.*</description>
+      <created by="Abel Braaksma" on="2016-06-06"/>
+      <environment>
+         <package file="package-version-001.xsl" uri="urn:simple" role="secondary" />
+      </environment>
+      <test>
+         <stylesheet file="package-version-104.xsl"/>
       </test>
       <result>
          <assert>/res = 'Success'</assert>
