@@ -21,11 +21,12 @@
    </test-case>
    
    <test-case name="current-output-uri-002">
-      <description>Initial value of current-output-uri</description>
+      <description>Initial value of current-output-uri is the same as the base output URI (regardless of whether the principal result is output to a different location)</description>
       <created by="Michael Kay" on="2014-07-12"/>      
       <test>
          <stylesheet file="current-output-uri-002.xsl"/>
          <initial-template name="main"/>
+         <!-- sets the base output uri -->
          <output file="results/current-output-uri-002.xml"/>
       </test>
       <result>
@@ -34,15 +35,18 @@
    </test-case>
    
    <test-case name="current-output-uri-003">
-      <description>Value of current-output-uri() within xsl:result-document</description>
-      <created by="Michael Kay" on="2014-07-12"/>      
+      <description>Value of current-output-uri() should change within xsl:result-document</description>
+      <created by="Michael Kay" on="2014-07-12"/>
+      <modified by="Abel Braaksma" on="2019-02-02" change="The assertion was not relative to the base output URI, but relative to the test base, leading to 'result/result/second' as tested location"/>
       <test>
          <stylesheet file="current-output-uri-003.xsl"/>
          <initial-template name="main"/>
+         <!-- sets the base output uri -->
          <output file="results/current-output-uri-003.xml"/>
       </test>
       <result>
-         <assert-result-document uri="results/second/current-output-uri-003.xml">
+         <!-- relative to the base output uri -->
+         <assert-result-document uri="second/current-output-uri-003.xml">
             <assert>ends-with(/out, 'results/second/current-output-uri-003.xml')</assert>
          </assert-result-document>
       </result>
