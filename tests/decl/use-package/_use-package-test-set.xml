@@ -34,13 +34,13 @@
    <environment name="use-package-xml-to-json">
       <source file="use-package-150.xml" role="."/>
       <package file="use-package-xml-to-json.xsl" role="secondary"
-         uri="http://www.w3.org/2013/XSLT/xml-to-json.xsl" package-version="1.0"/>
+         uri="http://www.w3.org/2013/XSLT/xml-to-json" package-version="1.0"/>
    </environment>
    
    <environment name="use-package-xml-to-json-with-streaming">
       <source file="use-package-150.xml" role="."  streaming="true"/>
       <package file="use-package-xml-to-json.xsl" role="secondary"
-         uri="http://www.w3.org/2013/XSLT/xml-to-json.xsl" package-version="1.0"/>
+         uri="http://www.w3.org/2013/XSLT/xml-to-json" package-version="1.0"/>
       <param name="STREAMABLE" as="xs:boolean" static="yes" select="true()"/>
    </environment>
    
@@ -312,6 +312,7 @@
       <description>Simple call of xml-to-json package extracted from the spec</description>
       <created by="Michael Kay" on="2016-08-23"/>
       <modified by="Michael Kay" on="2016-09-20" change="add expected result"/>
+      <modified by="Abel Braaksma" on="2019-02-20" change="Fix JSON package name URI in environment use-package-xml-to-json so that package can be discovered properly (package name must match)"/>
       <environment ref="use-package-xml-to-json"/>
       <dependencies>
          <feature value="higher_order_functions"/>
@@ -327,6 +328,7 @@
    <test-case name="use-package-151">
       <description>Call xml-to-json package extracted from the spec, with option indent=true()</description>
       <created by="Michael Kay" on="2016-10-06"/>
+      <modified by="Abel Braaksma" on="2019-02-20" change="Fix JSON package name URI in environment use-package-xml-to-json so that package can be discovered properly (package name must match)"/>
       <environment ref="use-package-xml-to-json"/>
       <dependencies>
          <feature value="higher_order_functions"/>
@@ -349,6 +351,7 @@
       <description>Simple call of xml-to-json package extracted from the spec, with streaming</description>
       <created by="Michael Kay" on="2016-10-06"/>
       <modified by="Michael Kay" on="2017-02-15" change="add streaming dependency"/>
+      <modified by="Abel Braaksma" on="2019-02-20" change="Fix JSON package name URI in environment use-package-xml-to-json-with-streaming so that package can be discovered properly (package name must match)"/>
       <environment ref="use-package-xml-to-json-with-streaming"/>
       <dependencies>
          <feature value="streaming"/>
