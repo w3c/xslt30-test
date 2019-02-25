@@ -34,6 +34,11 @@
       <source role="." file="merge015.xml"/>
    </environment>
    
+   <environment name="merge046">
+      <source file="log-file-1.xml" uri="log-file-1.xml"/>
+      <source file="log-file-2.xml" uri="log-file-2.xml"/>
+   </environment>
+   
    <environment name="merge049">
       <schema role="stylesheet-import"
               file="books.xsd"/>
@@ -680,7 +685,8 @@
       <created by="Michael Kay" on="2014-04-10"/>
       <modified by="Abel Braaksma" on="2018-12-22" change="XTSE0020 can be thrown for the name attribute, but the code as written may also hiccup statically on XTDE3490, which should be raised on fn:current-merge-group"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'xsl:initial-template' public, private named templates are not eligible initial templates (bug #30398)"/>
-      <environment ref="merge002"/>
+      <modified by="Abel Braaksma" on="2019-02-23" change="Change environment reference, original merge002 contained context node, which forces apply-templates invocation, while the goal of the test is call-template invocation"/>
+      <environment ref="merge046"/>
       <test>
          <stylesheet file="merge-046.xsl"/>
       </test>
@@ -693,10 +699,11 @@
    </test-case>
    
    <test-case name="merge-046a">
-      <description>xsl:merge: xsl:current-merge-group with source name argument, not an NCName</description>
+      <description>xsl:merge: xsl:merge-source/@name not an NCName</description>
       <created by="Abel Braaksma" on="2018-12-22"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'xsl:initial-template' public, private named templates are not eligible initial templates (bug #30398)"/>
-      <environment ref="merge002"/>
+      <modified by="Abel Braaksma" on="2019-02-23" change="Change environment reference, original merge002 contained context node, which forces apply-templates invocation, while the goal of the test is call-template invocation"/>
+      <environment ref="merge046"/>
       <test>
          <stylesheet file="merge-046a.xsl"/>
       </test>
@@ -709,7 +716,8 @@
       <description>xsl:merge: fn:current-merge-group with invalid source name argument, not an NCName, but must raise XTDE3490</description>
       <created by="Abel Braaksma" on="2018-12-22"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'xsl:initial-template' public, private named templates are not eligible initial templates (bug #30398)"/>
-      <environment ref="merge002"/>
+      <modified by="Abel Braaksma" on="2019-02-23" change="Change environment reference, original merge002 contained context node, which forces apply-templates invocation, while the goal of the test is call-template invocation"/>
+      <environment ref="merge046"/>
       <test>
          <stylesheet file="merge-046b.xsl"/>
       </test>
