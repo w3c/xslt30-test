@@ -11,6 +11,7 @@
       <description>Simplest possible package</description>
       <created by="Michael Kay" on="2013-07-08"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make main public, private named templates are not eligible initial templates (bug #30398) (package-001a/b/c/d/e/f/g/h/i/j/k/l/m/n/o/p/q/r/s/t for (non) error-variants of the original)"/>
       <test>
          <package file="package-001.xsl" role="principal"/>
          <initial-template name="main"/>
@@ -31,6 +32,7 @@
       <created by="Michael Kay" on="2013-07-08"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
       <modified by="Abel Braaksma" on="2015-03-28" change="Bug 24050, principal package does not require a name, renamed test from -901 to -002"/>
+      <modified by="Abel Braaksma" on="2019-02-19" change="Make xsl:initial-template public, private named templates are not eligible initial templates (bug #30398)"/>
       <test>
          <package file="package-002.xsl" role="principal"/>
       </test>
@@ -54,7 +56,7 @@
    </test-case>
 
    <test-case name="package-004">
-      <description>An empty package with a declared default mode</description>
+      <description>An empty package with a declared default mode, which is always eligible as a mode for apply-templates invocation, even when private</description>
       <created by="Abel Braaksma" on="2015-10-22"/>
       <environment>
          <source file="package-000.xml" uri="package-000.xml" role="."/>
@@ -169,6 +171,7 @@
       </environment>
       <test>
          <package file="package-011.xsl" role="principal"/>
+         <!-- this tests the absence of <initial-mode>, which should select the default mode (see doc) -->
       </test>
       <result>
          <assert-string-value></assert-string-value>
