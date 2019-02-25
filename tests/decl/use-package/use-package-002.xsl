@@ -16,7 +16,7 @@
   
     <!-- Call final function defined in used package -->
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="p:f-final('x', 5) = 'xxxxx'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="p:f('x', 5)"/></xsl:otherwise>

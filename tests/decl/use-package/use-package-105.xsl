@@ -20,7 +20,7 @@
       <xsl:sequence select="key('k', $search, $data)"/>
     </xsl:function>
     
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out p="{p:find($data, 'aaa')/column[3]}" q="{q:find($data, 'aaa')/column[3]}"/>
     </xsl:template>
     

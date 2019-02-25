@@ -17,7 +17,7 @@
     <xsl:decimal-format grouping-separator="^"/>
     <xsl:decimal-format name="a" grouping-separator="$"/>
     
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out p="{p:format(1234.5)}" q="{q:format(1234.5)}"/>
     </xsl:template>
     

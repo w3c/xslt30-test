@@ -11,13 +11,9 @@
   <!-- tests that the unnamed output format is local to a package -->
   
   <xsl:use-package name="http://www.w3.org/xslt30tests/use-package-base-002" package-version="1.0.0"/>
-  
-  
         
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:call-template name="go"/>
     </xsl:template>
 
-  
-  
 </xsl:package>   

@@ -14,7 +14,7 @@
   
   
         
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out>zzz</out>
     </xsl:template>
 

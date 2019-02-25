@@ -20,7 +20,7 @@
       <xs:test/>
     </xsl:function>
     
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:element name="out">
         <xsl:sequence select="q:alias(), p:alias()"/>
       </xsl:element>

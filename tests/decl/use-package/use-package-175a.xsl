@@ -10,7 +10,7 @@
     <xsl:use-package name="urn:175c"/>
     <xsl:mode/>
     
-    <xsl:template name="xsl:initial-template">
+    <xsl:template name="xsl:initial-template" visibility="public">
         <out>
             <bb><xsl:call-template name="b"/></bb>
             <cc><xsl:call-template name="c"/></cc>

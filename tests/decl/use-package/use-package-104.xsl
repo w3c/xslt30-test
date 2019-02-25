@@ -14,7 +14,7 @@
   
   
     
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <out p="{format-number(1234.5, '0.0', 'a')}"/>
     </xsl:template>
     

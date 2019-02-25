@@ -15,7 +15,7 @@
   
     <!-- Access final variable defined in used package -->
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="$v-final = 'v/final'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="$v-final"/></xsl:otherwise>

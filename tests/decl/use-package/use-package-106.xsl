@@ -16,7 +16,7 @@
     
     <xsl:output use-character-maps="cm"/>
     
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:result-document><out/></xsl:result-document>
     </xsl:template>
 

@@ -6,7 +6,7 @@
 
   <xsl:use-package name="http://www.w3.org/xslt30tests/use-package-base-004" package-version="2.0.0-alpha:beta"/>
 
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <package-version>
       <xsl:value-of select="$package-version"/>
     </package-version>

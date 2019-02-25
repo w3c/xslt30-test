@@ -15,7 +15,7 @@
   
     <!-- Access public variable defined in used package -->
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="$v-public = 'v/public'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="$v-public"/></xsl:otherwise>

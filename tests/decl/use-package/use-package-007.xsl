@@ -15,7 +15,7 @@
   
     <!-- Access private variable defined in used package (fails) -->
    
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
       <xsl:choose>
         <xsl:when test="$v-private = 'v/private'"><ok/></xsl:when>
         <xsl:otherwise><wrong value="$v-private"/></xsl:otherwise>
