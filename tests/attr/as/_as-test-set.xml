@@ -2266,6 +2266,56 @@ a:_underscore_
       </result>
    </test-case>
 
+   <test-case name="as-1303">
+      <description>Test with global xsl:variable that has @as="document(element(*, xs:untyped?))+" and @select contains a sequence of document, or mixed nodes from input file.</description>
+      <keywords>DocumentTest ElementNameOrWildcard xs:untyped OccurrenceIndicator</keywords>
+      <created by="Abel Braaksma" on="2019-02-06"/>
+      <environment ref="as-13"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-1303.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+            <e1>truetruetruetrue</e1>
+            <e2>truefalsetruefalse</e2>
+            <e3>truefalsefalsetrue</e3>
+            <e4>truefalsefalsetrue</e4>
+            <e5>truetruetruetrue</e5>
+            <e6>falsefalsefalsefalsetruefalsetruefalse</e6>
+         </out>]]>
+         </assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="as-1304">
+      <description>Test with global xsl:variable that has @as="document(element(*, xs:untyped?))+" and @select contains a sequence of document, or mixed nodes from input file.</description>
+      <keywords>DocumentTest ElementNameOrWildcard xs:untyped OccurrenceIndicator</keywords>
+      <created by="Abel Braaksma" on="2019-02-06"/>
+      <environment ref="as-13"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-1304.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>
+            <e1>falsetruetruefalse</e1>
+            <e2>falsetruetruefalse</e2>
+            <e3>falsefalsefalsefalse</e3>
+            <e4>falsetruetruefalse</e4>
+            <e5>falsefalsefalsefalse</e5>
+            <e6>falsetruetruefalse</e6>
+            <e7>falsetruetruefalse</e7>
+            <e8>truetruetruetrue</e8>
+         </out>]]>
+         </assert-xml>
+      </result>
+   </test-case>
+
    <test-case name="as-1401">
       <description>Test with global xsl:variable that has @as="attribute()*" and @select contains: -one attribute node, a sequence of attribute nodes from input file, an empty sequence obtained at run time, (), attribute nodes from a temporary tree</description>
       <keywords>AttributeTest OccurrenceIndicator attribute-axis empty-sequence xsl:variable</keywords>
