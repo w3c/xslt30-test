@@ -1621,12 +1621,13 @@ It is a non-recoverable dynamic
    </test-case>
    
    <test-case name="error-0045b">
-      <description>Tests showing that XTDE0045 should *not* be raised when a default mode is not declared
+      <description>Tests showing that XTDE0045 should *not* be raised when a default mode is not declared (but XTSE3085 is)
          
          [ERR XTSE3085] It is a static error, when the effective value of the declared-modes attribute
             of an xsl:package element is yes, if the package contains an explicit reference to an 
-            undeclared mode, or if it implicitly uses the unnamed mode and the unnamed mode is undeclared. .</description>
+            undeclared mode, or if it implicitly uses the unnamed mode and the unnamed mode is undeclared.</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
+      <modified by="Abel Braaksma" on="2019-02-25" change="Bug #30221. Fix expected error code, change to xsl:package and fix related tests that use this stylesheet"/>
       <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1642,14 +1643,13 @@ It is a non-recoverable dynamic
    </test-case>
    
    <test-case name="error-0045ba">
-      <description>Tests the following error with a default-mode attribute on xsl:stylesheet to a non-existing value
-         AND invoking the stylesheet with yet another non-existing mode.
+      <description>Tests showing that XTDE0045 should *not* be raised when a default mode is not declared, even when you invoke with another non-existing mode  (but XTSE3085 is)
          
-         Error: It is a non-recoverable dynamic
-                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
-                        expanded QName in the
-                        mode attribute of any template defined in the stylesheet.</description>
+            [ERR XTSE3085] It is a static error, when the effective value of the declared-modes attribute
+            of an xsl:package element is yes, if the package contains an explicit reference to an 
+            undeclared mode, or if it implicitly uses the unnamed mode and the unnamed mode is undeclared.</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
+      <modified by="Abel Braaksma" on="2019-02-25" change="Bug #30221. Fix expected error code, change to xsl:package and fix related tests that use this stylesheet"/>
       <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1659,20 +1659,19 @@ It is a non-recoverable dynamic
          <initial-mode name="non-existing-other-than-default-mode"/>
       </test>
       <result>
-         <error code="XTDE0045"/>
+         <error code="XTSE3085"/>
       </result>
    </test-case>
    
    <test-case name="error-0045bb">
-      <description>Tests that following error DOES NOT occur with a default-mode attribute on xsl:stylesheet 
-         to a non-existing value AND with the initial mode set to #unnamed
+      <description>Tests showing that #unnamed is always eligible and doesn't throw XTDE0045, but that XTSE3085 must be raised even when mode in @default-mode is never used
          
-         Error: It is a non-recoverable dynamic
-                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
-                        expanded QName in the
-                        mode attribute of any template defined in the stylesheet.</description>
+            [ERR XTSE3085] It is a static error, when the effective value of the declared-modes attribute
+            of an xsl:package element is yes, if the package contains an explicit reference to an 
+            undeclared mode, or if it implicitly uses the unnamed mode and the unnamed mode is undeclared.</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
       <modified by="Michael Kay" on="2015-08-11" change="The transformation produces an empty document, not an empty sequence"/>
+      <modified by="Abel Braaksma" on="2019-02-25" change="Bug #30221. Fix expected error code, change to xsl:package and fix related tests that use this stylesheet"/>
       <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1682,22 +1681,19 @@ It is a non-recoverable dynamic
          <initial-mode name="#unnamed"/>
       </test>
       <result>
-         <all-of>
-           <assert-string-value/>
-           <assert>not(/node())</assert>
-         </all-of>
+         <error code="XTSE3085"/>
       </result>
    </test-case>
    
    <test-case name="error-0045bc">
-      <description>Tests that following error DOES NOT occur with a default-mode attribute on xsl:stylesheet 
-         to a non-existing value AND with the initial mode set to an existing mode
+      <description>Tests that XTDE0045 DOES NOT occur with a default-mode attribute on xsl:stylesheet 
+         to a non-existing value AND with the initial mode set to an existing mode (but XTSE3085 is)
          
-         Error: It is a non-recoverable dynamic
-                        error if the invocation of the stylesheet specifies an initial mode (other than the default mode) that does not match the
-                        expanded QName in the
-                        mode attribute of any template defined in the stylesheet.</description>
+            [ERR XTSE3085] It is a static error, when the effective value of the declared-modes attribute
+            of an xsl:package element is yes, if the package contains an explicit reference to an 
+            undeclared mode, or if it implicitly uses the unnamed mode and the unnamed mode is undeclared.</description>
       <created by="Abel Braaksma" on="2014-10-21"/>
+      <modified by="Abel Braaksma" on="2019-02-25" change="Bug #30221. Fix expected error code, change to xsl:package and fix related tests that use this stylesheet"/>
       <environment ref="error001a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1707,7 +1703,7 @@ It is a non-recoverable dynamic
          <initial-mode name="main"/>
       </test>
       <result>
-         <assert-xml ><![CDATA[<out/>]]></assert-xml>
+         <error code="XTSE3085"/>
       </result>
    </test-case>
    
