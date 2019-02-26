@@ -7,8 +7,14 @@
   declared-modes="yes"
   default-mode="a">
   
-  <xsl:mode name="a" visibility="public"/>
+  <!-- this mode 'a' is an eligible initial mode, it is in @default-mode, whether it is private or (here) public does not matter --> 
+  <xsl:mode name="a" visibility="public" />
+  
+  <!-- mode '#unnamed is always an eligible initial mode -->
   <xsl:mode/>  
+  
+  <!-- a private mode (by default), is not an eligible default mode -->
+  <xsl:mode name="private-mode" />
 
   <xsl:template match="/">
       <ok/>

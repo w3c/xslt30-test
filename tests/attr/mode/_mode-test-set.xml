@@ -2716,8 +2716,9 @@
    </test-case>
    
    <test-case name="mode-1705a">
-      <description>Test attribute default-mode on xsl:package element, error scenario</description>
+      <description>Test attribute default-mode on xsl:package element, pointing to an implicitly private mode, this is allowed</description>
       <created by="Abel Braaksma" on="2016-07-07"/>
+      <modified by="Abel Braaksma" on="2019-02-25" change="Fix, see bug #30144, default-mode is always eligible. Was: expect XTDE0045, fix: no error (updated descr to reflect this, added mode-1705b for the error variant)"/>
       <environment ref="mode-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2727,7 +2728,23 @@
          <initial-mode name="a"/>
       </test>
       <result>
-         <error code="XTDE0045"/>
+         <assert>/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1705b">
+      <description>Test attribute default-mode on xsl:package element, error scenario, initial mode is not the default mode and is private</description>
+      <created by="Abel Braaksma" on="2019-02-25"/>
+      <environment ref="mode-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <package file="mode-1705b.xsl" role="principal"/>
+         <initial-mode name="private-mode"/>
+      </test>
+      <result>
+         <error code="XTDE0045" />
       </result>
    </test-case>
    
@@ -2854,6 +2871,22 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out>no-mode:a-text</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1714err">
+      <description>Error scenario: test attribute default-mode (named mode) on xsl:template element inside package: not eligible as initial mode</description>
+      <created by="Debbie Lockett" on="2015-09-07"/>
+      <environment ref="mode-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <package file="mode-1714err.xsl" role="principal"/>
+         <initial-mode name="a"/>
+      </test>
+      <result>
+         <error code="XTDE0045" />
       </result>
    </test-case>
    
