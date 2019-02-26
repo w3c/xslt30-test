@@ -3,7 +3,7 @@
     exclude-result-prefixes="xs"
     version="3.0">
     
-    <!-- No match for document node, but spec has changed so its children get processed -->
+    <!-- No match for document node, but spec has changed so its children get processed (bug #30219) -->
     
     <xsl:param name="STREAMABLE" static="yes" select="true()"/>
     <xsl:mode _streamable="{$STREAMABLE}" on-no-match="deep-skip" />
