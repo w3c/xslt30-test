@@ -1103,6 +1103,43 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="package_version_resolution" substitutionGroup="dependency">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Indicates that a test depends on ordered resolution of package version numbers 
+                    when multiple versions match a given version range of a &lt;use-package&gt; declaration. The 
+                    value attribute can be highest_version, lowest_version, unspecified.</p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:restriction base="dependencyType">
+                    <xs:attribute name="value">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="highest_version">
+                                    <xs:annotation>
+                                        <xs:documentation><p>Version chosen is the highest version of the matching range</p></xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="lowest_version">
+                                    <xs:annotation>
+                                        <xs:documentation><p>Version chosen is the lowest version of the matching range</p></xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="unspecified">
+                                    <xs:annotation>
+                                        <xs:documentation><p>The version chosen is any version of the matching range</p></xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:restriction>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="sweep_and_posture" substitutionGroup="dependency">
         <xs:annotation>
             <xs:documentation>

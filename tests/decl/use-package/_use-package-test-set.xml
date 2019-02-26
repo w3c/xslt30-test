@@ -553,14 +553,48 @@
          <initial-template name="main"/>
       </test>
       <result>
-         <assert>/package-version = '2.0.0'</assert>
+         <assert>/package-version = ('2.0.0')</assert>
       </result>
    </test-case>
-   <test-case name="use-package-203">
-      <description>Testing package versioning - version 1.0.0,2.0.0</description>
+   <test-case name="use-package-203a">
+      <description>Testing package versioning - version 1.0.0,2.0.0, version resolution: support highest version</description>
       <created by="John Lumley" on="2014-10-09"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'main' public, private named templates are not eligible initial templates (bug #30398)"/>
+      <modified by="Abel Braaksma" on="2019-02-26" change="Fix for bug #30106, add version-resolution dependency, renamed to use-package-203a and added -203b and -204c"/>      
       <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="highest_version" satisfied="true"/>
+      </dependencies>
+      <test>
+         <package file="use-package-203.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-203b">
+      <description>Testing package versioning - version 1.0.0,2.0.0, version resolution: support lowest version</description>
+      <created by="Abel Braaksma" on="2019-02-26"/>
+      <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="lowest_version" satisfied="true"/>
+      </dependencies>
+      <test>
+         <package file="use-package-203.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('1.0.0')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-203c">
+      <description>Testing package versioning - version 1.0.0,2.0.0, version resolution: support any version</description>
+      <created by="Abel Braaksma" on="2019-02-26"/>
+      <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="unspecified" satisfied="true"/>
+      </dependencies>
       <test>
          <package file="use-package-203.xsl" role="principal"/>
          <initial-template name="main"/>
@@ -569,17 +603,51 @@
          <assert>/package-version = ('1.0.0','2.0.0')</assert>
       </result>
    </test-case>
-   <test-case name="use-package-204">
-      <description>Testing package versioning - version 1.5 to 2.5</description>
+   <test-case name="use-package-204a">
+      <description>Testing package versioning - version 1.5 to 2.5, version resolution: support highest version</description>
       <created by="John Lumley" on="2014-10-09"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'main' public, private named templates are not eligible initial templates (bug #30398)"/>
+      <modified by="Abel Braaksma" on="2019-02-26" change="Fix for bug #30106, add version-resolution dependency, renamed to use-package-204a and added -204b and -204c"/>      
       <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="highest_version" satisfied="true"/>
+      </dependencies>
       <test>
          <package file="use-package-204.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
          <assert>/package-version = ('2.0.0')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-204b">
+      <description>Testing package versioning - version 1.5 to 2.5, , version resolution: support lowest version</description>
+      <created by="Abel Braaksma" on="2019-02-26"/>
+      <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="lowest_version" satisfied="true"/>
+      </dependencies>
+      <test>
+         <package file="use-package-204.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0-alpha')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-204c">
+      <description>Testing package versioning - version 1.5 to 2.5, , version resolution: support any version</description>
+      <created by="Abel Braaksma" on="2019-02-26"/>
+      <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="unspecified" satisfied="true"/>
+      </dependencies>
+      <test>
+         <package file="use-package-204.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0','2.0.0-alpha','2.0.0-beta')</assert>
       </result>
    </test-case>
    <test-case name="use-package-205">
@@ -595,11 +663,45 @@
          <assert>/package-version = ('1.0.0')</assert>
       </result>
    </test-case>
-   <test-case name="use-package-206">
-      <description>Testing package versioning - version 1.5+</description>
+   <test-case name="use-package-206a">
+      <description>Testing package versioning - version 1.5+, version resolution: support highest version</description>
       <created by="John Lumley" on="2014-10-09"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'main' public, private named templates are not eligible initial templates (bug #30398)"/>
+      <modified by="Abel Braaksma" on="2019-02-26" change="Fix for bug #30106, add version-resolution dependency, renamed to use-package-206a and added -206b and -206c"/>      
       <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="highest_version" satisfied="true"/>
+      </dependencies>
+      <test>
+         <package file="use-package-206.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('3.5.4')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-206b">
+      <description>Testing package versioning - version 1.5+, version resolution: support lowest version</description>
+      <created by="Abel Braaksma" on="2019-02-26"/>
+      <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="lowest_version" satisfied="true"/>
+      </dependencies>
+      <test>
+         <package file="use-package-206.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0-alpha')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-206c">
+      <description>Testing package versioning - version 1.5+, version resolution: support any version</description>
+      <created by="Abel Braaksma" on="2019-02-26"/>
+      <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="unspecified" satisfied="true"/>
+      </dependencies>
       <test>
          <package file="use-package-206.xsl" role="principal"/>
          <initial-template name="main"/>
@@ -648,11 +750,45 @@
          <assert>/package-version = ('2.0.0-beta')</assert>
       </result>
    </test-case>
-   <test-case name="use-package-210">
-      <description>Testing package versioning - version 2.0.0-a to 2.0.0-gamma</description>
+   <test-case name="use-package-210a">
+      <description>Testing package versioning - version 2.0.0-a to 2.0.0-gamma, version resolution: support highest version</description>
       <created by="John Lumley" on="2014-10-09"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'main' public, private named templates are not eligible initial templates (bug #30398)"/>
+      <modified by="Abel Braaksma" on="2019-02-26" change="Fix for bug #30106, add version-resolution dependency, renamed to use-package-210a and added -210b and -210c"/>      
       <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="highest_version" satisfied="true"/>
+      </dependencies>
+      <test>
+         <package file="use-package-210.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0-beta')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-210b">
+      <description>Testing package versioning - version 2.0.0-a to 2.0.0-gamma, version resolution: support lowest version</description>
+      <created by="Abel Braaksma" on="2019-02-26"/>
+      <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="lowest_version" satisfied="true"/>
+      </dependencies>
+      <test>
+         <package file="use-package-210.xsl" role="principal"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/package-version = ('2.0.0-alpha')</assert>
+      </result>
+   </test-case>
+   <test-case name="use-package-210b">
+      <description>Testing package versioning - version 2.0.0-a to 2.0.0-gamma, version resolution: support any version</description>
+      <created by="Abel Braaksma" on="2019-02-26"/>
+      <environment ref="use-package-env-004"/>
+      <dependencies>
+         <package_version_resolution value="unspecified" satisfied="true"/>
+      </dependencies>
       <test>
          <package file="use-package-210.xsl" role="principal"/>
          <initial-template name="main"/>
