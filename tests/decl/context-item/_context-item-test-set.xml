@@ -149,12 +149,13 @@
       <created by="Michael Kay" on="2014-10-09"/>
       <modified by="Michael Kay" on="2015-01-26" change="keyword change: prohibited -> absent"/>
       <modified by="Michael Kay" on="2015-07-29" change="change expected result in response to decision on bug 27014"/>
+      <modified by="Abel Braaksma" on="2019-02-27" change="Change expected error from XTSE3089 to XTSE3088 (the former is for xsl:global-context-item)" />
       <test>
          <stylesheet file="context-item-010.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3089"/>
+         <error code="XTSE3088"/>
       </result>
    </test-case>
    
@@ -234,11 +235,11 @@
    
    <test-case name="context-item-016">
       <description>
-        Test xsl:context-item with apply-templates use="prohibited". 
+        Test xsl:context-item with apply-templates use="absent". 
       </description>
       <created by="Michael Kay" on="2014-10-09"/>
       <modified by="Michael Kay" on="2015-01-26" change="keyword change: prohibited -> absent"/>
-      <modified by="Michael Kay" on="2015-10-16" change="static error: If the containing xsl:template element has no name attribute then the only permitted value is required."/>
+      <modified by="Michael Kay" on="2015-10-16" change="static error: If the containing xsl:template element has no name attribute then the only permitted value is 'required'."/>
       <environment ref="context-item-A"/>
       <test>
          <stylesheet file="context-item-016.xsl"/>
@@ -438,12 +439,13 @@
    <test-case name="context-item-912">
       <description>xsl:context-item inconsistent with the match pattern; type error detectable statically</description>
       <created by="Michael Kay" on="2018-05-11"/>    
+      <modified by="Abel Braaksma" on="2019-02-27" change="The type-error raised as a result of xsl:context-item should be XTTE0590, corrected accordingly"></modified>
       <test>
          <stylesheet file="context-item-912.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <error code="XTTE0590"/>
       </result>
    </test-case>
 
