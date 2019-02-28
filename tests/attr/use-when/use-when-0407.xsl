@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="2.0">
       <!-- Purpose:  Tests using function-available for generate-id,system-property, key, current
-  				unparsed-entity-uri, and unparsed-entity-public-id in an use-when instruction. -->
+  				unparsed-entity-uri, and unparsed-entity-public-id in a use-when instruction. -->
 
       <t:template match="/">
             <out>
                   <t:call-template name="temp"/>
-                  <in t:use-when="function-available('current')" f="current:">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('current')"/>
+                  <in t:use-when="function-available('current')" f="current">
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('generate-id')" f="generate-id">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('generate-id')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('key')" f="key">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('key')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('unparsed-entity-uri')" f="unparsed-entity-uri">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('unparsed-entity-uri')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('unparsed-entity-public-id')"
                         f="unparsed-entity-public-id">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('unparsed-entity-public-id')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('system-property')" f="system-property">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('system-property')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
             </out>
       </t:template>

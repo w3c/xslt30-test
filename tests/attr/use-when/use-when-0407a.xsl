@@ -6,30 +6,24 @@
       <t:template match="/" name="t:initial-template">
             <out>
                   <t:call-template name="temp"/>
-                  <in t:use-when="function-available('current')" f="current:">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('current')"/>
+                  <in t:use-when="function-available('current')" f="current">
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('generate-id')" f="generate-id">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('generate-id')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('key')" f="key">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('key')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('unparsed-entity-uri')" f="unparsed-entity-uri">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('unparsed-entity-uri')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('unparsed-entity-public-id')"
                         f="unparsed-entity-public-id">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('unparsed-entity-public-id')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
                   <in t:use-when="function-available('system-property')" f="system-property">
-                        <t:value-of select="'use-when evaluates to true!!!'"
-                              use-when="function-available('system-property')"/>
+                        <t:value-of select="'use-when evaluates to true!!!'" />
                   </in>
             </out>
       </t:template>
