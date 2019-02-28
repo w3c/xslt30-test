@@ -1616,9 +1616,13 @@
                     <xs:documentation>
                         <p>
                             If the select attribute is present, it defines the initial match selection. The
-                            value is an XPath expression, which is evaluated with an absent focus. In the absence
-                            of the select attribute, the initial match selection is the same as the global
-                            context item.
+                            value is an XPath expression, which is evaluated with an absent focus 
+                            and the base-uri set to the base-uri of the initial-mode declaration.
+                        </p>
+                        <p>
+                            If the select attribute is absent, the initial match selection is the same as the global
+                            context item as set in <code>&lt;source ... role="." /&gt;</code>. If there is no global
+                            context item either, it will trigger a dynamic error. 
                         </p>
                     </xs:documentation>
                 </xs:annotation>
