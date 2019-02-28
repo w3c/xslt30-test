@@ -777,4 +777,60 @@
          <assert-xml><![CDATA[<out><a id="a" from="c,d"/><a id="b" ref="c d" from="d"/><a id="c" ref="d a" from="b"/><a id="d" ref="a b" from="b,c"/></out>]]></assert-xml>
       </result>
    </test-case>
+
+   <test-case name="id-041">
+      <description>basic test of idref(), it shouldn't tokenize like fn:id() does</description>
+      <created by="Abel Braaksma" on="2019-02-27"/>
+      <environment>
+         <source role="." file="id302.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="dtd"/>
+      </dependencies>
+      <test>
+         <stylesheet file="id-041.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a id="a" from=""/><a id="b" ref="c d" from=""/><a id="c" ref="d a" from=""/><a id="d" ref="a b" from=""/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="id-042">
+      <description>basic test of idref(), multiple strings as argument should match multiple IDREF attributes</description>
+      <created by="Abel Braaksma" on="2019-02-27"/>
+      <environment>
+         <source role="." file="id302.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="dtd"/>
+      </dependencies>
+      <test>
+         <stylesheet file="id-042.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><a id="a" from="c,d"/><a id="b" ref="c d" from="c,d"/><a id="c" ref="d a" from="b,c,d"/><a id="d" ref="a b" from="b,c,d"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
+   <test-case name="id-043">
+      <description>basic test of idref(), using two arguments with different document</description>
+      <created by="Abel Braaksma" on="2019-02-27"/>
+      <environment>
+         <source select="parse-xml('&lt;root/>')" role="." />
+         <source uri="id302.xml" file="id302.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="dtd"/>
+      </dependencies>
+      <test>
+         <stylesheet file="id-043.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><idref for="a" from="c,d"/><idref for="b" from="c,d"/><idref for="c" from="b,c,d"/><idref for="d" from="b,c,d"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+
 </test-set>
