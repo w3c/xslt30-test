@@ -333,10 +333,25 @@
       </test>
       <result>
          <any-of>
-            <error code="*"/>
+            <error code="XTSE0813"/>
             <assert-xml><![CDATA[<foo bar="baz"/>]]></assert-xml>
             <assert-xml><![CDATA[<foo bar="zoo"/>]]></assert-xml>
          </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-alias-1910">
+      <description>namespace-alias used to swap two namespaces.</description>
+      <created by="Michael Kay" on="2019-02-20"/>
+      <environment ref="namespace-alias-19"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-alias-1910.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<b:foo xmlns:b="http://b/com/" xmlns:a="http://a/com/" b:bar="baz" a:bar="zoo"/>]]></assert-xml>
       </result>
    </test-case>
 
