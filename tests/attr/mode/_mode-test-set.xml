@@ -2307,7 +2307,39 @@
       <result>
          <error code="XTSE0545"/>
       </result>
-   </test-case> 
+   </test-case>
+   
+   <test-case name="mode-1516">
+      <description>Use on-multiple-match="fail" when a node matches two branches of the same union pattern. See spec bug 30402.</description>
+      <created by="Michael Kay" on="2019-02-27"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1516.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out/unambiguous-match</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="mode-1517">
+      <description>Parenthesized pattern is not a union pattern</description>
+      <created by="Michael Kay" on="2019-02-27"/>
+      <environment ref="mode-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="mode-1517.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out/unambiguous-match</assert>
+      </result>
+   </test-case>
    
    <test-case name="mode-1601">
       <description>Test attribute default-mode (named mode) on literal result element</description>
