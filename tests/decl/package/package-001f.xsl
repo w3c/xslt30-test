@@ -4,7 +4,7 @@
   declared-modes="false">
 
     <xsl:template match="." mode="start" name="somename" visibility="public">
-      <not-ok><xsl:value-of select="." /></not-ok>
+      <ok><xsl:value-of select="." /></ok>
     </xsl:template>
 
 </xsl:package>   
