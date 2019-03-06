@@ -14,7 +14,7 @@
       </xsl:for-each>
     </xsl:variable>
     
-    <xsl:template match="/" name="main">
+    <xsl:template match="/" name="main" visibility="public">
         <out>
           <last><xsl:value-of select="$v/w[last()]/accumulator-after('big')"/></last>
           <first><xsl:value-of select="$v/w[1]/accumulator-after('big')"/></first>

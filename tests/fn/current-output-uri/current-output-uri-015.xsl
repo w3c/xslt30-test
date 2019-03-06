@@ -3,7 +3,7 @@
 
   <!-- current-output-uri() initial value when not originally set in the test should be empty, regardless of xsl:output -->
   
-  <xsl:output indent="yes" method="xml" omit-xml-declaration="yes" />
+  <xsl:output indent="no" method="xml" omit-xml-declaration="yes" />
   
   <xsl:template name="xsl:initial-template">
     <out><xsl:value-of select="'empty: ' || empty(current-output-uri())"/></out>

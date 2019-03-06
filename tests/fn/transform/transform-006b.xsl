@@ -9,7 +9,7 @@
     expand-text="yes">
   
     
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
         <in>2.0</in>
     </xsl:template>
 

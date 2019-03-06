@@ -4,7 +4,7 @@
    
    <xsl:variable name="module-uri" select="'http://www.w3.org/fots/fn/load-xquery-module/valid/module'"/>
    
-   <xsl:template name="xsl:initial-template">
+   <xsl:template name="xsl:initial-template" visibility="public">
       <out>
          <xsl:variable name="module" select="load-xquery-module($module-uri)"/>
          <xsl:sequence select="$module?variables(QName($module-uri, 'var1'))"/>

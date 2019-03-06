@@ -4,6 +4,7 @@
    <!-- Purpose: next-match across package boundaries -->
    
    <t:use-package name="http://xslt-tests/next-match-036-lib">
+      <t:accept component="mode" names="m" visibility="public"/>
       <t:override>
          <t:template match="tag" mode="m">
             <tag2><t:next-match/></tag2>

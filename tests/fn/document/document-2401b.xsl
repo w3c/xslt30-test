@@ -12,7 +12,7 @@
    <t:use-package name="http://www.w3.org/xslts/document-2401a" package-version="3.0">
 
       <t:override>
-         <t:template name="a">
+         <t:template name="a" visibility="public">
             <out>
                <stripped>
                   <t:value-of select="count(document('doc14.xml')/*/text())"/>
