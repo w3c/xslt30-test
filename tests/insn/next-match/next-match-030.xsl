@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <t:transform xmlns:t="http://www.w3.org/1999/XSL/Transform" version="3.0">
-<!-- Purpose: Test xsl:next-match inside a named template with context-item use=absent-->
+<!-- Purpose: Test xsl:next-match inside xsl:copy with a select attribute-->
 
    <t:strip-space elements="*"/>
 
