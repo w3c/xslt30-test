@@ -33,7 +33,7 @@
     <c-acc>{accumulator-before('f:elementNr')}</c-acc>
   </xsl:template>
   
-  <xsl:template name="xsl:initial-template">
+  <xsl:template name="xsl:initial-template" visibility="public">
     <xsl:apply-templates select="$data"/>
   </xsl:template>
 
