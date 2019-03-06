@@ -8,7 +8,7 @@
    <xsl:variable name="module" select="load-xquery-module($module-uri)" static="yes"/>
    <xsl:variable name="fun" select="$module?functions(QName($module-uri, 'func1'))?0" static="yes"/>
    
-   <xsl:template name="xsl:initial-template">
+   <xsl:template name="xsl:initial-template" visibility="public">
       <out xsl:use-when="$fun instance of function(*)">        
          <xsl:sequence select="$fun()"/>
       </out>
