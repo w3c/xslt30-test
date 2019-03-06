@@ -9,7 +9,7 @@
     <xsl:result-document href="merged-events.xml">
         <events>
             <xsl:merge>
-                <xsl:merge-source sort-before-merge="maybe">
+                <xsl:merge-source sort-before-merge="no" select="()">
 
                         
                         <xsl:merge-key select="dateTime(current-date(), @time)" >
