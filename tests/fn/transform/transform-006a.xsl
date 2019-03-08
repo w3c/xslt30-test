@@ -9,8 +9,10 @@
     expand-text="yes">
   
     
-    <xsl:template name="main">
+    <xsl:template name="main" visibility="public">
         <in>1.0.5</in>
     </xsl:template>
+    
+    <xsl:template name="subsid"/>
 
 </xsl:package>

@@ -663,7 +663,21 @@
       <result early-exit-possible="true">
          <assert>/out = 'true'</assert>
       </result>
-   </test-case>  
+   </test-case> 
+   
+   <test-case name="sx-gc-eq-801">
+      <description>"=" comparing untypedAtomic to string. Success result. Saxon bug 4150.</description>
+      <created by="Michael Kay" on="2019-03-03"/>
+      <environment>
+         <source file="sx-gc-eq-801.xml" role="." streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="sx-gc-eq-801.xsl"/>
+      </test>
+      <result>
+         <assert>/ProteinEntry = "hello"</assert>
+      </result>
+   </test-case> 
 
    <test-case name="sx-gc-eq-901">
       <description>Test of xsl:stream instruction with "=", filtered with predicate that atomizes.</description>

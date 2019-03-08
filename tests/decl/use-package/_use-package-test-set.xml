@@ -296,8 +296,9 @@
       <created by="Michael Kay" on="2013-07-18"/>
       <modified by="Michael Kay" on="2014-08-22" change="no xsl:stylesheet child of xsl:package"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
-      <modified by="Abel Braaksma" on="2018-02-02" change="Use of exclude-result-prefixes was not taken into account in expected test result, see also variant -108b"/>
+      <modified by="Abel Braaksma" on="2019-02-02" change="Use of exclude-result-prefixes was not taken into account in expected test result, see also variant -108b"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'main' public, private named templates are not eligible initial templates (bug #30398)"/>
+      <modified by="Michael Kay" on="2019-03-05" change="Revert the change (now) dated 2019-02-02; the target namespace of xsl:namespace-alias appears in the result even if it is an excluded namespace"/>
       <environment ref="use-package-env-002"/>
       <test>
          <package file="use-package-108.xsl" role="principal"/>
@@ -305,7 +306,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<out>ZZZZZZ</out>]]></serialization-matches>
+         <serialization-matches><![CDATA[<out xmlns:p="[^"]*">ZZZZZZ</out>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -782,9 +783,10 @@
          <assert>/package-version = ('2.0.0-alpha')</assert>
       </result>
    </test-case>
-   <test-case name="use-package-210b">
+   <test-case name="use-package-210c">
       <description>Testing package versioning - version 2.0.0-a to 2.0.0-gamma, version resolution: support any version</description>
       <created by="Abel Braaksma" on="2019-02-26"/>
+      <modified by="Michael Kay" on="2019-03-05" change="made test name unique"/>
       <environment ref="use-package-env-004"/>
       <dependencies>
          <package_version_resolution value="unspecified" satisfied="true"/>
