@@ -4,7 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" 
     xmlns:f="urn:function" exclude-result-prefixes="xs f">
     
-    <!-- current-output-uri() in xsl:sort  -->
+    <!-- current-output-uri() in xsl:merge-key  -->
     
     <xsl:output indent="yes" />
 
