@@ -222,28 +222,30 @@
    </test-case>
    
    <test-case name="current-output-uri-016">
-      <description>Test dynamic invocation of fn:current-output-uri</description>
+      <description>Test dynamic invocation of fn:current-output-uri, should return empty sequence</description>
       <created by="Abel Braaksma" on="2019-02-02"/>      
+      <modified by="Abel Braaksma" on="2019-03-08" change="Bug #30411, current output URI is cleared upon dynamic function invocation"/>
       <test>
          <stylesheet file="current-output-uri-016.xsl"/>
          <!-- sets the base output uri -->
          <output file="results/current-output-uri-016.xml"/>
       </test>
       <result>
-         <assert>ends-with(/out, 'results/current-output-uri-016.xml')</assert>
+         <assert>/out = 'current-output-uri-is-empty=true'</assert>
       </result>
    </test-case>
    
    <test-case name="current-output-uri-017">
       <description>Test fn:current-output-uri inside anonymous function body context</description>
       <created by="Abel Braaksma" on="2019-02-02"/>      
+      <modified by="Abel Braaksma" on="2019-03-08" change="Bug #30411, current output URI is cleared inside anonymous function bodies"/>
       <test>
          <stylesheet file="current-output-uri-017.xsl"/>
          <!-- sets the base output uri -->
          <output file="results/current-output-uri-017.xml"/>
       </test>
       <result>
-         <assert>ends-with(/out, 'results/current-output-uri-017.xml')</assert>
+         <assert>/out = 'current-output-uri-is-empty=true'</assert>
       </result>
    </test-case>
    

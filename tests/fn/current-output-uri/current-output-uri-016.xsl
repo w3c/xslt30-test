@@ -6,7 +6,7 @@
     <xsl:variable name="outUri" select="current-output-uri#0" />    
   
     <xsl:template name="xsl:initial-template">
-        <out><xsl:value-of select="$outUri()"/></out>
+        <out>current-output-uri-is-empty=<xsl:value-of select="empty($outUri())"/></out>
     </xsl:template>
 
 </xsl:stylesheet>
