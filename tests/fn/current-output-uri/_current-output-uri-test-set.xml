@@ -224,7 +224,10 @@
    <test-case name="current-output-uri-016">
       <description>Test dynamic invocation of fn:current-output-uri, should return empty sequence</description>
       <created by="Abel Braaksma" on="2019-02-02"/>      
-      <modified by="Abel Braaksma" on="2019-03-08" change="Bug #30411, current output URI is cleared upon dynamic function invocation"/>
+      <modified by="Abel Braaksma" on="2019-03-08" change="Bug #30411, current output URI is cleared upon dynamic function invocation, dependency on HOF"/>
+      <dependencies>
+         <feature value="higher_order_functions" satisfied="true"/>
+      </dependencies>
       <test>
          <stylesheet file="current-output-uri-016.xsl"/>
          <!-- sets the base output uri -->
@@ -238,11 +241,14 @@
    <test-case name="current-output-uri-017">
       <description>Test fn:current-output-uri inside anonymous function body context</description>
       <created by="Abel Braaksma" on="2019-02-02"/>      
-      <modified by="Abel Braaksma" on="2019-03-08" change="Bug #30411, current output URI is cleared inside anonymous function bodies"/>
+      <modified by="Abel Braaksma" on="2019-03-08" change="Bug #30411, current output URI is cleared inside anonymous function bodies, dependency on HOF"/>
+      <dependencies>
+         <feature value="higher_order_functions" satisfied="true"/>
+      </dependencies>
       <test>
          <stylesheet file="current-output-uri-017.xsl"/>
          <!-- sets the base output uri -->
-         <output file="results/current-output-uri-017.xml"/>
+         <output file="results/current-output-uri-017.xml"/>         
       </test>
       <result>
          <assert>/out = 'current-output-uri-is-empty=true'</assert>
