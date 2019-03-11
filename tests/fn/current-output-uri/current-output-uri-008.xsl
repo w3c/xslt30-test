@@ -41,6 +41,11 @@
             <in-function>
                 <xsl:copy-of select="f:start()" />
             </in-function>
+            <in-pattern>
+                <xsl:for-each-group select="-1 to +1" group-starting-with=".[.=count(current-output-uri())]">
+                    <group at="{.}"/>
+                </xsl:for-each-group>
+            </in-pattern>
         </result>
     </xsl:template>
 
