@@ -702,4 +702,21 @@ Example of apply-imports</div>
          <assert-xml><![CDATA[<out><one>one time</one><one>one time</one><two>finally</two></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="next-match-040">
+      <description>Test of xsl:next-match across package boundaries. Variant of -036 in which the mode is accepted as final rather than public</description>
+      <created by="Michael Kay" on="2019-03-07"/>
+      <environment ref="next-match022"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <package name="http://xslt-tests/next-match-036-lib" uri="http://xslt-tests/next-match-036-lib" file="next-match-036-lib.xsl" role="secondary"/>
+         <stylesheet file="next-match-040.xsl"/>
+         <initial-mode name="m"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><tag2><tag>Example of apply-imports</tag></tag2><bag>Example of apply-templates</bag></out>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>

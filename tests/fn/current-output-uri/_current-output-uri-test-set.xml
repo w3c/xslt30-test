@@ -54,7 +54,8 @@
    
    <test-case name="current-output-uri-004">
       <description>Value of current-output-uri() in a tunnel parameter</description>
-      <created by="Michael Kay" on="2014-09-16"/> 
+      <created by="Michael Kay" on="2014-09-16"/>
+      <modified by="Michael Kay" on="2019-03-06" change="Test -003 has changed the convention for assert-result-document/@uri; apply the same change here"/>
       <environment>
          <source role="." file="current-output-uri-004.xsl"/>
       </environment>     
@@ -63,7 +64,7 @@
          <output file="results/current-output-uri-004.xml"/>
       </test>
       <result>
-         <assert-result-document uri="results/row1.xml">
+         <assert-result-document uri="row1.xml">
             <assert>ends-with(/row/col/@base, 'results/current-output-uri-004.xml')</assert>
          </assert-result-document>
       </result>
@@ -85,11 +86,12 @@
    
    <test-case name="current-output-uri-006">
       <description>Initial function must operate in temporary output state, current-output-uri() should return empty</description>
-      <created by="Abel Braaksma" on="2019-01-31"/>   
+      <created by="Abel Braaksma" on="2019-01-31"/> 
+      <modified by="Michael Kay" on="2019-03-06" change="make initial function public; add tree=no"/> 
       <test>
          <stylesheet file="current-output-uri-006.xsl"/>
          <initial-function name="f:start" xmlns:f="urn:function"/>
-         <output file="results/current-output-uri-006.xml"/>
+         <output tree="no" serialize="no" file="results/current-output-uri-006.xml"/>
       </test>
       <result>
          <assert-empty />
@@ -100,10 +102,11 @@
    <test-case name="current-output-uri-007">
       <description>Whole stylesheet is in temp output state and current-output-uri() should return empty everywhere</description>
       <created by="Abel Braaksma" on="2019-01-31"/>   
+      <modified by="Michael Kay" on="2019-03-06" change="make initial function public; add tree=no; change to return a single string, not a sequence of text nodes"/> 
       <test>
          <stylesheet file="current-output-uri-007.xsl"/>
          <initial-function name="f:start" xmlns:f="urn:function"/>
-         <output file="results/current-output-uri-007.xml"/>
+         <output tree="no" serialize="no" file="results/current-output-uri-007.xml"/>
       </test>
       <result>
          <assert-string-value>||||||</assert-string-value>
@@ -112,7 +115,8 @@
    
    <test-case name="current-output-uri-008">
       <description>Mix of with and without temp output state for current-output-uri(), initial-template</description>
-      <created by="Abel Braaksma" on="2019-01-31"/>   
+      <created by="Abel Braaksma" on="2019-01-31"/>
+      <modified by="Michael Kay" on="2019-03-06" change="add test for pattern evaluation in xsl:for-each-group"/>
       <test>
          <stylesheet file="current-output-uri-008.xsl"/>
          <initial-template name="start"/>
@@ -127,6 +131,7 @@
             <assert>/result/in-function/output-uri[1][@value = '']</assert>
             <assert>/result/in-function/output-uri[2][@value = '']</assert>
             <assert>/result/in-function/output-uri[3][@correct="output-uri is empty in patterns"]</assert>
+            <assert>/result/in-pattern/group[@at='0']</assert>
          </all-of>
       </result>
    </test-case>   

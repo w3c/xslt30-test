@@ -12,9 +12,11 @@
         </base>
     </xsl:variable>
     
-    <xsl:function name="f:start">
-        <xsl:apply-templates select="$base" />
-        <xsl:call-template name="named" />
+    <xsl:function name="f:start" visibility="public" as="xs:string">
+        <xsl:value-of>
+            <xsl:apply-templates select="$base" />
+            <xsl:call-template name="named" />
+        </xsl:value-of>
     </xsl:function>
     
     <xsl:template match="$base">
