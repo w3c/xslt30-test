@@ -39,7 +39,7 @@
   
 <xsl:function name="Q{f}namespaces" as="xs:string">
   <xsl:param name="node" as="element()"/>
-  <xsl:sequence select="name($node) || ' : ' || string-join(sort($node/namespace::*/(name()||'='||.||';')))"/>
+  <xsl:sequence select="name($node) || ' : ' || string-join(sort($node/namespace::*[name() ne 'xml']/(name()||'='||.||'; ')))"/>
 </xsl:function>  
 
 </xsl:stylesheet>
