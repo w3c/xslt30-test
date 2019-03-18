@@ -374,7 +374,8 @@
                         context item for a stylesheet.</p>
                     <p>The value to be bound to the context item is given in the select attribute,
                         which should be a simple XPath expression - typically a literal, or a simple
-                        call on a constructor function.</p>
+                        call on a constructor function. If the select expression is absent or returns the 
+                        empty sequence, the context item for this transformation is absent</p>
                     <p> The transformation is called with the value of the select expression as the
                         context item. </p>
                 </div>
@@ -474,9 +475,10 @@
                     <p>Where <code>role="."</code> is specified, the <code>select</code> attribute
                         may be present; its value is a path expression to select the initial context
                         node within the document, so that the transformation can start at a
-                        non-document node.</p>
+                        non-document node. The select expression is evaluated with the focus set to 
+                        the document defined in this source element.</p>
                     <p> The <code>file</code> attribute gives the location of the file containing
-                        the XML source, relative to the URI of the catalog file.</p>
+                        the XML source, relative to the URI of the catalog file. This should not be an absolute URI.</p>
                     <p>The <code>uri</code> attribute is the URI supplied to the <code>doc()</code>
                         function to access the document. This may be an absolute URI or a URI
                         relative to the base URI of the catalog file. In most cases it is the same
@@ -510,7 +512,9 @@
                     <xs:annotation>
                         <xs:documentation>
                             <p>The content of the file can be given either inline in the content
-                                child, or by reference using the <code>file</code> attribute. </p>
+                                child, or by reference using the <code>file</code> attribute. 
+                                If <code>role="."</code>, the select attribute can be used to select
+                                a singleton item from the source.</p>
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attributeGroup>
@@ -520,8 +524,8 @@
                     <xs:annotation>
                         <xs:documentation>
                             <p>If present, contains an XPath expression to select the initial
-                                context node within the source document. Used only with
-                                    <code>role="."</code>
+                                context item within the source document. Used only with
+                                    <code>role="."</code>. The select attribute should return a singleton sequence.
                             </p>
                         </xs:documentation>
                     </xs:annotation>
@@ -531,7 +535,7 @@
                         <xs:documentation>
                             <p>If true, indicates that this source file MUST be processed in
                                 streaming mode. This option is only used in conjunction with
-                                    <code>role="."</code>.</p>
+                                    <code>role="."</code>. The default is false.</p>
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
@@ -541,7 +545,7 @@
                             <p>If present and true, indicates that the source document contains an
                                 xml-stylesheet processing instruction which defines the stylesheet
                                 to be used for the test case. This option is only used in
-                                conjunction with <code>role="."</code>.</p>
+                                conjunction with <code>role="."</code>. The default is false.</p>
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
@@ -549,8 +553,8 @@
                     <xs:annotation>
                         <xs:documentation>
                             <p>If true, indicates that this source file MUST be processed with
-                                XInclude expansion enabled. (Processors that do not support XInclude
-                                processing should skip this test.)</p>
+                                XInclude expansion enabled (processors that do not support XInclude
+                                processing should skip this test). Default is false.</p>
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
@@ -1702,22 +1706,64 @@
     <xs:element name="output">
         <xs:annotation>
             <xs:documentation>
-                <p>Provides a base output URI for the transformation. The processor may (optionally)
-                    use this as the location to which serialized output for the principal result
-                    tree is written. The location should be given as a relative URI, and should be
-                    within a subdirectory of the directory that contains the test set XML file.</p>
-                <p>Directions for output post-processing can also be declared.</p>
-                <p>If the result-var attribute is present with the value 'yes' then the result of the transformation is
-                bound to a named variable rather than to the context item. This allows testing of
-                transformations that return a non-singleton sequence (see bug 30196).</p>
+                <p>Provides directions for post-processing the output of a transformation, summary below, 
+                    details can be found in the documentation of each attribute:
+                    <ul>
+                        <li>Attribute <code>file</code> sets the location of the base output URI, relative to the test set XML file</li>
+                        <li>Attribute <code>tree</code> sets whether or not a tree should be build from the raw result</li>
+                        <li>Attribute <code>serialize</code> determines whether the result should be serialized</li>
+                        <li>Attribute <code>well-formed</code> determines whether the result is expected to be well-formed XML</li>
+                        <li>Attribute <code>result-var</code> binds a variable to the result of the transformation if tree="no"</li>
+                    </ul>
+                </p>
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:attribute name="file" type="xs:anyURI" use="optional"/>
-            <xs:attribute name="tree" type="yesNoType" use="optional"/>
-            <xs:attribute name="serialize" type="yesNoType" use="optional"/>
-            <xs:attribute name="well-formed" type="yesNoType" use="optional"/>
-            <xs:attribute name="result-var" type="xs:NCName" use="optional"/>
+            <xs:attribute name="file" type="xs:anyURI" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        <p>If specified, should be a relative URI, interpreted relative to the test set location. 
+                            It determines the base output URI for this transformation, and as such serves as the base
+                            URI for <code>xsl:result-document</code>. If not specified, the base output URI is implementation 
+                            defined. The token <code>#absent</code> can be used to specify that the transformation starts 
+                            without an explicit base output URI. This setting has no influence on the static base URI.</p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="tree" type="yesNoType" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        <p>If the result is not serialized, determines whether the raw result or a tree is 
+                            to be returned. Similar to <code>&lt;xsl:output build-tree="..."/&gt;</code>. If absent,
+                            the default is the same as for the build-tree attribute.</p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="serialize" type="yesNoType" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        <p>Determines whether or not serialization takes place. The default is no.</p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="well-formed" type="yesNoType" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        <p>Determines whether the output will be well-formed XML. The default is yes.</p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="result-var" type="xs:NCName" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        <p>When <code>tree="no"</code>, the value in this attribute determines the name (in no namespace) or a variable
+                            that that is bound to the result sequence of the transformation, which can be referenced in the <code>&lt;assert&gt;</code>. 
+                            Conventional use is <code>result=var="result"</code>. If absent, only a singleton result sequence can be evaluated, 
+                            which is bound to the context item in the assert expression.
+                        </p>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
@@ -1925,8 +1971,9 @@
                     <xs:documentation>
                         <p>The uri corresponds to the URI used in the href attribute of the
                             xsl:result-document instruction. It is supplied as a relative URI,
-                            interpreted as being relative to the implicit base output URI chosen by
-                            the test driver.</p>
+                            interpreted as being relative to an implementation defined base output URI 
+                            as chosen by the test driver, or relative to an explicit base output URI if
+                            specified by <code>&lt;output file="..." /&gt;</code>.</p>
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -1969,6 +2016,7 @@
                                     tests. Instead, the test result should be expressed using
                                     assertions that take no account of the namespace prefixes
                                     generated.</p>
+                                <p>The default value is "false".</p>
                             </xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
@@ -2359,7 +2407,7 @@
                 <div>
                     <h3>link</h3>
                     <p> denotes an element which provides reference to documentation of the
-                        function. </p>
+                        function, instruction or declaration. </p>
                 </div>
             </xs:documentation>
         </xs:annotation>
@@ -2394,7 +2442,7 @@
         <xs:attribute name="xml-version" use="optional">
             <xs:annotation>
                 <xs:documentation>
-                    <p>Indicates whether an XML 1.1 parser is required for this source document.</p>
+                    <p>Indicates whether an XML 1.1 parser is required for this source document. Possible values are 1.0 and 1.1. If absent, the default value is 1.0.</p>
                 </xs:documentation>
             </xs:annotation>
             <xs:simpleType>
@@ -2589,7 +2637,8 @@
                     <h3>validation</h3>
                     <p> indicates for a source document within an environment whether the source
                         document is to be validated against the schema defined for that environment,
-                        and if so whether validation is to be strict or lax. </p>
+                        and if so whether validation is to be strict or lax. 
+                        Valid values are "strict", "lax" or "skip". The default is "strip".</p>
                 </div>
             </xs:documentation>
         </xs:annotation>
@@ -2721,11 +2770,14 @@
                     <p> This attribute provides a URI to be used as an abstract identifier of a
                         resource within the test suite (for example, a source document, or a
                         module). The URI is designed to be independent of the location of the
-                        resource. </p>
-                    <p> The URI should always be an absolute URI. </p>
-                    <p>For source documents, the URI can be used in a call to the doc() function to
-                        retrieve this source document (so the actual query does not need to know its
-                        location.</p>
+                        resource, which is typically set be the <code>file</code> attribute.</p>
+                    <p>If the URI is a relative URI, it can be resolved using <code>fn:resolve-uri</code> 
+                        against the base URI of the test-set location, however, tests should not rely on this behavior
+                        and should assume a processor-dependent base URI. The base URI that a processor chooses MUST 
+                        be the same base URI used in the XSLT file, such that a call to doc() with this relative URI will succeed.</p>
+                    <p>For source documents and collections, the URI can be used in a call to the doc(), 
+                        document() or collection() function to retrieve this source document or collection of 
+                        source documents (so the actual query does not need to know its physical location).</p>
                     <p>For packages, the URI should match the name of the package if the name attribute is absent.
                         If name is present, the URI can be used to retrieve the source document just like with doc(),
                         while the name should match the actual name of the referenced package.</p>
