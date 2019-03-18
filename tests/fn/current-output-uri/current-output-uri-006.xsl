@@ -6,7 +6,7 @@
     
     <!-- current-output-uri() while evaluating a stylesheet function -->
     
-    <xsl:function name="f:start">
+    <xsl:function name="f:start" visibility="public">
         <xsl:sequence select="current-output-uri()"/>
     </xsl:function>
 

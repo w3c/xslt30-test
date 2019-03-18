@@ -646,4 +646,19 @@
          <assert>/out = "  [QQQ]"</assert>
       </result>
    </test-case>
+   
+   <test-case name="format-date-037">
+      <description>Default namespace for calendar attribute: Saxon bug 4168</description>
+      <created by="Michael Kay after Christian Roth" on="2019-03-14"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="format-date-037.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>not(contains(/*:out, "[Calendar:"))</assert>
+      </result>
+   </test-case>
 </test-set>

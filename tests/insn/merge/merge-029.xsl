@@ -26,17 +26,9 @@
             if (count(current-merge-group()) = 1)
             then if (current-merge-group()[1]/root(.) is $original) then 'Deleted' else 'New'
             else if (deep-equal(current-merge-group()[1], current-merge-group()[2])) then 'NoChange' else 'Updated'"/>
-          <groups>
-            <CurrentMergeGroup>
-              <xsl:copy-of select="current-merge-group()[1]" />
-            </CurrentMergeGroup>
-            <CurrentMergeGroup>
-              <xsl:copy-of select="current-merge-group()[2]" />
-            </CurrentMergeGroup>
-            <CurrentMergeGroup>
-              <xsl:copy-of select="current-merge-group()[3]" />
-            </CurrentMergeGroup>
-          </groups>
+          <Address status="{$status}">
+            <xsl:copy-of select="current-merge-group()[1]/(AddressesId, Street)"/>
+          </Address>
         </xsl:merge-action>
       </xsl:merge>
     </Addresses>
