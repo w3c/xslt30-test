@@ -7,17 +7,17 @@ https://lists.w3.org/Archives/Public/public-xsl-wg/2016Feb/0001.html
 
 ### GETTING THE REPO ###
 
-You can find the test suite publicly available as a Mercurial (Hg) repository: https://dvcs.w3.org/hg/xslt30-test/
+The current version of the XSLT 3.0 test suite is in GitHub at https://github.com/w3c/xslt30-test
 
-To use it, you need a Mercurial client. Mercurial is a DVCS similar to Github and the like. Most popular on Windows is TortoiseHg which has a port for Mac OS X and Gnome/Nautilus: http://tortoisehg.bitbucket.org/. Just install and point select "Close repository", type in the URL above and you should be good to go after the repo has been downloaded.
+Prior to 31 March 2019 it was in a Mercurial (Hg) repository: https://dvcs.w3.org/hg/xslt30-test/
 
-If you don't feel like using a DVCS, you can download a ZIP archive from the above link. Changes can then be mailed to me and I will add them to the repository.
+If you don't feel like using a DVCS, you can download a ZIP archive from the above link. Changes can then be mailed to me and we will add them to the repository. However, GitHub pull requests are preferred.
 
-For committing changes you need write access. Liam can help you with that, but if you have a W3C account already, I think you get write access automatically. Mercurial is set up to always require a password when committing changes, even if you store the password in your client.
+For committing changes, unless you have write access, you can submit a pull request with your proposed changes. New tests are always welcome. Changes to existing tests require more care, and should always carry some explanation or justification, especially if the test is long-established and/or is not your own. If the change is because you believe the existing expected results are incorrect, you should raise a bug report and achieve consensus for the change before submitting it. Changes to test metadata, for example adding a previously unnoticed dependency, do not require the same level of formality.
 
 ### GETTING AROUND ###
 
-At first the test suite may look a bit daunting. A lot of documentation can be found in the catalog-schema.xsd in the <root>/admin directory. When editing or adding tests, it is best that you validate the XML against this schema (oXygen can do this automatically and will also give you tooltip and other context-sensitive help).
+At first the test suite may look a bit daunting. A lot of documentation can be found in the catalog-schema.xsd in the <root>/admin directory. When editing or adding tests, you should validate the XML against this schema (oXygen can do this automatically and will also give you tooltip and other context-sensitive help).
 
 The tests themselves are structured as follows:
 
@@ -29,7 +29,7 @@ _xxxx-test-set.xml:  files on top of each test-set directory start with an under
 
 ### WRITING TESTS ###
 
-First, I set up oXygen to have two Transformation Scenarios for each processor I want to use: one that takes as input an XSLT source and an XML source by the same name as the XSLT source (with only the extension different) and one that runs an XSLT source without any input, using the "xsl:initial-template" feature of XSLT 3.0.
+First, I [Abel Braaksma] set up oXygen to have two Transformation Scenarios for each processor I want to use: one that takes as input an XSLT source and an XML source by the same name as the XSLT source (with only the extension different) and one that runs an XSLT source without any input, using the "xsl:initial-template" feature of XSLT 3.0.
 
 Here's the way I do it then:
 
