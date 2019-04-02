@@ -527,4 +527,25 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="character-map-026">
+      <description>Test use of character maps with the adaptive output method</description>
+      <keywords>single-character-map adaptive-output-method</keywords>
+      <created by="Michael Kay" on="2019-04-02"/>
+      <environment ref="charmap001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="character-map-026.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>           
+            <serialization-matches><![CDATA[<test>\\&apos;E4</test>]]></serialization-matches>
+            <serialization-matches><![CDATA["\\&apos;E4"]]></serialization-matches>
+            <serialization-matches><![CDATA[map\{"ä":"\\&apos;E4"\}]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
