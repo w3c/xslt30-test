@@ -10,6 +10,11 @@
       <schema role="source-reference" file="../../../admin/catalog-schema.xsd" xsd-version="1.0"/>
       <schema role="secondary" file="../../../admin/xml.xsd" xsd-version="1.0"/>
    </environment>
+   
+   <environment name="catalog002">
+      <!-- Non-schema-aware environment -->
+      <source role="." file="../../../catalog.xml"/>
+   </environment>
 
    <environment name="catalog005">
       <source role="." file="../../../catalog.xml" validation="strict"/>
@@ -47,7 +52,8 @@
       <keywords>catalog-self-test master-catalog</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2019-03-10" change="Bug #30414: remove global schema-aware flag, this test does not require schema-aware" />
-      <environment ref="catalog001"/>
+      <modified by="Micahel Kay" on="2019-04-10" change="Use a non-schema-aware environment"/>
+      <environment ref="catalog002"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -64,7 +70,8 @@
       <keywords>catalog-self-test unique-testcase-names</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2019-03-10" change="Bug #30414: remove global schema-aware flag, this test does not require schema-aware" />
-      <environment ref="catalog001"/>
+      <modified by="Micahel Kay" on="2019-04-10" change="Use a non-schema-aware environment"/>
+      <environment ref="catalog002"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -82,7 +89,8 @@
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2012-12-11" change="add dependency on XML 1.1, see bug 20344"/>
       <modified by="Abel Braaksma" on="2019-03-10" change="Bug #30414: remove global schema-aware flag, this test does not require schema-aware" />
-      <environment ref="catalog001"/>
+      <modified by="Micahel Kay" on="2019-04-10" change="Use a non-schema-aware environment"/>
+      <environment ref="catalog002"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="XML_1.1"/>
@@ -120,7 +128,8 @@
       <keywords>catalog-self-test element-available</keywords>
       <created by="Michael Kay" on="2015-06-30"/>
       <modified by="Abel Braaksma" on="2019-03-10" change="Bug #30414: removed global and local schema-aware flag, test does not require schema-aware feature" />
-      <environment ref="catalog005"/>
+      <modified by="Micahel Kay" on="2019-04-10" change="Use a non-schema-aware environment"/>
+      <environment ref="catalog002"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
