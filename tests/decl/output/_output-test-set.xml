@@ -3933,11 +3933,36 @@
    </test-case>
 
    <test-case name="output-0602a">
-      <description>HTML5 svg unprefixed</description>
+      <description>
+         
+      HTML5 svg element, unprefixed.
+      
+      MHK comments 2019-04-11:
+      
+      The second assertion against the test results implies that the namespace declaration of the svg namespace
+      should not be present on the body element. Saxon 9.9 passes this test, but it's not clear that there is anything
+      in the spec to justify removing the namespace declaration. The spec for *XHTML* serialization is quite clear
+      that the namespace should be removed (the definition of 'prefix normalization' states clearly that "Any 
+      namespace node for any of those three namespaces that was previously present on any element node in the 
+      instance of the data model is also removed"). But the rules for the *HTML* method are far less clear.
+      For a start, the relevant rules are under a paragraph that starts "If the element is to be serialized 
+      as an HTML element, but the local part of the expanded QName is not recognized as the name of an HTML element..."
+      which could imply that the rules do not apply to the body element (but the rules don't actually make much
+      sense under that interpretation). There doesn't seem to be any reading of the rules that causes the
+      svg namespace declaration to be removed from the body element. Also, rules 1 and 2 seem directly 
+      contradictory.
+      
+      Because the rules are so unclear, and because I can't see any reason why the HTML and XHTML rules should
+      differ in such details, I'm going to treat the test results as definitive and the spec as inadequate.
+      Specifically, I think it's much simpler if the HTML output method performs "prefix normalization" for the
+      result tree in exactly the same way as the XHTML output method.     
+      
+      </description>
       <created by="John Lumley" on="2014-07-15"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
       <modified by="Michael Kay" on="2014-09-28" change="HTML5 serialization is not defined in XSLT 2.0"/>
+      <modified by="Michael Kay" on="2019-04-11" change="Allow namespace decl on svg element to follow attributes"/>
       <environment ref="output-06a"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -3952,13 +3977,13 @@
                   <serialization-matches>xmlns:svg=["']http://www.w3.org/2000/svg["']</serialization-matches>
                </any-of>
             </not>
-            <serialization-matches><![CDATA[<svg\s+xmlns=["']http://www.w3.org/2000/svg["']]]></serialization-matches>
+            <serialization-matches><![CDATA[<svg[^<>]+xmlns=["']http://www.w3.org/2000/svg["']]]></serialization-matches>
          </all-of>
       </result>
    </test-case>
    
    <test-case name="output-0602b">
-      <description>HTML5 MathML unprefixed</description>
+      <description>HTML5 MathML unprefixed. MHK: See also comments on output-0602a.</description>
       <created by="John Lumley" on="2014-07-15"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
@@ -4007,6 +4032,7 @@
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="John Lumley" on="2014-09-10" change="Serialization declaration moved to environment"/>
       <modified by="Michael Kay" on="2014-09-28" change="HTML5 serialization is not defined in XSLT 2.0"/>
+      <modified by="Michael Kay" on="2019-04-11" change="Allow namespace decl on mi element to follow attributes"/>
       <environment ref="output-06b"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -4015,7 +4041,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches>mi\s+xmlns:svg=["']http://www.w3.org/2000/svg["']</serialization-matches>
+            <serialization-matches><![CDATA[mi[^<>]+xmlns:svg=["']http://www.w3.org/2000/svg["']]]></serialization-matches>
             <serialization-matches>svg:att=</serialization-matches>
          </all-of>
       </result>
