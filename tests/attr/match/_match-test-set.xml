@@ -4820,5 +4820,41 @@
          <assert>exists(out/plus1.5/minus-0.1/wildcard/minus-0.4/minus-2.0)</assert>
       </result>
    </test-case>
+   
+   <test-case name="match-262">
+      <description>Test that xsl:mode on-no-match="deep-copy" preserves type annotations for elements.</description>
+      <keywords>xsl:import-schema on-no-match deep-copy</keywords>
+      <created by="Michael Kay" on="2019-04-28"/>
+      <environment ref="match3001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-262.xsl"/>
+      </test>
+      <result>
+         <assert>/out/@result="true"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="match-263">
+      <description>Test that xsl:mode on-no-match="deep-copy" preserves type annotations for attributes.</description>
+      <keywords>xsl:import-schema on-no-match deep-copy</keywords>
+      <created by="Michael Kay" on="2019-04-28"/>
+      <environment ref="match3092"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <year_component_values value="support negative year"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-263.xsl"/>
+      </test>
+      <result>
+         <assert>/out/@result="true"</assert>
+      </result>
+   </test-case>
  
 </test-set>
