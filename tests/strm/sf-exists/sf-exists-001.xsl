@@ -231,6 +231,86 @@
           <xsl:value-of select="exists(($b, account/transaction))"/>
         </out>
       </xsl:source-document>
-    </xsl:template>          
+    </xsl:template>
+  
+  <!-- exists() applied to grounded element nodes -->
+  
+  <xsl:template name="c-104" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="exists(outermost(//PRICE) ! parse-xml('&lt;p a=''3''>' || . || '&lt;/p>')/*)"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- exists() applied to grounded text nodes -->
+  
+  <xsl:template name="c-105" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="exists(outermost(//PRICE) ! parse-xml('&lt;p a=''3''>' || . || '&lt;/p>')//text())"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- exists() applied to grounded attribute nodes -->
+  
+  <xsl:template name="c-106" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="exists(outermost(//PRICE) ! parse-xml('&lt;p a=''3''>' || . || '&lt;/p>')//@a)"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <xsl:function name="Q{f}attribute" as="attribute()">
+    <xsl:param name="name" as="xs:string"/>
+    <xsl:param name="value" as="xs:string"/>
+    <xsl:attribute name="{$name}" select="$value"/>
+  </xsl:function>
+  
+  <xsl:function name="Q{f}element" as="element()">
+    <xsl:param name="name" as="xs:string"/>
+    <xsl:param name="value" as="xs:string"/>
+    <xsl:element name="{$name}">
+      <xsl:attribute name="x" select="'y'"/>
+      <xsl:value-of select="$value"/>
+    </xsl:element>
+  </xsl:function>
+  
+  <xsl:function name="Q{f}text" as="text()">
+    <xsl:param name="value" as="xs:string"/>
+    <xsl:value-of select="$value"/>
+  </xsl:function>
+  
+  <!-- exists() applied to constructed attribute nodes -->
+  
+  <xsl:template name="c-107" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="exists(outermost(//PRICE) ! Q{f}attribute('x', string(.)))"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- exists() applied to constructed element nodes -->
+  
+  <xsl:template name="c-108" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="exists(outermost(//PRICE) ! Q{f}element('x', string(.)))"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- exists() applied to constructed text nodes -->
+  
+  <xsl:template name="c-109" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="exists(outermost(//PRICE) ! Q{f}text(string(.)))"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
     
 </xsl:stylesheet>

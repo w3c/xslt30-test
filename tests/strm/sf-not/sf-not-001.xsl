@@ -284,7 +284,112 @@
           </xsl:for-each>  
         </out>
       </xsl:source-document>
-    </xsl:template>          
+    </xsl:template>
+  
+  <!-- not() applied to grounded element nodes -->
+  
+  <xsl:template name="c-114" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="not(outermost(//PRICE) ! parse-xml('&lt;p a=''3''>' || . || '&lt;/p>')/*)"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- not() applied to grounded text nodes -->
+  
+  <xsl:template name="c-115" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="not(outermost(//PRICE) ! parse-xml('&lt;p a=''3''>' || . || '&lt;/p>')//text())"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- not() applied to grounded attribute nodes -->
+  
+  <xsl:template name="c-116" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="not(outermost(//PRICE) ! parse-xml('&lt;p a=''3''>' || . || '&lt;/p>')//@a)"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <xsl:function name="Q{f}attribute">
+    <xsl:param name="name" as="xs:string"/>
+    <xsl:param name="value" as="xs:string"/>
+    <xsl:attribute name="{$name}" select="$value"/>
+    <!-- Atomic value after a node is OK -->
+    <xsl:sequence select="25"/>
+  </xsl:function>
+  
+  <xsl:function name="Q{f}bad-attribute">
+    <xsl:param name="name" as="xs:string"/>
+    <xsl:param name="value" as="xs:string"/>
+    <!-- Atomic value before a node is an error -->
+    <xsl:sequence select="25"/>
+    <xsl:attribute name="{$name}" select="$value"/>   
+  </xsl:function>
+  
+  <xsl:function name="Q{f}element">
+    <xsl:param name="name" as="xs:string"/>
+    <xsl:param name="value" as="xs:string"/>
+    <xsl:element name="{$name}">
+      <xsl:attribute name="x" select="'y'"/>
+      <xsl:value-of select="$value"/>
+    </xsl:element>
+    <!-- Prevent optimisation based on type analysis -->
+    <xsl:if test="current-date() lt xs:date('1900-01-01')"><xsl:sequence select="25"/></xsl:if>
+  </xsl:function>
+  
+  <xsl:function name="Q{f}text">
+    <xsl:param name="value" as="xs:string"/>
+    <xsl:value-of select="$value"/>
+    <!-- Prevent optimisation based on type analysis -->
+    <xsl:if test="current-date() lt xs:date('1900-01-01')"><xsl:sequence select="25"/></xsl:if>
+  </xsl:function>
+  
+  <!-- not() applied to constructed attribute nodes -->
+  
+  <xsl:template name="c-117" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="not(outermost(//PRICE) ! Q{f}attribute('x', string(.)))"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- not() applied to constructed element nodes -->
+  
+  <xsl:template name="c-118" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="not(outermost(//PRICE) ! Q{f}element('x', string(.)))"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- not() applied to constructed text nodes -->
+  
+  <xsl:template name="c-119" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="not(outermost(//PRICE) ! Q{f}text(string(.)))"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
+  <!-- not() applied to sequence comprising atomic value followed by attribute node -->
+  
+  <xsl:template name="c-120" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:value-of select="not(outermost(//PRICE) ! Q{f}bad-attribute('x', string(.)))"/>
+      </out>
+    </xsl:source-document>
+  </xsl:template>
+  
               
     
 </xsl:stylesheet>
