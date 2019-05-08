@@ -5,10 +5,10 @@
     exclude-result-prefixes="#all" 
     version="3.0">
     
- <xsl:template name="xsl:initial-template">
-     <xsl:source-document href="sf-xml-to-json-A.xml" streamable="true">
-         <json>{xml-to-json(/*, map{'indent':true()})}</json>
-     </xsl:source-document>
- </xsl:template>
+    <xsl:mode streamable="yes"/>
     
+    <xsl:template match="/">
+        <json>{xml-to-json(.)}</json>
+    </xsl:template>
+       
 </xsl:stylesheet>
