@@ -1403,7 +1403,9 @@
    <test-case name="copy-1220">
       <description>Test xsl:copy-of with namespaces tree-to-tree; copy-namespaces="yes"</description>
       <created by="Michael Kay" on="2019-02-12"/>
-      <modified by="Abel Braaksma" on="2019-02-25" change="Whole testset failed to parse because name='xsl:initial-template' and non-bound xsl namespace. Removed dependency on copy-12 (global context item was not used) an initial-template element, which makes the default (without context item) to be xsl:initial-template"/>
+      <modified by="Abel Braaksma" on="2019-02-25" change="Whole testset failed to parse because name='xsl:initial-template' 
+         and non-bound xsl namespace. Removed dependency on copy-12 (global context item was not used) an initial-template 
+         element, which makes the default (without context item) to be xsl:initial-template"/>
       <modified by="Michael Kay" on="2019-03-12" change="Add expected results"/>     
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1426,7 +1428,13 @@
    <test-case name="copy-1221">
       <description>Test xsl:copy-of with namespaces tree-to-tree; copy-namespaces="no"</description>
       <created by="Michael Kay" on="2019-02-12"/>
-      <modified by="Michael Kay" on="2019-03-12" change="Add expected results"/>          
+      <modified by="Michael Kay" on="2019-03-12" change="Add expected results"/>
+      <modified by="Michael Kay" on="2019-05-11" change="Change expected results.
+         The rules for xsl:copy-of with copy-namespaces='no' say that for the first aa element,
+         the only namespaces should be those prescribed by namespace fixup. The namespace fixup
+         rules explicitly say that an element does not acquire an in-scope namespace merely
+         because that namespace is present on its parent. So I think there is no reason for the
+         http://www.a.com/ namespace to be present on the first aa element."/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -1437,7 +1445,7 @@
       <result>
          <all-of>
             <assert>/out/m = 'a : a=http://www.a.com/; '</assert>
-            <assert>/out/n = 'aa : =http://www.aa.com/; a=http://www.a.com/; '</assert>
+            <assert>/out/n = 'aa : =http://www.aa.com/; '</assert>
             <assert>/out/o = 'a : =http://www.a.com/; '</assert>
             <assert>/out/p = 'aa : =http://www.a.com/; '</assert>
          </all-of>
