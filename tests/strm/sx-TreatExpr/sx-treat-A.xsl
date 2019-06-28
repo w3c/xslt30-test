@@ -2,7 +2,7 @@
   xmlns:map="http://www.w3.org/2005/xpath-functions/map" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="map xs">
 
-  <xsl:variable name="RUN" select="false()" static="yes"/>
+  <xsl:variable name="RUN" select="true()" static="yes"/>
   <xsl:strip-space elements="*"/>
 
   <!-- Simple use of xsl:stream with "treat as" -->
@@ -314,7 +314,7 @@
   
   <!-- "treat as" applied to constructed attribute nodes -->
   
-  <xsl:template name="c-107" use-when="true() or $RUN">
+  <xsl:template name="c-107" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:value-of select="(outermost(//PRICE) ! Q{f}attribute('x', string(.))) treat as attribute(x)+"/>
