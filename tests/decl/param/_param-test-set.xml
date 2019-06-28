@@ -522,4 +522,21 @@
          <assert-xml><![CDATA[<out><in value="42"/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="param-0703">
+      <description>
+         The visibility attribute is not allowed on xsl:param[@static='yes'], despite the note in section 9.6
+         which appears to suggest that visibility="provate" is OK. -->
+      </description>
+      <created by="Michael Kay" on="2019-05-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="param-0703.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0090"/>
+      </result>
+   </test-case>
 </test-set>
