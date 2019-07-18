@@ -353,7 +353,7 @@
   <xsl:template name="c-109" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:value-of select="(outermost(//PRICE) ! Q{f}text(string(.))) treat as text()+"/>
+        <xsl:value-of select="(outermost(//PRICE) ! Q{f}text(string(.)||'$ ')) treat as text()+"/>
       </out>
     </xsl:source-document>
   </xsl:template>
