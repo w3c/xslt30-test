@@ -549,6 +549,21 @@
     </xsl:source-document>
   </xsl:template> 
   
+  <!-- Separators between zero-length strings do not make the content non-empty -->
+  
+  <xsl:template name="s-044" use-when="$RUN">
+    <xsl:source-document streamable="yes" href="../docs/books.xml">
+      <out>
+        <xsl:on-non-empty>*</xsl:on-non-empty>
+        <xsl:for-each select="outermost(//PRICE)">
+          <xsl:sequence select="substring(., 1000)"/>
+        </xsl:for-each>
+        <xsl:on-non-empty>*</xsl:on-non-empty>
+        <xsl:on-empty>+++</xsl:on-empty>
+      </out>
+    </xsl:source-document>
+  </xsl:template> 
+  
   
 
 
