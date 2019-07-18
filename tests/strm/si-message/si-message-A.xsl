@@ -170,48 +170,9 @@
   </xsl:template>
   
 
-  <!-- within xsl:source-document, use xsl:message:  (non-schema-aware) -->
+  <!-- dropped tests d-022, -023, -024 which were identical and incomplete -->
   
-  <xsl:template name="d-022" use-when="$RUN">
-    <out>
-      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
-        <xsl:for-each select="/*/*:description">
-          <xsl:message >
-            <xsl:copy-of select="."/>
-          </xsl:message>
-        </xsl:for-each>
-      </xsl:source-document>
-    </out>
-  </xsl:template>
-  
-  <!-- within xsl:source-document, use xsl:message:  (non-schema-aware) -->
-  
-  <xsl:template name="d-023" use-when="$RUN">
-    <out>
-      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
-        <xsl:for-each select="/*/*:description">
-          <xsl:message>
-            <xsl:copy-of select="."/>
-          </xsl:message>
-        </xsl:for-each>
-      </xsl:source-document>
-    </out>
-  </xsl:template>
-  
-  <!-- within xsl:source-document, use xsl:message:  (non-schema-aware) -->
-  
-  <xsl:template name="d-024" use-when="$RUN">
-    <out>
-      <xsl:source-document streamable="yes" href="../docs/citygml.xml">
-        <xsl:for-each select="/*/*:description">
-          <xsl:message >
-            <xsl:copy-of select="."/>
-          </xsl:message>
-        </xsl:for-each>
-      </xsl:source-document>
-    </out>
-  </xsl:template>
-  
+ 
 
   
 </xsl:transform>  
