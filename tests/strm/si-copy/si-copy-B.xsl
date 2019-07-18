@@ -16,7 +16,7 @@
     <out>
       <xsl:source-document streamable="yes" href="../docs/loans-noNS.xml">
         <xsl:variable name="copy">
-          <xsl:copy select="." validation="strict">
+          <xsl:copy validation="strict">
             <xsl:copy-of select="child::node()"/>
           </xsl:copy>
         </xsl:variable>
