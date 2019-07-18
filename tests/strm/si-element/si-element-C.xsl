@@ -356,7 +356,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- Test of xsl:source-document with xsl:element/@on-empty (empty) -->
+  <!-- Test of xsl:source-document with xsl:where-populated (empty) -->
 
   <xsl:template name="s-051" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -370,7 +370,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- Test of xsl:source-document with xsl:element/@on-empty, with on-empty consuming (not empty) -->
+  <!-- Test of xsl:source-document with xsl:where-populated, with on-empty consuming (not empty) -->
 
   <xsl:template name="s-052" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
@@ -385,7 +385,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- Test of xsl:source-document with xsl:element/@on-empty, with on-empty consuming (empty) -->
+  <!-- Test of xsl:source-document with xsl:where-populated, with on-empty consuming (empty) -->
 
   <xsl:template name="s-053" use-when="$RUN">
     <xsl:param name="s" select="20"/>
@@ -401,7 +401,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- Test of xsl:source-document with xsl:element/@on-empty (empty, returns a new element) -->
+  <!-- Test of xsl:source-document with xsl:where-populated (empty, returns a new element) -->
 
   <xsl:template name="s-054" use-when="$RUN">
     <xsl:variable name="e" as="element()">
@@ -421,7 +421,7 @@
     </xsl:source-document>
   </xsl:template>
 
-  <!-- Test of xsl:source-document with xsl:element/@on-empty (empty, no longer a type error, returns two elements) -->
+  <!-- Test of xsl:source-document with xsl:where-populated (empty, no longer a type error, returns two elements) -->
 
   <xsl:template name="s-055" use-when="$RUN">
     <xsl:param name="n" select="2"/>
