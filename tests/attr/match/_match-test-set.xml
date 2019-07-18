@@ -3907,6 +3907,7 @@
       <description>Test of template matching with schema-attribute($name) for top-level attribute declarations of derived built-in atomic types. Show all cases where a node will match the pattern</description>
       <keywords>xsl:import-schema SchemaAttributeTest</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2019-07-16" change="expected results depended on order of attributes"/>
       <environment>
          <source role="." file="schemamatch140.xml" validation="strict"/>
          <schema role="source-reference" file="match-attributes.xsd" xsd-version="1.0"/>
@@ -3919,7 +3920,20 @@
          <stylesheet file="match-210.xsl"/>
       </test>
       <result>
-         <assert-xml file="match-210.out"/>
+         <all-of>
+            <assert>/out/wrong="http://www.example.com/ns/match/attributes match-attributes.xsd"</assert>
+            <assert>/out/A="americans"</assert>
+            <assert>/out/A="american"</assert>
+            <assert>/out/B="id1"</assert>
+            <assert>/out/C="id1"</assert>
+            <assert>/out/E="aa"</assert>
+            <assert>/out/wrong="aa bb cc"</assert>
+            <assert>/out/G="ge"</assert>
+            <assert>/out/H="300"</assert>
+            <assert>/out/I="2"</assert>
+            <assert>/out/J="-9223372036854775808"</assert>
+            <assert>/out/wrong="1.2"</assert>
+         </all-of>
       </result>
    </test-case>
 
