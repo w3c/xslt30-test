@@ -1467,13 +1467,17 @@
       <description>Within override, cannot override a template rule in a mode accepted as final</description>
       <created by="Michael Kay" on="2015-10-21"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make initial template 'main' public, private named templates are not eligible initial templates (bug #30398)"/>
+      <modified by="Michael Kay" on="2019-07-17" 
+         change="Previously this expected XTSE3060. I don't believe that is correct. Error 3060 should be raised only when the
+                visibility of the component (mode) in the used package is final, not when the visibility in the used package is
+                public and the visibility in the using package is final. xsl:accept only affects the visibility in the using package"/>
       <environment ref="override-m-G"/>
       <test>
          <package file="override-m-016.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="XTSE3060"/>
+         <assert>exists(/out/x1)</assert>
       </result>
    </test-case>
    
