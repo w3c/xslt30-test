@@ -29,7 +29,7 @@
   <xsl:template match="book">
     <book>
       <xsl:variable name="temp" as="text()*">
-        <xsl:value-of select=".//*/(@*/string(), .[self::chtitle]/string())   (: was .//chtitle | .//@* :)"/>
+        <xsl:value-of select="chapter/(@nr/string(), @length/string(), chtitle/string()) "/>
       </xsl:variable>
       <nodes>
         <xsl:value-of select="count($temp)"/>
