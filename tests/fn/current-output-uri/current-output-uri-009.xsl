@@ -10,7 +10,7 @@
 
     <xsl:template name="xsl:initial-template" >
         <xsl:apply-templates select="4,3,8,1,8">
-            <!-- if current-output-uri() doesn't return empty-sequence(), this would throw XPTY0004 -->
+            <!-- if current-output-uri() doesn't return empty-sequence(), this would throw XTTE1020 -->
             <xsl:sort select="., current-output-uri()" />
         </xsl:apply-templates>
     </xsl:template>

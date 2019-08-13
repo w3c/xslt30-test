@@ -138,28 +138,36 @@
    
    <test-case name="current-output-uri-009">
       <description>Empty current-output-uri() from xsl:sort</description>
-      <created by="Abel Braaksma" on="2019-01-31"/>   
+      <created by="Abel Braaksma" on="2019-01-31"/>
+      <modified by="Michael Kay" on="2019-07-25" change="The spec is unclear, see bug 30410. Allowing alternative result."/>
       <test>
          <stylesheet file="current-output-uri-009.xsl"/>
          <output file="results/current-output-uri-009.xml"/>
       </test>
       <result>
-         <assert-string-value>13488</assert-string-value>
+         <any-of>
+            <assert-string-value>13488</assert-string-value>
+            <error code="XTTE1020"/>
+         </any-of>
       </result>
    </test-case>   
    
    <test-case name="current-output-uri-010">
       <description>No current-output-uri() from xsl:merge-key</description>
       <created by="Abel Braaksma" on="2019-01-31"/>   
+      <modified by="Michael Kay" on="2019-07-25" change="The spec is unclear, see bug 30410. Allowing alternative result."/>
       <test>
          <stylesheet file="current-output-uri-010.xsl"/>
          <output file="results/current-output-uri-010.xml"/>
       </test>
       <result>
-         <all-of>
-            <assert>every $x in /result/merged satisfies ($x/text() = 'current-output-uri-010.xml')</assert>
-            <assert>count(/result/merged[(position() - 1) * 2 = @item]) = 30</assert>
-         </all-of>
+         <any-of>
+            <all-of>
+               <assert>every $x in /result/merged satisfies ($x/text() = 'current-output-uri-010.xml')</assert>
+               <assert>count(/result/merged[(position() - 1) * 2 = @item]) = 30</assert>
+            </all-of>
+            <error code="XTTE1020"/>
+         </any-of>
       </result>
    </test-case>   
    
@@ -195,8 +203,10 @@
    <test-case name="current-output-uri-013">
       <description>Test absence of base output URI with fn:current-output-uri</description>
       <created by="Abel Braaksma" on="2019-02-02"/>      
+      <modified by="Michael Kay" on="2019-07-25" change="Explicitly request an absent base output URI, as per bug 30413"/>
       <test>
          <stylesheet file="current-output-uri-013.xsl"/>
+         <output file="#absent" />
       </test>
       <result>
          <assert-xml><![CDATA[<out>empty: true</out>]]></assert-xml>
@@ -219,8 +229,10 @@
       <description>Test absence of base output URI with fn:current-output-uri is not influenced by presence of xsl:output</description>
       <created by="Abel Braaksma" on="2019-02-02"/> 
       <modified by="Michael Kay" on="2019-03-05" change="use indent='no' to satisfy test catalog-004"/>
+      <modified by="Michael Kay" on="2019-07-25" change="Explicitly request an absent base output URI, as per bug 30413"/>
       <test>
          <stylesheet file="current-output-uri-015.xsl"/>
+         <output file="#absent" />
       </test>
       <result>
          <assert-xml><![CDATA[<out>empty: true</out>]]></assert-xml>
