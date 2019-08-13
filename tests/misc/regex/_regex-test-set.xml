@@ -1187,4 +1187,19 @@ Tak, tak, tak! - da kommen sie.</poem>]]></content>
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="regex-090">
+      <description>Dynamic call on regex-group() returns zero-length string - see XSLT 3.0 spec §5.3.4</description>
+      <created by="Michael Kay" on="2019-07-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="regex-090.xsl"/>
+      </test>
+      <result>
+         <assert>/out and not(/out/node())</assert>
+      </result>
+   </test-case>
 </test-set>
