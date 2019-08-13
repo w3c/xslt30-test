@@ -142,7 +142,7 @@
     
     <xsl:template name="c-034">
         <xsl:variable name="v">
-            <xsl:copy-of select="$valid-data" validation="strip"/>
+            <Z><xsl:copy-of select="$valid-data" validation="strip"/></Z>
         </xsl:variable>
         <out>
             <a><xsl:value-of select="count(id('p1', $v))"/></a>
