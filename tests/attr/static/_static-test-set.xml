@@ -858,6 +858,48 @@
       </result>
    </test-case>
    
+   <test-case name="static-029">
+      <description>
+         A static variable whose value is a sequence of attribute nodes
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2019-08-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-029.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/result/@count = '4'</assert>
+            <assert>/result/@names = 'key key key key'</assert>
+            <assert>/result/@values = 'a b c d'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="static-030">
+      <description>
+         A static variable whose value is a sequence of namespace nodes
+      </description>
+      <keywords>static-variable</keywords>
+      <created by="Michael Kay" on="2019-08-15"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="static-030.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/result/@count = '10'</assert>
+            <assert>/result/@names = ' xml'</assert>
+            <assert>/result/@values = 'http://www.w3.org/2005/xpath-functions http://www.w3.org/XML/1998/namespace'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
 
 </test-set>
