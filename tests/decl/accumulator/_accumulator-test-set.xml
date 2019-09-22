@@ -1626,8 +1626,9 @@
    <test-case name="accumulator-075s">
       <description>A streaming accumulator test involving xsl:result-document (Saxon bug 3932)</description>
       <created by="Michael Kay after Martin Honnen" on="2018-10-02"/>
+      <modified by="Michael Kay" on="2019-09-02" change="set streaming=true on source, to reflect the intent of the test"/>
       <environment>
-         <source role="." file="accumulator-075.xml"/>
+         <source role="." file="accumulator-075.xml" streaming="true"/>
       </environment>
       <dependencies>
          <feature value="schema_aware"/>
@@ -1690,6 +1691,40 @@
       </test>
       <result>
          <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-077">
+      <description>A streaming accumulator test (Saxon bug 4293): accumulator-after called recursively</description>
+      <created by="Michael Kay after Martin Honnen" on="2019-09-02"/>
+      <environment>
+         <source role="." file="accumulator-077.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-077.xsl"/>
+         <param static="yes" name="STREAMABLE" select="false()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/header-value = 'header 1'</assert>
+         </all-of>            
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-077s">
+      <description>A streaming accumulator test (Saxon bug 4293): accumulator-after called recursively</description>
+      <created by="Michael Kay after Martin Honnen" on="2019-09-02"/>
+      <environment>
+         <source role="." file="accumulator-077.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-077.xsl"/>
+         <param static="yes" name="STREAMABLE" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/header-value = 'header 1'</assert>
+         </all-of>            
       </result>
    </test-case>
    
