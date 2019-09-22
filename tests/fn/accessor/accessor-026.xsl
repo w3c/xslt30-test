@@ -12,7 +12,7 @@
       </xslt:variable>
   
 	     <out>
-         <t1>
+	      <t1>
             <xslt:value-of select="if (data($var1/doc/processing-instruction()) instance of xs:string) then data($var1/doc/processing-instruction()) else 'WROONG TYPE returned'"/>
          </t1>
          <t2>
