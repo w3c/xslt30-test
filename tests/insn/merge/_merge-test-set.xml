@@ -1642,5 +1642,47 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="merge-099">
+      <description>Saxon bug 4314. current-merge-group() called on rhs of bang operator.</description>
+      <created by="Michael Kay after Martin Honnen" on="2019-09-22"/>
+      <dependencies>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="merge-099.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<root><result>10</result><result>10</result><result>10</result><result>35</result><result>35</result><result>35</result><result>10</result><result>10</result><result>10</result></root>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="merge-100">
+      <description>
+         xsl:merge: current-merge-group() not available in called function.
+      </description>
+      <created by="Michael Kay" on="2019-09-22"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-100.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3480"/>
+      </result>
+   </test-case> 
+   
+   <test-case name="merge-101">
+      <description>
+         xsl:merge: current-merge-key() not available in called function.
+      </description>
+      <created by="Michael Kay" on="2019-09-22"/>
+      <environment ref="merge002"/>
+      <test>
+         <stylesheet file="merge-101.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3510"/>
+      </result>
+   </test-case>
 
 </test-set>
