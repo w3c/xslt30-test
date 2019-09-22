@@ -309,6 +309,7 @@
       <keywords>xsl:message terminate-attribute select-expression variable-reference</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Michael Kay" on="2012-12-11" change="removed leading whitespace from output, see bug 20027"/>
+      <modified by="Michael Kay" on="2019-09-17" change="avoid use of assert-xml for text-only message content"/>
       <environment ref="avt-07"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -320,10 +321,10 @@
          <all-of>
             <assert-xml><![CDATA[<out>Printing.</out>]]></assert-xml>
             <assert-message>
-               <assert-xml><![CDATA[AVT with value 'no' in @terminate of xsl:message]]></assert-xml>
+               <assert-eq>"AVT with value 'no' in @terminate of xsl:message"</assert-eq>
             </assert-message>
             <assert-message>
-               <assert-xml><![CDATA[AVT with value 'no' in @terminate of xsl:message]]></assert-xml>
+               <assert-xml>"AVT with value 'no' in @terminate of xsl:message"</assert-xml>
             </assert-message>
          </all-of>
       </result>
