@@ -212,6 +212,7 @@
    <test-case name="attribute-0601">
       <description>The namespace attribute is interpreted as an attribute value template.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2019-09-25" change="Remove dependency on generated namespace prefixes"/>
       <environment ref="attribute-06"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -220,7 +221,14 @@
          <stylesheet file="attribute-0601.xsl"/>
       </test>
       <result>
-         <assert-xml file="attribute-0601.out"/>
+         <all-of>
+            <assert>/root/namespace::ped="http://ped.test.com"</assert>
+            <assert>/root/Out/namespace::*[. = 'http://www.ns0.com']</assert>
+            <assert>/root/Out/namespace::*[. = 'http://ped.test.com']</assert>
+            <assert>/root/Out/@Q{http://www.ns0.com}Attr0 = "Hello"</assert>
+            <assert>/root/Out/@Q{}Attr1 = "Whatsup"</assert>
+            <assert>/root/Out/@Q{http://ped.test.com}Attr2 = "Goodbye"</assert>
+         </all-of>
       </result>
    </test-case>
 

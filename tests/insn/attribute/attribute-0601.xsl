@@ -6,10 +6,9 @@
     <!-- Purpose: The namespace attribute is interpreted as an attribute value template. -->
 
 <xsl:template match="/">
- <root><xsl:text>&#10;</xsl:text>
+ <root>
   <Out>
 	<xsl:attribute name="a:{docs/a}" namespace="{docs/a/@href}">Hello</xsl:attribute>
-
 	<xsl:attribute name="b:{docs/b}" namespace="{docs/b/@href}">Whatsup</xsl:attribute>
 	<xsl:attribute name="c:Attr2" namespace="http://ped.test.com">Goodbye</xsl:attribute>
   </Out>
