@@ -1714,6 +1714,7 @@
          from spec. The escaping must be done manually.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1723,7 +1724,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output142.out"/>
+         <any-of>
+            <assert-serialization method="html" file="output142.out"/>
+            <assert-serialization method="html" file="output142a.out"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -1886,6 +1890,7 @@
       <description>Test of HTML output with @normalization-form=none.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1895,7 +1900,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output153.out"/>
+         <any-of>
+            <assert-serialization method="html" file="output153.out"/>
+            <assert-serialization method="html" file="output153a.out"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -1923,6 +1931,7 @@
       <description>Test HTML output with @byte-order-mark=no. Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1932,7 +1941,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output156.out"/>
+         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body>Hello</body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -1941,6 +1950,7 @@
          'yes')</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1950,7 +1960,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output159.out"/>
+         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body><div>This is <a href="http://iri\.example\.org/%EF%AD%8F/%C3%A5rsrapport/%C3%A5r/2005\?x=y"> escaped</a></div></body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -3643,6 +3653,7 @@
       <description>Simple test for using character maps with the HTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -3652,7 +3663,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="output179.out"/>
+         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body><p>xx&xx</p><p>yy\+Ayy</p><p>zz%&zz</p></body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -4116,6 +4127,7 @@
       <description>JSON serialization</description>
       <created by="Michael Kay" on="2016-12-16"/>
       <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
+      <modified by="Michael Kay" on="2019-10-06" change="Fix obvious error in expected results"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="XPath_3.1"/>
@@ -4128,11 +4140,11 @@
          <all-of>
             <any-of>
                <serialization-matches>\{"value":9,"index":3\}</serialization-matches>
-               <serialization-matches>\{"index":3,"index":9\}</serialization-matches>
+               <serialization-matches>\{"index":3,"value":9\}</serialization-matches>
             </any-of>
             <any-of>
                <serialization-matches>\{"value":16,"index":4\}</serialization-matches>
-               <serialization-matches>\{"index":4,"index":16\}</serialization-matches>
+               <serialization-matches>\{"index":4,"value":16\}</serialization-matches>
             </any-of>
             <serialization-matches>^\[\{</serialization-matches>
             <serialization-matches>\}\]$</serialization-matches>
@@ -4144,6 +4156,7 @@
       <description>JSON serialization with nested HTML</description>
       <created by="Michael Kay" on="2016-12-16"/>
       <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
+      <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="XPath_3.1"/>
@@ -4153,9 +4166,7 @@
          <output serialize="yes" tree="no"/>
       </test>
       <result>
-         <all-of>
-            <serialization-matches><![CDATA[\{"doc1":"<html xmlns=\\"http:\\/\\/www.w3.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\"><\\/meta><title>Document 1<\\/title>]]></serialization-matches>          
-         </all-of>
+        <serialization-matches><![CDATA[\{"doc1":"(<!DOCTYPE (HTML|html)>)?<html xmlns=\\"http:\\/\\/www\.w3\.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\">(<\\/meta>)?<title>Document 1<\\/title>]]></serialization-matches>          
       </result>
    </test-case>
    
@@ -4401,6 +4412,7 @@
    <test-case name="output-0716">
       <description>JSON node-output-method = html</description>
       <created by="Michael Kay" on="2018-05-14"/>
+      <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="XPath_3.1"/>
@@ -4410,7 +4422,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[\["<head><meta http-equiv=\\"Content-Type\\"]]></serialization-matches>
+         <serialization-matches><![CDATA[\["(<!DOCTYPE (HTML|html))?><head><meta http-equiv=\\"Content-Type\\"]]></serialization-matches>
       </result>
    </test-case>
    

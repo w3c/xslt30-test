@@ -21,15 +21,11 @@
 
    <t:template match="/doc">
       <html>
-         <t:text>
-</t:text>
          <body>
             <t:for-each select="*">
-    	          <p>
+    	         <p>
                   <t:value-of select="."/>
                </p>
-               <t:text>
-</t:text>
             </t:for-each>
          </body>
       </html>

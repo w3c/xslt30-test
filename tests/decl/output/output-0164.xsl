@@ -7,10 +7,7 @@
    <t:template match="/">
       <html>
          <body>
-            <t:text>
-</t:text>
-            <div>
-This is <a href="http://iri.example.org/ﭏ/årsrapport/år/2005?x=y"> escaped</a>
+            <div>This is <a href="http://iri.example.org/ﭏ/årsrapport/år/2005?x=y"> escaped</a>
             </div>
          </body>
       </html>
