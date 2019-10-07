@@ -8,9 +8,7 @@
    <t:template match="/">
       <html>
          <head>
-            <script type="text/javascript">
-        document.write ("&lt;EM&gt;This will work&lt;\/EM&gt;")
-      </script>
+            <script type="text/javascript">document.write ("&lt;EM&gt;This will work&lt;\/EM&gt;")</script>
          </head>
          <body/>
       </html>
