@@ -10,12 +10,8 @@
 
    <t:template match="/">
       <html>
-         <head>
-  the head
-</head>
-         <body>
- this should not have a meta tag
-</body>
+         <head>the head</head>
+         <body>this should not have a meta tag</body>
       </html>
    </t:template>
 </t:transform>
