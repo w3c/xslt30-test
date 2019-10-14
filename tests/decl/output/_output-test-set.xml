@@ -350,6 +350,7 @@
       <description>Test avoidance of apos entity for XHTML output</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -359,7 +360,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output011.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<div style="don't try this">example.org</div>]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xml:lang="en" lang="en">]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -368,6 +372,7 @@
          namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -377,7 +382,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output017.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>\s*)?<html><body>This is the body</body></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -386,6 +394,7 @@
          the html element itself.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -395,7 +404,11 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s*<body>This is the body</body>\s*</html>]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?\s*<html xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>This is the body</body>\s*</html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -404,6 +417,7 @@
          namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -413,7 +427,11 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?\s*<html xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -422,6 +440,7 @@
          defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -431,7 +450,11 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?\s*<html xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         </all-of>s
       </result>
    </test-case>
 
@@ -439,6 +462,7 @@
       <description>Test for SCRIPT handling with XHTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -448,7 +472,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output021.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="output021.out"/>
+            <assert-serialization method="xhtml" file="output021b.out"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -456,6 +483,7 @@
       <description>Test for STYLE handling with XHTML output method.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -465,7 +493,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output022.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="output022.out"/>
+            <assert-serialization method="xhtml" file="output022b.out"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -473,6 +504,7 @@
       <description>Test for the xhtml output method with an empty html tag</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -482,7 +514,11 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output029.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?\s*<html]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -541,6 +577,7 @@
       <description>Test XHTML output with @doctype-system only.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Amend result to allow for whitespace differences"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -550,7 +587,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output031.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<!DOCTYPE html\s*SYSTEM "out.dtd">\s*<html]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -559,6 +599,7 @@
          ignored.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -568,7 +609,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output032.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[\?>(\s*<!DOCTYPE (HTML|html)>\s*)?<html]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -576,6 +620,7 @@
       <description>Test XHTML output with @doctype-system and @doctype-public</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -585,7 +630,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output033.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<!DOCTYPE html\s*PUBLIC "-//BOAG//DTD Websites V1.3//EN" "out.dtd">]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -593,6 +641,7 @@
       <description>Test XHTML output with cdata-section-elements that have ]]</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -602,7 +651,11 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output042.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><out><example>]]></serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[\]\]\]\]&gt;</serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -610,6 +663,7 @@
       <description>Test XHTML output with cdata-section-elements that have ]]&gt;.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -619,7 +673,11 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output043.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><out><example>]]></serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[\]\]\]\]&gt;&lt;!\[CDATA\[&gt;\]\]&gt;</serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -628,6 +686,7 @@
          @indent=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -637,7 +696,16 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output045.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="output045.out"/>
+            <all-of>
+               <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+               <serialization-matches><![CDATA[<!DOCTYPE (HTML|html)>]]></serialization-matches>
+               <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+               <serialization-matches><![CDATA[<area\s+tabindex="2" /><base /><basefont></basefont><br /><col /><frame></frame>]]></serialization-matches>
+               <serialization-matches><![CDATA[<hr\s+width="100" /><img /><input /><isindex></isindex><link /><meta /><param /></html>]]></serialization-matches>
+            </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -646,6 +714,7 @@
          false".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -655,7 +724,16 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output045.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="output045.out"/>
+            <all-of>
+               <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+               <serialization-matches><![CDATA[<!DOCTYPE (HTML|html)>]]></serialization-matches>
+               <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+               <serialization-matches><![CDATA[<area\s+tabindex="2" /><base /><basefont></basefont><br /><col /><frame></frame>]]></serialization-matches>
+               <serialization-matches><![CDATA[<hr\s+width="100" /><img /><input /><isindex></isindex><link /><meta /><param /></html>]]></serialization-matches>
+            </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -664,6 +742,7 @@
          @indent="0".</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -673,7 +752,16 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output045.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="output045.out"/>
+            <all-of>
+               <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+               <serialization-matches><![CDATA[<!DOCTYPE (HTML|html)>]]></serialization-matches>
+               <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+               <serialization-matches><![CDATA[<area\s+tabindex="2" /><base /><basefont></basefont><br /><col /><frame></frame>]]></serialization-matches>
+               <serialization-matches><![CDATA[<hr\s+width="100" /><img /><input /><isindex></isindex><link /><meta /><param /></html>]]></serialization-matches>
+            </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -717,6 +805,7 @@
       <description>Simple test of XHTML output with @indent=no</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -726,7 +815,12 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output050.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[\?>(\s*<!DOCTYPE (HTML|html)>\s*)?<html]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[xmlns="http://www.w3.org/1999/xhtml"><body></body></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -997,6 +1091,7 @@
          result tree is 'html' in the XHTML namespace.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1006,7 +1101,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output066.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<head>the head</head><body>this should not have a meta tag</body></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1078,6 +1176,7 @@
       <description>Test serialization of invalid XHTML. Not an error.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1087,7 +1186,13 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output104.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="output104.out"/>
+            <all-of>
+               <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml"><h1>Introduction</h1>]]></serialization-matches>
+               <serialization-matches><![CDATA[</html><h1\s+xmlns="http://www.w3.org/1999/xhtml">Introduction</h1>]]></serialization-matches>
+            </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -1096,6 +1201,7 @@
          definition in xsl:result document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1105,7 +1211,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output106.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml"><body><br />]]></serialization-matches>
+            <serialization-matches><![CDATA[<Option\s+selected="selected"></Option></body></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1114,6 +1223,7 @@
          output definition in xsl:result document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1123,7 +1233,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output107.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml"><body><br />]]></serialization-matches>
+            <serialization-matches><![CDATA[<Option\s+selected="selected"></Option></body></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1132,6 +1245,7 @@
          definition is used to serialize the implicit final result tree. </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1141,7 +1255,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output108.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml"><body><br />]]></serialization-matches>
+            <serialization-matches><![CDATA[<Option\s+selected="selected"></Option></body></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1151,6 +1268,7 @@
          and the same namespace) </description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1160,7 +1278,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output110.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml"><body><br />]]></serialization-matches>
+            <serialization-matches><![CDATA[<Option\s+selected="selected"></Option></body></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1234,6 +1355,7 @@
       <description>Test XHTML output with @byte-order-mark=no.Encoding is UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1243,7 +1365,12 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output113.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>Hello</body>]]></serialization-matches>
+            <not><serialization-matches>^&#xfeff;</serialization-matches></not>
+         </all-of>
       </result>
    </test-case>
 
@@ -1251,6 +1378,7 @@
       <description>Test XHTML output with @byte-order-mark=false. Encoding is UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1260,7 +1388,12 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output113.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>Hello</body>]]></serialization-matches>
+            <not><serialization-matches>^&#xfeff;</serialization-matches></not>
+         </all-of>
       </result>
    </test-case>
 
@@ -1268,6 +1401,7 @@
       <description>Test XHTML output with @byte-order-mark="0". Encoding is UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-06"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1277,7 +1411,12 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="text" file="output113.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>Hello</body>]]></serialization-matches>
+            <not><serialization-matches>^&#xfeff;</serialization-matches></not>
+         </all-of>
       </result>
    </test-case>
 
@@ -1303,6 +1442,7 @@
       <description>Test XHTML output method with @encoding=UTF-8.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1312,7 +1452,11 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output121.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>HelloÁ</body>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1350,7 +1494,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1371,7 +1515,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1392,7 +1536,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1475,6 +1619,7 @@
       <description>Test of XTHML output with @normalization-form=NFC.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1484,7 +1629,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output132.out"/>
+         <serialization-matches><![CDATA[<body>Á</body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -1492,6 +1637,7 @@
       <description>Test of XTHML output with @normalization-form=none.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1501,7 +1647,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output133.out"/>
+         <serialization-matches><![CDATA[<body>Á</body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -1696,6 +1842,7 @@
       <description>Test XHTML output method with @version=1.0</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1705,7 +1852,11 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output140.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?\s*<html]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"></html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1897,7 +2048,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body>Á</body></html>]]></serialization-matches>
+         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body>Á</body></html>]]></serialization-matches>
       </result>
    </test-case>
 
