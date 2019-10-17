@@ -18,7 +18,6 @@
                 <hr/>
                 <img/>
                 <input/>
-                <keygen/>
                 <link/>
                 <meta/>
                 <param/>
