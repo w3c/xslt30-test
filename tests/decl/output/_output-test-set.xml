@@ -1073,6 +1073,7 @@
          '@media-type="application/xhtml-xml".</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1082,7 +1083,13 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output064.out"/>
+         <all-of>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="application/xhtml-xml;\s*charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[<head>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</head>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1547,6 +1554,7 @@
          element in the XHTML namespace and '@media-type="application/xhtml-xml".</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1556,7 +1564,14 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output126.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[html\s*xmlns="http://www.w3.org/1999/xhtml"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="application/xhtml-xml;\s*charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[<head>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</head>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1565,6 +1580,7 @@
          http-equiv="Content-Type"' tag already present.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1574,7 +1590,14 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output127.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[html\s*xmlns="http://www.w3.org/1999/xhtml"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="text/html;\s*charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[<head>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</head>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1584,6 +1607,7 @@
          attribute value. Example from spec.</description>
       <created by="XSLT Editors" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1593,7 +1617,14 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output129.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[html\s*xmlns="http://www.w3.org/1999/xhtml"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="text/html;\s*charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[<head>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</head>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1602,6 +1633,7 @@
          "application/postscript"</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1611,7 +1643,14 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output131.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[html\s*xmlns="http://www.w3.org/1999/xhtml"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[http-equiv="Content-Type"]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[content="application/postscript;\s*charset=UTF-8"]]></serialization-matches>
+            <serialization-matches><![CDATA[<head>[^<]*<[Mm][Ee][Tt][Aa][^>\\]*>[^<]*</head>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1808,6 +1847,7 @@
       <description>Test empty elements with non-empty content model in XHTML output.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="Alternative result if default html-version is 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1817,7 +1857,13 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="output138.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches flags="i"
+               ><![CDATA[<head><meta\s+http-equiv="Content-Type"\s+content="text/html;\s+charset=UTF-8"\s*/>]]></serialization-matches>
+            <serialization-matches><![CDATA[<title></title></head>]]></serialization-matches>
+            <serialization-matches><![CDATA[<body><p></p></body>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -3106,6 +3152,7 @@
          change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="Michael Kay" on="2017-06-18" change="removed 'command' element, see bug 30119"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="removed legacy 'keygen' element, not a void element in latest HTML5 spec"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -3124,7 +3171,6 @@
             <serialization-matches><![CDATA[<hr\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<img\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<input\s*/>]]></serialization-matches>
-            <serialization-matches><![CDATA[<keygen\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<link\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<meta\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<param\s*/>]]></serialization-matches>
@@ -3142,6 +3188,7 @@
          change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="Michael Kay" on="2017-06-18" change="removed 'command' element, see bug 30119"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="removed legacy 'keygen' element, not a void element in latest HTML5 spec"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -3160,7 +3207,6 @@
             <serialization-matches><![CDATA[<hr\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<img\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<input\s*/>]]></serialization-matches>
-            <serialization-matches><![CDATA[<keygen\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<link\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<meta\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<param\s*/>]]></serialization-matches>
@@ -3288,6 +3334,7 @@
          change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="Michael Kay" on="2017-06-18" change="removed 'command' element, see bug 30119"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="removed legacy 'keygen' element, not a void element in latest HTML5 spec"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -3306,7 +3353,6 @@
             <serialization-matches><![CDATA[<hr\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<img\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<input\s*class=['"]s['"]\s*/>]]></serialization-matches>
-            <serialization-matches><![CDATA[<keygen\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<link\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<meta\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<param\s*class=['"]s['"]\s*/>]]></serialization-matches>
@@ -3324,6 +3370,7 @@
          change="@html-version occured in xslt3.0 spec, stylesheet @version=3.0"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="Michael Kay" on="2017-06-18" change="removed 'command' element, see bug 30119"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="removed legacy 'keygen' element, not a void element in latest HTML5 spec"/>
       <environment ref="output-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -3342,7 +3389,6 @@
             <serialization-matches><![CDATA[<hr\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<img\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<input\s*class=['"]s['"]\s*/>]]></serialization-matches>
-            <serialization-matches><![CDATA[<keygen\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<link\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<meta\s*class=['"]s['"]\s*/>]]></serialization-matches>
             <serialization-matches><![CDATA[<param\s*class=['"]s['"]\s*/>]]></serialization-matches>
@@ -4302,6 +4348,7 @@
       <created by="Michael Kay" on="2016-12-16"/>
       <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
+      <modified by="Debbie Lockett" on="2019-10-17" change="Amend alternative result if default html-version is 5.0"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="XPath_3.1"/>
@@ -4311,7 +4358,10 @@
          <output serialize="yes" tree="no"/>
       </test>
       <result>
-        <serialization-matches><![CDATA[\{"doc1":"(<!DOCTYPE (HTML|html)>)?<html xmlns=\\"http:\\/\\/www\.w3\.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\">(<\\/meta>)?<title>Document 1<\\/title>]]></serialization-matches>          
+         <all-of>
+            <serialization-matches><![CDATA[\{"doc1":"(<!DOCTYPE (HTML|html)>)?]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns=\\"http:\\/\\/www\.w3\.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\">(<\\/meta>)?<title>Document 1<\\/title>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
    

@@ -19,7 +19,6 @@
                 <hr class="s"/>
                 <img class="s"/>
                 <input class="s"/>
-                <keygen class="s"/>
                 <link class="s"/>
                 <meta class="s"/>
                 <param class="s"/>
