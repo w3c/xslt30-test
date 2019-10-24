@@ -1232,6 +1232,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1242,7 +1243,12 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="text" file="result-document-0257.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
+            <not><serialization-matches>^&#xfeff;</serialization-matches></not>
+         </all-of>
       </result>
    </test-case>
 
@@ -1275,6 +1281,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1285,7 +1292,12 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="text" file="result-document-0257.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
+            <not><serialization-matches>^&#xfeff;</serialization-matches></not>
+         </all-of>
       </result>
    </test-case>
 
@@ -1318,6 +1330,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          UTF-8.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1328,7 +1341,12 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="text" file="result-document-0257.out"/>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+            <serialization-matches><![CDATA[<body>hello</body>]]></serialization-matches>
+            <not><serialization-matches>^&#xfeff;</serialization-matches></not>
+         </all-of>
       </result>
    </test-case>
 
@@ -1677,6 +1695,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1687,7 +1706,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1696,6 +1718,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          @indent="no".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1706,7 +1729,16 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="result-document-0278.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="result-document-0278.out"/>
+            <all-of>
+               <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+               <serialization-matches><![CDATA[<!DOCTYPE]]></serialization-matches>
+               <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+               <serialization-matches><![CDATA[<area\s+tabindex="2"\s*/><base\s*/><basefont></basefont><br\s*/><col\s*/><frame></frame>]]></serialization-matches>
+               <serialization-matches><![CDATA[<hr\s+width="100"\s*/><img\s*/><input\s*/><isindex></isindex><link\s*/><meta\s*/><param\s*/></html>]]></serialization-matches>
+            </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -1715,6 +1747,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1725,7 +1758,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1734,6 +1770,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          false".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1744,7 +1781,16 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="result-document-0278.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="result-document-0278.out"/>
+            <all-of>
+               <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+               <serialization-matches><![CDATA[<!DOCTYPE]]></serialization-matches>
+               <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+               <serialization-matches><![CDATA[<area\s+tabindex="2"\s*/><base\s*/><basefont></basefont><br\s*/><col\s*/><frame></frame>]]></serialization-matches>
+               <serialization-matches><![CDATA[<hr\s+width="100"\s*/><img\s*/><input\s*/><isindex></isindex><link\s*/><meta\s*/><param\s*/></html>]]></serialization-matches>
+            </all-of>
+         </any-of>
       </result>
    </test-case>
 
@@ -1753,6 +1799,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          namespace defined on the html element itself.</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1763,7 +1810,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
 
@@ -1772,6 +1822,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          @indent="0".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1782,13 +1833,22 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="result-document-0278.out"/>
+         <any-of>
+            <assert-serialization method="xhtml" file="result-document-0278.out"/>
+            <all-of>
+               <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+               <serialization-matches><![CDATA[<!DOCTYPE]]></serialization-matches>
+               <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
+               <serialization-matches><![CDATA[<area\s+tabindex="2"\s*/><base\s*/><basefont></basefont><br\s*/><col\s*/><frame></frame>]]></serialization-matches>
+               <serialization-matches><![CDATA[<hr\s+width="100"\s*/><img\s*/><input\s*/><isindex></isindex><link\s*/><meta\s*/><param\s*/></html>]]></serialization-matches>
+            </all-of>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="result-document-0283">
       <description>Test empty elements with empty content model in XHTML output and
-         @indent="0".</description>
+         @indent="NO".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <environment ref="result-document-02"/>
@@ -2793,6 +2853,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          ".</description>
       <created by="Debbie Lockett" on="2014-08-11"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="Alternative result if default html-version is 5.0"/>
       <environment ref="result-document-12"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2803,7 +2864,10 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<\?xml version="1.0" encoding="UTF-8"\?>\s*<html xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html\s+xmlns="http://www.w3.org/1999/xhtml">\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
    
@@ -2841,6 +2905,7 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <description>JSON serialization</description>
       <created by="Michael Kay" on="2016-12-16"/>
       <modified by="Debbie Lockett" on="2017-02-23" change="add serialization dependency"/>
+      <modified by="Debbie Lockett" on="2019-10-24" change="correction to result test regex"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="serialization" satisfied="true"/>
@@ -2853,11 +2918,11 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <all-of>
             <any-of>
                <serialization-matches>\{"value":9,"index":3\}</serialization-matches>
-               <serialization-matches>\{"index":3,"index":9\}</serialization-matches>
+               <serialization-matches>\{"index":3,"value":9\}</serialization-matches>
             </any-of>
             <any-of>
                <serialization-matches>\{"value":16,"index":4\}</serialization-matches>
-               <serialization-matches>\{"index":4,"index":16\}</serialization-matches>
+               <serialization-matches>\{"index":4,"value":16\}</serialization-matches>
             </any-of>
             <serialization-matches>^\[\{</serialization-matches>
             <serialization-matches>\}\]$</serialization-matches>
