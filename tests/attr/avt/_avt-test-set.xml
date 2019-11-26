@@ -234,6 +234,7 @@
       <description>Test AVT in the name attribute of xsl:namespace. AVT value comes from a node or a variable. Cases for AVT: -no literal element -literal element at start -literal element at end -literal element at start and end -literal element present and value obtained at run time is empty sequence</description>
       <keywords>xsl:namespace select-expression variable-reference mixed-avt</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2019-10-30" change="cosmetic improvements"/>
       <environment ref="avt-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -242,7 +243,11 @@
          <stylesheet file="avt-0303.xsl"/>
       </test>
       <result>
-         <assert-xml file="avt-0303.out"/>
+         <assert-xml><![CDATA[<?xml version="1.0" encoding="UTF-8"?><out
+            ><elem xmlns:a="http://www.test.org/" xmlns:b="http://www.example.org/"
+            /><elem xmlns:abc="http://www.test.org/" xmlns:bcd="http://www.example.org/"
+            /><elem xmlns:aa="http://www.test.org/" xmlns:abc="http://www.example.org/"
+            /><elem xmlns:a="http://www.test.org/"/></out>]]></assert-xml>
       </result>
    </test-case>
 

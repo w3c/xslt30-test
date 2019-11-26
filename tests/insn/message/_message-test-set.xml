@@ -854,4 +854,25 @@
          <assert>/out</assert>
       </result>
    </test-case>
+   
+   <test-case name="message-0501">
+      <description>xsl:message terminate=yes: the error can be caught, and the message content is available in the xsl:catch as $err:value.</description>
+      <created by="Michael Kay" on="2019-11-06"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="message-0501.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/err/code = "XTMM9000"</assert>
+            <assert>exists(/err/description)</assert>
+            <assert>/err/value/test = "Take me to your leader"</assert>
+            <assert>/err/value/test/comment() = "REALLY"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   
 </test-set>

@@ -179,17 +179,21 @@
       <description>This test is designed to exercise the different paths in the Saxon implementation of xsl:attribute</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-10-25" change="No need for this test to require serialization, or to depend on order of attributes"/>
       <environment ref="attribute-04"/>
       <dependencies>
          <spec value="XSLT10+"/>
-         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="attribute-0401.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="atrs14.out"/>
+         <all-of>
+            <assert>/html/@one = 'simple'</assert>
+            <assert>/html/@two = 'expression'</assert>
+            <assert>/html/@three = 'complex'</assert>
+            <assert>/html/@four = 'source'</assert>
+         </all-of>
       </result>
    </test-case>
 
