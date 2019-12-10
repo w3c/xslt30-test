@@ -4,6 +4,11 @@
 
   <!-- PURPOSE: effect of BC on default output method -->
   <!-- if XHTML is chosen, meta elements are added and URIs are escaped -->
+  
+  <!--  "If the expanded QName of this first element child has local part html (in lower case), and namespace URI http://www.w3.org/1999/xhtml, 
+         then the default output method is normally xhtml. However, if the effective version of the outermost element of the principal stylesheet 
+         module in the top-level package has the value 1.0, and if the result tree is generated implicitly (rather than by an explicit xsl:result-document 
+         instruction), then the default output method in this situation is xml. "-->
 
   <xsl:template name="main">
     <xsl:result-document>
