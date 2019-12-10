@@ -18,12 +18,16 @@
       <description>Returns error, module is not available (non-existent file)</description>
       <created by="Michael Kay" on="2017-08-17"/>
       <modified by="Michael Kay" on="2019-03-06" change="make entry point public"/>
+      <modified by="Michael Kay" on="2019-11-26" change="allow error FOQM0006 when no XQuery processor is available"/>
       <environment ref="load-xquery-module-A"/>           
       <test>
          <stylesheet file="load-xquery-module-001.xsl"/>
       </test>
       <result>
-         <error code="XQST0059"/>
+         <any-of>
+            <error code="XQST0059"/>
+            <error code="FOQM0006"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -31,12 +35,16 @@
       <description>Read value of a global variable from query module</description>
       <created by="Michael Kay" on="2017-08-17"/>
       <modified by="Michael Kay" on="2019-03-06" change="make entry point public"/>
+      <modified by="Michael Kay" on="2019-11-26" change="allow error FOQM0006 when no XQuery processor is available"/>
       <environment ref="load-xquery-module-A"/>           
       <test>
          <stylesheet file="load-xquery-module-002.xsl"/>
       </test>
       <result>
-         <assert>/out = "var1"</assert>
+         <any-of>
+            <assert>/out = "var1"</assert>
+            <error code="FOQM0006"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -44,12 +52,16 @@
       <description>Invoke a function from query module</description>
       <created by="Michael Kay" on="2017-08-17"/>
       <modified by="Michael Kay" on="2019-03-06" change="make entry point public"/>
+      <modified by="Michael Kay" on="2019-11-26" change="allow error FOQM0006 when no XQuery processor is available"/>
       <environment ref="load-xquery-module-A"/>           
       <test>
          <stylesheet file="load-xquery-module-003.xsl"/>
       </test>
       <result>
-         <assert>/out = "func1"</assert>
+         <any-of>
+            <assert>/out = "func1"</assert>
+            <error code="FOQM0006"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -57,12 +69,16 @@
       <description>Bind statically to a function from query module</description>
       <created by="Michael Kay" on="2017-08-17"/>
       <modified by="Michael Kay" on="2019-03-06" change="make entry point public"/>
+      <modified by="Michael Kay" on="2019-11-26" change="allow error FOQM0006 when no XQuery processor is available"/>
       <environment ref="load-xquery-module-A"/>           
       <test>
          <stylesheet file="load-xquery-module-004.xsl"/>
       </test>
       <result>
-         <assert>/out = "func1"</assert>
+         <any-of>
+            <assert>/out = "func1"</assert>
+            <error code="FOQM0006"/>
+         </any-of>
       </result>
    </test-case>
  
