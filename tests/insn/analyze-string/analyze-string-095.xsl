@@ -3,8 +3,6 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
     exclude-result-prefixes="xs xd" version="2.0">
 
-    <xsl:output method="text"/>
-
     <xsl:template name="main">
         <out>
             <xsl:analyze-string select="'1949'"
