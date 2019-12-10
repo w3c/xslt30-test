@@ -154,7 +154,7 @@
     <xsl:template name="r-018" use-when="$RUN">
       <xsl:source-document streamable="no" href="{$books-doc}">
         <out>
-          <xsl:apply-templates select="[/BOOKLIST/BOOKS/ITEM[1]/*/snapshot(), $insertion]?*" mode="r-018-mode"/>
+          <xsl:apply-templates select="[/BOOKLIST/BOOKS/ITEM[1]/* ! snapshot(), $insertion]?*" mode="r-018-mode"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -167,7 +167,7 @@
   <xsl:template name="r-019" use-when="$RUN">
     <xsl:source-document streamable="no" href="{$books-doc}">
       <out>
-        <xsl:apply-templates select="[/BOOKLIST/BOOKS/ITEM[1]/*/snapshot(), $insertion]" mode="r-019-mode"/>
+        <xsl:apply-templates select="[/BOOKLIST/BOOKS/ITEM[1]/* ! snapshot(), $insertion]" mode="r-019-mode"/>
       </out>
     </xsl:source-document>
   </xsl:template>
