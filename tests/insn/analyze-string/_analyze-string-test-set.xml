@@ -90,6 +90,51 @@ Tak, tak, tak! - da kommen sie.</poem>]]></content>
       <source role="." file="analyze-string-905.xml"/>
    </environment>
    
+   <test-case name="analyze-string-001">
+      <description>Type-check select attribute of xsl:analyze-string (failure case)</description>
+      <created by="Michael Kay" on="2019-12-09"/>
+      <environment ref="regex001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-001.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-002">
+      <description>Type-check select attribute of xsl:analyze-string (success case - URI promotion)</description>
+      <created by="Michael Kay" on="2019-12-09"/>
+      <environment ref="regex001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-002.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out>http://[e]n[e]rg[e]x.com/</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-003">
+      <description>Type-check select attribute of xsl:analyze-string (failure case: sequence of several values)</description>
+      <created by="Michael Kay" on="2019-12-09"/>
+      <environment ref="regex001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-003.xsl"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
    <test-case name="analyze-string-005">
       <description>test xsl:analyze-string with dynamic regex expression.</description>
       <created by="Michael Kay" on="2018-11-09"/>
@@ -230,7 +275,7 @@ It put its sooty foot
    </test-case>
 
    <test-case name="analyze-string-035">
-      <description>test xsl:analyze-string applied to empty sequence. Error in 2.0, allowed in 2.1 (bug 7976)</description>
+      <description>test xsl:analyze-string applied to empty sequence. Error in 2.0, allowed in 3.0 (bug 7976)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="regex001"/>
       <dependencies>
@@ -947,6 +992,7 @@ world</E1><E2>*</E2></out>]]></assert-xml>
    <test-case name="analyze-string-095">
       <description>Test of regex-group(), Saxon bug 2487 from Tomos Hillman</description>
       <created by="Michael Kay" on="2013-12-09"/>
+      <modified by="Michael Kay" on="2019-12-09" change="Drop xsl:output method=text"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -981,11 +1027,29 @@ world</E1><E2>*</E2></out>]]></assert-xml>
    <test-case name="analyze-string-097">
       <description>Test of analyze-string with non-capturing groups, Saxon bug 3211 from Henry Thompson</description>
       <created by="Michael Kay" on="2017-04-27"/>
+      <modified by="Michael Kay" on="2019-12-09" change="The regex is invalid: it contains an unescaped right curly brace at position 19 - '(\{[^}]+})'. 
+         Right curly brace in XSD regex syntax is not a NormalChar so it must be backslash-escaped. A corrected version of the test is at analyze-string-097a"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="analyze-string-097.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="FORX0001"/>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-097a">
+      <description>Test of analyze-string with non-capturing groups, Saxon bug 3211 from Henry Thompson. 
+          Corrected version of test analyze-string-097</description>
+      <created by="Michael Kay" on="2019-12-09"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-097a.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>

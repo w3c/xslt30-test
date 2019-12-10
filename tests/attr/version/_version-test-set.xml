@@ -329,6 +329,7 @@
       <description>Test xsl:message with select attribute</description>
       <keywords>xsl:message</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2019-12-03" change="Avoid assert-xml for non-XML results"/>
       <environment ref="ver17"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -340,13 +341,19 @@
          <all-of>
             <assert-xml><![CDATA[<out/>]]></assert-xml>
             <assert-message>
-               <assert-xml><![CDATA[message 1: A message]]></assert-xml>
+               <assert-string-value><![CDATA[message 1: A message]]></assert-string-value>
             </assert-message>
             <assert-message>
-               <assert-xml><![CDATA[<b id="3"/>Another message]]></assert-xml>
+               <all-of>
+                  <assert-string-value>Another message</assert-string-value>
+                  <assert>/b[@id='3'][following-sibling::text()[.='Another message']</assert>
+               </all-of>
             </assert-message>
             <assert-message>
-               <assert-xml><![CDATA[message 3<b id="3"/>]]></assert-xml>
+               <all-of>
+                  <assert-string-value>message 3</assert-string-value>
+                  <assert>/b[@id='3'][preceding-sibling::text()[.='message']</assert>
+               </all-of>
             </assert-message>
          </all-of>
       </result>

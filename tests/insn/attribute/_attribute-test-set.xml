@@ -248,7 +248,7 @@
       <description>Verify that 'checked' attribute of HTML element input is correctly set.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
-      <modified by="Debbie Lockett" on="2019-12-03" change="Amend result to allow for default HTML version 5.0"/>
+      <modified by="Michael Kay" on="2019-12-05" change="Accept serialization variations such as HTML5 DOCTYPE and changed attribute order"/>
       <environment ref="attribute-07"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -259,10 +259,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <all-of>
-            <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>\s*)?<HTML>]]></serialization-matches>
-            <serialization-matches><![CDATA[<HTML>\s*<Form>Zoneone\s+<Input Type="checkbox" CHECKED></Form>\s*</HTML>]]></serialization-matches>
-         </all-of>
+         <any-of>
+            <serialization-matches><![CDATA[<Input\s+Type=["']checkbox["']\s+CHECKED\s*></Form]]></serialization-matches>
+            <serialization-matches><![CDATA[<Input\s+CHECKED\s+Type=["']checkbox["']\s*></Form]]></serialization-matches>
+         </any-of>
       </result>
    </test-case>
 

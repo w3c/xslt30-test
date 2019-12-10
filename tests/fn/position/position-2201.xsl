@@ -1,7 +1,3 @@
-<!DOCTYPE stylesheet [
-  <!ENTITY nbsp " ">
-]>
-
 <!-- bug report from Jonathan Williford 
      last() fails when applied to an axis on a virtual copy of a node -->
      
