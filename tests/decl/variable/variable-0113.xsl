@@ -10,7 +10,7 @@
   
   <xsl:template match="/">
      <xsl:variable name="v" as="xs:integer" select="true()"/>
-     <out/>
+     <out value="{$v}"/>
      <xsl:message>*** Error not detected! ***</xsl:message>
   </xsl:template>
 
