@@ -596,11 +596,15 @@
    <test-case name="seqtor-038a">
       <description>Constructing simple content, xsl:namespace</description>
       <created by="Abel Braaksma" on="2016-01-23"/>
+      <modified by="Michael Kay" on="2019-11-30" change="Allow error result, a processor can reject an invalid namespace URI"/>
       <test>
          <stylesheet file="seqtor-038a.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<bar xmlns:foo="  |   |  "/>]]></assert-xml>
+         <any-of>
+            <assert-xml><![CDATA[<bar xmlns:foo="  |   |  "/>]]></assert-xml>
+            <error code="XTDE0905"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -618,22 +622,30 @@
    <test-case name="seqtor-038c">
       <description>Constructing simple content, xsl:namespace</description>
       <created by="Abel Braaksma" on="2016-01-23"/>
+      <modified by="Michael Kay" on="2019-11-30" change="Allow error result, a processor can reject an invalid namespace URI"/>
       <test>
          <stylesheet file="seqtor-038c.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<bar xmlns:foo=" | | "/>]]></assert-xml>
+         <any-of>
+            <assert-xml><![CDATA[<bar xmlns:foo=" | | "/>]]></assert-xml>
+            <error code="XTDE0905"/>
+         </any-of>
       </result>
    </test-case>
 
    <test-case name="seqtor-038d">
       <description>Constructing simple content, xsl:namespace</description>
       <created by="Abel Braaksma" on="2016-01-23"/>
+      <modified by="Michael Kay" on="2019-11-30" change="Allow error result, a processor can reject an invalid namespace URI"/>
       <test>
          <stylesheet file="seqtor-038d.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<bar xmlns:foo=" |  | "/>]]></assert-xml>
+         <any-of>
+            <assert-xml><![CDATA[<bar xmlns:foo=" | | "/>]]></assert-xml>
+            <error code="XTDE0905"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -805,6 +817,7 @@
       https://lists.w3.org/Archives/Public/public-xsl-query/2016Feb/0034.html</description>
       <created by="Abel Braaksma" on="2016-01-23"/>
       <modified by="Michael Kay" on="2016-03-24" change="add dependencies"/>
+      <modified by="Michael Kay" on="2019-11-29" change="avoid assert-xml on non-XML results"/>
       <dependencies>
          <feature value="higher_order_functions"/>
       </dependencies>
@@ -814,8 +827,8 @@
       </test>
       <result>
          <all-of>
-            <assert-xml><![CDATA[42 84 126 168 210 252 294 336 378 420]]></assert-xml>
-            <assert-string-value><![CDATA[42 84 126 168 210 252 294 336 378 420]]></assert-string-value>
+            <assert-type>xs:integer*</assert-type>
+            <assert-deep-eq>42, 84, 126, 168, 210, 252, 294, 336, 378, 420</assert-deep-eq>
          </all-of>
       </result>
    </test-case>
