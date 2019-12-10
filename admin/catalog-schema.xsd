@@ -881,6 +881,8 @@
                                 <xs:enumeration value="disabling_output_escaping"/>
                                 <xs:enumeration value="dynamic_evaluation"/>
                                 <xs:enumeration value="higher_order_functions"/>
+                                <xs:enumeration value="HTML4"/>
+                                <xs:enumeration value="HTML5"/>
                                 <xs:enumeration value="namespace_axis"/>
                                 <xs:enumeration value="schema_aware"/>
                                 <xs:enumeration value="built_in_derived_types"/>
@@ -1273,6 +1275,28 @@
                             <xs:restriction base="xs:string">
                                 <xs:enumeration value="UTF-8"/>
                                 <xs:enumeration value="iso-8859-1"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:restriction>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="default_html_version" substitutionGroup="dependency">
+        <xs:annotation>
+            <xs:documentation>
+                <p>Identifies the default HTML version for serialized output.</p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:restriction base="dependencyType">
+                    <xs:attribute name="value">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="4"/>
+                                <xs:enumeration value="5"/>
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>
