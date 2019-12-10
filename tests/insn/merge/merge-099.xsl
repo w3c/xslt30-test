@@ -4,8 +4,6 @@
     expand-text="yes"
     exclude-result-prefixes="#all">
     
-    <xsl:output indent="yes"/>
-    
     <xsl:function name="mf:test" as="item()*">
         <xsl:param name="i1" as="xs:integer*"/>
         <result>{sum($i1)}</result>
