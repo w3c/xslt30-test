@@ -288,9 +288,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <any-of>
             <serialization-matches><![CDATA[href="% %C2%96 &#0*(x96|150); a &#0*(34|x22);  ¡ &lt; &gt; &amp; end"]]></serialization-matches>
-         </any-of>
       </result>
    </test-case>
 
@@ -457,7 +455,7 @@
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
             <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?\s*<html xmlns="http://www.w3.org/1999/xhtml">]]></serialization-matches>
             <serialization-matches><![CDATA[\s+<body>This is the body</body>\s+</html>]]></serialization-matches>
-         </all-of>s
+         </all-of>
       </result>
    </test-case>
 
@@ -680,6 +678,113 @@
             <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
             <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><out><example>]]></serialization-matches>
             <serialization-matches>&lt;!\[CDATA\[\]\]\]\]&gt;&lt;!\[CDATA\[&gt;\]\]&gt;</serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0115b">
+      <description>Test XHTML output with cdata-section-elements that have (non-ASCII) characters
+         not representable in the character encoding being used for output (US-ASCII)</description>
+      <created by="Debbie Lockett" on="2019-11-29"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0115b.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><out><example>]]></serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[foo \]\]&gt;</serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[ bar\]\]&gt;</serialization-matches>
+            <any-of>
+               <serialization-matches><![CDATA[>&#xaa;<]]></serialization-matches>
+               <serialization-matches><![CDATA[>&#170;<]]></serialization-matches>
+            </any-of>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0115c">
+      <description>Test XHTML output with cdata-section-elements that have (non-ASCII) characters
+         not representable in the character encoding being used for output (US-ASCII);
+         not affected by character maps</description>
+      <created by="Debbie Lockett" on="2019-11-29"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0115c.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><out><example>]]></serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[foo \]\]&gt;</serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[ bar\]\]&gt;</serialization-matches>
+            <any-of>
+               <serialization-matches><![CDATA[>&#xaa;<]]></serialization-matches>
+               <serialization-matches><![CDATA[>&#170;<]]></serialization-matches>
+            </any-of>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0115d">
+      <description>Test XHTML output with cdata-section-elements that have (non-ASCII) characters
+         not representable in the character encoding being used for output (US-ASCII);
+         but unicode normalized (NFD) </description>
+      <created by="Debbie Lockett" on="2019-11-29"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0115d.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><out><example>]]></serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[foo c\]\]&gt;</serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[ bar\]\]&gt;</serialization-matches>
+            <any-of>
+               <serialization-matches><![CDATA[>&#807;<]]></serialization-matches>
+               <serialization-matches><![CDATA[>&#x327;<]]></serialization-matches>
+            </any-of>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0115e">
+      <description>Test XHTML output with cdata-section-elements that have (non-ASCII) characters
+         not representable in the character encoding being used for output (US-ASCII);
+         but unicode normalized (NFC) </description>
+      <created by="Debbie Lockett" on="2019-11-29"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0115e.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<\?xml]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml"><out><example>]]></serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[foo \]\]&gt;</serialization-matches>
+            <serialization-matches>&lt;!\[CDATA\[ bar\]\]&gt;</serialization-matches>
+            <any-of>
+               <serialization-matches><![CDATA[>&#xe7;<]]></serialization-matches>
+               <serialization-matches><![CDATA[>&#231;<]]></serialization-matches>
+            </any-of>
          </all-of>
       </result>
    </test-case>
@@ -1516,7 +1621,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1537,7 +1642,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1558,7 +1663,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1701,7 +1806,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<body>Á</body></html>]]></serialization-matches>
+         <serialization-matches><![CDATA[<body>Á</body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -2109,7 +2214,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body>Á</body></html>]]></serialization-matches>
+         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body>Á</body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -2675,9 +2780,12 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="error to assert-serialization-error"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-11-29" change="Declared requirement for HTML serialization version less than 5.0"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="HTML4"/>
+         <default_html_version value="4"/>
       </dependencies>
       <test>
          <stylesheet file="output-0195.xsl"/>
@@ -2685,6 +2793,49 @@
       </test>
       <result>
          <assert-serialization-error code="SERE0014"/>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0195a">
+      <description>Test that no error is raised if the output method is HTML, with default version 5.0, and the result tree
+         contains characters in the #x7F-#x9F range.</description>
+      <created by="Debbie Lockett" on="2019-11-29"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="HTML5"/>
+         <default_html_version value="5"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0195.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <any-of>
+            <serialization-matches><![CDATA[<doc>&#x9f;</doc>]]></serialization-matches>
+            <serialization-matches><![CDATA[<doc>&#159;</doc>]]></serialization-matches>
+         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0195b">
+      <description>Test that no error is raised if the output method is HTML, version 5.0, and the result tree
+         contains characters in the #x7F-#x9F range.</description>
+      <created by="Debbie Lockett" on="2019-11-29"/>
+      <environment ref="output-01"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="HTML5"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0195b.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <any-of>
+            <serialization-matches><![CDATA[<doc>&#x9f;</doc>]]></serialization-matches>
+            <serialization-matches><![CDATA[<doc>&#159;</doc>]]></serialization-matches>
+         </any-of>
       </result>
    </test-case>
 

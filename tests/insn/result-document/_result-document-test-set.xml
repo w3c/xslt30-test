@@ -776,10 +776,12 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          xsl:result-document.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Debbie Lockett" on="2019-11-29" change="Declared requirement for HTML serialization version"/>
       <environment ref="result-document-02"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="serialization" satisfied="true"/>
+         <feature value="HTML4"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-0235.xsl"/>
@@ -2934,9 +2936,30 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       <description>JSON serialization with nested HTML</description>
       <created by="Michael Kay" on="2016-12-16"/>
       <modified by="Debbie Lockett" on="2017-02-23" change="add serialization dependency"/>
+      <modified by="Debbie Lockett" on="2019-11-29" change="Declared requirement for HTML serialization version less than 5.0"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="serialization" satisfied="true"/>
+         <feature value="HTML4"/>
+         <default_html_version value="4"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1402.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA["doc1":"<html xmlns=\\"http:\\/\\/www.w3.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\"><\\/meta><title>Document 1<\\/title>]]></serialization-matches>          
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1402b">
+      <description>JSON serialization with nested HTML, with default version 5.0</description>
+      <created by="Debbie Lockett" on="2019-11-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="serialization" satisfied="true"/>
+         <feature value="HTML5"/>
+         <default_html_version value="5"/>
       </dependencies>
       <test>
          <stylesheet file="result-document-1402.xsl"/>
@@ -2944,7 +2967,8 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA["doc1":"<html xmlns=\\"http:\\/\\/www.w3.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\"><\\/meta><title>Document 1<\\/title>]]></serialization-matches>          
+            <serialization-matches><![CDATA["doc1":"<]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns=\\"http:\\/\\/www.w3.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\"><title>Document 1<\\/title>]]></serialization-matches>
          </all-of>
       </result>
    </test-case>
@@ -3093,6 +3117,22 @@ the un-named xsl:format (i.e. no 'name' attribute) has method "text".</assert-se
          <all-of>
             <serialization-matches><![CDATA[<!--start-->\n11\n12\n13\n14\n15\n<!--middle-->\n16\n17\n18\n19\n20\n<!--end-->$]]></serialization-matches>          
          </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="result-document-1411">
+      <description>JSON serialization parameter document and character map</description>
+      <created by="Debbie Lockett" on="2019-11-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="serialization" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="result-document-1411.xsl"/>
+         <output serialize="yes" tree="no"/>
+      </test>
+      <result>
+         <serialization-matches>\{"AAA":"AAA","BBB":"BBB","CCC":"CCC","d":"DDD","e":"EEE","f":"FFF","g":"GGG"\}</serialization-matches>
       </result>
    </test-case>
    
