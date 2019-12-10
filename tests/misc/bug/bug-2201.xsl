@@ -1,8 +1,5 @@
 <?xml version="1.0"?><!--nspace.xsl-->
 <!--XSLT 1.0 - http://www.CraneSoftwrights.com/training -->
-<!DOCTYPE xsl:stylesheet [
-<!ENTITY nl "&#xd;&#xa;">
-]>
 
 <?spec xpath#axes?>
 <!-- BUG: Saxon 5.3.2/018 -->
