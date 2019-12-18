@@ -148,7 +148,7 @@
     <xsl:template name="r-017" use-when="$RUN">
       <xsl:source-document streamable="no" href="{$books-doc}">
         <out>
-          <xsl:value-of select="[$insertion, /BOOKLIST/BOOKS/ITEM[1]/*/snapshot()]?* ! contains(name(), 'E')"/>
+          <xsl:value-of select="[$insertion, /BOOKLIST/BOOKS/ITEM[1]/* ! snapshot()]?* ! contains(name(), 'E')"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -158,7 +158,7 @@
     <xsl:template name="r-018" use-when="$RUN">
       <xsl:source-document streamable="no" href="{$books-doc}">
         <out>
-          <xsl:apply-templates select="[$insertion, /BOOKLIST/BOOKS/ITEM[1]/*/snapshot()]?*" mode="r-018-mode"/>
+          <xsl:apply-templates select="[$insertion, /BOOKLIST/BOOKS/ITEM[1]/* ! snapshot()]?*" mode="r-018-mode"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -261,7 +261,7 @@
     <xsl:template name="r-035" use-when="$RUN">
       <xsl:source-document streamable="no" href="{$books-doc}">
         <out>
-          <xsl:value-of select="[$insertion, //PRICE/ancestor-or-self::*/@*/copy-of()]" separator="|"/>
+          <xsl:value-of select="[$insertion, //PRICE/ancestor-or-self::*/@* ! copy-of()]" separator="|"/>
         </out>
       </xsl:source-document>
     </xsl:template>

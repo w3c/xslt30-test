@@ -198,7 +198,7 @@
          @escape-uri-attributes=yes.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
-      <modified by="Debbie Lockett" on="2019-11-29" change="Add variant with decimal numeric character references"/>
+      <modified by="Michael Kay" on="2019-12-10" change="Allow decimal as well as hex character references"/>
       <environment ref="output-0102"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -208,10 +208,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <any-of>
-            <serialization-matches><![CDATA[accesskey="&#x96;"]]></serialization-matches>
-            <serialization-matches><![CDATA[accesskey="&#150;"]]></serialization-matches>
-         </any-of>
+         <serialization-matches><![CDATA[accesskey="&#0*(150|x96);"]]></serialization-matches>
       </result>
    </test-case>
 
@@ -260,7 +257,7 @@
          @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
-      <modified by="Debbie Lockett" on="2019-11-29" change="Add variant with decimal numeric character references"/>
+      <modified by="Michael Kay" on="2019-12-10" change="Allow decimal as well as hex character references"/>
       <environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -270,10 +267,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <any-of>
-            <serialization-matches><![CDATA[href="&#x96;"]]></serialization-matches>
-            <serialization-matches><![CDATA[href="&#150;"]]></serialization-matches>
-         </any-of>
+         <serialization-matches><![CDATA[href="&#0*(150|x96);"]]></serialization-matches>
       </result>
    </test-case>
 
@@ -284,7 +278,7 @@
       <modified by="Tim Mills" on="2013-01-29"
          change="added variant with hex encoding of character references"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
-      <modified by="Debbie Lockett" on="2019-11-29" change="Add variant with decimal numeric character references"/>
+      <modified by="Michael Kay" on="2019-12-10" change="Allow decimal as well as hex character references"/>
       <environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -294,11 +288,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <any-of>
-            <serialization-matches><![CDATA[href="% %C2%96 &#x96; a &#34;  ¡ &lt; &gt; &amp; end"]]></serialization-matches>
-            <serialization-matches><![CDATA[href="% %C2%96 &#x96; a &#x22;  ¡ &lt; &gt; &amp; end"]]></serialization-matches>
-            <serialization-matches><![CDATA[href="% %C2%96 &#150; a &#34;  ¡ &lt; &gt; &amp; end"]]></serialization-matches>
-         </any-of>
+            <serialization-matches><![CDATA[href="% %C2%96 &#0*(x96|150); a &#0*(34|x22);  ¡ &lt; &gt; &amp; end"]]></serialization-matches>
       </result>
    </test-case>
 
@@ -325,7 +315,7 @@
          @escape-uri-attributes=no.</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
-      <modified by="Debbie Lockett" on="2019-11-29" change="Add variant with decimal numeric character references"/>
+      <modified by="Michael Kay" on="2019-12-10" change="Allow decimal as well as hex character references"/>
       <environment ref="output-0103"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -335,10 +325,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <any-of>
-            <serialization-matches><![CDATA[accesskey="&#x96;"]]></serialization-matches>
-            <serialization-matches><![CDATA[accesskey="&#150;"]]></serialization-matches>
-         </any-of>
+         <serialization-matches><![CDATA[accesskey="&#0*(150|x96);"]]></serialization-matches>
       </result>
    </test-case>
 
@@ -1634,7 +1621,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1655,7 +1642,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1676,7 +1663,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1819,7 +1806,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<body>Á</body></html>]]></serialization-matches>
+         <serialization-matches><![CDATA[<body>Á</body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -2227,7 +2214,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body>Á</body></html>]]></serialization-matches>
+         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body>Á</body></html>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -4532,6 +4519,7 @@
       <modified by="Michael Kay" on="2018-05-14" change="JSON serialization requires XPath 3.1 feature"/>
       <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
       <modified by="Debbie Lockett" on="2019-10-17" change="Amend alternative result if default html-version is 5.0"/>
+      <modified by="Michael Kay" on="2019-12-10" change="Allow charset in upper or lower case"/>      
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="XPath_3.1"/>
@@ -4543,7 +4531,7 @@
       <result>
          <all-of>
             <serialization-matches><![CDATA[\{"doc1":"(<!DOCTYPE (HTML|html)>)?]]></serialization-matches>
-            <serialization-matches><![CDATA[<html xmlns=\\"http:\\/\\/www\.w3\.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=UTF-8\\">(<\\/meta>)?<title>Document 1<\\/title>]]></serialization-matches>
+            <serialization-matches><![CDATA[<html xmlns=\\"http:\\/\\/www\.w3\.org\\/1999\\/xhtml\\"><head><meta http-equiv=\\"Content-Type\\" content=\\"text\\/html; charset=(UTF|utf)-8\\">(<\\/meta>)?<title>Document 1<\\/title>]]></serialization-matches>
          </all-of>
       </result>
    </test-case>

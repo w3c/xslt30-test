@@ -196,6 +196,7 @@
          with &lt;h2 style="clear: all"&gt;.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-03" change="Accept HTML5 serialization"/>
       <environment ref="bug-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -206,7 +207,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="bug07.out"/>
+         <serialization-matches><![CDATA[<h2 style=["']clear: all["']></h2>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -592,19 +593,23 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       <description>BUG: not a bug, as it turned out. Tests numeric sorting.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-03" change="Drop dependency on serialization"/>
       <environment>
          <source role="." file="bug-13.xml"/>
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
-         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-1301.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="bug18.out"/>
+         <all-of>
+            <assert>//tr[1][td[1]='Aluminum' and td[2]='13' and td[3]='26.98154']</assert>
+            <assert>//tr[2][td[1]='Gallium' and td[2]='31' and td[3]='69.723']</assert>
+            <assert>//tr[3][td[1]='Actinium' and td[2]='89' and td[3]='227']</assert>
+            <assert>//tr[4][td[1]='Americium' and td[2]='95' and td[3]='243']</assert>
+         </all-of>      
       </result>
    </test-case>
 
@@ -778,19 +783,20 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="Michael Kay" on="2015-03-20" change="Fix bug 26606"/>
+      <modified by="Michael Kay" on="2019-12-03" change="Drop dependency on serialization"/>
       <environment>
          <source role="." file="bug-17.xml"/>
       </environment>
       <dependencies>
          <spec value="XSLT20+"/>
-         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-1701.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="bug29.out"/>
+         <all-of>
+            <assert>//tr[2][td[1]='Brazil'][td[2]='3'][td[3]='2'][td[4]='0'][td[5]='1'][td[6]='6'][td[7]='3']</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -917,6 +923,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          their name matches "x".</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-03" change="Drop unused entity declaration"/>     
       <environment>
          <source role="." file="bug-22.xml"/>
       </environment>
@@ -1276,19 +1283,19 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       <description/>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-03" change="Drop serialization requirement"/>
       <environment>
          <source role="." file="bug-35.xml"/>
       </environment>
       <dependencies>
          <spec value="XSLT10+"/>
-         <feature value="serialization" satisfied="true"/>
       </dependencies>
       <test>
          <stylesheet file="bug-3501.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="bug57.out"/>
+         <!-- It's not clear what this test was intended to demonstrate, and the results are complex, so just test that it doesn't fail -->
+         <assert>true()</assert>
       </result>
    </test-case>
 

@@ -705,17 +705,23 @@
       <description>test case for bug https://sourceforge.net/tracker/index.php?func=detail&amp;aid=553347&amp;group_id=29872&amp;atid=397617 (Context not reset on return from a call to a stylesheet function)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-04" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-11-26" change="Rewritten to avoid serialization"/>
       <environment ref="function-05"/>
       <dependencies>
          <spec value="XSLT20+"/>
-         <feature value="serialization"/>
       </dependencies>
       <test>
          <stylesheet file="function-0501.xsl"/>
-         <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="html" file="func17.out"/>
+         <all-of>
+            <assert>/out/section[1]/actor[1][@name='User'][children/child='Administrator'][empty(parents/node())]</assert>
+            <assert>/out/section[1]/actor[2][@name='Administrator'][empty(children/node())][parents/parent='User']</assert>
+            <assert>/out/section[2]/actor[1][@name='User'][children/child='Administrator'][empty(parents/node())]</assert>
+            <assert>/out/section[2]/actor[2][@name='Administrator'][empty(children/node())][parents/parent='User']</assert>
+            <assert>/out/section[3]/actor[1][@name='User'][children/child='Administrator'][empty(parents/node())]</assert>
+            <assert>/out/section[3]/actor[2][@name='Administrator'][empty(children/node())][parents/parent='User']</assert>
+         </all-of>
       </result>
    </test-case>
 
