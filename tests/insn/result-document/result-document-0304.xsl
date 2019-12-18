@@ -3,7 +3,7 @@
 <!-- Purpose: xsl:result-document, adaptive serialization; -->
 
    <t:template name="t:initial-template">
-      <t:result-document method="adaptive" item-separator="|" build-tree="false">
+      <t:result-document method="adaptive" item-separator="|" build-tree="false" omit-xml-declaration="true">
          <t:map>
            <t:map-entry key="'a'" select="22"/>
          </t:map>

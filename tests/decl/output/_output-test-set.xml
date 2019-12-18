@@ -4780,6 +4780,7 @@
       <description>JSON node-output-method = html</description>
       <created by="Michael Kay" on="2018-05-14"/>
       <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
+      <modified by="Michael Kay" on="2019-12-16" change="Allow the HTML to be indented (any tabs or newlines will be JSON-escaped)"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="XPath_3.1"/>
@@ -4789,7 +4790,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[\["(<!DOCTYPE (HTML|html)>)?<head><meta http-equiv=\\"Content-Type\\"]]></serialization-matches>
+         <serialization-matches><![CDATA[\["(<!DOCTYPE (HTML|html)>)?(\s|\\n|\\t)*<head>(\s|\\n|\\t)*<meta http-equiv=\\"Content-Type\\"]]></serialization-matches>
       </result>
    </test-case>
    
