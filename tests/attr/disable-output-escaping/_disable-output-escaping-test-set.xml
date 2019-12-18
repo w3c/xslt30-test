@@ -29,6 +29,7 @@
       <description>Test for disabling output escaping in xsl:text</description>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-10" change="Simplify the assertion to the essentials, to tolerate variations such as HTML5 DOCTYPE declaration"/>
       <environment ref="doe-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -39,7 +40,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="doe176.out"/>
+         <serialization-matches><![CDATA[<p>&nbsp;</p>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -47,6 +48,7 @@
       <description>Test for disabling-output-escaping="true" in xsl:text</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-10" change="Simplify the assertion to the essentials, to tolerate variations such as HTML5 DOCTYPE declaration"/>
       <environment ref="doe-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -57,7 +59,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="doe176.out"/>
+         <serialization-matches><![CDATA[<p>&nbsp;</p>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -65,6 +67,7 @@
       <description>Test for disabling-output-escaping="1" in xsl:text</description>
       <created by="Debbie Lockett" on="2014-08-08"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-10" change="Simplify the assertion to the essentials, to tolerate variations such as HTML5 DOCTYPE declaration"/>
       <environment ref="doe-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -75,7 +78,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization method="xhtml" file="doe176.out"/>
+         <serialization-matches><![CDATA[<p>&nbsp;</p>]]></serialization-matches>
       </result>
    </test-case>
 
@@ -354,6 +357,28 @@
          <assert-serialization><![CDATA[<out><z>&lt;</z>10</out>]]></assert-serialization>
       </result>
    </test-case>
+   
+   <test-case name="doe-0201">
+      <description>d-o-e works within the scope of expand-text="yes</description>
+      <created by="Michael Kay" on="2019-12-17"/>
+      <environment>
+         <source role="." file="doe-0201.xsl"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="disabling_output_escaping" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0201.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<expandtext><count>3</count><test1/></expandtext>]]></serialization-matches>
+            <serialization-matches><![CDATA[<notexpandtext><count>\{count\(\*\)\}</count><test2/></notexpandtext>]]></serialization-matches>
+         </all-of>
+      </result>
+   </test-case>
   
 
    <test-case name="doe-0401">
@@ -530,6 +555,24 @@
             <assert-serialization-error code="SEPM0016"/>
             <error code="XTSE0020"/>
          </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="doe-0409">
+      <description>Test for disabling-output-escaping within xsl:for-each-group</description>
+      <created by="Michael Kay" on="2019-12-17"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="disabling_output_escaping"/>
+      </dependencies>
+      <test>
+         <stylesheet file="doe-0409.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[<group><a>1</a><a>2</a><a>3</a><a>4</a></group><group><a>5</a><a>6</a><a>7</a><a>8</a><a>9</a></group>]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
    
