@@ -134,6 +134,7 @@
       <description>Mix values with and without timezones</description>
       <created by="Michael Kay" on="2015-06-10"/>
       <modified by="Michael Kay" on="2017-04-30" change="add HOF dependendency"/>
+      <modified by="Michael Kay" on="2019-12-13" change="removed unused function which was in a reserved namespace; error case is now map-015"/>
       <dependencies>
          <feature value="higher_order_functions"/>
       </dependencies>
@@ -198,6 +199,21 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out>22</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-015">
+      <description>Error case: user function in reserved map namespace. Was map-010.</description>
+      <created by="Michael Kay" on="2019-12-13"/>
+      <dependencies>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="maps-015.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0080"/>
       </result>
    </test-case>
    
