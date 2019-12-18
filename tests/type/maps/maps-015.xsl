@@ -7,6 +7,8 @@
     expand-text="true">
     
     <!-- Mix values with and without timezone. See bug 28632, overturning 25375 -->
+  
+    <!-- map-010 in its uncorrected form, using a reserved namespace -->
     
     <xsl:variable name="Z" select="current-dateTime()"/>
     <xsl:variable name="A" select="adjust-dateTime-to-timezone($Z, ())"/>
@@ -26,5 +28,13 @@
       </out>  
     </xsl:template>
     
+    <xsl:function name="map:show" as="xs:string" expand-text="false">
+      <xsl:param name="map" as="map(*)"/>
+      <xsl:value-of>
+        <xsl:text>map{</xsl:text>
+        <xsl:value-of select="map:for-each($map, function($k, $v) { $k || ' : ' || $v || ', ' })"/>
+        <xsl:text>}</xsl:text>
+      </xsl:value-of>
+    </xsl:function>
     
 </xsl:stylesheet>
