@@ -22,75 +22,75 @@
 
     <xsl:output indent="no"></xsl:output>
 
-    <xsl:template match="/" name="initial-template">
+    <xsl:template name="initial-template">
         
         <out xml:base="http://example.com/a/b/c/d/../d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z">
             <xsl:variable name="base" select="static-base-uri()" xml:base="Z/../Z"/>
             
             <!-- varying bases -->
-            <base>{$base}</base>
-            <base>{static-base-uri()}</base>
-            <base>{resolve-uri(static-base-uri(), static-base-uri())}</base>
+            <base1>{$base}</base1>
+            <base2>{static-base-uri()}</base2>
+            <base3>{resolve-uri(static-base-uri(), static-base-uri())}</base3>
             
             <!-- ignorable dots, *but* removes the "z", leaves the trailing "/" -->
-            <resolve>{resolve-uri('.')}</resolve>
-            <resolve>{resolve-uri('./')}</resolve>
-            <resolve>{resolve-uri('./././././././')}</resolve>
+            <resolveA>{resolve-uri('.')}</resolveA>
+            <resolveB>{resolve-uri('./')}</resolveB>
+            <resolveC>{resolve-uri('./././././././')}</resolveC>
             
             <!-- variants of trying to get past the root, should return root path acc. to RFC, and *must* include root path leading "/" -->
-            <resolve>{resolve-uri('/')}</resolve>
-            <resolve>{resolve-uri('/./././././././')}</resolve>
-            <resolve>{resolve-uri('/../../.././././././././')}</resolve>
-            <resolve>{resolve-uri('/..')}</resolve>
-            <resolve>{resolve-uri('/../')}</resolve>
-            <resolve>{resolve-uri('../', 'http://example.com')}</resolve>
-            <resolve>{resolve-uri('../Z/..', 'http://example.com')}</resolve>
-            <resolve>{resolve-uri('./.', 'http://example.com')}</resolve>
+            <resolveD>{resolve-uri('/')}</resolveD>
+            <resolveE>{resolve-uri('/./././././././')}</resolveE>
+            <resolveF>{resolve-uri('/../../.././././././././')}</resolveF>
+            <resolveG>{resolve-uri('/..')}</resolveG>
+            <resolveH>{resolve-uri('/../')}</resolveH>
+            <resolveI>{resolve-uri('../', 'http://example.com')}</resolveI>
+            <resolveJ>{resolve-uri('../Z/..', 'http://example.com')}</resolveJ>
+            <resolveK>{resolve-uri('./.', 'http://example.com')}</resolveK>
             
             <!-- variants of one level up, ends with "/x/" -->
-            <resolve>{resolve-uri('..')}</resolve>
-            <resolve>{resolve-uri('../')}</resolve>
-            <resolve>{resolve-uri('../.')}</resolve>
-            <resolve>{resolve-uri('.././')}</resolve>
-            <resolve>{resolve-uri('.././')}</resolve>
-            <resolve>{resolve-uri('./././.././.')}</resolve>
+            <resolveL>{resolve-uri('..')}</resolveL>
+            <resolveM>{resolve-uri('../')}</resolveM>
+            <resolveN>{resolve-uri('../.')}</resolveN>
+            <resolveO>{resolve-uri('.././')}</resolveO>
+            <resolveP>{resolve-uri('.././')}</resolveP>
+            <resolveQ>{resolve-uri('./././.././.')}</resolveQ>
             
             <!-- tests overlap of dotted path, where multiple dots on the right of a non-dotted segment could (with a wrong algo) potentially remove dotted elements further to the left -->
-            <resolve>{resolve-uri('./X/Y/Z/../W/../../.././..')}</resolve>
-            <resolve>{resolve-uri('../../.././X/Y/Z/../W/../../.././../v/w/x/')}</resolve>
+            <resolveR>{resolve-uri('./X/Y/Z/../W/../../.././..')}</resolveR>
+            <resolveS>{resolve-uri('../../.././X/Y/Z/../W/../../.././../v/w/x/')}</resolveS>
             
             <!-- each following line ends with a lower letter in the alphabet, starting with "/w/" -->
-            <resolve>{resolve-uri('../../')}</resolve>
-            <resolve>{resolve-uri('../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../../')}</resolve>
+            <resolveT>{resolve-uri('../../')}</resolveT>
+            <resolveU>{resolve-uri('../../../')}</resolveU>
+            <resolveV>{resolve-uri('../../../../')}</resolveV>
+            <resolveW>{resolve-uri('../../../../../')}</resolveW>
+            <resolveX>{resolve-uri('../../../../../../')}</resolveX>
+            <resolveY>{resolve-uri('../../../../../../../')}</resolveY>
+            <resolveZ>{resolve-uri('../../../../../../../../')}</resolveZ>
+            <resolveZA>{resolve-uri('../../../../../../../../../')}</resolveZA>
+            <resolveZB>{resolve-uri('../../../../../../../../../../')}</resolveZB>
+            <resolveZC>{resolve-uri('../../../../../../../../../../../')}</resolveZC>
+            <resolveZD>{resolve-uri('../../../../../../../../../../../../')}</resolveZD>
+            <resolveZE>{resolve-uri('../../../../../../../../../../../../../')}</resolveZE>
+            <resolveZF>{resolve-uri('../../../../../../../../../../../../../../')}</resolveZF>
+            <resolveZG>{resolve-uri('../../../../../../../../../../../../../../../')}</resolveZG>
+            <resolveZH>{resolve-uri('../../../../../../../../../../../../../../../../')}</resolveZH>
+            <resolveZI>{resolve-uri('../../../../../../../../../../../../../../../../../')}</resolveZI>
+            <resolveZJ>{resolve-uri('../../../../../../../../../../../../../../../../../../')}</resolveZJ>
+            <resolveZK>{resolve-uri('../../../../../../../../../../../../../../../../../../../')}</resolveZK>
+            <resolveZL>{resolve-uri('../../../../../../../../../../../../../../../../../../../../')}</resolveZL>
+            <resolveZM>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../')}</resolveZM>
+            <resolveZN>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../')}</resolveZN>
+            <resolveZO>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../../')}</resolveZO>
             
             <!-- variants that should end with "/a/" -->
-            <resolve>{resolve-uri('./././../../../../../../../../../././././../../../../../../../../../../../../../../././.')}</resolve>
+            <resolveZP>{resolve-uri('./././../../../../../../../../../././././../../../../../../../../../../../../../../././.')}</resolveZP>
             
             <!-- variants that try to get past the root, should return root with dotted parts removed -->
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../../../../../')}</resolve>
-            <resolve>{resolve-uri('/../../../../../../../../../../../../../../../../../../../../../../../')}</resolve>
+            <resolveZQ>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../../../')}</resolveZQ>
+            <resolveZR>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../../../../')}</resolveZR>
+            <resolveZS>{resolve-uri('../../../../../../../../../../../../../../../../../../../../../../../../../../')}</resolveZS>
+            <resolveZT>{resolve-uri('/../../../../../../../../../../../../../../../../../../../../../../../')}</resolveZT>
         </out>
     </xsl:template>
 
