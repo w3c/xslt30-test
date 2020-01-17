@@ -7,8 +7,8 @@
        [xsl:]validation or default-validation attribute
        with a value other than strip, preserve, or lax.-->
    <xsl:template name="main" >
-      <out xsl:type="xs:untyped">
+      <xsl:element validation="strict">
          <x/>
-      </out>
+      </xsl:element>
    </xsl:template>
 </xsl:stylesheet>

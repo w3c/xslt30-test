@@ -21,7 +21,7 @@
       <xsl:copy-of select="@*" />
       <!-- If you supply node() instead of * (and change element() to node() in my:f),
            the resulting a element will have only text content in 9.5 if the input
-           cotains text nodes besides b elements. --> 
+           contains text nodes besides b elements. --> 
       <xsl:sequence select="my:f(*, 1)" />
     </xsl:copy>
   </xsl:template>

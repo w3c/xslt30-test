@@ -9414,10 +9414,8 @@ It is a static error if a character
    </test-case>
 
    <test-case name="error-1660a">
-      <description>Error: A non-schema-aware processor
-                     must signal a static error if the stylesheet
-                     includes an [xsl:]type attribute, or an
-                     [xsl:]validation or default-validation attribute
+      <description>Error: A non-schema-aware processor must signal a static error if the stylesheet
+                     includes an [xsl:]type attribute, or an [xsl:]validation or default-validation attribute
                      with a value other than strip, preserve, or lax.</description>
       <created by="Michael Kay" on="2014-08-25"/>
       <modified by="Abel Braaksma" on="2015-04-07" change="Error in stylesheet, namespace prefix not declared, fixed" />
@@ -9427,6 +9425,78 @@ It is a static error if a character
       </dependencies>
       <test>
          <stylesheet file="error-1660a.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE1660"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1660b">
+      <description>Error: A non-schema-aware processor must signal a static error if the stylesheet
+         includes an [xsl:]type attribute, or an [xsl:]validation or default-validation attribute
+         with a value other than strip, preserve, or lax.</description>
+      <created by="Michael Kay" on="2019-12-18"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1660b.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE1660"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1660c">
+      <description>Error: A non-schema-aware processor must signal a static error if the stylesheet
+         includes an [xsl:]type attribute, or an [xsl:]validation or default-validation attribute
+         with a value other than strip, preserve, or lax.</description>
+      <created by="Michael Kay" on="2019-12-18"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1660c.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE1660"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1660d">
+      <description>Error: A non-schema-aware processor must signal a static error if the stylesheet
+         includes an [xsl:]type attribute, or an [xsl:]validation or default-validation attribute
+         with a value other than strip, preserve, or lax.</description>
+      <created by="Michael Kay" on="2019-12-18"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1660d.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE1660"/>
+      </result>
+   </test-case>
+   
+   <test-case name="error-1660e">
+      <description>Error: A non-schema-aware processor must signal a static error if the stylesheet
+         includes an [xsl:]type attribute, or an [xsl:]validation or default-validation attribute
+         with a value other than strip, preserve, or lax.</description>
+      <created by="Michael Kay" on="2019-12-18"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="error-1660e.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>

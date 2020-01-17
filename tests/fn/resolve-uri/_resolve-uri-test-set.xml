@@ -360,6 +360,7 @@
       <modified by="Abel Braaksma" on="2015-04-15" change="Bug 28435: for XSLT 2.0 compatibility, added initial template, removed xsl:initial-template"/>
       <modified by="Michael Kay" on="2015-06-30" change="Tests using indent=yes should not use assert-xml; checked by catalog-004"/>
       <modified by="Michael Kay" on="2015-11-27" change="Add 3.0 dependency (test uses expand-text)"/>
+      <modified by="Michael Kay" on="2019-12-19" change="Break up the result assertions for ease of debugging"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -368,7 +369,55 @@
          <initial-template name="initial-template" />
       </test>
       <result>
-         <assert-xml file="resolve-uri-022.out"/>
+         <all-of>
+            <assert>/out/@xml:base = 'http://example.com/a/b/c/d/../d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z'</assert>
+            <assert>/out/resolveA='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/'</assert>
+            <assert>/out/resolveB='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/'</assert>
+            <assert>/out/resolveC='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/'</assert>
+            <assert>/out/resolveD='http://example.com/'</assert>
+            <assert>/out/resolveE='http://example.com/'</assert>
+            <assert>/out/resolveF='http://example.com/'</assert>
+            <assert>/out/resolveG='http://example.com/'</assert>
+            <assert>/out/resolveH='http://example.com/'</assert>
+            <assert>/out/resolveI='http://example.com/'</assert>
+            <assert>/out/resolveJ='http://example.com/'</assert>
+            <assert>/out/resolveK='http://example.com/'</assert>
+            <assert>/out/resolveL='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveM='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveN='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveO='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveP='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveQ='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveR='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveS='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveT='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/'</assert>
+            <assert>/out/resolveU='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/'</assert>
+            <assert>/out/resolveV='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/'</assert>
+            <assert>/out/resolveW='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/'</assert>
+            <assert>/out/resolveX='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/'</assert>
+            <assert>/out/resolveY='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/'</assert>
+            <assert>/out/resolveZ='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/'</assert>
+            <assert>/out/resolveZA='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/'</assert>
+            <assert>/out/resolveZB='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/'</assert>
+            <assert>/out/resolveZC='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/'</assert>
+            <assert>/out/resolveZD='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/'</assert>
+            <assert>/out/resolveZE='http://example.com/a/b/c/d/e/f/g/i/j/k/l/'</assert>
+            <assert>/out/resolveZF='http://example.com/a/b/c/d/e/f/g/i/j/k/'</assert>
+            <assert>/out/resolveZG='http://example.com/a/b/c/d/e/f/g/i/j/'</assert>
+            <assert>/out/resolveZH='http://example.com/a/b/c/d/e/f/g/i/'</assert>
+            <assert>/out/resolveZI='http://example.com/a/b/c/d/e/f/g/'</assert>
+            <assert>/out/resolveZJ='http://example.com/a/b/c/d/e/f/'</assert>
+            <assert>/out/resolveZK='http://example.com/a/b/c/d/e/'</assert>
+            <assert>/out/resolveZL='http://example.com/a/b/c/d/'</assert>
+            <assert>/out/resolveZM='http://example.com/a/b/c/'</assert>
+            <assert>/out/resolveZN='http://example.com/a/b/'</assert>
+            <assert>/out/resolveZO='http://example.com/a/'</assert>
+            <assert>/out/resolveZP='http://example.com/a/'</assert>
+            <assert>/out/resolveZQ='http://example.com/'</assert>
+            <assert>/out/resolveZR='http://example.com/'</assert>
+            <assert>/out/resolveZS='http://example.com/'</assert>
+            <assert>/out/resolveZT='http://example.com/'</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -377,6 +426,7 @@
          Same as resolve-uri-022, adapted to require the work to be done at run-time
       </description>
       <created by="Michael Kay" on="2016-01-18"/>
+      <modified by="Michael Kay" on="2019-12-19" change="Break up the result assertions for ease of debugging"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -385,7 +435,83 @@
          <initial-template name="initial-template" />
       </test>
       <result>
-         <assert-xml file="resolve-uri-022.out"/>
+         <all-of>
+            <assert>/out/@xml:base = 'http://example.com/a/b/c/d/../d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z'</assert>
+            <assert>/out/resolveA='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/'</assert>
+            <assert>/out/resolveB='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/'</assert>
+            <assert>/out/resolveC='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/'</assert>
+            <assert>/out/resolveD='http://example.com/'</assert>
+            <assert>/out/resolveE='http://example.com/'</assert>
+            <assert>/out/resolveF='http://example.com/'</assert>
+            <assert>/out/resolveG='http://example.com/'</assert>
+            <assert>/out/resolveH='http://example.com/'</assert>
+            <assert>/out/resolveI='http://example.com/'</assert>
+            <assert>/out/resolveJ='http://example.com/'</assert>
+            <assert>/out/resolveK='http://example.com/'</assert>
+            <assert>/out/resolveL='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveM='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveN='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveO='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveP='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveQ='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveR='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveS='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/'</assert>
+            <assert>/out/resolveT='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/'</assert>
+            <assert>/out/resolveU='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/'</assert>
+            <assert>/out/resolveV='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/'</assert>
+            <assert>/out/resolveW='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/'</assert>
+            <assert>/out/resolveX='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/'</assert>
+            <assert>/out/resolveY='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/'</assert>
+            <assert>/out/resolveZ='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/'</assert>
+            <assert>/out/resolveZA='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/'</assert>
+            <assert>/out/resolveZB='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/'</assert>
+            <assert>/out/resolveZC='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/'</assert>
+            <assert>/out/resolveZD='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/'</assert>
+            <assert>/out/resolveZE='http://example.com/a/b/c/d/e/f/g/i/j/k/l/'</assert>
+            <assert>/out/resolveZF='http://example.com/a/b/c/d/e/f/g/i/j/k/'</assert>
+            <assert>/out/resolveZG='http://example.com/a/b/c/d/e/f/g/i/j/'</assert>
+            <assert>/out/resolveZH='http://example.com/a/b/c/d/e/f/g/i/'</assert>
+            <assert>/out/resolveZI='http://example.com/a/b/c/d/e/f/g/'</assert>
+            <assert>/out/resolveZJ='http://example.com/a/b/c/d/e/f/'</assert>
+            <assert>/out/resolveZK='http://example.com/a/b/c/d/e/'</assert>
+            <assert>/out/resolveZL='http://example.com/a/b/c/d/'</assert>
+            <assert>/out/resolveZM='http://example.com/a/b/c/'</assert>
+            <assert>/out/resolveZN='http://example.com/a/b/'</assert>
+            <assert>/out/resolveZO='http://example.com/a/'</assert>
+            <assert>/out/resolveZP='http://example.com/a/'</assert>
+            <assert>/out/resolveZQ='http://example.com/'</assert>
+            <assert>/out/resolveZR='http://example.com/'</assert>
+            <assert>/out/resolveZS='http://example.com/'</assert>
+            <assert>/out/resolveZT='http://example.com/'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="resolve-uri-024">
+      <description>
+         Resolving static base URI with ".." path segments. Extracts three tests from resolve-uri-022 for ease of analysis.         
+      </description>
+      <created by="Michael Kay" on="2019-12-19"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="resolve-uri-024.xsl"/>
+         <initial-template name="initial-template" />
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/@xml:base = 'http://example.com/a/b/c/d/../d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z'</assert>
+            <assert>/out/base1='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/Z'</assert>
+            <any-of>
+               <assert>/out/base2='http://example.com/a/b/c/d/../d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z'</assert>
+               <assert>/out/base2='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z'</assert>
+            </any-of>
+            <any-of>
+               <assert>/out/base3='http://example.com/a/b/c/d/../d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z'</assert>
+               <assert>/out/base3='http://example.com/a/b/c/d/e/f/g/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z'</assert>
+            </any-of>
+         </all-of>
       </result>
    </test-case>
 </test-set>

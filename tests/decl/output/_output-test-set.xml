@@ -1611,6 +1611,7 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Tim Mills" on="2013-01-29" change="Use serialization-matches"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-22" change="Express assertion using character references to prevent normalization problems"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1621,8 +1622,8 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
+            <serialization-matches>&lt;a href="http://iri\.example\.org/&#64335;/&#229;rsrapport/&#97;&#778;r/2005\?x=y">not escaped&lt;/a></serialization-matches>
+            <serialization-matches><![CDATA[<a href="http://iri\.example\.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
    </test-case>
@@ -1632,6 +1633,7 @@
          escape some URIs but not all.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-22" change="Express assertion using character references to prevent normalization problems"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1642,7 +1644,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches>&lt;a href="http://iri\.example\.org/&#64335;/&#229;rsrapport/&#97;&#778;r/2005\?x=y">not escaped&lt;/a></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1653,6 +1655,7 @@
          escape some URIs but not all.</description>
       <created by="Debbie Lockett" on="2014-08-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2019-12-22" change="Express assertion using character references to prevent normalization problems"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1663,7 +1666,7 @@
       </test>
       <result>
          <all-of>
-            <serialization-matches><![CDATA[<a href="http://iri.example.org/ﭏ/årsrapport/år/2005\?x=y">not escaped</a>]]></serialization-matches>
+            <serialization-matches>&lt;a href="http://iri\.example\.org/&#64335;/&#229;rsrapport/&#97;&#778;r/2005\?x=y">not escaped&lt;/a></serialization-matches>
             <serialization-matches><![CDATA[<a href="http://iri.example.org/%EF%AD%8F/%C3%A5rsrapport/a%CC%8Ar/2005\?x=y"></a>]]></serialization-matches>
          </all-of>
       </result>
@@ -1797,6 +1800,7 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="Debbie Lockett" on="2019-10-14" change="Alternative result if default html-version is 5.0"/>
+      <modified by="Michael Kay" on="2019-12-22" change="Express assertion using character references to prevent normalization problems"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1806,7 +1810,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[<body>Á</body></html>]]></serialization-matches>
+         <serialization-matches>&lt;body>&#65;&#769;&lt;/body>&lt;/html></serialization-matches> 
       </result>
    </test-case>
 
@@ -2205,6 +2209,7 @@
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
       <modified by="Michael Kay" on="2019-10-07" change="Alternative result if default html-version is 5.0"/>
+      <modified by="Michael Kay" on="2019-12-22" change="Express assertion using character references to prevent normalization problems"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2214,7 +2219,7 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <serialization-matches><![CDATA[(<!DOCTYPE (HTML|html)>)?<html><body>Á</body></html>]]></serialization-matches>
+         <serialization-matches>(&lt;!DOCTYPE (HTML|html)>)?&lt;html>&lt;body>&#65;&#769;&lt;/body>&lt;/html></serialization-matches>
       </result>
    </test-case>
 
@@ -3762,6 +3767,42 @@
          <serialization-matches><![CDATA[hobbit><big]]></serialization-matches>
          <serialization-matches><![CDATA[little></hobbit]]></serialization-matches>
         </all-of> 
+      </result>
+   </test-case>
+   
+   <test-case name="output-0233">
+      <description>With html method, the DOCTYPE declaration must come immediately before the first element</description>
+      <created by="Michael Kay" on="2019-12-21"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0233.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches flags="s"><![CDATA[This should precede the DOCTYPE declaration-->\s*<!DOCTYPE (html|HTML)>\s*<html]]></serialization-matches> 
+      </result>
+   </test-case>
+   
+   <test-case name="output-0234">
+      <description>With xml method, the DOCTYPE declaration must come immediately before the first element</description>
+      <created by="Michael Kay" on="2019-12-21"/>
+      <environment ref="output-02"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0234.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[-->\s*<\?pi]]></serialization-matches>
+            <serialization-matches><![CDATA[\?>\s*<!DOCTYPE]]></serialization-matches>
+            <serialization-matches flags="s"><![CDATA[<!DOCTYPE.*">\s*<out]]></serialization-matches>
+         </all-of>
       </result>
    </test-case>
    

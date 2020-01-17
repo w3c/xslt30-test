@@ -12,17 +12,10 @@
    <t:template match="/">
       <html>
          <body>
-            <t:text>
-</t:text>
-            <div>
-               This is 1:<a href="http://iri.example.org/ﭏ/årsrapport/år/2005?x=y">not escaped</a>
-            </div>
-            <t:text>
-</t:text>
-            <div>
-This is 2:<a>
+            <div>This is 1:<a href="http://iri.example.org/&#64335;/&#229;rsrapport/&#97;&#778;r/2005?x=y">not escaped</a></div>
+            <div>This is 2:<a>
                   <t:attribute name="href">
-                     <t:value-of select="escape-html-uri('http://iri.example.org/ﭏ/årsrapport/år/2005?x=y')"/>
+                     <t:value-of select="escape-html-uri('http://iri.example.org/&#64335;/&#229;rsrapport/&#97;&#778;r/2005?x=y')"/>
                   </t:attribute>
                </a>escaped</div>
          </body>
