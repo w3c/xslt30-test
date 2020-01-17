@@ -1742,5 +1742,41 @@
       </result>
    </test-case>
    
+   <test-case name="accumulator-079">
+      <description>A streaming accumulator test (Saxon bug 4430): accumulator-after called recursively</description>
+      <created by="Michael Kay after Martin Honnen" on="2020-01-16"/>
+      <environment>
+         <source role="." file="accumulator-079.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-079.xsl"/>
+         <param static="yes" name="STREAMABLE" select="false()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/z[1] = '6'</assert>
+            <assert>/out/z[2] = '7'</assert>
+         </all-of>            
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-079s">
+      <description>A streaming accumulator test (Saxon bug 4430): accumulator-after called recursively</description>
+      <created by="Michael Kay after Martin Honnen" on="2020-01-16"/>
+      <environment>
+         <source role="." file="accumulator-079.xml" streaming="true"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-079.xsl"/>
+         <param static="yes" name="STREAMABLE" select="true()"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/z[1] = '6'</assert>
+            <assert>/out/z[2] = '7'</assert>
+         </all-of>            
+      </result>
+   </test-case>
+   
  
 </test-set>
