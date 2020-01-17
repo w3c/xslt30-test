@@ -818,17 +818,18 @@
       <created by="Abel Braaksma" on="2016-01-23"/>
       <modified by="Michael Kay" on="2016-03-24" change="add dependencies"/>
       <modified by="Michael Kay" on="2019-11-29" change="avoid assert-xml on non-XML results"/>
+      <modified by="Michael Kay" on="2020-01-15" change="correct expected results (xsl:variable without @select creates a document node)"/>
       <dependencies>
          <feature value="higher_order_functions"/>
       </dependencies>
       <test>
          <stylesheet file="seqtor-043b.xsl"/>
-         <output well-formed="no"/>
+         <!--<output well-formed="no"/>-->
       </test>
       <result>
          <all-of>
-            <assert-type>xs:integer*</assert-type>
-            <assert-deep-eq>42, 84, 126, 168, 210, 252, 294, 336, 378, 420</assert-deep-eq>
+            <assert-type>document-node()</assert-type>
+            <assert-eq>"42 84 126 168 210 252 294 336 378 420"</assert-eq>
          </all-of>
       </result>
    </test-case>
