@@ -312,6 +312,7 @@
       <description>trivial test of normalized output (uncommited method, NFKD)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2020-01-17" change="Allow decimal character references"/>
       <environment ref="unicode001"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -324,9 +325,9 @@
       <result>
          <all-of>
             <serialization-matches><![CDATA[<p>The quick brown fox</p>]]></serialization-matches>
-            <serialization-matches>Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
-            <serialization-matches>&lt;p norm="c" üss="u&amp;#x308;ß">Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
-            <serialization-matches>&lt;p norm="d" üss="u&amp;#x308;ss">Straßenu&amp;#x308;berfu&amp;#x308;hrung</serialization-matches>
+            <serialization-matches>Straßenu&amp;(#x308|#776);berfu&amp;(#x308|#776);hrung</serialization-matches>
+            <serialization-matches>&lt;p norm="c" üss="u&amp;(#x308|#776);ß">Straßenu&amp;(#x308|#776);berfu&amp;(#x308|#776);hrung</serialization-matches>
+            <serialization-matches>&lt;p norm="d" üss="u&amp;(#x308|#776);ss">Straßenu&amp;(#x308|#776);berfu&amp;(#x308|#776);hrung</serialization-matches>
             <serialization-matches><![CDATA[<p norm="kc" ffi="ffi">Affinity]]></serialization-matches>
          </all-of>
       </result>
