@@ -26,6 +26,7 @@
       <modified by="Abel Braaksma" on="2014-10-16" change="changed result assertion"/>
       <modified by="Michael Kay" on="2014-11-14" change="made this a serialization test"/>
       <modified by="Michael Kay" on="2017-10-10" change="added serialization dependency"/>
+      <modified by="Michael Kay" on="2020-02-17" change="alternative result if default HTML version is 5"/>
       <environment ref="include-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -38,7 +39,10 @@
          <output serialize="yes"/>
       </test>
       <result>
-         <assert-serialization><![CDATA[<body changed="8 Feb 2002" var="E">Text of one-tagText of two-tag<br></body>]]></assert-serialization>
+        <any-of>
+          <assert-serialization><![CDATA[<body changed="8 Feb 2002" var="E">Text of one-tagText of two-tag<br></body>]]></assert-serialization>
+          <assert-serialization><![CDATA[<!DOCTYPE HTML><body changed="8 Feb 2002" var="E">Text of one-tagText of two-tag<br></body>]]></assert-serialization>
+        </any-of>
       </result>
    </test-case>
 
