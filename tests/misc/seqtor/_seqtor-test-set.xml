@@ -638,12 +638,13 @@
       <description>Constructing simple content, xsl:namespace</description>
       <created by="Abel Braaksma" on="2016-01-23"/>
       <modified by="Michael Kay" on="2019-11-30" change="Allow error result, a processor can reject an invalid namespace URI"/>
-      <test>
+     <modified by="Michael Kay" on="2020-02-18" change="Change expected result: see explanation added to the stylesheet"/>
+     <test>
          <stylesheet file="seqtor-038d.xsl"/>
       </test>
       <result>
          <any-of>
-            <assert-xml><![CDATA[<bar xmlns:foo=" | | "/>]]></assert-xml>
+            <assert-xml><![CDATA[<bar xmlns:foo=" |  | "/>]]></assert-xml>
             <error code="XTDE0905"/>
          </any-of>
       </result>
