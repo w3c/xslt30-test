@@ -145,5 +145,23 @@
          <assert-xml><![CDATA[<out one="1" _one="1.0" _two="two"/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="shadow-008">
+      <description>
+         Underscored attribute xsl:_default-collection not accepted on as LRE
+      </description>
+      <keywords>static-variable xsl:template _xpath-default-namespace</keywords>
+      <created by="Michael Kay" on="2020-01-25"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="shadow-008.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XTSE0805"/>
+      </result>
+   </test-case>
 
 </test-set>
