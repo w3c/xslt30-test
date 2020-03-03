@@ -19,7 +19,8 @@
       <description>Syntax variations of xsl:expose</description>
       <created by="Michael Kay" on="2015-08-27"/>
       <modified by="Abel Braaksma" on="2019-02-19" change="Make main public, private named templates are not eligible initial templates (bug #30398) (expose-001a/b/c for original and error variants)"/>
-      <test>
+      <modified by="Michael Kay" on="2020-02-06" change="Draft erratum E36 makes it an error to name a function with no explicit arity"/>
+     <test>
          <package file="expose-001.xsl" role="principal"/>
          <initial-template name="main"/>
       </test>
@@ -496,5 +497,27 @@
          <error code="XTSE3025"/>
       </result>
    </test-case>
+  
+  <test-case name="expose-925">
+    <description>Error, can't use #0 to indicate the arity of a named template</description>
+    <created by="Michael Kay" on="2020-02-06"/>
+    <test>
+      <package file="expose-925.xsl" role="principal"/>
+    </test>
+    <result>
+      <error code="XTSE3020"/>
+    </result>
+  </test-case>
+  
+  <test-case name="expose-926">
+    <description>Error, when the component is a function then the arity must be given (erratum E36)</description>
+    <created by="Michael Kay" on="2020-02-06"/>
+    <test>
+      <package file="expose-926.xsl" role="principal"/>
+    </test>
+    <result>
+      <error code="XTSE3020"/>
+    </result>
+  </test-case>
    
 </test-set>
