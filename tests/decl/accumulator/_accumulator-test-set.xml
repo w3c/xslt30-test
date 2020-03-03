@@ -1744,7 +1744,7 @@
    
    <test-case name="accumulator-079">
       <description>A streaming accumulator test (Saxon bug 4430): accumulator-after called recursively</description>
-      <created by="Michael Kay after Martin Honnen" on="2020-01-16"/>
+      <created by="Michael Kay" on="2020-01-16"/>
       <environment>
          <source role="." file="accumulator-079.xml"/>
       </environment>
@@ -1754,8 +1754,8 @@
       </test>
       <result>
          <all-of>
-            <assert>/out/z[1] = '6'</assert>
-            <assert>/out/z[2] = '7'</assert>
+            <assert>/out/z[1] = '117'</assert>
+            <assert>/out/z[2] = '3144'</assert>
          </all-of>            
       </result>
    </test-case>
@@ -1772,11 +1772,43 @@
       </test>
       <result>
          <all-of>
-            <assert>/out/z[1] = '6'</assert>
-            <assert>/out/z[2] = '7'</assert>
+           <assert>/out/z[1] = '117'</assert>
+           <assert>/out/z[2] = '3144'</assert>
          </all-of>            
       </result>
    </test-case>
+  
+  <test-case name="accumulator-080">
+    <description>A streaming accumulator test (Saxon bug 4430): accumulator-after has cyclic dependency</description>
+    <created by="Michael Kay" on="2020-01-16"/>
+    <environment>
+      <source role="." file="accumulator-079.xml"/>
+    </environment>
+    <test>
+      <stylesheet file="accumulator-080.xsl"/>
+      <param static="yes" name="STREAMABLE" select="false()"/>
+    </test>
+    <result>
+      <!-- Note: catastrophic failure is also permitted -->
+      <error code="XTDE3400"/>          
+    </result>
+  </test-case>
+  
+  <test-case name="accumulator-080s">
+    <description>A streaming accumulator test (Saxon bug 4430): accumulator-after has cyclic dependency</description>
+    <created by="Michael Kay after Martin Honnen" on="2020-01-16"/>
+    <environment>
+      <source role="." file="accumulator-079.xml" streaming="true"/>
+    </environment>
+    <test>
+      <stylesheet file="accumulator-080.xsl"/>
+      <param static="yes" name="STREAMABLE" select="true()"/>
+    </test>
+    <result>
+      <!-- Note: catastrophic failure is also permitted -->
+      <error code="XTDE3400"/>           
+    </result>
+  </test-case>
    
  
 </test-set>
