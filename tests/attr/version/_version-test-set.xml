@@ -330,6 +330,7 @@
       <keywords>xsl:message</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2019-12-03" change="Avoid assert-xml for non-XML results"/>
+      <modified by="Michael Kay" on="2020-02-18" change="Corrected previous change (bad XPath syntax in assertions)"/>
       <environment ref="ver17"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -346,13 +347,13 @@
             <assert-message>
                <all-of>
                   <assert-string-value>Another message</assert-string-value>
-                  <assert>/b[@id='3'][following-sibling::text()[.='Another message']</assert>
+                  <assert>/b[@id='3'][following-sibling::text()[.='Another message']]</assert>
                </all-of>
             </assert-message>
             <assert-message>
                <all-of>
                   <assert-string-value>message 3</assert-string-value>
-                  <assert>/b[@id='3'][preceding-sibling::text()[.='message']</assert>
+                  <assert>/b[@id='3'][preceding-sibling::text()[.='message 3']]</assert>
                </all-of>
             </assert-message>
          </all-of>

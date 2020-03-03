@@ -6,7 +6,7 @@
     
     <!-- deny here, accept in the next xsl:include -->    
     <xsl:use-package name="urn:use-me" package-version="*"  >
-        <xsl:accept component="function" names="pkg:function1" visibility="hidden" />
+        <xsl:accept component="function" names="pkg:function1#0" visibility="hidden" />
         <!-- deliberately forgetting to hide pkg:function2, see bug #30389 --> 
     </xsl:use-package>
 

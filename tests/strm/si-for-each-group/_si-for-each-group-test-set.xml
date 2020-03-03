@@ -1520,7 +1520,12 @@
          <stylesheet file="si-group-064.xsl"/>
       </test>
       <result>
-         <assert>/TBA</assert>
+        <all-of>
+          <assert>deep-equal(/Members/Member[Name/fname='Fred']/* ! local-name(),
+            ('Name', 'Locations_1', 'Locations_2', 'Payments_1', 'Payments_2'))</assert>
+          <assert>deep-equal(/Members/Member[Name/fname='Jack']/* ! local-name(),
+            ('Name', 'Locations_1', 'Locations_2', 'Payments_1', 'Payments_2'))</assert>
+        </all-of>     
       </result>
    </test-case>
    
@@ -1534,7 +1539,12 @@
          <stylesheet file="si-group-065.xsl"/>
       </test>
       <result>
-         <assert>/TBA</assert>
+         <all-of>
+           <assert>deep-equal(/Members/Member[Name/fname='Fred']/* ! local-name(),
+             ('Name', 'Locations_1', 'Locations_2', 'Payments_1', 'Payments_2'))</assert>
+           <assert>deep-equal(/Members/Member[Name/fname='Jack']/* ! local-name(),
+             ('Name', 'Locations_1', 'Locations_2', 'Payments_1', 'Payments_2'))</assert>
+         </all-of>       
       </result>
    </test-case>
    

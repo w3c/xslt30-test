@@ -9,7 +9,7 @@
     <!-- private to a package -->
     <xsl:mode on-no-match="fail" />
     
-    <xsl:function name="me:function1" visibility="public" >You found me!</xsl:function>
-    <xsl:function name="me:function2" visibility="public" />
+    <xsl:function name="me:function1#0" visibility="public" >You found me!</xsl:function>
+    <xsl:function name="me:function2#0" visibility="public" />
     
 </xsl:package>

@@ -31,7 +31,7 @@
   
   <xsl:accumulator name="G" as="xs:integer" initial-value="0" _streamable="{$STREAMABLE}" saxon:trace="yes">
     <xsl:accumulator-rule match="fields/data/id1" phase="end"
-      select="$value + accumulator-after('values')"/>
+      select="$value + accumulator-after('G') + accumulator-after('values')"/>
   </xsl:accumulator>
   
   <xsl:accumulator name="D" as="xs:integer" initial-value="0" _streamable="{$STREAMABLE}" saxon:trace="yes">

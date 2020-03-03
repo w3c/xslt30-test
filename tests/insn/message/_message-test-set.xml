@@ -854,6 +854,24 @@
          <assert>/out</assert>
       </result>
    </test-case>
+  
+  <test-case name="message-0410">
+    <description>xsl:message outputs a comment node</description>
+    <created by="Michael Kay" on="2020-03-03"/>
+    <environment ref="message-04"/>
+    <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="XPath_3.1"/>
+    </dependencies>
+    <test>
+      <stylesheet file="message-0410.xsl"/>
+    </test>
+    <result>
+      <assert-message>
+        <assert>/comment() = 'Chicken legs'</assert>
+      </assert-message>
+    </result>
+  </test-case>
    
    <test-case name="message-0501">
       <description>xsl:message terminate=yes: the error can be caught, and the message content is available in the xsl:catch as $err:value.</description>
