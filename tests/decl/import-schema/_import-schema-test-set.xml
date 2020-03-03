@@ -3729,4 +3729,26 @@
          <error code="XTSE0220"/>  
       </result>
    </test-case>
+  
+  <test-case name="import-schema-202">
+    <description>Saxon bug 4446: incorrect inferences about descendant axis in the presence of wildcards</description>
+    <created by="Michael Kay after Frank Steimke" on="2020-02-04"/>
+    <environment>
+      <source file="import-schema-202.xml" validation="strict" role="."/>
+      <schema file="import-schema-202.xsd"/>
+    </environment>
+    <dependencies>
+      <spec value="XSLT30+"/>
+      <feature value="schema_aware"/>
+    </dependencies>
+    <test>
+      <stylesheet file="import-schema-202.xsl"/>
+    </test>
+    <result>
+      <all-of>
+        <assert>count(//*:sequence[@number-of-parents = '3']) = 4</assert>
+        <assert>count(//*:sequence/*:base) = 12</assert>
+      </all-of> 
+    </result>
+  </test-case>
 </test-set>

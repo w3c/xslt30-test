@@ -28,7 +28,7 @@
       
     </xsl:override>
     
-    <xsl:accept component="function" names="C:f1" visibility="hidden" use-when="$accept"/>
+    <xsl:accept component="function" names="C:f1#1" visibility="hidden" use-when="$accept"/>
   </xsl:use-package>  
   
   

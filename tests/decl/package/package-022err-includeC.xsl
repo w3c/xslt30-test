@@ -8,14 +8,14 @@
         to resolve a conflict, overlapping declarations can be hidden in one use-package and accepted in the other -->
     
     <xsl:use-package name="urn:use-me" package-version="*"  >
-        <xsl:accept component="function" names="pkg:function1" visibility="hidden" />
-        <xsl:accept component="function" names="pkg:function2" visibility="hidden" />
+        <xsl:accept component="function#0" names="pkg:function1" visibility="hidden" />
+        <xsl:accept component="function#0" names="pkg:function2" visibility="hidden" />
     </xsl:use-package>
     
     <xsl:use-package name="urn:use-me" package-version="*"  >
         <!-- note: pkg:function1 is accepted through another xsl:include as visibility="private", this is a conflict -->
-        <xsl:accept component="function" names="pkg:function1" visibility="public" />
-        <xsl:accept component="function" names="pkg:function2" visibility="hidden" />
+        <xsl:accept component="function#0" names="pkg:function1" visibility="public" />
+        <xsl:accept component="function#0" names="pkg:function2" visibility="hidden" />
     </xsl:use-package>
     
     <xsl:template match="second-child">
