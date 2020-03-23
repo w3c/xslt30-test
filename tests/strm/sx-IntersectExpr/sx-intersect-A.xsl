@@ -4,7 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
-    <xsl:variable name="RUN" select="true()" static="yes"/>
+    <xsl:variable name="RUN" select="false()" static="yes"/>
     <xsl:strip-space elements="*"/>
     
     <xsl:variable name="insertion" as="element()*">
@@ -69,7 +69,7 @@
     
     <!-- Streaming intersect operator: striding operand, focus-controlled usage -->
     
-    <xsl:template name="r-014" use-when="true() or $RUN">
+    <xsl:template name="r-014" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="/BOOKLIST/BOOKS/ITEM[1] ! (* intersect  $insertion)"/>
@@ -136,7 +136,7 @@
     
     <!-- Streaming intersect operator: crawling operand, absorption usage -->
     
-    <xsl:template name="r-021" use-when="$RUN">
+    <xsl:template name="r-021" use-when="true() or $RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:copy-of select="count((/BOOKLIST/BOOKS/ITEM[1]//text() intersect  $insertion))"/>

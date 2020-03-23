@@ -316,10 +316,11 @@
    <test-case name="si-iterate-099">
       <description>within xsl:stream, use xsl:iterate, with early exit. Saxon bug 2934</description>
       <created by="Michael Kay after Martin Honnen" on="2017-02-05"/>
+      <modified by="Michael Kay" on="2020-03-23" change="add early-exit label"/> 
       <test>
          <stylesheet file="si-iterate-099.xsl"/>
       </test>
-      <result>
+      <result early-exit-possible="true">
          <assert>/out = "true"</assert>
       </result>
    </test-case>
@@ -468,10 +469,11 @@
    <test-case name="si-iterate-139">
       <description>streaming xsl:iterate over overlapping snapshots, with xsl:break</description>
       <created by="Michael Kay after David Rudel" on="2017-09-05"/>
+      <modified by="Michael Kay" on="2020-03-23" change="add early-exit label"/>
       <test>
          <stylesheet file="si-iterate-139.xsl"/>
       </test>
-      <result>
+      <result early-exit-possible="true">
          <all-of>
             <assert>every $i in 1 to 101 satisfies exists(/data/out[@c=$i])</assert>
             <assert>empty(/data/out[@c &gt; 101])</assert>
