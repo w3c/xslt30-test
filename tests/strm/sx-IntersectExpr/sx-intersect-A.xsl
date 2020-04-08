@@ -4,7 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="map xs">
     
-    <xsl:variable name="RUN" select="false()" static="yes"/>
+    <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
     
     <xsl:variable name="insertion" as="element()*">
