@@ -12,10 +12,14 @@
             <xsl:for-each select="//*">
                 <element name="{name()}">
                     <union>
-                        <xsl:apply-templates select="@a | @b | @c"/>
+                        <xsl:apply-templates select="@a | @b | @c">
+                          <xsl:sort select="local-name()"/>
+                        </xsl:apply-templates>
                     </union>
                     <list>
-                        <xsl:apply-templates select="@*"/>
+                        <xsl:apply-templates select="@*">
+                          <xsl:sort select="local-name()"/>
+                        </xsl:apply-templates>
                     </list>
                 </element>
             </xsl:for-each>

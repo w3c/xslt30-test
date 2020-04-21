@@ -8,10 +8,13 @@
 	<xsl:template match="e">
         <z>
         <xsl:for-each select="child::node() | @*">
-           <n 
+           <xsl:sort select="namespace-uri()"/>
+           <xsl:sort select="local-name()"/>
+           <n p='{position()}'
               namespace="{namespace-uri-from-QName(node-name(.))}" 
               local-name="{local-name-from-QName(node-name(.))}"
-              prefix="{prefix-from-QName(node-name(.))}"/>
+              prefix="{prefix-from-QName(node-name(.))}"
+              content="{.}"/>
         </xsl:for-each>
         </z>
 	</xsl:template>
