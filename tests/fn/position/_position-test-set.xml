@@ -2042,8 +2042,9 @@
    </test-case>
 
    <test-case name="position-1602">
-      <description>Node Set Functions. Test of '[position()=last()]' against each axis. results depend on attribute order</description>
+      <description>Node Set Functions. Test of '[position()=last()]' against each axis.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-21" change="make expected results independent of attribute order"/>
       <environment ref="position-16"/>
       <dependencies>
          <spec value="XSLT10+"/>
@@ -2052,7 +2053,19 @@
          <stylesheet file="position-1602.xsl"/>
       </test>
       <result>
-         <assert-xml file="position-1602.out"/>
+         <all-of>
+           <assert>/out/ancestor = 'doc'</assert>
+           <assert>/out/ancestor-or-self = 'doc'</assert>
+           <assert>/out/descendant = 'c5'</assert>
+           <assert>/out/descendant-or-self = 'c5'</assert>
+           <assert>/out/following = 'a5'</assert>
+           <assert>/out/following-sibling = 'b4'</assert>
+           <assert>/out/parent = 'a3'</assert>
+           <assert>/out/preceding = 'a1'</assert>
+           <assert>/out/preceding-sibling = 'b1'</assert>
+           <assert>/out/self = 'b3'</assert>
+           <assert>/out/attribute = ('x', 'y', 'z') (:order is unpredictable:)</assert>
+         </all-of>
       </result>
    </test-case>
 

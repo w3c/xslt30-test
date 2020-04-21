@@ -15,8 +15,8 @@
   <xsl:apply-templates select="fa"/>
   This should come out doremifasolatido:
   <xsl:apply-templates select="mi | do | fa | re"/>
-  This should come out do-do-remi-mi1-mi2fasolatido-fa--so-:
-  <xsl:apply-templates select="mi[@mi2='mi2'] | do | fa/so/@so | fa | mi/@* | re | fa/@fa | do/@do"/>
+  This should come out do-do-remi-mi1-fasolatido-fa--so-:
+  <xsl:apply-templates select="mi[@mi1='-mi1-'] | do | fa/so/@so | fa | mi/@* | re | fa/@fa | do/@do"/>
   This should come out solatidoG#:
   <xsl:apply-templates select=".//*[@so]"/>
   This should come out relatidoABb:
