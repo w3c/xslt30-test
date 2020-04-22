@@ -6,7 +6,9 @@
 <xsl:template match="/">
    <out>
 	 <xsl:for-each select="//center">
-        <xsl:apply-templates select="attribute::*"/>
+        <xsl:apply-templates select="attribute::*">
+          <xsl:sort select="name()"/>
+        </xsl:apply-templates>
      </xsl:for-each>
    </out>
 </xsl:template>

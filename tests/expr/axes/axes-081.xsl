@@ -9,11 +9,15 @@
 <xsl:template match="/">
   <out>
     1.<xsl:for-each select="//center">
-      <xsl:apply-templates select="@*/self::node()"/>
+      <xsl:apply-templates select="@*/self::node()">
+        <xsl:sort select="local-name()"/>
+      </xsl:apply-templates>
     </xsl:for-each>
 
     2.<xsl:for-each select="//center">
-      <xsl:apply-templates select="@*/."/>
+      <xsl:apply-templates select="@*/.">
+        <xsl:sort select="local-name()"/>
+      </xsl:apply-templates>
     </xsl:for-each>
 
   </out>

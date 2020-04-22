@@ -485,6 +485,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          nodes.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Tim Mills" on="2012-12-10" change="Removed whitespace from expected result"/>
+      <modified by="Michael Kay" on="2020-04-21" change="make expected results independent of attribute order"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc><x a="1" b="2"/><y a="3" b="4" c="5"/><z c="2" b="3" a="1"/></doc>]]></content>
@@ -1474,6 +1475,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
    <test-case name="bug-4401">
       <description>BUG: 6.0.1/003 DESCRIPTION: Keys on match="@*" not working</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-21" change="make expected results independent of attribute order"/>
       <environment>
          <source role="." file="bug-44.xml"/>
       </environment>
@@ -1602,6 +1604,7 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
       <description>BUG (reported but not reproduced) name() doesn't work on attribute
          nodes.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-21" change="make expected results independent of attribute order"/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc fred="1" bill="2" jane="3" mary="4"/>]]></content>
@@ -1614,11 +1617,13 @@ axsl=http://www.w3.org/1999/XSL/TransformAlias;
          <stylesheet file="bug-4901.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<testing>4fred;
-    bill;
-    jane;
-    mary;
-    </testing>]]></assert-xml>
+        <all-of>
+          <assert>/testing/m = "4"</assert>
+          <assert>/testing/a = "fred"</assert>
+          <assert>/testing/a = "bill"</assert>
+          <assert>/testing/a = "jane"</assert>
+          <assert>/testing/a = "mary"</assert>
+        </all-of>
       </result>
    </test-case>
 
