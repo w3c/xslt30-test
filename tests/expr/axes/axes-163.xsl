@@ -9,10 +9,14 @@
 <xsl:template match="docs">
  <out>
     <xsl:for-each select="doc">
-      <xsl:apply-templates select="attribute::*"/>
+      <xsl:apply-templates select="attribute::*">
+        <xsl:sort select="local-name()"/>
+      </xsl:apply-templates>
     </xsl:for-each>
     <xsl:for-each select="foo:doc">
-      <xsl:apply-templates select="attribute::*"/>
+      <xsl:apply-templates select="attribute::*">
+        <xsl:sort select="local-name()"/>
+      </xsl:apply-templates>
     </xsl:for-each>
  </out>
 </xsl:template>
