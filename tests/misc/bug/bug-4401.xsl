@@ -9,7 +9,8 @@
 <xsl:template match="/">
  <doc>
  <xsl:for-each select="key('a', 'stone')">
-    <sss><xsl:value-of select="name(.)"/></sss>;
+    <xsl:sort select="name(.)"/> <!-- to avoid dependency on attribute order -->
+    <sss><xsl:value-of select="name(.)"/></sss>
  </xsl:for-each>
  </doc>
 </xsl:template>

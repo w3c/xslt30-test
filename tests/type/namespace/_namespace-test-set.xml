@@ -405,6 +405,7 @@
    <test-case name="namespace-0501">
       <description>Test of namespace stuff</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-21" change="make expected results independent of attribute order"/>
       <environment>
          <source role="." file="namespace-05.xml"/>
       </environment>
@@ -415,7 +416,20 @@
          <stylesheet file="namespace-0501.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-0501.out"/>
+         <all-of>
+           <assert>/out/r[@p='0.1'][@name='Family'][@lname='Family'][@uri='']</assert>
+           <assert>/out/r[@p='0.2'][@name='Family'][@lname='Family'][@uri='']</assert>
+           <assert>/out/r[@p='2.1'][@name='Surname'][@lname='Surname'][@uri='']</assert>
+           <assert>/out/r[@p='2.2'][@name='Children'][@lname='Children'][@uri='']</assert>
+           <assert>/out/r[@p='2.3'][@name='Parents'][@lname='Parents'][@uri='']</assert>
+           <assert>/out/r[@p='3.1'][@name='Father'][@lname='Father'][@uri='']</assert>
+           <assert>/out/r[@p='3.2'][@name='GrandKids'][@lname='GrandKids'][@uri='']</assert>
+           <assert>/out/r[@p='3.3'][@name='Mother'][@lname='Mother'][@uri='']</assert>
+           <assert>/out/r[@p='4.1'][@name='First'][@lname='First'][@uri='']</assert>
+           <assert>/out/r[@p='4.2'][@name='Last'][@lname='Last'][@uri='']</assert>
+           <assert>/out/r[@p='4.3'][@name='MI'][@lname='MI'][@uri='']</assert>
+           <!-- And many others.... -->
+         </all-of>
       </result>
    </test-case>
 
@@ -1109,8 +1123,8 @@ z = http://new-z.uri/;
 
    <test-case name="namespace-2301">
       <description>TEST node-name() function (returning a QName)</description>
-      <!--TODO: fix this test so the expected results do not depend on the order of attributes being retained-->
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-21" change="make expected results independent of attribute order"/>
       <environment ref="namespace-23"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1119,13 +1133,26 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2301.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-2301.out"/>
+         <all-of>
+           <assert>/z/n[@p='1'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='2'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='3'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='4'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='5'][@namespace=''][@local-name=''][@content=' a comment ']</assert>
+           <assert>/z/n[@p='6'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='7'][@namespace=''][@local-name='api'][@content='a processing instruction']</assert>
+           <assert>/z/n[@p='8'][@namespace=''][@local-name='att']</assert>
+           <assert>/z/n[@p='9'][@namespace=''][@local-name='f']</assert>
+           <assert>/z/n[@p='10'][@namespace='http://my.uri/'][@local-name='att']</assert>
+           <assert>/z/n[@p='11'][@namespace='http://my.uri/'][@local-name='g']</assert>
+         </all-of>
       </result>
    </test-case>
 
    <test-case name="namespace-2302">
       <description>TEST node-name() function (returning a QName)</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-21" change="make expected results independent of attribute order"/>
       <environment ref="namespace-23"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1134,7 +1161,19 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-2302.xsl"/>
       </test>
       <result>
-         <assert-xml file="namespace-2302.out"/>
+         <all-of>
+           <assert>/z/n[@p='1'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='2'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='3'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='4'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='5'][@namespace=''][@local-name=''][@content=' a comment ']</assert>
+           <assert>/z/n[@p='6'][@namespace=''][@local-name='']</assert>
+           <assert>/z/n[@p='7'][@namespace=''][@local-name='api'][@content='a processing instruction']</assert>
+           <assert>/z/n[@p='8'][@namespace=''][@local-name='att']</assert>
+           <assert>/z/n[@p='9'][@namespace=''][@local-name='f']</assert>
+           <assert>/z/n[@p='10'][@namespace='http://my.uri/'][@local-name='att']</assert>
+           <assert>/z/n[@p='11'][@namespace='http://my.uri/'][@local-name='g']</assert>
+         </all-of>
       </result>
    </test-case>
 

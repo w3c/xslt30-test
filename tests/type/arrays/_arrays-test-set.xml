@@ -813,7 +813,7 @@
    </test-case>
    
    <test-case name="arrays-303">
-      <description>Use array:insert-before (Saxon bug from T. Hata</description>
+      <description>Use array:insert-before (Saxon bug from T. Hata)</description>
       <created by="T. Hata via Michael Kay" on="2018-06-24"/>
       <test>
          <stylesheet file="arrays-303.xsl"/>
@@ -822,5 +822,32 @@
          <assert>/out/@a = "1 2"</assert>
       </result>
    </test-case>
+  
+  <test-case name="arrays-304">
+    <description>Use array:join (Saxon bug from Ruud Grossmann)</description>
+    <created by="Ruud Grossmann via Michael Kay" on="2020-03-25"/>
+    <test>
+      <stylesheet file="arrays-304.xsl"/>
+    </test>
+    <result>
+      <assert>/out = "1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 3 4 1 2"</assert>
+    </result>
+  </test-case>
+  
+  <test-case name="arrays-305">
+    <description>Retrieval operations on a much-modified array</description>
+    <created by=" Michael Kay" on="2020-03-25"/>
+    <test>
+      <stylesheet file="arrays-305.xsl"/>
+    </test>
+    <result>
+      <all-of>
+        <assert>/out/a = "116 115 114 113 112 111 110 109 108 107 106 2000 105 104 1000 102 101 20 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2"</assert>
+        <assert>/out/b = "35"</assert>
+        <assert>/out/c = "112"</assert>
+        <assert>/out/d = "111 110 109 108 107 106 2000 105 104 1000 102 101 20 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2"</assert>
+      </all-of>
+    </result>
+  </test-case>
 
 </test-set>

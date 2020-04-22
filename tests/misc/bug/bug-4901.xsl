@@ -7,9 +7,9 @@
 
 <xsl:template match="/">
   <testing>
-    <xsl:value-of select="doc/@mary"/>
+    <m><xsl:value-of select="doc/@mary"/></m>
     <xsl:for-each select="//@*">
-       <xsl:value-of select="name()"/>;
+      <a><xsl:value-of select="name()"/></a>
     </xsl:for-each>
   </testing>
 </xsl:template>
