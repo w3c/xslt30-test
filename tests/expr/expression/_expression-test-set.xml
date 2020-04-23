@@ -1346,9 +1346,10 @@
    <test-case name="expression-2501">
       <description>Purpose: NodeSet union using the attribute location path </description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-23" change="make expected results independent of attribute order"/>
       <environment>
          <source role=".">
-            <content><![CDATA[<doc attr1="attribute 1 " attr2="attribute 2">
+            <content><![CDATA[<doc attr1="attribute 1" attr2="attribute 2">
    <sub1>
      <child1>child number 1</child1>
    </sub1>
@@ -1366,9 +1367,10 @@
          <stylesheet file="expression-2501.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>
-   attribute 1 attribute 2
-</out>]]></assert-xml>
+        <any-of>
+          <assert>/out = "attribute 1attribute 2"</assert>
+          <assert>/out = "attribute 2attribute 1"</assert>
+        </any-of>
       </result>
    </test-case>
 

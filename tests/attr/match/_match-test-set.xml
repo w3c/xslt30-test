@@ -2298,6 +2298,7 @@
       <description>Test predicates of parentless copied attribute node with attribute axis</description>
       <keywords>parentless-nodes attribute-axis Wildcard NCName</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-23" change="make expected results independent of attribute order"/>
       <environment ref="match2020"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2306,7 +2307,10 @@
          <stylesheet file="match-117.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><t>attr_val1</t><t>attr_val2</t></out>]]></assert-xml>
+         <any-of>
+           <assert-xml><![CDATA[<out><t>attr_val1</t><t>attr_val2</t></out>]]></assert-xml>
+           <assert-xml><![CDATA[<out><t>attr_val2</t><t>attr_val1</t></out>]]></assert-xml>
+         </any-of>
       </result>
    </test-case>
 
@@ -2314,6 +2318,7 @@
       <description>Test predicates of parentless copied attribute node with attribute axis</description>
       <keywords>parentless-nodes attribute-axis Wildcard</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2020-04-23" change="make expected results independent of attribute order"/>
       <environment ref="match2020"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2322,7 +2327,10 @@
          <stylesheet file="match-118.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<t>attr_val1</t>]]></assert-xml>
+        <any-of>
+          <assert-xml><![CDATA[<t>attr_val1</t>]]></assert-xml>
+          <assert-xml><![CDATA[<t>attr_val2</t>]]></assert-xml>
+        </any-of>
       </result>
    </test-case>
 

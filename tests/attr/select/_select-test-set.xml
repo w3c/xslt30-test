@@ -981,6 +981,7 @@ cousin 3
   <test-case name="select-1701">
     <description>Test of select in xsl:apply-templates with complex pathExpr involving various node and name tests</description>
     <created by="Michael Kay" on="2012-10-30"/>
+    <modified by="Michael Kay" on="2020-04-23" change="make expected results independent of attribute order"/>
     <environment ref="select-17"/>
     <dependencies>
       <spec value="XSLT20+"/>
@@ -989,7 +990,10 @@ cousin 3
       <stylesheet file="select-1701.xsl"/>
     </test>
     <result>
-      <assert-xml><![CDATA[<out>att1|num4|num6|num5|att3|num4|num6|num5|</out>]]></assert-xml>
+      <any-of>
+        <assert-xml><![CDATA[<out>att1|num4|num6|num5|att3|num4|num6|num5|</out>]]></assert-xml>
+        <assert-xml><![CDATA[<out>att3|num4|num6|num5|att1|num4|num6|num5|</out>]]></assert-xml>
+      </any-of>
     </result>
   </test-case>
 
