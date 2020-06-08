@@ -143,7 +143,7 @@
   
   <!-- within xsl:source-document, use xsl:message: descendant text nodes mixed with atomic values -->
   
-  <xsl:template name="d-010" use-when="true() or $RUN">
+  <xsl:template name="d-010" use-when="$RUN">
     <out>
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="100, 101, /BOOKLIST/BOOKS/ITEM/PRICE/text()">
