@@ -1260,6 +1260,10 @@
    <test-case name="function-1033">
       <description>Tempt the optimizer with a loop-lifting opportunity</description>
       <created by="Michael Kay" on="2015-09-09"/>
+      <modified by="Michael Kay" on="2020-06-11" 
+         change="Produce 100 messages rather than 10,000, because there's no requirement for the optimizer
+         to loop-lift this, and if it doesn't, the test driver has to cope with 10,000 messages in case there
+         are assertions against them. Also, improve the test assertions."/>
       <environment ref="function-10"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1268,7 +1272,11 @@
          <stylesheet file="function-1033.xsl"/>
       </test>
       <result>
-         <assert>xs:integer(/out) = (1 to 10000)</assert>
+         <all-of>
+            <assert>xs:integer(/out/@total) = 100</assert>
+            <assert>xs:integer(/out/@distinct) = (1, 100)</assert> 
+                    <!-- technically, it can be anything between 1 and 100 -->
+         </all-of>
       </result>
    </test-case>
    
