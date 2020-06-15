@@ -342,5 +342,83 @@
          <assert>/out="no"</assert>
       </result>
    </test-case>
+   
+   <test-case name="system-property-020">
+      <description>Unknown system property returns zero-length string</description>
+      <created by="Michael Kay" on="2020-06-15"/>
+      <environment ref="systemprop001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="backwards_compatibility" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="system-property-020.xsl"/>
+      </test>
+      <result>
+         <assert>count(/out/a[.='']) = 3</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-021">
+      <description>System-property in a static expression</description>
+      <created by="Michael Kay" on="2020-06-15"/>
+      <environment ref="systemprop001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="system-property-021.xsl"/>
+      </test>
+      <result>
+         <assert>/out/ok</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-022">
+      <description>System-property not allowed in xsl:evaluate</description>
+      <created by="Michael Kay" on="2020-06-15"/>
+      <environment ref="systemprop001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="system-property-022.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3160"/>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-023">
+      <description>Dynamic evaluation of system-property()</description>
+      <created by="Michael Kay" on="2020-06-15"/>
+      <environment ref="systemprop001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="system-property-023.xsl"/>
+      </test>
+      <result>
+         <assert>/out = 'true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="system-property-024">
+      <description>Dynamic evaluation of system-property() via function-lookup</description>
+      <created by="Michael Kay" on="2020-06-15"/>
+      <environment ref="systemprop001"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="system-property-024.xsl"/>
+      </test>
+      <result>
+         <assert>/out = 'true'</assert>
+      </result>
+   </test-case>
 
 </test-set>
