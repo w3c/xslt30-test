@@ -16,11 +16,11 @@ exclude-result-prefixes="xs x">
 
   <xsl:template match="/">
     <xsl:variable name="temp" as="element()*">
-      <xsl:for-each select="1 to 10000">
+      <xsl:for-each select="1 to 100">
         <xsl:sequence select="x:test()"/>
       </xsl:for-each>
     </xsl:variable>  
-    <out><xsl:value-of select="count($temp/.)"/></out>   
+    <out total="{count($temp)}" distinct="{count($temp/.)}"/>
   </xsl:template>
 
 
