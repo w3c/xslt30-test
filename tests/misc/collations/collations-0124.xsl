@@ -6,7 +6,7 @@
 
 <xsl:strip-space elements="*"/>
 
-<xsl:param name="collation" as="xs:string" select="'&coll;'"/>
+  <xsl:param name="collation" as="xs:string" select="'http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive'"/>
 <xsl:variable name="x" as="xs:string" select="'Adele'"/>
 
 
@@ -23,16 +23,16 @@
 </out>
 </xsl:template>
 
-<xsl:template name="one" default-collation="&coll;">
+  <xsl:template name="one" default-collation="http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive">
   <one><xsl:value-of select="$x = 'ADELE'"/></one>
 </xsl:template>
 
 <xsl:template name="two">
-  <two xsl:default-collation="&coll;"><xsl:value-of select="'Adele' = 'ADELE'"/></two>
+  <two xsl:default-collation="http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive"><xsl:value-of select="'Adele' = 'ADELE'"/></two>
 </xsl:template>
 
 <xsl:template name="three">
-  <three><xsl:value-of select="$x = 'ADELE'" default-collation="&coll;"/></three>
+  <three><xsl:value-of select="$x = 'ADELE'" default-collation="http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive"/></three>
 </xsl:template>
 
 </xsl:stylesheet>
