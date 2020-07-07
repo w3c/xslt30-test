@@ -6,7 +6,7 @@
 
 <xsl:strip-space elements="*"/>
 
-<xsl:param name="collation" as="xs:string" select="'&coll;'"/>
+  <xsl:param name="collation" as="xs:string" select="'http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive'"/>
 
 
 <!-- ends-with() function using explicit collation, default collation, and none -->
@@ -14,7 +14,7 @@
 <xsl:template match="/">
 <out>
   <th><xsl:value-of select="words/word[ends-with(., 'GH', $collation)]"/></th>
-  <th><xsl:value-of select="words/word[ends-with(., 'GH')]" default-collation="&coll;"/></th>
+  <th><xsl:value-of select="words/word[ends-with(., 'GH')]" default-collation="http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive"/></th>
   <th><xsl:value-of select="words/word[ends-with(., 'GH')]"/></th>  
 </out>
 </xsl:template>

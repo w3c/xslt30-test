@@ -1,17 +1,15 @@
-<!DOCTYPE xsl:stylesheet SYSTEM "collation.dtd">
-
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 exclude-result-prefixes="xs">
 
 <xsl:strip-space elements="*"/>
 
-<xsl:param name="collation" as="xs:string" select="'&coll;'"/>
+  <xsl:param name="collation" as="xs:string" select="'http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive'"/>
 
 
 <!-- eq operator using default collation to compare two equal words -->
 
-<xsl:template match="/" default-collation="&coll;">
+  <xsl:template match="/" default-collation="http://www.w3.org/2005/xpath-functions/collation/html-ascii-case-insensitive">
 <out>
   <eq><xsl:value-of select="words/word[3] eq words/word[10]"/></eq>
   <ne><xsl:value-of select="words/word[3] ne words/word[10]"/></ne>  

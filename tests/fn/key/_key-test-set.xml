@@ -1816,4 +1816,25 @@ Namespace "" used in 3
          <assert>count(/Message2/Response/CE) = 2</assert>
       </result>
    </test-case>
+   
+   <test-case name="key-098">
+      <description>Namespaces in xsl:key match pattern. Saxon bug https://saxonica.plan.io/issues/4624</description>
+      <created by="Michael Kay after Wendell Piez" on="2020-06-29"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="key-098.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>report/run[1]/data1 = "data1 key gives me 1"</assert>
+            <assert>report/run[1]/data2 = "data2 key gives me 1"</assert>
+            <assert>report/run[2]/data1 = "data1 key gives me 2"</assert>
+            <assert>report/run[2]/data2 = "data2 key gives me 2"</assert>
+            <assert>report/run[3]/data1 = "data1 key gives me 2"</assert>
+            <assert>report/run[3]/data2 = "data2 key gives me 2"</assert>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
