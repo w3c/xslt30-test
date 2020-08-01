@@ -3,8 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs"
   expand-text="yes">
-   <!-- Purpose: See that match="$nodeset" gives acceptable performance -->
-  
+   
  
    <xsl:variable name="nodes" as="element()*">
      <x>
