@@ -1029,6 +1029,7 @@ world</E1><E2>*</E2></out>]]></assert-xml>
       <created by="Michael Kay" on="2017-04-27"/>
       <modified by="Michael Kay" on="2019-12-09" change="The regex is invalid: it contains an unescaped right curly brace at position 19 - '(\{[^}]+})'. 
          Right curly brace in XSD regex syntax is not a NormalChar so it must be backslash-escaped. A corrected version of the test is at analyze-string-097a"/>
+      <modified by="Michael Kay" on="2020-07-03" change="Corrected error code, FORX0002 not FORX0001"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -1037,7 +1038,7 @@ world</E1><E2>*</E2></out>]]></assert-xml>
          <initial-template name="main"/>
       </test>
       <result>
-         <error code="FORX0001"/>
+         <error code="FORX0002"/>
       </result>
    </test-case>
    
@@ -1096,6 +1097,25 @@ world</E1><E2>*</E2></out>]]></assert-xml>
             <assert>count(/out/match) = 2</assert>
             <assert>/out/match[1] = '"a"'</assert>
             <assert>/out/match[2] = '"b"'</assert> 
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="analyze-string-100">
+      <description>Test of regex-group() on rhs of "!", Saxon-JS bug 4629</description>
+      <created by="Michael Kay" on="2020-07-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="analyze-string-100.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/one = ""</assert>
+            <assert>/out/two = ""</assert>
+            <assert>/out/three = "1949"</assert>
          </all-of>
       </result>
    </test-case>
