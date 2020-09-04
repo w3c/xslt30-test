@@ -742,6 +742,38 @@ z = http://new-z.uri/;
         
       </result>
    </test-case>
+   
+   <test-case name="namespace-0912">
+      <description>Namespace inheritance: Default/null namespace not inherited by grandchild. Saxon bug 4666</description>
+      <created by="Michael Kay" on="2020-08-04"/>
+      <environment>
+         <source role="." file="namespace-0912.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-0912.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<report xmlns="x-uri"><p xmlns=""><w:s xmlns:w="w-uri"/></p></report>]]></assert-xml>        
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-0913">
+      <description>Namespace inheritance: Default/null namespace not inherited. Saxon bug 4696</description>
+      <created by="Michael Kay" on="2020-08-27"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-0913.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<description xmlns="http://example.com/x"><x:scenario xmlns="" 
+            xmlns:x="http://example.com/x"><e/></x:scenario></description>]]></assert-xml>        
+      </result>
+   </test-case>
 
    <test-case name="namespace-1101">
       <description>TEST xsl:namespace (XSLT 2.0)</description>

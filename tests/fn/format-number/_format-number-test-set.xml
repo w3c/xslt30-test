@@ -1144,7 +1144,30 @@ __26,931.4</out>]]></assert-xml>
       </result>
    </test-case>
    
-   
-   
+   <test-case name="format-number-070">
+      <description>format-number bug with function inlining (Saxon bug 4688)</description>
+      <created by="Michael Kay after Andy Yar" on="2020-08-17"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<root>
+      <value1>58</value1>
+      <value2>64</value2>
+   </root>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20"/>
+      </dependencies>
+      <test>
+         <stylesheet file="format-number-070.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/root/format1 = '058'</assert>
+            <assert>/root/format2 = '0000000064'</assert>
+         </all-of>
+      </result>
+   </test-case>
    
 </test-set>
