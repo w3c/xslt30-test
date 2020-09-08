@@ -1821,5 +1821,61 @@
       </result>
    </test-case>
    
+   <test-case name="accumulator-082">
+      <description>Accumulator containing xsl:iterate/xsl:param (Saxon bug 4724)</description>
+      <created by="Michael Kay after Martin Honnen after Tom Hillman" on="2020-09-06"/>
+      <environment>
+         <source role="." file="accumulator-082.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-082.xsl"/>
+      </test>
+      <result>
+         <assert>/root/foo[@accumulator-test='1']</assert>          
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-083">
+      <description>Accumulator rule containing XSLT local variable declaration</description>
+      <created by="Michael Kay" on="2020-09-06"/>
+      <environment>
+         <source role="." file="accumulator-082.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-083.xsl"/>
+      </test>
+      <result>
+         <assert>/root/foo[@accumulator-test='-1']</assert>          
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-084">
+      <description>Accumulator rule containing XPath local variable declaration</description>
+      <created by="Michael Kay" on="2020-09-06"/>
+      <environment>
+         <source role="." file="accumulator-082.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-084.xsl"/>
+      </test>
+      <result>
+         <assert>/root/foo[@accumulator-test='-1']</assert>          
+      </result>
+   </test-case>
+   
+   <test-case name="accumulator-085">
+      <description>Accumulator rule containing XPath local variable in a predicate of the match pattern</description>
+      <created by="Michael Kay" on="2020-09-06"/>
+      <environment>
+         <source role="." file="accumulator-082.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="accumulator-085.xsl"/>
+      </test>
+      <result>
+         <assert>/root/foo[@accumulator-test='0']</assert>          
+      </result>
+   </test-case>
+   
  
 </test-set>
