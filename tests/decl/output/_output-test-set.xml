@@ -4936,5 +4936,22 @@
       </result>
    </test-case>
    
+   <test-case name="output-0723">
+      <description>Serialization of a CR character within a comment node</description>
+      <created by="Michael Kay" on="2020-09-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0723.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <all-of>
+            <serialization-matches><![CDATA[^<a><!--\[\r\]--></a>$]]></serialization-matches>          
+         </all-of>
+      </result>
+   </test-case>
+   
 
 </test-set>

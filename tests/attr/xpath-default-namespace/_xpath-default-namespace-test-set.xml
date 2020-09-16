@@ -543,4 +543,18 @@ b
          <assert-xml><![CDATA[<z>Today's flavor: mint</z>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="xpath-default-namespace-1202">
+      <description>xpath-default-namespace on the root element of an included stylesheet module (Saxon bug 4660)</description>
+      <created by="Michael Kay" on="2020-09-16"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="xpath-default-namespace-1202.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<A xmlns="urn:FOO"><B/></A>]]></assert-xml>
+      </result>
+   </test-case>
 </test-set>
