@@ -251,6 +251,20 @@ Who knows?: Prince</out>]]></assert-xml>
          <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="choose-0202">
+      <description>Comparison of untyped atomic to integer. Saxon optimization bug 4738</description>
+      <created by="Michael Kay" on="2020-09-15"/>
+      <dependencies>
+         <spec value="XSLT10+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="choose-0202.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<message><client><merchant-limit due-limit="0.0000" days-limit="5" block-strategy="A"/></client></message>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="choose-0301">
       <description>Test for "when" happens on nonexsisent attribute node. No errors or output expected.</description>

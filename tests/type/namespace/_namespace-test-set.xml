@@ -770,8 +770,30 @@ z = http://new-z.uri/;
          <stylesheet file="namespace-0913.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<description xmlns="http://example.com/x"><x:scenario xmlns="" 
-            xmlns:x="http://example.com/x"><e/></x:scenario></description>]]></assert-xml>        
+         <all-of>
+            <assert-xml><![CDATA[<description xmlns="http://example.com/x"><x:scenario xmlns="" 
+               xmlns:x="http://example.com/x"><e/></x:scenario></description>]]></assert-xml>
+            <assert>not(in-scope-prefixes(//*:scenario) = "")</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="namespace-0914">
+      <description>
+         Namespace inheritance: Default/null namespace not inherited. Saxon bug 4696.
+         Variant of namespace-0913 testing correct serialized output.
+      </description>
+      <created by="Michael Kay" on="2020-08-27"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="serialization"/>
+      </dependencies>
+      <test>
+         <stylesheet file="namespace-0913.xsl"/><!--sic-->
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[x:scenario( xmlns:x="http://example.com/x")? xmlns=""]]></serialization-matches>
       </result>
    </test-case>
 
