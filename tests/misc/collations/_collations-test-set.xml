@@ -417,6 +417,36 @@
          <error code="XTSE1220"/>
       </result>
    </test-case>
+   
+   <test-case name="collations-0126">
+      <description>General comparison using default-collation at xsl:stylesheet level, run-time comparison</description>
+      <created by="Michael Kay" on="2020-09-17"/>
+      <environment ref="collations-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collations-0126.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><one>true</one><two>true</two><three>true</three></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="collations-0127">
+      <description>General comparison using default-collation at imported xsl:stylesheet level, run-time comparison</description>
+      <created by="Michael Kay" on="2020-09-17"/>
+      <environment ref="collations-01"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="collations-0127.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><one>true</one><two>true</two><three>true</three></out>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="collations-0201">
       <description>Testcase to verify that when collation attribute is used with xsl:sort, its value is used to determine the sorting order, and other attributes (lang, case-order) are ignored. Included cases: - no attributes specified; only @lang; only @case-order; both @lang and @case-order</description>
