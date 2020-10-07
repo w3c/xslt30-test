@@ -6,8 +6,7 @@
   <!-- PURPOSE: test tokenize() with a pattern that matches the empty string. -->
   
   <xsl:template match="/">
-    <xsl:message>**** SHOULD BE AN ERROR UNDER LATEST SPEC ****</xsl:message>
-    <out>;
+    <out>
         <xsl:value-of select='tokenize("abracadabra", ".?")' separator="|"/>
     </out>
   </xsl:template>
