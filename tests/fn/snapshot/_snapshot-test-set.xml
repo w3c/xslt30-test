@@ -111,6 +111,50 @@
       </result>
    </test-case>
    
+   <test-case name="snapshot-0101e">
+      <description>snapshot() applied to attribute node</description>
+      <created by="Michael Kay" on="2020-10-03"/>
+      <environment ref="snapshot-01"/>
+      <dependencies>
+         <feature value="higher_order_functions"/>
+      </dependencies>      
+      <test>
+         <stylesheet file="snapshot-0101.xsl"/>
+         <initial-template name="e"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/a='true'</assert>
+            <assert>/out/b='true'</assert>
+            <assert>/out/c='true'</assert>
+            <assert>/out/d='true'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="snapshot-0101f">
+      <description>snapshot() applied to namespace node</description>
+      <created by="Michael Kay" on="2020-10-03"/>
+      <environment ref="snapshot-01"/>
+      <dependencies>
+         <feature value="higher_order_functions"/>
+      </dependencies>      
+      <test>
+         <stylesheet file="snapshot-0101.xsl"/>
+         <initial-template name="f"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/a='true'</assert>
+            <assert>/out/b='true'</assert>
+            <assert>/out/c='true'</assert>
+            <assert>/out/d='true'</assert>
+            <assert>/out/e='true'</assert>
+            <assert>/out/f='true'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
    <test-case name="snapshot-0102">
       <description>Compare actual snapshot() results with the implementation in the spec</description>
       <created by="Michael Kay" on="2013-11-10"/>
