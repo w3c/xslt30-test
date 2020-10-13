@@ -720,6 +720,8 @@ Unicode codepoint collation:
    <test-case name="collations-1006">
       <description>To verify that the default-collation attribute is used by various expressions.</description>
       <created by="Michael Kay" on="2019-02-19"/>
+      <modified by="Michael Kay" on="2020-09-18" 
+         change="Since the test uses a UCA collation with fallback=no, error FOCH0002 is acceptable"/>
       <environment ref="collationfunc001"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -728,13 +730,16 @@ Unicode codepoint collation:
          <stylesheet file="collations-1006.xsl"/>
       </test>
       <result>
-         <all-of>
-            <assert>/out/a = 'true'</assert>
-            <assert>/out/b = 'true'</assert>
-            <assert>/out/c = 'true'</assert>
-            <assert>/out/d = 'true'</assert>
-            <assert>/out/e = 'Ab aBC aBcD'</assert>
-         </all-of>
+         <any-of>
+            <error code="FOCH0002"/>
+            <all-of>
+               <assert>/out/a = 'true'</assert>
+               <assert>/out/b = 'true'</assert>
+               <assert>/out/c = 'true'</assert>
+               <assert>/out/d = 'true'</assert>
+               <assert>/out/e = 'Ab aBC aBcD'</assert>
+            </all-of>
+         </any-of>        
       </result>
    </test-case>
    

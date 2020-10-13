@@ -2845,6 +2845,23 @@
          <assert-xml><![CDATA[<out><a>1</a><b>1</b></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="copy-5101">
+      <description>xsl:copy-of copy-namespaces=no with serialize()</description>
+      <created by="Michael Kay" on="2020-10-10"/>
+      <environment>
+         <source role="." file="copy-51.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-5101.xsl"/>
+      </test>
+      <result>
+         <assert>normalize-space(//*:foo)='&lt;bar xmlns="http://example.org"&gt;test&lt;/bar&gt;'</assert>
+      </result>
+   </test-case>
 
 
 </test-set>

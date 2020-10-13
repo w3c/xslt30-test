@@ -10,7 +10,7 @@
 
 <xsl:template match="doc">
  <root>
-  <xsl:value-of select="count(div)" /> divisions:
+  <xsl:value-of select="count(child::div)" /> divisions:
   <xsl:value-of select="key('mykey', 'Introduction')/p"/>
   <xsl:value-of select="key('mykey', 'Stylesheet Structure')/p"/>
   The next key finds two divisions:
