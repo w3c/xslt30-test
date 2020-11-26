@@ -1929,7 +1929,19 @@
       </result>
    </test-case>
    
-   
-   
+   <test-case name="accumulator-088">
+      <description>Saxon bug 4786</description>
+      <created by="Michael Kay" on="2020-10-10"/>
+      <test>
+         <stylesheet file="accumulator-088.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/processed[1][@path='/Q{}foo[1]'][@value='init, matched /Q{}foo[1]']</assert>
+            <assert>/out/processed[2][@path='Q{http://www.w3.org/2005/xpath-functions}root()'][@value='init, matched Q{http://www.w3.org/2005/xpath-functions}root()']</assert>
+         </all-of>      
+      </result>
+   </test-case>
+     
  
 </test-set>

@@ -105,6 +105,21 @@
          <error code="XTDE0040"/>
       </result>
    </test-case>
+   
+   <test-case name="transform-008">
+      <description>fn:transform() calling a transformation that executes xsl:result-document</description>
+      <created by="Michael Kay" on="2020-11-22"/>
+      <test>
+         <stylesheet file="transform-008.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/result/primary/a = '892'</assert>
+            <assert>/result/secondary/out = '479'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
 
 </test-set>
