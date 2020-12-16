@@ -276,7 +276,7 @@
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>  
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[empty($empty)]"/>
+        <xsl:sequence select="ends-with(base-uri(), 'books.xml')[empty($empty)]"/>
         <xsl:on-empty>There is no price data</xsl:on-empty>    
       </out>
     </xsl:source-document>
@@ -287,7 +287,7 @@
   <xsl:template name="s-026" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[empty($empty)]"/>  
+        <xsl:sequence select="ends-with(base-uri(), 'books.xml')[empty($empty)]"/>  
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>
         <xsl:on-empty>There is no price data</xsl:on-empty>    
       </out>
