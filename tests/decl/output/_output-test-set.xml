@@ -4954,6 +4954,23 @@
          </all-of>
       </result>
    </test-case>
-   
 
+   <test-case name="output-0724">
+      <description>Test serialization of input/@value</description>
+      <created by="Norman Walsh" on="2020-12-22"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0724.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+        <any-of>
+          <serialization-matches><![CDATA[^(<!DOCTYPE (HTML|html)>\s*)?<input value="✈"/>$]]></serialization-matches>
+          <serialization-matches><![CDATA[^(<!DOCTYPE (HTML|html)>\s*)?<input type="text" value="✈"/>$]]></serialization-matches>
+          <serialization-matches><![CDATA[^(<!DOCTYPE (HTML|html)>\s*)?<input value="✈" type="text"/>$]]></serialization-matches>
+        </any-of>
+      </result>
+   </test-case>
 </test-set>
