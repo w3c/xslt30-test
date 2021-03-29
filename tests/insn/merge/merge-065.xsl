@@ -32,6 +32,6 @@
     </xsl:template>
     
     <xsl:accumulator name="path" initial-value="''" _streamable="{$STREAMABLE}">
-      <xsl:accumulator-rule match="*" select="concat(document-uri(/), ' - ', string-join(ancestor::*/name(), '/'))"/>
+      <xsl:accumulator-rule match="*" select="concat(base-uri(/), ' - ', string-join(ancestor::*/name(), '/'))"/>
     </xsl:accumulator>  
 </xsl:stylesheet>

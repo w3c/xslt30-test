@@ -638,5 +638,20 @@
          <assert-xml><![CDATA[<out><one><name><e/></name></one><two><hat>tie</hat><jaq>ues</jaq></two></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="lre-110">
+      <description>No spurious error when local name of LRE matches an XSLT element name. Saxon bug 4921</description>
+      <created by="Michael Kay" on="2021-03-01"/>
+      <environment ref="lre10"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="lre-110.xsl"/>
+      </test>
+      <result>
+         <assert>/*:source-document</assert>
+      </result>
+   </test-case>
 
 </test-set>

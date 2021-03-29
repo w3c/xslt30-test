@@ -9,7 +9,7 @@
     
     <xsl:template match="/">
         <AllEmployeeData>
-            <xsl:variable name="input-uri" as="xs:anyURI" select="document-uri()"/>
+            <xsl:variable name="input-uri" as="xs:anyURI" select="base-uri()"/>
             <!--<xsl:message select="$input-uri"/>-->
             <xsl:merge>
                 <xsl:merge-source name="emp-details1" for-each-source="$input-uri" streamable="yes" select="Root/EmployeePersonal/Employee">

@@ -277,7 +277,7 @@
       <out>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>  
         <xsl:on-non-empty>There is some price data</xsl:on-non-empty>
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[exists($param-string)]"/>    
+        <xsl:sequence select="ends-with(base-uri(), 'books.xml')[exists($param-string)]"/>    
       </out>
     </xsl:source-document>
   </xsl:template> 
@@ -287,7 +287,7 @@
   <xsl:template name="s-026" use-when="$RUN">
     <xsl:source-document streamable="yes" href="../docs/books.xml">
       <out>
-        <xsl:sequence select="ends-with(document-uri(), 'books.xml')[exists($param-string)]"/>  
+        <xsl:sequence select="ends-with(base-uri(), 'books.xml')[exists($param-string)]"/>  
         <xsl:on-non-empty>There is some price data</xsl:on-non-empty>
         <xsl:sequence select="./BOOKLIST/BOOKS/ITEM/PRICEDATA"/>    
       </out>
