@@ -7,7 +7,10 @@
    
    <environment name="merge001">
       <source role="." file="merge001.xml"/>
-      <!-- TODO: uses a collection, need to catalog its contents -->
+      <collection uri="log-files">
+         <source file="log-files/log-file1.xml" uri="log-files/log-file1.xml"/>
+         <source file="log-files/log-file2.xml" uri="log-files/log-file2.xml"/>
+      </collection>
    </environment>
    <environment name="merge002">
       <source role="." file="merge001.xml"/>
@@ -1049,8 +1052,7 @@
       <description>xsl:merge test using accumulators.</description>
       <created by="Michael Kay" on="2015-08-12"/>
       <modified by="Michael Kay" on="2017-01-15" change="Streamable and non-streamable variants"/>
-      <modified by="Michael Kay" on="2020-12-05" change="Cannot rely on document-uri of 
-         a streamed node because there is no stability guarantee"/>
+      <modified by="Michael Kay" on="2021-01-05" change="Use base-uri rather than document-uri"/>
       <environment ref="merge002"/>
       <dependencies>
          <feature value="streaming"/>
@@ -1129,6 +1131,10 @@
    <test-case name="merge-070">
       <description>Merge two real-life data files for Swedish cities, using Swedish collation.</description>
       <created by="Michael Kay" on="2015-09-10"/>
+      <modified by="Michael Kay" on="2021-06-09" change="Strip spaces and hyphens from sort key to improve interoperability of results"/>
+      <!-- Failing on Saxon-CS because it claims cities-SE.xml is not correctly sorted: this depends on the relative
+         order of "Akersberga" and "Akers Styckebruk", which I don't think is well-defined in the spec, either
+         for English or Swedish collation -->
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1225,6 +1231,7 @@
    <test-case name="merge-076">
       <description>Use current-merge-group#1</description>
       <created by="Michael Kay" on="2015-09-10"/>
+      <modified by="Michael Kay" on="2021-06-09" change="Strip spaces and hyphens from sort key to improve interoperability of results"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1256,6 +1263,7 @@
    <test-case name="merge-078">
       <description>Composite merge key.</description>
       <created by="Michael Kay" on="2015-09-10"/>
+      <modified by="Michael Kay" on="2021-06-09" change="Strip spaces and hyphens from sort key to improve interoperability of results"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1273,6 +1281,7 @@
    <test-case name="merge-079">
       <description>Failure to access outside snapshot.</description>
       <created by="Michael Kay" on="2015-09-10"/>
+      <modified by="Michael Kay" on="2021-06-09" change="Strip spaces and hyphens from sort key to improve interoperability of results"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1290,8 +1299,7 @@
    <test-case name="merge-080">
       <description>Merge a single file (another way of doing group-adjacent).</description>
       <created by="Michael Kay" on="2015-09-10"/>
-      <modified by="Michael Kay" on="2020-12-05" change="Cannot rely on document-uri of 
-         a streamed node because there is no stability guarantee"/>
+      <modified by="Michael Kay" on="2021-06-09" change="Strip spaces and hyphens from sort key to improve interoperability of results"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1311,6 +1319,7 @@
    <test-case name="merge-081">
       <description>No failure to access outside snapshot when not streaming.</description>
       <created by="Michael Kay" on="2015-09-10"/>
+      <modified by="Michael Kay" on="2021-06-09" change="Strip spaces and hyphens from sort key to improve interoperability of results"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1348,6 +1357,7 @@
    <test-case name="merge-083">
       <description>Use position() in xsl:merge-action.</description>
       <created by="Michael Kay" on="2015-09-10"/>
+      <modified by="Michael Kay" on="2021-06-09" change="Strip spaces and hyphens from sort key to improve interoperability of results"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1365,6 +1375,7 @@
    <test-case name="merge-084">
       <description>Use last() in declared-streamable xsl:merge-action (bug 29120).</description>
       <created by="Michael Kay" on="2015-09-10"/>
+      <modified by="Michael Kay" on="2021-06-09" change="Strip spaces and hyphens from sort key to improve interoperability of results"/>
       <dependencies>
          <feature value="streaming"/>
       </dependencies>
@@ -1579,6 +1590,8 @@
       <modified by="Abel Braaksma" on="2019-02-28" change="Added dependency XP31 because of presence of fn:sort"/>
       <dependencies>
          <feature value="XPath_3.1" satisfied="true"/>
+         <!--Note, this test (and variations 097s, 097sf) rely on Saxon-format collection URIs
+             in the form (/my/dir?select="*.xml) and is therefore not interoperable: MHK 2021-06-09 -->
       </dependencies>
       <test>
          <stylesheet file="merge-097.xsl"/>
@@ -1631,6 +1644,7 @@
    <test-case name="merge-098">
       <description>Saxon bug 4275. Merging two streamed selections from the same input document.</description>
       <created by="Michael Kay after Martin Honnen" on="2019-08-12"/>
+      <modified by="Michael Kay" on="2021-01-05" change="Use base-uri rather than document-uri"/>
       <environment>
          <source role="." file="merge098.xml" streaming="true"/>
       </environment>

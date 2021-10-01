@@ -124,6 +124,10 @@
          <content><![CDATA[<doc></doc>]]></content>
       </source>
    </environment>
+   
+   <environment name="expression-44">
+      <source role="." file="expression-44.xml"/>
+   </environment>
 
    <test-case name="expression-0101">
       <description>Test of lang() function</description>
@@ -2019,6 +2023,38 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out><one>false</one><two>true</two><three>true</three></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="expression-4401">
+      <description>test promotion of independent subexpressions within a filter expression 
+         (was opt-001 in xslt3extra: Saxon bug 5091)</description>
+      <created by="Michael Kay" on="2021-09-14"/>
+      <environment ref="expression-44"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="expression-4401.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><section nr="2"/></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="expression-4402">
+      <description>test promotion of independent subexpressions within a filter expression 
+         (was opt-002 in xslt3extra: Saxon bug 5091)</description>
+      <created by="Michael Kay" on="2021-09-14"/>
+      <environment ref="expression-44"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="expression-4402.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><section nr="1"/></out>]]></assert-xml>
       </result>
    </test-case>
 </test-set>

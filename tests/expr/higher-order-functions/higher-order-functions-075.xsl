@@ -18,56 +18,46 @@
   <xsl:function name="task:create-monadic-task" as="map(*)">
     <xsl:param name="apply-fn" as="function(*)"/>
     <xsl:sequence select="map {
-      'apply': $apply-fn,
-      
+      'apply': $apply-fn,     
       'bind' : function($binder as function(item()*) as map(*)) as map(*) {
-      let $bound-apply-fn := function($realworld) {
-      let $io-res := $apply-fn($realworld)
-      return
-      $binder(fn:tail($io-res))('apply')(fn:head($io-res))
-      }
-      return
-      task:create-monadic-task($bound-apply-fn)
+          let $bound-apply-fn := function($realworld) {
+              let $io-res := $apply-fn($realworld)
+              return $binder(fn:tail($io-res))('apply')(fn:head($io-res))
+          }
+          return task:create-monadic-task($bound-apply-fn)
       },
       
       'then': function($next as map(*)) as map(*) {
-      let $then-apply-fn := function($realworld) {
-      let $io-res := $apply-fn($realworld)
-      (: NOTE: the result given by fn:head($io-res)
-      is not needed by `then`, so we can ignore it :)
-      return
-      $next('apply')(fn:head($io-res))
-      }
-      return
-      task:create-monadic-task($then-apply-fn)
+          let $then-apply-fn := function($realworld) {
+              let $io-res := $apply-fn($realworld)
+              (: NOTE: the result given by fn:head($io-res)
+                       is not needed by `then`, so we can ignore it :)
+              return $next('apply')(fn:head($io-res))
+          }
+          return task:create-monadic-task($then-apply-fn)
       },
       
       
       'fmap': function($mapper as function(item()*) as item()*) as map(*) {
-      let $fmap-apply-fn := function($realworld) {
-      let $io-res := $apply-fn($realworld)
-      return
-      (fn:head($io-res), $mapper(fn:tail($io-res)))
-      }
-      return
-      task:create-monadic-task($fmap-apply-fn)
+          let $fmap-apply-fn := function($realworld) {
+              let $io-res := $apply-fn($realworld)
+              return (fn:head($io-res), $mapper(fn:tail($io-res)))
+          }
+          return task:create-monadic-task($fmap-apply-fn)
       },
       
       'async': function() as map(*) {
-      let $async-apply-fn := function($realworld as element(io:realworld)) as item() + {
-      let $exec-NO-async := $apply-fn($realworld), 
-      $async-a := function($scheduler as element(io:scheduler)) as item()+ {
-      ($scheduler, fn:tail($exec-NO-async))
+          let $async-apply-fn := function($realworld as element(io:realworld)) as item() + {
+              let $exec-NO-async := $apply-fn($realworld), 
+                  $async-a := function($scheduler as element(io:scheduler)) as item()+ {
+                      ($scheduler, fn:tail($exec-NO-async))
+                  }
+              return (fn:head($exec-NO-async), $async-a)
+          }
+          return task:create-monadic-task($async-apply-fn)
       }
-      return
-      (fn:head($exec-NO-async), $async-a)
-      }
-      return
-      task:create-monadic-task($async-apply-fn)
-      }
-      
-      
-      }"/>
+            
+   }"/>
   </xsl:function>
   
   <xsl:function name="task:RUN-UNSAFE">

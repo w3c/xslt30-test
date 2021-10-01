@@ -21,6 +21,7 @@
       <!-- Note: secondary source documents not listed. The list would only get out of date... -->
       <schema role="source-reference" file="../../../admin/catalog-schema.xsd" xsd-version="1.1"/>
       <schema role="secondary" file="../../../admin/xml.xsd" xsd-version="1.1"/>
+      <schema role="secondary" file="XMLSchema.xsd" xsd-version="1.1"/>
       <schema role="source-reference" file="schema-for-xslt30.xsd" xsd-version="1.1"/>
    </environment>
 
@@ -109,16 +110,39 @@
       <keywords>catalog-self-test tests-stylesheet-schema-validity xsl:import-schema</keywords>
       <created by="Michael Kay" on="2013-11-28"/>
       <modified by="Abel Braaksma" on="2019-03-10" change="Bug #30414: removed global schema-aware flag, local flag stays, this test requires schema-aware" />
+      <modified by="Michael Kay" on="2021-06-14" change="Add XML 1.1 dependency"/>
       <environment ref="catalog005"/>
       <dependencies>
          <spec value="XSLT30+"/>
          <feature value="schema_aware"/>
+         <feature value="XML_1.1"/>
       </dependencies>
       <test>
          <stylesheet file="catalog-005.xsl"/>
+         <param name="supports_xml1.1" static="yes" select="true()"/>
       </test>
       <result>
-         <assert>not(/out/invalid)</assert>
+         <!--<assert>not(/out/invalid)</assert>-->
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="catalog-005b">
+      <description>Variant of catalog-005 for processors that don't support XML 1.1</description>
+      <created by="Michael Kay" on="2021-06-14"/>
+      <environment ref="catalog005"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+         <feature value="XML_1.1" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="catalog-005.xsl"/>
+         <param name="supports_xml1.1" static="yes" select="false()"/>
+      </test>
+      <result>
+         <!--<assert>not(/out/invalid)</assert>-->
+         <assert-xml><![CDATA[<out/>]]></assert-xml>
       </result>
    </test-case>
 
@@ -129,12 +153,32 @@
       <created by="Michael Kay" on="2015-06-30"/>
       <modified by="Abel Braaksma" on="2019-03-10" change="Bug #30414: removed global and local schema-aware flag, test does not require schema-aware feature" />
       <modified by="Michael Kay" on="2019-04-10" change="Use a non-schema-aware environment"/>
+      <modified by="Michael Kay" on="2021-06-14" change="Add XML 1.1 dependency"/>
       <environment ref="catalog002"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="XML_1.1"/>
       </dependencies>
       <test>
          <stylesheet file="catalog-006.xsl"/>
+         <param name="supports_xml1.1" static="yes" select="true()"/>
+      </test>
+      <result>
+         <assert>not(/out/unavailable)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="catalog-006b">
+      <description>Variant of catalog-006 for processors with no XML 1.1 support</description>
+      <created by="Michael Kay" on="2021-06-14"/>
+      <environment ref="catalog002"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="XML_1.1" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="catalog-006.xsl"/>
+         <param name="supports_xml1.1" static="yes" select="false()"/>
       </test>
       <result>
          <assert>not(/out/unavailable)</assert>

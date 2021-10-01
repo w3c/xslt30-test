@@ -1247,6 +1247,7 @@
       <description>Test of "&lt;=" and "&gt;=" operators</description>
       <keywords>PathExpr variable-reference GeneralComp xsl:value-of</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2021-03-28" change="make expected results less confusing"/>
       <environment ref="bool056"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1255,9 +1256,10 @@
          <stylesheet file="boolean-066.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>true should be false
-  true should be true
-</out>]]></assert-xml>
+         <all-of>
+            <assert>/out/a/@result='true'</assert> <!-- 3 gt 22 when compared as strings -->
+            <assert>/out/b/@result='true'</assert> <!-- 3 gt 2 when compared as strings -->
+         </all-of>
       </result>
    </test-case>
 

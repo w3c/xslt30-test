@@ -75,6 +75,7 @@
       <description>Test function-available() with two arguments</description>
       <keywords>stylesheet-function xsl:function fn:function-available buildin-functions arity</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2021-01-05" change="simplify assertions; create variant for XSLT 4.0"/>
       <environment ref="function-available-10"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -83,7 +84,21 @@
          <stylesheet file="function-available-1008.xsl"/>
       </test>
       <result>
-         <assert-xml file="function-available-1008.out"/>
+         <all-of>
+            <assert>/out/@a = 'true'</assert>
+            <assert>/out/@b = 'true'</assert>
+            <assert>/out/@c = 'true'</assert>
+            <assert>/out/@d = 'true'</assert>
+            <assert>/out/@e = 'true'</assert>
+            <assert>/out/@f = 'true'</assert>
+            <assert>/out/@g = 'true'</assert>
+            <assert>/out/@h = 'false'</assert>
+            <assert>/out/@i = 'false'</assert>
+            <assert>/out/@j = 'false'</assert>
+            <assert>/out/@k = 'false'</assert>
+            <assert>/out/@l = 'false'</assert>
+            <assert>/out/@m = 'false'</assert>
+         </all-of>
       </result>
    </test-case>
 
@@ -168,6 +183,7 @@
       <keywords>fn:function-available maps</keywords>
       <created by="Michael Kay" on="2016-03-21"/>
       <modified by="Michael Kay" on="2016-10-20" change="fix bug 29542"/>
+      <modified by="Michael Kay" on="2021-09-27" change="change example of non-existent function, as map:entries() is a proposed addition for 4.0"/>
       <environment ref="function-available-10"/>
       <dependencies>
          <spec value="XSLT30+"/>

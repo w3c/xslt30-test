@@ -10,6 +10,14 @@
      <stylesheet file="sx-gc-ne-B.xsl"/>
    </environment>
    
+   <environment name="transactions-with-schema">
+      <source uri="http://xslt.w3.org/transactions" file="../docs/big-transactions.xml" 
+         streaming="true" validation="strict" role="."/>
+      <schema role="source-reference"
+         file="../docs/transactions.xsd"
+         xsd-version="1.0"/>
+   </environment>
+   
    <dependencies>
       <spec value="XSLT30+"/>
       <feature value="streaming"/>
@@ -305,12 +313,17 @@
       <description>"ne" with a mix of untypedAtomic and numeric values. Error result</description>
       <keywords>xs:NMTOKENS striding GeneralComp sequence-comparison FORG0001 leading-lone-slash xs:decimal PathExpr SimpleMapExpr</keywords>
       <created by="Michael Kay" on="2014-05-12"/>
+      <modified by="Michael Kay" on="2021-03-07" 
+         change="Alternative result: the processor can find an unequal pair before it finds an incomparable pair"/>
       <environment ref="sx-gc-ne-A"/>
       <test>
          <initial-template name="s-026"/>
       </test>
       <result>
-         <error code="FORG0001"/>
+         <any-of>
+            <assert>/out='true'</assert>
+            <error code="FORG0001"/>
+         </any-of>
       </result>
    </test-case>
    
@@ -338,7 +351,37 @@
       <result early-exit-possible="true">
          <assert>/out = 'true'</assert>
       </result>
-   </test-case>       
+   </test-case>
+   
+   <test-case name="sx-gc-ne-100">
+      <description>General comparison over a streamed schema-aware document</description>
+      <created by="Michael Kay" on="2021-03-28"/>
+      <environment ref="transactions-with-schema"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sx-gc-ne-100.xsl"/>
+      </test>
+      <result>
+         <assert>out/@result='true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-gc-ne-101">
+      <description>General comparison over a streamed schema-aware document</description>
+      <created by="Michael Kay" on="2021-03-28"/>
+      <environment ref="transactions-with-schema"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sx-gc-ne-101.xsl"/>
+      </test>
+      <result>
+         <assert>out/@result='true'</assert>
+      </result>
+   </test-case>
    
     <test-case name="sx-gc-ne-103">
       <description>Basic Test of xsl:stream instruction with "&gt;="</description>
@@ -630,12 +673,17 @@
       <description>"ne" with a mix of untypedAtomic and numeric values. Error result</description>
       <keywords>xs:NMTOKENS striding GeneralComp sequence-comparison FORG0001 leading-lone-slash xs:decimal PathExpr SimpleMapExpr</keywords>
       <created by="Michael Kay" on="2014-05-12"/>
+      <modified by="Michael Kay" on="2021-03-07" 
+         change="Alternative result: the processor can find an unequal pair before it finds an incomparable pair"/>
       <environment ref="sx-gc-ne-B"/>
       <test>
          <initial-template name="s-026"/>
       </test>
       <result>
-         <error code="FORG0001"/>
+         <any-of>
+            <assert>/out='true'</assert>
+            <error code="FORG0001"/>
+         </any-of>
       </result>
    </test-case>
    

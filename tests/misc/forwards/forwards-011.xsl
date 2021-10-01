@@ -13,13 +13,13 @@
   and it doesn't appear here as a child of xsl:stylesheet. But this makes it a bit of a special
   case, so it's worth testing that all is well.
   -->
-
+  
   <xsl:template name="go">
     <out>ok</out>
   </xsl:template>
   
   <xsl:expose version="23.0"
     component="template" names="go" visibility="public"/>
-
-   
+  
+  
 </xsl:package>

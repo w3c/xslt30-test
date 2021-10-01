@@ -4,7 +4,7 @@
     exclude-result-prefixes=" xs"
     version="3.0">
    
-  <!-- within xsl:stream, use xsl:for-each-group group-adjacent -->
+  <!-- within xsl:source-document, use xsl:for-each-group group-adjacent -->
   
   <xsl:mode name="s" streamable="yes"/>
        

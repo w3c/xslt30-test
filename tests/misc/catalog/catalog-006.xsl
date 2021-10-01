@@ -8,11 +8,20 @@
   <!-- Test that all XSLT element names used in non-error stylesheets satisfy element-available() -->
   
   <xsl:param name="DEBUG" static="yes" select="false()"/>
+  
+  <xsl:param name="supports_xml1.1" static="true" as="xs:boolean" select="true()"/>
+  
 
   <xsl:template match="/">
       <out>
         <xsl:for-each select="/*/cat:test-set/document(@file)//cat:stylesheet[not(ancestor::cat:test-case//cat:error)]/@file">
-            <xsl:variable name="doc" select="document(.)"/>
+            <xsl:variable name="doc" as="document-node()?">
+              <xsl:try>
+                <xsl:sequence select="document(.)"/>
+                <xsl:catch use-when="not($supports_xml1.1)"/>
+                <xsl:catch errors="*:dummy"/>                 
+              </xsl:try>
+            </xsl:variable>  
             <xsl:message use-when="$DEBUG">Checking {document-uri($doc)}</xsl:message>
             <xsl:for-each select="$doc//xsl:*
                     [not(ancestor-or-self::xsl:*[number(@version) gt 3])]

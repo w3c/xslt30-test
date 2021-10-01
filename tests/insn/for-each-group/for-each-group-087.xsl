@@ -1,5 +1,4 @@
 <?spec xslt#grouping?>
-<!DOCTYPE xsl:stylesheet SYSTEM "../../misc/collations/collation.dtd">
 <xsl:transform 
   version="3.0" 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -8,7 +7,7 @@
   
   <!-- in 3.0, group using composite keys with a case-blind collation -->
   
-  <xsl:param name="collation" as="xs:string" select="'&coll;'"/>
+  <xsl:param name="collation" as="xs:string" select="'http://www.w3.org/2013/collation/UCA?strength=secondary'"/>
   
 <xsl:template match="/">
 <out>

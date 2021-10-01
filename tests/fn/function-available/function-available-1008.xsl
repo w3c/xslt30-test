@@ -16,22 +16,20 @@
  
   
    <xsl:template match="/">
-	<out>
-	<a1><xsl:value-of select="function-available('true', 0)"/> should be true</a1>;
-	<a1><xsl:value-of select="function-available('translate', $three)"/> should be true</a1>;
-    <a1><xsl:value-of select="function-available('function-available', 1)"/> should be true</a1>;
-	<a1><xsl:value-of select="function-available('function-available', $two)"/> should be true</a1>;
-	<a1><xsl:value-of select="function-available('my:f')"/> should be true</a1>;
-	<a1><xsl:value-of select="function-available('my:f', $two)"/> should be true</a1>;
-	<a1><xsl:value-of select="function-available('concat', 17)"/> should be true</a1>;		
-
-	<a1><xsl:value-of select="function-available('true', 1)"/> should be false</a1>;
-	<a1><xsl:value-of select="function-available('translate', $two)"/> should be false</a1>;
-    <a1><xsl:value-of select="function-available('function-available', 3)"/> should be false</a1>;
-	<a1><xsl:value-of select="function-available('function-available', $three)"/> should be false</a1>;
-	<a1><xsl:value-of select="function-available('my:f', 1)"/> should be false</a1>;
-	<a1><xsl:value-of select="function-available('concat', 0)"/> should be false</a1>;		
-	</out>
+	<out  a="{function-available('true', 0)}"
+      	b="{function-available('translate', $three)}"
+      	c="{function-available('function-available', 1)}"
+      	d="{function-available('function-available', $two)}"
+      	e="{function-available('my:f')}"
+      	f="{function-available('my:f', $two)}"
+      	g="{function-available('concat', 17)}" 
+      	h="{function-available('true', 1)}" 
+      	i="{function-available('translate', $two)}"
+      	j="{function-available('function-available', 3)}" 
+      	k="{function-available('function-available', $three)}"
+      	l="{function-available('my:f', 1)}" 
+      	m="{function-available('concat', 0)}"/>		
+	
    </xsl:template>
    
    <xsl:function name="my:f">

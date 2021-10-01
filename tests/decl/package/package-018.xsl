@@ -9,13 +9,13 @@
     
     <!-- testing using a pkg (twice), the used pkg contains two functions which do nothing -->    
     <xsl:use-package name="urn:use-me" package-version="*"  >
-        <xsl:accept component="function" names="pkg:function1" visibility="public" />
-        <xsl:accept component="function" names="pkg:function2" visibility="hidden" />
+        <xsl:accept component="function" names="pkg:function1#0" visibility="public" />
+        <xsl:accept component="function" names="pkg:function2#0" visibility="hidden" />
     </xsl:use-package>
     
     <xsl:use-package name="urn:use-me" package-version="0.1">        
-        <xsl:accept component="function" names="pkg:function2" visibility="public" />
-        <xsl:accept component="function" names="pkg:function1" visibility="hidden" />
+        <xsl:accept component="function" names="pkg:function2#0" visibility="public" />
+        <xsl:accept component="function" names="pkg:function1#0" visibility="hidden" />
     </xsl:use-package>
     
     <!-- an (almost) empty package -->
