@@ -256,8 +256,9 @@
       </xsl:source-document>
     </xsl:template>    
     
-    <!-- Test where the streamed operand is a mix of untypedAtomic and xs:decimal, and
-         the unstreamed operand is a mix of untypedAtomic and xs:double, Error result -->
+  <!-- Test where the streamed operand is a mix of untypedAtomic and xs:decimal, and
+         the unstreamed operand is a mix of untypedAtomic and xs:double, Error result,
+         or true (109 != 8.001) if this is detected before the error -->
     
     <xsl:template name="s-026" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">

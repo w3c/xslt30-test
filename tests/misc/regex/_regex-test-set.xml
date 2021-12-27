@@ -1218,4 +1218,19 @@ Tak, tak, tak! - da kommen sie.</poem>]]></content>
          <assert>/out and not(/out/node())</assert>
       </result>
    </test-case>
+   
+   <test-case name="regex-091">
+      <description>Dynamic call on regex-group() returns zero-length string - see XSLT 3.0 spec §5.3.4; also Saxon bug 5098</description>
+      <created by="Michael Kay" on="2021-09-17"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="regex-091.xsl"/>
+      </test>
+      <result>
+         <assert>/out and not(/out/node())</assert>
+      </result>
+   </test-case>
 </test-set>

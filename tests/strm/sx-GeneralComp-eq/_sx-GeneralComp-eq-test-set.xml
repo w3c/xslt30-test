@@ -10,6 +10,14 @@
      <stylesheet file="sx-gc-eq-B.xsl"/>
    </environment>
    
+   <environment name="transactions-with-schema">
+      <source uri="http://xslt.w3.org/transactions" file="../docs/big-transactions.xml" 
+         streaming="true" validation="strict" role="."/>
+      <schema role="source-reference"
+         file="../docs/transactions.xsd"
+         xsd-version="1.0"/>
+   </environment>
+   
    <dependencies>
       <spec value="XSLT30+"/>
       <feature value="streaming"/>
@@ -338,7 +346,37 @@
       <result early-exit-possible="true">
          <assert>/out = 'true'</assert>
       </result>
-   </test-case>                     
+   </test-case>
+   
+   <test-case name="sx-gc-eq-100">
+      <description>General comparison over a streamed schema-aware document</description>
+      <created by="Michael Kay" on="2021-03-28"/>
+      <environment ref="transactions-with-schema"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sx-gc-eq-100.xsl"/>
+      </test>
+      <result>
+         <assert>out/@result='true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-gc-eq-101">
+      <description>General comparison over a streamed schema-aware document</description>
+      <created by="Michael Kay" on="2021-03-28"/>
+      <environment ref="transactions-with-schema"/>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="sx-gc-eq-101.xsl"/>
+      </test>
+      <result>
+         <assert>out/@result='true'</assert>
+      </result>
+   </test-case>
    
     <test-case name="sx-gc-eq-103">
       <description>Basic Test of xsl:stream instruction with "="</description>

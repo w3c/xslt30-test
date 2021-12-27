@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <?spec xslt#grouping?>
-<!DOCTYPE xsl:stylesheet SYSTEM "../../misc/collations/collation.dtd">
 <xsl:stylesheet version="2.0"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -8,7 +7,7 @@
    <!-- Test position() and last() with the result of xsl:for-each-group group-adjacent with
      a case-blind collation --> 
   
-  <xsl:param name="collation" as="xs:string" select="'&coll;'"/>
+  <xsl:param name="collation" as="xs:string" select="'http://www.w3.org/2013/collation/UCA?strength=secondary'"/>
   
    <xsl:template match="/">
      <xsl:variable name="languages">

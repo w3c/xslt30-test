@@ -6,8 +6,8 @@
 <out>
   <xsl:variable name="set1" select="/dummy/set1/value"/>
   <xsl:variable name="set2" select="/dummy/set2/value"/>
-  <xsl:value-of select="$set1 &gt; $set2"/> should be false
-  <xsl:value-of select="$set2 &gt; $set1"/> should be true
+  <a result="{$set1 &gt; $set2}"/>
+  <b result="{$set2 &gt; $set1}"/>
 </out>
 </xsl:template>
 </xsl:stylesheet>

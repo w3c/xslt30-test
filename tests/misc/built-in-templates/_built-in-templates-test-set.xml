@@ -95,4 +95,36 @@ empty-CORRECT!
          <assert-xml file="built-in-templates-0202.out"/>
       </result>
    </test-case>
+   
+   <test-case name="built-in-templates-0301">
+      <description>Test to verify type annotation of an implicitly shallow-copied element: untyped input</description>
+      <created by="Michael Kay" on="2021-06-01"/>
+      <environment ref="built-in-templates-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="false"/>
+      </dependencies>
+      <test>
+         <stylesheet file="built-in-templates-0301.xsl"/>
+      </test>
+      <result>
+         <assert>/out='true'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="built-in-templates-0302">
+      <description>Test to verify type annotation of an implicitly shallow-copied element: typed input</description>
+      <created by="Michael Kay" on="2021-06-01"/>
+      <environment ref="built-in-templates-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware" satisfied="true"/>
+      </dependencies>
+      <test>
+         <stylesheet file="built-in-templates-0302.xsl"/>
+      </test>
+      <result>
+         <assert>/out='false'</assert>
+      </result>
+   </test-case>
 </test-set>
