@@ -149,6 +149,32 @@
       </result>
    </test-case>
    
+   <test-case name="expose-008">
+      <description>xsl:expose has no effect on the unnamed mode (Saxon bug 5231)</description>
+      <created by="Michael Kay" on="2022-01-25"/>
+      <test>
+         <package file="expose-008a.xsl" role="principal"/>
+         <package file="expose-008b.xsl" role="secondary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out='YYY'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="expose-009">
+      <description>xsl:expose has no effect on the unnamed mode. With declared-modes=no. (Saxon bug 5231)</description>
+      <created by="Michael Kay" on="2022-01-25"/>
+      <test>
+         <package file="expose-009a.xsl" role="principal"/>
+         <package file="expose-009b.xsl" role="secondary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out='YYY'</assert>
+      </result>
+   </test-case>
+   
    
    
    <test-case name="expose-901">
