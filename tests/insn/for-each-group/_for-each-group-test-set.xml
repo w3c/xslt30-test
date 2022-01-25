@@ -1556,4 +1556,18 @@ while you are in the cinema.</p></o>]]></assert-xml>
          <error code="XTDE1061"/>
       </result>
    </test-case>
+   
+   <test-case name="for-each-group-091">
+      <description>Default namespace in for-each-group/@group-by (Saxon bug 5230)</description>
+      <created by="Michael Kay" on="2022-01-25"/>
+      <test>
+         <stylesheet file="for-each-group-091.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/group[@key="A"]/@total = '30'</assert>
+            <assert>/out/group[@key="B"]/@total = '70'</assert>
+         </all-of>
+      </result>
+   </test-case>
 </test-set>
