@@ -686,6 +686,22 @@
          <assert-xml><![CDATA[<out a="xyz" b="" c="xyz" d="" e=""/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="avt-2103">
+      <description>Absent expression in AVTs (Saxon-JS Bug 5037)</description>
+      <keywords>xsl:element namespace-attribute</keywords>
+      <created by="Debbie Lockett" on="2021-07-06"/>
+      <environment ref="avt-21"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="avt-2103.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<test><foo>test</foo></test>]]></assert-xml>
+      </result>
+   </test-case>
 
    <test-case name="avt-2201">
       <description>this one works @@1 this one gives "not a QName" error @@2 this one gives "not a QName" error this one works</description>
