@@ -686,6 +686,7 @@
       <description>Test XHTML output with cdata-section-elements that have (non-ASCII) characters
          not representable in the character encoding being used for output (US-ASCII)</description>
       <created by="Debbie Lockett" on="2019-11-29"/>
+      <modified by="Michael Kay" on="2021-04-15" change="add option for upper-case hex char literals"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -702,6 +703,7 @@
             <serialization-matches>&lt;!\[CDATA\[ bar\]\]&gt;</serialization-matches>
             <any-of>
                <serialization-matches><![CDATA[>&#xaa;<]]></serialization-matches>
+               <serialization-matches><![CDATA[>&#xAA;<]]></serialization-matches>
                <serialization-matches><![CDATA[>&#170;<]]></serialization-matches>
             </any-of>
          </all-of>
@@ -713,6 +715,7 @@
          not representable in the character encoding being used for output (US-ASCII);
          not affected by character maps</description>
       <created by="Debbie Lockett" on="2019-11-29"/>
+      <modified by="Michael Kay" on="2021-04-15" change="add option for upper-case hex char literals"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -729,6 +732,7 @@
             <serialization-matches>&lt;!\[CDATA\[ bar\]\]&gt;</serialization-matches>
             <any-of>
                <serialization-matches><![CDATA[>&#xaa;<]]></serialization-matches>
+               <serialization-matches><![CDATA[>&#xAA;<]]></serialization-matches>
                <serialization-matches><![CDATA[>&#170;<]]></serialization-matches>
             </any-of>
          </all-of>
@@ -740,6 +744,7 @@
          not representable in the character encoding being used for output (US-ASCII);
          but unicode normalized (NFD) </description>
       <created by="Debbie Lockett" on="2019-11-29"/>
+      <modified by="Debbie Lockett" on="2021-04-15" change="add option for upper-case hex char literals"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -767,6 +772,7 @@
          not representable in the character encoding being used for output (US-ASCII);
          but unicode normalized (NFC) </description>
       <created by="Debbie Lockett" on="2019-11-29"/>
+      <modified by="Michael Kay" on="2021-04-15" change="add option for upper-case hex char literals"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -783,6 +789,7 @@
             <serialization-matches>&lt;!\[CDATA\[ bar\]\]&gt;</serialization-matches>
             <any-of>
                <serialization-matches><![CDATA[>&#xe7;<]]></serialization-matches>
+               <serialization-matches><![CDATA[>&#xE7;<]]></serialization-matches>
                <serialization-matches><![CDATA[>&#231;<]]></serialization-matches>
             </any-of>
          </all-of>
@@ -2805,6 +2812,7 @@
       <description>Test that no error is raised if the output method is HTML, with default version 5.0, and the result tree
          contains characters in the #x7F-#x9F range.</description>
       <created by="Debbie Lockett" on="2019-11-29"/>
+      <modified by="Michael Kay" on="2021-04-15" change="allow upper-case hex char literals"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2817,7 +2825,7 @@
       </test>
       <result>
          <any-of>
-            <serialization-matches><![CDATA[<doc>&#x9f;</doc>]]></serialization-matches>
+            <serialization-matches><![CDATA[<doc>&#x9[fF];</doc>]]></serialization-matches>
             <serialization-matches><![CDATA[<doc>&#159;</doc>]]></serialization-matches>
          </any-of>
       </result>
@@ -2827,6 +2835,7 @@
       <description>Test that no error is raised if the output method is HTML, version 5.0, and the result tree
          contains characters in the #x7F-#x9F range.</description>
       <created by="Debbie Lockett" on="2019-11-29"/>
+      <modified by="Michael Kay" on="2021-04-15" change="allow upper-case hex char literals"/>
       <environment ref="output-01"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -2838,7 +2847,7 @@
       </test>
       <result>
          <any-of>
-            <serialization-matches><![CDATA[<doc>&#x9f;</doc>]]></serialization-matches>
+            <serialization-matches><![CDATA[<doc>&#x9[fF];</doc>]]></serialization-matches>
             <serialization-matches><![CDATA[<doc>&#159;</doc>]]></serialization-matches>
          </any-of>
       </result>
@@ -4956,8 +4965,12 @@
    </test-case>
 
    <test-case name="output-0724">
-      <description>Test serialization of input/@value</description>
+      <description>
+         Test serialization of input/@value.
+         See https://github.com/w3c/qtspecs/issues/21
+      </description>
       <created by="Norman Walsh" on="2020-12-22"/>
+      <modified by="Michael Kay" on="2021-03-16" change="input tag in HTML is self-closing; no final '/>'"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -4971,6 +4984,42 @@
           <serialization-matches><![CDATA[^(<!DOCTYPE (HTML|html)>\s*)?<input type="text" value="✈">$]]></serialization-matches>
           <serialization-matches><![CDATA[^(<!DOCTYPE (HTML|html)>\s*)?<input value="✈" type="text">$]]></serialization-matches>
         </any-of>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0725">
+      <description>
+         Suppress-indentation with HTML output method. Should prevent any word-wrapping that the serializer
+         might otherwise do.
+      </description>
+      <created by="Michael Kay" on="2021-06-09"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0725.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+            <serialization-matches><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>]]></serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="output-0726">
+      <description>
+         Suppress-indentation with XHTML output method. Should prevent any word-wrapping that the serializer
+         might otherwise do.
+      </description>
+      <created by="Michael Kay" on="2021-06-09"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="output-0726.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>]]></serialization-matches>
       </result>
    </test-case>
 </test-set>

@@ -2369,7 +2369,23 @@
 
    <test-case name="copy-4308">
       <description>Test xsl:copy when there is no context item. See spec bug 7624. In this example
-         the error is detected dynamically.</description>
+         the error can only be detected dynamically.</description>
+      <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2021-10-17" change="Rewrite to do what it says on the tin. The test was previously identical to -4307"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-4308.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE0945"/>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-4309">
+      <description>Test xsl:copy when there is no context item. See spec bug 7624. In this example
+         the error can only be detected dynamically.</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <environment ref="copy-43"/>
       <dependencies>

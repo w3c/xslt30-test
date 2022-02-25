@@ -1099,9 +1099,11 @@
       <description>Test match="id(X,Y)" allowed in XSLT 3.0</description>
       <keywords>fn:doc fn:id variable-reference</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2021-05-20" change="Add DTD dependency"/>
       <environment ref="match1059"/>
       <dependencies>
          <spec value="XSLT30+"/>
+         <feature value="dtd"/>
       </dependencies>
       <test>
          <stylesheet file="match-053.xsl"/>
@@ -2079,11 +2081,13 @@
       <description>Test match patterns with function id() invloving variable reference</description>
       <keywords>fn:id variable-reference</keywords>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2021-05-20" change="Add DTD dependency"/>
       <environment>
          <source role="." file="match2016.xml"/>
       </environment>
       <dependencies>
          <spec value="XSLT20+"/>
+         <feature value="dtd"/>
       </dependencies>
       <test>
          <stylesheet file="match-104.xsl"/>
@@ -4960,6 +4964,48 @@
       </test>
       <result>
          <assert-xml><![CDATA[<X><AB>23</AB><Z><AB>25</AB></Z></X>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-270">
+      <description>Pattern match=$var where $var is atomic.</description>
+      <created by="Michael Kay" on="2021-09-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-270.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<ok/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-271">
+      <description>Pattern match=$var where $var is heterogeneous.</description>
+      <created by="Michael Kay" on="2021-09-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-271.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<ok/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-272">
+      <description>Pattern match=$var where $var is heterogeneous.</description>
+      <created by="Michael Kay" on="2021-09-02"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-272.xsl"/>
+      </test>
+      <result>
+         <assert>/ok</assert>
       </result>
    </test-case>
  

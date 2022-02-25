@@ -259,7 +259,8 @@
     </xsl:template>
     
     <!-- Test where the streamed operand is a mix of untypedAtomic and xs:decimal, and
-         the unstreamed operand is a mix of untypedAtomic and xs:double. Error result. -->
+         the unstreamed operand is a mix of untypedAtomic and xs:double. Result
+         may be an error ("109" cannot be convered to xs:date) or true (109 lt 13.22e1). -->
     
     <xsl:template name="s-026" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">

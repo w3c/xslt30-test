@@ -19,7 +19,7 @@
                         streamable="yes"
                 		for-each-source="'cities-SE.xml'"
                 		select="city-list/city">
-                    <xsl:merge-key select="name" lang="sv" case-order="upper-first"/>
+                    <xsl:merge-key select="translate(name, ' -', '')" lang="sv" case-order="upper-first"/>
                 </xsl:merge-source>
                 <xsl:merge-action>
                   <xsl:variable name="g" select="current-merge-group()"/>

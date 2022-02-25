@@ -1470,6 +1470,7 @@ while you are in the cinema.</p></o>]]></assert-xml>
       <description>Test position() and last() with the result of xsl:for-each-group group-adjacent
          with a case-blind collation (modification of for-each-group-038)</description>
       <created by="Debbie Lockett" on="2017-07-03"/>
+      <modified by="Michael Kay" on="2021-05-26" change="drop unnecessary and undocumented DTD dependency"/>
       <environment ref="group086"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1486,6 +1487,7 @@ while you are in the cinema.</p></o>]]></assert-xml>
       <description>XSLT 3.0 grouping using group-by with composite keys and a case-blind collation 
          (modification of for-each-group-043)</description>
       <created by="Debbie Lockett" on="2017-07-03"/>
+      <modified by="Michael Kay" on="2021-05-26" change="drop unnecessary and undocumented DTD dependency"/>
       <environment ref="group086"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1552,6 +1554,20 @@ while you are in the cinema.</p></o>]]></assert-xml>
       </test>
       <result>
          <error code="XTDE1061"/>
+      </result>
+   </test-case>
+   
+   <test-case name="for-each-group-091">
+      <description>Default namespace in for-each-group/@group-by (Saxon bug 5230)</description>
+      <created by="Michael Kay" on="2022-01-25"/>
+      <test>
+         <stylesheet file="for-each-group-091.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/group[@key="A"]/@total = '30'</assert>
+            <assert>/out/group[@key="B"]/@total = '70'</assert>
+         </all-of>
       </result>
    </test-case>
 </test-set>

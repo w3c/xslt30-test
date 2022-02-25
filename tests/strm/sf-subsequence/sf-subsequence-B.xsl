@@ -6,6 +6,8 @@
     
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
+    <xsl:param name="two" select="2" as="xs:integer"/>
+    <xsl:param name="three" select="3" as="xs:integer"/>
     
     <!-- Streaming subsequence#3: grounded operand -->
     
@@ -22,7 +24,7 @@
     <xsl:template name="r-002" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="subsequence(copy-of(/BOOKLIST/BOOKS/ITEM/PRICE), 3, 2)"/>
+          <xsl:copy-of select="subsequence(copy-of(/BOOKLIST/BOOKS/ITEM/PRICE), $three, $two)"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -42,7 +44,7 @@
     <xsl:template name="r-010" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:value-of select="count(subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, 3, 2))"/>
+          <xsl:value-of select="count(subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, $three, 2))"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -52,7 +54,7 @@
     <xsl:template name="r-011" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:value-of select="sum(subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, 3, 2))"/>
+          <xsl:value-of select="sum(subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, 3, $two))"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -62,7 +64,7 @@
     <xsl:template name="r-012" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:value-of select="subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, 3, 2)[position() mod 2 = 0]"/>
+          <xsl:value-of select="subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, 3, 2)[position() mod $two = 0]"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -72,7 +74,7 @@
     <xsl:template name="r-013" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:value-of select="subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, 3, 2) ! (.+1)"/>
+          <xsl:value-of select="subsequence(/BOOKLIST/BOOKS/ITEM/PRICE, $three, $two) ! (.+1)"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -109,7 +111,7 @@
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
           <xsl:for-each select="/BOOKLIST/BOOKS/ITEM[1]">
-            <xsl:copy-of select="subsequence(*, 3, 2)"/>
+            <xsl:copy-of select="subsequence(*, $three, $two)"/>
           </xsl:for-each>  
         </out>
       </xsl:source-document>
@@ -143,7 +145,7 @@
     <xsl:template name="r-020" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="count(subsequence(//PRICE, 3, 2))"/>
+          <xsl:copy-of select="count(subsequence(//PRICE, $three, $two))"/>
         </out>
       </xsl:source-document>
     </xsl:template> 
@@ -183,7 +185,7 @@
     <xsl:template name="r-030" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:copy-of select="subsequence(/BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*, 3, 2) ! name()"/>
+          <xsl:copy-of select="subsequence(/BOOKLIST/BOOKS/ITEM[1]/PRICE/ancestor::*, $three, $two) ! name()"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -223,7 +225,7 @@
     <xsl:template name="r-034" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:value-of select="subsequence(/BOOKLIST/BOOKS/ITEM/PRICE/ancestor-or-self::*/@CAT, 3, 2)" separator="|"/>
+          <xsl:value-of select="subsequence(/BOOKLIST/BOOKS/ITEM/PRICE/ancestor-or-self::*/@CAT, $three, 2)" separator="|"/>
         </out>
       </xsl:source-document>
     </xsl:template>
@@ -233,7 +235,7 @@
     <xsl:template name="r-035" use-when="$RUN">
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <out>
-          <xsl:value-of select="subsequence(//PRICE/ancestor-or-self::*/@*, 3, 2)" separator="|"/>
+          <xsl:value-of select="subsequence(//PRICE/ancestor-or-self::*/@*, 3, $two)" separator="|"/>
         </out>
       </xsl:source-document>
     </xsl:template>               

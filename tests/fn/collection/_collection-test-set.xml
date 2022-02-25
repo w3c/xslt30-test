@@ -15,6 +15,16 @@
       <collection uri=""/>
    </environment>
    
+   <environment name="collection-e02">
+      <source role=".">
+         <content><![CDATA[<doc/>]]></content>
+      </source>
+      <collection uri="catalog1.xml">
+         <source file="a.xml" uri="a.xml"/>
+         <source file="b.xml" uri="b.xml"/>
+      </collection>
+   </environment>
+   
    <environment name="collection-e03">
       <source role=".">
          <content><![CDATA[<doc/>]]></content>
@@ -56,7 +66,8 @@
    <test-case name="collection-002">
       <description>Test that result of collection($arg) is of type node()*.</description>
       <created by="Michael Kay" on="2012-10-30"/>
-      <environment ref="collection-e01"/>
+      <modified by="Michael Kay" on="2021-06-14" change="Use a collection URI that actually exists"/>
+      <environment ref="collection-e02"/>
       <dependencies>
          <spec value="XSLT20+"/>
       </dependencies>
@@ -89,6 +100,7 @@
    <test-case name="collection-004">
       <description>test collection() function</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2021-06-14" change="Use xml:id instead of DTD-based ID, to remove dependency"/>
       <environment ref="collection-e04"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -101,7 +113,7 @@
 <a> </a>
 <b> </b>
 <c> </c>
-</doc><a id="frag2"/><out>Got it right!</out></out>]]></assert-xml>
+</doc><a xml:id="frag2"/><out>Got it right!</out></out>]]></assert-xml>
       </result>
    </test-case>
    

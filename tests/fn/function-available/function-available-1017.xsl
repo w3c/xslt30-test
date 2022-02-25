@@ -71,7 +71,7 @@
         <g><xsl:value-of select="function-available('Q{http://www.w3.org/2005/xpath-functions/map}entry')"/></g>
         <h><xsl:value-of select="function-available('Q{http://www.w3.org/2005/xpath-functions/map}remove')"/></h>
         <i><xsl:value-of select="function-available('Q{http://www.w3.org/2005/xpath-functions/map}for-each')"/></i>
-        <z><xsl:value-of select="function-available('Q{http://www.w3.org/2005/xpath-functions/map}entries')"/></z>
+        <z><xsl:value-of select="function-available('Q{http://www.w3.org/2005/xpath-functions/map}key-value-pairs')"/></z>
       </ok-eqn>
       <ok-eqn-arity>
         <a><xsl:value-of select="function-available('Q{http://www.w3.org/2005/xpath-functions/map}merge',1)"/></a> 

@@ -227,6 +227,24 @@
          <assert-xml><![CDATA[<out><contains>false</contains><get/></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="maps-017">
+      <description>xsl:map-entry with default namespace in @key - Saxon bug 5230</description>
+      <created by="Michael Kay" on="2022-01-25"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<foo:root xmlns:foo='http://www.example.com'>
+      <foo:bar>Hello world</foo:bar>
+</foo:root>]]></content>
+         </source>
+      </environment>
+      <test>
+         <stylesheet file="maps-017.xsl"/>
+      </test>
+      <result>
+         <assert>/out = '{"Hello world":"greeting"}'</assert>
+      </result>
+   </test-case>
       
    <test-case name="maps-901a">
       <description>map:new() (without args) should throw error (since Oct 2014 LCWD)</description>

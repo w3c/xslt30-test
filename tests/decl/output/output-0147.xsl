@@ -7,7 +7,8 @@
              indent="no"
              encoding="UTF-8"
              normalization-form="none"/>
-   <!-- Purpose: Test of XTHML output with @normalization-form=none.-->
+   <!-- Purpose: Test of XTHML output with @normalization-form=none. Note,the body element contains x41 xCC x81,
+      representing the two codepoints 65 769 ('A' followed by the combining character x301) -->
 
    <t:template match="/">
       <html>

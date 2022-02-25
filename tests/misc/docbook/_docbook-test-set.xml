@@ -50,6 +50,41 @@
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="docbook-003">
+      <description>Extract part of a document using xsl:source-document with an xml:id-based fragment identifier (streamed)</description>
+      <created by="Michael Kay" on="2021-12-19"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="streaming"/>
+      </dependencies>
+      <test>
+         <stylesheet file="docbook-003.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/Q{http://docbook.org/ns/docbook}section/@xml:id="V1.79.1_Tools"</assert>
+            <assert>/Q{http://docbook.org/ns/docbook}section/*:title = "Tools"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="docbook-004">
+      <description>Extract part of a document using xsl:source-document with an xml:id-based fragment identifier (non-streamed)</description>
+      <created by="Michael Kay" on="2021-12-19"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="docbook-004.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/Q{http://docbook.org/ns/docbook}section/@xml:id="V1.79.1_Tools"</assert>
+            <assert>/Q{http://docbook.org/ns/docbook}section/*:title = "Tools"</assert>
+         </all-of>
+      </result>
+   </test-case>
 
 
 </test-set>

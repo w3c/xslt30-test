@@ -226,5 +226,37 @@
       </result>
    </test-case>
    
+   <test-case name="si-apply-templates-012">
+      <description>Schema-aware built-in shallow-copy drops type annotation.</description>
+      <created by="Michael Kay" on="2017-12-08"/>
+      <environment>
+         <schema file="../docs/books.xsd"/>
+         <source role="." streaming="true" file="../docs/books.xml" validation="strict"/>
+      </environment>
+      <dependencies>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="si-apply-templates-012.xsl"/>
+      </test>
+      <result>
+         <assert>/out='false'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="si-apply-templates-013">
+      <description>Non-Schema-aware built-in shallow-copy drops type annotation.</description>
+      <created by="Michael Kay" on="2017-12-08"/>
+      <environment>
+         <source role="." streaming="true" file="../docs/books.xml" validation="skip"/>
+      </environment>
+      <test>
+         <stylesheet file="si-apply-templates-013.xsl"/>
+      </test>
+      <result>
+         <assert>/out='true'</assert>
+      </result>
+   </test-case>
+   
 
 </test-set>

@@ -216,7 +216,7 @@
       </result>
    </test-case>
 
-   <test-case name="su-absorbing201">
+   <test-case name="su-absorbing-201">
       <description>Absorbing function - (Saxon crash during streamability analysis - Saxon bug 3253)</description>
       <created by="Michael Kay after Martin Honnen" on="2017-06-13"/>
       <environment>
@@ -298,6 +298,27 @@
       </test>
       <result>
          <error code="XTSE3430"/>
+      </result>
+   </test-case>
+   
+   <test-case name="su-absorbing-301">
+      <description>Positional grouping, Saxon bug 5035</description>
+      <created by="Michael Kay after Martin Honnen" on="2021-07-22"/>
+      <environment>
+         <source role="." streaming="true" file="su-absorbing-301.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="su-absorbing-301.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>count(/root/chunk) = 8</assert>
+            <assert>count(/root/chunk/item) = 23</assert>
+            <assert>count(/root/chunk[1]/item) = 3</assert>
+            <assert>count(/root/chunk[8]/item) = 2</assert>
+            <assert>/root/chunk[1]/item[1] = 'item 01'</assert>
+            <assert>/root/chunk[8]/item[1] = 'item 22'</assert>
+         </all-of>
       </result>
    </test-case>
 

@@ -23,8 +23,8 @@
     <xsl:function name="g:transitive-closure" visibility="private" as="node()*">
         <xsl:param name="from" as="node()"/>
         <xsl:param name="route" as="node()*"/>
-        <xsl:message>Closure: from {$from/@id}, route = {$route/@id}</xsl:message>
         <xsl:variable name="direct" select="g:neighbours($from)"/>
+        <xsl:message>Closure: from {$from/@id}, route = {$route/@id}, direct = {$direct/@id}, diff = {($direct except $route)/@id}</xsl:message>        
         <xsl:sequence select="$direct | (($direct except $route) ! g:transitive-closure(., ($route, .)))"/>
     </xsl:function>
     

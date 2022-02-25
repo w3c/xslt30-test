@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns="http://www.w3.org/2012/10/xslt-test-catalog" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="expand-text">
    <description>Tests the XSLT 3.0 expand-text attribute and content value templates</description>
 
@@ -988,19 +988,17 @@
    </test-case>
    
    <test-case name="cvt-048">
-      <description>No expand-text declaration on an imported stylesheet module, with expand-text="yes" on parent</description>
+      <description>CVT variable references in included module referring to declaration in main module</description>
       <keywords>expand-text-attribute xsl:stylesheet variable-reference lre</keywords>
-      <created by="Debbie Lockett" on="2021-07-27"/>
+      <created by="Michael Kay" on="2021-01-29"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="cvt-048.xsl"/>
-         <stylesheet file="cvt-048a.xsl" role="secondary"/>
-         <initial-template name="main"/>
       </test>
       <result>
-         <assert>/out = "{$Hello} {$World}!"</assert>
+         <assert>/out = "Hello World!"</assert>
       </result>
    </test-case>
 
