@@ -1001,6 +1001,24 @@
          <assert>/out = "Hello World!"</assert>
       </result>
    </test-case>
+   
+   <test-case name="cvt-049">
+      <description>No expand-text declaration on an imported stylesheet module, with expand-text="yes" on parent</description>
+      <keywords>expand-text-attribute xsl:stylesheet variable-reference lre</keywords>
+      <created by="Debbie Lockett" on="2021-07-27"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="cvt-049.xsl"/>
+         <stylesheet file="cvt-049a.xsl" role="secondary"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>/out = "{$Hello} {$World}!"</assert>
+      </result>
+   </test-case>
+   
 
 
 

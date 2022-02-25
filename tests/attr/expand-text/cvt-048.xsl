@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-<<<<<<< HEAD
-    expand-text="yes"
-    version="3.0">
-    
-    <xsl:import href="cvt-048a.xsl"/>
-=======
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
     expand-text="yes"
@@ -20,6 +14,5 @@
     <xsl:template name="xsl:initial-template">
         <xsl:call-template name="sub"/>
     </xsl:template>
->>>>>>> 79863a6a8362de2cb2426dab6bacf3fd10cecc28
     
 </xsl:stylesheet>
