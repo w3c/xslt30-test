@@ -5008,5 +5008,132 @@
          <assert>/ok</assert>
       </result>
    </test-case>
+   
+   <test-case name="match-273">
+      <description>Pattern with 'except' on RHS of "/", mixed axes in Except expression.</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-273.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<x><aa>23</aa><x><AA>25</AA></x></x>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-274">
+      <description>Match parentless element using child-or-top logic</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-274.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<XX><a>23</a><XX><a>25</a></XX></XX>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-275">
+      <description>Semantics of a pattern using "except"</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-275.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<x><aa>23</aa><x><AA>25</AA></x></x>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-276">
+      <description>An except pattern using the attribute axis</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-276.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<x><a p="2" r="4">23</a></x>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-277">
+      <description>An except pattern using the child axis</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-277.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<x><p>2</p><r>4</r><s>5</s></x>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-278">
+      <description>An intersect pattern that doesn't do what you think</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-278.xsl"/>
+      </test>
+      <result>
+         <assert>not(//wrong)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="match-279">
+      <description>This is how the intersection of match-278 needs to be written</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-279.xsl"/>
+      </test>
+      <result>
+         <assert>exists(//right)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="match-280">
+      <description>Intersection of two global variables</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-280.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><n>21</n><n>42</n><n>63</n><n>84</n></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-281">
+      <description>Difference of two global variables</description>
+      <created by="Michael Kay" on="2022-03-03"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-281.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><n>7</n><n>14</n><n>28</n><n>35</n><n>49</n><n>56</n><n>70</n><n>77</n><n>91</n><n>98</n></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
  
 </test-set>
