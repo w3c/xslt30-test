@@ -5135,5 +5135,47 @@
       </result>
    </test-case>
    
+   <test-case name="match-282">
+      <description>Pattern with union on RHS of "/", mixed axes in union; parentless root element; predicate in pattern</description>
+      <created by="Michael Kay" on="2022-03-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-282.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<X><AB>23</AB><Z><AB>25</AB></Z></X>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-283">
+      <description>Same as match-282 but predicate in pattern does not match</description>
+      <created by="Michael Kay" on="2022-03-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-283.xsl"/>
+      </test>
+      <result>
+         <assert>not(//wrong)</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="match-284">
+      <description>Pattern with except on RHS of "/", mixed axes in except; parentless root element; predicate in pattern</description>
+      <created by="Michael Kay" on="2022-03-05"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-284.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<x id="1"><a>23</a><z><AA>25</AA></z></x>]]></assert-xml>
+      </result>
+   </test-case>
+   
  
 </test-set>

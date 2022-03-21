@@ -1360,6 +1360,7 @@
    <test-case name="document-2011">
       <description>Identity of document retrieved using doc(document-uri(.))</description>
       <created by="Michael Kay" on="2020-06-05"/>
+      <modified by="Michael Kay" on="2022-03-13" change="further relax the assertions"/>
       <environment ref="document-20"/>
       <dependencies>
          <spec value="XSLT30+"/>
@@ -1371,7 +1372,10 @@
          <!-- Changed the test assertion to allow either option. There's nothing in the spec that
               says that doc() has to return the same document as the initial source document in the
               case where it has the same URI; it's just something that would be nice. -->
+         <!-- Further relaxed the assertions on 2022-03-13. It's entirely possible that document-uri(.)
+              returns an empty sequence, in which case only one doc element is output. -->
          <any-of>
+            <assert>count(/test/doc) = 1</assert>
             <assert>/test/doc[1]/@id eq /test/doc[2]/@id</assert>
             <assert>/test/doc[1]/@id ne /test/doc[2]/@id</assert>
          </any-of>

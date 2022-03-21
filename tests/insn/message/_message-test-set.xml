@@ -582,6 +582,7 @@
    <test-case name="message-0312">
       <description>Tests using xsl:document instruction inside an xsl:message.</description>
       <created by="Michael Kay" on="2012-10-30"/>
+      <modified by="Michael Kay" on="2022-03-18" change="Avoid assert-xml on non-well-formed XML content"/>
       <environment ref="message-03"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -593,7 +594,10 @@
          <all-of>
             <assert-xml><![CDATA[<out/>]]></assert-xml>
             <assert-message>
-               <assert-xml><![CDATA[<smart>Smart element</smart><dummy>dummy element</dummy>]]></assert-xml>
+               <all-of>
+                  <assert>/smart = 'Smart element'</assert>
+                  <assert>/dummy = 'dummy element'</assert>
+               </all-of>
             </assert-message>
          </all-of>
       </result>

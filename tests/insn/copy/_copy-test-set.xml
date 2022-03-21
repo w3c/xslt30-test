@@ -1903,12 +1903,29 @@
       <description>xsl:copy-of with copy-accumulators="yes"</description>
       <created by="Michael Kay" on="2015-04-24"/>
       <modified by="Michael Kay" on="2015-07-31" change="use current xsl:accumulator syntax"/>
+      <modified by="Michael Kay" on="2022-03-17" change="see https://github.com/w3c/xslt30-test/issues/50. The test should fail."/>
       <environment ref="copy-30"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
       <test>
          <stylesheet file="copy-3002.xsl"/>
+      </test>
+      <result>
+         <error code="XTDE3362"/>
+      </result>
+   </test-case>
+   
+   <test-case name="copy-3003">
+      <description>xsl:copy-of with copy-accumulators="yes". Corrected version of copy-3002</description>
+      <created by="Michael Kay" on="2015-04-24"/>
+      <modified by="Michael Kay" on="2022-03-17" change="forked from copy-3002; corrected the test to make the accumulator applicable"/>
+      <environment ref="copy-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="copy-3003.xsl"/>
       </test>
       <result>
          <assert>/out = "no no"</assert>
