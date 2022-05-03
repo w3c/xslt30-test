@@ -482,5 +482,118 @@
          <assert-xml><![CDATA[<out test1="XYZ"/>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="attribute-1501">
+      <description>Use xsl:attribute to validate against built-in attribute declarations in XML schema</description>
+      <created by="Michael Kay" on="2022-05-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-1501.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/e1/@xml:lang='en-US'</assert>
+            <assert>/out/e2/@xml:lang=''</assert>
+            <assert>/out/e3/@xml:space='preserve'</assert>
+            <assert>/out/e4/@xml:space='default'</assert>
+            <assert>/out/e5/@xml:id='ID001'</assert>
+            <assert>/out/id-ok='true'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-1502">
+      <description>Use xsl:attribute to validate against built-in attribute declarations in XML schema - error case</description>
+      <created by="Michael Kay" on="2022-05-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-1502.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-1503">
+      <description>Use xsl:attribute to validate against built-in attribute declarations in XML schema - error case</description>
+      <created by="Michael Kay" on="2022-05-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-1503.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-1504">
+      <description>Use xsl:attribute to validate against built-in attribute declarations in XML schema - error case</description>
+      <created by="Michael Kay" on="2022-05-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-1504.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-1505">
+      <description>Use xsl:attribute to validate against built-in attribute declarations in XML schema
+         - no error for duplicate IDs in this case.</description>
+      <created by="Michael Kay" on="2022-05-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-1505.xsl"/>
+      </test>
+      <result>
+         <assert>/out/doc/e5</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-1506">
+      <description>Use xsl:attribute to validate against built-in attribute declarations in XML schema - error case (duplicate ID)</description>
+      <created by="Michael Kay" on="2022-05-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-1506.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1555"/>
+      </result>
+   </test-case>
+   
+   <test-case name="attribute-1507">
+      <description>Use xsl:attribute to validate against built-in attribute declarations in XML schema - error case (dangling IDREF)</description>
+      <created by="Michael Kay" on="2022-05-03"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="attribute-1507.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1555"/>
+      </result>
+   </test-case>
 
 </test-set>
