@@ -10,6 +10,10 @@
      <stylesheet file="sx-union-B.xsl"/>
    </environment>
    
+   <environment name="sx-union-C">
+      <stylesheet file="sx-union-C.xsl"/>
+   </environment>
+   
    <dependencies>
       <spec value="XSLT30+"/>
       <feature value="streaming"/>
@@ -756,7 +760,6 @@
    
    <test-case name="sx-union-140">
       <description>Streaming union expression - bug 29507</description>
-      <keywords>ParenthesizedExpr mixed-posture </keywords>
       <created by="Michael Kay" on="2016-02-26"/>
       <environment ref="sx-union-B"/>
       <test>
@@ -772,7 +775,6 @@
    
    <test-case name="sx-union-141">
       <description>Streaming union expression - bug 29507</description>
-      <keywords>ParenthesizedExpr mixed-posture </keywords>
       <created by="Michael Kay" on="2016-02-26"/>
       <environment ref="sx-union-B"/>
       <test>
@@ -788,7 +790,6 @@
    
    <test-case name="sx-union-142">
       <description>Streaming union expression - bug 29507</description>
-      <keywords>ParenthesizedExpr mixed-posture </keywords>
       <created by="Michael Kay" on="2016-02-26"/>
       <environment ref="sx-union-B"/>
       <test>
@@ -804,7 +805,6 @@
    
    <test-case name="sx-union-143">
       <description>Streaming union expression - bug 29507</description>
-      <keywords>ParenthesizedExpr mixed-posture </keywords>
       <created by="Michael Kay" on="2016-02-26"/>
       <environment ref="sx-union-B"/>
       <test>
@@ -822,7 +822,6 @@
       <description>
          Streaming union expression - mixed posture. Not streamable
       </description>
-      <keywords>ParenthesizedExpr mixed-posture </keywords>
       <created by="Michael Kay" on="2016-02-26"/>
       <test>
          <stylesheet file="sx-union-201.xsl"/>
@@ -847,6 +846,267 @@
       </test>
       <result>
          <error code="XTSE3430"/>        
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-302">
+      <description>Streaming union expression - two consuming operands</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/*[1][self::AUTHOR] = 'Jane Austen'</assert>
+            <assert>/out/*[2][self::PRICE] = '4.95'</assert>
+            <assert>/out/*[3][self::AUTHOR] = 'Charlotte Brontë'</assert>
+            <assert>/out/*[4][self::PRICE] = '6.58'</assert>
+            <assert>/out/*[last()][self::PRICE] = '16.47'</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-310">
+      <description>Streaming union expression - striding operands, inspection usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert>/out = "12"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-311">
+      <description>Streaming union expression - striding operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <assert>/out = "54.37"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-312">
+      <description>Streaming union expression - striding operand, transmission usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert>/out = "4.95 6.58 4.95 4.95 16.47 16.47"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-313">
+      <description>Streaming union expression - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 188 7.58 114 5.95 86 5.95 130 17.47 130 17.47 130"</assert>        
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-union-314">
+      <description>Streaming union expression - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/*[1][self::PRICE] = 4.95</assert>
+            <assert>/out/*[2][self::QUANTITY] = 187</assert>
+            <assert>/out/*[3][self::PRICE] = 6.58</assert>
+            <assert>/out/*[4][self::QUANTITY] = 113</assert>
+            <assert>count(/out/*) = 12</assert>
+         </all-of>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-union-315">
+      <description>Streaming union expression - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 188 7.58 114 5.95 86 5.95 130 17.47 130 17.47 130 "</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-union-316">
+      <description>Streaming union expression - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/*[1][self::AUTHOR] = 'Jane Austen'</assert>
+            <assert>/out/*[2][self::PUBLISHER] = 'Modern Library'</assert>
+            <assert>count(/out/*) = 2</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-317">
+      <description>Streaming union expression - striding operand, focus-setting usage for inspection action</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>/out = "TITLE PUBLISHER PUB-DATE LANGUAGE PRICE PAGES DIMENSIONS WEIGHT TITLE PUBLISHER PUB-DATE LANGUAGE PRICE PAGES DIMENSIONS WEIGHT"</assert>
+      </result>
+   </test-case>
+   
+   <!--<test-case name="sx-union-318">
+      <description>Streaming union expression - striding operand, apply-templates usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding xsl:apply-templates PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceJane AustenModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
+      </result>
+   </test-case>-->
+   
+   <test-case name="sx-union-320">
+      <description>Streaming union expression - crawling operand, inspection usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert>/out = "66"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-321">
+      <description>Streaming union expression - crawling operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert>/out = "16"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-322">
+      <description>Streaming union expression - crawling operand, transmission usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceJane AustenModern Library"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-323">
+      <description>Streaming union expression - crawling operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 188 7.58 114 5.95 86 5.95 130 17.47 130 17.47 130"</assert>        
+      </result>
+   </test-case>
+   
+   <!--<test-case name="sx-union-330">
+      <description>Streaming union expression - climbing operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding-then-climbing fn:name leading-lone-slash PathExpr positional-predicate SimpleMapExpr ancestor-axis</keywords>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "BOOKLIST BOOKS ITEM a b"</assert>
+            <assert>/out = "a b BOOKLIST BOOKS ITEM"</assert>
+         </any-of>        
+      </result>
+   </test-case>-->
+   
+   <test-case name="sx-union-331">
+      <description>Streaming union expression - climbing operand, inspection usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST BOOKS ITEM ITEM"</assert>
+      </result>   
+   </test-case> 
+   
+   <test-case name="sx-union-332">
+      <description>Streaming union expression - climbing operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>/out = "MHK|MMP|P"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-333">
+      <description>Streaming union expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-union-334">
+      <description>Streaming union expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P|P|P|H|P"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-union-335">
+      <description>Streaming union expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-union-C"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>/out = "MHK|MMP|P|P|P|H|P"</assert>
       </result>
    </test-case>
 

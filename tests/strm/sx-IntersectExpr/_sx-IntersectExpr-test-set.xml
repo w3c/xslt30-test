@@ -10,6 +10,10 @@
      <stylesheet file="sx-intersect-B.xsl"/>
    </environment>
    
+   <environment name="sx-intersect-C">
+      <stylesheet file="sx-intersect-C.xsl"/>
+   </environment>
+   
    <dependencies>
       <spec value="XSLT30+"/>
       <feature value="streaming"/>
@@ -615,6 +619,273 @@
       </test>
       <result>
          <assert-xml><![CDATA[<out>ITEM</out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-302">
+      <description>Streaming intersect expression - two consuming operands</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-303">
+      <description>Streaming intersect expression - two consuming operands</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-003"/>
+      </test>
+      <result>
+         <assert>/out/PRICE = "4.95"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-310">
+      <description>Streaming intersect expression - striding operands, inspection usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert>/out = "4"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-311">
+      <description>Streaming intersect expression - striding operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <assert>/out = "54.37"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-312">
+      <description>Streaming intersect expression - striding operand, transmission usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert>/out = "Charlotte Brontë Thomas Hardy Jasper Fforde"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-313">
+      <description>Streaming intersect expression - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert>/out = "12.2 8.7 11.9 10"</assert>        
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-314">
+      <description>Streaming intersect expression - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/*[1][self::WEIGHT][@UNIT='oz'] = '6.1'</assert>
+            <assert>/out/*[2][self::WEIGHT][@UNIT='oz'] = '11.2'</assert>
+            <assert>/out/*[3][self::WEIGHT][@UNIT='oz'] = '7.7'</assert>
+            <assert>/out/*[4][self::WEIGHT][@UNIT='oz'] = '10.9'</assert>
+            <assert>/out/*[5][self::WEIGHT][@UNIT='oz'] = '9.0'</assert>
+            <assert>count(/out/*) = 5</assert>
+         </all-of>
+      </result>
+   </test-case> 
+   
+   <!--<test-case name="sx-intersect-315">
+      <description>Streaming intersect expression - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 188 7.58 114 5.95 86 5.95 130 17.47 130 17.47 130 "</assert>
+      </result>
+   </test-case> -->
+   
+   <test-case name="sx-intersect-316">
+      <description>Streaming intersect expression - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/*[1][self::WEIGHT][@UNIT='oz'] = '6.1'</assert>
+            <assert>count(/out/*) = 1</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-317">
+      <description>Streaming intersect expression - striding operand, focus-setting usage for inspection action</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>/out = "TITLE PUBLISHER PUB-DATE LANGUAGE PRICE PAGES DIMENSIONS WEIGHT"</assert>
+      </result>
+   </test-case>
+   
+   <!--<test-case name="sx-intersect-318">
+      <description>Streaming intersect expression - striding operand, apply-templates usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding xsl:apply-templates PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceJane AustenModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
+      </result>
+   </test-case>-->
+   
+   <test-case name="sx-intersect-320">
+      <description>Streaming intersect expression - crawling operand, inspection usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert>/out = "6"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-321">
+      <description>Streaming intersect expression - crawling operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert>/out = "1"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-322">
+      <description>Streaming intersect expression - crawling operand, transmission usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert>/out = "Jane AustenCharlotte Brontë"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-323">
+      <description>Streaming intersect expression - crawling operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert>/out = "7.1 12.2 8.7 11.9 10"</assert>        
+      </result>
+   </test-case>
+   
+   <!--<test-case name="sx-intersect-330">
+      <description>Streaming intersect expression - climbing operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding-then-climbing fn:name leading-lone-slash PathExpr positional-predicate SimpleMapExpr ancestor-axis</keywords>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "BOOKLIST BOOKS ITEM a b"</assert>
+            <assert>/out = "a b BOOKLIST BOOKS ITEM"</assert>
+         </any-of>        
+      </result>
+   </test-case>-->
+   
+   <test-case name="sx-intersect-331">
+      <description>Streaming intersect expression - climbing operand, inspection usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>/out = "BOOKLIST BOOKS"</assert>
+      </result>   
+   </test-case> 
+   
+   <test-case name="sx-intersect-332">
+      <description>Streaming intersect expression - climbing operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>/out = "MHK"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-333">
+      <description>Streaming intersect expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>/out = "P|P"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-intersect-334">
+      <description>Streaming intersect expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>/out = "MMP|P|P|P|H|P"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-intersect-335">
+      <description>Streaming intersect expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-intersect-C"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>/out = "MHK|MMP|P|P|P|H|P"</assert>
       </result>
    </test-case>
 
