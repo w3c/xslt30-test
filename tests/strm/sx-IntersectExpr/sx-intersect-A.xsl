@@ -7,10 +7,12 @@
     <xsl:variable name="RUN" select="true()" static="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <xsl:variable name="insertion" as="element()*">
-      <a>A</a>
-      <b>B</b>
-    </xsl:variable>
+  <xsl:variable name="insertion" as="node()*">
+    <a>A</a>
+    <b>B</b>
+    <xsl:text>InsertionText</xsl:text>
+    <xsl:attribute name="Alpha" select="'InsertionAttribute'"/>
+  </xsl:variable>
     
     <xsl:variable name="numeric-insertion" as="element()*">
       <a>11</a>

@@ -1911,4 +1911,21 @@ nNode: neither</out>]]></assert-xml>
          <assert-xml><![CDATA[<out><e>id3</e><e>id6</e><e>id7</e><e>id12</e><e>id15</e><e>id19</e></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="variable-4802">
+      <description>Saxon bug 5495 (Pattern using variables and position()=last()</description>
+      <created by="Michael Kay after Rohit Gaikwad" on="2022-05-18"/>
+      <environment>
+         <source role="." file="variable-4802.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="variable-4802.xsl"/>
+      </test>
+      <result>
+         <assert>false()</assert>
+      </result>
+   </test-case>
 </test-set>

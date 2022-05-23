@@ -10,6 +10,10 @@
    <environment name="sx-except-B">
       <stylesheet file="sx-except-B.xsl"/>
    </environment>
+   
+   <environment name="sx-except-C">
+      <stylesheet file="sx-except-C.xsl"/>
+   </environment>
 
    <dependencies>
       <spec value="XSLT30+"/>
@@ -24,7 +28,7 @@
          <initial-template name="r-002"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><PRICE>4.95</PRICE><PRICE>6.58</PRICE><PRICE>4.95</PRICE><PRICE>4.95</PRICE><PRICE>16.47</PRICE><PRICE>16.47</PRICE></out>]]></assert-xml>
+         <assert>count(//PRICE) = 6</assert>
       </result>
    </test-case>
 
@@ -707,6 +711,281 @@
       </test>
       <result>
          <assert>/out = "TITLE AUTHOR PUBLISHER PUB-DATE LANGUAGE PRICE QUANTITY ISBN PAGES DIMENSIONS WEIGHT"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-302">
+      <description>Streaming except expression - two consuming operands</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-002"/>
+      </test>
+      <result>
+         <assert>count(/out/PRICE) = 6</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-303">
+      <description>Streaming except expression - two consuming operands</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-003"/>
+      </test>
+      <result>
+         <assert>/out/PRICE = "4.95"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-310">
+      <description>Streaming except expression - striding operands, inspection usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-010"/>
+      </test>
+      <result>
+         <assert>/out = "2"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-311">
+      <description>Streaming except expression - striding operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-011"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-312">
+      <description>Streaming except expression - striding operand, transmission usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-012"/>
+      </test>
+      <result>
+         <assert>/out = "Charlotte Brontë Thomas Hardy Jasper Fforde"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-313">
+      <description>Streaming except expression - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-013"/>
+      </test>
+      <result>
+         <assert>/out = "7.1"</assert>        
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-except-314">
+      <description>Streaming except expression - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-014"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/*[1][self::WEIGHT][@UNIT='g'] = '390'</assert>
+            <assert>count(/out/*) = 1</assert>
+         </all-of>
+      </result>
+   </test-case> 
+   
+   <!--<test-case name="sx-except-315">
+      <description>Streaming except expression - striding operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-015"/>
+      </test>
+      <result>
+         <assert>/out = "5.95 188 7.58 114 5.95 86 5.95 130 17.47 130 17.47 130 "</assert>
+      </result>
+   </test-case> -->
+   
+   <test-case name="sx-except-316">
+      <description>Streaming except expression - striding operand, focus-controlled usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-016"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/*[1][self::WEIGHT][@UNIT='g'] = '390'</assert>
+            <assert>count(/out/*) = 1</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-317">
+      <description>Streaming except expression - striding operand, focus-setting usage for inspection action</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-017"/>
+      </test>
+      <result>
+         <assert>/out = "TITLE PUBLISHER PUB-DATE LANGUAGE PRICE PAGES DIMENSIONS WEIGHT TITLE PUBLISHER PUB-DATE LANGUAGE PRICE PAGES DIMENSIONS WEIGHT"</assert>
+      </result>
+   </test-case>
+   
+   <!--<test-case name="sx-except-318">
+      <description>Streaming except expression - striding operand, apply-templates usage</description>
+      <keywords>ParenthesizedExpr mixed-posture leading-lone-slash striding xsl:apply-templates PathExpr positional-predicate</keywords>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-018"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceJane AustenModern Library2002-12-31English4.9518706796016863528.3 5.7 1.16.1"</assert>
+      </result>
+   </test-case>-->
+   
+   <test-case name="sx-except-320">
+      <description>Streaming except expression - crawling operand, inspection usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-020"/>
+      </test>
+      <result>
+         <assert>/out = "0"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-320a">
+      <description>Streaming except expression - crawling operand, inspection usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-020a"/>
+      </test>
+      <result>
+         <assert>/out = "60"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-321">
+      <description>Streaming except expression - crawling operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-021"/>
+      </test>
+      <result>
+         <assert>/out = "10"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-322">
+      <description>Streaming except expression - crawling operand, transmission usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-022"/>
+      </test>
+      <result>
+         <assert>/out = "Pride and PrejudiceModern Library2002-12-31"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-323">
+      <description>Streaming except expression - crawling operand, focus-setting usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-023"/>
+      </test>
+      <result>
+         <assert>/out = "391"</assert>        
+      </result>
+   </test-case>
+   
+   <!--<test-case name="sx-except-330">
+      <description>Streaming except expression - climbing operand, inspection usage</description>
+      <keywords>ParenthesizedExpr mixed-posture striding-then-climbing fn:name leading-lone-slash PathExpr positional-predicate SimpleMapExpr ancestor-axis</keywords>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-030"/>
+      </test>
+      <result>
+         <any-of>
+            <assert>/out = "BOOKLIST BOOKS ITEM a b"</assert>
+            <assert>/out = "a b BOOKLIST BOOKS ITEM"</assert>
+         </any-of>        
+      </result>
+   </test-case>-->
+   
+   <test-case name="sx-except-331">
+      <description>Streaming except expression - climbing operand, inspection usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-031"/>
+      </test>
+      <result>
+         <assert>/out = "ITEM"</assert>
+      </result>   
+   </test-case> 
+   
+   <test-case name="sx-except-332">
+      <description>Streaming except expression - climbing operand, absorption usage</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-032"/>
+      </test>
+      <result>
+         <assert>/out = "MMP"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-333">
+      <description>Streaming except expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-033"/>
+      </test>
+      <result>
+         <assert>/out = "MMP"</assert>
+      </result>
+   </test-case> 
+   
+   <test-case name="sx-except-334">
+      <description>Streaming except expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-034"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="sx-except-335">
+      <description>Streaming except expression - climbing operand, absorption usage, removal of duplicates</description>
+      <created by="Michael Kay" on="2022-05-13"/>
+      <environment ref="sx-except-C"/>
+      <test>
+         <initial-template name="r-035"/>
+      </test>
+      <result>
+         <assert>empty(/out/node())</assert>
       </result>
    </test-case>
 
