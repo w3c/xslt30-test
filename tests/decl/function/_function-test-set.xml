@@ -1299,6 +1299,24 @@
             ><fn-fn><a>xypq</a><b>xypq</b><c>xypq</c><d>xypq</d></fn-fn></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="function-1035">
+      <description>Tail recursive function with cache=yes</description>
+      <created by="Michael Kay" on="2022-03-30"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="higher_order_functions"/>
+      </dependencies>
+      <test>
+         <stylesheet file="function-1035.xsl"/>
+      </test>
+      <result>
+         <all-of>
+            <assert>/out/pass1 = "832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155"</assert>
+            <assert>/out/pass2 = "832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155"</assert>           
+         </all-of>
+      </result>
+   </test-case>
 
 
    <test-case name="function-1101">
