@@ -286,15 +286,17 @@
    <test-case name="backwards-017">
       <description>effect of BC on default output method</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2022-06-15" change="This should be a serialization test. See GitHub issue #9."/>
       <dependencies>
          <spec value="XSLT10+"/>
+         <feature value="serialization"/>
       </dependencies>
       <test>
          <stylesheet file="backwards-017.xsl"/>
          <initial-template name="main"/>
       </test>
       <result>
-         <assert-xml file="backwards-017.out"/>
+         <serialization-matches>href="file:///My Documents/page.html"</serialization-matches>
       </result>
    </test-case>
 
@@ -320,10 +322,11 @@
    </test-case>
 
    <test-case name="backwards-019">
-      <description>effect of BC on default output method</description>
+      <description>effect of BC on default output method (implicit result document)</description>
       <created by="Michael Kay" on="2012-11-07"/>
       <modified by="Michael Kay" on="2014-04-28" change="correct expected results"/>
       <modified by="John Lumley" on="2014-09-02" change="Declared serialization requirement"/>
+      <modified by="Michael Kay" on="2022-06-15" change="Change expected result. See GitHub issue #9"/>
       <dependencies>
          <spec value="XSLT20+"/>
          <feature value="serialization"/>
@@ -335,6 +338,23 @@
       </test>
       <result>
          <serialization-matches>file:///My D&#xf8;cuments/page.html</serialization-matches>
+      </result>
+   </test-case>
+   
+   <test-case name="backwards-019b">
+      <description>effect of BC on default output method (explicit result document)</description>
+      <created by="Michael Kay" on="2022-06-15"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="serialization"/>
+      </dependencies>
+      <test>
+         <stylesheet file="backwards-019b.xsl"/>
+         <initial-template name="main"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <serialization-matches>file:///My D%C3%B8cuments/page.html</serialization-matches>
       </result>
    </test-case>
 
