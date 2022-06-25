@@ -581,4 +581,24 @@
          <serialization-matches>&lt;out att=['"]ab#&#231;#&#99;&#807;de['"]>ab#&#231;#&#99;&#807;de&lt;/out></serialization-matches>
       </result>
    </test-case>
+   
+   <test-case name="character-map-901">
+      <description>Error - "character" attribute misspelt "char" (Saxon bug 5570)</description>
+      <keywords>single-character-map xml-output-method</keywords>
+      <created by="Michael Kay" on="2022-06-19"/>
+      <environment ref="charmap001"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="character-map-901.xsl"/>
+         <output serialize="yes"/>
+      </test>
+      <result>
+         <any-of>
+            <error code="XTSE0010"/>
+            <error code="XTSE0090"/>
+         </any-of>
+      </result>
+   </test-case>
 </test-set>
