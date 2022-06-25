@@ -959,6 +959,7 @@
    <test-case name="on-empty-115b">
       <description>Test with on-empty, nested with variables and significant space in simple content seqtor: xsl:namespace</description>
       <created by="Abel Braaksma" on="2016-01-12"/>
+      <modified by="Michael Kay" on="2022-06-19" change="Alternative results. See https://github.com/w3c/xslt30-test/issues/60"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -966,7 +967,7 @@
          <stylesheet file="on-empty-115b.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<foo xmlns:bar=" "/>]]></assert-xml>
+         <assert>$result/child::foo</assert>
       </result>
    </test-case>
 
