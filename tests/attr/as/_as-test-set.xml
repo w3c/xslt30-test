@@ -3057,6 +3057,27 @@ a:_underscore_
          </all-of>
       </result>
    </test-case>
+   
+   <test-case name="as-1814">
+      <description>Variant of -1813 with computed attribute name</description>
+      <created by="Michael Kay" on="2022-07-06"/>
+      <environment ref="as-18"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-1814.xsl"/>
+      </test>
+      <result>
+         <all-of xmlns:my="http://www.example.com/ns/various">
+            <assert>/out/temp1/@my:specialPart = "123-AB"</assert>
+            <assert>/out/temp2/@my:listParts = "000-SS 000-RR"</assert>
+            <assert>/out/temp3/@my:union = "11111"</assert>
+         </all-of>
+      </result>
+   </test-case>
+   
 
    <test-case name="as-1901">
       <description>
