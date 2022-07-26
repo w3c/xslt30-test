@@ -139,13 +139,13 @@
 
     <!-- Template rule for fn:string elements in which 
          special characters are already escaped -->
-    <xsl:template match="fn:string[@escaped='true']" mode="indent no-indent">
+    <xsl:template match="fn:string[xs:boolean(@escaped)]" mode="indent no-indent">
         <xsl:sequence select="concat($quot, ., $quot)"/>
     </xsl:template>
 
     <!-- Template rule for fn:string elements in which 
          special characters need to be escaped -->
-    <xsl:template match="fn:string[not(@escaped='true')]" mode="indent no-indent">
+    <xsl:template match="fn:string[not(xs:boolean(@escaped))]" mode="indent no-indent">
         <xsl:sequence select="concat($quot, j:escape(.), $quot)"/>
     </xsl:template>
 
@@ -166,13 +166,15 @@
 
     <!-- Template rule matching a key within a map where 
          special characters in the key are already escaped -->
-    <xsl:template match="fn:*[@key-escaped='true']/@key" mode="key-attribute">
+    <xsl:template match="fn:*[xs:boolean(@escaped-key)]/@key" mode="key-attribute">
+        <!-- Corrected: see https://github.com/w3c/qtspecs/issues/41 -->
         <xsl:value-of select="concat($quot, ., $quot)"/>
     </xsl:template>
 
     <!-- Template rule matching a key within a map where 
          special characters in the key need to be escaped -->
-    <xsl:template match="fn:*[not(@key-escaped='true')]/@key" mode="key-attribute">
+    <xsl:template match="fn:*[not(xs:boolean(@escaped-key))]/@key" mode="key-attribute">
+        <!-- Corrected: see https://github.com/w3c/qtspecs/issues/41 -->
         <xsl:value-of select="concat($quot, j:escape(.), $quot)"/>
     </xsl:template>
     
