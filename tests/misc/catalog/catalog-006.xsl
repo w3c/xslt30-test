@@ -27,7 +27,8 @@
                     [not(ancestor-or-self::xsl:*[number(@version) gt 3])]
                     [not(ancestor-or-self::*[number(@xsl:version) gt 3])]
                     [not(ancestor-or-self::*/@*:use-when)]
-                    [not(element-available('xsl:'||local-name(.)))]">
+                    [not(element-available('xsl:'||local-name(.)) 
+                         or (local-name(.)='import-schema' and system-property('xsl:is-schema-aware')='no'))]">
               <unavailable in="{document-uri(/)}">{name()}</unavailable>
             </xsl:for-each>
         </xsl:for-each>  
