@@ -115,6 +115,11 @@
         <t018><xsl:sequence select="$xml-to-json-1(json-to-xml($in))"/></t018>
     </xsl:template>
     
+    <xsl:template name="t019">
+        <xsl:variable name="in"><j:map><j:string key='\"' escaped-key=" true ">1</j:string><j:string key='\"' escaped-key=" false ">0</j:string></j:map></xsl:variable>
+        <t><xsl:sequence select="$xml-to-json-1($in)"/></t>
+    </xsl:template>
+    
   
     <xsl:template name="e001">
         <xsl:variable name="in">"\\\/\"\r\t\n\u0020"</xsl:variable>
