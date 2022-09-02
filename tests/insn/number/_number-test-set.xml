@@ -1137,6 +1137,75 @@
   </out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="number-1002">
+      <description>XSLT 2.0: test use of select attribute of xsl:number, nothing selected</description>
+      <created by="Michael Kay" on="2022-08-08"/>
+      <environment>
+         <source role="." file="number-10.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-1002.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1000"/>
+      </result>
+   </test-case>
+   
+   <test-case name="number-1003">
+      <description>XSLT 2.0: test use of select attribute of xsl:number, multiple nodes selected</description>
+      <created by="Michael Kay" on="2022-08-08"/>
+      <environment>
+         <source role="." file="number-10.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-1003.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1000"/>
+      </result>
+   </test-case>
+   
+   <test-case name="number-1004">
+      <description>XSLT 2.0: in xsl:number, there is no context item</description>
+      <created by="Michael Kay" on="2022-08-08"/>
+      <environment>
+         <source role="." file="number-10.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-1004.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE0990"/>
+      </result>
+   </test-case>
+   
+   <test-case name="number-1005">
+      <description>XSLT 2.0: select in xsl:number, selected element is parentless</description>
+      <created by="Michael Kay" on="2022-08-08"/>
+      <environment>
+         <source role="." file="number-10.xml"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="number-1005.xsl"/>
+      </test>
+      <result>
+         <assert>/out='1'</assert>
+      </result>
+   </test-case>
+   
 
    <test-case name="number-1101">
       <description/>
