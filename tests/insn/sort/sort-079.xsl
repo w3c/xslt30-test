@@ -48,4 +48,8 @@
             collation="http://www.w3.org/2013/collation/UCA?lang=en;strength={$strength};alternate={$option}"/>
       </t:perform-sort>
    </t:function>
+   
+   <t:template match="/" mode="bbb">
+      <t:value-of select="@x"/>
+   </t:template>
 </t:transform>

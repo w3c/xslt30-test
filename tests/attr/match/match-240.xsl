@@ -7,7 +7,6 @@
 
 <?spec xslt#patterns?>
     <!-- Purpose: predicate pattern in which the type is not known statically.  -->
-    <!-- Purpose: comments in a pattern.  -->
 
 <xsl:template name="main">
  <out>
