@@ -380,12 +380,17 @@
    <test-case name="evaluate-018d">
       <description>Test xsl:evaluate with variables not matching the type required by xsl:with-param, detected dynamically.</description>
       <created by="Michael Kay" on="2018-11-19"/>
+      <modified by="Michael Kay" on="2022-12-15" change="force the type error to be detected by not having static and dynamic
+                                                         parameters with the same name"/>
       <environment ref="eval007"/>
       <test>
          <stylesheet file="evaluate-018d.xsl"/>
       </test>
       <result>
-         <error code="XPTY0004"/>
+         <any-of>
+            <error code="XPTY0004"/>
+            <error code="XTTE0590"/>
+         </any-of>
       </result>
    </test-case>
 
