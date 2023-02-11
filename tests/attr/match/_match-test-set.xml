@@ -5177,5 +5177,62 @@
       </result>
    </test-case>
    
+   <test-case name="match-285">
+      <description>Test of template matching with schema-attribute($name) with an explicitly constructed 
+         attribute node without a parent and validated with @validation=strict. Copy of match-193, but
+         using a local variable instead of a global variable; Saxon bug 5732.</description>
+      <keywords>xsl:import-schema SchemaAttributeTest parentless-nodes</keywords>
+      <created by="Michael Kay" on="2022-11-11"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-285.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>000-TM</A></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-286">
+      <description>Test of template matching with schema-attribute($name) with an explicitly constructed 
+         attribute node without a parent and validated with @validation=strict. Copy of match-285, but
+         using an instance-of test to prevent variable inlining; Saxon bug 5732.</description>
+      <keywords>xsl:import-schema SchemaAttributeTest parentless-nodes</keywords>
+      <created by="Michael Kay" on="2022-11-11"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-286.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>000-TM</A></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="match-287">
+      <description>Test of template matching with schema-attribute($name) with an explicitly constructed 
+         attribute node without a parent and validated with @validation=strict. Copy of match-285, but
+         creating the attribute in a function call; Saxon bug 5732.</description>
+      <keywords>xsl:import-schema SchemaAttributeTest parentless-nodes</keywords>
+      <created by="Michael Kay" on="2022-11-11"/>
+      <environment ref="match3011"/>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="match-287.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out><A>000-TM</A></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
  
 </test-set>
