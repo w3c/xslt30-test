@@ -9,7 +9,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
 
 <xsl:template match="/">
 <out>
-  <xsl:evaluate xpath="add" with-params="map{xs:QName('p1'): 6, xs:QName('p2'):7}">
+  <xsl:evaluate xpath="add" with-params="map{xs:QName('p1'): 6}">
     <xsl:with-param name="p1" as="xs:integer" select="6"/>
     <xsl:with-param name="p2" as="xs:integer" select="(1,'banana',3,4)[year-from-date(current-date()) idiv 1000]"/>
   </xsl:evaluate> 

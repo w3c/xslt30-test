@@ -9,9 +9,9 @@
 <xsl:template match="/">
   <xsl:result-document format="test">
   <out>
-    <utf-8><xsl:value-of select="contains(unparsed-text('http://www.w3.org/Consortium/mission.html'),
+    <utf-8><xsl:value-of select="contains(unparsed-text('https://www.w3.org/Consortium/mission.html'),
                                  'long-term growth')"/></utf-8>
-    <iso-8859-1><xsl:value-of select="contains(unparsed-text('http://www.w3.org/TR/1999/WD-font-19990902'),
+    <iso-8859-1><xsl:value-of select="contains(unparsed-text('https://www.w3.org/TR/1999/WD-font-19990902'),
                                  'Håkon Lie, W3C')"/></iso-8859-1>                                 
   </out> 
   </xsl:result-document> 

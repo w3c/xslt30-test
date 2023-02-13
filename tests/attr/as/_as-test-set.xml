@@ -4144,6 +4144,86 @@ a:_underscore_
       </result>
    </test-case>
    
+   <test-case name="as-3602">
+      <description>Validation of freestanding attribute node. Saxon bug 5732.</description>
+      <keywords>xsl:import-schema SchemaAttributeTest OccurrenceIndicator xsl:template strict-validation</keywords>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment>
+         <source role="." file="as-36.xml" validation="strict"/>
+         <schema role="source-reference" file="attributesSchemaAs.xsd"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-3602.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "falsetrue"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="as-3603">
+      <description>Validation of freestanding computed attribute node. Saxon bug 5732.</description>
+      <keywords>xsl:import-schema SchemaAttributeTest OccurrenceIndicator xsl:template strict-validation</keywords>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment>
+         <source role="." file="as-36.xml" validation="strict"/>
+         <schema role="source-reference" file="attributesSchemaAs.xsd"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-3603.xsl"/>
+      </test>
+      <result>
+         <assert>/out = "falsetrue"</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="as-3604">
+      <description>Validation of freestanding attribute node. Attribute is invalid. Saxon bug 5732.</description>
+      <keywords>xsl:import-schema SchemaAttributeTest OccurrenceIndicator xsl:template strict-validation</keywords>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment>
+         <source role="." file="as-36.xml" validation="strict"/>
+         <schema role="source-reference" file="attributesSchemaAs.xsd"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-3604.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+      </result>
+   </test-case>
+   
+   <test-case name="as-3605">
+      <description>Validation of freestanding computed attribute node. Attribute is invalid. Saxon bug 5732.</description>
+      <keywords>xsl:import-schema SchemaAttributeTest OccurrenceIndicator xsl:template strict-validation</keywords>
+      <created by="Michael Kay" on="2012-10-30"/>
+      <environment>
+         <source role="." file="as-36.xml" validation="strict"/>
+         <schema role="source-reference" file="attributesSchemaAs.xsd"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-3605.xsl"/>
+      </test>
+      <result>
+         <error code="XTTE1510"/>
+      </result>
+   </test-case>
+   
    <test-case name="as-3701">
       <description>Type annotation of complex type with simple content. Saxon bug 3628</description>
       <created by="Michael Kay" on="2018-01-16"/>
