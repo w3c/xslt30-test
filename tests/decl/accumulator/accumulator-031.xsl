@@ -20,7 +20,7 @@
     </xsl:source-document>
   </xsl:variable>
   
-  <xsl:template name="main">
+  <xsl:template name="main" visibility="public">
     <o><xsl:value-of select="$count"/></o>
   </xsl:template>
 </xsl:package>

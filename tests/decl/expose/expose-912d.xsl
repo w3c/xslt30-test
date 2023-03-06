@@ -46,7 +46,7 @@
     <xsl:expose visibility="public" component="template" names="t1 p:t2"/>
     <xsl:expose visibility="final" component="variable" names="v1"/>
     <xsl:expose visibility="public" component="variable" names="p:v2"/>
-    <xsl:expose visibility="private" component="function" names="p:f2"/>
+    <xsl:expose visibility="private" component="function" names="p:f2#0"/>
     <xsl:expose visibility="abstract" component="function" names="*:f1"/>
     
     <xsl:expose visibility="final" component="attribute-set" names="a1 *:a2"/>

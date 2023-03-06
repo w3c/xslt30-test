@@ -16,7 +16,7 @@
      
     <!-- Error: cannot accept private component as public --> 
         
-    <xsl:accept component="function" names="q:f2" visibility="public"/>
+    <xsl:accept component="function" names="q:f2#0" visibility="public"/>
          
   </xsl:use-package>  
   
