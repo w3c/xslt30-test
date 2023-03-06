@@ -1012,11 +1012,15 @@
   <test-case name="package-914a">
     <description>Error XTDE0044, an empty package cannot be executed without an initial match selection</description>
     <created by="Abel Braaksma" on="2018-01-18"/>
+    <modified by="Michael Kay" on="2023-03-06" change="allow alternative error code (xsl:initial-template is absent)"/>
     <test>
       <package file="package-914a.xsl" role="principal"/>
     </test>
     <result>
-      <error code="XTDE0044"/>
+      <any-of>
+        <error code="XTDE0040"/>
+        <error code="XTDE0044"/>
+      </any-of>
     </result>
   </test-case>
 
@@ -1035,6 +1039,7 @@
   <test-case name="package-914c">
     <description>Error XTDE0044, a named mode in a package cannot be executed without an initial match selection</description>
     <created by="Abel Braaksma" on="2018-01-18"/>
+    <modified by="Michael Kay" on="2023-03-06" change="declare visibility, to prevent a different error being reported"/>
     <test>
       <package file="package-914c.xsl" role="principal"/>
       <initial-mode name="mymode"/>

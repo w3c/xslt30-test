@@ -15,7 +15,7 @@
      
     <!-- Error: cannot accept final component as public --> 
         
-    <xsl:accept component="function" names="p:f1" visibility="public"/>
+    <xsl:accept component="function" names="p:f1#0" visibility="public"/>
          
   </xsl:use-package>  
   

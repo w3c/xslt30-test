@@ -6,7 +6,7 @@
     expand-text="yes">
     
     <xsl:use-package name="http://localhost/pkg">
-        <xsl:accept component="function" names="local:foo" visibility="private"/>
+        <xsl:accept component="function" names="local:foo#0" visibility="private"/>
         <xsl:override>
             <xsl:function name="local:foo">
                 <xsl:sequence select="'foo2'"/>

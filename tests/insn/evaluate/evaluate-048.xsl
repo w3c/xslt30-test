@@ -6,7 +6,7 @@
 
 
   <xsl:param name="p">function-lookup(QName('http://www.w3.org/2005/xpath-functions', 'document'), 1)
-    ('http://www.saxonica.com')</xsl:param>
+    ('http://www.saxonica.com/welcome/welcome.xml')</xsl:param>
   
   <xsl:template name="xsl:initial-template">
     <out>
