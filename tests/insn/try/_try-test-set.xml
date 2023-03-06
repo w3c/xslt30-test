@@ -682,4 +682,77 @@
          <assert-xml><![CDATA[<doc><inline>NOPE</inline><function/><message/><nested-functions/></doc>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="try-039">
+      <description>
+         Error: variable declared in xsl:try is not visible within select attribute xsl:catch.
+         Derived from try-011: see Saxon bug 5881
+      </description>
+      <keywords>XPST0008 variable-scope xsl:try error-handling generic-catch-clause specific-catch-clause</keywords>
+      <created by="Michael Kay" on="2023-02-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-039.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <error code="XPST0008"/>
+      </result>
+   </test-case>
+   
+   <test-case name="try-040">
+      <description>
+         Error: variable declared outwith xsl:try is visible within select attribute xsl:catch.
+         Derived from try-011: see Saxon bug 5881
+      </description>
+      <created by="Michael Kay" on="2023-02-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-040.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>out = '3.14159'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="try-041">
+      <description>
+         Error: global variable declared outwith xsl:try is visible within select attribute xsl:catch.
+         Derived from try-011: see Saxon bug 5881
+      </description>
+      <created by="Michael Kay" on="2023-02-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-041.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>out = '3.14159'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="try-042">
+      <description>
+         Error: global variable declared outwith xsl:try is visible within select attribute xsl:catch.
+         Derived from try-011: see Saxon bug 5881
+      </description>
+      <created by="Michael Kay" on="2023-02-14"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="try-042.xsl"/>
+         <initial-template name="main"/>
+      </test>
+      <result>
+         <assert>out = '3.14159'</assert>
+      </result>
+   </test-case>
 </test-set>
