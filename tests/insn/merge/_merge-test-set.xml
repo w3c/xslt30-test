@@ -284,12 +284,16 @@
       <description>The @select attribute of xsl:merge-key should be a singleton, but evaluated to be a sequence of items</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2018-12-22" change="For incomparable merge-keys, the error should be XTTE2230 instead of XTTE1020"/>
+      <modified by="Michael Kay" on="2023-03-06" change="Allow both error codes"/>     
       <environment ref="merge004"/>
       <test>
          <stylesheet file="merge-017.xsl"/>
       </test>
       <result>
-         <error code="XTTE2230"/>
+         <any-of>
+            <error code="XTTE1020"/>
+            <error code="XTTE2230"/>
+         </any-of>
       </result>
    </test-case>
 
@@ -334,6 +338,8 @@
       <description>Test xsl:merge-input with keys that have different order attributes.</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2018-12-22" change="XTDE2210 instead of XTSE2220, updated description, the order attributes are different."/>
+      <modified by="Michael Kay" on="2023-03-06" change="Revert previous change, the order attributes are effectively the same."/>
+      
       <environment ref="merge008"/>
       <test>
          <stylesheet file="merge-021.xsl"/>
@@ -563,12 +569,16 @@
       <description>Testing a sequence of more than one item is not allowed as the @select attr of merge-key</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
       <modified by="Abel Braaksma" on="2018-12-22" change="XTTE1020 is no longer the correct error here, when a merge-key cannot be compared, the errors should be XTTE2230"/>
+      <modified by="Michael Kay" on="2023-03-06" change="I beg to differ. Allow both error codes"/>
       <environment ref="merge917err"/>   
       <test>
          <stylesheet file="merge-038.xsl"/>
       </test>
       <result>
-         <error code="XTTE2230"/>
+         <any-of>
+            <error code="XTTE1020"/>
+            <error code="XTTE2230"/>
+         </any-of>
       </result>
    </test-case>
    
