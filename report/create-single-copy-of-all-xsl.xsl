@@ -28,6 +28,7 @@
     <xsl:template match="document-node()" mode="xsl">
         <xsl:copy>
             <xsl:apply-templates select="node() | @*" mode="#current" />
+        </xsl:copy>    
     </xsl:template>
     
     <xsl:template match="xsl:transform | xsl:stylesheet" mode="xsl">
