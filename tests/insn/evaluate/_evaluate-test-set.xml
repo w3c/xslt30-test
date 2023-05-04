@@ -860,4 +860,29 @@
          <assert>/out = 'false'</assert>
       </result>
    </test-case>
+   
+   <test-case name="evaluate-051">
+      <description>xsl:evaluate applied to an inline function (Saxon bug 6003)</description>
+      <created by="Michael Kay" on="2023-05-03"/>
+      <test>
+         <stylesheet file="evaluate-051.xsl"/>        
+      </test>
+      <result>
+         <assert>/out/in = '60'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="evaluate-052">
+      <description>xsl:evaluate applied to an inline function (Saxon bug 6004)</description>
+      <created by="Michael Kay" on="2023-05-03"/>
+      <environment>
+         <source role="." file="evaluate-052.xml"/>
+      </environment>
+      <test>
+         <stylesheet file="evaluate-052.xsl"/>        
+      </test>
+      <result>
+         <assert>/root/result = 'foo 1'</assert>
+      </result>
+   </test-case>
 </test-set>

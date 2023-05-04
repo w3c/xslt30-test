@@ -292,4 +292,41 @@
          <assert-xml><![CDATA[<out><e1>true , hello</e1><e2>true , true , brown-bear</e2></out>]]></assert-xml>
       </result>
    </test-case>
+   
+   <test-case name="type-functions-0502">
+      <description>Constructor function based on user-defined type</description>
+      <created by="Michael Kay" on="2023-03-14"/>
+      <environment>
+         <source role="." file="type-functions-05.xml" validation="strict"/>
+         <schema role="source-reference" file="variousTypesSchemaFunc.xsd" xsd-version="1.0"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0502.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<out value="123-XY" ok="true"/>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="type-functions-0503">
+      <description>Constructor function based on user-defined type, clashing with user-defined function</description>
+      <created by="Michael Kay" on="2023-03-14"/>
+      <environment>
+         <source role="." file="type-functions-05.xml" validation="strict"/>
+         <schema role="source-reference" file="variousTypesSchemaFunc.xsd" xsd-version="1.0"/>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="type-functions-0503.xsl"/>
+      </test>
+      <result>
+         <error code="XTSE0770"/>
+         <!-- the error isn't explicit in the XSLT spec, but this is the closest it gets -->
+      </result>
+   </test-case>
 </test-set>
