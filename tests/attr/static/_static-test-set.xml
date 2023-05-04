@@ -808,6 +808,7 @@
       <keywords>static-variable</keywords>
       <created by="Michael Kay" on="2017-01-06"/>
       <modified by="Abel Braaksma" on="2019-02-15" change="Fixed expected error code from XTSE0020 (invalid attribute value) to XTSE0090 (invalid attribute name)"/>
+      <modified by="Michael Kay" on="2023-03-06" change="I beg to differ. Allow either error code, since none is defined"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -815,7 +816,10 @@
          <stylesheet file="static-026.xsl"/>
       </test>
       <result>
-         <error code="XTSE0090"/>
+         <any-of>
+            <error code="XTSE0020"/>
+            <error code="XTSE0090"/>
+         </any-of>
       </result>
    </test-case>
    
