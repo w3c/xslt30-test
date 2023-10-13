@@ -3,6 +3,8 @@
 
  <?spec xslt#creating-attributes?>
     <!-- Purpose: Successful validation against built-in declarations for the XML namespace. -->
+   
+   <xsl:import-schema namespace="http://www.w3.org/XML/1998/namespace"/>
 
 <xsl:template match="/" name="xsl:initial-template">
    <out>
