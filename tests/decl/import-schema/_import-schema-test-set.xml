@@ -3751,4 +3751,23 @@
       </all-of> 
     </result>
   </test-case>
+   
+   <test-case name="import-schema-203">
+      <description>Saxon bug 6151: import-schema refers to schema document with wrong target namespace</description>
+      <created by="Michael Kay" on="2023-08-06"/>
+      <environment>
+         <source file="import-schema-202.xml"/>
+         <!-- No schema declared, deliberately to avoid pre-loading -->
+      </environment>
+      <dependencies>
+         <spec value="XSLT30+"/>
+         <feature value="schema_aware"/>
+      </dependencies>
+      <test>
+         <stylesheet file="import-schema-203.xsl"/>
+      </test>
+      <result>
+         <error code="XXXX9999"/>
+      </result>
+   </test-case>
 </test-set>
