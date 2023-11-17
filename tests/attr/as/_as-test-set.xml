@@ -675,6 +675,7 @@ a:_underscore_
       <keywords>type-promotion xs:float xs:double xs:decimal xs:integer AtomicOrUnionType</keywords>
       <created by="Michael Kay" on="2012-10-30"/>
       <modified by="Debbie Lockett" on="2020-10-14" change="Use environment without schema"/>
+      <modified by="Michael Kay" on="2023-11-07" change="Use param rather than variable so things are more dynamic"/>
       <environment ref="as-01b"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1405,6 +1406,20 @@ a:_underscore_
       </test>
       <result>
          <assert-xml><![CDATA[<out><item>111-AB</item><item>999-AC</item></out>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="as-0152">
+      <description>Test promotion of function result to xs:double.</description>
+      <created by="Michael Kay" on="2023-11-07"/>
+      <dependencies>
+         <spec value="XSLT30+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="as-0152.xsl"/>
+      </test>
+      <result>
+         <assert>every $att in //@* satisfies $att = 'true'</assert>
       </result>
    </test-case>
 
@@ -4147,7 +4162,7 @@ a:_underscore_
    <test-case name="as-3602">
       <description>Validation of freestanding attribute node. Saxon bug 5732.</description>
       <keywords>xsl:import-schema SchemaAttributeTest OccurrenceIndicator xsl:template strict-validation</keywords>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <created by="Michael Kay" on="2022-10-30"/>
       <environment>
          <source role="." file="as-36.xml" validation="strict"/>
          <schema role="source-reference" file="attributesSchemaAs.xsd"/>
@@ -4167,7 +4182,7 @@ a:_underscore_
    <test-case name="as-3603">
       <description>Validation of freestanding computed attribute node. Saxon bug 5732.</description>
       <keywords>xsl:import-schema SchemaAttributeTest OccurrenceIndicator xsl:template strict-validation</keywords>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <created by="Michael Kay" on="2022-10-30"/>
       <environment>
          <source role="." file="as-36.xml" validation="strict"/>
          <schema role="source-reference" file="attributesSchemaAs.xsd"/>
@@ -4187,7 +4202,7 @@ a:_underscore_
    <test-case name="as-3604">
       <description>Validation of freestanding attribute node. Attribute is invalid. Saxon bug 5732.</description>
       <keywords>xsl:import-schema SchemaAttributeTest OccurrenceIndicator xsl:template strict-validation</keywords>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <created by="Michael Kay" on="2022-10-30"/>
       <environment>
          <source role="." file="as-36.xml" validation="strict"/>
          <schema role="source-reference" file="attributesSchemaAs.xsd"/>
@@ -4207,7 +4222,7 @@ a:_underscore_
    <test-case name="as-3605">
       <description>Validation of freestanding computed attribute node. Attribute is invalid. Saxon bug 5732.</description>
       <keywords>xsl:import-schema SchemaAttributeTest OccurrenceIndicator xsl:template strict-validation</keywords>
-      <created by="Michael Kay" on="2012-10-30"/>
+      <created by="Michael Kay" on="2022-10-30"/>
       <environment>
          <source role="." file="as-36.xml" validation="strict"/>
          <schema role="source-reference" file="attributesSchemaAs.xsd"/>

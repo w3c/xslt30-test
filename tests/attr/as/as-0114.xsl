@@ -6,11 +6,11 @@
 <!-- Purpose: Test type of global xsl:variable where @select contains an xs:float, xs:decimal or xs:integer,  
   				@as="xs:double".(type promotion)  -->
 
-   <xslt:variable name="var1" select="xs:float(-1.75e-3)" as="xs:double"/>
+   <xslt:param name="var1" select="xs:float(-1.75e-3)" as="xs:double"/>
 
-   <xslt:variable name="var2" select="xs:decimal(-3.420100)" as="xs:double"/>
+   <xslt:param name="var2" select="xs:decimal(-3.420100)" as="xs:double"/>
 
-   <xslt:variable name="var3" select="xs:integer(-300)" as="xs:double"/>
+   <xslt:param name="var3" select="xs:integer(-300)" as="xs:double"/>
 
    <xslt:template match="/doc">
       <out>
