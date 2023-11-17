@@ -337,15 +337,22 @@
    <test-case name="merge-021">
       <description>Test xsl:merge-input with keys that have different order attributes.</description>
       <created by="O'Neil Delpratt" on="2012-11-07"/>
-      <modified by="Abel Braaksma" on="2018-12-22" change="XTDE2210 instead of XTSE2220, updated description, the order attributes are different."/>
-      <modified by="Michael Kay" on="2023-03-06" change="Revert previous change, the order attributes are effectively the same."/>
+      <modified by="Abel Braaksma" on="2018-12-22" 
+         change="XTDE2210 instead of XTSE2220, updated description, the order attributes are different."/>
+      <modified by="Michael Kay" on="2023-03-06" 
+         change="Revert previous change, the order attributes are effectively the same."/>
+      <modified by="Michael Kay" on="2023-11-17" 
+         change="Allow either error code, since the 3.0 spec has in effect been corrected in 4.0."/>
       
       <environment ref="merge008"/>
       <test>
          <stylesheet file="merge-021.xsl"/>
       </test>
       <result>
-         <error code="XTDE2210"/>
+         <any-of>
+            <error code="XTDE2210"/>
+            <error code="XTDE2220"/>
+         </any-of>
       </result>
    </test-case>
 
