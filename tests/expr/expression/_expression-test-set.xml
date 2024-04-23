@@ -2026,6 +2026,45 @@
       </result>
    </test-case>
    
+   <test-case name="expression-4302">
+      <description>Test for general comparison of node with number, 1.0 compatibility mode (SaxonJS bug 6393)</description>
+      <created by="Debbie Lockett" on="2024-04-19"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<a>A</a>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+         <feature value="backwards_compatibility"/>
+      </dependencies>
+      <test>
+         <stylesheet file="expression-4302.xsl"/>
+      </test>
+      <result>
+         <assert-xml><![CDATA[<span>false</span>]]></assert-xml>
+      </result>
+   </test-case>
+   
+   <test-case name="expression-4303">
+      <description>Test for general comparison of node with number, XPath 2.0 rules (SaxonJS bug 6393)</description>
+      <created by="Debbie Lockett" on="2024-04-19"/>
+      <environment>
+         <source role=".">
+            <content><![CDATA[<a>A</a>]]></content>
+         </source>
+      </environment>
+      <dependencies>
+         <spec value="XSLT20+"/>
+      </dependencies>
+      <test>
+         <stylesheet file="expression-4303.xsl"/>
+      </test>
+      <result>
+         <error code="FORG0001"/>
+      </result>
+   </test-case>
+   
    <test-case name="expression-4401">
       <description>test promotion of independent subexpressions within a filter expression 
          (was opt-001 in xslt3extra: Saxon bug 5091)</description>
