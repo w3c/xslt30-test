@@ -11,9 +11,11 @@
   </xsl:template>
   
   <xsl:template name="main" match="/">
-    <xsl:call-template name="test">
-      <xsl:with-param name="num1" select="xs:double('1e4')" as="xs:double" />
-    </xsl:call-template>
+    <out>
+      <xsl:call-template name="test">
+        <xsl:with-param name="num1" select="xs:double('1e4')" as="xs:double" />
+      </xsl:call-template>
+    </out>
   </xsl:template> 
 
 </xsl:stylesheet>
