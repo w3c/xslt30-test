@@ -14,6 +14,13 @@
          <content><![CDATA[<doc><e ref='1'/></doc>]]></content>
       </source>
    </environment>
+   
+   <environment name="maps-018">
+      <stylesheet file="maps-018.xsl"/>
+      <source role=".">
+         <content><![CDATA[<doc><e ref='1'/></doc>]]></content>
+      </source>
+   </environment>
 
    <test-case name="maps-001">
       <description>Basic test of maps in an XSLT 3.0 context</description>
@@ -243,6 +250,42 @@
       </test>
       <result>
          <assert>/out = '{"Hello world":"greeting"}'</assert>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-018">
+      <description>Error if too many arguments supplied for function call on maps and arrays</description>
+      <created by="Debbie Lockett" on="2024-05-24"/>
+      <environment ref="maps-018"/>
+      <test>
+         <param name="param" select="'map'"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-019">
+      <description>Error if too many arguments supplied for function call on maps and arrays</description>
+      <created by="Debbie Lockett" on="2024-05-24"/>
+      <environment ref="maps-018"/>
+      <test>
+         <param name="param" select="'array'"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
+      </result>
+   </test-case>
+   
+   <test-case name="maps-020">
+      <description>Error if attempting a function call on an item which is not a function</description>
+      <created by="Debbie Lockett" on="2024-05-24"/>
+      <environment ref="maps-018"/>
+      <test>
+         <param name="param" select="'string'"/>
+      </test>
+      <result>
+         <error code="XPTY0004"/>
       </result>
    </test-case>
       
