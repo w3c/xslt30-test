@@ -2279,6 +2279,8 @@
    <test-case name="math-3303">
       <description>Test of round-half-to-even on doubles.</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2024-09-09" 
+                change="corrected results as per https://github.com/w3c/xslt30-test/issues/79"/>
       <environment ref="math-33"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2293,8 +2295,8 @@
             <assert>/out/a[3][@b="100" and @c="0" and @d="-0"]</assert>
             <assert>/out/a[4][@b="200" and @c="200" and @d="200"]</assert>
             <assert>/out/a[5][@b="-100" and @c="-200" and @d="-200"]</assert>
-            <assert>/out/a[6][@b="180.02" and @c="150.02" and @d="250.02"]</assert>
-            <assert>/out/a[7][@b="-120.01" and @c="-150.02" and @d="-250.02"]</assert>
+            <assert>/out/a[6][@b="180.02" and @c="150.01" and @d="250.03"]</assert>
+            <assert>/out/a[7][@b="-120.01" and @c="-150.01" and @d="-250.03"]</assert>
          </all-of>
       </result>
    </test-case>
@@ -2302,6 +2304,8 @@
    <test-case name="math-3303a">
       <description>Test of round-half-to-even on doubles: variant forcing runtime evaluation</description>
       <created by="Michael Kay" on="2016-01-11"/>
+      <modified by="Michael Kay" on="2024-09-09" 
+                change="corrected results as per https://github.com/w3c/xslt30-test/issues/79"/>
       <environment ref="math-33"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2316,8 +2320,8 @@
             <assert>/out/a[3][@b="100" and @c="0" and @d="-0"]</assert>
             <assert>/out/a[4][@b="200" and @c="200" and @d="200"]</assert>
             <assert>/out/a[5][@b="-100" and @c="-200" and @d="-200"]</assert>
-            <assert>/out/a[6][@b="180.02" and @c="150.02" and @d="250.02"]</assert>
-            <assert>/out/a[7][@b="-120.01" and @c="-150.02" and @d="-250.02"]</assert>
+            <assert>/out/a[6][@b="180.02" and @c="150.01" and @d="250.03"]</assert>
+            <assert>/out/a[7][@b="-120.01" and @c="-150.01" and @d="-250.03"]</assert>
          </all-of>
       </result>
    </test-case>
