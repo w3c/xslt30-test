@@ -123,6 +123,7 @@
    <test-case name="transform-009">
       <description>fn:transform() calling a transformation that executes xsl:result-document (Saxon bug 4959)</description>
       <created by="Michael Kay" on="2021-04-03"/>
+      <modified by="Michael Kay" on="2025-09-22" change="order of results (items in a map) can vary"/>
       <environment>
          <source role="." file="transform-001.xsl"/> <!-- Any source document will do -->
       </environment>
@@ -134,7 +135,10 @@
          <all-of>
             <assert-serialization><![CDATA[<?xml version="1.0" encoding="UTF-8"?><principal>main output</principal>]]></assert-serialization>
             <assert-result-document uri="secondary-outputs.xml">
-               <assert-serialization><![CDATA[<secondary-outputs>text doc <secondary2>xml doc</secondary2></secondary-outputs>]]></assert-serialization>
+               <any-of>
+                  <assert-serialization><![CDATA[<secondary-outputs>text doc <secondary2>xml doc</secondary2></secondary-outputs>]]></assert-serialization>
+                  <assert-serialization><![CDATA[<secondary-outputs><secondary2>xml doc</secondary2> text doc</secondary-outputs>]]></assert-serialization>
+               </any-of>
             </assert-result-document>
          </all-of>
       </result>
