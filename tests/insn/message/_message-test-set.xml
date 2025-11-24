@@ -881,6 +881,7 @@
    <test-case name="message-0501">
       <description>xsl:message terminate=yes: the error can be caught, and the message content is available in the xsl:catch as $err:value.</description>
       <created by="Michael Kay" on="2019-11-06"/>
+      <modified by="Michael Kay" on="2025-09-22" change="displayed value of $err:code may include namespace prefix"/>
       <dependencies>
          <spec value="XSLT30+"/>
       </dependencies>
@@ -889,7 +890,7 @@
       </test>
       <result>
          <all-of>
-            <assert>/err/code = "XTMM9000"</assert>
+            <assert>/err/code = "XTMM9000" or ends-with(/err/code, ":XTMM9000")</assert>
             <assert>exists(/err/description)</assert>
             <assert>/err/value/test = "Take me to your leader"</assert>
             <assert>/err/value/test/comment() = "REALLY"</assert>
