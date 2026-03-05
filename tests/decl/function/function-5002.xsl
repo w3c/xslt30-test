@@ -10,7 +10,7 @@
     </xsl:template>
     
     <xsl:function name="sf:absorbing" streamability="absorbing">
-        <xsl:param name="node" />
+        <xsl:param name="node" as="node()"/>
         <xsl:copy-of select="$node/doc/section[1]/section/p[2]" />
     </xsl:function>
 </xsl:stylesheet>
