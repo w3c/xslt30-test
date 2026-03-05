@@ -147,7 +147,7 @@
 
   <!-- within xsl:source-document, use LRE: descendant text nodes mixed with atomic values -->
 
-  <xsl:template name="cy-010" use-when="$RUN">
+  <xsl:template name="cy-010" use-when="true() or $RUN">
     <out>
       <xsl:source-document streamable="yes" href="../docs/books.xml">
         <xsl:for-each select="100, 101, /BOOKLIST/BOOKS/ITEM/PRICE">
