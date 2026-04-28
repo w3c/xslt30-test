@@ -12,7 +12,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
 <out>;
  <xsl:for-each select="0 to 30">
    <xsl:variable name="d2" select="$d + xs:yearMonthDuration('P1Y')*."/>
-   <z><xsl:value-of select="translate(format-date($d2, '[YWwo]', 'en', (), ()), '-. ', '')"/></z>;
+   <z><xsl:value-of select="translate(replace(format-date($d2, '[YWwo]', 'en', (), ()), ' And ', ' and '), '-. ', '')"/></z>;
  </xsl:for-each>  
 </out>     
   </xsl:template>

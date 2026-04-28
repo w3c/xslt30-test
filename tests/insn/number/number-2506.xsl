@@ -8,13 +8,16 @@
 
 <xsl:template match="doc">
   <out>
-    <xsl:apply-templates/>
+    <xsl:apply-templates select=".//note"/>
   </out>
 </xsl:template>
 
 <xsl:template match="note">
-  <xsl:number value="position()" format="Ww " lang="{if (position() mod 2 = 0) then 'en' else 'de'}" />
-  <xsl:apply-templates/>
+  <xsl:variable name="temp">
+    <xsl:number value="position()" format="Ww" lang="{if (position() mod 2 = 0) then 'en' else 'de'}" />
+  </xsl:variable>
+  <!-- allow both "twenty-one" and "twenty one" -->
+  <n><xsl:value-of select="translate($temp, '-', ' ')"/></n>
 </xsl:template>
 
 </xsl:stylesheet>

@@ -166,7 +166,13 @@
          <stylesheet file="number-0105.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out><a name="Andy">Zero</a><a name="Thomas">Seven</a><a name="Peter">Fourteen</a><a name="Paul">Twenty One</a><a name="Matthew">Twenty Eight</a></out>]]></assert-xml>
+         <all-of>
+            <assert>/out/a[@name="Andy"] = "Zero"</assert>
+            <assert>/out/a[@name="Thomas"] = "Seven"</assert>
+            <assert>/out/a[@name="Peter"] = "Fourteen"</assert>
+            <assert>/out/a[@name="Paul"] = ("Twenty One", "Twenty-One")</assert>
+            <assert>/out/a[@name="Matthew"] = ("Twenty Eight", "Twenty-Eight")</assert>
+         </all-of>
       </result>
    </test-case>
    
@@ -1726,6 +1732,7 @@ footnote</footnote> and a <citation/></p>
    <test-case name="number-2506">
       <description>Test xsl:number with different values of lang attribute in a single run</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2026-02-15" change="rewrite to make the test do as intended"/>
       <environment ref="number-25"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -1734,7 +1741,16 @@ footnote</footnote> and a <citation/></p>
          <stylesheet file="number-2506.xsl"/>
       </test>
       <result>
-         <assert-xml file="number-2506.out"/>
+         <all-of>
+            <assert>/out/n[1] = ("Ein", "Eins")</assert>
+            <assert>/out/n[2] = "Two"</assert>
+            <assert>/out/n[3] = "Drei"</assert>
+            <assert>/out/n[4] = "Four"</assert>
+            <assert>/out/n[5] = "Fünf"</assert>
+            <assert>/out/n[6] = "Six"</assert>
+            <assert>/out/n[7] = "Sieben"</assert>
+            <assert>/out/n[8] = "Eight"</assert>
+         </all-of>
       </result>
    </test-case>
 
