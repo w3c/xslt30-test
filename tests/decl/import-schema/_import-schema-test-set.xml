@@ -2874,10 +2874,15 @@
       </description>
       <created by="Michael Kay, Saxonica" on="2012-11-09"/>
       <modified by="Michael Kay" on="2015-03-20" change="See bug 20726"/>
+      <modified by="Michael Kay" on="2026-03-06" change="I think the assertion that the prefix 'p' was required
+         in the first element was based on a misreading of the spec. Since the containing element in the instance
+         document has no in-scope namespace declaration for the namespace URI of the constructed attribute, the
+         processor is free to choose any prefix it likes, so long as it declares it."/>
       <environment>
          <source role=".">
             <content><![CDATA[<doc><e/><e xmlns:p="http://some.other.namespace/"/><e xmlns:q="http://p.com/"/></doc>]]></content>
          </source>
+         <schema role="stylesheet-import" file="schema092.xsd" xsd-version="1.0"/>
       </environment>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -2889,9 +2894,21 @@
       </test>
       <result>
          <all-of>
-            <assert>/doc/att[1][@local="foo"][@ns="http://p.com/"][@prefixed="true"][@declared="true"][@name="p:foo"]</assert>
-            <assert>/doc/att[2][@local="foo"][@ns="http://p.com/"][@prefixed="true"][@declared="true"][not(@name)]</assert>
-            <assert>/doc/att[3][@local="foo"][@ns="http://p.com/"][@prefixed="true"][@declared="true"][@name="q:foo"]</assert>
+            <assert>/doc/att[1][@local="foo"]
+                               [@ns="http://p.com/"]
+                               [@prefixed="true"]
+                               [@declared="true"]
+            </assert>
+            <assert>/doc/att[2][@local="foo"]
+                               [@ns="http://p.com/"]
+                               [@prefixed="true"]
+                               [@declared="true"]
+            </assert>
+            <assert>/doc/att[3][@local="foo"]
+                               [@ns="http://p.com/"]
+                               [@prefixed="true"]
+                               [@declared="true"]
+                               [@name="q:foo"]</assert>
          </all-of>
       </result>
    </test-case>
