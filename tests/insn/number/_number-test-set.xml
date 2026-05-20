@@ -671,6 +671,10 @@
    <test-case name="number-0807">
       <description>test formatting of a number larger than a 64-bit integer</description>
       <created by="Michael Kay" on="2012-11-07"/>
+      <modified by="Michael Kay" on="2026-05-05" change="See Saxon bug 7070. The xs:double value 1e100 is cast to
+         xs:integer, the rules say that this gives the integer that is exactly equal to the mantissa times 2 to
+         the power of the unbiased exponent, which is not going to be a nice power of 10. But in the interests
+         of continuity, we continue to allow the previous result."/>
       <environment ref="number-06"/>
       <dependencies>
          <spec value="XSLT20+"/>
@@ -680,7 +684,10 @@
          <stylesheet file="number-0807.xsl"/>
       </test>
       <result>
-         <assert-xml><![CDATA[<out>[10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]</out>]]></assert-xml>
+         <any-of>
+            <assert-xml><![CDATA[<out>[10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]</out>]]></assert-xml>
+            <assert-xml><![CDATA[<out>[10000000000000000159028911097599180468360808563945281389781327557747838772170381060813469985856815104]</out>]]></assert-xml>
+         </any-of>
       </result>
    </test-case>
 
