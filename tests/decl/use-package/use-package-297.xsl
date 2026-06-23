@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:package version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+   
+   <xsl:use-package name="http://use-package-297/pkg"/>
+   
+   <xsl:template name="xsl:initial-template" visibility="public">
+      <ok/>
+   </xsl:template>
+</xsl:package>
